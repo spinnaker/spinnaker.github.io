@@ -2,7 +2,7 @@
 layout: single
 title:  "Documentation"
 sidebar:
-  nav: docs
+  nav: documentation
 ---
 
 {% include toc %}

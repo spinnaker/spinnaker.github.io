@@ -1,21 +1,12 @@
-# main links
 main:
-  # - title: "Quick-Start Guide"
-  #   url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
-  # - title: "About"
-  #   url: https://mmistakes.github.io/minimal-mistakes/about/
-  # - title: "Sample Posts"
-  #   url: /year-archive/
-  # - title: "Sample Collections"
-  #   url: /collection-archive/
-  # - title: "Sitemap"
-  #   url: /sitemap/
   - title: Concepts
     url: /concepts
   - title: Documentation
-    url: /docs
+    url: /documentation
   - title: Community
+    url: /community
   - title: Resources
+    url: /resources
 
 concepts:
   - title: Overview
@@ -28,15 +19,18 @@ concepts:
       - title: Expressions Guide
         url: /concepts/pipelines/expressions-guide
 
-docs:
+documentation:
   - title: Overview
-    url: /docs
+    url: /documentation
   - title: Installation
-    url: /docs/installation
+    url: /documentation/installation
     children:
       - title: Linux
       - title: AWS
       - title: GCE
+      - title: Kubernetes
+      - title: Azure
+      - title: Docker Compose
   - title: Releases
   - title: Provider Configuration
     children:
@@ -44,7 +38,24 @@ docs:
       - title: AWS
       - title: GCE
       - title: Kubernetes
-  - title: Bells and Whistles
+  - title: Features and Guides
     children:
-      - title: Jacob
-      - title: Jessica
+      - title: Pipeline Expressions
+      - title: Security
+
+community:
+  - title: Community
+    children:
+      - title: Contributing
+      - title: Code of Conduct
+      - title: Support Policy
+      - title: FAQs
+      - title: Chat room
+      - title: Roadmap
+
+resources:
+  - title: Resources
+    children:
+      - title: Presentations
+      - title: External Articles
+      - title: Slack Archive
