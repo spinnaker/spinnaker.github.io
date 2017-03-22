@@ -13,22 +13,38 @@ main:
   - title: Concepts
     url: /concepts
   - title: Documentation
-    url: /documentation
+    url: /docs
+  - title: Community
+  - title: Resources
 
 concepts:
   - title: Overview
-  - title: Stuff
-  - title: Moar Stuff
+    url: /concepts
+  - title: Groupings
+    url: /concepts/groupings
+  - title: Pipelines
+    url: /concepts/pipelines
+    children:
+      - title: Expressions Guide
+        url: /concepts/pipelines/expressions-guide
 
 docs:
   - title: Overview
+    url: /docs
   - title: Installation
+    url: /docs/installation
     children:
       - title: Linux
-        children:
-          - title: Foo
-            children:
-              - title: Bar
       - title: AWS
       - title: GCE
   - title: Releases
+  - title: Provider Configuration
+    children:
+      - title: Halyard
+      - title: AWS
+      - title: GCE
+      - title: Kubernetes
+  - title: Bells and Whistles
+    children:
+      - title: Jacob
+      - title: Jessica
