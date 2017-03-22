@@ -1,0 +1,34 @@
+# main links
+main:
+  # - title: "Quick-Start Guide"
+  #   url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
+  # - title: "About"
+  #   url: https://mmistakes.github.io/minimal-mistakes/about/
+  # - title: "Sample Posts"
+  #   url: /year-archive/
+  # - title: "Sample Collections"
+  #   url: /collection-archive/
+  # - title: "Sitemap"
+  #   url: /sitemap/
+  - title: Concepts
+    url: /concepts
+  - title: Documentation
+    url: /documentation
+
+concepts:
+  - title: Overview
+  - title: Stuff
+  - title: Moar Stuff
+
+docs:
+  - title: Overview
+  - title: Installation
+    children:
+      - title: Linux
+        children:
+          - title: Foo
+            children:
+              - title: Bar
+      - title: AWS
+      - title: GCE
+  - title: Releases

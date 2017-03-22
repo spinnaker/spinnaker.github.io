@@ -1,8 +1,10 @@
 ---
-layout: post
+layout: single
 title:  "Welcome to Jekyll!"
 date:   2017-03-22 08:49:43 -0400
 categories: jekyll update
+sidebar:
+  nav: concepts
 ---
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
@@ -12,7 +14,7 @@ Jekyll also offers powerful support for code snippets:
 
 {% highlight ruby %}
 def print_hi(name)
-  puts "Hi, #{name}"
+  puts "Hi, #{name}" foo
 end
 print_hi('Tom')
 #=> prints 'Hi, Tom' to STDOUT.
