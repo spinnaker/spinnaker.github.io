@@ -42,6 +42,7 @@ documentation:
     children:
       - title: Pipeline Expressions
       - title: Security
+        url: /documentation/security
 
 community:
   - title: Community
@@ -52,6 +53,7 @@ community:
       - title: FAQs
       - title: Chat room
       - title: Roadmap
+        url: /community/roadmap
 
 resources:
   - title: Resources
@@ -59,3 +61,53 @@ resources:
       - title: Presentations
       - title: External Articles
       - title: Slack Archive
+
+security:
+  - title: Overview
+    url: /documentation/security
+    children:
+      - title: Workflow
+        url: /documentation/security/workflow
+      - title: SSL Setup
+        url: /documentation/security/ssl
+  - title: Authentication
+    children:
+      - title: OAuth 2.0
+        url: /documentation/security/authentication/oauth
+      - title: SAML 2.0
+        url: /documentation/security/authentication/saml
+      - title: LDAP
+        url: /documentation/security/authentication/ldap
+      - title: X.509
+        url: /documentation/security/authentication/x509
+  - title: Authorization
+    url: /documentation/security/authorization
+    children:
+      - title: Google Groups
+      - title: GitHub Teams
+      - title: LDAP
+      - title: SAML
+
+authentication:
+  - title: OAuth 2.0
+    children:
+      - title: Pre-built Images
+        url: /documentation/security/authentication/oauth/pre-built-images
+      - title: SSL Server Termination
+        url: /documentation/security/authentication/oauth/ssl-server-termination
+      - title: SSL Load Balancer Termination
+        url: /documentation/security/authentication/oauth/ssl-load-balancer-termination
+      - title: Troubleshooting
+  - title: SAML 2.0
+    children:
+      - title: Pre-built Images
+      - title: SSL Terminated at Server
+      - title: SSL Terminated at Load Balancer
+      - title: Troubleshooting
+  - title: LDAP
+    children:
+      - title: Pre-built Images
+      - title: SSL Terminated at Server
+      - title: SSL Terminated at Load Balancer
+      - title: Troubleshooting
+  - title: X509

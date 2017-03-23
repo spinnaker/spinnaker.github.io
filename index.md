@@ -1,5 +1,12 @@
 ---
 layout: home
+feature_row:
+  - title: Configurable, Safe
+    excerpt: "Spinnaker helps codify the process of safely and reliably deploying artifacts to the cloud, leveraging industry best practices out-of-the-box.\n\n_**Configure once, run anytime.**_"
+  - title: Multi-cloud
+    excerpt: "Deploy across multiple cloud providers: AWS EC2, Google Compute Engine, Microsoft Azure, OpenStack and Cloud Foundry.\n\n_**Deploy anywhere, manage centrally.**_"
+  - title: Vibrant Community
+    excerpt: "Strong community engagement, and contributions from partners including: Netflix, Google, Microsoft, Pivotal, Veritas, Target, Schibsted and Kenzan.\n\n_**Pull requests are gladly accepted.**_"
 ---
 
 # Deliver your software changes to production with high velocity and confidence
@@ -8,21 +15,20 @@ Spinnaker is an open source, multi-cloud continuous delivery platform for releas
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/dwdVwE52KkU" frameborder="0" allowfullscreen></iframe>
 
-
-### Configurable, Safe
-
-Spinnaker helps codify the process of safely and reliably deploying artifacts to the cloud, leveraging industry best practices out-of-the-box.
-_**Configure once, run anytime.**_
-
-### Multi-cloud
-Deploy across multiple cloud providers: AWS EC2, Google Compute Engine, Microsoft Azure, OpenStack and Cloud Foundry.
-_**Deploy anywhere, manage centrally.**_
-
-### Vibrant Community
-Strong community engagement, and contributions from partners including: Netflix, Google, Microsoft, Pivotal, Veritas, Target, Schibsted and Kenzan.
-_**Pull requests are gladly accepted.**_
+{% include feature_row %}
 
 ## Supported Cloud Providers
 
-TODO: Add Logos.
+<div class="cloudproviders">
+  <ul class="images">
+    <li><img src="/assets/images/aws.png" /> </li>
+    <li><img src="/assets/images/gcp.png" /></li>
+    <li><img src="/assets/images/k8s.png"/></li>
+  </ul>
+  <ul class="images">
+    <li><img src="/assets/images/azure.png" /></li>
+    <li><img src="/assets/images/os.png" /></li>
+    <li><img src="/assets/images/cf.png" /></li>
+  </ul>
+</div>
 
