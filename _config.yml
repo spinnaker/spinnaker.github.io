@@ -76,7 +76,7 @@ analytics:
 
 
 # # Site Author
-# author:
+author:
 #   name             : "Your Name"
 #   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
 #   bio              : "I am an amazing person."
@@ -89,7 +89,7 @@ analytics:
 #   flickr           :
 #   facebook         :
 #   foursquare       :
-#   github           :
+  github           : spinnaker
 #   google_plus      :
 #   keybase          :
 #   instagram        :
