@@ -15,6 +15,8 @@ Authorization is fundamentally flawed without first confirming the user is who t
 
 There are 3 basic players in Spinnaker's authentication workflow:
 
+![](basic-players.png)
+
 1. **Deck**: Spinnaker's UI. Consists of a set of static HTML, JavaScript, and CSS files. Generally served from an Apache server, but there is nothing special about Apache that makes Deck work. Replace with your favorite HTTP(S) server if you'd like.
 
 2. **Gate**: Spinnaker's API Gateway. All traffic (including traffic generated from Deck) flows through Gate. It is the point at which _authentication_ is confirmed and one point (of several) where _authorization_ is enforced.
