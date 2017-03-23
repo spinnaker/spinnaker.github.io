@@ -1,0 +1,23 @@
+.cloudproviders {
+    background-color: #52adc8;
+    padding: 20px;
+}
+.cloudproviders .images {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 30px;
+    font-size: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.cloudproviders img {
+    max-width: 100%;
+    max-height: 100px;
+    margin: 20px;
+}
+
+.search input {
+    font-family: FontAwesome;
+}
