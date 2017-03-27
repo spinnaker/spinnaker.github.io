@@ -1,5 +1,5 @@
 ---
-title:  "OAuth 2.0 - Pre-built VM Images"
+title:  "SAML 2.0 - Pre-built VM Images"
 sidebar:
   nav: authentication
 ---
@@ -8,13 +8,13 @@ The all-in-one, prebuilt VM images tunnel all of Gate's traffic through Deck's A
 
 The giveaway is the presense of `/gate` at the beginning of the URL path in network traffic. For example, if you see calls like `http://deck.url:9000/gate/applications` or `http://deck.url:9000/gate/serverGroups`, you are most likely using a pre-built VM image where Gate traffic gets routed through Apache's [ProxyPass](https://httpd.apache.org/docs/2.4/mod/mod_proxy.html#proxypass).
 
-Since Gate doesn't know about being fronted by an Apache instance, we must explicitly set the `redirect_uri` in the initial request to the OAuth provider. Add the following to your configuration:
+Since Gate doesn't know about being fronted by an Apache instance, we must explicitly set the Gate address in the initial request to the SAML provider. Add the following to your configuration:
+
 ```
-spring:
-  oauth2:
-    client:
-      useCurrentUri: false
-      preEstablishedRedirectUri: https://deck.url:9000/gate/login
+saml:
+  # redirectProtocol: https # default is https
+  redirectHostname: gate.url:8084
+  redirectBasePath: gate # TODO(ttomsu): verify this.
 ```
 
 It is **strongly** recommended to _not_ put a load balancer in front of this setup. A request goes through two proxy hops -- one for the load balancer, and one for Apache -- and generally ends with frustration and headache getting the URLs _just_ right.

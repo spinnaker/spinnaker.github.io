@@ -90,6 +90,7 @@ security:
 
 authentication:
   - title: OAuth 2.0
+    url: /documentation/security/authentication/oauth
     children:
       - title: Pre-built Images
         url: /documentation/security/authentication/oauth/pre-built-images
@@ -97,13 +98,17 @@ authentication:
         url: /documentation/security/authentication/oauth/ssl-server-termination
       - title: SSL Load Balancer Termination
         url: /documentation/security/authentication/oauth/ssl-load-balancer-termination
-      - title: Troubleshooting
+      - title: Troubleshooting # TODO(ttomsu)
   - title: SAML 2.0
+    url: /documentation/security/authentication/saml
     children:
       - title: Pre-built Images
+        url: /documentation/security/authentication/saml/pre-built-images
       - title: SSL Terminated at Server
+        url: /documentation/security/authentication/saml/ssl-server-termination
       - title: SSL Terminated at Load Balancer
-      - title: Troubleshooting
+        url: /documentation/security/authentication/saml/ssl-load-balancer-termination
+      - title: Troubleshooting # TODO(ttomsu)
   - title: LDAP
     children:
       - title: Pre-built Images

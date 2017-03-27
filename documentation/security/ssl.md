@@ -8,9 +8,17 @@ sidebar:
 
 This section will cover communication with parties external to your Spinnaker instance. That is, any requests between your browser and the Deck (the UI) host, between Deck and Gate (the API gateway), and between any other client and Gate.
 
+## Network Architecture Options with SSL/TLS
+It is strongly encouraged that your entire communication with all players is conducted over HTTPS. Most reasonable identity providers already run HTTPS-only, and you should look for a different solution provider if yours does not.
+
+Each authentication mechanism is configured differently depending on where the SSL connection is terminated. Furthermore, the use of Spinnaker's all-in-one pre-built image adds a different configuration wrinkle when trying to add authentication.
+
+Many users like to get authentication working before adding HTTPS, but experience bears out that the transition is not smooth. It is recommended to put at least a temporary SSL solution in place **first**.
+
+## Certificate Authority
+
 We will use `openssl` to generate a Certificate Authority (CA) and a server certificate. For the purposes of this tutorial, we'll use a self-signed CA. You may consider using an external CA to minimize browser configuration, but it's not necessary (and can be expensive).
 
-### Certificate Authority
 Use the steps below to create a certificate authority. If you're using an external CA, skip to the next section.
 
 1. Create the CA key.
@@ -22,7 +30,7 @@ openssl genrsa -des3 -out ca.key 4096
 openssl req -new -x509 -days 365 -key ca.key -out ca.crt
 ```
 
-### Server Certificate
+## Server Certificate
 1. Create the server key. Keep this file safe!
 ```
 openssl genrsa -des3 -out server.key 4096

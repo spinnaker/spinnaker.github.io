@@ -45,9 +45,9 @@ For convenience, several providers are already pre-configured. As an administrat
 
 Provider | Profile | Config File | Provider-Specific Docs
 --- | --- | ---
-Google | `googleOAuth` | `/opt/spinnaker/config/gate-googleOAuth.yml` | TODO
-GitHub | `githubOAuth` | `/opt/spinnaker/config/gate-githubOAuth.yml` | TODO
-Azure | `azureOAuth` | `/opt/spinnaker/config/gate-azureOAuth.yml` | TODO
+Google | `googleOAuth` | `/opt/spinnaker/config/gate-googleOAuth.yml` | [Google Apps](./google/)
+GitHub | `githubOAuth` | `/opt/spinnaker/config/gate-githubOAuth.yml` | [GitHub Teams](./github/)
+Azure | `azureOAuth` | `/opt/spinnaker/config/gate-azureOAuth.yml` | [Azure](./azure/)
 
 Activate by setting the environmental variable `SPRING_PROFILES_ACTIVE=local,<profile>`
 
@@ -104,7 +104,7 @@ userInfoMapping:
 
 # SSL Termination
 
-Gate makes no assumption that it's being deployed in concert with other networking components, such as an SSL-terminating load balancer. Depending on your Spinnaker deployment, additional configuration may be necessary to get the authentication dance working properly.
+Gate makes no assumption that it's being deployed in concert with other networking components, such as an SSL-terminating load balancer. Depending on your Spinnaker deployment, additional configuration may be necessary to get the authentication [dance](../../index.html) working properly.
 
 * [Pre-built VM Images](./pre-built-images)
 * [SSL Terminated at Server](./ssl-server-termination)

@@ -139,10 +139,3 @@ Gate->>-Deck: Returns empty response
 	</div>
 
 1. Repeat this process from step 1. Now, the response from `https://gate.url:8084/auth/user` will contain a proper JSON object and the rest of application will proceed to load.
-
-# Network Architecture Options with SSL/TLS
-It is strongly encouraged that your entire communication with all three players is conducted over HTTPS. Most reasonable identity providers already run HTTPS-only, and you should look for a different solution provider if yours does not.
-
-Each authentication mechnism is configured differently depending on where the SSL connection is terminated. Furthermore, the use of Spinnaker's all-in-one pre-built image adds a different configuration wrinkle when trying to add authentication.
-
-Many users like to get authentication working before adding HTTPS, but experience bears out that the transition is not smooth. It is recommended to put at least a temporary SSL solution in place **first**.

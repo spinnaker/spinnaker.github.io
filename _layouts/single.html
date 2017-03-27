@@ -25,6 +25,9 @@ layout: default
 
     <div class="page__inner-wrap">
       {% unless page.header.overlay_color or page.header.overlay_image %}
+        <div class="suggest-edit">
+          <a href="https://github.com/{{site.repository}}/tree/master/{{page.path}}">Suggest an Edit</a>
+        </div>
         <header>
           {% if page.title %}<h1 class="page__title" itemprop="headline">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>{% endif %}
           {% if page.read_time %}
