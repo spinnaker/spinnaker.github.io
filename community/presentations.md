@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Community"
+title:  "Presentations"
 sidebar:
   nav: community
 ---

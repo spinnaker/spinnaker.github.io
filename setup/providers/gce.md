@@ -1,8 +1,8 @@
 ---
 layout: single
-title:  "Community"
+title:  "Google Compute Engine"
 sidebar:
-  nav: community
+  nav: reference
 ---
 
 {% include toc %}

@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Community"
+title:  "Code Of Conduct"
 sidebar:
   nav: community
 ---

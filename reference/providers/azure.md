@@ -1,8 +1,8 @@
 ---
 layout: single
-title:  "Community"
+title:  "Azure"
 sidebar:
-  nav: community
+  nav: reference
 ---
 
 {% include toc %}

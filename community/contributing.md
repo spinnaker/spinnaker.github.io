@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Community"
+title:  "Contributing"
 sidebar:
   nav: community
 ---

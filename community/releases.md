@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Community"
+title:  "Releases"
 sidebar:
   nav: community
 ---

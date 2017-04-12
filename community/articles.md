@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Community"
+title:  "Articles"
 sidebar:
   nav: community
 ---

@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Community"
+title:  "Support Policy"
 sidebar:
   nav: community
 ---

@@ -1,8 +1,8 @@
 ---
 layout: single
-title:  "Community"
+title:  "Instances"
 sidebar:
-  nav: community
+  nav: guides
 ---
 
 {% include toc %}

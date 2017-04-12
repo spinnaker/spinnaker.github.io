@@ -1,8 +1,8 @@
 ---
 layout: single
-title:  "Community"
+title:  "Load Balancers"
 sidebar:
-  nav: community
+  nav: guides
 ---
 
 {% include toc %}

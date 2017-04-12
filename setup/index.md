@@ -1,8 +1,8 @@
 ---
 layout: single
-title:  "Community"
+title:  "Setup"
 sidebar:
-  nav: community
+  nav: setup
 ---
 
 {% include toc %}

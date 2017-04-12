@@ -1,67 +1,128 @@
 main:
   - title: Concepts
     url: /concepts
-  - title: Documentation
-    url: /documentation
+  - title: Setup
+    url: /setup
+  - title: Guides
+    url: /guides
+  - title: Reference
+    url: /reference
   - title: Community
     url: /community
-  - title: Resources
-    url: /resources
 
 concepts:
   - title: Overview
     url: /concepts
-  - title: Groupings
-    url: /concepts/groupings
+  - title: Clusters
+    url: /concepts/clusters
   - title: Pipelines
     url: /concepts/pipelines
-    children:
-      - title: Expressions Guide
-        url: /concepts/pipelines/expressions-guide
 
-documentation:
-  - title: Overview
-    url: /documentation
-  - title: Installation
-    url: /documentation/installation
+setup:
+  - title: Quickstart
+    url: /setup/quickstart
+  - title: Requirements
+    url: /setup/requirements
     children:
-      - title: Linux
-      - title: AWS
-      - title: GCE
-      - title: Kubernetes
+      - title: Amazon Web Services
+        url: /setup/providers/aws
+      - title: AppEngine
+        url: /setup/providers/appengine
       - title: Azure
-      - title: Docker Compose
-  - title: Releases
-  - title: Provider Configuration
-    children:
-      - title: Halyard
-      - title: AWS
-      - title: GCE
+        url: /setup/providers/azure
+      - title: Google Cloud Engine
+        url: /setup/providers/gce
       - title: Kubernetes
-  - title: Features and Guides
+        url: /setup/providers/kubernetes
+      - title: OpenStack
+        url: /setup/providers/openstack
+      - title: Oracle
+        url: /setup/providers/oracle
+  - title: Install
+    url: /setup/install
+  - title: Monitoring
+    url: /setup/monitoring
+  - title: Upgrading
+    url: /setup/upgrading
+
+guides:
+  - title: Tutorials
+    url: /guides/tutorials
     children:
-      - title: Pipeline Expressions
-      - title: Security
-        url: /documentation/security
+      - title: Videos
+        url: /guides/tutorials/videos
+  - title: Tasks
+    url: /guides/tasks
+    children:
+      - title: Server Groups
+        url: /guides/tasks/server-groups
+      - title: Instances
+        url: /guides/tasks/instances
+      - title: Load Balancers
+        url: /guides/tasks/load-balancers
+      - title: Security Groups
+        url: /guides/tasks/security-groups
+  - title: Pipelines
+    url: /guides/pipelines
+    children:
+      - title: Triggers
+        url: /guides/pipelines/triggers
+      - title: Notifications
+        url: /guides/pipelines/notifications
+      - title: Stages
+        url: /guides/pipelines/stages
+      - title: Strategies
+        url: /guides/pipelines/strategies
+      - title: Expressions
+        url: /guides/pipelines/expressions
+  - title: Application Config
+    url: /guides/application-config
+
+reference:
+  - title: API
+    url: /reference/api
+  - title: Cloud Providers
+    children:
+      - title: Amazon Web Services
+        url: /reference/providers/aws
+      - title: AppEngine
+        url: /reference/providers/appengine
+      - title: Azure
+        url: /reference/providers/azure
+      - title: Google Compute Engine
+        url: /reference/providers/gce
+      - title: Kubernetes
+        url: /reference/providers/kubernetes
+      - title: OpenStack
+        url: /reference/providers/openstack
+      - title: Oracle
+        url: /reference/providers/oracle
+  - title: Halyard
+    url: /reference/halyard
+  - title: Architecture
+    url: /reference/architecture
 
 community:
-  - title: Community
-    children:
-      - title: Contributing
-      - title: Code of Conduct
-      - title: Support Policy
-      - title: FAQs
-      - title: Chat room
-      - title: Roadmap
-        url: /community/roadmap
+  - title: Releases
+    url: /community/releases
+  - title: Support Policy
+    url: /community/support-policy
+  - title: Contributing
+    url: /community/contributing
+  - title: Code of Conduct
+    url: /community/code-of-conduct
+  - title: FAQs
+    url: /community/faqs
+  - title: Chat room
+    url: /community/chat-room
+  - title: Presentations
+    url: /community/presentations
+  - title: Articles
+    url: /community/articles
+  - title: Roadmap
+    url: /community/roadmap
 
-resources:
-  - title: Resources
-    children:
-      - title: Presentations
-      - title: External Articles
-      - title: Slack Archive
-
+# deprecated
 security:
   - title: Overview
     url: /documentation/security
