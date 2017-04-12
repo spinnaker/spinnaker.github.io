@@ -1,8 +1,8 @@
 ---
 layout: single
-title:  "Community"
+title:  "AppEngine"
 sidebar:
-  nav: community
+  nav: reference
 ---
 
 {% include toc %}

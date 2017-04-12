@@ -1,8 +1,8 @@
 ---
 layout: single
-title:  "Community"
+title:  "Pipelines"
 sidebar:
-  nav: community
+  nav: guides
 ---
 
 {% include toc %}

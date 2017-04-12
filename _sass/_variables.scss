@@ -14,7 +14,7 @@ $indent-var                 : 1.3em !default;
 
 /* system typefaces */
 $serif                      : Georgia, Times, serif !default;
-$sans-serif                 : -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif !default;
+$sans-serif                 : "Source Sans Pro", -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif !default;
 $monospace                  : Monaco, Consolas, "Lucida Console", monospace !default;
 
 /* sans serif typefaces */
@@ -41,6 +41,7 @@ $type-size-5                : 1em !default;      // ~16px
 $type-size-6                : 0.75em !default;   // ~12px
 $type-size-7                : 0.6875em !default; // ~11px
 $type-size-8                : 0.625em !default;  // ~10px
+
 
 
 /*
@@ -93,7 +94,7 @@ $xing-color                 : #006567 !default;
 $link-color                 : $info-color !default;
 $link-color-hover           : mix(#000, $link-color, 25%) !default;
 $link-color-visited         : mix(#fff, $link-color, 25%) !default;
-$masthead-color             : #000 !default;
+$masthead-color             : #3a5469 !default;
 $masthead-link-color        : #fff !default;
 $masthead-link-color-hover  : mix(#000, $primary-color, 25%) !default;
 
@@ -107,6 +108,7 @@ $medium                     : 768px !default;
 $medium-wide                : 900px !default;
 $large                      : 1024px !default;
 $x-large                    : 1280px !default;
+
 
 
 /*

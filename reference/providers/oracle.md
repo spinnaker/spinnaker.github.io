@@ -1,8 +1,8 @@
 ---
 layout: single
-title:  "Community"
+title:  "Oracle"
 sidebar:
-  nav: community
+  nav: reference
 ---
 
 {% include toc %}

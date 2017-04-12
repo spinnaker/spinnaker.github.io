@@ -1,8 +1,8 @@
 ---
 layout: single
-title:  "Community"
+title:  "Server Groups"
 sidebar:
-  nav: community
+  nav: guides
 ---
 
 {% include toc %}

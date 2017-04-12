@@ -1,8 +1,8 @@
 ---
 layout: single
-title:  "Community"
+title:  "Security Groups"
 sidebar:
-  nav: community
+  nav: guides
 ---
 
 {% include toc %}
