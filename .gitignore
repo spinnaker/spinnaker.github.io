@@ -3,4 +3,8 @@ _site
 .jekyll-metadata
 node_modules/
 Gemfile.lock
+/.idea/
+*.iml
+*.ipr
+*.iws
 LICENSE.txt # todo: add our own

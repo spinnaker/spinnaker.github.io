@@ -183,7 +183,7 @@
 
   a {
     display: block;
-    margin: 0 1rem;
+    margin-left: 1.5rem;
     padding: 0.5rem 0;
     color: $masthead-link-color;
     text-decoration: none;
@@ -237,7 +237,7 @@
         left: 0;
         bottom: 0;
         height: 4px;
-        background: mix(#fff, $primary-color, 50%);
+        background: $masthead-link-color-hover;
         width: 100%;
         -webkit-transition: $global-transition;
         transition: $global-transition;
