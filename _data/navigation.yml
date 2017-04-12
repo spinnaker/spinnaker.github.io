@@ -40,6 +40,17 @@ setup:
         url: /setup/providers/oracle
   - title: Install
     url: /setup/install
+  - title: Security
+    url: /setup/security
+    children:
+      - title: Authentication
+        url: /setup/security/authentication
+      - title: Authorization
+        url: /setup/security/authorization
+  - title: Features
+    children:
+      - title: Notifications
+      - title: Webhooks
   - title: Monitoring
     url: /setup/monitoring
   - title: Upgrading

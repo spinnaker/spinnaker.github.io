@@ -6,3 +6,8 @@ sidebar:
 ---
 
 {% include toc %}
+
+
+## Contributors
+
+Super major props to these cool cats. (logos!)
