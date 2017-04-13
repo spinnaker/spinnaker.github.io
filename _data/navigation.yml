@@ -20,17 +20,40 @@ concepts:
 
 setup:
   - title: Quickstart
-    url: /setup/quickstart
-  - title: Requirements
-    url: /setup/requirements
     children:
+      - title: AWS Quickstart
+        url: /setup/quickstart/aws-quickstart
+      - title: Azure Quickstart
+        url: /setup/quickstart/azure-quickstart
+      - title: Google Cloud Launcher
+        url: /setup/quickstart/google-cloud-launcher
+  - title: Install
+    children:
+      - title: Getting Started
+        url: /setup/install/getting-started
+      - title: Halyard
+        url: /setup/install/halyard
+      - title: Environment
+        url: /setup/install/environment
+      - title: Storage
+        url: /setup/install/storage
+      - title: Deploy
+        url: /setup/install/deploy
+      - title: Configuration
+        url: /setup/install/configuration
+  - title: Cloud Providers
+    children:
+      - title: Overview
+        url: /setup/providers/overview
       - title: Amazon Web Services
         url: /setup/providers/aws
       - title: AppEngine
         url: /setup/providers/appengine
       - title: Azure
         url: /setup/providers/azure
-      - title: Google Cloud Engine
+      - title: Docker Registry
+        url: /setup/providers/docker-registry
+      - title: Google Compute Engine
         url: /setup/providers/gce
       - title: Kubernetes
         url: /setup/providers/kubernetes
@@ -38,10 +61,19 @@ setup:
         url: /setup/providers/openstack
       - title: Oracle
         url: /setup/providers/oracle
-  - title: Install
-    url: /setup/install
+      - title: Titus
+        url: /setup/providers/titus
+  - title: Persistent Storage
+    children:
+      - title: Overview
+        url: /setup/storage/overview
+      - title: Azure Blob Storage
+        url: /setup/storage/abs
+      - title: Google Cloud Storage
+        url: /setup/storage/gcs
+      - title: S3
+        url: /setup/storage/s3
   - title: Security
-    url: /setup/security
     children:
       - title: Authentication
         url: /setup/security/authentication
@@ -96,7 +128,7 @@ reference:
     children:
       - title: Amazon Web Services
         url: /reference/providers/aws
-      - title: AppEngine
+      - title: App Engine
         url: /reference/providers/appengine
       - title: Azure
         url: /reference/providers/azure

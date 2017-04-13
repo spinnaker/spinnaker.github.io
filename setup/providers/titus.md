@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Install"
+title:  "Titus"
 sidebar:
   nav: setup
 ---

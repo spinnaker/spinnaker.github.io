@@ -1,8 +1,6 @@
 ---
 layout: single
-title:  "App Engine"
+title:  "Azure Quickstart"
 sidebar:
   nav: setup
 ---
-
-{% include toc %}

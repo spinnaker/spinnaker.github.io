@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "App Engine"
+title:  "Azure Blob Storage"
 sidebar:
   nav: setup
 ---
