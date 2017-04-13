@@ -11,7 +11,7 @@
   @include clearfix;
   margin-top: 0;
   margin-bottom: 0;
-  padding-left: 2em;
+  padding-left: 0;
   padding-right: 2em;
   font-family: $sans-serif;
   -webkit-animation: intro 0.3s both;
@@ -20,7 +20,7 @@
           animation-delay: 0.30s;
 
   @include breakpoint($large) {
-    padding-left: 1em;
+    padding-left: 0;
     padding-right: 1em;
   }
 
@@ -30,20 +30,26 @@
 
   ol {
     padding: 0;
+    margin-top: 0;
     list-style: none;
-    font-size: $type-size-6;
+    font-size: $type-size-7;
 
     @include breakpoint($large) {
       @include span(10 of 12 last);
+      float: left;
+      padding-left: 0;
     }
 
     @include breakpoint($x-large) {
       @include prefix(0.5 of 12);
+      float: left;
+      padding-left: 0;
     }
   }
 
   li {
     display: inline;
+    font-weight: bold;
   }
 
   .current {

@@ -2,7 +2,7 @@
 layout: single
 title:  "Oracle"
 sidebar:
-  nav: reference
+  nav: setup
 ---
 
 {% include toc %}

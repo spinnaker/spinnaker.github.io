@@ -8,12 +8,6 @@ layout: default
   {% include page__hero_video.html %}
 {% endif %}
 
-{% if page.url != "/" and site.breadcrumbs %}
-  {% unless paginator %}
-    {% include breadcrumbs.html %}
-  {% endunless %}
-{% endif %}
-
 <div id="main" role="main">
   {% include sidebar.html %}
 
@@ -25,6 +19,13 @@ layout: default
 
     <div class="page__inner-wrap">
       {% unless page.header.overlay_color or page.header.overlay_image %}
+
+      {% if page.url != "/" and site.breadcrumbs %}
+        {% unless paginator %}
+          {% include breadcrumbs.html %}
+        {% endunless %}
+      {% endif %}
+      
         <div class="suggest-edit">
           <a href="https://github.com/{{site.repository}}/tree/master/{{page.path}}">Suggest an Edit</a>
         </div>

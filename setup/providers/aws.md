@@ -2,7 +2,7 @@
 layout: single
 title:  "Amazon Web Services"
 sidebar:
-  nav: reference
+  nav: setup
 ---
 
 {% include toc %}

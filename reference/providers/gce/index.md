@@ -2,7 +2,9 @@
 layout: single
 title:  "Google Compute Engine"
 sidebar:
-  nav: setup
+  nav: reference
 ---
 
 {% include toc %}
+
+<a href="./foo">Foo</a>

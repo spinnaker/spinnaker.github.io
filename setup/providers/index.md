@@ -1,8 +1,8 @@
 ---
 layout: single
-title:  "OpenStack"
+title:  "Providers"
 sidebar:
   nav: setup
 ---
 
-{% include toc %}
+links to providers

@@ -3,6 +3,7 @@ layout: single
 title:  "Concepts"
 sidebar:
   nav: concepts
+category: setup     
 ---
 
 {% include toc %}

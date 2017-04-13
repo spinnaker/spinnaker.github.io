@@ -1,8 +1,10 @@
 ---
 layout: single
-title:  "OpenStack"
+title:  "Baz"
 sidebar:
-  nav: setup
+  nav: reference
 ---
 
 {% include toc %}
+
+Baz!
