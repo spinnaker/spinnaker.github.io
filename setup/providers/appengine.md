@@ -2,7 +2,7 @@
 layout: single
 title:  "AppEngine"
 sidebar:
-  nav: reference
+  nav: setup
 ---
 
 {% include toc %}

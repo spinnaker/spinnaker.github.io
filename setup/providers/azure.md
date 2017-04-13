@@ -2,7 +2,7 @@
 layout: single
 title:  "Azure"
 sidebar:
-  nav: reference
+  nav: setup
 ---
 
 {% include toc %}

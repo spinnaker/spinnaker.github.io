@@ -2,7 +2,7 @@
 layout: single
 title:  "Kubernetes"
 sidebar:
-  nav: reference
+  nav: setup
 ---
 
 {% include toc %}
