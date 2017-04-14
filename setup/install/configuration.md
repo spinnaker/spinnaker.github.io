@@ -1,8 +1,10 @@
 ---
 layout: single
-title:  "Cloud Providers"
+title:  "Configuration"
 sidebar:
   nav: setup
 ---
 
 {% include toc %}
+
+

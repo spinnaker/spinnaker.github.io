@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "App Engine"
+title:  "Google Cloud Storage"
 sidebar:
   nav: setup
 ---

@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Quickstart"
+title:  "Docker Registry"
 sidebar:
   nav: setup
 ---
