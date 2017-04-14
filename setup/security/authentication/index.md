@@ -1,8 +1,6 @@
 ---
 layout: single
-title:  "Azure"
+title:  "Authentication"
 sidebar:
   nav: setup
 ---
-
-{% include toc %}

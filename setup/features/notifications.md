@@ -1,8 +1,6 @@
 ---
 layout: single
-title:  "Oracle"
+title:  "Notifications"
 sidebar:
   nav: setup
 ---
-
-{% include toc %}
