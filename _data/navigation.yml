@@ -21,12 +21,8 @@ concepts:
 setup:
   - title: Quickstart
     children:
-      - title: AWS Quickstart
-        url: /setup/quickstart/aws-quickstart
-      - title: Azure Quickstart
-        url: /setup/quickstart/azure-quickstart
-      - title: Google Cloud Launcher
-        url: /setup/quickstart/google-cloud-launcher
+      - title: Solutions
+        url: /setup/quickstart/solutions
   - title: Install
     children:
       - title: Getting Started
