@@ -25,19 +25,19 @@ setup:
     url: /setup/requirements
     children:
       - title: Amazon Web Services
-        url: /setup/providers/aws
+        url: /setup/requirements/aws
       - title: AppEngine
-        url: /setup/providers/appengine
-      - title: Azure
-        url: /setup/providers/azure
-      - title: Google Cloud Engine
-        url: /setup/providers/gce
+        url: /setup/requirements/appengine
+      - title: Microsoft Azure
+        url: /setup/requirements/azure
+      - title: Google Compute Engine
+        url: /setup/requirements/gce
       - title: Kubernetes
-        url: /setup/providers/kubernetes
+        url: /setup/requirements/kubernetes
       - title: OpenStack
-        url: /setup/providers/openstack
+        url: /setup/requirements/openstack
       - title: Oracle
-        url: /setup/providers/oracle
+        url: /setup/requirements/oracle
   - title: Install
     url: /setup/install
   - title: Security
