@@ -1,6 +1,18 @@
 require "bundler/gem_tasks"
 require "jekyll"
 require "listen"
+require 'html-proofer'
+
+task :test do
+  sh "bundle exec jekyll build"
+  options = { 
+    :assume_extension => true,
+    :check_favicon => true,
+    :check_html => true,
+    :disable_external => true  # TODO: each "Suggest Edit" button return 404 for some reason?
+  }
+  HTMLProofer.check_directory("./_site", options).run
+end
 
 def listen_ignore_paths(base, options)
   [
