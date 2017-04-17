@@ -198,6 +198,11 @@
       color: $masthead-link-color-hover;
     }
 
+    &.active {
+      color: $masthead-link-color-hover;
+      font-weight: bold;
+    }
+
     &.site-title {
       margin-left: 0;
     }

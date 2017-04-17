@@ -1,187 +1,187 @@
 main:
   - title: Concepts
-    url: /concepts
+    url: /concepts/
   - title: Setup
-    url: /setup
+    url: /setup/
   - title: Guides
-    url: /guides
+    url: /guides/
   - title: Reference
-    url: /reference
+    url: /reference/
   - title: Community
-    url: /community
+    url: /community/
 
 concepts:
   - title: Overview
-    url: /concepts
+    url: /concepts/
   - title: Clusters
-    url: /concepts/clusters
+    url: /concepts/clusters/
   - title: Pipelines
-    url: /concepts/pipelines
+    url: /concepts/pipelines/
 
 setup:
   - title: Quickstart
     children:
       - title: Solutions
-        url: /setup/quickstart/solutions
+        url: /setup/quickstart/solutions/
   - title: Install
     children:
       - title: Getting Started
-        url: /setup/install/getting-started
+        url: /setup/install/getting-started/
       - title: Halyard
-        url: /setup/install/halyard
+        url: /setup/install/halyard/
       - title: Environment
-        url: /setup/install/environment
+        url: /setup/install/environment/
       - title: Storage
-        url: /setup/install/storage
+        url: /setup/install/storage/
       - title: Deploy
-        url: /setup/install/deploy
+        url: /setup/install/deploy/
       - title: Configuration
-        url: /setup/install/configuration
+        url: /setup/install/configuration/
   - title: Cloud Providers
     children:
       - title: Overview
-        url: /setup/providers/overview
+        url: /setup/providers/overview/
       - title: Amazon Web Services
-        url: /setup/providers/aws
+        url: /setup/providers/aws/
       - title: AppEngine
-        url: /setup/providers/appengine
+        url: /setup/providers/appengine/
       - title: Azure
-        url: /setup/providers/azure
+        url: /setup/providers/azure/
       - title: Docker Registry
-        url: /setup/providers/docker-registry
+        url: /setup/providers/docker-registry/
       - title: Google Compute Engine
-        url: /setup/providers/gce
+        url: /setup/providers/gce/
       - title: Kubernetes
-        url: /setup/providers/kubernetes
+        url: /setup/providers/kubernetes/
       - title: OpenStack
-        url: /setup/providers/openstack
+        url: /setup/providers/openstack/
       - title: Oracle
-        url: /setup/providers/oracle
+        url: /setup/providers/oracle/
       - title: Titus
-        url: /setup/providers/titus
+        url: /setup/providers/titus/
   - title: Persistent Storage
     children:
       - title: Overview
-        url: /setup/storage/overview
+        url: /setup/storage/overview/
       - title: Azure Blob Storage
-        url: /setup/storage/abs
+        url: /setup/storage/abs/
       - title: Google Cloud Storage
-        url: /setup/storage/gcs
+        url: /setup/storage/gcs/
       - title: S3
-        url: /setup/storage/s3
+        url: /setup/storage/s3/
   - title: Security
     children:
       - title: Authentication
-        url: /setup/security/authentication
+        url: /setup/security/authentication/
       - title: Authorization
-        url: /setup/security/authorization
+        url: /setup/security/authorization/
   - title: Features
     children:
       - title: Notifications
       - title: Webhooks
   - title: Monitoring
-    url: /setup/monitoring
+    url: /setup/monitoring/
   - title: Upgrading
-    url: /setup/upgrading
+    url: /setup/upgrading/
 
 guides:
   - title: Tutorials
-    url: /guides/tutorials
+    url: /guides/tutorials/
     children:
       - title: Videos
-        url: /guides/tutorials/videos
+        url: /guides/tutorials/videos/
   - title: Tasks
-    url: /guides/tasks
+    url: /guides/tasks/
     children:
       - title: Server Groups
-        url: /guides/tasks/server-groups
+        url: /guides/tasks/server-groups/
       - title: Instances
-        url: /guides/tasks/instances
+        url: /guides/tasks/instances/
       - title: Load Balancers
-        url: /guides/tasks/load-balancers
+        url: /guides/tasks/load-balancers/
       - title: Security Groups
-        url: /guides/tasks/security-groups
+        url: /guides/tasks/security-groups/
   - title: Pipelines
-    url: /guides/pipelines
+    url: /guides/pipelines/
     children:
       - title: Triggers
-        url: /guides/pipelines/triggers
+        url: /guides/pipelines/triggers/
       - title: Notifications
-        url: /guides/pipelines/notifications
+        url: /guides/pipelines/notifications/
       - title: Stages
-        url: /guides/pipelines/stages
+        url: /guides/pipelines/stages/
       - title: Strategies
-        url: /guides/pipelines/strategies
+        url: /guides/pipelines/strategies/
       - title: Expressions
-        url: /guides/pipelines/expressions
+        url: /guides/pipelines/expressions/
   - title: Application Config
-    url: /guides/application-config
+    url: /guides/application-config/
 
 reference:
   - title: API
-    url: /reference/api
+    url: /reference/api/
   - title: Cloud Providers
     children:
       - title: Amazon Web Services
-        url: /reference/providers/aws
+        url: /reference/providers/aws/
       - title: App Engine
-        url: /reference/providers/appengine
+        url: /reference/providers/appengine/
       - title: Azure
-        url: /reference/providers/azure
+        url: /reference/providers/azure/
       - title: Google Compute Engine
-        url: /reference/providers/gce
+        url: /reference/providers/gce/
       - title: Kubernetes
-        url: /reference/providers/kubernetes
+        url: /reference/providers/kubernetes/
       - title: OpenStack
-        url: /reference/providers/openstack
+        url: /reference/providers/openstack/
       - title: Oracle
-        url: /reference/providers/oracle
+        url: /reference/providers/oracle/
   - title: Halyard
-    url: /reference/halyard
+    url: /reference/halyard/
   - title: Architecture
-    url: /reference/architecture
+    url: /reference/architecture/
 
 community:
   - title: Releases
-    url: /community/releases
+    url: /community/releases/
   - title: Support Policy
-    url: /community/support-policy
+    url: /community/support-policy/
   - title: Contributing
-    url: /community/contributing
+    url: /community/contributing/
   - title: Code of Conduct
-    url: /community/code-of-conduct
+    url: /community/code-of-conduct/
   - title: FAQs
-    url: /community/faqs
+    url: /community/faqs/
   - title: Chat room
-    url: /community/chat-room
+    url: /community/chat-room/
   - title: Presentations
-    url: /community/presentations
+    url: /community/presentations/
   - title: Articles
-    url: /community/articles
+    url: /community/articles/
   - title: Roadmap
-    url: /community/roadmap
+    url: /community/roadmap/
 
 # deprecated
 security:
   - title: Overview
-    url: /documentation/security
+    url: /documentation/security/
     children:
       - title: Workflow
-        url: /documentation/security/workflow
+        url: /documentation/security/workflow/
       - title: SSL Setup
-        url: /documentation/security/ssl
+        url: /documentation/security/ssl/
   - title: Authentication
     children:
       - title: OAuth 2.0
-        url: /documentation/security/authentication/oauth
+        url: /documentation/security/authentication/oauth/
       - title: SAML 2.0
-        url: /documentation/security/authentication/saml
+        url: /documentation/security/authentication/saml/
       - title: LDAP
-        url: /documentation/security/authentication/ldap
+        url: /documentation/security/authentication/ldap/
       - title: X.509
-        url: /documentation/security/authentication/x509
+        url: /documentation/security/authentication/x509/
   - title: Authorization
-    url: /documentation/security/authorization
+    url: /documentation/security/authorization/
     children:
       - title: Google Groups
       - title: GitHub Teams
@@ -190,24 +190,24 @@ security:
 
 authentication:
   - title: OAuth 2.0
-    url: /documentation/security/authentication/oauth
+    url: /documentation/security/authentication/oauth/
     children:
       - title: Pre-built Images
-        url: /documentation/security/authentication/oauth/pre-built-images
+        url: /documentation/security/authentication/oauth/pre-built-images/
       - title: SSL Server Termination
-        url: /documentation/security/authentication/oauth/ssl-server-termination
+        url: /documentation/security/authentication/oauth/ssl-server-termination/
       - title: SSL Load Balancer Termination
-        url: /documentation/security/authentication/oauth/ssl-load-balancer-termination
+        url: /documentation/security/authentication/oauth/ssl-load-balancer-termination/
       - title: Troubleshooting # TODO(ttomsu)
   - title: SAML 2.0
-    url: /documentation/security/authentication/saml
+    url: /documentation/security/authentication/saml/
     children:
       - title: Pre-built Images
-        url: /documentation/security/authentication/saml/pre-built-images
+        url: /documentation/security/authentication/saml/pre-built-images/
       - title: SSL Terminated at Server
-        url: /documentation/security/authentication/saml/ssl-server-termination
+        url: /documentation/security/authentication/saml/ssl-server-termination/
       - title: SSL Terminated at Load Balancer
-        url: /documentation/security/authentication/saml/ssl-load-balancer-termination
+        url: /documentation/security/authentication/saml/ssl-load-balancer-termination/
       - title: Troubleshooting # TODO(ttomsu)
   - title: LDAP
     children:

@@ -12,7 +12,13 @@
             {% else %}
               {% assign domain = site.url | append: site.baseurl %}
             {% endif %}
-            <li class="masthead__menu-item"><a href="{{ domain }}{{ link.url }}">{{ link.title }}</a></li>
+            <li class="masthead__menu-item">
+              {% if page.url contains link.url %}
+                <a href="{{ domain }}{{ link.url }}" class="active">{{ link.title }}</a>
+              {% else %}
+                <a href="{{ domain }}{{ link.url }}">{{ link.title }}</a>
+              {% endif %}
+            </li>
           {% endfor %}
         </ul>
         <button><div class="navicon"></div></button>
