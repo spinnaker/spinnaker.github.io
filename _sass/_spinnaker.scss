@@ -26,3 +26,19 @@
     float: right;
     font-size: $type-size-8;
 }
+
+// mermaid.js sequence diagrams
+.actor {
+  fill: $masthead-color;
+  stroke: $masthead-link-color-hover;
+}
+text.actor {
+  fill: $masthead-link-color-hover;
+  stroke: none;
+}
+.note {
+  fill: #c0d89d;
+}
+.noteText {
+  fill: $masthead-link-color-hover;   
+}
