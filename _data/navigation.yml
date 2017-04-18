@@ -22,7 +22,7 @@ setup:
   - title: Quickstart
     children:
       - title: Solutions
-        url: /setup/quickstart/solutions/
+        url: /setup/quickstart/
   - title: Install
     children:
       - title: Getting Started

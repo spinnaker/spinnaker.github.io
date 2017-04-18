@@ -3,7 +3,7 @@ title:  "OAuth 2.0 - SSL Load Balancer Termination"
 sidebar:
   nav: authentication
 ---
-A common practice is to offload SSL-related bits to outside of the server in question. This is a fully supported option in Spinnaker, but it does affect the authentication configuration slightly.
+
 
 Just like the pre-built VM image, we will override Gate's `redirect_uri` to point to the load balancer's endpoint.
 

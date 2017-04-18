@@ -5,7 +5,7 @@ sidebar:
 ---
 
 
-Terminating SSL within the Gate server is the de factor way to enable SSL for Spinnaker. This will work with or without a load balancer proxying traffic to this instance.
+
 
 1. Follow the [SSL Setup]() instructions to generate your server public/private key pair in the proper format. Save this file to `/opt/spinnaker/config/keystore.jks`
 

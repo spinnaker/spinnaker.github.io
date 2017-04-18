@@ -17,10 +17,10 @@ have set up, including Google Groups, GitHub Teams, or LDAP groups.
 * Overview (this page)
 * [Authentication](./authentication/)
   * [SSL](./authentication/ssl/)
-  * Network Architecture
-  * Methods
-    * OAuth 2.0
-    * SAML
+  * [Network Architecture](./authentication/network-arch/)
+  * [Methods](./authentication/methods/)
+    * [OAuth 2.0](/setup/security/authentication/methods/oauth)
+    * [SAML](/setup/security/authentication/methods/saml)
     * LDAP
     * X.509
 * [Authorization](./authorization/)
@@ -28,7 +28,3 @@ have set up, including Google Groups, GitHub Teams, or LDAP groups.
   * GitHub Teams
   * SAML
   * LDAP
-
-
-
-

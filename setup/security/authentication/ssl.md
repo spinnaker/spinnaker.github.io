@@ -1,5 +1,5 @@
 ---
-title:  "SSL "
+title:  "SSL"
 sidebar:
   nav: setup
 ---
@@ -93,4 +93,5 @@ TODO(ttomsu): This section
 ## Next Steps
 
 Each authentication mechanism is configured differently depending on where the SSL connection is 
-terminated. Learn about 
+terminated. Learn more about how the different [network architecture](../network-arch/) options 
+and how it affects your setup.
