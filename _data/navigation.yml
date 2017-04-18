@@ -71,6 +71,8 @@ setup:
         url: /setup/storage/s3/
   - title: Security
     children:
+      - title: Overview
+        url: /setup/security/
       - title: Authentication
         url: /setup/security/authentication/
       - title: Authorization
