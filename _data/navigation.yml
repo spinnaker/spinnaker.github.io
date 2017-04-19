@@ -88,10 +88,11 @@ setup:
 
 guides:
   - title: Tutorials
-    url: /guides/tutorials/
     children:
       - title: Videos
         url: /guides/tutorials/videos/
+      - title: Codelabs
+        url: /guides/tutorials/codelabs/
   - title: Tasks
     url: /guides/tasks/
     children:
