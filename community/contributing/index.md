@@ -1,8 +1,9 @@
 ---
 layout: single
-title:  "Frequently Asked Questions"
+title:  "Contributing"
 sidebar:
   nav: community
 ---
 
 {% include toc %}
+

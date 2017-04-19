@@ -1,13 +1,8 @@
 ---
 layout: single
-title:  "Chat Room"
+title:  "Nightly Builds"
 sidebar:
   nav: community
 ---
 
 {% include toc %}
-
-
-## Archive
-
-(link to archive here)
