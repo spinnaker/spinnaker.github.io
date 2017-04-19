@@ -6,4 +6,4 @@ sidebar:
 ---
 
 * [Videos](/guides/tutorials/videos/)
-* [Codelabs](guides/tutorials/codelabs/)
+* [Codelabs](/guides/tutorials/codelabs/)
