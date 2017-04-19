@@ -146,7 +146,6 @@ reference:
 
 community:
   - title: Releases
-    url: /community/releases/
     children:
       - title: Supported Versions
         url: /community/releases/versions/
@@ -157,7 +156,6 @@ community:
       - title: Roadmap
         url: /community/roadmap/
   - title: Contributing
-    url: /community/contributing/
     children:
       - title: Overview
         url: /community/contributing/
