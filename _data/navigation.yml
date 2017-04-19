@@ -147,22 +147,32 @@ reference:
 community:
   - title: Releases
     url: /community/releases/
-  - title: Support Policy
-    url: /community/support-policy/
+    children:
+      - title: Supported Versions
+        url: /community/releases/versions/
+      - title: Nightly Builds
+        url: /community/releases/nightly/
+      - title: Support Policy
+        url: /community/support-policy/
+      - title: Roadmap
+        url: /community/roadmap/
   - title: Contributing
     url: /community/contributing/
-  - title: Code of Conduct
-    url: /community/code-of-conduct/
+    children:
+      - title: Overview
+        url: /community/contributing/
+      - title: Submitting A Patch
+        url: /community/contributing/submitting/
+      - title: Kork Library
+        url: /community/contributing/kork-library/
+      - title: Code Of Conduct
+        url: /community/contributing/code-of-conduct/
   - title: FAQs
     url: /community/faqs/
-  - title: Chat room
-    url: /community/chat-room/
   - title: Presentations
     url: /community/presentations/
   - title: Articles
     url: /community/articles/
-  - title: Roadmap
-    url: /community/roadmap/
 
 # deprecated
 security:
