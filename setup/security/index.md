@@ -18,10 +18,10 @@ have set up, including Google Groups, GitHub Teams, or LDAP groups.
 * [Authentication](./authentication/)
   * [SSL](./authentication/ssl/)
   * [Network Architecture](./authentication/network-arch/)
-  * [Methods](./authentication/methods/)
-    * [OAuth 2.0](/setup/security/authentication/oauth)
-    * [SAML](/setup/security/authentication/saml)
-    * LDAP
+  * Methods
+    * [OAuth 2.0](./authentication/oauth/)
+    * [SAML](./authentication/saml/)
+    * [LDAP](./authentication/ldap/)
     * X.509
 * [Authorization](./authorization/)
   * Google Groups
