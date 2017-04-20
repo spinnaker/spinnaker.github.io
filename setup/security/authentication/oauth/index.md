@@ -91,7 +91,7 @@ userInfoMapping:
 During the OAuth [workflow](#workflow), Gate makes an intelligent guess on how to assemble a URI to
 itself, called the **`redirect_uri`**. Sometimes this guess is wrong when Spinnaker is deployed 
 in concert with other networking components, such as an SSL-terminating load balancer, or in the 
-case of the [Quickstart](/setup/quickstart/) images, a fronting Apache instance.
+case of the [Quickstart](/setup/quickstart) images, a fronting Apache instance.
 
 To manually set the `redirect_uri` Gate uses, set the following in your `halconfig`:
 
@@ -146,43 +146,41 @@ flow looks like:
     `email profile` to access the user's email address.
 
 1. OAuth provider prompts user for username & password.
-
-<div class="mermaid">
-    sequenceDiagram
-    
-    participant Deck
-    participant Gate
-    participant IdentityProvider
-    participant ResourceServer
-    
-    Deck->>+IdentityProvider: User sends credentials
-    IdentityProvider->>-Deck: Confirms client_id 'foo' can access user's information
-    Deck->>+IdentityProvider: User confirms
-    IdentityProvider->>-Deck: HTTP 302 to https://gate.url/login?code=abcdef
-</div>
-
+    <div class="mermaid">
+        sequenceDiagram
+        
+        participant Deck
+        participant Gate
+        participant IdentityProvider
+        participant ResourceServer
+        
+        Deck->>+IdentityProvider: User sends credentials
+        IdentityProvider->>-Deck: Confirms client_id 'foo' can access user's information
+        Deck->>+IdentityProvider: User confirms
+        IdentityProvider->>-Deck: HTTP 302 to https://gate.url/login?code=abcdef
+    </div>
 
 1. OAuth provider confirms that the user is granting Gate access to his profile.
 
 1. Using the `redirect_uri`, the OAuth provider redirects the user to this address, providing an 
 additional `code` parameter.
 
-<div class="mermaid">
-    sequenceDiagram
-    
-    participant Deck
-    participant Gate
-    participant IdentityProvider
-    participant ResourceServer
-    
-    Deck->>+Gate: GET /login?code=abcdef
-    Gate->>+IdentityProvider: POST /token "{code:abcdef, client_id:..., client_secret:...}"
-    IdentityProvider->>-Gate: Responds with access token `12345`
-    Gate->>+ResourceServer: GET /userInfo with "Authorization: Bearer 12345" header
-    ResourceServer->>-Gate: Respondes with JSON of user profile information
-    Note left of Gate: Gate extracts data based on userInfoMapping
-    Gate->>-Deck: HTTP 302 to originally requested URL
-</div>
+    <div class="mermaid">
+        sequenceDiagram
+        
+        participant Deck
+        participant Gate
+        participant IdentityProvider
+        participant ResourceServer
+        
+        Deck->>+Gate: GET /login?code=abcdef
+        Gate->>+IdentityProvider: POST /token "{code:abcdef, client_id:..., client_secret:...}"
+        IdentityProvider->>-Gate: Responds with access token `12345`
+        Gate->>+ResourceServer: GET /userInfo with "Authorization: Bearer 12345" header
+        ResourceServer->>-Gate: Respondes with JSON of user profile information
+        Note left of Gate: Gate extracts data based on userInfoMapping
+        Gate->>-Deck: HTTP 302 to originally requested URL
+    </div>
 
 1. Gate uses this `code` parameter to request an _access token_ from the OAuth provider's token 
 server.
@@ -212,18 +210,21 @@ is never revealed outside of the server using it.
   });
 </script>
 
+## Next Steps
+
+Now that you've authenticated the user, proceed to setting up their [authorization](/setup/security/authorization/).
 
 ## Troubleshooting
 
-* Review the general [authentication workflow](/setup/security/authentication/#workflow).
+* Review the general [authentication workflow](/setup/security/authentication#workflow).
 
-* Use an [incognito window](/setup/security/authentication/#incognito-mode).
+* Use an [incognito window](/setup/security/authentication#incognito-mode).
 
 * I'm getting an `Error: redirect_uri_mismatch` from my OAuth provider.
 
     The full error may look something like:
     
-    > Error: redirect_uri_mismatch. The redirect URI in the request, https://<some_url>/login, 
+    > Error: redirect_uri_mismatch. The redirect URI in the request, https://some.url/login, 
     does not match the ones authorized for the OAuth client.
     
     This likely means you've not set up your OAuth credentials correctly. Ensure that the Authorized 

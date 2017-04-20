@@ -77,8 +77,8 @@ Authentication provider).
     participant Gate
     participant IdentityProvider
 
-    Deck->>Apache: GET deck.url
-    Apache->>Deck: Returns Deck's landing page
+    Deck->>+Apache: GET deck.url
+    Apache->>-Deck: Returns Deck's landing page
 
     Deck->>+Gate: GET /auth/user for user's identity
     Note right of Gate: No or expired session cookie.
@@ -113,7 +113,7 @@ an _unprotected_ URL, but will only return the currently logged in user.
 
 1. Without a user logged in, Deck requests a _protected_ URL: `https://gate.url:8084/auth/redirect?to=https://deck.url:9000`.
 
-1. Given that the URL is protected, Gate sees that there is no logged in, and issues an HTTP 302
+1. Given that the URL is protected, Gate sees that there is no logged in user, so it issues a HTTP 302
 redirect to an authentication-method-specific page. It saves the requested URL
 (`https://gate.url:8084/auth/redirect?to=https://deck.url:9000`) in the session state.
 
@@ -127,11 +127,11 @@ redirect to an authentication-method-specific page. It saves the requested URL
 		Note right of IdentityProvider: Success!
 		IdentityProvider->>-Deck: HTTP 302 to https://gate.url/login?success
 
+        activate Gate
 		Deck->>+Gate: GET /login?success
-		Gate-->>IdentityProvider: Optionally retrieve validation info
-		activate IdentityProvider
-		IdentityProvider-->>Gate: .
-		deactivate IdentityProvider
+		Gate->>+IdentityProvider: Optionally retrieve validation info
+		IdentityProvider->>-Gate: .
+		deactivate Gate
 	</div>
 
 1. The user logs into the authentication provider.
