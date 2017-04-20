@@ -17,11 +17,11 @@ The workflow generally looks like this:
   3. The deployment is verified externally.
   4. Spinnaker now redeploys this image into a new environment (production), and disables the old version the Replica Set was managing
 
-#### Existing tags are ignored for the sake of traceability
-
-The rational is that repeatedly deploying the same tag (<code>:latest</code>, <code>:v2-stable</code>, etc...) reduces visibility into what version of your application is actually serving traffic. This is particularly true when you are deploying new versions several times a day, and different environments (staging, prod, test, dev, etc...) will each have different versions changing at different cadences. 
-
-Of course, there is nothing wrong with updating a stable tag after pushing a new tag to your registry to maintain a vetted docker image. There are also ways to ensure only a subset of docker tags for a particular image can trigger pipelines, but that'll be discussed in a future codelab.
+> **Existing tags are ignored for the sake of traceability.** 
+>
+> The rational is that repeatedly deploying the same tag (<code>:latest</code>, <code>:v2-stable</code>, etc...) reduces visibility into what version of your application is actually serving traffic. This is particularly true when you are deploying new versions several times a day, and different environments (staging, prod, test, dev, etc...) will each have different versions changing at different cadences.
+> 
+> Of course, there is nothing wrong with updating a stable tag after pushing a new tag to your registry to maintain a vetted docker image. There are also ways to ensure only a subset of docker tags for a particular image can trigger pipelines, but that'll be discussed in a future codelab.
 
 # 0. Setup
 
@@ -40,9 +40,9 @@ The code I'll be deploying is stored [here](https://github.com/lwander/spin-kub-
 
 Create a new [repository on Dockerhub](https://hub.docker.com/). [This guide](https://docs.docker.com/docker-hub/builds/) covers how to get your Github repository hooked up to your new Dockerhub repository by creating an automated build that will take code changes and build Docker images for you. In the end your repository should look something like [this](https://hub.docker.com/r/lwander/spin-kub-demo/).
 
-#### Make sure Github is configured to send events to Dockerhub
-
-This can be set under your Github repositories Settings > Webhooks & Services > Services > Docker.
+> **Make sure Github is configured to send events to Dockerhub.**
+>
+> This can be set under your Github repositories Settings > Webhooks & Services > Services > Docker.
 
 ## Configuring Kubernetes
 
@@ -78,9 +78,9 @@ Once the _dev_ _Load Balancer_ has been created, we will create an external-faci
 
 ![Fill out the fields in red again, changing "Load Balancer IP" to a static IP reserved using your underlying cloudprovider. If you do not have a static IP reserved, you may leave "Load Balancer IP" blank and an ephemeral IP will be assigned.](prodlb.png)
 
-#### If your cloudprovider (GKE, AWS, etc...) doesn't support Type: LoadBalancer
-
-.... you may need to change _Type_ to _Node Port_. Read more [here](http://kubernetes.io/docs/user-guide/services/#publishing-services---service-types).
+> **If your cloud provider (GKE, AWS, etc...) doesn't support Type: LoadBalancer** 
+>
+> .... you may need to change _Type_ to _Node Port_. Read more [here](http://kubernetes.io/docs/user-guide/services/#publishing-services---service-types).
 
 At this point your _Load Balancers_ tab should look like this:
 
@@ -98,9 +98,9 @@ Scroll down to the newly created _Container_ subsection, and edit the following 
 
 Once the create task completes, open a terminal and type <code>$ kubectl proxy</code>, and now navigate in your browser to http://localhost:8001/api/v1/proxy/namespaces/default/services/serve-dev:80/ to see if your application is serving traffic correctly.
 
-#### kubectl proxy
-
-`kubectl proxy` forwards traffic to the Kubernetes API server authenticated using your local `~./kube/config` credentials. This way we can peek into what the internal `serve-dev` service is serving on port 80.
+> **kubectl proxy**
+>
+> `kubectl proxy` forwards traffic to the Kubernetes API server authenticated using your local `~./kube/config` credentials. This way we can peek into what the internal `serve-dev` service is serving on port 80.
 
 Once you're satisfied, don't close the proxy or browser tab just yet as we'll use that again soon.
 
