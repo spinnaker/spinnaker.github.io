@@ -111,6 +111,8 @@ guides:
   - title: Developer How-Tos
     url: /guides/developer/
     children:
+      - title: Writing a New Stage
+        url: /guides/developer/new-stage/
       - title: Kork Library
         url: /guides/developer/kork-library/
 
