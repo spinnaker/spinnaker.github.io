@@ -1,8 +1,9 @@
 ---
 layout: single
-title:  "Pipelines"
+title:  "Setup"
 sidebar:
-  nav: guides
+  nav: setup
 ---
 
 {% include toc %}
+
