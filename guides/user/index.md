@@ -1,8 +1,9 @@
 ---
 layout: single
-title:  "Instances"
+title:  "User How-Tos"
 sidebar:
   nav: guides
 ---
 
 {% include toc %}
+

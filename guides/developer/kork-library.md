@@ -2,12 +2,12 @@
 layout: single
 title:  "Kork Library"
 sidebar:
-  nav: community
+  nav: guides
 ---
 
 {% include toc %}
 
-# Introduction
+## Introduction
 
 [Kork](https://github.com/spinnaker/kork) is a common library used across multiple Spinnaker components. A component uses a specific version of Kork depending on the last time that component's [spinnaker-dependencies](https://github.com/spinnaker/spinnaker-dependencies) version was updated. This guide is meant for developers who need to make changes to Kork, test those changes locally in the component that relies on those changes, and deploy those changes once they've been submitted.
 

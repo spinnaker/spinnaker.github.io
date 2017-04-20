@@ -80,7 +80,13 @@ setup:
   - title: Features
     children:
       - title: Notifications
-      - title: Webhooks
+        url: /setup/features/notifications/
+      - title: Cassandra to Object Store
+        url: /setup/features/front50-cassandra-to-obj-store/
+      - title: Cassandra to In-Memory
+        url: /setup/features/echo-cassandra-to-in-memory/
+      - title: Cassandra to Redis
+        url: /setup/features/front50-cassandra-to-redis/
   - title: Monitoring
     url: /setup/monitoring/
   - title: Upgrading
@@ -93,34 +99,22 @@ guides:
         url: /guides/tutorials/videos/
       - title: Codelabs
         url: /guides/tutorials/codelabs/
+  - title: User How-Tos
+    url: /guides/user/
+    children:
+      - title: Pipeline Expressions
+        url: /guides/user/pipeline-expressions/
+      - title: Tagging
+        url: /guides/user/tagging/
+      - title: Custom Instance Links
+        url: /guides/user/instance-links/
+  - title: Developer How-Tos
+    url: /guides/developer/
+    children:
       - title: Writing a New Stage
-        url: /guides/tutorials/new-stage/
-  - title: Tasks
-    url: /guides/tasks/
-    children:
-      - title: Server Groups
-        url: /guides/tasks/server-groups/
-      - title: Instances
-        url: /guides/tasks/instances/
-      - title: Load Balancers
-        url: /guides/tasks/load-balancers/
-      - title: Security Groups
-        url: /guides/tasks/security-groups/
-  - title: Pipelines
-    url: /guides/pipelines/
-    children:
-      - title: Triggers
-        url: /guides/pipelines/triggers/
-      - title: Notifications
-        url: /guides/pipelines/notifications/
-      - title: Stages
-        url: /guides/pipelines/stages/
-      - title: Strategies
-        url: /guides/pipelines/strategies/
-      - title: Expressions
-        url: /guides/pipelines/expressions/
-  - title: Application Config
-    url: /guides/application-config/
+        url: /guides/developer/new-stage/
+      - title: Kork Library
+        url: /guides/developer/kork-library/
 
 reference:
   - title: API
@@ -163,8 +157,6 @@ community:
         url: /community/contributing/
       - title: Submitting A Patch
         url: /community/contributing/submitting/
-      - title: Kork Library
-        url: /community/contributing/kork-library/
       - title: Code Of Conduct
         url: /community/contributing/code-of-conduct/
   - title: FAQs
@@ -173,59 +165,3 @@ community:
     url: /community/presentations/
   - title: Articles
     url: /community/articles/
-
-# deprecated
-security:
-  - title: Overview
-    url: /documentation/security/
-    children:
-      - title: Workflow
-        url: /documentation/security/workflow/
-      - title: SSL Setup
-        url: /documentation/security/ssl/
-  - title: Authentication
-    children:
-      - title: OAuth 2.0
-        url: /documentation/security/authentication/oauth/
-      - title: SAML 2.0
-        url: /documentation/security/authentication/saml/
-      - title: LDAP
-        url: /documentation/security/authentication/ldap/
-      - title: X.509
-        url: /documentation/security/authentication/x509/
-  - title: Authorization
-    url: /documentation/security/authorization/
-    children:
-      - title: Google Groups
-      - title: GitHub Teams
-      - title: LDAP
-      - title: SAML
-
-authentication:
-  - title: OAuth 2.0
-    url: /documentation/security/authentication/oauth/
-    children:
-      - title: Pre-built Images
-        url: /documentation/security/authentication/oauth/pre-built-images/
-      - title: SSL Server Termination
-        url: /documentation/security/authentication/oauth/ssl-server-termination/
-      - title: SSL Load Balancer Termination
-        url: /documentation/security/authentication/oauth/ssl-load-balancer-termination/
-      - title: Troubleshooting # TODO(ttomsu)
-  - title: SAML 2.0
-    url: /documentation/security/authentication/saml/
-    children:
-      - title: Pre-built Images
-        url: /documentation/security/authentication/saml/pre-built-images/
-      - title: SSL Terminated at Server
-        url: /documentation/security/authentication/saml/ssl-server-termination/
-      - title: SSL Terminated at Load Balancer
-        url: /documentation/security/authentication/saml/ssl-load-balancer-termination/
-      - title: Troubleshooting # TODO(ttomsu)
-  - title: LDAP
-    children:
-      - title: Pre-built Images
-      - title: SSL Terminated at Server
-      - title: SSL Terminated at Load Balancer
-      - title: Troubleshooting
-  - title: X509

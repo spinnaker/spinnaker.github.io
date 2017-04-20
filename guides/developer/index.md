@@ -1,8 +1,9 @@
 ---
 layout: single
-title:  "Security Groups"
+title:  "Developer How Tos"
 sidebar:
   nav: guides
 ---
 
 {% include toc %}
+
