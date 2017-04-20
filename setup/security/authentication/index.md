@@ -182,18 +182,7 @@ user's identity.
 1. Repeat this process from step 1. Now, the response from `https://gate.url:8084/auth/user` will contain a proper JSON object and the rest of application will proceed to load.
 
 
-<script src="https://cdn.rawgit.com/knsv/mermaid/6.0.0/dist/mermaid.min.js"></script>
-<script>
-  mermaid.initialize({
-    startOnLoad:true,
-    sequenceDiagram: {
-      mirrorActors: true,
-      messageMargin: 75,
-      useMaxWidth: true,
-      width: 200
-    }
-  });
-</script>
+{% include mermaid %}
 
 ## Next Steps
 

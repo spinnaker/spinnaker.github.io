@@ -10,7 +10,7 @@ locale                   : "en"
 title                    : "Spinnaker"
 title_separator          : "-"
 name                     : "Spinnaker"
-description              : "An amazing website."
+description              : "Global Continuous Delivery"
 url                      : https://spinnaker.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : spinnaker/spinnaker.github.io # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -111,10 +111,6 @@ author:
 include:
   - .htaccess
   - _pages
-  - concepts
-  - documentation
-  - community
-  - resources
 exclude:
   - "*.sublime-project"
   - "*.sublime-workspace"

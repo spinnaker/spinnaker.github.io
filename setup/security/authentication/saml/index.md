@@ -166,18 +166,7 @@ endpoint.
 
 1. With the user's identity verified, Gate redirects the user to the originally requested URL.
 
-<script src="https://cdn.rawgit.com/knsv/mermaid/6.0.0/dist/mermaid.min.js"></script>
-<script>
-  mermaid.initialize({
-    startOnLoad:true,
-    sequenceDiagram: {
-      mirrorActors: true,
-      messageMargin: 75,
-      useMaxWidth: true,
-      width: 200
-    }
-  });
-</script>
+{% include mermaid %}
 
 ## Next Steps
 

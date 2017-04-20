@@ -1,0 +1,12 @@
+<script src="/assets/js/mermaid-6.0.0.min.js"></script>
+<script>
+  mermaid.initialize({
+    startOnLoad:true,
+    sequenceDiagram: {
+      mirrorActors: true,
+      messageMargin: 75,
+      useMaxWidth: true,
+      width: 200
+    }
+  });
+</script>

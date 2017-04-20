@@ -196,19 +196,7 @@ See UserInfoMapping below.
 The authorization code flow is the most secure way to get this data, because the _access token_ 
 is never revealed outside of the server using it.
 
-
-<script src="https://cdn.rawgit.com/knsv/mermaid/6.0.0/dist/mermaid.min.js"></script>
-<script>
-  mermaid.initialize({
-    startOnLoad:true,
-    sequenceDiagram: {
-      mirrorActors: true,
-      messageMargin: 75,
-      useMaxWidth: true,
-      width: 200
-    }
-  });
-</script>
+{% include mermaid %}
 
 ## Next Steps
 
