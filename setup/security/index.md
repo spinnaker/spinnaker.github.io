@@ -28,3 +28,7 @@ have set up, including Google Groups, GitHub Teams, or LDAP groups.
   * GitHub Teams
   * SAML
   * LDAP
+
+## Next Steps
+
+Setup [authentication](./authentication/) for your Spinnaker deployment.
