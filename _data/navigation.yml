@@ -93,6 +93,8 @@ guides:
         url: /guides/tutorials/videos/
       - title: Codelabs
         url: /guides/tutorials/codelabs/
+      - title: Writing a New Stage
+        url: /guides/tutorials/new-stage/
   - title: Tasks
     url: /guides/tasks/
     children:
