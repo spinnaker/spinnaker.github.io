@@ -24,7 +24,7 @@ sidebar:
 * [Setting up Spinnaker authentication with Okta and SAML](http://riltsken.github.io/devops/infrastructure/deploymenttools/2015/12/08/setup-okta-saml-with-spinnaker.html), *Samuel Toriel*
 * [Global Continuous Delivery with Spinnaker](http://techblog.netflix.com/2015/11/global-continuous-delivery-with.html), *Netflix Tech Blog*
 * [Moving from Asgard to Spinnaker](http://techblog.netflix.com/2015/09/moving-from-asgard-to-spinnaker.html), *Netflix Tech Blog*
-* [Netflix’s Spinnaker available now on Google Cloud Platform](https://cloudplatform.googleblog.com/2015/11/Netflixs-Spinnaker-available-now-on-Google-Cloud-Platform.html), *Gogole Cloud Platform Blog*
+* [Netflix’s Spinnaker available now on Google Cloud Platform](https://cloudplatform.googleblog.com/2015/11/Netflixs-Spinnaker-available-now-on-Google-Cloud-Platform.html), *Google Cloud Platform Blog*
 
 
 ## Spinnaker in the News
