@@ -152,9 +152,9 @@ community:
       - title: Nightly Builds
         url: /community/releases/nightly/
       - title: Support Policy
-        url: /community/support-policy/
+        url: /community/releases/support-policy/
       - title: Roadmap
-        url: /community/roadmap/
+        url: /community/releases/roadmap/
   - title: Contributing
     children:
       - title: Overview

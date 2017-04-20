@@ -1,8 +1,9 @@
 ---
 layout: single
-title:  "Frequently Asked Questions"
+title:  "Submitting A Patch"
 sidebar:
   nav: community
 ---
 
 {% include toc %}
+

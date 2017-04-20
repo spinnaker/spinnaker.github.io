@@ -1,8 +1,9 @@
 ---
 layout: single
-title:  "Frequently Asked Questions"
+title:  "Kork Library"
 sidebar:
   nav: community
 ---
 
 {% include toc %}
+
