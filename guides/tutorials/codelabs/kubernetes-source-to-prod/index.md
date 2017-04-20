@@ -122,7 +122,9 @@ Now select _Add Stage_ just below _Configuration_, and fill out the form as foll
 
 Next, in the _Server Groups_ box select _Add Server Group_, where you will use the already deployed server group as a template like so:
 
-![Any server group in this app can be used as a template, and vastly simplifies configuration (since most configuration is copied over). This includes replica sets deployed with "kubectl create -f <file.yml>".](templateselection.png)
+![Any server group in this app can be used as a template, and vastly simplifies configuration 
+(since most configuration is copied over). This includes replica sets deployed with "kubectl 
+create -f $FILE".](templateselection.png)
 
 In the resulting dialog, we only need to make one change down in the _Container_ subsection. Select the image that will come from the Docker trigger as shown below:
 

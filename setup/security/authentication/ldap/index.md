@@ -41,8 +41,8 @@ ldap:
 
 It is also possible to use `ldap.userSearchBase` and `ldap.userSearchFilter` if the simpler 
 `ldap.userDnPattern` does not match what your organization uses for `userDn`s. We won't explore this
-use case here, but you can read up more on LDAP search filters [here](https://confluence
-.atlassian.com/display/DEV/How+to+write+LDAP+search+filters).
+use case here, but you can read up more on LDAP search filters 
+[here](https://confluence.atlassian.com/display/DEV/How+to+write+LDAP+search+filters).
 
 
 ## Workflow

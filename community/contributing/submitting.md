@@ -42,7 +42,7 @@ test | Adding missing tests.
 chore | Changes to build process or auxiliary tools or libraries such as documentation generation.
 config | Changes to configurations that have tangible effects on users, (e.g. renaming properties, changing defaults, etc).
 
-The type of keyword affects the next semantic version bump. The `feat` keyword causes a minor version bump, while the rest of the keywords cause a patch version bump. Major version bumps are triggered by the presence of the words `BREAKING CHANGE` in the _commit message body_. This is covered more in [Body](#section-body).
+The type of keyword affects the next semantic version bump. The `feat` keyword causes a minor version bump, while the rest of the keywords cause a patch version bump. Major version bumps are triggered by the presence of the words `BREAKING CHANGE` in the _commit message body_. This is covered more in [Body](#body).
 
 If you _don't_ use one of the previous types (or don't follow the convention), your commit will not be included in the generated changelog. Your change will still affect the next semantic version bump, but it will be considered a patch change, not a major or minor change (even if the change is a breaking change or a feature).
 

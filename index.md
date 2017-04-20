@@ -21,14 +21,14 @@ Spinnaker is an open source, multi-cloud continuous delivery platform for releas
 
 <div class="cloudproviders">
   <ul class="images">
-    <li><img src="/assets/images/aws.png" /> </li>
-    <li><img src="/assets/images/gcp.png" /></li>
-    <li><img src="/assets/images/k8s.png"/></li>
+    <li><img alt="aws logo" src="/assets/images/aws.png" /> </li>
+    <li><img alt="gcp logo" src="/assets/images/gcp.png" /></li>
+    <li><img alt="k8s logo" src="/assets/images/k8s.png"/></li>
   </ul>
   <ul class="images">
-    <li><img src="/assets/images/azure.png" /></li>
-    <li><img src="/assets/images/os.png" /></li>
-    <li><img src="/assets/images/cf.png" /></li>
+    <li><img alt="azure logo" src="/assets/images/azure.png" /></li>
+    <li><img alt="os logo" src="/assets/images/os.png" /></li>
+    <li><img alt="cf logo" src="/assets/images/cf.png" /></li>
   </ul>
 </div>
 

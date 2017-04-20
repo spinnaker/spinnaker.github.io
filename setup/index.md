@@ -12,7 +12,7 @@ starting point and reference for users who want to deploy Spinnaker.
 
 If this is your first introduction to Spinnaker, and you want a quick way to
 evaluate it, please try out one of the [quickstart
-solutions](/setup/quickstart/solutions). These are intended to serve as an 
+solutions](/setup/quickstart/). These are intended to serve as an 
 evaluation and demo tool only, we don't recommend trying to scale them for 
 production use-cases.
 
