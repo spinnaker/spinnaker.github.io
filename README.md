@@ -54,6 +54,8 @@ Each page has a breadcrumb trail at the top that is based on the URL structure. 
 least an `index.md` file within each URL directory, otherwise the links will break.
 
 ## Link Checker
+Keep the "broken window theory" at bay by ensuring all links work with 
+[HTML Proofer](https://github.com/gjtorikian/html-proofer)
 
 Run link checker before committing: 
 `rake test`
