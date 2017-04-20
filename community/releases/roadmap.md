@@ -4,7 +4,9 @@ sidebar:
   nav: community
 ---
 
-# 2017 Q1
+{% include toc %}
+
+### 2017 Q1
 
 | Area | Features |
 |---|---|
@@ -33,7 +35,7 @@ sidebar:
 
 
 
-# 2016 Q4
+### 2016 Q4
 
 | Area | Features |
 |---|---|
@@ -52,3 +54,4 @@ sidebar:
 | | Consul support |
 | Azure | Solution Template - Deploy to VM Scale Set using Jenkins and Spinnaker |
 | | Key Vault Support |
+
