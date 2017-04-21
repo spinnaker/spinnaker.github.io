@@ -22,7 +22,7 @@ have set up, including Google Groups, GitHub Teams, or LDAP groups.
     * [OAuth 2.0](./authentication/oauth/)
     * [SAML](./authentication/saml/)
     * [LDAP](./authentication/ldap/)
-    * X.509
+    * [X.509](./authentication/x509/)
 * [Authorization](./authorization/)
   * Google Groups
   * GitHub Teams
