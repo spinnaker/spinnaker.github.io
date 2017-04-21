@@ -27,7 +27,7 @@ have set up, including Google Groups, GitHub Teams, or LDAP groups.
   * [Google Groups](./authorization/google-groups/)
   * [GitHub Teams](./authorization/github-teams/)
   * [LDAP](./authorization/ldap/)
-  * SAML
+  * [SAML](./authorization/saml/)
 
 
 ## Next Steps
