@@ -42,7 +42,7 @@ Fiat enables the ability to:
 1. Patience - there are a lot of small details that must be _just_ right with anything related to
  authentication and authorization.
 
-1. All Spinnaker component microservices are either:
+1. (Highly Suggested) All Spinnaker component microservices are either:
     1. Firewalled off as a collective group, or:
     
     ![all service firewalled off](fiat-firewall.png)
@@ -55,7 +55,7 @@ Fiat enables the ability to:
 
 To configure an external role provider, follow one of the instructions below:
 
-* Google Groups with a G Suite account
+* [Google Groups with a G Suite account](./google-groups/)
 * GitHub Teams
 * LDAP Groups
 * SAML Groups
