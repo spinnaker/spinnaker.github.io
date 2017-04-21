@@ -25,7 +25,7 @@ have set up, including Google Groups, GitHub Teams, or LDAP groups.
     * [X.509](./authentication/x509/)
 * [Authorization](./authorization/)
   * [Google Groups](./authorization/google-groups/)
-  * GitHub Teams
+  * [GitHub Teams](./authorization/github-teams/)
   * SAML
   * LDAP
 
