@@ -56,6 +56,6 @@ Fiat enables the ability to:
 To configure an external role provider, follow one of the instructions below:
 
 * [Google Groups with a G Suite account](./google-groups/)
-* [GitHub Teams](./github-teams)
-* LDAP Groups
+* [GitHub Teams](./github-teams/)
+* [LDAP Groups](./ldap/)
 * SAML Groups
