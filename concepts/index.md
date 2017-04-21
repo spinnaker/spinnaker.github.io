@@ -3,47 +3,56 @@ layout: single
 title:  "Concepts"
 sidebar:
   nav: concepts
-category: setup     
 ---
 
 {% include toc %}
 
-## Server Groups
+Spinnaker is an open source, multi-cloud continuous delivery platform that helps you release software changes with high velocity and confidence.
 
-A Server Group is a group of compute resource instances (VMs, container pods). The instances of a Server Group are identical and are managed as a group by the cloud platforms (e.g. ASGs, Kubernetes Replica Sets).
+It provides two core sets of features: *cluster management* and *deployment management*. Here is an overview of these features:
 
-Server Groups mandatorily take on the naming convention *application-stack-detail-version*, where *stack* and *detail* are optional and *version* is system-assigned (incrementing version number). Spinnaker has no particular opinion on how the *stack* and *detail* fields are used, however it's common to use *stack* to represent a particular environment for a given microservice (e.g. dev, test, prod) and to use *detail* as an additional descriptor (e.g. feature branch, "experimental"). Finally, *version* indicates the specific Server Group, and individual instances of a Server Group are given a hash suffix in their names (e.g. "c9nzt") to uniquely identify each.
+## Cluster Management
 
-## Clusters
+You use Spinnaker's cluster management features to view and manage your resources in the cloud.
 
-Clusters are logical groupings of Server Groups, by *application-stack-detail*. Clusters are used in situations where multiple Server Groups for a given microservice need to be coordinated in a single context, for example, during a red/black deployment.
+![](clusters.png)
 
-## Applications
+### Server Group
 
-Applications are a logical grouping of infrastructure components - Server Groups and Clusters, Load Balancers, Security Groups and Pipelines. All components under a given Application share infrastructure credentials and top-level permissions. There are a few areas where cross-Application activities occur (e.g. a Stage that starts a Pipeline in another application), however in most areas, references are relegated to within the Application.
+The base resource, the *Server Group*, identifies the machine instance profile on which to execute images along with the number of instances. This resource is associated with a Load Balancer and a Security Group. A Server Group also has basic configuration settings, such as user account information and the region/zone in which images are deployed. When deployed, a Server Group is a collection of virtual machines running software.
 
-An Application typically corresponds to a particular microservice.
+### Cluster
 
-## Projects
+You can define *Clusters*, which are logical groupings of Server Groups in Spinnaker.
 
-Projects are arbitrary collections of infrastructure resources and pipelines. This is a convenience feature which allows you to create a dashboard containing Applications, Clusters and Pipelines by wildcard.
+### Load Balancer
 
-<!-- ## Infrastructure
+A *Load Balancer* is associated with an ingress protocol and port range. It balances traffic among instances in its Server Group. Optionally, you can enable health checks for a load balancer, with flexiblity to define health criteria and specify the health check endpoint.
 
-This is a catch net area from which potentially lists all infrastructure components across all of Spinnaker that you have access to. You can search for Applications, Clusters, Server Groups, Instances, Load Balancers and Security Groups by wildcard. -->
+### Security Group
 
-## Load Balancers
+A *Security Group* defines network traffic access. It is effectively a set of firewall rules defined by an IP range (CIDR) along with a communication protocol (e.g., TCP) and port range.
 
-Load Balancers route incoming traffic to associated and enabled Server Groups.
+> Learn more on the [Clusters](/concepts/clusters/) page.
 
-## Security Groups
+## Deployment Management
 
-Security Groups define traffic ingress rules for Server Groups.
+You use Spinnaker's deployment management features to construct and manage continuous delivery workflows. 
 
-## Resource Mappings from Spinnaker to Provider
+### Pipeline
 
-Spinnaker | AWS | GCE | Kubernetes | Azure | OpenStack | Cloud Foundry
----|---|---|---|---|---|---
-Server Group | ASG | MIG | Replica Set
-Load Balancer | Load Balancer | L3/L4/HTTP/internal Load Balancer | Service
-Security Group | Security Group | Firewall Rule | Ingress Rule
+![](pipelines.png)
+
+*Pipelines* are the key deployment management construct in Spinnaker. They consist of a sequence of actions, known as stages. You can pass parameters from stage to stage along the pipeline. You can start a pipeline manually, or you can configure it to be started by automatic triggering events, such as a Jenkins job completing, a new Docker image appearing in your registry, a CRON schedule, or a stage in another pipeline. You can configure the pipeline to emit notifications to interested parties at various points during pipeline execution (such as on pipeline start/complete/fail), by email, SMS or HipChat.
+
+### Stage
+
+A *Stage* in Spinnaker is an action that forms an atomic building block for a pipeline. You can sequence stages in a Pipeline in any order, though some stage sequences may be more common than others. Spinnaker comes pre-packaged with a number of stages such as Deploy, Resize, Disable, Manual Judgment, and many more. You can see the full list of stages and read about implementation details for each provider in the [Reference](/reference/providers) section.
+
+### Deployment Strategies
+
+![](deployment-strategies.png)
+
+Spinnaker treats cloud-native deployment strategies as first class constructs, handling the underlying orchestration such as verifying health checks, disabling old server groups and enabling new server groups. Spinnaker supports the red/black (a.k.a. blue/green) strategy, with rolling red/black and canary strategies in active development.
+
+> Learn more on the [Pipelines](/concepts/pipelines/) page.
