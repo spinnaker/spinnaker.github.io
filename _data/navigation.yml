@@ -43,7 +43,7 @@ setup:
         url: /setup/providers/overview/
       - title: Amazon Web Services
         url: /setup/providers/aws/
-      - title: AppEngine
+      - title: App Engine
         url: /setup/providers/appengine/
       - title: Azure
         url: /setup/providers/azure/
