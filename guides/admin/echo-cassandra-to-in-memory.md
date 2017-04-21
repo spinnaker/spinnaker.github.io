@@ -2,7 +2,7 @@
 layout: single
 title:  "Echo: Cassandra to In-Memory"
 sidebar:
-  nav: setup
+  nav: guides
 ---
 
 {% include toc %}

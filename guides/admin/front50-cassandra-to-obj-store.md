@@ -2,7 +2,7 @@
 layout: single
 title:  "Front50: Cassandra to Object Store (S3, Azure, or GCS)"
 sidebar:
-  nav: setup
+  nav: guides
 ---
 
 {% include toc %}

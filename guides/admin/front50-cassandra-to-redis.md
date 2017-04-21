@@ -2,7 +2,7 @@
 layout: single
 title:  "Front50: Cassandra to Redis"
 sidebar:
-  nav: setup
+  nav: guides
 ---
 
 {% include toc %}
