@@ -49,4 +49,4 @@ Choose an authentication method:
 * [OAuth 2.0](/setup/security/authentication/oauth/)
 * [SAML](/setup/security/authentication/saml/)
 * [LDAP](/setup/security/authentication/ldap/)
-* X.509
+* [X.509](/setup/security/authentication/x509/)
