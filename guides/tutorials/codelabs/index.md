@@ -14,3 +14,4 @@ Run through these codelabs to get hands-on experience with Spinnaker in a guided
 * [GCE Source To Prod](./gce-source-to-prod) - create a cohesive workflow which takes source code and builds, tests and promotes it to production with VMs in GCE
 * [Kubernetes Source To Prod](./kubernetes-source-to-prod) - create a set of basic pipelines for deploying code from a Github repo to a Kubernetes cluster in the form of a Docker container
 * [OpenStack Source To Prod](./openstack-source-to-prod) - create a cohesive workflow which takes source code and builds, tests, and promotes it to production on OpenStack
+* [Continuous Delivery with Containers on GCP](./gcp-kubernetes-source-to-prod) - set up a source-to-prod continuous delivery flow for a hello world app deployed via containers, on the Google Cloud Platform
