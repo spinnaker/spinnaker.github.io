@@ -26,7 +26,8 @@ prompt the user for some configuration in the process. Generally the default
 answers to each prompt are best.
 
 ```
-curl https://raw.githubusercontent.com/spinnaker/halyard/master/InstallHalyard.sh | sudo bash
+wget https://raw.githubusercontent.com/spinnaker/halyard/master/InstallHalyard.sh
+sudo bash InstallHalyard.sh
 ```
 
 At this point, run the following command to see if Halyard was installed
