@@ -13,7 +13,8 @@ is generally easier than dynamically obtaining an OAuth Bearer token or SAML ass
 
 ## Certificates
 
-If you followed the [SSL](./ssl/) guide, you may already have generated a **certificate authority**
+If you followed the [SSL](../ssl/) guide, you may already have generated a **certificate 
+authority**
 (CA). Using this CA, we can generate a client certificate using `openssl`.
 
 1. Create the client key. Keep this file safe!

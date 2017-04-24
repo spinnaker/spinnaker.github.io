@@ -14,7 +14,7 @@ can also be a PaaS, like [App Engine](https://cloud.google.com/appengine),
 or a container orchestrator, like [Kubernetes](https://kubernetes.io). 
 
 The cloud provider is central to everything you do in Spinnaker. It will be
-where you deploy your [Server Groups](/concepts#server-groups), the source of
+where you deploy your [Server Groups](/concepts/#server-group), the source of
 your deployable artifacts, and the subject of automation via
 [Pipelines](/concepts/pipelines).
 
