@@ -27,7 +27,7 @@ With the personal access token in hand, use Halyard to configure Fiat:
 
 ```bash
 TOKEN=b22a54...  # Personal access token under admin account 
-ORG=myorg    # GitHub Organization
+ORG=myorg        # GitHub Organization
 
 hal config security roles provider github edit \
     --token $TOKEN \
