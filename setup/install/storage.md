@@ -8,8 +8,8 @@ sidebar:
 {% include toc %}
 
 Spinnaker relies on having an external Persistent Storage source to store
-Spinnaker-specific metadata, such as your [Pipelines](/concepts/pipelines), or 
-configured [Applications](/concepts#applications). Before you can deploy
+Spinnaker-specific metadata, such as your [Pipelines](/concepts/#pipeline), or 
+configured [Applications](/concepts/#applications). Before you can deploy
 Spinnaker, you must configure it to use one of the supported storage types.
 
 ## Supported Storage Types

@@ -19,11 +19,23 @@ You use Spinnaker's cluster management features to view and manage your resource
 
 ### Server Group
 
-The base resource, the *Server Group*, identifies the machine instance profile on which to execute images along with the number of instances. This resource is associated with a Load Balancer and a Security Group. A Server Group also has basic configuration settings, such as user account information and the region/zone in which images are deployed. When deployed, a Server Group is a collection of virtual machines running software.
+The base resource, the *Server Group*, identifies the machine instance profile on which to 
+execute images along with the number of instances. This resource is associated with a Load 
+Balancer and a Security Group. A Server Group also has basic configuration settings, such as 
+user account information and the region/zone in which images are deployed. When deployed, a 
+Server Group is a collection of virtual machines running software.
+
+Server groups follow the **application-stack-detail-version** naming convention.
 
 ### Cluster
 
-You can define *Clusters*, which are logical groupings of Server Groups in Spinnaker.
+You can define *Clusters*, which are logical groupings of Server Groups in Spinnaker. These 
+groups are based on the **application-stack-detail** naming convention.
+
+### Applications
+
+*Applications* are logical groupings of Clusters in Spinnaker from the **application-stack-detail**
+ naming convention.
 
 ### Load Balancer
 
