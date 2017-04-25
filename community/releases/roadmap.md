@@ -6,6 +6,16 @@ sidebar:
 
 {% include toc %}
 
+### 2017 Q2
+
+| Area | Features |
+|---|---|
+| General | Establish regular versioned releases of Spinnaker |
+| | [halyard](https://github.com/spinnaker/halyard) - install and upgrade Spinnaker on versioned or nightly releases |
+| | [halyard](https://github.com/spinnaker/halyard) - configure providers, persistence, authn/z, monitoring |
+| | Canary strategy alpha for AWS, GCE |
+
+
 ### 2017 Q1
 
 | Area | Features |
