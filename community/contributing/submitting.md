@@ -46,6 +46,8 @@ The type of keyword affects the next semantic version bump. The `feat` keyword c
 
 If you _don't_ use one of the previous types (or don't follow the convention), your commit will not be included in the generated changelog. Your change will still affect the next semantic version bump, but it will be considered a patch change, not a major or minor change (even if the change is a breaking change or a feature).
 
+If you submit a pull request with multiple commits and choose to _Squash and Merge_ the pull request, the individual commit message **are not** added to the changelog, **only the pull request message is**. To include each commit in your pull request in the changelog and next version calculation, _merge the changes without squashing_.
+
 #### Scope
 
 The `scope` of the commit message indicates the area or feature of Spinnaker the commit applies to. For instance, if you were to submit a patch to the Google provider in Clouddriver, your commit message might look something like:
