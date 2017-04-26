@@ -33,7 +33,7 @@ registry of choice:
 The DockerHub registry address is `index.docker.io`, keep track of this for
 later:
 
-```
+```bash
 ADDRESS=index.docker.io
 ```
 
@@ -44,14 +44,14 @@ which Docker repositories you want to index and deploy. For example, if you
 wanted to deploy the public NGINX image, alongside your private `app` image,
 your list of repositories would look like:
 
-```
+```bash
 REPOSITORIES=library/nginx yourusername/app
 ```
 
 If any of your images aren't publicly available, make sure you know your
 DockerHub username & password to supply to `hal` later:
 
-```
+```bash
 USERNAME=yourusername
 PASSWORD=hunter2
 ```
@@ -63,7 +63,7 @@ want to store your images. A good starting point is `gcr.io`, but there [more
 options
 available](https://cloud.google.com/container-registry/docs/pushing#pushing_to_the_registry).
 
-```
+```bash
 ADDRESS=gcr.io
 ```
 
@@ -80,10 +80,11 @@ for Spinnaker since the access token is short-lived. The second, using a
 [service
 account](https://cloud.google.com/compute/docs/access/service-accounts) is
 preferred. The following steps will guide you through creating & downloading a
-service account for your registry, assuming it exists as your currently
+service account to be used as your password with the required 
+`roles/storage.admin` role, assuming the registry exists in your currently 
 configured `gcloud` project.
 
-```
+```bash
 SERVICE_ACCOUNT_NAME=spinnaker-gcr-account
 SERVICE_ACCOUNT_DEST=~/.gcp/gcr-account.json
 
@@ -110,7 +111,7 @@ Once you have run these commands, your GCR password is sitting in a file
 called `$SERVICE_ACCOUNT_DEST`. For Spinnaker to authenticate against GCR, keep
 track of these environment vars to be passed to `hal` later:
 
-```
+```bash
 # this is always the username for this authentication format
 USERNAME=_json_key 
 PASSWORD_FILE=$SERVICE_ACCOUNT_DEST
@@ -123,7 +124,7 @@ PASSWORD_FILE=$SERVICE_ACCOUNT_DEST
 
 First, make sure that the provider is enabled:
 
-```
+```bash
 hal config provider docker-registry enable
 ```
 
@@ -132,7 +133,7 @@ Assuming that your registry has address `$ADDRESS`, with repositories
 following `hal` command to add an account named `my-docker-registry` to
 your list of Docker Registry accounts:
 
-```
+```bash
 hal config provider docker-registry account add my-docker-registry \
     --address $ADDRESS \
     --repositories $REPOSITORIES \
