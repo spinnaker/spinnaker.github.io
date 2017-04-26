@@ -1,6 +1,8 @@
 ---
 layout: single
-title:  "Features"
+title:  "Stackdriver"
 sidebar:
   nav: setup
 ---
+
+{% include toc %}

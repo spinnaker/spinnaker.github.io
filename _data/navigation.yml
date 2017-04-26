@@ -37,6 +37,8 @@ setup:
         url: /setup/install/deploy/
       - title: Configuration
         url: /setup/install/configuration/
+      - title: Upgrades
+        url: /setup/install/upgrades/
   - title: Cloud Providers
     children:
       - title: Overview
@@ -77,14 +79,28 @@ setup:
         url: /setup/security/authentication/
       - title: Authorization
         url: /setup/security/authorization/
+  - title: CI
+    children:
+      - title: Overview
+        url: /setup/ci/overview/
+      - title: Travis CI
+        url: /setup/ci/travis/
+      - title: Jenkins
+        url: /setup/ci/jenkins/
   - title: Features
     children:
       - title: Notifications
         url: /setup/features/notifications/
   - title: Monitoring
-    url: /setup/monitoring/
-  - title: Upgrading
-    url: /setup/upgrading/
+    children:
+      - title: Overview
+        url: /setup/monitoring/overview/
+      - title: Datadog
+        url: /setup/monitoring/datadog/
+      - title: Prometheus
+        url: /setup/monitoring/prometheus/
+      - title: Stackdriver
+        url: /setup/monitoring/stackdriver/
 
 guides:
   - title: Tutorials
