@@ -21,22 +21,77 @@ In our scenario, we want to create a Spinnaker instance and set it up as follows
 For this exercise we will be operating entirely within one GCP project, and use Google Container Engine (GKE) as our Kubernetes cluster. 
 
 
-## Part 0: Prerequisites
+## Part 0: Preparation
 
-We assume the reader has some prior experience with Kubernetes and GCP, but will also provide some guidance along the way. First, you'll need to [install gcloud](https://cloud.google.com/sdk/downloads#interactive) and have a [GKE](https://console.cloud.google.com/kubernetes/list)) cluster.
+### Install gcloud
 
+If you don't already have gcloud installed, navigate to [Installing Cloud SDK](https://cloud.google.com/sdk/downloads#interactive) to install gcloud
 
-## Part 1: Install halyard
+### Create a Kubernetes cluster
+
+Navigate to the [Google Cloud Console's GKE section](https://console.cloud.google.com/kubernetes/list) to create a new Kubernetes cluster (please note the cluster name and zone).
+
+### Enable the GCP IAM API
+
+Navigate to the [Google Cloud Console](https://console.developers.google.com/apis/api/iam.googleapis.com/overview) and enable the Google Identity and Access Management (IAM) API
+
+### Set up credentials
+
+Create a service account for our halyard host VM:
+
+```
+GCP_PROJECT=$(gcloud info --format='value(config.project)')
+HALYARD_SA=halyard-service-account
+
+gcloud iam service-accounts create $HALYARD_SA \
+    --project=$GCP_PROJECT \
+    --display-name $HALYARD_SA
+
+HALYARD_SA_EMAIL=$(gcloud iam service-accounts list \
+    --project=$GCP_PROJECT \
+    --filter="displayName:$HALYARD_SA" \
+    --format='value(email)')
+
+gcloud projects add-iam-policy-binding $GCP_PROJECT \
+    --role roles/iam.serviceAccountKeyAdmin \
+    --member serviceAccount:$HALYARD_SA_EMAIL
+
+gcloud projects add-iam-policy-binding $GCP_PROJECT \
+    --role roles/container.admin \
+    --member serviceAccount:$HALYARD_SA_EMAIL
+```
+
+Create a service account for GCS and GCR that you'll later be handing to Spinnaker
+
+```
+GCS_SA=gcs-service-account
+
+gcloud iam service-accounts create $GCS_SA \
+    --project=$GCP_PROJECT \
+    --display-name $GCS_SA
+
+GCS_SA_EMAIL=$(gcloud iam service-accounts list \
+    --project=$GCP_PROJECT \
+    --filter="displayName:$GCS_SA" \
+    --format='value(email)')
+
+gcloud projects add-iam-policy-binding $GCP_PROJECT \
+    --role roles/storage.admin \
+    --member serviceAccount:$GCS_SA_EMAIL
+```
 
 ### Create halyard host VM
 
-```
-HALHOST=$USER-halyard-`date +%m%d`
+Create a VM with the service account:
 
-gcloud compute instances create $HALHOST \
-    --scopes storage-full,compute-rw \
-    --project={YOUR_GCP_PROJECT} \
+```
+HALYARD_HOST=$USER-halyard-`date +%m%d`
+
+gcloud compute instances create $HALYARD_HOST \
+    --project=$GCP_PROJECT \
     --zone=us-central1-f \
+    --scopes=cloud-platform \
+    --service-account=$HALYARD_SA_EMAIL \
     --image-project=ubuntu-os-cloud \
     --image-family=ubuntu-1404-lts \
     --machine-type=n1-standard-4
@@ -45,14 +100,16 @@ gcloud compute instances create $HALHOST \
 SSH into the VM. We specify port forwarding because at the end of this exercise you'll be port forwarding from this VM to Spinnaker running in the Kubernetes cluster. That is, you'll be port forwarding twice: from your workstation browser to this GCE VM, and from this GCE VM to the Kubernetes cluster.
 
 ```
-gcloud compute ssh $HALHOST \
-    --project={YOUR_GCP_PROJECT} \
+gcloud compute ssh $HALYARD_HOST \
+    --project=$GCP_PROJECT \
     --zone=us-central1-f \
-    --ssh-flag=”-L 9000:localhost:9000” \
-    --ssh-flag=”-L 8084:localhost:8084”
+    --ssh-flag="-L 9000:localhost:9000" \
+    --ssh-flag="-L 8084:localhost:8084"
 ```
 
 > **From this point on, you will be entering the commands below in the halyard ssh session.**
+
+## Part 1: Install halyard
 
 ### Install kubectl
 
@@ -63,7 +120,6 @@ chmod +x kubectl
 
 sudo mv kubectl /usr/local/bin/kubectl
 ```
-
 
 ### Install halyard
 
@@ -79,13 +135,35 @@ sudo bash InstallHalyard.sh
 
 ### ~/.kube/config
 
-If you don't already have this, an easy way to set this up is to use gcloud:
+Generate your ~/.kube/config file:
 
-    gcloud container clusters get-credentials {YOUR_GKE_CLUSTER_NAME}
+```
+GKE_CLUSTER_NAME={YOUR_GKE_CLUSTER_NAME}
+GKE_CLUSTER_ZONE={YOUR_GKE_CLUSTER_ZONE}
 
-### GCP service account
+gcloud config set container/use_client_certificate true
 
-You will need to specify the location of a json file containing credentials to your GCP project with the role "Storage / Storage Admin". Download the key from the Cloud Console and copy it to `~/.google/account.json`.
+gcloud container clusters get-credentials $GKE_CLUSTER_NAME \
+    --zone=$GKE_CLUSTER_ZONE
+```
+
+### GCS service account
+
+Download the service account json file for your GCP project with the following commands:
+
+```
+GCS_SA=gcs-service-account
+GCS_SA_DEST=~/.gcp/gcp.json
+
+mkdir -p $(dirname $GCS_SA_DEST)
+
+GCS_SA_EMAIL=$(gcloud iam service-accounts list \
+    --filter="displayName:$GCS_SA" \
+    --format='value(email)')
+
+gcloud iam service-accounts keys create $GCS_SA_DEST \
+    --iam-account $GCS_SA_EMAIL
+```
 
 
 ## Part 3: Set Spinnaker configuration
@@ -96,7 +174,9 @@ We will install Spinnaker v0.1.0
 
 Set up to persist to GCS
 
-    hal config storage gcs edit --project {YOUR_GCP_PROJECT} --json-path ~/.google/account.json
+    hal config storage gcs edit \
+        --project $GCP_PROJECT \
+        --json-path ~/.gcp/gcp.json
 
     hal config storage edit --type gcs
 
@@ -106,7 +186,7 @@ Set up pulling from GCR
 
     hal config provider docker-registry account add my-gcr-account \
         --address gcr.io \
-        --password-file ~/.google/account.json \
+        --password-file ~/.gcp/gcp.json \
         --username _json_key
 
 Set up Kubernetes provider
@@ -119,7 +199,9 @@ Set up Kubernetes provider
 
 ## Part 4: Deploy Spinnaker
 
-    hal config deploy edit --account-name my-k8s-account --type distributed
+    hal config deploy edit \
+        --account-name my-k8s-account \
+        --type distributed
 
     hal deploy apply
 
