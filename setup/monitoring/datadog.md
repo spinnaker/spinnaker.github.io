@@ -1,6 +1,8 @@
 ---
 layout: single
-title:  "Features"
+title:  "Datadog"
 sidebar:
   nav: setup
 ---
+
+{% include toc %}

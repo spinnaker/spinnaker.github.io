@@ -1,6 +1,8 @@
 ---
 layout: single
-title:  "Features"
+title:  "Overview"
 sidebar:
   nav: setup
 ---
+
+{% include toc %}

@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Upgrading"
+title:  "Prometheus"
 sidebar:
   nav: setup
 ---

@@ -1,6 +1,8 @@
 ---
 layout: single
-title:  "Features"
+title:  "Travis CI"
 sidebar:
   nav: setup
 ---
+
+{% include toc %}

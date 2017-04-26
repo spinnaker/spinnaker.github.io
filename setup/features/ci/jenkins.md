@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Monitoring"
+title:  "Jenkins"
 sidebar:
   nav: setup
 ---
