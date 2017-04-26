@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Codelab: Continuous Delivery with Containers on GCP"
+title:  "Continuous Delivery with Containers on GCP"
 sidebar:
   nav: guides
 ---
