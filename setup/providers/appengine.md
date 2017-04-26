@@ -21,7 +21,7 @@ Use your project name in place of `my-spinnaker-project` below.
 2. If this is your first time deploying to App Engine in your project, create an App Engine application using 
    `gcloud`. You cannot change your application's region, so pick wisely:
 
-   ``` 
+   ```bash
    gcloud app create --region <e.g., us-central>
    ```
 3. Spinnaker does not need to be given service account credentials if it is running on a Google Compute Engine VM _and_
@@ -33,15 +33,17 @@ Use your project name in place of `my-spinnaker-project` below.
     * Select a service account, the **JSON** key type, and click **Create**.
     * Safeguard the JSON file that your browser will download.
 
-## Basic Configuration
+## Adding an Account
 
 First, make sure that the provider is enabled:
-```
+
+```bash
 hal config provider appengine enable
 ```
 
 Next, run the following `hal` command to add an account named `my-appengine-account` to your list of App Engine accounts:
-```
+
+```bash
 hal config provider appengine account add my-appengine-account \ 
   --project <my-spinnaker-project> \
   --json-path <path-to-service-account-key>
@@ -49,7 +51,7 @@ hal config provider appengine account add my-appengine-account \
 
 You can omit the `--json-path` flag if Spinnaker does not need service account credentials.
 
-## Advanced Configuration
+## Advanced Account Settings
 
 Spinnaker deploys to App Engine by cloning your application source code from a git repository. Unless your code 
 is public, Spinnaker needs a mechanism to authenticate with your repositories - many of the configuration flags for 

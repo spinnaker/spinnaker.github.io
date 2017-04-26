@@ -27,7 +27,7 @@ credentials work using
 [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl-overview/) to run the
 following command:
 
-```
+```bash
 kubectl get namespaces
 ```
 
@@ -47,7 +47,7 @@ Follow the steps under the [Docker Registry](/setup/providers/docker-registry)
 provider to add any registries containing images you want to deploy. If
 you have already done so, you can verify that these accounts exist by running:
 
-```
+```bash
 hal config provider docker-registry account list
 ```
 
@@ -55,7 +55,7 @@ hal config provider docker-registry account list
 
 First, make sure that the provider is enabled:
 
-```
+```bash
 hal config provider kubernetes enable
 ```
 
@@ -63,10 +63,12 @@ Now, assuming you have a Docker Registry account named `my-docker-registry`,
 run the following `hal` command to add an account named `my-k8s-account` to 
 your list of Kubernetes accounts:
 
-```
+```bash
 hal config provider kubernetes account add my-k8s-account \
     --docker-registries my-docker-registry
 ```
+
+## Advanced Account Settings
 
 If you are looking for more configurability, please see the other options
 listed in the [Halyard
