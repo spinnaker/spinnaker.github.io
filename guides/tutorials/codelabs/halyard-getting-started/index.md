@@ -39,7 +39,7 @@ Navigate to the [Google Cloud Console](https://console.developers.google.com/api
 
 Create a service account for our halyard host VM:
 
-```
+```bash
 GCP_PROJECT=$(gcloud info --format='value(config.project)')
 HALYARD_SA=halyard-service-account
 
@@ -63,7 +63,7 @@ gcloud projects add-iam-policy-binding $GCP_PROJECT \
 
 Create a service account for GCS and GCR that you'll later be handing to Spinnaker
 
-```
+```bash
 GCS_SA=gcs-service-account
 
 gcloud iam service-accounts create $GCS_SA \
@@ -84,7 +84,7 @@ gcloud projects add-iam-policy-binding $GCP_PROJECT \
 
 Create a VM with the service account:
 
-```
+```bash
 HALYARD_HOST=$USER-halyard-`date +%m%d`
 
 gcloud compute instances create $HALYARD_HOST \
@@ -99,7 +99,7 @@ gcloud compute instances create $HALYARD_HOST \
 
 SSH into the VM. We specify port forwarding because at the end of this exercise you'll be port forwarding from this VM to Spinnaker running in the Kubernetes cluster. That is, you'll be port forwarding twice: from your workstation browser to this GCE VM, and from this GCE VM to the Kubernetes cluster.
 
-```
+```bash
 gcloud compute ssh $HALYARD_HOST \
     --project=$GCP_PROJECT \
     --zone=us-central1-f \
@@ -113,7 +113,7 @@ gcloud compute ssh $HALYARD_HOST \
 
 ### Install kubectl
 
-```
+```bash
 curl -O https://storage.googleapis.com/kubernetes-release/release/v1.6.1/bin/linux/amd64/kubectl
 
 chmod +x kubectl
@@ -123,7 +123,7 @@ sudo mv kubectl /usr/local/bin/kubectl
 
 ### Install halyard
 
-```
+```bash
 wget https://raw.githubusercontent.com/spinnaker/halyard/master/InstallHalyard.sh
 
 sudo bash InstallHalyard.sh
@@ -137,7 +137,7 @@ sudo bash InstallHalyard.sh
 
 Generate your ~/.kube/config file:
 
-```
+```bash
 GKE_CLUSTER_NAME={YOUR_GKE_CLUSTER_NAME}
 GKE_CLUSTER_ZONE={YOUR_GKE_CLUSTER_ZONE}
 
@@ -151,7 +151,7 @@ gcloud container clusters get-credentials $GKE_CLUSTER_NAME \
 
 Download the service account json file for your GCP project with the following commands:
 
-```
+```bash
 GCS_SA=gcs-service-account
 GCS_SA_DEST=~/.gcp/gcp.json
 
@@ -170,44 +170,56 @@ gcloud iam service-accounts keys create $GCS_SA_DEST \
 
 We will install Spinnaker v0.1.0
 
-    hal config version edit --version 0.1.0
+```bash
+hal config version edit --version 0.1.0
+```
 
 Set up to persist to GCS
 
-    hal config storage gcs edit \
-        --project $GCP_PROJECT \
-        --json-path ~/.gcp/gcp.json
+```bash
+hal config storage gcs edit \
+    --project $(gcloud info --format='value(config.project)') \
+    --json-path ~/.gcp/gcp.json
 
-    hal config storage edit --type gcs
+hal config storage edit --type gcs
+```
 
 Set up pulling from GCR
 
-    hal config provider docker-registry enable
+```bash
+hal config provider docker-registry enable
 
-    hal config provider docker-registry account add my-gcr-account \
-        --address gcr.io \
-        --password-file ~/.gcp/gcp.json \
-        --username _json_key
+hal config provider docker-registry account add my-gcr-account \
+    --address gcr.io \
+    --password-file ~/.gcp/gcp.json \
+    --username _json_key
+```
 
 Set up Kubernetes provider
 
-    hal config provider kubernetes enable
+```bash
+hal config provider kubernetes enable
 
-    hal config provider kubernetes account add my-k8s-account \
-        --docker-registries my-gcr-account
+hal config provider kubernetes account add my-k8s-account \
+    --docker-registries my-gcr-account
+```
 
 
 ## Part 4: Deploy Spinnaker
 
-    hal config deploy edit \
-        --account-name my-k8s-account \
-        --type distributed
+```bash
+hal config deploy edit \
+    --account-name my-k8s-account \
+    --type distributed
 
-    hal deploy apply
+hal deploy apply
+```
 
 Run the post-install script to port forward Spinnaker requests
 
-    ~/.halyard/default/install.sh
+```bash
+~/.halyard/default/install.sh
+```
 
 Finally, from your local workstation browser, navigate to your [brand new Spinnaker instance](http://localhost:9000/)!
 
