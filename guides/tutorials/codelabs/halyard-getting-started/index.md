@@ -218,7 +218,7 @@ hal deploy apply
 Run the post-install script to port forward Spinnaker requests
 
 ```bash
-~/.halyard/default/install.sh
+~/.hal/default/install.sh
 ```
 
 Finally, from your local workstation browser, navigate to your [brand new Spinnaker instance](http://localhost:9000/)!
