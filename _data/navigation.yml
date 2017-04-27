@@ -164,8 +164,6 @@ community:
     children:
       - title: Supported Versions
         url: /community/releases/versions/
-      - title: Nightly Builds
-        url: /community/releases/nightly/
       - title: Support Policy
         url: /community/releases/support-policy/
       - title: Roadmap
