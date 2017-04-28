@@ -219,7 +219,10 @@ tag_archive:
 #   permalinks:
 #     category: /categories/:name/
 #     tag: /tags/:name/
-
+collections:
+  changelogs:
+    output: true
+    permalink: /community/releases/versions/:name
 
 # HTML Compression
 # - http://jch.penibelst.de/
@@ -251,3 +254,14 @@ defaults:
       read_time: false
       comments: false
       related: true
+  - scope:
+      path: ""
+      type: changelogs
+    values:
+      layout: single
+      author_profile: false
+      read_time: false
+      comments: false
+      related: true
+      sidebar:
+        nav: community

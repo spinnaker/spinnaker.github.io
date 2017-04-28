@@ -5,6 +5,7 @@ sidebar:
   nav: community
 ---
 
-{% include toc %}
+{% for post in site.changelogs %}
+### <a href="{{ post.url }}">{{ post.title }}</a>
 
-changelogs here
+{% endfor %}
