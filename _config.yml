@@ -222,7 +222,7 @@ tag_archive:
 collections:
   changelogs:
     output: true
-    permalink: /community/releases/versions/:name
+    permalink: /community/releases/versions/:slug
 
 # HTML Compression
 # - http://jch.penibelst.de/

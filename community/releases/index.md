@@ -5,7 +5,7 @@ sidebar:
   nav: community
 ---
 
-* [Supported Versions](/community/releases/versions/)
+* [Versions](/community/releases/versions/)
 * [Support Policy](/community/releases/support-policy/)
 * [Roadmap](/community/releases/roadmap/)
 
