@@ -20,6 +20,11 @@ In our scenario, we want to create a Spinnaker instance and set it up as follows
 
 For this exercise we will be operating entirely within one GCP project, and use Google Container Engine (GKE) as our Kubernetes cluster. 
 
+{% include figure 
+    image_path="./deployment.png" 
+    alt="image of deployed environment including halyard vm" 
+    caption="How your Kubernetes cluster can look at the end of this guide, with an app 
+    deployed (not covered)." %}
 
 ## Part 0: Preparation
 
