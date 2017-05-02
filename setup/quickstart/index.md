@@ -12,5 +12,5 @@ There are a few Quickstart solutions:
 * [Microsoft Azure](https://aka.ms/azspinnaker)
 
 Keep in mind, none of these are intended for production use. Please follow
-[this](/setup/install/getting-started) guide if you intend to use Spinnaker for 
+[this](/setup/install/) guide if you intend to use Spinnaker for 
 more than an evaluation.
