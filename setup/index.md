@@ -17,12 +17,12 @@ evaluation and demo tool only, we don't recommend trying to scale them for
 production use-cases.
 
 If you want a more serious, scalable deployment of Spinnaker continue
-[here](/setup/install/getting-started) to installation guide. All other
+[here](/setup/install/) to installation guide. All other
 resources on this Setup page will assume you're following those instructions.
 
 ## Futher Reading
 
 * If you're curious how Spinnaker runs when it is deployed, take a look at the
-  [Architecture](/reference/architecture) pages.
-* Take a look at the [Releases](/community/releases) page to pick a version of
+  [Architecture](/reference/architecture/) pages.
+* Take a look at the [Releases](/community/releases/) page to pick a version of
   Spinnaker to install.
