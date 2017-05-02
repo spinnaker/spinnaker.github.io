@@ -11,7 +11,7 @@ For App Engine, an [__Account__](/setup/providers/overview#accounts) maps to an 
 
 ## Prerequisites
 
-Sign into the [Google Developers Console](https://console.developers.google.com) and create a project if you don't already have one.
+Sign into the [Google Cloud Console](https://console.cloud.google.com) and create a project if you don't already have one.
 Use your project name in place of `my-spinnaker-project` below.
 
 1. Enable APIs in your <code>my-spinnaker-project</code> project.
@@ -27,7 +27,7 @@ Use your project name in place of `my-spinnaker-project` below.
 3. Spinnaker does not need to be given service account credentials if it is running on a Google Compute Engine VM _and_
    it is deploying to an App Engine application inside the same Google Cloud Platform project in which it is running. If Spinnaker
    will need service account credentials, follow these steps for the project you would like to deploy to:
-    * Inside the [Google Cloud Console](https://cloud.console.google.com), go to the Credentials tab
+    * Inside the [Google Cloud Console](https://console.cloud.google.com), go to the Credentials tab
      on the API Management page.
     * Select the **Service account key** item from the **Create credentials** menu.
     * Select a service account, the **JSON** key type, and click **Create**.
