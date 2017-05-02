@@ -15,7 +15,7 @@ authenticate against a given [Google Cloud Platform](https://cloud.google.com/)
 ## Prerequisites
 
 You need a [Google Cloud Platform](https://cloud.google.com/) (GCP) project
-with to run Spinnaker against. The next steps assume you've already [created a
+to run Spinnaker against. The next steps assume you've already [created a
 project](https://cloud.google.com/resource-manager/docs/creating-managing-projects), 
 and installed [`gcloud`](https://cloud.google.com/sdk/downloads). You can check
 that `gcloud` is installed and authenticated by running:
@@ -56,7 +56,7 @@ gcloud iam service-accounts keys create $SERVICE_ACCOUNT_DEST \
     --iam-account $SA_EMAIL
 ```
 
-Once you have run these commands, your GCS JSON key is sitting in a file
+Once you have run these commands, your GCP JSON key is sitting in a file
 called `$SERVICE_ACCOUNT_DEST`. 
 
 ## Adding an Account
