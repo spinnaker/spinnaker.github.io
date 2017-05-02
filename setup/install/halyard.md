@@ -25,8 +25,9 @@ The following command installs the latest released Halyard version, and will
 prompt the user for some configuration in the process. Generally the default
 answers to each prompt are best.
 
-```
-wget https://raw.githubusercontent.com/spinnaker/halyard/master/InstallHalyard.sh
+```bash
+curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/stable/InstallHalyard.sh
+
 sudo bash InstallHalyard.sh
 ```
 
