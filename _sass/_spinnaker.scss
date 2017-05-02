@@ -40,5 +40,40 @@ text.actor {
   fill: #c0d89d;
 }
 .noteText {
-  fill: $masthead-link-color-hover;   
+  fill: $masthead-link-color-hover;
+}
+
+// release changelogs from GitHub Gists
+
+.gist {
+  article.markdown-body {
+    h1 {
+      margin-top: 0;
+      font-size: $type-size-3;
+    }
+
+    h2 {
+      font-size: $type-size-4;
+    }
+
+    h3 {
+      font-size: $type-size-5;
+    }
+
+    h4 {
+      font-size: $type-size-5;
+    }
+
+    h5 {
+      font-size: $type-size-6;
+    }
+
+    h6 {
+      font-size: $type-size-6;
+    }
+  }
+
+  p, dl, li {
+    font-size: 0.7rem;
+  }
 }
