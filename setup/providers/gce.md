@@ -81,6 +81,7 @@ hal config provider google account add my-gce-account --project $PROJECT \
     --json-path $SERVICE_ACCOUNT_DEST
 ```
 
+TODO(lwander or duftler): Add a note about application default credentials.
 
 ## Advanced Account Settings
 
