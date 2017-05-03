@@ -45,7 +45,7 @@ hal config provider openstack account add my-openstack-account \
 
 If you are looking for more configurability, please see the other options
 listed in the [Halyard
-Reference](https://github.com/spinnaker/halyard/blob/master/docs/commands.md#hal-config-provider-openstack-account-add).
+Reference](/reference/halyard/commands#hal-config-provider-openstack-account-add).
 
 If managing load balancers in your Openstack environment through Spinnaker is failing due to timeouts, you may need to increase the timeout and polling interval.
 This is more likely to occur in a resource constrained Openstack environment such as Devstack or another smaller test environment.

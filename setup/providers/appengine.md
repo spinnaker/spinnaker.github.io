@@ -58,6 +58,6 @@ is public, Spinnaker needs a mechanism to authenticate with your repositories - 
 App Engine manage this authentication. 
 
 You can view the available configuration flags for App Engine within the 
-[Halyard reference](https://github.com/spinnaker/halyard/blob/master/docs/commands.md#hal-config-provider-appengine-account-add).
+[Halyard reference](/reference/halyard/commands#hal-config-provider-appengine-account-add).
 
 

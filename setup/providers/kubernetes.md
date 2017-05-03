@@ -72,4 +72,4 @@ hal config provider kubernetes account add my-k8s-account \
 
 If you are looking for more configurability, please see the other options
 listed in the [Halyard
-Reference](https://github.com/spinnaker/halyard/blob/master/docs/commands.md#hal-config-provider-kubernetes-account-add).
+Reference](/reference/halyard/commands#hal-config-provider-kubernetes-account-add).
