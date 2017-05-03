@@ -7,7 +7,7 @@ sidebar:
 
 {% include toc %}
 
-For App Engine, an [__Account__](/setup/providers/overview#accounts) maps to an App Engine application.
+For App Engine, an [__Account__](/setup/providers/#accounts) maps to an App Engine application.
 
 ## Prerequisites
 

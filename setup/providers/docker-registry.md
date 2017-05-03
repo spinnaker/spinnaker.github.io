@@ -11,7 +11,7 @@ sidebar:
 > for deploying Docker images.
 
 When configuring Docker Registries, an
-[__Account__](/setup/providers/overview#accounts) maps to a credential able to
+[__Account__](/setup/providers/#accounts) maps to a credential able to
 authenticate against a certain set of [Docker
 repositories](https://docs.docker.com/glossary/?term=repository).
 
