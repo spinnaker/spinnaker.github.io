@@ -155,7 +155,11 @@ reference:
       - title: Oracle
         url: /reference/providers/oracle/
   - title: Halyard
-    url: /reference/halyard/
+    children:
+      - title: Overview
+        url: /reference/halyard/
+      - title: Commands
+        url: /reference/halyard/commands/
   - title: Architecture
     url: /reference/architecture/
 
