@@ -13,7 +13,7 @@ Compute Engine's [reference documentation](https://cloud.google.com/compute).
 ## Resource Mapping
 
 ### Account
-In [Google Compute Engine](https://cloud.google.com/compute) (GCE), an [Account](/setup/providers/overview#accounts)
+In [Google Compute Engine](https://cloud.google.com/compute) (GCE), an [Account](/setup/providers/#accounts)
 maps to a credential able to authenticate against a given [Google Cloud Platform](https://cloud.google.com/) (GCP)
 project - see the [setup guide](/setup/providers/gce).
 
