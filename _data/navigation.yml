@@ -42,7 +42,7 @@ setup:
   - title: Cloud Providers
     children:
       - title: Overview
-        url: /setup/providers/overview/
+        url: /setup/providers/
       - title: Amazon Web Services
         url: /setup/providers/aws/
       - title: App Engine
@@ -64,7 +64,7 @@ setup:
   - title: Persistent Storage
     children:
       - title: Overview
-        url: /setup/storage/overview/
+        url: /setup/storage/
       - title: Azure Blob Storage
         url: /setup/storage/abs/
       - title: Google Cloud Storage
@@ -82,7 +82,7 @@ setup:
   - title: CI
     children:
       - title: Overview
-        url: /setup/ci/overview/
+        url: /setup/ci/
       - title: Travis CI
         url: /setup/ci/travis/
       - title: Jenkins
@@ -94,7 +94,7 @@ setup:
   - title: Monitoring
     children:
       - title: Overview
-        url: /setup/monitoring/overview/
+        url: /setup/monitoring/
       - title: Datadog
         url: /setup/monitoring/datadog/
       - title: Prometheus
