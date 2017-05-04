@@ -34,7 +34,7 @@ sudo bash InstallHalyard.sh
 At this point, run the following command to see if Halyard was installed
 properly.
 
-```
+```bash
 hal -v
 ```
 
@@ -50,7 +50,7 @@ to explain what a command does. If you're still stuck, try looking under the
 Halyard also supplies a fair amount of command-completion; if you haven't
 already, run the following command or restart your shell to enable it.
 
-```
+```bash
 . ~/.bashrc
 ```
 
@@ -58,9 +58,25 @@ already, run the following command or restart your shell to enable it.
 
 You can always update Halyard by running the following commands.
 
-```
+```bash
 sudo apt-get update
 sudo apt-get upgrade halyard
+```
+
+## Uninstalling Halyard
+
+If you've used Halyard to deploy Spinnaker, and want to first purge that
+deployment, run the following command.
+
+```bash
+hal deploy clean
+```
+
+At this point you can safely uninstall Halyard by running the following
+command.
+
+```bash
+~/.hal/uninstall.sh
 ```
 
 ## Next Steps
