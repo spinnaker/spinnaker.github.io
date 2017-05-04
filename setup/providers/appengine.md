@@ -1,37 +1,78 @@
 ---
 layout: single
-title:  "App Engine"
+title:  "Google App Engine"
 sidebar:
   nav: setup
 ---
 
 {% include toc %}
 
-For App Engine, an [__Account__](/setup/providers/#accounts) maps to an App Engine application.
+In [Google App Engine](https://cloud.google.com/appengine), an [__Account__](/setup/providers/overview#accounts) maps to a 
+credential able to authenticate against a given [Google Cloud Platform](https://cloud.google.com) project.
 
 ## Prerequisites
 
-Sign into the [Google Cloud Console](https://console.cloud.google.com) and create a project if you don't already have one.
-Use your project name in place of `my-spinnaker-project` below.
+You need a [Google Cloud Platform](https://cloud.google.com/) project
+to run Spinnaker against. The next steps assume you've already [created a
+project](https://cloud.google.com/resource-manager/docs/creating-managing-projects), 
+and installed [`gcloud`](https://cloud.google.com/sdk/downloads). You can check
+that `gcloud` is installed and authenticated by running:
 
-1. Enable APIs in your <code>my-spinnaker-project</code> project.
-    * Go to the API Management page.
-    * Enable the **App Engine Admin** and **Compute Engine APIs**.
+```bash
+gcloud info
+```
 
-2. If this is your first time deploying to App Engine in your project, create an App Engine application using 
-   `gcloud`. You cannot change your application's region, so pick wisely:
+If this is your first time deploying to App Engine in your project, create an App Engine application. 
+You cannot change your application's region, so pick wisely:
 
-   ```bash
-   gcloud app create --region <e.g., us-central>
-   ```
-3. Spinnaker does not need to be given service account credentials if it is running on a Google Compute Engine VM _and_
-   it is deploying to an App Engine application inside the same Google Cloud Platform project in which it is running. If Spinnaker
-   will need service account credentials, follow these steps for the project you would like to deploy to:
-    * Inside the [Google Cloud Console](https://console.cloud.google.com), go to the Credentials tab
-     on the API Management page.
-    * Select the **Service account key** item from the **Create credentials** menu.
-    * Select a service account, the **JSON** key type, and click **Create**.
-    * Safeguard the JSON file that your browser will download.
+```bash
+gcloud app create --region <e.g., us-central>
+```
+
+You will also need to enable the App Engine Admin API for your project:
+
+```bash
+gcloud service-management enable appengine.googleapis.com
+```
+
+## Downloading Credentials
+
+Spinnaker does not need to be given [service account](https://cloud.google.com/compute/docs/access/service-accounts)
+credentials if it is running on a Google Compute Engine VM whose
+application default credentials have sufficient scopes to deploy to App Engine _and_ 
+Spinnaker is deploying to an App Engine application inside the same Google Cloud Platform project in which it is running. If
+Spinnaker will not need to be given service account credentials, or if you already have such a service account 
+with the corresponding JSON key downloaded, skip ahead to [Adding an Account](#adding-an-account).
+
+Run the following commands to create a service account 
+with the `roles/appengine.appAdmin` and `roles/storage.admin` roles enabled:
+
+```bash
+SERVICE_ACCOUNT_NAME=spinnaker-appengine-account
+SERVICE_ACCOUNT_DEST=~/.gcp/appengine-account.json
+
+gcloud iam service-accounts create \
+    $SERVICE_ACCOUNT_NAME \
+    --display-name $SERVICE_ACCOUNT_NAME
+
+SA_EMAIL=$(gcloud iam service-accounts list \
+    --filter="displayName:$SERVICE_ACCOUNT_NAME" \
+    --format='value(email)')
+
+PROJECT=$(gcloud info --format='value(config.project)')
+
+gcloud projects add-iam-policy-binding $PROJECT \
+    --role roles/appengine.appAdmin \
+    --role roles/storage.admin \
+    --member serviceAccount:$SA_EMAIL
+
+mkdir -p $(dirname $SERVICE_ACCOUNT_DEST)
+
+gcloud iam service-accounts keys create $SERVICE_ACCOUNT_DEST \
+    --iam-account $SA_EMAIL
+```
+
+Your service account JSON key now sits inside `$SERVICE_ACCOUNT_DEST`.
 
 ## Adding an Account
 
@@ -45,8 +86,8 @@ Next, run the following `hal` command to add an account named `my-appengine-acco
 
 ```bash
 hal config provider appengine account add my-appengine-account \ 
-  --project <my-spinnaker-project> \
-  --json-path <path-to-service-account-key>
+  --project $PROJECT \
+  --json-path $SERVICE_ACCOUNT_DEST 
 ```
 
 You can omit the `--json-path` flag if Spinnaker does not need service account credentials.
