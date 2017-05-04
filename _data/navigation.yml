@@ -69,6 +69,8 @@ setup:
         url: /setup/storage/abs/
       - title: Google Cloud Storage
         url: /setup/storage/gcs/
+      - title: Redis
+        url: /setup/storage/redis/
       - title: S3
         url: /setup/storage/s3/
   - title: Security
