@@ -49,7 +49,7 @@ Fill in your project for `$MY_PROJECT`
         --image spinnaker-codelab \
         --image-project marketplace-spinnaker-release \
         --machine-type n1-highmem-4 \
-        --scopes compute-rw,storage-full \
+        --scopes compute-rw,storage-full,logging-write,monitoring \
         --metadata startup-script=/opt/spinnaker/install/first_codelab_boot.sh
 
 Spinnaker will take a few minutes to auto configure and start up. Take 3 minutes to skim through Part 1 of this codelab below...
@@ -62,7 +62,7 @@ Open an SSH tunnel through which your local workstation will connect to Spinnake
         --ssh-flag="-L 8084:localhost:8084" \
         --ssh-flag="-L 8087:localhost:8087" \
         --ssh-flag="-L 9000:localhost:9000" \
-        --ssh-flag="-L 9090:localhost:9090"
+        --ssh-flag="-L 5656:localhost:5656"
 
 
 ## Part 1: Bake & Deploy to Test
@@ -105,7 +105,7 @@ First we create a load balancer for your cluster. Navigate to the LOAD BALANCERS
 
 The purpose of this pipeline is to generate a GCE image from a package, and then deploy the image on server groups in the test cluster. We want this pipeline to be kicked off every time the Jenkins continuous integration job completes.
 
-Create a new pipeline by navigating to the PIPELINES tab and clicking the *New* button
+Create a new pipeline by navigating to the PIPELINES tab and clicking the *Create* button
 
 * Name the pipeline “Bake & Deploy to Test”.
 * Click the *Create Pipeline* button.
@@ -145,7 +145,7 @@ The purpose of the “Deploy” stage is to take the GCE image constructed in th
 
 * Click *Add stage*.
 * Select “Deploy” in the *Type* drop down.
-* In the *Server group* section, click *Add server group*.
+* In the *Deploy Configuration* section, click *Add server group*.
 * In the dialog that appears, click *Continue without a template*.
 * In the Basic Settings section, enter “test” in the *Stack* field.
 * In the Load Balancers section, add your load balancer ("codelab-test").
@@ -183,7 +183,7 @@ The pipeline is now complete. Take a moment to review the stages of this pipelin
 
 Now let’s run this pipeline. We trigger it by manually running a Build of the Jenkins job.
 
-* Navigate to your Jenkins console at [http://localhost:9090](http://localhost:9090).
+* Navigate to your Jenkins console at [http://localhost:5656](http://localhost:5656).
   * Username: admin
   * Password: admin
 * Click on the "Hello-Build" job.
