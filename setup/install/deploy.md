@@ -20,7 +20,11 @@ be run with `sudo`.
 
 ## Troubleshooting
 
-todo(lwander) https://github.com/spinnaker/halyard/issues/311
+If this command fails, and it's the first time you've run this command please
+reach out to us on [Slack](join.spinnaker.io). If you've had a successful
+deployment, you can run `hal deploy diff` to see what changes you've made that
+may be causing problems. At any point you can rerun `hal deploy apply` with any
+changes you've made to retry the deployment.
 
 ## Next Steps
 
