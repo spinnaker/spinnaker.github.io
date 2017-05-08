@@ -101,7 +101,7 @@ TODO(ttomsu): Update this when halyard supports this override.
 spring:
   oauth2:
     client:
-      preEstablishedRedirectUri: https://my-real-gate-address.com/login
+      preEstablishedRedirectUri: https://my-real-gate-address.com:8084/login
       useCurrentUri: false
 ```
 
