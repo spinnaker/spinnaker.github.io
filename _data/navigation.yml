@@ -139,7 +139,9 @@ guides:
 
 reference:
   - title: API
-    url: /reference/api/
+    children:
+    - title: Swagger UI
+      url: /reference/api/swagger-ui/
   - title: Cloud Providers
     children:
       - title: Amazon Web Services
