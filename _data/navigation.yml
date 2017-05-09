@@ -35,6 +35,8 @@ setup:
         url: /setup/install/environment/
       - title: Storage
         url: /setup/install/storage/
+      - title: Cloud Provides
+        url: /setup/install/providers/
       - title: Deploy
         url: /setup/install/deploy/
       - title: Configuration
