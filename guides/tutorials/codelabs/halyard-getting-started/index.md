@@ -104,6 +104,11 @@ gcloud compute instances create $HALYARD_HOST \
 
 SSH into the VM. We specify port forwarding because at the end of this exercise you'll be port forwarding from this VM to Spinnaker running in the Kubernetes cluster. That is, you'll be port forwarding twice: from your workstation browser to this GCE VM, and from this GCE VM to the Kubernetes cluster.
 
+> :warning: You need to SSH into the Halyard host VM from your local
+> workstation; SSHing from [Cloud Shell](https://cloud.google.com/shell/) or
+> another VM won't open the necessary SSH tunnels that will allow your local
+> web browser to access Spinnaker.
+
 ```bash
 gcloud compute ssh $HALYARD_HOST \
     --project=$GCP_PROJECT \
@@ -200,15 +205,15 @@ hal config provider docker-registry account add my-gcr-account \
     --username _json_key
 ```
 
-Set up Kubernetes provider
+Set up the Kubernetes provider
 
 ```bash
 hal config provider kubernetes enable
 
 hal config provider kubernetes account add my-k8s-account \
-    --docker-registries my-gcr-account
+    --docker-registries my-gcr-account \
+    --context $(kubectl config current-context)
 ```
-
 
 ## Part 4: Deploy Spinnaker
 
@@ -219,6 +224,11 @@ hal config deploy edit \
 
 hal deploy apply
 ```
+
+> :point_right: Halyard will warn you that you have deployed Spinnaker remotely
+> without configuring an authentication mechanism. This is OK, but cumbersome, 
+> since we can connect via SSH tunnels. If you want to configure
+> authentication, read more in the [security documentation](/setup/security).
 
 Run the post-install script to port forward Spinnaker requests
 
