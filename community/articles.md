@@ -9,6 +9,7 @@ sidebar:
 
 ## Community Blog Posts & Tutorials
 
+* [Running Chaos Monkey on Spinnaker/Google Compute Engine (GCE)](https://medium.com/continuous-delivery-scale/running-chaos-monkey-on-spinnaker-google-compute-engine-gce-155dc52f20ef), *Deb Bakshiyev (Google)*
 * [Rosco: Deduping Logic](https://medium.com/@duftler/spinnaker-rosco-deduping-logic-e03716e04a30), *Matt Duftler (Google)*
 * [Multi-Cloud continuous delivery using Spinnaker at Waze](https://cloudplatform.googleblog.com/2017/02/guest-post-multi-cloud-continuous-delivery-using-Spinnaker-at-Waze.html)
 * [Rosco: Troubleshooting Bakes](https://medium.com/@duftler/troubleshooting-spinnaker-rosco-bakes-c0c600aa3598), *Matt Duftler (Google)*
