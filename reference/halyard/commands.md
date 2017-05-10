@@ -7,13 +7,18 @@ sidebar:
 
 # Table of Contents
 
+
  * [**hal**](#hal)
  * [**hal admin**](#hal-admin)
+ * [**hal admin deprecate**](#hal-admin-deprecate)
+ * [**hal admin deprecate version**](#hal-admin-deprecate-version)
  * [**hal admin publish**](#hal-admin-publish)
  * [**hal admin publish bom**](#hal-admin-publish-bom)
  * [**hal admin publish latest**](#hal-admin-publish-latest)
  * [**hal admin publish profile**](#hal-admin-publish-profile)
  * [**hal admin publish version**](#hal-admin-publish-version)
+ * [**hal backup**](#hal-backup)
+ * [**hal backup create**](#hal-backup-create)
  * [**hal config**](#hal-config)
  * [**hal config ci**](#hal-config-ci)
  * [**hal config ci jenkins**](#hal-config-ci-jenkins)
@@ -124,6 +129,15 @@ sidebar:
  * [**hal config provider openstack account list**](#hal-config-provider-openstack-account-list)
  * [**hal config provider openstack disable**](#hal-config-provider-openstack-disable)
  * [**hal config provider openstack enable**](#hal-config-provider-openstack-enable)
+ * [**hal config provider oraclebmcs**](#hal-config-provider-oraclebmcs)
+ * [**hal config provider oraclebmcs account**](#hal-config-provider-oraclebmcs-account)
+ * [**hal config provider oraclebmcs account add**](#hal-config-provider-oraclebmcs-account-add)
+ * [**hal config provider oraclebmcs account delete**](#hal-config-provider-oraclebmcs-account-delete)
+ * [**hal config provider oraclebmcs account edit**](#hal-config-provider-oraclebmcs-account-edit)
+ * [**hal config provider oraclebmcs account get**](#hal-config-provider-oraclebmcs-account-get)
+ * [**hal config provider oraclebmcs account list**](#hal-config-provider-oraclebmcs-account-list)
+ * [**hal config provider oraclebmcs disable**](#hal-config-provider-oraclebmcs-disable)
+ * [**hal config provider oraclebmcs enable**](#hal-config-provider-oraclebmcs-enable)
  * [**hal config security**](#hal-config-security)
  * [**hal config security api**](#hal-config-security-api)
  * [**hal config security api edit**](#hal-config-security-api-edit)
@@ -132,22 +146,22 @@ sidebar:
  * [**hal config security api ssl edit**](#hal-config-security-api-ssl-edit)
  * [**hal config security api ssl enable**](#hal-config-security-api-ssl-enable)
  * [**hal config security authn**](#hal-config-security-authn)
- * [**hal config security authn oauth**](#hal-config-security-authn-oauth)
- * [**hal config security authn oauth disable**](#hal-config-security-authn-oauth-disable)
- * [**hal config security authn oauth edit**](#hal-config-security-authn-oauth-edit)
- * [**hal config security authn oauth enable**](#hal-config-security-authn-oauth-enable)
+ * [**hal config security authn oauth2**](#hal-config-security-authn-oauth2)
+ * [**hal config security authn oauth2 disable**](#hal-config-security-authn-oauth2-disable)
+ * [**hal config security authn oauth2 edit**](#hal-config-security-authn-oauth2-edit)
+ * [**hal config security authn oauth2 enable**](#hal-config-security-authn-oauth2-enable)
  * [**hal config security authn saml**](#hal-config-security-authn-saml)
  * [**hal config security authn saml disable**](#hal-config-security-authn-saml-disable)
  * [**hal config security authn saml edit**](#hal-config-security-authn-saml-edit)
  * [**hal config security authn saml enable**](#hal-config-security-authn-saml-enable)
  * [**hal config security authz**](#hal-config-security-authz)
- * [**hal config security authz roles**](#hal-config-security-authz-roles)
- * [**hal config security authz roles disable**](#hal-config-security-authz-roles-disable)
- * [**hal config security authz roles edit**](#hal-config-security-authz-roles-edit)
- * [**hal config security authz roles enable**](#hal-config-security-authz-roles-enable)
- * [**hal config security authz roles provider**](#hal-config-security-authz-roles-provider)
- * [**hal config security authz roles provider google**](#hal-config-security-authz-roles-provider-google)
- * [**hal config security authz roles provider google edit**](#hal-config-security-authz-roles-provider-google-edit)
+ * [**hal config security authz disable**](#hal-config-security-authz-disable)
+ * [**hal config security authz edit**](#hal-config-security-authz-edit)
+ * [**hal config security authz enable**](#hal-config-security-authz-enable)
+ * [**hal config security authz github**](#hal-config-security-authz-github)
+ * [**hal config security authz github edit**](#hal-config-security-authz-github-edit)
+ * [**hal config security authz google**](#hal-config-security-authz-google)
+ * [**hal config security authz google edit**](#hal-config-security-authz-google-edit)
  * [**hal config security ui**](#hal-config-security-ui)
  * [**hal config security ui edit**](#hal-config-security-ui-edit)
  * [**hal config security ui ssl**](#hal-config-security-ui-ssl)
@@ -177,7 +191,6 @@ sidebar:
  * [**hal version bom**](#hal-version-bom)
  * [**hal version latest**](#hal-version-latest)
  * [**hal version list**](#hal-version-list)
-
 ## hal
 
 A tool for configuring, installing, and updating Spinnaker.
@@ -204,6 +217,7 @@ hal [parameters] [subcommands]
  * `--version, -v`: (*Default*: `false`) Version of Halyard.
 #### Subcommands
  * `admin`: This is meant for users building and publishing their own Spinnaker images and config.
+ * `backup`: Backup and restore (remote or local) copies of your halconfig and all required files.
  * `config`: Configure, validate, and view your halconfig.
  * `deploy`: Manage the deployment of Spinnaker. This includes where it's deployed, what the infrastructure footprint looks like, what the currently running deployment looks like, etc...
  * `task`: This set of commands exposes utilities of dealing with Halyard's task engine.
@@ -219,7 +233,32 @@ This is meant for users building and publishing their own Spinnaker images and c
 hal admin [subcommands]
 ```
 #### Subcommands
+ * `deprecate`: Deprecate config artifacts in your configured halconfig bucket.
  * `publish`: Publish config artifacts to your configured halconfig bucket.
+
+---
+## hal admin deprecate
+
+Deprecate config artifacts in your configured halconfig bucket.
+
+#### Usage
+```
+hal admin deprecate [subcommands]
+```
+#### Subcommands
+ * `version`: Deprecate a version of Spinnaker, removing it from the global versions.yml tracking file.
+
+---
+## hal admin deprecate version
+
+Deprecate a version of Spinnaker, removing it from the global versions.yml tracking file.
+
+#### Usage
+```
+hal admin deprecate version [parameters]
+```
+#### Parameters
+ * `--version`: (*Required*) The version (x.y.z) of Spinnaker to be deprecated.
 
 ---
 ## hal admin publish
@@ -287,14 +326,38 @@ hal admin publish version [parameters]
  * `--version`: (*Required*) The version (x.y.z) of Spinnaker to be recorded. This must exist as a BOM.
 
 ---
+## hal backup
+
+This is used to periodically checkpoint your configured Spinnaker installation as well as allow you to remotely store all aspects of your configured Spinnaker installation.
+
+#### Usage
+```
+hal backup [subcommands]
+```
+#### Subcommands
+ * `create`: Create a backup.
+
+---
+## hal backup create
+
+Create a backup.
+
+#### Usage
+```
+hal backup create
+```
+
+---
 ## hal config
 
 Configure, validate, and view your halconfig.
 
 #### Usage
 ```
-hal config [subcommands]
+hal config [parameters] [subcommands]
 ```
+#### Parameters
+ * `--no-validate`: (*Default*: `false`) Skip validation.
 #### Subcommands
  * `ci`: Configure, validate, and view the specified Continuous Integration service.
  * `deploy`: Display the configured Spinnaker deployment.
@@ -731,6 +794,7 @@ hal config provider [subcommands]
  * `google`: Manage and view Spinnaker configuration for the google provider
  * `kubernetes`: Manage and view Spinnaker configuration for the kubernetes provider
  * `openstack`: Manage and view Spinnaker configuration for the openstack provider
+ * `oraclebmcs`: Manage and view Spinnaker configuration for the oraclebmcs provider
 
 ---
 ## hal config provider appengine
@@ -2016,6 +2080,145 @@ hal config provider openstack enable [parameters]
  * `--no-validate`: (*Default*: `false`) Skip validation.
 
 ---
+## hal config provider oraclebmcs
+
+Manage and view Spinnaker configuration for the oraclebmcs provider
+
+#### Usage
+```
+hal config provider oraclebmcs [parameters] [subcommands]
+```
+#### Parameters
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+#### Subcommands
+ * `account`: Manage and view Spinnaker configuration for the oraclebmcs provider's account
+ * `disable`: Set the oraclebmcs provider as disabled
+ * `enable`: Set the oraclebmcs provider as enabled
+
+---
+## hal config provider oraclebmcs account
+
+Manage and view Spinnaker configuration for the oraclebmcs provider's account
+
+#### Usage
+```
+hal config provider oraclebmcs account ACCOUNT [parameters] [subcommands]
+```
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+#### Subcommands
+ * `add`: Add an account to the oraclebmcs provider.
+ * `delete`: Delete a specific oraclebmcs account by name.
+ * `edit`: Edit an account in the oraclebmcs provider.
+ * `get`: Get the specified account details for the oraclebmcs provider.
+ * `list`: List the account names for the oraclebmcs provider.
+
+---
+## hal config provider oraclebmcs account add
+
+Add an account to the oraclebmcs provider.
+
+#### Usage
+```
+hal config provider oraclebmcs account add ACCOUNT [parameters]
+```
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--compartment-id`: (*Required*) Provide the OCID of the Oracle BMCS Compartment to use.
+ * `--fingerprint`: (*Required*) Fingerprint of the public key
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--region`: (*Required*) An Oracle BMCS region (e.g., us-phoenix-1)
+ * `--required-group-membership`: (*Default*: `[]`) A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
+ * `--ssh-private-key-file-path`: (*Required*) Path to the private key in PEM format
+ * `--tenancyId`: (*Required*) Provide the OCID of the Oracle BMCS Tenancy to use.
+ * `--user-id`: (*Required*) Provide the OCID of the Oracle BMCS User you're authenticating as
+
+---
+## hal config provider oraclebmcs account delete
+
+Delete a specific oraclebmcs account by name.
+
+#### Usage
+```
+hal config provider oraclebmcs account delete ACCOUNT [parameters]
+```
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+---
+## hal config provider oraclebmcs account edit
+
+Edit an account in the oraclebmcs provider.
+
+#### Usage
+```
+hal config provider oraclebmcs account edit ACCOUNT [parameters]
+```
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--add-required-group-membership`: Add this group to the list of required group memberships.
+ * `--compartment-id`: Provide the OCID of the Oracle BMCS Compartment to use.
+ * `--fingerprint`: Fingerprint of the public key
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--region`: An Oracle BMCS region (e.g., us-phoenix-1)
+ * `--remove-required-group-membership`: Remove this group from the list of required group memberships.
+ * `--required-group-membership`: A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
+ * `--ssh-private-key-file-path`: Path to the private key in PEM format
+ * `--tenancyId`: Provide the OCID of the Oracle BMCS Tenancy to use.
+ * `--user-id`: Provide the OCID of the Oracle BMCS User you're authenticating as
+
+---
+## hal config provider oraclebmcs account get
+
+Get the specified account details for the oraclebmcs provider.
+
+#### Usage
+```
+hal config provider oraclebmcs account get ACCOUNT [parameters]
+```
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+---
+## hal config provider oraclebmcs account list
+
+List the account names for the oraclebmcs provider.
+
+#### Usage
+```
+hal config provider oraclebmcs account list [parameters]
+```
+#### Parameters
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+---
+## hal config provider oraclebmcs disable
+
+Set the oraclebmcs provider as disabled
+
+#### Usage
+```
+hal config provider oraclebmcs disable [parameters]
+```
+#### Parameters
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+---
+## hal config provider oraclebmcs enable
+
+Set the oraclebmcs provider as enabled
+
+#### Usage
+```
+hal config provider oraclebmcs enable [parameters]
+```
+#### Parameters
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+---
 ## hal config security
 
 Configure Spinnaker's security. This includes external SSL, authentication mechanisms, and authorization policies.
@@ -2133,45 +2336,45 @@ hal config security authn [parameters] [subcommands]
 #### Parameters
  * `--no-validate`: (*Default*: `false`) Skip validation.
 #### Subcommands
- * `oauth`: Configure the oauth method for authenticating.
+ * `oauth2`: Configure the oauth2 method for authenticating.
  * `saml`: Configure the saml method for authenticating.
 
 ---
-## hal config security authn oauth
+## hal config security authn oauth2
 
-Configure the oauth method for authenticating.
+Configure the oauth2 method for authenticating.
 
 #### Usage
 ```
-hal config security authn oauth [parameters] [subcommands]
+hal config security authn oauth2 [parameters] [subcommands]
 ```
 #### Parameters
  * `--no-validate`: (*Default*: `false`) Skip validation.
 #### Subcommands
- * `disable`: Set the oauth method as disabled
- * `edit`: Configure authentication using a OAuth 2.0 identity provider.
- * `enable`: Set the oauth method as enabled
+ * `disable`: Set the oauth2 method as disabled
+ * `edit`: Edit the oauth2 authentication method.
+ * `enable`: Set the oauth2 method as enabled
 
 ---
-## hal config security authn oauth disable
+## hal config security authn oauth2 disable
 
-Set the oauth method as disabled
+Set the oauth2 method as disabled
 
 #### Usage
 ```
-hal config security authn oauth disable [parameters]
+hal config security authn oauth2 disable [parameters]
 ```
 #### Parameters
  * `--no-validate`: (*Default*: `false`) Skip validation.
 
 ---
-## hal config security authn oauth edit
+## hal config security authn oauth2 edit
 
-The OAuth 2.0 workflow uses the authentication code workflow (commonly known as the three-legged workflow) to allow third parties (in this case, Spinnaker's API Gateway, Gate) to access user data (in this case, the user's email address for authentication). Learn more at https://spinnaker.io/setup/security/authentication/
+Edit the oauth2 authentication method.
 
 #### Usage
 ```
-hal config security authn oauth edit [parameters]
+hal config security authn oauth2 edit [parameters]
 ```
 #### Parameters
  * `--client-id`: The OAuth client ID you have configured with your OAuth provider.
@@ -2182,13 +2385,13 @@ hal config security authn oauth edit [parameters]
  * `--userInfoRequirements`: (*Default*: `(empty)`) The map of requirements the userInfo request must have. This is used to restrict user login to specific domains or having a specific attribute. Use equal signs between key and value, and additional key/value pairs need to repeat the flag. Example: '--userInfoRequirements foo=bar --userInfoRequirements baz=qux'.
 
 ---
-## hal config security authn oauth enable
+## hal config security authn oauth2 enable
 
-Set the oauth method as enabled
+Set the oauth2 method as enabled
 
 #### Usage
 ```
-hal config security authn oauth enable [parameters]
+hal config security authn oauth2 enable [parameters]
 ```
 #### Parameters
  * `--no-validate`: (*Default*: `false`) Skip validation.
@@ -2263,84 +2466,86 @@ hal config security authz [parameters] [subcommands]
 #### Parameters
  * `--no-validate`: (*Default*: `false`) Skip validation.
 #### Subcommands
- * `roles`: Configure authorization via a roles provider.
-
----
-## hal config security authz roles
-
-Configure authorization via a roles provider.
-
-#### Usage
-```
-hal config security authz roles [parameters] [subcommands]
-```
-#### Parameters
- * `--no-validate`: (*Default*: `false`) Skip validation.
-#### Subcommands
  * `disable`: Set Spinnaker's role-based authorization to disabled
  * `edit`: Edit your roles provider settings.
  * `enable`: Set Spinnaker's role-based authorization to enabled
- * `provider`: Configure a roles provider.
+ * `github`: Configure the github role provider.
+ * `google`: Configure the google role provider.
 
 ---
-## hal config security authz roles disable
+## hal config security authz disable
 
 Set Spinnaker's role-based authorization to disabled
 
 #### Usage
 ```
-hal config security authz roles disable [parameters]
+hal config security authz disable [parameters]
 ```
 #### Parameters
  * `--no-validate`: (*Default*: `false`) Skip validation.
 
 ---
-## hal config security authz roles edit
+## hal config security authz edit
 
 Edit your roles provider settings.
 
 #### Usage
 ```
-hal config security authz roles edit [parameters]
+hal config security authz edit [parameters]
 ```
 #### Parameters
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--type`: Set a roles provider type
 
 ---
-## hal config security authz roles enable
+## hal config security authz enable
 
 Set Spinnaker's role-based authorization to enabled
 
 #### Usage
 ```
-hal config security authz roles enable [parameters]
+hal config security authz enable [parameters]
 ```
 #### Parameters
  * `--no-validate`: (*Default*: `false`) Skip validation.
 
 ---
-## hal config security authz roles provider
+## hal config security authz github
 
-Configure a roles provider.
+Configure the github role provider.
 
 #### Usage
 ```
-hal config security authz roles provider [parameters] [subcommands]
+hal config security authz github [parameters] [subcommands]
 ```
 #### Parameters
  * `--no-validate`: (*Default*: `false`) Skip validation.
 #### Subcommands
- * `google`: Configure the google role provider.
+ * `edit`: Edit the github role provider.
 
 ---
-## hal config security authz roles provider google
+## hal config security authz github edit
+
+Edit the github role provider.
+
+#### Usage
+```
+hal config security authz github edit [parameters]
+```
+#### Parameters
+ * `--accessToken`: A personal access token of an account with access to your organization's GitHub Teams structure.
+ * `--baseUrl`: Used if using GitHub enterprise some other non github.com GitHub installation.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--organization`: The GitHub organization under which to query for GitHub Teams.
+
+---
+## hal config security authz google
 
 Configure the google role provider.
 
 #### Usage
 ```
-hal config security authz roles provider google [parameters] [subcommands]
+hal config security authz google [parameters] [subcommands]
 ```
 #### Parameters
  * `--no-validate`: (*Default*: `false`) Skip validation.
@@ -2348,18 +2553,18 @@ hal config security authz roles provider google [parameters] [subcommands]
  * `edit`: Edit the google role provider.
 
 ---
-## hal config security authz roles provider google edit
+## hal config security authz google edit
 
 Edit the google role provider.
 
 #### Usage
 ```
-hal config security authz roles provider google edit [parameters]
+hal config security authz google edit [parameters]
 ```
 #### Parameters
- * `--admin-username`: Your role provider's admin username e.g. ttomsu@spinnaker-test.net
+ * `--admin-username`: Your role provider's admin username e.g. admin@myorg.net
  * `--credential-path`: A path to a valid json service account that can authenticate against the Google role provider.
- * `--domain`: The domain your role provider is configured for e.g. spinnaker-test.net.
+ * `--domain`: The domain your role provider is configured for e.g. myorg.net.
  * `--no-validate`: (*Default*: `false`) Skip validation.
 
 ---
