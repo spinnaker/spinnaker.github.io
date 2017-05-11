@@ -7,7 +7,7 @@ sidebar:
 
 {% include toc %}
 
-In [Google App Engine](https://cloud.google.com/appengine), an [__Account__](/setup/providers/overview#accounts) maps to a 
+In [Google App Engine](https://cloud.google.com/appengine), an [__Account__](/setup/providers/#accounts) maps to a 
 credential able to authenticate against a given [Google Cloud Platform](https://cloud.google.com) project.
 
 ## Prerequisites

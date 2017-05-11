@@ -19,11 +19,11 @@ hal deploy apply
 
 ### Deploy to More Environments
 
-[Documentation](/setup/providers/) -- `hal config provider` 
+[Documentation](/setup/providers/) -- `hal config provider`
 
 You can add more Accounts to as many Providers as you want. There is nothing
 preventing you from deploying to two Kubernetes clusters, one Google Compute
-Engine project, and an App Engine application all at once. 
+Engine project, and an App Engine application all at once.
 
 ### Edit Your Storage Settings
 
@@ -37,7 +37,7 @@ you to migrate any data that you depend on.
 
 [Documentation](/setup/security/) -- `hal config security`
 
-You can configure SSL, setup a login page, or apply role-based authorization. 
+You can configure SSL, setup a login page, or apply role-based authorization.
 
 ### Setup Continuous Integration
 
@@ -64,5 +64,5 @@ to scale and troubleshoot your deployment of Spinnaker.
 
 ## Next Steps
 
-If you feel that you want to change versions of Spinnaker, head to
-[Upgrades](/setup/install/upgrades/) for more information.
+Now that you know how to make configuration changes, it's worth learning how to
+[Upgrade Spinnaker](/setup/install/upgrades/).
