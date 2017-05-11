@@ -168,6 +168,8 @@ reference:
         url: /reference/halyard/
       - title: Commands
         url: /reference/halyard/commands/
+      - title: Custom Configuration
+        url: /reference/halyard/custom/
   - title: Architecture
     url: /reference/architecture/
 
