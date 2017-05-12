@@ -175,16 +175,6 @@
           </div>
           <div class="clearfix"></div>
         </div>
-        <div id="header">
-          <div id="api-_">
-            <h2 id="welcome-to-apidoc">API and SDK Documentation</h2>
-            {{#version}}
-              <div class="app-desc">Version: {{{version}}}</div>
-            {{/version}}
-            <hr>
-            <p class="marked">{{appDescription}}</p>
-          </div>
-        </div>
         <div id="sections">
           {{#apiInfo}}
             {{#apis}}
@@ -205,67 +195,17 @@
                         <p></p>
                         <br />
                         <pre class="prettyprint language-html prettyprinted" data-type="{{httpMethod}}"><code><span class="pln">{{path}}</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
                           <li class="active"><a href="#examples-{{baseName}}-{{nickname}}-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-{{baseName}}-{{nickname}}-0-java">Java</a></li>
-                          <li class=""><a href="#examples-{{baseName}}-{{nickname}}-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-{{baseName}}-{{nickname}}-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-{{baseName}}-{{nickname}}-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-{{baseName}}-{{nickname}}-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-{{baseName}}-{{nickname}}-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-{{baseName}}-{{nickname}}-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-{{baseName}}-{{nickname}}-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-{{baseName}}-{{nickname}}-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-{{baseName}}-{{nickname}}-0-python">Python</a></li>
                         </ul>
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-{{baseName}}-{{nickname}}-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X <span style="text-transform: uppercase;">{{httpMethod}}</span>{{#authMethods}}{{#isApiKey}}{{#isKeyInHeader}} -H "{{keyParamName}}: [[apiKey]]"{{/isKeyInHeader}}{{/isApiKey}}{{#isBasic}}{{#hasProduces}} -H "Accept: {{#produces}}{{{mediaType}}}{{#hasMore}},{{/hasMore}}{{/produces}}"{{/hasProduces}}{{#hasConsumes}} -H "Content-Type: {{#consumes}}{{{mediaType}}}{{#hasMore}},{{/hasMore}}{{/consumes}}"{{/hasConsumes}} -H "Authorization: Basic [[basicHash]]"{{/isBasic}}{{/authMethods}} "{{basePath}}{{path}}{{#hasQueryParams}}?{{#queryParams}}{{^-first}}&{{/-first}}{{baseName}}={{vendorExtensions.x-eg}}{{/queryParams}}{{/hasQueryParams}}"</code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-{{baseName}}-{{nickname}}-0-java">
-                            <pre class="prettyprint"><code class="language-java">{{>sample_java}}</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-{{baseName}}-{{nickname}}-0-android">
-                            <pre class="prettyprint"><code class="language-java">{{>sample_android}}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-{{baseName}}-{{nickname}}-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-{{baseName}}-{{nickname}}-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">{{>sample_objc}}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-{{baseName}}-{{nickname}}-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">{{>sample_js}}</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-{{baseName}}-{{nickname}}-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-{{baseName}}-{{nickname}}-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">{{>sample_csharp}}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-{{baseName}}-{{nickname}}-0-php">
-                              <pre class="prettyprint"><code class="language-php">{{>sample_php}}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-{{baseName}}-{{nickname}}-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">{{>sample_perl}}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-{{baseName}}-{{nickname}}-0-python">
-                              <pre class="prettyprint"><code class="language-python">{{>sample_python}}</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Parameters</h2>
+                        </div>
+                          
+                          {{#hasPathParams}}<h2>Parameters</h2>{{/hasPathParams}}
 
                           {{#hasPathParams}}
                             <div class="methodsubtabletitle">Path parameters</div>
@@ -331,87 +271,6 @@
                               {{/queryParams}}
                             </table>
                           {{/hasQueryParams}}
-
-                          <h2>Responses</h2>
-                          {{#responses}}
-                            <h3> Status: {{code}} - {{message}} </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                              {{#schema}}
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-{{nickname}}-{{code}}-schema">Schema</a>
-                                </li>
-
-                                {{#examples}}
-                                  <li class="">
-                                    <a data-toggle="tab" href="#responses-{{nickname}}-{{code}}-example">Response Example</a>
-                                  </li>
-                                {{/examples}}
-                              {{/schema}}
-                              {{#hasHeaders}}
-                                <li class="">
-                                  <a data-toggle="tab" href="#responses-{{nickname}}-{{code}}-headers">Headers</a>
-                                </li>
-                              {{/hasHeaders}}
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                              {{#schema}}
-                                <div class="tab-pane active" id="responses-{{nickname}}-{{code}}-schema">
-                                  <div id='responses-{{nickname}}-{{code}}-schema-{{code}}' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                                               <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {{{jsonSchema}}};
-                                        var schema = schemaWrapper.schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.definitions = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-{{nickname}}-{{code}}-schema-data').val(stringify(schema));
-                                        var result = $('#responses-{{nickname}}-{{code}}-schema-{{code}}');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-{{nickname}}-{{code}}-schema-data' type='hidden' value=''></input>
-                                </div>
-                                {{#examples}}
-                                  <div class="tab-pane" id="responses-{{nickname}}-{{code}}-example">
-                                      <pre class="prettyprint"><code class="json">{{example}}</code></pre>
-                                </div>
-                                {{/examples}}
-                              {{/schema}}
-                              {{#hasHeaders}}
-                                <div class="tab-pane" id="responses-{{nickname}}-{{code}}-headers">
-                                    <table>
-                                        <tr>
-                                            <th width="150px">Name</th>
-                                            <th width="100px">Type</th>
-                                            <th width="100px">Format</th>
-                                            <th>Description</th>
-                                        </tr>
-                                        {{#headers}}
-                                        <tr>
-                                            <td>{{#name}}{{name}}{{/name}}</td>
-                                            <td>{{#datatype}}{{datatype}}{{/datatype}}</td>
-                                            <td>{{#dataFormat}}{{dataFormat}}{{/dataFormat}}</td>
-                                            <td>{{#description}}{{description}}{{/description}}</td>
-                                        </tr>
-                                        {{/headers}}
-                                    </table>
-                                </div>
-                              {{/hasHeaders}}
-                            </div>
-
-                          {{/responses}}
                         </article>
                       </div>
                       <hr>
@@ -420,24 +279,6 @@
                 {{/operations}}
               {{/apis}}
             {{/apiInfo}}
-          </div>
-          <div id="footer">
-            <div id="api-_footer">
-              <p>Suggestions, contact, support and error reporting;
-                {{#infoUrl}}
-                  <div class="app-desc">Information URL: <a href="{{{infoUrl}}}">{{{infoUrl}}}</a></div>
-                {{/infoUrl}}
-                {{#infoEmail}}
-                  <div class="app-desc">Contact Info: <a href="{{{infoEmail}}}">{{{infoEmail}}}</a></div>
-                {{/infoEmail}}
-              </p>
-              {{#licenseInfo}}
-                <div class="license-info">{{{licenseInfo}}}</div>
-              {{/licenseInfo}}
-              {{#licenseUrl}}
-                <div class="license-url">{{{licenseUrl}}}</div>
-              {{/licenseUrl}}
-            </div>
           </div>
 {{^hideGenerationTimestamp}}          <div id="generator">
             <div class="content">
