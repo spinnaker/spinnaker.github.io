@@ -35,7 +35,7 @@ no further configuration needed. Further [Spring
 Profiles](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-profiles.html)
 can be activated by configuring their `env` to include `SPRING_PROFILES_ACTIVE`
 entries for your desired service. See the below [Custom Service
-Settings](/reference/halyard/custom/$custom-service-settings) for more
+Settings](/reference/halyard/custom/#custom-service-settings) for more
 information.
 
 You can validate that your Custom Profiles have been picked up and applied to
