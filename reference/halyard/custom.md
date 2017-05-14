@@ -49,7 +49,7 @@ as found in `~/.hal/$DEPLOYMENT/history/service-settings.yml`. For example, if
 you wanted Echo to listen on port 443 with the `JAVA_OPTS="-Xms256m -Xmx512m"`
 environment variables set, you create the following file:
 
-__`~/.hal/default/service-settings/gate.yml`:__
+__`~/.hal/default/service-settings/echo.yml`:__
 ```yaml
 port: 443
 env:
