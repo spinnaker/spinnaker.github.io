@@ -32,6 +32,13 @@ The intended use-case for Deployments is managing multiple, isolated Spinnakers
 that need to be kept separate for one reason or another (compliance, network
 configuration, etc...).
 
+You can switch to/create a new deployment named `$DEPLOYMENT` by running the
+following command.
+
+```bash
+hal config --set-current-deployment $DEPLOYMENT
+```
+
 ### Artifacts
 
 Artifacts are unconfigured, versioned, prebuilt deployables consumed by
