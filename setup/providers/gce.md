@@ -46,9 +46,25 @@ SA_EMAIL=$(gcloud iam service-accounts list \
 
 PROJECT=$(gcloud info --format='value(config.project)')
 
-# TODO(lwander): find a more restricted scope
+# permission to create/modify instances in your project
 gcloud projects add-iam-policy-binding $PROJECT \
-    --role roles/editor --member serviceAccount:$SA_EMAIL
+    --member serviceAccount:$SA_EMAIL \
+    --role roles/compute.instanceAdmin 
+
+# permission to create/modify network settings in your project
+gcloud projects add-iam-policy-binding $PROJECT \
+    --member serviceAccount:$SA_EMAIL \
+    --role roles/compute.networkAdmin 
+
+# permission to create/modify firewall rules in your project
+gcloud projects add-iam-policy-binding $PROJECT \
+    --member serviceAccount:$SA_EMAIL \
+    --role roles/compute.securityAdmin
+
+# permission to create/modify images & disks in your project
+gcloud projects add-iam-policy-binding $PROJECT \
+    --member serviceAccount:$SA_EMAIL \
+    --role roles/compute.storageAdmin
 
 mkdir -p $(dirname $SERVICE_ACCOUNT_DEST)
 
