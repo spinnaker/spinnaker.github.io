@@ -20,6 +20,40 @@ credential able to authenticate against your desired Kubernetes Cluster, as
 well as a set of [Docker Registry](/setup/providers/docker-registry) accounts 
 to be used as a source of images.
 
+### Server Group
+
+A Spinnaker **Server Group** maps to a Kubernetes [Replica
+Set](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/).
+The Spinnaker API resource is defined
+[here](https://github.com/spinnaker/clouddriver/blob/master/clouddriver-kubernetes/src/main/groovy/com/netflix/spinnaker/clouddriver/kubernetes/deploy/description/servergroup/DeployKubernetesAtomicOperationDescription.groovy).
+
+When Spinnaker creates a Server Group named `${SERVER-GROUP}` it sets the
+following Pod labels:
+
+```yaml
+template:
+  metadata:
+    labels:
+      ${SERVER-GROUP}: true
+```
+
+Furthermore, using the [Docker Registry](/setup/providers/docker-registry/)
+accounts associated with the Kubernetes Account being deployed to, a list of
+[Image Pull
+Secretes](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod)
+already populated by Spinnaker are attached to the created Pod definition. This
+ensures that images from private registries can always be deployed. Image Pull
+Secrets named based on their Docker Registry account name in Spinnaker, so
+deploy to a Kuberentes account configured with `--docker-registries
+${DOCKER-REGISTRY}`, the following will appear in the Pod template:
+
+```yaml
+template:
+  spec:
+    imagePullSecrets:
+      - name: ${DOCKER-REGISTRY}
+```
+
 ### Load Balancer
 
 A Spinnaker **Load Balancer** maps to a Kubernetes
@@ -30,7 +64,7 @@ Type](https://kubernetes.io/docs/concepts/services-networking/service/#publishin
 When Spinnaker creates a service with name `${LOAD-BALANCER}`, it sets the 
 following selector:
 
-```yml
+```yaml
 
 spec:
  selector:
@@ -45,7 +79,7 @@ traffic to individual pods by editing their labels like so:
 
 #### Enabled pod (receiving traffic) 
 
-```yml
+```yaml
 
 metadata:
   labels:
@@ -56,7 +90,7 @@ metadata:
 
 #### Disabled pod (not receiving traffic) 
 
-```yml
+```yaml
 
 metadata:
   labels:
@@ -67,7 +101,7 @@ metadata:
 
 #### Enabled pod (receiving traffic from multiple sources) 
 
-```yml
+```yaml
 
 metadata:
   labels:

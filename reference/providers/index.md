@@ -24,4 +24,3 @@ These are the Cloud Providers currently supported by Spinnaker:
 * [Kubernetes](/reference/providers/kubernetes/)
 * [Openstack](/reference/providers/openstack/)
 * [Oracle](/reference/providers/oracle/)
-* [Titus](/reference/providers/titus/)
