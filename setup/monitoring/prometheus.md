@@ -68,55 +68,30 @@ as you do for Spinnaker's Gate microservice with its Deck Web UI).
 
 ## Configure the Spinnaker Monitoring Daemon for Prometheus
 
-  1. Install the debian package to get at the scripts and data files.
-  ```
-  sudo apt-get update -y
-  sudo apt-get install spinnaker-monitoring-daemon
-  sudo apt-get install spinnaker-monitoring-third-party
-  ```
+First, you must enable the Prometheus metric store:
 
-  If you are going to configure the client and server on the same machine,
-  then you can skip to the server-side configuration below, and ommit the
-  --server_only and/or --not_client arguments so that it will also perform
-  the client-side installation and configuration steps that remain below.
+```bash
+hal config metric-stores prometheus enable
+```
 
-  2. Run the client-side configuration script.
-     ```
-     /opt/spinnaker-monitoring/third_party/prometheus/install \
-        --client_only \
-        --client_host=''
-     ```
-     * The `--client_host` is an optional parameter that configures the
-       Spinnaker Monitoring Daemon to listen on a network interface other
-       than the default `localhost`. Specify the empty string `''` to add
-       all of them. This
-       is illustrated for simplicity. By exposing a network port other
-       than localhost, the server will be able to poll the client from
-       a different machine. If your Prometheus server will be colocated
-       with the Spinnaker Monitoring Daemon client then you can ommit
-       `--client_host` and stick with the localhost.
+There are two ways to configure how Spinnaker provides metrics to Prometheus:
 
-       *__Note__: Exposing these network ports makes the daemon accessible to
-        other hosts and exposes your networks. You should add additional
-        firewall rules for network security.*
+1. Have Prometheus poll each service's metrics endpoint directly. This is
+   the preferred method and the default, so no further configuration of Halyard
+   is necessary. However, you will need to configure Prometheus to discover
+   each Spinnaker service.
+2. Have each service push metrics to a Prometheus gateway server. Since this
+   involves periodically pushing metrics collected on a fixed interval, this
+   may introduce duplicate time-series entries; however, if you are unable to
+   configure Prometheus to discover each Spinnaker service, this may be the
+   only way to use Prometheus. To configure this given that `<url`> is the 
+   URL to the Prometheus gateway server, run the following command:
+   ```bash
+   hal config metric-stores prometheus edit --push-gateway=<url>
+   ```
 
-     * If you wish to use a Gateway-style deployment, then also specify the
-       gateway with `--gateway=<url>` where `<url>` is the URL to the gateway
-       server.
-
-  3. Restart the Spinnaker Monitoring Daemon
-     ```
-     sudo service spinnaker-monitoring-daemon restart
-     ```
-
-     * You should be able to poll the daemon to see metrics.
-       ```
-       curl localhost:8008/prometheus_metrics
-       ```
-
-  4. Proceed to [installing the metric and dashboard
-     server](#configure-the-metric-and-dashboard-servers)
-
+These changes will be picked up by your Spinnaker installation next time you
+run `hal deploy apply`.
 
 ## Configure the Metric and Dashboard Servers
 

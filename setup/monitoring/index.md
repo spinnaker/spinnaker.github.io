@@ -6,6 +6,7 @@ sidebar:
 ---
 
 {% include toc %}
+
 Spinnaker is instrumented with numerous metrics internally so that it can be
 monitored. Monitoring spinnaker typically involves the spinnaker-monitoring
 daemon, which collects metrics reported by each microservice instance and
@@ -18,7 +19,7 @@ based on "tags". The metrics, data-model, and usage a discussed further
 in the sections [Consuming Metrics](#consuming-metrics) and in the
 [Monitoring Reference document](/reference/monitoring/).
 
-Spinnaker currently supports three specific third-party systems: 
+Spinnaker currently supports three specific third-party systems:
 [Prometheus](https://prometheus.io/), [Datadog](https://www.datadoghq.com/),
 and [Stackdriver](http://www.stackdriver.com/). The daemon is extensible so
 that it should be straight forward to add other systems as well. In fact,
@@ -26,50 +27,26 @@ each of the supported systems was provided using the daemon's extension
 mechanisms -- there are not "native" systems.
 
 You can also use the microservice HTTP endpoint `/spectator/metrics`
-directly to scrape metrics yourself. The JSON document structure is 
+directly to scrape metrics yourself. The JSON document structure is
 further documented in the Monitoring reference section.
 
 
-## Installing Spinnaker Monitoring (on VMs)
+## Configuring Spinnaker Monitoring
 
-Spinnaker monitoring support is split across two debian packages.
+Halyard ensures that the Spinnaker monitoring daemon is installed on every
+host that runs a Spinnaker service capable of being monitored, and is provided
+with the necessary configuration to supply the third-party system of your
+choice with each Spinnaker service's metrics. To do so, Halyard must be
+provided with third-party specific credentials and/or endpoints explained
+in each system's configuration below:
 
-  * `spinnaker-monitoring-daemon` provides the monitoring daemon which is used
-     to collect metrics from one or more microservice instances.
+* [Datadog](/setup/monitoring/datadog/)
+* [Prometheus](/setup/monitoring/prometheus/#configure-the-spinnaker-monitoring-daemon-for-prometheus)
+* [Stackdriver](/setup/monitoring/stackdriver/#configure-the-spinnaker-monitoring-daemon-for-stackdriver)
 
-  * `spinnaker-monitoring-third-party` provides the installation scripts and
-    supporting data for the various supported third party services. Installing
-    this package makes the scripts and data available, but does not actually
-    execute them. After installing the package, you can then choose which
-    specific concrete solution(s) to install.
-
-Assuming you have already added the Spinnaker Debian Repositories to your Apt
-Package Manager *TBD - Add reference to instructions*, use the following steps
-to install these packages:
-
-  1. Install the debian packages
-```
-sudo apt-get update -y
-sudo apt-get install spinnaker-monitoring-daemon -y
-sudo apt-get install spinnaker-monitoring-third-party -y
-```
-
-  2. [Configure the Spinnaker Monitoring Daemon](#configuring-the-spinnaker-monitoring-daemon)
-
-  3. Install the 3rd-party monitoring package
-     * [Configuring Datadog](/setup/monitoring/datadog)
-     * [Configuring Prometheus](/setup/monitoring/prometheus)
-     * [Configuring Stackdriver](/setup/monitoring/stackdriver)
-
-  4. Restart the Spinnaker Monitoring Daemon
-```
-sudo service spinnaker-monitoring restart
-```
-
-## Configuring the Spinnaker Monitoring Daemon
-
-To be written
-
+Once this is complete and Spinnaker is deployed, you can optionally use the
+`spinnaker-monitoring-third-party` package to deploy pre-configured [Spinnaker
+dashboards](#supplied-dashboards) to your third-party system of choice.
 
 ## Consuming Metrics
 
@@ -167,7 +144,7 @@ There are two basic types of metrics currently supported,
       tag by times that have success=false tags wont give you the average time
       of the success calls (but would give you the average cost in total time
       spent for each successful call outcome if that is what you wanted.)
- 
+
 
   * __Gauges__ are instantaneous value readings at a given point in time.
     Like counters, individual gauges are scoped to individual microservice

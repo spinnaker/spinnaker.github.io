@@ -31,22 +31,59 @@ Stackdriver, please contact us through the Spinnaker Slack channel.
 
 # Installing Stackdriver
 
-## Configuring the Microservices
+## Configure the Spinnaker Monitoring Daemon for Stackdriver
 
-If you are going to have the microservices push directly into stackdriver,
-then you need to set the following attributes to `services.stackdriver`
-in `spinnaker-local.yml`:
 
-Name | Type | Description
------|------|------------
-enabled | true or false | Whether or not to write to stackdriver directly
-projectName | Stackdriver Project name | The stackdriver project to write the metric data into. The default is the `providers.google.primaryCredentials.project` however this is is not necessarily correct. Especially if you are using Stackdriver but not using Google.
-credentialsPath | Path to json file | A path to the JSON file containing the service account credentials downloaded from the Google Developer's Console used to authenticate with Stackdriver. The default is providers.google.primaryCredentials.jsonPath, however this might not be the account or credentials you wish to use. If you leave the value empty, it will use the default Service Account credentials for the VM that you are deployed on.
+First, you need a service account with the `roles/monitoring.viewer` and
+`roles/monitoring.metricWriter` roles enabled. If you don't already have this,
+run the following commands:
 
-If you are on Google Cloud Platform and using the Default Service Account
-credentials then you may need to enable the Monitoring-Write scope.
-This scope is enabled by default, however depending on how you create
-the VMs that you are deploying into, the scope may have been left out.
+```bash
+SERVICE_ACCOUNT_NAME=spinnaker-monitoring-account
+SERVICE_ACCOUNT_DEST=~/.gcp/gce-monitoring-account.json
+
+gcloud iam service-accounts create \
+    $SERVICE_ACCOUNT_NAME \
+    --display-name $SERVICE_ACCOUNT_NAME
+
+SA_EMAIL=$(gcloud iam service-accounts list \
+    --filter="displayName:$SERVICE_ACCOUNT_NAME" \
+    --format='value(email)')
+
+PROJECT=$(gcloud info --format='value(config.project)')
+
+# permission to read existing configured metrics
+gcloud projects add-iam-policy-binding $PROJECT \
+    --member serviceAccount:$SA_EMAIL \
+    --role roles/monitoring.viewer
+
+# permission to write new metrics 
+gcloud projects add-iam-policy-binding $PROJECT \
+    --member serviceAccount:$SA_EMAIL \
+    --role roles/monitoring.metricWriter
+
+mkdir -p $(dirname $SERVICE_ACCOUNT_DEST)
+
+gcloud iam service-accounts keys create $SERVICE_ACCOUNT_DEST \
+    --iam-account $SA_EMAIL
+```
+
+Now you have a service account with the correct roles sitting in
+`$SERVICE_ACCOUNT_DEST`.
+
+Finally, run the following hal commands to configure Stackdriver:
+
+```bash
+hal config metric-stores stackdriver edit \
+    --credentials-path $SERVICE_ACCOUNT_DEST
+
+hal config metric-stores stackdriver enable
+```
+
+There are further flags that can be provided if you would like to push metrics
+to a different project, or associate them with a different zone. Please refer
+to the [halyard command
+reference](/reference/halyard/commands/#hal-config-metric-stores-stackdriver-edit).
 
 Proceed to [install the dashboards](#installing-the-stackdriver-dashboards)
 
