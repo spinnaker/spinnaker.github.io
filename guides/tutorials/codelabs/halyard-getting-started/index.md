@@ -178,10 +178,10 @@ gcloud iam service-accounts keys create $GCS_SA_DEST \
 
 ## Part 3: Set Spinnaker configuration
 
-We will install Spinnaker v0.1.0
+We will install Spinnaker v0.4.2
 
 ```bash
-hal config version edit --version 0.1.0
+hal config version edit --version 0.4.2
 ```
 
 Set up to persist to GCS
@@ -230,10 +230,10 @@ hal deploy apply
 > since we can connect via SSH tunnels. If you want to configure
 > authentication, read more in the [security documentation](/setup/security).
 
-Run the post-install script to port forward Spinnaker requests
+Now, to connect to Spinnaker, run:
 
 ```bash
-~/.hal/default/install.sh
+hal deploy connect
 ```
 
 Finally, from your local workstation browser, navigate to your [brand new Spinnaker instance](http://localhost:9000/)!
