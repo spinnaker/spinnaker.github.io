@@ -140,6 +140,11 @@ guides:
         url: /guides/admin/echo-cassandra-to-in-memory/
       - title: Cassandra to Redis
         url: /guides/admin/front50-cassandra-to-redis/
+  - title: Runbooks
+    url: /guides/runbooks
+    children:
+      - title: API Rate Limiting
+        url: /guides/runbooks/api-rate-limiting/
 
 reference:
   - title: API
