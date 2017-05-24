@@ -69,8 +69,8 @@ setup:
     children:
       - title: Overview
         url: /setup/storage/
-      - title: Azure Blob Storage
-        url: /setup/storage/abs/
+      - title: Azure Storage
+        url: /setup/storage/azs/
       - title: Google Cloud Storage
         url: /setup/storage/gcs/
       - title: Redis
