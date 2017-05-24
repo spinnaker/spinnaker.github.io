@@ -97,6 +97,8 @@ setup:
     children:
       - title: Notifications
         url: /setup/features/notifications/
+      - title: Pipeline Templates
+        url: /setup/features/managed-pipeline-templates/
   - title: Monitoring
     children:
       - title: Overview

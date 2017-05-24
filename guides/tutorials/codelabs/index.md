@@ -17,3 +17,5 @@ Run through these codelabs to get hands-on experience with Spinnaker in a guided
 * [Continuous Delivery with Containers on GCP](./gcp-kubernetes-source-to-prod) - set up a source-to-prod continuous delivery flow for a hello world app deployed via containers, on the Google Cloud Platform
 * [Halyard Getting Started](./halyard-getting-started) - using [halyard](/setup/install/halyard/), Spinnaker's config tool, install Spinnaker from scratch onto a Kubernetes cluster, and configure it with the Kubernetes provider
 * [App Engine Source To Prod](./appengine-source-to-prod) - create a workflow to safely deploy to App Engine from source code.
+* [Managed Pipeline Templates](./managed-pipeline-templates) - create pipeline templates to standardize application
+  delivery pipelines.
