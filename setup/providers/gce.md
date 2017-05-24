@@ -28,7 +28,7 @@ gcloud info
 
 Spinnaker needs a [service
 account](https://cloud.google.com/compute/docs/access/service-accounts) to
-authenticate as against GCE, with the `roles/editor` role enabled. If
+authenticate as against GCE, with the role enumerated below enabled. If
 you don't already have such a service account with the corresponding JSON key
 downloaded, you can run the following commands to do so:
 
@@ -65,6 +65,12 @@ gcloud projects add-iam-policy-binding $PROJECT \
 gcloud projects add-iam-policy-binding $PROJECT \
     --member serviceAccount:$SA_EMAIL \
     --role roles/compute.storageAdmin
+
+# permission to download service account keys in your project
+# this is needed by packer to bake GCE images remotely
+gcloud projects add-iam-policy-binding $PROJECT \
+    --member serviceAccount:$SA_EMAIL \
+    --role roles/compute.serviceAccountActor
 
 mkdir -p $(dirname $SERVICE_ACCOUNT_DEST)
 
