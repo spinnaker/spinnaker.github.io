@@ -70,7 +70,7 @@ gcloud projects add-iam-policy-binding $PROJECT \
 # this is needed by packer to bake GCE images remotely
 gcloud projects add-iam-policy-binding $PROJECT \
     --member serviceAccount:$SA_EMAIL \
-    --role roles/compute.serviceAccountActor
+    --role roles/iam.serviceAccountActor
 
 mkdir -p $(dirname $SERVICE_ACCOUNT_DEST)
 
