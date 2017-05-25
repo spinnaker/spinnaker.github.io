@@ -40,10 +40,10 @@ hal config security oauth2 edit \
 
 ### Bring-Your-Own Provider
 
-TODO(ttomsu): Update this for Halyard config
-
 If you'd like to configure your own OAuth provider, you'll need to provide the following 
-configuration values in your `gate-local.yml` file:
+configuration values in your `gate-local.yml` file. If you're using Halyard, you can put this in 
+a new file under your [deployment](/reference/halyard/#deployments) (typically `default`): 
+`~/.hal/$DEPLOYMENT/staging/gate-local.yml`.
 
 ```yaml
 spring:
@@ -93,18 +93,11 @@ itself, called the **`redirect_uri`**. Sometimes this guess is wrong when Spinna
 in concert with other networking components, such as an SSL-terminating load balancer, or in the 
 case of the [Quickstart](/setup/quickstart) images, a fronting Apache instance.
 
-To manually set the `redirect_uri` Gate uses, set the following in your `halconfig`:
+To manually set the `redirect_uri` for Gate, use the following `hal` command:
 
-TODO(ttomsu): Update this when halyard supports this override.
-
+```bash
+hal config security authn oauth edit --pre-established-redirect-uri https://my-real-gate-address.com:8084/login
 ```
-spring:
-  oauth2:
-    client:
-      preEstablishedRedirectUri: https://my-real-gate-address.com:8084/login
-      useCurrentUri: false
-```
-
 
 ## Workflow
 
