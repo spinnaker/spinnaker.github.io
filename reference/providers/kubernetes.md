@@ -203,33 +203,72 @@ resources.
 
 ### Deploy
 
+When deploying a Replica Set, Spinnaker sets all labels as described in the
+[Server Group](#server-group) and [Load Balancer](#load-balancer) sections
+above, adds the necessary `ImagePullSecrets` for your desired docker
+containers, and then creates the Replica Set with all properties you've
+specified. 
+
+When deploying a Replica Set with a Deployment, and the Deployment doesn't
+exist, Spinnaker first creates the Replica Set with `replicas: 0`, and then
+creates the Deployment which will resize the Replica Set. When the Deployment
+does exist, does the same, but edits the Deployment in place rather than
+creating it.
 
 ### Clone
 
+This operates the same as __Deploy__; however, the properties the server group
+is deployed with are the result of merging those of the server group being
+cloned, and those specified in the operation, prefering those specified in the
+operation.
 
 ### Destroy
 
+This will delete whichever controler you are operating on. If you are deleting
+the must current Replica Set under a Deployment, Spinnaker will attempt to
+delete the Deployment as well.
 
 ### Resize
 
+When no autoscaler is attached, this updates the `replicas` count on the
+controller you are modifying. When an autoscaler is attached, it edits the
+min/max bounds specified on the attached autoscaler. Spinnaker will
+automatically detect if an Autoscaler exists for a resource, as long as it
+contains a resource reference pointing to your controller, and the
+Controller and Autoscaler's names match.
 
 ### Enable
 
+First this edits the target controller's Pod Spec to set each label matching
+`load-balancer-*: ` to `true`. Then each pod owned by the controller will have
+the same transformation applied in parallel.
 
 ### Disable
 
+The same as __Enable__, but substituting `true` for `false`.
 
 ### Rollback
 
+This is a combination of Enable & Disable, where the server group being rolled
+back to is first enabled, and once all health checks pass, the server group
+being rolled back from is disabled.
 
 ### Terminate Instance
 
+This invokes the delete operation on the given Pod. If this pod is managed by a
+controller, (e.g. a Replica Set), it will be recreated by that controller, but
+likely with a different name.
 
 ### Create Load Balancer
 
+Creates a Kubernetes service with labels matching those shown
+[above](#load-balancer).
 
 ### Edit Load Balancer
 
+Edits the chosen service by recreating it, setting any new properties
+supplied in the operation.
 
 ### Delete Load Balancer
 
+Deletes the service - this will not edit any pods associated with the service.
