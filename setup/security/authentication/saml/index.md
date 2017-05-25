@@ -95,20 +95,15 @@ _Assertion Consumer Service URL_. Sometimes this guess is wrong when Spinnaker i
 networking components, such as an SSL-terminating load balancer, or in the case of the [Quickstart](/setup/quickstart)
 images, a fronting Apache instance.
 
-To override the values to assemble the URL, set the following in your `halconfig`:
+To override the values to assemble the URL, use the following `hal` command:
 
-TODO(ttomsu): Update this when halyard supports this:
 
-```yaml
-saml:
-  redirectProtocol: https
-  redirectHostname: localhost:8084
-  redirectBasePath: /
+```bash
+hal config security authn saml edit --service-address-url https://my-real-gate-address.com:8084
 ```
 
-> For the Quickstart images, use `redirectBasePath: /gate`. All other configurations can omit this setting.
-
-TODO(ttomsu): confirm the above is true
+> For the Quickstart images, append `/gate` to the `--service-address-url. All other configurations
+can omit this setting.
 
 ## Workflow
 The SAML workflow below reflects the process when the user navigates to _Spinnaker first_, is redirected to the SAML 
