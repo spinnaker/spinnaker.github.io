@@ -32,9 +32,9 @@ The Spinnaker service that receives these webhooks listens on port 8089, and
 [GitHub webhooks](https://help.github.com/articles/github-s-ip-addresses/#service-hook-ip-addresses) are sent from IPs in the CIDR range given below.
 
 ```
-gcloud compute firewall-rules create allow-github-webhook \ 
+gcloud compute firewall-rules create allow-github-webhook \
     --allow="tcp:8089" \ 
-    --source-ranges="192.30.252.0/22" \ 
+    --source-ranges="192.30.252.0/22" \
     --target-tags="allow-github-webhook"
 ```
 
@@ -59,7 +59,7 @@ gcloud compute ssh $USER-spinnaker --ssh-flag="-L 9000:localhost:9000" --ssh-fla
 Download and install Halyard on this machine. Halyard is a tool for configuring, installing, and updating Spinnaker.
 
 ```
-wget https://raw.githubusercontent.com/spinnaker/halyard/master/InstallHalyard.sh
+curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/stable/InstallHalyard.sh
 
 sudo bash InstallHalyard.sh
 ```
