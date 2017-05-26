@@ -131,15 +131,6 @@ guides:
         url: /guides/developer/new-stage/
       - title: Kork Library
         url: /guides/developer/kork-library/
-  - title: Setup How-Tos
-    url: /guides/admin/
-    children:
-      - title: Cassandra to Object Store
-        url: /guides/admin/front50-cassandra-to-obj-store/
-      - title: Cassandra to In-Memory
-        url: /guides/admin/echo-cassandra-to-in-memory/
-      - title: Cassandra to Redis
-        url: /guides/admin/front50-cassandra-to-redis/
   - title: Runbooks
     url: /guides/runbooks
     children:
