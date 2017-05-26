@@ -5,6 +5,9 @@ sidebar:
   nav: reference
 ---
 
+Published: 2017-05-25 19:36:37
+_Version: 0.26.0-SNAPSHOT_
+
 # Table of Contents
 
 
@@ -15,6 +18,8 @@ sidebar:
  * [**hal admin publish**](#hal-admin-publish)
  * [**hal admin publish bom**](#hal-admin-publish-bom)
  * [**hal admin publish latest**](#hal-admin-publish-latest)
+ * [**hal admin publish latest-halyard**](#hal-admin-publish-latest-halyard)
+ * [**hal admin publish latest-spinnaker**](#hal-admin-publish-latest-spinnaker)
  * [**hal admin publish profile**](#hal-admin-publish-profile)
  * [**hal admin publish version**](#hal-admin-publish-version)
  * [**hal backup**](#hal-backup)
@@ -85,6 +90,21 @@ sidebar:
  * [**hal config provider azure bakery edit**](#hal-config-provider-azure-bakery-edit)
  * [**hal config provider azure disable**](#hal-config-provider-azure-disable)
  * [**hal config provider azure enable**](#hal-config-provider-azure-enable)
+ * [**hal config provider dcos**](#hal-config-provider-dcos)
+ * [**hal config provider dcos account**](#hal-config-provider-dcos-account)
+ * [**hal config provider dcos account add**](#hal-config-provider-dcos-account-add)
+ * [**hal config provider dcos account delete**](#hal-config-provider-dcos-account-delete)
+ * [**hal config provider dcos account edit**](#hal-config-provider-dcos-account-edit)
+ * [**hal config provider dcos account get**](#hal-config-provider-dcos-account-get)
+ * [**hal config provider dcos account list**](#hal-config-provider-dcos-account-list)
+ * [**hal config provider dcos cluster**](#hal-config-provider-dcos-cluster)
+ * [**hal config provider dcos cluster add**](#hal-config-provider-dcos-cluster-add)
+ * [**hal config provider dcos cluster delete**](#hal-config-provider-dcos-cluster-delete)
+ * [**hal config provider dcos cluster edit**](#hal-config-provider-dcos-cluster-edit)
+ * [**hal config provider dcos cluster get**](#hal-config-provider-dcos-cluster-get)
+ * [**hal config provider dcos cluster list**](#hal-config-provider-dcos-cluster-list)
+ * [**hal config provider dcos disable**](#hal-config-provider-dcos-disable)
+ * [**hal config provider dcos enable**](#hal-config-provider-dcos-enable)
  * [**hal config provider docker-registry**](#hal-config-provider-docker-registry)
  * [**hal config provider docker-registry account**](#hal-config-provider-docker-registry-account)
  * [**hal config provider docker-registry account add**](#hal-config-provider-docker-registry-account-add)
@@ -174,6 +194,8 @@ sidebar:
  * [**hal config storage edit**](#hal-config-storage-edit)
  * [**hal config storage gcs**](#hal-config-storage-gcs)
  * [**hal config storage gcs edit**](#hal-config-storage-gcs-edit)
+ * [**hal config storage oraclebmcs**](#hal-config-storage-oraclebmcs)
+ * [**hal config storage oraclebmcs edit**](#hal-config-storage-oraclebmcs-edit)
  * [**hal config storage s3**](#hal-config-storage-s3)
  * [**hal config storage s3 edit**](#hal-config-storage-s3-edit)
  * [**hal config version**](#hal-config-version)
@@ -181,6 +203,8 @@ sidebar:
  * [**hal deploy**](#hal-deploy)
  * [**hal deploy apply**](#hal-deploy-apply)
  * [**hal deploy clean**](#hal-deploy-clean)
+ * [**hal deploy collect-logs**](#hal-deploy-collect-logs)
+ * [**hal deploy connect**](#hal-deploy-connect)
  * [**hal deploy details**](#hal-deploy-details)
  * [**hal deploy diff**](#hal-deploy-diff)
  * [**hal deploy rollback**](#hal-deploy-rollback)
@@ -209,7 +233,7 @@ hal [parameters] [subcommands]
  * `-h, --help`: (*Default*: `false`) Display help text about this command.
  * `-l, --log`: Set the log level of the CLI.
  * `-o, --output`: Format the CLIs output.
- * `-q, --quiet`: Show no task information or messages.
+ * `-q, --quiet`: Show no task information or messages. When disabled, ANSI formatting will be disabled too.
 #### Parameters
  * `--docs`: (*Default*: `false`) Print markdown docs for the hal CLI.
  * `--print-bash-completion`: (*Default*: `false`) Print bash command completion. This is used during the installation of Halyard.
@@ -258,6 +282,7 @@ Deprecate a version of Spinnaker, removing it from the global versions.yml track
 hal admin deprecate version [parameters]
 ```
 #### Parameters
+ * `--illegal-reason`: If supplied, the version will not only be deprecated, but will no longer be installable by Halyard for the supplied reason
  * `--version`: (*Required*) The version (x.y.z) of Spinnaker to be deprecated.
 
 ---
@@ -271,7 +296,9 @@ hal admin publish [subcommands]
 ```
 #### Subcommands
  * `bom`: Publish a Bill of Materials (BOM).
- * `latest`: Publish a version of Spinnaker to the global versions.yml tracking file.
+ * `latest` _(Deprecated)_ : Publish the latest version of Spinnaker to the global versions.yml tracking file.
+ * `latest-halyard`: Publish the latest version of Halyard to the global versions.yml tracking file.
+ * `latest-spinnaker`: Publish the latest version of Spinnaker to the global versions.yml tracking file.
  * `profile`: Publish a base halconfig profile for a specific Spinnaker artifact.
  * `version`: Publish a version of Spinnaker to the global versions.yml tracking file.
 
@@ -290,11 +317,31 @@ hal admin publish bom [parameters]
 ---
 ## hal admin publish latest
 
-Publish a version of Spinnaker to the global versions.yml tracking file.
+Publish the latest version of Spinnaker to the global versions.yml tracking file.
 
 #### Usage
 ```
 hal admin publish latest VERSION
+```
+
+---
+## hal admin publish latest-halyard
+
+Publish the latest version of Halyard to the global versions.yml tracking file.
+
+#### Usage
+```
+hal admin publish latest-halyard VERSION
+```
+
+---
+## hal admin publish latest-spinnaker
+
+Publish the latest version of Spinnaker to the global versions.yml tracking file.
+
+#### Usage
+```
+hal admin publish latest-spinnaker VERSION
 ```
 
 ---
@@ -358,6 +405,7 @@ hal config [parameters] [subcommands]
 ```
 #### Parameters
  * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--set-current-deployment`: If supplied, set the current active deployment to the supplied value, creating it if need-be.
 #### Subcommands
  * `ci`: Configure, validate, and view the specified Continuous Integration service.
  * `deploy`: Display the configured Spinnaker deployment.
@@ -790,6 +838,7 @@ hal config provider [subcommands]
  * `appengine`: Manage and view Spinnaker configuration for the appengine provider
  * `aws`: Manage and view Spinnaker configuration for the aws provider
  * `azure`: Manage and view Spinnaker configuration for the azure provider
+ * `dcos`: Manage and view Spinnaker configuration for the dcos provider
  * `docker-registry`: Manage and view Spinnaker configuration for the dockerRegistry provider
  * `google`: Manage and view Spinnaker configuration for the google provider
  * `kubernetes`: Manage and view Spinnaker configuration for the kubernetes provider
@@ -1363,6 +1412,241 @@ hal config provider azure enable [parameters]
  * `--no-validate`: (*Default*: `false`) Skip validation.
 
 ---
+## hal config provider dcos
+
+Manage and view Spinnaker configuration for the dcos provider
+
+#### Usage
+```
+hal config provider dcos [parameters] [subcommands]
+```
+#### Parameters
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+#### Subcommands
+ * `account`: Manage and view Spinnaker configuration for the dcos provider's account
+ * `cluster`: Manage and view Spinnaker configuration for the dcos provider's cluster
+ * `disable`: Set the dcos provider as disabled
+ * `enable`: Set the dcos provider as enabled
+
+---
+## hal config provider dcos account
+
+Manage and view Spinnaker configuration for the dcos provider's account
+
+#### Usage
+```
+hal config provider dcos account ACCOUNT [parameters] [subcommands]
+```
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+#### Subcommands
+ * `add`: Add an account to the dcos provider.
+ * `delete`: Delete a specific dcos account by name.
+ * `edit`: Edit an account in the dcos provider.
+ * `get`: Get the specified account details for the dcos provider.
+ * `list`: List the account names for the dcos provider.
+
+---
+## hal config provider dcos account add
+
+Add an account to the dcos provider.
+
+#### Usage
+```
+hal config provider dcos account add ACCOUNT [parameters]
+```
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--cluster`: (*Required*) Reference to the name of the cluster from the set of clusters defined for this provider
+ * `--docker-registries`: (*Default*: `[]`) (*Required*) Provide the list of docker registries to use with this DC/OS account
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--password`: Password for a user account
+ * `--required-group-membership`: (*Default*: `[]`) A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
+ * `--service-key`: Secret key for service account authentication
+ * `--uid`: (*Required*) User or service account identifier
+
+---
+## hal config provider dcos account delete
+
+Delete a specific dcos account by name.
+
+#### Usage
+```
+hal config provider dcos account delete ACCOUNT [parameters]
+```
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+---
+## hal config provider dcos account edit
+
+Edit an account in the dcos provider.
+
+#### Usage
+```
+hal config provider dcos account edit ACCOUNT [parameters]
+```
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--add-docker-registry`: Add this docker registry to the list of docker registries to use as a source of images.
+ * `--add-required-group-membership`: Add this group to the list of required group memberships.
+ * `--docker-registries`: (*Default*: `[]`) Provide the list of docker registries to use with this DC/OS account
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--remove-credential`: (*Default*: `[]`) Provide the cluster name and uid of credentials to remove: --remove-credential my-cluster my-user
+ * `--remove-docker-registry`: Remove this docker registry from the list of docker registries to use as a source of images.
+ * `--remove-required-group-membership`: Remove this group from the list of required group memberships.
+ * `--required-group-membership`: A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
+ * `--update-service-credential`: (*Default*: `[]`) A DC/OS cluster service account credential in 3 parts: cluster-name uid serviceKey
+ * `--update-user-credential`: (*Default*: `[]`) A DC/OS cluster user credential in 3 parts: cluster-name uid password
+
+---
+## hal config provider dcos account get
+
+Get the specified account details for the dcos provider.
+
+#### Usage
+```
+hal config provider dcos account get ACCOUNT [parameters]
+```
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+---
+## hal config provider dcos account list
+
+List the account names for the dcos provider.
+
+#### Usage
+```
+hal config provider dcos account list [parameters]
+```
+#### Parameters
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+---
+## hal config provider dcos cluster
+
+Manage and view Spinnaker configuration for the dcos provider's cluster
+
+#### Usage
+```
+hal config provider dcos cluster CLUSTER [parameters] [subcommands]
+```
+#### Parameters
+`CLUSTER`: The name of the cluster to operate on.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+#### Subcommands
+ * `add`: Manage and view Spinnaker configuration for the dcos provider's cluster
+ * `delete`: Delete a specific dcos cluster by name.
+ * `edit`: Manage and view Spinnaker configuration for the dcos provider's cluster
+ * `get`: Get the specified cluster details for the dcos provider.
+ * `list`: List the cluster names for the dcos provider.
+
+---
+## hal config provider dcos cluster add
+
+Manage and view Spinnaker configuration for the dcos provider's cluster
+
+#### Usage
+```
+hal config provider dcos cluster add CLUSTER [parameters]
+```
+#### Parameters
+`CLUSTER`: The name of the cluster to operate on.
+ * `--ca-cert-data`: Root certificate to trust for connections to the cluster
+ * `--dcos-url`: (*Required*) URL of the endpoint for the DC/OS cluster's admin router.
+ * `--lb-account-secret`: Name of the secret to use for allowing marathon-lb to authenticate with the cluster.  Only necessary for clusters with strict or permissive security.
+ * `--lb-image`: Marathon-lb image to use when creating a load balancer with Spinnaker
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--skip-tls-verify`: Set this flag to disable verification of certificates from the cluster (insecure)
+
+---
+## hal config provider dcos cluster delete
+
+Delete a specific dcos cluster by name.
+
+#### Usage
+```
+hal config provider dcos cluster delete CLUSTER [parameters]
+```
+#### Parameters
+`CLUSTER`: The name of the cluster to operate on.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+---
+## hal config provider dcos cluster edit
+
+Manage and view Spinnaker configuration for the dcos provider's cluster
+
+#### Usage
+```
+hal config provider dcos cluster edit CLUSTER [parameters]
+```
+#### Parameters
+`CLUSTER`: The name of the cluster to operate on.
+ * `--ca-cert-data`: Root certificate to trust for connections to the cluster
+ * `--dcos-url`: URL of the endpoint for the DC/OS cluster's admin router.
+ * `--lb-account-secret`: Name of the secret to use for allowing marathon-lb to authenticate with the cluster.  Only necessary for clusters with strict or permissive security.
+ * `--lb-image`: Marathon-lb image to use when creating a load balancer with Spinnaker
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--remove-ca-cert-data`: (*Default*: `false`) Remove the CA certificate for this cluster
+ * `--remove-lb`: (*Default*: `false`) Remove the load balancer attributes for this cluster
+ * `--skip-tls-verify`: Set this flag to disable verification of certificates from the cluster (insecure)
+
+---
+## hal config provider dcos cluster get
+
+Get the specified cluster details for the dcos provider.
+
+#### Usage
+```
+hal config provider dcos cluster get CLUSTER [parameters]
+```
+#### Parameters
+`CLUSTER`: The name of the cluster to operate on.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+---
+## hal config provider dcos cluster list
+
+List the cluster names for the dcos provider.
+
+#### Usage
+```
+hal config provider dcos cluster list CLUSTER [parameters]
+```
+#### Parameters
+`CLUSTER`: The name of the cluster to operate on.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+---
+## hal config provider dcos disable
+
+Set the dcos provider as disabled
+
+#### Usage
+```
+hal config provider dcos disable [parameters]
+```
+#### Parameters
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+---
+## hal config provider dcos enable
+
+Set the dcos provider as enabled
+
+#### Usage
+```
+hal config provider dcos enable [parameters]
+```
+#### Parameters
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+---
 ## hal config provider docker-registry
 
 Manage and view Spinnaker configuration for the dockerRegistry provider
@@ -1837,6 +2121,8 @@ When no context is configured for an account the 'current-context' in your kubec
  * `--namespaces`: (*Default*: `[]`) A list of namespaces this Spinnaker account can deploy to and will cache.
 When no namespaces are configured, this defaults to 'all namespaces'.
  * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--omit-namespaces`: (*Default*: `[]`) A list of namespaces this Spinnaker account cannot deploy to or cache.
+This can only be set when no --namespaces are provided.
  * `--required-group-membership`: (*Default*: `[]`) A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
 
 ---
@@ -1865,6 +2151,7 @@ hal config provider kubernetes account edit ACCOUNT [parameters]
 `ACCOUNT`: The name of the account to operate on.
  * `--add-docker-registry`: Add this docker registry to the list of docker registries to use as a source of images.
  * `--add-namespace`: Add this namespace to the list of namespaces to manage.
+ * `--add-omit-namespace`: Add this namespace to the list of namespaces to omit.
  * `--add-required-group-membership`: Add this group to the list of required group memberships.
  * `--all-namespaces`: (*Default*: `false`) Set the list of namespaces to cache and deploy to every namespace available to your supplied credentials.
  * `--clear-context`: (*Default*: `false`) Removes the currently configured context, defaulting to 'current-context' in your kubeconfig.See http://kubernetes.io/docs/user-guide/kubeconfig-file/#context for more information.
@@ -1875,8 +2162,11 @@ When no context is configured for an account the 'current-context' in your kubec
  * `--namespaces`: (*Default*: `[]`) A list of namespaces this Spinnaker account can deploy to and will cache.
 When no namespaces are configured, this defaults to 'all namespaces'.
  * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--omit-namespaces`: (*Default*: `[]`) A list of namespaces this Spinnaker account cannot deploy to or cache.
+This can only be set when no --namespaces are provided.
  * `--remove-docker-registry`: Remove this docker registry from the list of docker registries to use as a source of images.
  * `--remove-namespace`: Remove this namespace to the list of namespaces to manage.
+ * `--remove-omit-namespace`: Remove this namespace to the list of namespaces to omit.
  * `--remove-required-group-membership`: Remove this group from the list of required group memberships.
  * `--required-group-membership`: A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
 
@@ -2380,9 +2670,9 @@ hal config security authn oauth2 edit [parameters]
  * `--client-id`: The OAuth client ID you have configured with your OAuth provider.
  * `--client-secret`: The OAuth client secret you have configured with your OAuth provider.
  * `--no-validate`: (*Default*: `false`) Skip validation.
- * `--preEstablishedRedirectUri`: The externally accessible URL for Gate. For use with load balancers that do any kind of address manipulation for Gate traffic, such as an SSL terminating load balancer.
+ * `--pre-established-redirect-uri`: The externally accessible URL for Gate. For use with load balancers that do any kind of address manipulation for Gate traffic, such as an SSL terminating load balancer.
  * `--provider`: The OAuth provider handling authentication. The supported options are Google, GitHub, and Azure
- * `--userInfoRequirements`: (*Default*: `(empty)`) The map of requirements the userInfo request must have. This is used to restrict user login to specific domains or having a specific attribute. Use equal signs between key and value, and additional key/value pairs need to repeat the flag. Example: '--userInfoRequirements foo=bar --userInfoRequirements baz=qux'.
+ * `--user-info-requirements`: (*Default*: `(empty)`) The map of requirements the userInfo request must have. This is used to restrict user login to specific domains or having a specific attribute. Use equal signs between key and value, and additional key/value pairs need to repeat the flag. Example: '--user-info-requirements foo=bar --userInfoRequirements baz=qux'.
 
 ---
 ## hal config security authn oauth2 enable
@@ -2434,13 +2724,13 @@ SAML authenticates users by passing cryptographically signed XML documents betwe
 hal config security authn saml edit [parameters]
 ```
 #### Parameters
- * `--issuerId`: The identity of the Spinnaker application registered with the SAML provider.
+ * `--issuer-id`: The identity of the Spinnaker application registered with the SAML provider.
  * `--keystore`: Path to the keystore that contains this server's private key. This key is used to cryptographically sign SAML AuthNRequest objects.
- * `--keystoreAlias`: The name of the alias under which this server's private key is stored in the --keystore file.
- * `--keystorePassword`: The password used to access the file specified in --keystore
+ * `--keystore-alias`: The name of the alias under which this server's private key is stored in the --keystore file.
+ * `--keystore-password`: The password used to access the file specified in --keystore
  * `--metadata`: The address to your identity provider's metadata XML file. This can be a URL or the path of a local file.
  * `--no-validate`: (*Default*: `false`) Skip validation.
- * `--serviceAddressUrl`: The address of the Gate server that will be accesible by the SAML identity provider. This should be the full URL, including port, e.g. https://gate.org.com:8084/. If deployed behind a load balancer, this would be the laod balancer's address.
+ * `--service-address-url`: The address of the Gate server that will be accesible by the SAML identity provider. This should be the full URL, including port, e.g. https://gate.org.com:8084/. If deployed behind a load balancer, this would be the laod balancer's address.
 
 ---
 ## hal config security authn saml enable
@@ -2665,6 +2955,7 @@ hal config storage [parameters] [subcommands]
  * `azs`: Manage and view Spinnaker configuration for the "azs" persistent store.
  * `edit`: Edit Spinnaker's persistent storage.
  * `gcs`: Manage and view Spinnaker configuration for the "gcs" persistent store.
+ * `oraclebmcs`: Manage and view Spinnaker configuration for the "oraclebmcs" persistent store.
  * `s3`: Manage and view Spinnaker configuration for the "s3" persistent store.
 
 ---
@@ -2738,7 +3029,41 @@ hal config storage gcs edit [parameters]
  * `--json-path`: A path to a JSON service account with permission to read and write to the bucket to be used as a backing store.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--project`: The Google Cloud Platform project you are using to host the GCS bucket as a backing store.
- * `--root-folder`: (*Default*: `spinnaker`) The root folder in the chosen bucket to place all of Spinnaker's persistent data in.
+ * `--root-folder`: The root folder in the chosen bucket to place all of Spinnaker's persistent data in.
+
+---
+## hal config storage oraclebmcs
+
+Manage and view Spinnaker configuration for the "oraclebmcs" persistent store.
+
+#### Usage
+```
+hal config storage oraclebmcs [parameters] [subcommands]
+```
+#### Parameters
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+#### Subcommands
+ * `edit`: Edit configuration for the "oraclebmcs" persistent store.
+
+---
+## hal config storage oraclebmcs edit
+
+Edit configuration for the "oraclebmcs" persistent store.
+
+#### Usage
+```
+hal config storage oraclebmcs edit [parameters]
+```
+#### Parameters
+ * `--bucket-name`: The bucket name to store persistent state object in
+ * `--compartment-id`: Provide the OCID of the Oracle BMCS Compartment to use.
+ * `--fingerprint`: Fingerprint of the public key
+ * `--namespace`: The namespace the bucket and objects should be created in
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--region`: An Oracle BMCS region (e.g., us-phoenix-1)
+ * `--ssh-private-key-file-path`: Path to the private key in PEM format
+ * `--tenancy-id`: Provide the OCID of the Oracle BMCS Tenancy to use.
+ * `--user-id`: Provide the OCID of the Oracle BMCS User you're authenticating as
 
 ---
 ## hal config storage s3
@@ -2764,9 +3089,10 @@ Edit configuration for the "s3" persistent store.
 hal config storage s3 edit [parameters]
 ```
 #### Parameters
- * `--bucket`: The name of a storage bucket that your specified account has access to.
+ * `--bucket`: The name of a storage bucket that your specified account has access to. If not specified, a random name will be chosen. If you specify a globally unique bucket name that doesn't exist yet, Halyard will create that bucket for you.
  * `--no-validate`: (*Default*: `false`) Skip validation.
- * `--root-folder`: (*Default*: `spinnaker`) The root folder in the chosen bucket to place all of Spinnaker's persistent data in.
+ * `--region`: This is only required if the bucket you specify doesn't exist yet. In that case, the bucket will be created in that region. See http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region.
+ * `--root-folder`: The root folder in the chosen bucket to place all of Spinnaker's persistent data in.
 
 ---
 ## hal config version
@@ -2793,7 +3119,7 @@ hal config version edit [parameters]
 ```
 #### Parameters
  * `--no-validate`: (*Default*: `false`) Skip validation.
- * `--version`: (*Required*) Must be either a version number "X.Y.Z" for a specific release of Spinnaker, "latest" for the most recently validated Spinnaker, or "nightly" for the most recently built (unvalidated) Spinnaker.
+ * `--version`: (*Required*) Must be either a version number "X.Y.Z" for a specific release of Spinnaker, or "$BRANCH-latest-unvalidated" for the most recently built (unvalidated) Spinnaker on $BRANCH.
 
 ---
 ## hal deploy
@@ -2807,6 +3133,8 @@ hal deploy [subcommands]
 #### Subcommands
  * `apply`: Deploy or update the currently configured instance of Spinnaker to a selected environment.
  * `clean`: Remove all Spinnaker artifacts in your target deployment environment.
+ * `collect-logs`: Collect logs from the specified Spinnaker services.
+ * `connect`: Connect to your Spinnaker deployment.
  * `details`: Get details about your currently deployed Spinnaker installation.
  * `diff`: This shows what changes you have made since Spinnaker was last deployed.
  * `rollback`: Rollback Spinnaker to the prior version on a selected environment.
@@ -2839,6 +3167,33 @@ hal deploy clean [parameters]
 ```
 #### Parameters
  * `--no-validate`: (*Default*: `false`) Skip validation.
+
+---
+## hal deploy collect-logs
+
+This command collects logs from all Spinnaker services, and depending on how it was deployed, it will collect logs from sidecars and startup scripts as well.
+
+#### Usage
+```
+hal deploy collect-logs [parameters]
+```
+#### Parameters
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--service-names`: (*Default*: `[]`) When supplied, logs from only the specified services will be collected.
+
+---
+## hal deploy connect
+
+This command connects to your Spinnaker deployment, assuming it was already deployed. In the case of the `Local*` deployment type, this is a NoOp.
+
+#### Usage
+```
+hal deploy connect [parameters]
+```
+#### Parameters
+ * `--auto-run`: This command will generate a script to be run on your behalf. By default, the script will run without intervention - if you want to override this, provide "true" or "false" to this flag.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--service-names`: (*Default*: `[]`) When supplied, connections to the specified Spinnaker services are opened. When omitted, connections to the UI & API servers are opened to allow you to interact with Spinnaker in your browser.
 
 ---
 ## hal deploy details
@@ -2956,8 +3311,10 @@ All Spinnaker releases that have been fully validated are listed here. You can p
 
 #### Usage
 ```
-hal version list
+hal version list [parameters]
 ```
+#### Parameters
+ * `--no-validate`: (*Default*: `false`) Skip validation.
 
 ---
 

@@ -7,7 +7,7 @@ sidebar:
 
 {% include toc %}
 
-In [Google App Engine](https://cloud.google.com/appengine), an [__Account__](/setup/providers/overview#accounts) maps to a 
+In [Google App Engine](https://cloud.google.com/appengine), an [__Account__](/setup/providers/#accounts) maps to a 
 credential able to authenticate against a given [Google Cloud Platform](https://cloud.google.com) project.
 
 ## Prerequisites
@@ -62,8 +62,11 @@ SA_EMAIL=$(gcloud iam service-accounts list \
 PROJECT=$(gcloud info --format='value(config.project)')
 
 gcloud projects add-iam-policy-binding $PROJECT \
-    --role roles/appengine.appAdmin \
     --role roles/storage.admin \
+    --member serviceAccount:$SA_EMAIL
+
+gcloud projects add-iam-policy-binding $PROJECT \
+    --role roles/appengine.appAdmin \
     --member serviceAccount:$SA_EMAIL
 
 mkdir -p $(dirname $SERVICE_ACCOUNT_DEST)
@@ -85,7 +88,7 @@ hal config provider appengine enable
 Next, run the following `hal` command to add an account named `my-appengine-account` to your list of App Engine accounts:
 
 ```bash
-hal config provider appengine account add my-appengine-account \ 
+hal config provider appengine account add my-appengine-account \
   --project $PROJECT \
   --json-path $SERVICE_ACCOUNT_DEST 
 ```

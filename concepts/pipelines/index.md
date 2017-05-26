@@ -17,12 +17,12 @@ You can view pipeline execution history, which serves as a means to introspect d
 
 ![](pipelines.png)
 
-Automation does not end with orchestrating only the steps of your release process. For many of your operational steps, the corresponding manipulating of resources in the cloud in a supervised and safe manner usually entails a non-trivial set of steps, each of which need to be remediated in failure situations. For the full realization of confidence and the velocity that follows, each step in these complex orchestrations need to be addressed.
+Automation does not end with orchestrating only the high-level steps of your release process. For many of your operational steps, the corresponding manipulation of resources in the cloud in a supervised and safe manner usually entails a non-trivial set of steps, each of which needs to be remediated in failure situations. For the full realization of confidence and the velocity that follows, each step in these complex orchestrations need to be addressed.
 
 ![](pipeline-tasks.png)
 
 * The Red/Black Deploy stage in Spinnaker actually entails a sequence of steps
 
-* Each given step is actually a set of tasks that need polling, remediation to ensure requisite state is met prior to proceeding
+* Each given step is actually a set of tasks that need polling, remediation to ensure requisite state is reached prior to proceeding
 
 * A given task often entails multiple API calls to the specific cloud platform, cognizant of expected response codes and remediating actions in failure

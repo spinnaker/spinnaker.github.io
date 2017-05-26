@@ -88,7 +88,38 @@ be used by Spinnaker!
 
 ## Use Halyard to Configure Gate
 
-TODO(ttomsu): This section
+With the above certificates and keys in hand, you can use Halyard to set up SSL for Gate and Deck.
+
+For Gate:
+
+```bash
+KEYSTORE_PATH= # /path/to/keystore.jks
+
+hal config security api ssl edit \
+  --key-alias spinnaker \
+  --keystore $KEYSTORE_PATH \
+  --keystore-password \
+  --keystore-type jks \
+  --truststore $KEYSTORE_PATH \
+  --truststore-password \
+  --truststore-type jks
+
+hal config security api ssl enable
+```
+
+For Deck:
+
+```bash
+SERVER_CERT=   # /path/to/server.crt
+SERVER_KEY=    # /path/to/server.key
+
+hal config security ui ssl edit \
+  --ssl-certificate-file $SERVER_CERT \
+  --ssl-certificate-key-file $SERVER_KEY \
+  --ssl-certificate-passphrase
+
+hal config security ui ssl enable
+```
 
 ## Next Steps
 

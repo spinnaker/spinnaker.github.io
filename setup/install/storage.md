@@ -14,10 +14,13 @@ Spinnaker, you must configure it to use one of the supported storage types.
 
 ## Supported Storage Types
 
-* <a href="/setup/storage/abs" target="_blank">Azure Blob Storage</a>
+* <a href="/setup/storage/azs" target="_blank">Azure Storage</a>
 * <a href="/setup/storage/gcs" target="_blank">Google Cloud Storage</a>
 * <a href="/setup/storage/s3" target="_blank">S3</a>
 
 ## Next Steps
 
-Now we're ready to [deploy Spinnaker](/setup/install/deploy).
+Now that the core components of Spinnaker have been configured, but before 
+Spinnaker becomes useful you need to enable and [Configure a Cloud
+Provider](/setup/install/providers/).
+

@@ -28,7 +28,7 @@ gcloud info
 
 Spinnaker needs a [service
 account](https://cloud.google.com/compute/docs/access/service-accounts) to
-authenticate as against GCE, with the `roles/editor` role enabled. If
+authenticate as against GCE, with the role enumerated below enabled. If
 you don't already have such a service account with the corresponding JSON key
 downloaded, you can run the following commands to do so:
 
@@ -46,9 +46,31 @@ SA_EMAIL=$(gcloud iam service-accounts list \
 
 PROJECT=$(gcloud info --format='value(config.project)')
 
-# TODO(lwander): find a more restricted scope
+# permission to create/modify instances in your project
 gcloud projects add-iam-policy-binding $PROJECT \
-    --role roles/editor --member serviceAccount:$SA_EMAIL
+    --member serviceAccount:$SA_EMAIL \
+    --role roles/compute.instanceAdmin 
+
+# permission to create/modify network settings in your project
+gcloud projects add-iam-policy-binding $PROJECT \
+    --member serviceAccount:$SA_EMAIL \
+    --role roles/compute.networkAdmin 
+
+# permission to create/modify firewall rules in your project
+gcloud projects add-iam-policy-binding $PROJECT \
+    --member serviceAccount:$SA_EMAIL \
+    --role roles/compute.securityAdmin
+
+# permission to create/modify images & disks in your project
+gcloud projects add-iam-policy-binding $PROJECT \
+    --member serviceAccount:$SA_EMAIL \
+    --role roles/compute.storageAdmin
+
+# permission to download service account keys in your project
+# this is needed by packer to bake GCE images remotely
+gcloud projects add-iam-policy-binding $PROJECT \
+    --member serviceAccount:$SA_EMAIL \
+    --role roles/iam.serviceAccountActor
 
 mkdir -p $(dirname $SERVICE_ACCOUNT_DEST)
 

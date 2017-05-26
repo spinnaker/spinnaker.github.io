@@ -22,7 +22,7 @@ when deploying to [Microsoft Azure](https://azure.microsoft.com/).
 
 These are the storage sources currently supported by Spinnaker:
 
-* [Azure Blob Storage](/setup/storage/abs)
+* [Azure Storage](/setup/storage/azs)
 * [Google Cloud Storage](/setup/storage/gcs)
 * [Redis](/setup/storage/redis)
 * [S3](/setup/storage/s3)
