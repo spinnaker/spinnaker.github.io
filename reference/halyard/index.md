@@ -95,3 +95,51 @@ others.
 You can see what global Service Settings Halyard has generated for your current 
 Deployment of Spinnaker by reading
 `~/.hal/$DEPLOYMENT/history/service-settings.yml`.
+
+### Bill of Materials
+
+Since Spinnaker is composed of several microservices, we need some way to
+express which versions of each service have been validated together, and
+provide that set of service versions a top-level version that can be referenced
+by users installing/deploying Spinnaker. This set of versions is referred to as
+the __Bill of Materials__ (BOM). Below is an example BOM:
+
+```yaml
+dependencies:
+  consul:
+    version: 0.7.5
+  redis:
+    version: 2:2.8.4-2
+  vault:
+    version: 0.7.0
+services:
+  clouddriver:
+    version: 0.4.0-393
+  deck:
+    version: 1.2.0-393
+  echo:
+    version: 0.2.1-393
+  fiat:
+    version: 0.2.0-393
+  front50:
+    version: 0.3.1-393
+  gate:
+    version: 0.4.0-393
+  igor:
+    version: 0.3.0-393
+  monitoring-daemon:
+    version: 0.1.0-393
+  monitoring-third-party:
+    version: 0.1.0-393
+  orca:
+    version: 0.4.0-393
+  rosco:
+    version: 0.3.0-393
+  spinnaker:
+    version: 0.4.0-393
+timestamp: '2017-05-26 11:30:46'
+version: master-2017-05-26-393
+```
+
+If you're curious how to deploy Spinnaker yourself using a validated BOM, read
+more on the [deployments](/reference/halyard/deploys) reference page.
