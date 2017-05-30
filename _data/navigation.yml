@@ -168,6 +168,13 @@ reference:
         url: /reference/halyard/custom/
   - title: Architecture
     url: /reference/architecture/
+    children:
+      - title: Overview
+        url: /reference/architecture/
+      - title: Life of a Deployment
+        url: /reference/architecture/load/
+      - title: Life of a Bake
+        url: /reference/architecture/loab/
 
 community:
   - title: Releases
