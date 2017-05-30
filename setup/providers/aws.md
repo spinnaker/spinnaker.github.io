@@ -5,8 +5,6 @@ sidebar:
   nav: setup
 ---
 
-{% include toc %}
-
 Create an AWS virtual machine.
 
 1. Goto [AWS Console](https://console.aws.amazon.com) > AWS Identity & Access
@@ -94,10 +92,12 @@ Create an AWS virtual machine.
 
           http://127.0.0.1:9000/
     
-# Amazon AMI IDs
+### Amazon AMI IDs
 
 Latest AMI build list in JSON available here:
-https://kenzan-spinnaker-public-ami-list.s3.amazonaws.com/latest/ami_table.json
+
+[https://kenzan-spinnaker-public-ami-list.s3.amazonaws.com/latest/ami_table.json]()
 
 Latest AMI build list in MD available here:
-https://kenzan-spinnaker-public-ami-list.s3.amazonaws.com/latest/ami_table.md
+
+[https://kenzan-spinnaker-public-ami-list.s3.amazonaws.com/latest/ami_table.md]()
