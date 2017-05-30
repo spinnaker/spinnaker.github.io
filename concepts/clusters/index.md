@@ -5,8 +5,6 @@ sidebar:
   nav: concepts
 ---
 
-{% include toc %}
-
 Spinnaker acts as a single pane of glass from which to manage your global deployments across multiple clouds. Here, we surface information related to health and status of running environments, and metadata around deployments and individual instances.
 
 Also available are ad-hoc actions you can perform on the resources you see such as resize, clone, disable, and roll back. Together, the Clusters section acts as command and control base where we can increasingly layer on information relevant to deploying your applications.

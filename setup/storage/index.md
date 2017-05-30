@@ -5,8 +5,6 @@ sidebar:
   nav: setup
 ---
 
-{% include toc %}
-
 Spinnaker requires an external storage source for persisting your Application
 settings and configured Pipelines. Since these data are sensitive and can be
 costly to lose, we recommend using a hosted storage source you are confident

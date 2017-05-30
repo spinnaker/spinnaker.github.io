@@ -5,8 +5,6 @@ sidebar:
   nav: setup
 ---
 
-{% include toc %}
-
 Spinnaker can listen to events, and collect artifacts produced by builds in
 external Continuous Integration (CI) systems. These events can trigger
 Pipelines, and the artifacts can be used by Spinnaker's image bakery to produce

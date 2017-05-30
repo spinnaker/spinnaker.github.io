@@ -5,8 +5,6 @@ sidebar:
   nav: setup
 ---
 
-{% include toc %}
-
 Welcome to Spinnaker's setup instructions. These pages are intended as a
 starting point and reference for users who want to deploy Spinnaker.
 

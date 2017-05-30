@@ -5,8 +5,6 @@ sidebar:
   nav: setup
 ---
 
-{% include toc %}
-
 All of Spinnaker's abstractions and capabilities are built on top of the Cloud
 Providers that it supports. So, for Spinnaker to be able to do anything you
 need to have at least one enabled, with one Account added. If you've picked the
@@ -25,7 +23,6 @@ These are the cloud providers currently supported by Spinnaker:
 * <a href="/setup/providers/kubernetes/" target="_blank">Kubernetes</a>
 * <a href="/setup/providers/openstack/" target="_blank">Openstack</a>
 * <a href="/setup/providers/oracle/" target="_blank">Oracle</a>
-* <a href="/setup/providers/titus/" target="_blank">Titus</a>
 
 ## Next Steps
 

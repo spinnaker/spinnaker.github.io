@@ -5,8 +5,6 @@ sidebar:
   nav: setup
 ---
 
-{% include toc %}
-
 Setting up [Jenkins](https://jenkins.io/) as a Continuous Integration (CI)
 system within Spinnaker enables using Jenkins as a Pipeline Trigger, as well as
 the Run Script stage, which depends on Jenkins as a job executor.

@@ -54,7 +54,7 @@ sudo apt-get install spinnaker-monitoring-daemon -y
 sudo apt-get install spinnaker-monitoring-third-party -y
 ```
 
-  2. [Configure the Spinnaker Monitoring Daemon](#configure-the-spinnaker-monitoring-daemon)
+  2. [Configure the Spinnaker Monitoring Daemon](#configuring-the-spinnaker-monitoring-daemon)
 
   3. Install the 3rd-party monitoring package
      * [Configuring Datadog](/setup/monitoring/datadog)

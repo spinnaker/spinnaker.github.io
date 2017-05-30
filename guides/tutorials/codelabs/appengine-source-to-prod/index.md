@@ -10,7 +10,7 @@ sidebar:
 This codelab provides an overview of Spinnaker's integration with App Engine.
 You'll build and run a simple App Engine deployment pipeline with the following steps:
 
-<img style="width: 60%;" src="images/codelab_diagram.png"/>
+<img style="width: 60%;" src="images/codelab_diagram.png" alt="Codelab diagram"/>
 
 # Prerequisites
 - Be sure you have your Google Cloud Platform project's ID. This value will be referenced as `GCP-PROJECT-ID` below.
