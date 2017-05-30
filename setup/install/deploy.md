@@ -5,8 +5,6 @@ sidebar:
   nav: setup
 ---
 
-{% include toc %}
-
 Now that we've picked a [Deployment Environment](/setup/install/environment/),
 configured [Persistent Storage](/setup/install/storage/), and enabled a [Cloud
 Provider](/setup/install/providers/) we're ready to

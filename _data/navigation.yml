@@ -11,12 +11,13 @@ main:
     url: /community/
 
 concepts:
-  - title: Overview
-    url: /concepts/
-  - title: Clusters
-    url: /concepts/clusters/
-  - title: Pipelines
-    url: /concepts/pipelines/
+  - children:
+    - title: Overview
+      url: /concepts/
+    - title: Clusters
+      url: /concepts/clusters/
+    - title: Pipelines
+      url: /concepts/pipelines/
 
 setup:
   - title: Quickstart
@@ -35,7 +36,7 @@ setup:
         url: /setup/install/environment/
       - title: Storage
         url: /setup/install/storage/
-      - title: Cloud Provides
+      - title: Cloud Providers
         url: /setup/install/providers/
       - title: Deploy
         url: /setup/install/deploy/
@@ -116,7 +117,6 @@ guides:
       - title: Codelabs
         url: /guides/tutorials/codelabs/
   - title: User How-Tos
-    url: /guides/user/
     children:
       - title: Pipeline Expressions
         url: /guides/user/pipeline-expressions/
@@ -125,14 +125,12 @@ guides:
       - title: Custom Instance Links
         url: /guides/user/instance-links/
   - title: Developer How-Tos
-    url: /guides/developer/
     children:
       - title: Writing a New Stage
         url: /guides/developer/new-stage/
       - title: Kork Library
         url: /guides/developer/kork-library/
   - title: Runbooks
-    url: /guides/runbooks
     children:
       - title: API Rate Limiting
         url: /guides/runbooks/api-rate-limiting/
@@ -188,9 +186,14 @@ community:
         url: /community/contributing/submitting/
       - title: Code Of Conduct
         url: /community/contributing/code-of-conduct/
-  - title: FAQs
-    url: /community/faqs/
-  - title: Presentations
-    url: /community/presentations/
-  - title: Articles
-    url: /community/articles/
+  - title: Publications
+    children:
+      - title: Presentations
+        url: /community/presentations/
+      - title: Articles
+        url: /community/articles/
+  - title: Misc
+    children:
+      - title: FAQs
+        url: /community/faqs/
+

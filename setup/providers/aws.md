@@ -5,10 +5,4 @@ sidebar:
   nav: setup
 ---
 
-{% include toc %}
-
-## Prerequisites
-
-## Adding an Account
-
-## Advanced Account Settings
+Documentation for AWS EC2 setup with Halyard is coming soon!

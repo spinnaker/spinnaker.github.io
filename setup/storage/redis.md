@@ -5,8 +5,6 @@ sidebar:
   nav: setup
 ---
 
-{% include toc %}
-
 > :warning: Redis can be used as Spinnaker's persistent storage source, but
 > it is __not__ recommended for production use-cases because it mixes fungible,
 > short-lived cache entries with the Pipeline and Application data that deploy

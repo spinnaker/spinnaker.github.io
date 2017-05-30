@@ -142,4 +142,4 @@ version: master-2017-05-26-393
 ```
 
 If you're curious how to deploy Spinnaker yourself using a validated BOM, read
-more on the [deployments](/reference/halyard/deploys) reference page.
+more in the [deployments](/reference/halyard/#deployments) section.

@@ -5,4 +5,4 @@ sidebar:
   nav: setup
 ---
 
-{% include toc %}
+Documentation for this feature is coming soon! 

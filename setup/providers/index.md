@@ -5,8 +5,6 @@ sidebar:
   nav: setup
 ---
 
-{% include toc %}
-
 In Spinnaker, a __Cloud Provider__ is an interface to a set of virtual 
 resources that Spinnaker has control over. Typically, this is a IaaS provider, 
 like [AWS](https://aws.amazon.com/), or [GCP](https://cloud.google.com), but it 
@@ -46,7 +44,6 @@ These are the cloud providers currently supported by Spinnaker:
 * [Kubernetes](/setup/providers/kubernetes)
 * [Openstack](/setup/providers/openstack)
 * [Oracle](/setup/providers/oracle)
-* [Titus](/setup/providers/titus)
 
 If you see a provider missing from that list that you feel Spinnaker should
 support, we will gladly welcome your contributions. Please reach out to us on
