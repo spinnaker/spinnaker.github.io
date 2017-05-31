@@ -69,7 +69,7 @@ example, the Profile found under `~/.hal-staging/clouddriver.yml` has name
 
 ### Services
 
-Services are the combination of an Artifacts, with a set of Profiles
+Services are the combination of an Artifact, with a set of Profiles
 that apply to that Artifact. For example, the Artifact
 
 - `gcr.io/spinnaker-marketplace/clouddriver:0.2.0-348` 

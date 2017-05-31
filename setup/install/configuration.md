@@ -42,7 +42,6 @@ You can configure SSL, setup a login page, or apply role-based authorization.
 ### Setup Continuous Integration
 
 [Documentation](/setup/ci/) -- `hal config ci`
-Documentation -- `hal config ci`
 
 Configure Jenkins or Travis CI to trigger Pipelines or supply Spinnaker with
 build artifacts to build into images and deploy.
