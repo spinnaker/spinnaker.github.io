@@ -5,9 +5,27 @@ sidebar:
   nav: community
 ---
 
-{% include toc %}
+## Engaging
 
+The Spinnaker OSS project was started at Netflix, and today thrives on the contributions and broad adoption of the public devops community. Here are some ways to get engaged - join us!
 
-## Contributors
+* [GitHub](https://github.com/spinnaker/spinnaker)
+* [Slack](http://join.spinnaker.io)
+* [StackOverflow](https://stackoverflow.com/search?q=spinnaker)
 
-Super major props to these cool cats. (logos!)
+## Core Contributors
+
+The list of contributors is growing with some core contributors below. Please reach out to us with a PR or on slack if you'd like to be added to this list!
+
+* [Cerner Corporation](http://cerner.com/)
+* [Netflix](https://netflix.github.io/)
+* [Google](https://opensource.google.com/)
+* [Kenzan](http://kenzan.com/)
+* [Microsoft/Azure Devops](https://github.com/azure-devops)
+* [Oracle](http://oracle.com/)
+* [Pivotal](http://pivotal.io/)
+* [Schibsted](http://www.schibsted.com/)
+* [Skuid](http://www.skuid.com/)
+* Target
+* [Veritas Technologies LLC](https://github.com/VeritasOS)
+
