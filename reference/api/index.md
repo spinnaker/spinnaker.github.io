@@ -5,4 +5,5 @@ sidebar:
   nav: reference
 ---
 
-[Swagger UI Guide](/reference/api/swagger-ui) 
+- [API documentation](/reference/api/docs.html)
+- [Swagger UI Guide](/reference/api/swagger-ui) 
