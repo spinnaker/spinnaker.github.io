@@ -96,7 +96,7 @@ PROJECT=$(gcloud info --format='value(config.project)')
 SERVICE_ACCOUNT_DEST=# see Prerequisites section above
 ```
 
-First, edit the storage settings:
+Finally, add your new google account:
 
 ```bash
 hal config provider google account add my-gce-account --project $PROJECT \
