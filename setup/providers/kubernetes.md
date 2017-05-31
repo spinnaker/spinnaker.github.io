@@ -36,7 +36,7 @@ hosted solutions:
 
 * [Google Container Engine](https://cloud.google.com/container-engine/)
 * [Azure Container
-  Service](https://docs.microsoft.com/en-us/azure/container-service/container-service-kubernetes-walkthrough)
+  Service](https://docs.microsoft.com/en-us/azure/container-service/container-service-kubernetes-walkthrough) [(codelab)](http://aka.ms/azspinlab)
 
 Or, you can read more on the Kubernetes setup page to pick a [solution that
 works for you](https://kubernetes.io/docs/setup/pick-right-solution/).
