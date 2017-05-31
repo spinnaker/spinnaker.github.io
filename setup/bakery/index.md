@@ -38,6 +38,11 @@ scripts/artifacts required by that template can also be placed into that
 directory, and referenced relative to the `configDir` Packer variable that will
 automatically be set.
 
+You can then use the `Template File Name` field under `Advanced Options` in the bake
+stage UI to refer to your custom template:
+
+![](bake_ui_template.png)
+
 ## Image Provider Configuration
 
 The following providers support configuring their image bakery:
