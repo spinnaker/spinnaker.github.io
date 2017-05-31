@@ -78,6 +78,12 @@ setup:
         url: /setup/storage/redis/
       - title: S3
         url: /setup/storage/s3/
+  - title: Image Bakery
+    children:
+      - title: Overview
+        url: /setup/bakery/
+      - title: Google Compute Engine
+        url: /setup/bakery/google/
   - title: Security
     children:
       - title: Overview
