@@ -144,6 +144,8 @@ guides:
 reference:
   - title: API
     children:
+    - title: Docs
+      url: /reference/api/docs/
     - title: Swagger UI
       url: /reference/api/swagger-ui/
   - title: Cloud Providers
