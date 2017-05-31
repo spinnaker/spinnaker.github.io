@@ -16,6 +16,10 @@ sidebar:
   * [Continuous Delivery for Kubernetes on GCP](#continuous-delivery-for-kubernetes-on-gcp-6m-26s)
   * [Continuous Delivery for Google App Engine](#continuous-delivery-for-google-app-engine-3m-55s)
   * [Google Source to Production Codelab Walk Through](#google-source-to-production-codelab-walk-through)
+* Microsoft Azure 
+  * [Host Spinnaker on Azure](https://channel9.msdn.com/Shows/Azure-Friday/Host-Spinnaker-on-Azure)
+  * [Continuous Delivery to Azure with Spinnaker](https://channel9.msdn.com/Shows/Azure-Friday/Using-Spinnakers-Release-Pipeline-for-CD-to-Azure)
+  * [CI/CD with Jenkins and Spinnaker on Azure](https://channel9.msdn.com/Events/Build/2017/P4104)
 
 
 ### <a href="https://youtu.be/dwdVwE52KkU" target="_blank">Welcome to Spinnaker: Feature Overview (2m 46s)</a>
