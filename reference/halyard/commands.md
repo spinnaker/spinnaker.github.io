@@ -5,8 +5,8 @@ sidebar:
   nav: reference
 ---
 
-Published: 2017-05-25 19:36:37
-_Version: 0.26.0-SNAPSHOT_
+Published: 2017-05-31 19:49:01
+_Version: 0.21.0-SNAPSHOT_
 
 # Table of Contents
 
@@ -72,6 +72,7 @@ _Version: 0.26.0-SNAPSHOT_
  * [**hal config provider aws account get**](#hal-config-provider-aws-account-get)
  * [**hal config provider aws account list**](#hal-config-provider-aws-account-list)
  * [**hal config provider aws disable**](#hal-config-provider-aws-disable)
+ * [**hal config provider aws edit**](#hal-config-provider-aws-edit)
  * [**hal config provider aws enable**](#hal-config-provider-aws-enable)
  * [**hal config provider azure**](#hal-config-provider-azure)
  * [**hal config provider azure account**](#hal-config-provider-azure-account)
@@ -139,6 +140,7 @@ _Version: 0.26.0-SNAPSHOT_
  * [**hal config provider kubernetes account get**](#hal-config-provider-kubernetes-account-get)
  * [**hal config provider kubernetes account list**](#hal-config-provider-kubernetes-account-list)
  * [**hal config provider kubernetes disable**](#hal-config-provider-kubernetes-disable)
+ * [**hal config provider kubernetes edit**](#hal-config-provider-kubernetes-edit)
  * [**hal config provider kubernetes enable**](#hal-config-provider-kubernetes-enable)
  * [**hal config provider openstack**](#hal-config-provider-openstack)
  * [**hal config provider openstack account**](#hal-config-provider-openstack-account)
@@ -617,7 +619,6 @@ hal config features edit [parameters]
 ```
 #### Parameters
  * `--chaos`: Enable Chaos Monkey support. For this to work, you'll need a running Chaos Monkey deployment. Currently, Halyard doesn't configure Chaos Monkey for you; read more instructions here https://github.com/Netflix/chaosmonkey/wiki.
- * `--fiat`: Enable Fiat (Spinnaker's access-control system). This assumes you have followed the steps here: http://www.spinnaker.io/docs/securing-spinnaker.
  * `--jobs`: Allow Spinnaker to run containers in Kubernetes and Titus as Job stages in pipelines.
  * `--no-validate`: (*Default*: `false`) Skip validation.
 
@@ -1006,6 +1007,7 @@ hal config provider aws [parameters] [subcommands]
 #### Subcommands
  * `account`: Manage and view Spinnaker configuration for the aws provider's account
  * `disable`: Set the aws provider as disabled
+ * `edit`: Set provider-wide properties for the AWS provider
  * `enable`: Set the aws provider as enabled
 
 ---
@@ -1038,7 +1040,10 @@ hal config provider aws account add ACCOUNT [parameters]
 ```
 #### Parameters
 `ACCOUNT`: The name of the account to operate on.
- * `--account-id`: Your AWS account ID to manage. See http://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html for more information.
+ * `--account-id`: (*Required*) Your AWS account ID to manage. See http://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html for more information.
+ * `--assume-role`: (*Required*) If set, Halyard will configure a credentials provider that uses AWS Security Token Service to assume the specified role.
+
+Example: "user/spinnaker" or "role/spinnakerManaged"
  * `--default-key-pair`: Provide the name of the AWS key-pair to use. See http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html for more information.
  * `--discovery`: The endpoint your Eureka discovery system is reachable at. See https://github.com/Netflix/eureka for more information.
 
@@ -1077,6 +1082,9 @@ hal config provider aws account edit ACCOUNT [parameters]
  * `--account-id`: Your AWS account ID to manage. See http://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html for more information.
  * `--add-region`: Add this region to the list of managed regions.
  * `--add-required-group-membership`: Add this group to the list of required group memberships.
+ * `--assume-role`: If set, Halyard will configure a credentials provider that uses AWS Security Token Service to assume the specified role.
+
+Example: "user/spinnaker" or "role/spinnakerManaged"
  * `--default-key-pair`: Provide the name of the AWS key-pair to use. See http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html for more information.
  * `--discovery`: The endpoint your Eureka discovery system is reachable at. See https://github.com/Netflix/eureka for more information.
 
@@ -1126,6 +1134,20 @@ hal config provider aws disable [parameters]
 ```
 #### Parameters
  * `--no-validate`: (*Default*: `false`) Skip validation.
+
+---
+## hal config provider aws edit
+
+The AWS provider requires a central "Managing Account" to authenticate on behalf of other AWS accounts, or act as your sole, credential-based account. Since this configuration, as well as some defaults, span all AWS accounts, it is generally required to edit the AWS provider using this command.
+
+#### Usage
+```
+hal config provider aws edit [parameters]
+```
+#### Parameters
+ * `--access-key-id`: Your AWS Access Key ID. If not provided, Halyard/Spinnaker will try to find AWS credentials as described at http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html#credentials-default
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--secret-access-key`: (*Sensitive data* - user will be prompted on standard input) Your AWS Secret Key.
 
 ---
 ## hal config provider aws enable
@@ -1852,6 +1874,7 @@ hal config provider google account add ACCOUNT [parameters]
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--project`: (*Required*) The Google Cloud Platform project this Spinnaker account will manage.
  * `--required-group-membership`: (*Default*: `[]`) A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
+ * `--user-data`: The path to user data template file. Spinnaker has the ability to inject userdata into generated instance templates. The mechanism is via a template file that is token replaced to provide some specifics about the deployment. See https://github.com/spinnaker/clouddriver/blob/master/clouddriver-aws/UserData.md for more information.
 
 ---
 ## hal config provider google account delete
@@ -1887,6 +1910,7 @@ hal config provider google account edit ACCOUNT [parameters]
  * `--remove-required-group-membership`: Remove this group from the list of required group memberships.
  * `--required-group-membership`: A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
  * `--set-alpha-listed`: Enable this flag if your project has access to alpha features and you want Spinnaker to take advantage of them.
+ * `--user-data`: The path to user data template file. Spinnaker has the ability to inject userdata into generated instance templates. The mechanism is via a template file that is token replaced to provide some specifics about the deployment. See https://github.com/spinnaker/clouddriver/blob/master/clouddriver-aws/UserData.md for more information.
 
 ---
 ## hal config provider google account get
@@ -2080,6 +2104,7 @@ hal config provider kubernetes [parameters] [subcommands]
 #### Subcommands
  * `account`: Manage and view Spinnaker configuration for the kubernetes provider's account
  * `disable`: Set the kubernetes provider as disabled
+ * `edit`: Set provider-wide properties for the Kubernetes provider
  * `enable`: Set the kubernetes provider as enabled
 
 ---
@@ -2203,6 +2228,18 @@ Set the kubernetes provider as disabled
 #### Usage
 ```
 hal config provider kubernetes disable [parameters]
+```
+#### Parameters
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+---
+## hal config provider kubernetes edit
+
+Due to how the Kubenretes provider shards its cache resources, there is opportunity to tune how its caching should be handled. This command exists to allow you tune this caching behavior.
+
+#### Usage
+```
+hal config provider kubernetes edit [parameters]
 ```
 #### Parameters
  * `--no-validate`: (*Default*: `false`) Skip validation.
@@ -3089,10 +3126,15 @@ Edit configuration for the "s3" persistent store.
 hal config storage s3 edit [parameters]
 ```
 #### Parameters
+ * `--access-key-id`: Your AWS Access Key ID. If not provided, Halyard/Spinnaker will try to find AWS credentials as described at http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html#credentials-default
+ * `--assume-role`: If set, Halyard will configure a credentials provider that uses AWS Security Token Service to assume the specified role.
+
+Example: "user/spinnaker" or "role/spinnakerManaged"
  * `--bucket`: The name of a storage bucket that your specified account has access to. If not specified, a random name will be chosen. If you specify a globally unique bucket name that doesn't exist yet, Halyard will create that bucket for you.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--region`: This is only required if the bucket you specify doesn't exist yet. In that case, the bucket will be created in that region. See http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region.
  * `--root-folder`: The root folder in the chosen bucket to place all of Spinnaker's persistent data in.
+ * `--secret-access-key`: (*Sensitive data* - user will be prompted on standard input) Your AWS Secret Key.
 
 ---
 ## hal config version
