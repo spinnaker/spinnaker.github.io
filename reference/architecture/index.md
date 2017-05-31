@@ -38,10 +38,10 @@ and service accounts.
 
 1. [Halyard](https://github.com/spinnaker/halyard) is Spinnaker's configuration service.
 
-## Dependency Graph
+## System Dependency Graph
 
-The table below is intended to represent the various dependencies of each service:
-
-TODO(duftler): Make this look better.
+A filled cell indicates that the system listed in the heading of that column has a dependency on the system listed in the heading of that row. As all Spinnaker
+services can be run in their own server group, it is typical for services to resolve their dependencies via load balancers or discovery systems (e.g.
+[Eureka](https://github.com/Netflix/eureka) or [Consul](https://www.consul.io/)).
 
 ![](graph.png)
