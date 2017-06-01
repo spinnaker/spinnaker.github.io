@@ -18,7 +18,7 @@ maps to a credential able to authenticate against a given [Google Cloud Platform
 project - see the [setup guide](/setup/providers/gce).
 
 ### Load Balancer
-A Spinnaker **load balancer** maps to a GCE [load balancer](https://cloud.google.com/compute/docs/load-balancing/). 
+A Spinnaker **load balancer** maps to a GCE [load balancer](https://cloud.google.com/compute/docs/load-balancing/).
 
 GCE supports many different types of load balancers, including: HTTPS(S), SSL Proxy, Network and Internal. Each of these
 is supported by Spinnaker.
@@ -53,6 +53,12 @@ Deploys a GCE managed instance group.
 A new GCE [instance template](https://cloud.google.com/compute/docs/instance-templates) is created for each new managed
 instance group.
 
+If a deployed server group is load-balanced, Spinnaker uses [instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata)
+to store the relationship between the server group and load balancer. This is necessary to represent the object models in Spinnaker's UI
+and to remember server group to load balancer relationships during server group enable and disable operations.
+Note that manipulating infrastructure (MIGs, load balancers) in GCE directly does not create the relationship metadata, and will most likely cause
+Spinnaker to misbehave.
+
 ### Clone
 
 Clones a GCE managed instance group.
@@ -60,7 +66,7 @@ Clones a GCE managed instance group.
 Similar to a [deploy](#deploy) operation, except that most of the attributes are optional. Any elided attributes will be
 inherited from the source managed instance group being cloned.
 
-### Destroy 
+### Destroy
 
 Destroys a GCE managed instance group and its instance template.
 
@@ -107,8 +113,7 @@ instance and shrinks the target size of the managed instance group.
 Upserts and wires together all of the necessary resources to support Network, HTTP(S), Internal or SSL load balancing.
 
 Depending on the type of load balancing desired, an assortment of regional/gobal forwarding rules, target pools/proxies,
-URL maps, backend services and health checks are required to be assembled. The create load balancer operation performs
-all of this configuration implicitly.
+URL maps, backend services and health checks are required to be assembled. The create load balancer operation performs all of this configuration implicitly.
 
 ### Edit Load Balancer
 
