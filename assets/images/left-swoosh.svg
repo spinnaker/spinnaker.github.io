@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="351px" height="347px" viewBox="0 0 351 347" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+    <title>left-swoosh</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="82.1790632%" y1="-0.473917274%" x2="34.6134572%" y2="114.440607%" id="linearGradient-1">
+            <stop stop-color="#2B3990" offset="0%"></stop>
+            <stop stop-color="#1E62A7" offset="16%"></stop>
+            <stop stop-color="#1485BC" offset="32%"></stop>
+            <stop stop-color="#0BA1CC" offset="49%"></stop>
+            <stop stop-color="#05B4D7" offset="66%"></stop>
+            <stop stop-color="#01C0DE" offset="83%"></stop>
+            <stop stop-color="#00C4E0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="-31668%" y1="78954%" x2="-19806%" y2="78954%" id="linearGradient-2">
+            <stop stop-color="#2B3990" offset="0%"></stop>
+            <stop stop-color="#1E62A7" offset="16%"></stop>
+            <stop stop-color="#1485BC" offset="32%"></stop>
+            <stop stop-color="#0BA1CC" offset="49%"></stop>
+            <stop stop-color="#05B4D7" offset="66%"></stop>
+            <stop stop-color="#01C0DE" offset="83%"></stop>
+            <stop stop-color="#00C4E0" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Home-page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop" transform="translate(0.000000, -1444.000000)">
+            <g id="Supported-Providers" transform="translate(-165.000000, 1240.000000)">
+                <g id="Group-8">
+                    <g id="Group" transform="translate(258.000000, 275.500000) scale(-1, 1) translate(-258.000000, -275.500000) ">
+                        <path d="M0,548.248159 C249.082315,572.85553 449.085037,426.021427 498.975863,363.10217 C548.866689,300.182914 473.219217,0 473.219217,0 C391.217087,200.774538 242.119232,505.075558 0,548.349424 L0,548.248159 Z" id="Shape" fill="url(#linearGradient-1)" style="mix-blend-mode: multiply;"></path>
+                        <path d="M113.4,466.741957 C258.702535,472.147621 369.301418,379.812119 395.962744,341.533259 C422.624069,303.254399 381.804194,130.847495 381.804194,130.847495 C341.423606,250.278889 229.067576,424.307493 113.4,466.741957 Z" id="Shape" fill="url(#linearGradient-2)" style="mix-blend-mode: multiply;"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

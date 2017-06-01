@@ -1,34 +1,202 @@
 ---
 layout: home
-feature_row:
-  - title: Configurable, Safe
-    excerpt: "Spinnaker helps codify the process of safely and reliably deploying artifacts to the cloud, leveraging industry best practices out-of-the-box.\n\n_**Configure once, run anytime.**_"
-  - title: Multi-cloud
-    excerpt: "Deploy across multiple cloud providers: AWS EC2, Google Compute Engine, Microsoft Azure, OpenStack and Cloud Foundry.\n\n_**Deploy anywhere, manage centrally.**_"
-  - title: Vibrant Community
-    excerpt: "Strong community engagement, and contributions from partners including: Netflix, Google, Microsoft, Pivotal, Veritas, Target, Schibsted and Kenzan.\n\n_**Pull requests are gladly accepted.**_"
+spinnaker_row:
+  title: Spinnaker is an open source, multi-cloud continuous delivery platform for releasing software changes with high velocity and confidence.
+  excerpt: "Created at Netflix, it has been battle-tested in production by hundreds of teams over millions of deployments. It combines a powerful and flexible pipeline management system with integrations to the major cloud providers."
+  image_path: assets/images/spinnaker-logo-inline.svg
+  alt: "Spinnaker Logo"
+multi_cloud_row: 
+  title: Multi-Cloud
+  excerpt: "Deploy across multiple cloud providers including AWS EC2, Google Compute Engine, Google Container Engine, Google App Engine, Microsoft Azure, Openstack, Oracle BareMetal, DC/OS, and Kubernetes."
+  image_path: assets/images/cloud.svg
+  alt: "Multi-Cloud Logo"
+automated_releases_row: 
+  title: Automated Releases
+  excerpt: "Create deployment pipelines that run integration and system tests, spin up and down server groups, and monitor your rollouts. Trigger pipelines via git events, Jenkins, Travis CI, Docker, CRON, or other Spinnaker pipelines."
+  image_path: assets/images/automated-releases.svg
+  alt: "Automated Releases Logo"
+best_practices_row: 
+  title: Built-in Deployment Best Practices
+  excerpt: "Create and deploy immutable images for faster rollouts, easier rollbacks, and the elimination of hard to debug configuration drift issues. Leverage an immutable infrastructure in the cloud with built-in deployment strategies such as red/black and canary deployments."
+  image_path: assets/images/best-practices.svg    
+  image_class: best_practices_img
+  alt: "Best Practices Logo"
+aws_provider:
+  image_path: assets/images/aws.png
+  alt: "AWS Logo"
+  image_class: spin_cloud_provider__aws
+gcp_provider:
+  image_path: assets/images/gcp.png
+  alt: "GCP Logo"
+  image_class: spin_cloud_provider__gcp
+k8s_provider:
+  image_path: assets/images/k8s.png
+  alt: "Kubernetes Logo"
+  image_class: spin_cloud_provider__k8s
+azure_provider:
+  image_path: assets/images/azure.png
+  alt: "Azure Logo"
+  image_class: spin_cloud_provider__azure
+os_provider:
+  image_path: assets/images/os.png
+  alt: "Openstack Logo"
+  image_class: spin_cloud_provider__os
+active_community_row:
+  title: Active Community
+  excerpt: "Join a community that includes Netflix, Google, Microsoft, Pivotal, Veritas, Target, Kenzan, Schibsted, and many others, actively working to maintain and improve Spinnaker."
+  image_path: assets/images/community.svg
+ci_integrations_feature:
+  title: CI Integrations
+  content: "Listen to events, collect artifacts, and trigger pipelines from Jenkins or Travis CI. Triggers via git, cron, or a new image in a docker registry are also supported."
+monitoring_integrations_feature:
+  title: Monitoring Integrations
+  content: "Tie your releases to monitoring services Datadog, Prometheus, or Stackdriver, using their metrics for canary analysis."
+cli_feature:
+  title: CLI for Setup and Admin
+  content: "Install, configure, and update your Spinnaker instance with halyard, Spinnaker’s CLI tool."
+deployment_strategies_feature:
+  title: Deployment Strategies
+  content: "Configure pipelines with built-in deployment strategies such as highlander and red/black,  with rolling red/black and canary in active development, or define your own custom strategy."
+vm_bakery_feature:
+  title: VM Bakery
+  content: "Bake immutable VM images via Packer, which comes packaged with Spinnaker and offers support for Chef and Puppet templates."
+notifications_feature:
+  title: Notifications
+  content: "Set up event notifications for email, Slack, HipChat, or SMS (via Twilio)."
+access_control_feature:
+  title: Role-based Access Control
+  content: "Restrict access to projects or accounts by hooking into your internal authentication system using OAuth, SAML, LDAP, X.509 certs, Google groups, Azure groups, or GitHub teams."
+manual_judgments_feature:
+  title: Manual Judgments
+  content: "Require a manual approval prior to releasing an update with a manual judgement stage."
+execution_windows_feature:
+  title: White-listed Execution Windows
+  content: "Restrict the execution of stages to certain windows of time, making sure deployments happen during off-peak traffic or when the right people are on hand to monitor the roll-out."
+chaos_monkey_feature:
+  title: Chaos Monkey Integration
+  content: "Test that your application can survive instance failures by terminating them on purpose."
+netflix_case_study:
+  title: How We Build Code at Netflix
+  image_path: assets/images/netflix_logo.jpg
+  image_class: spin_case_study__netflix
+  alt: "Netflix Logo"
+  links: 
+    - label: READ MORE
+      src: "https://medium.com/netflix-techblog/how-we-build-code-at-netflix-c5d9bd727f15"
+waze_case_study:
+  title: Multi-cloud continuous delivery using Spinnaker at Waze
+  image_path: assets/images/waze_logo.jpg
+  image_class: spin_case_study__waze
+  alt: "Waze Logo"
+  links:
+    - label: READ MORE
+      src: "https://cloudplatform.googleblog.com/2017/02/guest-post-multi-cloud-continuous-delivery-using-Spinnaker-at-Waze.html"
+    - label: WATCH THE PRESENTATION
+      src: "https://www.youtube.com/watch?v=05EZx3MBHSY"
+#target_case_study:
+#  title: How and Why We Moved To Spinnaker
+#  image_path: assets/images/spinnaker-logo-og.png
+#  alt: "Target Logo"
+#  links:
+#    - label: READ MORE
+#      src: "https://www.youtube.com/watch?v=05EZx3MBHSY"
+#intuit_case_study:
+#  title: Small Business Group's Spinnaker Journey
+#  image_path: assets/images/spinnaker-logo-og.png
+#  alt: "Intuit Logo"
+#  links:
+#    - label: WATCH THE VIDEO
+#      src: "https://vimeo.com/208263013/e0bd26b92f"
 ---
 
-# Deliver your software changes to production with high velocity and confidence
 
-Spinnaker is an open source, multi-cloud continuous delivery platform for releasing software changes with high velocity and confidence.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/dwdVwE52KkU" frameborder="0" allowfullscreen></iframe>
-
-{% include feature_row %}
-
-## Supported Cloud Providers
-
-<div class="cloudproviders">
-  <ul class="images">
-    <li><img alt="aws logo" src="/assets/images/aws.png" /> </li>
-    <li><img alt="gcp logo" src="/assets/images/gcp.png" /></li>
-    <li><img alt="k8s logo" src="/assets/images/k8s.png"/></li>
-  </ul>
-  <ul class="images">
-    <li><img alt="azure logo" src="/assets/images/azure.png" /></li>
-    <li><img alt="os logo" src="/assets/images/os.png" /></li>
-    <li><img alt="cf logo" src="/assets/images/cf.png" /></li>
-  </ul>
+<div class="spin_header">
+   <img class="spin_header__swoosh" src="{{ "assets/images/top-right-swoosh.svg" | absolute_url }}" alt="Spinnaker Swoosh"/>
+   <img class="spin_header__spin_text" src="{{ "assets/images/spinnaker-text-white.svg" | absolute_url }}" alt="Spinnaker Logo"/>
+   <div class="spin_header__text">
+       <h1>Continuous Delivery for Enterprise</h1>
+       <h2>Fast, safe, repeatable deployments</h2>
+   </div>
+   <div class="masthead__menu">
+     <nav id="site-nav" class="spin_header__nav">
+       <ul class="visible-links">
+         {% for link in site.data.navigation.main %}
+           {% if link.url contains 'http' %}
+             {% assign domain = '' %}
+           {% else %}
+             {% assign domain = site.url | append: site.baseurl %}
+           {% endif %}
+           <li class="masthead__menu-item">
+             {% if page.url contains link.url %}
+               <a href="{{ domain }}{{ link.url }}" class="active">{{ link.title | capitalize }}</a>
+             {% else %}
+               <a href="{{ domain }}{{ link.url }}">{{ link.title | capitalize }}</a>
+             {% endif %}
+           </li>
+         {% endfor %}
+       </ul>
+       <ul class="hidden-links hidden"></ul>
+     </nav>
+   </div>
+   <ul class="spin_call_to_action">
+     <li><a href="/concepts/">GET STARTED</a></li>
+     <li><a href="/setup/">INSTALL LATEST</a></li>
+   </ul>
 </div>
+
+<div class="spin_header__push_down">
+{% include splash_feature_row id="spinnaker_row" type="right" %}
+{% include splash_feature_row id="multi_cloud_row" type="left" %}
+{% include splash_feature_row id="automated_releases_row" type="right" %}
+{% include splash_feature_row id="best_practices_row" type="left" %}
+{% include splash_feature_row id="active_community_row" type="right" %}
+</div>
+<div class="spin_cloud_providers">
+    <div class="spin_cloud_providers__blue">
+        <h1 class="spin_cloud_providers__header">Supported Cloud Providers</h1>
+        <img src="{{ "assets/images/left-swoosh.svg" | absolute_url }}" alt="Spinnaker Swoosh"/>
+        <div class="spin_row">
+            {% include spinnaker_cloud_provider id="aws_provider" %}
+            {% include spinnaker_cloud_provider id="gcp_provider" %}
+            {% include spinnaker_cloud_provider id="k8s_provider" %}
+            {% include spinnaker_cloud_provider id="azure_provider" %}
+            {% include spinnaker_cloud_provider id="os_provider" %}
+        </div>
+    </div>
+</div>
+
+<h1 class="spin__heading spin_cloud_providers__push_down">Features List</h1>
+<div class="spin_row">
+  {% include spinnaker_feature_box id="ci_integrations_feature" %}
+  {% include spinnaker_feature_box id="monitoring_integrations_feature" %}
+</div>
+<div class="spin_row">
+  {% include spinnaker_feature_box id="cli_feature" %}
+  {% include spinnaker_feature_box id="deployment_strategies_feature" %}
+</div>
+<div class="spin_row">
+  {% include spinnaker_feature_box id="vm_bakery_feature" %}
+  {% include spinnaker_feature_box id="notifications_feature" %}
+</div>
+<div class="spin_row">
+  {% include spinnaker_feature_box id="access_control_feature" %}
+  {% include spinnaker_feature_box id="manual_judgments_feature" %}
+</div>
+<div class="spin_row">
+  {% include spinnaker_feature_box id="execution_windows_feature" %}
+  {% include spinnaker_feature_box id="chaos_monkey_feature" %}
+</div>
+
+<h1 class="spin__heading">Case Studies</h1>
+
+<div class="spin_row">
+  {% include spinnaker_case_study id="netflix_case_study" %}
+  {% include spinnaker_case_study id="waze_case_study" %}
+</div>
+
+<!-- <div class="spin_row">
+  {% include spinnaker_case_study id="target_case_study" %}
+  {% include spinnaker_case_study id="intuit_case_study" %}
+</div> -->
 

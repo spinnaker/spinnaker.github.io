@@ -56,6 +56,10 @@ yandex_site_verification :
 # Social Sharing
 twitter:
   username               : spinnakerio
+slack:
+  url                    : join.spinnaker.io
+stackoverflow:       
+  url                    : stackoverflow.com/questions/tagged/spinnaker
 facebook:
   username               :
   app_id                 :

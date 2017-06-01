@@ -1,0 +1,45 @@
+{% if include.id %}
+  {% assign f = page.[include.id] %}
+{% else %}
+  {% assign f = page.feature_row %}
+{% endif %}
+
+<div class="splash__wrapper">
+  {% if f.url contains "://" %}
+    {% capture f_url %}{{ f.url }}{% endcapture %}
+  {% else %}
+    {% capture f_url %}{{ f.url | absolute_url }}{% endcapture %}
+  {% endif %}
+  
+  <div class="feature__item{% if include.type %}--{{ include.type }}{% endif %}">
+    <div class="splash__item">
+      {% if f.image_path %}
+        <div class="splash__item-teaser">
+          <img {% if f.image_class %} class="{{f.image_class}}" {% endif %} src=
+            {% if f.image_path contains "://" %}
+              "{{ f.image_path }}"
+            {% else %}
+              "{{ f.image_path | absolute_url }}"
+            {% endif %}
+          alt="{% if f.alt %}{{ f.alt }}{% endif %}">
+        </div>
+      {% endif %}
+  
+      <div class="splash__item-body">
+        {% if f.title %}
+          <h2 class="splash__item-title">{{ f.title }}</h2>
+        {% endif %}
+  
+        {% if f.excerpt %}
+          <div class="splash__item-excerpt">
+            {{ f.excerpt | markdownify }}
+          </div>
+        {% endif %}
+  
+        {% if f.url %}
+          <p><a href="{{ f_url }}" class="btn {{ f.btn_class }}">{{ f.btn_label | default: site.data.ui-text[site.locale].more_label | default: "Learn More" }}</a></p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="713px" height="351px" viewBox="0 0 713 351" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+    <title>top-right-swoosh</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="82.1790632%" y1="-0.473917274%" x2="34.6134572%" y2="114.440607%" id="linearGradient-1">
+            <stop stop-color="#2B3990" offset="0%"></stop>
+            <stop stop-color="#1E62A7" offset="16%"></stop>
+            <stop stop-color="#1485BC" offset="32%"></stop>
+            <stop stop-color="#0BA1CC" offset="49%"></stop>
+            <stop stop-color="#05B4D7" offset="66%"></stop>
+            <stop stop-color="#01C0DE" offset="83%"></stop>
+            <stop stop-color="#00C4E0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="-31668%" y1="78954%" x2="-19806%" y2="78954%" id="linearGradient-2">
+            <stop stop-color="#2B3990" offset="0%"></stop>
+            <stop stop-color="#1E62A7" offset="16%"></stop>
+            <stop stop-color="#1485BC" offset="32%"></stop>
+            <stop stop-color="#0BA1CC" offset="49%"></stop>
+            <stop stop-color="#05B4D7" offset="66%"></stop>
+            <stop stop-color="#01C0DE" offset="83%"></stop>
+            <stop stop-color="#00C4E0" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Home-page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop" transform="translate(-311.000000, 0.000000)">
+            <g id="Group-12" transform="translate(311.000000, -567.000000)">
+                <g id="Group">
+                    <path d="M0,913.415264 C415.137192,954.412661 748.475061,709.777986 831.626438,604.950621 C914.777815,500.123257 788.698695,0 788.698695,0 C652.028478,334.50277 403.532054,841.487046 0,913.583977 L0,913.415264 Z" id="Shape" fill="url(#linearGradient-1)" style="mix-blend-mode: multiply;"></path>
+                    <path d="M189,777.620901 C431.170892,786.627071 615.502363,632.790427 659.937906,569.015484 C704.373449,505.240541 636.340324,218 636.340324,218 C569.039343,416.980073 381.779294,706.922465 189,777.620901 Z" id="Shape" fill="url(#linearGradient-2)" style="mix-blend-mode: multiply;"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
