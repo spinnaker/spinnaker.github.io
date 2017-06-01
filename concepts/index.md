@@ -19,11 +19,7 @@ You use Spinnaker's cluster management features to view and manage your resource
 
 ### Server Group
 
-The base resource, the *Server Group*, identifies the machine instance profile on which to 
-execute images along with the number of instances. This resource is associated with a Load 
-Balancer and a Security Group. A Server Group also has basic configuration settings, such as 
-user account information and the region/zone in which images are deployed. When deployed, a 
-Server Group is a collection of virtual machines running software.
+The base resource, the *Server Group*, identifies the deployable artifact (VM image, Docker image, source location) and basic configuration settings such as number of instances, autoscaling policies, metadata, etc. This resource is associated with a Load Balancer and a Security Group. When deployed, a Server Group is a collection of instances of the running software (VM instances, Kubernetes replicat sets).
 
 Server groups follow the **application-stack-detail-version** naming convention.
 
@@ -39,13 +35,13 @@ groups are based on the **application-stack-detail** naming convention.
 
 ### Load Balancer
 
-A *Load Balancer* is associated with an ingress protocol and port range. It balances traffic among instances in its Server Group. Optionally, you can enable health checks for a load balancer, with flexiblity to define health criteria and specify the health check endpoint.
+A *Load Balancer* is associated with an ingress protocol and port range. It balances traffic among instances in its Server Groups. Optionally, you can enable health checks for a load balancer, with flexiblity to define health criteria and specify the health check endpoint.
 
 ### Security Group
 
 A *Security Group* defines network traffic access. It is effectively a set of firewall rules defined by an IP range (CIDR) along with a communication protocol (e.g., TCP) and port range.
 
-> Learn more on the [Clusters](/concepts/clusters/) page.
+> Learn more about cluster management on the [Clusters](/concepts/clusters/) page.
 
 ## Deployment Management
 
@@ -59,7 +55,7 @@ You use Spinnaker's deployment management features to construct and manage conti
 
 ### Stage
 
-A *Stage* in Spinnaker is an action that forms an atomic building block for a pipeline. You can sequence stages in a Pipeline in any order, though some stage sequences may be more common than others. Spinnaker comes pre-packaged with a number of stages such as Deploy, Resize, Disable, Manual Judgment, and many more. You can see the full list of stages and read about implementation details for each provider in the [Reference](/reference/providers) section.
+A *Stage* in Spinnaker is an action that forms an atomic building block for a pipeline. You can sequence stages in a Pipeline in any order, though some stage sequences may be more common than others. Spinnaker provides a number of stages such as Deploy, Resize, Disable, Manual Judgment, and many more. You can see the full list of stages and read about implementation details for each provider in the [Reference](/reference/providers) section.
 
 ### Deployment Strategies
 
@@ -67,4 +63,5 @@ A *Stage* in Spinnaker is an action that forms an atomic building block for a pi
 
 Spinnaker treats cloud-native deployment strategies as first class constructs, handling the underlying orchestration such as verifying health checks, disabling old server groups and enabling new server groups. Spinnaker supports the red/black (a.k.a. blue/green) strategy, with rolling red/black and canary strategies in active development.
 
-> Learn more on the [Pipelines](/concepts/pipelines/) page.
+> Learn more about deployment management on the [Pipelines](/concepts/pipelines/) page.
+
