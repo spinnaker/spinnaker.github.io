@@ -20,7 +20,7 @@ The list of contributors is growing with some core contributors below. Please re
 * [Cerner Corporation](http://cerner.com/)
 * [Google](https://opensource.google.com/)
 * [Kenzan](http://kenzan.com/)
-* [Microsoft/Azure Devops](https://github.com/azure-devops)
+* [Microsoft](https://opensource.microsoft.com/)
 * [Netflix](https://netflix.github.io/)
 * [Oracle](http://oracle.com/)
 * [Pivotal](http://pivotal.io/)
