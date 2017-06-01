@@ -1,13 +1,13 @@
 ---
 layout: single
-title:  "Getting Started with Halyard"
+title:  "Halyard on GKE Quickstart"
 sidebar:
   nav: guides
 ---
 
 {% include toc %}
 
-In this codelab, you will learn the basics of [halyard](/setup/install/halyard/), Spinnaker's tool for managing your Spinnaker instance. 
+In this quickstart, you will learn the basics of [Halyard](/setup/install/halyard/), Spinnaker's tool for managing your Spinnaker instance.
 
 ## Overview
 
@@ -18,12 +18,12 @@ In our scenario, we want to create a Spinnaker instance and set it up as follows
 * We can pull Docker images from our Google Container Registry
 * We use GCS as our persistence store
 
-For this exercise we will be operating entirely within one GCP project, and use Google Container Engine (GKE) as our Kubernetes cluster. 
+For this exercise we will be operating entirely within one GCP project, and use Google Container Engine (GKE) as our Kubernetes cluster.
 
-{% include figure 
-    image_path="./deployment.png" 
-    alt="image of deployed environment including halyard vm" 
-    caption="How your Kubernetes cluster can look at the end of this guide, with an app 
+{% include figure
+    image_path="./deployment.png"
+    alt="image of deployed environment including halyard vm"
+    caption="How your Kubernetes cluster can look at the end of this guide, with an app
     deployed (not covered)." %}
 
 ## Part 0: Preparation
@@ -105,7 +105,8 @@ gcloud compute instances create $HALYARD_HOST \
 SSH into the VM. We specify port forwarding because at the end of this exercise you'll be port forwarding from this VM to Spinnaker running in the Kubernetes cluster. That is, you'll be port forwarding twice: from your workstation browser to this GCE VM, and from this GCE VM to the Kubernetes cluster.
 
 > :warning: You need to SSH into the Halyard host VM from your local
-> workstation; SSHing from [Cloud Shell](https://cloud.google.com/shell/) or
+> workstation; SSHing from [Cloud Shell](https://cloud.google.com/shell/), a
+> Chromebook or
 > another VM won't open the necessary SSH tunnels that will allow your local
 > web browser to access Spinnaker.
 
@@ -226,7 +227,7 @@ hal deploy apply
 ```
 
 > :point_right: Halyard will warn you that you have deployed Spinnaker remotely
-> without configuring an authentication mechanism. This is OK, but cumbersome, 
+> without configuring an authentication mechanism. This is OK, but cumbersome,
 > since we can connect via SSH tunnels. If you want to configure
 > authentication, read more in the [security documentation](/setup/security).
 
