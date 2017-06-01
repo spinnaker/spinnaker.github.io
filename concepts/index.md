@@ -19,7 +19,7 @@ You use Spinnaker's cluster management features to view and manage your resource
 
 ### Server Group
 
-The base resource, the *Server Group*, identifies the deployable artifact (VM image, Docker image, source location) and basic configuration settings such as number of instances, autoscaling policies, metadata, etc. This resource is associated with a Load Balancer and a Security Group. When deployed, a Server Group is a collection of instances of the running software (VM instances, Kubernetes replicat sets).
+The base resource, the *Server Group*, identifies the deployable artifact (VM image, Docker image, source location) and basic configuration settings such as number of instances, autoscaling policies, metadata, etc. This resource is associated with a Load Balancer and a Security Group. When deployed, a Server Group is a collection of instances of the running software (VM instances, Kubernetes replica sets).
 
 Server groups follow the **application-stack-detail-version** naming convention.
 
