@@ -1,6 +1,7 @@
 /* ==========================================================================
    FOOTER
    ========================================================================== */
+$footer-background: #38546a;
 
 .page__footer {
   @include full();
@@ -18,7 +19,7 @@
           animation: intro 0.3s both;
   -webkit-animation-delay: 0.45s;
           animation-delay: 0.45s;
-  background-color: $lighter-gray;
+  background-color: $footer-background;
   border-top: 1px solid $light-gray;
 
   footer {
@@ -52,7 +53,7 @@
 }
 
 .page__footer-follow {
-
+  color: white;
   ul {
     margin: 0;
     padding: 0;
@@ -74,7 +75,6 @@
   }
 
   a {
-    padding-right: 10px;
     font-weight: bold;
   }
 }

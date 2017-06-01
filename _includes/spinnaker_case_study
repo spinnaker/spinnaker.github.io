@@ -1,0 +1,19 @@
+{% assign study = page.[include.id] %}
+
+<div class="spin_case_study__wrapper">
+  <div class="spin_case_study__body">
+    <div class="spin_case_study__img">
+      <img {% if study.image_class %} class="{{study.image_class}}" {% endif %} src=
+        {% if study.image_path contains "://" %}
+          "{{ study.image_path }}"
+        {% else %}
+          "{{ study.image_path | absolute_url }}"
+        {% endif %}
+        alt="{% if study.alt %}{{ study.alt }}{% endif %}">
+    </div>
+    <h3 class="spin_case_study__title">{{study.title}}</h3>
+    {% for l in study.links %}
+      <a href="{{l.src}}" class="spin_case_study__label">{{l.label}}</a>
+    {% endfor %}
+  </div>    
+</div>

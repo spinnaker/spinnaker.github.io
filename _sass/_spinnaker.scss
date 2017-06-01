@@ -77,3 +77,287 @@ text.actor {
     font-size: 0.7rem;
   }
 }
+
+/*
+   Splash Page
+   ========================================================================== */
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url(/assets/fonts/SourceSansPro-Light.ttf) format("truetype");
+}
+
+$spin-light-blue: #e2f3f6;
+$spin-dark-blue: #139bb4;
+
+@mixin fullscreen {
+  width: 100vw;
+  position: absolute;
+  left: 0;
+}
+
+$header-height: 400px;
+
+.spin_header {
+  @include fullscreen();
+  height: $header-height;
+  background-color: $spin-dark-blue;
+  top: 0;
+
+  &__spin_text {
+    left: 40px;
+    top: 20px;
+    position: absolute;
+  }
+
+  &__swoosh {
+    top: 0;
+    right: 0;
+    position: absolute;
+    height: 115%;
+    opacity: 0.6;
+  }
+
+  &__text {
+    position: absolute;
+    top: 150px;
+    left: 40px;
+
+    h1, h2 {
+      border: none;
+      color: white;
+      font-weight: 100;
+      margin: 0;
+      line-height: 1;
+    }
+
+    h1 {
+      font-size: 3.4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+    }
+  }
+
+  &__push_down {
+    margin-top: $header-height + 50px;
+  }
+
+  &__nav {
+    @extend .greedy-nav;
+    background-color: transparent;
+    margin-top: 10px;
+    font-weight: 600;
+
+    a {
+      color: white;
+      font-size: large;
+      text-transform: uppercase;
+      &:hover {
+        text-decoration: none;
+        color: white !important;
+      }
+      &:before {
+        background: white !important;
+      }
+    }
+  }
+
+  ul.spin_call_to_action {
+    list-style: none;
+    margin-top: 280px;
+
+    li {
+      display: block;
+      float: left;
+      margin-right: 30px;
+      font-weight: 600;
+      font-size: large;
+      a {
+        color: white;
+      }
+    }
+  }
+}
+
+.splash__item {
+  &-body {
+    text-align: left;
+  }
+
+  &-excerpt {
+    p {
+      font-size: 0.9rem;
+    }
+  }
+
+  &-teaser {
+    width: 13% !important;
+
+    .best_practices_img {
+      width: 65% !important;
+    }
+  }
+}
+
+h2.splash__item-title {
+  border: none;
+}
+
+.splash__wrapper {
+  @extend .feature__wrapper;
+  border: none;
+  margin-bottom: 0;
+}
+
+.splash__item {
+  @extend .archive__item;
+
+  .splash__item-teaser {
+    @extend .archive__item-teaser;
+    width: 10%;
+    box-shadow: none !important;
+  }
+}
+
+h2.splash__item-title {
+  border: none;
+  padding: 0;
+  color: $spin-dark-blue;
+  font-weight: 100;
+  margin-left: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1.spin__heading {
+  border: none;
+  padding: 0;
+  color: $spin-dark-blue;
+  font-weight: 100;
+  margin-left: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.spin_row {
+  width: span(12 of 12);
+  margin-bottom: 1rem;
+  @include clearfix();
+}
+
+.spin_feature_box {
+  &__wrapper {
+    border-top: 10px solid white;
+    border-right: 40px solid white;
+    float: left;
+    background-color: #f2f2f2;
+    padding: 1.5rem 2rem .5rem 2rem;
+    width: span(6 of 12);
+    height: 200px;
+  }
+
+  &__title {
+    color: $spin-dark-blue;
+    margin: 0 0 .7rem 0;
+  }
+}
+
+.spin_case_study {
+  &__wrapper {
+    float: left;
+    width: span(6 of 12);
+  }
+
+  &__title {
+    font-size: large;
+    font-weight: normal;
+    font-style: italic;
+    margin-top: 0;
+  }
+
+  &__label {
+    font-weight: 600;
+    font-size: large;
+    margin-right: 20px;
+  }
+  
+  &__img {
+    width: 50%;
+  }
+
+  &__netflix {
+    width: 60%;
+  }
+}
+
+$blue-bar-height: 400px;
+$white-bar-height: 150px;
+$cloud-providers-bar-height: $blue-bar-height + $white-bar-height;
+
+.spin_cloud_providers {
+  &__blue {
+    @include fullscreen();
+    background-color: $spin-light-blue;
+    height: $blue-bar-height;
+    > img {
+      height: 110%;
+      margin-top: 50px;
+    }
+  }
+
+  &__push_down {
+    margin-top: $cloud-providers-bar-height;
+  }
+
+
+  &__header {
+    border: none;
+    padding: 0;
+    color: $spin-dark-blue;
+    font-weight: 100;
+    margin-left: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    position: absolute;
+    left: 100px;
+    top: 30px;
+  }
+
+  .spin_row {
+    position: absolute;
+    top: 150px;
+    left: 12vw;
+  }
+
+  .spin_cloud_provider {
+
+    &__wrapper {
+      float: left;
+      width: span(2 of 12);
+      img {
+        display: block;
+        margin: auto;
+      }
+    }
+
+    &__aws {
+      width: 11vw;
+    }
+
+    &__gcp {
+      width: 10vw;
+    }
+
+    &__k8s {
+      width: 7vw;
+    }
+
+    &__azure {
+      filter: invert(1);
+      width: 20vw;
+      margin-top: 10px !important;
+    }
+
+    &__os {
+      width: 6vw;
+    }
+  }
+}
