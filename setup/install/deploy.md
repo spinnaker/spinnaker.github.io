@@ -7,10 +7,24 @@ sidebar:
 
 Now that we've picked a [Deployment Environment](/setup/install/environment/),
 configured [Persistent Storage](/setup/install/storage/), and enabled a [Cloud
-Provider](/setup/install/providers/) we're ready to
-deploy Spinnaker with the following command:
+Provider](/setup/install/providers/) we're ready to pick a version of Spinnaker
+and deploy it. First, list the available versions:
 
+```bash
+hal version list
 ```
+
+You can follow the links to their changelogs to see what features each version
+has included since the last release. Once you've picked a version (e.g.
+`VERSION=1.0.0`), you can set it with 
+
+```bash
+hal config version edit --version $VERSION
+```
+
+And finally, deploy Spinnaker with the following command:
+
+```bash
 hal deploy apply
 ```
 
