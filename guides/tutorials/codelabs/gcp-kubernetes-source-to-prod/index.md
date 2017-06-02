@@ -29,41 +29,20 @@ that employ best practices in several key areas. The sequence of events is:
 ## Part 0: Set up Your Environment
 
 This codelab assumes you have git on your local workstation, a Github account,
-and a billing-enabled GCP project. Also, some screens might vary slightly if
-this isn't your first time settings things up!
+and a billing-enabled GCP project.
 
 ### Install gcloud
 
-If you have gcloud installed, skip to the next section, *[Enable APIs](#enable-apis)*.
-
-Install gcloud by running the following command and following through the
-prompts:
-
-    curl https://sdk.cloud.google.com | bash
-
-Authenticate gcloud to your account with your email address:
-
-    gcloud auth login {YOUR_EMAIL_ADDRESS}
-
-Point gcloud to your GCP project:
-
-    gcloud config set project {YOUR_GCP_PROJECT_ID}
+If you don't already have gcloud installed, [install gcloud](https://cloud.google.com/sdk/downloads#interactive).
 
 ### Enable APIs
 
-Enable Cloud Builder API:
+* Enable the [Google Cloud Container Builder API](https://console.cloud.google.com/apis/api/cloudbuild.googleapis.com/overview)
+in the Google Cloud Console.
 
-* Navigate to the [API Manager](https://console.cloud.google.com/apis/api/cloudbuild.googleapis.com/overview)
-page for Google Cloud Container Builder API.
+* Enable the [Google Container Registry API](https://pantheon.corp.google.com/apis/api/containerregistry.googleapis.com/overview).
 
-![Enable Cloud Build API](images/001_enable_cloudbuild_api.png)
-
-* Click the *ENABLE* button.
-* You can ignore the warning about the need to create a service account.
-
-Do the same to enable [Google Container Registry](https://console.cloud.google.com/gcr).
-
-And the [Google Identity and Access Management (IAM) API](https://console.cloud.google.com/apis/api/iam.googleapis.com/overview).
+* Enable the [Google Identity and Access Management (IAM) API](https://console.cloud.google.com/apis/api/iam.googleapis.com/overview).
 
 ### Create a Kubernetes cluster (GKE)
 
@@ -243,10 +222,10 @@ staging environment. We want this pipeline to be kicked off when a new image
 tag is pushed to the container registry for our app.
 
 Navigate to the [PIPELINES](http://localhost:9000/#/applications/codelab/executions)
-page and click the *New* button. Name it "Deploy to Stage" and click the
+page and click the *Create* button. Name it "Deploy to Stage" and click the
 *Create Pipeline* button.
 
-* Click *Add Trigger*.
+* Under the *Automated Triggers* heading, click *Add Trigger*.
 
 ![Add trigger](images/012_d2s_trigger.png)
 
@@ -260,7 +239,7 @@ Take the image that triggered this pipeline and deploy to "stage" environment:
 
 * Click *Add Stage*.
 * Select "Deploy" in the *Type* drop down.
-* In the *Server Groups* section, click *Add server group*.
+* Under the *Deploy Configuration* section, click *Add server group*.
 * Choose the kubernetes provider and click *Next*.
 * In the *Template Selection* dialog that appears, click the *Continue without
 a template* button.
@@ -286,10 +265,10 @@ stage deployment. We want this pipeline to kick off when the "Deploy to Stage"
 pipeline completes successfully.
 
 From the [PIPELINES](http://localhost:9000/#/applications/codelab/executions)
-page, click the *New* button. Name it "Validate" and click the *Create Pipeline*
+page, click the *Create* button. Name it "Validate" and click the *Create Pipeline*
 button.
 
-* Click *Add Trigger*.
+* Under the *Automated Triggers* heading, click *Add Trigger*.
 
 ![Add trigger](images/014_val_trigger.png)
 
@@ -315,10 +294,10 @@ This promotion pipeline takes what was previously deployed and validated in
 when the "Validate" pipeline completes successfully.
 
 From the [PIPELINES](http://localhost:9000/#/applications/codelab/executions)
-page, click the *New* button. Name it "Promote to Prod" and click the *Create
+page, click the *Create* button. Name it "Promote to Prod" and click the *Create
 Pipeline* button.
 
-* Click *Add Trigger*.
+* Under the *Automated Triggers* heading, click *Add Trigger*.
 
 ![Add trigger](images/015_p2p_trigger.png)
 
