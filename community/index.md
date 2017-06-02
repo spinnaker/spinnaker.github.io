@@ -17,6 +17,7 @@ The Spinnaker OSS project was started at Netflix, and today thrives on the contr
 
 The list of contributors is growing with some core contributors below. Please reach out to us with a PR or on slack if you'd like to be added to this list!
 
+* [Armory](http://www.armory.io/)
 * [Cerner Corporation](http://cerner.com/)
 * [Google](https://opensource.google.com/)
 * [Kenzan](http://kenzan.com/)
