@@ -90,7 +90,7 @@ $spin-light-blue: #e2f3f6;
 $spin-dark-blue: #139bb4;
 
 @mixin fullscreen {
-  width: 100vw;
+  width: 100%;
   position: absolute;
   left: 0;
 }
@@ -103,10 +103,32 @@ $header-height: 400px;
   background-color: $spin-dark-blue;
   top: 0;
 
-  &__spin_text {
-    left: 40px;
-    top: 20px;
-    position: absolute;
+  &__inner_wrap {
+    @include container;
+    @include clearfix;
+
+    padding: 0 0.5em;
+
+    @include breakpoint($x-large) {
+      max-width: $x-large;
+    }
+
+    a:hover {
+      text-decoration: none;
+
+      img {
+        box-shadow: none;
+      }
+    }
+  }
+
+  .masthead {
+    border-bottom-width: 0;
+    background-color: transparent;
+  }
+
+  .greedy-nav {
+    background-color: transparent;
   }
 
   &__swoosh {
@@ -118,15 +140,14 @@ $header-height: 400px;
   }
 
   &__text {
-    position: absolute;
-    top: 150px;
-    left: 40px;
+    position: relative;
+    margin-top: 3rem;
 
     h1, h2 {
       border: none;
       color: white;
       font-weight: 100;
-      margin: 0;
+      margin: 10px;
       line-height: 1;
     }
 
@@ -143,29 +164,12 @@ $header-height: 400px;
     margin-top: $header-height + 50px;
   }
 
-  &__nav {
-    @extend .greedy-nav;
-    background-color: transparent;
-    margin-top: 10px;
-    font-weight: 600;
-
-    a {
-      color: white;
-      font-size: large;
-      text-transform: uppercase;
-      &:hover {
-        text-decoration: none;
-        color: white !important;
-      }
-      &:before {
-        background: white !important;
-      }
-    }
-  }
-
   ul.spin_call_to_action {
     list-style: none;
-    margin-top: 280px;
+    margin: 0 10px;
+    padding: 0;
+    position: absolute;
+    bottom: 10px;
 
     li {
       display: block;
@@ -294,6 +298,13 @@ $white-bar-height: 150px;
 $cloud-providers-bar-height: $blue-bar-height + $white-bar-height;
 
 .spin_cloud_providers {
+  &__swoosh {
+    position: absolute;
+    left: 0;
+    z-index: 10;
+    margin-top: 8em;
+  }
+
   &__blue {
     @include fullscreen();
     background-color: $spin-light-blue;
@@ -301,6 +312,17 @@ $cloud-providers-bar-height: $blue-bar-height + $white-bar-height;
     > img {
       height: 110%;
       margin-top: 50px;
+    }
+  }
+
+  &__wrapper {
+    @include container;
+    @include clearfix;
+
+    padding: 0 0.5em;
+
+    @include breakpoint($x-large) {
+      max-width: $x-large;
     }
   }
 
@@ -316,22 +338,20 @@ $cloud-providers-bar-height: $blue-bar-height + $white-bar-height;
     font-weight: 100;
     margin-left: 0;
     font-family: 'Source Sans Pro', sans-serif;
-    position: absolute;
-    left: 100px;
-    top: 30px;
+    margin-top: 1em;
   }
 
-  .spin_row {
-    position: absolute;
-    top: 150px;
-    left: 12vw;
+  .provider_row {
+    margin-bottom: 1rem;
+    @include clearfix();
+    margin-top: 100px;
   }
 
   .spin_cloud_provider {
 
     &__wrapper {
       float: left;
-      width: span(2 of 12);
+      width: span(1 of 5);
       img {
         display: block;
         margin: auto;

@@ -112,37 +112,20 @@ waze_case_study:
 
 
 <div class="spin_header">
-   <img class="spin_header__swoosh" src="{{ "assets/images/top-right-swoosh.svg" | absolute_url }}" alt="Spinnaker Swoosh"/>
-   <img class="spin_header__spin_text" src="{{ "assets/images/spinnaker-text-white.svg" | absolute_url }}" alt="Spinnaker Logo"/>
-   <div class="spin_header__text">
-       <h1>Continuous Delivery for Enterprise</h1>
-       <h2>Fast, safe, repeatable deployments</h2>
-   </div>
-   <div class="masthead__menu">
-     <nav id="site-nav" class="spin_header__nav">
-       <ul class="visible-links">
-         {% for link in site.data.navigation.main %}
-           {% if link.url contains 'http' %}
-             {% assign domain = '' %}
-           {% else %}
-             {% assign domain = site.url | append: site.baseurl %}
-           {% endif %}
-           <li class="masthead__menu-item">
-             {% if page.url contains link.url %}
-               <a href="{{ domain }}{{ link.url }}" class="active">{{ link.title | capitalize }}</a>
-             {% else %}
-               <a href="{{ domain }}{{ link.url }}">{{ link.title | capitalize }}</a>
-             {% endif %}
-           </li>
-         {% endfor %}
-       </ul>
-       <ul class="hidden-links hidden"></ul>
-     </nav>
-   </div>
-   <ul class="spin_call_to_action">
-     <li><a href="/concepts/">GET STARTED</a></li>
-     <li><a href="/setup/">INSTALL LATEST</a></li>
-   </ul>
+  <img class="spin_header__swoosh" src="{{ "assets/images/top-right-swoosh.svg" | absolute_url }}" alt="Spinnaker Swoosh"/>
+  <div class="spin_header__inner_wrap">
+    
+    {% include masthead.html %}
+    
+    <div class="spin_header__text">
+      <h1>Continuous Delivery for Enterprise</h1>
+      <h2>Fast, safe, repeatable deployments</h2>
+    </div>
+    <ul class="spin_call_to_action">
+      <li><a href="/concepts/">GET STARTED</a></li>
+      <li><a href="/setup/">INSTALL LATEST</a></li>
+    </ul>
+  </div>
 </div>
 
 <div class="spin_header__push_down">
@@ -153,17 +136,19 @@ waze_case_study:
 {% include splash_feature_row id="active_community_row" type="right" %}
 </div>
 <div class="spin_cloud_providers">
-    <div class="spin_cloud_providers__blue">
-        <h1 class="spin_cloud_providers__header">Supported Cloud Providers</h1>
-        <img src="{{ "assets/images/left-swoosh.svg" | absolute_url }}" alt="Spinnaker Swoosh"/>
-        <div class="spin_row">
-            {% include spinnaker_cloud_provider id="aws_provider" %}
-            {% include spinnaker_cloud_provider id="gcp_provider" %}
-            {% include spinnaker_cloud_provider id="k8s_provider" %}
-            {% include spinnaker_cloud_provider id="azure_provider" %}
-            {% include spinnaker_cloud_provider id="os_provider" %}
-        </div>
+  <img class="spin_cloud_providers__swoosh" src="{{ "assets/images/left-swoosh.svg" | absolute_url }}" alt="Spinnaker Swoosh"/>
+  <div class="spin_cloud_providers__blue">
+    <div class="spin_cloud_providers__wrapper">
+      <h1 class="spin_cloud_providers__header">Supported Cloud Providers</h1>
+      <div class="provider_row">
+          {% include spinnaker_cloud_provider id="aws_provider" %}
+          {% include spinnaker_cloud_provider id="gcp_provider" %}
+          {% include spinnaker_cloud_provider id="k8s_provider" %}
+          {% include spinnaker_cloud_provider id="azure_provider" %}
+          {% include spinnaker_cloud_provider id="os_provider" %}
+      </div>
     </div>
+  </div>  
 </div>
 
 <h1 class="spin__heading spin_cloud_providers__push_down">Features List</h1>
