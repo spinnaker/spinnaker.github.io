@@ -73,7 +73,7 @@ ssh -L 8080:localhost:8080 -L 9000:localhost:9000 -L 8084:localhost:8084 -L 8087
   
     ![New Application](images/2-create-application.png)
   
-    You can read more how the Spinnaker application matches to Azure resources in the [Azure reference for Spinnaker](/reference/providers/azure.md)
+    You can read more how the Spinnaker application matches to Azure resources in the [Azure reference for Spinnaker](/reference/providers/azure/)
 
 ### II. Create a Security Group"
 
@@ -94,7 +94,7 @@ ssh -L 8080:localhost:8080 -L 9000:localhost:9000 -L 8084:localhost:8084 -L 8087
 
   > Note: We are using westus for the region but you can select any other region that is closer to your location. Be careful to match the region in the following steps.
 
-  You can read more about the implementation of Security Groups in Azure in the [Azure reference for Spinnaker](/reference/providers/azure.md)
+  You can read more about the implementation of Security Groups in Azure in the [Azure reference for Spinnaker](/reference/providers/azure/)
 
 ### III. Create a Load Balancer
 
@@ -116,7 +116,7 @@ ssh -L 8080:localhost:8080 -L 9000:localhost:9000 -L 8084:localhost:8084 -L 8087
 
     ![Create test load balancer](images/2-create-test-load-balancer.png)
 
-    You can learn more about the implementation of the Spinnaler Load Balancer in the [Azure reference for Spinnaker](/reference/provider/azure.md)
+    You can learn more about the implementation of the Spinnaler Load Balancer in the [Azure reference for Spinnaker](/reference/providers/azure/)
 
 1. Repeat the above steps to create a second load balancer for production. Use the same parameters but the following change:
   * Stack: prod 
