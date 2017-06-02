@@ -60,7 +60,7 @@ You can always update Halyard by running the following commands.
 
 ```bash
 sudo apt-get update
-sudo apt-get upgrade halyard
+sudo apt-get upgrade spinnaker-halyard
 ```
 
 ## Uninstalling Halyard
