@@ -285,7 +285,7 @@ In this section we will add the steps that will promote the deployment to test i
 
 In this step you will try out the pipeline that you have just build. 
 
-1. Got to [Jenkins](http://localhost:8080) and launch a new build of the "Sample Aptly Job". After some minutes, you should see your pipeline running. 
+1. Got to [Jenkins](http://localhost:8080) and launch a new build of the "Sample Aptly Job" like you did in the [*Configure Jenkins* section](#1-configure-jenkins). After some minutes, you should see your pipeline running. 
 
    You can also click on *Start Manual Execution* on your pipeline. 
 
