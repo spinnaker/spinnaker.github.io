@@ -7,7 +7,7 @@ spinnaker_row:
   alt: "Spinnaker Logo"
 multi_cloud_row: 
   title: Multi-Cloud
-  excerpt: "Deploy across multiple cloud providers including AWS EC2, Google Compute Engine, Google Container Engine, Google App Engine, Microsoft Azure, Openstack, Oracle BareMetal, DC/OS, and Kubernetes."
+  excerpt: "Deploy across multiple cloud providers including AWS EC2, Kubernetes, Google Compute Engine, Google Container Engine, Google App Engine, Microsoft Azure, and Openstack, with Oracle Bare Metal and DC/OS coming soon."
   image_path: assets/images/cloud.svg
   alt: "Multi-Cloud Logo"
 automated_releases_row: 
@@ -43,7 +43,7 @@ os_provider:
   image_class: spin_cloud_provider__os
 active_community_row:
   title: Active Community
-  excerpt: "Join a community that includes Netflix, Google, Microsoft, Pivotal, Veritas, Target, Kenzan, Schibsted, and many others, actively working to maintain and improve Spinnaker."
+  excerpt: "Join a community that includes Netflix, Google, Microsoft, Veritas, Target, Kenzan, Schibsted, and many others, actively working to maintain and improve Spinnaker."
   image_path: assets/images/community.svg
 ci_integrations_feature:
   title: CI Integrations
@@ -82,7 +82,7 @@ netflix_case_study:
   alt: "Netflix Logo"
   links: 
     - label: READ MORE
-      src: "https://medium.com/netflix-techblog/how-we-build-code-at-netflix-c5d9bd727f15"
+      src: "https://medium.com/netflix-techblog/global-continuous-delivery-with-spinnaker-2a6896c23ba7"
 waze_case_study:
   title: Multi-cloud continuous delivery using Spinnaker at Waze
   image_path: assets/images/waze_logo.jpg
