@@ -27,6 +27,7 @@ registry of choice:
 
 * [DockerHub](#dockerhub)
 * [Google Container Registry](#google-container-registry)
+* [Other Registries](#other-registries)
 
 ### DockerHub
 
@@ -47,6 +48,10 @@ your list of repositories would look like:
 ```bash
 REPOSITORIES=library/nginx yourusername/app
 ```
+
+> __NOTE__: Keep in mind that the repository name is typically either prefixed
+> with `library/` for most public images, or `<username>/` for images belonging
+> to user `<username>/`.
 
 If any of your images aren't publicly available, make sure you know your
 DockerHub username & password to supply to `hal` later:
@@ -69,8 +74,8 @@ ADDRESS=gcr.io
 
 Google Container Registry (GCR) supports the
 [catalog](https://docs.docker.com/registry/spec/api/#listing-repositories)
-endpoint to programatically list all images available to your credentials, so 
-you don't need to worry about supplying them by hand. However, supplying 
+endpoint to programatically list all images available to your credentials, so
+you don't need to worry about supplying them by hand. However, supplying
 credentials is not straight-forward.
 
 There are [two
@@ -80,8 +85,8 @@ for Spinnaker since the access token is short-lived. The second, using a
 [service
 account](https://cloud.google.com/compute/docs/access/service-accounts) is
 preferred. The following steps will guide you through creating & downloading a
-service account to be used as your password with the required 
-`roles/storage.admin` role, assuming the registry exists in your currently 
+service account to be used as your password with the required
+`roles/storage.admin` role, assuming the registry exists in your currently
 configured `gcloud` project.
 
 ```bash
@@ -113,12 +118,31 @@ track of these environment vars to be passed to `hal` later:
 
 ```bash
 # this is always the username for this authentication format
-USERNAME=_json_key 
+USERNAME=_json_key
 PASSWORD_FILE=$SERVICE_ACCOUNT_DEST
 ```
 
-> :warning: You will want to supply `--password-file $PASSWORD_FILE` rather than 
+> :warning: You will want to supply `--password-file $PASSWORD_FILE` rather than
 > `--password $PASSWORD` below.
+
+### Other Registries
+
+Most registries will fit either the Dockerhub or GCR pattern described above,
+or some mix of the two. In all cases you will need to know the FQDN of the
+registry, and your username/password pair if you are accessing private images.
+If your registry supports the [`/_catalog`
+endpoint](https://docs.docker.com/registry/spec/api/#listing-repositories) you
+do not have to list your repositories. If it does not, keep in mind that the
+repository names are generally of the form `<username>/<image name>`. Halyard
+will verify this for you.
+
+| Registry | FQDN | Catalog |
+|----------|------|:-------:|
+| GCR | gcr.io, eu.gcr.io, us.gcr.io, asia.gcr.io, b.gcr.io | Yes |
+| DockerHub | index.docker.io | No |
+| Quay | quay.io | Yes |
+| ECR | `account-id`.dkr.ecr.`region`.amazon.aws.com | ? |
+| JFrog Artifactory | `server`-`repo`.jfrog.io | ? |
 
 ## Adding an Account
 
