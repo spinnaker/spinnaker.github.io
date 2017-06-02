@@ -5,7 +5,7 @@ sidebar:
   nav: reference
 ---
 
-Published: 2017-05-31 19:49:01
+Published: 2017-06-02 16:22:38
 _Version: 0.21.0-SNAPSHOT_
 
 # Table of Contents
@@ -1335,7 +1335,7 @@ hal config provider azure bakery base-image add BASE-IMAGE [parameters]
  * `--publisher`: (*Required*) The Publisher name for your base image. See https://aka.ms/azspinimage to get a list of images.
  * `--short-description`: A short description to help human operators identify the image.
  * `--sku`: (*Required*) The SKU for your base image. See https://aka.ms/azspinimage to get a list of images.
- * `--template-file`: This is the name of the packer template that will be used to bake images from this base image. The template file must be found in this list https://github.com/spinnaker/rosco/tree/master/rosco-web/config/packer. In the future, halyard will support custom packer templates as well.
+ * `--template-file`: This is the name of the packer template that will be used to bake images from this base image. The template file must be found in this list https://github.com/spinnaker/rosco/tree/master/rosco-web/config/packer, or supplied as described here: https://spinnaker.io/setup/bakery/
 
 ---
 ## hal config provider azure bakery base-image delete
@@ -1370,7 +1370,7 @@ hal config provider azure bakery base-image edit BASE-IMAGE [parameters]
  * `--publisher`: The Publisher name for your base image. See https://aka.ms/azspinimage to get a list of images.
  * `--short-description`: A short description to help human operators identify the image.
  * `--sku`: The SKU for your base image. See https://aka.ms/azspinimage to get a list of images.
- * `--template-file`: This is the name of the packer template that will be used to bake images from this base image. The template file must be found in this list https://github.com/spinnaker/rosco/tree/master/rosco-web/config/packer. In the future, halyard will support custom packer templates as well.
+ * `--template-file`: This is the name of the packer template that will be used to bake images from this base image. The template file must be found in this list https://github.com/spinnaker/rosco/tree/master/rosco-web/config/packer, or supplied as described here: https://spinnaker.io/setup/bakery/
 
 ---
 ## hal config provider azure bakery base-image get
@@ -1988,7 +1988,7 @@ hal config provider google bakery base-image add BASE-IMAGE [parameters]
  * `--short-description`: A short description to help human operators identify the image.
  * `--source-image`: The source image. If both source image and source image family are set, source image will take precedence.
  * `--source-image-family`: The source image family to create the image from. The newest, non-deprecated image is used.
- * `--template-file`: This is the name of the packer template that will be used to bake images from this base image. The template file must be found in this list https://github.com/spinnaker/rosco/tree/master/rosco-web/config/packer. In the future, halyard will support custom packer templates as well.
+ * `--template-file`: This is the name of the packer template that will be used to bake images from this base image. The template file must be found in this list https://github.com/spinnaker/rosco/tree/master/rosco-web/config/packer, or supplied as described here: https://spinnaker.io/setup/bakery/
 
 ---
 ## hal config provider google bakery base-image delete
@@ -2022,7 +2022,7 @@ hal config provider google bakery base-image edit BASE-IMAGE [parameters]
  * `--short-description`: A short description to help human operators identify the image.
  * `--source-image`: The source image. If both source image and source image family are set, source image will take precedence.
  * `--source-image-family`: The source image family to create the image from. The newest, non-deprecated image is used.
- * `--template-file`: This is the name of the packer template that will be used to bake images from this base image. The template file must be found in this list https://github.com/spinnaker/rosco/tree/master/rosco-web/config/packer. In the future, halyard will support custom packer templates as well.
+ * `--template-file`: This is the name of the packer template that will be used to bake images from this base image. The template file must be found in this list https://github.com/spinnaker/rosco/tree/master/rosco-web/config/packer, or supplied as described here: https://spinnaker.io/setup/bakery/
 
 ---
 ## hal config provider google bakery base-image get
