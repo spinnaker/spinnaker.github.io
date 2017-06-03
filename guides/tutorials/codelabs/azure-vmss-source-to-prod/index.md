@@ -290,7 +290,7 @@ In this section you will create a Spinnaker pipeline that will bake the image fr
 
 In this step you will try out the pipeline that you have just built. 
 
-1. Go to [Jenkins](http://localhost:8080) and start a new build of the "Sample Aptly Job" like you did in the [*Configure Jenkins* section](#1-configure-jenkins). You should see your Spinnaker pipeline running soon after your Jenkins job finishes. 
+1. Go to [Jenkins](http://localhost:8080) and start a new build of the "Sample Aptly Job" like you did in the section "[Verify Jenkins](#2-verify-jenkins)". You should see your Spinnaker pipeline running soon after your Jenkins job finishes. 
 
 1. Navigate to the [PIPELINES](http://localhost:9000/#/applications/codelab/executions) tab
 1. Click on *Details* to get more information about the status of your deployment
