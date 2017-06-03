@@ -7,63 +7,69 @@ sidebar:
 
 {% include toc %}
 
-In this codelab, you will create a source-to-prod continuous delivery flow from source to production for a simple java based application.
+In this codelab, you will create a source-to-prod continuous delivery pipeline for a simple java based application targeting VM Scale Sets in Azure.
 
 After completing this lab the following workflow will happen: 
-  1. Some code is checked in on gthub.
-  2. Jenkins automatically runs a job to create a new build. 
-  3. Spinnaker deploys the new version of the application to a Test server group and disable the previous deployment.
-  4. The deployment is verified
-  5. Spinnaker redeploys the same image to the production environment and disable the previous deployment.
+  1. A developer pushes a commit to Github
+  2. Jenkins automatically builds a Debian package and pushes it to an Aptly repository
+  3. Spinnake bakes the new package into an image
+  4. Spinnaker deploys to a test environment and disable the previous deployment
+  4. Spinnake waits for a manual judgement of the test environment
+  5. Spinnaker deploys the image to the production environment and disable the previous deployment.
   
-This codelab will walk through the steps to  implement this scenario: 
+This codelab will walk through the following steps to implement this scenario: 
 
-  * Setup the environment and the necessary pre-requisites
-  * Configure Jenkins and Spinnaker
-  * Create the pipeline for the deployment
+  * [Deploy Spinnaker and Jenkins on Azure](#1-deploy-spinnaker-and-jenkins-on-azure)
+  * [Verify Jenkins](#2-verify-jenkins)
+  * [Prepare your environments](#3-prepare-your-environments)
+  * [Create the Continuous Delivery pipeline](#4-create-the-continuous-delivery-pipeline)
+  * [Trigger your pipeline](#5-trigger-your-pipeline)
+  * [Clean up the environment](#6-tear-down)
 
-## 0. Environment pre-requisites 
 
-### Deploy Spinnaker and Jenkins on Azure 
+## 1. Deploy Spinnaker and Jenkins on Azure 
 
 You need the following resources to perform the codelab: 
 - **Azure subscription**: You can create one for free using the [Azure Free trial](https://azure.microsoft.com/free/).
-- **Spinnaker and Jenkins VM**: You can deploy them on your Azure subscription with the [Continuous Deployment quick start template](https://github.com/Azure/azure-quickstart-templates/tree/master/301-jenkins-aptly-spinnaker-vmss) 
+- **Spinnaker and Jenkins VM**:
 
-From a shell run the following command that will walk you through all the steps necessary to deploy Jenkins and Spinnaker in Azure:
+From a shell run the following command that will walk you through all the steps necessary to deploy Jenkins and Spinnaker in Azure.
+
+> NOTE: Be careful to select `vmss` when prompted so when you run the following script.
 
 ```bash 
 bash <(curl -sL https://aka.ms/DeployDevOps)
 ```
+ 
 
 In the output of the above script you will find the command to open an SSH tunnel to the DevOps VM that has just been deployed. The command should look like this: 
 
 ```bash
-ssh -L 8080:localhost:8080 -L 9000:localhost:9000 -L 8084:localhost:8084 -L 8087:localhost:8087 username@vmdnsprefix.selected_region.cloudapp.azure.com
+ssh -L 8080:localhost:8080 -L 9000:localhost:9000 -L 8084:localhost:8084 -L 8087:localhost:8087 username@fqdn_of_your_devops_vm
 ```
 
 > NOTE: You will have to enter the password that you have specified in the previous step.
 
 
-## 1. Configure Jenkins 
+## 2. Verify Jenkins 
 
-1. After you have started your ssh tunnel, navigate to `http://localhost:8080/` on your local machine.
+1. After you have started your ssh tunnel, navigate to [http://localhost:8080/](http://localhost:8080) on your local machine.
 1. The instance should already be unlocked and your first account setup. Login with the credentials you specified when deploying the template.
 1. Click **Install suggested plugins**: 
-   ![Install Jenkins plugins](images/1-Install-Jenkins-plugins.png)
+   ![Install Jenkins plugins](images/2-Install-Jenkins-plugins.png)
 1. Your Jenkins instance is now ready to use!
 1. Run the `Sample Aptly Job` by clicking on the run button for the job. Verify that the job completes successfully.
 
-   ![Run Jenkins job](images/1-run-sample-aplty-job.png)
+   ![Run Jenkins job](images/2-run-sample-aplty-job.png)
 
-## 2. Configure Spinnaker
+## 3. Prepare your environments
 
 ### I. Create the "codelab" application 
 
-1. Navigate to your Spinnaker VM by using `http://localhost:9000` on your local machine. 
+1. Navigate to your Spinnaker dashboard by using [http://localhost:9000](http://localhost:9000) on your local machine. 
 1. Click on the **Actions** menu on the right
 
-   ![Actions](images/2-actions-create-applications.png)
+   ![Actions](images/3-actions-create-applications.png)
    
 1. In the *New Application* window, enter the following values: 
   * Name: codelab
@@ -71,7 +77,7 @@ ssh -L 8080:localhost:8080 -L 9000:localhost:9000 -L 8084:localhost:8084 -L 8087
   
     And click **Create**
   
-    ![New Application](images/2-create-application.png)
+    ![New Application](images/3-create-application.png)
   
     You can read more how the Spinnaker application matches to Azure resources in the [Azure reference for Spinnaker](/reference/providers/azure/)
 
@@ -90,7 +96,7 @@ ssh -L 8080:localhost:8080 -L 9000:localhost:9000 -L 8084:localhost:8084 -L 8087
 
     And click **Create**, if the loadbalancer does not appear in the page once the creation is complete, refresh your browser.
 
-    ![New Security Group](images/2-create-security-group.png)
+    ![New Security Group](images/3-create-security-group.png)
 
   > Note: We are using westus for the region but you can select any other region that is closer to your location. Be careful to match the region in the following steps.
 
@@ -112,18 +118,23 @@ ssh -L 8080:localhost:8080 -L 9000:localhost:9000 -L 8084:localhost:8084 -L 8087
   * External Port: 80
   * Internal Port: 8080 
 
-    And click **Create**, this will take approximately 15 minutes to complete.
+    And click **Create**.
 
-    ![Create test load balancer](images/2-create-test-load-balancer.png)
+    ![Create test load balancer](images/3-create-test-load-balancer.png)
 
-    You can learn more about the implementation of the Spinnaler Load Balancer in the [Azure reference for Spinnaker](/reference/providers/azure/)
+    The virtual network *devopsVnet* and the subnets *devopsSubnet#* were created for you by the script that you ran in the [Deploy Spinnaker and Jenkins on Azure](#1-deploy-spinnaker-and-jenkins-on-azure) step.
+
+    You can learn more about the implementation of the Spinnaler Load Balancer in the [Azure reference for Spinnaker](/reference/providers/azure/).
+
 
 1. Repeat the above steps to create a second load balancer for production. Use the same parameters but the following change:
   * Stack: prod 
 
-    ![Create prod load balancer](images/2-create-prod-load-balancer.png)
+    ![Create prod load balancer](images/3-create-prod-load-balancer.png)
 
-## 3. Bake and Deploy to Test
+> NOTE: It will take approximately 15 minutes to provision the two loadbalancers.
+
+## 4. Create the Continuous Delivery pipeline
 
 In this section you will create a Spinnaker pipeline that will bake the image from a Jenkins build then deploy it to test.
 
@@ -132,7 +143,7 @@ In this section you will create a Spinnaker pipeline that will bake the image fr
 1. Navigate to the [PIPELINES](http://localhost:9000/#/applications/codelab/executions) page and click on the *New* button (+ sign) on the right to create a new pipeline.
 1. Name your pipeline: "Deploy codelab" and click **Create**.
 
-   ![Bake and Deploy to Test](images/3-create-new-pipeline.png)
+   ![Bake and Deploy to Test](images/4-create-new-pipeline.png)
 
 ### II. Add a trigger for the pipeline
 
@@ -143,7 +154,7 @@ In this section you will create a Spinnaker pipeline that will bake the image fr
   * Job: "hello-karyon-rxnetty"
   * Property File: leave empty 
 
-    ![Add a trigger](images/3-add-trigger.png)
+    ![Add a trigger](images/4-add-trigger.png)
 
 ### III. Add *Bake* stage
 
@@ -155,7 +166,7 @@ In this section you will create a Spinnaker pipeline that will bake the image fr
   * Package: ```hello-karyon-rxnetty```
   * Base OS: ubuntu (v14.05)
 
-    ![Add Bake](images/3-add-bake-stage.png)
+    ![Add Bake](images/4-add-bake-stage.png)
 
 ### IV. Add *Deploy to test* stage
 
@@ -165,13 +176,13 @@ In this section you will create a Spinnaker pipeline that will bake the image fr
   * Stage Name: Deploy to Test
   * Depends On: Bake
 
-    ![Add Deploy to Test](images/3-add-deploy-to-test.png)
+    ![Add Deploy to Test](images/4-add-deploy-to-test.png)
 
 ### V. Create Test deployment configuration
 
 1. Click *Add server group* in the Deploy Configuration section. 
 
-   ![Add server group](images/3-add-server-group.png)
+   ![Add server group](images/4-add-server-group.png)
 
 1. Click "Continue without a template"
 1. In the "Configure Deployment Cluster" enter the following values:
@@ -181,19 +192,19 @@ In this section you will create a Spinnaker pipeline that will bake the image fr
   * Details: tutorial
   * Load Balancers: codelab-test-frontend
 
-    ![Configure Deployment Cluster - 1](images/3-configure-deployment-cluster-1.png)
+    ![Configure Deployment Cluster - 1](images/4-configure-deployment-cluster-1.png)
     
-  * Subnets: devopsSubnet0
+  * Subnets: devopsSubnet2
   * Security Groups: codelab-web
 
-    ![Configure Deployment Cluster - 2](images/3-configure-deployment-cluster-2.png)
+    ![Configure Deployment Cluster - 2](images/4-configure-deployment-cluster-2.png)
 
   * "Advanced Settings": 
     - Custom Data: TEST
     - Custom Script: https://raw.githubusercontent.com/azure-devops/hello-karyon-rxnetty/master/scripts/setcustomenv.sh
     - Command To Execute: sudo bash ./setcustomenv.sh
 
-      ![Configure Deployment Cluster - 3](images/3-configure-deployment-cluster-3.png)
+      ![Configure Deployment Cluster - 3](images/4-configure-deployment-cluster-3.png)
 
   * Click **Add** 
 
@@ -222,13 +233,7 @@ In this section you will create a Spinnaker pipeline that will bake the image fr
   * Depends On: Enable Test Deployment
   * Instructions: Validate test cluster 
 
-Save the pipeline by clicking the *Save Changes* button at the bottom right.
-
-## 4. Promote to Prod
-
-In this section we will add the steps that will promote the deployment to test in production.
-
-### I. Add Deploy to prod stage
+### VIII. Add Deploy to prod stage
 
 1. Click *Add stage* in the *Promote to Prod* section. 
 1. Use the following values to configure the stage:
@@ -236,7 +241,7 @@ In this section we will add the steps that will promote the deployment to test i
   * Stage Name: Deploy to Prod
   * Depends On: Manual Judgment
 
-### II. Create Production deployment configuration 
+### IX. Create Production deployment configuration 
 
 1. Click *Add server group* in the Deploy Configuration section. 
 1. Click *Continue without a template*
@@ -252,7 +257,7 @@ In this section we will add the steps that will promote the deployment to test i
   * Subnets: devopsSubnet2
   * Security Groups: codelab-web
 
-    ![Configure Prod Cluster - 2](images/3-configure-deployment-cluster-2.png)
+    ![Configure Prod Cluster - 2](images/4-configure-deployment-cluster-2.png)
 
   * "Advanced Settings": 
     - Custom Data: PROD
@@ -265,10 +270,10 @@ In this section we will add the steps that will promote the deployment to test i
 
 > NOTE: Record the name of the cluster. it will be used in the next step.
 
-### III. Enable Prod deployment
+### X. Enable Prod deployment
 
 1. Click *Add stage* in the *Deploy codelab* section.
-1. Use the following values to configuret this stage: 
+1. Use the following values to configure this stage: 
   * Type: Enable Server Group
   * Stage Name: Enable Prod Deployment
   * Depends On: Deploy to Prod
@@ -281,13 +286,11 @@ In this section we will add the steps that will promote the deployment to test i
 
   * Click **Save Changes**
 
-## 5. Test it out 
+## 5. Trigger your pipeline 
 
-In this step you will try out the pipeline that you have just build. 
+In this step you will try out the pipeline that you have just built. 
 
-1. Got to [Jenkins](http://localhost:8080) and launch a new build of the "Sample Aptly Job" like you did in the [*Configure Jenkins* section](#1-configure-jenkins). After some minutes, you should see your pipeline running. 
-
-   You can also click on *Start Manual Execution* on your pipeline. 
+1. Go to [Jenkins](http://localhost:8080) and start a new build of the "Sample Aptly Job" like you did in the [*Configure Jenkins* section](#1-configure-jenkins). You should see your Spinnaker pipeline running soon after your Jenkins job finishes. 
 
 1. Navigate to the [PIPELINES](http://localhost:9000/#/applications/codelab/executions) tab
 1. Click on *Details* to get more information about the status of your deployment
