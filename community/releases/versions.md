@@ -10,12 +10,12 @@ sidebar:
 {% for post in reversed %}
   {% unless post.tags contains 'deprecated' %}
 #### {{ post.title }}  
-Released: {{ post.date }}  
+Released: {{ post.date | date_to_rfc822 }}  
 <a href="{{ post.url }}">Changelog</a>
   {% endunless %}
 {% endfor %}
 
-## Deprecated
+### Deprecated Versions
 {% for post in reversed %}
   {% if post.tags contains 'deprecated' %}
 #### {{ post.title }}  
