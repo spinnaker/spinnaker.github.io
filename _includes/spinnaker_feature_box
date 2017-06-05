@@ -1,6 +1,6 @@
 {% assign box = page.[include.id] %}
 
-<div class="spin_feature_box__wrapper">
+<div class="spin_feature_box__wrapper sm-col sm-col-12 md-col-6">
   <div class="spin_feature_box__body">
     <h3 class="spin_feature_box__title">{{box.title}}</h3>
     <p>{{box.content}}</p>
