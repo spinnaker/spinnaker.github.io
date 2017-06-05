@@ -41,6 +41,10 @@ os_provider:
   image_path: assets/images/os.png
   alt: "Openstack Logo"
   image_class: spin_cloud_provider__os
+appengine_provider:
+  image_path: assets/images/appengine.svg
+  alt: "App Engine Logo"
+  image_class: spin_cloud_provider__appengine
 active_community_row:
   title: Active Community
   excerpt: "Join a community that includes Netflix, Google, Microsoft, Veritas, Target, Kenzan, Schibsted, and many others, actively working to maintain and improve Spinnaker."
@@ -109,8 +113,6 @@ waze_case_study:
 #      src: "https://vimeo.com/208263013/e0bd26b92f"
 ---
 
-
-
 <div class="spin_header">
   <img class="spin_header__swoosh" src="{{ "assets/images/top-right-swoosh.svg" | absolute_url }}" alt="Spinnaker Swoosh"/>
   <div class="spin_header__inner_wrap">
@@ -140,47 +142,50 @@ waze_case_study:
   <div class="spin_cloud_providers__blue">
     <div class="spin_cloud_providers__wrapper">
       <h1 class="spin_cloud_providers__header">Supported Cloud Providers</h1>
-      <div class="provider_row">
-          {% include spinnaker_cloud_provider id="aws_provider" %}
-          {% include spinnaker_cloud_provider id="gcp_provider" %}
-          {% include spinnaker_cloud_provider id="k8s_provider" %}
-          {% include spinnaker_cloud_provider id="azure_provider" %}
-          {% include spinnaker_cloud_provider id="os_provider" %}
+      <div class="clearfix">
+        {% include spinnaker_cloud_provider id="aws_provider" %}
+        {% include spinnaker_cloud_provider id="gcp_provider" %}
+        {% include spinnaker_cloud_provider id="k8s_provider" %}
+      <div class="clearfix">
+        {% include spinnaker_cloud_provider id="azure_provider" %}
+        {% include spinnaker_cloud_provider id="os_provider" %}
+        {% include spinnaker_cloud_provider id="appengine_provider" %}
+      </div>
       </div>
     </div>
   </div>  
 </div>
 
 <h1 class="spin__heading spin_cloud_providers__push_down">Features List</h1>
-<div class="spin_row">
+<div class="clearfix">
   {% include spinnaker_feature_box id="ci_integrations_feature" %}
   {% include spinnaker_feature_box id="monitoring_integrations_feature" %}
 </div>
-<div class="spin_row">
+<div class="clearfix">
   {% include spinnaker_feature_box id="cli_feature" %}
   {% include spinnaker_feature_box id="deployment_strategies_feature" %}
 </div>
-<div class="spin_row">
+<div class="clearfix">
   {% include spinnaker_feature_box id="vm_bakery_feature" %}
   {% include spinnaker_feature_box id="notifications_feature" %}
 </div>
-<div class="spin_row">
+<div class="clearfix">
   {% include spinnaker_feature_box id="access_control_feature" %}
   {% include spinnaker_feature_box id="manual_judgments_feature" %}
 </div>
-<div class="spin_row">
+<div class="clearfix">
   {% include spinnaker_feature_box id="execution_windows_feature" %}
   {% include spinnaker_feature_box id="chaos_monkey_feature" %}
 </div>
 
-<h1 class="spin__heading">Case Studies</h1>
+<h1 class="spin__heading mt2">Case Studies</h1>
 
-<div class="spin_row">
+<div class="clearfix">
   {% include spinnaker_case_study id="netflix_case_study" %}
   {% include spinnaker_case_study id="waze_case_study" %}
 </div>
 
-<!-- <div class="spin_row">
+<!-- <div class="clearfix">
   {% include spinnaker_case_study id="target_case_study" %}
   {% include spinnaker_case_study id="intuit_case_study" %}
 </div> -->

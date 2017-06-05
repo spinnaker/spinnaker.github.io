@@ -1,6 +1,6 @@
 {% assign study = page.[include.id] %}
 
-<div class="spin_case_study__wrapper">
+<div class="sm-col sm-col-12 md-col-6">
   <div class="spin_case_study__body">
     <div class="spin_case_study__img">
       <img {% if study.image_class %} class="{{study.image_class}}" {% endif %} src=

@@ -252,11 +252,11 @@ h1.spin__heading {
   &__wrapper {
     border-top: 10px solid white;
     border-right: 40px solid white;
-    float: left;
     background-color: #f2f2f2;
     padding: 1.5rem 2rem .5rem 2rem;
-    width: span(6 of 12);
-    height: 200px;
+    @include breakpoint($medium) {
+      height: 200px;
+    }
   }
 
   &__title {
@@ -266,10 +266,6 @@ h1.spin__heading {
 }
 
 .spin_case_study {
-  &__wrapper {
-    float: left;
-    width: span(6 of 12);
-  }
 
   &__title {
     font-size: large;
@@ -297,21 +293,26 @@ $blue-bar-height: 400px;
 $white-bar-height: 150px;
 $cloud-providers-bar-height: $blue-bar-height + $white-bar-height;
 
+$blue-bar-mobile-height: 800px;
+$cloud-providers-bar-mobile-height: $blue-bar-mobile-height + $white-bar-height;
+
 .spin_cloud_providers {
   &__swoosh {
     position: absolute;
     left: 0;
     z-index: 10;
-    margin-top: 8em;
+    margin-top: 35em;
+    @include breakpoint($medium) {
+      margin-top: 8em;
+    }
   }
 
   &__blue {
     @include fullscreen();
     background-color: $spin-light-blue;
-    height: $blue-bar-height;
-    > img {
-      height: 110%;
-      margin-top: 50px;
+    height: $blue-bar-mobile-height;
+    @include breakpoint($medium) {
+      height: $blue-bar-height;
     }
   }
 
@@ -327,7 +328,10 @@ $cloud-providers-bar-height: $blue-bar-height + $white-bar-height;
   }
 
   &__push_down {
-    margin-top: $cloud-providers-bar-height;
+    margin-top: $cloud-providers-bar-mobile-height;
+    @include breakpoint($medium) {
+      margin-top: $cloud-providers-bar-height;
+    }
   }
 
 
@@ -350,34 +354,27 @@ $cloud-providers-bar-height: $blue-bar-height + $white-bar-height;
   .spin_cloud_provider {
 
     &__wrapper {
-      float: left;
-      width: span(1 of 5);
       img {
         display: block;
         margin: auto;
       }
     }
 
-    &__aws {
-      width: 11vw;
-    }
-
     &__gcp {
-      width: 10vw;
+      width: 150px;
     }
 
     &__k8s {
-      width: 7vw;
+      width: 120px;
     }
 
     &__azure {
       filter: invert(1);
-      width: 20vw;
-      margin-top: 10px !important;
+      width: 300px;
     }
 
     &__os {
-      width: 6vw;
+      width: 130px;
     }
   }
 }

@@ -1,6 +1,6 @@
 {% assign provider = page.[include.id] %}
 
-<div class="spin_cloud_provider__wrapper">
+<div class="spin_cloud_provider__wrapper sm-col sm-col-4 mt2">
   <img {% if provider.image_class %} class="{{provider.image_class}}" {% endif %} src=
     {% if provider.image_path contains "://" %}
       "{{ provider.image_path }}"
