@@ -6,6 +6,22 @@ sidebar:
 
 {% include toc %}
 
+The roadmap indicates target and stretch-goal items that the broad community is working on. As our release versioning matures, we expect to move to a more granular model for communicating timelines for features.
+
+### 2017 Q3
+
+| Area | Features |
+|---|---|
+| General | Canary strategy beta with Atlas, Stackdriver, Prometheus, Datadog |
+| | Standard messaging format for trigger events and artifact handling (e.g. Jenkins) |
+| | Pub/sub and Kafka support for triggering pipelines |
+| | Pub/sub and Kafka as an outbound messaging option |
+| | UI for Managed Pipeline Templates |
+| GCP | Support for fetch/push artifacts with GCS |
+| App Engine | Deployment artifacts from GCS |
+| Kubernetes | Kubernetes config manifest based deployments |
+
+
 ### 2017 Q2
 
 | Area | Features |
@@ -13,6 +29,7 @@ sidebar:
 | General | Establish regular versioned releases of Spinnaker |
 | | [halyard](https://github.com/spinnaker/halyard) - install and upgrade Spinnaker on versioned or nightly releases |
 | | [halyard](https://github.com/spinnaker/halyard) - configure providers, persistence, authn/z, monitoring |
+| | UI for Managed Pipeline Templates |
 | | Canary strategy alpha for AWS, GCE |
 
 
@@ -42,7 +59,6 @@ sidebar:
 | | Codelab – Deploying to Kubernetes on Azure w/ Spinnaker |
 | Cloud Foundry | Code lab for installing Spinnaker on CF and deploying to CF |
 | App Engine | App Engine provider beta |
-
 
 
 ### 2016 Q4
