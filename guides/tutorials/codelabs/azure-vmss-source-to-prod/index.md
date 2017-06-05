@@ -13,9 +13,9 @@ After completing this lab the following workflow will happen:
   1. A developer pushes a commit to Github
   2. Jenkins automatically builds a Debian package and pushes it to an Aptly repository
   3. Spinnake bakes the new package into an image
-  4. Spinnaker deploys to a test environment and disable the previous deployment
-  4. Spinnake waits for a manual judgement of the test environment
-  5. Spinnaker deploys the image to the production environment and disable the previous deployment.
+  4. Spinnaker deploys to a test environment and disables the previous deployment
+  4. Spinnaker waits for a manual judgement of the test environment
+  5. Spinnaker deploys the image to the production environment and disables the previous deployment.
   
 This codelab will walk through the following steps to implement this scenario: 
 
@@ -35,7 +35,7 @@ You need the following resources to perform the codelab:
 
 From a shell run the following command that will walk you through all the steps necessary to deploy Jenkins and Spinnaker in Azure.
 
-> NOTE: Be careful to select `vmss` when prompted so when you run the following script.
+> NOTE: When running the following script, ensure that you type `vmss` when asked to select the target.
 
 ```bash 
 bash <(curl -sL https://aka.ms/DeployDevOps)
@@ -81,7 +81,7 @@ ssh -L 8080:localhost:8080 -L 9000:localhost:9000 -L 8084:localhost:8084 -L 8087
   
     You can read more how the Spinnaker application matches to Azure resources in the [Azure reference for Spinnaker](/reference/providers/azure/)
 
-### II. Create a Security Group"
+### II. Create a Security Group
 
 1. Navigate to the [SECURITY GROUPS](http://localhost:9000/#/applications/codelab/securityGroups) page and click on the **Create Security Group** button.
 1. Provide the following values in the *Create New Security Group* dialog: 
@@ -295,7 +295,7 @@ In this step you will try out the pipeline that you have just built.
 1. Navigate to the [PIPELINES](http://localhost:9000/#/applications/codelab/executions) tab
 1. Click on *Details* to get more information about the status of your deployment
 1. Connect to your application. 
-   You can find the public name of your application ny looking at the DNS Name that has been assigned to your load balancer.
+   You can find the public name of your application by looking at the DNS Name that has been assigned to your load balancer.
 
    ![DNS Name of your application](images/5-application-dns-name.png) 
 
