@@ -1,0 +1,11 @@
+{% assign user = page.[include.id] %}
+
+<div class="sm-col sm-col-12 md-col-4 spinnaker_user">
+  <img {% if user.image_class %} class="{{user.image_class}}" {% endif %} src=
+    {% if user.image_path contains "://" %}
+      "{{ user.image_path }}"
+    {% else %}
+      "{{ user.image_path | absolute_url }}"
+    {% endif %}
+    alt="{% if user.alt %}{{ user.alt }}{% endif %}">    
+</div>

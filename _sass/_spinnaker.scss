@@ -378,3 +378,18 @@ $cloud-providers-bar-mobile-height: $blue-bar-mobile-height + $white-bar-height;
     }
   }
 }
+
+.spinnaker_user {
+  img {
+    width: 230px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .spinnaker_user {
+    &__target, &__schibsted, &__gogo {
+      width: 110px;
+    }
+  }
+}
