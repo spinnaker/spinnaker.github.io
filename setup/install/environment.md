@@ -55,6 +55,7 @@ First, you need to configure one of the Cloud Providers that supports the
 __Distributed__ installation:
 
 * <a href="/setup/providers/kubernetes" target="_blank">Kubernetes</a>
+* <a href="/setup/providers/gce" target="_blank">Google Compute Engine</a> :warning: This is still in beta
 
 Then, remembering the `$ACCOUNT` name that you've created during the
 Provider configuration, run
