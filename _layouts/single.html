@@ -25,7 +25,7 @@ layout: has_masthead
           {% include breadcrumbs.html %}
         {% endunless %}
       {% endif %}
-      
+
         <div class="suggest-edit">
           <a href="https://github.com/{{site.repository}}/tree/master/{{page.path}}" target="_blank">Suggest an Edit</a>
         </div>
@@ -47,10 +47,6 @@ layout: has_masthead
           <a href="https://github.com/spinnaker/spinnaker.github.io/issues/new?body=Page:+{{page.url}}%0A%0AFeedback:" target="_blank">Got feedback?</a>
         </div>
 
-        {% if site.data.ui-text[site.locale].meta_label %}
-          <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label }}</h4>
-        {% endif %}
-        {% include page__taxonomy.html %}
         {% if page.modified %}
           <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Updated:" }}</strong> <time datetime="{{ page.modified | date: "%Y-%m-%d" }}">{{ page.modified | date: "%B %d, %Y" }}</time></p>
         {% elsif page.date %}
