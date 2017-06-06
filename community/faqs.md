@@ -36,7 +36,7 @@ sidebar:
 
 If you would like to add your own integration, we're happy to help you out in the slack channel.
 
-## I have an existing pre-1.0 - how do I migrate to Halyard?
+## I have an existing pre-1.0 Spinnaker installation - how do I migrate to Halyard?
 
 There is no one-size-fits-all migration strategy because of how varied 
 Spinnaker installations & configurations can be. However, there are a few
