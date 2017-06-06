@@ -73,7 +73,7 @@ The list of contributors is growing with some core contributors below. Please re
 * [Pivotal](http://pivotal.io/)
 * [Schibsted](http://www.schibsted.com/)
 * [Skuid](http://www.skuid.com/)
-* Target
+* [Target](http://http://target.github.io/)
 * [Veritas Technologies LLC](https://github.com/VeritasOS)
 
 
