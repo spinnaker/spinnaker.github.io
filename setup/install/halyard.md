@@ -19,7 +19,7 @@ we will encourage you to instead use Halyard.
 
 ## Installation
 
-Currently Halyard may only be installed on Ubuntu 14.04+.
+Currently Halyard may only be installed on Ubuntu 14.04.
 
 The following command installs the latest released Halyard version, and will
 prompt the user for some configuration in the process. Generally the default
