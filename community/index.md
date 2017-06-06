@@ -30,6 +30,12 @@ cerner_user:
 skuid_user:
   image_path: assets/images/users/skuid_logo.png
   alt: "Skuid logo"
+kenzan_user:
+  image_path: assets/images/users/kenzan_logo.svg
+  alt: "Kenzan logo"
+cloudera_user:
+  image_path: assets/images/users/cloudera_logo.svg
+  alt: "Cloudera logo"
 ---
 
 ## Who's using Spinnaker?
@@ -48,6 +54,10 @@ skuid_user:
   <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="cerner_user" %}
     {% include spinnaker_user id="skuid_user" %}
+    {% include spinnaker_user id="kenzan_user" %}
+  </div>
+  <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="cloudera_user" %}
   </div>
 </div>
 
