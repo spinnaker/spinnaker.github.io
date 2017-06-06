@@ -36,7 +36,17 @@ sidebar:
 
 If you would like to add your own integration, we're happy to help you out in the slack channel.
 
+## I have an existing pre-1.0 - how do I migrate to Halyard?
 
+There is no one-size-fits-all migration strategy because of how varied 
+Spinnaker installations & configurations can be. However, there are a few
+things you can keep in mind:
+
+1. As long as you use the same storage source (GCS/S3/AZS bucket) all of your existing
+   pipelines & applications will be migrated.
+2. If you create the same cloud provider accounts that you had in your old Spinnaker 
+   installation, all of the same infrastructure will be available to you.
+   
 ## I want to build my own cloud provider, how do I start?
 
 Adding a new cloud provider is not a simple task. You would want to extend the Clouddriver and Deck modules to support your new cloud provider. Look at the [Kubernetes commit stream](https://github.com/spinnaker/clouddriver/pulls?q=is%3Apr+author%3Alwander+is%3Aclosed) for an example.
