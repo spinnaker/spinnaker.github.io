@@ -90,16 +90,14 @@ Navigate to [Console](https://console.aws.amazon.com/) > IAM > Policies.
 ```json
 {
     "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Action": "sts:AssumeRole",
-            "Resource": [
-                "arn:aws:iam::${MANAGING_ACCOUNT_ID}:role/spinnakerManaged",
-                "arn:aws:iam::${MANAGED_ACCOUNT_ID}:role/spinnakerManaged"
-            ],
-            "Effect": "Allow"
-        }
-    ]
+    "Statement": [{
+        "Action": "sts:AssumeRole",
+        "Resource": [
+            "arn:aws:iam::${MANAGING_ACCOUNT_ID}:role/spinnakerManaged",
+            "arn:aws:iam::${MANAGED_ACCOUNT_ID}:role/spinnakerManaged"
+        ],
+        "Effect": "Allow"
+    }]
 }
 ```
 
@@ -133,7 +131,31 @@ In either case, record the ARN of the authentication mechanism (either
 
 First, we will create the role that will be assumed by our managing account.
 
-#### Create the spinnakerManaged
+#### Create the spinnakerManaged role
+
+It is likely that you will want the instances created by Spinnaker to acquire
+an IAM role on startup. By default, this role is called `BaseIAMRole`, and was
+configured [above](#create-an-ec2-role). In order for instances to assume this
+role, you must grant them
+[PassRole](https://aws.amazon.com/blogs/security/granting-permission-to-launch-ec2-instances-with-iam-roles-passrole-permission/)
+permission. To do so, create the following policy named __SpinnakerPassRole__, 
+substituting for `${MANAGING_ACCOUNT_ID}`:
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [{
+        "Effect": "Allow",
+        "Action": [ "ec2:*" ],
+        "Resource": "*"
+    },
+    {
+        "Effect": "Allow",
+        "Action": "iam:PassRole",
+        "Resource": "arn:aws:iam::${MANAGING_ACCOUNT_ID}:role/BaseIAMRole"
+    }]
+}
+```
 
 Using the ARN of the managing account recorded above (as `${AUTH_ARN}`), first
 create a role like so:
@@ -142,25 +164,24 @@ Navigate to [Console](https://console.aws.amazon.com/) > IAM > Roles.
 
 1. Select __Create new role__
 2. Select __Amazon EC2__
-3. Select __PowerUserAccess__ and hit __Continue__
+3. Select __PowerUserAccess__ and __SpinnakerPassRole__, and hit __Continue__
 4. Enter `spinnakerManaged` as the __Role name__
 5. Select __Create role__
 6. Navigate to the __Trust relationships__ tab
 7. Select __Edit trust relationship__
 8. Enter the following trust relationship, substituting for the `${AUTH_ARN}`
+
 ```json
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "1",
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "${AUTH_ARN}"
-      },
-      "Action": "sts:AssumeRole"
-    }
-  ]
+    "Version": "2012-10-17",
+    "Statement": [{
+        "Sid": "1",
+        "Effect": "Allow",
+        "Principal": {
+            "AWS": "${AUTH_ARN}"
+        },
+    "Action": "sts:AssumeRole"
+    }]
 }
 ```
 
