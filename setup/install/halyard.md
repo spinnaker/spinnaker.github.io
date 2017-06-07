@@ -82,4 +82,4 @@ command.
 ## Next Steps
 
 Once Halyard is installed and running, it's time to decide which [environment to
-deploy](/setup/install/environment) Spinnaker to.
+deploy](/setup/install/environment/) Spinnaker to.

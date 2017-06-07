@@ -25,7 +25,7 @@ setup:
       - title: Solutions
         url: /setup/quickstart/
       - title: Halyard Guides
-        url: /setup/quickstart/halyard
+        url: /setup/quickstart/halyard/
   - title: Install
     children:
       - title: Getting Started
