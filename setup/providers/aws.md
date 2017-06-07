@@ -185,10 +185,12 @@ Navigate to [Console](https://console.aws.amazon.com/) > IAM > Roles.
 }
 ```
 
-Now, add the account to the list of AWS accounts with
+Now add the account to the list of AWS accounts in Spinnaker using halyard:
 
 ```bash
-hal config provider aws account add ${ACCOUNT_NAME} \
+$AWS_ACCOUNT_NAME={name for AWS account in Spinnaker, e.g. my-aws-account}
+
+hal config provider aws account add $AWS_ACCOUNT_NAME \
     --account-id ${ACCOUNT_ID} \
     --assume-role role/spinnakerManaged
 ```
