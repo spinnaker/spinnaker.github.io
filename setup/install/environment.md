@@ -69,10 +69,10 @@ deploy it to the account you have previously configured.
 
 ## Further Reading
 
-* [Spinnaker Architecture](/reference/architecture) for a better understanding
+* [Spinnaker Architecture](/reference/architecture/) for a better understanding
   of the Distributed installation.
 
 ## Next Steps
 
 Now that your deployment environment is set up, you need to provide Spinnaker
-with a [Persistent Storage](/setup/install/storage) source.
+with a [Persistent Storage](/setup/install/storage/) source.

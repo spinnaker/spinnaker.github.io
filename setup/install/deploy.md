@@ -42,5 +42,5 @@ changes you've made to retry the deployment.
 ## Next Steps
 
 Now that Spinnaker is deployed and capable managing your cloud provider, you
-can either visit the [Guides](/guides) pages to learn how to use Spinnaker, or
+can either visit the [Guides](/guides/) pages to learn how to use Spinnaker, or
 see what other [Configuration](/setup/install/configuration/) is available.
