@@ -2,7 +2,7 @@
 layout: single
 title:  "Halyard on GKE Quickstart"
 sidebar:
-  nav: guides
+  nav: setup
 ---
 
 {% include toc %}

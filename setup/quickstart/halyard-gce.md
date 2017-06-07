@@ -75,7 +75,7 @@ gcloud projects add-iam-policy-binding $GCP_PROJECT \
     --member serviceAccount:$GCS_SERVICE_ACCOUNT_EMAIL
 ```
 
-Create a service account for GCE that you'll also be handing to Spinnaker   
+Create a service account for GCE that you'll also be handing to Spinnaker
 
 ```bash
 GCP_PROJECT=$(gcloud info --format='value(config.project)')
@@ -137,8 +137,8 @@ SSH into the VM with the following ports forwarded as shown to allow access to
 the Spinnaker UI & API servers.
 
 > :warning: You need to SSH into the Halyard host VM from your local
-> workstation; SSHing from [Cloud Shell](https://cloud.google.com/shell/) or
-> another VM won't open the necessary SSH tunnels that will allow your local
+> workstation; SSHing from [Cloud Shell](https://cloud.google.com/shell/), a
+> Chrombook, or another VM won't open the necessary SSH tunnels that will allow your local
 > web browser to access Spinnaker.
 
 ```bash
