@@ -162,7 +162,8 @@ hal config provider docker-registry account add my-docker-registry \
     --address $ADDRESS \
     --repositories $REPOSITORIES \
     --username $USERNAME \
-    --password $PASSWORD
+    --password # Do not supply your password as a flag, you will be prompted for your 
+               # password on STDIN
 ```
 
 ## Advanced Account Settings
