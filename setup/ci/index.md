@@ -22,5 +22,5 @@ independently of one-another, enumerated below.
 
 These are the CI systems currently supported by Spinnaker:
 
-* [Jenkins](/setup/ci/jenkins)
-* [Travis CI](/setup/ci/travis)
+* [Jenkins](/setup/ci/jenkins/)
+* [Travis CI](/setup/ci/travis/)
