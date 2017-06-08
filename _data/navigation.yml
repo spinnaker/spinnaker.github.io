@@ -64,8 +64,6 @@ setup:
         url: /setup/providers/openstack/
       - title: Oracle
         url: /setup/providers/oracle/
-      - title: Titus
-        url: /setup/providers/titus/
   - title: Persistent Storage
     children:
       - title: Overview

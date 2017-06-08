@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="/favicon.ico" />
   {{>js_jquery}}
   {{>js_prettify}}
   {{>js_bootstrap}}
@@ -151,7 +152,7 @@
 
               </div>
             -->
-            <li class="nav-fixed nav-header active" data-group="_"><a href="#api-_">API Summary</a></li>
+            <li class="nav-fixed nav-header active" data-group="_"><a href="#project">API Summary</a></li>
 
             {{#apiInfo}}
               {{#apis}}
@@ -204,12 +205,12 @@
                             <pre class="prettyprint"><code class="language-bsh">curl -X <span style="text-transform: uppercase;">{{httpMethod}}</span>{{#authMethods}}{{#isApiKey}}{{#isKeyInHeader}} -H "{{keyParamName}}: [[apiKey]]"{{/isKeyInHeader}}{{/isApiKey}}{{#isBasic}}{{#hasProduces}} -H "Accept: {{#produces}}{{{mediaType}}}{{#hasMore}},{{/hasMore}}{{/produces}}"{{/hasProduces}}{{#hasConsumes}} -H "Content-Type: {{#consumes}}{{{mediaType}}}{{#hasMore}},{{/hasMore}}{{/consumes}}"{{/hasConsumes}} -H "Authorization: Basic [[basicHash]]"{{/isBasic}}{{/authMethods}} "{{basePath}}{{path}}{{#hasQueryParams}}?{{#queryParams}}{{^-first}}&{{/-first}}{{baseName}}={{vendorExtensions.x-eg}}{{/queryParams}}{{/hasQueryParams}}"</code></pre>
                           </div>
                         </div>
-                          
+
                           {{#hasPathParams}}<h2>Parameters</h2>{{/hasPathParams}}
 
                           {{#hasPathParams}}
                             <div class="methodsubtabletitle">Path parameters</div>
-                            <table id="methodsubtable">
+                            <table class="methodsubtable">
                                 <tr>
                                   <th width="150px">Name</th>
                                   <th>Description</th>
@@ -222,7 +223,7 @@
 
                           {{#hasHeaderParams}}
                             <div class="methodsubtabletitle">Header parameters</div>
-                            <table id="methodsubtable">
+                            <table class="methodsubtable">
                               <tr>
                                 <th width="150px">Name</th>
                                 <th>Description</th>
@@ -235,7 +236,7 @@
 
                           {{#hasBodyParam}}
                             <div class="methodsubtabletitle">Body parameters</div>
-                            <table id="methodsubtable">
+                            <table class="methodsubtable">
                               <tr>
                                 <th width="150px">Name</th>
                                 <th>Description</th>
@@ -248,7 +249,7 @@
 
                           {{#hasFormParams}}
                             <div class="methodsubtabletitle">Form parameters</div>
-                            <table id="methodsubtable">
+                            <table class="methodsubtable">
                               <tr>
                                 <th width="150px">Name</th>
                                 <th>Description</th>
@@ -261,7 +262,7 @@
 
                           {{#hasQueryParams}}
                             <div class="methodsubtabletitle">Query parameters</div>
-                            <table id="methodsubtable">
+                            <table class="methodsubtable">
                               <tr>
                                 <th width="150px">Name</th>
                                 <th>Description</th>
