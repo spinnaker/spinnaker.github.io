@@ -32,10 +32,11 @@ CLIENT_ID=myClientId
 CLIENT_SECRET=myClientSecret
 PROVIDER=google|github|azure
 
-hal config security oauth2 edit \
-  --client_id $CLIENT_ID
-  --client_secret $CLIENT_SECRET
+hal config security authn oauth2 edit \
+  --client-id $CLIENT_ID \
+  --client-secret $CLIENT_SECRET \
   --provider $PROVIDER
+hal config security authn oauth2 enable
 ```
 
 ### Bring-Your-Own Provider
