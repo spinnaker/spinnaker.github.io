@@ -5,7 +5,7 @@ sidebar:
   nav: concepts
 ---
 
-Pipelines are your way of managing deployments in a consistent, repeatable and safe way. A pipeline is a sequence of stages provided by Spinnaker, ranging from functions that manipulate infrastructure (deploy, resize, disable) as well as utility scaffolding functions (manaul judgment, wait, run Jenkins job) that together precisely define your runbook for managing your deployments.
+Pipelines are your way of managing deployments in a consistent, repeatable and safe way. A pipeline is a sequence of stages provided by Spinnaker, ranging from functions that manipulate infrastructure (deploy, resize, disable) as well as utility scaffolding functions (manual judgment, wait, run Jenkins job) that together precisely define your runbook for managing your deployments.
 
 ![](edit-pipeline.png)
 
