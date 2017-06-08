@@ -5,4 +5,6 @@ sidebar:
   nav: reference
 ---
 
-{% include toc %}
+Reference documentation coming soon! 
+
+See setup [here](/setup/providers/aws/)
