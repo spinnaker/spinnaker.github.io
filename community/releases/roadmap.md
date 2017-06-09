@@ -2,7 +2,7 @@
 title:  "Roadmap"
 sidebar:
   nav: community
-redirect_from: /docs/customizing-instance-links
+redirect_from: /docs/roadmap
 ---
 
 {% include toc %}
