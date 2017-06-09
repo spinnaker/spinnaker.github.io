@@ -1,6 +1,7 @@
 ---
 layout: single
 title:  "An Introduction to Spinnaker: Hello Deployment"
+redirect_from: /docs/hello-spinnaker
 sidebar:
   nav: guides
 ---
