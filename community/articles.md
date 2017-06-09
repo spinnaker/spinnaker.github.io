@@ -3,6 +3,7 @@ layout: single
 title:  "Articles"
 sidebar:
   nav: community
+redirect_from: /docs/articles-and-blog-posts
 ---
 
 {% include toc %}

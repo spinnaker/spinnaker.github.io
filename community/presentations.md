@@ -3,6 +3,7 @@ layout: single
 title:  "Presentations"
 sidebar:
   nav: community
+redirect_from: /docs/presentations
 ---
 
 Conference and Meetup Presentations on Spinnaker

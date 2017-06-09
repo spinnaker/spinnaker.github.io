@@ -3,6 +3,7 @@ layout: single
 title:  "Customizing Instance Links"
 sidebar:
   nav: guides
+redirect_from: /docs/customizing-instance-links
 ---
 
 {% include toc %}

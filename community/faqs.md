@@ -3,6 +3,7 @@ layout: single
 title:  "Frequently Asked Questions"
 sidebar:
   nav: community
+redirect_from: /docs/frequently-asked-questions
 ---
 
 {% include toc %}

@@ -3,6 +3,7 @@ layout: single
 title:  "Getting Started"
 sidebar:
   nav: setup
+redirect_from: /docs/installation-tools
 ---
 
 This set of pages explains how to install Spinnaker with a higher degree of

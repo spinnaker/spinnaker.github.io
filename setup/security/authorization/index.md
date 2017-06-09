@@ -3,6 +3,7 @@ layout: single
 title:  "Authorization"
 sidebar:
   nav: setup
+redirect_from: /docs/fiat-setup
 ---
 
 {% include toc %}

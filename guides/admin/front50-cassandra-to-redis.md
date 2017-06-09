@@ -3,6 +3,7 @@ layout: single
 title:  "Front50: Cassandra to Redis"
 sidebar:
   nav: guides
+redirect_from: /docs/front50-cassandra-to-redis
 ---
 
 {% include toc %}

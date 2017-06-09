@@ -3,6 +3,7 @@ layout: single
 title:  "GCE Source To Prod"
 sidebar:
   nav: guides
+redirect_from: /docs/from-source-to-prod
 ---
 
 {% include toc %}

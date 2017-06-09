@@ -3,6 +3,7 @@ layout: single
 title:  "Kork Library"
 sidebar:
   nav: guides
+redirect_from: /docs/kork-library-dev
 ---
 
 {% include toc %}

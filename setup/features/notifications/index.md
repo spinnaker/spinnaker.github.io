@@ -3,6 +3,7 @@ layout: single
 title:  "Notifications and Events Guide"
 sidebar:
   nav: setup
+redirect_from: /docs/notifications-and-events-guide
 ---
 
 {% include toc %}

@@ -3,6 +3,7 @@ layout: single
 title:  "OpenStack Source To Prod"
 sidebar:
   nav: guides
+redirect_from: /docs/openstack-source-to-prod
 ---
 
 {% include toc %}
