@@ -3,6 +3,7 @@ layout: single
 title:  "Kubernetes Source To Prod"
 sidebar:
   nav: guides
+redirect_from: /docs/kubernetes-source-to-prod
 ---
 
 {% include toc %}

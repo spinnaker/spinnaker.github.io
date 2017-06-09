@@ -3,6 +3,7 @@ layout: single
 title:  "Contributing"
 sidebar:
   nav: community
+redirect_from: /docs/contributing-to-spinnaker
 ---
 
 {% include toc %}

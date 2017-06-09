@@ -3,6 +3,7 @@ layout: single
 title:  "Echo: Cassandra to In-Memory"
 sidebar:
   nav: guides
+redirect_from: /docs/echo-cassandra-to-in-memory
 ---
 
 {% include toc %}

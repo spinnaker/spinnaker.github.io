@@ -3,6 +3,9 @@ layout: single
 title:  "Halyard"
 sidebar:
   nav: setup
+redirect_from:
+  - /docs/creating-a-spinnaker-instance
+  - /docs/target-deployment-configuration
 ---
 
 {% include toc %}

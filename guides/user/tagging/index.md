@@ -3,6 +3,7 @@ layout: single
 title:  "General Purpose Tagging Guide"
 sidebar:
   nav: guides
+redirect_from: /docs/general-purpose-tags
 ---
 
 {% include toc %}

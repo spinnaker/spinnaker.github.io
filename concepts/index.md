@@ -3,6 +3,7 @@ layout: single
 title:  "Concepts"
 sidebar:
   nav: concepts
+redirect_from: /docs/overview
 ---
 
 {% include toc %}

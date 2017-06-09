@@ -3,6 +3,7 @@ layout: single
 title:  "Security"
 sidebar:
   nav: setup
+redirect_from: /docs/securing-spinnaker
 ---
 
 Spinnaker has multiple options for both authentication and authorization. Instead of reinventing 

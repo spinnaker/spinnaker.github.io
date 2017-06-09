@@ -3,6 +3,7 @@ layout: single
 title:  "Code Of Conduct"
 sidebar:
   nav: community
+redirect_from: /docs/code-of-conduct
 ---
 
 {% include toc %}

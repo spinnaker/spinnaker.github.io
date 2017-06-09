@@ -3,6 +3,7 @@ layout: single
 title:  "Custom Configuration"
 sidebar:
   nav: reference
+redirect_from: /docs/custom-configuration
 ---
 
 {% include toc %}

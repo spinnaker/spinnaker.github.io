@@ -3,6 +3,7 @@ layout: single
 title:  "Support Policy"
 sidebar:
   nav: community
+redirect_from: /docs/support-policy
 ---
 
 {% include toc %}

@@ -3,6 +3,7 @@ layout: single
 title:  "Jenkins"
 sidebar:
   nav: setup
+redirect_from: /docs/jenkins-script-execution-stage
 ---
 
 Setting up [Jenkins](https://jenkins.io/) as a Continuous Integration (CI)
