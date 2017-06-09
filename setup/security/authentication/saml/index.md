@@ -2,6 +2,7 @@
 title:  "SAML 2.0"
 sidebar:
   nav: setup
+redirect_from: /docs/gate-saml-config
 ---
 
 {% include toc %}
