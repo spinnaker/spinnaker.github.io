@@ -9,6 +9,12 @@ redirect_from: /docs/presentations
 Conference and Meetup Presentations on Spinnaker
 
 
+### <a href="https://www.slideshare.net/MedyaGhazizadeh/win-spinnaker-with-winnaker" target="_blank">Winning Spinnaker with Winnaker</a>
+**Open Source North Conference '17** \| June 8, 2017 \| *Medya Ghazizadeh (Target Corp)*
+
+Learn why Target chose Spinnaker as its multi-cloud continuous delivery tool and how Target developed Winnaker an auditing tool to test Spinnaker's full functionality.
+Learn about the challenges, solutions and open source contributions in its journey to implement immutable infrastructure philosophy.
+
 ### <a href="https://youtu.be/05EZx3MBHSY" target="_blank">Spinnaker: continuous delivery from first principles to production</a>
 **Google Cloud Next '17** \| March 10, 2017 \| *Steven Kim (Google), Tom Feiner (Waze)*
 
@@ -36,7 +42,7 @@ This session discusses the open-source community, its vital place within the AWS
 ### <a href="" target="_blank">Continuous deployment avec Spinnaker, automatise tous tes déploiements!</a>
 **DevFest 2016 Nantes** \| November 21, 2016 \| *Stéphane Lagraulet (Ippon Technologies)*
 
-Spinnaker est un outil open source de déploiement continu multi-cloud développé par Netflix. 
+Spinnaker est un outil open source de déploiement continu multi-cloud développé par Netflix.
 Vous savez déjà construire vos applications avec Jenkins, venez découvrir comment automatiser tous vos déploiements.
 Nous verrons ensemble comment créer une plate forme complète de déploiement continu jusqu'en production, à base de canary, blue/green et rollback.
 
@@ -101,4 +107,3 @@ Also, we will discuss one of most recent key open source releases – Spinnaker 
 A core aspect of a microservice architecture is individual deployability of services. Thus, orchestrating the roll out of these services should be as easy as possible. Historically Netflix has rolled out deployments using an open-source tool called Asgard. Spinnaker – the successor of Asgard and an open-source project as well – is a complete reimplementation of its predecessor and heavily improved.
 
 The talk introduces Spinnaker, the challenges it's trying to solve as well as the core concepts it's talking about. We then discuss and demo setting up a build pipeline as well as the various options in deployment targets, rollout strategies etc.
-
