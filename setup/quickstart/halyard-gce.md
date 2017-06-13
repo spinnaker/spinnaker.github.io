@@ -138,7 +138,7 @@ the Spinnaker UI & API servers.
 
 > :warning: You need to SSH into the Halyard host VM from your local
 > workstation; SSHing from [Cloud Shell](https://cloud.google.com/shell/), a
-> Chrombook, or another VM won't open the necessary SSH tunnels that will allow your local
+> Chromebook, or another VM won't open the necessary SSH tunnels that will allow your local
 > web browser to access Spinnaker.
 
 ```bash
