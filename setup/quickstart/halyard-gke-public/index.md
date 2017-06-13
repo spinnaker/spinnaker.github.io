@@ -30,7 +30,7 @@ At the end of this guide you will have
 You need a [GAFW domain](https://admin.google.com) (referred to as `$DOMAIN`
 for the remainder of this tutorial).
 
-You need a running Spinnaker cluster in GKE. If you don't have you, please go
+You need a running Spinnaker cluster in GKE. If you don't have one, please go
 through [this codelab](/setup/quickstart/halyard-gke).
 
 ## Part 1: Configuring Authentication
@@ -155,7 +155,7 @@ Spinnaker client ID using your value of `$DOMAIN`:
    alt="image showing updated redirect url"
 %}
 
-Now authorize the UI and API servers to recieve requests at these urls using
+Now authorize the UI and API servers to receive requests at these urls using
 Halyard:
 
 ```bash
@@ -166,7 +166,7 @@ hal config security api edit \
     --override-base-url http://spinnaker-api.$DOMAIN
 ```
 
-Now before we finalize these changes by deploying Spinnaker, we need to edit
+Now, before we finalize these changes by deploying Spinnaker, we need to edit
 the [Kubernetes
 Services](https://kubernetes.io/docs/concepts/services-networking/service/)
 fronting the UI & API servers, `spin-deck` and `spin-gate` in the `spinnaker`
