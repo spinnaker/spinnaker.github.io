@@ -5,7 +5,7 @@ sidebar:
   nav: reference
 ---
 
-Published: 2017-06-12 19:57:34
+Published: 2017-06-13 15:25:21
 
 
 # Table of Contents
@@ -24,6 +24,7 @@ Published: 2017-06-12 19:57:34
  * [**hal admin publish version**](#hal-admin-publish-version)
  * [**hal backup**](#hal-backup)
  * [**hal backup create**](#hal-backup-create)
+ * [**hal backup restore**](#hal-backup-restore)
  * [**hal config**](#hal-config)
  * [**hal config ci**](#hal-config-ci)
  * [**hal config ci jenkins**](#hal-config-ci-jenkins)
@@ -37,6 +38,7 @@ Published: 2017-06-12 19:57:34
  * [**hal config ci jenkins master list**](#hal-config-ci-jenkins-master-list)
  * [**hal config deploy**](#hal-config-deploy)
  * [**hal config deploy edit**](#hal-config-deploy-edit)
+ * [**hal config edit**](#hal-config-edit)
  * [**hal config features**](#hal-config-features)
  * [**hal config features edit**](#hal-config-features-edit)
  * [**hal config generate**](#hal-config-generate)
@@ -235,7 +237,7 @@ hal [parameters] [subcommands]
  * `-h, --help`: (*Default*: `false`) Display help text about this command.
  * `-l, --log`: Set the log level of the CLI.
  * `-o, --output`: Format the CLIs output.
- * `-q, --quiet`: Show no task information or messages. When disabled, ANSI formatting will be disabled too.
+ * `-q, --quiet`: Show no task information or messages. When set, ANSI formatting will be disabled, and all prompts will be accepted.
 
 #### Parameters
  * `--docs`: (*Default*: `false`) Print markdown docs for the hal CLI.
@@ -393,7 +395,7 @@ hal admin publish version [parameters]
 ---
 ## hal backup
 
-This is used to periodically checkpoint your configured Spinnaker installation as well as allow you to remotely store all aspects of your configured Spinnaker installation.
+This is used to periodically checkpoint your configured Spinnaker installation as well as allow you to store all aspects of your configured Spinnaker installation, to be picked up by an installation of Halyard on another machine.
 
 #### Usage
 ```
@@ -401,17 +403,32 @@ hal backup [subcommands]
 ```
 
 #### Subcommands
- * `create`: Create a backup.
+ * `create`: Create a backup of Halyard's state.
+ * `restore`: Restore an existing backup.
 
 ---
 ## hal backup create
 
-Create a backup.
+This will create a tarball of your halconfig directory, being careful to rewrite file paths, so when the tarball is expanded by Halyard on another machine it will still be able to reference any files you have explicitly linked with your halconfig - e.g. --kubeconfig-file for Kubernetes, or --json-path for GCE.
 
 #### Usage
 ```
 hal backup create
 ```
+
+
+---
+## hal backup restore
+
+Restore an existing backup. This backup does _not_ necessarily have to come from the machine it is being restored on - since all files referenced by your halconfig are included in the halconfig backup. As a result of this, keep in mind that after restoring a backup, all your required files are now in $halconfig/.backup/required-files.
+
+#### Usage
+```
+hal backup restore [parameters]
+```
+
+#### Parameters
+ * `--backup-path`: (*Required*) This is the path to the .tar file created by running `hal backup create`.
 
 
 ---
@@ -432,6 +449,7 @@ hal config [parameters] [subcommands]
 #### Subcommands
  * `ci`: Configure, validate, and view the specified Continuous Integration service.
  * `deploy`: Display the configured Spinnaker deployment.
+ * `edit`: Configure top-level, global configuration parameters.
  * `features`: Display the state of Spinnaker's feature flags.
  * `generate`: Generate the full Spinnaker config for your current deployment.
  * `metric-stores`: Configure Spinnaker's metric stores. This configuration only affects the publishing of metrics against whichever metric stores you enable (it can be more than one).
@@ -647,6 +665,22 @@ This is only required when Spinnaker is being deployed in non-Kubernetes cluster
 LocalhostDebian: Download and run the Spinnaker debians on the machine running the Daemon.
  * `--vault-address`: The address of a running Vault datastore. See https://www.vaultproject.io/.This is only required when Spinnaker is being deployed in non-Kubernetes clustered configuration.
  * `--vault-enabled`: Whether or not to use Vault as a secret storage mechanism to deploy Spinnaker.
+
+
+---
+## hal config edit
+
+Configure top-level, global configuration parameters. The properties edited here affect all Spinnaker subcomponents.
+
+#### Usage
+```
+hal config edit [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--timezone`: The timezone your Spinnaker instance runs in. This affects what the UI will display as well as how CRON triggers are run.
 
 
 ---
