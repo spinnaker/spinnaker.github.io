@@ -29,18 +29,18 @@
 
 // mermaid.js sequence diagrams
 .actor {
-  fill: $masthead-color;
-  stroke: $masthead-link-color-hover;
+  fill: #d8e8ec;
+  stroke: #7a8288;
 }
 text.actor {
-  fill: $masthead-link-color-hover;
+  fill: #7a8288;
   stroke: none;
 }
 .note {
   fill: #c0d89d;
 }
 .noteText {
-  fill: $masthead-link-color-hover;
+  fill: #000;
 }
 
 // release changelogs from GitHub Gists
