@@ -5,8 +5,6 @@ sidebar:
   nav: reference
 ---
 
-{% include toc %}
-
 Once you're familar with the definition and setup of a [Cloud
 Provider](/setup/providers/), you can read these reference pages for
 information on how Spinnaker concepts map to those of the Cloud Provider, as
