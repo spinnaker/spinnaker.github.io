@@ -100,6 +100,8 @@ To manually set the `redirect_uri` for Gate, use the following `hal` command:
 hal config security authn oauth edit --pre-established-redirect-uri https://my-real-gate-address.com:8084/login
 ```
 
+> Be sure to include the `/login` suffix at the end of the `--pre-established-redirect-uri` flag!
+
 ## Workflow
 
 The OAuth specification defines numerous flows for various scenarios. Spinnaker utilizes the 
