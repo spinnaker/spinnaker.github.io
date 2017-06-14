@@ -47,6 +47,25 @@ things you can keep in mind:
    pipelines & applications will be migrated.
 2. If you create the same cloud provider accounts that you had in your old Spinnaker 
    installation, all of the same infrastructure will be available to you.
+
+## Why don't the versions used in each subcomponent in the new top-level versioned Spinnaker match those in the github releases?
+
+You'll notice that, for example today, the
+[releases](https://github.com/spinnaker/clouddriver/releases) tab for
+Clouddriver has version 1.639.0 listed as the most recent release, while Spinnaker
+1.0.1 uses Clouddriver version 0.4.2. At first glance, it appears that
+Clouddriver is way out of date. However, this is not true. There are now two
+versioning schemes at play: one to stay compatible with Netflix's release
+process, and a second one that follows [semantic
+versioning](http://semver.org/). The top-level Spinnaker releases rely on the
+latter.
+
+If you're curious when a release `<version>` was cut for a particular component,
+any tag that matches `v<version>` follows Netflix's releases, while any tag
+that matches `version-<version>` follows semantic versioning. You can see an
+example of this below:
+
+![](./clouddriver-releases.png)
    
 ## I want to build my own cloud provider, how do I start?
 
