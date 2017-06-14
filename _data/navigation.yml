@@ -44,6 +44,8 @@ setup:
         url: /setup/install/configuration/
       - title: Upgrades
         url: /setup/install/upgrades/
+      - title: Backups
+        url: /setup/install/backups/
   - title: Cloud Providers
     children:
       - title: Overview
