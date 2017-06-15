@@ -27,38 +27,42 @@ gcloud service-management enable compute-component.googleapis.com
 `gcloud app create --region <e.g., us-central>`.
 
 # Configuration & Installation
-Create a new firewall rule for your GCP project. We're going to trigger our Spinnaker pipelines using Github webhooks. 
-The Spinnaker service that receives these webhooks listens on port 8089, and 
-[GitHub webhooks](https://help.github.com/articles/github-s-ip-addresses/#service-hook-ip-addresses) are sent from IPs in the CIDR range given below.
 
-```
+We're going to trigger our Spinnaker pipelines using Github webhooks. In order to do so,
+we will have to expose Spinnaker's API gateway to external traffic.
+If you are going to use this installation beyond this codelab, you should follow the [guides](/setup/security) for securing Spinnaker.
+
+Create a new firewall rule for your GCP project.
+Github sends webhooks from IPs in the [CIDR ranges](https://help.github.com/articles/github-s-ip-addresses/#service-hook-ip-addresses) queried below.
+
+```bash
 gcloud compute firewall-rules create allow-github-webhook \
-    --allow="tcp:8089" \ 
-    --source-ranges="192.30.252.0/22" \
+    --allow="tcp:8084" \ 
+    --source-ranges=$(curl -s https://api.github.com/meta | python -c "import sys, json; print ','.join(json.load(sys.stdin)['hooks'])") \
     --target-tags="allow-github-webhook"
 ```
 
 Provision a new virtual machine. We'll install Spinnaker on this machine:
 
-```
+```bash
 gcloud compute instances create $USER-spinnaker \
-    --scopes https://www.googleapis.com/auth/cloud-platform \
+    --scopes="https://www.googleapis.com/auth/cloud-platform" \
     --machine-type="n1-highmem-4" \
     --image-family="ubuntu-1404-lts" \
     --image-project="ubuntu-os-cloud" \
     --zone="us-central1-f" \
     --tags="allow-github-webhook"
-```
+``` 
 
 Next, run the following command to SSH into the machine we’ve just provisioned. We’ll also pass flags to forward ports 9000 and 8084 - Spinnaker’s UI and API servers listen on these ports.
 
-```
+```bash
 gcloud compute ssh $USER-spinnaker --ssh-flag="-L 9000:localhost:9000" --ssh-flag="-L 8084:localhost:8084"
 ```
 
 Download and install Halyard on this machine. Halyard is a tool for configuring, installing, and updating Spinnaker.
 
-```
+```bash
 curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/stable/InstallHalyard.sh
 
 sudo bash InstallHalyard.sh
@@ -66,8 +70,8 @@ sudo bash InstallHalyard.sh
 
 Once you’ve installed Halyard, run the following commands to configure Spinnaker for deploying to App Engine:
 
-```
-hal config version edit --version 0.3.0
+```bash
+hal config version edit --version $(hal version latest -q)
 
 hal config provider appengine enable
 
@@ -78,6 +82,11 @@ hal config storage gcs edit --project $GCP-PROJECT-ID
 hal config storage edit --type gcs
 ```
 
+Then run the following command to allow Spinnaker's API gateway to accept external requests:
+```bash
+echo "host: 0.0.0.0" | tee ~/.hal/default/service-settings/gate.yml
+```
+
 Run `sudo hal deploy apply` to install and run Spinnaker.
 
 
@@ -86,7 +95,7 @@ The installation process will take several minutes. While you’re waiting for S
    ```gcloud compute instances describe $USER-spinnaker | grep natIP```
  - Fork this repository, which contains a sample App Engine application: [https://github.com/danielpeach/redblue](https://github.com/danielpeach/redblue).
  - Inside your fork, click "Settings", then "Webhooks", then "Add Webhook".
- - Under "Payload URL", enter `http://{externalIP}:8089/webhooks/git/github`.
+ - Under "Payload URL", enter `http://{externalIP}:8084/webhooks/git/github`.
  - Under "Content Type", select `application/json`.
 
 At this point, Spinnaker should be up and running. Point your browser at [localhost:9000](http://localhost:9000) to view Spinnaker’s UI.
@@ -272,3 +281,7 @@ Once you’re ready, go back to the "Pipelines" tab. Click "Continue" on the "Va
 - Your new server group will receive 100% of traffic.
 - Your pipeline will wait for two minutes.
 - The first server group (the one we deployed at the beginning of this codelab) will be destroyed.
+
+# Clean up
+
+If you're done with this codelab, run `gcloud compute instances delete $USER-spinnaker` to destroy your Spinnaker installation.
