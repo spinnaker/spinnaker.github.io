@@ -9,6 +9,8 @@ main:
     url: /reference/
   - title: Community
     url: /community/
+  - title: Blog
+    url: https://blog.spinnaker.io
 
 concepts:
   - children:
