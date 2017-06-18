@@ -80,7 +80,7 @@ chaos_monkey_feature:
   title: Chaos Monkey Integration
   content: "Test that your application can survive instance failures by terminating them on purpose."
 netflix_case_study:
-  title: How We Build Code at Netflix
+  title: Global Continuous Delivery with Spinnaker
   image_path: assets/images/netflix_logo.jpg
   image_class: spin_case_study__netflix
   alt: "Netflix Logo"
