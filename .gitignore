@@ -8,3 +8,4 @@ Gemfile.lock
 *.ipr
 *.iws
 /.vscode/
+.DS_Store
