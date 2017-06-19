@@ -195,6 +195,12 @@ hal config provider aws account add $AWS_ACCOUNT_NAME \
     --assume-role role/spinnakerManaged
 ```
 
+Now enable AWS
+
+```bash
+hal config provider aws enable
+```
+
 ## Advanced Account Settings
 
 You can view the available configuration flags for AWS within the
