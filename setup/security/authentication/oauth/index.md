@@ -102,6 +102,18 @@ hal config security authn oauth edit --pre-established-redirect-uri https://my-r
 
 > Be sure to include the `/login` suffix at the end of the `--pre-established-redirect-uri` flag!
 
+Additionally, some configurations make it necessary to "unwind" external proxy instances. This makes the request to Gate
+look like the original request to the outer-most proxy. Add this to your `gate-local.yml` file in your Halyard 
+[custom profile] (https://www.spinnaker.io/reference/halyard/custom/#custom-profiles):
+
+```
+server:
+  tomcat:
+    protocolHeader: X-Forwarded-Proto
+    remoteIpHeader: X-Forwarded-For
+    internalProxies: .*
+```
+
 ## Workflow
 
 The OAuth specification defines numerous flows for various scenarios. Spinnaker utilizes the 
