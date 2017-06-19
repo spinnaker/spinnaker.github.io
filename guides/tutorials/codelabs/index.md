@@ -18,3 +18,4 @@ Run through these codelabs to get hands-on experience with Spinnaker in a guided
 * [Continuous Delivery to Kubernetes on Azure](./azure-kubernetes-source-to-prod/) - deploy a Dev Ops VM with a sample source-to-prod pipeline targeting Kubernetes on Azure
 * [Continuous Delivery to Azure VM Scale Set](./azure-vmss-source-to-prod/) - deploy a Dev Ops VM with a sample source-to-prod pipeline targeting Virtual Machine Scale Set on Azure 
 * [App Engine Source To Prod](./appengine-source-to-prod/) - create a workflow to safely deploy to App Engine from source code.
+* [Safe Deployments](./safe-deployments) - Enhance an existing deployment process to take advantage of Spinnaker safety features.
