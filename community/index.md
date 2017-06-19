@@ -39,6 +39,9 @@ cloudera_user:
 lookout_user:
   image_path: assets/images/users/lookout_horz_logo.png
   alt: "Lookout logo"
+scopely_user:
+  image_path: assets/images/users/scopely_logo.png
+  alt: "Scopely logo"
 ---
 
 ## Who's using Spinnaker?
@@ -62,6 +65,7 @@ lookout_user:
   <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="cloudera_user" %}
     {% include spinnaker_user id="lookout_user" %}
+    {% include spinnaker_user id="scopely_user" %}
   </div>
 </div>
 
