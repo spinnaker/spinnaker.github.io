@@ -202,10 +202,10 @@ gcloud iam service-accounts keys create $GCS_SERVICE_ACCOUNT_DEST \
 
 ## Part 3: Set Spinnaker configuration
 
-We will install Spinnaker v0.6.0
+We will install the latest version of Spinnaker
 
 ```bash
-hal config version edit --version 0.6.0
+hal config version edit --version $(hal version latest -q)
 ```
 
 Set up to persist to GCS

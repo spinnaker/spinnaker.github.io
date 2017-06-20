@@ -57,6 +57,13 @@ env:
   JAVA_OPTS: "-Xms256m -Xmx512m"
 ```
 
+If you wanted to specify a secure connection to redis, you would create the following file:
+
+__`~/.hal/default/service-settings/redis.yml`:__
+```yaml
+overrideBaseUrl: redis://someuser:somepassword@localhost:6379
+```
+
 ### Tweakable Service Settings
 
 Below are all the Service Settings you can configure. Keep in mind the ones
