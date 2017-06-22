@@ -262,7 +262,7 @@ Finally, redeploy Spinnaker:
 hal deploy apply
 ```
 
-And navigate to `spinnaker.$DOMAIN:9000` in your browser.
+And navigate to `spinnaker.$DOMAIN` in your browser.
 
 > __NOTE__: It can take some time for the DNS entries to propagate, so be
 > patient if you can't access the Spinnaker UI immediately.
