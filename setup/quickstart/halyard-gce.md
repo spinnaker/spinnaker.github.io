@@ -97,6 +97,7 @@ gcloud projects add-iam-policy-binding $GCP_PROJECT \
     --role roles/compute.instanceAdmin
 
 # permission to create/modify network settings in your project
+# If you're not doing a distributed installation, you can use networkUser instead of networkAdmin.
 gcloud projects add-iam-policy-binding $GCP_PROJECT \
     --member serviceAccount:$GCE_SERVICE_ACCOUNT_EMAIL \
     --role roles/compute.networkAdmin
