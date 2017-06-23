@@ -50,7 +50,7 @@ template:
 Furthermore, using the [Docker Registry](/setup/providers/docker-registry/)
 accounts associated with the Kubernetes Account being deployed to, a list of
 [Image Pull
-Secretes](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod)
+Secrete](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod)
 already populated by Spinnaker are attached to the created Pod definition. This
 ensures that images from private registries can always be deployed. Image Pull
 Secrets named based on their Docker Registry account name in Spinnaker, so
