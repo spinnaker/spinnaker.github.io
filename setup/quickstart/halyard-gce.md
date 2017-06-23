@@ -83,9 +83,11 @@ GCE_SERVICE_ACCOUNT_NAME=spinnaker-gce-account
 
 gcloud iam service-accounts create \
     $GCE_SERVICE_ACCOUNT_NAME \
+    --project=$GCP_PROJECT \
     --display-name $GCE_SERVICE_ACCOUNT_NAME
 
 GCE_SERVICE_ACCOUNT_EMAIL=$(gcloud iam service-accounts list \
+    --project=$GCP_PROJECT \
     --filter="displayName:$GCE_SERVICE_ACCOUNT_NAME" \
     --format='value(email)')
 
