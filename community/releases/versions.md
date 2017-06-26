@@ -41,4 +41,5 @@ Released: {{ post.date }}
 {% endfor %}
 
 > To be notified when new Spinnaker versioned releases are available, please join the
-[spinnaker-announce](https://groups.google.com/forum/#!forum/spinnaker-announce) group.
+[spinnaker-announce](https://groups.google.com/forum/#!forum/spinnaker-announce) Google
+Group (requires a Google account).
