@@ -31,7 +31,7 @@ Released: {{ post.date | date_to_rfc822 }}
   {% endunless %}
 {% endfor %}
 
-### Deprecated Versions
+## Deprecated Versions
 {% for post in reversed %}
   {% if post.tags contains 'deprecated' %}
 #### {{ post.title }}  
@@ -39,3 +39,6 @@ Released: {{ post.date }}
 <a href="{{ post.url }}">Changelog</a>
   {% endif %}
 {% endfor %}
+
+> To be notified when new Spinnaker versioned releases are available, please join the
+[spinnaker-announce](https://groups.google.com/forum/#!forum/spinnaker-announce) group.
