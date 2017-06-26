@@ -9,7 +9,7 @@ sidebar:
 
 In this codelab, you will improve a deployment process by adding safeguards to your deployments.
 
-This codelab is a continuation of the [Kubernetes: code to prod](../../kubernetes-source-to-prod) codelab. It assumes you have an application set up and ready to deploy.
+This codelab is a continuation of the [Kubernetes: code to prod](https://www.spinnaker.io/guides/tutorials/codelabs/kubernetes-source-to-prod/) codelab. It assumes you have an application set up and ready to deploy.
 
 ## Setup
 
