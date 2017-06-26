@@ -44,5 +44,7 @@ pass the filter will then have the `cn` (common name) attribute returned.
 
 TODO: Update these details when halyard supports LDAP.
 
+In the mean time, put the above configuration in `~/.hal/$DEPLOYMENT/profiles/fiat-local.yml`, creating it if needed.
+
 
 ## Troubleshooting
