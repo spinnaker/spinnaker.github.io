@@ -58,9 +58,9 @@ ADMIN=admin@your.org              # An administrator's email address
 CREDENTIALS=/path/to/creds.json   # The downloaded service account credentials
 DOMAIN=your.org                   # Your organization's domain.
 
-hal config security roles provider google edit \
+hal config security authz google edit \
     --admin-username $ADMIN \
-    --credentials-path $CREDENTIALS \
+    --credential-path $CREDENTIALS \
     --domain $DOMAIN
     
 hal config security roles enable
