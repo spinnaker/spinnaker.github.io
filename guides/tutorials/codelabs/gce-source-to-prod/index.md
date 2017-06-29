@@ -83,7 +83,6 @@ In the *New Application* dialog:
 
 * Enter "codelab" for *Name*.
 * Enter your email for *Owner Email*.
-* Click in the *Accounts* field and choose “my-google-account”.
 * Click the *Create* button.
 
 ![](1-new-application.png)
