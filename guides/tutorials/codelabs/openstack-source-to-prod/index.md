@@ -36,7 +36,6 @@ In the *New Application* dialog:
 
 * Enter "codelab" for *Name*.
 * Enter your email for *Owner Email*.
-* Click in the *Accounts* field and choose “my-openstack-account”.
 * Click the *Create* button.
 
 ![](create-app.png)
