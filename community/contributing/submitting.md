@@ -95,7 +95,7 @@ Note that at minimum, 'BREAKING CHANGE' must be specified on the last line. The 
 * Provide a descriptive title for your changes.
 * Add inline code comments to changes that might not be obvious.
 * Squash your commits when you first submit your PR, and again when it's ready to be merged. It's much easier to review incremental changes to feedback when the commits are kept separate.
-* Add a comment to @spinnaker/reviewers for review if your issue has been outstanding for more than 3 days. 
+* Ping the #dev channel in slack for review if your issue has been outstanding for more than 3 days. 
 
 Note that we are unlikely to accept pull requests that add features without prior discussion. The best way to propose a feature is to open an issue first and discuss your ideas there before implementing them.
 
