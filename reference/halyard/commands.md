@@ -5,7 +5,7 @@ sidebar:
   nav: reference
 ---
 
-Published: 2017-06-15 20:08:05
+Published: 2017-07-05 17:49:11
 
 
 # Table of Contents
@@ -1742,7 +1742,7 @@ hal config provider dcos account add ACCOUNT [parameters]
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--password`: Password for a user account
  * `--required-group-membership`: (*Default*: `[]`) A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
- * `--service-key`: Secret key for service account authentication
+ * `--service-key-file`: Path to a file containing the secret key for service account authentication
  * `--uid`: (*Required*) User or service account identifier
 
 
@@ -1852,7 +1852,7 @@ hal config provider dcos cluster add CLUSTER [parameters]
 
 #### Parameters
 `CLUSTER`: The name of the cluster to operate on.
- * `--ca-cert-data`: Root certificate to trust for connections to the cluster
+ * `--ca-cert-file`: Root certificate file to trust for connections to the cluster
  * `--dcos-url`: (*Required*) URL of the endpoint for the DC/OS cluster's admin router.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--lb-account-secret`: Name of the secret to use for allowing marathon-lb to authenticate with the cluster.  Only necessary for clusters with strict or permissive security.
@@ -1889,15 +1889,15 @@ hal config provider dcos cluster edit CLUSTER [parameters]
 
 #### Parameters
 `CLUSTER`: The name of the cluster to operate on.
- * `--ca-cert-data`: Root certificate to trust for connections to the cluster
+ * `--ca-cert-file`: Root certificate file to trust for connections to the cluster
  * `--dcos-url`: URL of the endpoint for the DC/OS cluster's admin router.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--lb-account-secret`: Name of the secret to use for allowing marathon-lb to authenticate with the cluster.  Only necessary for clusters with strict or permissive security.
  * `--lb-image`: Marathon-lb image to use when creating a load balancer with Spinnaker
  * `--no-validate`: (*Default*: `false`) Skip validation.
- * `--remove-ca-cert-data`: (*Default*: `false`) Remove the CA certificate for this cluster
+ * `--remove-ca-cert-file`: (*Default*: `false`) Remove the CA certificate file for this cluster
  * `--remove-lb`: (*Default*: `false`) Remove the load balancer attributes for this cluster
- * `--skip-tls-verify`: Set this flag to disable verification of certificates from the cluster (insecure)
+ * `--set-skip-tls-verify`: Set this flag to disable verification of certificates from the cluster (insecure)
 
 
 ---
@@ -2237,7 +2237,7 @@ hal config provider google account edit ACCOUNT [parameters]
  * `--add-image-project`: Add this image project to the list of image projects to cache and deploy images from.
  * `--add-required-group-membership`: Add this group to the list of required group memberships.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
- * `--image-projects`: (*Default*: `[]`) A list of Google Cloud Platform projects Spinnaker will be able to cache and deploy images from. When this is omitted, it defaults to the current project. Each project must have granted the IAM role `compute.imageUser` to the service account associated with the json key used by this account, as well as to the 'Google APIs service account' automatically created for the project being managed (should look similar to `12345678912@cloudservices.gserviceaccount.com`). See https://cloud.google.com/compute/docs/images/sharing-images-across-projects for more information about sharing images across GCP projects.
+ * `--image-projects`: A list of Google Cloud Platform projects Spinnaker will be able to cache and deploy images from. When this is omitted, it defaults to the current project. Each project must have granted the IAM role `compute.imageUser` to the service account associated with the json key used by this account, as well as to the 'Google APIs service account' automatically created for the project being managed (should look similar to `12345678912@cloudservices.gserviceaccount.com`). See https://cloud.google.com/compute/docs/images/sharing-images-across-projects for more information about sharing images across GCP projects.
  * `--json-path`: The path to a JSON service account that Spinnaker will use as credentials. This is only needed if Spinnaker is not deployed on a Google Compute Engine VM, or needs permissions not afforded to the VM it is running on. See https://cloud.google.com/compute/docs/access/service-accounts for more information.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--project`: The Google Cloud Platform project this Spinnaker account will manage.
@@ -2425,6 +2425,7 @@ hal config provider google bakery edit [parameters]
 #### Parameters
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--network`: Set the default network your images will be baked in.
+ * `--network-project-id`: Set the default project id for the network and subnet to use for the VM baking your image.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--use-internal-ip`: Use the internal rather than external IP of the VM baking your image.
  * `--zone`: Set the default zone your images will be baked in.
@@ -3778,10 +3779,13 @@ hal deploy apply [parameters]
 #### Parameters
  * `--auto-run`: This command will generate a script to be run on your behalf. By default, the script will run without intervention - if you want to override this, provide "true" or "false" to this flag.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--flush-infrastructure-caches`: (*Default*: `false`) WARNING: This is considered an advanced command, and may break your deployment if used incorrectly.
+
+This flushes infrastructure caches (clouddriver) after the deploy succeeds.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--omit-config`: (*Default*: `false`) WARNING: This is considered an advanced command, and may break your deployment if used incorrectly.
 
- This guarantees that no configuration will be generated for this deployment. This is useful for staging artifacts for later manual configuration.
+This guarantees that no configuration will be generated for this deployment. This is useful for staging artifacts for later manual configuration.
  * `--service-names`: (*Default*: `[]`) When supplied, only install or update the specified Spinnaker services.
 
 
