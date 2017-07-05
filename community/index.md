@@ -42,6 +42,10 @@ lookout_user:
 scopely_user:
   image_path: assets/images/users/scopely_logo.png
   alt: "Scopely logo"
+smartthings_user:
+  image_path: assets/images/users/st_logo.png
+  alt: "Smart Things logo"
+
 ---
 
 ## Who's using Spinnaker?
@@ -66,6 +70,9 @@ scopely_user:
     {% include spinnaker_user id="cloudera_user" %}
     {% include spinnaker_user id="lookout_user" %}
     {% include spinnaker_user id="scopely_user" %}
+  </div>
+  <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="smartthings_user" %}
   </div>
 </div>
 
