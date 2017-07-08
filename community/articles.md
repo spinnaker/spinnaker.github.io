@@ -10,6 +10,7 @@ redirect_from: /docs/articles-and-blog-posts
 
 ## Community Blog Posts & Tutorials
 
+* [Managing Kubernetes with Spinnaker at scale](http://blog.armory.io/managing-kubernetes-with-spinnaker/) *Colin Mo (Armory)*
 * [Codifying your Spinnaker Pipelines](https://medium.com/continuous-delivery-scale/codifying-your-spinnaker-pipelines-ea8e9164998f), *Rob Zienert (Netflix)*
 * [Running Chaos Monkey on Spinnaker/Google Compute Engine (GCE)](https://medium.com/continuous-delivery-scale/running-chaos-monkey-on-spinnaker-google-compute-engine-gce-155dc52f20ef), *Deb Bakshiyev (Google)*
 * [Rosco: Deduping Logic](https://medium.com/@duftler/spinnaker-rosco-deduping-logic-e03716e04a30), *Matt Duftler (Google)*
