@@ -37,12 +37,7 @@ If you don't already have gcloud installed, [install gcloud](https://cloud.googl
 
 ### Enable APIs
 
-* Enable the [Google Cloud Container Builder API](https://console.cloud.google.com/apis/api/cloudbuild.googleapis.com/overview)
-in the Google Cloud Console.
-
-* Enable the [Google Container Registry API](https://pantheon.corp.google.com/apis/api/containerregistry.googleapis.com/overview).
-
-* Enable the [Google Identity and Access Management (IAM) API](https://console.cloud.google.com/apis/api/iam.googleapis.com/overview).
+Verify that the [Service Management API](https://console.cloud.google.com/apis/api/servicemanagement.googleapis.com/overview) is enabled.
 
 ### Create a Kubernetes cluster (GKE)
 
@@ -59,7 +54,7 @@ in the Google Cloud Console.
 * Navigate to the [Spinnaker Launcher offering](https://console.cloud.google.com/launcher/details/click-to-deploy-images/spinnaker?q=spinnaker)
 and click the *Launch on Compute Engine* button.
 
-![Create Spinnaker instance](images/005_launcher_form.png)
+| ![Create Spinnaker instance](images/005_launcher_form.png) |
 
 * Set the *Deployment name* "spinnaker-cd-codelab"
 * Select "us-central1-f" in the *Zone* drop down list.
