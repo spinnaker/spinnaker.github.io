@@ -19,6 +19,7 @@ here is a list of API versions that are required to be enabled:
 * Networking v2
 * Orchestration (Heat)
 * Ceilometer
+* Telemetry Alarming (Aodh)
 * Glance v1
 
 You will need an account admin permissions for Spinnaker to use. You can download the [openrc](https://docs.openstack.org/user-guide/common/cli-set-environment-variables-using-openstack-rc.html) from your Horizon UI. To test your setup, use the the [OpenStack command line client](https://docs.openstack.org/developer/python-openstackclient/).
