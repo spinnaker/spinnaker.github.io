@@ -22,7 +22,9 @@ we will encourage you to instead use Halyard.
 
 ## Installation
 
-Currently Halyard may only be installed on Ubuntu 14.04.
+There are a few different ways to install Halyard (with more on the way):
+
+### Ubuntu 14.04
 
 The following command installs the latest released Halyard version, and will
 prompt the user for some configuration in the process. Generally the default
@@ -43,6 +45,47 @@ hal -v
 
 If that command fails, make sure `hal` is in your `$PATH`, and check for logs
 under `/var/log/upstart/halyard` and `/var/log/spinnaker/halyard/halyard.log`.
+
+### Docker
+
+> This installation path is in alpha and will have some rough edges.
+
+Make sure you have [Docker CE
+installed](https://docs.docker.com/engine/installation/). 
+
+Fetch the latest Halyard version:
+
+```bash
+docker pull gcr.io/spinnaker-marketplace/halyard:stable
+```
+
+Make (on your current machine) a local Halyard config directory. This will
+persist between runs of the Halyard docker container.
+
+```bash
+mkdir ~/.hal
+```
+
+Now, run the Halyard docker container, while mounting that Halyard config
+directory for your container:
+
+```
+docker run -v ~/.hal:/root/.hal gcr.io/spinnaker-marketplace/halyard:stable
+```
+
+This will emit all of the Halyard daemon's logs, and run as a foreground
+process in your current shell.
+
+In a separate shell, run:
+
+```
+docker exec -it <id of halyard container> bash
+```
+
+Now you're able to interact with the Halyard daemon. __However__, any
+secrets/config you need to supply to the daemon (e.g. a kubeconfig file) will
+need to be mounted in either your local `~/.hal` directory, or another
+directory that you supply to `docker run`.
 
 ## Command-Completion & Help
 
