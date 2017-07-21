@@ -13,7 +13,7 @@ Spinnaker is composed of a number of independent microservices:
 
 1. [Deck](https://github.com/spinnaker/deck) is the browser-based UI.
 
-1. [Gate](https://github.com/spinnaker/gate) is the API gateway. The Spinnaker UI and all api callers communicate with Spinnaker via Gate. 
+1. [Gate](https://github.com/spinnaker/gate) is the API gateway. The Spinnaker UI and all api callers communicate with Spinnaker via Gate.
 
 1. [Orca](https://github.com/spinnaker/orca) is the orchestration engine. It handles all ad-hoc operations and pipelines.
 
@@ -66,8 +66,8 @@ classDef external fill:#c0d89d,stroke:#39546a;
 class deck,api external
 </div>
 
-The diagram above represents which microservices depend on each other. The green boxes represent 
-"external" components, including Deck, the single-page JavaScript application that runs in your 
+The diagram above represents which microservices depend on each other. The green boxes represent
+"external" components, including Deck, the single-page JavaScript application that runs in your
 browser.
 
 {% include mermaid %}
@@ -77,3 +77,19 @@ services can be run in their own server group, it is typical for services to res
 [Eureka](https://github.com/Netflix/eureka) or [Consul](https://www.consul.io/)).
 
 ![](graph.png)
+
+## Port mappings
+
+By default Spinnaker binds ports according to the following table
+
+| Service     | Port              |
+| :---------- | :---------------- |
+| Deck        | 9000              |
+| Gate        | 8084              |
+| Orca        | 8083              |
+| Clouddriver | 7002              |
+| Front50     | 8080              |
+| Rosco       | 8087              |
+| Igor        | 8088              |
+| Echo        | 8089              |
+| Fiat        | 7003              |
