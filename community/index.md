@@ -45,6 +45,9 @@ scopely_user:
 smartthings_user:
   image_path: assets/images/users/st_logo.png
   alt: "Smart Things logo"
+clarivate_user:
+  image_path: assets/images/users/clarivate_logo.svg
+  alt: "Clarivate Logo"
 
 ---
 
@@ -73,6 +76,7 @@ smartthings_user:
   </div>
   <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="smartthings_user" %}
+    {% include spinnaker_user id="clarivate_user" %}
   </div>
 </div>
 
