@@ -17,9 +17,9 @@ Out of the box, Spinnaker allows you to configure the following types of notific
 
 This is discussed in the Configuring Notifications section below.
 
-Additionally, Spinnaker allows you to set webhooks for git triggers. See the [http://www.spinnaker.io/docs/notifications-and-events-guide#section-setting-up-git-triggers-in-spinnaker] section.  
+Additionally, Spinnaker allows you to set webhooks for git triggers. See the [Setting up Git Triggers in Spinnaker](#setting-up-git-triggers-in-spinnaker) section.
 
-You can also set Spinnaker to stream all its events to a downstream listener. See the [Add a Webhook to Spinnaker](http://www.spinnaker.io/docs/notifications-and-events-guide#section-add-a-listening-webhook-to-spinnaker) section.
+You can also set Spinnaker to stream all its events to a downstream listener. See the [Add a Webhook to Spinnaker](#add-a-listening-webhook-to-spinnaker) section.
 
 Additionally, Spinnaker is capable of handling cron-based triggers and detect changes in Jenkins builds and Docker images. This functionality will be documented at a later time. 
 
