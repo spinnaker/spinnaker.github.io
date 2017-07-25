@@ -18,6 +18,10 @@ The roadmap indicates target and stretch-goal items that the broad community is 
 | | Pub/sub and Kafka support for triggering pipelines |
 | | Pub/sub and Kafka as an outbound messaging option |
 | | UI for Managed Pipeline Templates |
+| | Making it easier to create custom pipeline stages |
+| | Making it easy to plug in new top-level UIs |
+| | Enhancing support for Spinnaker’s Expression Language |
+| | General Hystrix improvements  |
 | GCP | Support for fetch/push artifacts with GCS |
 | App Engine | Deployment artifacts from GCS |
 | Kubernetes | Kubernetes config manifest based deployments |
