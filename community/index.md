@@ -47,7 +47,10 @@ smartthings_user:
   alt: "Smart Things logo"
 clarivate_user:
   image_path: assets/images/users/clarivate_logo.svg
-  alt: "Clarivate Logo"
+  alt: "Clarivate logo"
+nest_user:
+  image_path: assets/images/users/nest_logo.png
+  alt: "Nest logo"
 
 ---
 
@@ -77,6 +80,7 @@ clarivate_user:
   <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="smartthings_user" %}
     {% include spinnaker_user id="clarivate_user" %}
+    {% include spinnaker_user id="nest_user" %}
   </div>
 </div>
 
