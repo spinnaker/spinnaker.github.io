@@ -284,7 +284,7 @@ In the “Find Image” stage, we select the image that was deployed in the test
 
 Click the *Add stage* button:
 
-* Select “Find Image” for the stage *Type*.
+* Select “Find Image from Cluster” for the stage *Type*.
 * Check the region of the test server group to pick the image from.
 * Enter codelab-test for the *Cluster*.
 * Choose “Newest” for the *Server Group Selection*.
