@@ -38,6 +38,14 @@ hal config security authn oauth2 edit \
   --provider $PROVIDER
 hal config security authn oauth2 enable
 ```
+### Azure TenantID
+
+If using the Azure OAuth2 provider you must provide an environment variable to the gate service settings located at `~/.hal/default/service-settings/gate.yml`
+
+```
+env:
+  azureTenantId: YOUR_TENANT_ID
+```
 
 ### Bring-Your-Own Provider
 
