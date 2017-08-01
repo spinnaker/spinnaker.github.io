@@ -470,7 +470,7 @@ Click on each load balancer and use the context menu to delete it:
 ### Delete the Cloud Launcher Deployment
 
 Delete the Deployment and associated GCE VM provisioned by Cloud Launcher:
-[spinnaker-cd-codelab deployment](https://pantheon.corp.google.com/deployments/details/spinnaker-cd-codelab)
+[spinnaker-cd-codelab deployment](https://console.cloud.google.com/deployments/details/spinnaker-cd-codelab)
 
 ### Delete the GCS bucket
 
