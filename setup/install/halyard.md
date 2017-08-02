@@ -70,7 +70,7 @@ Now, run the Halyard docker container, while mounting that Halyard config
 directory for your container:
 
 ```
-docker run -v ~/.hal:/root/.hal gcr.io/spinnaker-marketplace/halyard:stable
+docker run --name halyard --rm -v ~/.hal:/root/.hal gcr.io/spinnaker-marketplace/halyard:stable
 ```
 
 This will emit all of the Halyard daemon's logs, and run as a foreground
@@ -79,13 +79,14 @@ process in your current shell.
 In a separate shell, run:
 
 ```
-docker exec -it <id of halyard container> bash
+docker exec -it halyard bash
 ```
 
 Now you're able to interact with the Halyard daemon. __However__, any
 secrets/config you need to supply to the daemon (e.g. a kubeconfig file) will
 need to be mounted in either your local `~/.hal` directory, or another
-directory that you supply to `docker run`.
+directory that you supply to `docker run` with additional `-v` command-line 
+options.
 
 ## Command-Completion & Help
 
