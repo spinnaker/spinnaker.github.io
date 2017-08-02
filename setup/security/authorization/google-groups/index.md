@@ -63,6 +63,8 @@ hal config security authz google edit \
     --credential-path $CREDENTIALS \
     --domain $DOMAIN
     
+hal config security authz edit --type google
+
 hal config security authz enable
 ```
 
