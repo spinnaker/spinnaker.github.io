@@ -272,3 +272,13 @@ supplied in the operation.
 ### Delete Load Balancer
 
 Deletes the service - this will not edit any pods associated with the service.
+
+# Reserved Annotations
+
+The Kubernetes provider relies on annotations on Kubernetes resources to drive functionality.
+
+Currently, all annotations need to be user-supplied. In the future, certain relationships between resources will be recorded and annotated by Spinnaker.
+
+## `cache.spinnaker.io/ttl`
+
+For Pods only, you can provide the TTL of each individual Pod in milliseconds via the `cache.spinnaker.io/ttl` annotation.
