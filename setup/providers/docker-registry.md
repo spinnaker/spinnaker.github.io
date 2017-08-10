@@ -74,8 +74,10 @@ ADDRESS=gcr.io
 
 Google Container Registry (GCR) supports the
 [catalog](https://docs.docker.com/registry/spec/api/#listing-repositories)
-endpoint to programatically list all images available to your credentials, so
-you don't need to worry about supplying them by hand. However, supplying
+endpoint to programatically list all images available to your credentials. 
+To make use of this, you need to enable the [Resource Manager 
+API](https://console.developers.google.com/apis/api/cloudresourcemanager.googleapis.com/overview), 
+so you don't need to worry about supplying repositories hand. However, providing
 credentials is not straight-forward.
 
 There are [two
