@@ -36,9 +36,9 @@ If you don't already have gcloud installed, navigate to [Installing Cloud SDK](h
 
 Navigate to the [Google Cloud Console's GKE section](https://console.cloud.google.com/kubernetes/list) to create a new Kubernetes cluster (please note the cluster name and zone).
 
-### Enable the GCP IAM API
+### Enable the necessary APIs
 
-Navigate to the [Google Cloud Console](https://console.developers.google.com/apis/api/iam.googleapis.com/overview) and enable the Google Identity and Access Management (IAM) API
+Using the API manager, enable the [Google Identity and Access Management (IAM) API](https://console.developers.google.com/apis/api/iam.googleapis.com/overview), as well as the [Google Resource Manager API](https://console.developers.google.com/apis/api/cloudresourcemanager.googleapis.com/overview).
 
 ### Set up credentials
 
