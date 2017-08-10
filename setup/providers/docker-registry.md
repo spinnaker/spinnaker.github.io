@@ -77,7 +77,7 @@ Google Container Registry (GCR) supports the
 endpoint to programatically list all images available to your credentials. 
 To make use of this, you need to enable the [Resource Manager 
 API](https://console.developers.google.com/apis/api/cloudresourcemanager.googleapis.com/overview), 
-so you don't need to worry about supplying repositories hand. However, providing
+so you don't need to worry about supplying repositories by hand. However, providing
 credentials is not straight-forward.
 
 There are [two
