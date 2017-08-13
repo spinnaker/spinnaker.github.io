@@ -51,6 +51,12 @@ clarivate_user:
 nest_user:
   image_path: assets/images/users/nest_logo.png
   alt: "Nest logo"
+optimizely_user:
+  image_path: assets/images/users/Optimizely-Logo.png
+  alt: "Optimizely logo"
+plangrid_user:
+  image_path: assets/images/users/Logotype_classic.png
+  alt: "PlanGrid logo"
 
 ---
 
@@ -73,12 +79,16 @@ nest_user:
     {% include spinnaker_user id="netflix_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
-    {% include spinnaker_user id="smartthings_user" %}
-    {% include spinnaker_user id="schibsted_user" %}
-    {% include spinnaker_user id="scopely_user" %}
+    {% include spinnaker_user id="plangrid_user" %}
+    {% include spinnaker_user id="optimizely_user" %}
+    {% include spinnaker_user id="smartthings_user" %}   
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="schibsted_user" %}
+    {% include spinnaker_user id="scopely_user" %}
     {% include spinnaker_user id="skuid_user" %}
+  </div>
+  <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="target_user" %}
     {% include spinnaker_user id="waze_user" %}
   </div>
