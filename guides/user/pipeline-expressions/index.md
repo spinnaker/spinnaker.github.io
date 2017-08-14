@@ -235,7 +235,7 @@ You can execute java code within the expression language. This can be useful for
 
 You can use methods available to existing types like String - `${ 'this is a long string'.substring(0,5)}`
 
-You can also declare new classes. Note that package names need to be fully qualified. In the following expression, we're getting the current date as mm-dd-yyyy format: `${ new java.text.SimpleDateFormat('mm-dd-yyyy').format(new java.util.Date()) }` 
+You can also declare new classes. Note that package names need to be fully qualified. In the following expression, we're getting the current date as MM-dd-yyyy format: `${ new java.text.SimpleDateFormat('MM-dd-yyyy').format(new java.util.Date()) }` 
 
 ### Some Useful Things to Know
 
