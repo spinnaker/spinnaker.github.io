@@ -79,8 +79,8 @@ plangrid_user:
     {% include spinnaker_user id="netflix_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
-    {% include spinnaker_user id="plangrid_user" %}
     {% include spinnaker_user id="optimizely_user" %}
+    {% include spinnaker_user id="plangrid_user" %}
     {% include spinnaker_user id="smartthings_user" %}   
   </div>
   <div class="clearfix flex items-center mb3">
