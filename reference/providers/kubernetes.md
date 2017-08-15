@@ -219,13 +219,13 @@ creating it.
 
 This operates the same as __Deploy__; however, the properties the server group
 is deployed with are the result of merging those of the server group being
-cloned, and those specified in the operation, prefering those specified in the
+cloned, and those specified in the operation, preferring those specified in the
 operation.
 
 ### Destroy
 
-This will delete whichever controler you are operating on. If you are deleting
-the must current Replica Set under a Deployment, Spinnaker will attempt to
+This will delete whichever controller you are operating on. If you are deleting
+the most current Replica Set under a Deployment, Spinnaker will attempt to
 delete the Deployment as well.
 
 ### Resize
