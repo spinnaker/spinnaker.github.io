@@ -38,6 +38,7 @@ These are the cloud providers currently supported by Spinnaker:
 * [App Engine](/setup/providers/appengine)
 * [Amazon Web Services](/setup/providers/aws)
 * [Azure](/setup/providers/azure)
+* [DC/OS](/setup/providers/dcos)
 * [Docker v2 Registry](/setup/providers/docker-registry) (__Note:__ This only 
   acts as a source of images, and does not include support for deploying Docker
   images)
