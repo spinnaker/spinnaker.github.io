@@ -9,13 +9,17 @@ redirect_from: /docs/how-to-submit-a-patch
 {% include toc %}
 
 ## Before You Begin
-We prefer small, well tested pull requests.
+We prefer small, well tested pull requests. Note that we are unlikely to accept pull requests that add features without prior discussion. The best way to propose a feature is to first [open an issue](https://github.com/spinnaker/spinnaker/issues/new), ping the [#dev channel](https://spinnakerteam.slack.com/messages/C0DPVDMQE/) in slack and discuss your ideas before implementing them.
 
-Please refer to [Contributing to Spinnaker](http://spinnaker.io/online_docs/community/contributing_guidelines.html) and [On Collaborative Development](http://spinnaker.io/documentation/collab_dev.html).
+## When you initiate a Pull Request from Github
 
-Please follow the following conventions in your git commit messages.
+* Provide a descriptive title for your changes.
+* Add inline code comments to changes that might not be obvious.
+* Squash your commits when you first submit your PR, and again when it's ready to be merged. It's much easier to review incremental changes to feedback when the commits are kept separate.
 
 ## Commit Message Conventions
+
+Please follow the following conventions in your git commit messages.
 
 Once you've implemented a bug fix or feature, it's time to submit a patch to Spinnaker. In order to track and summarize the changes happening in Spinnaker, we use a changelog automation tool called [clog](https://github.com/clog-tool/clog-cli) which scrapes information from commit messages. We follow the ['conventional'](https://github.com/conventional-changelog/conventional-changelog/blob/a5505865ff3dd710cf757f50530e73ef0ca641da/conventions/angular.md) commit message format.
 
@@ -89,13 +93,3 @@ BREAKING CHANGE: More detail here if necessary.
 ```
 
 Note that at minimum, 'BREAKING CHANGE' must be specified on the last line. The extra detail is not mandatory.
-
-## When you initiate a Pull Request from Github
-
-* Provide a descriptive title for your changes.
-* Add inline code comments to changes that might not be obvious.
-* Squash your commits when you first submit your PR, and again when it's ready to be merged. It's much easier to review incremental changes to feedback when the commits are kept separate.
-* Ping the #dev channel in slack for review if your issue has been outstanding for more than 3 days. 
-
-Note that we are unlikely to accept pull requests that add features without prior discussion. The best way to propose a feature is to open an issue first and discuss your ideas there before implementing them.
-
