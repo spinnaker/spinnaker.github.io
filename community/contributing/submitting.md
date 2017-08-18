@@ -9,7 +9,7 @@ redirect_from: /docs/how-to-submit-a-patch
 {% include toc %}
 
 ## Before You Begin
-We prefer small, well tested pull requests. Note that we are unlikely to accept pull requests that add features without prior discussion. The best way to propose a feature is to first [open an issue](https://github.com/spinnaker/spinnaker/issues/new), ping the #dev channel in slack and discuss your ideas before implementing them.
+We prefer small, well tested pull requests. Note that we are unlikely to accept pull requests that add features without prior discussion. The best way to propose a feature is to first [open an issue](https://github.com/spinnaker/spinnaker/issues/new), ping the [#dev channel](https://spinnakerteam.slack.com/messages/C0DPVDMQE/) in slack and discuss your ideas before implementing them.
 
 ## When you initiate a Pull Request from Github
 
