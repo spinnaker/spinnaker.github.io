@@ -19,6 +19,7 @@ These are the cloud providers currently supported by Spinnaker:
 * <a href="/setup/providers/appengine/" target="_blank">App Engine</a>
 * <a href="/setup/providers/aws/" target="_blank">Amazon Web Services</a>
 * <a href="/setup/providers/azure/" target="_blank">Azure</a>
+* <a href="/setup/providers/dcos/" target="_blank">DC/OS</a>
 * <a href="/setup/providers/gce/" target="_blank">Google Compute Engine</a>
 * <a href="/setup/providers/kubernetes/" target="_blank">Kubernetes</a>
 * <a href="/setup/providers/openstack/" target="_blank">Openstack</a>
