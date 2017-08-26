@@ -60,6 +60,9 @@ plangrid_user:
 box_user:
   image_path: assets/images/users/box-logo.jpg 
   alt: "Box logo"
+chartboost_user:
+  image_path: assets/images/users/Logo-Default.png
+  alt: "Chartboost Logo"
 
 ---
 
@@ -69,36 +72,35 @@ box_user:
   <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="box_user" %}
     {% include spinnaker_user id="cerner_user" %}
-    {% include spinnaker_user id="clarivate_user" %}
+    {% include spinnaker_user id="chartboost_user" %}
     
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="clarivate_user" %}
     {% include spinnaker_user id="cloudera_user" %}
     {% include spinnaker_user id="gogo_user" %}
-    {% include spinnaker_user id="google_user" %}
-    
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="google_user" %}
     {% include spinnaker_user id="kenzan_user" %}
     {% include spinnaker_user id="lookout_user" %}
-    {% include spinnaker_user id="nest_user" %}
-    
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="nest_user" %}
     {% include spinnaker_user id="netflix_user" %}
     {% include spinnaker_user id="optimizely_user" %}
-    {% include spinnaker_user id="plangrid_user" %}
-       
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="plangrid_user" %}
     {% include spinnaker_user id="smartthings_user" %}
     {% include spinnaker_user id="schibsted_user" %}
-    {% include spinnaker_user id="scopely_user" %}
-    
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="scopely_user" %}
     {% include spinnaker_user id="skuid_user" %}
     {% include spinnaker_user id="target_user" %}
+  </div>
+  <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="waze_user" %}
   </div>
 </div>
