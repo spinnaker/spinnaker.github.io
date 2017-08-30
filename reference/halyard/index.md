@@ -81,7 +81,7 @@ combined with the Profiles
 
 constructs the `spin-clouddriver-bootstrap` service.
 
-The associations between Profiles and Services is recorded in 
+The associations between Profiles and Services are recorded in 
 `~/.hal/$DEPLOYMENT/history/service-profiles.yml`.
 
 ### Service Settings
