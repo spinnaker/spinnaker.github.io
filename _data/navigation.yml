@@ -108,6 +108,8 @@ setup:
     children:
       - title: Notifications
         url: /setup/features/notifications/
+      - title: User Data
+        url: /setup/features/user-data/
   - title: Monitoring
     children:
       - title: Overview
@@ -215,4 +217,3 @@ community:
     children:
       - title: FAQs
         url: /community/faqs/
-
