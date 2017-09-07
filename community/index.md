@@ -63,7 +63,9 @@ box_user:
 chartboost_user:
   image_path: assets/images/users/Logo-Default.png
   alt: "Chartboost Logo"
-
+weatherbug_user:
+  image_path: assets/images/users/WeatherBug-logo.png
+  alt: "WeatherBug Logo"
 ---
 
 ## Who's using Spinnaker?
@@ -102,6 +104,7 @@ chartboost_user:
   </div>
   <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="waze_user" %}
+    {% include spinnaker_user id="weatherbug_user" %}
   </div>
 </div>
 
