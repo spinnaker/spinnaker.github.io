@@ -5,7 +5,7 @@ sidebar:
   nav: reference
 ---
 
-Published: 2017-08-16 21:29:06
+Published: 2017-09-08 16:10:31
 
 
 # Table of Contents
@@ -191,6 +191,8 @@ Published: 2017-08-16 21:29:06
  * [**hal config security authz disable**](#hal-config-security-authz-disable)
  * [**hal config security authz edit**](#hal-config-security-authz-edit)
  * [**hal config security authz enable**](#hal-config-security-authz-enable)
+ * [**hal config security authz file**](#hal-config-security-authz-file)
+ * [**hal config security authz file edit**](#hal-config-security-authz-file-edit)
  * [**hal config security authz github**](#hal-config-security-authz-github)
  * [**hal config security authz github edit**](#hal-config-security-authz-github-edit)
  * [**hal config security authz google**](#hal-config-security-authz-google)
@@ -400,6 +402,7 @@ hal admin publish version [parameters]
 #### Parameters
  * `--alias`: (*Required*) The alias this version of Spinnaker goes by.
  * `--changelog`: (*Required*) A link to this Spinnaker release's changelog.
+ * `--minimum-halyard-version`: (*Required*) Minimum version of halyard required to install this release
  * `--version`: (*Required*) The version (x.y.z) of Spinnaker to be recorded. This must exist as a BOM.
 
 
@@ -2035,6 +2038,7 @@ hal config provider docker-registry account add ACCOUNT [parameters]
   gcr.io              - Google Container Registry (GCR)
   [us|eu|asia].gcr.io - Regional GCR
   localhost           - Locally deployed registry
+ * `--cache-interval-seconds`: (*Default*: `30`) How many seconds elapse between polling your docker registry. Certain registries are sensitive to over-polling, and larger intervals (e.g. 10 minutes = 600 seconds) are desirable if you're seeing rate limiting.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--email`: (*Default*: `fake.email@spinnaker.io`) Your docker registry email (often this only needs to be well-formed, rather than be a real address)
  * `--no-validate`: (*Default*: `false`) Skip validation.
@@ -2082,6 +2086,7 @@ hal config provider docker-registry account edit ACCOUNT [parameters]
   gcr.io              - Google Container Registry (GCR)
   [us|eu|asia].gcr.io - Regional GCR
   localhost           - Locally deployed registry
+ * `--cache-interval-seconds`: How many seconds elapse between polling your docker registry. Certain registries are sensitive to over-polling, and larger intervals (e.g. 10 minutes = 600 seconds) are desirable if you're seeing rate limiting.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--email`: Your docker registry email (often this only needs to be well-formed, rather than be a real address)
  * `--no-validate`: (*Default*: `false`) Skip validation.
@@ -3507,6 +3512,7 @@ hal config security authz [parameters] [subcommands]
  * `disable`: Set Spinnaker's role-based authorization to disabled
  * `edit`: Edit your roles provider settings.
  * `enable`: Set Spinnaker's role-based authorization to enabled
+ * `file`: Configure the file role provider.
  * `github`: Configure the github role provider.
  * `google`: Configure the google role provider.
 
@@ -3553,6 +3559,39 @@ hal config security authz enable [parameters]
 
 #### Parameters
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config security authz file
+
+Configure the file role provider.
+
+#### Usage
+```
+hal config security authz file [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `edit`: Edit the file role provider.
+
+---
+## hal config security authz file edit
+
+Edit the file role provider.
+
+#### Usage
+```
+hal config security authz file edit [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--file-path`: A path to a file describing the roles of each user.
  * `--no-validate`: (*Default*: `false`) Skip validation.
 
 
