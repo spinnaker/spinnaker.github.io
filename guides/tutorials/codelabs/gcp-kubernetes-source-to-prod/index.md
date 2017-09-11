@@ -37,7 +37,9 @@ If you don't already have gcloud installed, [install gcloud](https://cloud.googl
 
 ### Enable APIs
 
-Verify that the [Service Management API](https://console.cloud.google.com/apis/api/servicemanagement.googleapis.com/overview) is enabled.
+Navigate to the Google Cloud Console and enable the following APIs:
+* [Service Management API](https://console.cloud.google.com/apis/api/servicemanagement.googleapis.com/overview)
+* [Google Cloud Resource Manager API](https://console.developers.google.com/apis/api/cloudresourcemanager.googleapis.com/overview)
 
 ### Create a Kubernetes cluster (GKE)
 
