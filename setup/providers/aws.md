@@ -105,25 +105,55 @@ You can always add more accounts in the future by editing this policy.
 
 #### Configure an Authentication mechanism
 
-You can have Spinnaker authenticate via a user or role. If Spinnaker is
-running outside of EC2, you must use a user and access key/secret key pair. If
-Spinnaker is running inside of EC2, you may use your role on the instances
-Spinnaker is installed on. In either case, the user or role must have the
-`SpinnakerAssumeRolePolicy` attached, as well as the Amazon __PowerUserAccess__
-policy.
+Depending on whether Spinnaker is running outside or inside of EC2, you
+may authenticate via a user (access key / secret key pair) or IAM role, respectively.
 
-If you are authenticating as a user via an access key/secret key pair
-(`${ACCESS_KEY_ID}`/`${SECRET_ACCESS_KEY}`) you must run the following Halyard
+##### Option 1: Add an IAM role to the Spinnaker EC2 instance
+
+If Spinnaker is running inside of EC2, you may add an IAM role to the Spinnaker
+EC2 instance.
+
+Navigate to [Console](https://console.aws.amazon.com/) > IAM > Roles.
+
+1. Select __Create new role__
+2. Select __Amazon EC2__ and go to __Next step__
+3. Attach the __PowerUserAccess__ and __SpinnakerAssumeRolePolicy__ policies and go to __Next step__
+4. Enter __SpinnakerAuthRole__ as the __Role name__
+5. Select __Create role__
+
+Navigate to [Console](https://console.aws.amazon.com/) > EC2 > Instances.
+
+1. Select your instance
+2. Right click and go to __Instance Settings__ and __Attach/Replace IAM Role__ 
+3. Select the __SpinnakerAuthRole__ you created above and __Apply__
+
+Record the ARN of the user you have created - this will be used as `${AUTH_ARN}`:
+
+`arn:aws:iam::${MANAGED_ACCOUNT_ID}:role/SpinnakerAuthRole`  
+  
+##### Option 2: Add a user and access key / secret pair 
+
+If Spinnaker is running outside of EC2, you may add a User and use access key / secret key
+to authenticate.
+
+
+Navigate to [Console](https://console.aws.amazon.com/) > IAM > Users.
+
+1. Select __Add User__
+2. Enter a name, e.g, `Spinnaker`
+3. Select __Programmatic access__ as __Access Type__ and go to  __Next__
+3. Attach the __PowerUserAccess__ and __SpinnakerAssumeRolePolicy__ policies and go to __Next__
+5. Select __Create user__
+
+After you have the user's `${ACCESS_KEY_ID}`/`${SECRET_ACCESS_KEY}` pair you must run the following Halyard
 command:
 
 ```bash
 hal config provider aws edit --access-key-id ${ACCESS_KEY_ID} \
     --secret-access-key # do not supply the key here, you will be prompted
 ```
-
-In either case, record the ARN of the authentication mechanism (either
-`arn:aws:iam::${MANAGED_ACCOUNT_ID}:role/<some role name>` or
-`arn:aws:iam::${MANAGED_ACCOUNT_ID}:user/<some user name>`).
+Record the ARN of the user you have created - this will be used as `${AUTH_ARN}`:
+`arn:aws:iam::${MANAGED_ACCOUNT_ID}:user/Spinnaker`
 
 ### Configuring the Managed Account
 
