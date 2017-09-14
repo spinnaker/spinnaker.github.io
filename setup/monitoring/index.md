@@ -7,12 +7,12 @@ sidebar:
 
 {% include toc %}
 
-Spinnaker is instrumented with numerous metrics internally so that it can be
-monitored. Monitoring spinnaker typically involves the spinnaker-monitoring
-daemon, which collects metrics reported by each microservice instance and
-reports them to a third-party monitoring system which you then use to view
-overview dashboards, receive alerts, and informally browse depending on your
-needs.
+Each Spinnaker microservice is instrumented with numerous metrics exposed
+via a built in endpoint. Monitoring spinnaker typically involves the 
+spinnaker-monitoring daemon, which collects metrics reported by each 
+microservice instance and reports them to a third-party monitoring system
+which you then use to view overview dashboards, receive alerts, and 
+informally browse depending on your needs.
 
 Spinnaker publishes internal metrics using a multi-dimensional data model
 based on "tags". The metrics, data-model, and usage a discussed further
