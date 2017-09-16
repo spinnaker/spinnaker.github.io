@@ -70,7 +70,10 @@ Now, run the Halyard docker container, while mounting that Halyard config
 directory for your container:
 
 ```
-docker run --name halyard --rm -v ~/.hal:/root/.hal gcr.io/spinnaker-marketplace/halyard:stable
+docker run -p localhost:8084:8084 -p localhost:9000:9000 \
+    --name halyard --rm \
+    -v ~/.hal:/root/.hal \
+    gcr.io/spinnaker-marketplace/halyard:stable
 ```
 
 This will emit all of the Halyard daemon's logs, and run as a foreground
