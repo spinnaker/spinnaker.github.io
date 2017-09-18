@@ -35,7 +35,7 @@ be run with `sudo`.
 
 If you have not enabled any sort of authentication, Spinnaker will not be
 publically reachable by default. In this case, you will need to run the 
-following command to reach the UI on [localhost:9000](http://localhost:9000):
+following command to reach the UI on `http://localhost:9000` :
 
 ```bash
 hal deploy connect
