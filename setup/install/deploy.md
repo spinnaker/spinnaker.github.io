@@ -31,6 +31,19 @@ hal deploy apply
 __Note:__ If you're deploying to your local machine, that command may need to
 be run with `sudo`.
 
+## Connect to the Spinnaker UI
+
+If you have not enabled any sort of authentication, Spinnaker will not be
+publically reachable by default. In this case, you will need to run the 
+following command to reach the UI on [localhost:9000](http://localhost:9000):
+
+```bash
+hal deploy connect
+```
+
+If you want to make Spinnaker publically reachable without running that command,
+please read the [Halyard FAQ](/setup/halyard/faq/).
+
 ## Troubleshooting
 
 If this command fails, and it's the first time you've run this command please
