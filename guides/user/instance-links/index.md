@@ -85,6 +85,7 @@ id | instance ID | i-12345678
 imageId | ID of the AMI running on this instance | ami-123456
 instanceId | same as id | i-12345678
 instanceType | AWS instance type | m3.medium
+ipAddress | convenience field for private IP address (internal subnets) or publicDnsName (external subnets) | 104.156.81.74
 keyName | See AWS Documentation | my-keypair-for-this-account
 launchTime | timestamp of when instance launched | 1486146739000
 privateDnsName | internal DNS name associated by AWS to this instance | ip-104-156-81-74.ec2.internal
