@@ -10,11 +10,11 @@ redirect_from: /docs/pipeline-expressions-guide
 
 ## What are Pipeline Expressions?
 
+Pipeline expressions allow you to put a placeholder value that gets filled in when you run your pipeline. 
+
 A pipeline expression in Spinnaker looks like this:
 
 `${ execution.stages[0].name }`
-
-Pipeline expressions allow you to put a placeholder value that gets filled in when you run your pipeline. 
 
 For example, let's say I have a field called `command` that I want to be able to change every time I manually execute a pipeline. When I configure the pipeline, instead of a normal string, I can enter the expression `${ parameters.command }`,
 
@@ -24,33 +24,24 @@ I can now set up my pipeline to take a `command` parameter, when I manually exec
 
 ![](2.png)
 
-When the pipeline runs, it will substitute the value I have entered for `command` with the value `sleep 40000` that I have entered. 
+When the pipeline runs, it resolves the expression to what I’ve entered for `command`.
 
 ## Where can I use Pipeline Expressions in Spinnaker?
 
-![](3.png)
+> **Warning**
+>
+> Sometimes adding an expression stops your ability to use the UI. For example, if you use a parameter for the account field in a cluster deployment Stage, you will see a spinning loader from the UI when you try to edit this cluster.
 
 You can usually type in a value in the text fields of the Pipeline stages in Spinnaker. 
+
+[comment]: <> ![](3.png)
+<img width="600" src="3.png" alt="alt_text"> 
 
 In the following example, we're using pipeline expressions as parameters being passed into a Jenkins stage:
 
 > **Expressions and Pipeline Configuration**
 >
-> Since expressions are only evaluated before stages start, Spinnaker does not support using pipeline expressions in the configuration screen of a pipeline. For example, putting an expression in the job name of a trigger won't actually work.
-
-There are often cases where the value you want to replace doesn't allow typing, such as specifying a list of security groups or wanting to dynamically control the behavior of a checkbox. For these cases, you should edit the pipeline JSON directly.
-
-You can edit the pipeline JSON by selecting Pipeline Actions -> Edit as Json
-
-![](4.png)
-
-In the popup screen, you can now edit the fields that match the fields you want to substitute. 
-
-![](5.png)
-
-> **Warning**
->
-> Sometimes adding an expression will stop your ability to use the UI. For example, if you use a parameter for the account field in a cluster deployment Stage, you will see a spinning loader from the UI when you try to edit this cluster.
+> Because expressions are evaluated per stage before each stage starts, you cannot use expressions in the configuration at the pipeline level. For example, expression in the job name of a trigger for the pipeline does not work because no expressions have been evaluated yet.
 
 ### Turning a stage on or off
 
@@ -79,6 +70,18 @@ You can add expressions to be checked here by selecting *Expression* from the Ch
 ![](8.png)
 
 When the pipeline runs, if this expression evaluates to true, the pipeline will continue as is. If not, the stages following this stage will not run. 
+
+### Sometimes you can't use an expression
+There are often cases where the value you want to replace doesn't allow typing, such as specifying a list of security groups or wanting to dynamically control the behavior of a checkbox. For these cases, you should edit the pipeline JSON directly.
+
+You can edit the pipeline JSON by selecting Pipeline Actions -> Edit as Json
+
+![](4.png)
+
+In the popup screen, you can now edit the fields that match the fields you want to substitute. 
+
+[comment]: <> ![](5.png)
+<img width="700" src="5.png" alt="alt_text"> 
 
 ## What kind of data can I put in Pipeline Expressions?
 
