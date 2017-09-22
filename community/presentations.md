@@ -8,6 +8,10 @@ redirect_from: /docs/presentations
 
 Conference and Meetup Presentations on Spinnaker
 
+### <a href="https://www.youtube.com/playlist?list=PL4yLrwUObNktZDWIlAA3gl8Pi_m3ktxeR" target="_blank">Spinnaker Summit 2017</a>
+**Videos from Spinnaker Summit 2017** \| Sept 11-12, 2017 
+
+A playlist of recorded videos from the Spinnaker Summit held at the Netflix offices in 201
 
 ### <a href="https://www.slideshare.net/MedyaGhazizadeh/win-spinnaker-with-winnaker" target="_blank">Winning Spinnaker with Winnaker</a>
 **Open Source North Conference '17** \| June 8, 2017 \| *Medya Ghazizadeh (Target Corp)*
