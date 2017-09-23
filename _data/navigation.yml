@@ -58,6 +58,8 @@ setup:
         url: /setup/providers/aws/
       - title: Azure
         url: /setup/providers/azure/
+      - title: DC/OS
+        url: /setup/providers/dcos/
       - title: Docker Registry
         url: /setup/providers/docker-registry/
       - title: Google App Engine
