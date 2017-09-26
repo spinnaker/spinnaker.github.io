@@ -25,7 +25,13 @@ Additionally, Spinnaker is capable of handling cron-based triggers and detect ch
 
 # Configuring Notifications
 
-Notification configurations are set in echo.yml and settings.js. On a single instance virtual machine installation, notification values can also be set in spinnaker-local.yml, which will pass the details to echo.yml and settings.js.
+Notification configurations are in echo.yml and settings.js. For changes to echo.yml, create echo-local.yml and put your changes in there. You can customize settings.js directly.
+
+## Where to put echo-local.yml and settings.js
+
+If you use Halyard to configure Spinnaker, put echo-local.yml and settings.js in `~/.hal/{deployment}/profiles/`. 
+
+If you don’t use Halyard, put echo-local.yml in the same place as the current echo.yml, in `/opt/spinnaker/config`, and put settings.js in `/opt/deck/html/`.
 
 You will need to set the `spinnaker.baseUrl` configuration value which is used by spinnaker templates. This should point back to the url for your spinnaker's UI ( deck ) instance. This url is used in notifications to link back to your spinnaker instance.
 
