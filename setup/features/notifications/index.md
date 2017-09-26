@@ -33,7 +33,9 @@ If you use Halyard to configure Spinnaker, put echo-local.yml and settings.js in
 
 If you don’t use Halyard, put echo-local.yml in the same place as the current echo.yml, in `/opt/spinnaker/config`, and put settings.js in `/opt/deck/html/`.
 
-You will need to set the `spinnaker.baseUrl` configuration value which is used by spinnaker templates. This should point back to the url for your spinnaker's UI ( deck ) instance. This url is used in notifications to link back to your spinnaker instance.
+## Spinnaker baseURL
+
+You need to set the `spinnaker.baseUrl` configuration value which is used by spinnaker templates. This should point back to the url for your spinnaker's UI ( deck ) instance. This url is used in notifications to link back to your spinnaker instance.
 
 ## Email
 
