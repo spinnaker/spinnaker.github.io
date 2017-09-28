@@ -106,7 +106,7 @@ First, a list of key patterns:
 $ redis-cli
 
 # Set a new capacity
-127.0.0.1:6379> set rateLimit:chaosmonkey@example.com:capacity 2000
+127.0.0.1:6379> set rateLimit:capacity:chaosmonkey@example.com 2000
 
 # Add the chaosmonkey@example.com principal to the enforcing list
 127.0.0.1:6379> sadd rateLimit:enforcing chaosmonkey@example.com
