@@ -5,7 +5,7 @@ sidebar:
   nav: reference
 ---
 
-Published: 2017-09-08 16:10:31
+Published: 2017-10-02 20:51:37
 
 
 # Table of Contents
@@ -56,6 +56,11 @@ Published: 2017-09-08 16:10:31
  * [**hal config metric-stores stackdriver disable**](#hal-config-metric-stores-stackdriver-disable)
  * [**hal config metric-stores stackdriver edit**](#hal-config-metric-stores-stackdriver-edit)
  * [**hal config metric-stores stackdriver enable**](#hal-config-metric-stores-stackdriver-enable)
+ * [**hal config notification**](#hal-config-notification)
+ * [**hal config notification slack**](#hal-config-notification-slack)
+ * [**hal config notification slack disable**](#hal-config-notification-slack-disable)
+ * [**hal config notification slack edit**](#hal-config-notification-slack-edit)
+ * [**hal config notification slack enable**](#hal-config-notification-slack-enable)
  * [**hal config provider**](#hal-config-provider)
  * [**hal config provider appengine**](#hal-config-provider-appengine)
  * [**hal config provider appengine account**](#hal-config-provider-appengine-account)
@@ -179,6 +184,10 @@ Published: 2017-09-08 16:10:31
  * [**hal config security api ssl edit**](#hal-config-security-api-ssl-edit)
  * [**hal config security api ssl enable**](#hal-config-security-api-ssl-enable)
  * [**hal config security authn**](#hal-config-security-authn)
+ * [**hal config security authn ldap**](#hal-config-security-authn-ldap)
+ * [**hal config security authn ldap disable**](#hal-config-security-authn-ldap-disable)
+ * [**hal config security authn ldap edit**](#hal-config-security-authn-ldap-edit)
+ * [**hal config security authn ldap enable**](#hal-config-security-authn-ldap-enable)
  * [**hal config security authn oauth2**](#hal-config-security-authn-oauth2)
  * [**hal config security authn oauth2 disable**](#hal-config-security-authn-oauth2-disable)
  * [**hal config security authn oauth2 edit**](#hal-config-security-authn-oauth2-edit)
@@ -187,6 +196,10 @@ Published: 2017-09-08 16:10:31
  * [**hal config security authn saml disable**](#hal-config-security-authn-saml-disable)
  * [**hal config security authn saml edit**](#hal-config-security-authn-saml-edit)
  * [**hal config security authn saml enable**](#hal-config-security-authn-saml-enable)
+ * [**hal config security authn x509**](#hal-config-security-authn-x509)
+ * [**hal config security authn x509 disable**](#hal-config-security-authn-x509-disable)
+ * [**hal config security authn x509 edit**](#hal-config-security-authn-x509-edit)
+ * [**hal config security authn x509 enable**](#hal-config-security-authn-x509-enable)
  * [**hal config security authz**](#hal-config-security-authz)
  * [**hal config security authz disable**](#hal-config-security-authz-disable)
  * [**hal config security authz edit**](#hal-config-security-authz-edit)
@@ -467,6 +480,7 @@ hal config [parameters] [subcommands]
  * `features`: Display the state of Spinnaker's feature flags.
  * `generate`: Generate the full Spinnaker config for your current deployment.
  * `metric-stores`: Configure Spinnaker's metric stores. This configuration only affects the publishing of metrics against whichever metric stores you enable (it can be more than one).
+ * `notification`: Display the state of Spinnaker's notification settings.
  * `provider`: Configure, validate, and view the specified provider.
  * `security`: Configure Spinnaker's security. This includes external SSL, authentication mechanisms, and authorization policies.
  * `storage`: Show Spinnaker's persistent storage configuration.
@@ -975,6 +989,89 @@ Set the stackdriver method as enabled
 #### Usage
 ```
 hal config metric-stores stackdriver enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config notification
+
+Display the state of Spinnaker's notification settings.
+
+#### Usage
+```
+hal config notification [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `slack`: Manage and view Spinnaker configuration for the slack notification
+
+---
+## hal config notification slack
+
+Manage and view Spinnaker configuration for the slack notification
+
+#### Usage
+```
+hal config notification slack [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `disable`: Set the slack notification as disabled
+ * `edit`: Edit the slack notification type
+ * `enable`: Set the slack notification as enabled
+
+---
+## hal config notification slack disable
+
+Set the slack notification as disabled
+
+#### Usage
+```
+hal config notification slack disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config notification slack edit
+
+Edit the slack notification type
+
+#### Usage
+```
+hal config notification slack edit [parameters]
+```
+
+#### Parameters
+ * `--bot-name`: The name of your slack bot.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--token`: (*Sensitive data* - user will be prompted on standard input) Your slack bot token.
+
+
+---
+## hal config notification slack enable
+
+Set the slack notification as enabled
+
+#### Usage
+```
+hal config notification slack enable [parameters]
 ```
 
 #### Parameters
@@ -3352,8 +3449,78 @@ hal config security authn [parameters] [subcommands]
  * `--no-validate`: (*Default*: `false`) Skip validation.
 
 #### Subcommands
+ * `ldap`: Configure the ldap method for authenticating.
  * `oauth2`: Configure the oauth2 method for authenticating.
  * `saml`: Configure the saml method for authenticating.
+ * `x509`: Configure the x509 method for authenticating.
+
+---
+## hal config security authn ldap
+
+Configure the ldap method for authenticating.
+
+#### Usage
+```
+hal config security authn ldap [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `disable`: Set the ldap method as disabled
+ * `edit`: Configure authentication using a LDAP identity provider.
+ * `enable`: Set the ldap method as enabled
+
+---
+## hal config security authn ldap disable
+
+Set the ldap method as disabled
+
+#### Usage
+```
+hal config security authn ldap disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config security authn ldap edit
+
+Lightweight Directory Access Protocol (LDAP) is a standard way many organizations maintain user credentials and group memberships. Spinnaker uses the standard “bind” approach for user authentication. This is a fancy way of saying that Gate uses your username and password to login to the LDAP server, and if the connection is successful, you’re considered authenticated.
+
+#### Usage
+```
+hal config security authn ldap edit [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--url`: ldap:// or ldaps:// url of the LDAP server
+ * `--user-dn-pattern`: Placeholder...uid={0},ou=users
+ * `--user-search-base`: Placeholder...
+ * `--user-search-filter`: Placeholder
+
+
+---
+## hal config security authn ldap enable
+
+Set the ldap method as enabled
+
+#### Usage
+```
+hal config security authn ldap enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
 
 ---
 ## hal config security authn oauth2
@@ -3487,6 +3654,72 @@ Set the saml method as enabled
 #### Usage
 ```
 hal config security authn saml enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config security authn x509
+
+Configure the x509 method for authenticating.
+
+#### Usage
+```
+hal config security authn x509 [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `disable`: Set the x509 method as disabled
+ * `edit`: Configure authentication and role information for a x509 authentication scheme
+ * `enable`: Set the x509 method as enabled
+
+---
+## hal config security authn x509 disable
+
+Set the x509 method as disabled
+
+#### Usage
+```
+hal config security authn x509 disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config security authn x509 edit
+
+x509 authenticates users via client certificate and a corresponding private key These certificates optionally provide authorization information via custom Oids with corresponding group information for the user. This can be configured via --roleOid
+
+#### Usage
+```
+hal config security authn x509 edit [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--role-oid`: The OID that encodes roles that the user specified in the x509 certificate belongs to
+ * `--subject-principal-regex`: The regex used to parse the subject principal name embedded in the x509 certificate if necessary
+
+
+---
+## hal config security authn x509 enable
+
+Set the x509 method as enabled
+
+#### Usage
+```
+hal config security authn x509 enable [parameters]
 ```
 
 #### Parameters
