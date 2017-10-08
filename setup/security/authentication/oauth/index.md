@@ -97,7 +97,7 @@ case of the [Quickstart](/setup/quickstart) images, a fronting Apache instance.
 To manually set the `redirect_uri` for Gate, use the following `hal` command:
 
 ```bash
-hal config security authn oauth edit --pre-established-redirect-uri https://my-real-gate-address.com:8084/login
+hal config security authn oauth2 edit --pre-established-redirect-uri https://my-real-gate-address.com:8084/login
 ```
 
 > Be sure to include the `/login` suffix at the end of the `--pre-established-redirect-uri` flag!
