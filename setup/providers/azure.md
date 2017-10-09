@@ -7,6 +7,8 @@ sidebar:
 
 {% include toc %}
 
+If you want to configure Spinnaker to deploy containerized apps to Kubernetes on Azure, follow the steps [here](http://aka.ms/azspinlab). Otherwise, if you would like to deploy to Azure VM Scale Sets, follow the steps below.
+
 In [Azure](https://azure.microsoft.com/), an [__Account__](/setup/providers/#accounts) maps to a
 credential able to authenticate against a given [Azure subscription](https://azure.microsoft.com/free/).
 
