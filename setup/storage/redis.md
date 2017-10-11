@@ -6,10 +6,10 @@ sidebar:
 ---
 
 > :warning: Redis can be used as Spinnaker's persistent storage source, but
-> it is __not__ recommended for production use-cases because it mixes fungible,
-> short-lived cache entries with the Pipeline and Application data that deploy
-> all of your infrastructure. This means you will have to be extra careful
-> when clearing your Spinnaker Redis cache.
+> it is unsupported and __not__ recommended for production use-cases because
+> it mixes fungible, short-lived cache entries with the Pipeline and Application
+> data that deploy all of your infrastructure. This means you will have to be
+> extra careful when clearing your Spinnaker Redis cache.
 
 ## Prerequisites
 
