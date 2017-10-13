@@ -9,22 +9,24 @@ redirect_from: /docs/roadmap
 
 The roadmap indicates target and stretch-goal items that the broad community is working on. As our release versioning matures, we expect to move to a more granular model for communicating timelines for features.
 
+### 2017 Q4
+
+| Area | Features |
+|---|---|
+| General | Automated Canary Analysis alpha with Atlas, Stackdriver, Prometheus |
+| | Pub/sub and Kafka support for triggering pipelines |
+| App Engine | Deployment artifacts from GCS |
+| Kubernetes | [Kubernetes config manifest based deployments](https://github.com/spinnaker/spinnaker/issues/1902) |
+
 ### 2017 Q3
 
 | Area | Features |
 |---|---|
-| General | Canary strategy beta with Atlas, Stackdriver, Prometheus, Datadog |
-| | Standard messaging format for trigger events and artifact handling (e.g. Jenkins) |
-| | Pub/sub and Kafka support for triggering pipelines |
-| | Pub/sub and Kafka as an outbound messaging option |
-| | UI for Managed Pipeline Templates |
+| General | Standard messaging format for trigger events and artifact handling (e.g. Jenkins) |
 | | Making it easier to create custom pipeline stages |
 | | Making it easy to plug in new top-level UIs |
 | | Enhancing support for Spinnaker’s Expression Language |
 | | General Hystrix improvements  |
-| GCP | Support for fetch/push artifacts with GCS |
-| App Engine | Deployment artifacts from GCS |
-| Kubernetes | Kubernetes config manifest based deployments |
 
 
 ### 2017 Q2
