@@ -86,11 +86,7 @@ In the popup screen, you can now edit the fields that match the fields you want 
 
 ## What kind of data can I put in Pipeline Expressions?
 
-So where do we actually get the values that get evaluated in by pipeline expressions? In this section, we will describe the numerous sources of data for a pipeline in Spinnaker and how to access them. 
-
-### Pipeline Execution
-
-The current running pipeline is available within Pipeline Expressions as `execution`. The easiest way to view this JSON is as follows,
+In this section, we will describe the numerous sources of data for a pipeline expression in Spinnaker and how to access them.  Expressions are evaluated against the currently running pipeline. To see all the available attributes in a pipeline, you can view the source JSON. The easiest way to view this JSON is as follows,
 
 * Go to an execution of your pipeline.
 * Click on `Details` to expand the pipeline.
@@ -98,7 +94,11 @@ The current running pipeline is available within Pipeline Expressions as `execut
 
 ![](9.png)
 
-This will take you to a JSON file that contains the details of your pipeline execution. 
+This will take you to a JSON file that contains the details of your pipeline execution.
+
+### Pipeline Execution
+
+The current running pipeline is available within Pipeline Expressions as `execution`.  
 
 From there, you can navigate to different parts of the pipeline. For example, to reference the name of the first stage you can use `${ execution.stages[0]['name'] }`.
 
