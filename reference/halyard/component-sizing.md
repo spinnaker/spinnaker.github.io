@@ -1,9 +1,9 @@
 ---
 layout: single
-title:  "Custom Component Sizing"
+title:  "Component Sizing"
 sidebar:
   nav: reference
-redirect_from: /docs/custom-component-sizing
+redirect_from: /docs/component-sizing
 ---
 
 {% include toc %}
