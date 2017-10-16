@@ -9,7 +9,7 @@ sidebar:
 
 Here are a few Q/A pairs that come up fairly frequently.
 
-## I want to expose LocalDebian Spinnaker on a public IP address, but it always binds to locahost
+## I want to expose LocalDebian Spinnaker on a public IP address, but it always binds to localhost
 
 First off, on a local deployment Spinnaker binds to `localhost` intentionally.
 Your Spinnaker instance has the ability to deploy and destroy a lot of
