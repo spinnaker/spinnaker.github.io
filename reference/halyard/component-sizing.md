@@ -3,7 +3,6 @@ layout: single
 title:  "Component Sizing"
 sidebar:
   nav: reference
-redirect_from: /docs/component-sizing
 ---
 
 {% include toc %}
