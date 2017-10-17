@@ -140,7 +140,7 @@ the `spinnaker-monitoring-third-party` package as described above, do so now.
 
   1. Install the dashboards
   ```
-  /opt/spinnaker-monitoring/third_party/prometheus/nistall --dashboards_only
+  /opt/spinnaker-monitoring/third_party/prometheus/install --dashboards_only
   ```
 
   2. Open http://localhost:3000 in your browser
