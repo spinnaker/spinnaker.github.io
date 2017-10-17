@@ -38,7 +38,7 @@ Limits and requests follow the Kubernetes conventions [documented here](https://
 
 ### Updating JAVA_OPTS
 
-The shaping of the pods via request and limits will not cap the java processes for the Spinnaker microservice. This can be achieved by using the `env` key in [service-settings](references/halyard/custom/#tweakable-service-settings).
+The shaping of the pods via request and limits will not cap the java processes for the Spinnaker microservice. This can be achieved by using the `env` key in [service-settings](/reference/halyard/custom/#tweakable-service-settings).
 
 In general, the `-Xms` will follow 80%-90% of the requests memory allotment and `-Xmx` will follow 80-90% of the limits memory allotment. For the clouddriver example above, the `env` key is as follows:
 
