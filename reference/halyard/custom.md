@@ -91,9 +91,13 @@ cluster.
 
 
 ### Kubernetes
+
 The following Kubernetes specific setting can be specified
 
 #### imagePullSecrets
+
+If making use of custom artifactIds from an authenticated docker registry imagePullSecrets must be made available in the replicaset definition. To specify imagePullSecrets to custom artifactIds they can be specified as follows:
+
 ```
 kubernetes:
   imagePullSecrets:
