@@ -15,10 +15,10 @@ Provider level.
 
 These are the Cloud Providers currently supported by Spinnaker:
 
-* [App Engine](/reference/providers/)
-* [Amazon Web Services](/reference/providers/)
+* [App Engine](/reference/providers/appengine)
+* Amazon Web Services
 * [Azure](/reference/providers/azure/)
 * [Google Compute Engine](/reference/providers/gce/)
 * [Kubernetes](/reference/providers/kubernetes/)
-* [Openstack](/reference/providers/openstack/)
-* [Oracle](/reference/providers/oracle/)
+* Openstack
+* Oracle
