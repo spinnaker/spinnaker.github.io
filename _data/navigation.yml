@@ -160,8 +160,8 @@ reference:
     children:
       - title: Overview
         url: /reference/providers/
-      - title: Amazon Web Services
-        url: /reference/providers/aws/
+#      - title: Amazon Web Services
+#        url: /reference/providers/aws/
       - title: Azure
         url: /reference/providers/azure/
       - title: Google App Engine
@@ -170,10 +170,10 @@ reference:
         url: /reference/providers/gce/
       - title: Kubernetes
         url: /reference/providers/kubernetes/
-      - title: OpenStack
-        url: /reference/providers/openstack/
-      - title: Oracle
-        url: /reference/providers/oracle/
+#      - title: OpenStack
+#        url: /reference/providers/openstack/
+#      - title: Oracle
+#        url: /reference/providers/oracle/
   - title: Halyard
     children:
       - title: Overview
