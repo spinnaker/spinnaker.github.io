@@ -22,19 +22,17 @@ concepts:
       url: /concepts/pipelines/
 
 setup:
-  - title: Quickstart
+  - title: Quickstarts
     children:
-      - title: Solutions
+      - title: Demo Install
         url: /setup/quickstart/
-      - title: Halyard Guides
+      - title: Quick Full-Install
         url: /setup/quickstart/halyard/
-      - title: FAQ
-        url: /setup/quickstart/faq/
-  - title: Install
+  - title: Install and Configure
     children:
-      - title: Getting Started
+      - title: Overview
         url: /setup/install/
-      - title: Halyard
+      - title: Install Halyard
         url: /setup/install/halyard/
       - title: Environment
         url: /setup/install/environment/
@@ -46,6 +44,8 @@ setup:
         url: /setup/install/deploy/
       - title: Configuration
         url: /setup/install/configuration/
+      - title: FAQ
+        url: /setup/quickstart/faq/
       - title: Upgrades
         url: /setup/install/upgrades/
       - title: Backups
