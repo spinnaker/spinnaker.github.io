@@ -50,3 +50,13 @@ env:
 ### Recommendations
 
 It is not recommended that limits and requests be applied to the bootstrapping pods. These pods can be scaled down to 0 once `hal deploy apply` has been completed. They will be relaunched the next time a `hal deploy apply` is executed.
+
+### Replicas
+
+The number of desired replicas for a component can be specified within customSizing like so:
+```
+customSizing:
+  spin-[component name]:
+    replicas: 2
+```
+If the number of replicas isn't specified for a component halyard will deploy said component with the same number of replicas it had during the previous deployment. On the initial deployment of spinnaker all pods will default to 1 replica if nothing is specified within customSizing.
