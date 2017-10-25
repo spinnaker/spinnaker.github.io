@@ -75,6 +75,9 @@ informatica_user:
 purestorage_user:
   image_path: assets/images/users/PureStorage.png
   alt: "PureStorage Logo"
+mulesoft_user:
+  image_path: assets/images/users/MuleSoft_logo_299C.png
+  alt: "MuleSoft Logo"
 ---
 
 ## Who's using Spinnaker?
@@ -97,29 +100,27 @@ purestorage_user:
   </div>
   <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="lookout_user" %}
+    {% include spinnaker_user id="mulesoft_user" %}
     {% include spinnaker_user id="nest_user" %}
-    {% include spinnaker_user id="netflix_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="netflix_user" %}
     {% include spinnaker_user id="optimizely_user" %}
     {% include spinnaker_user id="purestorage_user" %}
+  </div>
+  <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="plangrid_user" %}
-
-  </div>
-  <div class="clearfix flex items-center mb3">
-        {% include spinnaker_user id="smartthings_user" %}
+    {% include spinnaker_user id="smartthings_user" %}
     {% include spinnaker_user id="schibsted_user" %}
-    {% include spinnaker_user id="scopely_user" %}
-    
-  </div>
+ </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="scopely_user" %}
     {% include spinnaker_user id="skuid_user" %}
     {% include spinnaker_user id="target_user" %}
-    {% include spinnaker_user id="underarmour_user" %}
-    
   </div>
-    <div class="clearfix flex items-center mb3">
-      {% include spinnaker_user id="waze_user" %}
+  <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="underarmour_user" %}
+    {% include spinnaker_user id="waze_user" %}
     {% include spinnaker_user id="weatherbug_user" %}
   </div>
 </div>
