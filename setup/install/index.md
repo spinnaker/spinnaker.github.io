@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Getting Started"
+title:  "Overview"
 sidebar:
   nav: setup
 redirect_from: /docs/installation-tools
