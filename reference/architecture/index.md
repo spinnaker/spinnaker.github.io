@@ -93,3 +93,4 @@ By default Spinnaker binds ports according to the following table
 | Igor        | 8088              |
 | Echo        | 8089              |
 | Fiat        | 7003              |
+| Halyard     | 8064              |
