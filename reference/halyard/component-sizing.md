@@ -11,10 +11,12 @@ sidebar:
 Within the halconfig custom sizing can be specified for each Spinnaker component. Custom sizing must be manually added to the halconfig, there are no CLI commands or flags to enable these settings. This feature is currently only supported for distributed deployments using Kubernetes (`hal config deploy edit --type distributed --account-name my-k8s-cluster`).
 
 ## Kubernetes
+The following kubernetes settings can be tweaked within custom sizing. 
+
+### CPU & Memory requests/limits
 
 Container requests and limits for cpu and memory can be specified in the customSizing section of the halconfig. Note that these sizings will also be applied to any sidecars running along side the container as well. Please see the example for details.
 
-### Example
 ```
 deploymentEnvironment:
   customSizing:
@@ -36,7 +38,7 @@ deploymentEnvironment:
 
 Limits and requests follow the Kubernetes conventions [documented here](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/).
 
-### Updating JAVA_OPTS
+#### Updating JAVA_OPTS
 
 The shaping of the pods via request and limits will not cap the java processes for the Spinnaker microservice. This can be achieved by using the `env` key in [service-settings](/reference/halyard/custom/#tweakable-service-settings).
 
@@ -47,9 +49,11 @@ env:
    JAVA_OPTS: "-Xms410m -Xmx819m
 ```
 
-### Recommendations
+#### Recommendations
 
 It is not recommended that limits and requests be applied to the bootstrapping pods. These pods can be scaled down to 0 once `hal deploy apply` has been completed. They will be relaunched the next time a `hal deploy apply` is executed.
+
+Optimal sizings for your components will depend upon your environment, but in general clouddriver and orca will need to be larger than the rest of the components, additionally echo may also need to be larger if using event hooks.
 
 ### Replicas
 
