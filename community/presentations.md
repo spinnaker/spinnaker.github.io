@@ -8,6 +8,14 @@ redirect_from: /docs/presentations
 
 Conference and Meetup Presentations on Spinnaker
 
+### <a href="https://www.meetup.com/Spinnaker-BayArea/events/243581205" target="_blank">South Bay Meetup at Cisco</a>
+**Videos from Spinnaker South Bay Meetup at Cisco** \| October 24, 2017 
+
+* [Cisco Spinnaker Use Cases](https://video.cisco.com/detail/video/5625201133001?autoStart=true)
+* [Community Update](https://video.cisco.com/detail/videos/customer-case-studies/video/5625309847001?autoStart=true)
+* [Intuit Spinnaker Use Cases](https://video.cisco.com/detail/videos/customer-case-studies/video/5625309848001?autoStart=true)
+* [Pure Storage Spinnaker Use Cases](https://video.cisco.com/detail/videos/service-provider/video/5625309849001?autoStart=true)
+
 ### <a href="https://www.youtube.com/playlist?list=PL4yLrwUObNktZDWIlAA3gl8Pi_m3ktxeR" target="_blank">Spinnaker Summit 2017</a>
 **Videos from Spinnaker Summit 2017** \| Sept 11-12, 2017 
 
