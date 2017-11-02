@@ -13,7 +13,7 @@ Conference and Meetup Presentations on Spinnaker
 
 * [Cisco Spinnaker Use Cases](https://video.cisco.com/detail/video/5625201133001?autoStart=true)
 * [Community Update](https://video.cisco.com/detail/videos/customer-case-studies/video/5625309847001?autoStart=true)
-* [Intuit Spinnaker Use Cases](https://video.cisco.com/detail/videos/customer-case-studies/video/5625309848001?autoStart=true)
+* Intuit Spinnaker Use Cases - please contact Intuit for the video 
 * [Pure Storage Spinnaker Use Cases](https://video.cisco.com/detail/videos/service-provider/video/5625309849001?autoStart=true)
 
 ### <a href="https://www.youtube.com/playlist?list=PL4yLrwUObNktZDWIlAA3gl8Pi_m3ktxeR" target="_blank">Spinnaker Summit 2017</a>
