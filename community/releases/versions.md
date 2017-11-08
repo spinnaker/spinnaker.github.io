@@ -31,6 +31,10 @@ Released: {{ post.date | date_to_rfc822 }}
   {% endunless %}
 {% endfor %}
 
+> To be notified when new Spinnaker versioned releases are available, please join the
+[spinnaker-announce](https://groups.google.com/forum/#!forum/spinnaker-announce) Google
+Group (requires a Google account).
+
 ## Deprecated Versions
 {% for post in reversed %}
   {% if post.tags contains 'deprecated' %}
@@ -40,6 +44,3 @@ Released: {{ post.date }}
   {% endif %}
 {% endfor %}
 
-> To be notified when new Spinnaker versioned releases are available, please join the
-[spinnaker-announce](https://groups.google.com/forum/#!forum/spinnaker-announce) Google
-Group (requires a Google account).
