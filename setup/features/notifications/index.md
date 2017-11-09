@@ -104,11 +104,10 @@ Note: your users will need to invite the hipchat bot to private rooms that want 
 
 For slack, you need to [create a custom bot user](https://api.slack.com/bot-users#how_do_i_create_custom_bot_users_for_my_team), then get the access token associated with that new bot user. Then...
 
-`hal config notification slack enable`
-
-and
-
-`hal config notification slack edit --bot-name $SPINNAKER_BOT --token $TOKEN_FROM_SLACK`
+```bash
+hal config notification slack enable`
+`hal config notification slack edit --bot-name $SPINNAKER_BOT --token $TOKEN_FROM_SLACK
+```
 
 Note: your users will need to invite the slack bot to private rooms that want to be notified.
 
