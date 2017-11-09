@@ -32,6 +32,20 @@ For this exercise we will be operating entirely within one GCP project, and use 
 
 If you don't already have gcloud installed, navigate to [Installing Cloud SDK](https://cloud.google.com/sdk/downloads#interactive) to install gcloud
 
+#### Authenticate gcloud and set your default project.
+
+Authenticate gcloud with your account. Follow the instructions after the following command.
+
+```bash
+gcloud auth login
+```
+
+Set your default gcloud project:
+
+```bash
+gcloud config set project <PROJECT_NAME>
+```
+
 ### Create a Kubernetes cluster
 
 Navigate to the [Google Cloud Console's GKE section](https://console.cloud.google.com/kubernetes/list) to create a new Kubernetes cluster (please note the cluster name and zone).
