@@ -5,7 +5,7 @@ sidebar:
   nav: reference
 ---
 
-Published: 2017-10-02 20:51:37
+Published: 2017-11-09 15:33:26
 
 
 # Table of Contents
@@ -26,6 +26,16 @@ Published: 2017-10-02 20:51:37
  * [**hal backup create**](#hal-backup-create)
  * [**hal backup restore**](#hal-backup-restore)
  * [**hal config**](#hal-config)
+ * [**hal config artifact**](#hal-config-artifact)
+ * [**hal config artifact gcs**](#hal-config-artifact-gcs)
+ * [**hal config artifact gcs account**](#hal-config-artifact-gcs-account)
+ * [**hal config artifact gcs account add**](#hal-config-artifact-gcs-account-add)
+ * [**hal config artifact gcs account delete**](#hal-config-artifact-gcs-account-delete)
+ * [**hal config artifact gcs account edit**](#hal-config-artifact-gcs-account-edit)
+ * [**hal config artifact gcs account get**](#hal-config-artifact-gcs-account-get)
+ * [**hal config artifact gcs account list**](#hal-config-artifact-gcs-account-list)
+ * [**hal config artifact gcs disable**](#hal-config-artifact-gcs-disable)
+ * [**hal config artifact gcs enable**](#hal-config-artifact-gcs-enable)
  * [**hal config ci**](#hal-config-ci)
  * [**hal config ci jenkins**](#hal-config-ci-jenkins)
  * [**hal config ci jenkins disable**](#hal-config-ci-jenkins-disable)
@@ -36,6 +46,15 @@ Published: 2017-10-02 20:51:37
  * [**hal config ci jenkins master edit**](#hal-config-ci-jenkins-master-edit)
  * [**hal config ci jenkins master get**](#hal-config-ci-jenkins-master-get)
  * [**hal config ci jenkins master list**](#hal-config-ci-jenkins-master-list)
+ * [**hal config ci travis**](#hal-config-ci-travis)
+ * [**hal config ci travis disable**](#hal-config-ci-travis-disable)
+ * [**hal config ci travis enable**](#hal-config-ci-travis-enable)
+ * [**hal config ci travis master**](#hal-config-ci-travis-master)
+ * [**hal config ci travis master add**](#hal-config-ci-travis-master-add)
+ * [**hal config ci travis master delete**](#hal-config-ci-travis-master-delete)
+ * [**hal config ci travis master edit**](#hal-config-ci-travis-master-edit)
+ * [**hal config ci travis master get**](#hal-config-ci-travis-master-get)
+ * [**hal config ci travis master list**](#hal-config-ci-travis-master-list)
  * [**hal config deploy**](#hal-config-deploy)
  * [**hal config deploy edit**](#hal-config-deploy-edit)
  * [**hal config edit**](#hal-config-edit)
@@ -176,6 +195,16 @@ Published: 2017-10-02 20:51:37
  * [**hal config provider oraclebmcs account list**](#hal-config-provider-oraclebmcs-account-list)
  * [**hal config provider oraclebmcs disable**](#hal-config-provider-oraclebmcs-disable)
  * [**hal config provider oraclebmcs enable**](#hal-config-provider-oraclebmcs-enable)
+ * [**hal config pubsub**](#hal-config-pubsub)
+ * [**hal config pubsub google**](#hal-config-pubsub-google)
+ * [**hal config pubsub google disable**](#hal-config-pubsub-google-disable)
+ * [**hal config pubsub google enable**](#hal-config-pubsub-google-enable)
+ * [**hal config pubsub google subscription**](#hal-config-pubsub-google-subscription)
+ * [**hal config pubsub google subscription add**](#hal-config-pubsub-google-subscription-add)
+ * [**hal config pubsub google subscription delete**](#hal-config-pubsub-google-subscription-delete)
+ * [**hal config pubsub google subscription edit**](#hal-config-pubsub-google-subscription-edit)
+ * [**hal config pubsub google subscription get**](#hal-config-pubsub-google-subscription-get)
+ * [**hal config pubsub google subscription list**](#hal-config-pubsub-google-subscription-list)
  * [**hal config security**](#hal-config-security)
  * [**hal config security api**](#hal-config-security-api)
  * [**hal config security api edit**](#hal-config-security-api-edit)
@@ -474,6 +503,7 @@ hal config [parameters] [subcommands]
  * `--set-current-deployment`: If supplied, set the current active deployment to the supplied value, creating it if need-be.
 
 #### Subcommands
+ * `artifact`: Configure, validate, and view the specified artifact provider.
  * `ci`: Configure, validate, and view the specified Continuous Integration service.
  * `deploy`: Display the configured Spinnaker deployment.
  * `edit`: Configure top-level, global configuration parameters.
@@ -482,9 +512,175 @@ hal config [parameters] [subcommands]
  * `metric-stores`: Configure Spinnaker's metric stores. This configuration only affects the publishing of metrics against whichever metric stores you enable (it can be more than one).
  * `notification`: Display the state of Spinnaker's notification settings.
  * `provider`: Configure, validate, and view the specified provider.
+ * `pubsub`: Configure, validate, and view the specified pubsub.
  * `security`: Configure Spinnaker's security. This includes external SSL, authentication mechanisms, and authorization policies.
  * `storage`: Show Spinnaker's persistent storage configuration.
  * `version`: Configure & view the current deployment of Spinnaker's version.
+
+---
+## hal config artifact
+
+Configure, validate, and view the specified artifact provider.
+
+#### Usage
+```
+hal config artifact [subcommands]
+```
+
+#### Subcommands
+ * `gcs`: Manage and view Spinnaker configuration for the gcs provider
+
+---
+## hal config artifact gcs
+
+Manage and view Spinnaker configuration for the gcs provider
+
+#### Usage
+```
+hal config artifact gcs [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `account`: Manage and view Spinnaker configuration for the gcs artifact provider's account
+ * `disable`: Set the gcs artifact provider as disabled
+ * `enable`: Set the gcs artifact provider as enabled
+
+---
+## hal config artifact gcs account
+
+Manage and view Spinnaker configuration for the gcs artifact provider's account
+
+#### Usage
+```
+hal config artifact gcs account ACCOUNT [parameters] [subcommands]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `add`: Add an artifact account to the gcs artifact provider.
+ * `delete`: Delete a specific gcs artifact account by name.
+ * `edit`: Edit an artifact account in the gcs artifact provider.
+ * `get`: Get the specified account details for the gcs provider.
+ * `list`: List the artifact account names for the gcs artifact provider.
+
+---
+## hal config artifact gcs account add
+
+Add an artifact account to the gcs artifact provider.
+
+#### Usage
+```
+hal config artifact gcs account add ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--json-path`: The path to a JSON service account that Spinnaker will use as credentials. This is only needed if Spinnaker is not deployed on a Google Compute Engine VM, or needs permissions not afforded to the VM it is running on. See https://cloud.google.com/compute/docs/access/service-accounts for more information.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact gcs account delete
+
+Delete a specific gcs artifact account by name.
+
+#### Usage
+```
+hal config artifact gcs account delete ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact gcs account edit
+
+Edit an artifact account in the gcs artifact provider.
+
+#### Usage
+```
+hal config artifact gcs account edit ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--json-path`: The path to a JSON service account that Spinnaker will use as credentials. This is only needed if Spinnaker is not deployed on a Google Compute Engine VM, or needs permissions not afforded to the VM it is running on. See https://cloud.google.com/compute/docs/access/service-accounts for more information.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact gcs account get
+
+Get the specified account details for the gcs provider.
+
+#### Usage
+```
+hal config artifact gcs account get ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact gcs account list
+
+List the artifact account names for the gcs artifact provider.
+
+#### Usage
+```
+hal config artifact gcs account list [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact gcs disable
+
+Set the gcs artifact provider as disabled
+
+#### Usage
+```
+hal config artifact gcs disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact gcs enable
+
+Set the gcs artifact provider as enabled
+
+#### Usage
+```
+hal config artifact gcs enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
 
 ---
 ## hal config ci
@@ -498,6 +694,7 @@ hal config ci [subcommands]
 
 #### Subcommands
  * `jenkins`: Manage and view Spinnaker configuration for the jenkins ci
+ * `travis`: Manage and view Spinnaker configuration for the travis ci
 
 ---
 ## hal config ci jenkins
@@ -656,6 +853,164 @@ hal config ci jenkins master list [parameters]
 
 
 ---
+## hal config ci travis
+
+Manage and view Spinnaker configuration for the travis ci
+
+#### Usage
+```
+hal config ci travis [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `disable`: Set the travis ci as disabled
+ * `enable`: Set the travis ci as enabled
+ * `master`: Manage and view Spinnaker configuration for the travis Continuous Integration services's master
+
+---
+## hal config ci travis disable
+
+Set the travis ci as disabled
+
+#### Usage
+```
+hal config ci travis disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config ci travis enable
+
+Set the travis ci as enabled
+
+#### Usage
+```
+hal config ci travis enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config ci travis master
+
+Manage and view Spinnaker configuration for the travis Continuous Integration services's master
+
+#### Usage
+```
+hal config ci travis master MASTER [parameters] [subcommands]
+```
+
+#### Parameters
+`MASTER`: The name of the master to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `add`: Add a master for the travis Continuous Integration service.
+ * `delete`: Delete a specific travis master by name.
+ * `edit`: Edit a master for the travis Continuous Integration service.
+ * `get`: Get the specified master details for travis.
+ * `list`: List the master names for travis.
+
+---
+## hal config ci travis master add
+
+Add a master for the travis Continuous Integration service.
+
+#### Usage
+```
+hal config ci travis master add MASTER [parameters]
+```
+
+#### Parameters
+`MASTER`: The name of the master to operate on.
+ * `--address`: (*Required*) The address of the travis API (https://api.travis-ci.org).
+ * `--base-url`: (*Required*) The base URL to the travis UI (https://travis-ci.org).
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--github-token`: (*Sensitive data* - user will be prompted on standard input) The github token to authentiacte against travis with.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--number-of-repositories`: How many repositories the travis integration should fetch from the api each time the poller runs. Should be set a bit higher than the expected maximum number of repositories built within the poll interval.
+
+
+---
+## hal config ci travis master delete
+
+Delete a specific travis master by name.
+
+#### Usage
+```
+hal config ci travis master delete MASTER [parameters]
+```
+
+#### Parameters
+`MASTER`: The name of the master to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config ci travis master edit
+
+Edit a master for the travis Continuous Integration service.
+
+#### Usage
+```
+hal config ci travis master edit MASTER [parameters]
+```
+
+#### Parameters
+`MASTER`: The name of the master to operate on.
+ * `--address`: The address of the travis API (https://api.travis-ci.org).
+ * `--base-url`: The base URL to the travis UI (https://travis-ci.org).
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--github-token`: (*Sensitive data* - user will be prompted on standard input) The github token to authentiacte against travis with.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--number-of-repositories`: How many repositories the travis integration should fetch from the api each time the poller runs. Should be set a bit higher than the expected maximum number of repositories built within the poll interval.
+
+
+---
+## hal config ci travis master get
+
+Get the specified master details for travis.
+
+#### Usage
+```
+hal config ci travis master get MASTER [parameters]
+```
+
+#### Parameters
+`MASTER`: The name of the master to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config ci travis master list
+
+List the master names for travis.
+
+#### Usage
+```
+hal config ci travis master list [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
 ## hal config deploy
 
 Display the configured Spinnaker deployment.
@@ -684,14 +1039,18 @@ hal config deploy edit [parameters]
 
 #### Parameters
  * `--account-name`: The Spinnaker account that Spinnaker will be deployed to, assuming you are runninga deployment of Spinnaker that requires an active cloud provider.
+ * `--bootstrap-only`: A bootstrap-only account is the account in which Spinnaker itself is deployed. When true, this account will not be included the accounts managed by Spinnaker.
  * `--consul-address`: The address of a running Consul cluster. See https://www.consul.io/.
 This is only required when Spinnaker is being deployed in non-Kubernetes clustered configuration.
  * `--consul-enabled`: Whether or not to use Consul as a service discovery mechanism to deploy Spinnaker.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--git-origin-user`: This is the git user your github fork exists under.
+ * `--git-upstream-user`: This is the upstream git user you are configuring to pull changes from & push PRs to.
  * `--location`: This is the location spinnaker will be deployed to.
  * `--no-validate`: (*Default*: `false`) Skip validation.
- * `--type`: Flotilla: Deploy Spinnaker with one server group per microservice, and a single shared Redis.
-LocalhostDebian: Download and run the Spinnaker debians on the machine running the Daemon.
+ * `--type`: Distributed: Deploy Spinnaker with one server group per microservice, and a single shared Redis.
+LocalDebian: Download and run the Spinnaker debians on the machine running the Daemon.
+LocalGit: Download and run the Spinnaker git repos on the machine running the Daemon.
  * `--vault-address`: The address of a running Vault datastore. See https://www.vaultproject.io/.This is only required when Spinnaker is being deployed in non-Kubernetes clustered configuration.
  * `--vault-enabled`: Whether or not to use Vault as a secret storage mechanism to deploy Spinnaker.
 
@@ -740,9 +1099,11 @@ hal config features edit [parameters]
 ```
 
 #### Parameters
+ * `--artifacts`: Enable artifact support. Read more at spinnaker.io/reference/artifacts
  * `--chaos`: Enable Chaos Monkey support. For this to work, you'll need a running Chaos Monkey deployment. Currently, Halyard doesn't configure Chaos Monkey for you; read more instructions here https://github.com/Netflix/chaosmonkey/wiki.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--jobs`: Allow Spinnaker to run containers in Kubernetes and Titus as Job stages in pipelines.
+ * `--mine-canary`: Enable canary support. For this to work, you'll need a canary judge configured. Currently, Halyard does not configure canary judge for you.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--pipeline-templates`: Enable pipeline template support. Read more at https://github.com/spinnaker/dcd-spec.
 
@@ -2657,6 +3018,7 @@ hal config provider kubernetes account add ACCOUNT [parameters]
 
 #### Parameters
 `ACCOUNT`: The name of the account to operate on.
+ * `--configure-image-pull-secrets`: (*Default*: `true`) (Only applicable to the v1 provider). When true, Spinnaker will create & manage your image pull secrets for you; when false, you will have to create and attach them to your pod specs by hand.
  * `--context`: The kubernetes context to be managed by Spinnaker. See http://kubernetes.io/docs/user-guide/kubeconfig-file/#context for more information.
 When no context is configured for an account the 'current-context' in your kubeconfig is assumed.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
@@ -2704,6 +3066,7 @@ hal config provider kubernetes account edit ACCOUNT [parameters]
  * `--add-required-group-membership`: Add this group to the list of required group memberships.
  * `--all-namespaces`: (*Default*: `false`) Set the list of namespaces to cache and deploy to every namespace available to your supplied credentials.
  * `--clear-context`: (*Default*: `false`) Removes the currently configured context, defaulting to 'current-context' in your kubeconfig.See http://kubernetes.io/docs/user-guide/kubeconfig-file/#context for more information.
+ * `--configure-image-pull-secrets`: (Only applicable to the v1 provider). When true, Spinnaker will create & manage your image pull secrets for you; when false, you will have to create and attach them to your pod specs by hand.
  * `--context`: The kubernetes context to be managed by Spinnaker. See http://kubernetes.io/docs/user-guide/kubeconfig-file/#context for more information.
 When no context is configured for an account the 'current-context' in your kubeconfig is assumed.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
@@ -3300,6 +3663,181 @@ Set the oraclebmcs provider as enabled
 #### Usage
 ```
 hal config provider oraclebmcs enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config pubsub
+
+Configure, validate, and view the specified pubsub.
+
+#### Usage
+```
+hal config pubsub [subcommands]
+```
+
+#### Subcommands
+ * `google`: Manage and view Spinnaker configuration for the google pubsub
+
+---
+## hal config pubsub google
+
+Manage and view Spinnaker configuration for the google pubsub
+
+#### Usage
+```
+hal config pubsub google [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `disable`: Set the google pubsub as disabled
+ * `enable`: Set the google pubsub as enabled
+ * `subscription`: Manage and view Spinnaker configuration for the google pubsub's subscription
+
+---
+## hal config pubsub google disable
+
+Set the google pubsub as disabled
+
+#### Usage
+```
+hal config pubsub google disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config pubsub google enable
+
+Set the google pubsub as enabled
+
+#### Usage
+```
+hal config pubsub google enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config pubsub google subscription
+
+Manage and view Spinnaker configuration for the google pubsub's subscription
+
+#### Usage
+```
+hal config pubsub google subscription SUBSCRIPTION [parameters] [subcommands]
+```
+
+#### Parameters
+`SUBSCRIPTION`: The name of the subscription to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `add`: Add an subscription to the google pubsub.
+ * `delete`: Delete a specific google subscription by name.
+ * `edit`: Edit an subscription in the google pubsub.
+ * `get`: Get the specified subscription details for the google pubsub.
+ * `list`: List the subscription names for the google pubsub.
+
+---
+## hal config pubsub google subscription add
+
+Add an subscription to the google pubsub.
+
+#### Usage
+```
+hal config pubsub google subscription add SUBSCRIPTION [parameters]
+```
+
+#### Parameters
+`SUBSCRIPTION`: The name of the subscription to operate on.
+ * `--ack-deadline-seconds`: (*Default*: `10`) Time in seconds before an outstanding message is considered unacknowledged and is re-sent.
+Configurable in your Google Cloud Pubsub subscription. See the docs here: https://cloud.google.com/pubsub/docs/subscriber
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--json-path`: The path to a JSON service account that Spinnaker will use as credentials. This is only needed if Spinnaker is not deployed on a Google Compute Engine VM, or needs permissions not afforded to the VM it is running on. See https://cloud.google.com/compute/docs/access/service-accounts for more information.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--project`: The name of the GCP project your subscription lives in.
+ * `--subscription-name`: The name of the subscription to listen to. This identifier does not include the name of the project, and must already be configured for Spinnaker to work.
+ * `--template-path`: A path to a jinja template that specifies how artifacts from this pubsub system are interpreted and transformed into Spinnaker artifacts. See spinnaker.io/reference/artifacts for more information.
+
+
+---
+## hal config pubsub google subscription delete
+
+Delete a specific google subscription by name.
+
+#### Usage
+```
+hal config pubsub google subscription delete SUBSCRIPTION [parameters]
+```
+
+#### Parameters
+`SUBSCRIPTION`: The name of the subscription to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config pubsub google subscription edit
+
+Edit an subscription in the google pubsub.
+
+#### Usage
+```
+hal config pubsub google subscription edit SUBSCRIPTION [parameters]
+```
+
+#### Parameters
+`SUBSCRIPTION`: The name of the subscription to operate on.
+ * `--ack-deadline-seconds`: Time in seconds before an outstanding message is considered unacknowledged and is re-sent.
+Configurable in your Google Cloud Pubsub subscription. See the docs here: https://cloud.google.com/pubsub/docs/subscriber
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--json-path`: The path to a JSON service account that Spinnaker will use as credentials. This is only needed if Spinnaker is not deployed on a Google Compute Engine VM, or needs permissions not afforded to the VM it is running on. See https://cloud.google.com/compute/docs/access/service-accounts for more information.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--project`: The name of the GCP project your subscription lives in.
+ * `--subscription-name`: The name of the subscription to listen to. This identifier does not include the name of the project, and must already be configured for Spinnaker to work.
+ * `--template-path`: A path to a jinja template that specifies how artifacts from this pubsub system are interpreted and transformed into Spinnaker artifacts. See spinnaker.io/reference/artifacts for more information.
+
+
+---
+## hal config pubsub google subscription get
+
+Get the specified subscription details for the google pubsub.
+
+#### Usage
+```
+hal config pubsub google subscription get SUBSCRIPTION [parameters]
+```
+
+#### Parameters
+`SUBSCRIPTION`: The name of the subscription to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config pubsub google subscription list
+
+List the subscription names for the google pubsub.
+
+#### Usage
+```
+hal config pubsub google subscription list [parameters]
 ```
 
 #### Parameters
