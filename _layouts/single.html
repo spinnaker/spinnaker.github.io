@@ -44,8 +44,12 @@ layout: has_masthead
 
       <footer class="page__meta">
         <div class="feedback">
-          <a href="https://github.com/spinnaker/spinnaker.github.io/issues/new?body=Page:+{{page.url}}%0A%0AFeedback:" target="_blank">Got feedback?</a>
+          <a href="https://github.com/spinnaker/spinnaker/issues/new" target="_blank">File a bug</a>
         </div>
+        <div class="feedback">
+          <a href="https://github.com/spinnaker/spinnaker.github.io/issues/new?body=Page:+{{page.url}}%0A%0AFeedback:" target="_blank" target="_blank">Comment on this document</a>
+        </div>
+
 
         {% if page.modified %}
           <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Updated:" }}</strong> <time datetime="{{ page.modified | date: "%Y-%m-%d" }}">{{ page.modified | date: "%B %d, %Y" }}</time></p>
