@@ -18,7 +18,7 @@ In our scenario, we want to create a Spinnaker instance and set it up as follows
 * We can pull Docker images from our Google Container Registry
 * We use GCS as our persistence store
 
-For this exercise we will be operating entirely within one GCP project, and use Google Container Engine (GKE) as our Kubernetes cluster.
+For this exercise we will be operating entirely within one GCP project, and use Google Kubernetes Engine (GKE) as our Kubernetes cluster.
 
 {% include figure
     image_path="./deployment.png"

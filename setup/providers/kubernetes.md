@@ -34,7 +34,7 @@ kubectl get namespaces
 If you do not have a Kubernetes cluster, you could try one of the following
 hosted solutions:
 
-* [Google Container Engine](https://cloud.google.com/container-engine/)
+* [Google Kubernetes Engine](https://cloud.google.com/container-engine/)
 * [Azure Container
   Service](https://docs.microsoft.com/en-us/azure/container-service/container-service-kubernetes-walkthrough)
 
