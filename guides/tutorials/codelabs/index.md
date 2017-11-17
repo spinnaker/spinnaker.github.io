@@ -20,3 +20,4 @@ Run through these codelabs to get hands-on experience with Spinnaker in a guided
 * [App Engine Source To Prod](./appengine-source-to-prod/) - create a workflow to safely deploy to App Engine from source code.
 * [Safe Deployments](./safe-deployments) - Enhance an existing deployment process to take advantage of Spinnaker safety features.
 * [DC/OS Source to Prod](./dcos-source-to-prod) - create a set of basic pipelines for deploying code from a Github repo to a DC/OS cluster.
+* [Deploying GCS Pub/Sub Artifacts to App Engine](./pubsub-to-appengine/) - Trigger a pipeline from a Pub/Sub message from GCS upon upload of a tarball.
