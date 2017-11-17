@@ -17,11 +17,11 @@ This codelab takes about an hour.
 
 ## Prerequisites
 
-This codelab assumes you have a billing-enabled GCP project.
+This codelab assumes you have a billing-enabled GCP project. Also, [install gcloud](https://cloud.google.com/sdk/downloads) if you haven't already.
 
 ## Set Up Your Environment
 
-### Create a GCS Bucket to store Artifacts
+### Create a GCS Bucket to store artifacts
 
 In the environment where you have `gcloud` installed, run the following commands:
 
@@ -37,13 +37,20 @@ $ gsutil mb -p $PROJECT_ID $BUCKET_NAME
 
 1. Enable the [Cloud Pub/Sub API](https://cloud.google.com/pubsub/docs/apis).
 
-2. `export TOPIC_NAME=<topic>` and `export SUBSCRIPTION_NAME=<subscription>`.
+2. Name your topic and subscription:
 
-3. `gsutil notification create -t $TOPIC_NAME -f json $BUCKET_NAME`.
+```
+export TOPIC_NAME=<topic>
+export SUBSCRIPTION_NAME=<subscription>`
+```
+
+3. Create the GCS Pub/Sub notification:   
+`gsutil notification create -t $TOPIC_NAME -f json $BUCKET_NAME`.
 
 4. Verify with `gsutil notification list $BUCKET_NAME`.
 
-5. Create a pull subscription with `gcloud beta Pub/Sub subscriptions create $SUBSCRIPTION_NAME --topic $TOPIC_NAME`.
+5. Create a pull subscription:  
+`gcloud beta Pub/Sub subscriptions create $SUBSCRIPTION_NAME --topic $TOPIC_NAME`.
 
 ## Configure and Deploy Your Spinnaker instance
 
@@ -54,17 +61,23 @@ If Spinnaker is not yet configured, follow this Halyard [quickstart](https://www
 
 ### Configure Spinnaker to listen to the Google Cloud Pub/Sub subscription
 
-Configure your GCS artifact provider.
+First, configure your GCS artifact provider.
 
-1. `hal config features edit --artifacts true`.
+1. Enable artifiact support:   
+`hal config features edit --artifacts true`.
 
-2. `hal config artifact gcs enable`.
+2. Enable the GCS artifact provider:   
+`hal config artifact gcs enable`
 
-3. `hal config artifact gcs account add --json-path <key> <artifact_account>`.
+3. Add Spinnaker configuration for the GCS artifact provider's account:   
+`hal config artifact gcs account add --json-path <json_service_key> <artifact_account>`
 
-Configure Spinnaker to receive messages from your Google Cloud Pub/Sub subscription.
+The `json_service_key` can be the one returned after you configured your GAE cloud provider, above, or one you got when you configured your GCS storage (possibly in the [Halyard on GCE Quickstart](https://www.spinnaker.io/setup/quickstart/halyard-gce/)). In either case, the service account associated with that key must have GCS write access.
 
-1. `hal config Pub/Sub google enable`.
+Now configure Spinnaker to receive messages from your Google Cloud Pub/Sub subscription.
+
+1. Enable Google Pub/Sub:   
+`hal config pubsub google enable`
 
 2. Create a JSON file and add the following contents to the file:
 
@@ -82,43 +95,49 @@ Configure Spinnaker to receive messages from your Google Cloud Pub/Sub subscript
     Spinnaker understands. The JSON snippet above defines the mapping specific to the GCS Pub/Sub message, but these are entirely
     user-supplied and can specify any valid Jinja transformation.
 
-    Make sure the file permissions on this template file are configured so that Spinnaker can read it: `sudo chown spinnaker <template>`.
+    Make sure the file permissions on this template file are configured so that Spinnaker can read it:   
+    `sudo chown spinnaker <template>`
 
-3. `hal config Pub/Sub google subscription add --project $PROJECT_ID --json-path <key> --subscription-name $SUBSCRIPTION_NAME --template-path <template> <subscription_name>`.
+3. Add your subscription to Google Pub/Sub:   
+`hal config pubsub google subscription add --project $PROJECT_ID --json-path <key> --subscription-name $SUBSCRIPTION_NAME --template-path <template> <subscription_name>`
 
 ### Deploy Spinnaker with Halyard
 
-Run `hal deploy apply`. Wait a few minutes for the deploy to complete.
+`hal deploy apply`   
+Wait a few minutes for the deploy to complete.
 
 ## Configure Your Pipeline
 
-1. Declare your application tarball as an expected artifact in the "Expected Artifacts" section.
+1. Declare your application tarball as an expected artifact in the __Expected Artifacts__ section. 
 
- ![Declare expected artifact](images/01_expected_artifacts.png)
+	![Declare expected artifact](images/01_expected_artifacts.png)
 
-2. Add a Pub/Sub trigger to your pipeline, select the *Pub/Sub System Type*, *Subscription Name*, and add the tarball as an expected
+2. Add a Pub/Sub trigger to your pipeline, select the __Pub/Sub System Type__, __Subscription Name__, and add the tarball as an expected
 artifact.
 
- ![Trigger configuration](images/02_trigger_config.png)
+	![Trigger configuration](images/02_trigger_config.png)
 
 3. Add a deploy stage with one server group.
 
-    - Select a *Source Type* of *GCS*.
+    - Select a __Source Type__ of __GCS__.
 
-    - Select your configured *Storage Account* from the dropdown.
+    - Select your configured __Storage Account__ from the dropdown.
 
-    - Select *via pipeline artifact* for *Resolve URL*.
+    - Select __via pipeline artifact__ for __Resolve URL__.
 
     - Select your configured "app.tar" expected artifact.
 
- ![Deployment configuration](images/03_deploy_config.png)
+	![Deployment configuration](images/03_deploy_config.png)
 
 ## Package and upload your application to GCS
 
 ### Acquire a "Hello World" application and upload to GCS
 
-1. Clone a sample GAE application: `git clone https://github.com/GoogleCloudPlatform/python-docs-samples.git`.
+1. Clone a sample GAE application:   
+`git clone https://github.com/GoogleCloudPlatform/python-docs-samples.git`
 
-2. Package your application as a tarball: `cd python-docs-samples/appengine/standard/hello_world tar -cvf app.tar *`.
+2. Package your application as a tarball:   
+`cd python-docs-samples/appengine/standard/hello_world tar -cvf app.tar *`
 
-3. Upload the tarball to the GCS bucket: `gsutil cp app.tar $BUCKET_NAME`.
+3. Upload the tarball to the GCS bucket:   
+`gsutil cp app.tar $BUCKET_NAME`
