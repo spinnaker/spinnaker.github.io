@@ -10,5 +10,6 @@ are a few configurations to get you started. If your environment matches one of 
 
 * [Halyard on Google Kubernetes Engine Quickstart](/setup/quickstart/halyard-gke/)
 * [Halyard on Google Compute Engine Quickstart](/setup/quickstart/halyard-gce/)
+* [Halyard on your local machine](/setup/quickstart/halyard-local/)
 * [Public Spinnaker on Google Container
   Engine](/setup/quickstart/halyard-gke-public/)
