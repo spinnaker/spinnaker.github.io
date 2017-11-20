@@ -108,6 +108,8 @@ the following command.
 hal config deploy edit --type localgit --git-origin-user=<YOUR_GITHUB_USERNAME>
 ```
 
+*NOTE: Be sure to use the same username here that you forked the Spinnaker repositories to*
+
 ## Further Reading
 
 * [Spinnaker Architecture](/reference/architecture/) for a better understanding
