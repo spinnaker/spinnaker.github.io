@@ -69,7 +69,7 @@ deploy it to the account you have previously configured.
 
 ## Local Git
 
-The __Local Git__ installation means Spinnaker will be cloned, built and run on
+The __Local Git__ installation means Spinnaker will be cloned, built, and run on
 the single machine Halyard is run on.
 
 ### Intended Use-case
@@ -81,7 +81,7 @@ to Spinnaker. It is not intended to be used to manage any production environment
 
 #### Install local dependancies
 
-Ensure that the following are installed on your system
+Ensure that the following are installed on your system:
 
 * git
 * curl
@@ -93,7 +93,7 @@ Fork all of the microservices listed here: [Spinnaker Microservices](https://www
 
 #### Setup SSH Keys
 
-Follow the following guides to setup ssh access to your github.com account from your local machine.
+Follow these guides to setup ssh access to your github.com account from your local machine:
 
 * [Generating a new ssh key and adding it to your ssh agent](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
 * [Adding a new ssh key to your Github account](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
