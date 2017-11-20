@@ -98,13 +98,6 @@ Follow the following guides to setup ssh access to your github.com account from 
 * [Generating a new ssh key and adding it to your ssh agent](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
 * [Adding a new ssh key to your Github account](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
 
-#### Connect to Redis
-
-Either:
-
-1. open a tunnel on 6379, or
-2. run a local instance
-
 ### Required Hal Invocations
 
 Currently, Halyard defaults to a __Local Debian__ install when first run, so 
