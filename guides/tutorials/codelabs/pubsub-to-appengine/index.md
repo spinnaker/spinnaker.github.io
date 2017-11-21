@@ -94,8 +94,8 @@ Now configure Spinnaker to receive messages from your Google Cloud Pub/Sub subsc
     ```
     [
       {
-        "reference": "&#123&#123 bucket &#125&#125/&#123&#123 name &#125&#125",
-        "name": "gs://&#123&#123 bucket &#125&#125/&#123&#123 name &#125&#125",
+        "reference": "&#123;&#123; bucket &#125;&#125;/&#123;&#123; name &#125;&#125;",
+        "name": "gs://&#123;&#123; bucket &#125;&#125;/&#123;&#123; name &#125;&#125;",
         "type": "gcs/object"
       }
     ]
