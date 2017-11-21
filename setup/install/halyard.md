@@ -73,6 +73,7 @@ directory for your container:
 docker run -p 8084:8084 -p 9000:9000 \
     --name halyard --rm \
     -v ~/.hal:/root/.hal \
+    -it \
     gcr.io/spinnaker-marketplace/halyard:stable
 ```
 
