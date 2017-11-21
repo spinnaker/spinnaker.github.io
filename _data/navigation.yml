@@ -80,6 +80,8 @@ setup:
         url: /setup/storage/azs/
       - title: Google Cloud Storage
         url: /setup/storage/gcs/
+      - title: Minio
+        url: /setup/storage/minio/
       - title: Redis
         url: /setup/storage/redis/
       - title: S3

@@ -22,5 +22,6 @@ These are the storage sources currently supported by Spinnaker:
 
 * [Azure Storage](/setup/storage/azs)
 * [Google Cloud Storage](/setup/storage/gcs)
+* [Minio](/setup/storage/minio)
 * [Redis](/setup/storage/redis)
 * [S3](/setup/storage/s3)
