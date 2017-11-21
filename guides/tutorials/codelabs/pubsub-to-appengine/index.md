@@ -91,15 +91,7 @@ Now configure Spinnaker to receive messages from your Google Cloud Pub/Sub subsc
 
 2. Create a JSON file named 'gcs-jinja.json' and add the following contents to the file:
 
-    ```
-    [
-      {
-        "reference": "&#123;&#123; bucket &#125;&#125;/&#123;&#123; name &#125;&#125;",
-        "name": "gs://&#123;&#123; bucket &#125;&#125;/&#123;&#123; name &#125;&#125;",
-        "type": "gcs/object"
-      }
-    ]
-    ```
+    <script src="https://gist.github.com/spinnaker-release/3f72a7efe5bc7914ba81170af6a59ffa.js"></script>
 
     This is a [Jinja](http://jinja.pocoo.org/docs/2.9/) template that defines the tranformation from the Pub/Sub message structure to the artifact format
     Spinnaker understands. The JSON snippet above defines the mapping specific to the GCS Pub/Sub message, but these are entirely
