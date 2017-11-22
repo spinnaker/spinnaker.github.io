@@ -8,7 +8,7 @@ sidebar:
 {% include toc %}
 
 There are several environments Halyard can deploy Spinnaker to, and they can be 
-split into three groups, both entirely handled by Halyard.
+split into three groups, each entirely handled by Halyard.
 
 * [Local installations](#local-debian) of Debian packages.
 * [Distributed installations](#distributed) via a remote bootstrapping process.
