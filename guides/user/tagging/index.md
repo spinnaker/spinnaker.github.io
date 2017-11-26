@@ -73,7 +73,7 @@ They are made up of:
 ## Identifier
 
 A unique identifier representing a tagged entity:
-`{cloudProvider:{entityType}:{entityId}:{accountId}:{region}`
+`{cloudProvider}:{entityType}:{entityId}:{accountId}:{region}`
 
 ## EntityRef
 
@@ -94,7 +94,6 @@ A unique identifier representing a tagged entity:
 ```
     {
       "id": "aws:servergroup:myservergroup-v001:100000000001:us-west-2",
-      "idPattern": "{{cloudProvider}}:{{entityType}}:{{entityId}}:{{account}}:{{region}}",
       "tags": [
         {
           "name": "spinnaker_ui_alert:autoscaling:ec2_instance_launch_error",
