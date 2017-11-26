@@ -73,7 +73,7 @@ They are made up of:
 ## Identifier
 
 A unique identifier representing a tagged entity:
-`{{cloudProvider}}:{{entityType}}:{{entityId}}:{{account}}:{{region}}`
+`{cloudProvider:{entityType}:{entityId}:{accountId}:{region}`
 
 ## EntityRef
 
