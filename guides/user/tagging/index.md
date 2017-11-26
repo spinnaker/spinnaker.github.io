@@ -137,6 +137,7 @@ Parameter Name | Description | Examples
 entityType | Filter by Entity Type | ?entityType=servergroup
 entityId | Filter by Entity Id | ?entityId=myservergroup-v001
 tag | Filter by Tag (specific value)<br/>Filter by Tag (any value) | ?tag:my_tag=my_value<br />?tag:my_tag=*
+maxResults | Maximum # of results to return (defaults to 100) | ?maxResults=1000
 
 ## POST /tags
 
