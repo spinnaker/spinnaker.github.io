@@ -89,7 +89,9 @@ Now configure Spinnaker to receive messages from your Google Cloud Pub/Sub subsc
 1. Enable Google Pub/Sub:
 `hal config pubsub google enable`
 
-2. Create a JSON file named 'gcs-jinja.json' and add the following contents to the file:
+2. Create a transformation template file.
+
+    a. Create a JSON file named 'gcs-jinja.json' and add the following contents to the file:
 
     <script src="https://gist.github.com/spinnaker-release/3f72a7efe5bc7914ba81170af6a59ffa.js"></script>
 
@@ -97,10 +99,39 @@ Now configure Spinnaker to receive messages from your Google Cloud Pub/Sub subsc
     Spinnaker understands. The JSON snippet above defines the mapping specific to the GCS Pub/Sub message, but these are entirely
     user-supplied and can specify any valid Jinja transformation.
 
-    Store the path to 'gcs-jinja.json' as an environment variable for the next step:
+    Here is an example message payload from uploading an object to a GCS bucket:
+
+    ```
+    {
+      "kind": "storage#object",
+      "id": "gcs-pub-sub/app.tar/1511803705417483",
+      "selfLink": "https://www.googleapis.com/storage/v1/b/gcs-pub-sub/o/app.tar",
+      "name": "app.tar",
+      "bucket": "gcs-pub-sub",
+      "generation": "1511803705417483",
+      "metageneration": "1",
+      "contentType": "application/x-tar",
+      "timeCreated": "2017-11-27T17:28:25.218Z",
+      "updated": "2017-11-27T17:28:25.218Z",
+      "storageClass": "MULTI_REGIONAL",
+      "timeStorageClassUpdated": "2017-11-27T17:28:25.218Z",
+      "size": "20480",
+      "md5Hash": "K8fipg9xurPwrBEEfrkP9w==",
+      "mediaLink": "https://www.googleapis.com/download/storage/v1/b/gcs-pub-sub/o/app.tar?generation=1511803705417483&alt=media",
+      "crc32c": "T4DRpw==",
+      "etag": "CIu+09aj39cCEAE="
+    }
+    ```
+
+    Any of the keys present in this message can be used in the transformation definition. Jinja is expressive, so you can even include
+    things like loops, array indices, and paths to sub-objects in your template. The only constraint on the template file is that
+    the resultant object must match [the artifact model class](https://github.com/spinnaker/kork/blob/master/kork-artifacts/src/main/java/com/netflix/spinnaker/kork/artifacts/model/Artifact.java),
+    and that one must be supplied to Spinnaker.
+
+    b. Store the path to 'gcs-jinja.json' as an environment variable for the next step:
     `TEMPLATE_PATH="$(pwd)/gcs-jinja.json"`
 
-    Make sure the file permissions on this template file are configured so that Spinnaker can read it:
+    c. Make sure the file permissions on this template file are configured so that Spinnaker can read it:
     `sudo chown spinnaker $TEMPLATE_PATH`
 
 
@@ -120,7 +151,7 @@ Wait a few minutes for the deploy to complete.
 
     b. Create a new Spinnaker application by selecting `Actions` > `Create Application`.
 
-    c. Give the application a name and an admin email, and add 'appengine' to the `Cloud Providers`.
+    c. Give the application a name and an admin email. If you have more than one cloud provider configured, add 'appengine' to the `Cloud Providers`.
 
     d. Click the check box beside 'Consider only cloud provider health when executing tasks' and create the application.
 
