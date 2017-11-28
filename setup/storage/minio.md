@@ -32,7 +32,7 @@ Run the following commands (notice we are picking S3 as our storage type,
 because Minio implements the S3 API):
 
 ```bash
-echo $MINIO_SECRET_KEY | hal config storage s3 --endpoint $ENDPOINT \
+echo $MINIO_SECRET_KEY | hal config storage s3 edit --endpoint $ENDPOINT \
     --access-key-id $MINIO_ACCESS_KEY \
     --secret-access-key # will be read on STDIN to avoid polluting your
                         # ~/.bash_history with a secret
