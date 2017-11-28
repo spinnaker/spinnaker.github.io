@@ -195,10 +195,10 @@ gcloud iam service-accounts keys create $GCS_SA_DEST \
 
 ## Part 3: Set Spinnaker configuration
 
-We will install Spinnaker v1.0.1
+We configure Halyard to use the latest version of Spinnaker.
 
 ```bash
-hal config version edit --version 1.0.1
+hal config version edit --version $(hal version latest -q)
 ```
 
 Set up to persist to GCS
