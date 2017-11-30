@@ -12,7 +12,7 @@ The Spinnaker Kubernetes V2 provider fully supports manifest-based deployments. 
 ## Accounts
 
 For Kubernetes V2, a Spinnaker [Account](/setup/providers/#accounts) maps to a
-credential that can authenticate against your Kubernetes Cluster. Unlike with the V1 provider, in V2 the Account [does not map to Docker Registry Accounts](#migrating-from-the-v1-provider).
+credential that can authenticate against your Kubernetes Cluster. Unlike with the V1 provider, in V2 the Account does not require any Docker Registry Accounts.
 
 ## Prerequisites
 
@@ -20,8 +20,8 @@ The Kubernetes provider has two requirements:
 
 * A [`kubeconfig`](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/)
 
-    The `kubeconfig` allows `kubectl` to authenticate against your cluster and to have read/write access to any resources you expect
-    Spinnaker to manage. You can request this from your Kubernetes cluster administrator.
+    The `kubeconfig` allows Spinnaker to authenticate against your cluster and to have read/write access to any resources you expect
+    it to manage. You can request this from your Kubernetes cluster administrator.
 
 * [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/)
 
@@ -40,7 +40,7 @@ The Kubernetes provider has two requirements:
 > authentication](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)
 > yourself.
 
-There is no automatic pipeline-migration strategy from the V1 provider to V2, for a few reasons:
+There is no automatic pipeline migration from the V1 provider to V2, for a few reasons:
 
 * Unlike the V1 provider, the V2 provider encourages you to store your Kubernetes
   Manifests outside of Spinnaker in some versioned, backing storage, such as
@@ -58,7 +58,7 @@ There is no automatic pipeline-migration strategy from the V1 provider to V2, fo
   Spinnaker's logical resources and Kubernetes's infrastructure resources, we
   chose to adopt the Kubernetes resources and operations more natively.
 
-However, you can easily manually migrate your infrastructure into the V2 provider.
+However, you can easily migrate your _infrastructure_ into the V2 provider.
 For any V1 account you have running, you can add a V2 account following the
 steps [below](#adding-an-account). This will surface your infrastructure twice (once per account)
 helping your pipeline & operation migration.
