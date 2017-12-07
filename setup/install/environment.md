@@ -86,8 +86,9 @@ Ensure that the following are installed on your system:
 
 * git
 * curl
-* yarn ([guide](https://yarnpkg.com/lang/en/docs/install/))
 * node (version >=8.9.0, [can be installed via nvm](https://github.com/creationix/nvm#install-script))
+* yarn (`npm install -g yarn` or [guide](https://yarnpkg.com/lang/en/docs/install/))
+
 
 #### Fork all Spinnaker repos
 
