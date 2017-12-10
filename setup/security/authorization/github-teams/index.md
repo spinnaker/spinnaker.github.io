@@ -29,11 +29,11 @@ With the personal access token in hand, use Halyard to configure Fiat:
 TOKEN=b22a54...  # Personal access token under admin account 
 ORG=myorg        # GitHub Organization
 
-hal config security roles provider github edit \
-    --token $TOKEN \
+hal config security authz github edit \
+    --accessToken $TOKEN \
     --organization $ORG
     
-hal config security roles enable
+hal config security authz enable
 ```
 
 ## Troubleshooting
