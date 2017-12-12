@@ -138,6 +138,7 @@ The Spinnaker OSS project was started at Netflix, and today thrives on the contr
 * [GitHub](https://github.com/spinnaker/spinnaker)
 * [Slack](http://join.spinnaker.io)
 * [StackOverflow](https://stackoverflow.com/search?q=spinnaker)
+* [Forum](https://community.spinnaker.io)
 
 ## Core Contributors
 
