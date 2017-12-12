@@ -7,41 +7,31 @@ sidebar:
 
 {% include toc %}
 
-This reference material describes how the Kubernetes V2 provider works, and in
-what ways it differs from other providers in Spinnaker. If you're unfamiliar
-with Kubernetes terminology, see the [Kubernetes
+This reference material describes how the Kubernetes V2 provider works, and how it differs from other providers in Spinnaker. If you're unfamiliar with Kubernetes terminology, see the [Kubernetes
 documentation](https://kubernetes.io/docs/home/).
 
-# The Manifest Based Approach
+# The Manifest-Based Approach
 
-The Kubernetes Provider V2 combines the strengths of Kubernetes' [declarative
+The Kubernetes provider V2 combines the strengths of Kubernetes's [declarative
 infrastructure
 management](https://kubernetes.io/docs/tutorials/object-management-kubectl/declarative-object-management-configuration/)
-with Spinnaker's workflow engine for imperative steps when you need them. You
-can fully specify all your infrastructure in the native Kubernetes manifest
-format, while still being able to express, for example, a multi-regional canary
-driven rollout. This represents a significant departure from how deployments
-are managed in Spinnaker today using other provider (including the Kubernetes
-Provider V1), so the below sub-sections will attempt to
-explain the differences.
+with Spinnaker's workflow engine for imperative steps when you need them. You can fully specify all your infrastructure in the native Kubernetes manifest format but still express, for example, a multi-region canary-driven rollout. 
+
+This is a significant departure from how deployments are managed in Spinnaker today using other providers (including the [Kubernetes
+provider v1](https://www.spinnaker.io/reference/providers/kubernetes/)). The rest of this doc explains the difference.
 
 ## No Restrictive Naming Policies
 
-In order to allow users to deploy existing manifests without rewriting them to
-adhere to the [Frigga naming convention](https://github.com/Netflix/frigga),
-resources relationships (between applications/clusters) are managed
-using [Kubernetes
-annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/).
-These are managed using Spinnaker's
-[Moniker](https://github.com/spinnaker/moniker) library, and the
-policies/strategies are configurable per-account. See the below [reserved
-annotations](#reserved-annotations) section for more detail.
+You can deploy existing manifests without rewriting them to adhere to [Frigga](https://github.com/Netflix/frigga).
+
+Resource relationships (for example between applications and clusters) are managed using [Kubernetes annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/), and Spinnaker manages these using its [Moniker](https://github.com/spinnaker/moniker) library. The policies and strategies are configurable per account. See [reserved
+annotations](#reserved-annotations) for more detail.
 
 ## Accomodating Level-based Deployments
 
 See the [Kubernetes API
 conventions](https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md#spec-and-status)
-for a description of an edge- vs. level-based API.
+for a description of edge-based vs. level-based APIs.
 
 Prior providers in Spinnaker focused on tracking an operation that modified a
 cloud resource. For example, if a resize operation was run, Spinnaker
