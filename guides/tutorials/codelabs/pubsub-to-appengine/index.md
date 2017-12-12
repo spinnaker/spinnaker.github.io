@@ -50,7 +50,7 @@ SUBSCRIPTION_NAME=<subscription>`
 4. Verify with `gsutil notification list $BUCKET_NAME`.
 
 5. Create a pull subscription:
-`gcloud beta Pub/Sub subscriptions create $SUBSCRIPTION_NAME --topic $TOPIC_NAME`.
+`gcloud beta pubsub subscriptions create $SUBSCRIPTION_NAME --topic $TOPIC_NAME`.
 
 ## Configure and Deploy Your Spinnaker instance
 
