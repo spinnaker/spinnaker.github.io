@@ -136,7 +136,7 @@ Now configure Spinnaker to receive messages from your Google Cloud Pub/Sub subsc
 
 
 3. Add your subscription to Google Pub/Sub:
-`hal config pubsub google subscription add --project $PROJECT_ID --json-path $SERVICE_ACCOUNT_DEST --subscription-name $SUBSCRIPTION_NAME --template-path $TEMPLATE_PATH my-gcs-supscription`
+`hal config pubsub google subscription add --project $PROJECT_ID --json-path $SERVICE_ACCOUNT_DEST --subscription-name $SUBSCRIPTION_NAME --template-path $TEMPLATE_PATH my-gcs-subscription`
 
 ### Deploy Spinnaker with Halyard
 
