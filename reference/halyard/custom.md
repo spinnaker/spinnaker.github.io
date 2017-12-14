@@ -85,6 +85,8 @@ cluster.
 | `monitored` | Whether or not this has monitoring endpoints exposed and understood by `spinnaker-monitoring`. |
 | `overrideBaseUrl` | The baseURL this service is reachable on. This is already made configurable for Deck & Gate via `hal config security`, since these are both public-facing and may service from different hosts than they are discoverable on internal to Spinnaker. |
 | `port` | The port number this service is bound to, and will accept requests on. |
+| `skipLifecycleManagement` | Whether or not this service should have it's
+lifecycle managed by halyard. | 
 | `safeToUpdate` | Whether or not this service can be shutdown, and spun on a new VM/container. This protects datastores like Vault & Redis from being taken down from Halyard. |
 | `scheme` | The URI scheme used to address this service, e.g. `http` vs.  `https`. |
 | `targetSize` | The initial number of nodes this service will be created with.  This is only respected on the initial deployment, and further edits will be rejected in favor of the prior service version's size. |
