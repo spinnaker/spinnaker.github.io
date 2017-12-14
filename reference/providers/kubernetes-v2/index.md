@@ -24,7 +24,7 @@ provider v1](https://www.spinnaker.io/reference/providers/kubernetes/)). The res
 
 You can deploy existing manifests without rewriting them to adhere to [Frigga](https://github.com/Netflix/frigga). Resource relationships (for example between applications and clusters) are managed using [Kubernetes annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/), and Spinnaker manages these using its [Moniker](https://github.com/spinnaker/moniker) library. 
 
-The policies and strategies are configurable per account. See [Reserved Annotations](#reserved-annotations) for more detail.
+The policies and strategies are configurable per account. See [Reserved Annotations](#reserved-annotations) for more details.
 
 ## Accomodating Level-Based Deployments
 
@@ -32,18 +32,18 @@ See the [Kubernetes API
 conventions](https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md#spec-and-status)
 for a description of edge-based vs. level-based APIs.
 
-Other providers in Spinnaker track operations that modify cloud resources. For example, if you run a resize operation, Spinnaker monitors that operation until the specified resize target is met. This is different from how the Kubernetes level-based API does  it: Kubernetes only tries to satisfy the desired state.
+Other providers in Spinnaker track operations that modify cloud resources. For example, if you run a resize operation, Spinnaker monitors that operation until the specified resize target is met. But because Kubernetes only tries to satisfy the desired _state_, and offers a level-based API for this purpose, the Kubernetes provider v2 uses the concept of "manifest stability." 
 
-To take advantage of this, the Kubernetes provider v2 assesses "manifest stability." A deployed manifest is considered stable when the Kubernetes controller-manager no longer needs to modify it, and it’s deemed “ready.” This assessment is different, obviously, for different `kind`s of manifests: a `deployment` is stable when its managed pods are updated, available, and ready (running your desired container and serving traffic). A `service` is stable once it is created, unless it is of type `LoadBalancer`, in which case it is considered stable once the underlying load balancer has been created and bound to the `Service`.
+A deployed manifest is considered stable when the Kubernetes controller-manager no longer needs to modify it, and it’s deemed “ready.” This assessment is different, obviously, for different `kind`s of manifests: a `Deployment` is stable when its managed pods are updated, available, and ready (running your desired container and serving traffic). A `Service` is stable once it is created, unless it is of type `LoadBalancer`, in which case it is considered stable once the underlying load balancer has been created and bound to the `Service`.
 
 This manifest stability is how Spinnaker ensures that operations
 have succeeded. Because there are a number of reasons why a manifest never
 becomes stable (lack of CPU quota, failing readiness checks, no IP for a
 service to bind...) every stage that modifies or deploys a manifest waits
 until your affected manifests are stable, or it times out after a configurable
-period.
+period (30-minute default).
 
-## Deploying Manifests Stored Externally to Spinnaker
+## Using Externally Stored Manifests
 
 You can store and version your manifest definitions in Git (or elsewhere outside of the Spinnaker pipeline store).
 
@@ -56,7 +56,7 @@ configure a pipeline that triggers either when...
 
 # Reserved Annotations
 
-Serveral annotations are built into each manfest and cannot be used otherwise.
+Serveral annotations are built into each manifest and cannot be used otherwise.
 
 * `moniker.spinnaker.io/application`
 
