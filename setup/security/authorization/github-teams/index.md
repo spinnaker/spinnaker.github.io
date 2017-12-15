@@ -32,7 +32,9 @@ ORG=myorg        # GitHub Organization
 hal config security authz github edit \
     --accessToken $TOKEN \
     --organization $ORG
-    
+
+hal config security authz edit --type github
+
 hal config security authz enable
 ```
 
