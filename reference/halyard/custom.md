@@ -87,7 +87,7 @@ cluster.
 | `port` | The port number this service is bound to, and will accept requests on. |
 | `safeToUpdate` | Whether or not this service can be shutdown, and spun on a new VM/container. This protects datastores like Vault & Redis from being taken down from Halyard. |
 | `scheme` | The URI scheme used to address this service, e.g. `http` vs.  `https`. |
-| `skipLifecycleManagement` | Whether or not halyard should skip managing a service's lifecycle. |
+| `skipLifecycleManagement` | Whether or not Halyard should skip managing a service's lifecycle. |
 | `targetSize` | The initial number of nodes this service will be created with.  This is only respected on the initial deployment, and further edits will be rejected in favor of the prior service version's size. |
 
 
