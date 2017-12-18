@@ -92,7 +92,7 @@ expected artifact can bind to one of artifacts in the trigger's payload.
 
 ### Artifacts in Trigger Payloads
 
-Artifacts are supplied by payload as a list of artifacts in a top-level
+Artifacts are supplied by payload as a list of artifacts in a top-level 
 `artifacts` key&mdash;the value is automatically injected into any triggered
 pipeline's execution context. However, it's possible that you're not the author
 of the incoming message, and are instead depending on a third-party system to

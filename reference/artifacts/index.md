@@ -7,7 +7,7 @@ sidebar:
 
 {% include toc %}
 
-In Spinnaker, an artifact is an object that references an external resource. That resource could be…
+In Spinnaker, an artifact is an object that references an external resource. That resource could be… 
 
 * a Docker image
 * a file stored in GitHub
