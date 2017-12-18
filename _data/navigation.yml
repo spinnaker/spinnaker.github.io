@@ -176,6 +176,12 @@ reference:
 #        url: /reference/providers/openstack/
 #      - title: Oracle
 #        url: /reference/providers/oracle/
+  - title: Artifacts
+    children:
+      - title: Overview
+        url: /reference/artifacts/
+      - title: In Pipelines
+        url: /reference/artifacts/in-pipelines/
   - title: Halyard
     children:
       - title: Overview

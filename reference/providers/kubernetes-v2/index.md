@@ -2,7 +2,7 @@
 Layout: single
 title:  "Kubernetes Provider V2 (Manifest Based)"
 sidebar:
-  nav: guides
+  nav: reference
 ---
 
 {% include toc %}
