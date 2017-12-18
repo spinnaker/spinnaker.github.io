@@ -19,7 +19,7 @@ infrastructure
 management](https://kubernetes.io/docs/tutorials/object-management-kubectl/declarative-object-management-configuration/)
 with Spinnaker's workflow engine for imperative steps when you need them. You
 can fully specify all your infrastructure in the native Kubernetes manifest
-format but still express, for example, a multi-region canary-driven rollout. 
+format but still express, for example, a multi-region canary-driven rollout.
 
 This is a significant departure from how deployments are managed in Spinnaker
 today using other providers (including the [Kubernetes provider
@@ -33,7 +33,7 @@ You can deploy existing manifests without rewriting them to adhere to
 between applications and clusters) are managed using [Kubernetes
 annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/),
 and Spinnaker manages these using its
-[Moniker](https://github.com/spinnaker/moniker) library. 
+[Moniker](https://github.com/spinnaker/moniker) library.
 
 The policies and strategies are configurable per account. See [Reserved
 Annotations](#reserved-annotations) for more details.
@@ -48,7 +48,7 @@ Other providers in Spinnaker track operations that modify cloud resources. For
 example, if you run a resize operation, Spinnaker monitors that operation until
 the specified resize target is met. But because Kubernetes only tries to satisfy
 the desired _state_, and offers a level-based API for this purpose, the
-Kubernetes provider v2 uses the concept of "manifest stability." 
+Kubernetes provider v2 uses the concept of "manifest stability."
 
 A deployed manifest is considered stable when the Kubernetes controller-manager
 no longer needs to modify it, and it’s deemed “ready.” This assessment is
@@ -83,7 +83,7 @@ Serveral annotations are built into each manifest and cannot be used otherwise.
 
 * `moniker.spinnaker.io/application`
 
-  The application this resource belongs to. 
+  The application this resource belongs to.
 
   This affects where the resource is accessible in the UI, and depending on your
   Spinnaker Authorization setup, can affect which users can read/write to this
@@ -91,7 +91,7 @@ Serveral annotations are built into each manifest and cannot be used otherwise.
 
 * `moniker.spinnaker.io/cluster`
 
-  The cluster this resource belongs to. 
+  The cluster this resource belongs to.
 
   This is purely a logical grouping for rendering resources in the UI and to
   help with dynamic target selection in Pipeline stages. For example, some
@@ -104,19 +104,85 @@ Serveral annotations are built into each manifest and cannot be used otherwise.
   as well as apply policies such as [Traffic
   Guards](https://blog.spinnaker.io/can-i-push-that-building-safer-low-risk-deployments-with-spinnaker-a27290847ac4).
 
-# Resource Mapping
+# How Kubernetes Resources Are Managed by Spinnaker
 
-Resource mapping between Spinnaker and Kubernetes constructs is a lot more
-flexible than for other providers, because of how many types of resources
-Kubernetes supports. Also the Kubernetes extension mechanisms&mdash;called
-[Custom Resource Definitions
+Resource mapping between Spinnaker and Kubernetes constructs, as well as the
+introduction of new types of resources, is a lot more flexible in the
+Kubernetes provider V2 for other providers, because of how many types of
+resources Kubernetes supports. Also the Kubernetes extension
+mechanisms&mdash;called [Custom Resource Definitions
 (CRDs)](https://kubernetes.io/docs/concepts/api-extension/custom-resources/)&mdash;make
 it easy to build new types of resources, and Spinnaker accomodates that by
 making it simple to extend Spinnaker to support a user's CRDs.
 
-## Workloads ≈ Server Groups
+## Terminology Mapping
 
-## Services, Ingresses ≈ Load Balancers
+It is worth noting that the resource mapping exists primarily to render
+resources in the UI according to Spinnaker conventions. It does not affect how
+resources are deployed or managed.
 
-## NetworkPolicies ≈ Security Groups
+There are three major groupings of resources in Spinnaker, Server Groups, Load
+Balancers, and Security Groups. They correspond to Kubernetes resource kinds as
+follows:
+
+* Workloads ≈ Spinnaker Server Groups
+* Services, Ingresses ≈ Load Balancers
+* NetworkPolicies ≈ Security Groups
+
+## Resource Management Policies
+
+How you manage the deployment and updates of a Kubernetes resource is dictated
+by its kind, via the policies that apply to a particular kind. Below are
+descriptions of these policies, followed by a mapping of kinds to policies.
+
+* __Operations__
+
+  There are several operations that can be implemented by each kind:
+
+  * _Deploy:_ Can this resource be deployed and redeployed? It's worth
+    mentioning that all deployments are carried out using `kubectl apply` to
+    capitalize on `kubectl`'s three-way merge on deploy. This is done to
+    accomodate running
+  * _Delete:_ Can this resource be deleted?
+  * _Scale:_  (Workloads only) Can this resource be scaled to a desired replica
+    count?
+  * _Undo Rollout:_ (Workloads only) Can this resource be rolled back/forward
+    to an existing revision?
+  * _Pause Rollout:_ (Workloads only) When rolling out, can the rollout be
+    stopped?
+  * _Resume Rollout:_ (Workloads only) When a rollout is paused, can it be
+    started again?
+
+* __Versioning__
+
+  If a resource is "versioned", it will always be deployed with a new sequence
+  number `vNNN`. This is important for resources like ConfigMaps and
+  ReplicaSets, which don't have their own built-in update policy like
+  Deployments or StatefulSets do. Making an edit to the in-place, rather than
+  redeploying can have unexpected results, and delete prior history.
+  Regardless, whatever the policy is, it can be overriden during a deploy
+  manifest stage.
+
+* __Stability__
+
+  This describes under what conditions this kind is considered stable after a
+  new `spec` has been submitted.
+
+## Workloads
+
+Anything classified as a Spinnaker Server Group will be rendered on the
+"Clusters Tab" for Spinnaker. If possible, any pods owned by the workload will
+be rendered as well.
+
+| __Resource__ | _Deploy_ | _Delete_ | _Scale_ | _Undo Rollout_ | _Pause Rollout_ | _Resume Rollout_ | Versioned | Stability |
+|-|:-:|:-:|:-:|:-:|:-:|:-:|:-:|-|
+| __`DaemonSet`__ | Yes | Yes | No | Yes | Yes | Yes | No | The `status.currentNumberScheduled`, `status.updatedNumberScheduled`, `status.numberAvailable`, and `status.numberReady` must all be at least the `status.desiredNumberScheduled`. |
+| __`Deployment`__ | Yes | Yes | Yes | Yes | Yes | Yes | No | The `status.updatedReplicas`, `status.availableReplicas`, and `status.readyReplicas` must all match the desired replica count for the Deployment. |
+| __`Pod`__ | Yes | Yes | No | No | No | No | Yes | The pod must be scheduled, and passing all probes. |
+| __`ReplicaSet`__ | Yes | Yes | Yes | No | No | No | No | The `status.fullyLabledReplicas`, `status.availableReplicas`, and `status.readyReplicas` must all match the desired replica count for the ReplicaSet. |
+| __`StatefulSet`__ | Yes | Yes | Yes | Yes | Yes | Yes | No | The `status.currentRevision`, and `status.updatedRevision` must match, and `status.currentReplicas`, and `status.readyReplicas` must match the spec's replica count. |
+
+## Services, Ingresses
+
+## NetworkPolicies
 
