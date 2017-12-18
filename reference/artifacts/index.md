@@ -1,49 +1,49 @@
 ---
 layout: single
-title:  "Artifacts"
+title:  "About Spinnaker Artifacts"
 sidebar:
   nav: reference
 ---
 
 {% include toc %}
 
-In Spinnaker, artifacts represent a common abstraction for references to remote
-data/resources. Examples include Docker images, files stored in GitHub, Amazon
-Machine Images (AMIs), binary blobs in S3/GCS, etc... All of these can be
-located and fetched using a
-[URI](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier), and can be
+In Spinnaker, an artifact is an object that references an external resource. That resource could be…
+
+* a Docker image
+* a file stored in GitHub
+* an Amazon Machine Image (AMI)
+* a binary blob in S3, GCS, etc.
+
+Any of these can be fetched using a [URI](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier), and can be
 used within a Spinnaker pipeline.
 
 However, a URI alone isn't always enough. Take the following examples:
 
-* We have a pipeline where we want to easily express which packages need to be
-  consumed by a "Bake Image" stage, which images are to be deployed into each
-  environment, and which configuration files are to be mounted. If each of
-  these three types of artifacts is just a URI, we'll have to resort to writing
-  and maintaining RegEx (or similar) against URIs to match artifacts to stages.
+* You have a “Bake Image” stage that defines which packages are to be consumed, 
+  which images are deployed into each environment, and which configuration files are mounted. 
+  If each of these artifact types is just a URI, you have to write (and maintain) RegEx (or similar) 
+  against URIs to match artifacts to stages.
 
-* Say our build system produces provenance information about our Docker images
-  (which commit triggered the build, and which build steps were used). This
-  isn't easy to store/retrieve from Docker image alone, but we want to trigger
-  our pipeline on the arrival of a new Docker image. If all we capture is the
-  URI (e.g. `gcr.io/your-project/your-image:v1.0.0`), we lose that provenance
-  information.
+* Your build system produces provenance information about your Docker images 
+  (for example, which commit triggered the build, which build steps were used). 
+  This isn’t easy to store in or retrieve from the Docker image, but you want to trigger the 
+  pipeline on the arrival of a new image. If all you capture is the URI 
+  (for example, `gcr.io/your-project/your-image:v1.0.0`) you lose that provenance information.
 
-* Perhaps your Spinnaker instance is used by many teams in your organization,
-  and you have configured authorization policies to isolate teams'
-  infrastructure and pipelines from one-another. Odds are, you'll want your
-  packages/configs/images published and accessible only by the teams that need
-  them. You'll need some way to annotate a URI with an account that can fetch
+* Your Spinnaker instance is used by many teams in your organization,
+  and your authorization policies isolate teams'
+  infrastructure and pipelines from each other. You probably want your
+  packages, configs, and images published and accessible only by the teams that need
+  them. You need a way to annotate a URI with an account that can fetch
   it based on a user's permissions.
 
-To address this, we have a format for decorating URIs with metadata
-pertinent to Spinnaker.
+To address situations like these, Spinnaker includes a format for decorating URIs with pertinent metadata.
 
-# Artifact Decoration
+# Decorate your Artifacts
 
 In Spinnaker, artifacts must match a specification. This specification is
-consistent between artifacts supplied to pipelines, artifacts accessed within
-pipelines, and artifacts produced by pipelines.
+consistent among all artifacts, whether they're supplied to pipelines, accessed within
+pipelines, or produced by pipelines.
 
 ## Format
 
