@@ -11,14 +11,14 @@ sidebar:
 > history in Redis. Deleting recent executions from Redis can cause
 > unexpected behavior.
 
-Now that you have an idea of [what an artifact is](../#about-spinnaker-artifacts) in Spinnaker, you need to
-understand how it's used within pipelines. An artifact arrives in a pipeline execution either from an external trigger (for example, code check-in) or by getting fetched by a stage. That artifact is then consumed by downstream stages based on pre-defined behavior. 
+Now that you have an idea of [what an artifact is](reference/artifacts/#about-spinnaker-artifacts) in Spinnaker, you need to
+understand how it's used within pipelines. An artifact arrives in a pipeline execution either from an external trigger (for example, a Docker image pushed to registry) or by getting fetched by a stage. That artifact is then consumed by downstream stages based on pre-defined behavior. 
 
 Spinnaker uses an "expected artifact" to enable a stage to fetch the needed artifact.
 
 # Expected Artifacts
 
-An "expected artifact" is a specification of what properties (found in the URI decoration) against which to match when searching for the desired artifact.
+An "expected artifact" is a specification of what properties (found in the URI decoration) against which to match when searching for the desired artifact, plus optional fallback behavior.
 
 Expected artifacts exist for two reasons:
 
