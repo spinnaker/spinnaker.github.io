@@ -7,8 +7,6 @@ sidebar:
 
 {% include toc %}
 
-# Deploy to Google Kubernetes Engine with RBAC
-
 If you've deployed Spinnaker already using [this
 codelab](/setup/quickstart/halyard-gke) you're left with a Spinnaker that can only deploy to the cluster that Spinnaker is deployed in.
 In many cases you want to deploy to clusters in another GCP project that also have Kubernetes RBAC enabled.
