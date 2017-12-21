@@ -140,6 +140,8 @@ Now configure Spinnaker to receive messages from your Google Cloud Pub/Sub subsc
 
 ### Deploy Spinnaker with Halyard
 
+Select a Spinnaker version: `hal config version edit --version <version>`. List the available versions with `hal version list`.
+
 `sudo hal deploy apply`
 Wait a few minutes for the deploy to complete.
 
