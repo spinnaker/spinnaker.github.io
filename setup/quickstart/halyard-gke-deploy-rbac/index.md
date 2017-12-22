@@ -35,7 +35,7 @@ At the end of this guide you will have:
    gcloud info
    ```
 
-   If you are unfamiliar with how to use multiple projects with ```bash gcloud ``` you can use this [guide](https://cloud.google.com/sdk/docs/managing-configurations) to get started.
+   If you are unfamiliar with how to use multiple projects with ```gcloud``` you can use this [guide](https://cloud.google.com/sdk/docs/managing-configurations) to get started.
 
 2. Set your zone and project variables and get the credentials for the Kubernetes cluster:
 
@@ -98,7 +98,7 @@ At the end of this guide you will have:
      --clusterrole edit
    ```
     
-   If you can't create a ```bash clusterrolebinding``` make sure that you have the right permissions.
+   If you can't create a ```clusterrolebinding``` make sure that you have the right permissions.
    The following command enables you to make other roles in the cluster:
 
    ```bash
@@ -136,7 +136,7 @@ At the end of this guide you will have:
    gcloud container clusters get-credentials $K8_TEST --project $GCP_TEST --zone us-central1-f
    ```
 
-3. Get the new user profile that was created by ```bash gcloud``` and add the token you received before in part 3 step 4.
+3. Get the new user profile that was created by ```gcloud``` and add the token you received before in part 3 step 4.
 
    ```bash
    TEST_USER_PROFILE=`kubectl config current-context`
@@ -156,6 +156,4 @@ At the end of this guide you will have:
    ```bash
    hal deploy apply
    ```
-
-
 
