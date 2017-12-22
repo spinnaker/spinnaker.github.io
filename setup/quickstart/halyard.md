@@ -12,3 +12,4 @@ are a few configurations to get you started. If your environment matches one of 
 * [Halyard on Google Compute Engine Quickstart](/setup/quickstart/halyard-gce/)
 * [Public Spinnaker on Google Kubernetes
   Engine](/setup/quickstart/halyard-gke-public/)
+* [Deploy to RBAC enabled cluster on Google Kubernetes Engine](/setup/quickstart/halyard-gke-deploy-rbac)
