@@ -1,0 +1,20 @@
+<script>
+  $(document).ready(function() {
+    $('.nav__items > li, li.collapsed').each(function(i, li) {
+      var $li = $(li);
+      var $ul = $li.find('> ul');
+      $li.addClass('collapsible');
+      $li.find('> span').on('click', function(e) {
+        $li.toggleClass('open');
+        $ul.toggle({ duration: 100 });
+      });
+      if ($li.hasClass('collapsed')) {
+        if ($li.find('.active').length === 0) {
+          $ul.hide();
+        } else {
+          $li.addClass('open');
+        }
+      }
+    });
+  });
+</script>
