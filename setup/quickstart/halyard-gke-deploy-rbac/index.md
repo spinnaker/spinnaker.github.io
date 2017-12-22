@@ -69,6 +69,7 @@ At the end of this guide you will have:
      --role roles/container.admin \
      --member serviceAccount:$HALYARD_SA_EMAIL
    ``` 
+
 ## Part 3: Add a service account (SA) to Kubernetes
 
 1. Next we need to add a service account to Kubernetes that will handle the authorization inside the Kubernetes cluster.
