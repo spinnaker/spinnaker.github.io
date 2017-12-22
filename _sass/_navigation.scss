@@ -449,10 +449,6 @@
     }
   }
 
-  .nav__items-nested li {
-    font-size: $type-size-5;
-  }
-
   @include breakpoint(max-width ($large - 1px)) {
     position: relative;
     max-height: 0;
@@ -499,6 +495,7 @@
 /*  text-transform: uppercase; */
   border-bottom: 1px solid $border-color;
 }
+
 
 /*
    Table of contents navigation

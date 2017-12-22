@@ -39,28 +39,7 @@ setup:
       - title: Storage
         url: /setup/install/storage/
       - title: Cloud Providers
-        collapsed: true
-        children:
-          - title: Overview
-            url: /setup/providers/
-          - title: Amazon Web Services
-            url: /setup/providers/aws/
-          - title: Azure
-            url: /setup/providers/azure/
-          - title: DC/OS
-            url: /setup/providers/dcos/
-          - title: Docker Registry
-            url: /setup/providers/docker-registry/
-          - title: Google App Engine
-            url: /setup/providers/appengine/
-          - title: Google Compute Engine
-            url: /setup/providers/gce/
-          - title: Kubernetes
-            url: /setup/providers/kubernetes/
-          - title: OpenStack
-            url: /setup/providers/openstack/
-          - title: Oracle
-            url: /setup/providers/oracle/
+        url: /setup/install/providers/
       - title: Deploy
         url: /setup/install/deploy/
       - title: Configuration
@@ -71,6 +50,28 @@ setup:
         url: /setup/install/upgrades/
       - title: Backups
         url: /setup/install/backups/
+  - title: Cloud Providers
+    children:
+      - title: Overview
+        url: /setup/providers/
+      - title: Amazon Web Services
+        url: /setup/providers/aws/
+      - title: Azure
+        url: /setup/providers/azure/
+      - title: DC/OS
+        url: /setup/providers/dcos/
+      - title: Docker Registry
+        url: /setup/providers/docker-registry/
+      - title: Google App Engine
+        url: /setup/providers/appengine/
+      - title: Google Compute Engine
+        url: /setup/providers/gce/
+      - title: Kubernetes
+        url: /setup/providers/kubernetes/
+      - title: OpenStack
+        url: /setup/providers/openstack/
+      - title: Oracle
+        url: /setup/providers/oracle/
   - title: Persistent Storage
     children:
       - title: Overview
