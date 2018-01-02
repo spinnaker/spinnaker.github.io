@@ -27,7 +27,7 @@ A Spinnaker **Instance** maps to a Kubernetes
 differentiates this from other Cloud Providers is the ability for Pods to run
 multiple containers at once, whereas typical IAAS providers in Spinanker run
 exactly one image per Instance. This means that extra care must be taken when
-updating Pods with more than container to ensure that the correct container is
+updating Pods with more than one container to ensure that the correct container is
 replaced.
 
 ### Server Group
