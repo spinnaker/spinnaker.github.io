@@ -36,6 +36,8 @@ Here's a sample of the configuration that accomplishes the above example:
 ldap:
   enabled: true
   url: ldaps://ldap.my-organization.com:10636/dc=my-organization,dc=com
+  managerDn: ldapserviceaccount
+  managerPassword: ldapserviceaccountpass
   userDnPattern: uid={0},ou=users
 ```
 
