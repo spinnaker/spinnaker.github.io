@@ -83,6 +83,27 @@ cleartax_in_user:
   alt: "ClearTax.in Logo"
 ---
 
+## Engage the community and get support
+
+The Spinnaker OSS project was started at Netflix, and today thrives on the contributions and broad adoption of the public devops community. Here are some ways to engage the community and find help&mdash;join us!
+
+* [Spinnaker community forum](https://community.spinnaker.io)
+
+    Closely monitored by Spinnaker principle developers, this forum is a good place to initiate discussions that might go on for a while and that won't scroll off the screen before you notice them.
+
+* [GitHub](https://github.com/spinnaker)
+
+    The Spinnaker project, with repos for its many services, including [Spinnaker itself](https://github.com/spinnaker/spinnaker) and the [repo for this documentation site](https://github.com/spinnaker/spinnaker.github.io). Come here to contribute to the Spinnaker services and the documentation.
+
+* [Slack](http://join.spinnaker.io)
+
+    A great place to get quick answers to questions that do not require extended, threaded discussion.
+
+* [Stack Overflow](https://stackoverflow.com/search?q=spinnaker)
+
+    Many people involved in the Spinnaker community can answer questions posed here. However, the principle developers don't monitor Stack Overflow as closely.
+
+
 ## Who's using Spinnaker?
 
 <div class="clearfix mb4">
@@ -130,15 +151,6 @@ cleartax_in_user:
     {% include spinnaker_user id="weatherbug_user" %}
   </div>
 </div>
-
-## Engaging
-
-The Spinnaker OSS project was started at Netflix, and today thrives on the contributions and broad adoption of the public devops community. Here are some ways to get engaged - join us!
-
-* [GitHub](https://github.com/spinnaker/spinnaker)
-* [Slack](http://join.spinnaker.io)
-* [StackOverflow](https://stackoverflow.com/search?q=spinnaker)
-* [Forum](https://community.spinnaker.io)
 
 ## Core Contributors
 
