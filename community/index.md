@@ -93,7 +93,9 @@ The Spinnaker OSS project was started at Netflix, and today thrives on the contr
 
 * [GitHub](https://github.com/spinnaker)
 
-    The Spinnaker project, with repos for its many services, including [Spinnaker itself](https://github.com/spinnaker/spinnaker) and the [repo for this documentation site](https://github.com/spinnaker/spinnaker.github.io). Come here to contribute to the Spinnaker services and the documentation.
+    The Spinnaker org, with repos for its many services. Come here to contribute to the Spinnaker services and documentation. 
+
+    If you find a problem, you can file an issue [here](https://github.com/spinnaker/spinnaker/issues). (However, if you just have a question, use one of the other resources listed here.)
 
 * [Slack](http://join.spinnaker.io)
 
