@@ -27,20 +27,14 @@ successful, the bind is successful and a session is established.
 > We highly suggest the use of SSL for the LDAP connection (over `ldaps`). Otherwise, 
 **user passwords are passed in clear text over the wire.**
 
-TODO(ttomsu): Add halyard setup instructions when implemented.
+## Configure LDAP using Halyard
 
-Here's a sample of the configuration that accomplishes the above example:
+Use `hal config` to enable and configure LDAP. Here's an example:
 
-```yaml
-# /opt/spinnaker/config/gate-local.yml
-ldap:
-  enabled: true
-  url: ldaps://ldap.my-organization.com:10636/dc=my-organization,dc=com
-  userDnPattern: uid={0},ou=users
-```
+`hal config security authn ldap edit --user-dn-pattern="uid={0},uid=users" --url=ldaps://ldap.my-organization.com:10636/dc=my-organization,dc=com`
 
-It is also possible to use `ldap.userSearchBase` and `ldap.userSearchFilter` if the simpler 
-`ldap.userDnPattern` does not match what your organization uses for `userDn`s. We won't explore this
+You can also use `ldap.userSearchBase` and `ldap.userSearchFilter` if the simpler 
+`ldap.userDnPattern` does not match what your organization uses for `userDn`s. We don't explore this
 use case here, but you can read up more on LDAP search filters 
 [here](https://confluence.atlassian.com/display/DEV/How+to+write+LDAP+search+filters).
 
