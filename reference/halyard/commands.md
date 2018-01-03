@@ -5,7 +5,7 @@ sidebar:
   nav: reference
 ---
 
-Published: 2017-12-07 20:24:44
+Published: 2018-01-03 21:21:06
 
 
 # Table of Contents
@@ -1516,6 +1516,7 @@ hal config provider appengine account add ACCOUNT [parameters]
 #### Parameters
 `ACCOUNT`: The name of the account to operate on.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--gcloud-release-track`: The gcloud release track (ALPHA, BETA, or STABLE) that Spinnaker will use when deploying to App Engine.
  * `--git-https-password`: (*Sensitive data* - user will be prompted on standard input) A password to be used when connecting with a remote git repository server over HTTPS.
  * `--git-https-username`: A username to be used when connecting with a remote git repository server over HTTPS.
  * `--github-oauth-access-token`: (*Sensitive data* - user will be prompted on standard input) An OAuth token provided by Github for connecting to  a git repository over HTTPS. See https://help.github.com/articles/creating-an-access-token-for-command-line-use for more information.
@@ -1561,6 +1562,7 @@ hal config provider appengine account edit ACCOUNT [parameters]
 `ACCOUNT`: The name of the account to operate on.
  * `--add-required-group-membership`: Add this group to the list of required group memberships.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--gcloud-release-track`: The gcloud release track (ALPHA, BETA, or STABLE) that Spinnaker will use when deploying to App Engine.
  * `--git-https-password`: (*Sensitive data* - user will be prompted on standard input) A password to be used when connecting with a remote git repository server over HTTPS.
  * `--git-https-username`: A username to be used when connecting with a remote git repository server over HTTPS.
  * `--github-oauth-access-token`: (*Sensitive data* - user will be prompted on standard input) An OAuth token provided by Github for connecting to  a git repository over HTTPS. See https://help.github.com/articles/creating-an-access-token-for-command-line-use for more information.
