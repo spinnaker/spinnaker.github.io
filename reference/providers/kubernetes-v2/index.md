@@ -79,9 +79,16 @@ that triggers either when...
 
 # Reserved Annotations
 
-Serveral annotations are built into each manifest and cannot be used otherwise.
+Several annotations are used as metadata by Spinnaker to describe a resource.
+Annotations listed below followed by a 📝 symbol may also be written by
+Spinnaker.
 
-* `moniker.spinnaker.io/application`
+You can always edit or apply annotations using the [`kubectl annotate`
+command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#annotate).
+
+## Moniker
+
+* `moniker.spinnaker.io/application` 📝
 
   The application this resource belongs to.
 
@@ -89,7 +96,7 @@ Serveral annotations are built into each manifest and cannot be used otherwise.
   Spinnaker Authorization setup, can affect which users can read/write to this
   resource.
 
-* `moniker.spinnaker.io/cluster`
+* `moniker.spinnaker.io/cluster` 📝
 
   The cluster this resource belongs to.
 
@@ -98,11 +105,18 @@ Serveral annotations are built into each manifest and cannot be used otherwise.
   stages allow you to select "the newest workload in cluster __X__". How you set
   up these groupings depends on your delivery needs.
 
-* `moniker.spinnaker.io/stack`, and `moniker.spinnaker.io/detail`
+* `moniker.spinnaker.io/stack` 📝, and `moniker.spinnaker.io/detail` 📝
 
   These simply provide ways to group resources using Spinnaker's cluster filters
   as well as apply policies such as [Traffic
   Guards](https://blog.spinnaker.io/can-i-push-that-building-safer-low-risk-deployments-with-spinnaker-a27290847ac4).
+
+## Caching
+
+* `caching.spinnaker.io/ignore`
+
+  When set to `True`, this tells Spinnaker to ignore this resource. It will not
+  be cached, or show up in the Spinnaker UI. 
 
 # How Kubernetes Resources Are Managed by Spinnaker
 
