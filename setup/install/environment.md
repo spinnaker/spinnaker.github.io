@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Environment"
+title:  "Choose your Environment"
 sidebar:
   nav: setup
 ---
