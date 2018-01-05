@@ -20,6 +20,8 @@ concepts:
       url: /concepts/clusters/
     - title: Pipelines
       url: /concepts/pipelines/
+    - title: Providers
+      url: /concepts/providers
 
 setup:
   - title: Quickstarts
