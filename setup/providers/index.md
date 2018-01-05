@@ -43,7 +43,7 @@ These are the cloud providers currently supported by Spinnaker:
   acts as a source of images, and does not include support for deploying Docker
   images)
 * [Google Compute Engine](/setup/providers/gce)
-* [Kubernetes](/setup/providers/kubernetes)
+* [Kubernetes v1](/setup/providers/kubernetes) and [v2](/setup/providers/kubernetes-v2)
 * [Openstack](/setup/providers/openstack)
 * [Oracle](/setup/providers/oracle)
 
