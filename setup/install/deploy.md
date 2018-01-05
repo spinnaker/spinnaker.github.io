@@ -7,7 +7,7 @@ sidebar:
 
 Now that we've picked a [Deployment Environment](/setup/install/environment/),
 configured [Persistent Storage](/setup/install/storage/), and enabled a [Cloud
-Provider](/setup/install/providers/) we're ready to pick a version of Spinnaker
+Provider](/setup/providers/) we're ready to pick a version of Spinnaker
 and deploy it. First, list the available versions:
 
 ```bash

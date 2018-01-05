@@ -8,7 +8,7 @@ sidebar:
 {% include toc %}
 
 DC/OS configuration for Spinnaker consists of a set of DC/OS
-clusters and a set of [Accounts](/setup/providers/#accounts) that have
+clusters and a set of [Accounts](/concepts/providers/#accounts) that have
 credentials to authenticate to one or more of those clusters. 
 Additionally, each account has a set of [Docker Registry](/setup/providers/docker-registry) 
 accounts to be used as a source of images.

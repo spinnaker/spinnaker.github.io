@@ -13,7 +13,7 @@ is still supported.
 
 ## Accounts
 
-For Kubernetes V2, a Spinnaker [Account](/setup/providers/#accounts) maps to a
+For Kubernetes V2, a Spinnaker [Account](/concepts/providers/#accounts) maps to a
 credential that can authenticate against your Kubernetes Cluster. Unlike with
 the V1 provider, in V2 the Account does not require any Docker Registry
 Accounts.

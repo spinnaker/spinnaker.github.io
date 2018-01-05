@@ -7,7 +7,7 @@ sidebar:
 
 {% include toc %}
 
-In [Azure](https://azure.microsoft.com/), an [__Account__](/setup/providers/#accounts) maps to a
+In [Azure](https://azure.microsoft.com/), an [__Account__](/concepts/providers/#accounts) maps to a
 credential able to authenticate against a given [Azure subscription](https://azure.microsoft.com/free/).
 
 ## Prerequisites
