@@ -80,12 +80,12 @@ setup:
         url: /setup/install/deploy/
       - title: Configuration
         url: /setup/install/configuration/
-      - title: FAQ
-        url: /setup/quickstart/faq/
       - title: Upgrades
         url: /setup/install/upgrades/
       - title: Backups
         url: /setup/install/backups/
+      - title: Spinnaker Config FAQ
+        url: /setup/quickstart/faq/
   - title: Image Bakery
     children:
       - title: Overview
