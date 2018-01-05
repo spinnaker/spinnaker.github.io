@@ -7,7 +7,7 @@ sidebar:
 
 {% include toc %}
 
-In [AWS](https://aws.amazon.com/), an [__Account__](/setup/providers/#accounts)
+In [AWS](https://aws.amazon.com/), an [__Account__](/concepts/providers/#accounts)
 maps to a credential able to authenticate against a given [AWS
 account](https://aws.amazon.com/account/).
 

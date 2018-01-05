@@ -20,6 +20,8 @@ concepts:
       url: /concepts/clusters/
     - title: Pipelines
       url: /concepts/pipelines/
+    - title: Providers
+      url: /concepts/providers
 
 setup:
   - title: Quickstarts
@@ -34,11 +36,24 @@ setup:
         url: /setup/install/
       - title: Install Halyard
         url: /setup/install/halyard/
-      - title: Environment
+      - title: Choose an Environment
         url: /setup/install/environment/
-      - title: Storage
-        url: /setup/install/storage/
-      - title: Cloud Providers
+      - title: Choose a Storage Service
+        collapsed: true
+        children:
+          - title: Overview
+            url: /setup/storage/
+          - title: Azure Storage
+            url: /setup/storage/azs/
+          - title: Google Cloud Storage
+            url: /setup/storage/gcs/
+          - title: Minio
+            url: /setup/storage/minio/
+          - title: Redis
+            url: /setup/storage/redis/
+          - title: S3
+            url: /setup/storage/s3/
+      - title: Choose a Cloud Provider
         collapsed: true
         children:
           - title: Overview
@@ -61,30 +76,16 @@ setup:
             url: /setup/providers/openstack/
           - title: Oracle
             url: /setup/providers/oracle/
-      - title: Deploy
+      - title: Deploy Spinnaker
         url: /setup/install/deploy/
       - title: Configuration
         url: /setup/install/configuration/
-      - title: FAQ
-        url: /setup/quickstart/faq/
       - title: Upgrades
         url: /setup/install/upgrades/
       - title: Backups
         url: /setup/install/backups/
-  - title: Persistent Storage
-    children:
-      - title: Overview
-        url: /setup/storage/
-      - title: Azure Storage
-        url: /setup/storage/azs/
-      - title: Google Cloud Storage
-        url: /setup/storage/gcs/
-      - title: Minio
-        url: /setup/storage/minio/
-      - title: Redis
-        url: /setup/storage/redis/
-      - title: S3
-        url: /setup/storage/s3/
+      - title: Spinnaker Config FAQ
+        url: /setup/quickstart/faq/
   - title: Image Bakery
     children:
       - title: Overview

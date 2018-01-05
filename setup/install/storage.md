@@ -21,5 +21,5 @@ Spinnaker, you must configure it to use one of the supported storage types.
 
 Now that the core components of Spinnaker have been configured, but before 
 Spinnaker becomes useful you need to enable and [Configure a Cloud
-Provider](/setup/install/providers/).
+Provider](/setup/providers/).
 
