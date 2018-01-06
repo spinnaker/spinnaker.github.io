@@ -170,12 +170,12 @@ descriptions of these policies, followed by a mapping of kinds to policies.
 * __Versioning__
 
   If a resource is "versioned", it will always be deployed with a new sequence
-  number `vNNN`. This is important for resources like ConfigMaps and
-  ReplicaSets, which don't have their own built-in update policy like
-  Deployments or StatefulSets do. Making an edit to the in-place, rather than
-  redeploying can have unexpected results, and delete prior history.
-  Regardless, whatever the policy is, it can be overriden during a deploy
-  manifest stage.
+  number `vNNN`, unless no change has been made to it. This is important for
+  resources like ConfigMaps and ReplicaSets, which don't have their own
+  built-in update policy like Deployments or StatefulSets do. Making an edit to
+  the in-place, rather than redeploying can have unexpected results, and delete
+  prior history. Regardless, whatever the policy is, it can be overriden
+  during a deploy manifest stage.
 
 * __Stability__
 
