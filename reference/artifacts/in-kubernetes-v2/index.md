@@ -13,9 +13,9 @@ can be expressed or deployed in terms of artifacts.
 
 # Manifests as Artifacts
 
-There are two ways to deploy a manifest - either supplied statically to a
-pipeline as text, or as an artifact. The below image demonstrates a deploy
-stage that is deploying a manifest stored in a GCS bucket:
+There are two ways to deploy a manifest&mdash;either supplied statically to a
+pipeline as text, or as an artifact. The image below shows a deploy
+stage deploys a manifest stored in a GCS bucket:
 
 {%
   include
@@ -27,12 +27,13 @@ stage that is deploying a manifest stored in a GCS bucket:
 
 # Kubernetes Objects as Artifacts
 
-Once a manifest has been successfully deployed in a pipeline (either from text
+Once a manifest has been successfully deployed using a pipeline (either from text
 or an artifact containing text), it is injected back into the pipeline's
-context as an output of the deploy stage. Why this is useful will be explained
-below, but for now, focus on the distinction between:
+context as an output of the deploy stage. Why this is useful is explained
+[below](#consuming-artifacts-in-manifests), but for now, focus on the distinction between...
 
-1. An artifact representing manifest stored as text in github:
+1. An artifact representing a manifest stored as text in github:
+
   ```json
   {
        "type": "github/file",
@@ -41,6 +42,7 @@ below, but for now, focus on the distinction between:
   }
   ```
 2. An artifact representing a deployed kubernetes object:
+
   ```json
   {
        "type": "kubernetes/configMap",
@@ -51,7 +53,7 @@ below, but for now, focus on the distinction between:
   ```
 
 As described in the [manifests as artifacts](#manifests-as-artifacts) section,
-a deploy stage would consume artifact 1, but produce artifact 2 as an output.
+a deploy stage would _consume_ artifact 1, but _produce_ artifact 2 as an output.
 
 When running pipelines, you can always check the produced outputs for any stage
 by examinging the execution's "source" directly:
@@ -67,9 +69,9 @@ by examinging the execution's "source" directly:
 According to the [Kubernetes reference
 documentation](/reference/providers/kubernetes-v2/#resource-management-policies),
 certain resources are "versioned", meaning that anytime a change is made to an
-object's manifest and deployed using Spinnaker, it will be redeployed with a
+object's manifest and deployed using Spinnaker, it is redeployed with a
 new version suffix (`-vNNN`). This is critical to supporting immutable
-deployments, as rolling out new config maps, secrets, or other versioned
+deployments, as rolling out new ConfigMaps, secrets, or other versioned
 resources should require any manifests that reference them to be updated as
 well. Luckily, Spinnaker makes handling these updates easy as explained
 [below](#consuming-artifacts-in-manifests).
@@ -77,23 +79,23 @@ well. Luckily, Spinnaker makes handling these updates easy as explained
 # Consuming Artifacts in Manifests
 
 Generally, artifacts represent resources that you update as a part of your
-deployment/delivery piplines. Given that Docker images and ConfigMaps are what
+deployment/delivery pipelines. Given that Docker images and ConfigMaps are what
 will likely be updated within a manifest, we provide easy, first-class ways of
 injecting them into your manifests. If you're familiar with [Pipeline
 Expressions](/guides/user/pipeline-expressions) and are curious why we don't
 just rely on those, read [why not pipeline
 expressions](#why-not-pipeline-expressions) below.
 
-Spinnaker will replace fields in your manifest based on a simple heuristic:
+Spinnaker replaces fields in your manifest based on a simple heuristic:
 
   _When a field's referenced type and value match an incoming artifact's type
   and name, the field's value is replaced with the artifact's reference_
 
 A "field's referenced type" sounds ambiguous, but in practice, it is
-straightforward. The field `spec.template.spec.containers.*.image` will always
-refer to a Docker image, so clearly it matches the artifact type
-`docker/image`. The field `spec.template.spec.volumes.*.configMap.name` will
-always refer to a ConfigMap, so it clearly matches the artifact type
+straightforward. The field `spec.template.spec.containers.*.image` always
+refers to a Docker image, so clearly it matches the artifact type
+`docker/image`. The field `spec.template.spec.volumes.*.configMap.name`
+always refers to a ConfigMap, so it clearly matches the artifact type
 `kubernetes/configMap`. The same logic applies throughout.
 
 Let's go through an example to make this clear:
