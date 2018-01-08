@@ -80,12 +80,13 @@ to Spinnaker. It is not intended to be used to manage any production environment
 
 ### Prerequisites
 
-#### Install local dependancies
+#### Install local dependencies
 
 Ensure that the following are installed on your system:
 
 * git
 * curl
+* redis-server
 * node (version >=8.9.0, [can be installed via nvm](https://github.com/creationix/nvm#install-script))
 * yarn (`npm install -g yarn` or [guide](https://yarnpkg.com/lang/en/docs/install/))
 
