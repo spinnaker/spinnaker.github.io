@@ -93,6 +93,12 @@ hal config provider kubernetes account add my-k8s-v2-account \
     --context $(kubectl config current-context)
 ```
 
+You'll also need to run
+
+```bash
+hal config features edit --artifacts true
+```
+
 ## Advanced Account Settings
 
 If you're looking for more configurability, please see the other options listed
