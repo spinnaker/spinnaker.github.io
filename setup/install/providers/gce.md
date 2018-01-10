@@ -3,6 +3,7 @@ layout: single
 title:  "Google Compute Engine"
 sidebar:
   nav: setup
+redirect_from: /setup/providers/gce.html
 ---
 
 {% include toc %}
@@ -110,3 +111,7 @@ TODO(lwander or duftler): Add a note about application default credentials.
 If you are looking for more configurability, please see the other options
 listed in the [Halyard
 Reference](/reference/halyard/commands#hal-config-provider-google-account-add).
+
+## Next Steps
+
+Optionally, you can [set up another cloud provider](/setup/install/providers/), but otherwise you're ready to [Deploy Spinnaker](/setup/install/deploy/).

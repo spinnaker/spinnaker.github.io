@@ -3,6 +3,7 @@ layout: single
 title:  "Google App Engine"
 sidebar:
   nav: setup
+redirect_from: /setup/providers/appengine.html
 ---
 
 {% include toc %}
@@ -103,5 +104,9 @@ App Engine manage this authentication.
 
 You can view the available configuration flags for App Engine within the 
 [Halyard reference](/reference/halyard/commands#hal-config-provider-appengine-account-add).
+
+## Next Steps
+
+Optionally, you can [set up another cloud provider](/setup/install/providers/), but otherwise you're ready to [Deploy Spinnaker](/setup/install/deploy/).
 
 

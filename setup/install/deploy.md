@@ -3,6 +3,7 @@ layout: single
 title:  "Deploy"
 sidebar:
   nav: setup
+redirect_from: /setup/install/upgrades/
 ---
 
 Now that we've picked a [Deployment Environment](/setup/install/environment/),
@@ -52,8 +53,26 @@ deployment, you can run `hal deploy diff` to see what changes you've made that
 may be causing problems. At any point you can rerun `hal deploy apply` with any
 changes you've made to retry the deployment.
 
+## Upgrade Spinnaker
+
+If you want to change Spinnaker versions using Halyard, you can read about
+supported versions like so:
+
+```bash
+hal version list
+```
+
+And pick a new version like so:
+
+```bash
+hal config version edit --version $VERSION
+
+# this will update Spinnaker
+hal deploy apply 
+```
+
 ## Next Steps
 
 Now that Spinnaker is deployed and capable managing your cloud provider, you
 can either visit the [Guides](/guides/) pages to learn how to use Spinnaker, or
-see what other [Configuration](/setup/install/configuration/) is available.
+continue with additional configuration, such as your [image bakery](/setup/bakery/).

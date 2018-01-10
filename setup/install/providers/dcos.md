@@ -3,6 +3,7 @@ layout: single
 title:  "DC/OS"
 sidebar:
   nav: setup
+redirect_from: /setup/providers/dcos.html
 ---
 
 {% include toc %}
@@ -90,3 +91,7 @@ listed in the [Halyard
 Reference](https://github.com/spinnaker/halyard/blob/master/docs/commands.md#hal-config-provider-dcos) 
 for adding [accounts](https://github.com/spinnaker/halyard/blob/master/docs/commands.md#hal-config-provider-dcos-account-add) 
 and [clusters](https://github.com/spinnaker/halyard/blob/master/docs/commands.md#hal-config-provider-dcos-cluster-add).
+
+## Next Steps
+
+Optionally, you can [set up another cloud provider](/setup/install/providers/), but otherwise you're ready to [Deploy Spinnaker](/setup/install/deploy/).
