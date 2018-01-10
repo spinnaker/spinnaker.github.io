@@ -14,6 +14,7 @@ Spinnaker, you must configure it to use one of the supported storage types.
 
 * <a href="/setup/storage/azs">Azure Storage</a>
 * <a href="/setup/storage/gcs">Google Cloud Storage</a>
+* <a href="/setup/storage/minio">Minio</a>
 * <a href="/setup/storage/redis">Redis</a>
 * <a href="/setup/storage/s3">S3</a>
 
