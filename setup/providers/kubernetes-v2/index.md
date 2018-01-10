@@ -41,6 +41,59 @@ The Kubernetes provider has two requirements:
     is much better support than what was in the original Kubernetes provider in
     Spinnaker
 
+### Kubernetes Role (RBAC)
+
+If you are using Kubernetes RBAC for access control, you may want to create a minimal for Role and Service Account for Spinnaker.
+This will ensure that Spinnaker has only the permissions it needs to operate within your cluster.
+
+The following YAML can be used to create the correct `ClusterRole`, `ClusterRoleBinding`, and `ServiceAccount`. If you are limiting
+Spinnaker to an explicit list of namespaces (using the `namespaces` option), you will need to use `Role` & `RoleBinding` instead of
+`ClusterRole` and `ClusterRoleBinding` and create one in each namespace Spinnaker will manage. You can read about the difference
+between `ClusterRole` and `Role` [here](https://kubernetes.io/docs/admin/authorization/rbac/#rolebinding-and-clusterrolebinding).
+
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+ name: spinnaker-role
+rules:
+- apiGroups: [""]
+  resources: ["namespaces", "configmaps", "events", "replicationcontrollers", "serviceaccounts", "pods/logs"]
+  verbs: ["get", "list"]
+- apiGroups: [""]
+  resources: ["pods", "services", "secrets"]
+  verbs: ["*"]
+- apiGroups: ["autoscaling"]
+  resources: ["horizontalpodautoscalers"]
+  verbs: ["list", "get"]
+- apiGroups: [“apps”]
+  resources: [“controllerrevisions”, "statefulsets"]
+  verbs: [“list”]
+- apiGroups: ["extensions", "app"]
+  resources: ["deployments", "replicasets", "ingresses", "daemonsets"]
+  verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+ name: spinnaker-role-binding
+roleRef:
+ apiGroup: rbac.authorization.k8s.io
+ kind: Role
+ name: spinnaker-role
+subjects:
+- namespace: default
+  kind: ServiceAccount
+  name: spinnaker-service-account
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+ name: spinnaker-service-account
+ namespace: default
+```
+
 ## Migrating from the V1 Provider
 
 > :warning: The V2 provider does __not__ use the [Docker Registry
