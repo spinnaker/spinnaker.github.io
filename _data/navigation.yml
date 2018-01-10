@@ -21,7 +21,7 @@ concepts:
     - title: Pipelines
       url: /concepts/pipelines/
     - title: Providers
-      url: /concepts/providers
+      url: /concepts/providers/
 
 setup:
   - title: Quickstarts

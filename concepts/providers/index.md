@@ -2,7 +2,7 @@
 layout: single
 title:  "Cloud Providers Overview"
 sidebar:
-  nav: setup
+  nav: concepts
 ---
 
 In Spinnaker, a __Cloud Provider__ is an interface to a set of virtual 
