@@ -59,19 +59,16 @@ metadata:
  name: spinnaker-role
 rules:
 - apiGroups: [""]
-  resources: ["namespaces", "configmaps", "events", "replicationcontrollers", "serviceaccounts", "pods/logs"]
-  verbs: ["get", "list"]
-- apiGroups: [""]
-  resources: ["pods", "services", "secrets"]
+  resources: ["configmaps", "namespaces", "pods", "secrets", "services"]
   verbs: ["*"]
-- apiGroups: ["autoscaling"]
-  resources: ["horizontalpodautoscalers"]
+- apiGroups: [""]
+  resources: ["pods/log"]
   verbs: ["list", "get"]
-- apiGroups: [“apps”]
-  resources: [“controllerrevisions”, "statefulsets"]
-  verbs: [“list”]
+- apiGroups: ["apps"]
+  resources: ["controllerrevisions", "statefulsets"]
+  verbs: ["*"]
 - apiGroups: ["extensions", "app"]
-  resources: ["deployments", "replicasets", "ingresses", "daemonsets"]
+  resources: ["daemonsets", "deployments", "ingresses", "networkpolicies", "replicasets"]
   verbs: ["*"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
