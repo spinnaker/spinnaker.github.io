@@ -52,7 +52,7 @@ Spinnaker to an explicit list of namespaces (using the `namespaces` option), you
 between `ClusterRole` and `Role` [here](https://kubernetes.io/docs/admin/authorization/rbac/#rolebinding-and-clusterrolebinding).
 
 
-```
+```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
