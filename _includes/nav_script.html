@@ -1,20 +1,42 @@
 <script>
   $(document).ready(function() {
+    var ACTIVE_CLASS = 'active';
+    var ACTIVE_SELECTOR = '.' + ACTIVE_CLASS;
+    var OPEN_CLASS = 'open';
+
     $('.nav__items > li, li.collapsed').each(function(i, li) {
       var $li = $(li);
       var $ul = $li.find('> ul');
-      $li.addClass('collapsible');
-      $li.find('> span').on('click', function(e) {
-        $li.toggleClass('open');
-        $ul.toggle({ duration: 100 });
+      var hasActiveChild = $li.find(ACTIVE_SELECTOR).length !== 0;
+      setInitialSubnavState($li, $ul, hasActiveChild);
+      $li.find('> span').on('click', function() {
+        toggleSubNav($li, $ul, hasActiveChild);
       });
-      if ($li.hasClass('collapsed')) {
-        if ($li.find('.active').length === 0) {
-          $ul.hide();
+    });
+
+    function setInitialSubnavState($parentLi, $subnavUl, hasActiveChild) {
+      $parentLi.addClass('collapsible');
+      if ($parentLi.hasClass('collapsed')) {
+        if (hasActiveChild) {
+          $parentLi.addClass(OPEN_CLASS);
         } else {
-          $li.addClass('open');
+          $subnavUl.hide();
+        }
+      } else {
+        $parentLi.addClass(OPEN_CLASS);
+      }
+    }
+
+    function toggleSubNav($parentLi, $subnavUl, hasActiveChild) {
+      if (hasActiveChild) {
+        if (!$parentLi.hasClass(OPEN_CLASS)) {
+          $parentLi.removeClass(ACTIVE_CLASS);
+        } else {
+          $parentLi.addClass(ACTIVE_CLASS);
         }
       }
-    });
+      $parentLi.toggleClass(OPEN_CLASS);
+      $subnavUl.toggle({ duration: 100 });
+    }
   });
 </script>

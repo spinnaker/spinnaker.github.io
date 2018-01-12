@@ -12,7 +12,7 @@ If you are not familiar with Azure or any of the terms used below, please consul
 ## Resource Mapping
 
 ### Account
-In [Azure](https://azure.microsoft.com/) (AZ), an [Account](/setup/providers/#accounts)
+In [Azure](https://azure.microsoft.com/) (AZ), an [Account](/concepts/providers/#accounts)
 maps to a credential able to authenticate against a given [Azure](https://azure.microsoft.com/) (AZ)
 project - see the [setup guide](/setup/providers/azure).
 

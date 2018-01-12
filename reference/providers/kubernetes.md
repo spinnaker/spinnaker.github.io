@@ -15,7 +15,7 @@ documentation](https://kubernetes.io/docs/home).
 
 ### Account
 
-In Kubernetes, an [Account](/setup/providers/#accounts) maps to a
+In Kubernetes, an [Account](/concepts/providers/#accounts) maps to a
 credential able to authenticate against your desired Kubernetes Cluster, as
 well as a set of [Docker Registry](/setup/providers/docker-registry) accounts
 to be used as a source of images.

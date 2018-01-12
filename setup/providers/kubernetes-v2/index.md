@@ -13,7 +13,7 @@ is still supported.
 
 ## Accounts
 
-For Kubernetes V2, a Spinnaker [Account](/setup/providers/#accounts) maps to a
+For Kubernetes V2, a Spinnaker [Account](/concepts/providers/#accounts) maps to a
 credential that can authenticate against your Kubernetes Cluster. Unlike with
 the V1 provider, in V2 the Account does not require any Docker Registry
 Accounts.
@@ -40,6 +40,56 @@ The Kubernetes provider has two requirements:
     API resource that `kubectl` supports is also supported by Spinnaker. This
     is much better support than what was in the original Kubernetes provider in
     Spinnaker
+
+### Kubernetes Role (RBAC)
+
+If you are using Kubernetes RBAC for access control, you may want to create a minimal for Role and Service Account for Spinnaker.
+This will ensure that Spinnaker has only the permissions it needs to operate within your cluster.
+
+The following YAML can be used to create the correct `ClusterRole`, `ClusterRoleBinding`, and `ServiceAccount`. If you are limiting
+Spinnaker to an explicit list of namespaces (using the `namespaces` option), you will need to use `Role` & `RoleBinding` instead of
+`ClusterRole` and `ClusterRoleBinding` and create one in each namespace Spinnaker will manage. You can read about the difference
+between `ClusterRole` and `Role` [here](https://kubernetes.io/docs/admin/authorization/rbac/#rolebinding-and-clusterrolebinding).
+
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+ name: spinnaker-role
+rules:
+- apiGroups: [""]
+  resources: ["configmaps", "namespaces", "pods", "secrets", "services"]
+  verbs: ["*"]
+- apiGroups: [""]
+  resources: ["pods/log"]
+  verbs: ["list", "get"]
+- apiGroups: ["apps"]
+  resources: ["controllerrevisions", "statefulsets"]
+  verbs: ["*"]
+- apiGroups: ["extensions", "app"]
+  resources: ["daemonsets", "deployments", "ingresses", "networkpolicies", "replicasets"]
+  verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+ name: spinnaker-role-binding
+roleRef:
+ apiGroup: rbac.authorization.k8s.io
+ kind: Role
+ name: spinnaker-role
+subjects:
+- namespace: default
+  kind: ServiceAccount
+  name: spinnaker-service-account
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+ name: spinnaker-service-account
+ namespace: default
+```
 
 ## Migrating from the V1 Provider
 
@@ -91,6 +141,12 @@ Then add the account:
 hal config provider kubernetes account add my-k8s-v2-account \
     --provider-version v2 \
     --context $(kubectl config current-context)
+```
+
+You'll also need to run
+
+```bash
+hal config features edit --artifacts true
 ```
 
 ## Advanced Account Settings

@@ -1,27 +1,29 @@
 ---
 layout: single
-title:  "Overview"
+title:  "About External Storage"
 sidebar:
   nav: setup
+redirect_from: /setup/install/storage.html
 ---
 
-Spinnaker requires an external storage source for persisting your Application
-settings and configured Pipelines. Since these data are sensitive and can be
-costly to lose, we recommend using a hosted storage source you are confident
+Spinnaker requires an external storage provider for persisting your Application
+settings and configured Pipelines. Because these data are sensitive and can be
+costly to lose, we recommend you use a hosted storage solution you are confident
 in.
 
-You have a few different options, enumerated below. Keep in mind
-whichever option you chose does not preclude any choice of [Cloud
-Provider](/setup/providers/), i.e. there is no problem with using
+Spinnaker supports the storage providers listed below. Whichever option you chose does not affect your choice of [Cloud
+Provider](/setup/providers/). That is, you can use
 [Google Cloud Storage](https://cloud.google.com/storage/) as a storage source
-when deploying to [Microsoft Azure](https://azure.microsoft.com/).
+but still deploy to [Microsoft Azure](https://azure.microsoft.com/).
 
-## Supported Storage Sources
-
-These are the storage sources currently supported by Spinnaker:
+## Supported Storage Solutions
 
 * [Azure Storage](/setup/storage/azs)
 * [Google Cloud Storage](/setup/storage/gcs)
 * [Minio](/setup/storage/minio)
 * [Redis](/setup/storage/redis)
 * [S3](/setup/storage/s3)
+
+## Next Steps
+
+After you've set up your external storage service, you need to enable and [configure a cloud provider](/setup/providers/).
