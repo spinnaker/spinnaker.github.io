@@ -21,109 +21,117 @@ concepts:
     - title: Pipelines
       url: /concepts/pipelines/
     - title: Providers
-      url: /concepts/providers
+      url: /concepts/providers/
 
 setup:
   - title: Quickstarts
+    collapsed: true
     children:
       - title: Demo Install
         url: /setup/quickstart/
       - title: Quick Full-Install
         url: /setup/quickstart/halyard/
-  - title: Install and Configure
+  - title: Set up Spinnaker
+    collapsed: true
     children:
       - title: Overview
         url: /setup/install/
-      - title: Install Halyard
+      - title: 1. Install Halyard
         url: /setup/install/halyard/
-      - title: Choose an Environment
+      - title: 2. Choose an Environment
         url: /setup/install/environment/
-      - title: Choose a Storage Service
+      - title: 3. Choose a Storage Service
         collapsed: true
         children:
           - title: Overview
-            url: /setup/storage/
+            url: /setup/install/storage/
           - title: Azure Storage
-            url: /setup/storage/azs/
+            url: /setup/install/storage/azs/
           - title: Google Cloud Storage
-            url: /setup/storage/gcs/
+            url: /setup/install/storage/gcs/
           - title: Minio
-            url: /setup/storage/minio/
+            url: /setup/install/storage/minio/
           - title: Redis
-            url: /setup/storage/redis/
+            url: /setup/install/storage/redis/
           - title: S3
-            url: /setup/storage/s3/
-      - title: Choose a Cloud Provider
+            url: /setup/install/storage/s3/
+      - title: 4. Choose a Cloud Provider
         collapsed: true
         children:
           - title: Overview
-            url: /setup/providers/
+            url: /setup/install/providers/
           - title: Amazon Web Services
-            url: /setup/providers/aws/
+            url: /setup/install/providers/aws/
           - title: Azure
-            url: /setup/providers/azure/
+            url: /setup/install/providers/azure/
           - title: DC/OS
-            url: /setup/providers/dcos/
+            url: /setup/install/providers/dcos/
           - title: Docker Registry
-            url: /setup/providers/docker-registry/
+            url: /setup/install/providers/docker-registry/
           - title: Google App Engine
-            url: /setup/providers/appengine/
+            url: /setup/install/providers/appengine/
           - title: Google Compute Engine
-            url: /setup/providers/gce/
+            url: /setup/install/providers/gce/
           - title: Kubernetes
-            url: /setup/providers/kubernetes/
+            url: /setup/install/providers/kubernetes/
           - title: OpenStack
-            url: /setup/providers/openstack/
+            url: /setup/install/providers/openstack/
           - title: Oracle
-            url: /setup/providers/oracle/
-      - title: Deploy Spinnaker
+            url: /setup/install/providers/oracle/
+      - title: 5. Deploy Spinnaker
         url: /setup/install/deploy/
-      - title: Configuration
-        url: /setup/install/configuration/
-      - title: Upgrades
-        url: /setup/install/upgrades/
-      - title: Backups
+      - title: 6. Back Up Your Config
         url: /setup/install/backups/
       - title: Spinnaker Config FAQ
         url: /setup/quickstart/faq/
-  - title: Image Bakery
+  - title: Configure Everything Else
+    collapsed: true
     children:
       - title: Overview
-        url: /setup/bakery/
-      - title: Google Compute Engine
-        url: /setup/bakery/google/
-  - title: Security
-    children:
-      - title: Overview
-        url: /setup/security/
-      - title: Authentication
-        url: /setup/security/authentication/
-      - title: Authorization
-        url: /setup/security/authorization/
-  - title: CI
-    children:
-      - title: Overview
-        url: /setup/ci/
-      - title: Travis CI
-        url: /setup/ci/travis/
-      - title: Jenkins
-        url: /setup/ci/jenkins/
-  - title: Features
-    children:
-      - title: Notifications
-        url: /setup/features/notifications/
-      - title: User Data
-        url: /setup/features/user-data/
-  - title: Monitoring
-    children:
-      - title: Overview
-        url: /setup/monitoring/
-      - title: Datadog
-        url: /setup/monitoring/datadog/
-      - title: Prometheus
-        url: /setup/monitoring/prometheus/
-      - title: Stackdriver
-        url: /setup/monitoring/stackdriver/
+        url: /setup/other_config/
+      - title: Configure the Image Bakery
+        collapsed: true
+        children:
+          - title: Overview
+            url: /setup/bakery/
+          - title: Google Compute Engine
+            url: /setup/bakery/google/ 
+      - title: Secure Spinnaker
+        collapsed: true
+        children:
+           - title: Secure Your Spinnaker Installation
+             url: /setup/security/
+           - title: Authentication
+             url: /setup/security/authentication/
+           - title: Authorization
+             url: /setup/security/authorization/
+      - title: Add Your CI system
+        collapsed: true
+        children:
+          - title: Set Up Continuous Integration
+            url: /setup/ci/
+          - title: Travis CI
+            url: /setup/ci/travis/
+          - title: Jenkins
+            url: /setup/ci/jenkins/
+      - title: Enable Monitoring
+        collapsed: true
+        children:
+          - title: Overview
+            url: /setup/monitoring/
+          - title: Datadog
+            url: /setup/monitoring/datadog/
+          - title: Prometheus
+            url: /setup/monitoring/prometheus/
+          - title: Stackdriver
+            url: /setup/monitoring/stackdriver/
+      - title: Additional Features
+        collapsed: true
+        children:
+          - title: Configure Notifications
+            url: /setup/features/notifications/
+          - title: Configure User Data (metadata)
+            url: /setup/features/user-data/
 
 guides:
   - title: Tutorials

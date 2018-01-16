@@ -3,6 +3,7 @@ layout: single
 title:  "About External Storage"
 sidebar:
   nav: setup
+redirect_from: /setup/storage.html
 redirect_from: /setup/install/storage.html
 ---
 
@@ -18,11 +19,13 @@ but still deploy to [Microsoft Azure](https://azure.microsoft.com/).
 
 ## Supported Storage Solutions
 
-* [Azure Storage](/setup/storage/azs)
-* [Google Cloud Storage](/setup/storage/gcs)
-* [Minio](/setup/storage/minio)
-* [Redis](/setup/storage/redis)
-* [S3](/setup/storage/s3)
+* [Azure Storage](/setup/install/storage/azs)
+* [Google Cloud Storage](/setup/install/storage/gcs)
+* [Minio](/setup/install/storage/minio)
+* [Redis](/setup/install/storage/redis)
+* [S3](/setup/install/storage/s3)
+
+See also [`hal config storage`](/reference/halyard/commands/#hal-config-storage).
 
 ## Next Steps
 

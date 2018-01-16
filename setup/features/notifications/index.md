@@ -23,6 +23,8 @@ You can also set Spinnaker to stream all its events to a downstream listener. Se
 
 Additionally, Spinnaker is capable of handling cron-based triggers and detect changes in Jenkins builds and Docker images. This functionality will be documented at a later time. 
 
+See also [`hal config notifications`](/reference/halyard/commands/#hal-config-notification).
+
 # Configuring Notifications
 
 Notification configurations are in echo.yml and settings.js. For changes to echo.yml, create echo-local.yml and put your changes in there. You can customize settings.js directly.

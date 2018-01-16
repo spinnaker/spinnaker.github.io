@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Setup"
+title:  "Set up Spinnaker"
 sidebar:
   nav: setup
 ---

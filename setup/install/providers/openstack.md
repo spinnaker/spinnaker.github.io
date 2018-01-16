@@ -3,6 +3,7 @@ layout: single
 title:  "OpenStack"
 sidebar:
   nav: setup
+redirect_from: /setup/providers/openstack.html
 ---
 
 {% include toc %}
@@ -53,3 +54,7 @@ This is more likely to occur in a resource constrained Openstack environment suc
 Openstack requires that the load balancer be in an ACTIVE state for it to create associated relationships (i.e. listeners, pools, monitors).
 Each modification will cause the load balancer to go into a PENDING state and back to ACTIVE once the change has been made.
 Spinnaker needs to poll Openstack, blocking further load balancer operations until the status returns to ACTIVE.
+
+## Next Steps
+
+Optionally, you can [set up another cloud provider](/setup/install/providers/), but otherwise you're ready to [Deploy Spinnaker](/setup/install/deploy/).

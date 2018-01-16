@@ -8,7 +8,7 @@ sidebar:
 {% include toc %}
 
 The Spinnaker Kubernetes V2 provider fully supports manifest-based deployments.
-[Kubernetes provider V1](https://www.spinnaker.io/setup/providers/kubernetes/)
+[Kubernetes provider V1](https://www.spinnaker.io/setup/install/providers/kubernetes/)
 is still supported.
 
 ## Accounts
@@ -94,7 +94,7 @@ metadata:
 ## Migrating from the V1 Provider
 
 > :warning: The V2 provider does __not__ use the [Docker Registry
-> Provider](https://www.spinnaker.io/setup/providers/docker-registry/), and we
+> Provider](https://www.spinnaker.io/setup/install/providers/docker-registry/), and we
 > encourage you to stop using the Docker Registry accounts in Spinnaker.  The
 > V2 provider requires that you manage your private registry [configuration and
 > authentication](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)

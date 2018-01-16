@@ -3,6 +3,7 @@ layout: single
 title:  "Azure Storage"
 sidebar:
   nav: setup
+redirect_from: /setup/storage/azs.html
 ---
 
 {% include toc %}

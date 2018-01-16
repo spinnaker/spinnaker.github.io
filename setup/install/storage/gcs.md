@@ -3,6 +3,7 @@ layout: single
 title:  "Google Cloud Storage"
 sidebar:
   nav: setup
+redirect_from: /setup/storage/gcs.html
 ---
 
 {% include toc %}

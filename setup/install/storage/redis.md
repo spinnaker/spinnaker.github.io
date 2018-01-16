@@ -3,6 +3,7 @@ layout: single
 title:  "Redis"
 sidebar:
   nav: setup
+redirect_from: /setup/storage/redis.html
 ---
 
 > :warning: We _highly_ recommend relying on [Minio](/setup/storage/minio)

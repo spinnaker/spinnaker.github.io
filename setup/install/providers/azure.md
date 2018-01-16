@@ -3,6 +3,7 @@ layout: single
 title:  "Azure"
 sidebar:
   nav: setup
+redirect_from: /setup/providers/azure.html
 ---
 
 {% include toc %}
@@ -81,3 +82,7 @@ hal config provider azure account add my-azure-account \
 
 You can view the available configuration flags for Azure within the
 [Halyard reference](/reference/halyard/commands#hal-config-provider-azure-account-add).
+
+## Next Steps
+
+Optionally, you can [set up another cloud provider](/setup/install/providers/), but otherwise you're ready to [Deploy Spinnaker](/setup/install/deploy/).

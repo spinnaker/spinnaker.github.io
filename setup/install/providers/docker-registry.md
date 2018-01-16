@@ -3,6 +3,7 @@ layout: single
 title:  "Docker Registry"
 sidebar:
   nav: setup
+redirect_from: /setup/providers/docker-registry.html
 ---
 
 {% include toc %}
@@ -173,3 +174,7 @@ hal config provider docker-registry account add my-docker-registry \
 If you are looking for more configurability, please see the other options
 listed in the [Halyard
 Reference](/reference/halyard/commands#hal-config-provider-docker-registry-account-add).
+
+## Next Steps
+
+Optionally, you can [set up another cloud provider](/setup/install/providers/), but otherwise you're ready to [Deploy Spinnaker](/setup/install/deploy/).

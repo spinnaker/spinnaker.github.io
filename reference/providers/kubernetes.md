@@ -17,7 +17,7 @@ documentation](https://kubernetes.io/docs/home).
 
 In Kubernetes, an [Account](/concepts/providers/#accounts) maps to a
 credential able to authenticate against your desired Kubernetes Cluster, as
-well as a set of [Docker Registry](/setup/providers/docker-registry) accounts
+well as a set of [Docker Registry](/setup/install/providers/docker-registry) accounts
 to be used as a source of images.
 
 ### Instance
@@ -47,7 +47,7 @@ template:
       ${SERVER-GROUP}: true
 ```
 
-Furthermore, using the [Docker Registry](/setup/providers/docker-registry/)
+Furthermore, using the [Docker Registry](/setup/install/providers/docker-registry/)
 accounts associated with the Kubernetes Account being deployed to, a list of
 [Image Pull
 Secrets](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod)

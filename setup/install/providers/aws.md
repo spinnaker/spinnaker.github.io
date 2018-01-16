@@ -3,6 +3,7 @@ layout: single
 title:  "Amazon Web Services"
 sidebar:
   nav: setup
+redirect_from: /setup/providers/aws.html
 ---
 
 {% include toc %}
@@ -235,3 +236,7 @@ hal config provider aws enable
 
 You can view the available configuration flags for AWS within the
 [Halyard reference](/reference/halyard/commands#hal-config-provider-aws-account-add).
+
+## Next Steps
+
+Optionally, you can [set up another cloud provider](/setup/install/providers/), but otherwise you're ready to [Deploy Spinnaker](/setup/install/deploy/).
