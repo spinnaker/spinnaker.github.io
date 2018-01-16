@@ -89,6 +89,11 @@ setup:
     children:
       - title: Overview
         url: /setup/other_config/
+      - title: Configure Artifact Support
+        collapsed: true
+        children:
+          - title: Google Cloud Storage
+            url: /setup/artifacts/gcs/
       - title: Configure the Image Bakery
         collapsed: true
         children:
@@ -105,6 +110,11 @@ setup:
              url: /setup/security/authentication/
            - title: Authorization
              url: /setup/security/authorization/
+      - title: Set up Pub/Sub Triggers
+        collapsed: true
+        children:
+          - title: Google
+            url: /setup/pubsub/google/
       - title: Add Your CI system
         collapsed: true
         children:
@@ -142,6 +152,11 @@ guides:
         url: /guides/tutorials/codelabs/
   - title: User How-Tos
     children:
+      - title: Artifacts
+        collapsed: true
+        children:
+          - title: Recieving Artifacts From GCS
+            url: /guides/user/artifacts/gcs/
       - title: Pipeline Expressions
         url: /guides/user/pipeline-expressions/
       - title: Tagging
