@@ -26,7 +26,9 @@ There are a few different ways to install Halyard (with more on the way):
 
 ### Ubuntu 14.04/16.04
 
-To install halyard:
+The following command installs the latest released Halyard version, and will
+prompt the user for some configuration in the process. Generally the default
+answers to each prompt are best.
 
 ```bash
 curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/debian/InstallHalyard.sh
