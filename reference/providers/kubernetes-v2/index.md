@@ -115,8 +115,8 @@ command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
 
 * `caching.spinnaker.io/ignore`
 
-  When set to `True`, this tells Spinnaker to ignore this resource. It will not
-  be cached, or show up in the Spinnaker UI. 
+  When set to `true`, this tells Spinnaker to ignore this resource. It will not
+  be cached, or show up in the Spinnaker UI.
 
 # How Kubernetes Resources Are Managed by Spinnaker
 
