@@ -3,7 +3,7 @@ layout: single
 title:  "Docker Registry"
 sidebar:
   nav: setup
-redirect_from: /setup/providers/docker-registry.html
+redirect_from: /setup/providers/docker-registry/
 ---
 
 {% include toc %}
@@ -75,9 +75,9 @@ ADDRESS=gcr.io
 
 Google Container Registry (GCR) supports the
 [catalog](https://docs.docker.com/registry/spec/api/#listing-repositories)
-endpoint to programatically list all images available to your credentials. 
-To make use of this, you need to enable the [Resource Manager 
-API](https://console.developers.google.com/apis/api/cloudresourcemanager.googleapis.com/overview), 
+endpoint to programatically list all images available to your credentials.
+To make use of this, you need to enable the [Resource Manager
+API](https://console.developers.google.com/apis/api/cloudresourcemanager.googleapis.com/overview),
 so you don't need to worry about supplying repositories by hand. However, providing
 credentials is not straight-forward.
 
@@ -165,7 +165,7 @@ hal config provider docker-registry account add my-docker-registry \
     --address $ADDRESS \
     --repositories $REPOSITORIES \
     --username $USERNAME \
-    --password # Do not supply your password as a flag, you will be prompted for your 
+    --password # Do not supply your password as a flag, you will be prompted for your
                # password on STDIN
 ```
 

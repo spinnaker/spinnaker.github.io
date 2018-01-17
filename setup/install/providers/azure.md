@@ -3,7 +3,7 @@ layout: single
 title:  "Azure"
 sidebar:
   nav: setup
-redirect_from: /setup/providers/azure.html
+redirect_from: /setup/providers/azure/
 ---
 
 {% include toc %}

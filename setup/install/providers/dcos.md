@@ -3,15 +3,15 @@ layout: single
 title:  "DC/OS"
 sidebar:
   nav: setup
-redirect_from: /setup/providers/dcos.html
+redirect_from: /setup/providers/dcos/
 ---
 
 {% include toc %}
 
 DC/OS configuration for Spinnaker consists of a set of DC/OS
 clusters and a set of [Accounts](/concepts/providers/#accounts) that have
-credentials to authenticate to one or more of those clusters. 
-Additionally, each account has a set of [Docker Registry](/setup/providers/docker-registry) 
+credentials to authenticate to one or more of those clusters.
+Additionally, each account has a set of [Docker Registry](/setup/providers/docker-registry)
 accounts to be used as a source of images.
 
 ## Prerequisites
@@ -19,16 +19,16 @@ accounts to be used as a source of images.
 ### DC/OS Cluster
 
 You need to have a DC/OS cluster running version 1.8 or greater.  This setup guide
-assumes the use of Enterprise DC/OS as the authentication methods described 
+assumes the use of Enterprise DC/OS as the authentication methods described
 below are only supported in the that version.  The provider may work with
 the open-source DC/OS but only if authentication is disabled.  However, it
-has not been extensively tested.  
+has not been extensively tested.
 
 <!-- TODO: link to the reference guide section about permissions required for the account-->
 
 ### Docker Registries
 
-Follow the steps under the [Docker Registry](/setup/providers/docker-registry) 
+Follow the steps under the [Docker Registry](/setup/providers/docker-registry)
 provider to add any registries containing images you want to deploy. If
 you have already done so, you can verify that these accounts exist by running:
 
@@ -42,21 +42,21 @@ First, enable the provider:
 
 ```bash
 hal config provider dcos enable
-```  
+```
 
 Next we need to add our DC/OS cluster:
 
 ```bash
 hal config provider dcos cluster add my-dcos-cluster \
     --dcos-url $CLUSTER_URL \
-    --skip-tls-verify 
+    --skip-tls-verify
     # For simplicity we won't worry about the
     # certificate for the cluster but this would not be recommended
     # for a production deployment
 ```
 
 Create a Spinnaker account that has credentials for the cluster.  The
-credentials can either be for a service account or a user account. 
+credentials can either be for a service account or a user account.
 
 If you are using a service account:
 
@@ -80,7 +80,7 @@ hal config provider dcos account add my-dcos-account \
 
 
 Note: Make sure that your DC/OS user has permission to deploy applications
-under a group in Marathon named after the Spinnaker account name 
+under a group in Marathon named after the Spinnaker account name
 (e.g. `/my-dcos-account`)
 
 
@@ -88,8 +88,8 @@ under a group in Marathon named after the Spinnaker account name
 
 If you are looking for more configurability, please see the other options
 listed in the [Halyard
-Reference](https://github.com/spinnaker/halyard/blob/master/docs/commands.md#hal-config-provider-dcos) 
-for adding [accounts](https://github.com/spinnaker/halyard/blob/master/docs/commands.md#hal-config-provider-dcos-account-add) 
+Reference](https://github.com/spinnaker/halyard/blob/master/docs/commands.md#hal-config-provider-dcos)
+for adding [accounts](https://github.com/spinnaker/halyard/blob/master/docs/commands.md#hal-config-provider-dcos-account-add)
 and [clusters](https://github.com/spinnaker/halyard/blob/master/docs/commands.md#hal-config-provider-dcos-cluster-add).
 
 ## Next Steps

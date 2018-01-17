@@ -3,15 +3,15 @@ layout: single
 title:  "Minio"
 sidebar:
   nav: setup
-redirect_from: /setup/storage/minio.html
+redirect_from: /setup/storage/minio/
 ---
 
-> :warning: Losing Minio's data will mean losing all your Spinnaker 
+> :warning: Losing Minio's data will mean losing all your Spinnaker
 > application metadata, and configured pipelines.
 
 [Minio](https://www.minio.io/) is an S3-compatible object store that you can
 host yourself. This is the persistent storage solution we recommend when you
-don't want to depend on a cloud provider to host your Spinnaker data. 
+don't want to depend on a cloud provider to host your Spinnaker data.
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ reachable by Spinnaker. Record the following values:
   running on the same machine as Spinnaker, this might be
   `http://localhost:9001`.
 
-* `MINIO_ACCESS_KEY`, `MINIO_SECRET_KEY`: The access/secret keypair you've 
+* `MINIO_ACCESS_KEY`, `MINIO_SECRET_KEY`: The access/secret keypair you've
   configured Minio with. These env vars need to be visible to the Minio process
   for them to work.
 
@@ -40,7 +40,7 @@ echo $MINIO_SECRET_KEY | hal config storage s3 edit --endpoint $ENDPOINT \
     --secret-access-key # will be read on STDIN to avoid polluting your
                         # ~/.bash_history with a secret
 
-hal config storage edit --type s3 
+hal config storage edit --type s3
 ```
 
 # Docker container instalation
@@ -55,5 +55,5 @@ echo $MINIO_SECRET_KEY | hal config storage s3 edit --endpoint $ENDPOINT \
     --secret-access-key # will be read on STDIN to avoid polluting your
                         # ~/.bash_history with a secret
 
-hal config storage edit --type s3 
+hal config storage edit --type s3
 ```

@@ -3,7 +3,7 @@ layout: single
 title:  "Amazon Web Services"
 sidebar:
   nav: setup
-redirect_from: /setup/providers/aws.html
+redirect_from: /setup/providers/aws/
 ---
 
 {% include toc %}
@@ -125,14 +125,14 @@ Navigate to [Console](https://console.aws.amazon.com/) > IAM > Roles.
 Navigate to [Console](https://console.aws.amazon.com/) > EC2 > Instances.
 
 1. Select your instance
-2. Right click and go to __Instance Settings__ and __Attach/Replace IAM Role__ 
+2. Right click and go to __Instance Settings__ and __Attach/Replace IAM Role__
 3. Select the __SpinnakerAuthRole__ you created above and __Apply__
 
 Record the ARN of the user you have created - this will be used as `${AUTH_ARN}`:
 
-`arn:aws:iam::${MANAGED_ACCOUNT_ID}:role/SpinnakerAuthRole`  
-  
-##### Option 2: Add a user and access key / secret pair 
+`arn:aws:iam::${MANAGED_ACCOUNT_ID}:role/SpinnakerAuthRole`
+
+##### Option 2: Add a user and access key / secret pair
 
 If Spinnaker is running outside of EC2, you may add a User and use access key / secret key
 to authenticate.
@@ -169,7 +169,7 @@ an IAM role on startup. By default, this role is called `BaseIAMRole`, and was
 configured [above](#create-an-ec2-role). In order for instances to assume this
 role, you must grant them
 [PassRole](https://aws.amazon.com/blogs/security/granting-permission-to-launch-ec2-instances-with-iam-roles-passrole-permission/)
-permission. To do so, create the following policy named __SpinnakerPassRole__, 
+permission. To do so, create the following policy named __SpinnakerPassRole__,
 substituting for `${MANAGING_ACCOUNT_ID}`:
 
 ```json

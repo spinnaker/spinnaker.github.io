@@ -3,12 +3,12 @@ layout: single
 title:  "Redis"
 sidebar:
   nav: setup
-redirect_from: /setup/storage/redis.html
+redirect_from: /setup/storage/redis/
 ---
 
 > :warning: We _highly_ recommend relying on [Minio](/setup/storage/minio)
 > instead of Redis if you are looking for a local persistant storage solution
-> for Spinnaker. The Redis storage implementation is untested and unsupported 
+> for Spinnaker. The Redis storage implementation is untested and unsupported
 > by anyone in the Spinnaker community.
 
 > :warning: Redis can be used as Spinnaker's persistent storage source, but
@@ -20,7 +20,7 @@ redirect_from: /setup/storage/redis.html
 ## Prerequisites
 
 Currently, Halyard only allows you to use the Redis instance that Halyard
-provisions/installs on your behalf. While this is likely to change, for you 
+provisions/installs on your behalf. While this is likely to change, for you
 don't need to preconfigure anything to get this storage source working.
 
 
