@@ -26,24 +26,13 @@ There are a few different ways to install Halyard (with more on the way):
 
 ### Ubuntu 14.04/16.04
 
-If you have a machine without halyard installed we recommend installing from 
-our jar based installation script:
+To install halyard:
 
 ```bash
 curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/debian/InstallHalyard.sh
 
 sudo bash InstallHalyard.sh
 ```
-
-Additionally a debian (apt) based installation is available for 14.04:
-
-```bash
-curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/stable/InstallHalyard.sh
-
-sudo bash InstallHalyard.sh
-```
-
-NOTE: This script does not work on Ubuntu 16.04. 
 
 At this point, run the following command to see if Halyard was installed
 properly.
@@ -54,26 +43,6 @@ hal -v
 
 If that command fails, make sure `hal` is in your `$PATH`, and check for logs
 under `/var/log/upstart/halyard` and `/var/log/spinnaker/halyard/halyard.log`.
-
-#### Migration from debian to jar based installation
-
-We will stop publishing debians for halyard at some point in the future in
-favor of the jar based installation.
-
-To migrate from a debian based installation to a jar based installation:
-
-```bash
-HALYARD_BACKUP_PATH=$(hal backup create -q)
-
-sudo apt remove spinnaker-halyard/trusty-stable -y < /dev/null
-sudo rm /etc/apt/sources.list.d/halyard.list && sudo rm /etc/apt/sources.list.d/halyard.list.save
-sudo apt update
-
-curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/debian/InstallHalyard.sh
-sudo bash InstallHalyard.sh
-
-hal backup restore --backup-path=$HALYARD_BACKUP_PATH
-```
 
 ### Docker
 
