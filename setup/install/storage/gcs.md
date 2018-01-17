@@ -3,20 +3,20 @@ layout: single
 title:  "Google Cloud Storage"
 sidebar:
   nav: setup
-redirect_from: /setup/storage/gcs.html
+redirect_from: /setup/storage/gcs/
 ---
 
 {% include toc %}
 
-Using [Google Cloud Storage](https://cloud.google.com/storage/) (GCS) as a 
+Using [Google Cloud Storage](https://cloud.google.com/storage/) (GCS) as a
 storage source means that Spinnaker will store all of its persistent data in a
 [Bucket](https://cloud.google.com/storage/docs/json_api/v1/buckets).
 
 ## Prerequisites
 
-You need a [Google Cloud Platform](https://cloud.google.com/) (GCP) project to 
+You need a [Google Cloud Platform](https://cloud.google.com/) (GCP) project to
 host your bucket in. The next steps assume you've already [created a
-project](https://cloud.google.com/resource-manager/docs/creating-managing-projects), 
+project](https://cloud.google.com/resource-manager/docs/creating-managing-projects),
 and installed [`gcloud`](https://cloud.google.com/sdk/downloads). You can check
 that `gcloud` is installed and authenticated by running:
 
@@ -56,7 +56,7 @@ gcloud iam service-accounts keys create $SERVICE_ACCOUNT_DEST \
 ```
 
 Once you have run these commands, your GCS JSON key is sitting in a file
-called `$SERVICE_ACCOUNT_DEST`. 
+called `$SERVICE_ACCOUNT_DEST`.
 
 ## Editing Your Storage Settings
 

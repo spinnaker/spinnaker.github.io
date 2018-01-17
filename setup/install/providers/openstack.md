@@ -3,7 +3,7 @@ layout: single
 title:  "OpenStack"
 sidebar:
   nav: setup
-redirect_from: /setup/providers/openstack.html
+redirect_from: /setup/providers/openstack/
 ---
 
 {% include toc %}

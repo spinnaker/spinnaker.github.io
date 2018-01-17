@@ -3,21 +3,21 @@ layout: single
 title:  "Google Compute Engine"
 sidebar:
   nav: setup
-redirect_from: /setup/providers/gce.html
+redirect_from: /setup/providers/gce/
 ---
 
 {% include toc %}
 
-In [Google Compute Engine](https://cloud.google.com/compute) (GCE), an 
-[__Account__](/concepts/providers/#accounts) maps to a credential able to 
-authenticate against a given [Google Cloud Platform](https://cloud.google.com/) 
+In [Google Compute Engine](https://cloud.google.com/compute) (GCE), an
+[__Account__](/concepts/providers/#accounts) maps to a credential able to
+authenticate against a given [Google Cloud Platform](https://cloud.google.com/)
 (GCP) project.
 
 ## Prerequisites
 
 You need a [Google Cloud Platform](https://cloud.google.com/) (GCP) project
 to run Spinnaker against. The next steps assume you've already [created a
-project](https://cloud.google.com/resource-manager/docs/creating-managing-projects), 
+project](https://cloud.google.com/resource-manager/docs/creating-managing-projects),
 and installed [`gcloud`](https://cloud.google.com/sdk/downloads). You can check
 that `gcloud` is installed and authenticated by running:
 
@@ -50,12 +50,12 @@ PROJECT=$(gcloud info --format='value(config.project)')
 # permission to create/modify instances in your project
 gcloud projects add-iam-policy-binding $PROJECT \
     --member serviceAccount:$SA_EMAIL \
-    --role roles/compute.instanceAdmin 
+    --role roles/compute.instanceAdmin
 
 # permission to create/modify network settings in your project
 gcloud projects add-iam-policy-binding $PROJECT \
     --member serviceAccount:$SA_EMAIL \
-    --role roles/compute.networkAdmin 
+    --role roles/compute.networkAdmin
 
 # permission to create/modify firewall rules in your project
 gcloud projects add-iam-policy-binding $PROJECT \
@@ -80,7 +80,7 @@ gcloud iam service-accounts keys create $SERVICE_ACCOUNT_DEST \
 ```
 
 Once you have run these commands, your GCP JSON key is sitting in a file
-called `$SERVICE_ACCOUNT_DEST`. 
+called `$SERVICE_ACCOUNT_DEST`.
 
 ## Adding an Account
 

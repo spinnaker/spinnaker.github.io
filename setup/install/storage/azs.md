@@ -3,12 +3,12 @@ layout: single
 title:  "Azure Storage"
 sidebar:
   nav: setup
-redirect_from: /setup/storage/azs.html
+redirect_from: /setup/storage/azs/
 ---
 
 {% include toc %}
 
-Using [Azure Storage](https://azure.microsoft.com/services/storage/) (AZS) as a 
+Using [Azure Storage](https://azure.microsoft.com/services/storage/) (AZS) as a
 storage source means that Spinnaker will store all of its persistent data in a
 [Storage Account](https://docs.microsoft.com/azure/storage/storage-create-storage-account).
 
@@ -61,4 +61,3 @@ Finally, set the storage source to AZS:
 ```bash
 hal config storage edit --type azs
 ```
-
