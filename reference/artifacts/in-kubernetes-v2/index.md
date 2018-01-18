@@ -30,7 +30,7 @@ stage deploys a manifest stored in a GCS bucket:
 Once a manifest has been successfully deployed using a pipeline (either from text
 or an artifact containing text), it is injected back into the pipeline's
 context as an output of the deploy stage. Why this is useful is explained
-[below](#consuming-artifacts-in-manifests), but for now, focus on the distinction between...
+[below](#binding-artifacts-in-manifests), but for now, focus on the distinction between...
 
 1. An artifact representing a manifest stored as text in github:
 
@@ -74,9 +74,9 @@ new version suffix (`-vNNN`). This is critical to supporting immutable
 deployments, as rolling out new ConfigMaps, secrets, or other versioned
 resources should require any manifests that reference them to be updated as
 well. Luckily, Spinnaker makes handling these updates easy as explained
-[below](#consuming-artifacts-in-manifests).
+[below](#binding-artifacts-in-manifests).
 
-# Consuming Artifacts in Manifests
+# Binding Artifacts in Manifests
 
 Generally, artifacts represent resources that you update as a part of your
 deployment/delivery pipelines. Given that Docker images and ConfigMaps are what
@@ -86,7 +86,7 @@ Expressions](/guides/user/pipeline-expressions) and are curious why we don't
 just rely on those, read [why not pipeline
 expressions](#why-not-pipeline-expressions) below.
 
-Spinnaker replaces fields in your manifest based on a simple heuristic:
+Spinnaker binds artifacts in your manifest based on a simple heuristic:
 
   _When a field's referenced type and value match an incoming artifact's type
   and name, the field's value is replaced with the artifact's reference_
@@ -174,7 +174,7 @@ spec:
         app: nginx
     spec:
       containers:
-        - image: gcr.io/my-images/nginx@sha256:0cce25b9a55    # replaced by spinnaker
+        - image: gcr.io/my-images/nginx@sha256:0cce25b9a55    # bound by spinnaker
           name: nginx
           ports:
             - containerPort: 80
@@ -183,7 +183,7 @@ spec:
               name: my-config-map
       volumes:
         - configMap:
-            name: configmap-v001                              # replaced by spinnaker
+            name: configmap-v001                              # bound by spinnaker
           name: my-config-map 
 ```
 
