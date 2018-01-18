@@ -12,35 +12,35 @@ redirect_from: /docs/back-end-code
 
 ## Choice of Language
 
+### Java
+
+In any existing module (i.e. a sub-project of an microservice) that already uses Groovy we prefer new code be written in Java.
+
+Spinnaker uses Java 8 and we encourage use of lambdas, the streams API, etc. where appropriate.
+
+### Kotlin
+
+In any module that does _not_ currently use Groovy the language of choice is [Kotlin](https://kotlinlang.org/).
+However, it is absolutely fine to write Java code if that's what you're more comfortable with.
+
+There are cross-compilation issues with mixing Groovy and Kotlin in the same source tree.
+For that reason, and in the interests of retaining some measure of sanity, we would rather not mix both languages in a single module.
+
 ### Groovy
 
 Although much of Spinnaker is written in it, we prefer that new production code should not use Groovy.
-It's fine to use [http://spockframework.org/](Spock) for tests, however.
+It's fine to use [Spock](http://spockframework.org/) for tests, however.
 
 If your changes touch on Groovy code that would be relatively easy to transform into Java, please feel free to do so.
 Interfaces, for example require almost no changes.
 Otherwise, changes to existing Groovy code are fine, but any new classes should not be written in Groovy.
 
 Types from the Groovy runtime libraries should not be exposed in the API of any class.
-Since Groovy closures can be automatically type-coerced to Java [https://dzone.com/articles/java-8-functional-interfaces-sam](SAM types), please use an appropriate SAM type for parameters or return types that may be implemented with Groovy closures.
-
-### Java
-
-In any module (i.e. a sub-project of an microservice) that already uses Groovy we prefer new code be written in Java.
-
-Spinnaker uses Java 8 and we encourage use of lambdas, the streams API, etc. where appropriate.
-
-### Kotlin
-
-In any module that does _not_ currently use Groovy the language of choice is [https://kotlinlang.org/](Kotlin).
-However, it is absolutely fine to write Java code if that's what you're more comfortable with.
-
-There are cross-compilation issues with mixing Groovy and Kotlin in the same source tree.
-For that reason, and in the interests of retaining some measure of sanity, we would rather not mix both languages in a single module.
+Since Groovy closures can be automatically type-coerced to Java [SAM types](https://dzone.com/articles/java-8-functional-interfaces-sam), please use an appropriate SAM type for parameters or return types that may be implemented with Groovy closures.
 
 ## Code formatting
 
-We follow [https://google.github.io/styleguide/javaguide.html](Google's Java Style Guide).
+We follow [Google's Java Style Guide](https://google.github.io/styleguide/javaguide.html) for Java.
 
 For Kotlin / Groovy languages please use:
 
