@@ -4,7 +4,6 @@ title:  "About External Storage"
 sidebar:
   nav: setup
 redirect_from: /setup/storage/
-redirect_from: /setup/install/storage/
 ---
 
 Spinnaker requires an external storage provider for persisting your Application
