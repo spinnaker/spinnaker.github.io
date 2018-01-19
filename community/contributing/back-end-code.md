@@ -51,18 +51,19 @@ For Kotlin / Groovy languages please use:
 
 ## Package structure
 
-Spinnaker microservices automatically component-scan for `@Configuration` classes in the `com.netflix.spinnaker.<service>.config` package.
+Spinnaker microservices automatically component-scan for `@Configuration` classes in the `com.netflix.spinnaker.config` package (although we will need to rethink this convention for Java 9 compatibility).
 Other classes should be placed in `com.netflix.spinnaker.<service>.<feature>` where `<service>` is the microservice name, for example `orca` or `clouddriver` and `<feature>` is something descriptive of the feature being implemented.
 
-Please do not separate classes into different packages by _what_ they are.
+Please do not separate classes into different packages according to _what_ they are.
 Packages should represent the group of classes that implement a particular piece of functionality not all components of a particular type.
 
 ## Naming things
 
-Please use descriptive but concise names for variables, classes, properties and so on.
-Longer names are fine when they add clarity.
+Please use descriptive but concise names for variables, classes, properties, methods, and so on.
+Longer names are good when they add clarity.
+Shorter names are good when they reduce redundancy.
 
-### A note on units
+### Representing units
 
 It's preferable to use types that properly represent things like durations, timestamps, etc. (`java.time.Duration` and `java.time.Instant` would be ideal in those specific cases).
 If that's not practical please include a suffix on the property / variable name that describes the unit.
