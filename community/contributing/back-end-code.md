@@ -70,7 +70,8 @@ If that's not practical please include a suffix on the property / variable name 
 A property declared as `public long getTimeout()` is ambiguous and can easily lead to errors when developers using your code assume what the units are.
 
 For example, these names are much less likely to result in errors:
-```
+
+```java
 public long getTimeoutMillis();
 public long getTimeoutSeconds();
 ```
