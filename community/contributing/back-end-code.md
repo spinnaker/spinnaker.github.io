@@ -3,7 +3,6 @@ layout: single
 title:  "Code Conventions for Server-side Components"
 sidebar:
   nav: community
-redirect_from: /docs/back-end-code
 ---
 
 {% include toc %}
