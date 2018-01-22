@@ -88,7 +88,7 @@ source of truth” for application configuration, and is also the source of data
 permission configurations. The easiest way to add permission configurations to an existing
 application is through Deck:
 
-![group membership highlighed in UI](applications_permissions.png)
+![Editing applicaton permissions](applications_permissions.png)
 
 
 ### Unrestricted Accounts and Applications
