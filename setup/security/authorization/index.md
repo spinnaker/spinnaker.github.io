@@ -88,18 +88,18 @@ source of truth” for application configuration, and is also the source of data
 permission configurations. The easiest way to add permission configurations to an existing
 application is through Deck:
 
-![Editing applicaton permissions](applications_permissions.png)
+![group membership highlighed in UI](group-membership.png)
 
 
 ### Unrestricted Accounts and Applications
 
 It's important to understand what may happen if you leave either an account or application
-without any `requiredGroupMembership` groups.
+without any configured permissions.
 
 * If an account is unrestricted, any user with access to Spinnaker can deploy a new application
 to that account.
 * If an application is unrestricted, any user with access to Spinnaker can deploy that
-application into a different account. They may also be able to see basic information like
+application into a different account. They may also be able to see basic information like 
 instance names and counts within server groups.
 
 
