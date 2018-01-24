@@ -58,7 +58,7 @@ plangrid_user:
   image_path: assets/images/users/Logotype_classic.png
   alt: "PlanGrid logo"
 box_user:
-  image_path: assets/images/users/box-logo.jpg 
+  image_path: assets/images/users/box-logo.jpg
   alt: "Box logo"
 chartboost_user:
   image_path: assets/images/users/Logo-Default.png
@@ -89,11 +89,11 @@ The Spinnaker OSS project was started at Netflix, and today thrives on the contr
 
 * [Spinnaker community forum](https://community.spinnaker.io)
 
-    Closely monitored by Spinnaker principle developers, this forum is a good place to initiate discussions that might go on for a while and that won't scroll off the screen before you notice them.
+    Closely monitored by Spinnaker principal developers, this forum is a good place to initiate discussions that might go on for a while and that won't scroll off the screen before you notice them.
 
 * [GitHub](https://github.com/spinnaker)
 
-    The Spinnaker org, with repos for its many services. Come here to contribute to the Spinnaker services and documentation. 
+    The Spinnaker org, with repos for its many services. Come here to contribute to the Spinnaker services and documentation.
 
     If you find a problem, you can file an issue [here](https://github.com/spinnaker/spinnaker/issues). (However, if you just have a question, use one of the other resources listed here.)
 
@@ -103,7 +103,7 @@ The Spinnaker OSS project was started at Netflix, and today thrives on the contr
 
 * [Stack Overflow](https://stackoverflow.com/search?q=spinnaker)
 
-    Many people involved in the Spinnaker community can answer questions posed here. However, the principle developers don't monitor Stack Overflow as closely.
+    Many people involved in the Spinnaker community can answer questions posed here. However, the principal developers don't monitor Stack Overflow as closely.
 
 
 ## Who's using Spinnaker?
