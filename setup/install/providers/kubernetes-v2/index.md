@@ -65,7 +65,7 @@ rules:
   resources: ["pods/log"]
   verbs: ["list", "get"]
 - apiGroups: ["apps"]
-  resources: ["controllerrevisions", "statefulsets"]
+  resources: ["controllerrevisions", "deployments", "statefulsets"]
   verbs: ["*"]
 - apiGroups: ["extensions", "app"]
   resources: ["daemonsets", "deployments", "ingresses", "networkpolicies", "replicasets"]
