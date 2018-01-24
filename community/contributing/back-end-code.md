@@ -7,7 +7,7 @@ sidebar:
 
 {% include toc %}
 
-# Code Conventions for Server-side Components
+Please consider the following conventions when submitting pull requests to Spinnaker.
 
 ## Choice of Language
 
@@ -15,7 +15,7 @@ sidebar:
 
 In any existing module (i.e. a sub-project of an microservice) that already uses Groovy we prefer new code be written in Java.
 
-Spinnaker uses Java 8 and we encourage use of lambdas, the streams API, etc. where appropriate.
+Spinnaker uses Java 8 and we encourage use of newer features (such as lambdas, the streams API, the `java.time` package, and default interface methods) where appropriate.
 
 ### Kotlin
 
