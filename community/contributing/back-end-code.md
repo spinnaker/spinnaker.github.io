@@ -75,6 +75,15 @@ public long getTimeoutMillis();
 public long getTimeoutSeconds();
 ```
 
+## Nullability
+
+When writing Java code, please use `@javax.annotation.Nullable` and `@javax.annotation.Nonnull` annotations on return types and parameters of public methods.
+This lets the Kotlin compiler make better decisions about the interactions between Kotlin and Java code.
+
+## Date and time values
+
+Please use classes from `java.time` and not `java.util.Date`, `java.util.Calendar`, etc.
+
 ## Exceptions
 
 Please select, or create, appropriate exception types rather than throwing overly general things such as `RuntimeException`.
