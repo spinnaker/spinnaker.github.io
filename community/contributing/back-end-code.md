@@ -28,7 +28,7 @@ For that reason, and in the interests of retaining some measure of sanity, we wo
 ### Groovy
 
 Although much of Spinnaker is written in it, we prefer that new production code should not use Groovy.
-It's fine to use [Spock](http://spockframework.org/) for tests, however.
+It's fine to use Groovy with [Spock](http://spockframework.org/) for writing tests, however.
 
 If your changes touch on Groovy code that would be relatively easy to transform into Java, please feel free to do so.
 Interfaces, for example require almost no changes.
@@ -64,7 +64,7 @@ Shorter names are good when they reduce redundancy.
 
 ### Representing units
 
-It's preferable to use types that properly represent things like durations, timestamps, etc. (`java.time.Duration` and `java.time.Instant` would be ideal in those specific cases).
+It's preferable to use types that properly represent things like durations, or timestamps (`java.time.Duration` and `java.time.Instant` would be ideal in those specific cases).
 If that's not practical please include a suffix on the property / variable name that describes the unit.
 A property declared as `public long getTimeout()` is ambiguous and can easily lead to errors when developers using your code assume what the units are.
 
@@ -82,7 +82,7 @@ This lets the Kotlin compiler make better decisions about the interactions betwe
 
 ## Date and time values
 
-Please use classes from `java.time` and not `java.util.Date`, `java.util.Calendar`, etc.
+Please use classes from `java.time` and not `java.util.Date` or `java.util.Calendar`.
 
 ## Exceptions
 
