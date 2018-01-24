@@ -74,3 +74,30 @@ For example, these names are much less likely to result in errors:
 public long getTimeoutMillis();
 public long getTimeoutSeconds();
 ```
+
+## Nullability
+
+When writing Java code, please use `@javax.annotation.Nullable` and `@javax.annotation.Nonnull` annotations on return types and parameters of public methods.
+This lets the Kotlin compiler make better decisions about the interactions between Kotlin and Java code.
+
+## Date and time values
+
+Please use classes from `java.time` and not `java.util.Date`, `java.util.Calendar`, etc.
+
+## Exceptions
+
+Please select, or create, appropriate exception types rather than throwing overly general things such as `RuntimeException`.
+
+Exception types you create should extend `RuntimeException` (directly or indirectly).
+Please try to include descriptive information in exception messages, especially for errors that will be surfaced to the user.
+
+## Testing
+
+We really appreciate contributions that include tests.
+Thorough testing at the unit level with maybe an integration test to validate how components tie together is ideal.
+
+### Testing tools
+
+Spinnaker uses [Spock](http://spockframework.org/) for testing Java and Groovy code.
+
+For Kotlin we are still pinning down specific best practices but currently recommend JUnit tests (written in Kotlin) using [AssertJ](https://joel-costigliola.github.io/assertj/) and [Mockito](http://site.mockito.org/) via [mockito-kotlin](https://github.com/nhaarman/mockito-kotlin).
