@@ -95,7 +95,7 @@ setup:
           - title: Overview
             url: /setup/bakery/
           - title: Google Compute Engine
-            url: /setup/bakery/google/ 
+            url: /setup/bakery/google/
       - title: Secure Spinnaker
         collapsed: true
         children:
@@ -229,6 +229,8 @@ community:
         url: /community/contributing/releasing/
       - title: Code Of Conduct
         url: /community/contributing/code-of-conduct/
+      - title: Code Conventions for Server-side Components
+        url: /community/contributing/back-end-code/
   - title: Publications
     children:
       - title: Presentations
