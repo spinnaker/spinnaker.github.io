@@ -81,7 +81,7 @@ metadata:
  name: spinnaker-role-binding
 roleRef:
  apiGroup: rbac.authorization.k8s.io
- kind: Role
+ kind: ClusterRole
  name: spinnaker-role
 subjects:
 - namespace: default
