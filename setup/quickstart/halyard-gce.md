@@ -137,7 +137,7 @@ gcloud projects add-iam-policy-binding $GCP_PROJECT \
 Create a VM with the service account:
 
 ```bash
-HALYARD_HOST=$USER-halyard-`date +%m%d`
+HALYARD_HOST=$(echo $USER-halyard-`date +%m%d` | tr '_.' '-')
 
 gcloud compute instances create $HALYARD_HOST \
     --project=$GCP_PROJECT \
