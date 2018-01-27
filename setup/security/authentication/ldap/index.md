@@ -31,6 +31,8 @@ successful, the bind is successful and a session is established.
 
 Use `hal config` to enable and configure LDAP. Here's an example:
 
+`hal config security authn ldap enable`
+
 `hal config security authn ldap edit --user-dn-pattern="uid={0},uid=users" --url=ldaps://ldap.my-organization.com:10636/dc=my-organization,dc=com`
 
 You can also use `ldap.userSearchBase` and `ldap.userSearchFilter` if the simpler 
