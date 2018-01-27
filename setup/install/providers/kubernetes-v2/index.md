@@ -43,13 +43,14 @@ The Kubernetes provider has two requirements:
 
 ### Kubernetes Role (RBAC)
 
-If you are using Kubernetes RBAC for access control, you may want to create a minimal for Role and Service Account for Spinnaker.
-This will ensure that Spinnaker has only the permissions it needs to operate within your cluster.
+If you are using Kubernetes RBAC for access control, here's the minimal set of permissions Spinnaker
+needs. The exact set of permissions might differ based on Kubernetes version.
 
-The following YAML can be used to create the correct `ClusterRole`, `ClusterRoleBinding`, and `ServiceAccount`. If you are limiting
-Spinnaker to an explicit list of namespaces (using the `namespaces` option), you will need to use `Role` & `RoleBinding` instead of
-`ClusterRole` and `ClusterRoleBinding` and create one in each namespace Spinnaker will manage. You can read about the difference
-between `ClusterRole` and `Role` [here](https://kubernetes.io/docs/admin/authorization/rbac/#rolebinding-and-clusterrolebinding).
+The following YAML create the correct `ClusterRole`, `ClusterRoleBinding`, and `ServiceAccount`. If you limit
+Spinnaker to operating on an explicit list of namespaces (using the `namespaces` option), you will need
+to use `Role` & `RoleBinding` instead of `ClusterRole` and `ClusterRoleBinding` and apply the `Role`
+and `RoleBinding` to each namespace Spinnaker manages. You can read about the difference between `ClusterRole` and `Role`
+[here](https://kubernetes.io/docs/admin/authorization/rbac/#rolebinding-and-clusterrolebinding).
 
 
 ```yaml
