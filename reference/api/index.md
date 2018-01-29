@@ -6,4 +6,4 @@ sidebar:
 ---
 
 - [API documentation](/reference/api/docs.html)
-- [Swagger UI Guide](/reference/api/swagger-ui) 
+- [Swagger UI Guide](/reference/api/swagger-ui.md) 
