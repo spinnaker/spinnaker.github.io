@@ -75,7 +75,7 @@ accounts. To add access restrictions to an account, update your `halconfig` to i
 PROVIDER= # Your cloud provider
 GROUP=    # The new group membership
 
-hal config provider $PROVIDER --add-required-group-membership $GROUP
+hal config provider $PROVIDER account edit $ACCOUNT --add-required-group-membership $GROUP
 ```
 
 Alternatively, you can overwrite the whole list using the `--required-group-membership` flag.
@@ -99,7 +99,7 @@ without any configured permissions.
 * If an account is unrestricted, any user with access to Spinnaker can deploy a new application
 to that account.
 * If an application is unrestricted, any user with access to Spinnaker can deploy that
-application into a different account. They may also be able to see basic information like 
+application into a different account. They may also be able to see basic information like
 instance names and counts within server groups.
 
 
