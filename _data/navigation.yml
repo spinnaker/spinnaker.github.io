@@ -94,6 +94,8 @@ setup:
         children:
           - title: Google Cloud Storage
             url: /setup/artifacts/gcs/
+          - title: GitHub
+            url: /setup/artifacts/github/
       - title: Configure the Image Bakery
         collapsed: true
         children:
@@ -110,11 +112,13 @@ setup:
              url: /setup/security/authentication/
            - title: Authorization
              url: /setup/security/authorization/
-      - title: Set up Pub/Sub Triggers
+      - title: Set up Triggers
         collapsed: true
         children:
-          - title: Google
-            url: /setup/pubsub/google/
+          - title: Google Pub/Sub
+            url: /setup/triggers/google/
+          - title: GitHub Webhook
+            url: /setup/triggers/github/
       - title: Add Your CI system
         collapsed: true
         children:
@@ -157,6 +161,8 @@ guides:
         children:
           - title: Recieving Artifacts From GCS
             url: /guides/user/artifacts/gcs/
+          - title: Recieving Artifacts From GitHub
+            url: /guides/user/artifacts/github/
       - title: Pipeline Expressions
         url: /guides/user/pipeline-expressions/
       - title: Tagging
