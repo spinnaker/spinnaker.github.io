@@ -35,7 +35,7 @@ $ gsutil mb -p $PROJECT_ID $BUCKET_NAME
 
 [GCP documentation includes the steps](https://cloud.google.com/storage/docs/reporting-changes) for configuring GCS to publish Pub/Sub messages, but here is a summary.
 
-1. Enable the [Cloud Pub/Sub API](https://cloud.google.com/pubsub/docs/apis).
+1. Enable the [Cloud Pub/Sub API](https://console.cloud.google.com/apis/api/pubsub.googleapis.com/).
 
 2. Name your topic and subscription:
 
