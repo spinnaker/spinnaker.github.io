@@ -43,18 +43,18 @@ intent is that the Pub/Sub messages will be received by Spinnaker whenever a
 file is uploaded or changed, and the artifact account will allow you to
 download these where necessary.
 
-## Configure Google Pubsub for GCS
+## 1. Configure Google Pub/Sub for GCS
 
-Follow the [Pub/Sub configuration](/setup/pubsub/google/), in particular, pay
+Follow the [Pub/Sub configuration](/setup/triggers/google/), in particular, pay
 attention to the [GCS
-section](/setup/pubsub/google/#receiving-messages-from-google-cloud-storage-gcs)
+section](/setup/triggers/google/#receiving-messages-from-google-cloud-storage-gcs)
 since this is where we'll be publishing our files to.
 
-## Configure a GCS Artifact Account
+## 2. Configure a GCS Artifact Account
 
 Follow the [GCS artifact configuration](/setup/artifacts/gcs/).
 
-## Apply Your Configuration Changes
+## 3. Apply Your Configuration Changes
 
 Once the Pub/Sub and artifact changes have been made using Halyard, run
 
