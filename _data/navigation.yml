@@ -149,34 +149,7 @@ guides:
       - title: Videos
         url: /guides/tutorials/videos/
       - title: Codelabs
-        collapsed: true
-        children:
-          - title: Overview
-            url: /guides/tutorials/codelabs/
-          - title: Bake and Deploy Pipeline
-            url: /guides/tutorials/codelabs/bake-and-deploy-pipeline/
-          - title: Hello Deployment
-            url: /guides/tutorials/codelabs/hello-deployment/
-          - title: GCE Source To Prod
-            url: /guides/tutorials/codelabs/gce-source-to-prod/
-          - title: Kubernete Source To Pro
-            url: /guides/tutorials/codelabs/kubernetes-source-to-prod/
-          - title: OpenStack Source To Prod
-            url: /guides/tutorials/codelabs/openstack-source-to-prod/
-          - title: Continuous Delivery with Containers on GCP
-            url: /guides/tutorials/codelabs/gcp-kubernetes-source-to-prod/
-          - title: Continuous Delivery to Kubernetes on Azure
-            url: /guides/tutorials/codelabs/azure-kubernetes-source-to-prod/
-          - title: Continuous Delivery to Azure VM Scale Set
-            url: /guides/tutorials/codelabs/azure-vmss-source-to-prod/
-          - title: App Engine Source To Prod
-            url: /guides/tutorials/codelabs/appengine-source-to-prod/
-          - title: Safe Deployments
-            url: /guides/tutorials/codelabs/safe-deployments/
-          - title: DC/OS Source To Prod
-            url: /guides/tutorials/codelabs/dcos-source-to-prod/
-          - title: Deploying GCS Pub/Sub Artifacts to App Engine
-            url: /guides/tutorials/codelabs/pubsub-to-appengine/
+        url: /guides/tutorials/codelabs/
   - title: User How-Tos
     children:
       - title: Artifacts
