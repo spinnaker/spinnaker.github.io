@@ -7,7 +7,7 @@ sidebar:
 
 {% include toc %}
 
-Spinnaker stages ithat read data from artifacts can consume
+Spinnaker stages that read data from artifacts can consume
 [GCS](https://cloud.google.com/storage/) objects as artifacts.
 
 ## Prerequisites
