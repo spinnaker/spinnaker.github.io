@@ -88,8 +88,8 @@ or an object store (like GCS).
 
 For more information about triggering based on changes:
 
-* [Consuming GitHub Artifacts](/guides/user/artifacts/github)
-* [Consuming GCS Artifacts](/guides/user/artifacts/gcs)
+* [Consuming GitHub Artifacts](/guides/user/triggers/github)
+* [Consuming GCS Artifacts](/guides/user/triggers/gcs)
 
 Assuming you have declared an expected artifact upstream to your Deploy
 manifest stage, you can reference it in the Deploy configuration:
