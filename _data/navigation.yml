@@ -183,13 +183,15 @@ guides:
             url: /guides/tutorials/codelabs/pubsub-to-appengine/
   - title: User How-Tos
     children:
-      - title: Artifacts
+      - title: Triggering Pipelines
         collapsed: true
         children:
+          - title: Trigging on Webhooks
+            url: /guides/user/triggers/webhooks/
           - title: Recieving Artifacts From GCS
-            url: /guides/user/artifacts/gcs/
+            url: /guides/user/triggers/gcs/
           - title: Recieving Artifacts From GitHub
-            url: /guides/user/artifacts/github/
+            url: /guides/user/triggers/github/
       - title: Pipeline Expressions
         url: /guides/user/pipeline-expressions/
       - title: Tagging

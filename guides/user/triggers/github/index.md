@@ -3,6 +3,7 @@ layout: single
 title:  "Receiving artifacts from GitHub"
 sidebar:
   nav: guides
+redirect_from: /guides/user/artifacts/github/
 ---
 
 {% include toc %}
