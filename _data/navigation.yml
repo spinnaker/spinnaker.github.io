@@ -240,6 +240,19 @@ reference:
         url: /reference/artifacts/
       - title: In Pipelines
         url: /reference/artifacts/in-pipelines/
+      - title: Types of Artifacts
+        collapsed: true
+        children:
+          - title: Overview
+            url: /reference/artifacts/types/overview/
+          - title: Docker Image
+            url: /reference/artifacts/types/docker-image/
+          - title: GCS Object
+            url: /reference/artifacts/types/gcs-object/
+          - title: GitHub File
+            url: /reference/artifacts/types/github-file/
+          - title: Kubernetes Object
+            url: /reference/artifacts/types/kubernetes-object/
   - title: Halyard
     children:
       - title: Overview
