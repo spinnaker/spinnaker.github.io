@@ -12,7 +12,7 @@ sidebar:
 > unexpected behavior.
 
 Now that you have an idea of [what an artifact is](/reference/artifacts/) in Spinnaker, you need to
-understand how it's used within pipelines. An artifact arrives in a pipeline execution either from an external trigger (for example, a Docker image pushed to registry) or by getting fetched by a stage. That artifact is then consumed by downstream stages based on pre-defined behavior. 
+understand how it's used within pipelines. An artifact arrives in a pipeline execution either from an external trigger (for example, a Docker image pushed to registry) or by getting fetched by a stage. That artifact is then consumed by downstream stages based on pre-defined behavior.
 
 Spinnaker uses an "expected artifact" to enable a stage to fetch the needed artifact.
 
@@ -92,7 +92,7 @@ expected artifact can bind to one of artifacts in the trigger's payload.
 
 ### Artifacts in Trigger Payloads
 
-Artifacts are supplied by payload as a list of artifacts in a top-level 
+Artifacts are supplied by payload as a list of artifacts in a top-level
 `artifacts` key&mdash;the value is automatically injected into any triggered
 pipeline's execution context. However, it's possible that you're not the author
 of the incoming message, and are instead depending on a third-party system to
@@ -135,3 +135,79 @@ whose execution history to search, and an expected artifact to bind.
 
 A common use case would be to "promote" the image deployed to staging to a
 pipeline that's deploying to production.
+
+# A Visual Explanation
+
+To help explain how artifacts & expected artifacts work, let's walk through a
+demo pipeline. To begin, here is the key:
+
+{%
+   include
+   figure
+   image_path="./key.svg"
+%}
+
+Say we've configured the following pipeline:
+
+{%
+   include
+   figure
+   image_path="./configuration.svg"
+   caption="The pipeline declares that it expects an artifact matching _1_
+   (perhaps a docker image) _when the pipeline starts_. This is done in the
+   pipeline configuration tab. It also expects an artifact matching _2_ in
+   pipeline stage _B_ (perhaps a \"Find Artifact from Execution\" stage)."
+%}
+
+The pipeline is triggered by some source (maybe a Webhook) supplying two
+artifacts:
+
+{%
+   include
+   figure
+   image_path="./trigger.svg"
+%}
+
+Artifact _1_ is bound, but both incoming artifacts are placed into the trigger,
+so any downstream stages (in this case all of them) can consume them. The
+advantage of the expected artifact is that stages can _explicitly_ reference
+whatever artifact is bound downstream, rather than have to check for existance
+of the artifact at runtime.
+
+{%
+   include
+   figure
+   image_path="./running-a.svg"
+%}
+
+It's important to keep in mind that artifact _1_ was bound when the pipeline
+started. If we reference the expected artifact downstream (such as in the
+"Deploy Manifest") stage shown below, it is using the artifact that was bound
+when the pipeline first executed, not when the stage shown runs.
+
+{%
+   include
+   figure
+   image_path="./artifact-1.png"
+%}
+
+When stage _B_ starts executing, it needs to bind expected artifact _2_. If,
+for example, it was a "Find Artifact from Execution" stage, it would do so by
+looking up the artifact from a another pipeline's execution, and binding it
+here.
+
+{%
+   include
+   figure
+   image_path="./running-b-d.svg"
+%}
+
+If stages _C_ or _D_ needed to reference an upstream artifact, they would have
+different artifacts accessible to them, since they have different upstream
+stages. For examples, stage _D_ does not have access to artifact _2_.
+
+{%
+   include
+   figure
+   image_path="./running-c-d.svg"
+%}
