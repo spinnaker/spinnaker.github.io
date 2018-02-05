@@ -449,8 +449,11 @@
     }
   }
 
-  .nav__items-nested li {
-    font-size: $type-size-5;
+  .nav__items-nested {
+    padding-top: 1em;
+    li {
+      font-size: $type-size-5;
+    }
   }
 
   @include breakpoint(max-width ($large - 1px)) {
