@@ -264,7 +264,6 @@ reference:
       - title: Component Sizing
         url: /reference/halyard/component-sizing
   - title: Architecture
-    url: /reference/architecture/
     children:
       - title: Overview
         url: /reference/architecture/
