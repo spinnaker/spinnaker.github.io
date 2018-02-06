@@ -286,12 +286,12 @@ community:
     children:
       - title: Overview
         url: /community/contributing/
+      - title: Code Of Conduct
+        url: /community/contributing/code-of-conduct/
       - title: Submitting A Patch
         url: /community/contributing/submitting/
       - title: Releasing a Patch
         url: /community/contributing/releasing/
-      - title: Code Of Conduct
-        url: /community/contributing/code-of-conduct/
       - title: Code Conventions for Server-side Components
         url: /community/contributing/back-end-code/
   - title: Publications
