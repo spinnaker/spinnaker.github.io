@@ -149,6 +149,7 @@ setup:
 
 guides:
   - title: Tutorials
+    collapsed: true
     children:
       - title: Videos
         url: /guides/tutorials/videos/
@@ -182,6 +183,7 @@ guides:
           - title: Deploying GCS Pub/Sub Artifacts to App Engine
             url: /guides/tutorials/codelabs/pubsub-to-appengine/
   - title: User How-Tos
+    collapsed: true
     children:
       - title: Triggering Pipelines
         collapsed: true
@@ -199,24 +201,28 @@ guides:
       - title: Custom Instance Links
         url: /guides/user/instance-links/
   - title: Developer How-Tos
+    collapsed: true
     children:
       - title: Writing a New Stage
         url: /guides/developer/new-stage/
       - title: Kork Library
         url: /guides/developer/kork-library/
   - title: Runbooks
+    collapsed: true
     children:
       - title: API Rate Limiting
         url: /guides/runbooks/api-rate-limiting/
 
 reference:
   - title: API
+    collapsed: true
     children:
     - title: Docs
       url: /reference/api/docs.html
     - title: Swagger UI
       url: /reference/api/swagger-ui/
   - title: Cloud Providers
+    collapsed: true
     children:
       - title: Overview
         url: /reference/providers/
@@ -235,6 +241,7 @@ reference:
 #      - title: Oracle
 #        url: /reference/providers/oracle/
   - title: Artifacts
+    collapsed: true
     children:
       - title: Overview
         url: /reference/artifacts/
@@ -254,6 +261,7 @@ reference:
           - title: Kubernetes Object
             url: /reference/artifacts/types/kubernetes-object/
   - title: Halyard
+    collapsed: true
     children:
       - title: Overview
         url: /reference/halyard/
@@ -264,6 +272,7 @@ reference:
       - title: Component Sizing
         url: /reference/halyard/component-sizing
   - title: Architecture
+    collapsed: true
     children:
       - title: Overview
         url: /reference/architecture/
@@ -274,6 +283,7 @@ reference:
 
 community:
   - title: Releases
+    collapsed: true
     children:
       - title: Versions
         url: /community/releases/versions/
@@ -282,6 +292,7 @@ community:
       - title: Roadmap
         url: /community/releases/roadmap/
   - title: Contributing
+    collapsed: true
     children:
       - title: Overview
         url: /community/contributing/
@@ -294,12 +305,14 @@ community:
       - title: Code Conventions for Server-side Components
         url: /community/contributing/back-end-code/
   - title: Publications
+    collapsed: true
     children:
       - title: Presentations
         url: /community/presentations/
       - title: Articles
         url: /community/articles/
   - title: Misc
+    collapsed: true
     children:
       - title: FAQs
         url: /community/faqs/
