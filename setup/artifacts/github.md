@@ -18,7 +18,9 @@ artifact account so that Spinnaker can download files from GitHub.
 ### Downloading credentials
 
 Start by generating an [access token](https://github.com/settings/tokens) for
-GitHub. Place the token in a file (`$TOKEN_FILE`) readable by Halyard:
+GitHub. The token requires the __repo__ scope. 
+
+Place the token in a file (`$TOKEN_FILE`) readable by Halyard:
 
 ```bash
 echo $TOKEN > $TOKEN_FILE
@@ -39,6 +41,7 @@ First, make sure that artifact support is enabled:
 
 ```bash
 hal config features edit --artifacts true
+hal config artifact github enable
 ```
 
 Next, add an artifact account:
