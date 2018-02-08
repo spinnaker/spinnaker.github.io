@@ -58,7 +58,6 @@ metrics tracked by your telemetry service.
 Before you have
 
 
-
 Notes on what all else to include:
 * Something descriptive about the judge itself. Not going to get into the
 interface, in the sense that I'm not documenting for devs how to plug in their
