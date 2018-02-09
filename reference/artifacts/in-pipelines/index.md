@@ -136,6 +136,25 @@ whose execution history to search, and an expected artifact to bind.
 A common use case would be to "promote" the image deployed to staging to a
 pipeline that's deploying to production.
 
+
+## Passing Artifacts Between Pipelines
+
+Artifacts can be passed between pipelines.  If a pipeline triggers the execution of a second pipeline,
+this second pipeline will have access to any artifacts that were available to the first pipeline;
+this includes both artifacts in the first pipeline's trigger as well as artifacts emitted by the
+first pipeline.
+
+Two concrete cases where artifacts can be passed are as follows:
+
+1. __Pipeline triggered by the completion of another pipeline__
+
+   The second pipeline will have access to all artifacts from the first pipeline
+
+2. __Pipeline that is a stage of a parent pipeline__
+
+   The child pipeline will have access to any artifacts from the parent pipeline that are upstream
+   from where the child pipeline is triggered
+
 # A Visual Explanation
 
 To help explain how artifacts & expected artifacts work, let's walk through a
