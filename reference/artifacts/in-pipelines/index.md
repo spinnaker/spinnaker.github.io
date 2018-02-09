@@ -148,12 +148,16 @@ Two concrete cases where artifacts can be passed are as follows:
 
 1. __Pipeline triggered by the completion of another pipeline__
 
-   The second pipeline will have access to all artifacts from the first pipeline
+   To set up this configuration, go to the _Configuration_ screen for a pipeline (Pipeline B) and
+   add an automated trigger of type _Pipeline_ pointing to another pipeline (Pipeline A).  Whenever
+   Pipeline A completes, it will trigger a run of Pipeline B, and Pipeline B will have access to
+   all artifacts from Pipeline A.
 
 2. __Pipeline that is a stage of a parent pipeline__
 
-   The child pipeline will have access to any artifacts from the parent pipeline that are upstream
-   from where the child pipeline is triggered
+   To set up this configuration, go to the parent pipeline (Pipeline A), choose _Add Stage_, and add
+   a stage of type _Pipeline_ pointing to another pipeline (Pipeline B).  In this case, Pipeline B
+   will have access to any artifacts from Pipeline A that are upstream from where it was triggered.
 
 # A Visual Explanation
 
