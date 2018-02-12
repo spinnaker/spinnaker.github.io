@@ -47,7 +47,7 @@ hal -v
 ```
 
 If that command fails, make sure `hal` is in your `$PATH`, and check for logs
-under `/var/log/upstart/halyard` and `/var/log/spinnaker/halyard/halyard.log`.
+under `/var/log/spinnaker/halyard/halyard.log`.
 
 ### Docker
 
