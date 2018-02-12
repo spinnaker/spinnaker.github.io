@@ -18,7 +18,7 @@ deployed in. If Jenkins is secured, you need a username/password
 (`$USERNAME`/`$PASSWORD`) pair able to authenticate against Jenkins using
 HTTP Basic Auth.
 
-## Adding Your Jenkins Master
+## Add Your Jenkins Master
 
 First, make sure that your Jenkins master is enabled:
 
@@ -37,6 +37,44 @@ echo $PASSWORD | hal config ci jenkins master add my-jenkins-master \
                # in your .bash_history
 ```
 
+## Configure Jenkins and Spinnaker for CSRF Protection
+
+> **NOTE:** Jenkins CSRF protection in Igor is only supported for Jenkins 2.x.
+
+To enable Spinnaker and Jenkins to share a crumb to protect against CSRF...
+
+### 1. Configure Halyard to enable the `csrf` flag:
+
+```
+hal config ci jenkins master edit MASTER --csrf true
+```
+
+(`MASTER` is the name of the Jenkins master you've previously
+configured. If you haven't yet added your master, use `hal config ci
+jenkins master add` instead of `edit`. )
+
+Here's what your Jenkins master configuration looks like in your Hal config:
+
+```yaml
+jenkins:
+      enabled: true
+      masters:
+      - name: <jenkins master name>
+        address: http://<jenkins ip>/jenkins
+        username: <jenkins admin user>
+        password: <admin password>
+        csrf: true
+```
+
+### 2. Enable CSRF protection in Jenkins:
+
+a. Under __Manage Jenkins__ > __Configure Global Security__, select __Prevent
+Cross Site Request Forgery exploits__.
+
+b. Under __Crumb Algorithm__, select __Default Crumb Issuer__.
+
+![](/setup/ci/jenkins_enable_csrf.png)
+
 ## Jenkins Script Execution Stage
 
 ### Purpose
@@ -46,7 +84,7 @@ This is good for launching an integration/functional test battery
 after a bake and deploy stage from a pipeline instead of doing it manually.
 
 ### Assumptions
-here are a few assumptions we make in the following directions:
+Here are a few assumptions we make in the following directions:
 
 You have a running Spinnaker instance, with access to configuration files.
 
@@ -114,4 +152,3 @@ The current version of the script stage is a bit rudimentary, but we'll
 soon have support for a separate "job" stage that will be much more robust and encapsulate
 the same behavior as the script stage. The script stage is a temporary
 solution for the time being.
-
