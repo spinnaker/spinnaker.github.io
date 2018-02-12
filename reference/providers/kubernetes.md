@@ -92,7 +92,7 @@ scheme for a Deployment in Cluster `${CLUSTER-NAME}` with sequence number
 `SERVER-GROUP-NAME=${CLUSTER-NAME}-v${SEQUENCE-NUMBER}` looks like this:
 
 ```yaml
-# irrelevant details ommitted
+# irrelevant details omitted
 kind: Deployment
 metadata:
   name: ${CLUSTER-NAME}
