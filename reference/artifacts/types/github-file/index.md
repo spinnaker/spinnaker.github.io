@@ -18,7 +18,7 @@ stage.
 | Field | Explanation |
 |-|-----------|
 | `type` | Always `github/file`. |
-| `reference` | The `content_url` as referenced by a [PushEvent](https://developer.github.com/v3/activity/events/types/#pushevent). `https://api.github.com/repos/baxterthehacker/public-repo/contents/path/to/file.yml` is an example. |
+| `reference` |  The full path including filename for retrieval via the GitHub API. This is the `contents_url` as referenced by a [PushEvent](https://developer.github.com/v3/activity/events/types/#pushevent). `https://api.github.com/repos/baxterthehacker/public-repo/contents/path/to/file.yml` is an example for public GitHub. `https://github.mydomain.com/api/v3/repos/orgname/reponame/contents/path/to/file.yml` is an example for GHE. |
 | `name` | The file path within your repo. `path/to/file.yml` is an example. |
 | `version` | The file's commit or branch. |
 | `location` | N/A |
