@@ -5,7 +5,7 @@ sidebar:
   nav: reference
 ---
 
-Published: 2018-01-10 15:21:32
+Published: 2018-02-12 22:15:17
 
 
 # Table of Contents
@@ -1208,7 +1208,7 @@ hal config deploy edit [parameters]
 ```
 
 #### Parameters
- * `--account-name`: The Spinnaker account that Spinnaker will be deployed to, assuming you are runninga deployment of Spinnaker that requires an active cloud provider.
+ * `--account-name`: The Spinnaker account that Spinnaker will be deployed to, assuming you are running a deployment of Spinnaker that requires an active cloud provider.
  * `--bootstrap-only`: A bootstrap-only account is the account in which Spinnaker itself is deployed. When true, this account will not be included the accounts managed by Spinnaker.
  * `--consul-address`: The address of a running Consul cluster. See https://www.consul.io/.
 This is only required when Spinnaker is being deployed in non-Kubernetes clustered configuration.
@@ -1216,13 +1216,13 @@ This is only required when Spinnaker is being deployed in non-Kubernetes cluster
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--git-origin-user`: This is the git user your github fork exists under.
  * `--git-upstream-user`: This is the upstream git user you are configuring to pull changes from & push PRs to.
- * `--location`: This is the location spinnaker will be deployed to.
+ * `--location`: This is the location spinnaker will be deployed to. When deploying to Kubernetes, use this flag to specify the namespace to deploy to (defaults to 'spinnaker')
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--type`: Distributed: Deploy Spinnaker with one server group per microservice, and a single shared Redis.
 LocalDebian: Download and run the Spinnaker debians on the machine running the Daemon.
 LocalGit: Download and run the Spinnaker git repos on the machine running the Daemon.
  * `--update-versions`: When set to "false", any *local* version of Spinnaker components will be used instead of attempting to update. This does not work for distributed installations of Spinnaker, where no *local* version exists.
- * `--vault-address`: The address of a running Vault datastore. See https://www.vaultproject.io/.This is only required when Spinnaker is being deployed in non-Kubernetes clustered configuration.
+ * `--vault-address`: The address of a running Vault datastore. See https://www.vaultproject.io/. This is only required when Spinnaker is being deployed in non-Kubernetes clustered configuration.
  * `--vault-enabled`: Whether or not to use Vault as a secret storage mechanism to deploy Spinnaker.
 
 
@@ -3973,6 +3973,8 @@ hal config pubsub google subscription add SUBSCRIPTION [parameters]
 Configurable in your Google Cloud Pubsub subscription. See the docs here: https://cloud.google.com/pubsub/docs/subscriber
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--json-path`: The path to a JSON service account that Spinnaker will use as credentials. This is only needed if Spinnaker is not deployed on a Google Compute Engine VM, or needs permissions not afforded to the VM it is running on. See https://cloud.google.com/compute/docs/access/service-accounts for more information.
+ * `--message-format`: (*Default*: `CUSTOM`) One of 'GCS', 'GCR', or 'CUSTOM'. This can be used to help Spinnaker translate the contents of the
+Pub/Sub message into Spinnaker artifacts.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--project`: The name of the GCP project your subscription lives in.
  * `--subscription-name`: The name of the subscription to listen to. This identifier does not include the name of the project, and must already be configured for Spinnaker to work.
@@ -4011,6 +4013,8 @@ hal config pubsub google subscription edit SUBSCRIPTION [parameters]
 Configurable in your Google Cloud Pubsub subscription. See the docs here: https://cloud.google.com/pubsub/docs/subscriber
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--json-path`: The path to a JSON service account that Spinnaker will use as credentials. This is only needed if Spinnaker is not deployed on a Google Compute Engine VM, or needs permissions not afforded to the VM it is running on. See https://cloud.google.com/compute/docs/access/service-accounts for more information.
+ * `--message-format`: One of 'GCS', 'GCR', or 'CUSTOM'. This can be used to help Spinnaker translate the contents of the
+Pub/Sub message into Spinnaker artifacts.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--project`: The name of the GCP project your subscription lives in.
  * `--subscription-name`: The name of the subscription to listen to. This identifier does not include the name of the project, and must already be configured for Spinnaker to work.
