@@ -164,7 +164,7 @@ guides:
             url: /guides/tutorials/codelabs/hello-deployment/
           - title: GCE Source To Prod
             url: /guides/tutorials/codelabs/gce-source-to-prod/
-          - title: Kubernete Source To Pro
+          - title: Kubernete Source To Prod
             url: /guides/tutorials/codelabs/kubernetes-source-to-prod/
           - title: OpenStack Source To Prod
             url: /guides/tutorials/codelabs/openstack-source-to-prod/

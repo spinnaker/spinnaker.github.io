@@ -195,7 +195,8 @@ figure {
   }
 
   img {
-    width: 100%;
+    padding: 0.1em;
+    border: 1px solid $light-gray;
     border-radius: $border-radius;
     -webkit-transition: $global-transition;
     transition: $global-transition;
