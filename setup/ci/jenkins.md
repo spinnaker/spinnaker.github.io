@@ -43,7 +43,7 @@ echo $PASSWORD | hal config ci jenkins master add my-jenkins-master \
 
 To enable Spinnaker and Jenkins to share a crumb to protect against CSRF...
 
-### 1. Configure Halyard to enable the `preventCSRF` flag:
+### 1. Configure Halyard to enable the `csrf` flag:
 
 ```
 hal config ci jenkins master edit MASTER --csrf true
