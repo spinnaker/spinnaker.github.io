@@ -196,13 +196,12 @@ NAME        TYPE       CLUSTER-IP    EXTERNAL-IP   PORT(S)          AGE
 spin-gate   NodePort   10.7.255.85   <none>        8084:31355/TCP   32m
 ```
 
-At this point, you will (unfortunately) have to open your firewalls on a node
+At this point, you will (for this codelab only) have to open your firewalls on a node
 (with IP `$NODE_IP`) in that cluster to all addresses on for TCP connections on
 `$NODE_PORT`. If (for a production use-case) you were running Spinnaker with
-[authentication](/setup/security), only webhooks would be allowed. if DockerHub
-supported source range filtering, or some sort of secret passing, the
-authentication would be improved. __If anyone reading this codelab has
-suggestions on how to make it more secure, it would be much appreciated!__
+[authentication](/setup/security), only webhooks would be allowed, which you
+can reject by header or payload. See [the webhook guide for more 
+details](/guides/user/triggers/webhooks).
 
 ### Allow Docker to Post Build Events
 
