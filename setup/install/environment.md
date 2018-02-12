@@ -87,6 +87,7 @@ Ensure that the following are installed on your system:
 * git
 * curl
 * redis-server
+* OpenJDK 8 - JDK (we're building from source, so a JRE is not sufficient)
 * node (version >=8.9.0, [can be installed via nvm](https://github.com/creationix/nvm#install-script))
 * yarn (`npm install -g yarn` or [guide](https://yarnpkg.com/lang/en/docs/install/))
 
