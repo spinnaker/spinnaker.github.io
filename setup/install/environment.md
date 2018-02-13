@@ -26,6 +26,8 @@ and for clouds where the __Distributed__ installation is not yet supported;
 however, since all services are on a single machine, there will be downtime when
 Halyard updates Spinnaker.
 
+Note that a Halyard [Docker installation](https://www.spinnaker.io/setup/install/halyard/#docker) cannot be used as a __Local Debian__ base image because it does not contain the necessary packages to run Spinnaker.
+
 ### Required Hal Invocations
 
 Currently, Halyard defaults to a __Local Debian__ install when first run,
