@@ -61,6 +61,12 @@
     font-size: 0.8rem;
   }
 
+  blockquote {
+    p {
+      margin: 1em;
+    }
+  }
+
   /* paragraph indents */
   p {
     margin: 0 0 $indent-var;
