@@ -9,8 +9,8 @@ redirect_from: /docs/fiat-setup
 {% include toc %}
 
 Much like authentication, Spinnaker allows for a variety of pluggable
-authorization mechanisms. This page will illustrate how to setup and configure **Fiat**,
-Spinnaker's authorization microservice.
+authorization mechanisms. This page shows how to setup and configure
+**Fiat**, Spinnaker's authorization microservice.
 
 
 ## Model and Features
@@ -18,7 +18,7 @@ Spinnaker's authorization microservice.
 Fiat's authorization model is a _whitelist that is open by default_. In other words, when a
 resource does _not_ define who is allowed to access it, it is considered unrestricted.
 
-Fiat enables the ability to:
+With Fiat, you can&hellip;
 
 * Restrict access to specific [_accounts_](#accounts).
 * Restrict access to specific [_applications_](#applications).
@@ -43,7 +43,7 @@ accounts_](#service-accounts).
         > SAML roles are fixed at login time, and cannot be changed until the user needs to
         reauthenticate.
 
-1. Patience - there are a lot of small details that must be _just_ right with anything related to
+1. Patience&mdash;there are a lot of small details that must be _just_ right with anything related to
  authentication and authorization.
 
 1. (Highly Suggested) All Spinnaker component microservices are either:
@@ -66,10 +66,10 @@ accounts.
 
 
 ### Accounts
-In the dark ages (prior to Fiat), only accounts could be restricted. Clouddriver is the “one source
-of truth” for accounts, so Fiat reaches out to Clouddriver to gather the list of available
-accounts. To add access restrictions to an account, update your `halconfig` to include the
-`requiredGroupMembership` field.
+In the dark ages (before Fiat), only accounts could be restricted. Because
+Clouddriver is the source of truth for accounts, Fiat reaches out to Clouddriver
+to gather the list of available accounts. To add access restrictions to an
+account, update your `halconfig` to include the `requiredGroupMembership` field.
 
 ```bash
 PROVIDER= # Your cloud provider
@@ -83,13 +83,12 @@ Alternatively, you can overwrite the whole list using the `--required-group-memb
 
 ### Applications
 
-One of Fiat’s prime enhancements is the ability to restrict applications. Front50 is the “one
-source of truth” for application configuration, and is also the source of data for application
-permission configurations. The easiest way to add permission configurations to an existing
-application is through Deck:
+Set permissions for an existing application using the application configration:
 
-![group membership highlighed in UI](group-membership.png)
-
+{% include figure
+   image_path="./applications_permissions.png"
+   caption="Application configuration, with Permissions"
+%}
 
 ### Unrestricted Accounts and Applications
 
