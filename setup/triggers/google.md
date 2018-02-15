@@ -92,6 +92,15 @@ material](https://cloud.google.com/storage/docs/pubsub-notifications).
 
 ### Receiving messages from Google Container Registry (GCR)
 
+{% include
+   warning
+   content="The GCR message type extracts the image digest by default, but
+   Google App Engine doesn't support deploying from a digest. So if you're
+   using artifacts from GCR messages to trigger a GAE deployment, you need
+   to use a custom message template. The template must copy the image's tag
+   into the artifact's reference and version fields."
+%}
+
 First, record the fact that your `$MESSAGE_FORMAT` is `GCR`, this will be
 needed later.
 
