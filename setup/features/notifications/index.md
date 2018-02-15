@@ -108,7 +108,7 @@ For slack, you need to [create a custom bot user](https://api.slack.com/bot-user
 
 ```bash
 hal config notification slack enable
-hal config notification slack edit --bot-name $SPINNAKER_BOT --token $TOKEN_FROM_SLACK
+echo $TOKEN_FROM_SLACK | hal config notification slack edit --bot-name $SPINNAKER_BOT --token
 ```
 
 Note: your users will need to invite the slack bot to private rooms that want to be notified.
