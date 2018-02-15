@@ -162,6 +162,36 @@ Two concrete cases where artifacts can be passed are as follows:
    a stage of type _Pipeline_ pointing to another pipeline (Pipeline B).  In this case, Pipeline B
    will have access to any artifacts from Pipeline A that are upstream from where it was triggered.
 
+## Stages that produce artifacts
+
+Stages can be configured to 'Produce' artifacts if they expose the following
+Stage configuration:
+
+{%
+   include
+   figure
+   image_path="./produced-artifact.png"
+%}
+
+If you are configuring your stages using JSON, the expected artifacts are
+placed in a top-level `expectedArtifacts: []` list.
+
+There are two ways to use this:
+
+1. __To bind artifacts injected into the stage context__
+
+   If your stage emits artifacts (such as a "Deploy (Manifest)" stage) into the
+   pipeline context, you can match against these artifacts for downstream
+   stages to consume.
+
+2. __To artificially inject artifacts into the stage context__
+
+   If you are running a stage that does not natively emit artifacts (such as
+   the "Run Job" stage), you can use the default artifact, which always binds
+   to the expected artifact, to be injected into the pipeline each time it is
+   run. _Keep in mind:_ If the matching artifact is empty, it will bind any
+   artifact, and your default artifact will not be used.
+
 # A Visual Explanation
 
 To help explain how artifacts & expected artifacts work, let's walk through a
