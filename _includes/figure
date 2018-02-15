@@ -5,6 +5,9 @@
     {% else %}
       "{{ include.image_path }}"
     {% endif %}
+    {% if include.image_path contains ".svg" %}
+      style=" width: 100%" 
+    {% endif %}
     alt="{% if include.alt %}{{ include.alt }}{% endif %}">
   {% if include.caption %}
     <figcaption>{{ include.caption | markdownify | remove: "<p>" | remove: "</p>" }}</figcaption>
