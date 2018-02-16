@@ -5,6 +5,8 @@ sidebar:
   nav: reference
 ---
 
+{% include alpha version="1.6" %}
+
 While an artifact can reference any remote, deployable resource, we have
 first-class support for in the form of:
 

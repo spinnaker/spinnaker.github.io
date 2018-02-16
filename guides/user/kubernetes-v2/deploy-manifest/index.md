@@ -5,6 +5,8 @@ sidebar:
   nav: guides
 ---
 
+{% include alpha version="1.6" %}
+
 {% include toc %}
 
 This guide is meant to show you the very basics of how to deploy a Kubernetes
