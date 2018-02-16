@@ -110,11 +110,17 @@ already, run the following command or restart your shell to enable it.
 
 ## Updates
 
-You can always update Halyard by running the following commands.
+If you're running a version of Halyard before 0.40.0, you can run:
 
 ```bash
 sudo apt-get update
-sudo apt-get upgrade spinnaker-halyard
+sudo apt-get install spinnaker-halyard
+```
+
+Otherwise, run:
+
+```bash
+sudo update-halyard
 ```
 
 ## Uninstalling Halyard
