@@ -223,7 +223,9 @@ page and click the *Create* button. Name it "Deploy to Stage" and click the
 
 * Under the *Automated Triggers* heading, click *Add Trigger*.
 
+<!--
 ![Add trigger](images/012_d2s_trigger.png)
+-->
 
 * Select "Docker Registry" in the *Type* drop down.
 * Select "my-gcr-account" for *Registry Name*.
