@@ -57,8 +57,9 @@ for those who can't afford downtime during Spinnaker updates.
 First, you need to configure one of the Cloud Providers that supports the
 __Distributed__ installation:
 
-* <a href="/setup/providers/kubernetes" target="_blank">Kubernetes</a> **Note**: We recommend having at least 4 cores and 8 GiB of RAM free in the cluster you are deploying to.
-* <a href="/setup/providers/gce" target="_blank">Google Compute Engine</a> :warning: This is still in beta
+* <a href="/setup/install/providers/kubernetes" target="_blank">Kubernetes</a> **Note**: We recommend having at least 4 cores and 8 GiB of RAM free in the cluster you are deploying to.
+* <a href="/setup/install/providers/kubernetes-v2" target="_blank">Kubernetes (Manifest Based)</a> :warning: This is still in alpha.
+* <a href="/setup/install/providers/gce" target="_blank">Google Compute Engine</a> :warning: This is still in beta
 
 Then, remembering the `$ACCOUNT` name that you've created during the
 Provider configuration, run
