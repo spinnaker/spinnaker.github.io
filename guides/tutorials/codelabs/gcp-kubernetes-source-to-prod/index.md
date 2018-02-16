@@ -223,10 +223,12 @@ page and click the *Create* button. Name it "Deploy to Stage" and click the
 
 * Under the *Automated Triggers* heading, click *Add Trigger*.
 
+<!--
 ![Add trigger](images/012_d2s_trigger.png)
+-->
 
 * Select "Docker Registry" in the *Type* drop down.
-* Select "my-docker-registry-account" for *Registry Name*.
+* Select "my-gcr-account" for *Registry Name*.
 * Select your project for *Organization*.
 * Select "{YOUR_GCP_PROJECT_ID}/gcp-cd-codelab" for *Image*.
 * Leave the tag blank.
