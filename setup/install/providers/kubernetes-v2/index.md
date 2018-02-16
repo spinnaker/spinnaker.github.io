@@ -5,6 +5,8 @@ sidebar:
   nav: setup
 ---
 
+{% include alpha version="1.6" %}
+
 {% include toc %}
 
 The Spinnaker Kubernetes V2 provider fully supports manifest-based deployments.

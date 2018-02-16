@@ -1,0 +1,11 @@
+<blockquote class="warning">
+  <p>
+    The contents of this page refer to alpha features in Spinnaker
+    {{ include.version }}.
+  </p>
+  <p>
+    This means we are working on their stability and usability, as well as
+    possibly adding or changing features. Expect rough edges, and file <a
+    href="https://github.com/spinnaker/spinnaker/issues">issues</a> as needed.
+  </p>
+</blockquote>

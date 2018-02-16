@@ -5,9 +5,9 @@ sidebar:
   nav: guides
 ---
 
-{% include toc %}
+{% include alpha version="1.6" %}
 
-> __☞ Note__: This codelab requires Spinnaker 1.6 or later.
+{% include toc %}
 
 In this codelab you will configure:
 

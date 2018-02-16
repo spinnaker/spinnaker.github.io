@@ -5,6 +5,8 @@ sidebar:
   nav: guides
 ---
 
+{% include alpha version="1.6" %}
+
 {% include toc %}
 
 This guide explains how to configure Spinnaker to trigger pipelines based on

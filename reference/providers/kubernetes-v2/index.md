@@ -5,6 +5,8 @@ sidebar:
   nav: reference
 ---
 
+{% include alpha version="1.6" %}
+
 {% include toc %}
 
 This article describes how the Kubernetes provider v2 works, and how it differs
