@@ -40,7 +40,7 @@ and Spinnaker manages these using its
 The policies and strategies are configurable per account. See [Reserved
 Annotations](#reserved-annotations) for more details.
 
-## Accomodating Level-Based Deployments
+## Accommodating Level-Based Deployments
 
 See the [Kubernetes API
 conventions](https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md#spec-and-status)
@@ -128,7 +128,7 @@ Kubernetes provider V2 for other providers, because of how many types of
 resources Kubernetes supports. Also the Kubernetes extension
 mechanisms&mdash;called [Custom Resource Definitions
 (CRDs)](https://kubernetes.io/docs/concepts/api-extension/custom-resources/)&mdash;make
-it easy to build new types of resources, and Spinnaker accomodates that by
+it easy to build new types of resources, and Spinnaker accommodates that by
 making it simple to extend Spinnaker to support a user's CRDs.
 
 ## Terminology Mapping
@@ -158,10 +158,10 @@ descriptions of these policies, followed by a mapping of kinds to policies.
   * _Deploy:_ Can this resource be deployed and redeployed? It's worth
     mentioning that all deployments are carried out using `kubectl apply` to
     capitalize on `kubectl`'s three-way merge on deploy. This is done to
-    accomodate running
+    accommodate running
   * _Delete:_ Can this resource be deleted?
   * _Scale:_  (Workloads only) Can this resource be scaled to a desired replica
-    count?
+    count once it's running?
   * _Undo Rollout:_ (Workloads only) Can this resource be rolled back/forward
     to an existing revision?
   * _Pause Rollout:_ (Workloads only) When rolling out, can the rollout be
@@ -200,5 +200,20 @@ be rendered as well.
 
 ## Services, Ingresses
 
+| __Resource__ | _Deploy_ | _Delete_ | Versioned | Stability |
+|-|:-:|:-:|:-:|-|
+| __`Service`__ | Yes | Yes | No | The `status.loadBalancer` field reports that a load balancer was found if and only if the service type is `LoadBalancer`. |
+| __`Ingress`__ | Yes | Yes | No | The `status.loadBalancer` field reports that a load balancer was bound. |
+
 ## NetworkPolicies
 
+| __Resource__ | _Deploy_ | _Delete_ | Versioned | Stability |
+|-|:-:|:-:|:-:|-|
+| __`NetworkPolicy`__ | Yes | Yes | No | Automatically [stable](#accommodating-level-based-deployments). |
+
+## ConfigMaps, Secrets
+
+| __Resource__ | _Deploy_ | _Delete_ | Versioned | Stability |
+|-|:-:|:-:|:-:|-|
+| __`ConfigMap`__ | Yes | Yes | Yes | Automatically [stable](#accommodating-level-based-deployments). |
+| __`Secret`__ | Yes | Yes | Yes | Automatically [stable](#accommodating-level-based-deployments). |
