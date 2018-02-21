@@ -50,8 +50,8 @@ Fill in your project for `$MY_PROJECT`
         --image spinnaker-codelab \
         --image-project marketplace-spinnaker-release \
         --machine-type n1-highmem-4 \
-        --scopes compute-rw,storage-full,logging-write,monitoring \
-        --metadata startup-script=/opt/spinnaker/install/first_codelab_boot.sh
+        --scopes cloud-platform \
+        --metadata startup-script=/var/spinnaker/startup/first_codelab_boot.sh,gce_account=my-google-account
 
 Spinnaker will take a few minutes to auto configure and start up. Take 3 minutes to skim through Part 1 of this codelab below...
 
