@@ -72,8 +72,10 @@ setup:
             url: /setup/install/providers/appengine/
           - title: Google Compute Engine
             url: /setup/install/providers/gce/
-          - title: Kubernetes
+          - title: Kubernetes (Legacy)
             url: /setup/install/providers/kubernetes/
+          - title: Kubernetes (Manifest Based)
+            url: /setup/install/providers/kubernetes-v2/
           - title: OpenStack
             url: /setup/install/providers/openstack/
           - title: Oracle
@@ -164,8 +166,10 @@ guides:
             url: /guides/tutorials/codelabs/hello-deployment/
           - title: GCE Source To Prod
             url: /guides/tutorials/codelabs/gce-source-to-prod/
-          - title: Kubernete Source To Prod
+          - title: Kubernetes Source To Prod
             url: /guides/tutorials/codelabs/kubernetes-source-to-prod/
+          - title: Kubernetes (Manifest Based) Source To Prod
+            url: /guides/tutorials/codelabs/kubernetes-v2-source-to-prod/
           - title: OpenStack Source To Prod
             url: /guides/tutorials/codelabs/openstack-source-to-prod/
           - title: Continuous Delivery with Containers on GCP
@@ -200,6 +204,13 @@ guides:
         url: /guides/user/tagging/
       - title: Custom Instance Links
         url: /guides/user/instance-links/
+      - title: Kubernetes (Manifest Based)
+        collapsed: true
+        children:
+          - title: Deploy a Manifest
+            url: /guides/user/kubernetes-v2/deploy-manifest/
+          - title: Best Practices
+            url: /guides/user/kubernetes-v2/best-practices/
   - title: Developer How-Tos
     collapsed: true
     children:
@@ -234,8 +245,10 @@ reference:
         url: /reference/providers/appengine/
       - title: Google Compute Engine
         url: /reference/providers/gce/
-      - title: Kubernetes
+      - title: Kubernetes (Legacy)
         url: /reference/providers/kubernetes/
+      - title: Kubernetes (Manifest Based)
+        url: /reference/providers/kubernetes-v2/
 #      - title: OpenStack
 #        url: /reference/providers/openstack/
 #      - title: Oracle
@@ -247,6 +260,8 @@ reference:
         url: /reference/artifacts/
       - title: In Pipelines
         url: /reference/artifacts/in-pipelines/
+      - title: In Kubernetes (Manifest Based)
+        url: /reference/artifacts/in-kubernetes-v2/
       - title: Types of Artifacts
         collapsed: true
         children:
