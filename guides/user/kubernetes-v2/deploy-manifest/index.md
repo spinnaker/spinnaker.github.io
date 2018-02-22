@@ -39,7 +39,7 @@ from the stage selector as shown here:
   image_path="./deploy-manifest.png"
 %}
 
-> :warning: Don't select the regular __Deploy__ stage, it is used to deploy more 
+> :warning: Don't select the regular __Deploy__ stage, it is used to deploy more
 > opinionated "Server Groups" using another provider (including Kubernetes V1).
 
 ### Specifying Manifests Statically
@@ -77,7 +77,7 @@ them into the UI, the stage definition would look more like:
 }
 ```
 
-### Specifying Manifests Dynamically 
+### Specifying Manifests Dynamically
 
 If you are storing your manifests outside of Spinnaker's pipeline repository,
 or want a single deploy stage to be able to deploy a variety of manifests, you
@@ -104,7 +104,7 @@ manifest stage, you can reference it in the Deploy configuration:
   get to pick which upstream artifact to deploy."
 %}
 
-> __☞ Note__: Make sure that the __Artifact Account__ field matches an artifact 
+> __☞ Note__: Make sure that the __Artifact Account__ field matches an artifact
 > with permission to download your manifest.
 
 Keep in mind that the artifact bound in the upstream stage can match multiple

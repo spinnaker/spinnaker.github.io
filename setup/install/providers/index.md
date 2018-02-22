@@ -16,14 +16,15 @@ can skip this.
 
 ## Supported Providers
 
-These are the cloud providers currently supported by Spinnaker. Click through for instructions for setting up each provider. 
+These are the cloud providers currently supported by Spinnaker. Click through for instructions for setting up each provider.
 
 * <a href="/setup/install/providers/appengine/">App Engine</a>
 * <a href="/setup/install/providers/aws/">Amazon Web Services</a>
 * <a href="/setup/install/providers/azure/">Azure</a>
 * <a href="/setup/install/providers/dcos/">DC/OS</a>
 * <a href="/setup/install/providers/gce/">Google Compute Engine</a>
-* <a href="/setup/install/providers/kubernetes/">Kubernetes</a>
+* <a href="/setup/install/providers/kubernetes/">Kubernetes (legacy)</a>
+* <a href="/setup/install/providers/kubernetes-v2/">Kubernetes V2 (manifest based)</a>
 * <a href="/setup/install/providers/openstack/">Openstack</a>
 * <a href="/setup/install/providers/oracle/">Oracle</a>
 

@@ -15,9 +15,12 @@ can be expressed or deployed in terms of artifacts.
 
 # Manifests as Artifacts
 
-There are two ways to deploy a manifest&mdash;either supplied statically to a
-pipeline as text, or as an artifact. The image below shows a deploy
-stage deploys a manifest stored in a GCS bucket:
+There are two ways to deploy a manifest:
+
+* The manifest is supplied statically to a pipeline as text
+* The manifest is supplied as an artifact
+
+The image below shows a deploy stage that deploys a manifest stored in a GCS bucket:
 
 {%
   include
@@ -29,30 +32,30 @@ stage deploys a manifest stored in a GCS bucket:
 
 # Kubernetes Objects as Artifacts
 
-Once a manifest has been successfully deployed using a pipeline (either from text
+Once a manifest is successfully deployed using a pipeline (either from text
 or an artifact containing text), it is injected back into the pipeline's
 context as an output of the deploy stage. Why this is useful is explained
-[below](#binding-artifacts-in-manifests), but for now, focus on the distinction between...
+[below](#binding-artifacts-in-manifests), but for now focus on the distinction between...
 
 1. An artifact representing a manifest stored as text in github:
 
-  ```json
-  {
-       "type": "github/file",
-       "name": "manifests/frontend-configs.yml",
-       "reference": "https://api.github.com/repos/your-application/..."
-  }
-  ```
+   ```json
+   {
+        "type": "github/file",
+        "name": "manifests/frontend-configs.yml",
+        "reference": "https://api.github.com/repos/your-application/..."
+   }
+   ```
 2. An artifact representing a deployed kubernetes object:
 
-  ```json
-  {
-       "type": "kubernetes/configMap",
-       "name": "frontend-configs",
-       "location": "prod",
-       "version": "v001"
-  }
-  ```
+   ```json
+   {
+        "type": "kubernetes/configMap",
+        "name": "frontend-configs",
+        "location": "prod",
+        "version": "v001"
+   }
+   ```
 
 As described in the [manifests as artifacts](#manifests-as-artifacts) section,
 a deploy stage would _consume_ artifact 1, but _produce_ artifact 2 as an output.
@@ -70,12 +73,12 @@ by examinging the execution's "source" directly:
 
 According to the [Kubernetes reference
 documentation](/reference/providers/kubernetes-v2/#resource-management-policies),
-certain resources are "versioned", meaning that anytime a change is made to an
+certain resources are "versioned," meaning anytime a change is made to an
 object's manifest and deployed using Spinnaker, it is redeployed with a
 new version suffix (`-vNNN`). This is critical to supporting immutable
 deployments, as rolling out new ConfigMaps, secrets, or other versioned
 resources should require any manifests that reference them to be updated as
-well. Luckily, Spinnaker makes handling these updates easy as explained
+well. Luckily, Spinnaker makes handling these updates easy, as explained
 [below](#binding-artifacts-in-manifests).
 
 # Binding Artifacts in Manifests
@@ -93,7 +96,7 @@ Spinnaker binds artifacts in your manifest based on a simple heuristic:
   _When a field's referenced type and value match an incoming artifact's type
   and name, the field's value is replaced with the artifact's reference_
 
-A "field's referenced type" sounds ambiguous, but in practice, it is
+A "field's referenced type" sounds ambiguous, but in practice it's
 straightforward. The field `spec.template.spec.containers.*.image` always
 refers to a Docker image, so clearly it matches the artifact type
 `docker/image`. The field `spec.template.spec.volumes.*.configMap.name`
@@ -132,7 +135,7 @@ spec:
       volumes:
         - configMap:
             name: configmap             # possible artifact
-          name: my-config-map 
+          name: my-config-map
 ```
 
 And when the deploy stage executes, we have the following artifacts in our
@@ -140,12 +143,12 @@ execution context (likely populated from a trigger event, or prior deployments):
 
 ```json
 [
-  { 
+  {
     "type": "docker/image",
     "name": "gcr.io/my-images/nginx",
     "reference": "gcr.io/my-images/nginx@sha256:0cce25b9a55"
-  }, 
-  { 
+  },
+  {
     "type": "kubernetes/configMap",
     "name": "configmap",
     "version": "v001",
@@ -186,16 +189,16 @@ spec:
       volumes:
         - configMap:
             name: configmap-v001                              # bound by spinnaker
-          name: my-config-map 
+          name: my-config-map
 ```
 
 ## Why Not Pipeline Expressions?
 
-[Pipeline Expressions](/guides/user/pipeline-expressions) offer a great way of
-referencing pipeline context programatically using short snippets of code. Of
-course, it's possible to construct expressions that would allow you to
+[Pipeline Expressions](/guides/user/pipeline-expressions) offer a great way to
+reference pipeline context programmatically using short snippets of code. Of
+course, it's possible to construct expressions that allow you to
 reference the Docker image's reference that triggered a pipeline, or the name
-of the ConfigMap you deployed in a prior stage. However, we wanted an easier
-way to express updates to these resources, that left your Kubernetes Manifests
+of the ConfigMap you deployed in a prior stage. But we want an easier
+way to express updates to these resources, leaving your Kubernetes Manifests
 natively deployable without making Spinnaker's expression engine a hard
 dependency.
