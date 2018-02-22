@@ -302,6 +302,8 @@ community:
     children:
       - title: Versions
         url: /community/releases/versions/
+      - title: Release Cadence
+        url: /community/releases/release-cadence/
       - title: Support Policy
         url: /community/releases/support-policy/
       - title: Roadmap
