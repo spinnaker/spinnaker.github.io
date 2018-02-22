@@ -26,6 +26,8 @@ There are a few different ways to install Halyard (with more on the way):
 
 ### Ubuntu 14.04/16.04
 
+Note: 16.04 support is only available with Spinnaker versions 1.6.0 and above.
+
 The following command installs the latest released Halyard version, and will
 prompt the user for some configuration in the process. Generally the default
 answers to each prompt are best.
