@@ -49,10 +49,10 @@ Destroys an Azure Virtual Machine Scale set.
 Not supported
 
 ### Enable
-Enables an Azure Virtual Machine Scale Set to recieve traffic.
+Enables an Azure Virtual Machine Scale Set to receive traffic.
 
 ### Disable
-Disables an Azure Virtual Machine Scale set from recieving traffic.
+Disables an Azure Virtual Machine Scale set from receiving traffic.
 
 ### Create Load Balancer
 Creates a new Application Gateway in Azure.
