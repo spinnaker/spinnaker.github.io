@@ -23,7 +23,7 @@ Words words Words
 
 ## Prerequisites
 If you're going to generate the kinds of metrics that Spinnaker automated canary
-analysis can use to make judgements, you must instrument your code to have those
+analysis can use to make judgments, you must instrument your code to have those
 metrics tracked by your telemetry service.
 (((link to Stackdrive docs as an example?)))
 
