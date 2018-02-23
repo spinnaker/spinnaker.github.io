@@ -151,7 +151,7 @@ sudo mv kubectl /usr/local/bin/kubectl
 ### Install halyard
 
 ```bash
-curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/stable/InstallHalyard.sh
+curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/debian/InstallHalyard.sh
 
 sudo bash InstallHalyard.sh
 
