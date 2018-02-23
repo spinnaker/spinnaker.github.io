@@ -9,19 +9,21 @@ sidebar:
 
 {% include toc %}
 
-This guide is meant to show you the very basics of how to deploy a Kubernetes
-Manifest using Spinnaker, using the [Kubernetes Provider
-V2](/setup/install/providers/kubernetes-v2).
+This guide shows the basics of how to deploy a Kubernetes manifest using the
+[Kubernetes Provider V2](/setup/install/providers/kubernetes-v2).
 
-There are two things to cover here:
+There are two main steps:
 
-* [How to specify which manifest to deploy](#specifying-your-manifest)
-* [How to override artifacts in the manifest](#overriding-artifacts)
+* [Specify which manifest to deploy](#specifying-your-manifest)
 
-At a high level, you specify a manifest to deploy, and optionally, can override
-certain artifacts (as fields) at runtime (e.g. the docker image to use).
+  This is required.
 
-## Specifying Your Manifest
+* [Override artifacts in the manifest](#overriding-artifacts)
+
+  Optionally, you can override some artifacts (as fields) at run time (for
+    example, which Docker image to use.)
+
+## Specify Your Manifest
 
 Depending on your needs, there is more than one way to specify the manifest
 that you want to deploy:
@@ -30,8 +32,8 @@ that you want to deploy:
 * [Dynamically: bound at runtime using an
   artifact](#specifying-manifests-dynamically)
 
-In either case, we want to start by selecting the __Deploy (Manifest)__ stage
-from the stage selector as shown here:
+In either case, start by selecting the __Deploy (Manifest)__ stage
+from the stage selector:
 
 {%
   include
@@ -39,25 +41,25 @@ from the stage selector as shown here:
   image_path="./deploy-manifest.png"
 %}
 
-> :warning: Don't select the regular __Deploy__ stage, it is used to deploy more
+> :warning: Don't select the regular __Deploy__ stage; it deploys more
 > opinionated "Server Groups" using another provider (including Kubernetes V1).
 
-### Specifying Manifests Statically
+### Specify Manifests Statically
 
 If you know ahead of time what you expect to deploy using a certain manifest
-(even if you don't know what version of your docker image it will run) you can
-declare it directly in the pipeline by providing the manifest specification.
+(even if you don't know what version of your Docker image it will run) you can
+declare it directly in the pipeline by providing the manifest specification:
 
 {%
   include
   figure
   image_path="./in-pipeline.png"
-  caption="Notice that by selecting \"Text\" as the __Manifest Source__, we get
-  to enter the Manifest YAML by hand."
+  caption="Notice that by selecting __Text__ as the __Manifest Source__, we get
+  to enter the manifest YAML by hand."
 %}
 
-Of course, if you are generating your pipeline definitions rather than entering
-them into the UI, the stage definition would look more like:
+Of course, if you are _generating_ your pipeline definitions rather than entering
+them into the UI, the stage definition would look more like this:
 
 ```json
 {
@@ -77,18 +79,19 @@ them into the UI, the stage definition would look more like:
 }
 ```
 
-### Specifying Manifests Dynamically
+### Specify Manifests Dynamically
 
-If you are storing your manifests outside of Spinnaker's pipeline repository,
-or want a single deploy stage to be able to deploy a variety of manifests, you
+If you are storing your manifests outside of Spinnaker's
+[pipeline repository](/setup/install/storage/),
+or want a single deploy stage to deploy a variety of manifests, you
 can specify your manifest using an [Artifact](/reference/artifacts).
 
 The idea is: artifacts in Spinnaker allow you to reference remote, deployable
-resources. When using the Deploy Manifest stage, artifacts will reference a
-text file (containing a Manifest specification). This can be stored in GitHub
-or an object store (like GCS).
+resources. When referencing an artifact from a Deploy Manifest stage , that
+artifact must be a text file containing the Manifest specification.
+This can be stored in GitHub or an object store (like GCS).
 
-For more information about triggering based on changes:
+Changes to manifests can trigger pipelines. Here's some more information:
 
 * [Consuming GitHub Artifacts](/guides/user/triggers/github)
 * [Consuming GCS Artifacts](/guides/user/triggers/gcs)
@@ -100,36 +103,34 @@ manifest stage, you can reference it in the Deploy configuration:
   include
   figure
   image_path="./in-artifact.png"
-  caption="Notice that by selecting \"Artifact\" as the __Manifest Source__, we
+  caption="Notice that by selecting __Artifact__ as the __Manifest Source__, we
   get to pick which upstream artifact to deploy."
 %}
 
-> __☞ Note__: Make sure that the __Artifact Account__ field matches an artifact
-> with permission to download your manifest.
+> __☞ Note__: Make sure that the __Artifact Account__ field matches an account
+> with permission to download the manifest.
 
 Keep in mind that the artifact bound in the upstream stage can match multiple
 incoming artifacts. If instead we had configured it to listen to changes using
 a regex matching `.*\.yml`, it would bind any YAML file that changes in your
 artifact source, and deploy it when it reaches your Deploy stage.
 
-## Overriding Artifacts
+## Override Artifacts
 
 In general, when we deploy changes to our infrastructure, the majority of
-changes will come in the form of a new Docker image, or perhaps a feature-flag
+changes come in the form of a new Docker image, or perhaps a feature-flag
 change in a ConfigMap. For this reason, we have first-class mechanisms for
-easily overriding the version of:
+easily overriding the version of...
 
-* Docker Image
+* Docker image
 * Kubernetes ConfigMap
-* Kubernetes Secret
+* Kubernetes secret
 
-When one of these objects exists in the pipeline context from an upstream
-stage, Spinnaker will automatically try to inject it into the manifest you're
-deploying. A description of how this works can be read
-[here](/reference/artifacts/in-kubernetes-v2/#binding-artifacts-in-manifests)
-in detail.
+When one of these objects exists in the pipeline context from an upstream stage,
+Spinnaker [automatically tries to inject it](/reference/artifacts/in-kubernetes-v2/#binding-artifacts-in-manifests)
+into the manifest you're deploying.
 
-To give a quick example, say you trigger your pipeline using a webhook coming
+For example, say you trigger your pipeline using a webhook coming
 from a Docker registry. At a high level, the event says "Image
 `gcr.io/my-project/my-image` has a new digest `sha256:c81e41ef5e...`". In the
 pipeline that gets triggered, you've configured a Deploy Manifest stage with
@@ -143,10 +144,10 @@ the following spec:
 # rest of manifest ...
 ```
 
-Since the pipeline was triggered by the Docker image changing, the
-orchestration engine will send that artifact along with the manifest to the
+Because the pipeline was triggered by a change to the Docker image, the
+orchestration engine send that artifact along with the manifest to
 Spinnaker's cloud provider integration service, which, based on the name of the
-Docker image, will deploy the following:
+Docker image, deploys the following:
 
 ```yaml
 # ... rest of manifest
@@ -156,11 +157,11 @@ Docker image, will deploy the following:
 # rest of manifest ...
 ```
 
-In order to help ensure that the correct artifacts get bound, you can force the
-stage to either bind all required artifacts, or fail before deploying. Take the
-below image for example, where we specify that the docker image
+To ensure that the correct artifacts get bound, you can force the
+stage to either bind all required artifacts, or fail before deploying. Here's an
+example where we specify that the docker image
 `gcr.io/my-project/my-image` must be bound in the manifest, otherwise the stage
-will fail:
+fails:
 
 {%
   include
