@@ -40,17 +40,18 @@ The Kubernetes provider has two requirements:
     merges on `kubectl apply`, and API discovery. Though this creates a
     dependency on a binary, the good news is that any authentication method or
     API resource that `kubectl` supports is also supported by Spinnaker. This
-    is much better support than what was in the original Kubernetes provider in
-    Spinnaker
+    is an improvement over the original Kubernetes provider in Spinnaker.
 
 ### Kubernetes Role (RBAC)
 
-If you are using Kubernetes RBAC for access control, here's the minimal set of permissions Spinnaker
-needs. The exact set of permissions might differ based on Kubernetes version.
+If you're using Kubernetes
+[RBAC](https://kubernetes.io/docs/admin/authorization/rbac/) for access control,
+here's the minimal set of permissions Spinnaker needs. The exact set of
+permissions might differ based on Kubernetes version.
 
-The following YAML create the correct `ClusterRole`, `ClusterRoleBinding`, and `ServiceAccount`. If you limit
-Spinnaker to operating on an explicit list of namespaces (using the `namespaces` option), you will need
-to use `Role` & `RoleBinding` instead of `ClusterRole` and `ClusterRoleBinding` and apply the `Role`
+The following YAML creates the correct `ClusterRole`, `ClusterRoleBinding`, and `ServiceAccount`. If you limit
+Spinnaker to operating on an explicit list of namespaces (using the `namespaces` option), you need
+to use `Role` & `RoleBinding` instead of `ClusterRole` and `ClusterRoleBinding`, and apply the `Role`
 and `RoleBinding` to each namespace Spinnaker manages. You can read about the difference between `ClusterRole` and `Role`
 [here](https://kubernetes.io/docs/admin/authorization/rbac/#rolebinding-and-clusterrolebinding).
 

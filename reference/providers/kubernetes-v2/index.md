@@ -9,7 +9,7 @@ sidebar:
 
 {% include toc %}
 
-This article describes how the Kubernetes provider v2 works, and how it differs
+This article describes how the Kubernetes provider v2 works and how it differs
 from other providers in Spinnaker. If you're unfamiliar with Kubernetes
 terminology, see the [Kubernetes
 documentation](https://kubernetes.io/docs/home/).
@@ -24,9 +24,9 @@ can fully specify all your infrastructure in the native Kubernetes manifest
 format but still express, for example, a multi-region canary-driven rollout.
 
 This is a significant departure from how deployments are managed in Spinnaker
-today using other providers (including the [Kubernetes provider
+using other providers (including the [Kubernetes provider
 v1](https://www.spinnaker.io/reference/providers/kubernetes/)). The rest of this
-doc explains the difference.
+doc explains the differences.
 
 ## No Restrictive Naming Policies
 
@@ -77,7 +77,7 @@ as artifacts in pipeline executions. For example, you can configure a pipeline
 that triggers either when...
 
 * a new Docker image is uploaded, or
-* your manifest file is changed in Git.
+* your manifest file is changed in Git
 
 # Reserved Annotations
 
@@ -117,14 +117,14 @@ command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
 
 * `caching.spinnaker.io/ignore`
 
-  When set to `true`, this tells Spinnaker to ignore this resource. It will not
-  be cached, or show up in the Spinnaker UI.
+  When set to `true`, tells Spinnaker to ignore this resource.
+  The resource is not cached and does not show up in the Spinnaker UI.
 
 # How Kubernetes Resources Are Managed by Spinnaker
 
 Resource mapping between Spinnaker and Kubernetes constructs, as well as the
 introduction of new types of resources, is a lot more flexible in the
-Kubernetes provider V2 for other providers, because of how many types of
+Kubernetes provider V2 than for other providers, because of how many types of
 resources Kubernetes supports. Also the Kubernetes extension
 mechanisms&mdash;called [Custom Resource Definitions
 (CRDs)](https://kubernetes.io/docs/concepts/api-extension/custom-resources/)&mdash;make
@@ -137,13 +137,17 @@ It is worth noting that the resource mapping exists primarily to render
 resources in the UI according to Spinnaker conventions. It does not affect how
 resources are deployed or managed.
 
-There are three major groupings of resources in Spinnaker, Server Groups, Load
-Balancers, and Security Groups. They correspond to Kubernetes resource kinds as
-follows:
+There are three major groupings of resources in Spinnaker:
 
-* Workloads ≈ Spinnaker Server Groups
-* Services, Ingresses ≈ Load Balancers
-* NetworkPolicies ≈ Security Groups
+* server groups
+* load balancers
+* security groups
+
+These correspond to Kubernetes resource kinds as follows:
+
+* Server Groups ≈ Workloads
+* Load Balancers ≈ Services, Ingresses
+* Security Groups ≈ NetworkPolicies
 
 ## Resource Management Policies
 
@@ -155,28 +159,35 @@ descriptions of these policies, followed by a mapping of kinds to policies.
 
   There are several operations that can be implemented by each kind:
 
-  * _Deploy:_ Can this resource be deployed and redeployed? It's worth
+  * _Deploy:_
+    Can this resource be deployed and redeployed? It's worth
     mentioning that all deployments are carried out using `kubectl apply` to
     capitalize on `kubectl`'s three-way merge on deploy. This is done to
-    accommodate running
-  * _Delete:_ Can this resource be deleted?
-  * _Scale:_  (Workloads only) Can this resource be scaled to a desired replica
-    count once it's running?
-  * _Undo Rollout:_ (Workloads only) Can this resource be rolled back/forward
+    accommodate running against your cluster, alongside Spinnaker, other tools
+    that rely on the three-way merge semantics.
+  * _Delete:_
+    Can this resource be deleted?
+  * _Scale:_
+    For workloads only, can this resource be scaled to a desired replica
+    count?
+  * _Undo Rollout:_
+    For workloads only, can this resource be rolled back/forward
     to an existing revision?
-  * _Pause Rollout:_ (Workloads only) When rolling out, can the rollout be
+  * _Pause Rollout:_
+    For workloads only, when rolling out, can the rollout be
     stopped?
-  * _Resume Rollout:_ (Workloads only) When a rollout is paused, can it be
+  * _Resume Rollout:_
+    For workloads only, when the rollout is paused, can it be
     started again?
 
 * __Versioning__
 
-  If a resource is "versioned", it will always be deployed with a new sequence
+  If a resource is "versioned", it is always deployed with a new sequence
   number `vNNN`, unless no change has been made to it. This is important for
-  resources like ConfigMaps and ReplicaSets, which don't have their own
-  built-in update policy like Deployments or StatefulSets do. Making an edit to
-  the in-place, rather than redeploying can have unexpected results, and delete
-  prior history. Regardless, whatever the policy is, it can be overriden
+  resources like `ConfigMaps` and `ReplicaSets`, which don't have their own
+  built-in update policy like `Deployments` or `StatefulSets` do. Making an edit to
+  the resource in place, rather than redeploying, can have unexpected results and can delete
+  history. Regardless, whatever the policy is, it can be overriden
   during a deploy manifest stage.
 
 * __Stability__
@@ -186,15 +197,14 @@ descriptions of these policies, followed by a mapping of kinds to policies.
 
 ## Workloads
 
-Anything classified as a Spinnaker Server Group will be rendered on the
-"Clusters Tab" for Spinnaker. If possible, any pods owned by the workload will
-be rendered as well.
+Anything classified as a Spinnaker server group is rendered on the
+__Clusters__ tab in Spinnaker. If possible, any pods owned by the workload are rendered as well.
 
 | __Resource__ | _Deploy_ | _Delete_ | _Scale_ | _Undo Rollout_ | _Pause Rollout_ | _Resume Rollout_ | Versioned | Stability |
 |-|:-:|:-:|:-:|:-:|:-:|:-:|:-:|-|
 | __`DaemonSet`__ | Yes | Yes | No | Yes | Yes | Yes | No | The `status.currentNumberScheduled`, `status.updatedNumberScheduled`, `status.numberAvailable`, and `status.numberReady` must all be at least the `status.desiredNumberScheduled`. |
 | __`Deployment`__ | Yes | Yes | Yes | Yes | Yes | Yes | No | The `status.updatedReplicas`, `status.availableReplicas`, and `status.readyReplicas` must all match the desired replica count for the Deployment. |
-| __`Pod`__ | Yes | Yes | No | No | No | No | Yes | The pod must be scheduled, and passing all probes. |
+| __`Pod`__ | Yes | Yes | No | No | No | No | Yes | The pod must be scheduled, and pass all probes. |
 | __`ReplicaSet`__ | Yes | Yes | Yes | No | No | No | No | The `status.fullyLabledReplicas`, `status.availableReplicas`, and `status.readyReplicas` must all match the desired replica count for the ReplicaSet. |
 | __`StatefulSet`__ | Yes | Yes | Yes | Yes | Yes | Yes | No | The `status.currentRevision`, and `status.updatedRevision` must match, and `status.currentReplicas`, and `status.readyReplicas` must match the spec's replica count. |
 
