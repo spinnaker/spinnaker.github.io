@@ -63,7 +63,7 @@ gcloud compute ssh $USER-spinnaker --ssh-flag="-L 9000:localhost:9000" --ssh-fla
 Download and install Halyard on this machine. Halyard is a tool for configuring, installing, and updating Spinnaker.
 
 ```bash
-curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/stable/InstallHalyard.sh
+curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/debian/InstallHalyard.sh
 
 sudo bash InstallHalyard.sh
 ```
