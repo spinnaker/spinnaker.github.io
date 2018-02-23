@@ -211,6 +211,8 @@ guides:
             url: /guides/user/kubernetes-v2/deploy-manifest/
           - title: Best Practices
             url: /guides/user/kubernetes-v2/best-practices/
+          - title: Parameterize Manifests
+            url: /guides/user/kubernetes-v2/parameterize-manifests/
   - title: Developer How-Tos
     collapsed: true
     children:
