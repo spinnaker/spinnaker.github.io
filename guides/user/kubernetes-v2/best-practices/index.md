@@ -33,8 +33,7 @@ There are two ways to achieve this in Spinnaker:
    [jinja](http://jinja.pocoo.org/)) to express & render your manifests
    _before_ sending them to Spinnaker to deploy.
 
-2. Rely on Spinnaker's [artifact
-   substitution](/guides/user/kubernetes-v2/deploy-manifest/#overriding-artifacts)
+2. Rely on Spinnaker's [artifact substitution](/guides/user/kubernetes-v2/deploy-manifest/#override-artifacts)
    and a trigger that supplies your image by digest.
 
 ## Emit Your Deployed Manifests to an Audit Log

@@ -29,8 +29,7 @@ Depending on your needs, there is more than one way to specify the manifest
 that you want to deploy:
 
 * [Statically: directly in the pipeline](#specify-manifests-statically)
-* [Dynamically: bound at runtime using an
-  artifact](#specifying-manifests-dynamically)
+* [Dynamically: bound at runtime using an artifact](#specify-manifests-dynamically)
 
 In either case, start by selecting the __Deploy (Manifest)__ stage
 from the stage selector:
