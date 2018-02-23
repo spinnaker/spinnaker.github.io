@@ -145,9 +145,9 @@ There are three major groupings of resources in Spinnaker:
 
 These correspond to Kubernetes resource kinds as follows:
 
-* server groups ≈ workloads
-* load balancers ≈ services, ingresses
-* security groups ≈ network policies
+* Server Groups ≈ Workloads
+* Load Balancers ≈ Services, Ingresses
+* Security Groups ≈ NetworkPolicies
 
 ## Resource Management Policies
 
@@ -227,4 +227,3 @@ __Clusters__ tab in Spinnaker. If possible, any pods owned by the workload are r
 |-|:-:|:-:|:-:|-|
 | __`ConfigMap`__ | Yes | Yes | Yes | Automatically [stable](#accommodating-level-based-deployments). |
 | __`Secret`__ | Yes | Yes | Yes | Automatically [stable](#accommodating-level-based-deployments). |
-

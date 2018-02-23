@@ -14,11 +14,11 @@ This guide shows the basics of how to deploy a Kubernetes manifest using the
 
 There are two main steps:
 
-* [Specify which manifest to deploy](#specifying-your-manifest)
+* [Specify which manifest to deploy](#specify-your-manifest)
 
   This is required.
 
-* [Override artifacts in the manifest](#overriding-artifacts)
+* [Override artifacts in the manifest](#override-artifacts)
 
   Optionally, you can override some artifacts (as fields) at run time (for
     example, which Docker image to use.)
@@ -28,7 +28,7 @@ There are two main steps:
 Depending on your needs, there is more than one way to specify the manifest
 that you want to deploy:
 
-* [Statically: directly in the pipeline](#specifying-manifests-statically)
+* [Statically: directly in the pipeline](#specify-manifests-statically)
 * [Dynamically: bound at runtime using an
   artifact](#specifying-manifests-dynamically)
 
@@ -124,7 +124,7 @@ easily overriding the version of...
 
 * Docker image
 * Kubernetes ConfigMap
-* Kubernetes secret
+* Kubernetes Secret
 
 When one of these objects exists in the pipeline context from an upstream stage,
 Spinnaker [automatically tries to inject it](/reference/artifacts/in-kubernetes-v2/#binding-artifacts-in-manifests)

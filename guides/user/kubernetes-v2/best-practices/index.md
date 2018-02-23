@@ -51,7 +51,7 @@ hydrated manifest recorded.
 
 ## Version Your ConfigMaps and Secrets
 
-Anytime Spinnaker deploys a ConfigMap or secret, it appends a version to
+Anytime Spinnaker deploys a ConfigMap or Secret, it appends a version to
 its name. If that exact ConfigMap or secret is already running in the cluster,
 it's not' redeployed. Downstream stages that reference the ConfigMap or
 secret will deploy the version chosen by Spinnaker. __Unless your application
