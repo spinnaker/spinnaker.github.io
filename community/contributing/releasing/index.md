@@ -14,9 +14,8 @@ Spinnaker you manage. You have a few options available:
 # Wait for the non-patch release
 
 Any time we release `X+1.Y.0` or `X.Y+1.0`, we include all commits merged into
-`master` for each service. We do this on a semi-regular cadence (once every few
-weeks). This frequency may become more regular in the future, but for now, it's
-a safe way to wait for your patch to be released.
+`master` for each service. We do this on a [regular
+cadence](/community/releases/release-cadence).
 
 # Merge into the release branch
 
