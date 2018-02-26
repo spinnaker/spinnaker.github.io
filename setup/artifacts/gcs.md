@@ -31,7 +31,7 @@ you don't already have such a service account with the corresponding JSON key
 downloaded, you can run the following commands to do so:
 
 ```bash
-SERVICE_ACCOUNT_NAME=spinnaker-gcs-artifacts-account
+SERVICE_ACCOUNT_NAME=spin-gcs-artifacts-account
 SERVICE_ACCOUNT_DEST=~/.gcp/gcs-artifacts-account.json
 
 gcloud iam service-accounts create \
