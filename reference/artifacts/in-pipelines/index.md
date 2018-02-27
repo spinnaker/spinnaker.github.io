@@ -17,7 +17,7 @@ sidebar:
 {% include toc %}
 
 Now that you have an idea of [what an artifact is](/reference/artifacts/) in Spinnaker, you need to
-understand how it's used within pipelines. An artifact arrives in a pipeline execution either from an external trigger (for example, a Docker image pushed to registry) or by getting fetched by a stage. That artifact is then consumed by downstream stages based on pre-defined behavior.
+understand how it's used within pipelines. An artifact arrives in a pipeline execution either from an external trigger (for example, a Docker image pushed to a registry) or by getting fetched by a stage. That artifact is then consumed by downstream stages based on pre-defined behavior.
 
 Spinnaker uses an "expected artifact" to enable a stage to fetch the needed artifact.
 
@@ -93,7 +93,7 @@ assign expected artifacts to individual triggers.
 %}
 
 When a trigger has one or more expected artifacts, it only runs when each
-expected artifact can bind to one of artifacts in the trigger's payload.
+expected artifact can bind to one of the artifacts in the trigger's payload.
 
 ### Artifacts in Trigger Payloads
 
