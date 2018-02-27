@@ -213,6 +213,8 @@ guides:
             url: /guides/user/kubernetes-v2/best-practices/
           - title: Parameterize Manifests
             url: /guides/user/kubernetes-v2/parameterize-manifests/
+          - title: Configure Automated Rollbacks
+            url: /guides/user/kubernetes-v2/automated-rollbacks/
   - title: Developer How-Tos
     collapsed: true
     children:
