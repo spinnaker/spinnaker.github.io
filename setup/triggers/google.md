@@ -171,7 +171,7 @@ gcloud iam service-accounts keys create $SERVICE_ACCOUNT_DEST \
 Once you have run these commands, your GCS JSON key is sitting in a file
 called `$SERVICE_ACCOUNT_DEST`.
 
-# Editing Your Artifact Settings
+# Editing Your Pub/Sub Settings
 
 All that's required are the following values:
 
