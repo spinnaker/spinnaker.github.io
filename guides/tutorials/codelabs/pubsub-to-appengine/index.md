@@ -59,7 +59,7 @@ SUBSCRIPTION_NAME=<subscription>`
 If Spinnaker is not yet configured, follow this Halyard [quickstart](https://www.spinnaker.io/setup/quickstart/halyard-gce/), then
 [configure the GAE cloud provider](https://www.spinnaker.io/setup/providers/appengine/).
 
-Note that while configuring the GAE cloud provider, you will create a service account with the `roles/storage.admin`
+Note that while configuring the GAE cloud provider, you will create a service account with `roles/storage.admin`
 enabled and set two environment variables:
 
 ```
@@ -67,7 +67,24 @@ SERVICE_ACCOUNT_NAME=spinnaker-appengine-account
 SERVICE_ACCOUNT_DEST=~/.gcp/appengine-account.json
 ```
 
-We'll need this service account later, so keep these variables handy.
+In addition to the `roles/storage.admin`, the service account also needs `roles/pubsub.subscriber`.
+
+Add the role to the service account:
+
+```
+gcloud projects add-iam-policy-binding $PROJECT \
+    --role roles/pubsub.subscriber \
+    --member serviceAccount:$SA_EMAIL # service account email from GAE setup.
+```
+
+Optionally generate a new service account key:
+
+```
+rm $SERVICE_ACCOUNT_DEST && gcloud iam service-accounts keys create $SERVICE_ACCOUNT_DEST \
+    --iam-account $SA_EMAIL
+```
+
+We'll need this service account later, so keep these environment variables handy.
 
 ### Configure Spinnaker to listen to the Google Cloud Pub/Sub subscription
 
@@ -176,10 +193,12 @@ Wait a few minutes for the deploy to complete.
     b. Select 'Pub/Sub' as the trigger type.
 
     c. Select 'google' as the `Pub/Sub System Type` and select 'my-gcs-subscription' as the `Subscription Name`.
+    
+    d. Add an attribute constraint with key 'eventType' and value 'OBJECT_FINALIZE'. This prevents your pipeline from triggering twice from one GCS event.
 
-    d. Select the '.../app.tar' expected artifact in the `Expected Artifacts` drop down.
+    e. Select the '.../app.tar' expected artifact in the `Expected Artifacts` drop down.
 
-    e. Save the pipeline with the `Save Changes` button in the bottom right corner of the pipeline configuration screen.
+    f. Save the pipeline with the `Save Changes` button in the bottom right corner of the pipeline configuration screen.
 
 4. Create and configure a deploy stage in your pipeline.
 
