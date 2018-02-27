@@ -61,8 +61,8 @@ called `$SERVICE_ACCOUNT_DEST`.
 All that's required are the following values:
 
 ```bash
-# See Prerequisites section above
-SERVICE_ACCOUNT_DEST=
+# Same as in Prerequisites section above
+SERVICE_ACCOUNT_DEST=~/.gcp/gcs-artifacts-account.json
 
 ARTIFACT_ACCOUNT_NAME=my-gcs-artifact-account
 ```
