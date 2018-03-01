@@ -8,7 +8,10 @@ sidebar:
 {% include toc %}
 
 
-Words words Words
+If you have [enabled canary for your application]() and have one or more canary
+configs prepared, you can now add a canary stage to your pipeline and configure
+it to perform canary analysis for your deployment, against the target
+environment.
 
 ## What's in the canary stages
 
