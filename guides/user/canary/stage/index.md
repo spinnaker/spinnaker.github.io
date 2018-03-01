@@ -8,7 +8,6 @@ sidebar:
 {% include toc %}
 
 
-<<<<<<< HEAD
 If you have [enabled canary for your application]() and have one or more canary
 configs prepared, you can now add a canary stage to your pipeline and configure
 it to perform canary analysis for your deployment, against the target
@@ -27,12 +26,9 @@ The Retrospective analysis type means that the canary analysis will be performed
 
 
 ###
-=======
-Words words Words
-
 ## What's in the canary stages
 
 A pipeline canary stage includes...
 
 *
->>>>>>> docs(guides): Adds documentation for automated canary analysis
+

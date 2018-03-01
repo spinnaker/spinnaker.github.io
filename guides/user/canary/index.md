@@ -20,6 +20,11 @@ used for operational changes, including changes to configuration.
 
 The canary process is not a substitute for other forms of testing.
 
+Canaries are usually used for deployments with changes to code, but can also be
+used for operational changes, including changes to configuration.
+
+The canary process is not a substitute for other forms of testing.
+
 ## How to make Canary work in Spinnaker&mdash;the high-level process
 
 This process assumes Spinnaker is already set up to support Canary.
@@ -45,7 +50,10 @@ when it deviates upward  or down.
 
 
 ## Prerequisites
-If you're going to generate the kinds of metrics that Spinnaker automated canary
+
+### Instrument your code for metrics
+
+If you're going to generate the kinds of metrics that Spinnaker canary
 analysis can use to make judgments, you must instrument your code to have those
 metrics tracked by your telemetry service.
 (((link to StackDriver docs as an example?)))
