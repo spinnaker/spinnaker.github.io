@@ -20,24 +20,24 @@ used for operational changes, including changes to configuration.
 
 The canary process is not a substitute for other forms of testing.
 
-# How Canary works in Spinnaker&mdash;the high-level process
+## How to make Canary work in Spinnaker&mdash;the high-level process
 
-Here's a high-level overview of how to set up and run automated canary analysis
-in Spinnaker.
+This process assumes Spinnaker is already set up to support Canary.
 
-You might also be interested in learning [more about the canary judge and how it
-makes its decisions](/guides/user/canary/judge/).
+(See also: [The Canary Judge&mdash;how does it work?](/guides/user/canary/judge/).
 
-1. In Spinnaker, create one or more canary configurations.
+### In Spinnaker, create one or more canary configurations.
 
-   This configuration provides a default set of metrics for use in all pipeline
-   canary stages that reference it, plus default scoring thresholds and weights.
-   The configuration also identifies the judge used to evaluate the success or
-   failure of the canary.
+This configuration provides the set of metrics for use in all pipeline
+canary stages that reference it, plus default scoring thresholds and weights.
 
-   [Here's how to create these configurations.]()
+You can group metrics logically. Any that you leave ungrouped are evaluated, but
+they don't contribute to the success or failure of the canary run.
 
-1. In any deployment pipeline that will use canary, add a canary stage.
+You can configure each metric flexibly, to define its scope and whether it fails
+when it deviates upward  or down.
+
+### In any deployment pipeline that will use canary, add a canary stage.
 
    In that stage, you can
 
