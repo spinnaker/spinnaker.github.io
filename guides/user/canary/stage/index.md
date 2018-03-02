@@ -28,7 +28,8 @@ The Retrospective analysis type means that the canary analysis will be performed
 ###
 ## What's in the canary stages
 
-A pipeline canary stage includes...
+The canary analysis can be performed over data points collected beginning from
+the moment of execution and into the future, or it can be performed over a
+specified time interval.
 
 *
-
