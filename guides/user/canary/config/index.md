@@ -18,7 +18,9 @@ canary stage
 
 Canary configuration is done for an application, with one or more config sets
 available to that application. Your Spinnaker might also be set up so that all
-configurations are available to all applications.
+configurations are available to all applications. This configuration is available
+to canary stages in pipelines, but those [stages are defined
+separately](guides/user/canary/stage/).
 
 ## Metric groups versus grouping metrics
 When you create a canary configuration, you create metric groups, and scoring
@@ -42,12 +44,13 @@ happen before you see the __Canary__ tab in Deck:
 
 * In the Application config, you need to activate the __Canary__ option.
 
-  {% include figure
-     image_path="./enable_canary.png"
-     caption="Enabling __Canary__ lets you configure canary analysis for all
-     pipelines in this application, including multiple config sets."
+  {%
+    include
+    figure
+    image_path="./enable_canary.png"
+    caption="Enabling __Canary__ lets you configure canary analysis for all
+    pipelines in this application, including multiple config sets."
   %}
-
 
 ## Create a new canary configuration
 
@@ -71,14 +74,12 @@ in this configuration.
 
 ## Create metric groups and add metrics
 
-The metrics are the basis for passing or failing a canary. Later on, you'll
-specify default thresholds to use against these metrics.
+The metrics available depend on the telemetry provider you use. Spinnaker
+currently supports StackDriver only.
 
 Metrics must be [added to metric groups](#group_metrics) before you can apply
 the weighting that determines the relative importance of metrics.
 
-The metrics available depend on the telemetry provider you use. Spinnaker
-currently supports StackDriver only.
 
 1. In the __Metrics__ section, select __Add Metric__.
 
@@ -87,11 +88,27 @@ currently supports StackDriver only.
    You're going to want to be able to select this from a drop down when you add
    a canary stage to your pipeline.
 
-1. Specify whether this metric fails when the value gets too high or too low.
+1. Specify whether this metric fails when the value deviates too high or too low.
 
-1. Optionally, choose a [filter template]().
+1. Optionally, choose a [filter
+template](/guides/user/canary/config/filter_templates/).
 
-1.
+   This is only available  if your Spinnaker is [configured for it](). Filter
+   templates are collections of [StackDriver monitoring
+   filters](https://cloud.google.com/monitoring/api/v3/filters).
+
+   For example...
+
+   ```
+   resource.type = "gce_instance" AND
+   resource.labels.zone = starts_with("${zone}")
+   ```
+   
+1. Optionally, click __Group by__ and enter the metric metadata attribute by
+which to group and aggregate the data.
+
+    StackDriver lets you [group time series by resource and metric labels](), and
+    then aggregate the data under those groups.
 
 
 

@@ -1,4 +1,4 @@
---
+---
 layout: single
 title:  "The Canary Judge&mdash;how does it work?"
 sidebar:
@@ -6,3 +6,6 @@ sidebar:
 ---
 
 {% include toc %}
+
+
+text
