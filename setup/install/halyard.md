@@ -72,7 +72,7 @@ Now, run the Halyard docker container, while mounting that Halyard config
 directory for your container:
 
 ```
-docker run -p 8084:8084 -p 9000:9000 \
+docker run -p 127.0.0.1:8084:8084 -p 127.0.0.1:9000:9000 \
     --name halyard --rm \
     -v ~/.hal:/root/.hal \
     -it \
