@@ -10,10 +10,10 @@ redirect_from: /docs/notifications-and-events-guide
 
 Out of the box, Spinnaker allows you to configure the following types of notifications:
 
-* Email
-* HipChat
-* Slack
-* SMS ( via Twilio )
+* [Email](#email)
+* [HipChat](#hipchat)
+* [Slack](#slack)
+* [SMS](#twilio) via Twilio 
 
 This is discussed in the Configuring Notifications section below.
 
@@ -22,6 +22,8 @@ Additionally, Spinnaker allows you to set webhooks for git triggers. See the [Se
 You can also set Spinnaker to stream all its events to a downstream listener. See the [Add a Webhook to Spinnaker](#add-a-listening-webhook-to-spinnaker) section.
 
 Additionally, Spinnaker is capable of handling cron-based triggers and detect changes in Jenkins builds and Docker images. This functionality will be documented at a later time. 
+
+See also [`hal config notifications`](/reference/halyard/commands/#hal-config-notification).
 
 # Configuring Notifications
 
@@ -102,25 +104,11 @@ Note: your users will need to invite the hipchat bot to private rooms that want 
 
 ## Slack
 
-For slack, you will need to create a custom bot user (https://api.slack.com/bot-users#how_do_i_create_custom_bot_users_for_my_team), then get the access token associated with the new bot user. 
+For slack, you need to [create a custom bot user](https://api.slack.com/bot-users#how_do_i_create_custom_bot_users_for_my_team), then get the access token associated with that new bot user. Then...
 
-in echo.yml
-```
-slack:
-  enabled: true
-  token: <API token for bot>
-```
-
-in settings.js (deck)
-```
-window.spinnakerSettings = {
-// ...
-  notifications: {
-    slack: {
-      enabled: true,
-      botName: '<username of bot>'
-    },
-// ...
+```bash
+hal config notification slack enable
+echo $TOKEN_FROM_SLACK | hal config notification slack edit --bot-name $SPINNAKER_BOT --token
 ```
 
 Note: your users will need to invite the slack bot to private rooms that want to be notified.

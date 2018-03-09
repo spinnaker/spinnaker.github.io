@@ -60,6 +60,8 @@ slack:
   url                    : join.spinnaker.io
 stackoverflow:
   url                    : stackoverflow.com/questions/tagged/spinnaker
+discourse:
+  url                    : community.spinnaker.io
 facebook:
   username               :
   app_id                 :

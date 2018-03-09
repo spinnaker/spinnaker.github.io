@@ -10,7 +10,7 @@ redirect_from: /docs/general-purpose-tags
 
 <h1 style="margin-top: 0; font-size: 25px;"><span style="color: red">Release Candidate</span> (2017-01-13)</h1>
 
-This guide provides an introduction to the provider-agnostic tagging capabilities of Spinnaker.
+This guide provides an introduction to the provider-agnostic tagging capabilities of Spinnaker, otherwise referred to as _Entity Tags_.
 
 # Requirements
 
@@ -39,7 +39,7 @@ There are no restrictions on the size or quantity of these tags (*unlike limitat
 
 ## Current Limitations
 - Completely separate from any tag support on the underlying cloud provider
-  - *Callers must make an additional API call to retrieve general purpose tags*
+  - *Callers must make an additional API call to retrieve entity tags*
 - Limited lifecycle support
   - *Only server groups have a delete hook that will cleanup associated tags*
 
@@ -73,7 +73,7 @@ They are made up of:
 ## Identifier
 
 A unique identifier representing a tagged entity:
-`{{cloudProvider}}:{{entityType}}:{{entityId}}:{{account}}:{{region}}`
+`{cloudProvider}:{entityType}:{entityId}:{accountId}:{region}`
 
 ## EntityRef
 
@@ -94,7 +94,6 @@ A unique identifier representing a tagged entity:
 ```
     {
       "id": "aws:servergroup:myservergroup-v001:100000000001:us-west-2",
-      "idPattern": "{{cloudProvider}}:{{entityType}}:{{entityId}}:{{account}}:{{region}}",
       "tags": [
         {
           "name": "spinnaker_ui_alert:autoscaling:ec2_instance_launch_error",
@@ -138,6 +137,7 @@ Parameter Name | Description | Examples
 entityType | Filter by Entity Type | ?entityType=servergroup
 entityId | Filter by Entity Id | ?entityId=myservergroup-v001
 tag | Filter by Tag (specific value)<br/>Filter by Tag (any value) | ?tag:my_tag=my_value<br />?tag:my_tag=*
+maxResults | Maximum # of results to return (defaults to 100) | ?maxResults=1000
 
 ## POST /tags
 
@@ -151,7 +151,7 @@ cloudProvider | cloudProvider | ?cloudProvider=aws<br/>?cloudProvider=* (wildcar
 
 #### Upsert Tags
 ```
-    curl -X "POST" "http://gate/tags?entityId=myservergroup=-v001&entityType=servergroup&account=production&region=us-west-2&cloudProvider=aws" \
+    curl -X "POST" "http://gate/tags?entityId=myservergroup-v001&entityType=servergroup&account=production&region=us-west-2&cloudProvider=aws" \
          -H "Content-Type: application/json" \
          -d $'[
       {
@@ -168,7 +168,7 @@ cloudProvider | cloudProvider | ?cloudProvider=aws<br/>?cloudProvider=* (wildcar
 
 ## POST /tasks
 
-This API provides backwards compatibility with traditional Spinnaker tasks and can be used interchangeably with the `POST /tasks` API.
+This API provides backwards compatibility with traditional Spinnaker tasks and can be used interchangeably with the `POST /tags` API.
 
 #### Upsert Tags
 ```
@@ -181,15 +181,21 @@ This API provides backwards compatibility with traditional Spinnaker tasks and c
           "type": "upsertEntityTags",
           "tags": [
             {
-              "name": "owner",
+              "name": "spinnaker_ui_alert:autoscaling:ec2_instance_launch_error",
               "namespace": "my_namespace",
-              "value": "spinnaker"
+              "value": {
+                "message": "Insufficient capacity. Launching EC2 instance failed.",
+                "type": "alert"
+              },
+              "valueType": "object"
             }
           ],
           "entityRef": {
             "cloudProvider": "aws",
-            "entityType": "application",
-            "entityId": "spinnaker"
+            "entityType": "servergroup",
+            "entityId": "myservergroup-v001",
+            "region": "us-west-2",
+            "account": "production"            
           }
         }
       ],
@@ -208,7 +214,7 @@ This API provides backwards compatibility with traditional Spinnaker tasks and c
 
 # FEATURE: Server Group Alerts and Notices
 
-*Server Group Alerts and Notices* is a new Spinnaker feature is built upon general purpose tags.
+*Server Group Alerts and Notices* is a new Spinnaker feature is built upon entity tags.
 
 ![](alert.png)
 

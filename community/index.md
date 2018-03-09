@@ -58,7 +58,7 @@ plangrid_user:
   image_path: assets/images/users/Logotype_classic.png
   alt: "PlanGrid logo"
 box_user:
-  image_path: assets/images/users/box-logo.jpg 
+  image_path: assets/images/users/box-logo.jpg
   alt: "Box logo"
 chartboost_user:
   image_path: assets/images/users/Logo-Default.png
@@ -69,7 +69,42 @@ weatherbug_user:
 underarmour_user:
   image_path: assets/images/users/ua_logo.png
   alt: "Under Armour Logo"
+informatica_user:
+  image_path: assets/images/users/informatica-logo.png
+  alt: "Informatica Logo"
+purestorage_user:
+  image_path: assets/images/users/PureStorage.png
+  alt: "PureStorage Logo"
+mulesoft_user:
+  image_path: assets/images/users/MuleSoft_logo_299C.png
+  alt: "MuleSoft Logo"
+cleartax_in_user:
+  image_path: assets/images/users/cleartax_in_logo.png
+  alt: "ClearTax.in Logo"
 ---
+
+## Engage the community and get support
+
+The Spinnaker OSS project was started at Netflix, and today thrives on the contributions and broad adoption of the public devops community. Here are some ways to engage the community and find help&mdash;join us!
+
+* [Spinnaker community forum](https://community.spinnaker.io)
+
+    Closely monitored by Spinnaker principal developers, this forum is a good place to initiate discussions that might go on for a while and that won't scroll off the screen before you notice them.
+
+* [GitHub](https://github.com/spinnaker)
+
+    The Spinnaker org, with repos for its many services. Come here to contribute to the Spinnaker services and documentation.
+
+    If you find a problem, you can file an issue [here](https://github.com/spinnaker/spinnaker/issues). (However, if you just have a question, use one of the other resources listed here.)
+
+* [Slack](http://join.spinnaker.io)
+
+    A great place to get quick answers to questions that do not require extended, threaded discussion.
+
+* [Stack Overflow](https://stackoverflow.com/search?q=spinnaker)
+
+    Many people involved in the Spinnaker community can answer questions posed here. However, the principal developers don't monitor Stack Overflow as closely.
+
 
 ## Who's using Spinnaker?
 
@@ -78,17 +113,21 @@ underarmour_user:
     {% include spinnaker_user id="box_user" %}
     {% include spinnaker_user id="cerner_user" %}
     {% include spinnaker_user id="chartboost_user" %}
-    
   </div>
   <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="clarivate_user" %}
+    {% include spinnaker_user id="cleartax_in_user" %}
     {% include spinnaker_user id="cloudera_user" %}
-    {% include spinnaker_user id="gogo_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="gogo_user" %}
     {% include spinnaker_user id="google_user" %}
+    {% include spinnaker_user id="informatica_user" %}
+  </div>
+  <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="kenzan_user" %}
     {% include spinnaker_user id="lookout_user" %}
+    {% include spinnaker_user id="mulesoft_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="nest_user" %}
@@ -96,29 +135,24 @@ underarmour_user:
     {% include spinnaker_user id="optimizely_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="purestorage_user" %}
     {% include spinnaker_user id="plangrid_user" %}
     {% include spinnaker_user id="smartthings_user" %}
-    {% include spinnaker_user id="schibsted_user" %}
-  </div>
+ </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="schibsted_user" %}
     {% include spinnaker_user id="scopely_user" %}
     {% include spinnaker_user id="skuid_user" %}
-    {% include spinnaker_user id="target_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="target_user" %}
     {% include spinnaker_user id="underarmour_user" %}
     {% include spinnaker_user id="waze_user" %}
+  </div>
+  <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="weatherbug_user" %}
   </div>
 </div>
-
-## Engaging
-
-The Spinnaker OSS project was started at Netflix, and today thrives on the contributions and broad adoption of the public devops community. Here are some ways to get engaged - join us!
-
-* [GitHub](https://github.com/spinnaker/spinnaker)
-* [Slack](http://join.spinnaker.io)
-* [StackOverflow](https://stackoverflow.com/search?q=spinnaker)
 
 ## Core Contributors
 

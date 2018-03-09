@@ -27,6 +27,20 @@ Once we are finished we will have the following setup:
 
 If you don't already have gcloud installed, navigate to [Installing Cloud SDK](https://cloud.google.com/sdk/downloads#interactive) to install gcloud
 
+#### Authenticate gcloud and set your default project.
+
+Authenticate gcloud with your account. Follow the instructions after the following command.
+
+```bash
+gcloud auth login
+```
+
+Set your default gcloud project:
+
+```bash
+gcloud config set project <PROJECT_NAME>
+```
+
 ### Enable the GCP IAM API
 
 Navigate to the [Google Cloud Console](https://console.developers.google.com/apis/api/iam.googleapis.com/overview) and enable the Google Identity and Access Management (IAM) API
@@ -123,7 +137,7 @@ gcloud projects add-iam-policy-binding $GCP_PROJECT \
 Create a VM with the service account:
 
 ```bash
-HALYARD_HOST=$USER-halyard-`date +%m%d`
+HALYARD_HOST=$(echo $USER-halyard-`date +%m%d` | tr '_.' '-')
 
 gcloud compute instances create $HALYARD_HOST \
     --project=$GCP_PROJECT \

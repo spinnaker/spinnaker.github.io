@@ -1,0 +1,6 @@
+<blockquote class="warning">
+  <p>
+    :warning: <b>WARNING</b>
+    {{ include.content | markdownify }}
+  </p>
+</blockquote>

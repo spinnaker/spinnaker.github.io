@@ -20,161 +20,267 @@ concepts:
       url: /concepts/clusters/
     - title: Pipelines
       url: /concepts/pipelines/
+    - title: Providers
+      url: /concepts/providers/
 
 setup:
-  - title: Quickstart
+  - title: Quickstarts
+    collapsed: true
     children:
-      - title: Solutions
+      - title: Demo Install
         url: /setup/quickstart/
-      - title: Halyard Guides
+      - title: Quick Full-Install
         url: /setup/quickstart/halyard/
-      - title: FAQ
-        url: /setup/quickstart/faq/
-  - title: Install
+  - title: Set up Spinnaker
+    collapsed: true
     children:
-      - title: Getting Started
+      - title: Overview
         url: /setup/install/
-      - title: Halyard
+      - title: 1. Install Halyard
         url: /setup/install/halyard/
-      - title: Environment
+      - title: 2. Choose an Environment
         url: /setup/install/environment/
-      - title: Storage
-        url: /setup/install/storage/
-      - title: Cloud Providers
-        url: /setup/install/providers/
-      - title: Deploy
+      - title: 3. Choose a Storage Service
+        collapsed: true
+        children:
+          - title: Overview
+            url: /setup/install/storage/
+          - title: Azure Storage
+            url: /setup/install/storage/azs/
+          - title: Google Cloud Storage
+            url: /setup/install/storage/gcs/
+          - title: Minio
+            url: /setup/install/storage/minio/
+          - title: Redis
+            url: /setup/install/storage/redis/
+          - title: S3
+            url: /setup/install/storage/s3/
+      - title: 4. Choose a Cloud Provider
+        collapsed: true
+        children:
+          - title: Overview
+            url: /setup/install/providers/
+          - title: Amazon Web Services
+            url: /setup/install/providers/aws/
+          - title: Azure
+            url: /setup/install/providers/azure/
+          - title: DC/OS
+            url: /setup/install/providers/dcos/
+          - title: Docker Registry
+            url: /setup/install/providers/docker-registry/
+          - title: Google App Engine
+            url: /setup/install/providers/appengine/
+          - title: Google Compute Engine
+            url: /setup/install/providers/gce/
+          - title: Kubernetes (Legacy)
+            url: /setup/install/providers/kubernetes/
+          - title: Kubernetes (Manifest Based)
+            url: /setup/install/providers/kubernetes-v2/
+          - title: OpenStack
+            url: /setup/install/providers/openstack/
+          - title: Oracle
+            url: /setup/install/providers/oracle/
+      - title: 5. Deploy Spinnaker
         url: /setup/install/deploy/
-      - title: Configuration
-        url: /setup/install/configuration/
-      - title: Upgrades
-        url: /setup/install/upgrades/
-      - title: Backups
+      - title: 6. Back Up Your Config
         url: /setup/install/backups/
-  - title: Cloud Providers
+      - title: Spinnaker Config FAQ
+        url: /setup/quickstart/faq/
+  - title: Configure Everything Else
+    collapsed: true
     children:
       - title: Overview
-        url: /setup/providers/
-      - title: Amazon Web Services
-        url: /setup/providers/aws/
-      - title: Azure
-        url: /setup/providers/azure/
-      - title: DC/OS
-        url: /setup/providers/dcos/
-      - title: Docker Registry
-        url: /setup/providers/docker-registry/
-      - title: Google App Engine
-        url: /setup/providers/appengine/
-      - title: Google Compute Engine
-        url: /setup/providers/gce/
-      - title: Kubernetes
-        url: /setup/providers/kubernetes/
-      - title: OpenStack
-        url: /setup/providers/openstack/
-      - title: Oracle
-        url: /setup/providers/oracle/
-  - title: Persistent Storage
-    children:
-      - title: Overview
-        url: /setup/storage/
-      - title: Azure Storage
-        url: /setup/storage/azs/
-      - title: Google Cloud Storage
-        url: /setup/storage/gcs/
-      - title: Redis
-        url: /setup/storage/redis/
-      - title: S3
-        url: /setup/storage/s3/
-  - title: Image Bakery
-    children:
-      - title: Overview
-        url: /setup/bakery/
-      - title: Google Compute Engine
-        url: /setup/bakery/google/
-  - title: Security
-    children:
-      - title: Overview
-        url: /setup/security/
-      - title: Authentication
-        url: /setup/security/authentication/
-      - title: Authorization
-        url: /setup/security/authorization/
-  - title: CI
-    children:
-      - title: Overview
-        url: /setup/ci/
-      - title: Travis CI
-        url: /setup/ci/travis/
-      - title: Jenkins
-        url: /setup/ci/jenkins/
-  - title: Features
-    children:
-      - title: Notifications
-        url: /setup/features/notifications/
-      - title: User Data
-        url: /setup/features/user-data/
-  - title: Monitoring
-    children:
-      - title: Overview
-        url: /setup/monitoring/
-      - title: Datadog
-        url: /setup/monitoring/datadog/
-      - title: Prometheus
-        url: /setup/monitoring/prometheus/
-      - title: Stackdriver
-        url: /setup/monitoring/stackdriver/
+        url: /setup/other_config/
+      - title: Configure Artifact Support
+        collapsed: true
+        children:
+          - title: Google Cloud Storage
+            url: /setup/artifacts/gcs/
+          - title: GitHub
+            url: /setup/artifacts/github/
+      - title: Configure the Image Bakery
+        collapsed: true
+        children:
+          - title: Overview
+            url: /setup/bakery/
+          - title: Google Compute Engine
+            url: /setup/bakery/google/
+      - title: Secure Spinnaker
+        collapsed: true
+        children:
+           - title: Secure Your Spinnaker Installation
+             url: /setup/security/
+           - title: Authentication
+             url: /setup/security/authentication/
+           - title: Authorization
+             url: /setup/security/authorization/
+      - title: Set up Triggers
+        collapsed: true
+        children:
+          - title: Google Pub/Sub
+            url: /setup/triggers/google/
+          - title: GitHub Webhook
+            url: /setup/triggers/github/
+      - title: Add Your CI system
+        collapsed: true
+        children:
+          - title: Set Up Continuous Integration
+            url: /setup/ci/
+          - title: Travis CI
+            url: /setup/ci/travis/
+          - title: Jenkins
+            url: /setup/ci/jenkins/
+      - title: Enable Monitoring
+        collapsed: true
+        children:
+          - title: Overview
+            url: /setup/monitoring/
+          - title: Datadog
+            url: /setup/monitoring/datadog/
+          - title: Prometheus
+            url: /setup/monitoring/prometheus/
+          - title: Stackdriver
+            url: /setup/monitoring/stackdriver/
+      - title: Additional Features
+        collapsed: true
+        children:
+          - title: Configure Notifications
+            url: /setup/features/notifications/
+          - title: Configure User Data (metadata)
+            url: /setup/features/user-data/
 
 guides:
   - title: Tutorials
+    collapsed: true
     children:
       - title: Videos
         url: /guides/tutorials/videos/
       - title: Codelabs
-        url: /guides/tutorials/codelabs/
+        collapsed: true
+        children:
+          - title: Overview
+            url: /guides/tutorials/codelabs/
+          - title: Bake and Deploy Pipeline
+            url: /guides/tutorials/codelabs/bake-and-deploy-pipeline/
+          - title: Hello Deployment
+            url: /guides/tutorials/codelabs/hello-deployment/
+          - title: GCE Source To Prod
+            url: /guides/tutorials/codelabs/gce-source-to-prod/
+          - title: Kubernetes Source To Prod
+            url: /guides/tutorials/codelabs/kubernetes-source-to-prod/
+          - title: Kubernetes (Manifest Based) Source To Prod
+            url: /guides/tutorials/codelabs/kubernetes-v2-source-to-prod/
+          - title: OpenStack Source To Prod
+            url: /guides/tutorials/codelabs/openstack-source-to-prod/
+          - title: Continuous Delivery with Containers on GCP
+            url: /guides/tutorials/codelabs/gcp-kubernetes-source-to-prod/
+          - title: Continuous Delivery to Kubernetes on Azure
+            url: /guides/tutorials/codelabs/azure-kubernetes-source-to-prod/
+          - title: Continuous Delivery to Azure VM Scale Set
+            url: /guides/tutorials/codelabs/azure-vmss-source-to-prod/
+          - title: App Engine Source To Prod
+            url: /guides/tutorials/codelabs/appengine-source-to-prod/
+          - title: Safe Deployments
+            url: /guides/tutorials/codelabs/safe-deployments/
+          - title: DC/OS Source To Prod
+            url: /guides/tutorials/codelabs/dcos-source-to-prod/
+          - title: Deploying GCS Pub/Sub Artifacts to App Engine
+            url: /guides/tutorials/codelabs/pubsub-to-appengine/
   - title: User How-Tos
+    collapsed: true
     children:
+      - title: Triggering Pipelines
+        collapsed: true
+        children:
+          - title: Trigging on Webhooks
+            url: /guides/user/triggers/webhooks/
+          - title: Receiving Artifacts From GCS
+            url: /guides/user/triggers/gcs/
+          - title: Receiving Artifacts From GitHub
+            url: /guides/user/triggers/github/
       - title: Pipeline Expressions
         url: /guides/user/pipeline-expressions/
       - title: Tagging
         url: /guides/user/tagging/
       - title: Custom Instance Links
         url: /guides/user/instance-links/
+      - title: Kubernetes (Manifest Based)
+        collapsed: true
+        children:
+          - title: Deploy a Manifest
+            url: /guides/user/kubernetes-v2/deploy-manifest/
+          - title: Best Practices
+            url: /guides/user/kubernetes-v2/best-practices/
+          - title: Parameterize Manifests
+            url: /guides/user/kubernetes-v2/parameterize-manifests/
+          - title: Configure Automated Rollbacks
+            url: /guides/user/kubernetes-v2/automated-rollbacks/
   - title: Developer How-Tos
+    collapsed: true
     children:
       - title: Writing a New Stage
         url: /guides/developer/new-stage/
       - title: Kork Library
         url: /guides/developer/kork-library/
   - title: Runbooks
+    collapsed: true
     children:
       - title: API Rate Limiting
         url: /guides/runbooks/api-rate-limiting/
 
 reference:
   - title: API
+    collapsed: true
     children:
     - title: Docs
       url: /reference/api/docs.html
     - title: Swagger UI
       url: /reference/api/swagger-ui/
   - title: Cloud Providers
+    collapsed: true
     children:
       - title: Overview
         url: /reference/providers/
-      - title: Amazon Web Services
-        url: /reference/providers/aws/
+#      - title: Amazon Web Services
+#        url: /reference/providers/aws/
       - title: Azure
         url: /reference/providers/azure/
       - title: Google App Engine
         url: /reference/providers/appengine/
       - title: Google Compute Engine
         url: /reference/providers/gce/
-      - title: Kubernetes
+      - title: Kubernetes (Legacy)
         url: /reference/providers/kubernetes/
-      - title: OpenStack
-        url: /reference/providers/openstack/
-      - title: Oracle
-        url: /reference/providers/oracle/
+      - title: Kubernetes (Manifest Based)
+        url: /reference/providers/kubernetes-v2/
+#      - title: OpenStack
+#        url: /reference/providers/openstack/
+#      - title: Oracle
+#        url: /reference/providers/oracle/
+  - title: Artifacts
+    collapsed: true
+    children:
+      - title: Overview
+        url: /reference/artifacts/
+      - title: In Pipelines
+        url: /reference/artifacts/in-pipelines/
+      - title: In Kubernetes (Manifest Based)
+        url: /reference/artifacts/in-kubernetes-v2/
+      - title: Types of Artifacts
+        collapsed: true
+        children:
+          - title: Overview
+            url: /reference/artifacts/types/overview/
+          - title: Docker Image
+            url: /reference/artifacts/types/docker-image/
+          - title: GCS Object
+            url: /reference/artifacts/types/gcs-object/
+          - title: GitHub File
+            url: /reference/artifacts/types/github-file/
+          - title: Kubernetes Object
+            url: /reference/artifacts/types/kubernetes-object/
   - title: Halyard
+    collapsed: true
     children:
       - title: Overview
         url: /reference/halyard/
@@ -182,8 +288,10 @@ reference:
         url: /reference/halyard/commands/
       - title: Custom Configuration
         url: /reference/halyard/custom/
+      - title: Component Sizing
+        url: /reference/halyard/component-sizing
   - title: Architecture
-    url: /reference/architecture/
+    collapsed: true
     children:
       - title: Overview
         url: /reference/architecture/
@@ -194,28 +302,38 @@ reference:
 
 community:
   - title: Releases
+    collapsed: true
     children:
       - title: Versions
         url: /community/releases/versions/
+      - title: Release Cadence
+        url: /community/releases/release-cadence/
       - title: Support Policy
         url: /community/releases/support-policy/
       - title: Roadmap
         url: /community/releases/roadmap/
   - title: Contributing
+    collapsed: true
     children:
       - title: Overview
         url: /community/contributing/
-      - title: Submitting A Patch
-        url: /community/contributing/submitting/
       - title: Code Of Conduct
         url: /community/contributing/code-of-conduct/
+      - title: Submitting A Patch
+        url: /community/contributing/submitting/
+      - title: Releasing a Patch
+        url: /community/contributing/releasing/
+      - title: Code Conventions for Server-side Components
+        url: /community/contributing/back-end-code/
   - title: Publications
+    collapsed: true
     children:
       - title: Presentations
         url: /community/presentations/
       - title: Articles
         url: /community/articles/
   - title: Misc
+    collapsed: true
     children:
       - title: FAQs
         url: /community/faqs/

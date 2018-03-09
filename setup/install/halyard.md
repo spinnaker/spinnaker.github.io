@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Halyard"
+title:  "Install Halyard"
 sidebar:
   nav: setup
 redirect_from:
@@ -24,14 +24,16 @@ we will encourage you to instead use Halyard.
 
 There are a few different ways to install Halyard (with more on the way):
 
-### Ubuntu 14.04
+### Ubuntu 14.04/16.04
+
+Note: 16.04 support is only available with Spinnaker versions 1.6.0 and above.
 
 The following command installs the latest released Halyard version, and will
 prompt the user for some configuration in the process. Generally the default
 answers to each prompt are best.
 
 ```bash
-curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/stable/InstallHalyard.sh
+curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/debian/InstallHalyard.sh
 
 sudo bash InstallHalyard.sh
 ```
@@ -44,7 +46,7 @@ hal -v
 ```
 
 If that command fails, make sure `hal` is in your `$PATH`, and check for logs
-under `/var/log/upstart/halyard` and `/var/log/spinnaker/halyard/halyard.log`.
+under `/var/log/spinnaker/halyard/halyard.log`.
 
 ### Docker
 
@@ -73,6 +75,7 @@ directory for your container:
 docker run -p 127.0.0.1:8084:8084 -p 127.0.0.1:9000:9000 \
     --name halyard --rm \
     -v ~/.hal:/root/.hal \
+    -it \
     gcr.io/spinnaker-marketplace/halyard:stable
 ```
 
@@ -106,11 +109,17 @@ already, run the following command or restart your shell to enable it.
 
 ## Updates
 
-You can always update Halyard by running the following commands.
+If you're running a version of Halyard before 0.40.0, you can run:
 
 ```bash
 sudo apt-get update
-sudo apt-get upgrade spinnaker-halyard
+sudo apt-get install spinnaker-halyard
+```
+
+Otherwise, run:
+
+```bash
+sudo update-halyard
 ```
 
 ## Uninstalling Halyard

@@ -4,4 +4,4 @@ rvm:
 
 sudo: false
 
-script: rake test
+script: bundle exec rake test

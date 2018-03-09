@@ -8,7 +8,7 @@ sidebar:
 {% include toc %}
 
 This is the reference documentation for the metrics reported by Spinnaker
-microservices. It is indented for operators who need to monitor the services
+microservices. It is intended for operators who need to monitor the services
 but cannot use the monitoring-daemon. If you're looking on instructions for
 how to install or setup monitoring, checkout the
 [setup instructions](/setup/monitoring/).

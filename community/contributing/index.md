@@ -22,3 +22,8 @@ In the meantime, if you're really excited about contributing and don't want to w
 
 For more details about the patch submission process, look at [How to submit a patch](/community/contributing/submitting/).
 
+## How to run Spinnaker locally for development
+
+Running Spinnaker locally on your machine is a great option for testing changes before submitting a pull request.
+
+The [environments](/setup/install/environment/#local-git) page offers a guide for using Halyard to configure a local git repository consistent with a released version of Spinnaker. This can be a great option for developers looking to contribute to Spinnaker to make and test their changes before sending any code for review.

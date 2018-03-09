@@ -19,8 +19,8 @@ and following the instructions in the prompt. If you don't have `gcloud` install
 - Be sure you have the App Engine Admin and Compute Engine APIs enabled for your GCP project: 
 
 ```bash
-gcloud service-management enable appengine.googleapis.com
-gcloud service-management enable compute-component.googleapis.com
+gcloud services enable appengine.googleapis.com
+gcloud services enable compute.googleapis.com
 ```
 
 - If this is your first time deploying to App Engine in your project, execute the following command to create an App Engine application. You cannot change the region, so choose wisely:
@@ -63,7 +63,7 @@ gcloud compute ssh $USER-spinnaker --ssh-flag="-L 9000:localhost:9000" --ssh-fla
 Download and install Halyard on this machine. Halyard is a tool for configuring, installing, and updating Spinnaker.
 
 ```bash
-curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/stable/InstallHalyard.sh
+curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/debian/InstallHalyard.sh
 
 sudo bash InstallHalyard.sh
 ```
@@ -84,6 +84,7 @@ hal config storage edit --type gcs
 
 Then run the following command to allow Spinnaker's API gateway to accept external requests:
 ```bash
+mkdir -p ~/.hal/default/service-settings
 echo "host: 0.0.0.0" | tee ~/.hal/default/service-settings/gate.yml
 ```
 

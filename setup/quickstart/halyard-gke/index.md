@@ -18,7 +18,7 @@ In our scenario, we want to create a Spinnaker instance and set it up as follows
 * We can pull Docker images from our Google Container Registry
 * We use GCS as our persistence store
 
-For this exercise we will be operating entirely within one GCP project, and use Google Container Engine (GKE) as our Kubernetes cluster.
+For this exercise we will be operating entirely within one GCP project, and use Google Kubernetes Engine (GKE) as our Kubernetes cluster.
 
 {% include figure
     image_path="./deployment.png"
@@ -31,6 +31,20 @@ For this exercise we will be operating entirely within one GCP project, and use 
 ### Install gcloud
 
 If you don't already have gcloud installed, navigate to [Installing Cloud SDK](https://cloud.google.com/sdk/downloads#interactive) to install gcloud
+
+#### Authenticate gcloud and set your default project.
+
+Authenticate gcloud with your account. Follow the instructions after the following command.
+
+```bash
+gcloud auth login
+```
+
+Set your default gcloud project:
+
+```bash
+gcloud config set project <PROJECT_NAME>
+```
 
 ### Create a Kubernetes cluster
 
@@ -92,7 +106,7 @@ gcloud projects add-iam-policy-binding $GCP_PROJECT \
 Create a VM with the service account:
 
 ```bash
-HALYARD_HOST=$USER-halyard-`date +%m%d`
+HALYARD_HOST=$(echo $USER-halyard-`date +%m%d` | tr '_.' '-')
 
 gcloud compute instances create $HALYARD_HOST \
     --project=$GCP_PROJECT \
@@ -127,7 +141,9 @@ gcloud compute ssh $HALYARD_HOST \
 ### Install kubectl
 
 ```bash
-curl -O https://storage.googleapis.com/kubernetes-release/release/v1.6.1/bin/linux/amd64/kubectl
+KUBECTL_LATEST=$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)
+
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$KUBECTL_LATEST/bin/linux/amd64/kubectl
 
 chmod +x kubectl
 
@@ -137,7 +153,7 @@ sudo mv kubectl /usr/local/bin/kubectl
 ### Install halyard
 
 ```bash
-curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/stable/InstallHalyard.sh
+curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/debian/InstallHalyard.sh
 
 sudo bash InstallHalyard.sh
 
@@ -181,10 +197,10 @@ gcloud iam service-accounts keys create $GCS_SA_DEST \
 
 ## Part 3: Set Spinnaker configuration
 
-We will install Spinnaker v1.0.1
+We configure Halyard to use the latest version of Spinnaker.
 
 ```bash
-hal config version edit --version 1.0.1
+hal config version edit --version $(hal version latest -q)
 ```
 
 Set up to persist to GCS

@@ -48,6 +48,8 @@ Once this is complete and Spinnaker is deployed, you can optionally use the
 `spinnaker-monitoring-third-party` package to deploy pre-configured [Spinnaker
 dashboards](#supplied-dashboards) to your third-party system of choice.
 
+See also [`hal config metric-stores`](/reference/halyard/commands/#hal-config-metric-stores).
+
 ## Consuming Metrics
 
 Spinnaker publishes internal metrics using a multi-dimensional data model

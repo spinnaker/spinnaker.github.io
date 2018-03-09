@@ -15,9 +15,9 @@ documentation](https://kubernetes.io/docs/home).
 
 ### Account
 
-In Kubernetes, an [Account](/setup/providers/#accounts) maps to a
+In Kubernetes, an [Account](/concepts/providers/#accounts) maps to a
 credential able to authenticate against your desired Kubernetes Cluster, as
-well as a set of [Docker Registry](/setup/providers/docker-registry) accounts
+well as a set of [Docker Registry](/setup/install/providers/docker-registry) accounts
 to be used as a source of images.
 
 ### Instance
@@ -27,7 +27,7 @@ A Spinnaker **Instance** maps to a Kubernetes
 differentiates this from other Cloud Providers is the ability for Pods to run
 multiple containers at once, whereas typical IAAS providers in Spinanker run
 exactly one image per Instance. This means that extra care must be taken when
-updating Pods with more than container to ensure that the correct container is
+updating Pods with more than one container to ensure that the correct container is
 replaced.
 
 ### Server Group
@@ -47,7 +47,7 @@ template:
       ${SERVER-GROUP}: true
 ```
 
-Furthermore, using the [Docker Registry](/setup/providers/docker-registry/)
+Furthermore, using the [Docker Registry](/setup/install/providers/docker-registry/)
 accounts associated with the Kubernetes Account being deployed to, a list of
 [Image Pull
 Secrets](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod)
@@ -92,7 +92,7 @@ scheme for a Deployment in Cluster `${CLUSTER-NAME}` with sequence number
 `SERVER-GROUP-NAME=${CLUSTER-NAME}-v${SEQUENCE-NUMBER}` looks like this:
 
 ```yaml
-# irrelevant details ommitted
+# irrelevant details omitted
 kind: Deployment
 metadata:
   name: ${CLUSTER-NAME}

@@ -76,14 +76,32 @@ cluster.
 | `address` | The address other services will use to lookup this service; e.g.  `localhost` or `redis.service.spinnaker.consul`. |
 | `artifactId` | A fully-qualified identifier for the Artifact this service is to run - see your Service Settings output path for examples, since this varies by platform/deployment environment. |
 | `basicAuthEnabled` | Whether or not to enable HTTP basic auth for this service. |
-| `enabled` | Whether or not this service is enabled. Be careful, since disabling critical services like `consul-client` can make your entire installation unusuable and un-upgradable. |
+| `enabled` | Whether or not this service is enabled. Be careful, since disabling critical services like `consul-client` can make your entire installation unusable and un-upgradable. |
 | `env` | Environment variables to make available to this Service. Supplied as YAML key-value pairs. |
 | `healthEndpoint` | The HTTP endpoint that can be queried for health status.  Leave empty if you want Halyard to simply check that a TCP connection is openable. This information is typically transmitted to the platform's discovery system. |
 | `host` | The host that this service will bind to. `0.0.0.0` will always work, but more restrictive bindings may be more secure. |
+| `kubernetes` | You can add Kubernetes specific service settings, see details below. |
 | `location` | The Spinnaker "location" this will be installed in. This is a namespace in Kubernetes, and a zone in GCE. |
 | `monitored` | Whether or not this has monitoring endpoints exposed and understood by `spinnaker-monitoring`. |
 | `overrideBaseUrl` | The baseURL this service is reachable on. This is already made configurable for Deck & Gate via `hal config security`, since these are both public-facing and may service from different hosts than they are discoverable on internal to Spinnaker. |
 | `port` | The port number this service is bound to, and will accept requests on. |
 | `safeToUpdate` | Whether or not this service can be shutdown, and spun on a new VM/container. This protects datastores like Vault & Redis from being taken down from Halyard. |
-| `scheme` | The URI scheme used to addres this service, e.g. `http` vs.  `https`. |
+| `scheme` | The URI scheme used to address this service, e.g. `http` vs.  `https`. |
+| `skipLifecycleManagement` | Whether or not Halyard should skip managing a service's lifecycle. |
 | `targetSize` | The initial number of nodes this service will be created with.  This is only respected on the initial deployment, and further edits will be rejected in favor of the prior service version's size. |
+
+
+### Kubernetes
+
+The following Kubernetes specific setting can be specified
+
+#### imagePullSecrets
+
+If making use of custom artifactIds from an authenticated docker registry imagePullSecrets must be made available in the replicaset definition. To specify imagePullSecrets to custom artifactIds they can be specified as follows:
+
+```
+kubernetes:
+  imagePullSecrets:
+  - desired-image-pull-secret1
+  - desired-image-pull-secret2
+```

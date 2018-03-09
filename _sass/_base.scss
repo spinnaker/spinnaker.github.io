@@ -93,12 +93,13 @@ abbr[data-original-title] {
 /* blockquotes */
 
 blockquote {
-  margin: 2em 1em 2em 0;
-  padding-left: 1em;
-  padding-right: 1em;
   font-style: italic;
-  border-left: 0.25em solid $light-gray;
-
+  border: 1px dashed $border-color;
+  border-radius: $border-radius;
+  background: $lightest-gray;
+  margin-left: auto;
+  margin-right: auto;
+  
   cite {
     font-style: italic;
 
@@ -106,6 +107,10 @@ blockquote {
       content: "\2014";
       padding-right: 5px;
     }
+  }
+  
+  &.warning {
+    background: $warning-color;
   }
 }
 
@@ -195,7 +200,8 @@ figure {
   }
 
   img {
-    width: 100%;
+    padding: 0.1em;
+    border: 1px solid $light-gray;
     border-radius: $border-radius;
     -webkit-transition: $global-transition;
     transition: $global-transition;

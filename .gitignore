@@ -2,7 +2,6 @@ _site
 .sass-cache
 .jekyll-metadata
 node_modules/
-Gemfile.lock
 /.idea/
 *.iml
 *.ipr

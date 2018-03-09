@@ -9,7 +9,26 @@ redirect_from: /docs/how-to-submit-a-patch
 {% include toc %}
 
 ## Before You Begin
-We prefer small, well tested pull requests. Note that we are unlikely to accept pull requests that add features without prior discussion. The best way to propose a feature is to first [open an issue](https://github.com/spinnaker/spinnaker/issues/new), ping the [#dev channel](https://spinnakerteam.slack.com/messages/C0DPVDMQE/) in slack and discuss your ideas before implementing them.
+
+We prefer small, well tested pull requests. Note that we are unlikely to accept
+pull requests that add features without prior discussion. The best way to
+propose a feature is to first [open an
+issue](https://github.com/spinnaker/spinnaker/issues/new), ping the [#dev
+channel](https://spinnakerteam.slack.com/messages/C0DPVDMQE/) in slack and
+discuss your ideas before implementing them.
+
+It's possible that we'll encourage you to write a "design doc" if your change
+is large or impactful enough. There are no formal requirements, but we
+encourage you to discuss the following points:
+
+* Why this change is necessary, and what problem(s) it solves.
+* What alternatives you considered.
+* How it will integrate with other Spinnaker features.
+* A rough, technical plan of the work required.
+* What integration testing you think is necessary.
+* (Optional) Implementation milestones you plan to hit.
+
+Once your design doc is ready, the community will review it and leave feedback.
 
 ## When you initiate a Pull Request from Github
 

@@ -24,3 +24,5 @@ These are the CI systems currently supported by Spinnaker:
 
 * [Jenkins](/setup/ci/jenkins/)
 * [Travis CI](/setup/ci/travis/)
+
+See also [`hal config ci`](/reference/halyard/commands/#hal-config-ci).

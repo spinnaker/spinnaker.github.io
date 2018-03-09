@@ -12,7 +12,7 @@ If you are not familiar with Azure or any of the terms used below, please consul
 ## Resource Mapping
 
 ### Account
-In [Azure](https://azure.microsoft.com/) (AZ), an [Account](/setup/providers/#accounts)
+In [Azure](https://azure.microsoft.com/) (AZ), an [Account](/concepts/providers/#accounts)
 maps to a credential able to authenticate against a given [Azure](https://azure.microsoft.com/) (AZ)
 project - see the [setup guide](/setup/providers/azure).
 
@@ -49,10 +49,10 @@ Destroys an Azure Virtual Machine Scale set.
 Not supported
 
 ### Enable
-Enables an Azure Virtual Machine Scale Set to recieve traffic.
+Enables an Azure Virtual Machine Scale Set to receive traffic.
 
 ### Disable
-Disables an Azure Virtual Machine Scale set from recieving traffic.
+Disables an Azure Virtual Machine Scale set from receiving traffic.
 
 ### Create Load Balancer
 Creates a new Application Gateway in Azure.

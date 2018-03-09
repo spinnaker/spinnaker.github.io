@@ -27,7 +27,7 @@ Engine project, and an App Engine application all at once.
 
 ### Edit Your Storage Settings
 
-[Documentation](/setup/storage/) -- `hal config storage`
+[Documentation](/setup/install/storage/) -- `hal config storage`
 
 While you have likely already setup a storage source during the initial
 installation of Spinnaker, you can always reconfigure it. However, it is up to
