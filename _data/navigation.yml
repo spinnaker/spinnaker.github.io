@@ -273,6 +273,8 @@ reference:
             url: /reference/artifacts/types/overview/
           - title: Docker Image
             url: /reference/artifacts/types/docker-image/
+          - title: Embedded Base64
+            url: /reference/artifacts/types/embedded-base64/
           - title: GCS Object
             url: /reference/artifacts/types/gcs-object/
           - title: GitHub File
