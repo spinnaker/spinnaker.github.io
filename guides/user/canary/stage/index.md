@@ -26,6 +26,7 @@ The Retrospective analysis type means that the canary analysis will be performed
 
 
 ###
+<<<<<<< HEAD
 ## What's in the canary stages
 
 The canary analysis can be performed over data points collected beginning from
@@ -33,3 +34,5 @@ the moment of execution and into the future, or it can be performed over a
 specified time interval.
 
 *
+=======
+>>>>>>> 26f81e3c11f7f022ab653c95c143c39b49e798ea

@@ -20,11 +20,14 @@ used for operational changes, including changes to configuration.
 
 The canary process is not a substitute for other forms of testing.
 
+<<<<<<< HEAD
 Canaries are usually used for deployments with changes to code, but can also be
 used for operational changes, including changes to configuration.
 
 The canary process is not a substitute for other forms of testing.
 
+=======
+>>>>>>> 26f81e3c11f7f022ab653c95c143c39b49e798ea
 ## How to make Canary work in Spinnaker&mdash;the high-level process
 
 This process assumes Spinnaker is already set up to support Canary.
@@ -63,6 +66,10 @@ metrics tracked by your telemetry service.
 Before you have
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 26f81e3c11f7f022ab653c95c143c39b49e798ea
 Notes on what all else to include:
 * Something descriptive about the judge itself. Not going to get into the
 interface, in the sense that I'm not documenting for devs how to plug in their

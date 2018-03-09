@@ -103,6 +103,7 @@ template](/guides/user/canary/config/filter_templates/).
    resource.type = "gce_instance" AND
    resource.labels.zone = starts_with("${zone}")
    ```
+<<<<<<< HEAD
 
 1. Optionally, click __Group by__ and enter the metric metadata attribute by
 which to group and aggregate the data.
@@ -191,6 +192,9 @@ template](/guides/user/canary/config/filter_templates/).
    resource.labels.zone = starts_with("${zone}")
    ```
 
+=======
+   
+>>>>>>> 26f81e3c11f7f022ab653c95c143c39b49e798ea
 1. Optionally, click __Group by__ and enter the metric metadata attribute by
 which to group and aggregate the data.
 
