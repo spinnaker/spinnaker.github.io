@@ -37,13 +37,19 @@ However, a URI alone isn't always enough. Take the following examples:
   them. You need a way to annotate a URI with an account that can fetch
   it based on a user's permissions.
 
-To address situations like these, Spinnaker includes a format for decorating URIs with pertinent metadata.
+To address situations like these, Spinnaker includes a format for supplying
+URIs alongside pertinent metadata. We call this "artifact decoration".
 
 # Decorate your Artifacts
 
 In Spinnaker, artifacts must match a specification. This specification is
-consistent among all artifacts, whether they're supplied to pipelines, accessed within
-pipelines, or produced by pipelines.
+consistent among all artifacts, whether they're supplied to pipelines, accessed
+within pipelines, or produced by pipelines.
+
+> Every time we refer to an _Artifact_, we mean a JSON payload matching this
+> specification, not the actual artifact contents. The key distinction is that
+> the artifact is a reference or a pointer to a resource, not the resource
+> itself.
 
 ## Format
 
