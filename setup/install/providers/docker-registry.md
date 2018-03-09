@@ -107,7 +107,12 @@ SA_EMAIL=$(gcloud iam service-accounts list \
 PROJECT=$(gcloud info --format='value(config.project)')
 
 gcloud projects add-iam-policy-binding $PROJECT \
-    --role roles/storage.admin --member serviceAccount:$SA_EMAIL
+    --member serviceAccount:$SA_EMAIL \
+    --role roles/browser
+
+gcloud projects add-iam-policy-binding $PROJECT \
+    --member serviceAccount:$SA_EMAIL \
+    --role roles/storage.admin
 
 mkdir -p $(dirname $SERVICE_ACCOUNT_DEST)
 
