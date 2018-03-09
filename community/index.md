@@ -78,6 +78,9 @@ purestorage_user:
 mulesoft_user:
   image_path: assets/images/users/MuleSoft_logo_299C.png
   alt: "MuleSoft Logo"
+makerbot_user:
+  image_path: assets/images/users/makerbot_logo.png
+  alt: "MakerBot Logo"
 cleartax_in_user:
   image_path: assets/images/users/cleartax_in_logo.png
   alt: "ClearTax.in Logo"
@@ -151,6 +154,7 @@ The Spinnaker OSS project was started at Netflix, and today thrives on the contr
   </div>
   <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="weatherbug_user" %}
+    {% include spinnaker_user id="makerbot_user" %}
   </div>
 </div>
 
@@ -170,5 +174,3 @@ The list of contributors is growing with some core contributors below. Please re
 * [Skuid](http://www.skuid.com/)
 * [Target](http://target.github.io/)
 * [Veritas Technologies LLC](https://github.com/VeritasOS)
-
-
