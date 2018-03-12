@@ -86,7 +86,7 @@ cleartax_in_user:
   alt: "ClearTax.in Logo"
 grubhub_user:
   image_path: assets/images/users/grubhub_logo.png
-  alt: "GrubHub Logo"
+  alt: "Grubhub Logo"
 ---
 
 ## Engage the community and get support
