@@ -81,6 +81,7 @@ mulesoft_user:
 makerbot_user:
   image_path: assets/images/users/makerbot_logo.png
   alt: "MakerBot Logo"
+  image_class: spinnaker_user__makerbot
 cleartax_in_user:
   image_path: assets/images/users/cleartax_in_logo.png
   alt: "ClearTax.in Logo"

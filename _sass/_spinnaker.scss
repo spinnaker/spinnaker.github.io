@@ -392,7 +392,7 @@ $cloud-providers-bar-mobile-height: $blue-bar-mobile-height + $white-bar-height;
   }
 
   .spinnaker_user {
-    &__target, &__schibsted, &__gogo {
+    &__target, &__schibsted, &__gogo, &__makerbot {
       width: 110px;
     }
   }
