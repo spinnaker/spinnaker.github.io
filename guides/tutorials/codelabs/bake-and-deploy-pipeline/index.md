@@ -19,9 +19,6 @@ Note here that the us-east-1a availability zone is currently full, so it will ne
 1. In Spinnaker, click **Actions** > **Create Application**
   1. Input <code>example</code> for the **Name** field and your email address for
 the **Owner Email** field.
-2. Click inside of the dashed rectangle beside the **Accounts** heading.
-  * Click <code>my-aws-account</code> if you are deploying to AWS or
-<code>my-google-account</code> if you are deploying to GCP.
 3. Click on the **Consider only cloud provider health when executing
   tasks** button next to **Instance Health**.
 4. Click the **Create** button.
