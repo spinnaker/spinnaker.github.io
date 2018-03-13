@@ -60,7 +60,7 @@ to apply them in Spinnaker.
 # Using GitHub Artifacts in Pipelines
 
 We will need either an existing or a new pipeline that we want to be triggered
-on changes to GCS artifacts. If you do not have a pipeline, create one as shown
+on changes to GitHub artifacts. If you do not have a pipeline, create one as shown
 below.
 
 {%
