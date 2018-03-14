@@ -215,6 +215,19 @@ guides:
             url: /guides/user/kubernetes-v2/parameterize-manifests/
           - title: Configure Automated Rollbacks
             url: /guides/user/kubernetes-v2/automated-rollbacks/
+      - title: Automated Canary Analysis
+        collapsed: true
+        children:
+          - title: Overview
+            url: /guides/user/canary/
+          - title: Configure Canary for Application
+            url: /guides/user/canary/config/
+          - title: Add a Canary Stage to Pipeline
+            url: /guides/user/canary/stage/
+          - title: Canary Best Practices
+            url: /guides/user/canary/best-practices/
+          - title: About the Canary Judge
+            url: /guides/user/canary/judge/
   - title: Developer How-Tos
     collapsed: true
     children:
