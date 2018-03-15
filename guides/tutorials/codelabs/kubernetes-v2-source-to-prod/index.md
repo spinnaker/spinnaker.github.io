@@ -33,11 +33,11 @@ Before we begin, we need to do the following:
 
 * [Configure Kubernetes](#configure-kubernetes)
 
-  Two Kubernetes clusters, one for staging, and one for prod.
+  Two Kubernetes clusters, one for staging and one for prod.
 
 * [Configure Spinnaker](#configure-spinnaker)
   
-  A running Spinnaker instance, able to deploy to Kubernetes, and download
+  A running Spinnaker instance, able to deploy to Kubernetes and download
   artifacts from GitHub.
 
 * [Configure Webhooks](#configure-webhooks)
@@ -196,12 +196,13 @@ NAME        TYPE       CLUSTER-IP    EXTERNAL-IP   PORT(S)          AGE
 spin-gate   NodePort   10.7.255.85   <none>        8084:31355/TCP   32m
 ```
 
-At this point, you will (for this codelab only) have to open your firewalls on a node
-(with IP `$NODE_IP`) in that cluster to all addresses on for TCP connections on
-`$NODE_PORT`. If (for a production use-case) you were running Spinnaker with
-[authentication](/setup/security), only webhooks would be allowed, which you
-can reject by header or payload. See [the webhook guide for more 
-details](/guides/user/triggers/webhooks).
+Now pick any node in the cluster and record its IP as `$NODE_IP`; for the purposes of
+this codelab, we'll be sending external webhooks to `$NODE_PORT` on that node.  In
+order for these webhooks to work, you will (for this codelab only) have to open your
+firewall on that node to all addresses for TCP connections on `$NODE_PORT`. If
+(for a production use-case) you were running Spinnaker with [authentication](/setup/security),
+only webhooks would be allowed, which you can reject by header or payload.
+See [the webhook guide for more details](/guides/user/triggers/webhooks).
 
 ### Allow Docker to Post Build Events
 
@@ -331,9 +332,9 @@ Save the pipeline.
 
 # 3. Deploy Manifests to Staging
 
-Trigger the pipeline by pushing a commit to your repository. The pipeline
-should start in a few seconds -- when it completes, click __Details__ to see
-information about the execution:
+Trigger the pipeline by pushing a commit to the `manifests/demo.yml` file in
+your repository. The pipeline should start in a few seconds -- when it completes,
+click __Details__ to see information about the execution:
 
 {% include figure
    image_path="./staging-execution.png"
@@ -341,7 +342,7 @@ information about the execution:
 
 There are a couple of things to notice here: 
 
-* In the top right we get details about the commit that triggered this
+* In the top left we get details about the commit that triggered this
   pipeline. 
 
 * In the __Deploy Status__ we can see what the YAML was that Spinnaker
@@ -496,7 +497,7 @@ trigger that depends on the "Validate Staging" pipeline:
 %}
 
 Next, change the __Account__ the "Deploy (Manifest)" stage deploys to
-point at __demo-prod__:
+point at __prod-demo__:
 
 {% include figure
    image_path="./deploy-to-prod-account.png"
