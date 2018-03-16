@@ -227,7 +227,13 @@ Arithmetic operations such as `${ trigger.buildInfo.number * 2 }` are supported.
 
 ### Comparisons
 
-The expression language also allows you to specify rational operators, such as `${ instance.size > 400 }` or `${ params.runCanary == true }`.  Note that you may need to coerce or transform some values for the comparisons to work properly.  For example, the `status` attribute of a stage is actually an enum internally, not a string (although it shows up as a string in the JSON).  To compare the status to a string, you'll need to call `.toString()` on the result.
+The expression language also allows you to specify rational operators, such as `${ instance.size > 400 }` or `${ params.runCanary == true }`.
+
+Note that you may need to coerce or transform some values for the comparisons to work properly.  For example, the `status` attribute of a stage is actually an enum internally, not a string (although it shows up as a string in the JSON).  To compare the status to a string, you'll need to call `.toString()` on the result.  For example:
+
+```
+#stage('Validation')['status'].toString() == 'SUCCEEDED'
+```
 
 ### Functions
 
