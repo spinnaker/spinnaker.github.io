@@ -229,6 +229,12 @@ Arithmetic operations such as `${ trigger.buildInfo.number * 2 }` are supported.
 
 The expression language also allows you to specify rational operators, such as `${ instance.size > 400 }` or `${ params.runCanary == true }`.
 
+Note that you may need to coerce or transform some values for the comparisons to work properly.  For example, the `status` attribute of a stage is actually an enum internally, not a string (although it shows up as a string in the JSON).  To compare the status to a string, you'll need to call `.toString()` on the result.  For example:
+
+```
+#stage('Validation')['status'].toString() == 'SUCCEEDED'
+```
+
 ### Functions
 
 There are a few [helper functions](#helper-functions-in-spinnaker) available within Spinnaker. These can be accessed via `#functionName( params )`. For example, `#fromUrl( 'http://www.netflix.com' )`.
