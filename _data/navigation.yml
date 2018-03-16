@@ -98,6 +98,8 @@ setup:
             url: /setup/artifacts/gcs/
           - title: GitHub
             url: /setup/artifacts/github/
+          - title: HTTP
+            url: /setup/artifacts/http/
       - title: Configure the Image Bakery
         collapsed: true
         children:
@@ -279,6 +281,8 @@ reference:
             url: /reference/artifacts/types/gcs-object/
           - title: GitHub File
             url: /reference/artifacts/types/github-file/
+          - title: HTTP File 
+            url: /reference/artifacts/types/http-file/
           - title: Kubernetes Object
             url: /reference/artifacts/types/kubernetes-object/
   - title: Halyard
