@@ -100,7 +100,7 @@ gcloud projects add-iam-policy-binding $GCP_PROJECT \
     --role roles/storage.admin \
     --member serviceAccount:$GCS_SA_EMAIL
 
-gcloud projects add-iam-policy-binding $PROJECT \
+gcloud projects add-iam-policy-binding $GCP_PROJECT \
     --member serviceAccount:$GCS_SA_EMAIL \
     --role roles/browser
 ```
