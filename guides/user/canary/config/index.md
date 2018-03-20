@@ -91,7 +91,7 @@ you need to [add them to groups](#group_metrics).
 
 1. Specify whether this metric fails when the value deviates too high or too low.
 
-  Or select __either__, in which case it fails on deviation in either direction.
+   Or select __either__, in which case it fails on deviation in either direction.
 
 1. Optionally, choose a [filter
 template](/guides/user/canary/config/filter_templates/).
@@ -112,13 +112,14 @@ which to group and aggregate the data.
     StackDriver lets you [group time series by resource and metric labels](), and
     then aggregate the data under those groups.
 
-    > __Metric groups versus grouping metrics__
-    >
-    > When you create a canary configuration, you create metric groups, and scoring
-    > thresholds and weights are applied to groups (rather than to specific metrics).
-    > But you can also group metrics by resource type, as described [below](##group_the_metrics).
 
 ## Group the metrics
+
+> __Metric groups versus grouping metrics__
+>
+> When you create a canary configuration, you create metric groups, and scoring
+> thresholds and weights are applied to groups (rather than to specific metrics).
+> But you can also group metrics by resource type, as described [below](##group_the_metrics).
 
 If you're using StackDriver, you can
 [group metrics by resource groups](https://cloud.google.com/monitoring/groups/).

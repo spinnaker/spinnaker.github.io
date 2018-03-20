@@ -8,15 +8,13 @@ sidebar:
 {% include toc %}
 
 
-Canary is a deployment process in which a change is rolled out gradually, with
-checkpoints along the way to evaluate the new system (the canary) versus the old
-system (baseline) to ensure that the new system is operating at least as well as
-the old.
+Canary is a deployment process in which a change is partially rolled out, then
+evaluated against the current deployment (baseline) to ensure that the new
+deployment is operating at least as well as the old. This evaluation is done
+using key metrics chosen when the canary is configured.
 
-This evaluation is done using key metrics chosen when the canary is configured.
-
-Canaries are usually used for deployments with changes to code, but can also be
-used for operational changes, including changes to configuration.
+Canaries are usually run against deployments containing changes to code, but they
+can also be used for operational changes, including changes to configuration.
 
 The canary process is not a substitute for other forms of testing.
 
