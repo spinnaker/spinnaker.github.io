@@ -83,7 +83,7 @@ Alternatively, you can overwrite the whole list using the `--required-group-memb
 
 ### Applications
 
-Set permissions for an existing application using the application configration:
+Set permissions for an existing application using the application configuration:
 
 {% include figure
    image_path="./applications_permissions.png"
