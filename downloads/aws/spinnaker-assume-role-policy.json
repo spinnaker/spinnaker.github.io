@@ -1,0 +1,10 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [{
+        "Action": "sts:AssumeRole",
+        "Resource": [
+            "arn:aws:iam::MANAGING_ACCOUNT_ID:role/spinnakerManaged"MANAGED_ACCOUNT_ROLE_ARNS
+        ],
+        "Effect": "Allow"
+    }]
+}

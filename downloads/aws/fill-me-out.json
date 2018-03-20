@@ -1,0 +1,8 @@
+{
+	"AWS_ACCOUNT_NAME":"my-aws-account",
+	"AWS_VPC_NAME":"my-default-vpc",
+	"AWS_REGION":"us-west-2",
+	"MANAGING_ACCOUNT_ID":"",
+	"MANAGED_ACCOUNT_IDS": [],
+	"AUTH_TYPE":"role"
+}

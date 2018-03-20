@@ -1,0 +1,11 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [{
+        "Sid": "1",
+        "Effect": "Allow",
+        "Principal": {
+            "AWS": "arn:aws:iam::MANAGING_ACCOUNT_ID:role/SpinnakerAuthRole"
+        },
+    "Action": "sts:AssumeRole"
+    }]
+}

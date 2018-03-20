@@ -1,0 +1,13 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [{
+        "Effect": "Allow",
+        "Action": [ "ec2:*" ],
+        "Resource": "*"
+    },
+    {
+        "Effect": "Allow",
+        "Action": "iam:PassRole",
+        "Resource": "arn:aws:iam::MANAGING_ACCOUNT_ID:role/BaseIAMRole"
+    }]
+}
