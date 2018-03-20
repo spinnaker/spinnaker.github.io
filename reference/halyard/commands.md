@@ -5,7 +5,7 @@ sidebar:
   nav: reference
 ---
 
-Published: 2018-03-02 21:25:23
+Published: 2018-03-20 12:20:25
 
 
 # Table of Contents
@@ -45,6 +45,15 @@ Published: 2018-03-02 21:25:23
  * [**hal config artifact github account list**](#hal-config-artifact-github-account-list)
  * [**hal config artifact github disable**](#hal-config-artifact-github-disable)
  * [**hal config artifact github enable**](#hal-config-artifact-github-enable)
+ * [**hal config artifact http**](#hal-config-artifact-http)
+ * [**hal config artifact http account**](#hal-config-artifact-http-account)
+ * [**hal config artifact http account add**](#hal-config-artifact-http-account-add)
+ * [**hal config artifact http account delete**](#hal-config-artifact-http-account-delete)
+ * [**hal config artifact http account edit**](#hal-config-artifact-http-account-edit)
+ * [**hal config artifact http account get**](#hal-config-artifact-http-account-get)
+ * [**hal config artifact http account list**](#hal-config-artifact-http-account-list)
+ * [**hal config artifact http disable**](#hal-config-artifact-http-disable)
+ * [**hal config artifact http enable**](#hal-config-artifact-http-enable)
  * [**hal config ci**](#hal-config-ci)
  * [**hal config ci jenkins**](#hal-config-ci-jenkins)
  * [**hal config ci jenkins disable**](#hal-config-ci-jenkins-disable)
@@ -539,6 +548,7 @@ hal config artifact [subcommands]
 #### Subcommands
  * `gcs`: Manage and view Spinnaker configuration for the gcs provider
  * `github`: Manage and view Spinnaker configuration for the github provider
+ * `http`: Manage and view Spinnaker configuration for the http provider
 
 ---
 ## hal config artifact gcs
@@ -845,6 +855,162 @@ Set the github artifact provider as enabled
 #### Usage
 ```
 hal config artifact github enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact http
+
+Manage and view Spinnaker configuration for the http provider
+
+#### Usage
+```
+hal config artifact http [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `account`: Manage and view Spinnaker configuration for the http artifact provider's account
+ * `disable`: Set the http artifact provider as disabled
+ * `enable`: Set the http artifact provider as enabled
+
+---
+## hal config artifact http account
+
+Manage and view Spinnaker configuration for the http artifact provider's account
+
+#### Usage
+```
+hal config artifact http account ACCOUNT [parameters] [subcommands]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `add`: Add an artifact account to the http artifact provider.
+ * `delete`: Delete a specific http artifact account by name.
+ * `edit`: Edit an artifact account in the http artifact provider.
+ * `get`: Get the specified account details for the http provider.
+ * `list`: List the artifact account names for the http artifact provider.
+
+---
+## hal config artifact http account add
+
+Add an artifact account to the http artifact provider.
+
+#### Usage
+```
+hal config artifact http account add ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--password`: (*Sensitive data* - user will be prompted on standard input) HTTP basic auth password
+ * `--username`: HTTP basic auth username
+ * `--username-password-file`: File containing "username:password" to use for HTTP basic auth
+
+
+---
+## hal config artifact http account delete
+
+Delete a specific http artifact account by name.
+
+#### Usage
+```
+hal config artifact http account delete ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact http account edit
+
+Edit an artifact account in the http artifact provider.
+
+#### Usage
+```
+hal config artifact http account edit ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--password`: (*Sensitive data* - user will be prompted on standard input) Http password
+ * `--username`: Http username
+ * `--username-password-file`: File containing "username:password" to use for Http authentication
+
+
+---
+## hal config artifact http account get
+
+Get the specified account details for the http provider.
+
+#### Usage
+```
+hal config artifact http account get ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact http account list
+
+List the artifact account names for the http artifact provider.
+
+#### Usage
+```
+hal config artifact http account list [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact http disable
+
+Set the http artifact provider as disabled
+
+#### Usage
+```
+hal config artifact http disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact http enable
+
+Set the http artifact provider as enabled
+
+#### Usage
+```
+hal config artifact http enable [parameters]
 ```
 
 #### Parameters
@@ -3222,14 +3388,19 @@ hal config provider kubernetes account add ACCOUNT [parameters]
 When no context is configured for an account the 'current-context' in your kubeconfig is assumed.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--docker-registries`: (*Default*: `[]`) A list of the Spinnaker docker registry account names this Spinnaker account can use as image sources. These docker registry accounts must be registered in your halconfig before you can add them here.
+ * `--kinds`: (*Default*: `[]`) (V2 Only) A list of resource kinds this Spinnaker account can deploy to and will cache.
+When no kinds are configured, this defaults to 'all kinds described here https://spinnaker.io/reference/providers/kubernetes-v2'.
  * `--kubeconfig-file`: The path to your kubeconfig file. By default, it will be under the Spinnaker user's home directory in the typical .kube/config location.
  * `--namespaces`: (*Default*: `[]`) A list of namespaces this Spinnaker account can deploy to and will cache.
 When no namespaces are configured, this defaults to 'all namespaces'.
  * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--omit-kinds`: (*Default*: `[]`) (V2 Only) A list of resource kinds this Spinnaker account cannot deploy to or cache.
+This can only be set when --kinds is empty or not set.
  * `--omit-namespaces`: (*Default*: `[]`) A list of namespaces this Spinnaker account cannot deploy to or cache.
-This can only be set when no --namespaces are provided.
+This can only be set when --namespaces is empty or not set.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
  * `--required-group-membership`: (*Default*: `[]`) A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
+ * `--service-account`: When true, Spinnaker attempt to authenticate against Kubernetes using a Kubernetes service account. This only works when Halyard & Spinnaker are deployed in Kubernetes. Read more about service accounts here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/.
 
 
 ---
@@ -3261,9 +3432,12 @@ hal config provider kubernetes account edit ACCOUNT [parameters]
 #### Parameters
 `ACCOUNT`: The name of the account to operate on.
  * `--add-docker-registry`: Add this docker registry to the list of docker registries to use as a source of images.
+ * `--add-kind`: Add this kind to the list of kinds to manage.
  * `--add-namespace`: Add this namespace to the list of namespaces to manage.
+ * `--add-omit-kind`: Add this kind to the list of kinds to omit.
  * `--add-omit-namespace`: Add this namespace to the list of namespaces to omit.
  * `--add-required-group-membership`: Add this group to the list of required group memberships.
+ * `--all-kinds`: (*Default*: `false`) Set the list of kinds to cache and deploy to every kind available to your supplied credentials.
  * `--all-namespaces`: (*Default*: `false`) Set the list of namespaces to cache and deploy to every namespace available to your supplied credentials.
  * `--clear-context`: (*Default*: `false`) Removes the currently configured context, defaulting to 'current-context' in your kubeconfig.See http://kubernetes.io/docs/user-guide/kubeconfig-file/#context for more information.
  * `--configure-image-pull-secrets`: (Only applicable to the v1 provider). When true, Spinnaker will create & manage your image pull secrets for you; when false, you will have to create and attach them to your pod specs by hand.
@@ -3271,18 +3445,25 @@ hal config provider kubernetes account edit ACCOUNT [parameters]
 When no context is configured for an account the 'current-context' in your kubeconfig is assumed.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--docker-registries`: (*Default*: `[]`) A list of the Spinnaker docker registry account names this Spinnaker account can use as image sources. These docker registry accounts must be registered in your halconfig before you can add them here.
+ * `--kinds`: (*Default*: `[]`) (V2 Only) A list of resource kinds this Spinnaker account can deploy to and will cache.
+When no kinds are configured, this defaults to 'all kinds described here https://spinnaker.io/reference/providers/kubernetes-v2'.
  * `--kubeconfig-file`: The path to your kubeconfig file. By default, it will be under the Spinnaker user's home directory in the typical .kube/config location.
  * `--namespaces`: (*Default*: `[]`) A list of namespaces this Spinnaker account can deploy to and will cache.
 When no namespaces are configured, this defaults to 'all namespaces'.
  * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--omit-kinds`: (*Default*: `[]`) (V2 Only) A list of resource kinds this Spinnaker account cannot deploy to or cache.
+This can only be set when --kinds is empty or not set.
  * `--omit-namespaces`: (*Default*: `[]`) A list of namespaces this Spinnaker account cannot deploy to or cache.
-This can only be set when no --namespaces are provided.
+This can only be set when --namespaces is empty or not set.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
  * `--remove-docker-registry`: Remove this docker registry from the list of docker registries to use as a source of images.
+ * `--remove-kind`: Remove this kind to the list of kinds to manage.
  * `--remove-namespace`: Remove this namespace to the list of namespaces to manage.
+ * `--remove-omit-kind`: Remove this kind to the list of kinds to omit.
  * `--remove-omit-namespace`: Remove this namespace to the list of namespaces to omit.
  * `--remove-required-group-membership`: Remove this group from the list of required group memberships.
  * `--required-group-membership`: A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
+ * `--service-account`: When true, Spinnaker attempt to authenticate against Kubernetes using a Kubernetes service account. This only works when Halyard & Spinnaker are deployed in Kubernetes. Read more about service accounts here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/.
 
 
 ---
