@@ -205,5 +205,5 @@ hal config pubsub google subscription add $PUBSUB_NAME \
 ```
 
 There are more options described
-[here](/reference/halyard/commands#hal-config-artifact-gcs-account-edit)
+[here](/reference/halyard/commands/#hal-config-pubsub-google-subscription-edit)
 if you need more control over your configuration.
