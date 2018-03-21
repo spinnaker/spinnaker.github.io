@@ -230,7 +230,7 @@ data:
         apiSecurity:
           ssl:
             enabled: false
-          overrideBaseUrl: http://localhost:9000/gate
+          overrideBaseUrl: /gate
         uiSecurity:
           ssl:
             enabled: false
