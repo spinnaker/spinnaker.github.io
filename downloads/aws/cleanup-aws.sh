@@ -4,7 +4,7 @@ ARN_FILENAME=aws-arns.json
 
 validate(){
 	print_function_details
-	if [ ! -e $ARN_FILENAME ] 
+	if [[ ! -e $ARN_FILENAME ]] 
 	then
 		print_error_and_exit "File aws_arns.json does not exist. No resources to clean up."
 	fi 
@@ -60,7 +60,7 @@ delete_roles(){
 }
 
 print_function_details(){
-		echo "Script step: " ${FUNCNAME[1]}	
+	echo "Script step: " ${FUNCNAME[1]}	
 }
 
 print_error_and_exit(){

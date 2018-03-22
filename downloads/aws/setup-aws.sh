@@ -33,7 +33,7 @@ update_json_files(){
 
 	NUM_MANAGED_ACCOUNTS=$(jq '.MANAGED_ACCOUNT_IDS | length' fill-me-out.json)
 
-	if [ "$NUM_MANAGED_ACCOUNTS" == "0" ]; then
+	if [[ "$NUM_MANAGED_ACCOUNTS" == "0" ]]; then
 		sed -i.bak s/MANAGED_ACCOUNT_ROLE_ARNS/""/g spinnaker-assume-role-policy.json
 	else
 		# Roles contain /. Seperator changed to #.
@@ -169,7 +169,7 @@ print_function_details(){
 }
 
 print_resource_creation(){
-	echo "Created resource " + $1
+	echo "Created resource $1"
 }
 
 print_error_and_exit(){

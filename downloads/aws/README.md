@@ -3,7 +3,7 @@ Scripted setup to get your aws account ready for Spinnaker
 Replaces setup at https://www.spinnaker.io/setup/install/providers/aws/
 
 ## Prep Work
-These steps must be completed before you can setup your aws account
+These steps must be completed before you can set up your aws account
 
 ### Environment
 You can set up AWS from your local machine or from an instance launched in your AWS account.
@@ -15,7 +15,7 @@ You need these permissions to set up AWS to run Spinnaker:
 	sts:AssumeRole
 ```
 
-If you also want to run `halyard`, you'll need `s3` permissions:
+If you also want to run [`halyard`](https://www.spinnaker.io/setup/install/halyard/), you'll need `s3` permissions:
 ```
 	s3:*
 ```
@@ -43,17 +43,26 @@ AWS Inline Policy Example (no restrictions):
 ```
 A policy giving you access to these resources should be attached to the instance profile you're running this script from. If you've already launched the instance, you can add permissions to the instance profile via the AWS Console.
 
-The permissions listed here are not all of the permissions needed to run Spinnaker. These permissions are just for preparing your aws environment. 
+The permissions listed here are *extremely* extreme, and provide the path of list resistance (rather than the past of least privilage) for setting up your AWS account. These permissions are also not all of the permissions needed to run Spinnaker. We do not reccomend these permissions for the operation of Spinnaker.
+
+Additionally, you must have [`jq`](https://stedolan.github.io/jq/download/) installed:
+```sh
+# OS X
+brew install jq
+
+# Ubuntu
+sudo apt-get install jq
+```
 
 #### Set up local environment
 
-If you're running locally, make sure that you've installed AWS and the credentials user or role that you are using has the required permissions (listed above). Set up the [aws cli](https://docs.aws.amazon.com/rekognition/latest/dg/setup-awscli.html).
+If you're running locally, make sure that you've [installed the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) and the credentials user or role that you are using has the required permissions (listed above). Set up the [aws cli](https://docs.aws.amazon.com/rekognition/latest/dg/setup-awscli.html).
 
 #### OR Set up AWS Box
 
 If you're running this from an EC2 instance make sure that the instance profile attached to that instance has the above permissions.
 
-Make sure that the `aws` cli is installed and configured on the machine you're running, and that the env var `AWS_DEFAULT_REGION` is set.
+Make sure that the [`aws` cli is installed](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) and configured on the machine you're running, and that the env var `AWS_DEFAULT_REGION` is set.
 
 ```bash
 	sudo apt-get install awscli
@@ -69,11 +78,11 @@ Feel free to change the default names or leave them. They will show up in the UI
 * `MANAGED_ACCOUNT_IDS` is an array of account IDs of accounts that Spinnaker is managing.
 * `AUTH_TYPE` is the [method of authentication](https://www.spinnaker.io/setup/install/providers/aws/#configure-an-authentication-mechanism).
 	* If Spinnaker is running inside of EC2, chose "role".
-	* If Spinnaker is running outside of EC2, chose "user". This will need to be created through the console following [these steps](https://www.spinnaker.io/setup/install/providers/aws/#option-2-add-a-user-and-access-key--secret-pair).
+	* If Spinnaker is running outside of EC2, chose "user". This will need to be created through the AWS console following [these steps](https://www.spinnaker.io/setup/install/providers/aws/#option-2-add-a-user-and-access-key--secret-pair).
 
 ### Run `setup-aws.sh`
 Your specific information will be pulled from `fill-me-out.json`.
-The resources that are created will be output in a created file called `aws-arns.json`. Each run of `setup-aws.sh` appends the created resources to this file if it exists.
+The resources that are created will be output in a file called `aws-arns.json`. Each run of `setup-aws.sh` appends the created resources to this file if it exists.
 
 All created infrastructure resources will be tagged with `spinnaker:setup:TIMESTAMP`, where timestamp is the start time of the script.
 
