@@ -25,7 +25,10 @@ The canary process is not a substitute for other forms of testing.
 If you're going to generate the kinds of metrics that Spinnaker canary
 analysis can use to make judgments, you must instrument your code to have those
 metrics tracked by your telemetry service.
-(((link to StackDriver docs as an example?)))
+
+Support is built in forps://cloud.google.com/stackdriver/docs/),
+[Datadog](https://docs.datadoghq.com/), and
+[Prometheus](https://prometheus.io/docs/introduction/overview/).
 
 ### Set up your canary environment
 
@@ -33,14 +36,11 @@ Before you can configure canary analysis and create canary stages for your
 pipelines, your Spinnaker administrator needs to [enable canary for your
 installation](/setup/canary/).
 
-
-*
-
 ## How to make Canary work in Spinnaker&mdash;the high-level process
 
 This process assumes Spinnaker is already [set up to support Canary](/setup/canary/).
 
-(See also: [The Canary Judge&mdash;how does it work?](/guides/user/canary/judge/).
+(See also: [The Canary Judge&mdash;how does it work?](/guides/user/canary/judge/))
 
 1. In Spinnaker, create one or more canary configurations.
 
@@ -50,12 +50,12 @@ This process assumes Spinnaker is already [set up to support Canary](/setup/cana
    [Here's how](/guides/user/canary/config/).
 
    You can configure each metric flexibly, to define its scope and whether it
-   fails when it deviates upward or down. Also, you can group metrics logically;
+   fails when it deviates upward or down. You can also group metrics logically;
    any that you leave ungrouped are evaluated, but they don't contribute to the
    success or failure of the canary run.
 
-1. In any deployment pipeline that will use canary, add a canary stage.
+1. In any deployment pipeline that will use canary, add one or more canary stages.
 
-   In that stage, you can specify the scope and override scoring thresholds.
+   In a canary stage, you can specify the scope and override scoring thresholds.
 
    [Here's how](/guides/user/canary/stage/).
