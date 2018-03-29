@@ -4509,9 +4509,13 @@ hal config security authn ldap edit [parameters]
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--url`: ldap:// or ldaps:// url of the LDAP server
- * `--user-dn-pattern`: Placeholder...uid={0},ou=users
- * `--user-search-base`: Placeholder...
- * `--user-search-filter`: Placeholder
+ * `--user-dn-pattern`: The pattern for finding a user's DN using simple pattern matching. For
+   example, the pattern 'uid={0},ou=users' finds the user's DN by substituting the user's login name
+   in the supplied pattern.
+ * `--user-search-base`: The part of the directory tree under which user searches should be performed.
+ * `--user-search-filter`: The filter to use when searching for a user's DN. For example, the filter
+   'uid={0}' would substitute the user's login name and search for a matching user. Will search from
+   user-search-base if provided.
 
 
 ---
