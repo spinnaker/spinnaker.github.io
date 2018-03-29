@@ -25,7 +25,7 @@ spinnaker:
     enabled: true
 ```
 
-## 4. Export Existing Applications, Pipelines, Strategies, Notifications and Projects
+## 4. Export existing applications, pipelines, strategies, notifications and projects
 
 ```
 #!/bin/sh
@@ -48,7 +48,7 @@ curl http://FRONT50_HOSTNAME:FRONT50_PORT/v2/projects | json_pp | jq '._embedded
 
 ## 5. Deploy new Front50
 
-## 6. Import Applications, Pipelines, Strategies, Notifications and Projects
+## 6. Import applications, pipelines, strategies, notifications and projects
 
 ```
 #!/bin/sh
