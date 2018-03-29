@@ -13,7 +13,7 @@ In this codelab, you will create a Source to Prod pipeline targeting a Kubernete
 
 Fork [this repository](https://github.com/azure-devops/spin-kub-demo) with a simple 'Hello World' application written in Go. You will commit a change to this fork in order to trigger the Source to Prod pipeline.
 
-## Deploy dev ops VM
+## Deploy DevOps VM
 
 Run the following command to deploy the 'Continuous Delivery to Kubernetes' [Quickstart Template](https://github.com/Azure/azure-quickstart-templates/tree/master/301-jenkins-acr-spinnaker-k8s) in Azure. It will make sure you have the [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) installed and interactively ask if you want to change any of the default behavior. **Important:** When asked, make sure to specify your fork of the sample git repository so that you can trigger the pipeline with your own commits.
 

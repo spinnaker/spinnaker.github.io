@@ -59,7 +59,7 @@ safe delivery__.
 
 Let's go through two examples:
 
-### You want to slowly rollout a configuration change
+### You want to slowly roll out a configuration change
 
 Say you are rolling out a new feature, hidden behind a feature-flag. All
 that's needed is an update to a ConfigMap referenced by a Deployment.

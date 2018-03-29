@@ -15,7 +15,7 @@ In this codelab, you will create a cohesive workflow which takes source code and
 * Promote to Prod
 
 
-## Part 0: Environment setup
+## Part 0: Set up environment
 We are assuming you have completed [configuring Spinnaker](http://www.spinnaker.io/v1.0/docs/target-deployment-configuration#section-openstack) with OpenStack. In this example, we will be using Jenkins to trigger our pipelines.
 
 ## Part 1: Bake & deploy to test
@@ -70,7 +70,7 @@ Navigate to the "Load Balancers" tab and click the *Create Load Balancer* button
 ![](load-2.png)
 
 
-### Setup pipeline: “Bake & Deploy to Test” pipeline
+### Set up pipeline: “Bake & Deploy to Test” pipeline
 
 The purpose of this pipeline is to generate a OpenStack image from a package, and then deploy the image on server groups in the test cluster. We want this pipeline to be kicked off every time the Jenkins continuous integration job completes.
 
@@ -96,7 +96,7 @@ Refer to the figure below for an illustration of what the pipeline’s Configura
 
 ![](trigger-1.png)
 
-#### Setup Bake stage
+#### Set up Bake stage
 
 The purpose of our “Bake” stage is to create a OpenStack image with the package that was built by the Jenkins job that triggered this pipeline.
 
@@ -109,7 +109,7 @@ The purpose of our “Bake” stage is to create a OpenStack image with the pack
 
 ![](bake-red.png)
 
-#### Setup Deploy stage
+#### Set up Deploy stage
 
 The purpose of the “Deploy” stage is to take the OpenStack image constructed in the “Bake” stage and deploy it into a test environment.
 
@@ -175,7 +175,7 @@ The second pipeline, named “Validate Test”, is a simple one-stage placeholde
 
 Furthermore, we configure the prod deployment to implement the red/black strategy (a.k.a. blue/green), which means that upon verifying health of the new server group it will immediately disable the previous server group in the same cluster. Here we disable rather than destroy, so that rollbacks can be quickly accomplished simply by re-enabling the old server group.
 
-### Setup pipeline: “Validate Test”
+### Set up pipeline: “Validate Test”
 
 Create a new pipeline by navigating to the PIPELINES tab and clicking *Configure*, then *Create New ...*
 
@@ -196,7 +196,7 @@ We want this pipeline to kick off when the Bake & Deploy to Test pipeline comple
 
 ![](triggerpipe.png)
 
-#### Setup Manual Judgment stage
+#### Set up Manual Judgment stage
 
 We stop and wait for human confirmation to continue:
 
@@ -224,7 +224,7 @@ We create a load balancer for the prod cluster. Navigate to the LOAD BALANCERS t
 
 ![](lb2.png)
 
-### Setup pipeline: “Promote to Prod” pipeline
+### Set up pipeline: “Promote to Prod” pipeline
 
 Create a new pipeline by navigating to the PIPELINES tab and clicking *Configure*, then *Create New ...*
 
@@ -245,7 +245,7 @@ We want this pipeline to kick off when the Validate Test pipeline completes.
 
 ![](2-configuration-2.png)
 
-#### Setup Find Image stage
+#### Set up Find Image stage
 
 In the “Find Image from Cluster” stage, we select the image that was deployed in the test cluster.
 
@@ -258,7 +258,7 @@ Click the *Add stage* button:
 
 ![](find-image.png)
 
-#### Setup the Deploy stage
+#### Set up the Deploy stage
 
 We deploy the image that was picked, to the prod cluster.
 

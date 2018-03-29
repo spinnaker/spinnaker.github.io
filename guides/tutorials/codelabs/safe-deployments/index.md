@@ -17,7 +17,7 @@ Please follow the steps in the Kubernetes Source to Prod guide to create a deplo
 
 # Making manual operations safer 
 
-## Using the rollback action
+## Using the Rollback action
 
 The rollback action automates the process of restoring to the previous good known server group. This feature enhances a traditionally manual operation by ensuring that the restored cluster is taking traffic before disabling the current server group.
 

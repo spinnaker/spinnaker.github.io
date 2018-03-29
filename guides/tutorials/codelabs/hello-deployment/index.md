@@ -12,11 +12,11 @@ This guide will run through the workflow of setting up an example application de
 Spinnaker. It assumes you already have Spinnaker up and running on AWS or 
 GCE. A guide for installation can be found [here](/setup/install/).
 
-Below is a diagram of the workflow we will setup.
+Below is a diagram of the workflow we will set up.
 
 ![](flow.png)
 
-## Setup Jenkins
+## Set up Jenkins
 
 Jenkins is a powerful continuous integration server that allows us to do several important things:
 
@@ -59,9 +59,9 @@ note of your username and password, Spinnaker will need them later. Now you can 
 users to register as you can add them manually from the control panel. The Jenkins API is now 
 enabled.
 
-### Setup deb repo
+### Set up deb repo
 
-There are several options you can use to setup your private deb repo. This involves leveraging a 
+There are several options you can use to set up your private deb repo. This involves leveraging a 
 tool to create the file structure and format for your .deb packages. You will also need to serve 
 them publicly on the internet so they can be installed.
 
@@ -120,12 +120,12 @@ Create our repo named "hello"
 $ ./aptly repo create hello
 ```
 
-We will now publish our (currently empty) repo and setup nginx to host it on port 9999.
+We will now publish our (currently empty) repo and set up nginx to host it on port 9999.
 
 ```
 $ ./aptly publish repo -architectures="amd64" -component=main -distribution=trusty -skip-signing=true hello
 ```
-### Setup Nginx to serve aptly deb repo
+### Set up Nginx to serve aptly deb repo
 Install and configure nginx
 
 ```
@@ -160,7 +160,7 @@ via the github UI so you can make changes and see them flow through the Spinnake
 
 ### Create Jenkins jobs
 
-We will now setup our Jenkins jobs for spinnaker to use.
+We will now set up our Jenkins jobs for spinnaker to use.
 
 1. Polling job
 
@@ -302,7 +302,7 @@ The load balancer will be the entry-point to our application scaling group. Clic
 
 ![](group4.png)
 
-## Setup Spinnaker pipeline
+## Set up Spinnaker pipeline
 
 We now have the necessary resources to begin pipeline creation. A pipeline is a group of actions 
 that handle the complete lifecycle of our deployment. It is also a great centralized place to 
