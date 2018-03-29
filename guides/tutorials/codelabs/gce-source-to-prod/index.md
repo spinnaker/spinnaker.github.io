@@ -99,7 +99,7 @@ First we create a load balancer for your cluster. Navigate to the LOAD BALANCERS
 
 ![](1-create-lb.png)
 
-### Setup pipeline: Bake & Deploy to Test pipeline
+### Setup pipeline: “Bake & Deploy to Test” pipeline
 
 The purpose of this pipeline is to generate a GCE image from a package, and then deploy the image on server groups in the test cluster. We want this pipeline to be kicked off every time the Jenkins continuous integration job completes.
 
@@ -209,7 +209,7 @@ The second pipeline, named “Validate Test”, is a simple one-stage placeholde
 
 Furthermore, we configure the prod deployment to implement the red/black strategy (a.k.a. blue/green), which means that upon verifying health of the new server group it will immediately disable the previous server group in the same cluster. Here we disable rather than destroy, so that rollbacks can be quickly accomplished simply by re-enabling the old server group.
 
-### Setup pipeline: validate test
+### Setup pipeline: “Validate Test” pipeline
 
 Create a new pipeline by navigating to the PIPELINES tab and clicking *Configure*, then *Create New ...*
 
@@ -257,7 +257,7 @@ We create a load balancer for the prod cluster. Navigate to the LOAD BALANCERS t
 
 ![](2-create-lb.png)
 
-### Setup pipeline: promote to prod pipeline
+### Setup pipeline: “Promote to Prod” pipeline
 
 Create a new pipeline by navigating to the PIPELINES tab and clicking *Configure*, then *Create New ...*
 
