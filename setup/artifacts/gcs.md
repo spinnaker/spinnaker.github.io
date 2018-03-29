@@ -80,6 +80,12 @@ hal config artifact gcs account add $ARTIFACT_ACCOUNT_NAME \
     --json-path $SERVICE_ACCOUNT_DEST
 ```
 
+And enable GCS artifact support:
+
+```bash
+hal config artifact gcs enable
+```
+
 There are more options described
 [here](/reference/halyard/commands#hal-config-artifact-gcs-account-edit)
 if you need more control over your configuration.
