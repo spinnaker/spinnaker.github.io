@@ -12,7 +12,7 @@ Cassandra is no longer an actively maintained or supported persistence store.
 
 A migration to S3, GCS, or AZS is **recommended**.
 
-## 1. Create a Bucket and Folder
+## 1. Create a bucket and folder
 
 Make up a bucket name (or account name if using Azure) that is consistent with the naming policies for the underlying storage service. For purposes of this document, we'll pick ${USER}-spinnaker since many storage services (including Amazon S3, Google GCS, and Azure AZS) require globally unique names.
 
@@ -20,7 +20,7 @@ Make up a folder name within the bucket. The default is "front50". Spinnaker wil
 
 Note that currently only Amazon Simple Storage Service (S3), Google Cloud Storage (GCS), or Azure Storage (AZS) are supported, and they are mutually exclusive. Pick only one. This is independent of where you are actually running Spinnaker.
 
-### A. Create the Bucket in S3
+### A. Create the bucket in S3
 
 If you wish to use S3 as the storage service, create the bucket and underlying root folder.
 
@@ -28,7 +28,7 @@ See [Amazon's Documentation](http://docs.aws.amazon.com/AmazonS3/latest/gsg/Crea
 
 To enable versioning on an existing bucket, follow [these](http://docs.aws.amazon.com/AmazonS3/latest/UG/enable-bucket-versioning.html) steps.
 
-### B. Create the Bucket in GCS
+### B. Create the bucket in GCS
 
 If you wish to use GCS as the storage service, Spinnaker can automatically create the bucket (with versioning) for you if it has the right OAuth scopes (Storage Admin). To create it yourself you are best off using the [gsutil tool](https://cloud.google.com/storage/docs/gsutil). Using `gsutil`, also [turn on versioning](https://cloud.google.com/storage/docs/object-versioning) within the bucket.
 
@@ -37,7 +37,7 @@ gsutil mb ${USER}-spinnaker
 gsutil versioning set on ${USER}-spinnaker
 ```
 
-### C. Create the Storage Account in AZS
+### C. Create the storage account in AZS
 
 If you wish to use Azure Storage, Spinnaker can automatically create the container and root folder (with versioning). Follow instructions [here](https://docs.microsoft.com/azure/storage/storage-create-storage-account#create-a-storage-account) to create a storage account and make sure to note the storage account name and a key.
 
@@ -97,7 +97,7 @@ services:
       storageContainerName: front50
 ```
 
-## 4. Export Existing Applications, Pipelines, Strategies, Notifications and Projects
+## 4. Export existing applications, pipelines, strategies, notifications and projects
 
 Replace "FRONT50_HOSTNAME" and "FRONT50_PORT" and run the following ("localhost" and "8080" are the defaults):
 
