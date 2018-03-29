@@ -18,7 +18,7 @@ spinnaker:
     enabled: false
 ```
 
-## 2. Enable In-memory backend in echo.yml
+## 2. Enable in-memory backend in echo.yml
 
 ```
 spinnaker:
