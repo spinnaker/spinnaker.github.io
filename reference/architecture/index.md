@@ -37,42 +37,9 @@ and service accounts.
 
 1. [Halyard](https://github.com/spinnaker/halyard) is Spinnaker's configuration service. Halyard manages the lifecycle of each of the above services. It only interacts with the above services during Spinnaker startup, updates, and rollbacks.
 
-## System Dependency Graph
+## System Dependencies
 
-<div class="mermaid">
-graph TB
-
-deck(Deck) --> gate;
-api(Custom Script/API Caller) --> gate(Gate);
-
-gate --> orca(Orca);
-gate --> clouddriver(Clouddriver);
-orca --> clouddriver;
-gate --> rosco(Rosco);
-orca --> front50;
-gate --> front50(Front50);
-gate --> fiat(Fiat);
-clouddriver --> fiat;
-orca --> fiat;
-front50 --> fiat;
-echo(Echo) --> orca;
-echo --> front50;
-igor(Igor) --> echo;
-
-classDef default fill:#d8e8ec,stroke:#39546a;
-linkStyle default stroke:#39546a,stroke-width:2px,fill:none;
-
-classDef external fill:#c0d89d,stroke:#39546a;
-class deck,api external
-</div>
-
-The diagram above represents which microservices depend on each other. The green boxes represent
-"external" components, including Deck, the single-page JavaScript application that runs in your
-browser.
-
-{% include mermaid %}
-
-A filled cell indicates that the system listed in the heading of that column has a dependency on the system listed in the heading of that row. As all Spinnaker
+A filled cell in this table indicates that the system listed in the heading of that column depends on the system listed in the heading of that row. As all Spinnaker
 services can be run in their own server group, it is typical for services to resolve their dependencies via load balancers or discovery systems (e.g.
 [Eureka](https://github.com/Netflix/eureka) or [Consul](https://www.consul.io/)).
 
