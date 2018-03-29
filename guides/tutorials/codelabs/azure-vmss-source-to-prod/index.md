@@ -81,7 +81,7 @@ ssh -L 8080:localhost:8080 -L 9000:localhost:9000 -L 8084:localhost:8084 -L 8087
   
     You can read more how the Spinnaker application matches to Azure resources in the [Azure reference for Spinnaker](/reference/providers/azure/)
 
-### II. Create a Security Group
+### II. Create a security group
 
 1. Navigate to the [SECURITY GROUPS](http://localhost:9000/#/applications/codelab/securityGroups) page and click on the **Create Security Group** button.
 1. Provide the following values in the *Create New Security Group* dialog: 
@@ -102,7 +102,7 @@ ssh -L 8080:localhost:8080 -L 9000:localhost:9000 -L 8084:localhost:8084 -L 8087
 
   You can read more about the implementation of Security Groups in Azure in the [Azure reference for Spinnaker](/reference/providers/azure/)
 
-### III. Create a Load Balancer
+### III. Create a load balancer
 
 1. Navigate to the [LOAD BALANCERS](http://localhost:9000/#/applications/codelab/loadBalancers) page and click the **Create Load Balancer** button.
 1. Provide the following values in the "Create New Load Balancer" dialog: 
@@ -134,7 +134,7 @@ ssh -L 8080:localhost:8080 -L 9000:localhost:9000 -L 8084:localhost:8084 -L 8087
 
 > NOTE: It will take approximately 15 minutes to provision the two loadbalancers.
 
-## 4. Create the Continuous Delivery pipeline
+## 4. Create the continuous delivery pipeline
 
 In this section you will create a Spinnaker pipeline that will bake the image from a Jenkins build then deploy it to test.
 
@@ -178,7 +178,7 @@ In this section you will create a Spinnaker pipeline that will bake the image fr
 
     ![Add Deploy to Test](images/4-add-deploy-to-test.png)
 
-### V. Create Test deployment configuration
+### V. Create test deployment configuration
 
 1. Click *Add server group* in the Deploy Configuration section. 
 
@@ -224,7 +224,7 @@ In this section you will create a Spinnaker pipeline that will bake the image fr
 
     ![Enable test Deployment](images/3-enable-test-deployment.png)
 
-### VII. Manual Judgement 
+### VII. Manual judgment 
 
 1. Click *Add stage* in the *Deploy codelab* section.
 1. Use the following values: 
@@ -233,7 +233,7 @@ In this section you will create a Spinnaker pipeline that will bake the image fr
   * Depends On: Enable Test Deployment
   * Instructions: Validate test cluster 
 
-### VIII. Add Deploy to prod stage
+### VIII. Add Deploy to Prod stage
 
 1. Click *Add stage* in the *Promote to Prod* section. 
 1. Use the following values to configure the stage:
@@ -241,7 +241,7 @@ In this section you will create a Spinnaker pipeline that will bake the image fr
   * Stage Name: Deploy to Prod
   * Depends On: Manual Judgment
 
-### IX. Create Production deployment configuration 
+### IX. Create production deployment configuration 
 
 1. Click *Add server group* in the Deploy Configuration section. 
 1. Click *Continue without a template*
@@ -270,7 +270,7 @@ In this section you will create a Spinnaker pipeline that will bake the image fr
 
 > NOTE: Record the name of the cluster. it will be used in the next step.
 
-### X. Enable Prod deployment
+### X. Enable prod deployment
 
 1. Click *Add stage* in the *Deploy codelab* section.
 1. Use the following values to configure this stage: 

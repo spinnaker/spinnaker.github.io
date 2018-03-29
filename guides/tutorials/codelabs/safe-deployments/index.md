@@ -57,9 +57,9 @@ You should see a task window and the deployment being rolled back safely and aut
 
 ![](images/rollback5.png)
 
-# Making a Deployment Pipeline Safer
+# Making a deployment pipeline safer
 
-## Creating your deployment Pipeline
+## Creating your deployment pipeline
 
 Go to the Pipelines screen and select _Create New_
 

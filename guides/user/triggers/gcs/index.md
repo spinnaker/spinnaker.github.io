@@ -19,7 +19,7 @@ This functionality uses Google's
 messages to Spinnaker, and must be configured to send messages to
 Spinnaker's event bus as shown below.
 
-# Prerequisite Configuration/Setup
+# Prerequisite configuration/setup
 
 If you (or your Spinnaker admin) has already configured Spinnaker to listen to
 a Pub/Sub messages from the GCS bucket you plan to publish objects to, you can
@@ -52,11 +52,11 @@ attention to the [GCS
 section](/setup/triggers/google/#receiving-messages-from-google-cloud-storage-gcs)
 since this is where we'll be publishing our files to.
 
-## 2. Configure a GCS Artifact Account
+## 2. Configure a GCS artifact account
 
 Follow the [GCS artifact configuration](/setup/artifacts/gcs/).
 
-## 3. Apply Your Configuration Changes
+## 3. Apply your configuration changes
 
 Once the Pub/Sub and artifact changes have been made using Halyard, run
 
@@ -66,7 +66,7 @@ hal deploy apply
 
 to apply them in Spinnaker.
 
-# Using GCS Artifacts in Pipelines
+# Using GCS artifacts in pipelines
 
 We will need either an existing or a new pipeline that we want to be triggered
 on changes to GCS artifacts. If you do not have a pipeline, create one as shown
@@ -80,7 +80,7 @@ below.
   Spinnaker"
 %}
 
-## Configure the GCS Artifact
+## Configure the GCS artifact
 
 Once you have your pipeline ready, we need to declare that this pipeline
 expects to have a specific artifact matching some criteria is available before
@@ -108,7 +108,7 @@ a regex. You can, for example, set the object path to be
   configured to receive Pub/Sub messages from above."
 %}
 
-## Configure the GCS Trigger
+## Configure the GCS trigger
 
 Now that the expected artifact has been added, let's add a Pub/Sub trigger to
 run our pipeline.

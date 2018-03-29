@@ -96,7 +96,7 @@ And deploy the config with `hal`
 sudo hal deploy apply
 ```
 
-# 1. Create a Spinnaker Application
+# 1. Create a Spinnaker application
 
 Spinnaker applications are groups of resources managed by the underlying cloud provider, and are delineated by the naming convention `<app name>-`.
 
@@ -108,7 +108,7 @@ You'll notice that you were dropped in this _Clusters_ tab for your newly create
 
 ![](images/101-clusters.png)
 
-# 2. Create a Demo Server Group
+# 2. Create a demo server group
 
 Next we will create a _Server Group_ as a sanity check to make sure we have set up everything correctly so far. Before doing this, ensure you have at least 1 tag pushed to your Docker registry with the code you want to deploy. Now on the _Clusters_ screen, select _Create Server Group/Job_, choose _Server Group_ from the drop down and hit _Next_ to see the following dialog:
 
@@ -136,7 +136,7 @@ Test that you can reach your service with the following command (where `$VHOST` 
 curl --header "Host: dev.example.com" http://$PUBLIC_AGENT
 ```
 
-# 3. Git to _dev_ Pipeline
+# 3. Git to _dev_ pipeline
 
 Now let's automate the process of creating server groups associated with the _dev_ stack. Navigate to the _Pipelines_ tab, select _Configure_ > _Create New..._ and then fill out the resulting dialog as follows:
 
@@ -162,7 +162,7 @@ Lastly, we want to add a stage to destroy the previous server group in this _dev
 
 ![Make sure to select "codelab-cluster" as the region, and "toggle for list of clusters" to make cluster selection easier. (For DC/OS in Spinnaker a "region" is a DC/OS cluster and a "cluster" is a Spinnaker concept for managing server groupp) "Target" needs to be "Previous Server Group", so whatever was previously deployed is deleted after our newly deployed server group is "Healthy".](images/305-destroy.png)
 
-# 4. Verification Pipeline
+# 4. Verification pipeline
 
 Back on the _Pipelines_ dialog, create a new pipeline as before, but call it "Manual Judgement". On the first screen, add a Pipeline trigger as shown below:
 
@@ -208,7 +208,7 @@ Now to prevent all prior versions of this app in production from serving traffic
 
 Save the pipeline, and we are ready to go!
 
-# 7. Run the Pipeline
+# 7. Run the pipeline
 
 Push a new branch to your repo, and wait for the pipeline to run.
 

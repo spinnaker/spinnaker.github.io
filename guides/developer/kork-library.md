@@ -12,7 +12,7 @@ redirect_from: /docs/kork-library-dev
 
 [Kork](https://github.com/spinnaker/kork) is a common library used across multiple Spinnaker components. A component uses a specific version of Kork depending on the last time that component's [spinnaker-dependencies](https://github.com/spinnaker/spinnaker-dependencies) version was updated. This guide is meant for developers who need to make changes to Kork, test those changes locally in the component that relies on those changes, and deploy those changes once they've been submitted.
 
-## Local Development Cycle
+## Local development cycle
 ### Kork
 
 1. Make desired changes to `kork` module locally.
@@ -46,14 +46,14 @@ repositories {
 
 3. Voila! The component now uses your locally source, hand-crafted, artisan Kork library!
 
-## Release Process
+## Release process
 
 ### Kork
 1. Create and submit a PR for your Kork changes.
 2. Create a new Kork [release](https://github.com/spinnaker/kork/releases) that follows the version naming convention. Make note of this version number.
 3. Monitor the Travis CI [build](https://travis-ci.org/spinnaker/kork) and confirm the new packages have been deployed to [Bintray](https://bintray.com/spinnaker/spinnaker/kork/view).
 
-### Spinnaker-Dependencies
+### Spinnaker-dependencies
 1. Create and submit a new PR to the [spinnaker-dependencies.yml](https://github.com/spinnaker/spinnaker-dependencies/blob/master/src/spinnaker-dependencies.yml) file that updates the Kork library to your new version.
 2. Create a new spinnaker-dependencies [release](https://github.com/spinnaker/spinnaker-dependencies/releases) that follows the version naming convention. Again, make note of this version number.
 3. Monitor the Travis CI [build](https://travis-ci.org/spinnaker/spinnaker-dependencies) and confirm the new packages have been deployed to [Bintray](https://bintray.com/spinnaker/spinnaker/spinnaker-dependencies/view).

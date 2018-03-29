@@ -29,7 +29,7 @@ When using a Deployment object, you can see the history of rollouts in the
 Spinnaker exposes "Undo Rollout" functionality in two places, in the [Clusters
 tab](#ad-hoc-rollbacks), and as a [pipeline stage](#automated-rollbacks).
 
-## Ad-hoc Rollbacks
+## Ad-hoc rollbacks
 
 In cases where you see something is immediately wrong and isolated to a
 resource in the "Clusters" tab, you can select "Undo Rollout" from the
@@ -55,7 +55,7 @@ new version (version 5):
    image_path="./v005.png"
 %}
 
-## Automated Rollbacks
+## Automated rollbacks
 
 You can also configure automated rollbacks inside of Spinnaker pipelines. These
 stages are best configured to run when other stages or branches fail,
@@ -82,7 +82,7 @@ And roll back by "1" revision, (Revision 4) will be active again. Roll back by
 > Keep in mind that Kubernetes will implicitly rollforward the old
 > configuration, creating (Revision 6) in both cases.
 
-### Parameterized Rollbacks
+### Parameterized rollbacks
 
 It's worth mentioning that you can parameterize the target resource to
 roll back. It can point to something specified using pipeline parameters, and

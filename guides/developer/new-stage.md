@@ -22,7 +22,7 @@ For the backend, you need to define:
 * A stage class
 * One or more task classes associated with the stage
 
-## Stage Class
+## Stage class
 
 A stage class must implement the [com.netflix.spinnaker.orca.pipeline.StageDefinitionBuilder](https://github.com/spinnaker/orca/blob/master/orca-core/src/main/groovy/com/netflix/spinnaker/orca/pipeline/StageDefinitionBuilder.java) interface.
 
@@ -81,7 +81,7 @@ public class ChapStage implements StageDefinitionBuilder, CancellableStage {
 }
 ```
 
-## Task Classes
+## Task classes
 
 A task class must implement a [com.netflix.spinnaker.orca.Task](https://github.com/spinnaker/orca/blob/master/orca-core/src/main/groovy/com/netflix/spinnaker/orca/Task.java), 
 or an interface that extends it, such as:
@@ -259,7 +259,7 @@ public class MonitorChapTask implements RetryableTask {
 }
 ```
 
-## Other Classes Used
+## Other classes used
 
 The details of the `com.netflix.spinnaker.orca.chap.Run` class and 
 `com.netflix.spinnaker.orca.chap.ChapService` interface aren't directly relevant 

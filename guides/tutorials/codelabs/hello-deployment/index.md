@@ -12,11 +12,11 @@ This guide will run through the workflow of setting up an example application de
 Spinnaker. It assumes you already have Spinnaker up and running on AWS or 
 GCE. A guide for installation can be found [here](/setup/install/).
 
-Below is a diagram of the workflow we will setup.
+Below is a diagram of the workflow we will set up.
 
 ![](flow.png)
 
-## Setup Jenkins
+## Set up Jenkins
 
 Jenkins is a powerful continuous integration server that allows us to do several important things:
 
@@ -59,9 +59,9 @@ note of your username and password, Spinnaker will need them later. Now you can 
 users to register as you can add them manually from the control panel. The Jenkins API is now 
 enabled.
 
-### Setup deb repo
+### Set up deb repo
 
-There are several options you can use to setup your private deb repo. This involves leveraging a 
+There are several options you can use to set up your private deb repo. This involves leveraging a 
 tool to create the file structure and format for your .deb packages. You will also need to serve 
 them publicly on the internet so they can be installed.
 
@@ -120,12 +120,12 @@ Create our repo named "hello"
 $ ./aptly repo create hello
 ```
 
-We will now publish our (currently empty) repo and setup nginx to host it on port 9999.
+We will now publish our (currently empty) repo and set up nginx to host it on port 9999.
 
 ```
 $ ./aptly publish repo -architectures="amd64" -component=main -distribution=trusty -skip-signing=true hello
 ```
-### Setup Nginx to serve aptly deb repo
+### Set up Nginx to serve aptly deb repo
 Install and configure nginx
 
 ```
@@ -158,11 +158,11 @@ We have set up an example application with a gradle.build ready to package your 
 deployment. Fork [https://github.com/kenzanlabs/hello-karyon-rxnetty](https://github.com/kenzanlabs/hello-karyon-rxnetty) 
 via the github UI so you can make changes and see them flow through the Spinnaker pipeline.
 
-### Create Jenkins Jobs
+### Create Jenkins jobs
 
-We will now setup our jenkins jobs for spinnaker to use.
+We will now set up our Jenkins jobs for spinnaker to use.
 
-1. Polling Job
+1. Polling job
 
 The first is a simple job that polls our git repo for changes. Spinnaker has no knowledge of our 
 repo location, so it needs a way to trigger a pipeline automatically when code is pushed. 
@@ -177,7 +177,7 @@ polling job and kick off a pipeline when it detects a fresh run.
 ![](jenkins2.png)
 
 
-2. Build and Publish Job
+2. Build and publish job
 
 This job will be responsible for building and publishing our package, along with passing the package
  and version name to Spinnaker.
@@ -216,7 +216,7 @@ ssh -i yourkey.pem -L 9000:127.0.0.1:9000 -L 8084:127.0.0.1:8084 ubuntu@instance
 
 Spinnaker will be accessible on [http://localhost:9000](http://localhost:9000).
 
-### Jenkins Integration
+### Jenkins integration
 
 Before we can begin setting up our workflow, we need to edit the Spinnaker configuration to allow 
 it to communicate with our Jenkins server.
@@ -247,7 +247,7 @@ igor:
     enabled: true
 ```
 
-### Deb Repository
+### Deb repository
 
 The last configuration step is to add our deb repository address to the Rosco config. When Spinnaker 
 is baking the application image, it will add this address to the sources list so it can 
@@ -302,7 +302,7 @@ The load balancer will be the entry-point to our application scaling group. Clic
 
 ![](group4.png)
 
-## Setup Spinnaker Pipeline
+## Set up Spinnaker pipeline
 
 We now have the necessary resources to begin pipeline creation. A pipeline is a group of actions 
 that handle the complete lifecycle of our deployment. It is also a great centralized place to 

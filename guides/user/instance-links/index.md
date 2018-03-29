@@ -14,7 +14,7 @@ Spinnaker makes it easy to give users links to common features of their applicat
 
 There are two basic approaches to customizing links: organization-wide links (i.e. links that apply to every instance managed by Spinnaker), and application-specific links (i.e. links that are common to every instance of your application).
 
-## Default Links
+## Default links
 
 At Netflix, we use a common base server, which adds a number of default endpoints to every running instance. These are configured in Deck's `settings.js` file:
 
@@ -49,7 +49,7 @@ window.spinnakerSettings = {
 
 When users create a new application, these links are available in each instance in Spinnaker with no additional input from the application owner.
 
-## Customizing Application Links
+## Customizing application links
 
 These links are customizable via the application's Config tab in Spinnaker. If configured in `settings.js`, the default links are displayed. Users can then customize the links for their particular application.
 
@@ -69,7 +69,7 @@ path | result
 https://my.company/trafficFrom?instance={{"{{id"}}}} | https://my.company/trafficFrom?instance=i-1234
 https://{{"{{publicIpAddress"}}}}:9090/secureAdmin | https://104.156.81.74:9090/secureAdmin
 
-## Available Template Fields
+## Available template fields
 
 This is not a comprehensive list of fields - just the most common ones. Not all fields will be available for every instance, as some are VPC-only, and some depend on subnet, launch configuration, and other factors. Trial and error is a good way to figure out what's going to work for your application.
 

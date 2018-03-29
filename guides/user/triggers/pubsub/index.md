@@ -16,7 +16,7 @@ Pipeline's execution.
 > __☞ Note__:  It's possible to configure multiple pipelines to trigger off of
 > a single pub/sub message.
 
-## Adding a Pub/Sub Trigger to a Pipeline
+## Adding a pub/sub trigger to a pipeline
 
 Assuming you have created a pipeline, under __Configuration__, select __Add
 Trigger__ and make its type selector __Pub/Sub__.
@@ -31,7 +31,7 @@ must be configured before it is available to select in the UI.
   image_path="./basic-pubsub.png"
 %}
 
-### Payload Constraints
+### Payload constraints
 
 If you want to ensure that a pub/sub trigger only fires when a certain message payload
 arrives, you can provide __Payload Constraints__ in the trigger. These are

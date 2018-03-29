@@ -5,7 +5,7 @@ sidebar:
   nav: guides
 ---
 
-## Table of Contents
+## Contents
 
 * General
   * [Welcome to Spinnaker: Feature Overview](#welcome-to-spinnaker-feature-overview-2m-46s)

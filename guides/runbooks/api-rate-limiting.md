@@ -78,7 +78,7 @@ ingest to play nicely with the rate limiter:
 * `X-RateLimit-Learning`: Bool. Whether or not the rate limiter is enforcing the
   principal.
 
-### Anonymous Clients
+### Anonymous clients
 
 If your Spinnaker deployment allows anonymous API access, by default all 
 requests will be bucketed into the same rate limit window. With a little trust,

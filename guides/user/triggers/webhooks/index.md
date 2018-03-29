@@ -16,7 +16,7 @@ you, will be available in the Pipeline's execution.
 > __☞ Note__:  It's possible to configure multiple pipelines to trigger off of
 > a single webhook.
 
-## Adding a Webhook Trigger to a Pipeline
+## Adding a webhook trigger to a pipeline
 
 Assuming you have created a pipeline, under __Configuration__, select __Add
 Trigger__ and make its type selector __Webhook__.
@@ -44,7 +44,7 @@ Spinnaker is installed), save that pipeline, and run:
 curl $ENDPOINT -X POST -H "content-type: application/json" -d "{ }"
 ```
 
-### Payload Constraints
+### Payload constraints
 
 If you want to ensure that a webhook only triggers when a certain payload
 arrives, you can provide __Payload Constraints__ in the trigger. These are

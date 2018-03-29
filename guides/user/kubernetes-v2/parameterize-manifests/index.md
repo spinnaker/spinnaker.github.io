@@ -18,7 +18,7 @@ or
 This can be applied to a wide-range of use-cases, but we will focus on using a
 pipeline parameter to specify the target namespace.
 
-## Configure your Pipeline Parameters
+## Configure your pipeline parameters
 
 First we will register a pipeline parameter in the "configuration" tab of the
 pipeline editor (only the __Name__ is required):
@@ -31,7 +31,7 @@ pipeline editor (only the __Name__ is required):
 > See more details on how to provide parameters to piplines programatically in
 > the [wehbooks](/guides/user/triggers/webhooks) page.
 
-## Configure your Manifest
+## Configure your manifest
 
 In this scenario, we're using a parameter to specify the manifest's namespace.
 Edit your manifest so the `metadata` section contains:
@@ -53,7 +53,7 @@ When you go to run the pipeline by hand, you will see the following:
    image_path="./run.png"
 %}
 
-## Parameterizing Non-String Keys
+## Parameterizing non-string keys
 
 When parameterizing a YAML value that's not a string (such as the replica
 count), you will need to explicitly convert the evaluated expression [to the
@@ -71,7 +71,7 @@ spec:
 ```
 
 
-## More Advanced Parameterization
+## More advanced parameterization
 
 Please read the [pipeline expressions
 guide](/guides/user/pipeline-expressions).

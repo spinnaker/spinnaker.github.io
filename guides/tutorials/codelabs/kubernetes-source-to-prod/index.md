@@ -53,7 +53,7 @@ Follow one of the guides [here](http://kubernetes.io/docs/getting-started-guides
 
 We will be deploying Spinnaker to the same Kubernetes cluster it will be managing. To do so, follow the installation [guide](/setup/install), being sure to enable & create a Kubernetes account, as well as a Docker Registry account with credentials and repositories pointing at those created above.
 
-# 1. Create a Spinnaker Application
+# 1. Create a Spinnaker application
 
 Spinnaker applications are groups of resources managed by the underlying cloud provider, and are delineated by the naming convention `<app name>-`. Since Spinnaker and a few other Kubernetes-essential pods are already running in your cluster, your _Applications_ tab will look something like this:
 
@@ -74,7 +74,7 @@ You'll notice that you were dropped in this _Clusters_ tab for your newly create
 
 ![](clusterscreen.png)
 
-# 2. Create a Load Balancer
+# 2. Create a load balancer
 
 We will be creating a pair of Spinnaker _Load Balancers_ (Kubernetes [Services](http://kubernetes.io/docs/user-guide/services/)) to serve traffic to our _dev_ and _prod_ versions of our app. Navigate to the _Load Balancers_ tab, and select _Create Load Balancer_ in the top right corner of the screen. 
 
@@ -98,7 +98,7 @@ At this point your _Load Balancers_ tab should look like this:
 
 ![](loadbalancers.png)
 
-# 3. Create a Demo Server Group
+# 3. Create a demo server group
 
 Next we will create a _Server Group_ as a sanity check to make sure we have set up everything correctly so far. Before doing this, ensure you have at least 1 tag pushed to your Docker registry with the code you want to deploy. Now on the _Clusters_ screen, select _Create Server Group/Job_, choose _Server Group_ from the drop down and hit _Next_ to see the following dialog:
 
@@ -120,7 +120,7 @@ Once the create task completes, open a terminal and type <code>$ kubectl proxy</
 
 Once you're satisfied, don't close the proxy or browser tab just yet as we'll use that again soon.
 
-# 4. Git to _dev_ Pipeline
+# 4. Git to _dev_ pipeline
 
 Now let's automate the process of creating server groups associated with the _dev_ loadbalancer. Navigate to the _Pipelines_ tab, select _Create_ and then fill out the resulting dialog as follows:
 
@@ -156,7 +156,7 @@ Make sure to select "default" as the namespace, and "toggle for list of clusters
 
 ![](destroysg.png)
 
-# 5. Verification Pipeline
+# 5. Verification pipeline
 
 Back on the _Pipelines_ dialog, create a new pipeline as before, but call it "Manual Judgement". On the first screen, add a Pipeline trigger as shown below:
 
@@ -212,7 +212,7 @@ You will need to manualy enter "serve-prod" as the cluster name since it doesn't
 
 Save the pipeline, and we are ready to go!
 
-# 7. Run the Pipeline
+# 7. Run the pipeline
 
 Push a new branch to your repo, and wait for the pipeline to run.
 
