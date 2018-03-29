@@ -20,7 +20,7 @@ You will be using a custom-built image that includes sample application source c
 
 This codelab is an extension of the [Hello World Deployment](../hello-deployment) tutorial. It runs specifically on the Google Cloud Platform, and requires a billing-enabled GCP project.
 
-## Part 0: Environment set up
+## Part 0: Set up environment
 
 ### Install gcloud
 
