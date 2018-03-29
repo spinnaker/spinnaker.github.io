@@ -23,7 +23,7 @@ There are two main steps:
   Optionally, you can override some artifacts (as fields) at run time (for
     example, which Docker image to use.)
 
-## Specify Your Manifest
+## Specify your manifest
 
 Depending on your needs, there is more than one way to specify the manifest
 that you want to deploy:
@@ -43,7 +43,7 @@ from the stage selector:
 > :warning: Don't select the regular __Deploy__ stage; it deploys more
 > opinionated "Server Groups" using another provider (including Kubernetes V1).
 
-### Specify Manifests Statically
+### Specify manifests statically
 
 If you know ahead of time what you expect to deploy using a certain manifest
 (even if you don't know what version of your Docker image it will run) you can
@@ -78,7 +78,7 @@ them into the UI, the stage definition would look more like this:
 }
 ```
 
-### Specify Manifests Dynamically
+### Specify manifests dynamically
 
 If you are storing your manifests outside of Spinnaker's
 [pipeline repository](/setup/install/storage/),
@@ -114,7 +114,7 @@ incoming artifacts. If instead we had configured it to listen to changes using
 a regex matching `.*\.yml`, it would bind any YAML file that changes in your
 artifact source, and deploy it when it reaches your Deploy stage.
 
-## Override Artifacts
+## Override artifacts
 
 In general, when we deploy changes to our infrastructure, the majority of
 changes come in the form of a new Docker image, or perhaps a feature-flag

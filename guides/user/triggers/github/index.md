@@ -17,7 +17,7 @@ This functionality uses GitHub
 Spinnaker, and must be configured to send messages to Spinnaker's event bus as
 shown below.
 
-# Prerequisite Configuration/Setup
+# Prerequisite configuration/setup
 
 If you (or your Spinnaker admin) have already configured Spinnaker to listen to
 a GitHub webhooks from the repository you plan to publish commits to, you can
@@ -39,15 +39,15 @@ account. The intent is that the webhook will be received by Spinnaker whenever
 a commit is made, and the artifact account will allow you to download any
 pertinent files.
 
-## 1. Configure GitHub Webhooks
+## 1. Configure GitHub webhooks
 
 Follow the [GitHub webhook configuration](/setup/triggers/github/).
 
-## 2. Configure a GitHub Artifact Account
+## 2. Configure a GitHub artifact account
 
 Follow the [GitHub artifact configuration](/setup/artifacts/github/).
 
-## 3. Apply Your Configuration Changes
+## 3. Apply your configuration changes
 
 Once the artifact changes have been made using Halyard, run
 
@@ -57,7 +57,7 @@ hal deploy apply
 
 to apply them in Spinnaker.
 
-# Using GitHub Artifacts in Pipelines
+# Using GitHub artifacts in pipelines
 
 We will need either an existing or a new pipeline that we want to be triggered
 on changes to GitHub artifacts. If you do not have a pipeline, create one as shown
@@ -96,7 +96,7 @@ a YAML file inside `folder` in your repository.
   image_path="./set-expected-artifact.png"
 %}
 
-## Configure the GitHub Trigger
+## Configure the GitHub trigger
 
 Now that the expected artifact has been added, let's add a Git trigger to
 run our pipeline. To configure the trigger:

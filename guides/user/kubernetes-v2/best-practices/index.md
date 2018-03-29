@@ -11,7 +11,7 @@ The Kubernetes Provider V2 enables a wide variety of ways to deploy your
 manifests into Kubernetes clusters. This page provides best-practices for doing
 so.
 
-## Deploy Docker Images by Digest
+## Deploy Docker images by digest
 
 If your registry exposes image changes by
 [digest](https://docs.docker.com/registry/spec/api/#content-digests), we
@@ -36,7 +36,7 @@ There are two ways to achieve this in Spinnaker:
 2. Rely on Spinnaker's [artifact substitution](/guides/user/kubernetes-v2/deploy-manifest/#override-artifacts)
    and a trigger that supplies your image by digest.
 
-## Emit Your Deployed Manifests to an Audit Log
+## Emit your deployed manifests to an audit log
 
 To keep track of what's changing in your cluster, and under what circumstances
 it is changing, we highly recommend [configuring Spinnaker to emit events to an
@@ -48,7 +48,7 @@ orchestration engine, all that's needed is an endpoint to send them to.  When
 set up, any pipeline that deploys or updates a manifest will have your fully
 hydrated manifest recorded.
 
-## Version Your ConfigMaps and Secrets
+## Version your ConfigMaps and Secrets
 
 Anytime Spinnaker deploys a ConfigMap or Secret, it appends a version to
 its name. If that exact ConfigMap or secret is already running in the cluster,
@@ -59,7 +59,7 @@ safe delivery__.
 
 Let's go through two examples:
 
-### You Want to Slowly Rollout a Configuration Change
+### You want to slowly rollout a configuration change
 
 Say you are rolling out a new feature, hidden behind a feature-flag. All
 that's needed is an update to a ConfigMap referenced by a Deployment.
@@ -73,7 +73,7 @@ If instead you push a new ConfigMap, and edit the Deployment to
 reflect this change, only the newly deployed Pods will have your feature flag
 enabled.
 
-### You Need to Roll Back a Broken Configuration Change
+### You need to roll back a broken configuration change
 
 With an unversioned ConfigMap, the "Rollback" feature on Deployments,
 StatefulSets, and DaemonSets does not have the desired effect, because a material
@@ -91,7 +91,7 @@ However, this approach can have a few problems:
   rolling forward the config at the same time can exacerbate the problem in the
   current broken controller until the rollout completes.
 
-## Avoid Using the Ad-hoc "Edit" Features When Possible
+## Avoid using the ad-hoc "edit" features when possible
 
 Spinnaker provides quick ways to edit your deployed Manifests in the
 infrastructure screen. This is done to provide you a quick fallback when

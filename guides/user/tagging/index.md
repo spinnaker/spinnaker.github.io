@@ -37,7 +37,7 @@ Spinnaker provides a provider-agnostic way of attaching additional attributes (*
 
 There are no restrictions on the size or quantity of these tags (*unlike limitations imposed by native cloud provider tags*).
 
-## Current Limitations
+## Current limitations
 - Completely separate from any tag support on the underlying cloud provider
   - *Callers must make an additional API call to retrieve entity tags*
 - Limited lifecycle support
@@ -47,12 +47,12 @@ There are no restrictions on the size or quantity of these tags (*unlike limitat
 >
 > If they are blocking a particular use-case, please file an [issue](https://github.com/spinnaker/spinnaker/issues).
 
-## Common Use Cases
+## Common use cases
 - Server Group Alerts and Notices
 - Server Group Attribution (*what pipeline / user created this server group*)
 - Security (*restricting when particular IAM roles can be used*)
 
-# Tag Namespaces
+# Tag namespaces
 
 All tags have an associated namespace (_`default` will be used if unspecified_) that provides a means of grouping tags by a logical owner.
 
@@ -60,7 +60,7 @@ Tag names can be re-used across namespaces.
 
 Eventually Spinnaker will allow permissions to be defined per-namespace (ie. certain namespaces can only be modified by particular users or groups).
 
-# Implementation Details
+# Implementation details
 
 These provider-agnostic tags are stored in S3 or GCS (*via Front50*) and indexed via Elasticsearch.
 
@@ -149,7 +149,7 @@ account | Account Name | ?account=production<br/>?account=* (wildcard)
 region | Region | ?region=us-west-2<br/>?region=* (wildcard)
 cloudProvider | cloudProvider | ?cloudProvider=aws<br/>?cloudProvider=* (wildcard)
 
-#### Upsert Tags
+#### Upsert tags
 ```
     curl -X "POST" "http://gate/tags?entityId=myservergroup-v001&entityType=servergroup&account=production&region=us-west-2&cloudProvider=aws" \
          -H "Content-Type: application/json" \
@@ -170,7 +170,7 @@ cloudProvider | cloudProvider | ?cloudProvider=aws<br/>?cloudProvider=* (wildcar
 
 This API provides backwards compatibility with traditional Spinnaker tasks and can be used interchangeably with the `POST /tags` API.
 
-#### Upsert Tags
+#### Upsert tags
 ```
     curl -X "POST" "http://gate/tasks" \
          -H "Content-Type: application/json" \
@@ -205,20 +205,20 @@ This API provides backwards compatibility with traditional Spinnaker tasks and c
 
 ## DELETE /tags/:id/:tagName
 
-#### Delete Tags
+#### Delete tags
 ```
     curl -X "DELETE" "http://gate/tags/myservergroup-v001:100000000001:us-west-2/spinnaker_ui_alert:autoscaling:ec2_instance_launch_error" \
          -H "Content-Type: application/json" \
          -d $'{}'
 ```
 
-# FEATURE: Server Group Alerts and Notices
+# FEATURE: Server group alerts and notices
 
 *Server Group Alerts and Notices* is a new Spinnaker feature is built upon entity tags.
 
 ![](alert.png)
 
-#### Add Alert
+#### Add alert
 ```
     curl -X "POST" "http://gate/tags?entityId=spintest-v003&entityType=servergroup&account=test&region=us-west-2&cloudProvider=aws" \
          -H "Content-Type: application/json" \
@@ -235,7 +235,7 @@ This API provides backwards compatibility with traditional Spinnaker tasks and c
     ]'
 ```
 
-#### Add Notice
+#### Add notice
 ```
     curl -X "POST" "http://gate/tags?entityId=spintest-v003&entityType=servergroup&account=test&region=us-west-2&cloudProvider=aws" \
          -H "Content-Type: application/json" \
@@ -252,7 +252,7 @@ This API provides backwards compatibility with traditional Spinnaker tasks and c
     ]'
 ```
 
-#### Delete Alert (or Notice)
+#### Delete alert (or notice)
 ```
     curl -X "DELETE" "http://gate/tags/aws:servergroup:spintest-v003:100000000001:us-west-2/spinnaker_ui_alert:autoscaling:ec2_instance_launch_error" \
          -H "Content-Type: application/json" \

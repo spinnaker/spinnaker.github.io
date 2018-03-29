@@ -8,7 +8,7 @@ redirect_from: /docs/pipeline-expressions-guide
 
 {% include toc %}
 
-## What are Pipeline Expressions?
+## What are pipeline expressions?
 
 Pipeline expressions allow you to put a placeholder value that gets filled in when you run your pipeline. 
 
@@ -26,7 +26,7 @@ I can now set up my pipeline to take a `command` parameter, when I manually exec
 
 When the pipeline runs, it resolves the expression to what I’ve entered for `command`.
 
-## Where can I use Pipeline Expressions in Spinnaker?
+## Where can I use pipeline expressions in Spinnaker?
 
 > **Warning**
 >
@@ -55,7 +55,7 @@ Enter an expression:
 
 When this pipeline runs, it will evaluate the expression to decide if the stage can be skipped. This is useful for adding optional stages to your pipeline. 
 
-### Preconditions Stage
+### Preconditions stage
 
 To use expressions to gate multiple stages, you can use the the 'check Preconditions' stage. When this stage is configured, it will gate the execution of subsequent stages. In other words, the stages that follow this stage will only run if the precondition evaluates to true.
 
@@ -84,7 +84,7 @@ In the popup screen, you can now edit the fields that match the fields you want 
 [comment]: <> ![](5.png)
 <img width="700" src="5.png"> 
 
-## What kind of data can I put in Pipeline Expressions?
+## What kind of data can I put in pipeline expressions?
 
 In this section, we will describe the numerous sources of data for a pipeline expression in Spinnaker and how to access them.  Expressions are evaluated against the currently running pipeline. To see all the available attributes in a pipeline, you can view the source JSON. The easiest way to view this JSON is as follows,
 
@@ -96,7 +96,7 @@ In this section, we will describe the numerous sources of data for a pipeline ex
 
 This will take you to a JSON file that contains the details of your pipeline execution.
 
-### Pipeline Execution
+### Pipeline execution
 
 The current running pipeline is available within Pipeline Expressions as `execution`.  
 
@@ -134,13 +134,13 @@ This means that if I reference a field in my expression like `${ package }`, it 
 
 You can also access the value of other stages by doing a lookup by name using the [#stage( stage name )](#stagestring) helper method. To access stage attributes, you can call `${ #stage('stage name')['id']}`. To access the values passed into the stage, use `${ #stage('stage name')['context']['baseAmiName']}`.
 
-### Pipeline Parameters
+### Pipeline parameters
 
 The configuration screen of your pipeline lets you specify parameters. Parameters to the pipeline can also come from upstream pipelines that have configured a Pipeline stage.
 
 You can access values of parameters within expressions by referencing the `parameters` array. This is a shortcut for `execution.parameters`. For example, `${ parameters['run canary'] }` will evaluate to the value of the parameter called *run canary*. 
 
-### Trigger Values
+### Trigger values
 
 You can reference values in the pipeline trigger via the `trigger` property. This value is available in the execution JSON under the trigger object. 
 
@@ -171,7 +171,7 @@ If you're adding property files from a Jenkins or Script *STAGE* ( not Trigger )
 >
 > If you have multiple Jenkins jobs, they can clobber the same properties. A way around this is to reference the particular stage. `${ #stage( 'first jenkins job' )['context']['BUILD_ANIMAL'] }`
 
-### Manual Judgment Choices
+### Manual Judgment choices
 
 The manual judgment stage allows you to specify options when you approve a stage. Under Judgement Inputs, you can enter a choice.
 
@@ -187,11 +187,11 @@ In subsequent stages, you can reference the choice provided via the [#judgment( 
 
 You can also read from external sources via the [#fromUrl( url )](#fromurlstring) and [#jsonFromUrl( url )](#jsonfromurlstring) helper methods. 
 
-## Pipeline Expression Language Reference
+## Pipeline expression language reference
 
 The Pipeline Expression syntax is implemented with the Spring Expression Language ( SpEL ). You can learn more about SPeL by following this [link](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/expressions.html).
 
-### Writing Expressions
+### Writing expressions
 
 A pipeline expression is started by `${` and terminated by `}` : 
 
@@ -247,17 +247,17 @@ You can use methods available to existing types like String - `${ 'this is a lon
 
 You can also declare new classes. Note that package names need to be fully qualified. In the following expression, we're getting the current date as MM-dd-yyyy format: `${ new java.text.SimpleDateFormat('MM-dd-yyyy').format(new java.util.Date()) }` 
 
-### Some Useful Things to Know
+### Some useful things to know
 
-### #Default Values#
+### #Default values#
 
 You can set a default value within expressions by using `?:`. For example, `${ parameters.region ?: 'us-east-1'}`.
 
-###Filtering Maps#
+###Filtering maps#
 
 The expression language allows you to filter maps by using the `.?` expression. For example, to filter a list of stages by type, you can use the expression `${ execution.stages.?[ type == 'bake' ] }`
 
-###Lists as Parameters
+###Lists as parameters
 
 Sometimes you want to enter a list of values as a parameter. For example, a list of regions or security groups. A useful tip here is to ask the user to enter them as a list of comma separated values `us-east-1,us-west-1,eu-west-1` and then use the `split()` method to make these into a map. Your expression would look like this `parameters.regions.split(',')`.
 
@@ -325,7 +325,7 @@ Converts a value to an integer.
 ### #toJson(Object)
 Converts a Map into a JSON String. This is useful when you want to pass values from Spinnaker to another system. For example, I can use ${#toJson( deployedServerGroups )} to pass the details of the recently deployed server groups to a jenkins job.
 
-## Sample Use Cases
+## Sample use cases
 
 ### Create a stack based on the committed git branch
 
@@ -390,7 +390,7 @@ Similarly, you can see that when I chose 'cleaning up', that pipeline branch is 
 
 ![](24.png)
 
-## Expression Autocomplete
+## Expression autocomplete
 
 Spinnaker has autocompleted functionality within the context of a pipeline configuration.
 
@@ -409,7 +409,7 @@ Hit enter and the opening and closing braces of the expression will be added to 
 
 ![](26.png)
 
-### Helper Functions and Stages
+### Helper functions and stages
 
 Within the **curly braces ${ }**,  adding a **question mark (?)** will display a list of all the helper properties that are relevant to the stage config that you are in as well as a list of all the stages in the pipeline.
 
@@ -426,7 +426,7 @@ Here is an example of what context of the 'deployedServerGroups' helper property
 The list will show the available context attributes on the left and the previous values highlighted on the right. The list can also be narrowed by typing a few characters, and selecting on by hitting **ENTER**.
 
 
-### Helper Functions
+### Helper functions
 
 Also within the **curly braces (${ })**,  adding a **pound sign (#)** will display a list of all the helper functions that are available.
 
@@ -450,6 +450,6 @@ From here you can move the cursor to the end of the closing paren of the functio
 
 ![](33.png)
 
-# Source Code
+# Source code
 
 The expression language support can be found in the orca codebase and pretty much encapsulated in the [ContextParameterProcessor](https://github.com/spinnaker/orca/blob/master/orca-core/src/main/groovy/com/netflix/spinnaker/orca/pipeline/util/ContextParameterProcessor.groovy) class.
