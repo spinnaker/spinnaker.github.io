@@ -85,12 +85,12 @@ kubeconfig files [here](http://kubernetes.io/docs/user-guide/kubeconfig-file/).
 We will be deploying Spinnaker to one of your Kubernetes clusters. To do so,
 start by [installing halyard](/setup/install/halyard).
 
-### Choose a Storage Service
+### Choose a storage service
 
 Pick a storage service [here](/setup/install/storage), and run the required
 `hal` commands.
 
-### Add your Kubernetes Accounts
+### Add your Kubernetes accounts
 
 You will need to configure two Kubernetes accounts. See the Kubernetes
 contexts created in the prior step using:
@@ -143,7 +143,7 @@ And finally, deploy Spinnaker.
 hal deploy apply
 ```
 
-## Configure Webhooks
+## Configure webhooks
 
 Now that Spinnaker is running, you need to point both Docker and GitHub
 webhooks at Spinnaker to send events when Docker images and manifest changes
@@ -204,7 +204,7 @@ were running Spinnaker in production with [authentication](/setup/security),
 only webhooks would be allowed, which you can reject by header or payload.
 See [the webhook guide for more details](/guides/user/triggers/webhooks).
 
-### Allow Docker to Post Build Events
+### Allow Docker to post build events
 
 These will be used to trigger pipelines based on new Docker images being
 published. Follow the steps shown
@@ -212,14 +212,14 @@ published. Follow the steps shown
 endpoint you configure must be
 `http://${NODE_IP}:${NODE_PORT}/webhooks/webhook/dockerhub`.
 
-### Allow GitHub to Post Push Events
+### Allow GitHub to post push events
 
 Follow the steps shown
 [here](/setup/triggers/github/#configuring-your-github-webhook), where
 `ENDPOINT=http://${NODE_IP}:${NODE_PORT}`. Keep track of what you pick as the
 `$SECRET`!
 
-# 1: Create a Spinnaker Application
+# 1: Create a Spinnaker application
 
 When you first open Spinnaker (if you've followed the above
 [prerequisites](#0-prerequisites)) it'll be running on `localhost:9000`) you'll
@@ -246,7 +246,7 @@ After hitting __Create__, you should be brought to an empty __Clusters__ tab:
    image_path="./empty-clusters.png"
 %}
 
-# 2: Create a "Deploy to Staging" Pipeline
+# 2: Create a "Deploy to Staging" pipeline
 
 Let's deploy the manifests and code in our staging cluster by setting up
 automated pipelines to do so. Start by navigating to __Pipelines__ >
@@ -330,7 +330,7 @@ Finally, configure the stage with the following values:
 
 Save the pipeline.
 
-# 3. Deploy Manifests to Staging
+# 3. Deploy manifests to staging
 
 Trigger the pipeline by pushing a commit to the `manifests/demo.yml` file in
 your repository. The pipeline should start in a few seconds. When it completes,
@@ -374,7 +374,7 @@ service](http://localhost:8001/api/v1/proxy/namespaces/default/services/spinnake
 in your browser. Let's make a change to this service, and configure Spinnaker
 to listen to Docker builds.
 
-# 4. Configure Docker Triggers
+# 4. Configure Docker triggers
 
 __Important__: We need to configure DockerHub to build on __Tag__ events only,
 if we build on every commit, this particular setup will trigger both when
@@ -412,7 +412,7 @@ Docker artifact to bind in this deployment:
 
 Save the pipeline.
 
-# 5. Deploy Docker to Staging
+# 5. Deploy Docker to staging
 
 You can push a tag to your repository by running:
 
@@ -442,7 +442,7 @@ image:
    image_path="./staging-v002.png"
 %}
 
-# 6. Configure a Validation Pipeline
+# 6. Configure a validation pipeline
 
 For the sake of a simple codelab, we will control which deployments make it to
 production by adding a "Manual Judgement" pipeline. In practice, this can be
@@ -477,7 +477,7 @@ cluster:
 
 Save the Pipeline.
 
-# 7. Promote to Production
+# 7. Promote to production
 
 Let's promote these artifacts into our production cluster. Create a new
 pipeline, but instead of creating it from scratch, let's copy the "Deploy to
@@ -503,7 +503,7 @@ point at __prod-demo__:
    image_path="./deploy-to-prod-account.png"
 %}
 
-# 8. Run the Full Flow
+# 8. Run the full flow
 
 Now our full flow is ready to go - let's kick it off by changing the background
 color of our application.
@@ -540,7 +540,7 @@ both environments:
    image_path="./both-accounts.png"
 %}
 
-# 9. Extra Credit
+# 9. Extra credit
 
 At this point there are few things you can play with:
 

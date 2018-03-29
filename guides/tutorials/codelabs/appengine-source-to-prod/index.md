@@ -26,7 +26,7 @@ gcloud services enable compute.googleapis.com
 - If this is your first time deploying to App Engine in your project, execute the following command to create an App Engine application. You cannot change the region, so choose wisely:
 `gcloud app create --region <e.g., us-central>`.
 
-# Configuration & Installation
+# Configuration & installation
 
 We're going to trigger our Spinnaker pipelines using Github webhooks. In order to do so,
 we will have to expose Spinnaker's API gateway to external traffic.
@@ -134,7 +134,7 @@ It should be a "Hello World" page with a bright red background.
 Click on the tab labeled "Load Balancers". You will see a panel labeled "default". This is your default App Engine Service.
 If you deploy Versions to different App Engine Services, those Services will also appear under this tab.
 
-# Deployment Pipeline
+# Deployment pipeline
 
 ![Codelab_Diagram](images/codelab_diagram.png)
 
@@ -157,7 +157,7 @@ Next, we’ll build a deployment pipeline. It will include the following stages:
 - Under "Pipeline Name", enter `Deploy And Promote`.
 - Click "Create".
 
-## Webhook Trigger
+## Webhook trigger
 
 Under "Automated Triggers":
 - Under "Type", select `Git`.
@@ -168,7 +168,7 @@ Under "Automated Triggers":
 
 ![Webhook_Trigger_Config](images/webhook_trigger_config.png)
 
-## Deploy Stage
+## Deploy stage
 
 - Click "Add Stage". 
 - Under "Type", select `Deploy`.
@@ -185,7 +185,7 @@ Under "Automated Triggers":
 - Under "Config Filepaths", enter `app.yaml`.
 - Click "Add".
 
-## Edit Load Balancer Stage
+## Edit Load Balancer stage
 
 - Click "Add Stage", then under "Type", select `Edit Load Balancer`.
 - Under "Stage Name", enter `Split Traffic 5%/95%`.
@@ -217,13 +217,13 @@ when we run this pipeline for the first time, it will be the server group we dep
 
 ![Edit_Load_Balancer_Config](images/edit_load_balancer_config.png)
 
-## Manual Judgment Stage
+## Manual Judgment stage
 
 - Click "Add Stage", then under "Type", select `Manual Judgment`.
 - Under "Stage Name", enter `Validate Release`.
 - Under "Instructions", enter `Verify that the new release should receive 100% of traffic.`
 
-## Enable Stage
+## Enable stage
 
 - Click "Add Stage", then under "Type", select `Enable Server Group`.
 - Under "Stage Name", enter `Enable Release`.
@@ -234,12 +234,12 @@ When this stage runs, all traffic will be directed to the server group deployed 
 
 ![Enable_Stage_Config](images/enable_stage_config.png)
 
-## Wait Stage
+## Wait stage
 
 - Click "Add Stage", then under "Type", select `Wait`.
 - Under "Wait time (seconds)", enter `120`.
 
-## Destroy Stage
+## Destroy stage
 
 - Click "Add Stage", then under "Type", select `Destroy Server Group`.
 - Under "Stage Name", enter `Destroy Previous Release`.
@@ -252,7 +252,7 @@ When we run this pipeline for the first time, this stage will destroy the first 
 
 Once you’re finished configuring your stages, click "Save Changes" on the bottom right corner of the screen.
 
-# Pipeline Trigger
+# Pipeline trigger
 
 - If you haven’t already done so, clone your forked repository to your local workstation.
 - Check out a new branch named "release".
@@ -262,7 +262,7 @@ Once you’re finished configuring your stages, click "Save Changes" on the bott
 - If we’ve configured everything correctly, you should see your pipeline start within Spinnaker. 
   If you haven’t configured a webhook, you can also click "Start Manual Execution" to start your pipeline.
 
-# Pipeline Execution
+# Pipeline execution
 
 Under the "Pipelines" tab, you should see your running pipeline.
 

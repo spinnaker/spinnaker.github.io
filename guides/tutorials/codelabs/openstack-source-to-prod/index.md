@@ -15,10 +15,10 @@ In this codelab, you will create a cohesive workflow which takes source code and
 * Promote to Prod
 
 
-## Part 0: Environment Setup
+## Part 0: Environment setup
 We are assuming you have completed [configuring Spinnaker](http://www.spinnaker.io/v1.0/docs/target-deployment-configuration#section-openstack) with OpenStack. In this example, we will be using Jenkins to trigger our pipelines.
 
-## Part 1: Bake & Deploy to Test
+## Part 1: Bake & deploy to test
 
 In this first exercise, you’ll set up a pipeline, named Bake & Deploy to Test, which builds an OpenStack image, deploys it as a server group to a test cluster, then destroys the previous server group in that cluster (also called the "Highlander" strategy). We will be triggering this pipeline with a Jenkins continuous integration job.
 
@@ -26,7 +26,7 @@ The workflow is shown in the figure below.
 
 ![](workflow.png)
 
-### Create a Spinnaker Application
+### Create a Spinnaker application
 
 Navigate to Spinnaker at [http://localhost:9000](http://localhost:9000).
 
@@ -40,7 +40,7 @@ In the *New Application* dialog:
 
 ![](create-app.png)
 
-### Create a Security Group
+### Create a security group
 First we create a security group for your cluster. Navigate to the "SECURITY GROUPS" tab and click the *Create Security Group* button:
 
 * Enter "test" for *Stack*.
@@ -52,7 +52,7 @@ First we create a security group for your cluster. Navigate to the "SECURITY GRO
 
 ![](security-group-1.png)
 
-### Create a Load Balancer
+### Create a load balancer
 
 Navigate to the "Load Balancers" tab and click the *Create Load Balancer* button:
 
@@ -70,7 +70,7 @@ Navigate to the "Load Balancers" tab and click the *Create Load Balancer* button
 ![](load-2.png)
 
 
-### Setup Pipeline: Bake & Deploy to Test Pipeline
+### Setup pipeline: “Bake & Deploy to Test” pipeline
 
 The purpose of this pipeline is to generate a OpenStack image from a package, and then deploy the image on server groups in the test cluster. We want this pipeline to be kicked off every time the Jenkins continuous integration job completes.
 
@@ -166,7 +166,7 @@ You can now see in the CLUSTERS tab that a new server group has been deployed to
 
 ![](clustersfixed.png)
 
-## Part 2: Validate Test
+## Part 2: Validate test
 
 The second pipeline, named “Validate Test”, is a simple one-stage placeholder to represent some gating function before pushing to prod.
 
@@ -175,7 +175,7 @@ The second pipeline, named “Validate Test”, is a simple one-stage placeholde
 
 Furthermore, we configure the prod deployment to implement the red/black strategy (a.k.a. blue/green), which means that upon verifying health of the new server group it will immediately disable the previous server group in the same cluster. Here we disable rather than destroy, so that rollbacks can be quickly accomplished simply by re-enabling the old server group.
 
-### Setup Pipeline: Validate Test
+### Setup pipeline: “Validate Test”
 
 Create a new pipeline by navigating to the PIPELINES tab and clicking *Configure*, then *Create New ...*
 
@@ -207,11 +207,11 @@ We stop and wait for human confirmation to continue:
 
 ![](manualjudge.png)
 
-## Part 3: Promote to Prod
+## Part 3: Promote to prod
 
 The third pipeline, “Promote to Prod”, takes the image that was deployed in the test cluster, and deploys that image to the prod environment, thereby promoting it.
 
-### Create a Load Balancer
+### Create a load balancer
 
 We create a load balancer for the prod cluster. Navigate to the LOAD BALANCERS tab and click the *Create Load Balancer* button:
 
@@ -224,7 +224,7 @@ We create a load balancer for the prod cluster. Navigate to the LOAD BALANCERS t
 
 ![](lb2.png)
 
-### Setup Pipeline: Promote to Prod Pipeline
+### Setup pipeline: “Promote to Prod” pipeline
 
 Create a new pipeline by navigating to the PIPELINES tab and clicking *Configure*, then *Create New ...*
 

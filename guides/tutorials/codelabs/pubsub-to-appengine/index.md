@@ -19,9 +19,9 @@ This codelab takes about an hour.
 
 This codelab assumes you have a billing-enabled GCP project. Also, [install gcloud](https://cloud.google.com/sdk/downloads) if you haven't already.
 
-## Set Up Your Environment
+## Set up your environment
 
-### Create a GCS Bucket to store artifacts
+### Create a GCS bucket to store artifacts
 
 In the environment where you have `gcloud` installed, run the following commands:
 
@@ -52,7 +52,7 @@ SUBSCRIPTION_NAME=<subscription>`
 5. Create a pull subscription:
 `gcloud beta pubsub subscriptions create $SUBSCRIPTION_NAME --topic $TOPIC_NAME`.
 
-## Configure and Deploy Your Spinnaker instance
+## Configure and deploy your Spinnaker instance
 
 ### Configure Spinnaker to deploy to GAE
 
@@ -162,7 +162,7 @@ Select a Spinnaker version: `hal config version edit --version <version>`. List 
 `sudo hal deploy apply`
 Wait a few minutes for the deploy to complete.
 
-## Configure Your Pipeline
+## Configure your pipeline
 
 1. Create an application:
 

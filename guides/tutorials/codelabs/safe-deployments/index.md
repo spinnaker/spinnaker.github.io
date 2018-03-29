@@ -17,7 +17,7 @@ Please follow the steps in the Kubernetes Source to Prod guide to create a deplo
 
 # Making manual operations safer 
 
-## Using the Rollback action
+## Using the rollback action
 
 The rollback action automates the process of restoring to the previous good known server group. This feature enhances a traditionally manual operation by ensuring that the restored cluster is taking traffic before disabling the current server group.
 
@@ -57,9 +57,9 @@ You should see a task window and the deployment being rolled back safely and aut
 
 ![](images/rollback5.png)
 
-# Making a Deployment Pipeline Safer
+# Making a deployment pipeline safer
 
-## Creating your deployment Pipeline
+## Creating your deployment pipeline
 
 Go to the Pipelines screen and select _Create New_
 

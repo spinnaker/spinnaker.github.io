@@ -20,7 +20,7 @@ You will be using a custom-built image that includes sample application source c
 
 This codelab is an extension of the [Hello World Deployment](../hello-deployment) tutorial. It runs specifically on the Google Cloud Platform, and requires a billing-enabled GCP project.
 
-## Part 0: Environment Setup
+## Part 0: Environment setup
 
 ### Install gcloud
 
@@ -65,7 +65,7 @@ Open an SSH tunnel through which your local workstation will connect to Spinnake
         --ssh-flag="-L 5656:localhost:5656"
 
 
-## Part 1: Bake & Deploy to Test
+## Part 1: Bake & deploy to test
 
 In this first exercise, you’ll set up a pipeline, named Bake & Deploy to Test, which builds a GCE image, deploys it as a server group to a test cluster, then destroys the previous server group in that cluster (also called the "Highlander" strategy). The pipeline is triggered by a Jenkins continuous integration job.
 
@@ -73,7 +73,7 @@ The workflow is shown in the figure below.
 
 ![](1-workflow.png)
 
-### Create a Spinnaker Application
+### Create a Spinnaker application
 
 Navigate to Spinnaker at [http://localhost:9000](http://localhost:9000).
 
@@ -87,7 +87,7 @@ In the *New Application* dialog:
 
 ![](1-new-application.png)
 
-### Create a Load Balancer
+### Create a load balancer
 
 First we create a load balancer for your cluster. Navigate to the LOAD BALANCERS tab, click the *Create Load Balancer* button, and select *Network* as the type of load balancer.
 
@@ -99,7 +99,7 @@ First we create a load balancer for your cluster. Navigate to the LOAD BALANCERS
 
 ![](1-create-lb.png)
 
-### Setup Pipeline: Bake & Deploy to Test Pipeline
+### Setup pipeline: Bake & Deploy to Test pipeline
 
 The purpose of this pipeline is to generate a GCE image from a package, and then deploy the image on server groups in the test cluster. We want this pipeline to be kicked off every time the Jenkins continuous integration job completes.
 
@@ -201,7 +201,7 @@ You can also introspect server group details by clicking on a server group. In t
 
 ![](1-cluster-info.png)
 
-## Part 2: Validate Test
+## Part 2: Validate test
 
 The second pipeline, named “Validate Test”, is a simple one-stage placeholder to represent some gating function before pushing to prod.
 
@@ -209,7 +209,7 @@ The second pipeline, named “Validate Test”, is a simple one-stage placeholde
 
 Furthermore, we configure the prod deployment to implement the red/black strategy (a.k.a. blue/green), which means that upon verifying health of the new server group it will immediately disable the previous server group in the same cluster. Here we disable rather than destroy, so that rollbacks can be quickly accomplished simply by re-enabling the old server group.
 
-### Setup Pipeline: Validate Test
+### Setup pipeline: validate test
 
 Create a new pipeline by navigating to the PIPELINES tab and clicking *Configure*, then *Create New ...*
 
@@ -241,11 +241,11 @@ We stop and wait for human confirmation to continue:
 
 ![](2-manual-judgment.png)
 
-## Part 3: Promote to Prod
+## Part 3: Promote to prod
 
 The third pipeline, “Promote to Prod”, takes the image that was deployed in the test cluster, and deploys that image to the prod environment, thereby promoting it.
 
-### Create a Load Balancer
+### Create a load balancer
 
 We create a load balancer for the prod cluster. Navigate to the LOAD BALANCERS tab and click the *Create Load Balancer* button:
 
@@ -257,7 +257,7 @@ We create a load balancer for the prod cluster. Navigate to the LOAD BALANCERS t
 
 ![](2-create-lb.png)
 
-### Setup Pipeline: Promote to Prod Pipeline
+### Setup pipeline: promote to prod pipeline
 
 Create a new pipeline by navigating to the PIPELINES tab and clicking *Configure*, then *Create New ...*
 
@@ -331,7 +331,7 @@ In the CLUSTERS tab, you can see that a server group has been deployed to the pr
 
 Because we selected the red/black deployment strategy for the deployment, there should always be only one enabled/active server group resident in the prod cluster cluster, with previous ones disabled (grey), even after successive runs of this pipeline. Try it out by manually invoking the promotion pipeline again.
 
-## Extra Stuff
+## Extra stuff
 
 ### Roll back
 

@@ -13,7 +13,7 @@ In this codelab, you will create a Source to Prod pipeline targeting a Kubernete
 
 Fork [this repository](https://github.com/azure-devops/spin-kub-demo) with a simple 'Hello World' application written in Go. You will commit a change to this fork in order to trigger the Source to Prod pipeline.
 
-## Deploy Dev Ops VM
+## Deploy dev ops VM
 
 Run the following command to deploy the 'Continuous Delivery to Kubernetes' [Quickstart Template](https://github.com/Azure/azure-quickstart-templates/tree/master/301-jenkins-acr-spinnaker-k8s) in Azure. It will make sure you have the [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) installed and interactively ask if you want to change any of the default behavior. **Important:** When asked, make sure to specify your fork of the sample git repository so that you can trigger the pipeline with your own commits.
 
@@ -24,7 +24,7 @@ bash <(curl -sL https://aka.ms/DeployDevOps)
 The script should list several outputs after it has finished. Run the 'SSH' output to connect to your Jenkins and Spinnaker instances hosted on the same VM.
 > NOTE: The command will forward traffic from your VM to your local machine on several ports, including port 8080 for the Jenkins dashboard, port 9000 for the Spinnaker dashboard, and port 8084 for the Spinnaker gate service. It also forwards port 8001, which is used to view the Kubernetes dashboard - just run `kubectl proxy` on your VM and navigate to [localhost:8001/ui](http://localhost:8001/ui).
 
-## Verify Sample Pipeline
+## Verify sample pipeline
 
 Navigate to [localhost:8080](http://localhost:8080) to see your Jenkins dashboard. Follow the default Jenkins 'Getting Started' instructions and verify the sample 'Basic Docker Build' job successfully built and pushed to your Azure Container Registry as shown in the image below:
 
@@ -40,6 +40,6 @@ After the pipeline finishes, go to the Cluster view to inspect your production e
 
 ![Verify Production IP](prod-ip.png)
 
-## Trigger Sample Pipeline
+## Trigger sample pipeline
 
 Finally, make a change to your sample app in git and push your changes (for example, you can change the color or wording in the 'content/index.html' file) in order to [trigger](https://wiki.jenkins-ci.org/display/JENKINS/GitHub+Plugin) your pipeline. Follow the same steps above to watch as your new image is built and deployed to your staging/production environments.
