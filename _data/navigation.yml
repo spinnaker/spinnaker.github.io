@@ -224,6 +224,8 @@ guides:
         url: /guides/developer/new-stage/
       - title: Kork Library
         url: /guides/developer/kork-library/
+      - title: Kubernetes CRD extensions 
+        url: /guides/developer/crd-extensions/
   - title: Runbooks
     collapsed: true
     children:
