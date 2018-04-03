@@ -30,6 +30,11 @@ curl -X POST \
   $FRONT50/serviceAccounts
 ```
 
+You can see your new service account that just got created:
+```bash
+curl $FRONT50/serviceAccounts
+```
+
 A Fiat sync may be necessary for all affected users to pick up the changes:
 
 ```bash
