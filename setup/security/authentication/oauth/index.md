@@ -22,8 +22,8 @@ For convenience, several providers are already pre-configured. As an administrat
 Provider | Halyard value | Provider-Specific Docs
 --- | --- | ---
 Google Apps for Work / G Suite | `google` | [Google Apps for Work / G Suite](./providers/google/)
-GitHub | `github` | [GitHub Teams](./providers/github/)
-Azure | `azure` | [Azure](./providers/azure/)
+GitHub | `github` | [GitHub Teams](https://help.github.com/articles/authorizing-oauth-apps/)
+Azure | `azure` | [Azure](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-oauth-code)
 
 Activate one by executing the following:
 
