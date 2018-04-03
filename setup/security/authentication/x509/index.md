@@ -58,6 +58,7 @@ Encoding with any another OID can be done by editing the openssl.conf.
     #default_keyfile 	= privkey.pem
     distinguished_name	= req_distinguished_name
     attributes		= req_attributes
+    req_extensions = v3_req
 
     [ req_distinguished_name ]
     countryName			= Country Name (2 letter code)
