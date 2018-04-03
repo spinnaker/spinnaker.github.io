@@ -45,6 +45,15 @@ spec:
         # todo - make :stable or digest of :stable
         image: gcr.io/spinnaker-marketplace/halyard:0.43.0-20180321030509
         imagePullPolicy: Always
+        command:
+        - /bin/sh
+        args:
+        - -c
+        # when the configmap is mounted directly at /root/.hal the halyard daemon
+        # isn't able to replace the contents of the mount with user modifications.
+        # so instead we mount the configmap elsewhere and copy the files into
+        # place when the container starts.
+        - "cp -R /root/staging/.hal /root/.hal && /opt/halyard/bin/halyard"
         readinessProbe:
           exec:
             command:
@@ -56,22 +65,22 @@ spec:
         - containerPort: 8064
         volumeMounts:
         - name: halconfig
-          mountPath: /root/.hal/config
+          mountPath: /root/staging/.hal/config
           subPath: config
         - name: halconfig
-          mountPath: /root/.hal/default/service-settings/deck.yml
+          mountPath: /root/staging/.hal/default/service-settings/deck.yml
           subPath: deck.yml
         - name: halconfig
-          mountPath: /root/.hal/default/service-settings/gate.yml
+          mountPath: /root/staging/.hal/default/service-settings/gate.yml
           subPath: gate.yml
         - name: halconfig
-          mountPath: /root/.hal/default/service-settings/igor.yml
+          mountPath: /root/staging/.hal/default/service-settings/igor.yml
           subPath: igor.yml
         - name: halconfig
-          mountPath: /root/.hal/default/service-settings/fiat.yml
+          mountPath: /root/staging/.hal/default/service-settings/fiat.yml
           subPath: fiat.yml
         - name: halconfig
-          mountPath: /root/.hal/default/profiles/front50-local.yml
+          mountPath: /root/staging/.hal/default/profiles/front50-local.yml
           subPath: front50-local.yml
       volumes:
       - name: halconfig
