@@ -70,6 +70,9 @@ spec:
         - name: halconfig
           mountPath: /root/.hal/default/service-settings/fiat.yml
           subPath: fiat.yml
+        - name: halconfig
+          mountPath: /root/.hal/default/profiles/front50-local.yml
+          subPath: front50-local.yml
       volumes:
       - name: halconfig
         configMap:
@@ -104,6 +107,8 @@ data:
   fiat.yml: |
     enabled: false
     skipLifeCycleManagement: true
+  front50-local.yml: |
+    spinnaker.s3.versioning: false
   gate.yml: |
     host: 0.0.0.0
   deck.yml: |
