@@ -109,7 +109,7 @@ within pipelines, or produced by pipelines.
 ```
 
 ```js
-// A S3 object
+// An S3 object
 {
   "type": "s3/object",
   "name": "s3://bucket/file.json",
