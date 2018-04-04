@@ -7,7 +7,7 @@ sidebar:
 
 {% include toc %}
 
-In Spinnaker, an artifact is an object that references an external resource. That resource could be… 
+In Spinnaker, an artifact is an object that references an external resource. That resource could be…
 
 * a Docker image
 * a file stored in GitHub
@@ -19,15 +19,15 @@ used within a Spinnaker pipeline.
 
 However, a URI alone isn't always enough. Take the following examples:
 
-* You have a “Bake Image” stage that defines which packages are to be consumed, 
-  which images are deployed into each environment, and which configuration files are mounted. 
-  If each of these artifact types is just a URI, you have to write (and maintain) RegEx (or similar) 
+* You have a “Bake Image” stage that defines which packages are to be consumed,
+  which images are deployed into each environment, and which configuration files are mounted.
+  If each of these artifact types is just a URI, you have to write (and maintain) RegEx (or similar)
   against URIs to match artifacts to stages.
 
-* Your build system produces provenance information about your Docker images 
-  (for example, which commit triggered the build, which build steps were used). 
-  This isn’t easy to store in or retrieve from the Docker image, but you want to trigger the 
-  pipeline on the arrival of a new image. If all you capture is the URI 
+* Your build system produces provenance information about your Docker images
+  (for example, which commit triggered the build, which build steps were used).
+  This isn’t easy to store in or retrieve from the Docker image, but you want to trigger the
+  pipeline on the arrival of a new image. If all you capture is the URI
   (for example, `gcr.io/your-project/your-image:v1.0.0`) you lose that provenance information.
 
 * Your Spinnaker instance is used by many teams in your organization,
@@ -105,5 +105,14 @@ within pipelines, or produced by pipelines.
   "name": "gs://bucket/file.json",
   "version": "135028134000"
   "location": "us-central1"
+}
+```
+
+```js
+// An S3 object
+{
+  "type": "s3/object",
+  "name": "s3://bucket/file.json",
+  "location": "us-east-1"
 }
 ```
