@@ -112,9 +112,7 @@ within pipelines, or produced by pipelines.
 // A S3 object
 {
   "type": "s3/object",
-  "reference": "s3://bucket/file.json#1522839181",
   "name": "s3://bucket/file.json",
-  "version": "1522839181"
   "location": "us-east-1"
 }
 ```
