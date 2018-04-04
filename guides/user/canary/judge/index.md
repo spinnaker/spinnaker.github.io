@@ -1,12 +1,14 @@
 ---
 layout: single
-title:  "The Canary Judge&mdash;how does it work?"
+title:  "The canary judge&mdash;how does it work?"
 sidebar:
   nav: guides
 ---
 
 {% include toc %}
 
+> Note: Automated canary analysis in Spinnaker is designed to support pluggable
+> judges. This document describes how the default judge (NetflixACAJudge) works.
 
 To assess the quality of a canary deployment against a baseline, metrics from
 both deployments are compared in order to check for significant degradation.
@@ -21,10 +23,10 @@ This is done in two phases:
 
 * Judgment
 
-  In this phase Spinnaker compares those metrics, rendering a decision to pass
-  or fail the canary (that is, was there was a significant degradation in the
+  In this phase Spinnaker compares those metrics and renders a decision to pass
+  or fail the canary (that is, was there a significant degradation in the
   metrics?) The judgment can also be configured to continue on with a canary
-  when the result it "marginal."
+  when the result is "marginal."
 
   The judgment consists of four main steps, and they're described below.
 
@@ -64,9 +66,9 @@ screen shot below.
 
 <!--- insert image here, if available --->
 
-The primary metric comparison algorithm (classifier) in Kayenta (AKA the
-judge) uses a nonparametric statistical test to check for a significant
-difference between the canary and baseline metrics.
+The primary metric comparison algorithm (classifier) in Kayenta uses a
+nonparametric statistical test to check for a significant difference between the
+canary and baseline metrics.
 
 ## Step 4: Score computation
 
@@ -74,12 +76,10 @@ After each metric is classified, a final score is computed which represents how
 similar the canary is to the baseline. This score is calculated as the ratio of
 "Pass" metrics out of the total number of metrics.
 
-For example, if 9 of 10 metrics are classified as “Pass” the score is 90%. The
+For example, if 9 of 10 metrics are classified as “Pass,” the score is 90%. The
 threshold score for overall canary pass, marginal, or fail is
 
-
-
-
-While there are more complex scoring methodologies, we bias toward techniques
-that are simple to interpret and understand; understanding why a decision was
-made is important to the success of Automated Canary Analysis.
+While there are more complex scoring methodologies, the default judge
+(NetflixACAJudge) is biased toward techniques that are simple to interpret and
+understand; understanding why a decision was made is important to the success of
+Automated Canary Analysis.

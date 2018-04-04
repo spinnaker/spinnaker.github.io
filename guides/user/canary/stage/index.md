@@ -1,7 +1,7 @@
 against the target environment.
 ---
 layout: single
-title:  "Add a Canary stage to a pipeline"
+title:  "Add a canary stage to a pipeline"
 sidebar:
   nav: guides
 ---
@@ -10,8 +10,9 @@ sidebar:
 
 
 If you have [enabled canary for your application](/setup/canary/) and have one
-or more [canary configs prepared](), you can now add a canary stage to your
-pipeline and configure it to perform canary analysis for your deployment,
+or more [canary configs prepared](/guides/user/canary/config/), you can now add
+a canary stage to your pipeline and configure it to perform canary analysis for
+your deployment,
 
 This stage type is for the canary _analysis_ only. The canary stage doesn't
 perform any provisioning or cleanup operations for you. Those must be configured
@@ -38,7 +39,7 @@ and the cloud resource on which the baseline and canary are running.
 
 You can also refine the scope using [extended params](#extended-params).
 
-## Configure the canary stage
+## Define the canary stage
 
 <!-- something here about where in the pipeline you'd put the canary stage, and
 other permutations, like multiple stages? -->
@@ -78,9 +79,10 @@ downstream of its dependencies.
 
    * Choose the __Config Name__.
 
-     This is the canary config you created [here](). That configuration must be
-     created within this same application, unless your Spinnaker is set up so
-     that all canary configurations are available to all pipelines.
+     This is the canary config you created [here](/guides/user/canary/config).
+     That configuration must be visible to this application. By default, all
+     configs are visible to all applications, but your canary might be [set up
+     so that each config is limited]() to the application in which it is created.
 
    * Set a __Delay__.
 
@@ -110,7 +112,7 @@ downstream of its dependencies.
    > You can enter server groups and regions by name, but you can also click the
    > magic wand here to automatically populate the fields with expressions that
    > resolve to available resources. Those resources are a starting point, which
-   > you can eidt to match the specific resources you need.
+   > you can edit to match the specific resources you need.
 
    * __Baseline__
 
@@ -145,7 +147,8 @@ downstream of its dependencies.
      Add any additional parameters, which are specific to the metric sources and
      which can be used to refine the scope of the analysis. These parameters can
      provide variable bindings for use in the expansion of custom filter
-     templates [specified in the canary config](/guides/user/canary/config/).
+     templates [specified in the canary
+     config](/guides/user/canary/config/filter_templates/).
 
    ![Canary stage declaration](/guides/user/canary/stage/metric_scope.png)
 
