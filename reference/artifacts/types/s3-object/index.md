@@ -17,7 +17,7 @@ Deploy Manifest or AWS Deploy stage.
 | Field | Explanation |
 |-|-----------|
 | `type` | Always `s3/object`. |
-| `name` | The same as `reference`, but never with a version. |
+| `name` | Name/Path of the object. |
 | `location` | The region where your bucket was created |
 
 ## Example
