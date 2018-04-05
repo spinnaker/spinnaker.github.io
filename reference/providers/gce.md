@@ -38,10 +38,10 @@ GCE supports [predefined machine types](https://cloud.google.com/compute/docs/ma
 well as [custom machine types](https://cloud.google.com/compute/docs/machine-types#custom_machine_types), and Spinnaker
 has support for the full range.
 
-### Security Group
-A Spinnaker **security group** maps to a GCE [Firewall](https://cloud.google.com/compute/docs/vpc/firewalls).
+### Firewall
+A Spinnaker **firewall** maps to a GCE [Firewall](https://cloud.google.com/compute/docs/vpc/firewalls).
 
-Spinnaker has user-friendly support for associating a new server group with a set of security groups, and the correct
+Spinnaker has user-friendly support for associating a new server group with a set of firewalls, and the correct
 target tags will be set on the newly-provisioned server group.
 
 ## Operation mapping
@@ -125,23 +125,23 @@ Deletes a load balancer and all of its resources.
 
 This operation is not permitted unless there are no instances associated with the load balancer.
 
-### Create Security Group
+### Create Firewall
 
 Creates a firewall rule.
 
 Target tags can be explicitly specified, or one can be automatically generated. Supports source filtering based on both
 tags and CIDRs.
 
-### Clone Security Group
+### Clone Firewall
 
 Clones a firewall rule.
 
-Supported only via the ui. The create security group wizard is pre-populated with the attributes of the security group
+Supported only via the ui. The create firewall wizard is pre-populated with the attributes of the firewall
 
 ### Edit inbound rules
 
 Modifies the source filters, target tags and ingress rules of an existing firewall rule.
 
-### Delete Security Group
+### Delete Firewall
 
 Deletes a firewall rule.

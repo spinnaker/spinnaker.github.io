@@ -276,22 +276,23 @@ our app.
 ![](create.png)
 
 
-### Create security group
+### Create firewall
 
-Now we will create a security group to allow access to our application. Spinnaker only allows you to
- attach ingress sources based on another security group, so we first must create a base security 
- group via the aws console to allow traffic on port 8080.
+Now we will create a firewall to allow access to our application. Spinnaker only allows you to
+ attach ingress sources based on another firewall, so we first must create a base security
+ group via the aws console to allow traffic on port 8080 (AWS Security Groups map to Firewalls in
+ Spinnaker).
 
 ![](group1.png)
 
-Now we can use this group as an inbound rule for our application security group. Click the security 
-groups tab and add a new group.
+Now we can use this group as an inbound rule for our application firewall. Click the firewalls
+tab and add a new firewall.
 
-![](group2.png)
+![](firewall1.png)
 
 Select our group as ingress source
 
-![](group3.png)
+![](firewall2.png)
 
 
 
@@ -300,7 +301,7 @@ Select our group as ingress source
 The load balancer will be the entry-point to our application scaling group. Click the load balancers
  tab and add it.
 
-![](group4.png)
+![](lb1.png)
 
 ## Set up Spinnaker pipeline
 
