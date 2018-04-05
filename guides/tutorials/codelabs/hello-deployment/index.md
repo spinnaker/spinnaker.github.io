@@ -276,11 +276,12 @@ our app.
 ![](create.png)
 
 
-### Create security group
+### Create firewall
 
-Now we will create a security group to allow access to our application. Spinnaker only allows you to
- attach ingress sources based on another security group, so we first must create a base security 
- group via the aws console to allow traffic on port 8080.
+Now we will create a firewall to allow access to our application. Spinnaker only allows you to
+ attach ingress sources based on another firewall, so we first must create a base security
+ group via the aws console (AWS Security Groups map to Firewalls in Spinnaker) to allow traffic
+ on port 8080.
 
 ![](group1.png)
 

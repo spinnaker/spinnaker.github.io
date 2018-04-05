@@ -73,7 +73,7 @@ When the pipeline runs, if this expression evaluates to true, the pipeline will 
 
 ### Sometimes you can't use an expression
 
-There are often cases where the value you want to replace doesn't allow typing, such as specifying a list of security groups or wanting to dynamically control the behavior of a checkbox. For these cases, you should edit the pipeline JSON directly.
+There are often cases where the value you want to replace doesn't allow typing, such as specifying a list of firewalls or wanting to dynamically control the behavior of a checkbox. For these cases, you should edit the pipeline JSON directly.
 
 You can edit the pipeline JSON by selecting Pipeline Actions -> Edit as Json
 
@@ -263,7 +263,7 @@ The expression language allows you to filter maps by using the `.?` expression. 
 
 ###Lists as parameters
 
-Sometimes you want to enter a list of values as a parameter. For example, a list of regions or security groups. A useful tip here is to ask the user to enter them as a list of comma separated values `us-east-1,us-west-1,eu-west-1` and then use the `split()` method to make these into a map. Your expression would look like this `parameters.regions.split(',')`.
+Sometimes you want to enter a list of values as a parameter. For example, a list of regions or firewalls. A useful tip here is to ask the user to enter them as a list of comma separated values `us-east-1,us-west-1,eu-west-1` and then use the `split()` method to make these into a map. Your expression would look like this `parameters.regions.split(',')`.
 
 ### #root
 

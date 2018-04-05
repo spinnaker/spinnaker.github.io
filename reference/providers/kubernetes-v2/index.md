@@ -151,13 +151,13 @@ There are three major groupings of resources in Spinnaker:
 
 * server groups
 * load balancers
-* security groups
+* firewalls
 
 These correspond to Kubernetes resource kinds as follows:
 
 * Server Groups ≈ Workloads
 * Load Balancers ≈ Services, Ingresses
-* Security Groups ≈ NetworkPolicies
+* Firewalls ≈ NetworkPolicies
 
 ## Resource management policies
 
