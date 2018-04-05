@@ -1,4 +1,3 @@
-against the target environment.
 ---
 layout: single
 title:  "Add a canary stage to a pipeline"
