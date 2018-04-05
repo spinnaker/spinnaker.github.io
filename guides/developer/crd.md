@@ -3,13 +3,12 @@ layout: single
 title:  "Kubernetes CRD Extensions"
 sidebar:
   nav: guides
-redirect_from: /docs/crd-extensions
 ---
 
 # Native Support For Kubernetes Custom Resource Definitions
 Spinnaker's Kubernetes V2 provider natively supports Custom Resource Definitions (CRDs).
 
-For example, inside a `clouddriver.yml` config, you can map your CRD to a `spinnakerKind` - `serverGroups`, `loadBalancers`, `instances`, etc.:
+For example, inside a `clouddriver.yml` config, you can map your CRD to a `spinnakerKind` (`serverGroups`, `loadBalancers`, `instances`, etc.):
 
 ```
 kubernetes:
@@ -20,7 +19,7 @@ kubernetes:
           spinnakerKind: serverGroups
 ```
 
-Spinnaker will cache instances of your CRD, and the resource will be surfaced in the API and UI as your configured `spinnakerKind`.
+Spinnaker caches instances of your CRD, and the resource is surfaced in the API and UI as your configured `spinnakerKind`.
 
 # Spinnaker Extension Points for Custom Resource Definitions
 
@@ -29,28 +28,28 @@ These extension points live alongside the config-based support for CRDs describe
 
 This work has allowed us to support the following features within Spinnaker:
 
- - Custom models for representing CRDs as `spinnakerKinds`.
- - Deploying CRDs with custom Spinnaker artifact types.
- - Custom Kubernetes API versions.
- - Custom Spinnaker naming strategies.
- - Per-account, custom Spinnaker UIs that can run alongside the existing Kubernetes UIs.
+ - Custom models for representing CRDs as `spinnakerKinds`
+ - Deploying CRDs with custom Spinnaker artifact types
+ - Custom Kubernetes API versions
+ - Custom Spinnaker naming strategies
+ - Per-account, custom Spinnaker UIs that can run alongside the existing Kubernetes UIs
 
-This guide exists for developers that want to duplicate this functionality for their CRDs.
-It also exists an explanation of certain code paths within Spinnaker which include hooks with no corresponding open-source implementations.
+This guide is for developers who want to duplicate this functionality for their CRDs.
+It also exists as an explanation of certain code paths within Spinnaker which include hooks with no current corresponding open-source implementations.
 
-Developers that want to implement these features will have to build their own layered version
+Developers who want to implement these features will have to build their own layered version
 of [Clouddriver](https://github.com/spinnaker/clouddriver) -
-see Adam Jorden's [blog post](https://blog.spinnaker.io/scaling-spinnaker-at-netflix-custom-features-and-packaging-e78536d38040) - and should be familiar with the Kubernetes V2 provider and writing code for Clouddriver.
+  see Adam Jorden's [blog post](https://blog.spinnaker.io/scaling-spinnaker-at-netflix-custom-features-and-packaging-e78536d38040) - and should be familiar with the [Kubernetes V2 provider](/reference/providers/kubernetes-v2) and writing code for Clouddriver.
 
 ## Custom Handlers
 
-The central extension point is the `KubernetesHandler` class. A subclass of `KubernetesHandler` - e.g., `KubernetesReplicaSetHandler` - defines the
+The central extension point is the [KubernetesHandler](https://github.com/spinnaker/clouddriver/blob/master/clouddriver-kubernetes/src/main/groovy/com/netflix/spinnaker/clouddriver/kubernetes/v2/op/handler/KubernetesHandler.java) class. A subclass of `KubernetesHandler` - e.g., [KubernetesReplicaSetHandler](https://github.com/spinnaker/clouddriver/blob/master/clouddriver-kubernetes/src/main/groovy/com/netflix/spinnaker/clouddriver/kubernetes/v2/op/handler/KubernetesReplicaSetHandler.java) - defines the
 relationship between Spinnaker and your Kubernetes kind.
 
 For example, if you wanted to build a Spinnaker integration for your CRD of kind `MyCRDKind`, you would start with
 the following handler:
 
-```
+```java
 @Component
 public class MyCRDHandler extends KubernetesHandler {
 
@@ -98,22 +97,22 @@ public class MyCRDHandler extends KubernetesHandler {
 
 ## Custom Spinnaker Resource Models
 
-Developers may want to change how their CRD is represented in Spinnaker's API. By default, a CRD of `spinnakerKind` `serverGroups` will
-be represented with the model class `KubernetesServerGroup`.
+You may want to change how their CRD is represented in Spinnaker's API. By default, a CRD of `spinnakerKind` `serverGroups` will
+be represented with the model class [KubernetesV2ServerGroup](https://github.com/spinnaker/clouddriver/blob/master/clouddriver-kubernetes/src/main/groovy/com/netflix/spinnaker/clouddriver/kubernetes/v2/caching/view/model/KubernetesV2ServerGroup.java).
 
-Developers may want to override this representation, for example, if they want to define how their server group's `region` is resolved.
+You may want to override this representation, for example, if you want to define how your server group's `region` is resolved.
 
-They can do so by having their `KubernetesJobHandler` implement `ServerGroupHandler` (or `ServerGroupManagerHandler` if their
-resource is of `spinnakerKind` `serverGroupManagers`). They will be responsible for translating raw Spinnaker cache data into a
+To override the default model class, `MyCRDHandler` should implement `ServerGroupHandler` (or `ServerGroupManagerHandler` if your
+resource is of `spinnakerKind` `serverGroupManagers`). You will be responsible for translating raw Spinnaker cache data into a
 subclass of `KubernetesServerGroup`.
 
 ## Custom Kubernetes API Versions
 
-Developers that want Spinnaker to support custom Kubernetes API versions should subclass `KubernetesApiVersion`.
+If you want Spinnaker to support custom Kubernetes API versions, subclass `KubernetesApiVersion`.
 
 For example,
 
-```
+```java
 public class MyApiVersion extends KubernetesApiVersion {
   public static MY_BETA_API_VERSION = new MyApiVersion("myApiVersion/v1beta");
 
@@ -126,9 +125,9 @@ public class MyApiVersion extends KubernetesApiVersion {
 
 ## Custom Spinnaker Naming Strategies
 
-Developers that want to use a custom naming strategy for ther CRDs should implement a `NamingStrategy`. For example,
+To use a custom naming strategy for your CRD, implement [NamingStrategy](https://github.com/spinnaker/clouddriver/blob/master/clouddriver-core/src/main/groovy/com/netflix/spinnaker/clouddriver/names/NamingStrategy.java). For example,
 
-```
+```java
 @Component
 public class MyManifestNamer implements NamingStrategy<KubernetesManifest> {
   @Override
@@ -168,7 +167,7 @@ should not be open sourced.
 
 Spinnaker's UI, Deck, has many points of integration to allow for per-cloud provider customization through the `CloudProviderRegistry`:
 
-```
+```javascript
 cloudProviderRegistryProvider.registerProvider('kubernetes', {
   name: 'Kubernetes',
   skin: 'v2',
@@ -184,14 +183,14 @@ The UIs for Spinnaker's Kubernetes V1 & V2 providers are implemented as `skin`s.
 is not strictly coupled to a backend implementation. By default, a Spinnaker Kubernetes account using the V1 provider implementation
 will use the V1 skin; an account using the V2 implementation will use the V2 skin.
 
-Developers can write custom skins for the Kubernetes provider by registering a new `skin` with the `CloudProviderRegistry`:
+You can write custom skins for the Kubernetes provider by registering a new `skin` with the `CloudProviderRegistry`:
 
-```
+```javascript
 cloudProviderRegistryProvider.registerProvider('kubernetes', {
   name: 'Kubernetes',
   skin: 'myCustomizedUISkin',
   ... // References to components and templates. These do not all need to be custom components -
-  ... // developers can mix in components from the V1 and V2 Kubernetes `skins`.
+  ... // you can mix in components from the V1 and V2 Kubernetes `skins`.
 });
 ```
 
@@ -204,8 +203,8 @@ kubernetes:
       skin: myCustomizedUISkin
 ```
 
-A custom `skin` should be used in cases when some Kubernetes accounts should render the V1 or V2 `skin`, and others should use custom UI components.
+Use a custom skin in casees where some Kubernetes account should render the V1 or V2 `skin`, and another should use custom UI components.
 If all Kubernetes accounts need the same customizations, then Deck's `OverrideRegistry` should be sufficient.
 
-There is no strong relationship between CRDs and UI customizations - i.e., developers may want to have per-account UI customizations even
+There is no strong relationship between CRDs and UI customizations - i.e., you may want to have per-account UI customizations even
 if they aren't using CRDs.
