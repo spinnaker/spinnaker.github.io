@@ -7,10 +7,9 @@ sidebar:
 
 {% include toc %}
 
-You can create sets of filters to apply against time series returned by your
-telemetry provider. These filters can also be parameterized, then hydrated by
-values provided in the [canary
-stage](/guides/user/canary/stage/#extended-params).
+Filter templates allow you to compose and parameterize advanced queries against
+your telemetry provider. Parameterized queries are hydrated by values provided
+in the [canary stage](/guides/user/canary/stage/#extended-params).
 
 ## Things to keep in mind
 
@@ -63,3 +62,5 @@ this stage is using.
 3. Add the value you want for that variable.
 
 ![](/guides/user/canary/config/filter_templates/extended_params.png)
+
+## Configure canary analysis for AWS

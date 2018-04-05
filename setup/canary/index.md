@@ -7,10 +7,9 @@ sidebar:
 
 {% include toc %}
 
-All setup for automated canary analysis in Spinnaker is done using Halyard
-commands.
-[Here's a reference](/reference/halyard/commands/#hal-config-canary) for this
-canary set of Halyard commands.
+Setting up automated canary analysis in Spinnaker consists  of running a bunch
+of Halyard commands, as described in this doc. For further details, [Here's a
+reference](/reference/halyard/commands/#hal-config-canary)
 
 
 ## Enable/disable canary analysis
@@ -26,9 +25,9 @@ hal config canary disable
 
 ## Specify the scope of canary configs
 
-Each [canary configuration](/guides/user/canary/config/) is available to all
-pipeline canary stages in all apps, by default. But you can change that so each
-canary config is only visible to the app in which it is created:
+By default, each [canary configuration](/guides/user/canary/config/) is
+visible to all pipeline canary stages in all apps. But you can change that so
+each canary config can be used only within the app in which it was created:
 
 ```
 hal config canary edit --show-all-configs-enabled false
@@ -39,7 +38,10 @@ Set it to `true` to revert to global visibility.
 ## Set the canary judge
 
 The current default judge is `NetflixACAJudge-v1.0`. The behavior of this judge
-is described [here](/guides/user/canary/judge/)
+is described [here](/guides/user/canary/judge/).
+
+If there are any other judges available in your world, you can set Spinnaker to
+use  it:
 
 ```
 hal config canary edit --default-judge JUDGE
@@ -51,7 +53,7 @@ hal config canary edit --default-judge JUDGE
 hal config canary edit --default-metrics-store STORE
 ```
 
-`STORE` currently can be...
+`STORE` can be...
 
 * `atlas`
 * `datadog`
@@ -60,7 +62,7 @@ hal config canary edit --default-metrics-store STORE
 
 ## Provide the default metrics account
 
-Add the account name to use on your metrics provider. This default can be
+Add the account name to use for your metrics provider. This default can be
 overridden in [canary configuration](/guides/user/canary/config/).
 
 ```
