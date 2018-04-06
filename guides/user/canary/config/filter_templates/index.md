@@ -23,7 +23,7 @@ what is returned in the time series.
    refining selectors. The metric type is provided by the list of metrics above.
 
 * The purpose of the metric filter is to allow you to parameterize what
-is in these refining selectors, but it is perfectly legal to user literal
+is in these refining selectors, but it is perfectly legal to use literal
 values in filter templates.
 
 ## Create a filter template
@@ -62,5 +62,3 @@ this stage is using.
 3. Add the value you want for that variable.
 
 ![](/guides/user/canary/config/filter_templates/extended_params.png)
-
-## Configure canary analysis for AWS

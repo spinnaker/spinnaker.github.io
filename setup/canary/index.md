@@ -42,7 +42,7 @@ The current default judge is `NetflixACAJudge-v1.0`. The behavior of this judge
 is described [here](/guides/user/canary/judge/).
 
 If there are any other judges available in your world, you can set Spinnaker to
-use  it:
+use it:
 
 ```
 hal config canary edit --default-judge JUDGE
@@ -302,14 +302,4 @@ hal config canary prometheus account get
 
 ```
 hal config canary prometheus account list
-```
-
-
-
-
-## Specify location of web components (for Atlas)
-If you're using Atlas as your  telemetry provider...
-
-```
-hal config canary edit --atlasWebComponentsUrl URL
 ```

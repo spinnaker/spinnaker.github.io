@@ -10,11 +10,11 @@ sidebar:
 Before you can add a canary stage to a pipeline, you need to configure what the
 canary consists of, including...
 
+* A name by which a canary stage can choose this config
 * The specific metrics to evaluate, and a logical grouping of those metrics
 * Default scoring thresholds (which can be overridden in the
 canary stage)
 * Optionally, one or more filter templates
-* A name by which a canary stage can choose this config
 
 Canary configuration is done per Spinnaker
 [application](/concepts/#applications). For each
@@ -70,7 +70,9 @@ applications.
    This is the name shown in the stage config when you create a canary stage for
    your pipeline.
 
-1. Select your telemetry provider from the __Metric Store__ dropdown.
+1. (Optional) select your telemetry provider from the __Metric Store__ dropdown.
+
+   If you have only one provider set up, this is not a drop-down.
 
    ![Canary config declaration](/guides/user/canary/config/canary_config_create.png)
 

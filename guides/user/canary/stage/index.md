@@ -15,7 +15,7 @@ your deployment,
 
 This stage type is for the canary _analysis_ only. The canary stage doesn't
 perform any provisioning or cleanup operations for you. Those must be configured
-elsewhere in your pipeline
+elsewhere in your pipeline.
 
 ## About the canary stage
 
@@ -94,7 +94,7 @@ downstream of its dependencies.
 
      This is how frequently (in minutes) to capture and score the metrics.
 
-   * For __Analysis Type__, select __Growing__ or __Sliding Lookback__.
+   * For __Lookback Type__, select __Growing__ or __Sliding__.
 
      - In a growing analysis, a judgment is taken every [interval] minutes, but
      each judgment goes all the way back to the beginning of the __Lifetime__.
@@ -166,7 +166,7 @@ downstream of its dependencies.
 
    ![Canary stage declaration](/guides/user/canary/stage/advanced_settings.png)
 
-   ## Time scope in the canary stage
+<!--   ## Time scope in the canary stage
 
    When you define your canary stage, you have a lot of choices about how to
    manage the analysis over time, beginning with the analysis type:
@@ -181,3 +181,4 @@ downstream of its dependencies.
 
 
    ### Retrospective analysis
+-->

@@ -21,6 +21,11 @@ This is done in two phases:
   set of tags or annotations that identify which deployment the data was
   collected from (canary or baseline).
 
+  This phase is performed by Kayenta, not by the judge. Besides the default
+  judge, it is possible to plug in a custom judge, and metric collection is not
+  the responsibility of the judge. The judge merely receives timeseries from
+  Kayenta and analyzes those.
+
 * Judgment
 
   In this phase Spinnaker compares those metrics and renders a decision to pass
@@ -73,11 +78,12 @@ canary and baseline metrics.
 ## Step 4: Score computation
 
 After each metric is classified, a final score is computed which represents how
-similar the canary is to the baseline. This score is calculated as the ratio of
-"Pass" metrics out of the total number of metrics.
+similar the canary is to the baseline. A metric group's score is calculated as
+the ratio of "Pass" metrics out of the total number of metrics.
 
 For example, if 9 of 10 metrics are classified as “Pass,” the score is 90%. The
-threshold score for overall canary pass, marginal, or fail is
+threshold score for overall canary pass, marginal, or fail is specified in the
+[canary configuration](/guides/user/canary/config/).
 
 While there are more complex scoring methodologies, the default judge
 (NetflixACAJudge) is biased toward techniques that are simple to interpret and

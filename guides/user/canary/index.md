@@ -54,8 +54,8 @@ configurations](/guides/user/canary/config/).
    (Any that you leave ungrouped are evaluated, but they don't contribute to the
    success or failure of the canary run.)
 
-   You can think of this configuration as a templated query against your metric
-   store.
+   You can think of this configuration as a templated set of queries against
+   your metric store.
 
 1. In any deployment pipeline that will use canary, [add one or more canary
 stages](/guides/user/canary/stage/).

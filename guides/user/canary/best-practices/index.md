@@ -18,7 +18,7 @@ the whole group fails every time.
 
 ## Some configuration values to start with
 
-Although these values are not necessarily "best practices," the are reasonable
+Although these values are not necessarily "best practices," they are reasonable
 starting points for your canary configs:
 
 | Setting | Value |
