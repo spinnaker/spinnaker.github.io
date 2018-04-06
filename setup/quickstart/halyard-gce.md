@@ -1,12 +1,16 @@
 ---
 
 layout: single
-title:  "Halyard on GCE Quickstart"
+title:  "Try out Halyard on GCE"
 sidebar:
   nav: setup
 ---
 
 {% include toc %}
+
+ > Note: we recommend that you install Spinnaker following the [standard setup directions](/setup/)
+ rather than using this guide, which is just a set of commands to get Spinnaker up and running on
+ GCS and GCE.
 
 In this guide we'll be going through the basics of deploying Spinnaker to a
 single VM instances on GCE; however, many of the operations here apply to any

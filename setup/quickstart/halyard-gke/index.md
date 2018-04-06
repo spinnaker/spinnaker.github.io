@@ -1,13 +1,17 @@
 ---
 layout: single
-title:  "Halyard on GKE Quickstart"
+title:  "Try out Halyard on GKE"
 sidebar:
   nav: setup
 ---
 
 {% include toc %}
 
-In this quickstart, you will learn the basics of [Halyard](/setup/install/halyard/), Spinnaker's tool for managing your Spinnaker instance.
+> Note: we recommend that you install Spinnaker following the [standard setup directions](/setup/)
+ rather than using this guide, which is just a set of commands to get Spinnaker up and running on
+ GCS and GKE.
+
+In this guide, you will learn the basics of [Halyard](/setup/install/halyard/), Spinnaker's tool for managing your Spinnaker instance.
 
 ## Overview
 

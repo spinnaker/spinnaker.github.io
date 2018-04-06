@@ -24,13 +24,8 @@ concepts:
       url: /concepts/providers/
 
 setup:
-  - title: Quickstarts
-    collapsed: true
-    children:
-      - title: Demo Install
-        url: /setup/quickstart/
-      - title: Quick Full-Install
-        url: /setup/quickstart/halyard/
+  - title: Try it out
+    url: /setup/quickstart/
   - title: Set up Spinnaker
     collapsed: true
     children:
