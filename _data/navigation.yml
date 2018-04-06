@@ -29,8 +29,6 @@ setup:
     children:
       - title: Demo Install
         url: /setup/quickstart/
-      - title: Quick Full-Install
-        url: /setup/quickstart/halyard/
   - title: Set up Spinnaker
     collapsed: true
     children:
