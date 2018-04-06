@@ -25,13 +25,13 @@ applications. But you can [change
 that](/setup/canary/#specify-the-scope-of-canary-configs).
 
 The configuration you create here is available to canary stages in pipelines,
-but those [stages are defined separately](guides/user/canary/stage/).
+but those [stages are defined separately](/guides/user/canary/stage/).
 
 <!---
 TODO: figure out why this is done and how it's used
 --->
 Separately, you can [group individual metrics by Stackdriver
-resource types](#group_the_metrics).
+resource types](#group-the-metrics).
 
 ## Prerequisites
 
@@ -161,10 +161,11 @@ aggregate the data.
    Your metric is now listed under the specific group you selected for it, and
    under __All__.
 
-### Add filter filter_templates
+### Add filter templates
 
-If your telemetry provider is Stackdriver or Prometheus, you can add filter
-templates and then assign each metric a filter template, if you want.
+If your telemetry provider is Stackdriver or Prometheus, you can add [filter
+templates](/guides/user/canary/config/filter_templates/) and then assign each
+metric a filter template, if you want.
 
 1. Click __Add Template__.
 
@@ -178,7 +179,7 @@ template resource.
 
    This expression is resolved to the filter template resource using __Extended
    Params__ in any [canary
-   stage](/guides/user/canary/stage/#configure-the-canary-stage) that uses this
+   stage](/guides/user/canary/stage/#define-the-canary-stage) that uses this
    configuration.
 
 ## Edit a configuration
@@ -190,5 +191,3 @@ template resource.
    configs are scoped to individual applications.
 
 2. Select the config you want to edit.
-
-3.

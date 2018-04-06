@@ -32,9 +32,9 @@ in the past).
 
 ### Metric scope
 
-Metric scope is the where and when for your canary analysis. It describes the
-specific baseline and canary server groups, the start and end times and interval,
-and the cloud resource on which the baseline and canary are running.
+Metric scope defines where, when, and on what the canary analysis occurs.
+It describes the specific baseline and canary server groups, the start and end
+times and interval, and the cloud resource on which the baseline and canary are running.
 
 You can also refine the scope using [extended params](#extended-params).
 

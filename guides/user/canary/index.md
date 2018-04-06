@@ -22,11 +22,12 @@ The canary process is not a substitute for other forms of testing.
 
 ### Have metrics to evaluate
 
-Your application might have access to performance metrics that are published and
+Your application might send performance metrics which are published and
 available by default. You can also install a monitoring agent to collect more
-comprehensive metrics. And you can instrument your code to generate further
-metrics. In any case, you need to have access to a set of metrics, using some
-telemetry provider, which Kayenta can then use to make the canary judgment.
+comprehensive metrics, and you can instrument your code to generate further
+metrics for that agent. In any case, you need to have access to a set of
+metrics, using some telemetry provider, which Kayenta can then use to make the
+canary judgment.
 
 Support is built in for [Stackdriver](https://cloud.google.com/stackdriver/docs/),
 [Datadog](https://docs.datadoghq.com/), and
@@ -40,29 +41,26 @@ installation](/setup/canary/).
 
 ## How to make Canary work in Spinnaker&mdash;the high-level process
 
-This process assumes Spinnaker is already [set up to support Canary](/setup/canary/).
+1. In Spinnaker, [create one or more canary
+configurations](/guides/canary/config/).
 
-(See also: [The Canary Judge&mdash;how does it work?](/guides/user/canary/judge/))
-
-1. In Spinnaker, create one or more canary configurations.
-
-   This configuration provides the set of metrics for use in all pipeline
-   canary stages that reference it, plus default scoring thresholds and weights.
-
-   [Here's how](/guides/user/canary/config/).
+   The configuration provides the set of metrics for use in all pipeline
+   canary stages that reference it, plus default scoring thresholds and
+   weights&mdash;defaults that can be overridden in
+   a [canary stage](/guides/user/canary/stage/)
 
    You can configure each metric flexibly, to define its scope and whether it
-   fails when it deviates upward or down. You can also group metrics logically;
-   any that you leave ungrouped are evaluated, but they don't contribute to the
-   success or failure of the canary run.
+   fails when it deviates upward or down. You can also group metrics logically.
+   (Any that you leave ungrouped are evaluated, but they don't contribute to the
+   success or failure of the canary run.)
 
    You can think of this configuration as a templated query against your metric
    store.
 
-1. In any deployment pipeline that will use canary, add one or more canary
-stages.
+1. In any deployment pipeline that will use canary, [add one or more canary
+stages](/guides/user/canary/stage/).
 
-   The canary stage includes information that scopes the templated query in the
-   canary config  to a specified set of resources and time boundaries.
+   The canary stage includes information that scopes the templated query (canary
+     config) to a specified set of resources and time boundaries.
 
-   [Here's how](/guides/user/canary/stage/).
+See also: [The Canary Judge&mdash;how does it work?](/guides/user/canary/judge/)

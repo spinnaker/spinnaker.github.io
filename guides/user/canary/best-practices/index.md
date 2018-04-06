@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Best Practices for Configuring canary"
+title:  "Best practices for configuring canary"
 sidebar:
   nav: guides
 ---

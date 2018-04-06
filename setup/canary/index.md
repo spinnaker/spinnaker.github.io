@@ -104,7 +104,7 @@ hal config canary aws account add ACCOUNT --bucket --deployment --no-validate
 --root-folder
 ```
 
-See the [command reference](/reference/halyard/commands/#hal-config-canary-aws)
+See the [command reference](/reference/halyard/commands/#hal-config-canary)
 for more about these parameters.
 
 #### Enable S3 for your canary
@@ -147,7 +147,7 @@ hal config canary datadog disable
 
 You can add, delete, and multiple accounts for Datadog service integrations.
 For details on the parameters for these commands, see the [Halyard reference
-documentation](/reference/halyard/commands/#hal-config-canary-datadog)
+documentation](/reference/halyard/commands/#hal-config-canary)
 
 #### Add an account to your Datadog service integration
 
@@ -156,7 +156,7 @@ hal config canary datadog account add ACCOUNT --api-key --application-key
 --base-url
 ```
 
-See the [command reference](/reference/halyard/commands/#hal-config-canary-datadog)
+See the [command reference](/reference/halyard/commands/#hal-config-canary)
 for more about these parameters.
 
 #### Edit your Datadog account information
@@ -209,7 +209,7 @@ hal config canary google disable
 
 You can add, delete, and multiple accounts for Google service integrations.
 For details on the parameters for these commands, see the [Halyard reference
-documentation](/reference/halyard/commands/#hal-config-canary-google)
+documentation](/reference/halyard/commands/#hal-config-canary)
 
 #### Add an account to your Google service integration
 
@@ -218,7 +218,7 @@ hal config canary google account add ACCOUNT --bucket --bucket-location
 --json-path --project --root-folder
 ```
 
-See the [command reference](/reference/halyard/commands/#hal-config-canary-google)
+See the [command reference](/reference/halyard/commands/#hal-config-canary)
 for more about these parameters.
 
 #### Edit your Google account information
@@ -267,7 +267,7 @@ hal config canary prometheus disable
 
 You can add, delete, and multiple accounts for Prometheus service integrations.
 For details on the parameters for these commands, see the [Halyard reference
-documentation](/reference/halyard/commands/#hal-config-canary-prometheus)
+documentation](/reference/halyard/commands/#hal-config-canary)
 
 #### Add an account to your Prometheus service integration
 
@@ -276,7 +276,7 @@ hal config canary prometheus account add ACCOUNT --base-url
 ```
 
 See the [command
-reference](/reference/halyard/commands/#hal-config-canary-prometheus)
+reference](/reference/halyard/commands/#hal-config-canary)
 for more information.
 
 #### Edit your Prometheus account information
