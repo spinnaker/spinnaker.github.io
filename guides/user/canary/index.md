@@ -42,7 +42,7 @@ installation](/setup/canary/).
 ## How to make Canary work in Spinnaker&mdash;the high-level process
 
 1. In Spinnaker, [create one or more canary
-configurations](/guides/canary/config/).
+configurations](/guides/user/canary/config/).
 
    The configuration provides the set of metrics for use in all pipeline
    canary stages that reference it, plus default scoring thresholds and

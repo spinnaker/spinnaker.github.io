@@ -27,7 +27,8 @@ hal config canary disable
 
 By default, each [canary configuration](/guides/user/canary/config/) is
 visible to all pipeline canary stages in all apps. But you can change that so
-each canary config can be used only within the app in which it was created:
+each canary config can be used only within the Spinnaker application in which it
+was created:
 
 ```
 hal config canary edit --show-all-configs-enabled false

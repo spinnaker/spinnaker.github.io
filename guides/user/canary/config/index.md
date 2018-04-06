@@ -27,11 +27,6 @@ that](/setup/canary/#specify-the-scope-of-canary-configs).
 The configuration you create here is available to canary stages in pipelines,
 but those [stages are defined separately](/guides/user/canary/stage/).
 
-<!---
-TODO: figure out why this is done and how it's used
---->
-Separately, you can [group individual metrics by Stackdriver
-resource types](#group-the-metrics).
 
 ## Prerequisites
 
