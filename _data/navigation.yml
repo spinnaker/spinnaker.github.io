@@ -279,6 +279,8 @@ reference:
             url: /reference/artifacts/types/embedded-base64/
           - title: GCS Object
             url: /reference/artifacts/types/gcs-object/
+          - title: S3 Object
+            url: /reference/artifacts/types/s3-object/
           - title: GitHub File
             url: /reference/artifacts/types/github-file/
           - title: HTTP File 
