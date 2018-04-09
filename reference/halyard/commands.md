@@ -5,7 +5,7 @@ sidebar:
   nav: reference
 ---
 
-Published: 2018-03-27 19:42:50
+Published: 2018-04-09 15:20:38
 
 
 # Table of Contents
@@ -55,9 +55,48 @@ Published: 2018-03-27 19:42:50
  * [**hal config artifact http disable**](#hal-config-artifact-http-disable)
  * [**hal config artifact http enable**](#hal-config-artifact-http-enable)
  * [**hal config canary**](#hal-config-canary)
+ * [**hal config canary aws**](#hal-config-canary-aws)
+ * [**hal config canary aws account**](#hal-config-canary-aws-account)
+ * [**hal config canary aws account add**](#hal-config-canary-aws-account-add)
+ * [**hal config canary aws account delete**](#hal-config-canary-aws-account-delete)
+ * [**hal config canary aws account edit**](#hal-config-canary-aws-account-edit)
+ * [**hal config canary aws account get**](#hal-config-canary-aws-account-get)
+ * [**hal config canary aws account list**](#hal-config-canary-aws-account-list)
+ * [**hal config canary aws disable**](#hal-config-canary-aws-disable)
+ * [**hal config canary aws edit**](#hal-config-canary-aws-edit)
+ * [**hal config canary aws enable**](#hal-config-canary-aws-enable)
+ * [**hal config canary datadog**](#hal-config-canary-datadog)
+ * [**hal config canary datadog account**](#hal-config-canary-datadog-account)
+ * [**hal config canary datadog account add**](#hal-config-canary-datadog-account-add)
+ * [**hal config canary datadog account delete**](#hal-config-canary-datadog-account-delete)
+ * [**hal config canary datadog account edit**](#hal-config-canary-datadog-account-edit)
+ * [**hal config canary datadog account get**](#hal-config-canary-datadog-account-get)
+ * [**hal config canary datadog account list**](#hal-config-canary-datadog-account-list)
+ * [**hal config canary datadog disable**](#hal-config-canary-datadog-disable)
+ * [**hal config canary datadog enable**](#hal-config-canary-datadog-enable)
  * [**hal config canary disable**](#hal-config-canary-disable)
  * [**hal config canary edit**](#hal-config-canary-edit)
  * [**hal config canary enable**](#hal-config-canary-enable)
+ * [**hal config canary google**](#hal-config-canary-google)
+ * [**hal config canary google account**](#hal-config-canary-google-account)
+ * [**hal config canary google account add**](#hal-config-canary-google-account-add)
+ * [**hal config canary google account delete**](#hal-config-canary-google-account-delete)
+ * [**hal config canary google account edit**](#hal-config-canary-google-account-edit)
+ * [**hal config canary google account get**](#hal-config-canary-google-account-get)
+ * [**hal config canary google account list**](#hal-config-canary-google-account-list)
+ * [**hal config canary google disable**](#hal-config-canary-google-disable)
+ * [**hal config canary google edit**](#hal-config-canary-google-edit)
+ * [**hal config canary google enable**](#hal-config-canary-google-enable)
+ * [**hal config canary prometheus**](#hal-config-canary-prometheus)
+ * [**hal config canary prometheus account**](#hal-config-canary-prometheus-account)
+ * [**hal config canary prometheus account add**](#hal-config-canary-prometheus-account-add)
+ * [**hal config canary prometheus account delete**](#hal-config-canary-prometheus-account-delete)
+ * [**hal config canary prometheus account edit**](#hal-config-canary-prometheus-account-edit)
+ * [**hal config canary prometheus account get**](#hal-config-canary-prometheus-account-get)
+ * [**hal config canary prometheus account list**](#hal-config-canary-prometheus-account-list)
+ * [**hal config canary prometheus disable**](#hal-config-canary-prometheus-disable)
+ * [**hal config canary prometheus edit**](#hal-config-canary-prometheus-edit)
+ * [**hal config canary prometheus enable**](#hal-config-canary-prometheus-enable)
  * [**hal config ci**](#hal-config-ci)
  * [**hal config ci jenkins**](#hal-config-ci-jenkins)
  * [**hal config ci jenkins disable**](#hal-config-ci-jenkins-disable)
@@ -1038,9 +1077,340 @@ hal config canary [parameters] [subcommands]
  * `--no-validate`: (*Default*: `false`) Skip validation.
 
 #### Subcommands
+ * `aws`: Configure your canary analysis AWS service integration settings for Spinnaker.
+ * `datadog`: Configure your canary analysis Datadog service integration settings for Spinnaker.
  * `disable`: Set Spinnaker's canary analysis to disabled.
  * `edit`: Edit Spinnaker's canary analysis settings.
  * `enable`: Set Spinnaker's canary analysis to enabled.
+ * `google`: Configure your canary analysis Google service integration settings for Spinnaker.
+ * `prometheus`: Configure your canary analysis Prometheus service integration settings for Spinnaker.
+
+---
+## hal config canary aws
+
+Configure your canary analysis AWS service integration settings for Spinnaker.
+
+#### Usage
+```
+hal config canary aws [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `account`: Manage and view Spinnaker configuration for the AWS service integration's canary accounts.
+ * `disable`: Set Spinnaker's canary analysis AWS service integration to disabled.
+ * `edit`: Edit Spinnaker's canary analysis AWS service integration settings.
+ * `enable`: Set Spinnaker's canary analysis AWS service integration to enabled.
+
+---
+## hal config canary aws account
+
+Manage and view Spinnaker configuration for the AWS service integration's canary accounts.
+
+#### Usage
+```
+hal config canary aws account ACCOUNT [parameters] [subcommands]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `add`: Add a canary account to the AWS service integration.
+ * `delete`: Delete a specific AWS canary account by name.
+ * `edit`: Edit a canary account in the AWS service integration.
+ * `get`: Get the specified canary account details for the AWS service integration.
+ * `list`: List the canary account names for the AWS service integration.
+
+---
+## hal config canary aws account add
+
+Add a canary account to the AWS service integration.
+
+#### Usage
+```
+hal config canary aws account add ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--bucket`: The name of a storage bucket that your specified account has access to. If you specify a globally unique bucket name that doesn't exist yet, Kayenta will create that bucket for you.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--root-folder`: The root folder in the chosen bucket to place all of the canary service's persistent data in (*Default*: `kayenta`).
+
+
+---
+## hal config canary aws account delete
+
+Delete a specific AWS canary account by name.
+
+#### Usage
+```
+hal config canary aws account delete ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary aws account edit
+
+Edit a canary account in the AWS service integration.
+
+#### Usage
+```
+hal config canary aws account edit ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--bucket`: The name of a storage bucket that your specified account has access to. If you specify a globally unique bucket name that doesn't exist yet, Kayenta will create that bucket for you.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--root-folder`: The root folder in the chosen bucket to place all of the canary service's persistent data in (*Default*: `kayenta`).
+
+
+---
+## hal config canary aws account get
+
+Get the specified canary account details for the AWS service integration.
+
+#### Usage
+```
+hal config canary aws account get ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary aws account list
+
+List the canary account names for the AWS service integration.
+
+#### Usage
+```
+hal config canary aws account list [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary aws disable
+
+Set Spinnaker's canary analysis AWS service integration to disabled.
+
+#### Usage
+```
+hal config canary aws disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary aws edit
+
+Edit Spinnaker's canary analysis AWS service integration settings.
+
+#### Usage
+```
+hal config canary aws edit [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--s3-enabled`: Whether or not to enable S3 as a persistent store (*Default*: `false`).
+
+
+---
+## hal config canary aws enable
+
+Set Spinnaker's canary analysis AWS service integration to enabled.
+
+#### Usage
+```
+hal config canary aws enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary datadog
+
+Configure your canary analysis Datadog service integration settings for Spinnaker.
+
+#### Usage
+```
+hal config canary datadog [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `account`: Manage and view Spinnaker configuration for the Datadog service integration's canary accounts.
+ * `disable`: Set Spinnaker's canary analysis Datadog service integration to disabled.
+ * `enable`: Set Spinnaker's canary analysis Datadog service integration to enabled.
+
+---
+## hal config canary datadog account
+
+Manage and view Spinnaker configuration for the Datadog service integration's canary accounts.
+
+#### Usage
+```
+hal config canary datadog account ACCOUNT [parameters] [subcommands]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `add`: Add a canary account to the Datadog service integration.
+ * `delete`: Delete a specific Datadog canary account by name.
+ * `edit`: Edit a canary account in the Datadog service integration.
+ * `get`: Get the specified canary account details for the Datadog service integration.
+ * `list`: List the canary account names for the Datadog service integration.
+
+---
+## hal config canary datadog account add
+
+Add a canary account to the Datadog service integration.
+
+#### Usage
+```
+hal config canary datadog account add ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--api-key`: (*Required*) (*Sensitive data* - user will be prompted on standard input) Your org's unique Datadog API key. See https://app.datadoghq.com/account/settings#api.
+ * `--application-key`: (*Required*) (*Sensitive data* - user will be prompted on standard input) Your Datadog application key. See https://app.datadoghq.com/account/settings#api.
+ * `--base-url`: (*Required*) The base URL to the Datadog server.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary datadog account delete
+
+Delete a specific Datadog canary account by name.
+
+#### Usage
+```
+hal config canary datadog account delete ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary datadog account edit
+
+Edit a canary account in the Datadog service integration.
+
+#### Usage
+```
+hal config canary datadog account edit ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--api-key`: (*Sensitive data* - user will be prompted on standard input) Your org's unique Datadog API key. See https://app.datadoghq.com/account/settings#api.
+ * `--application-key`: (*Sensitive data* - user will be prompted on standard input) Your Datadog application key. See https://app.datadoghq.com/account/settings#api.
+ * `--base-url`: The base URL to the Datadog server.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary datadog account get
+
+Get the specified canary account details for the Datadog service integration.
+
+#### Usage
+```
+hal config canary datadog account get ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary datadog account list
+
+List the canary account names for the Datadog service integration.
+
+#### Usage
+```
+hal config canary datadog account list [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary datadog disable
+
+Set Spinnaker's canary analysis Datadog service integration to disabled.
+
+#### Usage
+```
+hal config canary datadog disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary datadog enable
+
+Set Spinnaker's canary analysis Datadog service integration to enabled.
+
+#### Usage
+```
+hal config canary datadog enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
 
 ---
 ## hal config canary disable
@@ -1076,7 +1446,7 @@ hal config canary edit [parameters]
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--redux-logger-enabled`: Whether or not to enable redux logging in the canary module in deck (*Default*: `true`).
- * `--show-all-configs-enabled`: Whether or not to show all canary configs in deck, or just those scoped to the current application (*Default*: `false`).
+ * `--show-all-configs-enabled`: Whether or not to show all canary configs in deck, or just those scoped to the current application (*Default*: `true`).
  * `--stages-enabled`: Whether or not to enable canary stages in deck (*Default*: `true`).
  * `--templates-enabled`: Whether or not to enable custom filter templates for canary configs in deck (*Default*: `true`).
 
@@ -1089,6 +1459,354 @@ Set Spinnaker's canary analysis to enabled.
 #### Usage
 ```
 hal config canary enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary google
+
+Configure your canary analysis Google service integration settings for Spinnaker.
+
+#### Usage
+```
+hal config canary google [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `account`: Manage and view Spinnaker configuration for the Google service integration's canary accounts.
+ * `disable`: Set Spinnaker's canary analysis Google service integration to disabled.
+ * `edit`: Edit Spinnaker's canary analysis Google service integration settings.
+ * `enable`: Set Spinnaker's canary analysis Google service integration to enabled.
+
+---
+## hal config canary google account
+
+Manage and view Spinnaker configuration for the Google service integration's canary accounts.
+
+#### Usage
+```
+hal config canary google account ACCOUNT [parameters] [subcommands]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `add`: Add a canary account to the Google service integration.
+ * `delete`: Delete a specific Google canary account by name.
+ * `edit`: Edit a canary account in the Google service integration.
+ * `get`: Get the specified canary account details for the Google service integration.
+ * `list`: List the canary account names for the Google service integration.
+
+---
+## hal config canary google account add
+
+Add a canary account to the Google service integration.
+
+#### Usage
+```
+hal config canary google account add ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--bucket`: The name of a storage bucket that your specified account has access to. If you specify a globally unique bucket name that doesn't exist yet, Kayenta will create that bucket for you.
+ * `--bucket-location`: This is only required if the bucket you specify doesn't exist yet. In that case, the bucket will be created in that location. See https://cloud.google.com/storage/docs/managing-buckets#manage-class-location.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--json-path`: The path to a JSON service account that Spinnaker will use as credentials. This is only needed if Spinnaker is not deployed on a Google Compute Engine VM, or needs permissions not afforded to the VM it is running on. See https://cloud.google.com/compute/docs/access/service-accounts for more information.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--project`: (*Required*) The Google Cloud Platform project the canary service will use to consume GCS and Stackdriver.
+ * `--root-folder`: The root folder in the chosen bucket to place all of the canary service's persistent data in (*Default*: `kayenta`).
+
+
+---
+## hal config canary google account delete
+
+Delete a specific Google canary account by name.
+
+#### Usage
+```
+hal config canary google account delete ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary google account edit
+
+Edit a canary account in the Google service integration.
+
+#### Usage
+```
+hal config canary google account edit ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--bucket`: The name of a storage bucket that your specified account has access to. If you specify a globally unique bucket name that doesn't exist yet, Kayenta will create that bucket for you.
+ * `--bucket-location`: This is only required if the bucket you specify doesn't exist yet. In that case, the bucket will be created in that location. See https://cloud.google.com/storage/docs/managing-buckets#manage-class-location.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--json-path`: The path to a JSON service account that Spinnaker will use as credentials. This is only needed if Spinnaker is not deployed on a Google Compute Engine VM, or needs permissions not afforded to the VM it is running on. See https://cloud.google.com/compute/docs/access/service-accounts for more information.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--project`: The Google Cloud Platform project the canary service will use to consume GCS and Stackdriver.
+ * `--root-folder`: The root folder in the chosen bucket to place all of the canary service's persistent data in (*Default*: `kayenta`).
+
+
+---
+## hal config canary google account get
+
+Get the specified canary account details for the Google service integration.
+
+#### Usage
+```
+hal config canary google account get ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary google account list
+
+List the canary account names for the Google service integration.
+
+#### Usage
+```
+hal config canary google account list [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary google disable
+
+Set Spinnaker's canary analysis Google service integration to disabled.
+
+#### Usage
+```
+hal config canary google disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary google edit
+
+Edit Spinnaker's canary analysis Google service integration settings.
+
+#### Usage
+```
+hal config canary google edit [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--gcs-enabled`: Whether or not to enable GCS as a persistent store (*Default*: `false`).
+ * `--metadata-caching-interval-ms`: Number of milliseconds to wait in between caching the names of available metric types (for use in building canary configs; *Default*: `60000`).
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--stackdriver-enabled`: Whether or not to enable Stackdriver as a metrics service (*Default*: `false`).
+
+
+---
+## hal config canary google enable
+
+Set Spinnaker's canary analysis Google service integration to enabled.
+
+#### Usage
+```
+hal config canary google enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary prometheus
+
+Configure your canary analysis Prometheus service integration settings for Spinnaker.
+
+#### Usage
+```
+hal config canary prometheus [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `account`: Manage and view Spinnaker configuration for the Prometheus service integration's canary accounts.
+ * `disable`: Set Spinnaker's canary analysis Prometheus service integration to disabled.
+ * `edit`: Edit Spinnaker's canary analysis Prometheus service integration settings.
+ * `enable`: Set Spinnaker's canary analysis Prometheus service integration to enabled.
+
+---
+## hal config canary prometheus account
+
+Manage and view Spinnaker configuration for the Prometheus service integration's canary accounts.
+
+#### Usage
+```
+hal config canary prometheus account ACCOUNT [parameters] [subcommands]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `add`: Add a canary account to the Prometheus service integration.
+ * `delete`: Delete a specific Prometheus canary account by name.
+ * `edit`: Edit a canary account in the Prometheus service integration.
+ * `get`: Get the specified canary account details for the Prometheus service integration.
+ * `list`: List the canary account names for the Prometheus service integration.
+
+---
+## hal config canary prometheus account add
+
+Add a canary account to the Prometheus service integration.
+
+#### Usage
+```
+hal config canary prometheus account add ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--base-url`: (*Required*) The base URL to the Prometheus server.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary prometheus account delete
+
+Delete a specific Prometheus canary account by name.
+
+#### Usage
+```
+hal config canary prometheus account delete ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary prometheus account edit
+
+Edit a canary account in the Prometheus service integration.
+
+#### Usage
+```
+hal config canary prometheus account edit ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--base-url`: The base URL to the Prometheus server.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary prometheus account get
+
+Get the specified canary account details for the Prometheus service integration.
+
+#### Usage
+```
+hal config canary prometheus account get ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary prometheus account list
+
+List the canary account names for the Prometheus service integration.
+
+#### Usage
+```
+hal config canary prometheus account list [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary prometheus disable
+
+Set Spinnaker's canary analysis Prometheus service integration to disabled.
+
+#### Usage
+```
+hal config canary prometheus disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary prometheus edit
+
+Edit Spinnaker's canary analysis Prometheus service integration settings.
+
+#### Usage
+```
+hal config canary prometheus edit [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--metadata-caching-interval-ms`: Number of milliseconds to wait in between caching the names of available metric types (for use in building canary configs; *Default*: `60000`).
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary prometheus enable
+
+Set Spinnaker's canary analysis Prometheus service integration to enabled.
+
+#### Usage
+```
+hal config canary prometheus enable [parameters]
 ```
 
 #### Parameters
@@ -4509,9 +5227,9 @@ hal config security authn ldap edit [parameters]
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--url`: ldap:// or ldaps:// url of the LDAP server
- * `--user-dn-pattern`: Placeholder...uid={0},ou=users
- * `--user-search-base`: Placeholder...
- * `--user-search-filter`: Placeholder
+ * `--user-dn-pattern`: The pattern for finding a user's DN using simple pattern matching. For example, if your LDAP server has the URL ldap://mysite.com/dc=spinnaker,dc=org, and you have the pattern 'uid={0},ou=members', 'me' will map to a DN uid=me,ou=members,dc=spinnaker,dc=org. If no match is found, will try to find the user using user-search-filter, if set.
+ * `--user-search-base`: The part of the directory tree under which user searches should be performed. If user-search-base isn't supplied, the search will be performed from the root.
+ * `--user-search-filter`: The filter to use when searching for a user's DN. Will search either from user-search-base (if specified) or root for entires matching the filter, then attempt to bind as that user with the login password. For example, the filter 'uid={0}' would apply to any user where uid matched the user's login name. If --user-dn-pattern is also specified, will attempt to find a match using the specified pattern first, before searching with the specified search filter if no match is found from the pattern.
 
 
 ---
