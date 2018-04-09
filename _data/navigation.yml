@@ -143,6 +143,8 @@ setup:
             url: /setup/monitoring/prometheus/
           - title: Stackdriver
             url: /setup/monitoring/stackdriver/
+      - title: Set up canary support
+        url: /setup/canary
       - title: Additional Features
         collapsed: true
         children:
@@ -217,6 +219,24 @@ guides:
             url: /guides/user/kubernetes-v2/parameterize-manifests/
           - title: Configure Automated Rollbacks
             url: /guides/user/kubernetes-v2/automated-rollbacks/
+      - title: Automated Canary Analysis
+        collapsed: true
+        children:
+          - title: Overview
+            url: /guides/user/canary/
+          - title: Configure a canary
+            collapsed: true
+            children:
+              - title: Overview
+                url: /guides/user/canary/config/
+              - title: Filter templates
+                url: /guides/user/canary/config/filter_templates/
+          - title: Add a canary stage
+            url: /guides/user/canary/stage/
+          - title: The canary judge
+            url: /guides/user/canary/judge/
+          - title: Best practices
+            url: /guides/user/canary/best-practices/
   - title: Developer How-Tos
     collapsed: true
     children:
@@ -283,7 +303,7 @@ reference:
             url: /reference/artifacts/types/gcs-object/
           - title: GitHub File
             url: /reference/artifacts/types/github-file/
-          - title: HTTP File 
+          - title: HTTP File
             url: /reference/artifacts/types/http-file/
           - title: Kubernetes Object
             url: /reference/artifacts/types/kubernetes-object/
