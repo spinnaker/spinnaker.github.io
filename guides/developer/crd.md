@@ -5,26 +5,9 @@ sidebar:
   nav: guides
 ---
 
-# Native Support For Kubernetes Custom Resource Definitions
-Spinnaker's Kubernetes V2 provider natively supports Custom Resource Definitions (CRDs).
-
-For example, inside a `clouddriver.yml` config, you can map your CRD to a `spinnakerKind` (`serverGroups`, `loadBalancers`, `instances`, etc.):
-
-```
-kubernetes:
-  accounts:
-    - name: my-kubernetes-account
-      customResources:
-        - kubernetesKind: myCRDKind
-          spinnakerKind: serverGroups
-```
-
-Spinnaker caches instances of your CRD, and the resource is surfaced in the API and UI as your configured `spinnakerKind`.
-
 # Spinnaker Extension Points for Custom Resource Definitions
 
 At Google, we've built extension points for deep CRD integrations within Spinnaker.
-These extension points live alongside the config-based support for CRDs described above.
 
 This work has allowed us to support the following features within Spinnaker:
 
