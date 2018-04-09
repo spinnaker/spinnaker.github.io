@@ -7,10 +7,37 @@ sidebar:
 
 {% include toc %}
 
-Setting up automated canary analysis in Spinnaker consists  of running a bunch
+Setting up automated canary analysis in Spinnaker consists of running a bunch
 of Halyard commands, as described in this doc. For further details, [Here's a
-reference](/reference/halyard/commands/#hal-config-canary)
+comprehensive reference](/reference/halyard/commands/#hal-config-canary)
 
+## Quick start
+
+If you'd prefer to just get up and running quickly now, this set of sample Halyard commands will enable
+Kayenta and configure it to retrieve metrics from Stackdriver and use GCS for persistent storage:
+```
+hal config canary enable
+hal config canary google enable
+hal config canary google account add my-google-account --project $PROJECT_ID --$JSON_PATH --bucket $MY_SPINNAKER_BUCKET
+hal config canary google edit --gcs-enabled true --stackdriver-enabled true
+```
+In the commands above, `$PROJECT_ID` refers to your GCP project id, `$JSON_PATH` refers to your service account json file,
+and `$MY_SPINNAKER_BUCKET` should refer to a bucket your credentials allow you access to. These can be the same values you used
+when configuring your other Spinnaker services (like Clouddriver).
+
+Note that before you run any canary-specific Halyard command you must ensure that you are on version 0.46.0 or later of
+Halyard.
+
+You can update Halyard via: `sudo update-halyard` or `sudo apt-get update && sudo apt-get install halyard`
+
+Next, configure Halyard to use the custom bom we've prepared for the release of Kayenta:
+
+`hal config version edit --version canary-preview`
+
+Lastly, update your Spinnaker deployment to include Kayenta:
+
+`hal deploy deploy` (to Kubernetes)
+`sudo hal deploy apply` (to local VM)
 
 ## Enable/disable canary analysis
 
@@ -21,7 +48,6 @@ hal config canary enable
 ```
 hal config canary disable
 ```
-
 
 ## Specify the scope of canary configs
 
