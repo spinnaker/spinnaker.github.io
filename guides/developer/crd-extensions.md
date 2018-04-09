@@ -186,8 +186,8 @@ kubernetes:
       skin: myCustomizedUISkin
 ```
 
-Use a custom skin in casees where some Kubernetes account should render the V1 or V2 `skin`, and another should use custom UI components.
+Use a custom skin in cases where some Kubernetes account should render the V1 or V2 `skin`, and another should use custom UI components.
 If all Kubernetes accounts need the same customizations, then Deck's `OverrideRegistry` should be sufficient.
 
 There is no strong relationship between CRDs and UI customizations - i.e., you may want to have per-account UI customizations even
-if they aren't using CRDs.
+if you aren't using CRDs.
