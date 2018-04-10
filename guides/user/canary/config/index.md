@@ -55,7 +55,7 @@ Canary](/setup/canary/).
 ## Create a canary configuration
 
 You can create as many of these as you like, and when you create a canary stage,
-you can select which configuration to use. Configurations you create within an
+you must select a canary configuration to use. Configurations you create within an
 application are available to all pipelines in that application, but your
 Spinnaker might be set up so that all configurations are available to all
 applications.
@@ -72,7 +72,7 @@ applications.
 
 1. (Optional) select your telemetry provider from the __Metric Store__ dropdown.
 
-   If you have only one provider set up, this is not a drop-down.
+   If you have only one provider set up, this drop-down is not shown.
 
    ![Canary config declaration](/guides/user/canary/config/canary_config_create.png)
 
@@ -171,13 +171,18 @@ metric a filter template, if you want.
    This is the name by which you can select it when configuring the specific
    metric.
 
-1. In the __Template__ field, enter an expression identifying the filter
-template resource.
+1. In the __Template__ field, enter an expression using the [FreeMarker](https://freemarker.apache.org/)
+   template language.
 
-   This expression is resolved to the filter template resource using __Extended
+   See the interpolation syntax [here](https://freemarker.apache.org/docs/dgui_quickstart_template.html).
+
+   The expression is expanded using the variable bindings specified via the __Extended
    Params__ in any [canary
    stage](/guides/user/canary/stage/#define-the-canary-stage) that uses this
    configuration.
+
+   These variable bindings are also implicitly available: `project`, `resourceType`, `scope`, `location`
+
 
 ## Edit a configuration
 

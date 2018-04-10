@@ -59,6 +59,7 @@ Params__, click __Add Field__.
 2. Under __Key__, type a variable you used in a filter template in the config
 this stage is using.
 
-3. Add the value you want for that variable.
+3. Add the value you want for that variable. You can use any literal or
+   [pipeline expression](/guides/user/pipeline-expressions/).
 
 ![](/guides/user/canary/config/filter_templates/extended_params.png)
