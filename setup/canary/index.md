@@ -42,7 +42,7 @@ Next, configure Halyard to use the custom bom we've prepared for the release of 
 
 Lastly, update your Spinnaker deployment to include Kayenta:
 
-`hal deploy deploy` (to Kubernetes)
+`hal deploy apply` (to Kubernetes)
 `sudo hal deploy apply` (to local VM)
 
 ## Enable/disable canary analysis
