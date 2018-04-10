@@ -25,7 +25,7 @@ This document assumes a debian installation.
 
 ## Install the Spinnaker Monitoring Daemon
 
-To get started need to make sure the spinnaker-monitoring-daemon is installed on your machines.
+To get started you'll need to make sure the spinnaker-monitoring-daemon is installed on your machines.
 If you've configured them with halyard it should be as simple as the following commands.
 
 ```
