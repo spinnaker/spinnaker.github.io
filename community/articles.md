@@ -8,7 +8,7 @@ redirect_from: /docs/articles-and-blog-posts
 
 {% include toc %}
 
-## Community Blog Posts & Tutorials
+## Community blog posts & tutorials
 
 * [Managing Kubernetes with Spinnaker at scale](http://blog.armory.io/managing-kubernetes-with-spinnaker/) *Colin Mo (Armory)*
 * [Codifying your Spinnaker Pipelines](https://medium.com/continuous-delivery-scale/codifying-your-spinnaker-pipelines-ea8e9164998f), *Rob Zienert (Netflix)*
@@ -31,7 +31,7 @@ redirect_from: /docs/articles-and-blog-posts
 * [Netflix’s Spinnaker available now on Google Cloud Platform](https://cloudplatform.googleblog.com/2015/11/Netflixs-Spinnaker-available-now-on-Google-Cloud-Platform.html), *Google Cloud Platform Blog*
 
 
-## Spinnaker in the News
+## Spinnaker in the news
 
 * [Why Amazon's most important cloud customer, Netflix, is speaking at Google's big cloud conference](http://finance.yahoo.com/news/why-amazons-most-important-cloud-154510446.html), *Yahoo Finance*
 * [Creating Microservice Deployment Pipelines with Netflix’s Spinnaker: A Perspective from Google](http://www.infoq.com/news/2016/02/microservice-deploys-spinnaker), *InfoQ*

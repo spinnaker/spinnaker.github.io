@@ -10,7 +10,7 @@ redirect_from: /docs/frequently-asked-questions
 
 ## What are the integrations available to Spinnaker?
 
-### Cloud Providers
+### Cloud providers
 * Amazon Web Services
 * Google Cloud Platform
 * Cloud Foundry
@@ -18,15 +18,15 @@ redirect_from: /docs/frequently-asked-questions
 * Microsoft Azure
 * Netflix Titus ( coming soon )
 
-### CI Platforms
+### CI platforms
 * Jenkins
 * Travis
 
-### Source Repositories
+### Source repositories
 * GitHub
 * BitBucket Server / Stash
 
-### Messaging Support
+### Messaging support
 * Email
 * Slack
 * HipChat

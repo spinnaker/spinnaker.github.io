@@ -8,7 +8,7 @@ redirect_from: /docs/how-to-submit-a-patch
 
 {% include toc %}
 
-## Before You Begin
+## Before you begin
 
 We prefer small, well tested pull requests. Note that we are unlikely to accept
 pull requests that add features without prior discussion. The best way to
@@ -36,7 +36,7 @@ Once your design doc is ready, the community will review it and leave feedback.
 * Add inline code comments to changes that might not be obvious.
 * Squash your commits when you first submit your PR, and again when it's ready to be merged. It's much easier to review incremental changes to feedback when the commits are kept separate.
 
-## Commit Message Conventions
+## Commit message conventions
 
 Please follow the following conventions in your git commit messages.
 
