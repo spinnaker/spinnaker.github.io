@@ -43,7 +43,7 @@ spec:
       containers:
       - name: halyard-daemon
         # todo - make :stable or digest of :stable
-        image: gcr.io/spinnaker-marketplace/halyard:0.43.0-20180321030509
+        image: gcr.io/spinnaker-marketplace/halyard:stable
         imagePullPolicy: Always
         command:
         - /bin/sh
@@ -376,7 +376,7 @@ spec:
       containers:
       - name: hal-deploy-apply
         # todo use a custom image
-        image: gcr.io/spinnaker-marketplace/halyard:0.43.0-20180321030509
+        image: gcr.io/spinnaker-marketplace/halyard:stable
         command:
         - /bin/sh
         args:
