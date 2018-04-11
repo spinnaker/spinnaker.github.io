@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Public Spinnaker on GKE"
+title:  "Try out public Spinnaker on GKE"
 sidebar:
   nav: setup
 ---
