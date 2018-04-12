@@ -50,8 +50,6 @@ under `/var/log/spinnaker/halyard/halyard.log`.
 
 ### Docker
 
-> This installation path is in alpha and will have some rough edges.
-
 Make sure you have [Docker CE
 installed](https://docs.docker.com/engine/installation/). 
 
@@ -74,7 +72,7 @@ directory for your container:
 ```
 docker run -p 8084:8084 -p 9000:9000 \
     --name halyard --rm \
-    -v ~/.hal:/root/.hal \
+    -v ~/.hal:/home/spinnaker/.hal \
     -it \
     gcr.io/spinnaker-marketplace/halyard:stable
 ```
