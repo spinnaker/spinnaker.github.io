@@ -11,7 +11,7 @@ information on how Spinnaker concepts map to those of the Cloud Provider, as
 well as how the various Spinnaker operations are performed at the Cloud
 Provider level.
 
-## Supported Providers
+## Supported providers
 
 These are the Cloud Providers currently supported by Spinnaker:
 

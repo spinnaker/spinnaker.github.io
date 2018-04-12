@@ -14,7 +14,7 @@ from other providers in Spinnaker. If you're unfamiliar with Kubernetes
 terminology, see the [Kubernetes
 documentation](https://kubernetes.io/docs/home/).
 
-# The Manifest-Based Approach
+# The manifest-based approach
 
 The Kubernetes provider v2 combines the strengths of Kubernetes's [declarative
 infrastructure
@@ -28,7 +28,7 @@ using other providers (including the [Kubernetes provider
 v1](https://www.spinnaker.io/reference/providers/kubernetes/)). The rest of this
 doc explains the differences.
 
-## No Restrictive Naming Policies
+## No restrictive naming policies
 
 You can deploy existing manifests without rewriting them to adhere to
 [Frigga](https://github.com/Netflix/frigga). Resource relationships (for example
@@ -40,7 +40,7 @@ and Spinnaker manages these using its
 The policies and strategies are configurable per account. See [Reserved
 Annotations](#reserved-annotations) for more details.
 
-## Accommodating Level-Based Deployments
+## Accommodating level-based deployments
 
 See the [Kubernetes API
 conventions](https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md#spec-and-status)
@@ -67,7 +67,7 @@ of CPU quota, failing readiness checks, no IP for a service to bind...) every
 stage that modifies or deploys a manifest waits until your affected manifests
 are stable, or it times out after a configurable period (30-minute default).
 
-## Using Externally Stored Manifests
+## Using externally stored manifests
 
 You can store and version your manifest definitions in Git (or elsewhere outside
 of the Spinnaker pipeline store).
@@ -79,7 +79,7 @@ that triggers either when...
 * a new Docker image is uploaded, or
 * your manifest file is changed in Git
 
-# Reserved Annotations
+# Reserved annotations
 
 Several annotations are used as metadata by Spinnaker to describe a resource.
 Annotations listed below followed by a 📝 symbol may also be written by
@@ -120,7 +120,7 @@ command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
   When set to `true`, tells Spinnaker to ignore this resource.
   The resource is not cached and does not show up in the Spinnaker UI.
 
-# How Kubernetes Resources Are Managed by Spinnaker
+# How Kubernetes resources are managed by Spinnaker
 
 Resource mapping between Spinnaker and Kubernetes constructs, as well as the
 introduction of new types of resources, is a lot more flexible in the
@@ -131,7 +131,7 @@ mechanisms&mdash;called [Custom Resource Definitions
 it easy to build new types of resources, and Spinnaker accommodates that by
 making it simple to extend Spinnaker to support a user's CRDs.
 
-## Terminology Mapping
+## Terminology mapping
 
 It is worth noting that the resource mapping exists primarily to render
 resources in the UI according to Spinnaker conventions. It does not affect how
@@ -149,7 +149,7 @@ These correspond to Kubernetes resource kinds as follows:
 * Load Balancers ≈ Services, Ingresses
 * Security Groups ≈ NetworkPolicies
 
-## Resource Management Policies
+## Resource management policies
 
 How you manage the deployment and updates of a Kubernetes resource is dictated
 by its kind, via the policies that apply to a particular kind. Below are
@@ -208,7 +208,7 @@ __Clusters__ tab in Spinnaker. If possible, any pods owned by the workload are r
 | __`ReplicaSet`__ | Yes | Yes | Yes | No | No | No | No | The `status.fullyLabledReplicas`, `status.availableReplicas`, and `status.readyReplicas` must all match the desired replica count for the ReplicaSet. |
 | __`StatefulSet`__ | Yes | Yes | Yes | Yes | Yes | Yes | No | The `status.currentRevision`, and `status.updatedRevision` must match, and `status.currentReplicas`, and `status.readyReplicas` must match the spec's replica count. |
 
-## Services, Ingresses
+## Services, ingresses
 
 | __Resource__ | _Deploy_ | _Delete_ | Versioned | Stability |
 |-|:-:|:-:|:-:|-|
@@ -221,7 +221,7 @@ __Clusters__ tab in Spinnaker. If possible, any pods owned by the workload are r
 |-|:-:|:-:|:-:|-|
 | __`NetworkPolicy`__ | Yes | Yes | No | Automatically [stable](#accommodating-level-based-deployments). |
 
-## ConfigMaps, Secrets
+## ConfigMaps, secrets
 
 | __Resource__ | _Deploy_ | _Delete_ | Versioned | Stability |
 |-|:-:|:-:|:-:|-|

@@ -9,7 +9,7 @@ sidebar:
 
 If you are not familiar with Azure or any of the terms used below, please consult the Azure [reference documentation](https://docs.microsoft.com/en-us/azure/).
 
-## Resource Mapping
+## Resource mapping
 
 ### Account
 In [Azure](https://azure.microsoft.com/) (AZ), an [Account](/concepts/providers/#accounts)
@@ -34,7 +34,7 @@ Instances in a Virtual Machine Scale set all use the same standard/custom VHD.
 ### Security Group
 A Spinnaker **security group** maps to an Azure [Network Security Group](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 
-## Operation Mapping
+## Operation mapping
 
 ### Deploy
 Deploys a new Azure Virtual Machine Scale set.
@@ -69,7 +69,7 @@ Creates a Network Security Group in the specified Virtual Network.
 ### Clone Security Group
 Clones a Network Security Group in the same virtual Network.
 
-### Edit Inbound Rules
+### Edit inbound rules
 Edit the inbound traffic rules on the corresponding Network Security Group.
 
 ### Delete Security Group

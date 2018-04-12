@@ -10,7 +10,7 @@ sidebar:
 If you are not familiar with App Engine or any of the terms used below, please consult
 App Engine's [reference documentation](https://cloud.google.com/appengine/docs).
 
-## Resource Mapping
+## Resource mapping
 
 ### Account
 A Spinnaker **account** maps to a single App Engine **application**, a top-level resource that contains 
@@ -37,7 +37,7 @@ file when you deploy a version.
 ### Instance
 A Spinnaker **instance** maps to an App Engine **instance**.
 
-## Operation Mapping
+## Operation mapping
 
 ### Deploy
 
@@ -101,6 +101,6 @@ Deletes a service. Deleting a service will also delete all of its versions.
 You cannot delete the `default` service. However, you can disable your App Engine application from within the
 [Google Cloud Console](https://console.cloud.google.com).
 
-### Terminate Instance
+### Terminate instance
 
 Deletes an instance.

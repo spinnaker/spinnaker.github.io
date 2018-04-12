@@ -10,7 +10,7 @@ sidebar:
 If you are not familiar with Google Compute Engine or any of the terms used below, please consult
 Compute Engine's [reference documentation](https://cloud.google.com/compute).
 
-## Resource Mapping
+## Resource mapping
 
 ### Account
 In [Google Compute Engine](https://cloud.google.com/compute) (GCE), an [Account](/concepts/providers/#accounts)
@@ -44,7 +44,7 @@ A Spinnaker **security group** maps to a GCE [Firewall](https://cloud.google.com
 Spinnaker has user-friendly support for associating a new server group with a set of security groups, and the correct
 target tags will be set on the newly-provisioned server group.
 
-## Operation Mapping
+## Operation mapping
 
 ### Deploy
 
@@ -94,16 +94,16 @@ receives traffic.
 [Enables](#enable) one server group and [disables](#disable) another. The disable is only initiated once the
 newly-enabled server group's instances are all determined to be healthy.
 
-### Reboot Instance
+### Reboot instance
 
 Performs a [hard reset](https://cloud.google.com/compute/docs/instances/restarting-an-instance) on an instance.
 
-### Terminate Instance
+### Terminate instance
 
 [Deletes](https://cloud.google.com/compute/docs/instances/stopping-or-deleting-an-instance#delete_an_instance) an
 instance. In most cases, the managed instance group will provision a new instance to replace the terminated instance.
 
-### Terminate Instance and Shrink Server Group
+### Terminate instance and shrink Server Group
 
 Atomically [deletes](https://cloud.google.com/sdk/gcloud/reference/compute/instance-groups/managed/delete-instances) an
 instance and shrinks the target size of the managed instance group.
@@ -138,7 +138,7 @@ Clones a firewall rule.
 
 Supported only via the ui. The create security group wizard is pre-populated with the attributes of the security group
 
-### Edit Inbound Rules
+### Edit inbound rules
 
 Modifies the source filters, target tags and ingress rules of an existing firewall rule.
 

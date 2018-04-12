@@ -13,7 +13,7 @@ Artifacts play an important role in the Kubernetes Provider V2. Everything from
 the manifests you deploy, to the Docker images or ConfigMaps they reference
 can be expressed or deployed in terms of artifacts.
 
-# Manifests as Artifacts
+# Manifests as artifacts
 
 There are two ways to deploy a manifest:
 
@@ -30,7 +30,7 @@ The image below shows a deploy stage that deploys a manifest stored in a GCS buc
   the referenced file in GCS is modified."
 %}
 
-# Kubernetes Objects as Artifacts
+# Kubernetes objects as artifacts
 
 Once a manifest is successfully deployed using a pipeline (either from text
 or an artifact containing text), it is injected back into the pipeline's
@@ -69,7 +69,7 @@ by examinging the execution's "source" directly:
   image_path="./check-source.png"
 %}
 
-## Versioned Kubernetes Objects
+## Versioned Kubernetes objects
 
 According to the [Kubernetes reference
 documentation](/reference/providers/kubernetes-v2/#resource-management-policies),
@@ -81,7 +81,7 @@ resources should require any manifests that reference them to be updated as
 well. Luckily, Spinnaker makes handling these updates easy, as explained
 [below](#binding-artifacts-in-manifests).
 
-# Binding Artifacts in Manifests
+# Binding artifacts in manifests
 
 Generally, artifacts represent resources that you update as a part of your
 deployment/delivery pipelines. Given that Docker images and ConfigMaps are what
@@ -192,7 +192,7 @@ spec:
           name: my-config-map
 ```
 
-## Why Not Pipeline Expressions?
+## Why not pipeline expressions?
 
 [Pipeline Expressions](/guides/user/pipeline-expressions) offer a great way to
 reference pipeline context programmatically using short snippets of code. Of

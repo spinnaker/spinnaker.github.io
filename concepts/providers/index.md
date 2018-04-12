@@ -30,7 +30,7 @@ this will allow you to keep your environments (e.g. _staging_ vs. _prod_)
 separate, as well as restrict access to sets of resources using Spinnaker's
 [Authorization](/setup/security/authorization) mechanisms.
 
-## Supported Providers
+## Supported providers
 
 These are the cloud providers currently supported by Spinnaker:
 
