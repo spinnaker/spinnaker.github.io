@@ -8,7 +8,7 @@ redirect_from: /docs/support-policy
 
 {% include toc %}
 
-## Bugs and Feature Requests
+## Bugs and feature requests
 
 If you have what looks like a bug, or you would like to make a feature request,
 please use the [GitHub issue tracking

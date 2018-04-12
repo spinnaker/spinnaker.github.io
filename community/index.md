@@ -163,7 +163,7 @@ The Spinnaker OSS project was started at Netflix, and today thrives on the contr
   </div>
 </div>
 
-## Core Contributors
+## Core contributors
 
 The list of contributors is growing with some core contributors below. Please reach out to us with a PR or on slack if you'd like to be added to this list!
 

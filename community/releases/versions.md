@@ -21,7 +21,7 @@ hal version bom <version>
 to see the commit hash and tag matching `version-<version>` of each
 subcomponent.
 
-## Latest Stable
+## Latest stable
 {% assign reversed = site.changelogs | reverse |  %}
 {% for post in reversed %}
   {% unless post.tags contains 'deprecated' %}

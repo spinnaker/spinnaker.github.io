@@ -9,7 +9,7 @@ sidebar:
 
 Please consider the following conventions when submitting pull requests to Spinnaker.
 
-## Choice of Language
+## Choice of language
 
 ### Java
 
