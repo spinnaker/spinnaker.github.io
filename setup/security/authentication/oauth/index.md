@@ -56,7 +56,7 @@ spring:
       accessTokenUri:       # Used to get an access token
       scope:
     resource:
-      userInfoUri:          # Used to the current user's profile
+      userInfoUri:          # Used to get the current user's email address/profile
     userInfoMapping:        # Used to map the userInfo response to our User
       email:
       firstName:
