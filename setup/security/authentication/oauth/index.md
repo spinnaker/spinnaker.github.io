@@ -44,7 +44,7 @@ hal config security authn oauth2 enable
 If you'd like to configure your own OAuth provider, you'll need to provide the following 
 configuration values in your `gate-local.yml` file. If you're using Halyard, you can put this in 
 a new file under your [deployment](/reference/halyard/#deployments) (typically `default`): 
-`~/.hal/$DEPLOYMENT/staging/gate-local.yml`.
+`~/.hal/$DEPLOYMENT/profiles/gate-local.yml`.
 
 ```yaml
 spring:
