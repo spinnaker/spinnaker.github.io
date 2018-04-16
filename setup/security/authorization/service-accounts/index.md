@@ -26,7 +26,7 @@ FRONT50=http://front50.url:8080
 
 curl -X POST \
   -H "Content-type: application/json" \
-  -d '{ "name": "myApp-svc-account", "memberOf": ["myApp-prod","myApp-qa"] }' \
+  -d '{ "name": "sekret-service-account@spinnaker-test.net", "memberOf": ["myApp-prod","myApp-qa"] }' \
   $FRONT50/serviceAccounts
 ```
 
