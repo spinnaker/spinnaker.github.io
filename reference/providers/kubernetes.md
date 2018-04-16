@@ -11,7 +11,7 @@ If you are not familiar with Kubernetes or some of the Kubernetes terminology
 used below, please read the [reference
 documentation](https://kubernetes.io/docs/home).
 
-## Resource Mapping
+## Resource mapping
 
 ### Account
 
@@ -196,7 +196,7 @@ between pods and services.
 > switch to a model that allows users to make any label-based association
 > between pods and services.
 
-## Operation Mapping
+## Operation mapping
 
 This enumerates the various "Atomic Operations" and how they modify Kubernetes
 resources.
@@ -253,7 +253,7 @@ This is a combination of Enable & Disable, where the server group being rolled
 back to is first enabled, and once all health checks pass, the server group
 being rolled back from is disabled.
 
-### Terminate Instance
+### Terminate instance
 
 This invokes the delete operation on the given Pod. If this pod is managed by a
 controller, (e.g. a Replica Set), it will be recreated by that controller, but
@@ -273,7 +273,7 @@ supplied in the operation.
 
 Deletes the service - this will not edit any pods associated with the service.
 
-# Reserved Annotations
+# Reserved annotations
 
 The Kubernetes provider relies on annotations on Kubernetes resources to drive functionality.
 

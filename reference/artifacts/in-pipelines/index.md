@@ -22,7 +22,7 @@ understand how it's used within pipelines. An artifact arrives in a pipeline exe
 Spinnaker uses an "expected artifact" to enable a stage to bind an artifact
 from another pipeline execution, stage output, or running environment. 
 
-# Expected Artifacts
+# Expected artifacts
 
 An "expected artifact" is a specification of what properties (found in the URI decoration) against which to match when searching for the desired artifact, plus optional fallback behavior.
 
@@ -96,7 +96,7 @@ assign expected artifacts to individual triggers.
 When a trigger has one or more expected artifacts, it only runs when each
 expected artifact can bind to one of the artifacts in the trigger's payload.
 
-### Artifacts in Trigger Payloads
+### Artifacts in trigger payloads
 
 Artifacts are supplied by payload as a list of artifacts in a top-level
 `artifacts` key&mdash;the value is automatically injected into any triggered
@@ -129,7 +129,7 @@ we can register the following Jinja template for our GCR subscription:
 ]
 ```
 
-## Find Artifact from Execution
+## Find artifact from execution
 
 To allow you to promote artifacts between executions, you can make use of the
 "Find Artifact from Execution" stage. All that's required is the pipeline ID
@@ -143,7 +143,7 @@ A common use case would be to "promote" the image deployed to staging to a
 pipeline that's deploying to production.
 
 
-## Passing Artifacts Between Pipelines
+## Passing artifacts between pipelines
 
 Artifacts can be passed between pipelines.  If a pipeline triggers the execution of a second pipeline,
 this second pipeline will have access to any artifacts that were available to the first pipeline;
@@ -195,7 +195,7 @@ There are two ways to use this:
    run. _Keep in mind:_ If the matching artifact is empty, it will bind any
    artifact, and your default artifact will not be used.
 
-# A Visual Explanation
+# A visual explanation
 
 To help explain how artifacts & expected artifacts work, let's walk through a
 demo pipeline. To begin, here is the key:

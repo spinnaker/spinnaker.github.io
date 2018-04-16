@@ -40,7 +40,7 @@ However, a URI alone isn't always enough. Take the following examples:
 To address situations like these, Spinnaker includes a format for supplying
 URIs alongside pertinent metadata. We call this "artifact decoration".
 
-# Decorate your Artifacts
+# Decorate your artifacts
 
 In Spinnaker, artifacts must match a specification. This specification is
 consistent among all artifacts, whether they're supplied to pipelines, accessed

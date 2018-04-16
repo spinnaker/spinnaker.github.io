@@ -13,15 +13,14 @@ but cannot use the monitoring-daemon. If you're looking on instructions for
 how to install or setup monitoring, checkout the
 [setup instructions](/setup/monitoring/).
 
-
-## Enabling Monitoring
+## Enabling monitoring
 
 The monitoring endpoint, `/spectator/metrics`, is not available unless
 monitoring is enabled, which it is by default. Monitoring is enabled in
 the microservices using the Halyard command **TBD**.
 
 
-## Metrics Overview
+## Metrics overview
 
 A Spinnaker metric is a named collection of measurements used to track
 a type of activity over time. There are two basic types of metrics: counters
@@ -119,12 +118,12 @@ reset each time the process restarts. It is up to the backing monitoring
 service to aggregate these counts across replicas.
 
 
-## JSON Document Format
+## JSON document format
 
 Metrics are returned in the following format:
 
 
-### Top-Level Document
+### Top-level document
 
 Key | Format | Description
 ----|--------|------------
@@ -134,7 +133,7 @@ metrics | [See Metric Entry](#metric-entry) | The individual metric entries.
 startTime | int | Unix epoch time *milliseconds* that process started.
 
 
-### Metric Entry
+### Metric entry
 
 The metrics dictionary contains an entry for each reported metric name.
 The dictionary key is the name of the metric. The entry contains the data for the metric.
@@ -145,7 +144,7 @@ kind|String  | The type of metric. `Counter` is a numeric monotonically increasi
 values| List of [Time-Series Data Point](#time-series-data-point) | A metric will have one or more time-series associated with it. The current value for each of these is in this list.
 
 
-### Time-Series Data Point
+### Time-series data point
 
 Key | Format | Description
 ----|--------|------------

@@ -15,7 +15,7 @@ Spinnaker is an open source, multi-cloud continuous delivery platform that helps
 
 It provides two core sets of features: *cluster management* and *deployment management*. Here is an overview of these features:
 
-## Cluster Management
+## Cluster management
 
 You use Spinnaker's cluster management features to view and manage your resources in the cloud.
 
@@ -47,7 +47,7 @@ A *Security Group* defines network traffic access. It is effectively a set of fi
 
 > Learn more about cluster management on the [Clusters](/concepts/clusters/) page.
 
-## Deployment Management
+## Deployment management
 
 You use Spinnaker's deployment management features to construct and manage continuous delivery workflows. 
 
@@ -61,7 +61,7 @@ You use Spinnaker's deployment management features to construct and manage conti
 
 A *Stage* in Spinnaker is an action that forms an atomic building block for a pipeline. You can sequence stages in a Pipeline in any order, though some stage sequences may be more common than others. Spinnaker provides a number of stages such as Deploy, Resize, Disable, Manual Judgment, and many more. You can see the full list of stages and read about implementation details for each provider in the [Reference](/reference/providers) section.
 
-### Deployment Strategies
+### Deployment strategies
 
 ![](deployment-strategies.png)
 
