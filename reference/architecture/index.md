@@ -62,6 +62,43 @@ service.
 
 ## System dependencies
 
+ This diagram shows which microservices depend on each other. The green
+ boxes represent "external" components, including the Deck UI, a single-page
+ JavaScript application that runs in your browser.
+
+ <div class="mermaid">
+ graph TB
+
+ deck(Deck) --> gate;
+ api(Custom Script/API Caller) --> gate(Gate);
+ gate --> kayenta(Kayenta);
+ orca --> kayenta(Kayenta);
+ gate --> orca(Orca);
+ gate --> clouddriver(Clouddriver);
+ orca --> clouddriver;
+ gate --> rosco(Rosco);
+ orca --> front50;
+ orca --> rosco
+ gate --> front50(Front50);
+ gate --> fiat(Fiat);
+ gate --> kayenta(Kayenta);
+ orca --> kayenta;
+ clouddriver --> fiat;
+ orca --> fiat;
+ front50 --> fiat;
+ echo(Echo) --> orca;
+ echo --> front50;
+ igor(Igor) --> echo;
+
+ classDef default fill:#d8e8ec,stroke:#39546a;
+ linkStyle default stroke:#39546a,stroke-width:1px,fill:none;
+
+ classDef external fill:#c0d89d,stroke:#39546a;
+ class deck,api external
+ </div>
+
+ {% include mermaid %}
+
 In the table below, A filled cell indicates that the system listed in the
 heading of that column has a dependency on the system listed in the heading of
 that row. As all Spinnaker services can be run in their own server group, it' i's
