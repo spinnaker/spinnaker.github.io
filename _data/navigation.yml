@@ -214,6 +214,8 @@ guides:
             url: /guides/user/kubernetes-v2/parameterize-manifests/
           - title: Configure Automated Rollbacks
             url: /guides/user/kubernetes-v2/automated-rollbacks/
+          - title: Annotation-Driven UI
+            url: /guides/user/kubernetes-v2/annotations-ui/
       - title: Automated Canary Analysis
         collapsed: true
         children:
