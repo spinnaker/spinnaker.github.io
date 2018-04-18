@@ -27,16 +27,28 @@ hal config canary google edit --gcs-enabled true \
   --stackdriver-enabled true
 ```
 
-In the commands above, `$PROJECT_ID` refers to your GCP project id, `$JSON_PATH` refers to your service account json file,
-and `$MY_SPINNAKER_BUCKET` should refer to a bucket your credentials allow you access to. These can be the same values you used
-when configuring your other Spinnaker services (like Clouddriver).
+In the commands above...
 
-Note that before you run any canary-specific Halyard command you must ensure that you are on version 0.46.0 or later of
-Halyard.
+`$PROJECT_ID` is your GCP project ID
 
-You can update Halyard via: `sudo update-halyard` or `sudo apt-get update && sudo apt-get install halyard`
+`$JSON_PATH` points to your service account JSON file&mdash;don't include quotes
 
-Next, configure Halyard to use the custom bom we've prepared for the release of Kayenta:
+`$MY_SPINNAKER_BUCKET` points to a GCS bucket that accepts your credentials.
+
+These can be the same values you used when configuring your other Spinnaker
+services (like Clouddriver).
+
+> __Note__ All canary-specific Halyard commands require Halyard version 0.46.0
+> or later.
+>
+> `sudo update-halyard`
+>
+> or
+>
+> `sudo apt-get update && sudo apt-get install halyard`
+
+Next, configure Halyard to use the custom BOM we've prepared for the release of
+Kayenta:
 
 `hal config version edit --version canary-preview`
 
