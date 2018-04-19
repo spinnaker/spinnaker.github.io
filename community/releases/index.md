@@ -6,6 +6,6 @@ sidebar:
 ---
 
 * [Versions](/community/releases/versions/)
+* [Release Cadence](/community/releases/release-cadence/)
 * [Support Policy](/community/releases/support-policy/)
-* [Roadmap](/community/releases/roadmap/)
 
