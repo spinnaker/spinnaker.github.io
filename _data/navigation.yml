@@ -266,6 +266,8 @@ reference:
 #        url: /reference/providers/aws/
       - title: Azure
         url: /reference/providers/azure/
+      - title: ECS (Amazon Web Services)
+        url: /reference/providers/ecs/
       - title: Google App Engine
         url: /reference/providers/appengine/
       - title: Google Compute Engine
