@@ -337,8 +337,6 @@ community:
         url: /community/releases/release-cadence/
       - title: Support Policy
         url: /community/releases/support-policy/
-      - title: Roadmap
-        url: /community/releases/roadmap/
   - title: Contributing
     collapsed: true
     children:
