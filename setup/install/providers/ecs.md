@@ -24,7 +24,7 @@ As Elastic Network Interfaces (ENIs) are not yet supported in Spinnaker, you do 
 
 The role that Clouddriver assumes for your ECS account needs to have the trust relationship below for your Spinnaker IAM assumed role.  For information on how to set up the role Clouddriver assumes, see the [AWS documentation](/setup/install/providers/aws/#adding-an-account)  For information on how to modify IAM roles in the AWS console, see the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html)
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -44,27 +44,9 @@ The role that Clouddriver assumes for your ECS account needs to have the trust r
 
 ### Optional setups
 
-You may create IAM roles that have the `ecs-tasks.amazonaws.com` trust relationship so that your containers have an IAM role associated to them.  
+You may create IAM roles that have the `ecs-tasks.amazonaws.com` trust relationship so that your containers have an IAM role associated to them.  or information on how to modify IAM roles in the AWS console, see the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html)  
 
-```yaml
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "",
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "ecs-tasks.amazonaws.com"
-      },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}
-```
-
-You may create IAM roles that have the `ecs-tasks.amazonaws.com` trust relationship so that your containers have an IAM role associated to them.  
-
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement": [
