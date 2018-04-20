@@ -361,6 +361,11 @@ community:
         url: /community/presentations/
       - title: Articles
         url: /community/articles/
+  - title: Governance
+    collapsed: true
+    children:
+      - title: Special Interest Groups
+        url: /community/governance/sigs
   - title: Misc
     collapsed: true
     children:
