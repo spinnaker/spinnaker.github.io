@@ -22,7 +22,8 @@ As Elastic Network Interfaces (ENIs) are not yet supported in Spinnaker, you do 
 
 ### Spinnaker Clouddriver role 
 
-The role that Clouddriver assumes for your ECS account needs to have the following trust relationships for your Spinnaker IAM assumed role:
+The role that Clouddriver assumes for your ECS account needs to have the trust relationship below for your Spinnaker IAM assumed role.  For information on how to set up the role Clouddriver assumes, see the [AWS documentation](/setup/install/providers/aws/#adding-an-account)  For information on how to modify IAM roles in the AWS console, see the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html)
+
 ```yaml
 {
   "Version": "2012-10-17",
@@ -40,10 +41,6 @@ The role that Clouddriver assumes for your ECS account needs to have the followi
   ]
 }
 ```  
-
-For information on how to set up the role Clouddriver assumes, see the [AWS documentation](/setup/install/providers/aws/#adding-an-account)
-
-For information on how to modify IAM roles in the AWS console, see the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html)
 
 ### Optional setups
 
