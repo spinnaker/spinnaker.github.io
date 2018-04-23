@@ -27,7 +27,7 @@ push events to send to Spinnaker from a single GitHub repository.
   repository](https://help.github.com/articles/create-a-repo/) to send Webhooks
   from. 
 
-## Configuring Your GitHub Webhook
+## Configuring your GitHub webhook
 
 Under your GitHub repository, navigate to __Settings__ > __Webhooks__ > __Add
 Webhook__. Here, provide the following values to the form shown below:
@@ -43,7 +43,7 @@ Webhook__. Here, provide the following values to the form shown below:
    image_path="./github-webhook.png" 
 %}
 
-## Spinnaker Configuration
+## Spinnaker configuration
 
 You do not need to configure Spinnaker via Halyard at this point -- all that's
 needed is pipeline trigger configuration. An example of that can be found in

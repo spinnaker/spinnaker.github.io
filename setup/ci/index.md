@@ -18,7 +18,7 @@ Spinnaker to build a VM image which Spinnaker deploys.
 Currently, Spinnaker supports two CI systems which can be enabled and run
 independently of one-another, enumerated below.
 
-## Supported CI Systems
+## Supported CI systems
 
 These are the CI systems currently supported by Spinnaker:
 

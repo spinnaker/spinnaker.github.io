@@ -15,7 +15,7 @@ have set up, including Google Groups, GitHub Teams, or LDAP groups.
 
 See also [`hal config security`](/reference/halyard/commands/#hal-config-security).
  
-## Table of Contents
+## Contents
 
 * Overview (this page)
 * [Authentication](./authentication/)
@@ -35,6 +35,6 @@ See also [`hal config security`](/reference/halyard/commands/#hal-config-securit
   * [Service Accounts](./authorization/service-accounts/)
 
 
-## Next Steps
+## Next steps
 
 Setup [authentication](./authentication/) for your Spinnaker deployment.

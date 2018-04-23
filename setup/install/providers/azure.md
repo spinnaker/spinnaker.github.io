@@ -56,7 +56,7 @@ az keyvault secret set --name VMUsername --vault-name $VAULT_NAME --value <Inser
 az keyvault secret set --name VMPassword --vault-name $VAULT_NAME --value <Insert default password>
 ```
 
-## Adding an Account
+## Adding an account
 
 First, make sure the provider is enabled:
 
@@ -78,11 +78,11 @@ hal config provider azure account add my-azure-account \
 
 > NOTE: You will be prompted for the App Key on standard input. If necessary, you can generate a new key: `az ad sp reset-credentials --name $APP_ID`
 
-## Advanced Account Settings
+## Advanced account settings
 
 You can view the available configuration flags for Azure within the
 [Halyard reference](/reference/halyard/commands#hal-config-provider-azure-account-add).
 
-## Next Steps
+## Next steps
 
 Optionally, you can [set up another cloud provider](/setup/install/providers/), but otherwise you're ready to [Deploy Spinnaker](/setup/install/deploy/).

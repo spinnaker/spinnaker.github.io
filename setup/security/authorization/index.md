@@ -13,7 +13,7 @@ authorization mechanisms. This page shows how to setup and configure
 **Fiat**, Spinnaker's authorization microservice.
 
 
-## Model and Features
+## Model and features
 
 Fiat's authorization model is a _whitelist that is open by default_. In other words, when a
 resource does _not_ define who is allowed to access it, it is considered unrestricted.
@@ -56,7 +56,7 @@ accounts_](#service-accounts).
         ![all services use mutual TLS authentication](fiat-mTLS.png)
 
 
-## Restrictable Resources
+## Restrictable resources
 
 Accounts and applications access control can be confusing unless you understand the core
 relationship: accounts can contain multiple applications, and applications can span multiple
@@ -90,7 +90,7 @@ Set permissions for an existing application using the application configuration:
    caption="Application configuration, with Permissions"
 %}
 
-### Unrestricted Accounts and Applications
+### Unrestricted accounts and applications
 
 It's important to understand what may happen if you leave either an account or application
 without any configured permissions.
@@ -102,7 +102,7 @@ application into a different account. They may also be able to see basic informa
 instance names and counts within server groups.
 
 
-## Effects of Restrictions
+## Effects of restrictions
 
 Because of the new access restrictions, `https://localhost:9000/#/applications` should no longer
 list applications that have been restricted. Even navigating to the previously accessible page
@@ -110,18 +110,18 @@ should be denied:
 
 ![chrome network traffic is returning 403 Forbidden errors](restricted-network-traffic.png)
 
-## Service Accounts
+## Service accounts
 
 A popular feature in Spinnaker is the ability to run pipelines automatically based on a
 triggering event, such as a `git push` or a Jenkins build completing. When pipelines run against
 accounts and applications that are protected, it is necessary to use a Fiat [service account](
 ./service-accounts/) with enough permissions to access those protected resources.
 
-## Role Providers
+## Role providers
 
 To configure an external role provider, follow one of the instructions below:
 
 * [Google Groups with a G Suite account](./google-groups/)
 * [GitHub Teams](./github-teams/)
 * [LDAP Groups](./ldap/)
-* [SAML Groups](./saml/)
+* [SAML G`roups](./saml/)

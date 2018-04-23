@@ -44,7 +44,7 @@ az storage account create --resource-group $RESOURCE_GROUP --sku STANDARD_LRS --
 STORAGE_ACCOUNT_KEY=$(az storage account keys list --resource-group $RESOURCE_GROUP --account-name $STORAGE_ACCOUNT_NAME --query [0].value | tr -d '"')
 ```
 
-## Editing Your Storage Settings
+## Editing your storage settings
 
 First, edit the storage settings:
 

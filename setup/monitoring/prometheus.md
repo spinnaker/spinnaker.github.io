@@ -66,7 +66,7 @@ your browser will need to access both ports (i.e. you may need to tunnel both
 as you do for Spinnaker's Gate microservice with its Deck Web UI).
 
 
-## Configure the Spinnaker Monitoring Daemon for Prometheus
+## Configure the Spinnaker monitoring daemon for Prometheus
 
 First, you must enable the Prometheus metric store:
 
@@ -93,7 +93,7 @@ There are two ways to configure how Spinnaker provides metrics to Prometheus:
 These changes will be picked up by your Spinnaker installation next time you
 run `hal deploy apply`.
 
-## Configure the Metric and Dashboard Servers
+## Configure the metric and dashboard servers
 
   When you ssh into the machine to perform this installation, forward
   the ports 3000 and 9090 so you can install the dashboards. e.g.
@@ -133,7 +133,7 @@ run `hal deploy apply`.
   3. Proceed to [install the operational dashboards](#install-the-operational-dashboards]
 
 
-## Install the Operational Dashboards
+## Install the operational dashboards
 
 If you have not already port forwarded `9090` and `3000` or installed
 the `spinnaker-monitoring-third-party` package as described above, do so now.
@@ -153,7 +153,7 @@ the `spinnaker-monitoring-third-party` package as described above, do so now.
        because the Daemons might not be polled.
 
 
-# Using The Prometheus Dashboards
+# Using the Prometheus dashboards
 
 Each of the dashboards use Grafana's templating mechanism in order to
 allow you to perform some global filtering. The variables provided depend

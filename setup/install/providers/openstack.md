@@ -25,7 +25,7 @@ here is a list of API versions that are required to be enabled:
 
 You will need an account admin permissions for Spinnaker to use. You can download the [openrc](https://docs.openstack.org/user-guide/common/cli-set-environment-variables-using-openstack-rc.html) from your Horizon UI. To test your setup, use the the [OpenStack command line client](https://docs.openstack.org/developer/python-openstackclient/).
 
-## Adding an Account
+## Adding an account
 
 First, make sure that the provider is enabled:
 
@@ -43,7 +43,7 @@ hal config provider openstack account add my-openstack-account \
     --password service-password
 ```
 
-## Advanced Account Settings
+## Advanced account settings
 
 If you are looking for more configurability, please see the other options
 listed in the [Halyard
@@ -55,6 +55,6 @@ Openstack requires that the load balancer be in an ACTIVE state for it to create
 Each modification will cause the load balancer to go into a PENDING state and back to ACTIVE once the change has been made.
 Spinnaker needs to poll Openstack, blocking further load balancer operations until the status returns to ACTIVE.
 
-## Next Steps
+## Next steps
 
 Optionally, you can [set up another cloud provider](/setup/install/providers/), but otherwise you're ready to [Deploy Spinnaker](/setup/install/deploy/).

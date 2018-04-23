@@ -19,7 +19,7 @@ Both the Kubernetes credentials and Docker Registry accounts must exist before
 Halyard will allow you to add a Kubernetes account. The sections below will
 help you create these resources if you do not already have them.
 
-### Kubernetes Cluster
+### Kubernetes cluster
 
 You need to have a running Kubernetes cluster with corresponding credentials in
 a [kubeconfig file](https://kubernetes.io/docs/concepts/cluster-administration/authenticate-across-clusters-kubeconfig/).
@@ -42,7 +42,7 @@ hosted solutions:
 Or, you can read more on the Kubernetes setup page to pick a [solution that
 works for you](https://kubernetes.io/docs/setup/pick-right-solution/).
 
-### Kubernetes Role (RBAC)
+### Kubernetes role (RBAC)
 
 If you are using Kubernetes RBAC for access control, you may want to create a minimal for Role and Service Account for Spinnaker.
 This will ensure that Spinnaker has only the permissions it needs to operate within your cluster.
@@ -105,7 +105,7 @@ you have already done so, you can verify that these accounts exist by running:
 hal config provider docker-registry account list
 ```
 
-## Adding an Account
+## Adding an account
 
 First, make sure that the provider is enabled:
 
@@ -122,12 +122,12 @@ hal config provider kubernetes account add my-k8s-account \
     --docker-registries my-docker-registry
 ```
 
-## Advanced Account Settings
+## Advanced account settings
 
 If you are looking for more configurability, please see the other options
 listed in the [Halyard
 Reference](/reference/halyard/commands#hal-config-provider-kubernetes-account-add).
 
-## Next Steps
+## Next steps
 
 Optionally, you can [set up another cloud provider](/setup/install/providers/), but otherwise you're ready to [Deploy Spinnaker](/setup/install/deploy/).

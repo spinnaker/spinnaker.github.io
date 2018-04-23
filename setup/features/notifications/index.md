@@ -25,7 +25,7 @@ Additionally, Spinnaker is capable of handling cron-based triggers and detect ch
 
 See also [`hal config notifications`](/reference/halyard/commands/#hal-config-notification).
 
-# Configuring Notifications
+# Configuring notifications
 
 Notification configurations are in echo.yml and settings.js. For changes to echo.yml, create echo-local.yml and put your changes in there. You can customize settings.js directly.
 
@@ -137,7 +137,7 @@ window.spinnakerSettings = {
 // ...
 ```
 
-## Using Notifications
+## Using notifications
 
 Once notifications have been configured, you can use them to send changes in pipelines and in the manual judgment stage in Spinnaker.
 

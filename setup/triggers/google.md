@@ -22,7 +22,7 @@ check that `gcloud` is installed and authenticated by running:
 gcloud info
 ```
 
-## A Pub/Sub Subscription
+## A Pub/Sub subscription
 
 The Pub/Sub integration can be used to either:
 
@@ -171,7 +171,7 @@ gcloud iam service-accounts keys create $SERVICE_ACCOUNT_DEST \
 Once you have run these commands, your GCS JSON key is sitting in a file
 called `$SERVICE_ACCOUNT_DEST`.
 
-# Editing Your Pub/Sub Settings
+# Editing your Pub/Sub settings
 
 All that's required are the following values:
 

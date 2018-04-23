@@ -92,7 +92,7 @@ need to be mounted in either your local `~/.hal` directory, or another
 directory that you supply to `docker run` with additional `-v` command-line 
 options.
 
-## Command-Completion & Help
+## Command completion & help
 
 If you're ever stuck, appending `-h` to a command will provide some help text
 to explain what a command does. If you're still stuck, try looking under the
@@ -136,7 +136,7 @@ command.
 ~/.hal/uninstall.sh
 ```
 
-## Next Steps
+## Next steps
 
 Once Halyard is installed and running, it's time to decide which [environment to
 deploy](/setup/install/environment/) Spinnaker to.

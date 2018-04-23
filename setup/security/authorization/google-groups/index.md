@@ -11,7 +11,7 @@ Organizations that have a G Suite account (formerly Google Apps for Work) can us
 to manage the roles users are granted. 
 
 
-## Service Account Setup
+## Service account setup
 
 In order to access a user's group membership, we must use the Google Admin Directory API. We will
 setup a Google Cloud Platform (GCP) service account and grant it access to the Directory API. 

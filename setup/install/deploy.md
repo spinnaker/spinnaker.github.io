@@ -71,7 +71,7 @@ hal config version edit --version $VERSION
 hal deploy apply 
 ```
 
-## Next Steps
+## Next steps
 
 Now that Spinnaker is deployed and capable managing your cloud provider, you
 can either visit the [Guides](/guides/) pages to learn how to use Spinnaker, or

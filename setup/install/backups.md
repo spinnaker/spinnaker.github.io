@@ -40,7 +40,7 @@ backup.
 > restore` in succession on the same machine, links to local files will be
 > rewritten to point to those in a `~/.hal/.backup/required-files` directory.
 
-## Next Steps
+## Next steps
 
 After this step is done, you can use Spinnaker to create pipelines and deploy software, 
 but there are some [further configuration steps](/setup/other_config/) you're likely to need.

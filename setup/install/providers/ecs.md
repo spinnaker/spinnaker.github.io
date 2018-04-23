@@ -14,7 +14,7 @@ account](https://aws.amazon.com/account/).
 
 ## Prerequisites
 
-### ECS Cluster
+### ECS cluster
 You need to [create an ECS cluster](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create_cluster.html) and have enough capacity in it to deploy your containers.  
 
 ### Networking 
@@ -91,5 +91,5 @@ ecs:
 ```
 
 
-## Next Steps
+## Next steps
 Optionally, you can [set up another cloud provider](/setup/install/providers/), but otherwise you're ready to [Deploy Spinnaker](/setup/install/deploy/).

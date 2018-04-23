@@ -13,7 +13,7 @@ commit could trigger a Jenkins build that could kick off a pipeline to deploy th
 image in your access-controlled QA environment.
 
 
-## Creating Service Accounts
+## Creating service accounts
 
 Service accounts are persistent and configuration merely consists of giving it a name and a set 
 of roles. Therefore, Front50 is the most logical place to configure a service account. There is 
@@ -50,7 +50,7 @@ Fiat:
 $ curl $FIAT/authorize/myApp-svc-account
 ```
 
-### Service Account Roles
+### Service account roles
 The roles you give this service account determine who has access to use it. In order to prevent a
 privilege escalation vulnerability, only users _with every role the service account has_ may use
 it.
@@ -59,7 +59,7 @@ For example, if user "Batman" has roles `foo`, `bar`, and `baz`, and service acc
 roles `foo` and `bar`, then "Batman" has access to use "Alfred" in his pipelines. However, user
 "Joker", with role `foo` does not have all of the roles "Alred" has, so he cannot use it.
 
-## Using Service Accounts
+## Using service accounts
 With Fiat enabled, you should now see a “Run As User” option in your Trigger configuration. This
 list contains all of the service accounts you currently have access to.
 

@@ -113,7 +113,7 @@ hal config security authn x509 edit --role-oid 1.2.840.10070.8.1
 hal config security authn x509 enable
 ```
 
-## Optional Settings
+## Optional settings
 
 A `subjectPrincipalRegex` can be provided if the certificates principal name needs parsing.
 
@@ -121,7 +121,7 @@ A `subjectPrincipalRegex` can be provided if the certificates principal name nee
 hal config security authn x509 edit --subject-principal-regex "EMAILADDRESS=(.*?)(?:,|$)"
 ```
 
-### API Port
+### API port
 
 ![browser's client certificate request](cert-auth.png)
 
@@ -140,7 +140,7 @@ Unlike the other authentication methods, X.509 does not have any redirects or fa
 passing between Deck, Gate, and a third-party identity provider. Connections are either
 established with a valid certificate or they're not.
 
-## Next Steps
+## Next steps
 
 Now that you've authenticated the user, proceed to setting up their [authorization](/setup/security/authorization/).
 

@@ -11,7 +11,7 @@ sidebar:
 This document describes how to configure Spinnaker and its monitoring daemon
 to publish metrics and dashboards to Datadog.
 
-# Setup Datadog
+# Set up Datadog
 
 To get started, you'll need a Datadog account, API and App Keys. You can create
 API and App keys [here on the Datadog website](https://app.datadoghq.com/account/settings#api).
@@ -23,7 +23,7 @@ If you do chose to run the agent, you can find more information on the the Datad
 Additionally, you can install the agent with the `spinnaker-third-party` scripts as outlined below.
 This document assumes a debian installation.
 
-## Install the Spinnaker Monitoring Daemon
+## Install the Spinnaker monitoring daemon
 
 To get started you'll need to make sure the spinnaker-monitoring-daemon is installed on your machines.
 If you've configured them with halyard it should be as simple as the following commands.
@@ -33,7 +33,7 @@ sudo apt-get update -y
 sudo apt-get install spinnaker-monitoring-daemon -y
 ```
 
-## Configure the Spinnaker Monitoring Daemon for Datadog
+## Configure the Spinnaker monitoring daemon for Datadog
 
 Now enable the Datadog metrics store with halyard:
 
@@ -55,7 +55,7 @@ hal config metric-stores datadog edit --app-key <APP_KEY>
 
 These changes will be picked up by your Spinnaker installation next time you run `hal deploy apply`.
 
-## Install Tools and Optionally the Datadog Agent
+## Install tools and (optionally) the Datadog agent
 
 SSH into your machine however you do so. If you're using an ssh tunnel
 to perform this installation, forward the ports 3000 and 9090 so you
@@ -85,7 +85,7 @@ Once complete you should have a running datadog agent and find more detailed met
 
 3. Proceed to [install the operational dashboards](#install-the-operational-dashboards)
 
-## Install the Operational Dashboards
+## Install the operational dashboards
 
 Having installed `spinnaker-monitoring-third-party` [above](#install-tools-and-optionally-the-datadog-agent),
 you can run the same script to install the Datadog dashboards

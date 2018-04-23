@@ -18,7 +18,7 @@ deployed in. If Jenkins is secured, you need a username/password
 (`$USERNAME`/`$PASSWORD`) pair able to authenticate against Jenkins using
 HTTP Basic Auth.
 
-## Add Your Jenkins Master
+## Add your Jenkins master
 
 First, make sure that your Jenkins master is enabled:
 
@@ -37,7 +37,7 @@ echo $PASSWORD | hal config ci jenkins master add my-jenkins-master \
                # in your .bash_history
 ```
 
-## Configure Jenkins and Spinnaker for CSRF Protection
+## Configure Jenkins and Spinnaker for CSRF protection
 
 > **NOTE:** Jenkins CSRF protection in Igor is only supported for Jenkins 2.x.
 
@@ -75,7 +75,7 @@ b. Under __Crumb Algorithm__, select __Default Crumb Issuer__.
 
 ![](/setup/ci/jenkins_enable_csrf.png)
 
-## Jenkins Script Execution Stage
+## Jenkins script execution stage
 
 ### Purpose
 The script stage lets a Spinnaker user run an arbitrary shell, python, or
