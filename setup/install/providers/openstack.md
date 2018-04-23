@@ -25,6 +25,9 @@ here is a list of API versions that are required to be enabled:
 
 You will need an account admin permissions for Spinnaker to use. You can download the [openrc](https://docs.openstack.org/user-guide/common/cli-set-environment-variables-using-openstack-rc.html) from your Horizon UI. To test your setup, use the the [OpenStack command line client](https://docs.openstack.org/developer/python-openstackclient/).
 
+## Optional Setup 
+ * Senlin - If using the Availability Zone specification, Senlin is necessary. 
+
 ## Adding an Account
 
 First, make sure that the provider is enabled:
