@@ -148,8 +148,5 @@ values| List of [Time-Series Data Point](#time-series-data-point) | A metric wil
 
 Key | Format | Description
 ----|--------|------------
-tags | List of Tag Bindings | A tag-binding is a `key`, `value` pair expressed as a dictionary with two entries; `key` and `value`. Each of these has a string value. The value of the `key` is the name of the tag. The value of the `value` is the value for the tag. For example,
-`{"key": "success", "value": "true"}` is associating the tag `success=true` to the time-series.
-In practice, each time-series usually has several different tags (i.e. the context used to
-tag a metric, has multiple dimensions to it, each of which described by a different tag).
+tags | List of Tag Bindings | A tag-binding is a `key`, `value` pair expressed as a dictionary with two entries; `key` and `value`. Each of these has a string value. The value of the `key` is the name of the tag. The value of the `value` is the value for the tag. For example, `{"key": "success", "value": "true"}` is associating the tag `success=true` to the time-series. <br>In practice, each time-series usually has several different tags (i.e. the context used to tag a metric, has multiple dimensions to it, each of which described by a different tag).
 values | List of Timestamped Value | In practice this is a list of one element, which is only the most current value. The element is a dictionary with two keys. `v` for the value, which is a real, even for scalar values, and `t` for the timestamp as milliseconds since the Unix epoch.
