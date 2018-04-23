@@ -249,7 +249,7 @@ You can also declare new classes. Note that package names need to be fully quali
 
 To call static methods, use this syntax `T(fully.qualified.class.name).methodName()`. For example, to calculate the date 5 days from now, you can call: `${ T(java.time.LocalDate).now().plusDays(5).toString() }`
 
-Whitelisted java methods can be found [here](https://github.com/spinnaker/orca/blob/master/orca-core/src/main/java/com/netflix/spinnaker/orca/pipeline/expressions/whitelisting/InstantiationTypeRestrictor.java#L27).
+Whitelisted java methods can be found [here](https://github.com/spinnaker/orca/blob/6d0ba0bf8af5e06c5b405b8294f07e7a5a4c335a/orca-core/src/main/java/com/netflix/spinnaker/orca/pipeline/expressions/whitelisting/InstantiationTypeRestrictor.java#L26).
 
 ### Some useful things to know
 
