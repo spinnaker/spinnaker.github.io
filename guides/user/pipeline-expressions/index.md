@@ -452,4 +452,4 @@ From here you can move the cursor to the end of the closing paren of the functio
 
 # Source code
 
-The expression language support can be found in the orca codebase and pretty much encapsulated in the [ContextParameterProcessor](https://github.com/spinnaker/orca/blob/master/orca-core/src/main/groovy/com/netflix/spinnaker/orca/pipeline/util/ContextParameterProcessor.groovy) class.
+The expression language support can be found in the orca codebase and pretty much encapsulated in the [ContextParameterProcessor](https://github.com/spinnaker/orca/blob/master/orca-core/src/main/java/com/netflix/spinnaker/orca/pipeline/util/ContextParameterProcessor.java) class.
