@@ -91,6 +91,8 @@ setup:
       - title: Configure Artifact Support
         collapsed: true
         children:
+          - title: Overview
+            url: /setup/artifacts/
           - title: Google Cloud Storage
             url: /setup/artifacts/gcs/
           - title: GitHub
@@ -210,6 +212,8 @@ guides:
         children:
           - title: Deploy a Manifest
             url: /guides/user/kubernetes-v2/deploy-manifest/
+          - title: Deploy a Helm Chart
+            url: /guides/user/kubernetes-v2/deploy-helm/
           - title: Best Practices
             url: /guides/user/kubernetes-v2/best-practices/
           - title: Parameterize Manifests
