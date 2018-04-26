@@ -1,0 +1,33 @@
+<script>
+  $(document).ready(function() {
+    $('.begin-collapsible-section').each(function(i, el) {
+      var $start = $(el);
+      var $parent = $start.parent();
+      var $heading = $parent.next();
+      var $node = $heading.next();
+      var contents = [];
+      while ($node.get(0) != null) {
+        if ($node.has('.end-collapsible-section').length !== 0) {
+          $node.remove();
+          break;
+        }
+        contents.push($node);
+        $node = $node.next();
+      }
+      if ($node.get(0) == null) {
+        return; // didnt find end-collapsible-section
+      }
+      var $collapsibleWrapper = $('<div class="collapsible-section"></div>');
+      $collapsibleWrapper.append(contents);
+      $parent.replaceWith([$heading, $collapsibleWrapper]);
+      $heading.addClass('collapsible-section-header');
+      $heading.on('click', function(e) {
+        if (e.target === $heading.get(0)) {
+          $collapsibleWrapper.toggle();
+          $heading.toggleClass('open');
+        }
+      });
+      $collapsibleWrapper.hide();
+    });
+  });
+</script>

@@ -397,3 +397,21 @@ $cloud-providers-bar-mobile-height: $blue-bar-mobile-height + $white-bar-height;
     }
   }
 }
+
+.collapsible-section-header {
+  cursor: pointer;
+
+  &:before {
+    font-family: FontAwesome;
+    content: $fa-var-chevron-right;
+    font-size: 0.75em;
+    position: absolute;
+    margin: 0.3em 0 0 -1em;
+    color: $light-gray;
+  }
+
+  &.open:before {
+    content: $fa-var-chevron-down;
+    margin: 0.25em 0 0 -1.4em;
+  }
+}
