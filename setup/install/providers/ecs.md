@@ -66,7 +66,14 @@ You may create [Application Auto Scaling](https://docs.aws.amazon.com/autoscalin
 
 ### Halyard
 
-Halyard support is in progress.  
+
+Example command: 
+```bash
+hal config provider ecs account add ecs-account-name --aws-account aws-account-name
+```
+
+In the above example, `ecs-account-name` is the name of the ECS account, and `aws-account-name` is the name of a previously added, valid AWS account.  Do note that the ECS account will use credentials from the corresponding AWS account.
+  
 
 ### Clouddriver yaml properties
 
