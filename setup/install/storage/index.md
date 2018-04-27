@@ -16,7 +16,7 @@ Provider](/setup/providers/). That is, you can use
 [Google Cloud Storage](https://cloud.google.com/storage/) as a storage source
 but still deploy to [Microsoft Azure](https://azure.microsoft.com/).
 
-## Supported Storage Solutions
+## Supported storage solutions
 
 * [Azure Storage](/setup/install/storage/azs)
 * [Google Cloud Storage](/setup/install/storage/gcs)
@@ -26,6 +26,6 @@ but still deploy to [Microsoft Azure](https://azure.microsoft.com/).
 
 See also [`hal config storage`](/reference/halyard/commands/#hal-config-storage).
 
-## Next Steps
+## Next steps
 
 After you've set up your external storage service, you need to enable and [configure a cloud provider](/setup/providers/).

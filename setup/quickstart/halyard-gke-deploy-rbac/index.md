@@ -47,7 +47,7 @@ At the end of this guide you will have:
    gcloud container clusters get-credentials $K8_TEST --zone $ZONE --project $GCP_TEST
    ```
 
-## Part 2: Add Service account to GCP
+## Part 2: Add service account to GCP
 
 1. Create the service account in the GCP test project.
 

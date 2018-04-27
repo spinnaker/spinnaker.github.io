@@ -30,7 +30,7 @@ two solutions.
    This makes sense if you're running Spinnaker in a private network, or have
    another form of authentication fronting Spinnaker.
 
-## I want to expose the Distributed, Kubernetes hosted Spinnaker publicly
+## I want to expose the distributed, Kubernetes hosted Spinnaker publicly
 
 There is [a guide](/setup/quickstart/halyard-gke-public/) for doing this using
 Google's authentication & domain registrar. If this doesn't match your

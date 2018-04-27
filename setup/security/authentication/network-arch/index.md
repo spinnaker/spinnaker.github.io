@@ -11,7 +11,7 @@ sidebar:
 Your choice of installation environment can affect how you must configure authentication. This 
 page describes some of the most common network configurations.
 
-## Demo Images
+## Demo images
 
 If you started your Spinnaker instance through one of the [Quickstart](/setup/quickstart) images,
 you have a system that routes all Gate traffic through Deck's Apache instance. You can observe 
@@ -27,14 +27,14 @@ straight to Gate from the load balancer in this case
 
 ![Demo image traffic goes through load balancer](demo-image-lb.png)
 
-## Server Terminated SSL
+## Server terminated SSL
 
 Terminating SSL within the Gate server is the de factor way to enable SSL for Spinnaker. This will 
 work with or without a load balancer proxying traffic to this instance.
 
 ![SSL terminated at server through load balancer](server-ssl-termination.png)
 
-## Load Balancer Terminated SSL
+## Load Balancer terminated SSL
 
 A common practice is to offload SSL-related bits to outside of the server in question. This is a 
 fully supported option in Spinnaker, but it does affect the authentication configuration slightly.
@@ -42,7 +42,7 @@ See your authentication method for specifics.
 
 ![SSL terminated at load balancer](lb-ssl-termination.png)
 
-## Next Steps
+## Next steps
 
 Choose an authentication method:
 

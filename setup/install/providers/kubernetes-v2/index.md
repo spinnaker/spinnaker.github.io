@@ -42,7 +42,7 @@ The Kubernetes provider has two requirements:
     API resource that `kubectl` supports is also supported by Spinnaker. This
     is an improvement over the original Kubernetes provider in Spinnaker.
 
-### Kubernetes Role (RBAC)
+### Kubernetes role (RBAC)
 
 If you're using Kubernetes
 [RBAC](https://kubernetes.io/docs/admin/authorization/rbac/) for access control,
@@ -95,7 +95,7 @@ metadata:
  namespace: default
 ```
 
-## Migrating from the V1 Provider
+## Migrating from the V1 provider
 
 > :warning: The V2 provider does __not__ use the [Docker Registry
 > Provider](https://www.spinnaker.io/setup/install/providers/docker-registry/), and we
@@ -131,7 +131,7 @@ steps [below](#adding-an-account). This will surface your infrastructure twice
 {% include figure image_path="./v1v2.png" caption="A V1 and V2 provider
 surfacing the same infrastructure" %}
 
-## Adding an Account
+## Adding an account
 
 First, make sure that the provider is enabled:
 
@@ -153,7 +153,7 @@ You'll also need to run
 hal config features edit --artifacts true
 ```
 
-## Advanced Account Settings
+## Advanced account settings
 
 If you're looking for more configurability, please see the other options listed
 in the [Halyard

@@ -33,7 +33,7 @@ for the remainder of this tutorial).
 You need a running Spinnaker cluster in GKE. If you don't have one, please go
 through [this codelab](/setup/quickstart/halyard-gke).
 
-## Part 1: Configuring Authentication
+## Part 1: Configuring authentication
 
 Before we expose Spinnaker on a public IP address, we want to make sure that no
 unauthenticated user can access Spinnaker.
@@ -99,7 +99,7 @@ successfully login before continuing, however.
    alt="image of sign in screen"
 %}
 
-## Part 2: Creating Public Spinnaker Endpoints
+## Part 2: Creating public Spinnaker endpoints
 
 Next we will expose Spinnaker on endpoints discoverable via DNS. Given that we
 have our domain `$DOMAIN`, we will add subdomains for `spinnaker.$DOMAIN`

@@ -14,7 +14,7 @@ need to have at least one enabled, with one Account added. If you've picked the
 already done this step, so unless you want to deploy to multiple Providers, you
 can skip this.
 
-## Supported Providers
+## Supported providers
 
 These are the cloud providers currently supported by Spinnaker. Click through for instructions for setting up each provider.
 
@@ -31,6 +31,6 @@ These are the cloud providers currently supported by Spinnaker. Click through fo
 
 See also [`hal config provider`](/reference/halyard/commands/#hal-config-provider).
 
-## Next Steps
+## Next steps
 
 When you've finished setting up your cloud provider, you're ready to [Deploy Spinnaker](/setup/install/deploy/).

@@ -25,7 +25,7 @@ that `gcloud` is installed and authenticated by running:
 gcloud info
 ```
 
-### Downloading Credentials
+### Downloading credentials
 
 Spinnaker needs a [service
 account](https://cloud.google.com/compute/docs/access/service-accounts) to
@@ -106,12 +106,12 @@ hal config provider google account add my-gce-account --project $PROJECT \
 
 TODO(lwander or duftler): Add a note about application default credentials.
 
-## Advanced Account Settings
+## Advanced account settings
 
 If you are looking for more configurability, please see the other options
 listed in the [Halyard
 Reference](/reference/halyard/commands#hal-config-provider-google-account-add).
 
-## Next Steps
+## Next steps
 
 Optionally, you can [set up another cloud provider](/setup/install/providers/), but otherwise you're ready to [Deploy Spinnaker](/setup/install/deploy/).

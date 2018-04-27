@@ -13,7 +13,7 @@ It's more configurable and available than a [Quickstart](/setup/quickstart/)
 installation (though that's a good choice if you just want to evaluate Spinnaker 
 without much work). 
 
-## The Process
+## The process
 
 Installing a complete Spinnaker involves these steps:
 1. [Install Halyard](/setup/install/halyard/)
@@ -23,7 +23,7 @@ Installing a complete Spinnaker involves these steps:
 
 
 
-## Next Steps
+## Next steps
 
 Let's start by [setting up Halyard](/setup/install/halyard/), which will manage
 the configuration, installation, and updates of Spinnaker for you.

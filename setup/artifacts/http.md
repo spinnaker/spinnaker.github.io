@@ -24,7 +24,7 @@ configuration is needed, Spinnaker will automatically add a
    echo ${USERNAME}:${PASSWORD} > $USERNAME_PASSWORD_FILE
    ```
 
-## Edit Your Artifact Settings
+## Edit your artifact settings
 
 1. Collect the `$USERNAME_PASSWORD_FILE` value returned from the
    [prerequisites](#prerequisites) section above.

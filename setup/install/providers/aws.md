@@ -32,7 +32,7 @@ Navigate to [Console](https://console.aws.amazon.com/) > VPC.
 4. Enter `defaultvpc.internal.us-west-1` as the __Subnet name__
 5. Select __Create VPC__
 
-### Create an EC2 Role
+### Create an EC2 role
 
 > This is the role instances launched/deployed with Spinnaker will assume.
 
@@ -44,7 +44,7 @@ Navigate to [Console](https://console.aws.amazon.com/) > IAM > Roles.
 4. Enter `BaseIAMRole` as the __Role name__
 5. Select __Create role__
 
-### Create an EC2 Key Pair
+### Create an EC2 key pair
 
 > This is the key pair instances launched with Spinnaker will be configured
 > with, allowing you to SSH into them if need-be.
@@ -56,7 +56,7 @@ Navigate to [Console](https://console.aws.amazon.com/) > EC2 > Key Pairs.
 3. Download the resulting `${MY_AWS_ACCOUNT}-keypair.pem`, and run `chmod 400`
    against the file
 
-## Adding an Account
+## Adding an account
 
 There are two types of Accounts in the Spinnaker AWS provider; however, the
 distinction is not made in how they are configured using Halyard, but instead
@@ -69,7 +69,7 @@ how they are configured in AWS.
    managed account. These will be configured to grant AssumeRole access to the
    managed account. __This includes the managing account!__
 
-### Configuring the Managing Account
+### Configuring the managing account
 
 Assume the managing account has 12-digit account id `${MANAGING_ACCOUNT_ID}`,
 and there is at least one (optional) managed account with 12-digit account id
@@ -104,7 +104,7 @@ Navigate to [Console](https://console.aws.amazon.com/) > IAM > Policies.
 
 You can always add more accounts in the future by editing this policy.
 
-#### Configure an Authentication mechanism
+#### Configure an authentication mechanism
 
 Depending on whether Spinnaker is running outside or inside of EC2, you
 may authenticate via a user (access key / secret key pair) or IAM role, respectively.
@@ -156,7 +156,7 @@ hal config provider aws edit --access-key-id ${ACCESS_KEY_ID} \
 Record the ARN of the user you have created - this will be used as `${AUTH_ARN}`:
 `arn:aws:iam::${MANAGED_ACCOUNT_ID}:user/Spinnaker`
 
-### Configuring the Managed Account
+### Configuring the managed account
 
 > These steps need to be carried out for the managing account as well.
 
@@ -232,11 +232,11 @@ Now enable AWS
 hal config provider aws enable
 ```
 
-## Advanced Account Settings
+## Advanced account settings
 
 You can view the available configuration flags for AWS within the
 [Halyard reference](/reference/halyard/commands#hal-config-provider-aws-account-add).
 
-## Next Steps
+## Next steps
 
 Optionally, you can [set up Amazon's Elastic Container Service](/setup/install/providers/ecs/) or [set up another cloud provider](/setup/install/providers/), but otherwise you're ready to [Deploy Spinnaker](/setup/install/deploy/).

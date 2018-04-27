@@ -31,7 +31,7 @@ Stackdriver, please contact us through the Spinnaker Slack channel.
 
 # Installing Stackdriver
 
-## Configure the Spinnaker Monitoring Daemon for Stackdriver
+## Configure the Spinnaker monitoring daemon for Stackdriver
 
 
 First, you need a service account with the `roles/monitoring.viewer` and
@@ -88,7 +88,7 @@ reference](/reference/halyard/commands/#hal-config-metric-stores-stackdriver-edi
 Proceed to [install the dashboards](#installing-the-stackdriver-dashboards)
 
 
-## Installing the Stackdriver Dashboards
+## Installing the Stackdriver dashboards
 
 *__Note__: The Stackdriver Dashboard API is currently whitelisted, so
 you need a registered STACKDRIVER_API key in order to use it. If you

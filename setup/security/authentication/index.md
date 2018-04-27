@@ -40,7 +40,7 @@ where _authorization_ is enforced.
 1. **Identity Provider**: This is your organization's OAuth 2.0, SAML 2.0, or LDAP service. X.509
 client certificates can be used in addition to any of these services, or used standalone.
 
-## Incognito Mode
+## Incognito mode
 
 ![Incognito logo](./incognito.png){:width="50px"}
 
@@ -184,6 +184,6 @@ user's identity.
 
 {% include mermaid %}
 
-## Next Steps
+## Next steps
 
 Learn how to configure Spinnaker to communicate over [SSL](./ssl).

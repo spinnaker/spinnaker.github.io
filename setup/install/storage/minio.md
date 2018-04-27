@@ -27,7 +27,7 @@ reachable by Spinnaker. Record the following values:
   configured Minio with. These env vars need to be visible to the Minio process
   for them to work.
 
-## Editing Your Storage Settings
+## Editing your storage settings
 
 Run the following commands (notice we are picking S3 as our storage type,
 because Minio implements the S3 API):

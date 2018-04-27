@@ -26,7 +26,7 @@ Place the token in a file (`$TOKEN_FILE`) readable by Halyard:
 echo $TOKEN > $TOKEN_FILE
 ```
 
-## Editing Your Artifact Settings
+## Editing your artifact settings
 
 All that's required are the following values:
 

@@ -11,9 +11,9 @@ by the identity provider. To confirm your identity, Spinnaker requests access to
 from your identity provider.
 
 
-## OAuth Providers
+## OAuth providers
 
-### Pre-configured Providers
+### Pre-configured providers
 
 For convenience, several providers are already pre-configured. As an administrator, you merely have
  to activate one, and give the client ID and secret. Follow the Provider-Specific documentation to
@@ -39,7 +39,7 @@ hal config security authn oauth2 edit \
 hal config security authn oauth2 enable
 ```
 
-### Bring-Your-Own Provider
+### Bring-your-own provider
 
 If you'd like to configure your own OAuth provider, you'll need to provide the following 
 configuration values in your `gate-local.yml` file. If you're using Halyard, you can put this in 
@@ -87,7 +87,7 @@ userInfoMapping:
   username: user
 ```
 
-## Network Architecture and SSL Termination
+## Network architecture and SSL termination
 
 During the OAuth [workflow](#workflow), Gate makes an intelligent guess on how to assemble a URI to
 itself, called the **`redirect_uri`**. Sometimes this guess is wrong when Spinnaker is deployed 
@@ -206,7 +206,7 @@ is never revealed outside of the server using it.
 
 {% include mermaid %}
 
-## Next Steps
+## Next steps
 
 Now that you've authenticated the user, proceed to setting up their [authorization](/setup/security/authorization/).
 

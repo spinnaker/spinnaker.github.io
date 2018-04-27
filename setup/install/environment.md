@@ -19,7 +19,7 @@ split into three groups, each entirely handled by Halyard.
 The __Local Debian__ installation means Spinnaker will be downloaded and run on the 
 single machine Halyard is currently installed on.
 
-### Intended Use-case
+### Intended use case
 
 The __Local Debian__ installation is intended for smaller deployments of Spinnaker,
 and for clouds where the __Distributed__ installation is not yet supported;
@@ -28,7 +28,7 @@ Halyard updates Spinnaker.
 
 Note that a Halyard [Docker installation](https://www.spinnaker.io/setup/install/halyard/#docker) cannot be used as a __Local Debian__ base image because it does not contain the necessary packages to run Spinnaker.
 
-### Required Hal Invocations
+### Required Halyard invocations
 
 Currently, Halyard defaults to a __Local Debian__ install when first run,
 and no changes are required on your behalf. However, if you've edited
@@ -47,12 +47,12 @@ independently. This allows Halyard to manage Spinnaker's lifecycle by creating
 a smaller, headless Spinnaker to update your Spinnaker, ensuring 0 downtime 
 updates.
 
-### Intended Use-case
+### Intended use case
 
 This installation is intended for users with a larger resource footprint, and
 for those who can't afford downtime during Spinnaker updates.
 
-### Required Hal Invocations
+### Required Halyard invocations
 
 First, you need to configure one of the Cloud Providers that supports the
 __Distributed__ installation:
@@ -76,7 +76,7 @@ deploy it to the account you have previously configured.
 The __Local Git__ installation means Spinnaker will be cloned, built, and run on
 the single machine Halyard is run on.
 
-### Intended Use-case
+### Intended use case
 
 The __Local Git__ installation is intended for developers who want to contribute
 to Spinnaker. It is not intended to be used to manage any production environment.
@@ -99,14 +99,14 @@ Ensure that the following are installed on your system:
 
 Fork all of the microservices listed here: [Spinnaker Microservices](https://www.spinnaker.io/reference/architecture/#spinnaker-microservices) on github ([guide](https://guides.github.com/activities/forking/#fork)).
 
-#### Setup SSH Keys
+#### Setup SSH keys
 
 Follow these guides to setup ssh access to your github.com account from your local machine:
 
 * [Generating a new ssh key and adding it to your ssh agent](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
 * [Adding a new ssh key to your Github account](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
 
-### Required Hal Invocations
+### Required Halyard invocations
 
 Currently, Halyard defaults to a __Local Debian__ install when first run, so 
 Developers must change their deployment type to __Local Git__ type. You can run 
@@ -118,12 +118,12 @@ hal config deploy edit --type localgit --git-origin-user=<YOUR_GITHUB_USERNAME>
 
 *NOTE: Be sure to use the same username here that you forked the Spinnaker repositories to*
 
-## Further Reading
+## Further reading
 
 * [Spinnaker Architecture](/reference/architecture/) for a better understanding
   of the Distributed installation.
 
-## Next Steps
+## Next steps
 
 Now that your deployment environment is set up, you need to provide Spinnaker
 with a [Persistent Storage](/setup/install/storage/) source.

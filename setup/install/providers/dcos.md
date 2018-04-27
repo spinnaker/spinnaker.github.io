@@ -26,7 +26,7 @@ has not been extensively tested.
 
 <!-- TODO: link to the reference guide section about permissions required for the account-->
 
-### Docker Registries
+### Docker registries
 
 Follow the steps under the [Docker Registry](/setup/providers/docker-registry)
 provider to add any registries containing images you want to deploy. If
@@ -84,7 +84,7 @@ under a group in Marathon named after the Spinnaker account name
 (e.g. `/my-dcos-account`)
 
 
-## Advanced Account Settings
+## Advanced account settings
 
 If you are looking for more configurability, please see the other options
 listed in the [Halyard
@@ -92,6 +92,6 @@ Reference](https://github.com/spinnaker/halyard/blob/master/docs/commands.md#hal
 for adding [accounts](https://github.com/spinnaker/halyard/blob/master/docs/commands.md#hal-config-provider-dcos-account-add)
 and [clusters](https://github.com/spinnaker/halyard/blob/master/docs/commands.md#hal-config-provider-dcos-cluster-add).
 
-## Next Steps
+## Next steps
 
 Optionally, you can [set up another cloud provider](/setup/install/providers/), but otherwise you're ready to [Deploy Spinnaker](/setup/install/deploy/).

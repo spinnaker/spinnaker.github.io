@@ -15,7 +15,7 @@ your identifying information, such as username and group membership.
 Gate verifies the XML document's signature using a `metadata` file, and if successful, it associates the 
 identifying information with the user and allows the user to proceed as authenticated.
 
-## Identity Provider Setup
+## Identity provider setup
 
 1. In your SAML Identity Provider (IdP), download the `metadata.xml` file. Some providers expose this as a URL. It 
 may look something like this:
@@ -89,7 +89,7 @@ saml:
   redirectHostname: localhost:8084
 ```
 
-## Network Architecture and SSL Termination
+## Network architecture and SSL termination
 
 During the SAML [workflow](#workflow), Gate makes an intelligent guess on how to assemble a URI to itself, called the
 _Assertion Consumer Service URL_. Sometimes this guess is wrong when Spinnaker is deployed in concert with other 
@@ -164,7 +164,7 @@ endpoint.
 
 {% include mermaid %}
 
-## Next Steps
+## Next steps
 
 Now that you've authenticated the user, proceed to setting up their [authorization](/setup/security/authorization/).
 

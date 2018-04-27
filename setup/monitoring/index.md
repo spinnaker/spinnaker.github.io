@@ -31,7 +31,7 @@ directly to scrape metrics yourself. The JSON document structure is
 further documented in the Monitoring reference section.
 
 
-## Configuring Spinnaker Monitoring
+## Configuring Spinnaker monitoring
 
 Halyard ensures that the Spinnaker monitoring daemon is installed on every
 host that runs a Spinnaker service capable of being monitored, and is provided
@@ -50,7 +50,7 @@ dashboards](#supplied-dashboards) to your third-party system of choice.
 
 See also [`hal config metric-stores`](/reference/halyard/commands/#hal-config-metric-stores).
 
-## Consuming Metrics
+## Consuming metrics
 
 Spinnaker publishes internal metrics using a multi-dimensional data model
 based on "tags". Each "metric" has a name and type. Each data point is a
@@ -89,7 +89,7 @@ There are only individual metrics on the individual instance of
 concrete microservices that, taken together, compose a "Spinnaker" deployment.
 
 
-### Types of Metrics
+### Types of metrics
 
 There are two basic types of metrics currently supported,
 *counters* and *gauges*.
@@ -202,7 +202,7 @@ can distinguish 4xx from 5xx errors) the success tag does not add any
 additional time-series permutations since its value is not actually
 independent.
 
-### Supplied Dashboards
+### Supplied dashboards
 
 Each of the supplied monitoring solutions provides a set of dashboards
 tailored for that system. These are likely to evolve at different rates
@@ -225,7 +225,7 @@ depending on the dashboard, but the underlying trends and relative signals
 over time will still be valid.
 
 
-#### Types of Dashboards
+#### Types of dashboards
 
 There are several different dashboards. Each monitoring system has its own
 implementation of the dashboards. See the corresponding documentation for

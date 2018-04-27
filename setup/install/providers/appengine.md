@@ -36,7 +36,7 @@ You will also need to enable the App Engine Admin API for your project:
 gcloud service-management enable appengine.googleapis.com
 ```
 
-## Downloading Credentials
+## Downloading credentials
 
 Spinnaker does not need to be given [service account](https://cloud.google.com/compute/docs/access/service-accounts)
 credentials if it is running on a Google Compute Engine VM whose
@@ -78,7 +78,7 @@ gcloud iam service-accounts keys create $SERVICE_ACCOUNT_DEST \
 
 Your service account JSON key now sits inside `$SERVICE_ACCOUNT_DEST`.
 
-## Adding an Account
+## Adding an account
 
 First, make sure that the provider is enabled:
 
@@ -108,7 +108,7 @@ authentication.
 You can view the available configuration flags for App Engine within the
 [Halyard reference](/reference/halyard/commands#hal-config-provider-appengine-account-add).
 
-### Deploying from Storage
+### Deploying from storage
 
 Much like deploying from Git, Spinnaker also supports deploying your source code to App Engine
 from a Google Cloud Storage bucket.  This method of deploying requires you to bundle your code
@@ -132,6 +132,6 @@ deployment's Source Type.
 Selecting the Container Image option reveals a textbox that can then be used to specify the gcr.io URL.  Alternatively
 you can use an Artifact as the source of the container image URL.
 
-## Next Steps
+## Next steps
 
 Optionally, you can [set up another cloud provider](/setup/install/providers/), but otherwise you're ready to [Deploy Spinnaker](/setup/install/deploy/).

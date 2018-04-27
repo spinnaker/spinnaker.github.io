@@ -86,7 +86,7 @@ the session is established. Otherwise, a "Bad Credentials" exception is thrown.
 
 {% include mermaid %}
 
-## Next Steps
+## Next steps
 
 Now that you've authenticated the user, proceed to setting up their [authorization](/setup/security/authorization/).
 

@@ -31,7 +31,7 @@ provisions/installs on your behalf. While this is likely to change, for you
 don't need to preconfigure anything to get this storage source working.
 
 
-## Editing Your Storage Settings
+## Editing your storage settings
 
 All that's needed is the following command:
 

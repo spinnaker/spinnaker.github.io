@@ -19,7 +19,7 @@ bears out that the transition is not smooth. It is recommended to put at least a
 solution in place 
 **first**.
 
-## Certificate Authority
+## Certificate authority
 
 We will use `openssl` to generate a Certificate Authority (CA) and a server certificate. For the 
 purposes of this tutorial, we'll use a self-signed CA. You may consider using an external CA to 
@@ -38,7 +38,7 @@ openssl genrsa -des3 -out ca.key 4096
 openssl req -new -x509 -days 365 -key ca.key -out ca.crt
 ```
 
-## Server Certificate
+## Server certificate
 1. Create the server key. Keep this file safe!
 ```
 openssl genrsa -des3 -out server.key 4096
@@ -86,7 +86,7 @@ Voilà! You now have a Java Keystore with your certificate authority and server 
 be used by Spinnaker!
 
 
-## Use Halyard to Configure Gate
+## Use Halyard to configure Gate
 
 With the above certificates and keys in hand, you can use Halyard to set up SSL for Gate and Deck.
 
@@ -121,7 +121,7 @@ hal config security ui ssl edit \
 hal config security ui ssl enable
 ```
 
-## Next Steps
+## Next steps
 
 Each authentication mechanism is configured differently depending on where the SSL connection is 
 terminated. Learn more about how the different [network architecture](../network-arch/) options 

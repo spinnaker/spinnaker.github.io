@@ -24,7 +24,7 @@ that `gcloud` is installed and authenticated by running:
 gcloud info
 ```
 
-### Downloading Credentials
+### Downloading credentials
 
 Spinnaker needs a [service
 account](https://cloud.google.com/compute/docs/access/service-accounts) to

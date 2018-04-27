@@ -18,7 +18,7 @@ If you want a more serious, scalable deployment of Spinnaker continue
 [here](/setup/install/) to installation guide. All other
 resources on this Setup page will assume you're following those instructions.
 
-## Further Reading
+## Further reading
 
 * If you're curious how Spinnaker runs when it is deployed, take a look at the
   [Architecture](/reference/architecture/) pages.
