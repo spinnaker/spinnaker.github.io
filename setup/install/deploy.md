@@ -42,7 +42,19 @@ following command to reach the UI on [localhost:9000](http://localhost:9000):
 hal deploy connect
 ```
 
-If you want to make Spinnaker publically reachable without running that command,
+If you need to access Spinnaker from a different machine than the one on which you
+installed it, you can ssh to your Spinnaker instance by tunneling the needed
+ports. We need to forward both 9000 (which gives you access to the UI) and 8084
+(which gives you access to the API entrypoint).
+
+Once you've run the below command, you should be able to access Spinnaker at
+[localhost:9000](http://localhost:9000).
+
+```bash
+ssh -L 9000:127.0.0.1:9000 -L 8084:127.0.0.1:8084 $YOUR_INSTANCE
+```
+
+If you want to make Spinnaker publicly reachable without `hal deploy connect`,
 please read the [Halyard FAQ](/setup/quickstart/faq/).
 
 ## Troubleshooting
