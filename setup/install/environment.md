@@ -14,6 +14,8 @@ split into three groups, each entirely handled by Halyard.
 * [Distributed installations](#distributed) via a remote bootstrapping process.
 * [Local git installations](#local-git) from github.
 
+<span class="begin-collapsible-section"></span>
+
 ## Local Debian
 
 The __Local Debian__ installation means Spinnaker will be downloaded and run on the 
@@ -38,6 +40,8 @@ the following command.
 ```
 hal config deploy edit --type localdebian
 ```
+
+<span class="end-collapsible-section"></span>
 
 ## Distributed
 
