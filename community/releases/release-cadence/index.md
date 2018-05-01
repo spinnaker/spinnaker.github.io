@@ -58,6 +58,10 @@ here](/community/contributing/releasing/#merge-into-the-release-branch). If
 your patch is merged before the [Release Window is
 closed](#closing-the-release-window), it will be included in this release.
 
+Unless a severe error (e.g. security vulnerability, large-scale breakage) has a
+pending patch, patch releases are published at a weekly cadence on a
+best-effort basis.
+
 ### Closing the Release Window
 
 Once the community has deemed that the Candidate is "stable" (meaning all
