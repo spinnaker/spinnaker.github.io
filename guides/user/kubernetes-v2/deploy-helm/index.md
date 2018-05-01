@@ -11,8 +11,8 @@ sidebar:
 
 Spinnaker surfaces a "Bake (Manifest)" stage to turn templates into manifests
 with the help of a templating engine. Currently, the only supported templating
-engine is [Helm](https://helm.sh/), by relying the `helm template` command. See
-more details [here](https://docs.helm.sh/helm/#helm_template).
+engine is [Helm](https://helm.sh/), by relying on the `helm template` command.
+See more details [here](https://docs.helm.sh/helm/#helm_template).
 
 > Note: Make sure that you have configured [artifact support](/setup/artifacts)
 > in Spinnaker first. All Helm charts are fetched/stored as artifacts in
@@ -20,12 +20,11 @@ more details [here](https://docs.helm.sh/helm/#helm_template).
 
 ## Configure the "Bake (Manifest)" stage
 
-When configuring the "Bake (Manifest)" stage, you can configure
-the following:
+When configuring the "Bake (Manifest)" stage, you can specify the following:
 
 * __The release name__ (required)
 
-  The Helm release name for this chart, and informs the name of the
+  The Helm release name for this chart. This determines the name of the
   artifact produced by this stage.
 
 * __The template artifact__ (required)
@@ -56,7 +55,7 @@ As an example, we have a fully configured Bake (Manifest) stage below:
 %}
 
 Notice that in the "Produces Artifacts" section, Spinnaker has automatically
-created an `embedded/base64` artifact that will be bound when the stage
+created an `embedded/base64` artifact that is bound when the stage
 completes, representing the fully baked manifest set to be deployed downstream.
 
 {%
@@ -119,7 +118,7 @@ stage as shown here:
 > your base64 manifest set. This is required to translate the manifest set into
 > the format required by the deploy stage.
 
-When this stage runs, you will see every resource in your Helm chart get
+When this stage runs, you can see every resource in your Helm chart get
 deployed at once:
 
 {%
