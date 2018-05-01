@@ -3,6 +3,8 @@ layout: single
 title:  "Authentication"
 sidebar:
   nav: setup
+redirect_from: /setup/security/authentication/network-arch/
+
 ---
 
 {% include toc %}
