@@ -28,11 +28,20 @@ If you have `gcloud` installed, skip to the next section, “[Provision an insta
 
 Install `gcloud` by running the following command and following through the prompts:
 
-    curl https://sdk.cloud.google.com | bash
+```bash
+curl https://sdk.cloud.google.com | bash
+```
 
 Authenticate `gcloud` to your account with your email address:
 
-    gcloud auth login <your email address>
+```bash
+gcloud auth login <your email address>
+```
+
+### Enable the Compute Engine API
+
+Navigate to the Google Cloud Console and enable the [Compute Engine
+API](https://pantheon.corp.google.com/apis/api/compute.googleapis.com/overview).
 
 ### Provision an instance of Spinnaker and Jenkins
 
@@ -40,29 +49,33 @@ We’ve created a single GCE image that includes Spinnaker, Jenkins, and aptly, 
 
 Fill in your project for `$MY_PROJECT`
 
-    MY_PROJECT=<your project>
-    INSTANCE_NAME=spinnaker-codelab
-    ZONE=us-east1-b
+```bash
+MY_PROJECT=<your project>
+INSTANCE_NAME=spinnaker-codelab
+ZONE=us-east1-b
 
-    gcloud compute instances create $INSTANCE_NAME \
-        --project $MY_PROJECT \
-        --zone $ZONE \
-        --image spinnaker-codelab \
-        --image-project marketplace-spinnaker-release \
-        --machine-type n1-highmem-4 \
-        --scopes cloud-platform \
-        --metadata startup-script=/var/spinnaker/startup/first_codelab_boot.sh,gce_account=my-google-account
+gcloud compute instances create $INSTANCE_NAME \
+    --project $MY_PROJECT \
+    --zone $ZONE \
+    --image spinnaker-codelab \
+    --image-project marketplace-spinnaker-release \
+    --machine-type n1-highmem-4 \
+    --scopes cloud-platform \
+    --metadata startup-script=/var/spinnaker/startup/first_codelab_boot.sh,gce_account=my-google-account
+```
 
 Spinnaker will take a few minutes to auto configure and start up. Take 3 minutes to skim through Part 1 of this codelab below...
 
 Open an SSH tunnel through which your local workstation will connect to Spinnaker:
 
-    gcloud compute ssh $INSTANCE_NAME \
-        --project $MY_PROJECT \
-        --zone $ZONE \
-        --ssh-flag="-L 8084:localhost:8084" \
-        --ssh-flag="-L 9000:localhost:9000" \
-        --ssh-flag="-L 5656:localhost:5656"
+```bash 
+gcloud compute ssh $INSTANCE_NAME \
+    --project $MY_PROJECT \
+    --zone $ZONE \
+    --ssh-flag="-L 8084:localhost:8084" \
+    --ssh-flag="-L 9000:localhost:9000" \
+    --ssh-flag="-L 5656:localhost:5656"
+```
 
 
 ## Part 1: Bake & deploy to test
@@ -355,10 +368,21 @@ The image you’re using does have Jenkins polling for updates to the local git 
 
 You can update source by doing the following from your ssh terminal:
 
-    sudo su jenkins
-    cd /var/lib/jenkins/hello-karyon-rxnetty
-    vi build.gradle
-    # Change the number on the “release” line.
-    git commit -a -m "Bump release number"
+```bash 
+sudo su jenkins
+cd /var/lib/jenkins/hello-karyon-rxnetty
+```
+
+Now change the number on the "release" line:
+
+```bash 
+vi build.gradle
+```
+
+Finally, commit your changes to trigger a new Jenkins build:
+
+```bash
+git commit -a -m "Bump release number"
+```
 
 You’ll see the whole sequence again, but with a key difference: a new image will be baked, and the server groups deployed as a result will show different build info.
