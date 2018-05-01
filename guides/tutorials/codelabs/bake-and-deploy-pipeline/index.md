@@ -14,6 +14,16 @@ To walk you through some of the basics with Spinnaker, you're going to set up a 
 
 Note here that the us-east-1a availability zone is currently full, so it will need to be deselected in the corresponding 'region' checkbox list for each of these steps.
 
+### Set up Spinnaker
+
+If you don't already have a running Spinnaker instance, you'll need to set one
+up before you continue. A [demo installation](/setup/quickstart) should be sufficient
+for this codelab, but you can also follow the [full setup guide](/setup/install) to
+try out Spinnaker with a full installation.
+
+Once you have deployed Spinnaker, navigate to [localhost:9000](http://localhost:9000)
+to start this codelab.
+
 ### Create a Spinnaker application
 
 1. In Spinnaker, click **Actions** > **Create Application**
