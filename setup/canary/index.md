@@ -47,10 +47,9 @@ services (like Clouddriver).
 >
 > `sudo apt-get update && sudo apt-get install halyard`
 
-Next, configure Halyard to use the custom BOM we've prepared for the release of
-Kayenta:
+Next, set the Spinnaker version to v1.7.0 or higher:
 
-`hal config version edit --version canary-preview`
+`hal config version edit --version 1.7.0`
 
 Lastly, update your Spinnaker deployment to include Kayenta:
 
