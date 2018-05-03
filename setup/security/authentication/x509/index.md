@@ -22,7 +22,7 @@ authority**
     openssl genrsa -des3 -out client.key 4096
     ```
 
-1. Generate a certificate signing request for the server.
+1. Generate a certificate signing request for the server. Ensure the `Common Name` is set to a non-empty value.
     ```
     openssl req -new -key client.key -out client.csr
     ```
