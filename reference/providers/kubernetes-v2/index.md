@@ -120,6 +120,16 @@ command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
   When set to `true`, tells Spinnaker to ignore this resource.
   The resource is not cached and does not show up in the Spinnaker UI.
 
+## Strategy
+
+* `strategy.spinnaker.io/versioned`
+
+  When set to `true` or `false`, this overrides the resource's default
+  "version" behavior described in the [resource management
+  policies](#resource-management-policies). This can be used to force a
+  ConfigMap or Secret to be deployed without appending a new version when the
+  contents change, for example.
+
 # How Kubernetes resources are managed by Spinnaker
 
 Resource mapping between Spinnaker and Kubernetes constructs, as well as the
@@ -189,6 +199,9 @@ descriptions of these policies, followed by a mapping of kinds to policies.
   the resource in place, rather than redeploying, can have unexpected results and can delete
   history. Regardless, whatever the policy is, it can be overriden
   during a deploy manifest stage.
+
+  This policy can be overriden per-manifest using the
+  `strategy.spinnaker.io/versioned` annotation [described here](#strategy).
 
 * __Stability__
 
