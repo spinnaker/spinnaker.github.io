@@ -415,3 +415,7 @@ $cloud-providers-bar-mobile-height: $blue-bar-mobile-height + $white-bar-height;
     margin: 0.25em 0 0 -1.4em;
   }
 }
+
+li > div.highlighter-rouge {
+  font-size: 0.75em;
+}
