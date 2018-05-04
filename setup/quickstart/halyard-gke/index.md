@@ -53,6 +53,9 @@ gcloud config set project <PROJECT_NAME>
 ### Create a Kubernetes cluster
 
 Navigate to the [Google Cloud Console's GKE section](https://console.cloud.google.com/kubernetes/list) to create a new Kubernetes cluster (please note the cluster name and zone).
+Make sure to enable legacy authorization (in one of the drop-down menus shown
+when creating your cluster), or you may see authorization errors when
+deploying Spinnaker.
 
 ### Enable APIs
 
@@ -251,6 +254,14 @@ hal config deploy edit \
 
 hal deploy apply
 ```
+
+If you run into an error that looks something like: ```Unable to
+communicate with your Kubernetes cluster: Failure executing: GET at:
+https://xx.xx.xx.xx/api/v1/namespaces. Message: Forbidden!```, check whether you
+have enabled legacy authorization on your GKE cluster. Navigate to the
+[Google Cloud Console's GKE section](https://console.cloud.google.com/kubernetes/list),
+click on the name of your cluster to see cluster details, and enable legacy
+authorization if necessary. Then re-run `hal deploy apply`.
 
 > :point_right: Halyard will warn you that you have deployed Spinnaker remotely
 > without configuring an authentication mechanism. This is OK, but cumbersome,
