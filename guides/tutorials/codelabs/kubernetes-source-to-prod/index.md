@@ -200,9 +200,11 @@ We want to attach this server group to the "prod" load balancer, so make sure to
 
 ![](prodlbse.png)
 
-Lastly in the container section:
+Lastly, in the container section, make sure that your image is set to the result
+of the Find Image stage (`serve-dev.*`), rather than a specific image that you
+have already deployed.
 
-![](fimingres.png)
+![](prodcontainer.png)
 
 Now to prevent all prior versions of this app in production from serving traffic once the deploy finishes, we will add a "Disable Cluster" stage like so:
 
