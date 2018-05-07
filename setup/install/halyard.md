@@ -62,13 +62,20 @@ your container:
    > another directory that you supply to `docker run` with additional `-v`
    > command-line options.
 
-1. In a separate shell, run:
+1. In a separate shell, connect to Halyard running in the container:
 
    ```
    docker exec -it halyard bash
    ```
 
-   You can [interact with Halyard](/reference/halyard/commands/) from this shell.
+   You can interact with Halyard from here.
+
+1. Run `. ~/.bashrc` to enable command completion.
+
+To get help with any `hal` command, append `-h`. Also, see the [Halyard command
+Reference](/reference/halyard/commands).
+
+<span class="begin-collapsible-section"></span>
 
 ### Update Halyard on Docker
 
@@ -100,11 +107,18 @@ your container:
    docker exec -it halyard bash
    ```
 
+<span class="end-collapsible-section"></span>
+
+<span class="begin-collapsible-section"></span>
+
 ### Uninstall Halyard from Docker
 
 To uninstall Halyard, just delete the container.
 
 ` docker rm halyard`
+
+<span class="end-collapsible-section"></span>
+
 
 <span class="begin-collapsible-section"></span>
 
@@ -128,6 +142,11 @@ To uninstall Halyard, just delete the container.
 
    If this command fails, make sure `hal` is in your `$PATH`, and check the logs
 under `/var/log/spinnaker/halyard/halyard.log`.
+
+1. Run `. ~/.bashrc` to enable command completion.
+
+To get help with any `hal` command, append `-h`. Also, see the [Halyard command
+Reference](/reference/halyard/commands).
 
 ### Update Halyard on Ubuntu
 
@@ -158,23 +177,6 @@ Now you can safely uninstall Halyard:
 ```bash
 sudo ~/.hal/uninstall.sh
 ```
-<span class="end-collapsible-section"></span>
-
-<span class="begin-collapsible-section"></span>
-
-## Command completion & help
-
-If you're ever stuck, append `-h` to a `hal` command to get help text for that
-command. If you're still stuck, try the [Halyard command
-reference](/reference/halyard).
-
-Halyard also supplies a fair amount of command-completion. If you haven't
-already, run the following command or restart your shell to enable it.
-
-```bash
-. ~/.bashrc
-```
-
 <span class="end-collapsible-section"></span>
 
 ## Next steps
