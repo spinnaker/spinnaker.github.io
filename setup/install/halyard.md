@@ -56,6 +56,8 @@ your container:
 
    This runs as a foreground process in your current shell. This is useful
    because it emits all of the Halyard daemon's logs, which are not persisted.
+   If you don't care about the logs, and would rather run in detached mode,
+   replace the `-it` with `-d`
 
    > __Note:__ Any secrets/config you need to supply to the daemon (for example, a
    > kubeconfig file) must be mounted in either your local `~/.hal` directory, or
@@ -73,8 +75,7 @@ your container:
 1. Run the following commands to enable command completion:
 
    ```bash
-   hal --print-bash-completion > ~/hal_bash_completion
-   source ~/hal_bash_completion
+   source <(hal --print-bash-completion)
    ```
 
 To get help with any `hal` command, append `-h`. Also, see the [Halyard command
