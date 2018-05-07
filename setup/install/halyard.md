@@ -54,8 +54,8 @@ your container:
        gcr.io/spinnaker-marketplace/halyard:stable
    ```
 
-   This emits all of the Halyard daemon's logs, and runs as a foreground process
-   in your current shell.
+   This runs as a foreground process in your current shell. This is useful
+   because it emits all of the Halyard daemon's logs, which are not persisted.
 
    > __Note:__ Any secrets/config you need to supply to the daemon (for example, a
    > kubeconfig file) must be mounted in either your local `~/.hal` directory, or
@@ -70,7 +70,12 @@ your container:
 
    You can interact with Halyard from here.
 
-1. Run `. ~/.bashrc` to enable command completion.
+1. Run the following commands to enable command completion:
+
+   ```bash
+   hal --print-bash-completion > ~/hal_bash_completion
+   source ~/hal_bash_completion
+   ```
 
 To get help with any `hal` command, append `-h`. Also, see the [Halyard command
 Reference](/reference/halyard/commands).
