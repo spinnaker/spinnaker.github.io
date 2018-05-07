@@ -72,7 +72,7 @@ your container:
 
    You can interact with Halyard from here.
 
-1. Run the following commands to enable command completion:
+1. Run the following command to enable command completion:
 
    ```bash
    source <(hal --print-bash-completion)
