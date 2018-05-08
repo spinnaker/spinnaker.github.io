@@ -114,7 +114,7 @@ reasons:
 * The V2 provider encourages you to leverage the Kubernetes native deployment
   orchestration (e.g.
   [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/))
-  instead of the Spinnaker blue/green, where possible.
+  instead of the Spinnaker red/black, where possible.
 
 * The initial operations available on Kubernetes manifests (e.g. scale, pause
   rollout, delete) in the V2 provider don't map nicely to the operations in the
