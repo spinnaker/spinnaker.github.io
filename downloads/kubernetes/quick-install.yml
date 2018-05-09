@@ -128,7 +128,7 @@ data:
     currentDeployment: default
     deploymentConfigurations:
     - name: default
-      version: master-latest-unvalidated
+      version: 1.7.3
       providers:
         appengine:
           enabled: false
