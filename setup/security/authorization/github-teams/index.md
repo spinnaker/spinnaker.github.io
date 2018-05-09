@@ -21,8 +21,6 @@ Roles from GitHub are mapped to the Teams under a specific GitHub organization.
 
 ## Configure with Halyard
 
-TODO: Confirm these details when halyard supports GitHub.
-
 With the personal access token in hand, use Halyard to configure Fiat:
 
 ```bash
