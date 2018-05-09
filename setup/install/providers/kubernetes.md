@@ -63,7 +63,7 @@ rules:
   resources: ["namespaces", "configmaps", "events", "replicationcontrollers", "serviceaccounts", "pods/logs"]
   verbs: ["get", "list"]
 - apiGroups: [""]
-  resources: ["pods", "pods/portforward", "services", "secrets"]
+  resources: ["pods", "pods/portforward", "services", "services/proxy", "secrets"]
   verbs: ["*"]
 - apiGroups: ["autoscaling"]
   resources: ["horizontalpodautoscalers"]
