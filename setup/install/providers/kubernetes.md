@@ -44,7 +44,7 @@ works for you](https://kubernetes.io/docs/setup/pick-right-solution/).
 
 ### Kubernetes role (RBAC)
 
-If you are using Kubernetes RBAC for access control, you may want to create a minimal for Role and Service Account for Spinnaker.
+If you are using Kubernetes RBAC for access control, you may want to create a minimal Role and Service Account for Spinnaker.
 This will ensure that Spinnaker has only the permissions it needs to operate within your cluster.
 
 The following YAML can be used to create the correct `ClusterRole`, `ClusterRoleBinding`, and `ServiceAccount`. If you are limiting
