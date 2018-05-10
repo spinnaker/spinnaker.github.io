@@ -7,41 +7,15 @@ sidebar:
 
 {% include toc %}
 
-There are several environments Halyard can deploy Spinnaker to, and they can be 
-split into three groups, each entirely handled by Halyard.
+There are several environments Halyard can install Spinnaker on, and they can be 
+split into three groups:
 
-* [Local installations](#local-debian) of Debian packages.
 * [Distributed installations](#distributed) via a remote bootstrapping process.
+* [Local installations](#local-debian) of Debian packages.
 * [Local git installations](#local-git) from github.
 
-<span class="begin-collapsible-section"></span>
-
-## Local Debian
-
-The __Local Debian__ installation means Spinnaker will be downloaded and run on the 
-single machine Halyard is currently installed on.
-
-### Intended use case
-
-The __Local Debian__ installation is intended for smaller deployments of Spinnaker,
-and for clouds where the __Distributed__ installation is not yet supported;
-however, since all services are on a single machine, there will be downtime when
-Halyard updates Spinnaker.
-
-Note that a Halyard [Docker installation](https://www.spinnaker.io/setup/install/halyard/#docker) cannot be used as a __Local Debian__ base image because it does not contain the necessary packages to run Spinnaker.
-
-### Required Halyard invocations
-
-Currently, Halyard defaults to a __Local Debian__ install when first run,
-and no changes are required on your behalf. However, if you've edited
-Halyard's deployment type and want to revert to a local install, you can run
-the following command.
-
-```
-hal config deploy edit --type localdebian
-```
-
-<span class="end-collapsible-section"></span>
+The most common and best supported path is the Distributed installation onto a
+Kubernetes cluster, however, all methods below are supported.
 
 ## Distributed
 
@@ -74,6 +48,37 @@ hal config deploy edit --type distributed --account-name $ACCOUNT
 
 This command changes the type of the next deployment of Spinnaker, and will
 deploy it to the account you have previously configured.
+
+<span class="begin-collapsible-section"></span>
+
+## Local Debian
+
+The __Local Debian__ installation means Spinnaker will be downloaded and run on the 
+single machine Halyard is currently installed on.
+
+### Intended use case
+
+The __Local Debian__ installation is intended for smaller deployments of Spinnaker,
+and for clouds where the __Distributed__ installation is not yet supported;
+however, since all services are on a single machine, there will be downtime when
+Halyard updates Spinnaker.
+
+Note that a Halyard [Docker installation](https://www.spinnaker.io/setup/install/halyard/#docker) cannot be used as a __Local Debian__ base image because it does not contain the necessary packages to run Spinnaker.
+
+### Required Halyard invocations
+
+Currently, Halyard defaults to a __Local Debian__ install when first run,
+and no changes are required on your behalf. However, if you've edited
+Halyard's deployment type and want to revert to a local install, you can run
+the following command.
+
+```
+hal config deploy edit --type localdebian
+```
+
+<span class="end-collapsible-section"></span>
+
+<span class="begin-collapsible-section"></span>
 
 ## Local Git
 
@@ -121,6 +126,8 @@ hal config deploy edit --type localgit --git-origin-user=<YOUR_GITHUB_USERNAME>
 ```
 
 *NOTE: Be sure to use the same username here that you forked the Spinnaker repositories to*
+
+<span class="end-collapsible-section"></span>
 
 ## Further reading
 
