@@ -119,7 +119,7 @@ Follow these guides to setup ssh access to your github.com account from your loc
 
 Currently, Halyard defaults to a __Local Debian__ install when first run, so 
 Developers must change their deployment type to __Local Git__ type. You can run 
-the following command.
+the following commands to setup your development environment with the latest code.
 
 ```
 hal config deploy edit --type localgit --git-origin-user=<YOUR_GITHUB_USERNAME>
