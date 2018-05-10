@@ -123,6 +123,8 @@ the following command.
 
 ```
 hal config deploy edit --type localgit --git-origin-user=<YOUR_GITHUB_USERNAME>
+
+hal config version edit --version branch:upstream/master
 ```
 
 *NOTE: Be sure to use the same username here that you forked the Spinnaker repositories to*
