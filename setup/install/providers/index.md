@@ -7,16 +7,18 @@ redirect_from: /docs/target-deployment-setup
 redirect_from: /setup/providers/
 ---
 
-All of Spinnaker's abstractions and capabilities are built on top of the [Cloud
-Providers](/concepts/providers/) that it supports. So, for Spinnaker to be able to do anything you
-need to have at least one enabled, with one Account added. If you've picked the
-[Distributed](/setup/install/environment/#distributed) deployment you have
-already done this step, so unless you want to deploy to multiple Providers, you
-can skip this.
+In Spinnaker, *Providers* are integrations to the Cloud platforms your
+applications deploy to and run on. In this section, you'll be registering
+credentials for your Cloud platforms, known as *Accounts* in Spinnaker, by
+which Spinnaker deploys your applications to them.
 
 ## Supported providers
 
-These are the cloud providers currently supported by Spinnaker. Click through for instructions for setting up each provider.
+All of Spinnaker's abstractions and capabilities are built on top of the [Cloud
+Providers](/concepts/providers/) that it supports. So, for Spinnaker to be able to do anything you
+need to have at least one enabled, configured as an Account.
+
+Add as many as you need/like. When you're done, return to this page.
 
 * <a href="/setup/install/providers/appengine/">App Engine</a>
 * <a href="/setup/install/providers/aws/">Amazon Web Services</a>
