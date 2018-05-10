@@ -18,10 +18,13 @@ but still deploy to [Microsoft Azure](https://azure.microsoft.com/).
 
 ## Supported storage solutions
 
+Set up persistent storage for your Spinnaker instance by choosing one of the options below. When you've
+completed the section, return to this page.
+
 * [Azure Storage](/setup/install/storage/azs)
 * [Google Cloud Storage](/setup/install/storage/gcs)
 * [Minio](/setup/install/storage/minio)
-* [Redis](/setup/install/storage/redis)
+* [Redis](/setup/install/storage/redis) :warning: Unsupported and not recommended for production environments
 * [S3](/setup/install/storage/s3)
 
 See also [`hal config storage`](/reference/halyard/commands/#hal-config-storage).
