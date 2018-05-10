@@ -8,8 +8,12 @@ sidebar:
 {% include toc %}
 
 Setting up automated canary analysis in Spinnaker consists of running a bunch
-of Halyard commands, as described in this doc. For further details, [Here's a
-comprehensive reference](/reference/halyard/commands/#hal-config-canary)
+of Halyard commands, as described in this doc. Before you can use the canary
+analysis service, you must configure at least one metrics service, and at least
+one storage service. The most common setup is to have one metrics service
+configured (e.g. Stackdriver, Atlas, Prometheus or Datadog) and one storage
+service (e.g. S3, GCS or Minio) configured. For further details, [here's a
+comprehensive reference](/reference/halyard/commands/#hal-config-canary).
 
 ## Quick start
 
