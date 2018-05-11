@@ -396,7 +396,7 @@ Similarly, you can see that when I chose 'cleaning up', that pipeline branch is 
 
 ## Expression autocomplete
 
-Spinnaker has autocompleted functionality within the context of a pipeline configuration.
+Spinnaker has autocomplete functionality within the context of a pipeline configuration.
 
 **TLDR;**
 Here are the character triggers that will invoke the autocomplete
@@ -412,6 +412,38 @@ Doing so will display this:
 Hit enter and the opening and closing braces of the expression will be added to the text field.
 
 ![](26.png)
+
+### Testing expressions
+
+There is an API endpoint you can use to evaluate an expression against an existing execution of a pipeline. This can be helpful for troubleshooting or for crafting complex expressions.
+
+In order to use this endpoint you will need the pipeline Id for the pipeline execution you want to use to test your expression. This is the ULID value for the pipeline URI when you are viewing details of that execution.
+```
+$ PIPELINE_ID=01CD8CWFA97RG1WYSCAZY4RBX8
+$ curl http://api.my.spinnaker/pipelines/$PIPELINE_ID/evaluateExpression -H"Content-Type: text/plain" --data '${ #stage("Canary").status.toString() }'
+
+{"result":"TERMINAL","detail":null}
+```
+
+If an expression does not evaluate (in this case missing the closing `}`), error details are included:
+```
+$ PIPELINE_ID=01CD8CWFA97RG1WYSCAZY4RBX8
+$ curl http://api.my.spinnaker/pipelines/$PIPELINE_ID/evaluateExpression -H"Content-Type: text/plain" --data '${ #stage("Canary").status.toString()'
+
+{
+  "result": "${ #stage('Canary').status.toString() ",
+  "detail": {
+    "{ #stage('Canary').status.toString() ": [
+      {
+        "description": "Failed to evaluate [expression] Expression [{ #stage( #root.execution, 'Canary').status.toString() ] @0: No ending suffix '}' for expression starting at character 0: { #stage( #root.execution, 'Canary').status.toString() ",
+        "exceptionType": "org.springframework.expression.ParseException",
+        "timestamp": 1526075005956,
+        "level": "ERROR"
+      }
+    ]
+  }
+}
+```
 
 ### Helper functions and stages
 
