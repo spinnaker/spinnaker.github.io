@@ -45,8 +45,8 @@ installed](https://docs.docker.com/engine/installation/).
 
 1. Start Halyard in a new Docker container.
 
-  The following command creates the Halyard Docker container, mounting the
-  Halyard config directory:
+   The following command creates the Halyard Docker container, mounting the
+   Halyard config directory:
 
    ```
    docker run -p 8084:8084 -p 9000:9000 \
