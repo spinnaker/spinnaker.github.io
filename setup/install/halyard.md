@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Install Halyard"
+title:  "__1__. Install Halyard"
 sidebar:
   nav: setup
 redirect_from:

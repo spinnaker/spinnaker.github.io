@@ -33,24 +33,7 @@ setup:
         url: /setup/install/
       - title: 1. Install Halyard
         url: /setup/install/halyard/
-      - title: 2. Choose an Environment
-        url: /setup/install/environment/
-      - title: 3. Choose a Storage Service
-        collapsed: true
-        children:
-          - title: Overview
-            url: /setup/install/storage/
-          - title: Azure Storage
-            url: /setup/install/storage/azs/
-          - title: Google Cloud Storage
-            url: /setup/install/storage/gcs/
-          - title: Minio
-            url: /setup/install/storage/minio/
-          - title: Redis
-            url: /setup/install/storage/redis/
-          - title: S3
-            url: /setup/install/storage/s3/
-      - title: 4. Choose a Cloud Provider
+      - title: 2. Choose Cloud Providers
         collapsed: true
         children:
           - title: Overview
@@ -77,6 +60,23 @@ setup:
             url: /setup/install/providers/openstack/
           - title: Oracle
             url: /setup/install/providers/oracle/
+      - title: 3. Choose an Environment
+        url: /setup/install/environment/
+      - title: 4. Choose a Storage Service
+        collapsed: true
+        children:
+          - title: Overview
+            url: /setup/install/storage/
+          - title: Azure Storage
+            url: /setup/install/storage/azs/
+          - title: Google Cloud Storage
+            url: /setup/install/storage/gcs/
+          - title: Minio
+            url: /setup/install/storage/minio/
+          - title: Redis
+            url: /setup/install/storage/redis/
+          - title: S3
+            url: /setup/install/storage/s3/
       - title: 5. Deploy Spinnaker
         url: /setup/install/deploy/
       - title: 6. Back Up Your Config
@@ -247,7 +247,7 @@ guides:
         url: /guides/developer/new-stage/
       - title: Kork Library
         url: /guides/developer/kork-library/
-      - title: Kubernetes CRD extensions 
+      - title: Kubernetes CRD extensions
         url: /guides/developer/crd-extensions/
   - title: Runbooks
     collapsed: true
