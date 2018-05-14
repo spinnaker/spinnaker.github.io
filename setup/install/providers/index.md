@@ -21,7 +21,7 @@ Providers](/concepts/providers/) that it supports. So, for Spinnaker to do
 anything you must enable at least one provider, with one Account added for it.
 
 (In fact, if you use a [Distributed
-deployment](/setup/install/environment/#distributed), you'll have a provider (on
+deployment](/setup/install/environment/#distributed/), you'll have a provider (on
 Kubernetes) to run Spinnaker. You can use that one as your only provider, or you
 can create an additional provider for each cloud target.)
 
