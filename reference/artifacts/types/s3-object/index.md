@@ -18,6 +18,7 @@ Deploy Manifest or AWS Deploy stage.
 |-|-----------|
 | `type` | Always `s3/object`. |
 | `name` | Name/Path of the object. |
+| `reference` | Name/Path of the object. |
 | `location` | The region where your bucket was created |
 
 ## Example
@@ -26,6 +27,7 @@ Deploy Manifest or AWS Deploy stage.
 {
   "type": "s3/object",
   "name": "s3://bucket/file.json",
+  "reference": "s3://bucket/file.json",
   "location": "us-east-1"
 }
 ```
