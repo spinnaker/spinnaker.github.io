@@ -17,7 +17,7 @@ stage.
 | Field | Explanation |
 |-|-----------|
 | `type` | Always `gitlab/file`. |
-| `reference` |  The full path including filename for retrieval via the GitHub API. `https://gitlab.example.com/api/v4/projects/13083/repository/files/manifests%2Fconfig%2Eyaml/raw` is an example from the Gitlab documentation. For more info, see the documentation [here](https://docs.gitlab.com/ee/api/repository_files.html#get-raw-file-from-repository).
+| `reference` |  The full path including filename for retrieval via the Gitlab API. `https://gitlab.example.com/api/v4/projects/13083/repository/files/manifests%2Fconfig%2Eyaml/raw` is an example from the Gitlab documentation. For more info, see the documentation [here](https://docs.gitlab.com/ee/api/repository_files.html#get-raw-file-from-repository).
 | `name` | The file path within your repo. `path/to/file.yml` is an example. |
 | `version` | The file's commit or branch. |
 | `location` | N/A |
