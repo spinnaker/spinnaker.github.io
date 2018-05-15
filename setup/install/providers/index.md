@@ -12,7 +12,7 @@ your applications to.
 
 In this section, you'll register credentials for your Cloud platforms. Those
 credentials are known as *Accounts* in Spinnaker, and Spinnaker deploys your
-applications to them.
+applications via those accounts.
 
 ## Supported providers
 
@@ -21,9 +21,10 @@ Providers](/concepts/providers/) that it supports. So, for Spinnaker to do
 anything you must enable at least one provider, with one Account added for it.
 
 (In fact, if you use a [Distributed
-deployment](/setup/install/environment/#distributed-installation), you'll have a provider (on
-Kubernetes) to run Spinnaker. You can use that one as your only provider, or you
-can create an additional provider for each cloud target.)
+deployment](/setup/install/environment/#distributed-installation), you'll have
+an account (on Kubernetes) to run Spinnaker. You can use that one as your only
+provider account, or you can create an additional account for each provider.)
+
 
 Add as many of the following providers as you need. When you're done, return to this page.
 
