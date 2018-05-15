@@ -126,6 +126,7 @@ waze_case_study:
     <ul class="spin_call_to_action">
       <li><a href="/concepts/">GET STARTED</a></li>
       <li><a href="/setup/">INSTALL LATEST</a></li>
+      <li><a href="/ebook/">READ OUR EBOOK</a></li>
     </ul>
   </div>
 </div>

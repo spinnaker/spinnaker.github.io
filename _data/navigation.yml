@@ -5,6 +5,8 @@ main:
     url: /setup/
   - title: Guides
     url: /guides/
+  - title: Ebook
+    url: /ebook/
   - title: Reference
     url: /reference/
   - title: Community
