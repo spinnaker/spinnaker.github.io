@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Install Halyard"
+title:  "__1__. Install Halyard"
 sidebar:
   nav: setup
 redirect_from:
@@ -37,14 +37,16 @@ installed](https://docs.docker.com/engine/installation/).
 
 1. On your current machine, make a local Halyard config directory.
 
-   This will persist between runs of the Halyard docker container.
 
    ```bash
    mkdir ~/.hal
    ```
+   This will persist between runs of the Halyard docker container.
 
-1. Run the Halyard Docker container, mounting that Halyard config directory for
-your container:
+1. Start Halyard in a new Docker container.
+
+   The following command creates the Halyard Docker container, mounting the
+   Halyard config directory:
 
    ```
    docker run -p 8084:8084 -p 9000:9000 \
@@ -64,7 +66,7 @@ your container:
    > another directory that you supply to `docker run` with additional `-v`
    > command-line options.
 
-1. In a separate shell, connect to Halyard running in the container:
+1. In a separate shell, connect to Halyard:
 
    ```
    docker exec -it halyard bash

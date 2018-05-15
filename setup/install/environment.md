@@ -1,59 +1,64 @@
 ---
 layout: single
-title:  "Choose your Environment"
+title:  "__3__. Choose your Environment"
 sidebar:
   nav: setup
 ---
 
 {% include toc %}
 
-There are several environments Halyard can install Spinnaker on, and they can be 
-split into three groups:
+In this step, you tell Halyard where to install Spinnaker.
 
-* [Distributed installations](#distributed) via a remote bootstrapping process.
-* [Local installations](#local-debian) of Debian packages.
+* [Distributed installation](#distributed-installation)
+  Halyard deploys each of Spinnaker's [microservices](/reference/architecture)
+  separately. This is highly recommended for use in production.
+
+* [Local installations](#local-debian) of Debian packages
+  Spinnaker is deployed on a single machine. This is good for smaller
+  deployments.
+
 * [Local git installations](#local-git) from github.
+  This is useful for developers contributing to the Spinnaker project.
 
-The most common and best supported path is the Distributed installation onto a
-Kubernetes cluster, however, all methods below are supported.
+  The recommended path is a distributed installation onto a Kubernetes cluster,
+  but all of these methods are supported:
 
-## Distributed
+## Distributed installation
 
-The __Distributed__ installation means that Spinnaker will be deployed to a 
-remote cloud such that each of Spinnaker's services are deployed 
-independently. This allows Halyard to manage Spinnaker's lifecycle by creating 
-a smaller, headless Spinnaker to update your Spinnaker, ensuring 0 downtime 
-updates.
+Distributed installations are for development orgs with large resource
+footprints, and for those who can't afford downtime during Spinnaker updates.
 
-### Intended use case
+Spinnaker is deployed to a remote cloud, with each
+[microservice](/reference/architecture/) deployed independently. Halyard
+creates a smaller, headless Spinnaker to update your Spinnaker and its
+microservices, ensuring zero-downtime updates.
 
-This installation is intended for users with a larger resource footprint, and
-for those who can't afford downtime during Spinnaker updates.
+1. If you haven't already done so, configure a provider for the environment in
+which you will install Spinnaker.
 
-### Required Halyard invocations
+   This must be on a Kubernetes cluster. It does not have to be the same
+   provider as the one you're using to deploy your applications.
 
-First, you need to configure one of the Cloud Providers that supports the
-__Distributed__ installation:
+   * [Kubernetes](/setup/install/providers/kubernetes)
 
-* <a href="/setup/install/providers/kubernetes" target="_blank">Kubernetes</a> **Note**: We recommend having at least 4 cores and 8 GiB of RAM free in the cluster you are deploying to.
-* <a href="/setup/install/providers/kubernetes-v2" target="_blank">Kubernetes (Manifest Based)</a> :warning: This is still in alpha.
-* <a href="/setup/install/providers/gce" target="_blank">Google Compute Engine</a> :warning: This is still in beta
+   * [Kubernetes (Manifest Based)](/setup/install/providers/kubernetes-v2)<br />
+     :warning: This is still in alpha.
 
-Then, remembering the `$ACCOUNT` name that you've created during the
-Provider configuration, run
+   We recommend at least 4 cores and 8GB of RAM available in the cluster where
+   you will deploy Spinnaker.
 
-```
-hal config deploy edit --type distributed --account-name $ACCOUNT
-```
+1. Run the following command, using the `$ACCOUNT` name you created when you
+configured the provider:
 
-This command changes the type of the next deployment of Spinnaker, and will
-deploy it to the account you have previously configured.
+   ```
+   hal config deploy edit --type distributed --account-name $ACCOUNT
+   ```
 
 <span class="begin-collapsible-section"></span>
 
 ## Local Debian
 
-The __Local Debian__ installation means Spinnaker will be downloaded and run on the 
+The __Local Debian__ installation means Spinnaker will be downloaded and run on the
 single machine Halyard is currently installed on.
 
 ### Intended use case
@@ -63,7 +68,10 @@ and for clouds where the __Distributed__ installation is not yet supported;
 however, since all services are on a single machine, there will be downtime when
 Halyard updates Spinnaker.
 
-Note that a Halyard [Docker installation](https://www.spinnaker.io/setup/install/halyard/#docker) cannot be used as a __Local Debian__ base image because it does not contain the necessary packages to run Spinnaker.
+Note that a Halyard [Docker
+installation](https://www.spinnaker.io/setup/install/halyard/#docker) cannot be
+used as a __Local Debian__ base image because it does not contain the necessary
+packages to run Spinnaker.
 
 ### Required Halyard invocations
 
@@ -117,9 +125,10 @@ Follow these guides to setup ssh access to your github.com account from your loc
 
 ### Required Halyard invocations
 
-Currently, Halyard defaults to a __Local Debian__ install when first run, so 
-Developers must change their deployment type to __Local Git__ type. You can run 
-the following commands to setup your development environment with the latest code.
+Halyard defaults to a __Local Debian__ install when first run. If you will be
+contributing code to the Spinnaker project, you can change your deployment type
+to __Local Git__ type and set up your development environment with the latest
+code.
 
 ```
 hal config deploy edit --type localgit --git-origin-user=<YOUR_GITHUB_USERNAME>
