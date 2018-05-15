@@ -66,28 +66,32 @@ may look something like this:
 
 1. Create a Spinnaker SAML application.
 1. Specify the login URL as `https://localhost:8084/saml/SSO`. Replace "localhost" with Gate's address, if known.
-1. Specify a unique entity ID (we'll use `io.spinnaker:test` in our example).
+1. Specify a unique entity ID (we'll use `spinnaker.test` in our example).
 1. Enable the users you'd like to have access to your Spinnaker instance.
 
-> TODO: Add halyard commands here when halyard supports SAML
-
 1. Generate a keystore and key in a new Java Keystore with some password:
-```
-keytool -genkey -v -keystore saml.jks -alias saml -keyalg RSA -keysize 2048 -validity 10000
-```
-2. Create or modify your `gate-local.yml` file to include the following settings:
+    ```
+    keytool -genkey -v -keystore saml.jks -alias saml -keyalg RSA -keysize 2048 -validity 10000
+    ```
+1. Execute the following halyard commands and redeploy Gate:
 
-
-```yaml
-saml:
-  enabled: true
-  metadataUrl: file:/opt/spinnaker/config/metadata.xml
-  keyStore: file:/opt/spinnaker/config/saml.jks
-  keyStorePassword: hunter2
-  keyStoreAliasName: saml
-  issuerId: io.spinnaker:test
-  redirectHostname: localhost:8084
-```
+    ```
+    $KEYSTORE_PATH= # /path/to/keystore.jks
+    $KEYSTORE_PASSWORD=hunter2
+    $METADATA_PATH= # /path/to/metadata.xml
+    $SERVICE_ADDR_URL=https://localhost:8084
+    $ISSUER_ID=spinnaker.test
+    
+    hal config security authn saml edit \
+      --keystore $KEYSTORE_PATH
+      --keystore-alias saml
+      --keystore-password $KEYSTORE_PASSWORD
+      --metadata $METADATA_PATH
+      --issuer-id $ISSUER_ID \
+      --service-address-url $SERVICE_ADDR_URL
+      
+    hal config security authn saml enable
+    ```
 
 ## Network architecture and SSL termination
 
