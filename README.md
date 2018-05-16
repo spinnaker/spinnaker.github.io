@@ -59,5 +59,3 @@ Keep the "broken window theory" at bay by ensuring all links work with
 
 Run link checker before committing: 
 `rake test`
-
-(TODO: enforce this via CI build?)
