@@ -96,29 +96,23 @@ to Spinnaker. It is not intended to be used to manage any production environment
 
 Ensure that the following are installed on your system:
 
-* git
-  * Debian: `sudo apt-get install git`
-* curl
-  * Debian: `sudo apt-get install curl`
-* redis-server
-  * Debian: `sudo apt-get install redis-server`
+* git: `sudo apt-get install git`
+* curl: `sudo apt-get install curl`
+* redis-server: `sudo apt-get install redis-server`
 * OpenJDK 8 - JDK (we're building from source, so a JRE is not sufficient)
-  * Debian:
-      ```
-      sudo add-apt-repository ppa:openjdk-r/ppa
-      sudo apt-get update
-      sudo apt-get install openjdk-8-jdk
-      ```
+    ```
+    sudo add-apt-repository ppa:openjdk-r/ppa
+    sudo apt-get update
+    sudo apt-get install openjdk-8-jdk
+    ```
 * node (version >=8.9.0, [can be installed via nvm](https://github.com/creationix/nvm#install-script), summarized below)
-  * Debian:
-      ```
-      curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-      # Follow instructions at end of script to add nvm to ~/.bash_rc
-      
-      nvm install v8.9.0
-      ```
-* yarn 
-  * Debian: `npm install -g yarn` or [guide](https://yarnpkg.com/lang/en/docs/install/)
+    ```
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+    # Follow instructions at end of script to add nvm to ~/.bash_rc
+
+    nvm install v8.9.0
+    ```
+* yarn: `npm install -g yarn` or [guide](https://yarnpkg.com/lang/en/docs/install/)
 
 
 #### Fork all Spinnaker repos
