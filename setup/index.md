@@ -11,7 +11,7 @@ These pages contain instructions for installing and setting up Spinnaker
 
 If you're new to Spinnaker and you want a quick way to evaluate it, try out one
 of the [quickstart solutions](/setup/quickstart/). These are demos for
-evaluation only and are not suitable for us in production.
+evaluation only and are not suitable for use in production.
 
 ## Install it
 
