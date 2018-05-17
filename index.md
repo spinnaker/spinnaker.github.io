@@ -5,17 +5,17 @@ spinnaker_row:
   excerpt: "Created at Netflix, it has been battle-tested in production by hundreds of teams over millions of deployments. It combines a powerful and flexible pipeline management system with integrations to the major cloud providers."
   image_path: assets/images/spinnaker-logo-inline.svg
   alt: "Spinnaker Logo"
-multi_cloud_row: 
+multi_cloud_row:
   title: Multi-Cloud
   excerpt: "Deploy across multiple cloud providers including AWS EC2, Kubernetes, Google Compute Engine, Google Kubernetes Engine, Google App Engine, Microsoft Azure, and Openstack, with Oracle Bare Metal and DC/OS coming soon."
   image_path: assets/images/cloud.svg
   alt: "Multi-Cloud Logo"
-automated_releases_row: 
+automated_releases_row:
   title: Automated Releases
   excerpt: "Create deployment pipelines that run integration and system tests, spin up and down server groups, and monitor your rollouts. Trigger pipelines via git events, Jenkins, Travis CI, Docker, CRON, or other Spinnaker pipelines."
   image_path: assets/images/automated-releases.svg
   alt: "Automated Releases Logo"
-best_practices_row: 
+best_practices_row:
   title: Built-in Deployment Best Practices
   excerpt: "Create and deploy immutable images for faster rollouts, easier rollbacks, and the elimination of hard to debug configuration drift issues. Leverage an immutable infrastructure in the cloud with built-in deployment strategies such as red/black and canary deployments."
   image_path: assets/images/best-practices.svg    
@@ -84,7 +84,7 @@ netflix_case_study:
   image_path: assets/images/netflix_logo.jpg
   image_class: spin_case_study__netflix
   alt: "Netflix Logo"
-  links: 
+  links:
     - label: READ MORE
       src: "https://medium.com/netflix-techblog/global-continuous-delivery-with-spinnaker-2a6896c23ba7"
 waze_case_study:
@@ -116,16 +116,16 @@ waze_case_study:
 <div class="spin_header">
   <img class="spin_header__swoosh" src="{{ "assets/images/top-right-swoosh.svg" | absolute_url }}" alt="Spinnaker Swoosh"/>
   <div class="spin_header__inner_wrap">
-    
+
     {% include masthead.html %}
-    
+
     <div class="spin_header__text">
       <h1>Continuous Delivery for Enterprise</h1>
       <h2>Fast, safe, repeatable deployments</h2>
     </div>
     <ul class="spin_call_to_action">
-      <li><a href="/concepts/">GET STARTED</a></li>
-      <li><a href="/setup/">INSTALL LATEST</a></li>
+      <li><a href="/concepts/">HOW IT WORKS</a></li>
+      <li><a href="/setup/">INSTALL SPINNAKER</a></li>
       <li><a href="/ebook/">READ OUR EBOOK</a></li>
     </ul>
   </div>
@@ -190,4 +190,3 @@ waze_case_study:
   {% include spinnaker_case_study id="target_case_study" %}
   {% include spinnaker_case_study id="intuit_case_study" %}
 </div> -->
-
