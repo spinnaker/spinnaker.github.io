@@ -43,6 +43,14 @@ In the following example, we're using pipeline expressions as parameters being p
 >
 > Because expressions are evaluated per stage before each stage starts, you cannot use expressions in the configuration at the pipeline level. For example, an expression in the job name of a trigger for the pipeline does not work because no expressions have been evaluated yet.
 
+You can use expressions in any field in a Spinnaker stage. Spinnaker requires you to enclose an expression between `${` and `}` everywhere except for the `conditional on expression` input field, where the enclosing braces can be skipped.
+
+In some places of the UI, you can see an icon [...] that will allow you change a dropdown to a free form input box where you can enter an expression instead. 
+
+For example, if you have a pipeline with parameters choices configured, the pipeline stage will allow you to enter an expression like `${trigger.parameters['value1']}` instead of selecting from a dropdown. This expression still needs to be enclosed with `${` and `}` as the expression can be a complex one, e.g. `${ trigger.parameters['stack'] }-readonly-${ trigger.parameters['region'] }`. 
+
+For other places in the UI where it is difficult to enter text like the capacity field in a deploy, you can enter an expression by editing the stage JSON and adding an expression instead of the field. Make sure you enclose the expression in double quotes in the JSON. `"min": "${trigger.parameters['min']}""`
+
 ### Turning a stage on or off
 
 You can use expressions to turn an individual stage on or off. 
