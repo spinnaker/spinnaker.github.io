@@ -30,8 +30,15 @@ Swap out `rbenv` below for `rvm` if you prefer. RVM was giving me installation i
     1. `bundle exec jekyll serve --watch --incremental`
 1. Navigate to [http://localhost:4000](http://localhost:4000) to see your locally generated page.    
 
+You can do the same within Docker using the included Dockerfile (the volume mount will still allow changes to files to be visible to Jekyll):
 
-### Page Generation
+```sh
+docker build --tag spinnaker/spinnaker.github.io-test .
+docker run -it --rm --mount "type=bind,source=$(pwd),target=/code" \
+    -p 4000:4000 spinnaker/spinnaker.github.io-test --incremental
+```
+
+## Page Generation
 
 A page named `foo.md` will be transformed to `foo/index.html` and links to `foo` will result in an HTTP 301 
 to `foo/`. This has two implications:
