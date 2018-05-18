@@ -256,6 +256,8 @@ guides:
     children:
       - title: API Rate Limiting
         url: /guides/runbooks/api-rate-limiting/
+      - title: Sharding Spinnaker
+        url: /guides/runbooks/sharding-spinnaker/
 
 reference:
   - title: API
