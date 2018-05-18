@@ -197,7 +197,9 @@ guides:
       - title: Triggering Pipelines
         collapsed: true
         children:
-          - title: Trigging on Webhooks
+          - title: Triggering on Pub/Sub Messages
+            url: /guides/user/triggers/pubsub/
+          - title: Triggering on Webhooks
             url: /guides/user/triggers/webhooks/
           - title: Receiving Artifacts From GCS
             url: /guides/user/triggers/gcs/
