@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Sharding Spinanker"
+title:  "Sharding Spinnaker"
 sidebar:
   nav: guides
 ---
@@ -13,7 +13,7 @@ This document shows you how to shard traffic to different areas of Spinnaker:
 
 The general pattern is that you define a selector class in your configuration. The requests will then be propagated to the defined selected shard.
 
-At Netflix, we create read-only shards for clouddriver to better manage requests. Each readonly shard is connected to a Redis replica. 
+At Netflix, we create read-only shards for clouddriver to better manage requests. Each read-only shard is connected to a Redis replica. 
 
 Selectors exist at these levels:
 
