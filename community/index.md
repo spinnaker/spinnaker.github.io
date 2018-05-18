@@ -92,7 +92,7 @@ contaazul_user:
   image_path: assets/images/users/contaazul_logo.svg
   alt: "ContaAzul Logo"
 xiaohongshu_user:
-  image_path: assets/images/users/xiaohongshu_logo.svg
+  image_path: assets/images/users/xiaohongshu_logo.png
   alt: "Xiaohongshu Logo"
 ---
 
