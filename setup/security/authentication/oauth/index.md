@@ -206,6 +206,21 @@ is never revealed outside of the server using it.
 
 {% include mermaid %}
 
+## Restricting access based on User Info
+
+User access can be restricted further based on the user info from an OAuth ID token. This
+requirement is set via the `--user-info-requirements` parameter. This enables us to restrict user
+login to specific domains or having a specific attribute. Use equal signs between key and value,
+and additional key/value pairs need to repeat the flag. The values can also be regex expressions
+if they start and end with '/'.
+```
+# Example:
+hal config security authn oauth2 edit \
+  --user-info-requirements hd=your-org.net \
+  --user-info-requirements batz=/^Sample.*Regex/ \
+  --user-info-requirements foo=bar
+```
+
 ## Next steps
 
 Now that you've authenticated the user, proceed to setting up their [authorization](/setup/security/authorization/).
