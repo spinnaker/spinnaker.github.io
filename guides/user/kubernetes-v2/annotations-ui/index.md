@@ -21,7 +21,7 @@ panel for a pod:
 
 ```bash
 kubectl annotate pod my-prod-pod-v000 \
-  pod-info.details.html.spinnaker.io="<a href='https://internal-elk.net/{{ name }}'>Internal Logs Service</a>"
+  pod-info.details.html.spinnaker.io="<a href='https://internal-elk.net/{{"{{ name "}}}}'>Internal Logs Service</a>"
 ```
 
 Here's how this annotation will render in Spinnaker's UI:
@@ -41,8 +41,8 @@ with spaces and the section title is rendered using Title Case.
 pod-info.details.**html**.spinnaker.io.  Excluding "html" here would have rendered
 the link as plain text.
 3. The HTML content is taken from the annotation's value:
-`<a href='https://internal-elk.net/{{ name }}'>Internal Logs Service</a>`
-4. The pod's name will be interpolated into the link. Notice the `{{ name }}` template
+`<a href='https://internal-elk.net/{{"{{ name "}}}}'>Internal Logs Service</a>`
+4. The pod's name will be interpolated into the link. Notice the `{{"{{ name "}}}}` template
 value in the href attribute.  The full set of available values are listed at the end
 of this document.
 
@@ -72,7 +72,7 @@ a single section title.
 
 Template values can be included in the content of the annotation and will be replaced when
 they are rendered by Deck.  A templated value has the following appearance in an annotation:
-`{{ templateKey }}` where `templateKey` will vary depending on the available set of keys
+`{{"{{ templateKey "}}}}` where `templateKey` will vary depending on the available set of keys
 for the resource that is annotated.  The complete set of available keys is documented below.
 
 #### Instances
