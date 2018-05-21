@@ -1,5 +1,10 @@
 ---
 layout: home
+summit_row:
+  title: "Come join us at the 2nd-annual Spinnaker Summit"
+  excerpt: "Oct. 8-9 in Seattle, WA"
+  image_path: assets/images/spinnaker_summit.png
+  alt: ""
 spinnaker_row:
   title: Spinnaker is an open source, multi-cloud continuous delivery platform for releasing software changes with high velocity and confidence.
   excerpt: "Created at Netflix, it has been battle-tested in production by hundreds of teams over millions of deployments. It combines a powerful and flexible pipeline management system with integrations to the major cloud providers."
@@ -132,6 +137,8 @@ waze_case_study:
 </div>
 
 <div class="spin_header__push_down">
+<a href="https://www.spinnakersummit.com" target="_blank">{% include splash_feature_row id="summit_row" type="left" %}</a>
+<hr width="100%" size="4" noshade>
 {% include splash_feature_row id="spinnaker_row" type="right" %}
 {% include splash_feature_row id="multi_cloud_row" type="left" %}
 {% include splash_feature_row id="automated_releases_row" type="right" %}
