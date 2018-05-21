@@ -31,7 +31,7 @@ reachable by Spinnaker. Record the following values:
 
 Given that Minio doesn't support versioning objects, we need to disable it
 in Spinnaker. Add the following line to `~/.hal/$DEPLOYMENT/profiles/front50-local.yml`
-(`$PROFILE` is typically `default`, read more [here](https://www.spinnaker.io/reference/halyard/#deployments)):
+(`$DEPLOYMENT` is typically `default`, read more [here](https://www.spinnaker.io/reference/halyard/#deployments)):
 
 ```yaml
 spinnaker.s3.versioning: false
