@@ -38,8 +38,8 @@ hosted solutions:
 * [Google Kubernetes Engine](https://cloud.google.com/container-engine/)
 
   Due to limitations in the client library that this version of the provider
-  depends on, you need to use [legacy cluster certificates in this 
-  page](https://cloud.google.com/kubernetes-engine/docs/how-to/iam-integration#authentication_modes) 
+  depends on, you need to use [legacy cluster certificates as shown in this 
+  link](https://cloud.google.com/kubernetes-engine/docs/how-to/iam-integration#authentication_modes) 
   for authentication to work.
   
 * [Azure Container
