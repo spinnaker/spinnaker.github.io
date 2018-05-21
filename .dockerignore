@@ -1,0 +1,4 @@
+# Ignore all files to start with, and then override
+*
+!Gemfile*
+!*.gemspec
