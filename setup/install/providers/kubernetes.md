@@ -36,6 +36,12 @@ If you do not have a Kubernetes cluster, you could try one of the following
 hosted solutions:
 
 * [Google Kubernetes Engine](https://cloud.google.com/container-engine/)
+
+  Due to limitations in the client library that this version of the provider
+  depends on, you need to use [legacy cluster certificates as shown in this 
+  link](https://cloud.google.com/kubernetes-engine/docs/how-to/iam-integration#authentication_modes) 
+  for authentication to work.
+  
 * [Azure Container
   Service](https://docs.microsoft.com/en-us/azure/container-service/container-service-kubernetes-walkthrough)
 
