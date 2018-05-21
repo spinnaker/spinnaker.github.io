@@ -40,7 +40,7 @@ spinnaker.s3.versioning: false
 Run the following commands (notice we are picking S3 as our storage type,
 because Minio implements the S3 API):
 
-# Ubuntu installation
+### Ubuntu installation
 
 ```bash
 echo $MINIO_SECRET_KEY | hal config storage s3 edit --endpoint $ENDPOINT \
@@ -51,7 +51,7 @@ echo $MINIO_SECRET_KEY | hal config storage s3 edit --endpoint $ENDPOINT \
 hal config storage edit --type s3
 ```
 
-# Docker container installation
+### Docker container installation
 
 ```bash
 # The next two lines should be run inside the docker container only
