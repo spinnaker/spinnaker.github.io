@@ -314,6 +314,8 @@ reference:
             url: /reference/artifacts/types/s3-object/
           - title: GitHub File
             url: /reference/artifacts/types/github-file/
+          - title: GitLab File
+            url: /reference/artifacts/types/gitlab-file/
           - title: HTTP File
             url: /reference/artifacts/types/http-file/
           - title: Kubernetes Object
