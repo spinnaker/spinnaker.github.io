@@ -148,7 +148,7 @@ message payload to the Spinnaker artifact format:
 [
   {
     "type": "gcs/object", # static type.
-    "reference": "{{ location }}", # 'location' in the pub/sub payload.
+    "reference": "{{"{{ location "}}}}", # 'location' in the pub/sub payload.
   }
 ]
 ```
