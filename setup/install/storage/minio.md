@@ -29,10 +29,19 @@ reachable by Spinnaker. Record the following values:
 
 ## Editing your storage settings
 
+Given that Minio doesn't support versioning objects, we need to disable it
+in Spinnaker. Add the following line to `~/.hal/$DEPLOYMENT/profiles/front50-local.yml`:
+
+```yaml
+spinnaker.s3.versioning: false
+```
+
+`$DEPLOYMENT` is typically `default`. Read more [here](https://www.spinnaker.io/reference/halyard/#deployments).
+
 Run the following commands (notice we are picking S3 as our storage type,
 because Minio implements the S3 API):
 
-# Ubuntu installation
+### Ubuntu installation
 
 ```bash
 echo $MINIO_SECRET_KEY | hal config storage s3 edit --endpoint $ENDPOINT \
@@ -43,7 +52,7 @@ echo $MINIO_SECRET_KEY | hal config storage s3 edit --endpoint $ENDPOINT \
 hal config storage edit --type s3
 ```
 
-# Docker container installation
+### Docker container installation
 
 ```bash
 # The next two lines should be run inside the docker container only
