@@ -64,3 +64,5 @@ customSizing:
     replicas: 2
 ```
 If the number of replicas isn't specified for a component halyard will deploy said component with the same number of replicas it had during the previous deployment. On the initial deployment of spinnaker all pods will default to 1 replica if nothing is specified within customSizing.
+
+__Important:__ To avoid duplicate triggering, echo and igor must each be deployed with exactly one pod.
