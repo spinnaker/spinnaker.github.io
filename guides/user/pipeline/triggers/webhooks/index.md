@@ -3,6 +3,7 @@ layout: single
 title:  "Triggering on Webhooks"
 sidebar:
   nav: guides
+redirect_from: /guides/user/triggers/webhooks/
 ---
 
 {% include toc %}

@@ -194,19 +194,22 @@ guides:
   - title: User How-Tos
     collapsed: true
     children:
-      - title: Triggering Pipelines
+      - title: Pipelines
         collapsed: true
         children:
-          - title: Triggering on Pub/Sub Messages
-            url: /guides/user/triggers/pubsub/
-          - title: Triggering on Webhooks
-            url: /guides/user/triggers/webhooks/
-          - title: Receiving Artifacts From GCS
-            url: /guides/user/triggers/gcs/
-          - title: Receiving Artifacts From GitHub
-            url: /guides/user/triggers/github/
-      - title: Pipeline Expressions
-        url: /guides/user/pipeline-expressions/
+          - title: Triggering Pipelines
+            collapsed: true
+            children:
+              - title: Triggering on Pub/Sub Messages
+                url: /guides/user/pipeline/triggers/pubsub/
+              - title: Triggering on Webhooks
+                url: /guides/user/pipeline/triggers/webhooks/
+              - title: Receiving Artifacts From GCS
+                url: /guides/user/pipeline/triggers/gcs/
+              - title: Receiving Artifacts From GitHub
+                url: /guides/user/pipeline/triggers/github/
+          - title: Pipeline Expressions
+            url: /guides/user/pipeline/expressions/
       - title: Tagging
         url: /guides/user/tagging/
       - title: Custom Instance Links

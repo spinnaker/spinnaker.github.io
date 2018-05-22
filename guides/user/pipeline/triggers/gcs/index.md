@@ -3,6 +3,7 @@ layout: single
 title:  "Receiving artifacts from GCS"
 sidebar:
   nav: guides
+redirect_from: /guides/user/triggers/gcs/
 ---
 
 {% include alpha version="1.6" %}
