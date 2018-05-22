@@ -22,11 +22,12 @@ help you create these resources if you do not already have them.
 ### Kubernetes cluster
 
 You need to have a running Kubernetes cluster with corresponding credentials in
-a [kubeconfig file](https://kubernetes.io/docs/concepts/cluster-administration/authenticate-across-clusters-kubeconfig/).
+a [kubeconfig
+file](https://kubernetes.io/docs/concepts/cluster-administration/authenticate-across-clusters-kubeconfig/){:target="_blank"}.
 If you do have a running cluster and credentials, you can verify that your
 credentials work using
-[`kubectl`](https://kubernetes.io/docs/user-guide/kubectl-overview/) to run the
-following command:
+[`kubectl`](https://kubernetes.io/docs/user-guide/kubectl-overview/){:target="_blank"}
+to run the following command:
 
 ```bash
 kubectl get namespaces
@@ -35,18 +36,18 @@ kubectl get namespaces
 If you do not have a Kubernetes cluster, you could try one of the following
 hosted solutions:
 
-* [Google Kubernetes Engine](https://cloud.google.com/container-engine/)
+* [Google Kubernetes Engine](https://cloud.google.com/container-engine/){:target="_blank"}
 
   Due to limitations in the client library that this version of the provider
-  depends on, you need to use [legacy cluster certificates as shown in this 
-  link](https://cloud.google.com/kubernetes-engine/docs/how-to/iam-integration#authentication_modes) 
+  depends on, you need to use [legacy cluster certificates as shown in this
+  link](https://cloud.google.com/kubernetes-engine/docs/how-to/iam-integration#authentication_modes){:target="_blank"}
   for authentication to work.
-  
+
 * [Azure Container
-  Service](https://docs.microsoft.com/en-us/azure/container-service/container-service-kubernetes-walkthrough)
+  Service](https://docs.microsoft.com/en-us/azure/container-service/container-service-kubernetes-walkthrough){:target="_blank"}
 
 Or, you can read more on the Kubernetes setup page to pick a [solution that
-works for you](https://kubernetes.io/docs/setup/pick-right-solution/).
+works for you](https://kubernetes.io/docs/setup/pick-right-solution/){:target="_blank"}.
 
 ### Kubernetes role (RBAC)
 
@@ -56,7 +57,7 @@ This will ensure that Spinnaker has only the permissions it needs to operate wit
 The following YAML can be used to create the correct `ClusterRole`, `ClusterRoleBinding`, and `ServiceAccount`. If you are limiting
 Spinnaker to an explicit list of namespaces (using the `namespaces` option), you will need to use `Role` & `RoleBinding` instead of
 `ClusterRole` and `ClusterRoleBinding` and create one in each namespace Spinnaker will manage. You can read about the difference
-between `ClusterRole` and `Role` [here](https://kubernetes.io/docs/admin/authorization/rbac/#rolebinding-and-clusterrolebinding).
+between `ClusterRole` and `Role` [here](https://kubernetes.io/docs/admin/authorization/rbac/#rolebinding-and-clusterrolebinding){:target="_blank"}.
 
 
 ```yaml

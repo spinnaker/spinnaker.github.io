@@ -7,9 +7,9 @@ sidebar:
 
 Spinnaker refers to data injected into instances started by Spinnaker as *user data*.
 The implementation and naming of this varies from provider to provider, but the resulting functionality is similar.
-In AWS, it is known as [User Data](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html).
-In GCP, it is known as [Instance Metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata).
-In OpenStack, it is known as [User Data](http://cloudinit.readthedocs.io/en/latest/topics/format.html#user-data-script).
+In AWS, it is known as [User Data](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html){:target="_blank"}.
+In GCP, it is known as [Instance Metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata){:target="_blank"}.
+In OpenStack, it is known as [User Data](http://cloudinit.readthedocs.io/en/latest/topics/format.html#user-data-script){:target="_blank"}.
 The template file used to define the user data is called the *user data file* which is located on the Clouddriver server.
 Tokens are replaced in the user data file to provide some specifics about the deployment.
 Every instance started has environment variables are set according to the template and the deployment.
@@ -96,7 +96,7 @@ With Google, the user data file is set per account.
 It is best practice to use the same file for different accounts to ensure consistency,
 but different user data files can be used for different accounts if needed.
 The contents of the this file is parsed and set as the
-[Instance Metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata) on launched instances.
+[Instance Metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata){:target="_blank"} on launched instances.
 Any metadata defined in the server group configuration within Spinnaker is
 appended to the metadata defined by the *user data file*.
 The metadata defined in the server group configuration within Spinnaker takes preferences over the metadata defined in the *user data file* if the metadata keys match.
@@ -108,9 +108,12 @@ then the final metadata injected into the instance will be `CLOUD_CLUSTER=overri
 
 The path to the template file is controlled by the `--user-data-file` flag with [Halyard](/reference/halyard/commands/#hal-config-provider-openstack-account-add).
 
-The contents of this file are token-replaced and set as [Cloud-Init](http://cloudinit.readthedocs.io/en/latest/index.html) in the instances of a server group. With OpenStack, this file is technically a complete [`user-data-script`](http://cloudinit.readthedocs.io/en/latest/topics/format.html#user-data-script) that is token-replaced;
-as such, the file must to start with content type (usually `#!/bin/sh`).
-For example:
+The contents of this file are token-replaced and set as
+[Cloud-Init](http://cloudinit.readthedocs.io/en/latest/index.html){:target="_blank"}
+in the instances of a server group. With OpenStack, this file is technically a
+complete [`user-data-script`](http://cloudinit.readthedocs.io/en/latest/topics/format.html#user-data-script){:target="_blank"}
+that is token-replaced; as such, the file must to start with content type
+(usually `#!/bin/sh`). For example:
 
 ```sh
 #!/bin/sh

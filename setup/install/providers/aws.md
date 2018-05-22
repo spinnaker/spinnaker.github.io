@@ -8,9 +8,9 @@ redirect_from: /setup/providers/aws/
 
 {% include toc %}
 
-In [AWS](https://aws.amazon.com/), an [__Account__](/concepts/providers/#accounts)
+In [AWS](https://aws.amazon.com/){:target="_blank"}, an [__Account__](/concepts/providers/#accounts)
 maps to a credential able to authenticate against a given [AWS
-account](https://aws.amazon.com/account/).
+account](https://aws.amazon.com/account/){:target="_blank"}.
 
 ## Prerequisites
 
@@ -24,7 +24,7 @@ and is assigned region `us-west-1`.
 
 > This is the VPC instances will be deployed to.
 
-Navigate to [Console](https://console.aws.amazon.com/) > VPC.
+Navigate to [Console](https://console.aws.amazon.com/){:target="_blank"} > VPC.
 
 1. Select __Start VPC wizard__
 2. Select create a __VPC with a Single Public Subnet__
@@ -36,7 +36,7 @@ Navigate to [Console](https://console.aws.amazon.com/) > VPC.
 
 > This is the role instances launched/deployed with Spinnaker will assume.
 
-Navigate to [Console](https://console.aws.amazon.com/) > IAM > Roles.
+Navigate to [Console](https://console.aws.amazon.com/){:target="_blank"} > IAM > Roles.
 
 1. Select __Create new role__
 2. Select __Amazon EC2__
@@ -49,7 +49,7 @@ Navigate to [Console](https://console.aws.amazon.com/) > IAM > Roles.
 > This is the key pair instances launched with Spinnaker will be configured
 > with, allowing you to SSH into them if need-be.
 
-Navigate to [Console](https://console.aws.amazon.com/) > EC2 > Key Pairs.
+Navigate to [Console](https://console.aws.amazon.com/){:target="_blank"} > EC2 > Key Pairs.
 
 1. Select __Create key pair__
 2. Enter `${MY_AWS_ACCOUNT}-keypair` as the keypair name.
@@ -80,7 +80,7 @@ each managed account.
 
 #### Create the SpinnakerAssumeRolePolicy
 
-Navigate to [Console](https://console.aws.amazon.com/) > IAM > Policies.
+Navigate to [Console](https://console.aws.amazon.com/){:target="_blank"} > IAM > Policies.
 
 1. Select __Create policy__
 2. Select __Create your own policy__
@@ -114,7 +114,7 @@ may authenticate via a user (access key / secret key pair) or IAM role, respecti
 If Spinnaker is running inside of EC2, you may add an IAM role to the Spinnaker
 EC2 instance.
 
-Navigate to [Console](https://console.aws.amazon.com/) > IAM > Roles.
+Navigate to [Console](https://console.aws.amazon.com/){:target="_blank"} > IAM > Roles.
 
 1. Select __Create new role__
 2. Select __Amazon EC2__ and go to __Next step__
@@ -122,7 +122,7 @@ Navigate to [Console](https://console.aws.amazon.com/) > IAM > Roles.
 4. Enter __SpinnakerAuthRole__ as the __Role name__
 5. Select __Create role__
 
-Navigate to [Console](https://console.aws.amazon.com/) > EC2 > Instances.
+Navigate to [Console](https://console.aws.amazon.com/){:target="_blank"} > EC2 > Instances.
 
 1. Select your instance
 2. Right click and go to __Instance Settings__ and __Attach/Replace IAM Role__
@@ -138,7 +138,7 @@ If Spinnaker is running outside of EC2, you may add a User and use access key / 
 to authenticate.
 
 
-Navigate to [Console](https://console.aws.amazon.com/) > IAM > Users.
+Navigate to [Console](https://console.aws.amazon.com/){:target="_blank"} > IAM > Users.
 
 1. Select __Add User__
 2. Enter a name, e.g, `Spinnaker`
@@ -168,7 +168,7 @@ It is likely that you will want the instances created by Spinnaker to acquire
 an IAM role on startup. By default, this role is called `BaseIAMRole`, and was
 configured [above](#create-an-ec2-role). In order for instances to assume this
 role, you must grant them
-[PassRole](https://aws.amazon.com/blogs/security/granting-permission-to-launch-ec2-instances-with-iam-roles-passrole-permission/)
+[PassRole](https://aws.amazon.com/blogs/security/granting-permission-to-launch-ec2-instances-with-iam-roles-passrole-permission/){:target="_blank"}
 permission. To do so, create the following policy named __SpinnakerPassRole__,
 substituting for `${MANAGING_ACCOUNT_ID}`:
 
@@ -191,7 +191,7 @@ substituting for `${MANAGING_ACCOUNT_ID}`:
 Using the ARN of the managing account recorded above (as `${AUTH_ARN}`), first
 create a role like so:
 
-Navigate to [Console](https://console.aws.amazon.com/) > IAM > Roles.
+Navigate to [Console](https://console.aws.amazon.com/){:target="_blank"} > IAM > Roles.
 
 1. Select __Create new role__
 2. Select __Amazon EC2__
@@ -239,4 +239,7 @@ You can view the available configuration flags for AWS within the
 
 ## Next steps
 
-Optionally, you can [set up Amazon's Elastic Container Service](/setup/install/providers/ecs/) or [set up another cloud provider](/setup/install/providers/), but otherwise you're ready to [Deploy Spinnaker](/setup/install/deploy/).
+Optionally, you can [set up Amazon's Elastic Container
+Service](/setup/install/providers/ecs/) or [set up another cloud
+provider](/setup/install/providers/), but otherwise you're ready to
+[Deploy Spinnaker](/setup/install/deploy/).

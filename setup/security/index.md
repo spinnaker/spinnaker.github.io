@@ -6,21 +6,20 @@ sidebar:
 redirect_from: /docs/securing-spinnaker
 ---
 
-Spinnaker has multiple options for both authentication and authorization. Instead of reinventing 
-yet-another-login system, Spinnaker hooks into a login system your organization probably already 
+Spinnaker has multiple options for both authentication and authorization. Instead of reinventing
+yet-another-login system, Spinnaker hooks into a login system your organization probably already
 has, such as OAuth 2.0, SAML, or LDAP.
 
 For authorization, Spinnaker similarly leverages a role-provider that your organization may already
 have set up, including Google Groups, GitHub Teams, or LDAP groups.
 
 See also [`hal config security`](/reference/halyard/commands/#hal-config-security).
- 
+
 ## Contents
 
 * Overview (this page)
 * [Authentication](./authentication/)
   * [SSL](./authentication/ssl/)
-  * [Network Architecture](./authentication/network-arch/)
   * Methods
     * [OAuth 2.0](./authentication/oauth/)
     * [SAML](./authentication/saml/)

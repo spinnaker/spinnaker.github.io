@@ -3,8 +3,6 @@ layout: single
 title:  "Authentication"
 sidebar:
   nav: setup
-redirect_from: /setup/security/authentication/network-arch/
-
 ---
 
 {% include toc %}
@@ -50,9 +48,9 @@ Getting the authentication workflow _just_ right rarely happens on the first try
  during configuration (or development) causes a new session to be established in Gate's session
  repository. Re-using these sessions is undesirable when testing configuration changes.
 
-We highly recommend using Google Chrome's
-[Incognito mode](https://support.google.com/chrome/answer/95464?source=gsearch&hl=en) when working
-with configuration changes.
+We highly recommend using Google Chrome's [Incognito
+mode](https://support.google.com/chrome/answer/95464?source=gsearch&hl=en){:target="_blank"}
+when working with configuration changes.
 
 1. Open a new Incognito window
 1. Navigate to your Spinnaker's Deck endpoint
