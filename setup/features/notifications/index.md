@@ -121,7 +121,7 @@ Note: your users will need to invite the slack bot to private rooms that want to
 
 ## Twilio
 
-For twilio, you need to add your account [credentials](https://www.twilio.com/help/faq/twilio-basics/what-is-the-auth-token-and-how-can-i-change-it){:target="_blank"}.
+For Twilio, you need to add your account [credentials](https://www.twilio.com/help/faq/twilio-basics/what-is-the-auth-token-and-how-can-i-change-it){:target="_blank"}.
 
 in echo.yml
 ```
