@@ -14,7 +14,9 @@ the Run Script stage, which depends on Jenkins as a job executor.
 
 You need a running Jenkins Master at version 1.x - 2.x reachable at a URL
 (`$BASEURL`) from whatever provider/environment Spinnaker will be
-deployed in. If Jenkins is secured, you need a username/password
+deployed in.
+
+If Jenkins is secured, you need a username/password
 (`$USERNAME`/`$PASSWORD`) pair able to authenticate against Jenkins using
 HTTP Basic Auth.
 
@@ -36,6 +38,10 @@ echo $PASSWORD | hal config ci jenkins master add my-jenkins-master \
     --password # password will be read from STDIN to avoid appearing
                # in your .bash_history
 ```
+
+> *Note*: If you use the [GitHub OAuth plugin](https://github.com/settings/tokens)
+> for authentication into Jenkins, you can use the GitHub $USERNAME, and use the
+> OAuth token as the $PASSWORD.
 
 ## Configure Jenkins and Spinnaker for CSRF protection
 
