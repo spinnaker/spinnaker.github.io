@@ -39,7 +39,8 @@ echo $PASSWORD | hal config ci jenkins master add my-jenkins-master \
                # in your .bash_history
 ```
 
-> *Note*: If you use the [GitHub OAuth plugin](https://wiki.jenkins.io/display/JENKINS/GitHub+OAuth+Plugin)
+> *Note*: If you use the [GitHub OAuth
+> plugin](https://wiki.jenkins.io/display/JENKINS/GitHub+OAuth+Plugin){:target="_blank"}
 > for authentication into Jenkins, you can use the GitHub $USERNAME, and use the
 > OAuth token as the $PASSWORD.
 
