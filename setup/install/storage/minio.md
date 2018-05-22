@@ -30,12 +30,13 @@ reachable by Spinnaker. Record the following values:
 ## Editing your storage settings
 
 Given that Minio doesn't support versioning objects, we need to disable it
-in Spinnaker. Add the following line to `~/.hal/$DEPLOYMENT/profiles/front50-local.yml`
-(`$DEPLOYMENT` is typically `default`, read more [here](https://www.spinnaker.io/reference/halyard/#deployments)):
+in Spinnaker. Add the following line to `~/.hal/$DEPLOYMENT/profiles/front50-local.yml`:
 
 ```yaml
 spinnaker.s3.versioning: false
 ```
+
+`$DEPLOYMENT` is typically `default`. Read more [here](https://www.spinnaker.io/reference/halyard/#deployments).
 
 Run the following commands (notice we are picking S3 as our storage type,
 because Minio implements the S3 API):
