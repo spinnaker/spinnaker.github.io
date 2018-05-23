@@ -242,4 +242,5 @@ You can view the available configuration flags for AWS within the
 Optionally, you can [set up Amazon's Elastic Container
 Service](/setup/install/providers/ecs/) or [set up another cloud
 provider](/setup/install/providers/), but otherwise you're ready to
-[Deploy Spinnaker](/setup/install/deploy/).
+[choose an environment](/setup/install/environment/)
+in which to install Spinnaker.
