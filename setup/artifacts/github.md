@@ -8,17 +8,17 @@ sidebar:
 {% include toc %}
 
 Spinnaker can be configured to listen to changes to a repository in
-[GitHub](https://github.com){:target="_blank"}.
+[GitHub](https://github.com){:target="\_blank"}.
 These steps show you how to configure a GitHub artifact account so that
 Spinnaker can download files from GitHub.
 
 ## Prerequisites
 
-* You need a [GitHub](https://github.com){:target="_blank"} account.
+* You need a [GitHub](https://github.com){:target="\_blank"} account.
 
 ### Downloading credentials
 
-Start by generating an [access token](https://github.com/settings/tokens){:target="_blank"}
+Start by generating an [access token](https://github.com/settings/tokens){:target="\_blank"}
 for GitHub. The token requires the __repo__ scope.
 
 Place the token in a file (`$TOKEN_FILE`) readable by Halyard:

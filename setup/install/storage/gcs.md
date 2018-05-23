@@ -8,16 +8,16 @@ redirect_from: /setup/storage/gcs/
 
 {% include toc %}
 
-Using [Google Cloud Storage](https://cloud.google.com/storage/){:target="_blank"}
+Using [Google Cloud Storage](https://cloud.google.com/storage/){:target="\_blank"}
 (GCS) as a storage source means that Spinnaker will store all of its persistent
-data in a [Bucket](https://cloud.google.com/storage/docs/json_api/v1/buckets){:target="_blank"}.
+data in a [Bucket](https://cloud.google.com/storage/docs/json_api/v1/buckets){:target="\_blank"}.
 
 ## Prerequisites
 
-You need a [Google Cloud Platform](https://cloud.google.com/){:target="_blank"}
+You need a [Google Cloud Platform](https://cloud.google.com/){:target="\_blank"}
 (GCP) project to host your bucket in. The next steps assume you've already
-[created a project](https://cloud.google.com/resource-manager/docs/creating-managing-projects){:target="_blank"},
-and installed [`gcloud`](https://cloud.google.com/sdk/downloads){:target="_blank"}.
+[created a project](https://cloud.google.com/resource-manager/docs/creating-managing-projects){:target="\_blank"},
+and installed [`gcloud`](https://cloud.google.com/sdk/downloads){:target="\_blank"}.
 You can check that `gcloud` is installed and authenticated by running:
 
 ```bash
@@ -27,7 +27,7 @@ gcloud info
 ### Downloading credentials
 
 Spinnaker needs a [service
-account](https://cloud.google.com/compute/docs/access/service-accounts){:target="_blank"}
+account](https://cloud.google.com/compute/docs/access/service-accounts){:target="\_blank"}
 to authenticate as against GCP, with the `roles/storage.admin` role enabled. If
 you don't already have such a service account with the corresponding JSON key
 downloaded, you can run the following commands to do so:

@@ -7,7 +7,7 @@ sidebar:
 
 {% include toc %}
 
-[Datadog](https://datadoghq.com){:target="_blank"} is a modern monitoring &
+[Datadog](https://datadoghq.com){:target="\_blank"} is a modern monitoring &
 analytics solution. This document describes how to configure Spinnaker and its
 monitoring daemon to publish metrics and dashboards to Datadog.
 
@@ -15,12 +15,12 @@ monitoring daemon to publish metrics and dashboards to Datadog.
 
 To get started, you'll need a Datadog account, API and App Keys. You can create
 API and App keys [here on the Datadog
-website](https://app.datadoghq.com/account/settings#api){:target="_blank"}.
+website](https://app.datadoghq.com/account/settings#api){:target="\_blank"}.
 
 It is not required that you run a Datadog agent for this setup to work properly,
 but it is recommended to provide greater visibility into your spinnaker
 installation. If you do chose to run the agent, you can find more information on
-the the Datadog website here: [Agent - Datadog Docs](https://docs.datadoghq.com/agent/){:target="_blank"}.
+the the Datadog website here: [Agent - Datadog Docs](https://docs.datadoghq.com/agent/){:target="\_blank"}.
 
 Additionally, you can install the agent with the `spinnaker-third-party` scripts as outlined below.
 This document assumes a debian installation.

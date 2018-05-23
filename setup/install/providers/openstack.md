@@ -23,9 +23,9 @@ here is a list of API versions that are required to be enabled:
 * Telemetry Alarming (Aodh)
 * Glance v1
 
-You will need an account admin permissions for Spinnaker to use. You can download the [openrc](https://docs.openstack.org/user-guide/common/cli-set-environment-variables-using-openstack-rc.html){:target="_blank"}
+You will need an account admin permissions for Spinnaker to use. You can download the [openrc](https://docs.openstack.org/user-guide/common/cli-set-environment-variables-using-openstack-rc.html){:target="\_blank"}
 from your Horizon UI. To test your setup, use the the [OpenStack command-line
-client](https://docs.openstack.org/developer/python-openstackclient/){:target="_blank"}.
+client](https://docs.openstack.org/developer/python-openstackclient/){:target="\_blank"}.
 
 ## Adding an account
 

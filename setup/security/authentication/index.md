@@ -49,7 +49,7 @@ Getting the authentication workflow _just_ right rarely happens on the first try
  repository. Re-using these sessions is undesirable when testing configuration changes.
 
 We highly recommend using Google Chrome's [Incognito
-mode](https://support.google.com/chrome/answer/95464?source=gsearch&hl=en){:target="_blank"}
+mode](https://support.google.com/chrome/answer/95464?source=gsearch&hl=en){:target="\_blank"}
 when working with configuration changes.
 
 1. Open a new Incognito window

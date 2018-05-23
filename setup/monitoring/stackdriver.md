@@ -7,7 +7,7 @@ sidebar:
 
 {% include toc %}
 
-There are two ways to use [Stackdriver](https://cloud.google.com/stackdriver){:target="_blank"}
+There are two ways to use [Stackdriver](https://cloud.google.com/stackdriver){:target="\_blank"}
 with Spinnaker. The easiest is
 to configure Spinnaker microservices to push metrics directly into
 stackdriver. Additionally the Spinnaker Monitoring Daemon can write
@@ -25,7 +25,7 @@ Note that the current integration with Stackdriver is based on using
 custom metrics. All told there are a few hundred metrics and several
 thousand time series (exact numbers depend on individual circumstances).
 Custom metrics are considered a premium stackdriver feature and may incur
-[additional costs](https://cloud.google.com/stackdriver/pricing){:target="_blank"}
+[additional costs](https://cloud.google.com/stackdriver/pricing){:target="\_blank"}
 depending on your situation. If you are interested in using
 Stackdriver, please contact us through the Spinnaker Slack channel.
 
@@ -94,7 +94,7 @@ Proceed to [install the dashboards](#installing-the-stackdriver-dashboards)
 *__Note__: The Stackdriver Dashboard API is currently whitelisted, so
 you need a registered STACKDRIVER_API key in order to use it. If you
 are so inclined, [contact your sales
-representative](https://cloud.google.com/contact/){:target="_blank"}.
+representative](https://cloud.google.com/contact/){:target="\_blank"}.
 
 To install the stackdriver dashboards, you need to have the monitoring daemon
 installed. But you only need it installed while you upload the dashboards.
@@ -109,7 +109,7 @@ sudo apt-get install spinnaker-monitoring-third-party -y
 ```
 
 With your browser, log into
-[app.google.stackdriver.com](https://app.google.stackdriver.com){:target="_blank"}
+[app.google.stackdriver.com](https://app.google.stackdriver.com){:target="\_blank"}
 and select your project. You should be able to see the various Spinnaker
 dashboards and select from them.
 
@@ -124,5 +124,5 @@ milliseconds or seconds.
 If you are using Stackdriver, you may wish to complement it with Datalab
 for the visualization or to manipulate the data. There are no datalab
 dashboards provided at present. See the
-[Google DataLab Website](https://cloud.google.com/datalab/){:target="_blank"}
+[Google DataLab Website](https://cloud.google.com/datalab/){:target="\_blank"}
 for more information.

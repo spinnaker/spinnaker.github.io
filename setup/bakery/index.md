@@ -9,7 +9,7 @@ sidebar:
 
 Since the concept of Immutable Infrastructure is core to Spinnaker, we provide
 an image bakery powered by [Hashicorp's
-Packer](https://www.packer.io/intro/){:target="_blank"} to help you produce
+Packer](https://www.packer.io/intro/){:target="\_blank"} to help you produce
 machine images.
 
 For getting started, the default configuration (no changes required) provides
@@ -26,12 +26,12 @@ There are two types of configuration of the Bakery:
 ## Packer Templates
 
 Every time you initiate a bake using Spinnaker, Spinnaker invokes a [packer
-template](https://www.packer.io/docs/templates/index.html){:target="_blank"}
-with a mix of [variables](https://www.packer.io/docs/templates/index.html){:target="_blank"}
+template](https://www.packer.io/docs/templates/index.html){:target="\_blank"}
+with a mix of [variables](https://www.packer.io/docs/templates/index.html){:target="\_blank"}
 provided by you, the Pipeline you are currently executing, and Spinnaker itself.
 All of the default packer templates are versioned alongside Rosco, the image
 bakery service
-[here](https://github.com/spinnaker/rosco/tree/master/rosco-web/config/packer){:target="_blank"}.
+[here](https://github.com/spinnaker/rosco/tree/master/rosco-web/config/packer){:target="\_blank"}.
 If want to override/include a new template, place it into
 `~/.hal/$DEPLOYMENT/profiles/rosco/packer/` (`$DEPLOYMENT` is
 typically `default`, read more [here](/reference/halyard/#deployments)). Any local

@@ -20,9 +20,9 @@ in the sections [Consuming Metrics](#consuming-metrics) and in the
 [Monitoring Reference document](/reference/monitoring/).
 
 Spinnaker currently supports three specific third-party systems:
-[Prometheus](https://prometheus.io/){:target="_blank"},
-[Datadog](https://www.datadoghq.com/){:target="_blank"},
-and [Stackdriver](http://www.stackdriver.com/){:target="_blank"}. The daemon is
+[Prometheus](https://prometheus.io/){:target="\_blank"},
+[Datadog](https://www.datadoghq.com/){:target="\_blank"},
+and [Stackdriver](http://www.stackdriver.com/){:target="\_blank"}. The daemon is
 extensible so that it should be straightforward to add other systems as well.
 In fact, each of the supported systems was provided using the daemon's extension
 mechanisms -- there are not "native" systems.

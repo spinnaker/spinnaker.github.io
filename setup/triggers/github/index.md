@@ -8,7 +8,7 @@ sidebar:
 {% include toc %}
 
 Spinnaker can be configured to listen to changes to a repository in
-[GitHub](https://github.com){:target="_blank"}. These steps show you how to
+[GitHub](https://github.com){:target="\_blank"}. These steps show you how to
 configure webhook push events to send to Spinnaker from a single GitHub repository.
 
 ## Prerequisites
@@ -24,7 +24,7 @@ configure webhook push events to send to Spinnaker from a single GitHub reposito
   [Halyard reference](/reference/halyard).
 
 * You need a [GitHub
-  repository](https://help.github.com/articles/create-a-repo/){:target="_blank"}
+  repository](https://help.github.com/articles/create-a-repo/){:target="\_blank"}
   to send Webhooks from.
 
 ## Configuring your GitHub webhook

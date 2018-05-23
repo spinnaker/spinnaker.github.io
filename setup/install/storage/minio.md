@@ -9,7 +9,7 @@ redirect_from: /setup/storage/minio/
 > :warning: Losing Minio's data will mean losing all your Spinnaker
 > application metadata, and configured pipelines.
 
-[Minio](https://www.minio.io/){:target="_blank"} is an S3-compatible object
+[Minio](https://www.minio.io/){:target="\_blank"} is an S3-compatible object
 store that you can host yourself. This is the persistent storage solution we
 recommend when you don't want to depend on a cloud provider to host your
 Spinnaker data.
@@ -17,7 +17,7 @@ Spinnaker data.
 ## Prerequisites
 
 Install Minio following the instructions on the [Minio
-homepage](https://www.minio.io/){:target="_blank"}, making sure to have it run
+homepage](https://www.minio.io/){:target="\_blank"}, making sure to have it run
 on an endpoint reachable by Spinnaker. Record the following values:
 
 * `ENDPOINT`: The fully-qualifed endpoint Minio is reachable on. If Minio is

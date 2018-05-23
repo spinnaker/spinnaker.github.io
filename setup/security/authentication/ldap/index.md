@@ -38,7 +38,7 @@ Use `hal config` to enable and configure LDAP. Here's an example:
 You can also use `ldap.userSearchBase` and `ldap.userSearchFilter` if the simpler
 `ldap.userDnPattern` does not match what your organization uses for `userDn`s. We don't explore this
 use case here, but you can read up more on LDAP search filters
-[here](https://confluence.atlassian.com/kb/how-to-write-ldap-search-filters-792496933.html){:target="_blank"}.
+[here](https://confluence.atlassian.com/kb/how-to-write-ldap-search-filters-792496933.html){:target="\_blank"}.
 
 
 ## Workflow

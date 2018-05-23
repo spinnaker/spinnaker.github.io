@@ -239,8 +239,8 @@ hal config canary datadog account list
 ## Set up canary analysis for Google
 
 Configure your canary analysis to work with
-Google, including [Stackdriver](https://cloud.google.com/stackdriver){:target="_blank"}
-and [GCS](https://cloud.google.com/storage/){:target="_blank"}.
+Google, including [Stackdriver](https://cloud.google.com/stackdriver){:target="\_blank"}
+and [GCS](https://cloud.google.com/storage/){:target="\_blank"}.
 
 
 ### Enable/disable your Google service integration

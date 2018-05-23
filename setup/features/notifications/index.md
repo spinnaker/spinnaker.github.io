@@ -81,7 +81,7 @@ window.spinnakerSettings = {
 ## HipChat
 
 For Hipchat, you will need to create a hipchat [authentication
-token](https://www.hipchat.com/docs/apiv2/auth){:target="_blank"} that can post
+token](https://www.hipchat.com/docs/apiv2/auth){:target="\_blank"} that can post
 messages.
 
 in echo.yml
@@ -109,7 +109,7 @@ Note: your users will need to invite the hipchat bot to private rooms that want 
 ## Slack
 
 For slack, you need to [create a custom bot
-user](https://api.slack.com/bot-users#how_do_i_create_custom_bot_users_for_my_team){:target="_blank"},
+user](https://api.slack.com/bot-users#how_do_i_create_custom_bot_users_for_my_team){:target="\_blank"},
 then get the access token associated with that new bot user. Then...
 
 ```bash
@@ -121,7 +121,7 @@ Note: your users will need to invite the slack bot to private rooms that want to
 
 ## Twilio
 
-For Twilio, you need to add your account [credentials](https://www.twilio.com/help/faq/twilio-basics/what-is-the-auth-token-and-how-can-i-change-it){:target="_blank"}.
+For Twilio, you need to add your account [credentials](https://www.twilio.com/help/faq/twilio-basics/what-is-the-auth-token-and-how-can-i-change-it){:target="\_blank"}.
 
 in echo.yml
 ```
@@ -228,7 +228,7 @@ You can access the hash of the build via expression ```${trigger.hash}```
 
 # Add a listening webhook to spinnaker
 
-The [echo-rest](https://github.com/spinnaker/echo/tree/master/echo-rest){:target="_blank"}
+The [echo-rest](https://github.com/spinnaker/echo/tree/master/echo-rest){:target="\_blank"}
 module in spinnaker allows you to set downstream listeners keeping track of
 Spinnaker events.
 

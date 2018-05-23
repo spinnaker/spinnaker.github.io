@@ -14,13 +14,13 @@ redirect_from: /setup/providers/docker-registry/
 When configuring Docker Registries, an
 [__Account__](/concepts/providers/#accounts) maps to a credential able to
 authenticate against a certain set of [Docker
-repositories](https://docs.docker.com/glossary/?term=repository){:target="_blank"}.
+repositories](https://docs.docker.com/glossary/?term=repository){:target="\_blank"}.
 
 ## Prerequisites
 
 The Docker Registry you are configuring must already exist, support the [v2
-registry API](https://docs.docker.com/registry/spec/api/){:target="_blank"}, and
-have at least 1 [tag](https://docs.docker.com/glossary/?term=tag){:target="_blank"}
+registry API](https://docs.docker.com/registry/spec/api/){:target="\_blank"}, and
+have at least 1 [tag](https://docs.docker.com/glossary/?term=tag){:target="\_blank"}
 among the repositories you define in your Account. While each different
 supported registry supports the same API, there are still some subtleties in
 getting them to work with Spinnaker. Please make sure you read the section below
@@ -40,7 +40,7 @@ ADDRESS=index.docker.io
 ```
 
 Dockerhub hosts a mix of public and private repositories, but does not expose a
-[catalog](https://docs.docker.com/registry/spec/api/#listing-repositories){:target="_blank"}
+[catalog](https://docs.docker.com/registry/spec/api/#listing-repositories){:target="\_blank"}
 endpoint to programmatically list them. Therefore you need to explicitly list
 which Docker repositories you want to index and deploy. For example, if you
 wanted to deploy the public NGINX image, alongside your private `app` image,
@@ -67,26 +67,26 @@ PASSWORD=hunter2
 There are a few different registry addresses for GCR, depending on where you
 want to store your images. A good starting point is `gcr.io`, but there [more
 options
-available](https://cloud.google.com/container-registry/docs/pushing#pushing_to_the_registry){:target="_blank"}.
+available](https://cloud.google.com/container-registry/docs/pushing#pushing_to_the_registry){:target="\_blank"}.
 
 ```bash
 ADDRESS=gcr.io
 ```
 
 Google Container Registry (GCR) supports the
-[catalog](https://docs.docker.com/registry/spec/api/#listing-repositories){:target="_blank"}
+[catalog](https://docs.docker.com/registry/spec/api/#listing-repositories){:target="\_blank"}
 endpoint to programatically list all images available to your credentials.
 To make use of this, you need to enable the [Resource Manager
-API](https://console.developers.google.com/apis/api/cloudresourcemanager.googleapis.com/overview){:target="_blank"},
+API](https://console.developers.google.com/apis/api/cloudresourcemanager.googleapis.com/overview){:target="\_blank"},
 so you don't need to worry about supplying repositories by hand. However, providing
 credentials is not straight-forward.
 
 There are [two
-ways](https://cloud.google.com/container-registry/docs/advanced-authentication){:target="_blank"}
+ways](https://cloud.google.com/container-registry/docs/advanced-authentication){:target="\_blank"}
 to authenticate against GCR. The first, using an access token, is problematic
 for Spinnaker since the access token is short-lived. The second, using a
 [service
-account](https://cloud.google.com/compute/docs/access/service-accounts){:target="_blank"}
+account](https://cloud.google.com/compute/docs/access/service-accounts){:target="\_blank"}
 is preferred. The following steps will guide you through creating & downloading
 a service account to be used as your password with the required
 `roles/storage.admin` role, assuming the registry exists in your currently
@@ -139,7 +139,7 @@ Most registries will fit either the Dockerhub or GCR pattern described above,
 or some mix of the two. In all cases you will need to know the FQDN of the
 registry, and your username/password pair if you are accessing private images.
 If your registry supports the [`/_catalog`
-endpoint](https://docs.docker.com/registry/spec/api/#listing-repositories){:target="_blank"}
+endpoint](https://docs.docker.com/registry/spec/api/#listing-repositories){:target="\_blank"}
 you do not have to list your repositories. If it does not, keep in mind that the
 repository names are generally of the form `<username>/<image name>`. Halyard
 will verify this for you.

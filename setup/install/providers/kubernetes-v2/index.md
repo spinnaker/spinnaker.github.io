@@ -10,7 +10,7 @@ sidebar:
 {% include toc %}
 
 The Spinnaker Kubernetes V2 provider fully supports manifest-based deployments.
-[Kubernetes provider V1](https://www.spinnaker.io/setup/install/providers/kubernetes/){:target="_blank"}
+[Kubernetes provider V1](https://www.spinnaker.io/setup/install/providers/kubernetes/){:target="\_blank"}
 is still supported.
 
 ## Accounts
@@ -24,13 +24,13 @@ Accounts.
 
 The Kubernetes provider has two requirements:
 
-* A [`kubeconfig`](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/){:target="_blank"}
+* A [`kubeconfig`](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/){:target="\_blank"}
 
     The `kubeconfig` allows Spinnaker to authenticate against your cluster and
     to have read/write access to any resources you expect it to manage. You can
     request this from your Kubernetes cluster administrator.
 
-* [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/){:target="_blank"}
+* [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/){:target="\_blank"}
 
     Spinnaker relies on `kubectl` to manage all API access. It's installed
     along with Spinnaker.
@@ -45,7 +45,7 @@ The Kubernetes provider has two requirements:
 ### Kubernetes role (RBAC)
 
 If you're using Kubernetes
-[RBAC](https://kubernetes.io/docs/admin/authorization/rbac/){:target="_blank"}
+[RBAC](https://kubernetes.io/docs/admin/authorization/rbac/){:target="\_blank"}
 for access control, here's the minimal set of permissions Spinnaker needs.
 The exact set of permissions might differ based on Kubernetes version.
 
@@ -53,7 +53,7 @@ The following YAML creates the correct `ClusterRole`, `ClusterRoleBinding`, and 
 Spinnaker to operating on an explicit list of namespaces (using the `namespaces` option), you need
 to use `Role` & `RoleBinding` instead of `ClusterRole` and `ClusterRoleBinding`, and apply the `Role`
 and `RoleBinding` to each namespace Spinnaker manages. You can read about the difference between `ClusterRole` and `Role`
-[here](https://kubernetes.io/docs/admin/authorization/rbac/#rolebinding-and-clusterrolebinding){:target="_blank"}.
+[here](https://kubernetes.io/docs/admin/authorization/rbac/#rolebinding-and-clusterrolebinding){:target="\_blank"}.
 
 
 ```yaml
@@ -113,7 +113,7 @@ reasons:
 
 * The V2 provider encourages you to leverage the Kubernetes native deployment
   orchestration (e.g.
-  [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/){:target="_blank"})
+  [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/){:target="\_blank"})
   instead of the Spinnaker red/black, where possible.
 
 * The initial operations available on Kubernetes manifests (e.g. scale, pause

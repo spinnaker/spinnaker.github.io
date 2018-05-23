@@ -12,7 +12,7 @@ Roles from GitHub are mapped to the Teams under a specific GitHub organization.
 ## Personal Access Token
 
 1. Under an administrator's account, generate a new Personal Access Token from
-[https://github.com/settings/tokens](https://github.com/settings/tokens){:target="_blank"}.
+[https://github.com/settings/tokens](https://github.com/settings/tokens){:target="\_blank"}.
 1. Give it a descriptive name such as "spinnaker-fiat."
 1. Select the `read:org` scope.
 1. Click "Generate Token"

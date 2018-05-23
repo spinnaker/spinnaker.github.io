@@ -8,16 +8,16 @@ redirect_from: /setup/providers/azure/
 
 {% include toc %}
 
-In [Azure](https://azure.microsoft.com/){:target="_blank"}, an
+In [Azure](https://azure.microsoft.com/){:target="\_blank"}, an
 [__Account__](/concepts/providers/#accounts) maps to a credential able to
-authenticate against a given [Azure subscription](https://azure.microsoft.com/free/){:target="_blank"}.
+authenticate against a given [Azure subscription](https://azure.microsoft.com/free/){:target="\_blank"}.
 
 ## Prerequisites
 
-You need a [Service Principal](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli){:target="_blank"}
-to authenticate with Azure and a [Key Vault](https://azure.microsoft.com/services/key-vault/){:target="_blank"}
-to store a default username/password for deployed [VM Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview){:target="_blank"}.
-The next steps assume the use of the [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli){:target="_blank"}.
+You need a [Service Principal](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli){:target="\_blank"}
+to authenticate with Azure and a [Key Vault](https://azure.microsoft.com/services/key-vault/){:target="\_blank"}
+to store a default username/password for deployed [VM Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview){:target="\_blank"}.
+The next steps assume the use of the [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli){:target="\_blank"}.
 The example commands will set environment variables along the way for use when
 creating an account in the final stage. You can check that you have `az` installed by running:
 

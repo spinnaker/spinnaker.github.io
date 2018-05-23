@@ -7,9 +7,9 @@ sidebar:
 
 {% include toc %}
 
-[Prometheus](https://prometheus.io/){:target="_blank"} is an open-source
+[Prometheus](https://prometheus.io/){:target="\_blank"} is an open-source
 monitoring system that pairs nicely with Spinnaker. Prometheus does not have a
-native dashboard, rather it uses [Grafana](http://grafana.org){:target="_blank"},
+native dashboard, rather it uses [Grafana](http://grafana.org){:target="\_blank"},
 another open-source system. The Spinnaker integration bundles the two together,
 so as far as this document is concerned, Grafana and Prometheus are treated as
 one system.
@@ -26,7 +26,7 @@ The current Spinnaker installation script can configure for a simple
 single instance VM deployment typically used for prototype purposes, or
 a multi-VM "high-availability" production type deployment on Google Cloud
 Platform. For more information and custom configuration options, see the
-[Prometheus Configuration](https://prometheus.io/docs/operating/configuration/){:target="_blank"}
+[Prometheus Configuration](https://prometheus.io/docs/operating/configuration/){:target="\_blank"}
 documentation. They describe support for discovering services on EC2, Azure,
 and other platforms or discovery mechanisms you might be using.
 
@@ -123,8 +123,8 @@ run `hal deploy apply`.
        to discover the daemons running on GCE instances.
 
      * If you are deploying Spinnaker across multiple VMs on EC2,
-       see [Prometheus ec2_sd_config](https://prometheus.io/docs/operating/configuration/#<ec2_sd_config>){:target="_blank"}.
-       If on Azure, see [Prometheus azure_sd_config](https://prometheus.io/docs/operating/configuration/#<azure_sd_config>){:target="_blank"}.
+       see [Prometheus ec2_sd_config](https://prometheus.io/docs/operating/configuration/#<ec2_sd_config>){:target="\_blank"}.
+       If on Azure, see [Prometheus azure_sd_config](https://prometheus.io/docs/operating/configuration/#<azure_sd_config>){:target="\_blank"}.
        If you pursue one of these, please contribute back the work to
        improve the installer for those that follow your lead.
 

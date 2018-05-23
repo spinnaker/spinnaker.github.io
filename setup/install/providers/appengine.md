@@ -8,17 +8,17 @@ redirect_from: /setup/providers/appengine/
 
 {% include toc %}
 
-In [Google App Engine](https://cloud.google.com/appengine){:target="_blank"}, an
+In [Google App Engine](https://cloud.google.com/appengine){:target="\_blank"}, an
 [__Account__](/concepts/providers/#accounts) maps to a credential able to
 authenticate against a given [Google Cloud
-Platform](https://cloud.google.com){:target="_blank"} project.
+Platform](https://cloud.google.com){:target="\_blank"} project.
 
 ## Prerequisites
 
-You need a [Google Cloud Platform](https://cloud.google.com/){:target="_blank"}
+You need a [Google Cloud Platform](https://cloud.google.com/){:target="\_blank"}
 project to run Spinnaker against. The next steps assume you've already [created
-a project](https://cloud.google.com/resource-manager/docs/creating-managing-projects){:target="_blank"},
-and installed [`gcloud`](https://cloud.google.com/sdk/downloads){:target="_blank"}.
+a project](https://cloud.google.com/resource-manager/docs/creating-managing-projects){:target="\_blank"},
+and installed [`gcloud`](https://cloud.google.com/sdk/downloads){:target="\_blank"}.
 You can check that `gcloud` is installed and authenticated by running:
 
 ```bash
@@ -40,7 +40,7 @@ gcloud service-management enable appengine.googleapis.com
 
 ## Downloading credentials
 
-Spinnaker does not need to be given [service account](https://cloud.google.com/compute/docs/access/service-accounts){:target="_blank"}
+Spinnaker does not need to be given [service account](https://cloud.google.com/compute/docs/access/service-accounts){:target="\_blank"}
 credentials if it is running on a Google Compute Engine VM whose
 application default credentials have sufficient scopes to deploy to App Engine _and_
 Spinnaker is deploying to an App Engine application inside the same Google Cloud Platform project in which it is running. If
