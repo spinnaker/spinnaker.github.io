@@ -42,7 +42,7 @@ You need to set the `spinnaker.baseUrl` configuration value which is used by spi
 ## Email
 
 Email in spinnaker is provided by [Spring Boot Mail
-starter](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-email.html){:target="_blank"}.
+starter](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-email.html){:target="\_blank"}.
 The following is an example of using Gmail to send notifications.
 
 in echo.yml
