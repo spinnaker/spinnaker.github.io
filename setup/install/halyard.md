@@ -189,5 +189,4 @@ sudo ~/.hal/uninstall.sh
 
 ## Next steps
 
-Now that Halyard is running, it's time to decide which [environment to
-deploy](/setup/install/environment/) Spinnaker to.
+Now that Halyard is running, it's time to [choose your cloud provider](/setup/install/providers/).

@@ -32,4 +32,4 @@ See also [`hal config storage`](/reference/halyard/commands/#hal-config-storage)
 
 ## Next steps
 
-After you've set up your external storage service, you need to enable and [configure a cloud provider](/setup/providers/).
+After you've set up your external storage service, you're ready to [deploy Spinnaker](/setup/install/deploy/).

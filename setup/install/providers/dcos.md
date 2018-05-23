@@ -94,4 +94,6 @@ and [clusters](/reference/halyard/commands/#hal-config-provider-dcos-cluster-add
 
 ## Next steps
 
-Optionally, you can [set up another cloud provider](/setup/install/providers/), but otherwise you're ready to [Deploy Spinnaker](/setup/install/deploy/).
+Optionally, you can [set up another cloud provider](/setup/install/providers/),
+but otherwise you're ready to [choose an environment](/setup/install/environment/)
+in which to install Spinnaker.
