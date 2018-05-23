@@ -8,15 +8,15 @@ sidebar:
 {% include toc %}
 
 Spinnaker stages that read data from artifacts can consume
-[GCS](https://cloud.google.com/storage/) objects as artifacts.
+[GCS](https://cloud.google.com/storage/){:target="\_blank"} objects as artifacts.
 
 ## Prerequisites
 
-You need a [Google Cloud Platform](https://cloud.google.com/) (GCP) project to
-host a bucket in. The next steps assume you've already [created a
-project](https://cloud.google.com/resource-manager/docs/creating-managing-projects),
-and installed [`gcloud`](https://cloud.google.com/sdk/downloads). You can check
-that `gcloud` is installed and authenticated by running:
+You need a [Google Cloud Platform](https://cloud.google.com/){:target="\_blank"}
+(GCP) project to host a bucket in. The next steps assume you've already [created a
+project](https://cloud.google.com/resource-manager/docs/creating-managing-projects){:target="\_blank"},
+and installed [`gcloud`](https://cloud.google.com/sdk/downloads){:target="\_blank"}.
+You can check that `gcloud` is installed and authenticated by running:
 
 ```bash
 gcloud info
@@ -25,8 +25,8 @@ gcloud info
 ### Downloading credentials
 
 Spinnaker needs a [service
-account](https://cloud.google.com/compute/docs/access/service-accounts) to
-authenticate as against GCP, with the `roles/storage.admin` role enabled. If
+account](https://cloud.google.com/compute/docs/access/service-accounts){:target="\_blank"}
+to authenticate as against GCP, with the `roles/storage.admin` role enabled. If
 you don't already have such a service account with the corresponding JSON key
 downloaded, you can run the following commands to do so:
 

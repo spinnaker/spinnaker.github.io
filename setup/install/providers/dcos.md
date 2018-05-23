@@ -88,9 +88,9 @@ under a group in Marathon named after the Spinnaker account name
 
 If you are looking for more configurability, please see the other options
 listed in the [Halyard
-Reference](https://github.com/spinnaker/halyard/blob/master/docs/commands.md#hal-config-provider-dcos)
-for adding [accounts](https://github.com/spinnaker/halyard/blob/master/docs/commands.md#hal-config-provider-dcos-account-add)
-and [clusters](https://github.com/spinnaker/halyard/blob/master/docs/commands.md#hal-config-provider-dcos-cluster-add).
+Reference](/reference/halyard/commands/#hal-config-provider-dcos)
+for adding [accounts](/reference/halyard/commands/#hal-config-provider-dcos-account-add)
+and [clusters](/reference/halyard/commands/#hal-config-provider-dcos-cluster-add).
 
 ## Next steps
 

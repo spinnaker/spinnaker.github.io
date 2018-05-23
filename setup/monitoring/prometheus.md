@@ -7,11 +7,12 @@ sidebar:
 
 {% include toc %}
 
-[Prometheus](https://prometheus.io/) is an open source monitoring system
-that pairs nicely with Spinnaker. Prometheus does not have a native dashboard,
-rather it uses [Grafana](http://grafana.org), another open source system.
-The Spinnaker integration bundles the two together, so as far as this document
-is concerned, Grafana and Prometheus are treated as one system.
+[Prometheus](https://prometheus.io/){:target="\_blank"} is an open-source
+monitoring system that pairs nicely with Spinnaker. Prometheus does not have a
+native dashboard, rather it uses [Grafana](http://grafana.org){:target="\_blank"},
+another open-source system. The Spinnaker integration bundles the two together,
+so as far as this document is concerned, Grafana and Prometheus are treated as
+one system.
 
 A typical (and recommended) Prometheus installation contains a Prometheus
 server that is configured to actively poll the systems it is monitoring,
@@ -25,8 +26,8 @@ The current Spinnaker installation script can configure for a simple
 single instance VM deployment typically used for prototype purposes, or
 a multi-VM "high-availability" production type deployment on Google Cloud
 Platform. For more information and custom configuration options, see the
-[Prometheus Configuration](https://prometheus.io/docs/operating/configuration/)
-documentation. They describe support for discovering services on EC2, Azure, 
+[Prometheus Configuration](https://prometheus.io/docs/operating/configuration/){:target="\_blank"}
+documentation. They describe support for discovering services on EC2, Azure,
 and other platforms or discovery mechanisms you might be using.
 
 In special circumstances (where there is no other means for Prometheus
@@ -84,7 +85,7 @@ There are two ways to configure how Spinnaker provides metrics to Prometheus:
    involves periodically pushing metrics collected on a fixed interval, this
    may introduce duplicate time-series entries; however, if you are unable to
    configure Prometheus to discover each Spinnaker service, this may be the
-   only way to use Prometheus. To configure this given that `<url`> is the 
+   only way to use Prometheus. To configure this given that `<url`> is the
    URL to the Prometheus gateway server, run the following command:
    ```bash
    hal config metric-stores prometheus edit --push-gateway=<url>
@@ -122,8 +123,8 @@ run `hal deploy apply`.
        to discover the daemons running on GCE instances.
 
      * If you are deploying Spinnaker across multiple VMs on EC2,
-       see [Prometheus ec2_sd_config](https://prometheus.io/docs/operating/configuration/#<ec2_sd_config>).
-       If on Azure, see [Prometheus azure_sd_config](https://prometheus.io/docs/operating/configuration/#<azure_sd_config>).
+       see [Prometheus ec2_sd_config](https://prometheus.io/docs/operating/configuration/#<ec2_sd_config>){:target="\_blank"}.
+       If on Azure, see [Prometheus azure_sd_config](https://prometheus.io/docs/operating/configuration/#<azure_sd_config>){:target="\_blank"}.
        If you pursue one of these, please contribute back the work to
        improve the installer for those that follow your lead.
 
@@ -199,7 +200,7 @@ exact metric names, then you might need to look inside the view definition
 to reverse engineer it.
 
 ## Caveats
-     
+
 The Grafana dashboards are typically "idelta" (sic) or "rates" at 1m intervals.
 When computing the delta, it considers the previous value in the series
 for the selected time interval. If there was no value (e.g. this is the first

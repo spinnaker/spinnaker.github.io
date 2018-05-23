@@ -8,10 +8,10 @@ sidebar:
 {% include toc %}
 
 Each Spinnaker microservice is instrumented with numerous metrics exposed
-via a built in endpoint. Monitoring spinnaker typically involves the 
-spinnaker-monitoring daemon, which collects metrics reported by each 
+via a built in endpoint. Monitoring spinnaker typically involves the
+spinnaker-monitoring daemon, which collects metrics reported by each
 microservice instance and reports them to a third-party monitoring system
-which you then use to view overview dashboards, receive alerts, and 
+which you then use to view overview dashboards, receive alerts, and
 informally browse depending on your needs.
 
 Spinnaker publishes internal metrics using a multi-dimensional data model
@@ -20,10 +20,11 @@ in the sections [Consuming Metrics](#consuming-metrics) and in the
 [Monitoring Reference document](/reference/monitoring/).
 
 Spinnaker currently supports three specific third-party systems:
-[Prometheus](https://prometheus.io/), [Datadog](https://www.datadoghq.com/),
-and [Stackdriver](http://www.stackdriver.com/). The daemon is extensible so
-that it should be straight forward to add other systems as well. In fact,
-each of the supported systems was provided using the daemon's extension
+[Prometheus](https://prometheus.io/){:target="\_blank"},
+[Datadog](https://www.datadoghq.com/){:target="\_blank"},
+and [Stackdriver](http://www.stackdriver.com/){:target="\_blank"}. The daemon is
+extensible so that it should be straightforward to add other systems as well.
+In fact, each of the supported systems was provided using the daemon's extension
 mechanisms -- there are not "native" systems.
 
 You can also use the microservice HTTP endpoint `/spectator/metrics`

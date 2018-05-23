@@ -33,7 +33,7 @@ There are two ways you can install Halyard:
 ## Install Halyard on Docker
 
 1. Make sure you have [Docker CE
-installed](https://docs.docker.com/engine/installation/).
+installed](https://docs.docker.com/engine/installation/){:target="\_blank"}.
 
 1. On your current machine, make a local Halyard config directory.
 

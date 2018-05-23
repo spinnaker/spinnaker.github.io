@@ -17,7 +17,7 @@ hal version list
 
 You can follow the links to their changelogs to see what features each version
 has included since the last release. Once you've picked a version (e.g.
-`VERSION=1.0.0`), you can set it with 
+`VERSION=1.0.0`), you can set it with
 
 ```bash
 hal config version edit --version $VERSION
@@ -35,7 +35,7 @@ be run with `sudo`.
 ## Connect to the Spinnaker UI
 
 If you have not enabled any sort of authentication, Spinnaker will not be
-publically reachable by default. In this case, you will need to run the 
+publically reachable by default. In this case, you will need to run the
 following command to reach the UI on [localhost:9000](http://localhost:9000):
 
 ```bash
@@ -48,10 +48,10 @@ please read the [Halyard FAQ](/setup/quickstart/faq/).
 ## Troubleshooting
 
 If this command fails, and it's the first time you've run this command please
-reach out to us on [Slack](http://join.spinnaker.io). If you've had a successful
-deployment, you can run `hal deploy diff` to see what changes you've made that
-may be causing problems. At any point you can rerun `hal deploy apply` with any
-changes you've made to retry the deployment.
+reach out to us on [Slack](http://join.spinnaker.io){:target="\_blank"}.
+If you've had a successful deployment, you can run `hal deploy diff` to see what
+changes you've made that may be causing problems. At any point you can rerun
+`hal deploy apply` with any changes you've made to retry the deployment.
 
 ## Upgrade Spinnaker
 
@@ -68,7 +68,7 @@ And pick a new version like so:
 hal config version edit --version $VERSION
 
 # this will update Spinnaker
-hal deploy apply 
+hal deploy apply
 ```
 
 ## Next steps

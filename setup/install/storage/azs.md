@@ -8,13 +8,16 @@ redirect_from: /setup/storage/azs/
 
 {% include toc %}
 
-Using [Azure Storage](https://azure.microsoft.com/services/storage/) (AZS) as a
-storage source means that Spinnaker will store all of its persistent data in a
-[Storage Account](https://docs.microsoft.com/azure/storage/storage-create-storage-account).
+Using [Azure Storage](https://azure.microsoft.com/services/storage/){:target="\_blank"}
+(AZS) as a storage source means that Spinnaker will store all of its persistent
+data in a [Storage Account](https://docs.microsoft.com/azure/storage/storage-create-storage-account){:target="\_blank"}.
 
 ## Prerequisites
 
-The next steps assume the use of the [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) in order to create a Storage Account. You can check that you have `az` installed by running:
+The next steps assume the use of the [Azure CLI
+2.0](https://docs.microsoft.com/cli/azure/install-azure-cli){:target="\_blank"}
+in order to create a Storage Account. You can check that you have `az` installed
+by running:
 
 ```bash
 az --version

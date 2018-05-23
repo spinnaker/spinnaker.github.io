@@ -8,18 +8,19 @@ redirect_from: /setup/providers/gce/
 
 {% include toc %}
 
-In [Google Compute Engine](https://cloud.google.com/compute) (GCE), an
-[__Account__](/concepts/providers/#accounts) maps to a credential able to
-authenticate against a given [Google Cloud Platform](https://cloud.google.com/)
-(GCP) project.
+In [Google Compute Engine](https://cloud.google.com/compute){:target="\_blank"}
+(GCE), an [__Account__](/concepts/providers/#accounts) maps to a credential able
+to authenticate against a given [Google Cloud
+Platform](https://cloud.google.com/){:target="\_blank"} (GCP) project.
 
 ## Prerequisites
 
-You need a [Google Cloud Platform](https://cloud.google.com/) (GCP) project
-to run Spinnaker against. The next steps assume you've already [created a
-project](https://cloud.google.com/resource-manager/docs/creating-managing-projects),
-and installed [`gcloud`](https://cloud.google.com/sdk/downloads). You can check
-that `gcloud` is installed and authenticated by running:
+You need a [Google Cloud Platform](https://cloud.google.com/){:target="\_blank"}
+(GCP) project to run Spinnaker against. The next steps assume you've already
+[created a
+project](https://cloud.google.com/resource-manager/docs/creating-managing-projects){:target="\_blank"},
+and installed [`gcloud`](https://cloud.google.com/sdk/downloads){:target="\_blank"}.
+You can check that `gcloud` is installed and authenticated by running:
 
 ```bash
 gcloud info
@@ -28,8 +29,8 @@ gcloud info
 ### Downloading credentials
 
 Spinnaker needs a [service
-account](https://cloud.google.com/compute/docs/access/service-accounts) to
-authenticate as against GCE, with the role enumerated below enabled. If
+account](https://cloud.google.com/compute/docs/access/service-accounts){:target="\_blank"}
+to authenticate as against GCE, with the role enumerated below enabled. If
 you don't already have such a service account with the corresponding JSON key
 downloaded, you can run the following commands to do so:
 

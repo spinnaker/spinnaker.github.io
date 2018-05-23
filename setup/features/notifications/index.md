@@ -13,7 +13,7 @@ Out of the box, Spinnaker allows you to configure the following types of notific
 * [Email](#email)
 * [HipChat](#hipchat)
 * [Slack](#slack)
-* [SMS](#twilio) via Twilio 
+* [SMS](#twilio) via Twilio
 
 This is discussed in the Configuring Notifications section below.
 
@@ -21,7 +21,7 @@ Additionally, Spinnaker allows you to set webhooks for git triggers. See the [Se
 
 You can also set Spinnaker to stream all its events to a downstream listener. See the [Add a Webhook to Spinnaker](#add-a-listening-webhook-to-spinnaker) section.
 
-Additionally, Spinnaker is capable of handling cron-based triggers and detect changes in Jenkins builds and Docker images. This functionality will be documented at a later time. 
+Additionally, Spinnaker is capable of handling cron-based triggers and detect changes in Jenkins builds and Docker images. This functionality will be documented at a later time.
 
 See also [`hal config notifications`](/reference/halyard/commands/#hal-config-notification).
 
@@ -31,7 +31,7 @@ Notification configurations are in echo.yml and settings.js. For changes to echo
 
 ## Where to put echo-local.yml and settings.js
 
-If you use Halyard to configure Spinnaker, put echo-local.yml and settings.js in `~/.hal/{deployment}/profiles/`. 
+If you use Halyard to configure Spinnaker, put echo-local.yml and settings.js in `~/.hal/{deployment}/profiles/`.
 
 If you don’t use Halyard, put echo-local.yml in the same place as the current echo.yml, in `/opt/spinnaker/config`, and put settings.js in `/opt/deck/html/`.
 
@@ -41,7 +41,9 @@ You need to set the `spinnaker.baseUrl` configuration value which is used by spi
 
 ## Email
 
-Email in spinnaker is provided by [Spring Boot Mail starter](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-email.html). The following is an example of using Gmail to send notifications.
+Email in spinnaker is provided by [Spring Boot Mail
+starter](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-email.html){:target="\_blank"}.
+The following is an example of using Gmail to send notifications.
 
 in echo.yml
 ```
@@ -78,7 +80,9 @@ window.spinnakerSettings = {
 
 ## HipChat
 
-For Hipchat, you will need to create a hipchat [authentication token](https://www.hipchat.com/docs/apiv2/auth) that is able to post messages. 
+For Hipchat, you will need to create a hipchat [authentication
+token](https://www.hipchat.com/docs/apiv2/auth){:target="\_blank"} that can post
+messages.
 
 in echo.yml
 ```
@@ -104,7 +108,9 @@ Note: your users will need to invite the hipchat bot to private rooms that want 
 
 ## Slack
 
-For slack, you need to [create a custom bot user](https://api.slack.com/bot-users#how_do_i_create_custom_bot_users_for_my_team), then get the access token associated with that new bot user. Then...
+For slack, you need to [create a custom bot
+user](https://api.slack.com/bot-users#how_do_i_create_custom_bot_users_for_my_team){:target="\_blank"},
+then get the access token associated with that new bot user. Then...
 
 ```bash
 hal config notification slack enable
@@ -115,7 +121,7 @@ Note: your users will need to invite the slack bot to private rooms that want to
 
 ## Twilio
 
-For twilio, you need to add your account [credentials](https://www.twilio.com/help/faq/twilio-basics/what-is-the-auth-token-and-how-can-i-change-it). 
+For Twilio, you need to add your account [credentials](https://www.twilio.com/help/faq/twilio-basics/what-is-the-auth-token-and-how-can-i-change-it){:target="\_blank"}.
 
 in echo.yml
 ```
@@ -141,29 +147,30 @@ window.spinnakerSettings = {
 
 Once notifications have been configured, you can use them to send changes in pipelines and in the manual judgment stage in Spinnaker.
 
-To set up an application-wide notification, go to Application -> Config -> Notifications, 
+To set up an application-wide notification, go to Application -> Config -> Notifications,
 
 Click on 'Add Notification'
 
 ![](edit-notification.png)
 
-Enter your notification details. 
+Enter your notification details.
 
-You can also set Notifications at the Pipeline level ( under configuration ) and at the stage level ( by clicking on the [ ] Send Notifications for this stage checkbox. 
+You can also set Notifications at the Pipeline level ( under configuration ) and at the stage level ( by clicking on the [ ] Send Notifications for this stage checkbox.
 
 # Setting up Git Triggers in Spinnaker
 
-Instead of listening for events from Github like in the Docker and Jenkins case, direct triggering from git requires a webhook endpoint to be set up in the corresponding VCS. 
+Instead of listening for events from Github like in the Docker and Jenkins case, direct triggering from git requires a webhook endpoint to be set up in the corresponding VCS.
 
 ## Github
 
 ### Using Github as a Trigger
 
-Go to your project's Webhooks page, i.e, https://github.com/spinnaker/igor/settings/hooks
+Go to your project's Webhooks page, for example https://github.com/spinnaker/igor/settings/hooks
 
 Click "Add webhook"
 
-enter http://[spinnakerapi]/webhooks/git/github in the Payload URL where spinnakerapi is the location of your gate installation.
+enter `http://[spinnakerapi]/webhooks/git/github` in the Payload URL, where
+`spinnakerapi` is the location of your gate installation.
 
 select "Just the push event"
 
@@ -181,7 +188,8 @@ Add a Post Receive webhook
 
 ![](stash.png)
 
-Add the following URL: http://[gate url]/webhooks/git/stash where gate url is the url to your spinnaker api.
+Add the following URL: `http://[gate url]/webhooks/git/stash`, where `gate url`
+is the url to your spinnaker api.
 
 You are now ready to receive events from this repository.
 
@@ -195,7 +203,8 @@ Add a 'Repository Push' or 'Pull Request Merged' webhook
 
 ![](bitbucket.png)
 
-Add the following URL: http://[gate url]/webhooks/git/bitbucket where gate url is the url to your spinnaker api.
+Add the following URL: `http://[gate url]/webhooks/git/bitbucket`, where
+`gate url` is the url to your spinnaker api.
 
 You are now ready to receive events from this repository.
 
@@ -203,7 +212,7 @@ You are now ready to receive events from this repository.
 
 Go to Pipeline > Configuration
 
-Select Trigger Type to be Git 
+Select Trigger Type to be Git
 
 Set Repository Type to be github, stash, or bitbucket
 
@@ -219,11 +228,13 @@ You can access the hash of the build via expression ```${trigger.hash}```
 
 # Add a listening webhook to spinnaker
 
-The [echo-rest](https://github.com/spinnaker/echo/tree/master/echo-rest) module in spinnaker allows you to set downstream listeners keeping track of Spinnaker events. 
+The [echo-rest](https://github.com/spinnaker/echo/tree/master/echo-rest){:target="\_blank"}
+module in spinnaker allows you to set downstream listeners keeping track of
+Spinnaker events.
 
 Whenever Spinnaker receives an event from Orca, igor, or echo, it will forward these events to the webhooks registered.
 
-A useful pattern is to have an intermediate service that will filter and convert events you care about into the format you expect. 
+A useful pattern is to have an intermediate service that will filter and convert events you care about into the format you expect.
 
 ## Configuration in echo.yml
 
@@ -231,19 +242,19 @@ A useful pattern is to have an intermediate service that will filter and convert
 rest:
   enabled: true
   endpoints:
-    - 
+    -
       wrap: false
       url: http://listener.com
-    - 
+    -
       wrap: false
       url: http://listener2.com
 ```
 
 This will post every event to listener and listener2
 
-## Wrapping 
+## Wrapping
 
-If your endpoint expects events of the form 
+If your endpoint expects events of the form
 
 ```
 	{ "eventName" : "abc", "payload" : "[event json]"}
@@ -252,7 +263,7 @@ If your endpoint expects events of the form
 you can wrap the event via this configuration:
 
 ```
-  - 
+  -
       wrap: true
       flatten: true
       url: http://listener3
@@ -260,7 +271,7 @@ you can wrap the event via this configuration:
       fieldName: payload
 ```
 
-The flatten setting will simply make the json in content and details ( see below ) into a json String. 
+The flatten setting will simply make the json in content and details ( see below ) into a json String.
 
 # Event types
 
@@ -312,7 +323,7 @@ Here is an example event:
   }
 ```
 
-Events have a details, which will always be the same.
+Events have details, which will always be the same.
 
 ### details.type
 
@@ -329,5 +340,4 @@ The application involved in the execution, this will only exist for orca: type e
 
 ### content.execution
 
-For orca type events, this is the corrent execution that has the entire pipeline execution.
-
+For orca type events, this is the current execution that has the entire pipeline execution.
