@@ -260,6 +260,8 @@ guides:
         url: /guides/runbooks/api-rate-limiting/
       - title: Sharding Spinnaker
         url: /guides/runbooks/sharding-spinnaker/
+      - title: Orca Quality of Service
+        url: /guides/runbooks/orca-quality-of-service/
 
 reference:
   - title: API
