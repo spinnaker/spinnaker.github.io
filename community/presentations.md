@@ -8,16 +8,22 @@ redirect_from: /docs/presentations
 
 Conference and Meetup Presentations on Spinnaker
 
+### <a href="http://2018.opendevconf.com/" target="_blank">OpenDev CI/CD</a>
+**Videos from OpenDev Conference, Vancouver, BC** \| May 22-23, 2018
+
+* [How Dev/Ops Evolves as the Cloud Does](https://www.youtube.com/watch?v=LjjfWBrvyps){:target="\_blank"}
+* [Open CD for Open Infrastructure Hybrid and Multi-Cloud Deployments with Spinnaker](https://www.youtube.com/watch?v=EC_zxrk2NQc){:target="\_blank"}
+
 ### <a href="https://www.meetup.com/Spinnaker-BayArea/events/243581205" target="_blank">South Bay Meetup at Cisco</a>
-**Videos from Spinnaker South Bay Meetup at Cisco** \| October 24, 2017 
+**Videos from Spinnaker South Bay Meetup at Cisco** \| October 24, 2017
 
 * [Cisco Spinnaker Use Cases](https://video.cisco.com/detail/video/5625201133001?autoStart=true)
 * [Community Update](https://video.cisco.com/detail/videos/customer-case-studies/video/5625309847001?autoStart=true)
-* Intuit Spinnaker Use Cases - please contact Intuit for the video 
+* Intuit Spinnaker Use Cases - please contact Intuit for the video
 * [Pure Storage Spinnaker Use Cases](https://video.cisco.com/detail/videos/service-provider/video/5625309849001?autoStart=true)
 
 ### <a href="https://www.youtube.com/playlist?list=PL4yLrwUObNktZDWIlAA3gl8Pi_m3ktxeR" target="_blank">Spinnaker Summit 2017</a>
-**Videos from Spinnaker Summit 2017** \| Sept 11-12, 2017 
+**Videos from Spinnaker Summit 2017** \| Sept 11-12, 2017
 
 A playlist of recorded videos from the Spinnaker Summit held at the Netflix offices in 201
 
