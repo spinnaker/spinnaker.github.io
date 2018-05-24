@@ -82,7 +82,7 @@ Encoding with any another OID can be done by editing the openssl.conf.
     keyUsage = nonRepudiation, digitalSignature, keyEncipherment
     1.2.840.10070.8.1 = ASN1:UTF8String:spinnaker-example0\nspinnaker-example1
     ```
-    The final line in this file `1.2.840.10070.8.1= ASN1:UTF8String:spinnaker-example0\nspinnaker-example1` is what matters for creating a client certificate with user role information, as *anything after `UTF8String:`* is encoded inside of the x509 certificate under the given OID.
+    The final line in this file `1.2.840.10070.8.1= ASN1:UTF8String:spinnaker-example0\nspinnaker-example1` is what matters for creating a client certificate with user role information, as anything after `UTF8String:` is encoded inside of the x509 certificate under the given OID.
 
     where:
     - 1.2.840.10070.8.1 - OID
@@ -92,7 +92,8 @@ Encoding with any another OID can be done by editing the openssl.conf.
 
 1. Generate a CSR for a new x509 certificate and the given `openssl.conf`:  
     ```
-    openssl req -nodes -newkey rsa:2048 -keyout key.out -out client.csr -subj "/C=US/ST=CA/L=Oakland/O=Spinnaker/CN=example@example.com" -config openssl.conf
+    openssl req -nodes -newkey rsa:2048 -keyout key.out -out client.csr \
+        -subj "/C=US/ST=CA/L=Oakland/O=Spinnaker/CN=example@example.com" -config openssl.conf
     ```
 1. Use the CA to sign the server's request. (If using an external CA, they do this for you.)
     ```
@@ -101,13 +102,34 @@ Encoding with any another OID can be done by editing the openssl.conf.
 
 ![Example x509 certificate generated](two_roles_x509.png)
 
-## Setting roleOid via halyard
+## Set roleOid
 
 ```
 hal config security authn x509 edit --role-oid 1.2.840.10070.8.1
 ```
 
-## Enabling x509 via halyard
+### Configure SSL to require certs
+If you have SSL enabled, you need to set the Apache Tomcat SSL stack to require a valid certificate 
+chain, as required by the Spring Security integration. 
+
+```
+hal config security api ssl edit --client-auth # Set to WANT or NEED
+```
+
+There are three states for `client-auth` - `WANT`, `NEED`, and when it is unset.
+
+Set `client-auth` to `WANT` to use a certificate if available. SSL connections will succeed even if 
+the client doesn’t provide a certificate. This is useful if you enable x509 with another 
+authentication method like OAuth, LDAP, SAML - when a certificate is not provided, users can still
+authenticate with one of these methods.
+
+Set `client-auth` to `NEED` if x509 is the sole authentication method, or if you want to ensure the
+certificate is provided AND another authentication mechanism is used.
+
+To revert back to not requiring a certificate after disabling x509, find and delete the `client-auth`
+field set in `~/.hal/config`.
+
+## Enable x509
 
 ```
 hal config security authn x509 enable
