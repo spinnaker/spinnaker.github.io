@@ -3,8 +3,9 @@ layout: single
 title:  "Pipeline Expressions Guide"
 sidebar:
   nav: guides
-redirect_from: /docs/pipeline-expressions-guide
-redirect_from: /guides/user/pipeline-expressions/
+redirect_from:
+  - /docs/pipeline-expressions-guide
+  - /guides/user/pipeline-expressions/
 ---
 
 {% include toc %}

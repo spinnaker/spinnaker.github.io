@@ -3,8 +3,9 @@ layout: single
 title:  "Receiving artifacts from GitHub"
 sidebar:
   nav: guides
-redirect_from: /guides/user/artifacts/github/
-redirect_from: /guides/user/triggers/github/
+redirect_from:
+  - /guides/user/artifacts/github/
+  - /guides/user/triggers/github/
 ---
 
 {% include toc %}
