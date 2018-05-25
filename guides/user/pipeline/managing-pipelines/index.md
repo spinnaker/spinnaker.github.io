@@ -31,10 +31,6 @@ pipeline will perform.
 
 ### Add a stage
 
-Your first stage in any pipeline will be a **Configuration** stage, where you
-can set up pipeline triggers and parameters. You'll need to add more stages for
-each task you want your pipeline to perform.
-
 1. Select **Add stage** from your pipeline configuration screen.
   ![](images/add-stage.png)
 2. Set the stage type using the drop-down menu.
@@ -84,7 +80,7 @@ choose **Enable**.
 
 First, some background: Spinnaker represents pipelines as JSON behind the
 scenes. Any changes you make to your pipeline using the UI are converted to JSON
-when Spinnaker actually runs the pipeline.
+when Spinnaker saves the pipeline.
 
 When you use the **Edit as JSON** feature, you are directly editing the payload.
 This can be useful for working around limitations of the UI. However, the JSON
@@ -105,6 +101,8 @@ In order to edit your pipeline as JSON:
 Each time you save your pipeline, the current version is added to revision
 history. You can use revision history to diff two versions of a pipeline or to
 restore an older version of a pipeline.
+
+> *Note*: minio and redis do not support version history.
 
 1. From the pipelines tab, click **Configure** to modify an existing pipeline.
   ![](images/select-configure.png)
