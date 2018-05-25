@@ -102,7 +102,9 @@ Each time you save your pipeline, the current version is added to revision
 history. You can use revision history to diff two versions of a pipeline or to
 restore an older version of a pipeline.
 
-> *Note*: minio and redis do not support version history.
+> *Note*: If you are using minio or redis to store your Spinnaker configuration
+files, you won't be able to use revision history because neither minio nor redis
+supports it.
 
 1. From the pipelines tab, click **Configure** to modify an existing pipeline.
   ![](images/select-configure.png)
