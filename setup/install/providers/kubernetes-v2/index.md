@@ -42,6 +42,8 @@ The Kubernetes provider has two requirements:
     API resource that `kubectl` supports is also supported by Spinnaker. This
     is an improvement over the original Kubernetes provider in Spinnaker.
 
+<span class="begin-collapsible-section"></span>
+
 ### Optional: Configure Kubernetes roles (RBAC)
 
 If your Kubernetes cluster supports
@@ -97,6 +99,10 @@ metadata:
  namespace: default
 ```
 
+<span class="end-collapsible-section"></span>
+
+<span class="begin-collapsible-section"></span>
+
 ## Migrating from the V1 provider
 
 > :warning: The V2 provider does __not__ use the [Docker Registry
@@ -132,6 +138,8 @@ steps [below](#adding-an-account). This will surface your infrastructure twice
 
 {% include figure image_path="./v1v2.png" caption="A V1 and V2 provider
 surfacing the same infrastructure" %}
+
+<span class="end-collapsible-section"></span>
 
 ## Adding an account
 
