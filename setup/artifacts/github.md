@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Configuring GitHub Webhooks"
+title:  "Configure a GitHub artifact account"
 sidebar:
   nav: setup
 ---
