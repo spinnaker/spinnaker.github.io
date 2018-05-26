@@ -123,7 +123,7 @@ hal config provider kubernetes account add staging-demo \
 
 ### Configure GitHub artifact credentials
 
-Make sure to [add GitHub as an artifact account](/setup/artifacts/github). This
+Make sure to [add GitHub as an artifact account](/setup/artifacts/github.md). This
 will allow us to fetch the manifests later.
 
 ### Deploy Spinnaker
