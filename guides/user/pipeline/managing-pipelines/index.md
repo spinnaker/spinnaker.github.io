@@ -20,16 +20,20 @@ This guide explains how to configure and control pipelines, including creating,
 adding triggers to, or disabling pipelines.
 
 ## Create a pipeline
-1. Navigate to the **Pipelines** tab in your Spinnaker application.
+1. Select the application in which you would like to create a pipeline.
+2. Navigate to the **Pipelines** tab in the Spinnaker UI.
   ![](images/pipelines-tab.png)
-2. Click **Create**, located in the upper right corner of the **Pipelines** tab.
+3. Click **Create**, located in the upper right corner of the **Pipelines** tab.
   ![](images/create.png)
-3. Choose **Pipeline** from the drop down menu and name your pipeline.
+4. Choose **Pipeline** from the drop down menu and name your pipeline.
 
 After you create your pipeline, add stages to specify the actions that your
 pipeline will perform.
 
 ### Add a stage
+The first step in any pipeline is **Configuration**, where you can set up
+pipeline triggers and parameters. Each *stage* specifies an action the pipeline
+will take once it is configured.
 
 1. Select **Add stage** from your pipeline configuration screen.
   ![](images/add-stage.png)
