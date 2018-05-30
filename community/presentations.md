@@ -6,8 +6,6 @@ sidebar:
 redirect_from: /docs/presentations
 ---
 
-{% include toc %}
-
 Conference and Meetup Presentations on Spinnaker
 
 ### <a href="http://2018.opendevconf.com/" target="_blank">OpenDev CI/CD</a>
