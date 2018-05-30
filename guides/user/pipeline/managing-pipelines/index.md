@@ -7,9 +7,9 @@ sidebar:
 
 {% include toc %}
 
-Pipelines are the essential tool in Spinnaker for configuring how to deploy your
-application. They are composed of a series of stages that can be combined in
-almost any order, which makes them flexible, consistent, and repeatable.
+Pipelines are the essential tool in Spinnaker for controlling how to deploy your
+application. A pipeline is composed of a series of stages that can be combined
+in almost any order, which makes pipelines flexible, consistent, and repeatable.
 
 You can configure your pipelines to run entirely automatically or require manual
 intervention to ensure that everything is working as expected. Similarly,
@@ -22,7 +22,7 @@ adding triggers to, or disabling pipelines.
 ## Create a pipeline
 1. Navigate to the **Pipelines** tab in your Spinnaker application.
   ![](images/pipelines-tab.png)
-2. Click **Create**, located in the upper right corner of the Pipelines tab.
+2. Click **Create**, located in the upper right corner of the **Pipelines** tab.
   ![](images/create.png)
 3. Choose **Pipeline** from the drop down menu and name your pipeline.
 
@@ -61,7 +61,8 @@ triggers.
 Disabling a pipeline prevents any triggers from firing, as well as preventing
 users from running it manually.
 
-1. From the pipelines tab, click **Configure** to modify an existing pipeline.
+1. From the **Pipelines** tab, click **Configure** to modify an existing
+pipeline.
   ![](images/select-configure.png)
 2. Click **Pipeline actions** in the upper right corner, and select **Disable**.
   ![](images/pipeline-actions.png)
@@ -71,26 +72,29 @@ choose **Enable**.
 
 ## Delete a pipeline
 
-1. From the pipelines tab, click **Configure** to modify an existing pipeline.
+1. From the **Pipelines** tab, click **Configure** to modify an existing
+pipeline.
   ![](images/select-configure.png)
 2. Click **Pipeline actions** in the upper right corner, and select **Delete**.
   ![](images/pipeline-actions.png)
 
-## Edit as JSON
+## Edit a pipeline as JSON
 
-First, some background: Spinnaker represents pipelines as JSON behind the
-scenes. Any changes you make to your pipeline using the UI are converted to JSON
-when Spinnaker saves the pipeline.
+> **Warning**: the JSON you write here is not validated -- Edit as JSON
+essentially allows you to modify the pipeline via a free-form textbox. **Be
+careful!** It is very easy to break the pipeline.
+
+Spinnaker represents pipelines as JSON behind the scenes. Any changes you make
+to your pipeline using the UI are converted to JSON when Spinnaker saves the
+pipeline.
 
 When you use the **Edit as JSON** feature, you are directly editing the payload.
-This can be useful for working around limitations of the UI. However, the JSON
-you write here *is not validated* -- **Edit as JSON** essentially allows you to
-modify the pipeline via a free-form textbox. Be careful! It is very easy to
-break the pipeline.
+This can be useful for working around limitations of the UI.
 
 In order to edit your pipeline as JSON:
 
-1. From the pipelines tab, click **Configure** to modify an existing pipeline.
+1. From the **Pipelines** tab, click **Configure** to modify an existing
+pipeline.
   ![](images/select-configure.png)
 2. Click **Pipeline actions** in the upper right corner, and select
 **Edit as JSON**.
@@ -106,7 +110,8 @@ restore an older version of a pipeline.
 files, you won't be able to use revision history because neither minio nor redis
 supports it.
 
-1. From the pipelines tab, click **Configure** to modify an existing pipeline.
+1. From the **Pipelines** tab, click **Configure** to modify an existing
+pipeline.
   ![](images/select-configure.png)
 2. Click **Pipeline actions** in the upper right corner, and select
 **View revision history**.
