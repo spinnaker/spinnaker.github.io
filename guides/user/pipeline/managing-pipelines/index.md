@@ -56,9 +56,8 @@ Make sure that you are editing the **Configuration** stage of your pipeline.
 2. Choose your desired trigger type from the drop-down menu that appears, and
 input any further required configuration.
 
-For further information on how triggers work, see the documentation on pipeline
-triggers.
-<!-- TODO(nhayes): link here to pipeline triggers overview once it exists. -->
+For further information on how triggers work, see the [documentation on pipeline
+triggers](/guides/user/pipeline/triggers/).
 
 ## Disable a pipeline
 
