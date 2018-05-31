@@ -350,3 +350,33 @@ hal config canary prometheus account get
 ```
 hal config canary prometheus account list
 ```
+
+
+
+
+## Set up Minio as storage provider
+Configure your canary analysis to use Prometheus as your telemetry provider.
+
+### Add a custom halyard profile for kayenta
+```
+  aws:
+    enabled: true
+    accounts:
+    - name: <name>
+      bucket: <bucket>
+      rootFolder: <rootFolder>
+      endpoint: http://<minio-uri>:<minio-port>/
+      supportedTypes:
+      - CONFIGURATION_STORE
+      - OBJECT_STORE
+  s3:
+    enabled: true
+```
+
+### Mount AWS credentials file in kayentas file system
+Location: /home/spinnaker/.aws/credentials
+```
+[default]
+aws_access_key_id = <key_id>
+aws_secret_access_key = <secret_key>
+```
