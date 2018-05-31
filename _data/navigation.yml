@@ -153,6 +153,16 @@ setup:
             url: /setup/features/notifications/
           - title: Configure User Data (metadata)
             url: /setup/features/user-data/
+  - title: Scale Spinnaker
+    collapsed: true
+    children:
+      - title: Overview
+        url: /setup/scaling/
+      - title: Configure Caching
+        collapsed: true
+        children:
+          - title: Externalize Redis
+            url: /setup/scaling/caching/externalize-redis/
 
 guides:
   - title: Tutorials
