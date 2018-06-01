@@ -29,7 +29,7 @@ At the end of this guide you will have:
 
 ## Part 1: Configure gcloud
 
-1. Make sure that you are authenticated against the test cluster ($K8_TEST). 
+1. Make sure that you are authenticated against the test cluster ($K8_TEST).
 
    ```bash
    gcloud info
@@ -68,14 +68,27 @@ At the end of this guide you will have:
    gcloud projects add-iam-policy-binding $GCP_TEST \
      --role roles/container.admin \
      --member serviceAccount:$HALYARD_SA_EMAIL
-   ``` 
+   ```
 
-## Part 3: Add a service account (SA) to Kubernetes
+## Part 3: Add a Configure Kubernetes roles (RBAC) to Kubernetes
 
-1. Next we need to add a service account to Kubernetes that will handle the authorization inside the Kubernetes cluster.
-   Create a file, spinnaker-service-account.yaml, with the following content:
+1. Next we need to add a RBAC to Kubernetes that will handle the authorization inside the Kubernetes cluster.
+   Create a file, spinnaker-rbac.yaml, with the following content:
 
    ```yaml
+   apiVersion: rbac.authorization.k8s.io/v1
+   kind: ClusterRoleBinding
+   metadata:
+    name: spinnaker-role-binding
+   roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: cluster-admin
+   subjects:
+   - namespace: default
+     kind: ServiceAccount
+     name: spinnaker-service-account
+   ---
    apiVersion: v1
    kind: ServiceAccount
    metadata:
@@ -83,21 +96,14 @@ At the end of this guide you will have:
      namespace: default
    ```
 
-2. Apply the service account
+   If you are interested in more granular permissions, you can learn on [this page](https://www.spinnaker.io/setup/install/providers/kubernetes-v2/).
+
+2. Apply the RBAC
 
    ```bash
-   kubectl apply -f ./spinnaker-service-account.yaml
+   kubectl apply -f ./spinnaker-rbac.yaml
    ```
 
-3. Then we need to set access for Spinnaker to edit the cluster so it can manage deployments there.
-
-   ```bash
-   kubectl create clusterrolebinding \
-     --user system:serviceaccount:default:spinnaker-service-account \
-     spinnaker \
-     --clusterrole edit
-   ```
-    
    If you can't create a ```clusterrolebinding``` make sure that you have the right permissions.
    The following command enables you to make other roles in the cluster:
 
@@ -107,8 +113,8 @@ At the end of this guide you will have:
      --clusterrole=cluster-admin \
      --user=your.google.cloud.email@example.org
    ```
-      
-4. Now we want to get the secret for the service account that was created by Kubernetes. 
+
+3. Now we want to get the secret for the service account that was created by Kubernetes.
    Store it somewhere safe for the next part.
 
    ```bash
@@ -136,7 +142,7 @@ At the end of this guide you will have:
    gcloud container clusters get-credentials $K8_TEST --project $GCP_TEST --zone us-central1-f
    ```
 
-3. Get the new user profile that was created by ```gcloud``` and add the token you received before in part 3 step 4.
+3. Get the new user profile that was created by ```gcloud``` and add the token you received before in part 3 step 3.
 
    ```bash
    TEST_USER_PROFILE=`kubectl config current-context`
