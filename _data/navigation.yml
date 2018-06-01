@@ -161,6 +161,8 @@ setup:
       - title: Configure Caching
         collapsed: true
         children:
+          - title: Configure Redis Usage
+            url: /setup/productionize/caching/configure-redis-usage/
           - title: Externalize Redis
             url: /setup/productionize/caching/externalize-redis/
 
@@ -207,8 +209,6 @@ guides:
       - title: Pipelines
         collapsed: true
         children:
-          - title: Managing Pipelines
-            url: /guides/user/pipeline/managing-pipelines/
           - title: Triggering Pipelines
             collapsed: true
             children:
