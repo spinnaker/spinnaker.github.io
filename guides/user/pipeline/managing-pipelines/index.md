@@ -47,12 +47,12 @@ triggers](/guides/user/pipeline/triggers/).
 ### Add a stage
 The first step in any pipeline is **Configuration**, where you can set up
 pipeline triggers and parameters. Each *stage* specifies an action the pipeline
-will take once it is configured.
+will take once it's configured.
 
 1. Select **Add stage** from your pipeline configuration screen.
   ![](images/add-stage.png)
 2. Set the stage type using the drop-down menu.
-3. If this is not the first stage in your pipeline, make sure that this stage
+3. If this isn't the first stage in your pipeline, make sure that this stage
 depends on the desired upstream stage(s) using the **Depends on** field.
   ![](images/stage-depends-on.png)
 
@@ -85,7 +85,7 @@ pipeline.
 
 > **Warning**: the JSON you write here is not validated -- Edit as JSON
 essentially allows you to modify the pipeline via a free-form textbox. **Be
-careful!** It is very easy to break the pipeline, although you can restore from
+careful!** It's very easy to break the pipeline, although you can restore from
 revision history to roll back any changes.
 
 Spinnaker represents pipelines as JSON behind the scenes. Any changes you make
@@ -111,9 +111,9 @@ Each time you save your pipeline, the current version is added to revision
 history. You can use revision history to diff two versions of a pipeline or to
 restore an older version of a pipeline.
 
-> *Note*: If you are using minio or redis as your
+> *Note*: If you are using Minio or Redis as your
 [storage service](/setup/install/storage/), you won't be able to use revision
-history because neither minio nor redis supports it.
+history because neither supports it.
 
 1. From the **Pipelines** tab, click **Configure** to modify an existing
 pipeline.
