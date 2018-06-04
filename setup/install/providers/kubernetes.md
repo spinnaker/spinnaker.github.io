@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Kubernetes"
+title:  "Kubernetes (legacy provider)"
 sidebar:
   nav: setup
 redirect_from: /setup/providers/kubernetes/
@@ -8,10 +8,25 @@ redirect_from: /setup/providers/kubernetes/
 
 {% include toc %}
 
-In Kubernetes, an [Account](/concepts/providers/#accounts) maps to a
-credential able to authenticate against your desired Kubernetes Cluster, as
-well as a set of [Docker Registry](/setup/providers/docker-registry) accounts
-to be used as a source of images.
+For the Kubernetes provider, a Spinnaker [Account](/concepts/providers/#accounts)
+maps to a credential that can authenticate against your Kubernetes Cluster. It
+can also include a set of [Docker Registry](/setup/providers/docker-registry)
+accounts that are used as a source of images.
+
+When setting your your Kubernetes provider account, you will [use halyard
+to add the account](#), then provide any Docker registries that you'll use.
+
+## A note about accessing your cluster
+
+Kubernetes can run on a local machine, but more likely you will use one of
+several hosted solutions:
+
+* [GKE](https://cloud.google.com/kubernetes-engine/){:target="\_blank"}
+* [EKS](https://aws.amazon.com/eks/){:target="\_blank"}
+* [Azure Container Service](https://azure.microsoft.com/services/container-service/){:target="\_blank"}
+
+Consult the documentation for your environment to find out how to get the
+`kubeconfig` that you must provide to Halyard.
 
 ## Prerequisites
 
@@ -19,15 +34,18 @@ Both the Kubernetes credentials and Docker Registry accounts must exist before
 Halyard will allow you to add a Kubernetes account. The sections below will
 help you create these resources if you do not already have them.
 
-### Kubernetes cluster
+<span class="begin-collapsible-section"></span>
+
+### You need a Kubernetes cluster
+
+> Note: Halyard on Docker comes with `kubectl` already installed. Halyard on
+> Ubuntu does not.
 
 You need to have a running Kubernetes cluster with corresponding credentials in
-a [kubeconfig
-file](https://kubernetes.io/docs/concepts/cluster-administration/authenticate-across-clusters-kubeconfig/){:target="\_blank"}.
-If you do have a running cluster and credentials, you can verify that your
-credentials work using
-[`kubectl`](https://kubernetes.io/docs/user-guide/kubectl-overview/){:target="\_blank"}
-to run the following command:
+a [kubeconfig file](https://kubernetes.io/docs/concepts/cluster-administration/authenticate-across-clusters-kubeconfig/){:target="\_blank"}.
+If you do have a running cluster and credentials, you can verify that those
+credentials work by running the following command on a machine that has the
+credentials and has [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl-overview/){:target="\_blank"} installed:
 
 ```bash
 kubectl get namespaces
@@ -46,17 +64,44 @@ hosted solutions:
 * [Azure Container
   Service](https://docs.microsoft.com/en-us/azure/container-service/container-service-kubernetes-walkthrough){:target="\_blank"}
 
-Or, you can read more on the Kubernetes setup page to pick a [solution that
-works for you](https://kubernetes.io/docs/setup/pick-right-solution/){:target="\_blank"}.
+Or pick a different [solution that works for
+you](https://kubernetes.io/docs/setup/pick-right-solution/){:target="\_blank"}.
 
-### Kubernetes role (RBAC)
+<span class="end-collapsible-section"></span>
 
-If you are using Kubernetes RBAC for access control, you may want to create a minimal Role and Service Account for Spinnaker.
-This will ensure that Spinnaker has only the permissions it needs to operate within your cluster.
+<span class="begin-collapsible-section"></span>
 
-The following YAML can be used to create the correct `ClusterRole`, `ClusterRoleBinding`, and `ServiceAccount`. If you are limiting
-Spinnaker to an explicit list of namespaces (using the `namespaces` option), you will need to use `Role` & `RoleBinding` instead of
-`ClusterRole` and `ClusterRoleBinding` and create one in each namespace Spinnaker will manage. You can read about the difference
+### You need a Docker registry
+
+To use the Kubernetes (legacy) provider, you need a Docker registry as a source
+of images. To enable this, you set up a Docker registry as another provider, [as
+described here](/setup/providers/docker-registry), and add any registries that
+contain images you want to deploy.
+
+You can verify your Docker registry accounts using this command:
+
+```bash
+hal config provider docker-registry account list
+```
+
+When you [add your Kubernetes provider account](#adding-an-account), you include
+your registry (or registries) in the command.
+
+<span class="end-collapsible-section"></span>
+
+<span class="begin-collapsible-section"></span>
+
+### Optional: configure Kubernetes roles (RBAC)
+
+If you use Kubernetes RBAC for access control, you may want to create a minimal
+Role and Service Account for Spinnaker. This ensures that Spinnaker has only the
+permissions it needs to operate within your cluster.
+
+The following YAML creates the correct `ClusterRole`, `ClusterRoleBinding`,
+and `ServiceAccount`. If you're limiting Spinnaker to an explicit list of
+namespaces (using the `namespaces` option), you need to use `Role` &
+`RoleBinding` instead of `ClusterRole` and `ClusterRoleBinding`, and create one
+in each namespace Spinnaker will manage. You can read about the difference
 between `ClusterRole` and `Role` [here](https://kubernetes.io/docs/admin/authorization/rbac/#rolebinding-and-clusterrolebinding){:target="\_blank"}.
 
 
@@ -102,17 +147,9 @@ metadata:
  namespace: default
 ```
 
-### Docker Registries
+<span class="end-collapsible-section"></span>
 
-Follow the steps under the [Docker Registry](/setup/providers/docker-registry)
-provider to add any registries containing images you want to deploy. If
-you have already done so, you can verify that these accounts exist by running:
-
-```bash
-hal config provider docker-registry account list
-```
-
-## Adding an account
+## Add a Kubernetes account
 
 First, make sure that the provider is enabled:
 
@@ -121,8 +158,7 @@ hal config provider kubernetes enable
 ```
 
 Now, assuming you have a Docker Registry account named `my-docker-registry`,
-run the following `hal` command to add an account named `my-k8s-account` to
-your list of Kubernetes accounts:
+run the following `hal` command to add that to your list of Kubernetes accounts:
 
 ```bash
 hal config provider kubernetes account add my-k8s-account \
@@ -131,12 +167,11 @@ hal config provider kubernetes account add my-k8s-account \
 
 ## Advanced account settings
 
-If you are looking for more configurability, please see the other options
-listed in the [Halyard
-Reference](/reference/halyard/commands#hal-config-provider-kubernetes-account-add).
+If you are looking for more configurability, see the available options in the
+[Halyard Reference](/reference/halyard/commands#hal-config-provider-kubernetes-account-add).
 
 ## Next steps
 
 Optionally, you can [set up another cloud provider](/setup/install/providers/),
-but otherwise you're ready to [choose an environment](/setup/install/environment/)
+but otherwise you're ready to [choose the environment](/setup/install/environment/)
 in which to install Spinnaker.
