@@ -214,6 +214,8 @@ guides:
           - title: Triggering Pipelines
             collapsed: true
             children:
+              - title: Overview
+                url: /guides/user/pipeline/triggers/
               - title: Triggering on Pub/Sub Messages
                 url: /guides/user/pipeline/triggers/pubsub/
               - title: Triggering on Webhooks
