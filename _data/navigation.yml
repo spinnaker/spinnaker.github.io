@@ -209,9 +209,13 @@ guides:
       - title: Pipelines
         collapsed: true
         children:
+          - title: Managing Pipelines
+            url: /guides/user/pipeline/managing-pipelines/
           - title: Triggering Pipelines
             collapsed: true
             children:
+              - title: Overview
+                url: /guides/user/pipeline/triggers/
               - title: Triggering on Pub/Sub Messages
                 url: /guides/user/pipeline/triggers/pubsub/
               - title: Triggering on Webhooks
