@@ -6,12 +6,9 @@ sidebar:
 redirect_from: /docs/installation-tools
 ---
 
-This section has the steps for installing and configuring Spinnaker.
-
-Using this procedure, the Spinnaker you install is suitable for use in production. 
-It's more configurable and available than a [Quickstart](/setup/quickstart/)
-installation (though that's a good choice if you just want to evaluate Spinnaker 
-without much work). 
+This section describes how to install and set up Spinnaker so that it can be configured for
+use in production. If you just want to evaluate Spinnaker without much work, one of the options
+in [Quickstart](/setup/quickstart/) might be a better choice.
 
 ## The process
 
