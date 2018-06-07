@@ -10,62 +10,53 @@ redirect_from: /setup/providers/kubernetes/
 
 For the Kubernetes provider, a Spinnaker [Account](/concepts/providers/#accounts)
 maps to a credential that can authenticate against your Kubernetes Cluster. It
-can also include a set of [Docker Registry](/setup/providers/docker-registry)
-accounts that are used as a source of images.
+also includes a set of one or more [Docker
+Registry](/setup/providers/docker-registry) accounts that are used as a source
+of images.
 
 When setting your your Kubernetes provider account, you will [use halyard
 to add the account](#), then provide any Docker registries that you'll use.
 
-## A note about accessing your cluster
-
-Kubernetes can run on a local machine, but more likely you will use one of
-several hosted solutions:
-
-* [GKE](https://cloud.google.com/kubernetes-engine/){:target="\_blank"}
-* [EKS](https://aws.amazon.com/eks/){:target="\_blank"}
-* [Azure Container Service](https://azure.microsoft.com/services/container-service/){:target="\_blank"}
-
-Consult the documentation for your environment to find out how to get the
-`kubeconfig` that you must provide to Halyard.
-
 ## Prerequisites
-
-Both the Kubernetes credentials and Docker Registry accounts must exist before
-Halyard will allow you to add a Kubernetes account. The sections below will
-help you create these resources if you do not already have them.
 
 <span class="begin-collapsible-section"></span>
 
-### You need a Kubernetes cluster
+### You need a Kubernetes cluster and its credentials
 
-> Note: Halyard on Docker comes with `kubectl` already installed. Halyard on
-> Ubuntu does not.
+You need a running Kubernetes cluster, with corresponding credentials in a
+[kubeconfig file](https://kubernetes.io/docs/concepts/cluster-administration/authenticate-across-clusters-kubeconfig/){:target="\_blank"}.
 
-You need to have a running Kubernetes cluster with corresponding credentials in
-a [kubeconfig file](https://kubernetes.io/docs/concepts/cluster-administration/authenticate-across-clusters-kubeconfig/){:target="\_blank"}.
-If you do have a running cluster and credentials, you can verify that those
-credentials work by running the following command on a machine that has the
-credentials and has [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl-overview/){:target="\_blank"} installed:
+If you have these, you can verify the credentials work by running this command
+on a machine that has the credentials and has
+[`kubectl`](https://kubernetes.io/docs/user-guide/kubectl-overview/){:target="\_blank"}
+installed:
 
 ```bash
 kubectl get namespaces
 ```
 
-If you do not have a Kubernetes cluster, you could try one of the following
-hosted solutions:
+> Note: Halyard on Docker comes with `kubectl` already installed. Halyard on
+> Ubuntu does not.
+
+If you don't have a Kubernetes cluster, you can try one of these hosted
+solutions:
 
 * [Google Kubernetes Engine](https://cloud.google.com/container-engine/){:target="\_blank"}
 
-  Due to limitations in the client library that this version of the provider
-  depends on, you need to use [legacy cluster certificates as shown in this
-  link](https://cloud.google.com/kubernetes-engine/docs/how-to/iam-integration#authentication_modes){:target="\_blank"}
-  for authentication to work.
+  For authentication to work, you need to [use legacy cluster certificates](https://cloud.google.com/kubernetes-engine/docs/how-to/iam-integration#authentication_modes){:target="\_blank"}.
+  This is because of limitations in the client library that the Kubernetes legacy
+  provider depends on.
 
 * [Azure Container
   Service](https://docs.microsoft.com/en-us/azure/container-service/container-service-kubernetes-walkthrough){:target="\_blank"}
 
+* [EKS](https://aws.amazon.com/eks/){:target="\_blank"}
+
 Or pick a different [solution that works for
 you](https://kubernetes.io/docs/setup/pick-right-solution/){:target="\_blank"}.
+
+Consult the documentation for your environment to find out how to get the
+`kubeconfig` that you must provide to Halyard.
 
 <span class="end-collapsible-section"></span>
 
