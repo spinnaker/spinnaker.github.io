@@ -14,8 +14,8 @@ in [Quickstart](/setup/quickstart/) might be a better choice.
 
 Installing a complete Spinnaker involves these steps:
 1. [Install Halyard](/setup/install/halyard/)
-2. [Choose an environment](/setup/install/environment/)
-3. [Choose a cloud provider](/setup/install/providers/)
+2. [Choose a cloud provider](/setup/install/providers/)
+3. [Choose an environment](/setup/install/environment/)
 4. [Deploy Spinnaker](/setup/install/deploy/)
 
 
