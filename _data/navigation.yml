@@ -365,6 +365,8 @@ reference:
         url: /reference/architecture/load/
       - title: Life of a Bake
         url: /reference/architecture/loab/
+  - title: Pipeline Stages
+    url: /reference/pipeline/stages
 
 community:
   - title: Releases
