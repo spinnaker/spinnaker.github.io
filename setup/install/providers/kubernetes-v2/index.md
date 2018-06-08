@@ -60,7 +60,7 @@ the following resources with `kubectl apply --context $CONTEXT ...`
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: spinnaker
+  name: spinnaker-service-account
   namespace: spinnaker
 
 ---
@@ -93,7 +93,7 @@ TOKEN=$(kubectl get secret --context $CONTEXT \
        -n spinnaker \
        -o jsonpath='{.secrets[0].name}') \
    -n spinnaker \
-   -o jsonpath='{.data.token}')
+   -o jsonpath='{.data.token}' | base64 --decode)
 ```
 
 Place this token into your `kubeconfig` under a new user called
