@@ -131,7 +131,7 @@ run `hal deploy apply`.
      * If you are deploying Spinnaker on Kubernetes, hang tight, or
        contact the slack channel; support is forthcoming.
 
-  3. Proceed to [install the operational dashboards](#install-the-operational-dashboards]
+  3. Proceed to [install the operational dashboards](#install-the-operational-dashboards)
 
 
 ## Install the operational dashboards
