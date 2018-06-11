@@ -142,13 +142,17 @@ API](https://console.developers.google.com/apis/api/cloudresourcemanager.googlea
    PASSWORD_FILE=$SERVICE_ACCOUNT_DEST
    ```
 
-1. Enable the provider:
+1. Enable the provider.
 
    ```bash
    hal config provider docker-registry enable
    ```
 
-1. Add the account:
+1. Add the account.
+
+   > Note: if you're running Halyard [in a Docker
+   > container](/setup/install/halyard/#install-halyard-on-docker), you might
+   > have to restart the container, now mounting the `~/.gcp` directory. 
 
    ```bash
    hal config provider docker-registry account add my-docker-registry \

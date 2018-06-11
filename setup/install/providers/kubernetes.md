@@ -65,8 +65,8 @@ Consult the documentation for your environment to find out how to get the
 ### You need a Docker registry
 
 To use the Kubernetes (legacy) provider, you need a Docker registry as a source
-of images. To enable this, you set up a Docker registry as another provider, [as
-described here](/setup/providers/docker-registry), and add any registries that
+of images. To enable this, [set up a Docker registry as another
+provider](/setup/providers/docker-registry), and add any registries that
 contain images you want to deploy.
 
 You can verify your Docker registry accounts using this command:
