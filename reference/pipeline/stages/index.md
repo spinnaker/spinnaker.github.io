@@ -13,10 +13,27 @@ sidebar:
 This article describes the currently-supported stages that you can add to your
 Spinnaker pipelines.
 
+Note that when you're creating a pipeline, you probably won't see every stage
+that's listed here: you'll only see the stages that Spinnaker supports on your
+provider.
+
 ## General
 
 ### Bake
-Bake an image in the specified region.
+Bake an image from the specified packages. Baking here refers to the process
+of creating a machine image. Spinnaker's bakery is backed by
+[Hashicorp's Packer](https://www.packer.io/intro/). Spinnaker provides default
+[Packer templates](https://www.packer.io/docs/templates/index.html) and base
+machine images in order to get you started, but see the
+[bakery configuration guide](/setup/bakery/) if you want to customize your bake
+process.
+
+Note that Spinnaker skips the bake process if it detects that a new bake is
+unnecessary. Spinnaker generates a unique key for each bake based on the bake
+stage parameters: base OS, versioned packages, etc. If either the packages or
+the bake stage parameters have changed, Spinnaker triggers a new bake. To change
+the default behavior and re-bake your image each time the pipeline runs, select
+**Rebake** in the **Bake Configuration** section.
 
 ### Canary Analysis
 Run [automated canary analysis](/guides/user/canary/) against the deployment
