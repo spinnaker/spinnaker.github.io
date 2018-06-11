@@ -42,6 +42,77 @@ The Kubernetes provider has two requirements:
     API resource that `kubectl` supports is also supported by Spinnaker. This
     is an improvement over the original Kubernetes provider in Spinnaker.
 
+
+<span class="begin-collapsible-section"></span>
+
+### Optional: Create a Kubernetes Service Account
+
+If you want, you can associate Spinnaker with a [Kubernetes Service
+Account](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/),
+even when managing multiple Kubernetes clusters. This can be useful if you need
+to grant Spinnaker certain roles in the cluster later on, or you typically
+depend on an authentication mechanism that doesn't work in all environments.
+
+Given that you want to create a Service Account in context `$CONTEXT`, create
+the following resources with `kubectl apply --context $CONTEXT ...`
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: spinnaker-service-account
+  namespace: spinnaker
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: spinnaker-admin
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: spinnaker-service-account
+  namespace: spinnaker
+```
+
+> Note, this grants Spinnaker full access to the Kubernetes cluster using the
+> `cluster-admin` role binding. This isn't necessary -- it's used as a simple
+> example. For more fine-grained control, see the
+> [RBAC](#optional-configure-kubernetes-roles-rbac) section.
+
+Next, grab the token that this service account relies on:
+
+```bash
+TOKEN=$(kubectl get secret --context $CONTEXT \
+   $(kubectl get serviceaccount spinnaker-service-account \
+       --context $CONTEXT \
+       -n spinnaker \
+       -o jsonpath='{.secrets[0].name}') \
+   -n spinnaker \
+   -o jsonpath='{.data.token}' | base64 --decode)
+```
+
+Place this token into your `kubeconfig` under a new user called
+`${CONTEXT}-token-user`:
+
+```bash
+kubectl config set-credentials ${CONTEXT}-token-user --token $TOKEN
+```
+
+Now configure your context `$CONTEXT` to use this new user:
+
+```bash
+kubectl config set-context $CONTEXT --user ${CONTEXT}-token-user
+```
+
+Now `$CONTEXT` will authenticate using the token we created above.
+
+<span class="end-collapsible-section"></span>
+
 <span class="begin-collapsible-section"></span>
 
 ### Optional: Configure Kubernetes roles (RBAC)
@@ -58,7 +129,6 @@ namespaces (using the `namespaces` option), you need to use `Role` &
 `Role` and `RoleBinding` to each namespace Spinnaker manages. You can read
 about the difference between `ClusterRole` and `Role`
 [here](https://kubernetes.io/docs/admin/authorization/rbac/#rolebinding-and-clusterrolebinding){:target="\_blank"}.
-
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1

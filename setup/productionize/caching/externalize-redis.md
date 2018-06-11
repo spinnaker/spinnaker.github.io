@@ -3,6 +3,7 @@ layout: single
 title:  "Externalize Redis"
 sidebar:
   nav: setup
+redirect_from: /setup/scaling/externalize-redis/
 ---
 
 {% include toc %}
@@ -30,15 +31,15 @@ We will refer to this as `$REDIS_ENDPOINT`.
 
 Using [Halyard's custom
 configuration](/reference/halyard/custom#custom-service-settings) we will
-create the following file `~/.hal/$PROFILE/service-settings/redis.yml`:
+create the following file `~/.hal/$DEPLOYMENT/service-settings/redis.yml`:
 
 ```yaml
 overrideBaseUrl: $REDIS_ENDPOINT
 skipLifeCycleManagement: true
 ```
 
-> `$PROFILE` is typically `default`. See [the
-> documentation](/reference/halyard#profiles) for more details.
+> `$DEPLOYMENT` is typically `default`. See [the
+> documentation](/reference/halyard#deployments) for more details.
 
 > __Note__: By setting `skipLifeCycleManagement` we are telling Halyard to stop
 > deploying/check the status of the Redis instance. If Halyard has already
@@ -52,14 +53,14 @@ installations yourself, Halyard does not create them for you_.
 
 Using [Halyard's custom
 configuration](/reference/halyard/custom#custom-profiles) we will
-create the following file `~/.hal/$PROFILE/profile-settings/$SERVICE-local.yml`:
+create the following file `~/.hal/$DEPLOYMENT/profile-settings/$SERVICE-local.yml`:
 
 ```yaml
 services.redis.baseUrl: $REDIS_ENDPOINT
 ```
 
-> `$PROFILE` is typically `default`. See [the
-> documentation](/reference/halyard#profiles) for more details.
+> `$DEPLOYMENT` is typically `default`. See [the
+> documentation](/reference/halyard#deployments) for more details.
 
 > `$SERVICE` is the service name (e.g. `clouddriver`) that is being configured
 > to use another endpoint.
