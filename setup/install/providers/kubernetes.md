@@ -26,10 +26,10 @@ to add the account](#), then provide any Docker registries that you'll use.
 You need a running Kubernetes cluster, with corresponding credentials in a
 [kubeconfig file](https://kubernetes.io/docs/concepts/cluster-administration/authenticate-across-clusters-kubeconfig/){:target="\_blank"}.
 
-If you have these, you can verify the credentials work by running this command
-on a machine that has the credentials and has
+If you have these, and you have
 [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl-overview/){:target="\_blank"}
-installed:
+installed on the machine where you have your `kubeconfig`, you can verify the
+credentials work by running this command:
 
 ```bash
 kubectl get namespaces
@@ -41,22 +41,41 @@ kubectl get namespaces
 If you don't have a Kubernetes cluster, you can try one of these hosted
 solutions:
 
-* [Google Kubernetes Engine](https://cloud.google.com/container-engine/){:target="\_blank"}
-
-  For authentication to work, you need to [use legacy cluster certificates](https://cloud.google.com/kubernetes-engine/docs/how-to/iam-integration#authentication_modes){:target="\_blank"}.
-  This is because of limitations in the client library that the Kubernetes legacy
-  provider depends on.
-
 * [Azure Container
   Service](https://docs.microsoft.com/en-us/azure/container-service/container-service-kubernetes-walkthrough){:target="\_blank"}
 
 * [EKS](https://aws.amazon.com/eks/){:target="\_blank"}
+
+* [Google Kubernetes Engine](https://cloud.google.com/container-engine/){:target="\_blank"}
+
+  See the note below on getting credentials in GKE.
 
 Or pick a different [solution that works for
 you](https://kubernetes.io/docs/setup/pick-right-solution/){:target="\_blank"}.
 
 Consult the documentation for your environment to find out how to get the
 `kubeconfig` that you must provide to Halyard.
+
+#### If your cluster is running on GKE
+
+The simplest way to get credentials is to use legacy authorization.
+
+1. Enable [Legacy authorization](https://cloud.google.com/sdk/gcloud/reference/beta/container/clusters/update){:target=""\_blank"}.
+
+1. Configure `gcloud` to populate the `kubeconfig` with
+[legacy credentials](https://cloud.google.com/kubernetes-engine/docs/how-to/iam-integration#using_legacy_cluster_certificate_or_user_credentials){:target=""\_blank"}:
+
+   ```bash
+   gcloud config set container/use_client_certificate true
+   ```
+
+1. And get your credentials.
+
+   ```bash
+   gcloud container clusters get-credentials NAME --zone ZONE
+   ```
+
+However, [you can also use RBAC and a service account](#optional-configure-kubernetes-roles-rbac).
 
 <span class="end-collapsible-section"></span>
 
@@ -142,19 +161,19 @@ metadata:
 
 ## Add a Kubernetes account
 
-First, make sure that the provider is enabled:
+1. Make sure that the provider is enabled:
 
-```bash
-hal config provider kubernetes enable
-```
+   ```bash
+   hal config provider kubernetes enable
+   ```
 
-Now, assuming you have a Docker Registry account named `my-docker-registry`,
+1. Assuming you have a Docker Registry account named `my-docker-registry`,
 run the following `hal` command to add that to your list of Kubernetes accounts:
 
-```bash
-hal config provider kubernetes account add my-k8s-account \
-    --docker-registries my-docker-registry
-```
+   ```bash
+   hal config provider kubernetes account add my-k8s-account \
+       --docker-registries my-docker-registry
+   ```
 
 ## Advanced account settings
 
