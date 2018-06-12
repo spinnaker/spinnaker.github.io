@@ -20,6 +20,8 @@ how they are configured in AWS.
    managed account. These will be configured to grant AssumeRole access to the
    managed account. __This includes the managing account!__
 
+![](concepts.png)
+
 
 That being said, there are two ways to configure Amazon Web Services (AWS) Cloud Provider. You may choose one of them based on your preferences
 
@@ -28,6 +30,6 @@ That being said, there are two ways to configure Amazon Web Services (AWS) Cloud
 
 
 ### TODO :
-- [ ] Insert diagram to explain
+- [x] Insert diagram to explain
 - [ ] Insert CLI steps
 - [x] General Structure change
