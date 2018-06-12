@@ -1,9 +1,8 @@
 ---
 layout: single
-title:  "Amazon Web Services"
+title:  "Using AWS Console"
 sidebar:
   nav: setup
-redirect_from: /setup/providers/aws/
 ---
 
 {% include toc %}
@@ -55,19 +54,6 @@ Navigate to [Console](https://console.aws.amazon.com/){:target="\_blank"} > EC2 
 2. Enter `${MY_AWS_ACCOUNT}-keypair` as the keypair name.
 3. Download the resulting `${MY_AWS_ACCOUNT}-keypair.pem`, and run `chmod 400`
    against the file
-
-## Adding an account
-
-There are two types of Accounts in the Spinnaker AWS provider; however, the
-distinction is not made in how they are configured using Halyard, but instead
-how they are configured in AWS.
-
-1. Managing accounts. There is always exactly one managing account, this
-   account is what Spinnaker authenticates as, and if necessary, assumes roles
-   in the managed accounts.
-2. Managed accounts. Every account that you want to modify resources in is a
-   managed account. These will be configured to grant AssumeRole access to the
-   managed account. __This includes the managing account!__
 
 ### Configuring the managing account
 
