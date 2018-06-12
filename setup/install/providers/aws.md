@@ -130,7 +130,7 @@ Navigate to [Console](https://console.aws.amazon.com/){:target="\_blank"} > EC2 
 
 Record the ARN of the user you have created - this will be used as `${AUTH_ARN}`:
 
-`arn:aws:iam::${MANAGED_ACCOUNT_ID}:role/SpinnakerAuthRole`
+`arn:aws:iam::${MANAGING_ACCOUNT_ID}:role/SpinnakerAuthRole`
 
 ##### Option 2: Add a user and access key / secret pair
 
@@ -154,7 +154,7 @@ hal config provider aws edit --access-key-id ${ACCESS_KEY_ID} \
     --secret-access-key # do not supply the key here, you will be prompted
 ```
 Record the ARN of the user you have created - this will be used as `${AUTH_ARN}`:
-`arn:aws:iam::${MANAGED_ACCOUNT_ID}:user/Spinnaker`
+`arn:aws:iam::${MANAGING_ACCOUNT_ID}:user/Spinnaker`
 
 ### Configuring the managed account
 
