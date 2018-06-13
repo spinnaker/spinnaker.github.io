@@ -11,19 +11,94 @@ In [AWS](https://aws.amazon.com/){:target="\_blank"}, an [__Account__](/concepts
 maps to a credential able to authenticate against a given [AWS
 account](https://aws.amazon.com/account/){:target="\_blank"}.
 
-## Prerequisites
+## Assumptions
 
-Whatever account you want to manage with AWS needs a few things configured
-before Spinnaker can manage it.
+Whatever account you want to manage with AWS needs a few things configured before Spinnaker can manage it.
 
-These steps assume that you will be naming this account `${MY_AWS_ACCOUNT}`
-and is assigned region `us-west-1`.
+* [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) is installed and [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
+* You will be naming this account `${MY_AWS_ACCOUNT}` and is assigned region `${AWS_REGION}`.
 
 ### Create a VPC
+In case you dont have a VPC already created in your account,you can create it using the following commands
+
+```bash
+
+AWS_REGION="us-west-2"
+VPC_CIDR="10.0.0.0/16"
+VPC_NAME="defaultvpc"
+SUBNET_PUBLIC_NAME="defaultvpc.public"
+SUBNET_PUBLIC_CIDR="10.0.1.0/24"
+SUBNET_PUBLIC_AZ="us-west-2a"
+
+VPC_ID=$(aws ec2 create-vpc --cidr-block $VPC_CIDR --query 'Vpc.{VpcId:VpcId}' --output text --region $AWS_REGION)
+echo "  VPC ID '$VPC_ID' CREATED in '$AWS_REGION' region."
+
+# Add Name tag to VPC
+
+aws ec2 create-tags --resources $VPC_ID --tags "Key=Name,Value=$VPC_NAME" --region $AWS_REGION
+echo "  VPC ID '$VPC_ID' NAMED as '$VPC_NAME'."
+
+# Create Public Subnet
+
+echo "Creating Public Subnet..."
+SUBNET_PUBLIC_ID=$(aws ec2 create-subnet --vpc-id $VPC_ID --cidr-block $SUBNET_PUBLIC_CIDR --availability-zone $SUBNET_PUBLIC_AZ \
+  --query 'Subnet.{SubnetId:SubnetId}' --output text --region $AWS_REGION)
+
+echo "  Subnet ID '$SUBNET_PUBLIC_ID' CREATED in '$SUBNET_PUBLIC_AZ'" "Availability Zone."
+
+# Add Name tag to Public Subnet
+aws ec2 create-tags --resources $SUBNET_PUBLIC_ID --tags "Key=Name,Value=$SUBNET_PUBLIC_NAME" --region $AWS_REGION
+
+echo "  Subnet ID '$SUBNET_PUBLIC_ID' NAMED as" "'$SUBNET_PUBLIC_NAME'."
+
+# Create Internet gateway
+echo "Creating Internet Gateway..."
+IGW_ID=$(aws ec2 create-internet-gateway \
+  --query 'InternetGateway.{InternetGatewayId:InternetGatewayId}' \
+  --output text \
+  --region $AWS_REGION)
+echo "  Internet Gateway ID '$IGW_ID' CREATED."
+
+# Attach Internet gateway to your VPC
+aws ec2 attach-internet-gateway \
+  --vpc-id $VPC_ID \
+  --internet-gateway-id $IGW_ID \
+  --region $AWS_REGION
+  
+echo "  Internet Gateway ID '$IGW_ID' ATTACHED to VPC ID '$VPC_ID'."
+
+# Create Route Table
+echo "Creating Route Table..."
+ROUTE_TABLE_ID=$(aws ec2 create-route-table \
+  --vpc-id $VPC_ID \
+  --query 'RouteTable.{RouteTableId:RouteTableId}' \
+  --output text \
+  --region $AWS_REGION)
+echo "  Route Table ID '$ROUTE_TABLE_ID' CREATED."
+
+# Create route to Internet Gateway
+RESULT=$(aws ec2 create-route \
+  --route-table-id $ROUTE_TABLE_ID \
+  --destination-cidr-block 0.0.0.0/0 \
+  --gateway-id $IGW_ID \
+  --region $AWS_REGION)
+echo "  Route to '0.0.0.0/0' via Internet Gateway ID '$IGW_ID' ADDED to" \
+  "Route Table ID '$ROUTE_TABLE_ID'."
+
+# Associate Public Subnet with Route Table
+RESULT=$(aws ec2 associate-route-table  \
+  --subnet-id $SUBNET_PUBLIC_ID \
+  --route-table-id $ROUTE_TABLE_ID \
+  --region $AWS_REGION)
+echo "  Public Subnet ID '$SUBNET_PUBLIC_ID' ASSOCIATED with Route Table ID" \
+  "'$ROUTE_TABLE_ID'."
 
 
+```
 
 ### Create an EC2 role
+
+
 
 ### Create an EC2 key pair
 
