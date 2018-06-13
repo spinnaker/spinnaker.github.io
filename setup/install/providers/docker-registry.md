@@ -19,7 +19,7 @@ repositories](https://docs.docker.com/glossary/?term=repository){:target="\_blan
 Perform the steps in this article in the same place where you have Halyard
 installed, whether [in a Docker
 container](/setup/install/halyard/#install-halyard-on-docker) or [locally on
-Ubuntu](/setup/install/halyard/#install-on-ubuntu-14041604).
+Ubuntu/Debian or macOS](/setup/install/halyard/#update-halyard-on-debianubuntu-or-macos).
 
 ## Prerequisites
 
@@ -152,7 +152,7 @@ API](https://console.developers.google.com/apis/api/cloudresourcemanager.googlea
 
    > Note: if you're running Halyard [in a Docker
    > container](/setup/install/halyard/#install-halyard-on-docker), you might
-   > have to restart the container, now mounting the `~/.gcp` directory. 
+   > have to restart the container, now mounting the `~/.gcp` directory.
 
    ```bash
    hal config provider docker-registry account add my-docker-registry \

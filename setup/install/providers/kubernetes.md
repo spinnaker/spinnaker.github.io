@@ -14,8 +14,9 @@ also includes a set of one or more [Docker
 Registry](/setup/providers/docker-registry) accounts that are used as a source
 of images.
 
-When setting your your Kubernetes provider account, you will [use halyard
-to add the account](#), then provide any Docker registries that you'll use.
+When setting your your Kubernetes provider account, you will [use halyard to add
+the account](#add-a-kubernetes-account) and provide any Docker registries that
+you'll use.
 
 ## Prerequisites
 
@@ -94,8 +95,8 @@ You can verify your Docker registry accounts using this command:
 hal config provider docker-registry account list
 ```
 
-When you [add your Kubernetes provider account](#adding-an-account), you include
-your registry (or registries) in the command.
+When you [add your Kubernetes provider account](#add-a-kubernetes-account), you
+include your registry (or registries) in the command.
 
 <span class="end-collapsible-section"></span>
 
