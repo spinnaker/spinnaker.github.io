@@ -18,6 +18,8 @@ Use this option to deploy Spinnaker, if you are familar with deployment using [A
 ### Managing Account
 1. Navigate to [Console](https://console.aws.amazon.com/){:target="\_blank"} > CloudFormation and [select](https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/getting-started.html#select-region) your preferred region.
 2. Download [the template](https://github.com/spinnaker.github.io/blob/master/setup/install/providers/aws/managing.yaml) locally to your workstation.
+    
+    2.a (Optional). Add Managing account as shown [here](https://github.com/spinnaker.github.io/blob/master/setup/install/providers/aws/managing.yaml#L104)
 3. Creating the CloudFormation Stack
     * __Create Stack__ > __Upload a template to Amazon S3__ > __Browse to template you downloaded in Step-2 above__ > __Next__  
     * Enter __Stack Name__ as spinnaker-__managing__-infrastructure-setup and follow the prompts on screen to create the stack
@@ -49,6 +51,7 @@ If you want to use AccessKeys and Secrets to run Spinnaker
 ```bash
 
 curl https://github.com/spinnaker.github.io/blob/master/setup/install/providers/aws/managing.yaml
+echo "Optionally add Managing account to the file downloaded as shown at https://github.com/spinnaker.github.io/blob/master/setup/install/providers/aws/managing.yaml#L104"
 aws cloudformation deploy --stack-name spinnaker-managing-infrastructure-setup --template-file managing.yaml \
 --parameter-overrides UseAccessKeyForAuthentication=true --capabilities CAPABILITY_NAMED_IAM --region us-west-2
 ```
@@ -58,6 +61,7 @@ If you want to use InstanceProfile run Spinnaker
 ```bash
 
 curl https://github.com/spinnaker.github.io/blob/master/setup/install/providers/aws/managing.yaml
+echo "Optionally add Managing account to the file downloaded as shown at https://github.com/spinnaker.github.io/blob/master/setup/install/providers/aws/managing.yaml#L104"
 aws cloudformation deploy --stack-name spinnaker-managing-infrastructure-setup --template-file managing.yaml \
 --parameter-overrides UseAccessKeyForAuthentication=false --capabilities CAPABILITY_NAMED_IAM --region us-west-2
 ```

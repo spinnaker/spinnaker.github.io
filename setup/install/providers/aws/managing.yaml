@@ -100,7 +100,8 @@ Resources:
           - Action: sts:AssumeRole
             Effect: Allow
             Resource:
-              - !Sub arn:aws:iam::${AWS::AccountId}:role/spinnakerManaged # Keep Adding Managed Accounts here
+              - !Sub arn:aws:iam::${AWS::AccountId}:role/spinnakerManaged # This is the current account
+              #- arn:aws:iam::YOUR_MANAGED_ACCOUNT1:role/spinnakerManaged # Keep Adding Managed Accounts like this
       PolicyName: SpinnakerAssumeRolePolicy
 
 # Creates a single subnet VPC
