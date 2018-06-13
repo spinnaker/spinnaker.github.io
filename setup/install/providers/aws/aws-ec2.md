@@ -37,7 +37,7 @@ Use this option to deploy Spinnaker, if you are familar with deployment using [A
     * Enter __Stack Name__ as spinnaker-__managed__-infrastructure-setup and follow the prompts on screen to create the stack
     * Enter __AuthArn__ and __ManagingAccountId__ as the value noted above and follow the prompts on screen to create the stack
 
-![](cloudformation-outputs.png)  
+![](outputs.png)  
 ## Option-2 : Use AWS CLI to configure AWS
 
 This option assumes that you have AWS CLI [installed](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) ,
@@ -112,7 +112,7 @@ You can view the available configuration flags for AWS within the
 ## Next steps
 
 Optionally, you can [set up Amazon's Elastic Container
-Service](/setup/install/providers/ecs/) or [set up another cloud
+Service](/setup/install/providers/aws/aws-ecs/) or [set up another cloud
 provider](/setup/install/providers/), but otherwise you're ready to
 [choose an environment](/setup/install/environment/)
 in which to install Spinnaker.

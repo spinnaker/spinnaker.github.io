@@ -27,9 +27,3 @@ That being said, there are two ways to configure Amazon Web Services (AWS) Cloud
 
 * [Amazon Elastic Compute Cloud (EC2)](/setup/install/providers/aws/aws-ec2/) - - Use this option, if you want to run Spinnaker in [EC2 Instances](https://aws.amazon.com/ec2/)
 * [Amazon Elastic Container Service (ECS)](/setup/install/providers/aws/aws-ecs/) - Use this option, if you want to run Spinnaker in container. Container orchestration is baked by [Amazon ECS](https://aws.amazon.com/ecs/)
-
-
-### TODO :
-- [x] Insert diagram to explain
-- [ ] Insert CLI steps
-- [x] General Structure change
