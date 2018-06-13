@@ -23,6 +23,7 @@ Use this option to deploy Spinnaker, if you are familar with deployment using [A
     * Enter __Stack Name__ as spinnaker-__managing__-infrastructure-setup and follow the prompts on screen to create the stack
 4. Once the stack is select the stack you created in Step-3 > Outputs and note the values. You will need these values for subsequent configurations.
 
+
 ### In each of the Managing Account
 
 > These steps need to be carried out for the managing account as well.
@@ -33,7 +34,8 @@ Use this option to deploy Spinnaker, if you are familar with deployment using [A
     * __Create Stack__ > __Upload a template to Amazon S3__ > __Browse to template you downloaded in Step-2 above__ > __Next__  
     * Enter __Stack Name__ as spinnaker-__managed__-infrastructure-setup and follow the prompts on screen to create the stack
     * Enter __AuthArn__ and __ManagingAccountId__ as the value noted above and follow the prompts on screen to create the stack
-    
+
+![](cloudformation-outputs.png)  
 ## Option-2 : Use AWS CLI to configure AWS
 
 This option assumes that you have AWS CLI [installed](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) ,
