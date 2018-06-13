@@ -45,12 +45,10 @@ setup:
             children:
               - title: Overview
                 url: /setup/install/providers/aws/
-              - title: Using AWS CLI
-                url: /setup/install/providers/aws/aws-cli/
-              - title: Using AWS Console
-                url: /setup/install/providers/aws/aws-console/
-          - title: ECS (Amazon Web Services)
-            url: /setup/install/providers/ecs/
+              - title: EC2
+                url: /setup/install/providers/aws/aws-ec2/
+              - title: ECS
+                url: /setup/install/providers/aws/aws-ecs/
           - title: Azure
             url: /setup/install/providers/azure/
           - title: DC/OS

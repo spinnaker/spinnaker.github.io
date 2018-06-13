@@ -1,9 +1,8 @@
 ---
 layout: single
-title:  "ECS (Amazon Web Services)"
+title:  "Amazon ECS"
 sidebar:
   nav: setup
-redirect_from: /setup/providers/ecs/
 ---
 
 {% include toc %}

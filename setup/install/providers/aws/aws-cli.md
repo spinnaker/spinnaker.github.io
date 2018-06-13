@@ -7,19 +7,30 @@ sidebar:
 
 {% include toc %}
 
+## Assumptions
 In [AWS](https://aws.amazon.com/){:target="\_blank"}, an [__Account__](/concepts/providers/#accounts)
 maps to a credential able to authenticate against a given [AWS
 account](https://aws.amazon.com/account/){:target="\_blank"}.
 
-## Assumptions
-
 Whatever account you want to manage with AWS needs a few things configured before Spinnaker can manage it.
 
-* [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) is installed and [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
+* AWS CLI is [installed](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) and [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
 * You will be naming this account `${MY_AWS_ACCOUNT}` and is assigned region `${AWS_REGION}`.
 
-### Create a VPC
-In case you dont have a VPC already created in your account,you can create it using the following commands
+
+## Changes in Managed Account
+
+Following are the steps required in the Managed Account
+
+* Create a VPC
+* Configure Authentication mechanism
+    * Option 1: Add an IAM role to the Spinnaker EC2 instance
+    * Option 2: Add a user and access key / secret pair
+
+
+## Create a VPC in Managed Account
+In case you dont have a VPC already created in your account,you can create it using the following script.
+Copy and Paste the following script to your command line.
 
 ```bash
 
@@ -96,6 +107,78 @@ echo "  Public Subnet ID '$SUBNET_PUBLIC_ID' ASSOCIATED with Route Table ID" \
 
 ```
 
+## Configure an authentication mechanism
+
+### Option 1: Add an IAM role to the Spinnaker EC2 instance in Managing Account
+If you plan on running Spinnaker on EC2 instances, the recommended approach is to assign an IAM role to the instance.
+
+
+```bash
+
+MANAGING_ACCOUNT_ID="FILL_YOUR_MANAGING_SPINNAKER_AWS_ACCOUNT"
+MANAGED_ACCOUNT_ID="FILL_YOUR_MANAGED_AWS_ACCOUNT"
+
+aws iam create-role --role-name SpinnakerAuthRole --assume-role-policy-document \
+"{ \"Version\": \"2012-10-17\", \"Statement\": [ { \"Effect\": \"Allow\", \"Principal\": { \"AWS\": \"ec2.amazonaws.com\"}, \"Action\": \"sts:AssumeRole\" } ] }"
+
+aws iam put-role-policy --role-name SpinnakerAuthRole --policy-name SpinnakerAssumeRolePolicy --policy-document \
+"{ \"Version\": \"2012-10-17\", \"Statement\": [{ \"Action\": \"sts:AssumeRole\", \"Resource\": [ \"arn:aws:iam::${MANAGING_ACCOUNT_ID}:role/spinnakerManaged\", \"arn:aws:iam::${MANAGED_ACCOUNT_ID}:role/spinnakerManaged\" ], \"Effect\": \"Allow\" }] }
+
+aws iam attach-role-policy --role-name SpinnakerAuthRole --policy-arn arn:aws:iam::aws:policy/PowerUserAccess
+```
+
+
+Correspondingly, create a role and grant the access to the role created above in __**each of the Managed Account including Managing Account**__
+
+```bash
+
+MANAGING_ACCOUNT_ID="FILL_YOUR_MANAGING_SPINNAKER_AWS_ACCOUNT"
+
+aws iam create-role --role-name spinnakerManaged --assume-role-policy-document \
+"{ \"Version\": \"2012-10-17\", \"Statement\": [ { \"Effect\": \"Allow\", \"Principal\": { \"Service\": \"arn:aws:iam::${MANAGING_ACCOUNT_ID}:role/BaseIAMRole\"}, \"Action\": \"sts:AssumeRole\" } ] }"
+
+aws iam put-role-policy --role-name spinnakerManaged --policy-name SpinnakerPassRole --policy-document \
+"{ \"Version\": \"2012-10-17\", \"Statement\": [{ \"Effect\": \"Allow\", \"Action\": [ \"ec2:*\" ], \"Resource\": \"*\" }, { \"Effect\": \"Allow\", \"Action\": \"iam:PassRole\", \"Resource\": \"arn:aws:iam::${MANAGING_ACCOUNT_ID}:role/BaseIAMRole\" }] }"
+
+aws iam attach-role-policy --role-name spinnakerManaged --policy-arn arn:aws:iam::aws:policy/PowerUserAccess
+aws iam create-instance-profile --instance-profile-name s3access-profile
+```
+
+
+##### Option 2: Add a user and access key / secret pair
+
+If Spinnaker is running outside of EC2, you may add a User and use access key / secret key to authenticate.
+
+```bash
+
+MANAGING_ACCOUNT_ID="FILL_YOUR_MANAGING_SPINNAKER_AWS_ACCOUNT"
+MANAGED_ACCOUNT_ID="FILL_YOUR_MANAGED_AWS_ACCOUNT"
+
+aws iam create-role --role-name SpinnakerAuthRole --assume-role-policy-document \
+"{ \"Version\": \"2012-10-17\", \"Statement\": [ { \"Effect\": \"Allow\", \"Principal\": { \"AWS\": \"ec2.amazonaws.com\"}, \"Action\": \"sts:AssumeRole\" } ] }"
+
+aws iam put-role-policy --role-name SpinnakerAuthRole --policy-name SpinnakerAssumeRolePolicy --policy-document \
+"{ \"Version\": \"2012-10-17\", \"Statement\": [{ \"Action\": \"sts:AssumeRole\", \"Resource\": [ \"arn:aws:iam::${MANAGING_ACCOUNT_ID}:role/spinnakerManaged\", \"arn:aws:iam::${MANAGED_ACCOUNT_ID}:role/spinnakerManaged\" ], \"Effect\": \"Allow\" }] }
+
+aws iam attach-role-policy --role-name SpinnakerAuthRole --policy-arn arn:aws:iam::aws:policy/PowerUserAccess
+```
+
+
+Correspondingly, create a role and grant the access to the role created above in __**each of the Managed Account including Managing Account**__
+
+```bash
+
+MANAGING_ACCOUNT_ID="FILL_YOUR_MANAGING_SPINNAKER_AWS_ACCOUNT"
+
+aws iam create-role --role-name spinnakerManaged --assume-role-policy-document \
+"{ \"Version\": \"2012-10-17\", \"Statement\": [ { \"Effect\": \"Allow\", \"Principal\": { \"Service\": \"arn:aws:iam::${MANAGING_ACCOUNT_ID}:role/BaseIAMRole\"}, \"Action\": \"sts:AssumeRole\" } ] }"
+
+aws iam put-role-policy --role-name spinnakerManaged --policy-name SpinnakerPassRole --policy-document \
+"{ \"Version\": \"2012-10-17\", \"Statement\": [{ \"Effect\": \"Allow\", \"Action\": [ \"ec2:*\" ], \"Resource\": \"*\" }, { \"Effect\": \"Allow\", \"Action\": \"iam:PassRole\", \"Resource\": \"arn:aws:iam::${MANAGING_ACCOUNT_ID}:role/BaseIAMRole\" }] }"
+
+aws iam attach-role-policy --role-name spinnakerManaged --policy-arn arn:aws:iam::aws:policy/PowerUserAccess
+```
+
 ### Create an EC2 role
 
 
@@ -114,15 +197,9 @@ echo "  Public Subnet ID '$SUBNET_PUBLIC_ID' ASSOCIATED with Route Table ID" \
 
 
 
-#### Configure an authentication mechanism
 
 
 
-##### Option 1: Add an IAM role to the Spinnaker EC2 instance
-
-
-
-##### Option 2: Add a user and access key / secret pair
 
 
 

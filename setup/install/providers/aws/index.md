@@ -25,8 +25,8 @@ how they are configured in AWS.
 
 That being said, there are two ways to configure Amazon Web Services (AWS) Cloud Provider. You may choose one of them based on your preferences
 
-* [Command line interface (Recommended)](/setup/install/providers/aws/aws-cli/)
-* [AWS Console](/setup/install/providers/aws/aws-console/)
+* [Amazon Elastic Compute Cloud (EC2)](/setup/install/providers/aws/aws-ec2/) - - Use this option, if you want to run Spinnaker in [EC2 Instances](https://aws.amazon.com/ec2/)
+* [Amazon Elastic Container Service (ECS)](/setup/install/providers/aws/aws-ecs/) - Use this option, if you want to run Spinnaker in container. Container orchestration is baked by [Amazon ECS](https://aws.amazon.com/ecs/)
 
 
 ### TODO :
