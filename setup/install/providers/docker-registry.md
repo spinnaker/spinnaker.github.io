@@ -26,8 +26,9 @@ Ubuntu/Debian or macOS](/setup/install/halyard/#update-halyard-on-debianubuntu-o
 * The Docker Registry you are configuring must already exist.
 * That Registry must support the
 [v2 registry API](https://docs.docker.com/registry/spec/api/){:target="\_blank"}.
-* The Registry needs at least 1 [tag](https://docs.docker.com/glossary/?term=tag){:target="\_blank"}
-among the repositories you define in your Account.
+* If the Registry doesn't have at least 1
+[tag](https://docs.docker.com/glossary/?term=tag){:target="\_blank"} among the
+repositories you define in your Account, Halyard throws a warning.
 
 ## Registry providers
 
@@ -102,7 +103,7 @@ API](https://console.developers.google.com/apis/api/cloudresourcemanager.googlea
    (You can use an [access
    token](https://cloud.google.com/container-registry/docs/advanced-authentication#access_token){:target="\_blank"}
    instead, but that's problematic for Spinnaker because the token is short
-   lived.)
+   lived, and you are responsible for refreshing it.)
 
    ```bash
    SERVICE_ACCOUNT_NAME=spinnaker-gcr-account
