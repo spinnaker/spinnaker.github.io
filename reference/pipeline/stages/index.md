@@ -37,7 +37,10 @@ the default behavior and re-bake your image each time the pipeline runs, select
 
 ### Canary Analysis
 Run [automated canary analysis](/guides/user/canary/) against the deployment
-before fully deploying.
+before fully deploying. Note that this stage _only_ handles analysis; you're
+responsible for provisioning and cleaning up your canary instances elsewhere.
+For a step by step explanation of how to set up a canary analysis stage see the
+[how-to guide](/guides/user/canary/stage/).
 
 ### Check Preconditions
 Check for preconditions before continuing. For example, you can check that
