@@ -82,7 +82,8 @@ hal config provider azure account add my-azure-account \
   --app-key
 ```
 
-> NOTE: You will be prompted for the App Key on standard input. If necessary, you can generate a new key: `az ad sp reset-credentials --name $APP_ID`
+> NOTE: You will be prompted for the App Key on standard input. If necessary,
+you can generate a new key: `az ad sp credential reset --name $APP_ID`
 
 ## Advanced account settings
 
