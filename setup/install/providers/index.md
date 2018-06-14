@@ -24,7 +24,6 @@ Add as many of the following providers as you need. When you're done, return to 
 
 * [App Engine](/setup/install/providers/appengine/)
 * [Amazon Web Services](/setup/install/providers/aws/)
-* [Amazon Web Services - ECS](/setup/install/providers/ecs/)
 * [Azure](/setup/install/providers/azure/)
 * [DC/OS](/setup/install/providers/dcos/)
 * [Google Compute Engine](/setup/install/providers/gce/)
