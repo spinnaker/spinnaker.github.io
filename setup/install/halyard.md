@@ -30,7 +30,7 @@ Halyard runs on...
 
 * Ubuntu 14.04 or 16.04 (Ubuntu 16.04 requires Spinnaker 1.6.0 or later)
 * Debian 8 or 9
-* macOS
+* macOS (tested on 10.13 High Sierra only)
 
 1. Get the latest version of Halyard:
 
