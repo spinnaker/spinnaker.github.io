@@ -41,7 +41,7 @@ Halyard runs on...
 
    For macOS:
    ```bash
-   curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/osx/InstallHalyard.sh
+   curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/macos/InstallHalyard.sh
    ```
 
 1. Install it:

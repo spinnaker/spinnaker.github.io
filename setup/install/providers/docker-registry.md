@@ -167,7 +167,7 @@ API](https://console.developers.google.com/apis/api/cloudresourcemanager.googlea
 
 Most registries fit either the Dockerhub or GCR pattern described above,
 or some mix of the two. In all cases you need to know the FQDN of the
-reegistry, and your username/password pair if you are accessing private images.
+registry, and your username/password pair if you are accessing private images.
 If your registry supports the [`/_catalog`
 endpoint](https://docs.docker.com/registry/spec/api/#listing-repositories){:target="\_blank"}
 you do not have to list your repositories. If it does not, keep in mind that the

@@ -14,7 +14,7 @@ also includes a set of one or more [Docker
 Registry](/setup/providers/docker-registry) accounts that are used as a source
 of images.
 
-When setting your your Kubernetes provider account, you will [use halyard to add
+When setting up your Kubernetes provider account, you will [use halyard to add
 the account](#add-a-kubernetes-account) and provide any Docker registries that
 you'll use.
 
@@ -61,7 +61,9 @@ Consult the documentation for your environment to find out how to get the
 
 The simplest way to get credentials is to use legacy authorization.
 
-1. Enable [Legacy authorization](https://cloud.google.com/sdk/gcloud/reference/beta/container/clusters/update){:target=""\_blank"}.
+1. Enable Legacy authorization.
+
+   ![](/setup/install/providers/images/gke-enable-legacy-auth.png)
 
 1. Configure `gcloud` to populate the `kubeconfig` with
 [legacy credentials](https://cloud.google.com/kubernetes-engine/docs/how-to/iam-integration#using_legacy_cluster_certificate_or_user_credentials){:target=""\_blank"}:
