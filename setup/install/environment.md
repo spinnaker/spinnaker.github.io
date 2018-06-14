@@ -7,21 +7,28 @@ sidebar:
 
 {% include toc %}
 
-In this step, you tell Halyard where to install Spinnaker.
+In this step, you tell Halyard in what type of environment to install Spinnaker.
 
-* [Distributed installation](#distributed-installation)
+The recommended path is a distributed installation onto a Kubernetes cluster,
+but all of these methods are supported:
+
+* [Distributed installation](#distributed-installation) on Kubernetes
+
   Halyard deploys each of Spinnaker's [microservices](/reference/architecture)
-  separately. This is highly recommended for use in production.
+  separately. __This is highly recommended for use in production.__
 
 * [Local installations](#local-debian) of Debian packages
-  Spinnaker is deployed on a single machine. This is good for smaller
-  deployments.
 
-* [Local git installations](#local-git) from github.
-  This is useful for developers contributing to the Spinnaker project.
+  Spinnaker is deployed on a single machine. This is ok for smaller
+  Spinnaker deployments, but Spinnaker will be unavailable when it's being
+  updated.
 
-  The recommended path is a distributed installation onto a Kubernetes cluster,
-  but all of these methods are supported:
+* [Local git installations](#local-git) from github
+
+  This is for developers contributing to the Spinnaker project. If you're a
+  contributor, you'll probably have two separate installations&mdash;a
+  distributed one for using Spinnaker in production, and this local Git one for
+  developing Spinnaker contributions.
 
 ## Distributed installation
 
@@ -46,6 +53,13 @@ which you will install Spinnaker.
 
    We recommend at least 4 cores and 8GB of RAM available in the cluster where
    you will deploy Spinnaker.
+
+1. Make sure [`kubectl` is installed](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+on the machine running Halyard.
+
+   After you install it, you might need to update the `$PATH` to ensure Halyard
+   can find it, and if Halyard was already running you might need to restart it
+   to pick up the new `$PATH`.
 
 1. Run the following command, using the `$ACCOUNT` name you created when you
 configured the provider:
