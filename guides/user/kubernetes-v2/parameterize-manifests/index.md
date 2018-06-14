@@ -15,7 +15,7 @@ manifests as they are deployed, whether they are deployed
 or
 [dynamically](/guides/user/kubernetes-v2/deploy-manifest/#specify-manifests-dynamically).
 
-This can be applied to a wide-range of use-cases, but we will focus on using a
+This can be applied to a wide range of use-cases, but we will focus on using a
 pipeline parameter to specify the target namespace.
 
 ## Configure your pipeline parameters
@@ -28,8 +28,8 @@ pipeline editor (only the __Name__ is required):
    image_path="./parameter.png"
 %}
 
-> See more details on how to provide parameters to piplines programatically in
-> the [wehbooks](/guides/user/triggers/webhooks) page.
+> See more details on how to provide parameters to pipelines programmatically in
+> the [webhooks](/guides/user/triggers/webhooks) page.
 
 ## Configure your manifest
 

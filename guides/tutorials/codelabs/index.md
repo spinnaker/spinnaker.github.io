@@ -9,6 +9,7 @@ Run through these codelabs to get hands-on experience with Spinnaker in a guided
 
 ## Table of Contents
 
+* [Continuous Delivery to Kubernetes Using Spinnaker](https://codelabs.developers.google.com/codelabs/cloud-spinnaker-kubernetes-cd/) - deploy an application from Kubernetes manifest files (from the Google I/O 2018 Spinnaker Codelab)
 * [Bake and Deploy Pipeline](./bake-and-deploy-pipeline/) - set up a Spinnaker pipeline that bakes a virtual machine (VM) image containing redis, then deploys that image to a test cluster
 * [Hello Deployment](./hello-deployment/) - run through the workflow of setting up an example application deployment 
 * [GCE Source To Prod](./gce-source-to-prod/) - create a cohesive workflow which takes source code and builds, tests and promotes it to production with VMs in GCE

@@ -130,6 +130,20 @@ command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
   ConfigMap or Secret to be deployed without appending a new version when the
   contents change, for example.
 
+* `strategy.spinnaker.io/max-version-history`
+
+  When set to a non-negative integer, this configures how many versions of a
+  resource to keep around. When more than `max-version-history` versions of a
+  Kubernetes artifact exist, Spinnaker deletes all older versions.
+  __Resources are sorted by the `metadata.creationTimestamp` kubernetes property
+  rather than the version number.__
+
+  Keep in mind, if you are trying to restrict how many copies of a ReplicaSet
+  a Deployment is managing, that is configured by
+  [`spec.revisionHistoryLimit`](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#clean-up-policy).
+  If instead Spinnaker is deploying ReplicaSets directly without a Deployment,
+  this annotation does the job.
+
 # How Kubernetes resources are managed by Spinnaker
 
 Resource mapping between Spinnaker and Kubernetes constructs, as well as the

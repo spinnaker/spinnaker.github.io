@@ -116,7 +116,7 @@ At the end of this guide you will have:
    SERVICE_ACCOUNT_TOKEN=`kubectl get serviceaccounts spinnaker-service-account -o jsonpath='{.secrets[0].name}'`
 
    #Get token and base64 decode it since all secrets are stored in base64 in Kubernetes and store it somewhere safe for later use
-   kubectl get secret $SERVICE_ACCOUNT_TOKEN -o jsonpath='{.data.token}' | base64 -D
+   kubectl get secret $SERVICE_ACCOUNT_TOKEN -o jsonpath='{.data.token}' | base64 --decode
    ```
 
 ## Part 4: Add provider to Halyard

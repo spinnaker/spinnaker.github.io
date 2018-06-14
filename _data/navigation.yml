@@ -153,6 +153,18 @@ setup:
             url: /setup/features/notifications/
           - title: Configure User Data (metadata)
             url: /setup/features/user-data/
+  - title: Productionize Spinnaker
+    collapsed: true
+    children:
+      - title: Overview
+        url: /setup/productionize/
+      - title: Configure Caching
+        collapsed: true
+        children:
+          - title: Configure Redis Usage
+            url: /setup/productionize/caching/configure-redis-usage/
+          - title: Externalize Redis
+            url: /setup/productionize/caching/externalize-redis/
 
 guides:
   - title: Tutorials
@@ -197,9 +209,13 @@ guides:
       - title: Pipelines
         collapsed: true
         children:
+          - title: Managing Pipelines
+            url: /guides/user/pipeline/managing-pipelines/
           - title: Triggering Pipelines
             collapsed: true
             children:
+              - title: Overview
+                url: /guides/user/pipeline/triggers/
               - title: Triggering on Pub/Sub Messages
                 url: /guides/user/pipeline/triggers/pubsub/
               - title: Triggering on Webhooks
@@ -323,6 +339,8 @@ reference:
             url: /reference/artifacts/types/github-file/
           - title: GitLab File
             url: /reference/artifacts/types/gitlab-file/
+          - title: Bitbucket File
+            url: /reference/artifacts/types/bitbucket-file/
           - title: HTTP File
             url: /reference/artifacts/types/http-file/
           - title: Kubernetes Object
@@ -347,6 +365,8 @@ reference:
         url: /reference/architecture/load/
       - title: Life of a Bake
         url: /reference/architecture/loab/
+  - title: Pipeline Stages
+    url: /reference/pipeline/stages
 
 community:
   - title: Releases

@@ -416,6 +416,14 @@ $cloud-providers-bar-mobile-height: $blue-bar-mobile-height + $white-bar-height;
   }
 }
 
+h3.collapsible-section-header {
+  margin-left: 30px;
+
+  + .collapsible-section {
+    margin-left: 30px;
+  }
+}
+
 li > div.highlighter-rouge {
   font-size: 0.75em;
 }
