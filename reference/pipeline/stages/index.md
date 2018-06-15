@@ -36,10 +36,14 @@ the default behavior and re-bake your image each time the pipeline runs, select
 **Rebake** in the **Bake Configuration** section.
 
 ### Canary Analysis
-Run [automated canary analysis](/guides/user/canary/) against the deployment
+Use [Kayenta](/reference/architecture/#spinnaker-microservices) to run
+[automated canary analysis](/guides/user/canary/) against the deployment
 before fully deploying. Note that this stage _only_ handles analysis; you're
-responsible for provisioning and cleaning up your canary instances elsewhere.
-For a step by step explanation of how to set up a canary analysis stage see the
+responsible for provisioning and cleaning up your canary instances. This is
+typically done within the same pipeline via stages surrounding the
+Canary Analysis stage.
+
+For a step-by-step explanation of how to set up a Canary Analysis stage see the
 [how-to guide](/guides/user/canary/stage/).
 
 ### Check Preconditions
