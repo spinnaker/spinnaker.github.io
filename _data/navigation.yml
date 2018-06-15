@@ -170,6 +170,11 @@ setup:
             url: /setup/productionize/caching/configure-redis-usage/
           - title: Externalize Redis
             url: /setup/productionize/caching/externalize-redis/
+      - title: Configure Scaling
+        collapsed: true
+        children:
+          - title: Horizontally Scale Spinnaker
+            url: /setup/productionize/scaling/horizontal-scaling/
 
 guides:
   - title: Tutorials
