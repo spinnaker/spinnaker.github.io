@@ -169,6 +169,22 @@ Deploy a Kubernetes manifest YAML/JSON file.
 ### Find Artifacts From Resource
 Find artifacts from a Kubernetes resource.
 
+### Patch (Manifest)
+Update an already existing Kubernetes resource in place using the [Kubernetes 
+patch operation](https://kubernetes.io/docs/tasks/run-application/update-api-object-kubectl-patch/). 
+Spinnaker can update the resource without knowing the entire resource (that is, 
+you have to specify only the portion of the manifest you want to update). 
+
+The patch stage can be used to add a label or update a sidecar container image 
+for a set of resources. It can also be used to implement a [rainbow deployment
+](http://brandon.dimcheff.com/2018/02/rainbow-deploys-with-kubernetes/) 
+strategy for Kubernetes by first deploying a new ReplicaSet and then patching 
+the fronting service's selectors to point to the new ReplicaSet.
+
+Spinnaker also supports [artifact substitution
+](/reference/artifacts/in-kubernetes-v2/#binding-artifacts-in-manifests) for the 
+patch content just like the resource manifest in the deploy stage. 
+
 ### Scale (Manifest)
 Scale a Kubernetes object created from a manifest.
 
