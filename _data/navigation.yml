@@ -279,6 +279,11 @@ guides:
         url: /guides/developer/kork-library/
       - title: Kubernetes CRD extensions
         url: /guides/developer/crd-extensions/
+  - title: Operator How-Tos
+    collapsed: true
+    children:
+      - title: Custom Webhook Stages
+        url: /guides/operator/custom-webhook-stages/
   - title: Runbooks
     collapsed: true
     children:
@@ -288,7 +293,6 @@ guides:
         url: /guides/runbooks/sharding-spinnaker/
       - title: Orca Quality of Service
         url: /guides/runbooks/orca-quality-of-service/
-
 reference:
   - title: API
     collapsed: true
