@@ -6,31 +6,36 @@ sidebar:
 redirect_from: /setup/install/upgrades/
 ---
 
-Now that we've picked a [Deployment Environment](/setup/install/environment/),
-configured [Persistent Storage](/setup/install/storage/), and enabled a [Cloud
-Provider](/setup/providers/) we're ready to pick a version of Spinnaker
-and deploy it. First, list the available versions:
+Now that we've enabled one or more [Cloud Providers](/setup/providers/), picked
+a [Deployment Environment](/setup/install/environment/), and configured
+[Persistent Storage](/setup/install/storage/), we're ready to pick a version of
+Spinnaker, deploy it, and connect to it.
 
-```bash
-hal version list
-```
+## Pick a version
 
-You can follow the links to their changelogs to see what features each version
-has included since the last release. Once you've picked a version (e.g.
-`VERSION=1.0.0`), you can set it with
+1. List the available versions:
 
-```bash
-hal config version edit --version $VERSION
-```
+   ```bash
+   hal version list
+   ```
 
-And finally, deploy Spinnaker with the following command:
+   You can follow the links to the versions' respective changelogs to see what
+   features each adds.
+
+1. Set the version you want to use:
+
+   ```bash
+   hal config version edit --version $VERSION
+   ```
+
+## Deploy Spinnaker
 
 ```bash
 hal deploy apply
 ```
 
-__Note:__ If you're deploying to your local machine, that command may need to
-be run with `sudo`.
+__Note:__ If you're deploying to your local machine, you might need `sudo hal
+deploy apply`.
 
 ## Connect to the Spinnaker UI
 
@@ -44,6 +49,10 @@ hal deploy connect
 
 If you want to make Spinnaker publicly reachable without running that command,
 please read the [Halyard FAQ](/setup/quickstart/faq/).
+
+Also, it's likely that you're running Halyard on a separate machine from the
+the one running your browser. In this case, you need to set up an SSH tunnel to
+forward ports to the host running Halyard.
 
 ## Troubleshooting
 

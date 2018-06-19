@@ -18,4 +18,4 @@ Below is a list of the current Spinnaker SIGs.
 
 | Name | Lead(s) | Agenda/Notes | Meeting Link | Contact |
 |-|-|-|-|-|
-| __Kubernetes__ | [lwander@](https://github.com/lwander) | [Link](https://docs.google.com/document/d/1db_yw1uru99Byvin4lQgm7aUZ9xMmvsARtEiiNUrmBo) | [Link (Hangouts)](https://plus.google.com/hangouts/_/google.com/kubernetes-v2?hceid=bHdhbmRlckBnb29nbGUuY29t.64nbl442ak31mn3cl3b667uevf&authuser=0) | [sig-kubernetes@spinnaker.io Mailing list](https://groups.google.com/a/spinnaker.io/forum/#!forum/sig-kubernetes), [#sig-kubernetes on Slack](https://spinnakerteam.slack.com) |
+| __Kubernetes__ | [lwander@](https://github.com/lwander), [ethanfrogers@](https://github.com/ethanfrogers) | [Link](https://docs.google.com/document/d/1db_yw1uru99Byvin4lQgm7aUZ9xMmvsARtEiiNUrmBo) | [Link (Hangouts)](https://plus.google.com/hangouts/_/google.com/kubernetes-v2?hceid=bHdhbmRlckBnb29nbGUuY29t.64nbl442ak31mn3cl3b667uevf&authuser=0) | [sig-kubernetes@spinnaker.io Mailing list](https://groups.google.com/a/spinnaker.io/forum/#!forum/sig-kubernetes), [#sig-kubernetes on Slack](https://spinnakerteam.slack.com) |
