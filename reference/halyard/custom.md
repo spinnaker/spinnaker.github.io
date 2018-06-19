@@ -40,7 +40,7 @@ Settings](/reference/halyard/custom/#custom-service-settings) for more
 information.
 
 You can validate that your Custom Profiles have been picked up and applied to
-their services by checking `~/.hal/$DEPLOYMENT/history/profile-settings.yml`.
+their services by checking `~/.hal/$DEPLOYMENT/history/service-profiles.yml`.
 
 ## Custom Service Settings
 
