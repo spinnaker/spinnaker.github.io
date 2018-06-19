@@ -279,11 +279,11 @@ guides:
         url: /guides/developer/kork-library/
       - title: Kubernetes CRD extensions
         url: /guides/developer/crd-extensions/
-  - title: Admin How-Tos
+  - title: Operator How-Tos
     collapsed: true
     children:
       - title: Custom Webhook Stages
-        url: /guides/admin/custom-webhook-stages/
+        url: /guides/operator/custom-webhook-stages/
   - title: Runbooks
     collapsed: true
     children:
