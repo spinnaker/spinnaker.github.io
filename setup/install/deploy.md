@@ -6,7 +6,7 @@ sidebar:
 redirect_from: /setup/install/upgrades/
 ---
 
-Now that we've enabled ore or more [Cloud Providers](/setup/providers/), picked
+Now that we've enabled one or more [Cloud Providers](/setup/providers/), picked
 a [Deployment Environment](/setup/install/environment/), and configured
 [Persistent Storage](/setup/install/storage/), we're ready to pick a version of
 Spinnaker, deploy it, and connect to it.
