@@ -6,7 +6,7 @@ sidebar:
 redirect_from: /setup/storage/redis/
 ---
 
-{% include 
+{% include
    warning
    content="We _highly_ recommend relying on [Minio](/setup/storage/minio)
    instead of Redis if you are looking for a local persistant storage solution
@@ -38,3 +38,8 @@ All that's needed is the following command:
 ```
 hal config storage edit --type redis
 ```
+
+## Next steps
+
+After you've set up Redis as your external storage service, you're ready to
+[deploy Spinnaker](/setup/install/deploy/).
