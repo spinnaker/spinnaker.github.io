@@ -17,21 +17,21 @@ Use this option to deploy Spinnaker, if you are familar with deployment using [A
 
 ### Managing Account
 1. Navigate to [Console](https://console.aws.amazon.com/){:target="\_blank"} > CloudFormation and [select](https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/getting-started.html#select-region) your preferred region.
-2. Download [the template](https://github.com/spinnaker.github.io/blob/master/setup/install/providers/aws/managing.yaml) locally to your workstation.
+2. Download [the template](https://github.com/spinnaker/spinnaker.github.io/blob/master/setup/install/providers/aws/managing.yaml) locally to your workstation.
     
-    2.a (Optional). Add Managing account as shown [here](https://github.com/spinnaker.github.io/blob/master/setup/install/providers/aws/managing.yaml#L104)
+    2.a (Optional). The AWS account in which you are executing this is added as a managed account by default. However, you can add additional managed account as shown [here](https://github.com/spinnaker/spinnaker.github.io/blob/master/setup/install/providers/aws/managing.yaml#L104).
 3. Creating the CloudFormation Stack
     * __Create Stack__ > __Upload a template to Amazon S3__ > __Browse to template you downloaded in Step-2 above__ > __Next__  
     * Enter __Stack Name__ as spinnaker-**managing**-infrastructure-setup and follow the prompts on screen to create the stack
 4. Once the stack is select the stack you created in Step-3 > Outputs and note the values. You will need these values for subsequent configurations.
 
 
-### In each of the Managing Account
+### In each of the Managed Account
 
 > These steps need to be carried out for the managing account as well.
 
 1. Navigate to [Console](https://console.aws.amazon.com/){:target="\_blank"} > CloudFormation and [select](https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/getting-started.html#select-region) your preferred region.
-2. Download [the template](https://github.com/spinnaker.github.io/blob/master/setup/install/providers/aws/managed.yaml) locally to your workstation.
+2. Download [the template](https://github.com/spinnaker/spinnaker.github.io/blob/master/setup/install/providers/aws/managed.yaml) locally to your workstation.
 3. Creating the CloudFormation Stack
     * __Create Stack__ > __Upload a template to Amazon S3__ > __Browse to template you downloaded in Step-2 above__ > __Next__  
     * Enter __Stack Name__ as spinnaker-**managed**-infrastructure-setup and follow the prompts on screen to create the stack
