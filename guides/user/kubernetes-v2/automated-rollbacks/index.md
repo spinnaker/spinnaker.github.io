@@ -5,8 +5,6 @@ sidebar:
   nav: guides
 ---
 
-{% include alpha version="1.6" %}
-
 {% include toc %}
 
 There are clear benefits to having your stored manifests (in Git, GCS, etc...)
