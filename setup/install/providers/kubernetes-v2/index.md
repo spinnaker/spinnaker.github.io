@@ -5,7 +5,6 @@ sidebar:
   nav: setup
 ---
 
-{% include alpha version="1.6" %}
 
 {% include toc %}
 
