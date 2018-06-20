@@ -5,8 +5,6 @@ sidebar:
   nav: guides
 ---
 
-{% include alpha version="1.8" %}
-
 {% include toc %}
 
 This guide describes how to surface information about your Kubernetes resources

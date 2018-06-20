@@ -5,8 +5,6 @@ sidebar:
   nav: guides
 ---
 
-{% include alpha version="1.6" %}
-
 {% include toc %}
 
 Spinnaker can inject context from the currently executing pipeline into your
