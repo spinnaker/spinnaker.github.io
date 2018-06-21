@@ -34,6 +34,19 @@ When configuring the "Bake (Manifest)" stage, you can specify the following:
   /path/to/chart`. See more details
   [here](https://docs.helm.sh/helm/#helm-package).
 
+* __The release namespace__ (optional)
+
+  The Kubernetes namespace to install release into. If parameter is not
+  specified default namespace will be used.
+
+> Note: Not all Helm charts contains namespace definition in manifests.
+> Make sure that your manifests contains the following code:
+
+```yaml
+metadata:
+  namespace: {{ .Release.Namespace }}
+```
+
 * __Zero or more override artifacts__ (optional)
 
   The files passed to `--values` parameter in the [`helm
