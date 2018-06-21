@@ -106,7 +106,7 @@ parameters:
 ### Create New Relic Deployment
 ```yaml
 label: New Relic - Create Deployment
-type: newRelicDeplpyment
+type: newRelicDeployment
 enabled: true
 description: Create a Deployment in New Relic
 method: POST
