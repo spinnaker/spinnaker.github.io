@@ -49,6 +49,8 @@ setup:
                 url: /setup/install/providers/aws/aws-ec2/
               - title: ECS
                 url: /setup/install/providers/aws/aws-ecs/
+              - title: EKS
+                url: /setup/install/providers/aws/aws-eks/
           - title: Azure
             url: /setup/install/providers/azure/
           - title: DC/OS
