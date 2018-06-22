@@ -126,6 +126,10 @@ kubectl config set-credentials ${CONTEXT}-token-user --token $TOKEN
 kubectl config set-context $CONTEXT --user ${CONTEXT}-token-user
 ```
 
+> This point onwards, the location (either EC2 instance, or local) where you run halyard commands from should have the kubeconfig file that was created
+by the above kubectl commands. If you ran the kubectl commands locally and want to run halyard command on an instance, then you can copy the kubeconfig file
+from local to the instance.
+
 #### Enable Kubernetes Cloud provider using Halyard
 
 ```
