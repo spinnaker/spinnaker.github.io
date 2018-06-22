@@ -40,8 +40,8 @@ In the *New Application* dialog:
 
 ![](create-app.png)
 
-### Create a security group
-First we create a security group for your cluster. Navigate to the "SECURITY GROUPS" tab and click the *Create Security Group* button:
+### Create a firewall
+First we create a firewall for your cluster. Navigate to the "FIREWALLS" tab and click the *Create Firewall* button:
 
 * Enter "test" for *Stack*.
 * Enter "http" for *Detail*.
@@ -50,7 +50,7 @@ First we create a security group for your cluster. Navigate to the "SECURITY GRO
 * Enter your preferred port forwarding specifications in the *Ingress* section.
 * Click the *Create* button.
 
-![](security-group-1.png)
+![](firewall-1.png)
 
 ### Create a load balancer
 
@@ -60,7 +60,7 @@ Navigate to the "Load Balancers" tab and click the *Create Load Balancer* button
 * Enter "lb" in the *Detail* field.
 * Select your preferred subnet in the *Subnet* dropdown.
 * Select your preferred network in the *Network* dropdown.
-* Select "codelab-test-http" in the *Security Groups* dropdown.
+* Select "codelab-test-http" in the *Firewalls* dropdown.
 
 ![](load-1.png)
 
@@ -123,7 +123,7 @@ The purpose of the “Deploy” stage is to take the OpenStack image constructed
 
 ![](deploycluster-red.png)
 
-* In the Access section, input the load balancer and security group we created earlier.
+* In the Access section, input the load balancer and firewall we created earlier.
 * Click the "Add" button.
 * Save this stage of the pipeline.
 
@@ -219,7 +219,7 @@ We create a load balancer for the prod cluster. Navigate to the LOAD BALANCERS t
 * Enter "lb" for *Detail*.
 * Select your preferred subnet in the Subnet dropdown.
 * Select your preferred network in the Network dropdown.
-* Select "codelab-test-http" in the Security Groups dropdown.
+* Select "codelab-test-http" in the Firewalls dropdown.
 * Click the *Create* button.
 
 ![](lb2.png)
@@ -269,7 +269,7 @@ We deploy the image that was picked, to the prod cluster.
 * In the Basic Settings section, enter “prod” in the *Stack* field.
 * (Optional) Select a deployment strategy. Default is none.
 * Select your preferred option in the Instance Type drop down.
-* In the Access section, add the prod load balancer and the security group we previously created.
+* In the Access section, add the prod load balancer and the firewall we previously created.
 * Click the *Add* button.
 * Click *Save Changes* to save your prod pipeline.
 

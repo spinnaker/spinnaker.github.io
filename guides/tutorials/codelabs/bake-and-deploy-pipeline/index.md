@@ -33,20 +33,20 @@ the **Owner Email** field.
   tasks** button next to **Instance Health**.
 4. Click the **Create** button.
 
-### Create and configure a security group
+### Create and configure a firewall
 
-Next, you'll create a security group that specifies traffic firewall
-rules for the cluster. You'll configure the firewall rules to allow
+Next, you'll create a firewall that specifies traffic
+rules for the cluster. You'll configure the rules to allow
 all incoming traffic on port 80, for clusters associated with this
-security group.
+firewall.
 
-1. Click **SECURITY GROUPS**, then click the **+** button to create a security group.
+1. Click **FIREWALLS**, then click the **+** button to create a firewall.
 2. Input <code>test</code> for the **Detail (optional)** field and
 <code>Test environment</code> for the **Description** field.
 3. If running on AWS
   * Select **defaultvpc** as the **VPC** field
-  * Click **Add new Security Group Rule**.
-  * Click **default** on the **Security Group** dropdown.
+  * Click **Add new Firewall Rule**.
+  * Click **default** on the **Firewall** dropdown.
   * Change **Start Port** and **End Port** to <code>80</code>.
 4. If running on GCP
   * Click **Add New Source CIDR** and use the default
@@ -66,7 +66,7 @@ Next, you'll create a load balancer in Spinnaker.
   Subnet** dropdown.
 4. Click the **Next** button.
 5. If running on AWS
-  * Select **example-test** from the **Security Groups** dropdown.
+  * Select **example-test** from the **Firewalls** dropdown.
   * Hit **Next**, then **Create**.
 6. If running on GCP
   * Deselect the **Enable health check?** checkbox.
@@ -114,7 +114,7 @@ for the **Stack** field.
 7. Click the **Next** button.
 8. Click the text area next to the **Load Balancers** heading, then
   select <code>example-test</code>. Click the **Next** button.
-9. Click the **Security Groups** form field, then click
+9. Click the **Firewalls** form field, then click
   <code>example-test (example-test)</code>. Click the **Next**
   button.
 10. If running on AWS
@@ -143,11 +143,11 @@ during pipeline execution, click on the horizontal bar to see detailed
 status for any of the stages in the pipeline.
 
 Feel free to navigate around the Spinnaker menus, create new
-pipelines, clusters, server groups, load balancers, and security
-groups, etc. and see what happens.
+pipelines, clusters, server groups, load balancers, and firewalls,
+etc. and see what happens.
 
 When you're ready to stop, don't forget to cleanup your resources. An
 easy way to do this is to visit the pipelines, clusters, load
-balancers, and security groups pages, click on the ones created and
+balancers, and firewalls pages, click on the ones created and
 select the appropriate **Delete** command from the Actions pulldown on
 the right.

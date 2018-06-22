@@ -81,26 +81,26 @@ ssh -L 8080:localhost:8080 -L 9000:localhost:9000 -L 8084:localhost:8084 -L 8087
   
     You can read more how the Spinnaker application matches to Azure resources in the [Azure reference for Spinnaker](/reference/providers/azure/)
 
-### II. Create a security group
+### II. Create a firewall
 
-1. Navigate to the [SECURITY GROUPS](http://localhost:9000/#/applications/codelab/securityGroups) page and click on the **Create Security Group** button.
-1. Provide the following values in the *Create New Security Group* dialog: 
+1. Navigate to the [FIREWALLS](http://localhost:9000/#/applications/codelab/firewalls) page and click on the **Create Firewall** button.
+1. Provide the following values in the *Create New Firewall* dialog: 
   * Detail: web
   * Account: my-azure-account (should be selected by default)
   * Region: westus (select the region that is closest to your location)
 
-    Ingress (click *Add new Security Group Rule*):
+    Ingress (click *Add new Firewall Rule*):
   * Protocol: TCP
   * Start Port: 80
   * End Port: 80 
 
     And click **Create**, if the loadbalancer does not appear in the page once the creation is complete, refresh your browser.
 
-    ![New Security Group](images/3-create-security-group.png)
+    ![New Firewall](images/3-create-firewall.png)
 
   > Note: We are using westus for the region but you can select any other region that is closer to your location. Be careful to match the region in the following steps.
 
-  You can read more about the implementation of Security Groups in Azure in the [Azure reference for Spinnaker](/reference/providers/azure/)
+  You can read more about the implementation of Network Security Groups in Azure in the [Azure reference for Spinnaker](/reference/providers/azure/)
 
 ### III. Create a load balancer
 
@@ -162,7 +162,7 @@ In this section you will create a Spinnaker pipeline that will bake the image fr
 1. Enter the following values: 
   * Type: Bake
   * Stage Name: Bake
-  * Regions: westus (or select the region that you have selected when creating the Security Group)
+  * Regions: westus (or select the region that you have selected when creating the Firewall)
   * Package: ```hello-karyon-rxnetty```
   * Base OS: ubuntu (v14.05)
 
@@ -187,7 +187,7 @@ In this section you will create a Spinnaker pipeline that will bake the image fr
 1. Click "Continue without a template"
 1. In the "Configure Deployment Cluster" enter the following values:
   * Account: my-azure-account
-  * Region: westus (or select the region that you have selected when creating the Security Group)
+  * Region: westus (or select the region that you have selected when creating the Firewall)
   * Stack: test
   * Details: tutorial
   * Load Balancers: codelab-test-frontend
@@ -195,7 +195,7 @@ In this section you will create a Spinnaker pipeline that will bake the image fr
     ![Configure Deployment Cluster - 1](images/4-configure-deployment-cluster-1.png)
     
   * Subnets: devopsSubnet2
-  * Security Groups: codelab-web
+  * Firewalls: codelab-web
 
     ![Configure Deployment Cluster - 2](images/4-configure-deployment-cluster-2.png)
 
@@ -218,7 +218,7 @@ In this section you will create a Spinnaker pipeline that will bake the image fr
   * Stage Name: Enable Test Deployment
   * Depends On: Deploy to Test
   * Account: my-azure-account
-  * Regions: westus (or select the region that you have selected when creating the Security Group)
+  * Regions: westus (or select the region that you have selected when creating the Firewall)
   * Cluster: codelab-test-tutorial (or the name of your cluster if you have used different values)
   * Target: Newest Server Group
 
@@ -247,7 +247,7 @@ In this section you will create a Spinnaker pipeline that will bake the image fr
 1. Click *Continue without a template*
 1. In the *Configure Deployment Cluster* enter the following values:
   * Account: my-azure-account
-  * Region: westus (or select the region that you have selected when creating the Security Group)
+  * Region: westus (or select the region that you have selected when creating the Firewall)
   * Stack: prod
   * Details: tutorial
   * Load Balancers: codelab-prod-frontend
@@ -255,7 +255,7 @@ In this section you will create a Spinnaker pipeline that will bake the image fr
     ![Configure Prod Cluster - 1](images/4-configure-prod-cluster-1.png)
 
   * Subnets: devopsSubnet2
-  * Security Groups: codelab-web
+  * Firewalls: codelab-web
 
     ![Configure Prod Cluster - 2](images/4-configure-deployment-cluster-2.png)
 
@@ -278,7 +278,7 @@ In this section you will create a Spinnaker pipeline that will bake the image fr
   * Stage Name: Enable Prod Deployment
   * Depends On: Deploy to Prod
   * Account: my-azure-account
-  * Regions: westus (or select the region that you have selected when creating the Security Group)
+  * Regions: westus (or select the region that you have selected when creating the Firewall)
   * Cluster: codelab-prod-tutorial
   * Target: Newest Server Group
 
@@ -321,9 +321,9 @@ In this step you will try out the pipeline that you have just built.
 
    ![Delete Load Balancer](images/6-delete-load-balancer.png)
 
-### IV. Delete your security group
+### IV. Delete your firewall
 
-1. Navigate to the [SECURITY GROUP](http://localhost:9000/#/applications/codelab/securityGroups) section.
-1. Select each Security Group in the list then in the *Security Group Actions* select *Delete Security Group* 
+1. Navigate to the [FIREWALL](http://localhost:9000/#/applications/codelab/firewalls) section.
+1. Select each Firewall in the list then in the *Firewall Actions* select *Delete Firewall* 
 
-   ![Delete Security Group](images/6-delete-security-group.png)
+   ![Delete Firewall](images/6-delete-firewall.png)
