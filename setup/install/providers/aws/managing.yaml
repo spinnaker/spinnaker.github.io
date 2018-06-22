@@ -51,7 +51,6 @@ Resources:
   EksServiceRole:
     Type: AWS::IAM::Role
     Properties:
-          RoleName: eksServiceRole
           AssumeRolePolicyDocument:
             Statement:
               - Action:
@@ -69,7 +68,7 @@ Resources:
     Type: AWS::EKS::Cluster
     Properties:
         Name: !Ref EksClusterName
-        Version: 1.10
+        Version: "1.10"
         RoleArn: !GetAtt EksServiceRole.Arn
         ResourcesVpcConfig:
           SecurityGroupIds:

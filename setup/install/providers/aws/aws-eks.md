@@ -30,15 +30,15 @@ aws cloudformation deploy --stack-name spinnaker-managing-infrastructure-setup -
 Once the stack creation succeeds, note the following
 
 ```
-VPC_ID = $(aws cloudformation describe-stacks --stack-name spinnaker-managing-infrastructure-setup --query 'Stacks[0].Outputs[?OutputKey==`VpcId`].OutputValue' --output text)
-CONTROL_PLANE_SG = $(aws cloudformation describe-stacks --stack-name spinnaker-managing-infrastructure-setup --query 'Stacks[0].Outputs[?OutputKey==`SecurityGroups`].OutputValue' --output text)
-AUTH_ARN = $(aws cloudformation describe-stacks --stack-name spinnaker-managing-infrastructure-setup --query 'Stacks[0].Outputs[?OutputKey==`AuthArn`].OutputValue' --output text)
-SUBNETS = $(aws cloudformation describe-stacks --stack-name spinnaker-managing-infrastructure-setup --query 'Stacks[0].Outputs[?OutputKey==`SubnetIds`].OutputValue' --output text)
-MANAGING_ACCOUNT_ID = $(aws cloudformation describe-stacks --stack-name spinnaker-managing-infrastructure-setup --query 'Stacks[0].Outputs[?OutputKey==`ManagingAccountId`].OutputValue' --output text)
-EKS_CLUSTER_ENDPOINT = $(aws cloudformation describe-stacks --stack-name spinnaker-managing-infrastructure-setup --query 'Stacks[0].Outputs[?OutputKey==`EksClusterEndpoint`].OutputValue' --output text)
-EKS_CLUSTER_NAME = $(aws cloudformation describe-stacks --stack-name spinnaker-managing-infrastructure-setup --query 'Stacks[0].Outputs[?OutputKey==`EksClusterName`].OutputValue' --output text)
-EKS_CLUSTER_CA_DATA = $(aws cloudformation describe-stacks --stack-name spinnaker-managing-infrastructure-setup --query 'Stacks[0].Outputs[?OutputKey==`EksClusterCA`].OutputValue' --output text)
-SPINNAKER_INSTANCE_PROFILE_ARN = $(aws cloudformation describe-stacks --stack-name spinnaker-managing-infrastructure-setup --query 'Stacks[0].Outputs[?OutputKey==`SpinnakerInstanceProfile`].OutputValue' --output text)
+VPC_ID=$(aws cloudformation describe-stacks --stack-name spinnaker-managing-infrastructure-setup --query 'Stacks[0].Outputs[?OutputKey==`VpcId`].OutputValue' --output text)
+CONTROL_PLANE_SG=$(aws cloudformation describe-stacks --stack-name spinnaker-managing-infrastructure-setup --query 'Stacks[0].Outputs[?OutputKey==`SecurityGroups`].OutputValue' --output text)
+AUTH_ARN=$(aws cloudformation describe-stacks --stack-name spinnaker-managing-infrastructure-setup --query 'Stacks[0].Outputs[?OutputKey==`AuthArn`].OutputValue' --output text)
+SUBNETS=$(aws cloudformation describe-stacks --stack-name spinnaker-managing-infrastructure-setup --query 'Stacks[0].Outputs[?OutputKey==`SubnetIds`].OutputValue' --output text)
+MANAGING_ACCOUNT_ID=$(aws cloudformation describe-stacks --stack-name spinnaker-managing-infrastructure-setup --query 'Stacks[0].Outputs[?OutputKey==`ManagingAccountId`].OutputValue' --output text)
+EKS_CLUSTER_ENDPOINT=$(aws cloudformation describe-stacks --stack-name spinnaker-managing-infrastructure-setup --query 'Stacks[0].Outputs[?OutputKey==`EksClusterEndpoint`].OutputValue' --output text)
+EKS_CLUSTER_NAME=$(aws cloudformation describe-stacks --stack-name spinnaker-managing-infrastructure-setup --query 'Stacks[0].Outputs[?OutputKey==`EksClusterName`].OutputValue' --output text)
+EKS_CLUSTER_CA_DATA=$(aws cloudformation describe-stacks --stack-name spinnaker-managing-infrastructure-setup --query 'Stacks[0].Outputs[?OutputKey==`EksClusterCA`].OutputValue' --output text)
+SPINNAKER_INSTANCE_PROFILE_ARN=$(aws cloudformation describe-stacks --stack-name spinnaker-managing-infrastructure-setup --query 'Stacks[0].Outputs[?OutputKey==`SpinnakerInstanceProfileArn`].OutputValue' --output text)
 ```
 
 
@@ -68,7 +68,7 @@ In the setup as done above, we used AWS CLI , hence you must ensure that the ser
 
 *  Create default kubectl configuration file
 
-Paste the following to your kubeconfig file , replace `<endpoint-url>` , `<base64-encoded-ca-cert>` and `<cluster-name>` with values of $EKS_CLUSTER_ENDPOINT and $EKS_CLUSTER_CA_DATA 
+Paste the following to your kubeconfig file , replace `<endpoint-url>` , `<base64-encoded-ca-cert>` and `<cluster-name>` with values of $EKS_CLUSTER_ENDPOINT , $EKS_CLUSTER_CA_DATA and $EKS_CLUSTER_NAME
 as noted above
 
 ```yaml
@@ -156,7 +156,7 @@ from local to the instance.
 
 ```
 
-./hal config deploy edit --type distributed --account-name ${NAME_OF_YOUR_AWS_ACCOUNT}
+./hal config deploy edit --type distributed --account-name ${MY_K8_ACCOUNT}
 
 ```
 
@@ -180,7 +180,7 @@ curl -O https://raw.githubusercontent.com/spinnaker/spinnaker.github.io/master/s
 aws cloudformation deploy --stack-name spinnaker-eks-nodes --template-file amazon-eks-nodegroup.yaml \
 --parameter-overrides NodeInstanceProfile=$SPINNAKER_INSTANCE_PROFILE_ARN \
 NodeInstanceType=t2.large ClusterName=$EKS_CLUSTER_NAME NodeGroupName=spinnaker-cluster-nodes ClusterControlPlaneSecurityGroup=$CONTROL_PLANE_SG \
-Subnets=$SUBNETS VpcId=vpc-0a86d53ed5cd2dc60 --capabilities CAPABILITY_NAMED_IAM
+Subnets=$SUBNETS VpcId=$VPC_ID --capabilities CAPABILITY_NAMED_IAM
 
 ```
 
@@ -234,4 +234,3 @@ kubectl get nodes --watch
 ./hal deploy connect
 
 ```
-
