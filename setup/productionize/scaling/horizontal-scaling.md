@@ -11,7 +11,7 @@ run more than one copy of any single service, and what considerations have to
 be made when doing so.
 
 This article assumes you have access to scale the individual Spinnaker
-middcroservices, and the mechanics of this are not covered here.
+microservices, and the mechanics of this are not covered here.
 
 > Keep in mind, if you are deploying Spinnaker to Kubernetes, you're more
 > likely to see benefits of horizontal scaling if you've already allocated
