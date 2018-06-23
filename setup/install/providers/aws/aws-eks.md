@@ -15,7 +15,7 @@ to run Spinnaker on [Amazon EKS](https://aws.amazon.com/eks/).
 These instructions assumes that you have AWS CLI [installed](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) ,
 [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html) and have access to managing and each of the managed account.
 
-#### Managing Account - Base Setup
+## Managing Account - Base Setup
 
 In Managing Account Create a two subnet VPC , IAM Roles, Instance Profiles and Security Group for EKS control plane communication and an EKS Cluster
 
@@ -42,7 +42,7 @@ SPINNAKER_INSTANCE_PROFILE_ARN=$(aws cloudformation describe-stacks --stack-name
 ```
 
 
-#### Managed Account - Base setup
+## Managed Account - Base setup
 
 In each of managed account, create role that can be assumed by Spinnaker
 
@@ -55,7 +55,7 @@ aws cloudformation deploy --stack-name spinnaker-managed-infrastructure-setup --
 
 ```
 
-#### kubectl configurations
+## kubectl configurations
 
 Before you proceed next, ensure to configure [kubectl and heptio authenticator for aws is installed and configured](https://docs.aws.amazon.com/eks/latest/userguide/configure-kubectl.html)
 
@@ -130,7 +130,7 @@ kubectl config set-context $CONTEXT --user ${CONTEXT}-token-user
 by the above kubectl commands. If you ran the kubectl commands locally and want to run halyard command on an instance, then you can copy the kubeconfig file
 from local to the instance.
 
-#### Enable Kubernetes Cloud provider using Halyard
+## Enable Kubernetes Cloud provider using Halyard
 
 ```
 ./hal config provider kubernetes enable
@@ -139,7 +139,7 @@ from local to the instance.
 ```
 
 
-#### Enable EC2 Cloud Provider using Halyard
+## Enable EC2 Cloud Provider using Halyard
 
 ```
 
@@ -152,7 +152,7 @@ from local to the instance.
 ```
 
 
-#### Choose Halyard distributed deployment
+## Choose Halyard distributed deployment
 
 ```
 
@@ -160,7 +160,7 @@ from local to the instance.
 
 ```
 
-#### Choose persistant storage to S3 using Halyard
+## Choose persistant storage to S3 using Halyard
 
 
 ```
@@ -173,7 +173,7 @@ from local to the instance.
 
 ```
 
-#### Create Kubernetes worker nodes
+## Create Kubernetes worker nodes
 
 ```
 curl -O https://raw.githubusercontent.com/spinnaker/spinnaker.github.io/master/setup/install/providers/aws/amazon-eks-nodegroup.yaml  
@@ -184,7 +184,7 @@ Subnets=$SUBNETS VpcId=$VPC_ID --capabilities CAPABILITY_NAMED_IAM
 
 ```
 
-#### Join the nodes created above with Spinnaker EKS cluster and watch them to appear in ready state
+## Join the nodes created above with Spinnaker EKS cluster and watch them to appear in ready state
 
 Replace `<spinnaker-role-arn>` with $AUTH_ARN and save it as aws-auth-cm.yaml
 
