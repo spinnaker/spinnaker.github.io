@@ -93,8 +93,12 @@
       var elementWithFragmentID;
       var linkWithName;
       if (hash.length > 0) {
-        elementWithFragmentID = this.$collapsibleWrapper.find(hash)[0];
-        linkWithName = this.$collapsibleWrapper.find(linkSelector)[0];
+        if (this.$heading.is(hash)) {
+          elementWithFragmentID = this.$heading[0];
+        } else {
+          elementWithFragmentID = this.$collapsibleWrapper.find(hash)[0];
+          linkWithName = this.$collapsibleWrapper.find(linkSelector)[0];
+        }
       }
       return elementWithFragmentID || linkWithName;
     };
