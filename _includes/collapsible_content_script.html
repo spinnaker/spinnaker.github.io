@@ -1,33 +1,129 @@
 <script>
-  $(document).ready(function() {
-    $('.begin-collapsible-section').each(function(i, el) {
-      var $start = $(el);
-      var $parent = $start.parent();
-      var $heading = $parent.next();
-      var $node = $heading.next();
-      var contents = [];
+  (function() {
+    'use strict';
+
+    $(document).ready(function() {
+      var elementReferencedByFragmentIdentifier;
+
+      // Find all els with classname "begin-collapsible-section" and convert them
+      // into zippies.
+      $('.begin-collapsible-section').each(function(i, el) {
+        var section = new CollapsibleSection(el);
+        section.inject();
+        section.bindEvents();
+        var linkedEl = section.findElWithFragmentIdentifier(window.location.hash);
+        if (linkedEl != null && elementReferencedByFragmentIdentifier == null) {
+          elementReferencedByFragmentIdentifier = linkedEl;
+          section.open();
+        } else {
+          section.collapse();
+        }
+      });
+
+      if (elementReferencedByFragmentIdentifier) {
+        elementReferencedByFragmentIdentifier.scrollIntoView(true);
+      }
+
+    });
+
+    // CollapsibleSection takes a starting element, finds its matching end element, and
+    // then converts it into a collapsible zippy. The end element for a given
+    // start is the first node found with classname "end-collapsible-section".
+    function CollapsibleSection(startEl) {
+      this.$start = $(startEl);
+      this.$parent = this.$start.parent();
+      this.$heading = this.$parent.next();
+      this.$collapsibleWrapper = null;
+      this.contents = [];
+      this.build();
+    }
+
+    // build() figures out which DOM nodes need to be included as part
+    // of this collapsed section and creates a wrapper element to hold them.
+    CollapsibleSection.prototype.build = function() {
+      var $node = this.$heading.next();
       while ($node.get(0) != null) {
         if ($node.has('.end-collapsible-section').length !== 0) {
           $node.remove();
           break;
         }
-        contents.push($node);
+        this.contents.push($node);
         $node = $node.next();
       }
       if ($node.get(0) == null) {
         return; // didnt find end-collapsible-section
       }
-      var $collapsibleWrapper = $('<div class="collapsible-section"></div>');
-      $collapsibleWrapper.append(contents);
-      $parent.replaceWith([$heading, $collapsibleWrapper]);
-      $heading.addClass('collapsible-section-header');
-      $heading.on('click', function(e) {
-        if (e.target === $heading.get(0)) {
-          $collapsibleWrapper.toggle();
-          $heading.toggleClass('open');
+      this.$collapsibleWrapper = $('<div class="collapsible-section"></div>');
+    }
+
+    // inject() inserts this section into the DOM.
+    CollapsibleSection.prototype.inject = function() {
+      if (this.$collapsibleWrapper == null) {
+        return;
+      }
+      this.$collapsibleWrapper.append(this.contents);
+      this.$parent.replaceWith([this.$heading, this.$collapsibleWrapper]);
+      this.$heading.addClass('collapsible-section-header');
+    }
+
+    // bindEvents() adds a click handler to toggle the open/closed state of
+    // this section
+    CollapsibleSection.prototype.bindEvents = function() {
+      if (this.$collapsibleWrapper == null) {
+        return;
+      }
+      var that = this;
+      var headingEl = this.$heading.get(0);
+      this.$heading.on('click', function(e) {
+        if (e.target === headingEl) {
+          that.toggle();
         }
       });
-      $collapsibleWrapper.hide();
-    });
-  });
+    };
+
+    // findElWithFragmentIdentifier() takes a fragment idenfitier in format "#foobar"
+    // and figures out whether this section of content includes an element with that
+    // identifier.  The identifier can match either an element's ID attribute or a link's
+    // name attribute.
+    CollapsibleSection.prototype.findElWithFragmentIdentifier = function(hash) {
+      if (this.$collapsibleWrapper == null) {
+        return;
+      }
+      var linkSelector = '[name="' + hash.substring(1) + '"]';
+      var elementWithFragmentID;
+      var linkWithName;
+      if (hash.length > 0) {
+        elementWithFragmentID = this.$collapsibleWrapper.find(hash)[0];
+        linkWithName = this.$collapsibleWrapper.find(linkSelector)[0];
+      }
+      return elementWithFragmentID || linkWithName;
+    };
+
+    // open() shows the zippy's contents
+    CollapsibleSection.prototype.open = function() {
+      if (this.$collapsibleWrapper == null) {
+        return;
+      }
+      this.$collapsibleWrapper.show();
+      this.$heading.addClass('open');
+    }
+
+    // collapse() hides the zippy's contents
+    CollapsibleSection.prototype.collapse = function() {
+      if (this.$collapsibleWrapper == null) {
+        return;
+      }
+      this.$collapsibleWrapper.hide();
+      this.$heading.removeClass('open');
+    }
+
+    // toggle() flips the state of the zippy from open to closed or vice-versa
+    CollapsibleSection.prototype.toggle = function() {
+      if (this.$collapsibleWrapper == null) {
+        return;
+      }
+      this.$collapsibleWrapper.toggle();
+      this.$heading.toggleClass('open');
+    }
+  })();
 </script>
