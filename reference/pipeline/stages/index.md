@@ -53,7 +53,8 @@ your cluster is a particular size, or add a pipeline expression. See the
 information about creating and using pipeline expressions.
 
 ### Clone Server Group
-Deploy a new Server Group that is a copy of the specified Server Group.
+Deploy the image from the original Server Group to a new Server Group. You can
+choose to copy the capacity of the original Server Group as well.
 
 ### Deploy
 Deploy the previously baked or found image using the specified deployment
@@ -80,30 +81,34 @@ to disable the Server Group which is newest, oldest, or previous
 (second-most-recently deployed) when this stage starts.
 
 ### Enable Server Group
-Enable a Server Group, which means that the Server Group will will resume
-handling traffic.
+Enable a Server Group, which means that the Server Group resumes handling
+traffic. The configuration of your Load Balancer determines how traffic is
+routed between newly-enabled Server Groups and any existing Server Groups.
 
 ### Find Artifact From Execution
 Find and bind an artifact from another pipeline execution.
 
 ### Find Image From Cluster
-Find an image to deploy from an existing Cluster. You must specify the Cluster,
-Server Group, and image name such that there is exactly one match.
+Find an image to deploy from an existing Cluster. Make sure that you specify the
+Cluster and Server Group such that there is exactly one match, or this may
+behave in unexpected ways.
 
 ### Find Image From Tags
 Find an image to deploy from tags.
 
 ### Jenkins
-Run a Jenkins job. You must [set up Jenkins](/setup/ci/jenkins/) in order to
-use this stage.
+Run the specified job in Jenkins. You must [set up Jenkins](/setup/ci/jenkins/)
+in order to use this stage. Once Jenkins is configured, your Jenkins master and
+available jobs are automatically populated in the respective drop-down menus.
 
 ### Manual Judgment
-Wait for the user to click **Continue** before continuing.
+Wait for the user to click **Continue** before continuing. You can specify
+instructions for how to decide whether to continue, or add input options
+that users can choose between.
 
 ### Pipeline
 Run an existing pipeline: you can select any pipeline from this application and
 run it as a sub-pipeline.
-
 
 ### Resize Server Group
 Resize the oldest, newest, or second newest Server Group. You can resize the
@@ -177,20 +182,20 @@ Deploy a Kubernetes manifest YAML/JSON file.
 Find artifacts from a Kubernetes resource.
 
 ### Patch (Manifest)
-Update an already existing Kubernetes resource in place using the [Kubernetes 
-patch operation](https://kubernetes.io/docs/tasks/run-application/update-api-object-kubectl-patch/). 
-Spinnaker can update the resource without knowing the entire resource (that is, 
-you have to specify only the portion of the manifest you want to update). 
+Update an already existing Kubernetes resource in place using the [Kubernetes
+patch operation](https://kubernetes.io/docs/tasks/run-application/update-api-object-kubectl-patch/).
+Spinnaker can update the resource without knowing the entire resource (that is,
+you have to specify only the portion of the manifest you want to update).
 
-The patch stage can be used to add a label or update a sidecar container image 
+The patch stage can be used to add a label or update a sidecar container image
 for a set of resources. It can also be used to implement a [rainbow deployment
-](http://brandon.dimcheff.com/2018/02/rainbow-deploys-with-kubernetes/) 
-strategy for Kubernetes by first deploying a new ReplicaSet and then patching 
+](http://brandon.dimcheff.com/2018/02/rainbow-deploys-with-kubernetes/)
+strategy for Kubernetes by first deploying a new ReplicaSet and then patching
 the fronting service's selectors to point to the new ReplicaSet.
 
 Spinnaker also supports [artifact substitution
-](/reference/artifacts/in-kubernetes-v2/#binding-artifacts-in-manifests) for the 
-patch content just like the resource manifest in the deploy stage. 
+](/reference/artifacts/in-kubernetes-v2/#binding-artifacts-in-manifests) for the
+patch content just like the resource manifest in the deploy stage.
 
 ### Scale (Manifest)
 Scale a Kubernetes object created from a manifest.
