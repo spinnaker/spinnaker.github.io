@@ -13,16 +13,25 @@ One way to manage applications and pipelines as code is through [spin](http://gi
 
 To acquire `spin`, do the following:
 
+### On Linux
+
 ```bash
-# See the versions released at https://github.com/spinnaker/spin/releases.
-export VERSION=<desired spin version tag> # Select a tag from the released version, e.g. v0.1.0
-curl -L https://github.com/spinnaker/spin/releases/download/$VERSION/spin -o spin
-chmod +x ./spin
-./spin --help
+curl -LO https://storage.googleapis.com/spinnaker-artifacts/spin/$(curl -s https://storage.googleapis.com/spinnaker-artifacts/spin/latest)/linux/amd64/spin
+
+chmod +x spin
+
+sudo mv spin /usr/local/bin/spin
 ```
 
-**Note**: The alpha `spin` binaries are only available for Linux platforms only at this point.
-We'll compile binaries for other platforms likely in Spinnaker 1.9.x.
+### On MacOS
+
+```bash
+curl -LO https://storage.googleapis.com/spinnaker-artifacts/spin/$(curl -s https://storage.googleapis.com/spinnaker-artifacts/spin/latest)/darwin/amd64/spin
+
+chmod +x spin
+
+sudo mv spin /usr/local/bin/spin
+```
 
 ## Configure `spin`
 
