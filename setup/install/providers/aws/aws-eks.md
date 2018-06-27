@@ -5,9 +5,17 @@ sidebar:
   nav: setup
 ---
 
+
+
 {% include toc %}
 
+
+
+
+
 > Before you proceed with installing Spinnaker on EKS, we strongly recommend that you familiarize yourself with [Amazon EKS concepts](https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html)
+
+
 
 Below are the instructions to be followed if you want to configure [Kubernetes V2 (manifest based) Clouddriver](/setup/install/providers/kubernetes-v2) 
 to run Spinnaker on [Amazon EKS](https://aws.amazon.com/eks/).
@@ -24,7 +32,7 @@ In Managing Account Create a two subnet VPC , IAM Roles, Instance Profiles and S
 ```
 curl -O https://raw.githubusercontent.com/spinnaker/spinnaker.github.io/master/setup/install/providers/aws/managing.yaml  
 aws cloudformation deploy --stack-name spinnaker-managing-infrastructure-setup --template-file managing.yaml \
---parameter-overrides UseAccessKeyForAuthentication=false --capabilities CAPABILITY_NAMED_IAM
+--parameter-overrides UseAccessKeyForAuthentication=false EksClusterName=spinnaker-cluster --capabilities CAPABILITY_NAMED_IAM
 ```
 
 Once the stack creation succeeds, note the following
@@ -49,6 +57,8 @@ In each of managed account, create role that can be assumed by Spinnaker
 > This needs to be executed in managing account as well.
 
 ```
+
+curl -O https://raw.githubusercontent.com/spinnaker/spinnaker.github.io/master/setup/install/providers/aws/managed.yaml  
 
 aws cloudformation deploy --stack-name spinnaker-managed-infrastructure-setup --template-file managed.yaml \
 --parameter-overrides AuthArn=$AUTH_ARN ManagingAccountId=$MANAGING_ACCOUNT_ID --capabilities CAPABILITY_NAMED_IAM
@@ -109,10 +119,9 @@ users:
 
 ```
 CONTEXT=aws
-kubectl apply -f https://raw.githubusercontent.com/spinnaker/spinnaker.github.io/master/setup/install/providers/aws/eks/eks-admin-service-account.yaml 
-kubectl apply -f https://raw.githubusercontent.com/spinnaker/spinnaker.github.io/master/setup/install/providers/aws/eks/eks-admin-cluster-role-binding.yaml 
-kubectl apply -f https://raw.githubusercontent.com/spinnaker/spinnaker.github.io/master/setup/install/providers/aws/eks/spinnaker-service-account.yaml 
 kubectl create namespace spinnaker
+#kubectl apply -f https://raw.githubusercontent.com/spinnaker/spinnaker.github.io/master/setup/install/providers/aws/eks/eks-admin-service-account.yaml 
+#kubectl apply -f https://raw.githubusercontent.com/spinnaker/spinnaker.github.io/master/setup/install/providers/aws/eks/eks-admin-cluster-role-binding.yaml 
 kubectl apply -f https://raw.githubusercontent.com/spinnaker/spinnaker.github.io/master/setup/install/providers/aws/eks/spinnaker-service-account.yaml 
 kubectl apply -f https://raw.githubusercontent.com/spinnaker/spinnaker.github.io/master/setup/install/providers/aws/eks/spinnaker-cluster-role-binding.yaml 
 TOKEN=$(kubectl get secret --context $CONTEXT \
@@ -126,7 +135,7 @@ kubectl config set-credentials ${CONTEXT}-token-user --token $TOKEN
 kubectl config set-context $CONTEXT --user ${CONTEXT}-token-user
 ```
 
-> This point onwards, the location (either EC2 instance, or local) where you run halyard commands from should have the kubeconfig file that was created
+> This point onwards, the location (either EC2 instance, or container or local) where you run halyard commands from should have the kubeconfig file that was created
 by the above kubectl commands. If you ran the kubectl commands locally and want to run halyard command on an instance, then you can copy the kubeconfig file
 from local to the instance.
 
@@ -136,19 +145,6 @@ from local to the instance.
 ./hal config provider kubernetes enable
 ./hal config provider kubernetes account add ${MY_K8_ACCOUNT}   --provider-version v2   --context $(kubectl config current-context)
 ./hal config features edit --artifacts true
-```
-
-
-## Enable EC2 Cloud Provider using Halyard
-
-```
-
-./hal config provider aws account add ${NAME_OF_YOUR_AWS_ACCOUNT} \
-    --account-id ${YOUR_AWS_ACCOUNT_ID} \
-    --assume-role role/spinnakerManaged
-
-./hal config provider aws enable
-
 ```
 
 
@@ -175,8 +171,9 @@ from local to the instance.
 
 ## Create Kubernetes worker nodes
 
+Worker nodes use [EKS optimized AMIs](https://docs.aws.amazon.com/eks/latest/userguide/worker.html)
 ```
-curl -O https://raw.githubusercontent.com/spinnaker/spinnaker.github.io/master/setup/install/providers/aws/amazon-eks-nodegroup.yaml  
+curl -O https://raw.githubusercontent.com/spinnaker/spinnaker.github.io/master/setup/install/providers/aws/eks/amazon-eks-nodegroup.yaml  
 aws cloudformation deploy --stack-name spinnaker-eks-nodes --template-file amazon-eks-nodegroup.yaml \
 --parameter-overrides NodeInstanceProfile=$SPINNAKER_INSTANCE_PROFILE_ARN \
 NodeInstanceType=t2.large ClusterName=$EKS_CLUSTER_NAME NodeGroupName=spinnaker-cluster-nodes ClusterControlPlaneSecurityGroup=$CONTROL_PLANE_SG \
@@ -234,3 +231,12 @@ kubectl get nodes --watch
 ./hal deploy connect
 
 ```
+
+## Next steps
+
+Optionally, you can [set up Amazon's Elastic Container
+Service](/setup/install/providers/aws/aws-ecs/) and/or [set up Amazon's EC2](/setup/install/providers/aws/aws-ec2/) and/or [set up another cloud
+provider](/setup/install/providers/), but otherwise you're ready to
+[choose an environment](/setup/install/environment/)
+in which to install Spinnaker.
+
