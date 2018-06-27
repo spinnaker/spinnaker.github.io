@@ -191,6 +191,8 @@ Resources:
               - !Select
                 - '0'
                 - !GetAZs ''
+        - Key: immutable_metadata # This is important for Spinnaker UI to display and group subnets
+          Value: {"purpose":"public-subnet"}
   SpinnakerPublicSubnet2:
     Type: AWS::EC2::Subnet
     Properties:
@@ -208,6 +210,8 @@ Resources:
               - !Select
                 - '1'
                 - !GetAZs ''
+        - Key: immutable_metadata
+          Value: {"purpose":"public-subnet"}
   SpinnakerPublicRouteTable:
     Type: AWS::EC2::RouteTable
     DependsOn:
