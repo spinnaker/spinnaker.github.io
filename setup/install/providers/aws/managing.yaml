@@ -25,13 +25,14 @@ Parameters:
       - true
       - false
   EksClusterName:
-    Description : Name of your EKS cluster
+    Description : Enter EKS cluster name, if you want to run Spinnaker on EKS
     Type: String
-    Default : spinnaker-cluster
+    Default: None
 
 Conditions:
   CreateAccessKeys : !Equals [ !Ref UseAccessKeyForAuthentication, true ]
   CreateEc2Role: !Equals [ !Ref UseAccessKeyForAuthentication, false ]
+  SupportEKS: !Not [!Equals ["None",!Ref EksClusterName]]
 Resources:
   BaseIAMRole:
     Properties:
@@ -50,6 +51,7 @@ Resources:
 
   EksServiceRole:
     Type: AWS::IAM::Role
+    Condition: SupportEKS
     Properties:
           AssumeRolePolicyDocument:
             Statement:
@@ -66,6 +68,7 @@ Resources:
                   - arn:aws:iam::aws:policy/AmazonEKSServicePolicy
   EksCluster:
     Type: AWS::EKS::Cluster
+    Condition: SupportEKS
     Properties:
         Name: !Ref EksClusterName
         Version: "1.10"
@@ -88,7 +91,7 @@ Resources:
           - !Ref BaseIAMRole
       Type: AWS::IAM::InstanceProfile
 
-# Creates EC2 Role and Instance Profile
+# Creates EC2 Role and Instance Profile with which Spinnaker Runs
   SpinnakerInstanceProfile:
     DependsOn: SpinnakerAuthRole
     Condition: CreateEc2Role
@@ -111,9 +114,9 @@ Resources:
         Version: '2012-10-17'
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/PowerUserAccess
-        - arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
-        - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
-        - arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly
+        - !If [SupportEKS,"arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy",!Ref "AWS::NoValue"]
+        - !If [SupportEKS,"arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy",!Ref "AWS::NoValue"]
+        - !If [SupportEKS,"arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly",!Ref "AWS::NoValue"]
     Type: AWS::IAM::Role
     Condition: CreateEc2Role
 
@@ -234,6 +237,7 @@ Resources:
 
   ControlPlaneSecurityGroup:
       Type: AWS::EC2::SecurityGroup
+      Condition: SupportEKS
       Properties:
         GroupDescription: Cluster communication with worker nodes
         VpcId: !Ref SpinnakerVPC
@@ -250,20 +254,25 @@ Outputs:
   AuthArn:
     Value: !If [CreateAccessKeys,!GetAtt SpinnakerUser.Arn,!GetAtt SpinnakerAuthRole.Arn ]
   EksClusterEndpoint:
+      Condition: SupportEKS
       Value: !GetAtt EksCluster.Endpoint
   EksClusterCA:
+        Condition: SupportEKS
         Value: !GetAtt EksCluster.CertificateAuthorityData
   SubnetIds:
       Description: All subnets in the VPC
       Value: !Join [ ",", [ !Ref SpinnakerPublicSubnet1,!Ref SpinnakerPublicSubnet2 ] ]
   EksClusterName:
+    Condition: SupportEKS
     Value: !Ref EksClusterName
 
   SpinnakerInstanceProfileArn:
     Value: !GetAtt SpinnakerInstanceProfile.Arn
+
   VpcId:
     Value: !Ref SpinnakerVPC
 
   SecurityGroups:
+      Condition: SupportEKS
       Description: Security group for the cluster control plane communication with worker nodes
       Value: !Join [ ",", [ !Ref ControlPlaneSecurityGroup ] ]

@@ -23,6 +23,16 @@ Swap out `rbenv` below for `rvm` if you prefer. RVM was giving me installation i
     1. `gem install bundle`
     1. `bundle install`    
 
+## Host the website on Amazon S3
+
+1. [Enable static website hosting on a S3 Bucket](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/static-website-hosting.html)
+1. `gem install s3_website`
+1. `s3_website cfg create`
+1. Delete s3_id and s3_secret so that your AWS credentials can be read from ~/.aws/credentials
+1. Modify url property at _config.yml to use the CNAME that you want to use
+1. `jekyll build`
+1. `s3_website push`
+
 ## Local Development 
 1. Start Jekyll server
     1. `bundle exec jekyll serve --watch`
