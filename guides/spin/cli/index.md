@@ -71,4 +71,29 @@ and the [README](https://github.com/spinnaker/spin/blob/master/README.md) for mo
 
 ### OAuth2
 
-Coming soon in Spinnaker 1.9.x.
+`spin` can be configured with OAuth2.0 to authenticate calls against Spinnaker. The configuration
+block looks like this:
+
+```yaml
+auth:
+  enabled: true
+  oauth2:
+    authUrl: # OAuth2 provider auth url
+    tokenUrl: # OAuth2 provider token url
+    clientId: # OAuth2 client id
+    clientSecret: # OAuth2 client secret
+    scopes: # Scopes requested for the token
+    - scope1
+    - scope2
+```
+
+See https://www.spinnaker.io/setup/security/authentication/oauth/providers/ 
+to see examples for acquiring a clientId/clientSecret from your provider.
+
+Unlike X.509, OAuth2 needs to be initialized once to authenticate with the provider before
+it can be used for automation. To authenticate, configure OAuth2 as shown above and execute
+any `spin` command. You will be prompted to authenticate with your OAuth2 provider
+and paste an access code. `spin` then exchanges the code for an OAuth2 access/refresh token pair,
+which it caches in your `~/.spin/config` file for future use. All subsequent `spin` calls will
+use the cached OAuth2 token for authentication with no user input required. If an OAuth2
+access token expires, `spin` will use the refresh token to renew the access token expiry.
