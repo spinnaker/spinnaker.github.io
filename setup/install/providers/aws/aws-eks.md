@@ -29,7 +29,7 @@ In Managing Account Create a two subnet VPC , IAM Roles, Instance Profiles and S
 
 > This step will take around 15-20 minutes to complete
    
-```
+```bash
 curl -O https://raw.githubusercontent.com/spinnaker/spinnaker.github.io/master/setup/install/providers/aws/managing.yaml  
 aws cloudformation deploy --stack-name spinnaker-managing-infrastructure-setup --template-file managing.yaml \
 --parameter-overrides UseAccessKeyForAuthentication=false EksClusterName=spinnaker-cluster --capabilities CAPABILITY_NAMED_IAM
@@ -37,7 +37,7 @@ aws cloudformation deploy --stack-name spinnaker-managing-infrastructure-setup -
 
 Once the stack creation succeeds, note the following
 
-```
+```bash
 VPC_ID=$(aws cloudformation describe-stacks --stack-name spinnaker-managing-infrastructure-setup --query 'Stacks[0].Outputs[?OutputKey==`VpcId`].OutputValue' --output text)
 CONTROL_PLANE_SG=$(aws cloudformation describe-stacks --stack-name spinnaker-managing-infrastructure-setup --query 'Stacks[0].Outputs[?OutputKey==`SecurityGroups`].OutputValue' --output text)
 AUTH_ARN=$(aws cloudformation describe-stacks --stack-name spinnaker-managing-infrastructure-setup --query 'Stacks[0].Outputs[?OutputKey==`AuthArn`].OutputValue' --output text)
@@ -56,7 +56,7 @@ In each of managed account, create role that can be assumed by Spinnaker
 
 > This needs to be executed in managing account as well.
 
-```
+```bash
 
 curl -O https://raw.githubusercontent.com/spinnaker/spinnaker.github.io/master/setup/install/providers/aws/managed.yaml  
 
@@ -147,28 +147,6 @@ from local to the instance.
 ./hal config features edit --artifacts true
 ```
 
-
-## Choose Halyard distributed deployment
-
-```
-
-./hal config deploy edit --type distributed --account-name ${MY_K8_ACCOUNT}
-
-```
-
-## Choose persistant storage to S3 using Halyard
-
-
-```
-./hal config storage s3 edit \
-    --access-key-id ${ACCESS_KEY_HAVING_S3_ACCESS} \
-    --secret-access-key \
-    --region us-west-2
-
-./hal config storage edit --type s3
-
-```
-
 ## Create Kubernetes worker nodes
 
 Worker nodes use [EKS optimized AMIs](https://docs.aws.amazon.com/eks/latest/userguide/worker.html)
@@ -215,22 +193,6 @@ kubectl get nodes --watch
 
 ```
 
-## Deploy Spinnaker using Halyard
-
-```
-
-./hal config version edit --version 1.7.6
-./hal deploy apply
-
-```
-
-## Connect
-
-```
-
-./hal deploy connect
-
-```
 
 ## Next steps
 
