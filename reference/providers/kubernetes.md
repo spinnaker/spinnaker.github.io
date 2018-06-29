@@ -3,6 +3,7 @@ layout: single
 title:  "Kubernetes"
 sidebar:
   nav: reference
+redirect_from: /reference/providers/kubernetes-v1/
 ---
 
 {% include toc %}
