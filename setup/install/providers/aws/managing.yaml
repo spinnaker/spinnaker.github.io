@@ -184,15 +184,10 @@ Resources:
         - !GetAZs ''
       Tags:
         - Key: Name
-          Value: !Join
-            - .
-            - - !Ref 'SpinnakerVPC'
-              - internal
-              - !Select
-                - '0'
-                - !GetAZs ''
-        - Key: immutable_metadata # This is important for Spinnaker UI to display and group subnets
-          Value: {"purpose":"public-subnet"}
+          Value: !Sub SpinnakerVPC.external.${AWS::Region}a
+        - Key: immutable_metadata # If you cannot name the VPC as done above, use this tag
+          Value: !Sub |
+            {"purpose": "public-subnet"}
   SpinnakerPublicSubnet2:
     Type: AWS::EC2::Subnet
     Properties:
@@ -203,15 +198,10 @@ Resources:
         - !GetAZs ''
       Tags:
         - Key: Name
-          Value: !Join
-            - .
-            - - !Ref 'SpinnakerVPC'
-              - internal
-              - !Select
-                - '1'
-                - !GetAZs ''
+          Value: !Sub SpinnakerVPC.external.${AWS::Region}b
         - Key: immutable_metadata
-          Value: {"purpose":"public-subnet"}
+          Value: !Sub |
+            {"purpose": "external"}
   SpinnakerPublicRouteTable:
     Type: AWS::EC2::RouteTable
     DependsOn:
