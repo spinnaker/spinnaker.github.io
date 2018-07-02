@@ -14,7 +14,7 @@ redirect_from: /docs/bake-and-deploy-pipeline
 > For Kubernetes, try [Kubernetes
 Source-to-Prod](/guides/tutorials/codelabs/kubernetes-source-to-prod/), or the
 [manifest-based version](/guides/tutorials/codelabs/kubernetes-v2-source-to-prod/),
-or [this one, for Azure](guides/tutorials/codelabs/azure-kubernetes-source-to-prod/).
+or [this one, for Azure](/guides/tutorials/codelabs/azure-kubernetes-source-to-prod/).
 
 To walk you through some of the basics with Spinnaker, you're going to set up a Spinnaker pipeline that bakes a virtual machine (VM) image containing redis, then deploys that image to a test cluster.
 
