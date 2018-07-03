@@ -121,5 +121,5 @@ associated with the application.
 When we're finished with our Spinnaker application, we can delete it.
 
 ```bash
-spin application delete --application-name my-app
+spin application delete my-app
 ```
