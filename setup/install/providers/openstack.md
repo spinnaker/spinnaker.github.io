@@ -42,7 +42,7 @@ The OpenStack account information is in your openrc.sh. Run the following `hal` 
 hal config provider openstack account add my-openstack-account \
     --auth-url http://authurl:5000/v3  --username service-account \
     --domain-name default --regions RegionOne --project-name the-project \
-    --password service-password
+    --password service-password --environment exampleenv
 ```
 
 ## Advanced account settings
