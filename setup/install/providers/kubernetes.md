@@ -3,7 +3,9 @@ layout: single
 title:  "Kubernetes (legacy provider)"
 sidebar:
   nav: setup
-redirect_from: /setup/providers/kubernetes/
+redirect_from: 
+ - /setup/providers/kubernetes/
+ - /setup/install/providers/kubernetes-v1/
 ---
 
 {% include toc %}
