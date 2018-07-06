@@ -8,7 +8,13 @@ redirect_from: /docs/bake-and-deploy-pipeline
 
 {% include toc %}
 
-> **NOTE:** _Kubernetes:_ The following example pipeline is predicated on running a VM based deployment solution (e.g. AWS, GCP). Comprehensive documentation of pipeline configuration for Kubernetes is incoming, as it is slightly different for container based solutions.
+> **VM only**: This codelab requires you have a VM (for example, on AWS or GCP)
+> on which to run it.
+>
+> For Kubernetes, try [Kubernetes
+Source-to-Prod](/guides/tutorials/codelabs/kubernetes-source-to-prod/), or the
+[manifest-based version](/guides/tutorials/codelabs/kubernetes-v2-source-to-prod/),
+or [this one, for Azure](/guides/tutorials/codelabs/azure-kubernetes-source-to-prod/).
 
 To walk you through some of the basics with Spinnaker, you're going to set up a Spinnaker pipeline that bakes a virtual machine (VM) image containing redis, then deploys that image to a test cluster.
 
