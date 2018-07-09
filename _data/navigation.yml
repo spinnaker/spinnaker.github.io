@@ -67,6 +67,8 @@ setup:
             children:
               - title: Amazon EKS
                 url: /setup/install/providers/kubernetes-v2/aws-eks/
+              - title: Google Kubernetes Engine
+                url: /setup/install/providers/kubernetes-v2/gke/
           - title: OpenStack
             url: /setup/install/providers/openstack/
           - title: Oracle
