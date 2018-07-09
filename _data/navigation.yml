@@ -49,8 +49,6 @@ setup:
                 url: /setup/install/providers/aws/aws-ec2/
               - title: ECS
                 url: /setup/install/providers/aws/aws-ecs/
-              - title: EKS
-                url: /setup/install/providers/aws/aws-eks/
           - title: Azure
             url: /setup/install/providers/azure/
           - title: DC/OS
@@ -65,6 +63,10 @@ setup:
             url: /setup/install/providers/kubernetes/
           - title: Kubernetes (Manifest Based)
             url: /setup/install/providers/kubernetes-v2/
+            collapsed: false
+            children:
+              - title: Amazon EKS
+                url: /setup/install/providers/aws/aws-eks/
           - title: OpenStack
             url: /setup/install/providers/openstack/
           - title: Oracle
