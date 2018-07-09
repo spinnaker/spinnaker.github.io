@@ -63,6 +63,10 @@ setup:
             url: /setup/install/providers/kubernetes/
           - title: Kubernetes (Manifest Based)
             url: /setup/install/providers/kubernetes-v2/
+            collapsed: false
+            children:
+              - title: Amazon EKS
+                url: /setup/install/providers/kubernetes-v2/aws-eks/
           - title: OpenStack
             url: /setup/install/providers/openstack/
           - title: Oracle

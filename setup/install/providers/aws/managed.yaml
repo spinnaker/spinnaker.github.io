@@ -24,7 +24,6 @@ Resources:
         Version: '2012-10-17'
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/PowerUserAccess
-
   SpinnakerManagedPolicy:
       Type: AWS::IAM::Policy
       Properties:
@@ -35,5 +34,5 @@ Resources:
           Statement:
             - Action: iam:PassRole
               Effect: Allow
-              Resource: !Sub arn:aws:iam::${ManagingAccountId}:role/BaseIAMRole
+              Resource: "*" # You should restrict this only to certain set of roles, if required
         PolicyName: SpinnakerPassRole
