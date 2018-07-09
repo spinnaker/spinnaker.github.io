@@ -66,10 +66,7 @@ This is the step that compares the canary and baseline data for each included
 metric. The output of this step is a classification, for each metric indicating
 if there is a significant difference between the canary and baseline.
 
-Each metric is classified as either “Pass”, “High”, or “Low” as shown in the
-screen shot below.
-
-<!--- insert image here, if available --->
+Each metric is classified as either “Pass”, “High”, or “Low.”.
 
 The primary metric comparison algorithm (classifier) in Kayenta uses a
 nonparametric statistical test to check for a significant difference between the
