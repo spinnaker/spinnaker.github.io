@@ -142,6 +142,25 @@ command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
   If instead Spinnaker is deploying ReplicaSets directly without a Deployment,
   this annotation does the job.
 
+# Reserved labels
+
+In accordance with [Kubernetes' recommendations on common
+labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/#labels),
+Spinnaker applies the following labels as of release 1.9:
+
+* `app.kubernetes.io/name`
+
+  This is the name of the Spinnaker application this resource is deployed to,
+  and matches the value of the `moniker.spinnaker.io/application` annotation
+  desribed [here](#moniker).
+
+* `app.kubernetes.io/managed-by`
+
+  Always set to `"spinnaker"`.
+
+> This labeling behavior can be disabled by setting the property
+> `kubernetes.v2.applyAppLabels: false` in `clouddriver-local.yml`.
+
 # How Kubernetes resources are managed by Spinnaker
 
 Resource mapping between Spinnaker and Kubernetes constructs, as well as the
