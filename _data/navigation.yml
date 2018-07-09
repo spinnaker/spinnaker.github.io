@@ -66,7 +66,7 @@ setup:
             collapsed: false
             children:
               - title: Amazon EKS
-                url: /setup/install/providers/aws/aws-eks/
+                url: /setup/install/providers/kubernetes-v2/aws-eks/
           - title: OpenStack
             url: /setup/install/providers/openstack/
           - title: Oracle
