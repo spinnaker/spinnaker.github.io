@@ -31,8 +31,8 @@ Instances in a Virtual Machine Scale set all use the same standard/custom VHD.
 [Linux VM sizes](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)
 [WIndows VM sizes](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
 
-### Security Group
-A Spinnaker **security group** maps to an Azure [Network Security Group](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+### Firewall
+A Spinnaker **firewall** maps to an Azure [Network Security Group](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 
 ## Operation mapping
 
@@ -63,14 +63,14 @@ Edits the properties of an Application Gateway.
 ### Delete Load Balancer
 Deletes an Application Gateway.  Delete will fail if the App Gatway is connected to a Virtual Machine Scale Set.
 
-### Create Security Group
+### Create Firewall
 Creates a Network Security Group in the specified Virtual Network.
 
-### Clone Security Group
+### Clone Firewall
 Clones a Network Security Group in the same virtual Network.
 
 ### Edit inbound rules
 Edit the inbound traffic rules on the corresponding Network Security Group.
 
-### Delete Security Group
+### Delete Firewall
 Deletes the Network Security Group.

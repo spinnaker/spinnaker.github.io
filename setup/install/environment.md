@@ -59,7 +59,11 @@ on the machine running Halyard.
 
    After you install it, you might need to update the `$PATH` to ensure Halyard
    can find it, and if Halyard was already running you might need to restart it
-   to pick up the new `$PATH`.
+   to pick up the new `$PATH`:
+
+   `hal shutdown`
+
+   Then invoke any `hal` command to restart the Halyard daemon.
 
 1. Run the following command, using the `$ACCOUNT` name you created when you
 configured the provider:

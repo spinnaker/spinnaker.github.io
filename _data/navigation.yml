@@ -302,6 +302,15 @@ guides:
         url: /guides/runbooks/sharding-spinnaker/
       - title: Orca Quality of Service
         url: /guides/runbooks/orca-quality-of-service/
+  - title: Spin CLI
+    collapsed: true
+    children:
+      - title: Install and Configure Spin CLI
+        url: /guides/spin/cli/
+      - title: Manage Applications
+        url: /guides/spin/app/
+      - title: Manage Pipelines
+        url: /guides/spin/pipeline/
 reference:
   - title: API
     collapsed: true
