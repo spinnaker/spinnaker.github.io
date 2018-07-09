@@ -18,7 +18,7 @@ sidebar:
 
 
 Below are the instructions to be followed if you want to configure [Kubernetes V2 (manifest based) Clouddriver](/setup/install/providers/kubernetes-v2) 
-to run Spinnaker on [Amazon EKS](https://aws.amazon.com/eks/).
+Spinnaker to deploy to [Amazon EKS](https://aws.amazon.com/eks/).
 
 These instructions assumes that you have AWS CLI [installed](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) ,
 [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html) and have access to managing and each of the managed account.
@@ -57,12 +57,10 @@ In each of managed account, create role that can be assumed by Spinnaker
 > This needs to be executed in managing account as well.
 
 ```bash
-
 curl -O https://raw.githubusercontent.com/spinnaker/spinnaker.github.io/master/setup/install/providers/aws/managed.yaml  
 
 aws cloudformation deploy --stack-name spinnaker-managed-infrastructure-setup --template-file managed.yaml \
 --parameter-overrides AuthArn=$AUTH_ARN ManagingAccountId=$MANAGING_ACCOUNT_ID --capabilities CAPABILITY_NAMED_IAM
-
 ```
 
 ## kubectl configurations
@@ -142,9 +140,9 @@ from local to the instance.
 ## Enable Kubernetes Cloud provider using Halyard
 
 ```
-./hal config provider kubernetes enable
-./hal config provider kubernetes account add ${MY_K8_ACCOUNT}   --provider-version v2   --context $(kubectl config current-context)
-./hal config features edit --artifacts true
+hal config provider kubernetes enable
+hal config provider kubernetes account add ${MY_K8_ACCOUNT}   --provider-version v2   --context $(kubectl config current-context)
+hal config features edit --artifacts true
 ```
 
 ## Create Kubernetes worker nodes
@@ -188,9 +186,7 @@ kubectl apply -f aws-auth-cm.yaml
 Watch the nodes to come in ready state
 
 ```
-
 kubectl get nodes --watch
-
 ```
 
 
