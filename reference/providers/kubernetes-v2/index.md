@@ -115,14 +115,14 @@ command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
 
 * `caching.spinnaker.io/ignore`
 
-  When set to `true`, tells Spinnaker to ignore this resource.
+  When set to `'true'`, tells Spinnaker to ignore this resource.
   The resource is not cached and does not show up in the Spinnaker UI.
 
 ## Strategy
 
 * `strategy.spinnaker.io/versioned`
 
-  When set to `true` or `false`, this overrides the resource's default
+  When set to `'true'` or `'false'`, this overrides the resource's default
   "version" behavior described in the [resource management
   policies](#resource-management-policies). This can be used to force a
   ConfigMap or Secret to be deployed without appending a new version when the
