@@ -38,7 +38,6 @@ EKS_CLUSTER_CA_DATA=$(aws cloudformation describe-stacks --stack-name spinnaker-
 SPINNAKER_INSTANCE_PROFILE_ARN=$(aws cloudformation describe-stacks --stack-name spinnaker-managing-infrastructure-setup --query 'Stacks[0].Outputs[?OutputKey==`SpinnakerInstanceProfileArn`].OutputValue' --output text)
 ```
 
-
 ## Set up the managed account
 
 In each of managed accounts, create a IAM role that can be assumed by Spinnaker:
@@ -61,7 +60,6 @@ Also, when an Amazon EKS cluster is created, the IAM entity (user or role) that 
 If you use the console to create the cluster, you must ensure that the same IAM user credentials are in the AWS SDK credential chain when you are running `kubectl` commands on your cluster.
 
 In the setup as done above, we used AWS CLI, hence you must ensure that the server/workstation from where you are running the `kubectl` commands in step-2 below have the same AWS credentials.
-
 
 1. Create default [kubectl configuration file](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html)
 
