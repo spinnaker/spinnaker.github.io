@@ -54,7 +54,7 @@ aws cloudformation deploy --stack-name spinnaker-managed-infrastructure-setup --
 
 ## `kubectl` and `heptio authenticator` configurations
 
-1. Configure [kubectl and heptio authenticator for aws is installed and configured](https://docs.aws.amazon.com/eks/latest/userguide/configure-kubectl.html)
+1. Configure [kubectl and heptio authenticator for aws is installed and configured](https://docs.aws.amazon.com/eks/latest/userguide/configure-kubectl.html) on the workstation/instance where you are running Halyard from. Alternatively, if you are using Halyard container, you must be on version >=1.5.
 
  Also, when an Amazon EKS cluster is created, the IAM entity (user or role) that creates the cluster is added to the Kubernetes RBAC authorization table as the administrator. Initially, only that IAM user can make calls to the Kubernetes API server using `kubectl`.
 
