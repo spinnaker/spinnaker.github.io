@@ -63,8 +63,8 @@ In the setup as done above, we used AWS CLI, hence you must ensure that the serv
 
 1. Create default [kubectl configuration file](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html)
 
-Paste the following to your kubeconfig file , replace `<endpoint-url>` , `<base64-encoded-ca-cert>` and `<cluster-name>` with values of $EKS_CLUSTER_ENDPOINT , $EKS_CLUSTER_CA_DATA and $EKS_CLUSTER_NAME
-as noted above
+Paste the following to your kubeconfig file, replace `<endpoint-url>`, `<base64-encoded-ca-cert>` and `<cluster-name>` with values of `$EKS_CLUSTER_ENDPOINT`, `$EKS_CLUSTER_CA_DATA` and `$EKS_CLUSTER_NAME`
+as noted above:
 
 ```yaml
 
@@ -100,14 +100,13 @@ users:
 
 ```
 
-(Optional) To have the Heptio authenticator assume a role to perform cluster operations (instead of the default AWS credential provider chain), uncomment the -r and <role-arn> lines and substitute an IAM role ARN to use with your user.
+(Optional) To have the Heptio authenticator assume a role to perform cluster operations (instead of the default AWS credential provider chain), uncomment the `-r` and `<role-arn>` lines and substitute an IAM role ARN to use with your user.
 
-(Optional) To have the Heptio authenticator always use a specific named AWS credential profile (instead of the default AWS credential provider chain), uncomment the env lines and substitute <aws-profile> with the profile name to use.
+(Optional) To have the Heptio authenticator always use a specific named AWS credential profile (instead of the default AWS credential provider chain), uncomment the env lines and substitute `<aws-profile>` with the profile name to use.
 
 {:start="2"}
 
 2. [Create the necessary service accounts and cluster role bindings](/setup/install/providers/kubernetes-v2/#optional-create-a-kubernetes-service-account)
-
 
 ## Enable Kubernetes Cloud provider using Halyard
 
@@ -130,7 +129,7 @@ Subnets=$SUBNETS VpcId=$VPC_ID --capabilities CAPABILITY_NAMED_IAM
 
 ```
 
-## Join the nodes created above with the Spinnaker EKS cluster and wait till the 
+## Join the nodes with the Spinnaker EKS cluster
 
 Replace `<spinnaker-role-arn>` with `$AUTH_ARN` and save it as aws-auth-cm.yaml
 
@@ -161,7 +160,6 @@ Watch the status of your nodes and wait for them to reach the `Ready` status.
 ```bash
 kubectl get nodes --watch
 ```
-
 
 ## Next steps
 
