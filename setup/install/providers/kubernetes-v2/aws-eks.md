@@ -52,20 +52,22 @@ aws cloudformation deploy --stack-name spinnaker-managed-infrastructure-setup --
 --parameter-overrides AuthArn=$AUTH_ARN ManagingAccountId=$MANAGING_ACCOUNT_ID --capabilities CAPABILITY_NAMED_IAM
 ```
 
-## `kubectl` configurations
+## `kubectl` and `heptio authenticator` configurations
 
-Before you proceed,configure [kubectl and heptio authenticator for aws is installed and configured](https://docs.aws.amazon.com/eks/latest/userguide/configure-kubectl.html)
+1. Configure [kubectl and heptio authenticator for aws is installed and configured](https://docs.aws.amazon.com/eks/latest/userguide/configure-kubectl.html)
 
-Also, when an Amazon EKS cluster is created, the IAM entity (user or role) that creates the cluster is added to the Kubernetes RBAC authorization table as the administrator. Initially, only that IAM user can make calls to the Kubernetes API server using `kubectl`.
+ Also, when an Amazon EKS cluster is created, the IAM entity (user or role) that creates the cluster is added to the Kubernetes RBAC authorization table as the administrator. Initially, only that IAM user can make calls to the Kubernetes API server using `kubectl`.
 
-If you use the console to create the cluster, you must ensure that the same IAM user credentials are in the AWS SDK credential chain when you are running `kubectl` commands on your cluster.
+ If you use the console to create the cluster, you must ensure that the same IAM user credentials are in the AWS SDK credential chain when you are running `kubectl` commands on your cluster.
 
-In the setup as done above, we used AWS CLI, hence you must ensure that the server/workstation from where you are running the `kubectl` commands in step-2 below have the same AWS credentials.
+ In the setup as done above, we used AWS CLI, hence you must ensure that the server/workstation from where you are running the `kubectl` commands in step-2 below have the same AWS credentials.
 
-1. Create default [kubectl configuration file](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html)
+{:start="2"}
 
-Paste the following to your kubeconfig file, replace `<endpoint-url>`, `<base64-encoded-ca-cert>` and `<cluster-name>` with values of `$EKS_CLUSTER_ENDPOINT`, `$EKS_CLUSTER_CA_DATA` and `$EKS_CLUSTER_NAME`
-as noted above:
+2. Create default [kubectl configuration file](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html)
+
+ Paste the following to your `kubeconfig` file, replace `<endpoint-url>`, `<base64-encoded-ca-cert>` and `<cluster-name>` with values of `$EKS_CLUSTER_ENDPOINT`, `$EKS_CLUSTER_CA_DATA` and `$EKS_CLUSTER_NAME`
+ as noted above:
 
 ```yaml
 
@@ -101,13 +103,13 @@ users:
 
 ```
 
-(Optional) To have the Heptio authenticator assume a role to perform cluster operations (instead of the default AWS credential provider chain), uncomment the `-r` and `<role-arn>` lines and substitute an IAM role ARN to use with your user.
+ (Optional) To have the Heptio authenticator assume a role to perform cluster operations (instead of the default AWS credential provider chain), uncomment the `-r` and `<role-arn>` lines and substitute an IAM role ARN to use with your user.
 
-(Optional) To have the Heptio authenticator always use a specific named AWS credential profile (instead of the default AWS credential provider chain), uncomment the env lines and substitute `<aws-profile>` with the profile name to use.
+ (Optional) To have the Heptio authenticator always use a specific named AWS credential profile (instead of the default AWS credential provider chain), uncomment the env lines and substitute `<aws-profile>` with the profile name to use.
 
-{:start="2"}
+{:start="3"}
 
-2. [Create the necessary service accounts and cluster role bindings](/setup/install/providers/kubernetes-v2/#optional-create-a-kubernetes-service-account)
+3. [Create the necessary service accounts and cluster role bindings](/setup/install/providers/kubernetes-v2/#optional-create-a-kubernetes-service-account)
 
 ## Enable Kubernetes Cloud provider using Halyard
 
@@ -150,13 +152,13 @@ data:
 
 ```
 
-Run following to join nodes with the cluster:
+Join the nodes with the cluster:
 
 ```bash
 kubectl apply -f aws-auth-cm.yaml
 ```
 
-Watch the status of your nodes and wait for them to reach the `Ready` status.
+Watch the status of your nodes and wait for them to reach the `Ready` status:
 
 ```bash
 kubectl get nodes --watch
