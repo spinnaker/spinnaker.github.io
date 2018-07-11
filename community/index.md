@@ -94,6 +94,9 @@ contaazul_user:
 xiaohongshu_user:
   image_path: assets/images/users/xiaohongshu_logo.png
   alt: "Xiaohongshu Logo"
+mercari_user:
+  image_path: assets/images/users/mercari_logo.png
+  alt: "Mercari Logo"
 ---
 
 ## Engage the community and get support
@@ -145,29 +148,30 @@ The Spinnaker OSS project was started at Netflix, and today thrives on the contr
   <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="lookout_user" %}
     {% include spinnaker_user id="makerbot_user" %}
-    {% include spinnaker_user id="mulesoft_user" %}
+    {% include spinnaker_user id="mercari_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="mulesoft_user" %}
     {% include spinnaker_user id="nest_user" %}
     {% include spinnaker_user id="netflix_user" %}
-    {% include spinnaker_user id="optimizely_user" %}
  </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="optimizely_user" %}
     {% include spinnaker_user id="plangrid_user" %}
     {% include spinnaker_user id="purestorage_user" %}
-    {% include spinnaker_user id="smartthings_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="smartthings_user" %}
     {% include spinnaker_user id="schibsted_user" %}
     {% include spinnaker_user id="scopely_user" %}
-    {% include spinnaker_user id="skuid_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="skuid_user" %}
     {% include spinnaker_user id="target_user" %}
     {% include spinnaker_user id="underarmour_user" %}
-    {% include spinnaker_user id="waze_user" %}
   </div>
     <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="waze_user" %}
     {% include spinnaker_user id="weatherbug_user" %}
     {% include spinnaker_user id="xiaohongshu_user" %}
   </div>
@@ -177,6 +181,7 @@ The Spinnaker OSS project was started at Netflix, and today thrives on the contr
 
 The list of contributors is growing with some core contributors below. Please reach out to us with a PR or on slack if you'd like to be added to this list!
 
+* [Amazon](https://aws.amazon.com/opensource/)
 * [Armory](http://www.armory.io/)
 * [Cerner Corporation](http://cerner.com/)
 * [Google](https://opensource.google.com/)

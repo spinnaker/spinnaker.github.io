@@ -3,6 +3,7 @@ layout: single
 title:  "Kubernetes"
 sidebar:
   nav: reference
+redirect_from: /reference/providers/kubernetes-v1/
 ---
 
 {% include toc %}
@@ -25,7 +26,7 @@ to be used as a source of images.
 A Spinnaker **Instance** maps to a Kubernetes
 [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/). What
 differentiates this from other Cloud Providers is the ability for Pods to run
-multiple containers at once, whereas typical IAAS providers in Spinanker run
+multiple containers at once, whereas typical IAAS providers in Spinnaker run
 exactly one image per Instance. This means that extra care must be taken when
 updating Pods with more than one container to ensure that the correct container is
 replaced.

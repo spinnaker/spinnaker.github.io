@@ -23,7 +23,7 @@ You use Spinnaker's cluster management features to view and manage your resource
 
 ### Server Group
 
-The base resource, the *Server Group*, identifies the deployable artifact (VM image, Docker image, source location) and basic configuration settings such as number of instances, autoscaling policies, metadata, etc. This resource is associated with a Load Balancer and a Security Group. When deployed, a Server Group is a collection of instances of the running software (VM instances, Kubernetes pods).
+The base resource, the *Server Group*, identifies the deployable artifact (VM image, Docker image, source location) and basic configuration settings such as number of instances, autoscaling policies, metadata, etc. This resource is associated with a Load Balancer and a Firewall. When deployed, a Server Group is a collection of instances of the running software (VM instances, Kubernetes pods).
 
 Server groups follow the **application-stack-detail-version** naming convention.
 
@@ -41,9 +41,9 @@ groups are based on the **application-stack-detail** naming convention.
 
 A *Load Balancer* is associated with an ingress protocol and port range. It balances traffic among instances in its Server Groups. Optionally, you can enable health checks for a load balancer, with flexiblity to define health criteria and specify the health check endpoint.
 
-### Security Group
+### Firewall
 
-A *Security Group* defines network traffic access. It is effectively a set of firewall rules defined by an IP range (CIDR) along with a communication protocol (e.g., TCP) and port range.
+A *Firewall* defines network traffic access. It is effectively a set of firewall rules defined by an IP range (CIDR) along with a communication protocol (e.g., TCP) and port range.
 
 > Learn more about cluster management on the [Clusters](/concepts/clusters/) page.
 

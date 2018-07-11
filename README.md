@@ -38,6 +38,19 @@ docker run -it --rm --mount "type=bind,source=$(pwd),target=/code" \
     -p 4000:4000 spinnaker/spinnaker.github.io-test --incremental
 ```
 
+## Host the website on Amazon S3
+
+Hosting the documentation website on Amazon S3 allows review from look/feel perspective before a Pull request is submitted.
+This allows peer reviews of a breaking change without the needs of any technical setup for the reviewer.
+
+1. [Enable static website hosting on a S3 Bucket](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/static-website-hosting.html)
+1. `gem install s3_website`
+1. `s3_website cfg create`
+1. Delete `s3_id` and `s3_secret` so that your AWS credentials can be read from `~/.aws/credentials`
+1. Modify url property at _config.yml to use the CNAME that you want to use
+1. `jekyll build`
+1. `s3_website push`
+
 ## Page Generation
 
 A page named `foo.md` will be transformed to `foo/index.html` and links to `foo` will result in an HTTP 301 

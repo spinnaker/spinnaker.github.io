@@ -64,3 +64,8 @@ Finally, set the storage source to AZS:
 ```bash
 hal config storage edit --type azs
 ```
+
+## Next steps
+
+After you've set up Azure Storage as your storage service, you're ready to
+[deploy Spinnaker](/setup/install/deploy/).

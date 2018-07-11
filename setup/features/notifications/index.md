@@ -43,28 +43,28 @@ You need to set the `spinnaker.baseUrl` configuration value which is used by spi
 
 Email in spinnaker is provided by [Spring Boot Mail
 starter](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-email.html){:target="\_blank"}.
-The following is an example of using Gmail to send notifications.
+The following is an example of using hotmail to send notifications.
 
 in echo.yml
 ```
 mail:
   enabled: true
-  from: xxxx@gmail.com
+  from: <myemail>@hotmail.com
 spring:
   mail:
-    host: smtp.gmail.com
-    username: xxxx@gmail.com
-    password: [ App Password - https://support.google.com/accounts/answer/185833?hl=en ]
+    host: smtp.live.com
+    username: <myemail>@hotmail.com
+    password: hunter2
+    port: 587
     properties:
       mail:
         smtp:
           auth: true
-          ssl:
+          starttls:
             enable: true
-          socketFactory:
-            port: 465
-            class: javax.net.ssl.SSLSocketFactory
-            fallback: false
+        transport:
+          protocol: smtp
+#	debug: true <- this is useful if you are mucking around with smtp properties  
 ```
 in settings.js (deck)
 ```

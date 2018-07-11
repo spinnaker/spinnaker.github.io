@@ -1,9 +1,8 @@
 ---
 layout: single
-title:  "ECS (Amazon Web Services)"
+title:  "Amazon ECS"
 sidebar:
   nav: setup
-redirect_from: /setup/providers/ecs/
 ---
 
 {% include toc %}
@@ -23,7 +22,7 @@ As Elastic Network Interfaces (ENIs) are not yet supported in Spinnaker, you do 
 
 ### Spinnaker Clouddriver role
 
-The role that Clouddriver assumes for your ECS account needs to have the trust relationship below for your Spinnaker IAM assumed role.  For information on how to set up the role Clouddriver assumes, see the [AWS documentation](/setup/install/providers/aws/#adding-an-account)  For information on how to modify IAM roles in the AWS console, see the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html){:target="\_blank"}
+The role that Clouddriver assumes for your ECS account needs to have the trust relationship below for your Spinnaker IAM assumed role.  For information on how to set up the role Clouddriver assumes, see the [AWS documentation](/setup/install/providers/aws/aws-ec2/)  For information on how to modify IAM roles in the AWS console, see the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html){:target="\_blank"}
 
 ```json
 {

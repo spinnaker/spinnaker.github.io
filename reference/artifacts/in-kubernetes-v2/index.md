@@ -5,8 +5,6 @@ sidebar:
   nav: reference
 ---
 
-{% include alpha version="1.6" %}
-
 {% include toc %}
 
 Artifacts play an important role in the Kubernetes Provider V2. Everything from

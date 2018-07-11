@@ -16,15 +16,25 @@ When configuring Docker Registries, an
 authenticate against a certain set of [Docker
 repositories](https://docs.docker.com/glossary/?term=repository){:target="\_blank"}.
 
+Perform the steps in this article in the same place where you have Halyard
+installed, whether [in a Docker
+container](/setup/install/halyard/#install-halyard-on-docker) or [locally on
+Ubuntu/Debian or macOS](/setup/install/halyard/#update-halyard-on-debianubuntu-or-macos).
+
 ## Prerequisites
 
-The Docker Registry you are configuring must already exist, support the [v2
-registry API](https://docs.docker.com/registry/spec/api/){:target="\_blank"}, and
-have at least 1 [tag](https://docs.docker.com/glossary/?term=tag){:target="\_blank"}
-among the repositories you define in your Account. While each different
-supported registry supports the same API, there are still some subtleties in
-getting them to work with Spinnaker. Please make sure you read the section below
-corresponding to your registry of choice:
+* The Docker Registry you are configuring must already exist.
+* That Registry must support the
+[v2 registry API](https://docs.docker.com/registry/spec/api/){:target="\_blank"}.
+* If the Registry doesn't have at least 1
+[tag](https://docs.docker.com/glossary/?term=tag){:target="\_blank"} among the
+repositories you define in your Account, Halyard throws a warning.
+
+## Registry providers
+
+You can set up a Docker Registry provider for Spinnaker using any of the
+repositories listed here. Each one supports the same API, but there
+are subtle differences in how to get them to work with Spinnaker.
 
 * [DockerHub](#dockerhub)
 * [Google Container Registry](#google-container-registry)
@@ -64,85 +74,105 @@ PASSWORD=hunter2
 
 ### Google Container Registry
 
-There are a few different registry addresses for GCR, depending on where you
-want to store your images. A good starting point is `gcr.io`, but there [more
-options
-available](https://cloud.google.com/container-registry/docs/pushing#pushing_to_the_registry){:target="\_blank"}.
+1. Set the registry address.
 
-```bash
-ADDRESS=gcr.io
-```
+   There are a few different registry addresses for GCR, depending on where you
+   want to store your images. The most likely address is `gcr.io`, but there are
+   [more options available](https://cloud.google.com/container-registry/docs/pushing#pushing_to_the_registry){:target="\_blank"}.
 
-Google Container Registry (GCR) supports the
-[catalog](https://docs.docker.com/registry/spec/api/#listing-repositories){:target="\_blank"}
-endpoint to programatically list all images available to your credentials.
-To make use of this, you need to enable the [Resource Manager
-API](https://console.developers.google.com/apis/api/cloudresourcemanager.googleapis.com/overview){:target="\_blank"},
-so you don't need to worry about supplying repositories by hand. However, providing
-credentials is not straight-forward.
+   ```bash
+   ADDRESS=gcr.io
+   ```
 
-There are [two
-ways](https://cloud.google.com/container-registry/docs/advanced-authentication){:target="\_blank"}
-to authenticate against GCR. The first, using an access token, is problematic
-for Spinnaker since the access token is short-lived. The second, using a
-[service
-account](https://cloud.google.com/compute/docs/access/service-accounts){:target="\_blank"}
-is preferred. The following steps will guide you through creating & downloading
-a service account to be used as your password with the required
-`roles/storage.admin` role, assuming the registry exists in your currently
-configured `gcloud` project.
+1. (Optional) Enable the [Resource Manager
+API](https://console.developers.google.com/apis/api/cloudresourcemanager.googleapis.com/overview){:target="\_blank"}.
 
-```bash
-SERVICE_ACCOUNT_NAME=spinnaker-gcr-account
-SERVICE_ACCOUNT_DEST=~/.gcp/gcr-account.json
+   Enable this API if you want to use the
+   [catalog](https://docs.docker.com/registry/spec/api/#listing-repositories){:target="\_blank"}
+   endpoint to programatically list all images available to your credentials,
+   so you don't have supply repositories manually.
 
-gcloud iam service-accounts create \
-    $SERVICE_ACCOUNT_NAME \
-    --display-name $SERVICE_ACCOUNT_NAME
+1. Set up [authentication](https://cloud.google.com/container-registry/docs/advanced-authentication){:target="\_blank"}.
 
-SA_EMAIL=$(gcloud iam service-accounts list \
-    --filter="displayName:$SERVICE_ACCOUNT_NAME" \
-    --format='value(email)')
+   A [service account](https://cloud.google.com/compute/docs/access/service-accounts){:target="\_blank"}
+   is the preferred way to authenticate to GCR. Use the commands below to create
+   and download a service account to be used as your password with the required
+   `roles/storage.admin` role, assuming the registry exists in your current
+   `gcloud` project.
 
-PROJECT=$(gcloud info --format='value(config.project)')
+   (You can use an [access
+   token](https://cloud.google.com/container-registry/docs/advanced-authentication#access_token){:target="\_blank"}
+   instead, but that's problematic for Spinnaker because the token is short
+   lived, and you are responsible for refreshing it.)
 
-gcloud projects add-iam-policy-binding $PROJECT \
-    --member serviceAccount:$SA_EMAIL \
-    --role roles/browser
+   ```bash
+   SERVICE_ACCOUNT_NAME=spinnaker-gcr-account
+   SERVICE_ACCOUNT_DEST=~/.gcp/gcr-account.json
 
-gcloud projects add-iam-policy-binding $PROJECT \
-    --member serviceAccount:$SA_EMAIL \
-    --role roles/storage.admin
+   gcloud iam service-accounts create \
+       $SERVICE_ACCOUNT_NAME \
+       --display-name $SERVICE_ACCOUNT_NAME
 
-mkdir -p $(dirname $SERVICE_ACCOUNT_DEST)
+   SA_EMAIL=$(gcloud iam service-accounts list \
+       --filter="displayName:$SERVICE_ACCOUNT_NAME" \
+       --format='value(email)')
 
-gcloud iam service-accounts keys create $SERVICE_ACCOUNT_DEST \
-    --iam-account $SA_EMAIL
-```
+   PROJECT=$(gcloud info --format='value(config.project)')
 
-Once you have run these commands, your GCR password is sitting in a file
-called `$SERVICE_ACCOUNT_DEST`. For Spinnaker to authenticate against GCR, keep
-track of these environment vars to be passed to `hal` later:
+   gcloud projects add-iam-policy-binding $PROJECT \
+       --member serviceAccount:$SA_EMAIL \
+       --role roles/browser
 
-```bash
-# this is always the username for this authentication format
-USERNAME=_json_key
-PASSWORD_FILE=$SERVICE_ACCOUNT_DEST
-```
+   gcloud projects add-iam-policy-binding $PROJECT \
+       --member serviceAccount:$SA_EMAIL \
+       --role roles/storage.admin
 
-> :warning: You will want to supply `--password-file $PASSWORD_FILE` rather than
-> `--password $PASSWORD` below.
+   mkdir -p $(dirname $SERVICE_ACCOUNT_DEST)
 
-### Other Registries
+   gcloud iam service-accounts keys create $SERVICE_ACCOUNT_DEST \
+       --iam-account $SA_EMAIL
+   ```
 
-Most registries will fit either the Dockerhub or GCR pattern described above,
-or some mix of the two. In all cases you will need to know the FQDN of the
+   Your GCR password is now in a file called `$SERVICE_ACCOUNT_DEST`.
+   For Spinnaker to authenticate against GCR, keep track of these environment
+   vars to be passed to `hal` [later](#add-the-account):
+
+   ```bash
+   # this is always the username for this authentication format
+   USERNAME=_json_key
+   PASSWORD_FILE=$SERVICE_ACCOUNT_DEST
+   ```
+
+1. Enable the provider.
+
+   ```bash
+   hal config provider docker-registry enable
+   ```
+
+1. Add the account.
+
+   > Note: if you're running Halyard [in a Docker
+   > container](/setup/install/halyard/#install-halyard-on-docker), you might
+   > have to restart the container, now mounting the `~/.gcp` directory.
+
+   ```bash
+   hal config provider docker-registry account add my-docker-registry \
+    --address $ADDRESS \
+    --username $USERNAME \
+    --password-file $PASSWORD_FILE
+
+   ```
+
+### Other registries
+
+Most registries fit either the Dockerhub or GCR pattern described above,
+or some mix of the two. In all cases you need to know the FQDN of the
 registry, and your username/password pair if you are accessing private images.
 If your registry supports the [`/_catalog`
 endpoint](https://docs.docker.com/registry/spec/api/#listing-repositories){:target="\_blank"}
 you do not have to list your repositories. If it does not, keep in mind that the
 repository names are generally of the form `<username>/<image name>`. Halyard
-will verify this for you.
+verifies this for you.
 
 | Registry | FQDN | Catalog |
 |----------|------|:-------:|
@@ -152,7 +182,7 @@ will verify this for you.
 | ECR | `account-id`.dkr.ecr.`region`.amazon.aws.com | ? |
 | JFrog Artifactory | `server`-`repo`.jfrog.io | ? |
 
-## Adding an Account
+## Add the account
 
 First, make sure that the provider is enabled:
 
