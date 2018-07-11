@@ -1,41 +1,31 @@
 ---
 layout: single
-title:  "Amazon EKS"
+title:  "Set up a K8s v2 provider for Amazon EKS"
 sidebar:
   nav: setup
 ---
 
-
-
 {% include toc %}
 
+> Before you proceed further with this setup, we strongly recommend that you familiarize yourself with [Amazon EKS concepts](https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html).
+Also, please visit the [AWS global infrastructure region table](https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/) for the most up-to-date information on Amazon EKS regional availability.
 
+These instructions assume that you have AWS CLI [installed](https://docs.aws.amazon.com/cli/latest/userguide/installing.html),
+[configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html), and have access to each of the managed account and managing account.
 
+## Set up the managing account
 
-
-> Before you proceed with installing Spinnaker on EKS, we strongly recommend that you familiarize yourself with [Amazon EKS concepts](https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html)
-
-
-
-Below are the instructions to be followed if you want to configure [Kubernetes V2 (manifest based) Clouddriver](/setup/install/providers/kubernetes-v2) 
-Spinnaker to deploy to [Amazon EKS](https://aws.amazon.com/eks/).
-
-These instructions assumes that you have AWS CLI [installed](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) ,
-[configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html) and have access to managing and each of the managed account.
-
-## Managing Account - Base Setup
-
-In Managing Account Create a two subnet VPC , IAM Roles, Instance Profiles and Security Group for EKS control plane communication and an EKS Cluster
+In the managing account, create a two-subnet VPC, IAM roles, instance profiles, and a Security Group for EKS control-plane communications and an EKS cluster.
 
 > This step will take around 15-20 minutes to complete
    
 ```bash
-curl -O https://raw.githubusercontent.com/spinnaker/spinnaker.github.io/master/setup/install/providers/aws/managing.yaml  
+curl -O https://www.spinnaker.io/setup/install/providers/aws/managing.yaml  
 aws cloudformation deploy --stack-name spinnaker-managing-infrastructure-setup --template-file managing.yaml \
 --parameter-overrides UseAccessKeyForAuthentication=false EksClusterName=spinnaker-cluster --capabilities CAPABILITY_NAMED_IAM
 ```
 
-Once the stack creation succeeds, note the following
+After the stack creation succeeds, run the following:
 
 ```bash
 VPC_ID=$(aws cloudformation describe-stacks --stack-name spinnaker-managing-infrastructure-setup --query 'Stacks[0].Outputs[?OutputKey==`VpcId`].OutputValue' --output text)
@@ -49,35 +39,35 @@ EKS_CLUSTER_CA_DATA=$(aws cloudformation describe-stacks --stack-name spinnaker-
 SPINNAKER_INSTANCE_PROFILE_ARN=$(aws cloudformation describe-stacks --stack-name spinnaker-managing-infrastructure-setup --query 'Stacks[0].Outputs[?OutputKey==`SpinnakerInstanceProfileArn`].OutputValue' --output text)
 ```
 
+## Set up the managed account
 
-## Managed Account - Base setup
-
-In each of managed account, create role that can be assumed by Spinnaker
+In each of managed accounts, create a IAM role that can be assumed by Spinnaker:
 
 > This needs to be executed in managing account as well.
 
 ```bash
-curl -O https://raw.githubusercontent.com/spinnaker/spinnaker.github.io/master/setup/install/providers/aws/managed.yaml  
+curl -O https://www.spinnaker.io/setup/install/providers/aws/managed.yaml  
 
 aws cloudformation deploy --stack-name spinnaker-managed-infrastructure-setup --template-file managed.yaml \
 --parameter-overrides AuthArn=$AUTH_ARN ManagingAccountId=$MANAGING_ACCOUNT_ID --capabilities CAPABILITY_NAMED_IAM
 ```
 
-## kubectl configurations
+## `kubectl` and `heptio authenticator` configurations
 
-Before you proceed next, ensure to configure [kubectl and heptio authenticator for aws is installed and configured](https://docs.aws.amazon.com/eks/latest/userguide/configure-kubectl.html)
+1. Install and configure [kubectl and heptio authenticator for aws](https://docs.aws.amazon.com/eks/latest/userguide/configure-kubectl.html) on the workstation/instance where you are running Halyard from. Halyard version must be >=1.5.0.
 
-Also, when an Amazon EKS cluster is created, the IAM entity (user or role) that creates the cluster is added to the Kubernetes RBAC authorization table as the administrator. Initially, only that IAM user can make calls to the Kubernetes API server using kubectl.
+    Also, when an Amazon EKS cluster is created, the IAM entity (user or role) that creates the cluster is added to the Kubernetes RBAC authorization table as the administrator. Initially, only that IAM user can make calls to the Kubernetes API server using `kubectl`.
 
-If you use the console to create the cluster, you must ensure that the same IAM user credentials are in the AWS SDK credential chain when you are running kubectl commands on your cluster.
+    If you use the console to create the cluster, you must ensure that the same IAM user credentials are in the AWS SDK credential chain when you are running `kubectl` commands on your cluster.
 
-In the setup as done above, we used AWS CLI , hence you must ensure that the server/workstation from where you are running the following kubectl commands have the same AWS credentials.
+    In the setup as done above, we used AWS CLI, hence you must ensure that the server/workstation from where you are running the `kubectl` commands in step-2 below have the same AWS credentials.
 
+{:start="2"}
 
-*  Create default kubectl configuration file
+2. Create default [kubectl configuration file](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html)
 
-Paste the following to your kubeconfig file , replace `<endpoint-url>` , `<base64-encoded-ca-cert>` and `<cluster-name>` with values of $EKS_CLUSTER_ENDPOINT , $EKS_CLUSTER_CA_DATA and $EKS_CLUSTER_NAME
-as noted above
+    Paste the following to your `kubeconfig` file, replace `<endpoint-url>`, `<base64-encoded-ca-cert>` and `<cluster-name>` with values of `$EKS_CLUSTER_ENDPOINT`, `$EKS_CLUSTER_CA_DATA` and `$EKS_CLUSTER_NAME`
+    as noted above:
 
 ```yaml
 
@@ -113,43 +103,28 @@ users:
 
 ```
 
-* Execute the following commands, which will create the necessary services accounts and cluster role bindings
+   (Optional) To have the Heptio authenticator assume a role to perform cluster operations (instead of the default AWS credential provider chain), uncomment the `-r` and `<role-arn>` lines and substitute an IAM role ARN to use with your user.
 
-```
-CONTEXT=aws
-kubectl create namespace spinnaker
-#kubectl apply -f https://raw.githubusercontent.com/spinnaker/spinnaker.github.io/master/setup/install/providers/aws/eks/eks-admin-service-account.yaml 
-#kubectl apply -f https://raw.githubusercontent.com/spinnaker/spinnaker.github.io/master/setup/install/providers/aws/eks/eks-admin-cluster-role-binding.yaml 
-kubectl apply -f https://raw.githubusercontent.com/spinnaker/spinnaker.github.io/master/setup/install/providers/aws/eks/spinnaker-service-account.yaml 
-kubectl apply -f https://raw.githubusercontent.com/spinnaker/spinnaker.github.io/master/setup/install/providers/aws/eks/spinnaker-cluster-role-binding.yaml 
-TOKEN=$(kubectl get secret --context $CONTEXT \
-   $(kubectl get serviceaccount spinnaker-service-account \
-       --context $CONTEXT \
-       -n spinnaker \
-       -o jsonpath='{.secrets[0].name}') \
-   -n spinnaker \
-   -o jsonpath='{.data.token}' | base64 --decode)
-kubectl config set-credentials ${CONTEXT}-token-user --token $TOKEN
-kubectl config set-context $CONTEXT --user ${CONTEXT}-token-user
-```
+   (Optional) To have the Heptio authenticator always use a specific named AWS credential profile (instead of the default AWS credential provider chain), uncomment the env lines and substitute `<aws-profile>` with the profile name to use.
 
-> This point onwards, the location (either EC2 instance, or container or local) where you run halyard commands from should have the kubeconfig file that was created
-by the above kubectl commands. If you ran the kubectl commands locally and want to run halyard command on an instance, then you can copy the kubeconfig file
-from local to the instance.
+{:start="3"}
+
+3. [Create the necessary service accounts and cluster role bindings](/setup/install/providers/kubernetes-v2/#optional-create-a-kubernetes-service-account)
 
 ## Enable Kubernetes Cloud provider using Halyard
 
-```
+```bash
 hal config provider kubernetes enable
-hal config provider kubernetes account add ${MY_K8_ACCOUNT}   --provider-version v2   --context $(kubectl config current-context)
+hal config provider kubernetes account add ${MY_K8_ACCOUNT} --provider-version v2 --context $(kubectl config current-context)
 hal config features edit --artifacts true
 ```
 
-## Create Kubernetes worker nodes
+## Launch and Configure Amazon EKS Worker Nodes
 
-Worker nodes use [EKS optimized AMIs](https://docs.aws.amazon.com/eks/latest/userguide/worker.html)
-```
-curl -O https://raw.githubusercontent.com/spinnaker/spinnaker.github.io/master/setup/install/providers/aws/eks/amazon-eks-nodegroup.yaml  
+Worker nodes launched using the below commands are standard Amazon EC2 instances and use [EKS optimized AMIs](https://docs.aws.amazon.com/eks/latest/userguide/worker.html).
+
+```bash
+curl -O https://www.spinnaker.io/setup/install/providers/aws/eks/amazon-eks-nodegroup.yaml
 aws cloudformation deploy --stack-name spinnaker-eks-nodes --template-file amazon-eks-nodegroup.yaml \
 --parameter-overrides NodeInstanceProfile=$SPINNAKER_INSTANCE_PROFILE_ARN \
 NodeInstanceType=t2.large ClusterName=$EKS_CLUSTER_NAME NodeGroupName=spinnaker-cluster-nodes ClusterControlPlaneSecurityGroup=$CONTROL_PLANE_SG \
@@ -157,11 +132,11 @@ Subnets=$SUBNETS VpcId=$VPC_ID --capabilities CAPABILITY_NAMED_IAM
 
 ```
 
-## Join the nodes created above with Spinnaker EKS cluster and watch them to appear in ready state
+## Join the nodes with the Spinnaker EKS cluster
 
-Replace `<spinnaker-role-arn>` with $AUTH_ARN and save it as aws-auth-cm.yaml
+Replace `<spinnaker-role-arn>` with `$AUTH_ARN` and save it as aws-auth-cm.yaml
 
-```
+```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -177,24 +152,19 @@ data:
 
 ```
 
-Run following to join nodes with the cluster
+Join the nodes with the cluster:
 
-```
+```bash
 kubectl apply -f aws-auth-cm.yaml
 ```
 
-Watch the nodes to come in ready state
+Watch the status of your nodes and wait for them to reach the `Ready` status:
 
-```
+```bash
 kubectl get nodes --watch
 ```
 
-
 ## Next steps
 
-Optionally, you can [set up Amazon's Elastic Container
-Service](/setup/install/providers/aws/aws-ecs/) and/or [set up Amazon's EC2](/setup/install/providers/aws/aws-ec2/) and/or [set up another cloud
-provider](/setup/install/providers/), but otherwise you're ready to
-[choose an environment](/setup/install/environment/)
-in which to install Spinnaker.
+Optionally, you can [set up another cloud provider](/setup/install/providers/), but otherwise you’re ready to [choose an environment](/setup/install/environment/) in which to install Spinnaker.
 

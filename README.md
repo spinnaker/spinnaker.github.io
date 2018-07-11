@@ -38,10 +38,10 @@ docker run -it --rm --mount "type=bind,source=$(pwd),target=/code" \
     -p 4000:4000 spinnaker/spinnaker.github.io-test --incremental
 ```
 
-## Host the website on Amazon S3
+### (Optional) Host the website on Amazon S3
 
-Hosting the documentation website on Amazon S3 allows review from look/feel perspective before a Pull request is submitted.
-This allows peer reviews of a breaking change without the needs of any technical setup for the reviewer.
+Hosting the documentation website on Amazon S3 allows review from look/feel perspective before a pull request is submitted.
+This allows peer reviews of a breaking change without needing any technical setup by the reviewer.
 
 1. [Enable static website hosting on a S3 Bucket](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/static-website-hosting.html)
 1. `gem install s3_website`

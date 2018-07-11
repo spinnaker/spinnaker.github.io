@@ -25,7 +25,10 @@ Parameters:
       - true
       - false
   EksClusterName:
-    Description : Enter EKS cluster name, if you want to run Spinnaker on EKS
+    Description : >
+      Enter EKS cluster name, if you want to run Spinnaker on EKS. Please ensure EKS is available in the region you are executing this template.
+      For more information about EKS availability, refer https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/
+      If you leave this parameter as the default value of None, EKS cluster will not be created.
     Type: String
     Default: None
 
