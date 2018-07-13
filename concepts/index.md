@@ -3,7 +3,7 @@ layout: single
 title:  "Concepts"
 sidebar:
   nav: concepts
-redirect_from: 
+redirect_from:
   - /docs
   - /docs/
   - /docs/overview
@@ -29,17 +29,22 @@ Server groups follow the **application-stack-detail-version** naming convention.
 
 ### Cluster
 
-You can define *Clusters*, which are logical groupings of Server Groups in Spinnaker. These 
+You can define *Clusters*, which are logical groupings of Server Groups in Spinnaker. These
 groups are based on the **application-stack-detail** naming convention.
 
 ### Applications
 
-*Applications* are logical groupings of Clusters in Spinnaker from the **application-stack-detail**
- naming convention.
+An application in Spinnaker is a collection of clusters, which in turn are
+collections of server groups. The application also includes firewalls and load
+balancers.
+
+An application *represents* the service, which you are going to deploy using
+Spinnaker, all configuration for that service, and all the infrastructure on
+which it will run.
 
 ### Load Balancer
 
-A *Load Balancer* is associated with an ingress protocol and port range. It balances traffic among instances in its Server Groups. Optionally, you can enable health checks for a load balancer, with flexiblity to define health criteria and specify the health check endpoint.
+A *Load Balancer* is associated with an ingress protocol and port range. It balances traffic among instances in its Server Groups. Optionally, you can enable health checks for a load balancer, with flexibility to define health criteria and specify the health check endpoint.
 
 ### Firewall
 
@@ -49,7 +54,7 @@ A *Firewall* defines network traffic access. It is effectively a set of firewall
 
 ## Deployment management
 
-You use Spinnaker's deployment management features to construct and manage continuous delivery workflows. 
+You use Spinnaker's deployment management features to construct and manage continuous delivery workflows.
 
 ### Pipeline
 
@@ -68,4 +73,3 @@ A *Stage* in Spinnaker is an action that forms an atomic building block for a pi
 Spinnaker treats cloud-native deployment strategies as first class constructs, handling the underlying orchestration such as verifying health checks, disabling old server groups and enabling new server groups. Spinnaker supports the red/black (a.k.a. blue/green) strategy, with rolling red/black and canary strategies in active development.
 
 > Learn more about deployment management on the [Pipelines](/concepts/pipelines/) page.
-
