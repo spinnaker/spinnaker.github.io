@@ -204,7 +204,7 @@ Resources:
           Value: !Sub SpinnakerVPC.external.${AWS::Region}b
         - Key: immutable_metadata
           Value: !Sub |
-            {"purpose": "external"}
+            {"purpose": "public-subnet"}
   SpinnakerPublicRouteTable:
     Type: AWS::EC2::RouteTable
     DependsOn:
