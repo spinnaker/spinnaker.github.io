@@ -9,6 +9,29 @@ sidebar:
 
 Here are a few Q/A pairs that come up fairly frequently.
 
+## I can't load the Applications screen
+
+After installing Spinnaker and navigating to the <em>Applications</em> screen, you may see one of
+following issues:
+ * The loading indicator spins continuously (prior to release 1.9)
+ * The following error message is displayed (release 1.9 and later):
+ ![Error fetching applications. Check that your gate endpoint is accessible. Further information on troubleshooting this error is available here](applications-error.png)
+
+ The most common cause of this error is that your browser can't communicate with your Gate endpoint.
+ (This endpoint defaults to `http://localhost:8084`, but can be customized.)
+
+ Check your browser console log and/or network for any failed requests to `<gate-endpoint>/applications`.
+
+ Some things to check while troubleshooting:
+ * If you are accessing Spinnaker via the default `http://localhost:9000`, check that you have
+   forwarded Gate's port (8084 by default) to the machine where your browser is running.
+ * If you are accessing Spinnaker via a custom URL, ensure that you have set `override-base-url`
+   for both the UI (Deck) and API (Gate) services, as described in the
+   [question below](#i-want-to-expose-localdebian-spinnaker-on-a-public-ip-address-but-it-always-binds-to-localhost).
+   These settings will configure cross-origin resource sharing (CORS) between your Gate and Deck
+   endpoints; if this is not properly configured, your browser will reject requests from Deck to
+   Gate.
+
 ## I want to expose LocalDebian Spinnaker on a public IP address, but it always binds to localhost
 
 First off, on a local deployment Spinnaker binds to `localhost` intentionally.
