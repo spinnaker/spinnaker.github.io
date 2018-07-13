@@ -57,7 +57,9 @@ deploy apply`.
 * You can make Spinnaker publicly reachable without running this command,
 as described
 [here](/setup/quickstart/faq//#i-want-to-expose-localdebian-spinnaker-on-a-public-ip-address-but-it-always-binds-to-localhost)
-and [here](/setup/quickstart/faq/#i-want-to-expose-the-distributed-kubernetes-hosted-spinnaker-publicly).
+(for local Debian) and
+[here](/setup/quickstart/faq/#i-want-to-expose-the-distributed-kubernetes-hosted-spinnaker-publicly)
+(for Kubernetes).
 
 * You can [set up authentication](/setup/security/authentication/).
 
