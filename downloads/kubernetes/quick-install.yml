@@ -20,6 +20,23 @@ subjects:
 
 ---
 
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: halyard-pv-claim
+  namespace: spinnaker
+  labels:
+    app: halyard-storage-claim
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: standard
+
+---
+
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
@@ -40,6 +57,9 @@ spec:
         app: spin
         stack: halyard
     spec:
+      securityContext:
+        runAsGroup: 1000
+        fsGroup: 1000
       containers:
       - name: halyard-daemon
         # todo - make :stable or digest of :stable
@@ -49,11 +69,9 @@ spec:
         - /bin/sh
         args:
         - -c
-        # when the configmap is mounted directly at /home/spinnaker/.hal the halyard daemon
-        # isn't able to replace the contents of the mount with user modifications.
-        # so instead we mount the configmap elsewhere and copy the files into
-        # place when the container starts.
-        - "cp -R /home/spinnaker/staging/.hal /home/spinnaker/.hal && /opt/halyard/bin/halyard"
+        # We persist the files on a PersistentVolume. To have sane defaults,
+        # we initialise those files from a ConfigMap if they don't already exist.
+        - "test -f /home/spinnaker/.hal/config || cp -R /home/spinnaker/staging/.hal/. /home/spinnaker/.hal/ && /opt/halyard/bin/halyard"
         readinessProbe:
           exec:
             command:
@@ -64,6 +82,8 @@ spec:
         ports:
         - containerPort: 8064
         volumeMounts:
+        - name: persistentconfig
+          mountPath: /home/spinnaker/.hal
         - name: halconfig
           mountPath: /home/spinnaker/staging/.hal/config
           subPath: config
@@ -86,6 +106,9 @@ spec:
       - name: halconfig
         configMap:
           name: halconfig
+      - name: persistentconfig
+        persistentVolumeClaim:
+          claimName: halyard-pv-claim
 ---
 
 apiVersion: v1
