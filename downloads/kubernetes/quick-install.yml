@@ -128,7 +128,7 @@ data:
     currentDeployment: default
     deploymentConfigurations:
     - name: default
-      version: 1.7.3
+      version: 1.8.1
       providers:
         appengine:
           enabled: false
@@ -219,6 +219,7 @@ data:
         chaos: false
         entityTags: false
         jobs: false
+        artifacts: true
       metricStores:
         datadog:
           enabled: false
