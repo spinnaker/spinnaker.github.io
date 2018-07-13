@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Deploy"
+title:  "Deploy Spinnaker and Connect to the UI"
 sidebar:
   nav: setup
 redirect_from: /setup/install/upgrades/
@@ -39,20 +39,29 @@ deploy apply`.
 
 ## Connect to the Spinnaker UI
 
-If you have not enabled any sort of authentication, Spinnaker will not be
-publicly reachable by default. In this case, you will need to run the
-following command to reach the UI on [localhost:9000](http://localhost:9000):
+1. Run the following command:
 
-```bash
-hal deploy connect
-```
+   ```bash
+   hal deploy connect
+   ```
 
-If you want to make Spinnaker publicly reachable without running that command,
-please read the [Halyard FAQ](/setup/quickstart/faq/).
+   If necessary, set up an SSH tunnel to the host running Halyard.
 
-Also, it's likely that you're running Halyard on a separate machine from the
-the one running your browser. In this case, you need to set up an SSH tunnel to
-forward ports to the host running Halyard.
+   This  command automatically forwards ports 9000 (Deck UI) and 8084 (Gate API
+     service).
+
+1. Navigate to [localhost:9000](localhost:9000).
+
+### Alternatives
+
+* You can make Spinnaker publicly reachable without running this command,
+as described
+[here](/setup/quickstart/faq//#i-want-to-expose-localdebian-spinnaker-on-a-public-ip-address-but-it-always-binds-to-localhost)
+(for local Debian) and
+[here](/setup/quickstart/faq/#i-want-to-expose-the-distributed-kubernetes-hosted-spinnaker-publicly)
+(for Kubernetes).
+
+* You can [set up authentication](/setup/security/authentication/).
 
 ## Troubleshooting
 
