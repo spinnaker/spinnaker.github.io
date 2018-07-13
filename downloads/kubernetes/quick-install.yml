@@ -219,6 +219,7 @@ data:
         chaos: false
         entityTags: false
         jobs: false
+        artifacts: true
       metricStores:
         datadog:
           enabled: false
