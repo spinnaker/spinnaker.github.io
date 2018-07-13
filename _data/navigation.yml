@@ -90,7 +90,7 @@ setup:
             url: /setup/install/storage/redis/
           - title: S3
             url: /setup/install/storage/s3/
-      - title: 5. Deploy Spinnaker
+      - title: 5. Deploy and Connect
         url: /setup/install/deploy/
       - title: 6. Back Up Your Config
         url: /setup/install/backups/
