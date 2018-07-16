@@ -427,3 +427,7 @@ h3.collapsible-section-header {
 li > div.highlighter-rouge {
   font-size: 0.75em;
 }
+
+div.highlighter-rouge {
+  overflow: auto;
+}
