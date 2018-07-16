@@ -134,8 +134,9 @@ Subnets=$SUBNETS VpcId=$VPC_ID --capabilities CAPABILITY_NAMED_IAM
 
 ## Join the nodes with the Spinnaker EKS cluster
 
-Replace `<spinnaker-role-arn>` with `$AUTH_ARN` and save it as aws-auth-cm.yaml
+Replace `<spinnaker-role-arn>` with `$AUTH_ARN` and save it as `aws-auth-cm.yaml`
 
+{% raw %}
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -151,6 +152,7 @@ data:
         - system:nodes
 
 ```
+{% endraw %}
 
 Join the nodes with the cluster:
 
