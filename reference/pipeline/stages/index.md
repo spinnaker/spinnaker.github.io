@@ -53,8 +53,9 @@ your cluster is a particular size, or add a pipeline expression. See the
 information about creating and using pipeline expressions.
 
 ### Clone Server Group
-Deploy the image from the original Server Group to a new Server Group. You can
-choose to copy the capacity of the original Server Group as well.
+Copies all attributes of the original Server Group into a new Server Group (the
+image that was deployed to it, its capacity, etc). You can choose to give the
+new Server Group a different capacity than the original one if desired.
 
 ### Deploy
 Deploy the previously baked or found image using the specified deployment
@@ -81,9 +82,9 @@ to disable the Server Group which is newest, oldest, or previous
 (second-most-recently deployed) when this stage starts.
 
 ### Enable Server Group
-Enable a Server Group, which means that the Server Group resumes handling
-traffic. The configuration of your Load Balancer determines how traffic is
-routed between newly-enabled Server Groups and any existing Server Groups.
+Tell Spinnaker to resume sending traffic to the Server Group. The configuration
+of your Load Balancer determines how traffic is routed among newly-enabled
+Server Groups and any existing Server Groups.
 
 ### Find Artifact From Execution
 Find and bind an artifact from another pipeline execution.
@@ -104,7 +105,7 @@ available jobs are automatically populated in the respective drop-down menus.
 ### Manual Judgment
 Wait for the user to click **Continue** before continuing. You can specify
 instructions for how to decide whether to continue, or add input options
-that users can choose between.
+that users can choose from.
 
 ### Pipeline
 Run an existing pipeline: you can select any pipeline from this application and
