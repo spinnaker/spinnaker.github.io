@@ -45,7 +45,7 @@ Similarly, you can call static methods using the syntax
 ### Comparisons
 
 You can use relational operators to compare values in an expression, such as
-`${instance["size"] > 400}` or `${parameters["runCanary"] == true}`.
+`${instance["size"] > 400}` or `${parameters["runCanary"] == "true"}`.
 
 Note that you may need to transform some values for the comparisons to work
 properly. For example, the status attribute of a stage is actually an enum
@@ -65,8 +65,9 @@ the full list of functions [here](#helper-functions).
 You can also use lists in your expressions. Spinnaker always provides a list
 called _stages_, which you can use to access each stage by index:
 `${execution["stages"][0]}` returns the value of the first stage in your
-pipeline. Keep in mind, though, that if you change the order in which your
-stages execute in the pipeline, the value of `stages[i]` will also change.
+pipeline.  Keep in mind, though, that if you change the order in which your
+stages execute in the pipeline (separately from your expression), the value of
+`stages[i]` will also change.
 
 ### Maps
 
@@ -201,7 +202,7 @@ repository](https://github.com/spinnaker/orca), mostly in the
 [ContextParameterProcessor class](https://github.com/spinnaker/orca/blob/master/orca-core/src/main/java/com/netflix/spinnaker/orca/pipeline/util/ContextParameterProcessor.java).
 
 
-## Pipeline expression language reference
+## Pipeline expression implementation
 
 The Pipeline Expression syntax is implemented using the [Spring Expression
 Language (SpEL)](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/expressions.html).

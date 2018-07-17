@@ -88,7 +88,7 @@ complete list of available properties, see the reference guide.
 Typing a helper property into an expression displays a list of the values that
 are available to you:
 
-![](images/helper-property-list.png)
+![](images/helper-properties-list.png)
 
 To quickly list available helper properties and stages, you can enter a question
 mark (`?`) into your pipeline expression. Once the list is displayed, you can
@@ -251,12 +251,13 @@ default `localhost:9000`, make sure you're sending your API requests to Gate
 
 Note also that pipeline expressions may not behave exactly the same against the
 testing endpoint and in your pipeline. In your pipeline, each expression is
-anchored to the particular stage in which it was declared. However, when using
-the testing endpoint, your expression is anchored to the entire pipeline at the
-end of its execution. Because of this, you need to access all variables from the
-top level when using the testing endpoint. For example, to check the type of a
-particular stage, you need to use the expression `${#stage("My Stage")["type"]}`,
-whereas within "My Stage" you can simply use the expression `${#root["type"]}`.
+evaluated against the context of the particular stage in which it was declared.
+When using the testing endpoint, your expression is evaluated against the
+entire pipeline at the end of its execution. Because of this, you need to access
+all variables from the top level when using the testing endpoint. For example,
+to check the type of a particular stage, you need to use the expression
+`${#stage("My Stage")["type"]}`, whereas within "My Stage" you can use the
+expression `${#root["type"]}`.
 
 ## Examples
 
