@@ -116,6 +116,9 @@ the single machine Halyard is run on.
 The __Local Git__ installation is intended for developers who want to contribute
 to Spinnaker. It is not intended to be used to manage any production environment.
 
+For a short guide to getting up and running with developing Spinnaker, see the
+[developer setup guide](/guides/developer/getting-set-up).
+
 ### Prerequisites
 
 #### Install local dependencies
