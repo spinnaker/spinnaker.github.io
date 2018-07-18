@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Reference"
+title:  "Pipeline Expression Reference"
 sidebar:
   nav: reference
 ---
@@ -8,14 +8,15 @@ sidebar:
 {% include toc %}
 
 Pipeline expressions allow you to reference arbitrary values about the
-state of your system in the execution of your pipelines. Each pipeline
-expression is made of `$` followed by opening/closing brackets: `${ }`.
-Within these brackets, you can add arbitrary expressions to access and
-modify the details of your pipeline during pipeline execution. For more
-information about how pipeline expressions work, see the
+state of your system in the execution of your pipelines. For more information
+about how pipeline expressions work, see the
 [overview](/guides/user/pipeline/expressions/).
 
 ## Syntax elements
+
+Each pipeline expression is made of `$` followed by opening/closing brackets:
+`${ }`. Within these brackets, you can add arbitrary expressions to access and
+modify the details of your pipeline during pipeline execution.
 
 ### Code
 
@@ -48,7 +49,12 @@ You can use relational operators to compare values in an expression, such as
 `${instance["size"] > 400}` or `${parameters["runCanary"] == "true"}`.
 
 Note that you may need to transform some values for the comparisons to work
-properly. For example, the status attribute of a stage is actually an enum
+properly. In the example above, `parameters["runCanary"]` returns a string
+rather than a boolean. To use it in a comparision, you need to either compare
+it to a string or convert it to a boolean:
+`${#toBoolean(parameters["runCanary"]) == true}`.
+
+Another example is that the status attribute of a stage is actually an enum
 internally, not a string. To compare the status to a string, you need to call
 `.toString()` on the result. For example:
 `${#stage("Deploy")["status"].toString() == "SUCCEEDED"}`.

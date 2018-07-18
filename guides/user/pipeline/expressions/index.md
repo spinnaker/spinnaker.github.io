@@ -47,9 +47,9 @@ evaluates to _Hello-randomString-world_.
 
 ### Where can I use pipeline expressions?
 
-You can use pipeline expressions in any place in the UI where you can enter
-free-form text, with the exception of the pipeline configuration stage. If you
-want to set the value of a field using a pipeline expression but there is no
+You can use pipeline expressions any place in the UI where you can enter
+free-form text, with the exception of the pipeline **Configuration** stage. If
+you want to set the value of a field using a pipeline expression but there is no
 text box available, you can use the [Edit as
 JSON](/guides/user/pipeline/managing-pipelines/#edit-a-pipeline-as-JSON)
 pipeline feature.
@@ -57,9 +57,9 @@ pipeline feature.
 ### When are pipeline expressions evaluated?
 
 Spinnaker evaluates the expressions for a given stage at the beginning of that
-stage. You can't use pipeline expressions during the pipeline configuration
+stage. You can't use pipeline expressions during the pipeline **Configuration**
 stage, because Spinnaker doesn't begin evaluating expressions until after the
-pipeline configuration stage has finished.
+**Configuration** stage has finished.
 
 ## What tools do I have for writing pipeline expressions?
 
@@ -77,23 +77,23 @@ the helper functions that are available.
 
 ### Helper properties
 
-_Helper properties_ are variables which refer to global information about the
-current pipeline execution. For example, `execution` is a variable which refers
-to the current pipeline execution, whereas `trigger` lets you access information
+[_Helper properties_](/reference/pipeline/expressions/#helper-properties)
+are variables which refer to global information about the current pipeline
+execution. For example, `execution` is a variable which refers to the current
+pipeline execution, whereas `trigger` lets you access information
 about the pipeline trigger. For example, if you've set up a Jenkins trigger and
 want to know which build triggered the current pipeline, you could access that
-information with the expression `${trigger["buildInfo"]["number"]}`. For a
-complete list of available properties, see the reference guide.
-
-Typing a helper property into an expression displays a list of the values that
-are available to you:
-
-![](images/helper-properties-list.png)
+information with the expression `${trigger["buildInfo"]["number"]}`.
 
 To quickly list available helper properties and stages, you can enter a question
 mark (`?`) into your pipeline expression. Once the list is displayed, you can
 start typing to narrow down the list, or press enter to add the selected helper
 property or stage name to the expression.
+
+Typing a helper property into an expression displays a list of the values that
+are available to you:
+
+![](images/helper-properties-list.png)
 
 Once a helper property is added to the expression you can use any of the meta
 keys (Shift, Command, Alt, Control) to bring up a list of all the pipeline
@@ -130,7 +130,7 @@ To specify a property file:
 
 1. Archive it in your Jenkins job.
 2. Specify the name of the file in the pipeline configuration. Note that this
-    is just the name of the file, not the absolute path --
+    is just the name of the file, not the absolute path —
     `mypropertyfile.properties` rather than
     `workspace/build/mypropertyfile.properties`.
     ![](images/property-file.png)
@@ -160,7 +160,7 @@ overwrite one another.
 
 ### #root
 
-`#root` returns the current stage context -- the _context_ map contained in each
+`#root` returns the current stage context — the _context_ map contained in each
 stage. For example, each Bake stage has a _package_ value which returns the name
 of the package that it installed. To access that value within the stage, you can
 use the expression `${#root["package"]}`.
