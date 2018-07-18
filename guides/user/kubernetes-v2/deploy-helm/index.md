@@ -12,7 +12,7 @@ sidebar:
 Spinnaker surfaces a "Bake (Manifest)" stage to turn templates into manifests
 with the help of a templating engine. Currently, the only supported templating
 engine is [Helm](https://helm.sh/), by relying on the `helm template` command.
-See more details [here](https://docs.helm.sh/helm/#helm_template).
+See more details [here](https://docs.helm.sh/helm/#helm-template).
 
 > Note: Make sure that you have configured [artifact support](/setup/artifacts)
 > in Spinnaker first. All Helm charts are fetched/stored as artifacts in
@@ -50,14 +50,14 @@ metadata:
 * __Zero or more override artifacts__ (optional)
 
   The files passed to `--values` parameter in the [`helm
-  template` command](https://docs.helm.sh/helm/#helm_template). Each is a
+  template` command](https://docs.helm.sh/helm/#helm-template). Each is a
   remotely stored artifact representing a [Helm Value
   File](https://docs.helm.sh/chart_template_guide/#values-files).
 
 * __Statically specified overrides__
 
   The set of static of key/value pairs that are passed as `--set` parameters to
-  the [`helm template` command](https://docs.helm.sh/helm/#helm_template).
+  the [`helm template` command](https://docs.helm.sh/helm/#helm-template).
 
 As an example, we have a fully configured Bake (Manifest) stage below:
 
