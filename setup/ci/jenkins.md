@@ -134,7 +134,7 @@ jenkins.masters[0].username = <username>
 jenkins.masters[0].password = <user_api_token>
 ```
 
-In orca.yml, add:
+In orca-local.yml, add:
 
 ```
 script:
