@@ -222,11 +222,22 @@ guides:
   - title: User How-Tos
     collapsed: true
     children:
+      - title: Applications
+        collapsed: true
+        children:
+          - title: About Applications
+            url: /guides/user/applications/
+          - title: Create an Application
+            url: /guides/user/applications/create/
+          - title: Configure an Application
+            url: /guides/user/applications/configure/
+          - title: Delete an Application
+            url: /guides/user/applications/delete/
       - title: Pipelines
         collapsed: true
         children:
           - title: Managing Pipelines
-            url: /guides/user/pipeline/managing-pipelines/
+            url: /guides/user/pipeline/managing-pipelines/c
           - title: Triggering Pipelines
             collapsed: true
             children:
@@ -284,8 +295,6 @@ guides:
   - title: Developer How-Tos
     collapsed: true
     children:
-      - title: Getting Set Up
-        url: /guides/developer/getting-set-up/
       - title: Writing a New Stage
         url: /guides/developer/new-stage/
       - title: Kork Library
