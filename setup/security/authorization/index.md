@@ -68,17 +68,31 @@ accounts.
 ### Accounts
 In the dark ages (before Fiat), only accounts could be restricted. Because
 Clouddriver is the source of truth for accounts, Fiat reaches out to Clouddriver
-to gather the list of available accounts. To add access restrictions to an
-account, update your `halconfig` to include the `requiredGroupMembership` field.
+to gather the list of available accounts. 
+
+There are two types of access restrictions to an account, `READ` and `WRITE`. Users must have
+at least one `READ` permission of an account to view the account's cloud resources, and at least one
+`WRITE` permission to make changes to the resources.
+
+These halyard commands manage the `READ` and `WRITE` permissions.
 
 ```bash
 PROVIDER= # Your cloud provider
-GROUP=    # The new group membership
 
-hal config provider $PROVIDER account edit $ACCOUNT --add-required-group-membership $GROUP
+hal config provider $PROVIDER account edit $ACCOUNT \
+  --add-read-permission role1 \ # Adds a READ permission
+  --add-write-permission role2 \ # Adds a WRITE permission
+  --remove-read-permission role3 \ # Removes a READ permission
+  --remove-write-permission role4 # Removes a WRITE permission
+
+# Alternatively, you can overwrite the whole read or write list, comma delimited.
+hal config provider $PROVIDER account edit $ACCOUNT \
+  --read-permissions role1,role2,role3 \
+  --write-permissions role1,role2,role3
 ```
 
-Alternatively, you can overwrite the whole list using the `--required-group-membership` flag.
+(Deprecated) `requiredGroupMembership` is the old way to add access restrictions to an account. 
+This method does not distinguish between `READ` and `WRITE` - users with access will have both.
 
 
 ### Applications
