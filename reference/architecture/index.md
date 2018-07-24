@@ -72,16 +72,14 @@ service.
  deck(Deck) --> gate;
  api(Custom Script/API Caller) --> gate(Gate);
  gate --> kayenta(Kayenta);
- orca --> kayenta(Kayenta);
  gate --> orca(Orca);
  gate --> clouddriver(Clouddriver);
  orca --> clouddriver;
  gate --> rosco(Rosco);
  orca --> front50;
- orca --> rosco
+ orca --> rosco;
  gate --> front50(Front50);
  gate --> fiat(Fiat);
- gate --> kayenta(Kayenta);
  orca --> kayenta;
  clouddriver --> fiat;
  orca --> fiat;
