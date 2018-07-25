@@ -54,8 +54,8 @@ information about creating and using pipeline expressions.
 
 ### Clone Server Group
 Copies all attributes of the original Server Group into a new Server Group (the
-image that was deployed to it, its capacity, etc). You can choose to give the
-new Server Group a different capacity than the original one if desired.
+image that was deployed to it, its capacity, etc). You can choose to override
+any of the properties of the original Server Group when creating the new one.
 
 ### Deploy
 Deploy the previously baked or found image using the specified deployment
@@ -75,16 +75,18 @@ stops handling traffic. If desired, you can leave a specific number of Server
 Groups running while the rest of the cluster is disabled.
 
 ### Disable Server Group
-Disable a Server Group, which means that the Server Group remains up but stops
-handling any traffic. This makes it easy to both route traffic to a new
-Server Group and roll back those changes if necessary. You must choose whether
-to disable the Server Group which is newest, oldest, or previous
+The specified Server Group remains up but stops handling any traffic.
+Any auto-scaling policies related to this Server Group will also be disabled.
+Disabling Server Groups makes it easy to both route traffic to a new Server
+Group and roll back those changes if necessary. You must choose whether to
+disable the Server Group which is newest, oldest, or previous
 (second-most-recently deployed) when this stage starts.
 
 ### Enable Server Group
 Tell Spinnaker to resume sending traffic to the Server Group. The configuration
 of your Load Balancer determines how traffic is routed among newly-enabled
-Server Groups and any existing Server Groups.
+Server Groups and any existing Server Groups. Enabling a Server Group also
+re-enables auto-scaling policies, if applicable.
 
 ### Find Artifact From Execution
 Find and bind an artifact from another pipeline execution.
@@ -105,7 +107,10 @@ available jobs are automatically populated in the respective drop-down menus.
 ### Manual Judgment
 Wait for the user to click **Continue** before continuing. You can specify
 instructions for how to decide whether to continue, or add input options
-that users can choose from.
+that users can choose from. These input options can be used to determine
+pipeline behavior in downstream stages. For example, you can use the [**Check
+Preconditions**](#check-preconditions) stage to ensure that a given stage only
+runs if a particular input is specified.
 
 ### Pipeline
 Run an existing pipeline: you can select any pipeline from this application and
