@@ -1,11 +1,10 @@
 ---
 layout: single
-title:  "Commands"
+title: "Commands"
 sidebar:
   nav: reference
 ---
-
-Published: 2018-05-09 16:20:23
+Published: 2018-07-13 20:07:20
 
 
 # Table of Contents
@@ -27,6 +26,15 @@ Published: 2018-05-09 16:20:23
  * [**hal backup restore**](#hal-backup-restore)
  * [**hal config**](#hal-config)
  * [**hal config artifact**](#hal-config-artifact)
+ * [**hal config artifact bitbucket**](#hal-config-artifact-bitbucket)
+ * [**hal config artifact bitbucket account**](#hal-config-artifact-bitbucket-account)
+ * [**hal config artifact bitbucket account add**](#hal-config-artifact-bitbucket-account-add)
+ * [**hal config artifact bitbucket account delete**](#hal-config-artifact-bitbucket-account-delete)
+ * [**hal config artifact bitbucket account edit**](#hal-config-artifact-bitbucket-account-edit)
+ * [**hal config artifact bitbucket account get**](#hal-config-artifact-bitbucket-account-get)
+ * [**hal config artifact bitbucket account list**](#hal-config-artifact-bitbucket-account-list)
+ * [**hal config artifact bitbucket disable**](#hal-config-artifact-bitbucket-disable)
+ * [**hal config artifact bitbucket enable**](#hal-config-artifact-bitbucket-enable)
  * [**hal config artifact gcs**](#hal-config-artifact-gcs)
  * [**hal config artifact gcs account**](#hal-config-artifact-gcs-account)
  * [**hal config artifact gcs account add**](#hal-config-artifact-gcs-account-add)
@@ -45,6 +53,15 @@ Published: 2018-05-09 16:20:23
  * [**hal config artifact github account list**](#hal-config-artifact-github-account-list)
  * [**hal config artifact github disable**](#hal-config-artifact-github-disable)
  * [**hal config artifact github enable**](#hal-config-artifact-github-enable)
+ * [**hal config artifact gitlab**](#hal-config-artifact-gitlab)
+ * [**hal config artifact gitlab account**](#hal-config-artifact-gitlab-account)
+ * [**hal config artifact gitlab account add**](#hal-config-artifact-gitlab-account-add)
+ * [**hal config artifact gitlab account delete**](#hal-config-artifact-gitlab-account-delete)
+ * [**hal config artifact gitlab account edit**](#hal-config-artifact-gitlab-account-edit)
+ * [**hal config artifact gitlab account get**](#hal-config-artifact-gitlab-account-get)
+ * [**hal config artifact gitlab account list**](#hal-config-artifact-gitlab-account-list)
+ * [**hal config artifact gitlab disable**](#hal-config-artifact-gitlab-disable)
+ * [**hal config artifact gitlab enable**](#hal-config-artifact-gitlab-enable)
  * [**hal config artifact http**](#hal-config-artifact-http)
  * [**hal config artifact http account**](#hal-config-artifact-http-account)
  * [**hal config artifact http account add**](#hal-config-artifact-http-account-add)
@@ -54,6 +71,15 @@ Published: 2018-05-09 16:20:23
  * [**hal config artifact http account list**](#hal-config-artifact-http-account-list)
  * [**hal config artifact http disable**](#hal-config-artifact-http-disable)
  * [**hal config artifact http enable**](#hal-config-artifact-http-enable)
+ * [**hal config artifact s3**](#hal-config-artifact-s3)
+ * [**hal config artifact s3 account**](#hal-config-artifact-s3-account)
+ * [**hal config artifact s3 account add**](#hal-config-artifact-s3-account-add)
+ * [**hal config artifact s3 account delete**](#hal-config-artifact-s3-account-delete)
+ * [**hal config artifact s3 account edit**](#hal-config-artifact-s3-account-edit)
+ * [**hal config artifact s3 account get**](#hal-config-artifact-s3-account-get)
+ * [**hal config artifact s3 account list**](#hal-config-artifact-s3-account-list)
+ * [**hal config artifact s3 disable**](#hal-config-artifact-s3-disable)
+ * [**hal config artifact s3 enable**](#hal-config-artifact-s3-enable)
  * [**hal config canary**](#hal-config-canary)
  * [**hal config canary aws**](#hal-config-canary-aws)
  * [**hal config canary aws account**](#hal-config-canary-aws-account)
@@ -258,15 +284,15 @@ Published: 2018-05-09 16:20:23
  * [**hal config provider openstack bakery edit**](#hal-config-provider-openstack-bakery-edit)
  * [**hal config provider openstack disable**](#hal-config-provider-openstack-disable)
  * [**hal config provider openstack enable**](#hal-config-provider-openstack-enable)
- * [**hal config provider oraclebmcs**](#hal-config-provider-oraclebmcs)
- * [**hal config provider oraclebmcs account**](#hal-config-provider-oraclebmcs-account)
- * [**hal config provider oraclebmcs account add**](#hal-config-provider-oraclebmcs-account-add)
- * [**hal config provider oraclebmcs account delete**](#hal-config-provider-oraclebmcs-account-delete)
- * [**hal config provider oraclebmcs account edit**](#hal-config-provider-oraclebmcs-account-edit)
- * [**hal config provider oraclebmcs account get**](#hal-config-provider-oraclebmcs-account-get)
- * [**hal config provider oraclebmcs account list**](#hal-config-provider-oraclebmcs-account-list)
- * [**hal config provider oraclebmcs disable**](#hal-config-provider-oraclebmcs-disable)
- * [**hal config provider oraclebmcs enable**](#hal-config-provider-oraclebmcs-enable)
+ * [**hal config provider oracle**](#hal-config-provider-oracle)
+ * [**hal config provider oracle account**](#hal-config-provider-oracle-account)
+ * [**hal config provider oracle account add**](#hal-config-provider-oracle-account-add)
+ * [**hal config provider oracle account delete**](#hal-config-provider-oracle-account-delete)
+ * [**hal config provider oracle account edit**](#hal-config-provider-oracle-account-edit)
+ * [**hal config provider oracle account get**](#hal-config-provider-oracle-account-get)
+ * [**hal config provider oracle account list**](#hal-config-provider-oracle-account-list)
+ * [**hal config provider oracle disable**](#hal-config-provider-oracle-disable)
+ * [**hal config provider oracle enable**](#hal-config-provider-oracle-enable)
  * [**hal config pubsub**](#hal-config-pubsub)
  * [**hal config pubsub google**](#hal-config-pubsub-google)
  * [**hal config pubsub google disable**](#hal-config-pubsub-google-disable)
@@ -285,6 +311,10 @@ Published: 2018-05-09 16:20:23
  * [**hal config security api ssl edit**](#hal-config-security-api-ssl-edit)
  * [**hal config security api ssl enable**](#hal-config-security-api-ssl-enable)
  * [**hal config security authn**](#hal-config-security-authn)
+ * [**hal config security authn iap**](#hal-config-security-authn-iap)
+ * [**hal config security authn iap disable**](#hal-config-security-authn-iap-disable)
+ * [**hal config security authn iap edit**](#hal-config-security-authn-iap-edit)
+ * [**hal config security authn iap enable**](#hal-config-security-authn-iap-enable)
  * [**hal config security authn ldap**](#hal-config-security-authn-ldap)
  * [**hal config security authn ldap disable**](#hal-config-security-authn-ldap-disable)
  * [**hal config security authn ldap edit**](#hal-config-security-authn-ldap-edit)
@@ -323,8 +353,8 @@ Published: 2018-05-09 16:20:23
  * [**hal config storage edit**](#hal-config-storage-edit)
  * [**hal config storage gcs**](#hal-config-storage-gcs)
  * [**hal config storage gcs edit**](#hal-config-storage-gcs-edit)
- * [**hal config storage oraclebmcs**](#hal-config-storage-oraclebmcs)
- * [**hal config storage oraclebmcs edit**](#hal-config-storage-oraclebmcs-edit)
+ * [**hal config storage oracle**](#hal-config-storage-oracle)
+ * [**hal config storage oracle edit**](#hal-config-storage-oracle-edit)
  * [**hal config storage s3**](#hal-config-storage-s3)
  * [**hal config storage s3 edit**](#hal-config-storage-s3-edit)
  * [**hal config version**](#hal-config-version)
@@ -337,6 +367,7 @@ Published: 2018-05-09 16:20:23
  * [**hal deploy details**](#hal-deploy-details)
  * [**hal deploy diff**](#hal-deploy-diff)
  * [**hal deploy rollback**](#hal-deploy-rollback)
+ * [**hal shutdown**](#hal-shutdown)
  * [**hal task**](#hal-task)
  * [**hal task interrupt**](#hal-task-interrupt)
  * [**hal task list**](#hal-task-list)
@@ -377,6 +408,7 @@ hal [parameters] [subcommands]
  * `backup`: Backup and restore (remote or local) copies of your halconfig and all required files.
  * `config`: Configure, validate, and view your halconfig.
  * `deploy`: Manage the deployment of Spinnaker. This includes where it's deployed, what the infrastructure footprint looks like, what the currently running deployment looks like, etc...
+ * `shutdown`: Shutdown the halyard daemon.
  * `task`: This set of commands exposes utilities of dealing with Halyard's task engine.
  * `version`: Get information about the available Spinnaker versions.
 
@@ -582,7 +614,7 @@ hal config [parameters] [subcommands]
  * `edit`: Configure top-level, global configuration parameters.
  * `features`: Display the state of Spinnaker's feature flags.
  * `generate`: Generate the full Spinnaker config for your current deployment.
- * `metric-stores`: Configure Spinnaker's metric stores. This configuration only affects the publishing of metrics against whichever metric stores you enable (it can be more than one).
+ * `metric-stores`: Configure Spinnaker's metric stores. Metrics stores are used to store metrics for the various Spinnaker micro-services. These metrics are not related in any way to canary deployments. The technologies backing both are similar, but metrics stores are places to push metrics regarding Spinnaker metrics, whereas canary metrics stores are used to pull metrics to analyze deployments. This configuration only affects the publishing of metrics against whichever metric stores you enable (it can be more than one).
  * `notification`: Display the state of Spinnaker's notification settings.
  * `provider`: Configure, validate, and view the specified provider.
  * `pubsub`: Configure, validate, and view the specified pubsub.
@@ -601,9 +633,168 @@ hal config artifact [subcommands]
 ```
 
 #### Subcommands
+ * `bitbucket`: Manage and view Spinnaker configuration for the bitbucket provider
  * `gcs`: Manage and view Spinnaker configuration for the gcs provider
  * `github`: Manage and view Spinnaker configuration for the github provider
+ * `gitlab`: Manage and view Spinnaker configuration for the gitlab provider
  * `http`: Manage and view Spinnaker configuration for the http provider
+ * `s3`: Manage and view Spinnaker configuration for the s3 provider
+
+---
+## hal config artifact bitbucket
+
+Manage and view Spinnaker configuration for the bitbucket provider
+
+#### Usage
+```
+hal config artifact bitbucket [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `account`: Manage and view Spinnaker configuration for the bitbucket artifact provider's account
+ * `disable`: Set the bitbucket artifact provider as disabled
+ * `enable`: Set the bitbucket artifact provider as enabled
+
+---
+## hal config artifact bitbucket account
+
+Manage and view Spinnaker configuration for the bitbucket artifact provider's account
+
+#### Usage
+```
+hal config artifact bitbucket account ACCOUNT [parameters] [subcommands]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `add`: Add an artifact account to the bitbucket artifact provider.
+ * `delete`: Delete a specific bitbucket artifact account by name.
+ * `edit`: Edit an artifact account in the bitbucket artifact provider.
+ * `get`: Get the specified account details for the bitbucket provider.
+ * `list`: List the artifact account names for the bitbucket artifact provider.
+
+---
+## hal config artifact bitbucket account add
+
+Add an artifact account to the bitbucket artifact provider.
+
+#### Usage
+```
+hal config artifact bitbucket account add ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--password`: (*Sensitive data* - user will be prompted on standard input) Bitbucket password
+ * `--username`: Bitbucket username
+ * `--username-password-file`: File containing "username:password" to use for Bitbucket authentication
+
+
+---
+## hal config artifact bitbucket account delete
+
+Delete a specific bitbucket artifact account by name.
+
+#### Usage
+```
+hal config artifact bitbucket account delete ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact bitbucket account edit
+
+Edit an artifact account in the bitbucket artifact provider.
+
+#### Usage
+```
+hal config artifact bitbucket account edit ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--password`: (*Sensitive data* - user will be prompted on standard input) Bitbucket password
+ * `--username`: Bitbucket username
+ * `--username-password-file`: File containing "username:password" to use for Bitbucket authentication
+
+
+---
+## hal config artifact bitbucket account get
+
+Get the specified account details for the bitbucket provider.
+
+#### Usage
+```
+hal config artifact bitbucket account get ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact bitbucket account list
+
+List the artifact account names for the bitbucket artifact provider.
+
+#### Usage
+```
+hal config artifact bitbucket account list [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact bitbucket disable
+
+Set the bitbucket artifact provider as disabled
+
+#### Usage
+```
+hal config artifact bitbucket disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact bitbucket enable
+
+Set the bitbucket artifact provider as enabled
+
+#### Usage
+```
+hal config artifact bitbucket enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
 
 ---
 ## hal config artifact gcs
@@ -918,6 +1109,160 @@ hal config artifact github enable [parameters]
 
 
 ---
+## hal config artifact gitlab
+
+Manage and view Spinnaker configuration for the gitlab provider
+
+#### Usage
+```
+hal config artifact gitlab [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `account`: Manage and view Spinnaker configuration for the gitlab artifact provider's account
+ * `disable`: Set the gitlab artifact provider as disabled
+ * `enable`: Set the gitlab artifact provider as enabled
+
+---
+## hal config artifact gitlab account
+
+Manage and view Spinnaker configuration for the gitlab artifact provider's account
+
+#### Usage
+```
+hal config artifact gitlab account ACCOUNT [parameters] [subcommands]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `add`: Add an artifact account to the gitlab artifact provider.
+ * `delete`: Delete a specific gitlab artifact account by name.
+ * `edit`: Edit an artifact account in the gitlab artifact provider.
+ * `get`: Get the specified account details for the gitlab provider.
+ * `list`: List the artifact account names for the gitlab artifact provider.
+
+---
+## hal config artifact gitlab account add
+
+Add an artifact account to the gitlab artifact provider.
+
+#### Usage
+```
+hal config artifact gitlab account add ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--token`: (*Sensitive data* - user will be prompted on standard input) Gitlab token
+ * `--token-file`: File containing a Gitlab authentication token
+
+
+---
+## hal config artifact gitlab account delete
+
+Delete a specific gitlab artifact account by name.
+
+#### Usage
+```
+hal config artifact gitlab account delete ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact gitlab account edit
+
+Edit an artifact account in the gitlab artifact provider.
+
+#### Usage
+```
+hal config artifact gitlab account edit ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--token`: (*Sensitive data* - user will be prompted on standard input) Gitlab token
+ * `--token-file`: File containing a Gitlab authentication token
+
+
+---
+## hal config artifact gitlab account get
+
+Get the specified account details for the gitlab provider.
+
+#### Usage
+```
+hal config artifact gitlab account get ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact gitlab account list
+
+List the artifact account names for the gitlab artifact provider.
+
+#### Usage
+```
+hal config artifact gitlab account list [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact gitlab disable
+
+Set the gitlab artifact provider as disabled
+
+#### Usage
+```
+hal config artifact gitlab disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact gitlab enable
+
+Set the gitlab artifact provider as enabled
+
+#### Usage
+```
+hal config artifact gitlab enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
 ## hal config artifact http
 
 Manage and view Spinnaker configuration for the http provider
@@ -1074,6 +1419,162 @@ hal config artifact http enable [parameters]
 
 
 ---
+## hal config artifact s3
+
+Manage and view Spinnaker configuration for the s3 provider
+
+#### Usage
+```
+hal config artifact s3 [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `account`: Manage and view Spinnaker configuration for the s3 artifact provider's account
+ * `disable`: Set the s3 artifact provider as disabled
+ * `enable`: Set the s3 artifact provider as enabled
+
+---
+## hal config artifact s3 account
+
+Manage and view Spinnaker configuration for the s3 artifact provider's account
+
+#### Usage
+```
+hal config artifact s3 account ACCOUNT [parameters] [subcommands]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `add`: Add an artifact account to the s3 artifact provider.
+ * `delete`: Delete a specific s3 artifact account by name.
+ * `edit`: Edit an artifact account in the s3 artifact provider.
+ * `get`: Get the specified account details for the s3 provider.
+ * `list`: List the artifact account names for the s3 artifact provider.
+
+---
+## hal config artifact s3 account add
+
+Add an artifact account to the s3 artifact provider.
+
+#### Usage
+```
+hal config artifact s3 account add ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--api-endpoint`: S3 api endpoint
+ * `--api-region`: S3 api region
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--region`: S3 region
+
+
+---
+## hal config artifact s3 account delete
+
+Delete a specific s3 artifact account by name.
+
+#### Usage
+```
+hal config artifact s3 account delete ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact s3 account edit
+
+Edit an artifact account in the s3 artifact provider.
+
+#### Usage
+```
+hal config artifact s3 account edit ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--api-endpoint`: S3 api endpoint
+ * `--api-region`: S3 api region
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--region`: S3 region
+
+
+---
+## hal config artifact s3 account get
+
+Get the specified account details for the s3 provider.
+
+#### Usage
+```
+hal config artifact s3 account get ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact s3 account list
+
+List the artifact account names for the s3 artifact provider.
+
+#### Usage
+```
+hal config artifact s3 account list [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact s3 disable
+
+Set the s3 artifact provider as disabled
+
+#### Usage
+```
+hal config artifact s3 disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact s3 enable
+
+Set the s3 artifact provider as enabled
+
+#### Usage
+```
+hal config artifact s3 enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
 ## hal config canary
 
 Configure your canary analysis settings for Spinnaker.
@@ -1150,10 +1651,15 @@ hal config canary aws account add ACCOUNT [parameters]
 
 #### Parameters
 `ACCOUNT`: The name of the canary account to operate on.
+ * `--access-key-id`: The default access key used to communicate with AWS.
  * `--bucket`: The name of a storage bucket that your specified account has access to. If you specify a globally unique bucket name that doesn't exist yet, Kayenta will create that bucket for you.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--endpoint`: The endpoint used to reach the service implementing the AWS api. Typical use is with Minio.
  * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--profile-name`: The profile name to use when resolving AWS credentials. Typically found in ~/.aws/credentials (*Default*: `default`).
+ * `--region`: The region to use.
  * `--root-folder`: The root folder in the chosen bucket to place all of the canary service's persistent data in (*Default*: `kayenta`).
+ * `--secret-access-key`: (*Sensitive data* - user will be prompted on standard input) The secret key used to communicate with AWS.
 
 
 ---
@@ -1184,10 +1690,15 @@ hal config canary aws account edit ACCOUNT [parameters]
 
 #### Parameters
 `ACCOUNT`: The name of the canary account to operate on.
+ * `--access-key-id`: The default access key used to communicate with AWS.
  * `--bucket`: The name of a storage bucket that your specified account has access to. If you specify a globally unique bucket name that doesn't exist yet, Kayenta will create that bucket for you.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--endpoint`: The endpoint used to reach the service implementing the AWS api. Typical use is with Minio.
  * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--profile-name`: The profile name to use when resolving AWS credentials. Typically found in ~/.aws/credentials (*Default*: `default`).
+ * `--region`: The region to use.
  * `--root-folder`: The root folder in the chosen bucket to place all of the canary service's persistent data in (*Default*: `kayenta`).
+ * `--secret-access-key`: (*Sensitive data* - user will be prompted on standard input) The secret key used to communicate with AWS.
 
 
 ---
@@ -2274,7 +2785,7 @@ hal config generate [parameters]
 ---
 ## hal config metric-stores
 
-Configure Spinnaker's metric stores. This configuration only affects the publishing of metrics against whichever metric stores you enable (it can be more than one).
+Configure Spinnaker's metric stores. Metrics stores are used to store metrics for the various Spinnaker micro-services. These metrics are not related in any way to canary deployments. The technologies backing both are similar, but metrics stores are places to push metrics regarding Spinnaker metrics, whereas canary metrics stores are used to pull metrics to analyze deployments. This configuration only affects the publishing of metrics against whichever metric stores you enable (it can be more than one).
 
 #### Usage
 ```
@@ -2608,7 +3119,7 @@ hal config provider [subcommands]
  * `google`: Manage and view Spinnaker configuration for the google provider
  * `kubernetes`: Manage and view Spinnaker configuration for the kubernetes provider
  * `openstack`: Manage and view Spinnaker configuration for the openstack provider
- * `oraclebmcs`: Manage and view Spinnaker configuration for the oraclebmcs provider
+ * `oracle`: Manage and view Spinnaker configuration for the oracle provider
 
 ---
 ## hal config provider appengine
@@ -2673,11 +3184,13 @@ hal config provider appengine account add ACCOUNT [parameters]
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--project`: (*Required*) The Google Cloud Platform project this Spinnaker account will manage.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
+ * `--read-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to view this account's cloud resources.
  * `--required-group-membership`: (*Default*: `[]`) A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
  * `--ssh-known-hosts-file-path`: The path to a known_hosts file to be used when connecting with a remote git repository over SSH.
  * `--ssh-private-key-file-path`: The path to an SSH private key to be used when connecting with a remote git repository over SSH.
  * `--ssh-private-key-passphrase`: (*Sensitive data* - user will be prompted on standard input) The passphrase to an SSH private key to be used when connecting with a remote git repository over SSH.
  * `--ssh-trust-unknown-hosts`: (*Default*: `false`) Enabling this flag will allow Spinnaker to connect with a remote git repository over SSH without verifying the server's IP address against a known_hosts file.
+ * `--write-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to make changes to this account's cloud resources.
 
 
 ---
@@ -2708,7 +3221,9 @@ hal config provider appengine account edit ACCOUNT [parameters]
 
 #### Parameters
 `ACCOUNT`: The name of the account to operate on.
+ * `--add-read-permission`: Add this permission to the list of read permissions.
  * `--add-required-group-membership`: Add this group to the list of required group memberships.
+ * `--add-write-permission`: Add this permission to the list of write permissions.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--gcloud-release-track`: The gcloud release track (ALPHA, BETA, or STABLE) that Spinnaker will use when deploying to App Engine.
  * `--git-https-password`: (*Sensitive data* - user will be prompted on standard input) A password to be used when connecting with a remote git repository server over HTTPS.
@@ -2719,12 +3234,16 @@ hal config provider appengine account edit ACCOUNT [parameters]
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--project`: The Google Cloud Platform project this Spinnaker account will manage.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
+ * `--read-permissions`: A user must have at least one of these roles in order to view this account's cloud resources.
+ * `--remove-read-permission`: Remove this permission from the list of read permissions.
  * `--remove-required-group-membership`: Remove this group from the list of required group memberships.
+ * `--remove-write-permission`: Remove this permission to from list of write permissions.
  * `--required-group-membership`: A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
  * `--ssh-known-hosts-file-path`: The path to a known_hosts file to be used when connecting with a remote git repository over SSH.
  * `--ssh-private-key-file-path`: The path to an SSH private key to be used when connecting with a remote git repository over SSH.
  * `--ssh-private-key-passphrase`: (*Sensitive data* - user will be prompted on standard input) The passphrase to an SSH private key to be used when connecting with a remote git repository over SSH.
  * `--ssh-trust-unknown-hosts`: Enabling this flag will allow Spinnaker to connect with a remote git repository over SSH without verifying the server's IP address against a known_hosts file.
+ * `--write-permissions`: A user must have at least one of these roles in order to make changes to this account's cloud resources.
 
 
 ---
@@ -2851,14 +3370,16 @@ Example: "user/spinnaker" or "role/spinnakerManaged"
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--discovery`: The endpoint your Eureka discovery system is reachable at. See https://github.com/Netflix/eureka for more information.
 
-Example: http://{{"{{region"}}}}.eureka.url.to.use:8080/eureka-server/v2 
+Example: http://{{region}}.eureka.url.to.use:8080/eureka-server/v2 
 
-Using {{"{{region"}}}} will make Spinnaker use AWS regions in the hostname to access discovery so that you can have discovery for multiple regions.
+Using {{region}} will make Spinnaker use AWS regions in the hostname to access discovery so that you can have discovery for multiple regions.
  * `--edda`: The endpoint Edda is reachable at. Edda is not a hard dependency of Spinnaker, but is helpful for reducing the request volume against AWS. See https://github.com/Netflix/edda for more information.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
+ * `--read-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to view this account's cloud resources.
  * `--regions`: (*Default*: `[]`) The AWS regions this Spinnaker account will manage.
  * `--required-group-membership`: (*Default*: `[]`) A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
+ * `--write-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to make changes to this account's cloud resources.
 
 
 ---
@@ -2890,8 +3411,10 @@ hal config provider aws account edit ACCOUNT [parameters]
 #### Parameters
 `ACCOUNT`: The name of the account to operate on.
  * `--account-id`: Your AWS account ID to manage. See http://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html for more information.
+ * `--add-read-permission`: Add this permission to the list of read permissions.
  * `--add-region`: Add this region to the list of managed regions.
  * `--add-required-group-membership`: Add this group to the list of required group memberships.
+ * `--add-write-permission`: Add this permission to the list of write permissions.
  * `--assume-role`: If set, Halyard will configure a credentials provider that uses AWS Security Token Service to assume the specified role.
 
 Example: "user/spinnaker" or "role/spinnakerManaged"
@@ -2899,16 +3422,20 @@ Example: "user/spinnaker" or "role/spinnakerManaged"
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--discovery`: The endpoint your Eureka discovery system is reachable at. See https://github.com/Netflix/eureka for more information.
 
-Example: http://{{"{{region"}}}}.eureka.url.to.use:8080/eureka-server/v2 
+Example: http://{{region}}.eureka.url.to.use:8080/eureka-server/v2 
 
-Using {{"{{region"}}}} will make Spinnaker use AWS regions in the hostname to access discovery so that you can have discovery for multiple regions.
+Using {{region}} will make Spinnaker use AWS regions in the hostname to access discovery so that you can have discovery for multiple regions.
  * `--edda`: The endpoint Edda is reachable at. Edda is not a hard dependency of Spinnaker, but is helpful for reducing the request volume against AWS. See https://github.com/Netflix/edda for more information.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
+ * `--read-permissions`: A user must have at least one of these roles in order to view this account's cloud resources.
  * `--regions`: The AWS regions this Spinnaker account will manage.
+ * `--remove-read-permission`: Remove this permission from the list of read permissions.
  * `--remove-region`: Remove this region from the list of managed regions.
  * `--remove-required-group-membership`: Remove this group from the list of required group memberships.
+ * `--remove-write-permission`: Remove this permission to from list of write permissions.
  * `--required-group-membership`: A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
+ * `--write-permissions`: A user must have at least one of these roles in order to make changes to this account's cloud resources.
 
 
 ---
@@ -3092,9 +3619,11 @@ hal config provider azure account add ACCOUNT [parameters]
  * `--packer-resource-group`: The resource group to use if baking images with Packer.
  * `--packer-storage-account`: The storage account to use if baking images with Packer.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
+ * `--read-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to view this account's cloud resources.
  * `--required-group-membership`: (*Default*: `[]`) A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
  * `--subscription-id`: (*Required*) The subscriptionId that your service principal is assigned to.
  * `--tenant-id`: (*Required*) The tenantId that your service principal is assigned to.
+ * `--write-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to make changes to this account's cloud resources.
 
 
 ---
@@ -3125,7 +3654,9 @@ hal config provider azure account edit ACCOUNT [parameters]
 
 #### Parameters
 `ACCOUNT`: The name of the account to operate on.
+ * `--add-read-permission`: Add this permission to the list of read permissions.
  * `--add-required-group-membership`: Add this group to the list of required group memberships.
+ * `--add-write-permission`: Add this permission to the list of write permissions.
  * `--app-key`: (*Sensitive data* - user will be prompted on standard input) The appKey (password) of your service principal.
  * `--client-id`: The clientId (also called appId) of your service principal.
  * `--default-key-vault`: The name of a KeyVault that contains the default user name and password used to create VMs
@@ -3136,10 +3667,14 @@ hal config provider azure account edit ACCOUNT [parameters]
  * `--packer-resource-group`: The resource group to use if baking images with Packer.
  * `--packer-storage-account`: The storage account to use if baking images with Packer.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
+ * `--read-permissions`: A user must have at least one of these roles in order to view this account's cloud resources.
+ * `--remove-read-permission`: Remove this permission from the list of read permissions.
  * `--remove-required-group-membership`: Remove this group from the list of required group memberships.
+ * `--remove-write-permission`: Remove this permission to from list of write permissions.
  * `--required-group-membership`: A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
  * `--subscription-id`: The subscriptionId that your service principal is assigned to.
  * `--tenant-id`: The tenantId that your service principal is assigned to.
+ * `--write-permissions`: A user must have at least one of these roles in order to make changes to this account's cloud resources.
 
 
 ---
@@ -3413,9 +3948,11 @@ hal config provider dcos account add ACCOUNT [parameters]
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--password`: Password for a user account
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
+ * `--read-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to view this account's cloud resources.
  * `--required-group-membership`: (*Default*: `[]`) A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
  * `--service-key-file`: Path to a file containing the secret key for service account authentication
  * `--uid`: (*Required*) User or service account identifier
+ * `--write-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to make changes to this account's cloud resources.
 
 
 ---
@@ -3447,17 +3984,23 @@ hal config provider dcos account edit ACCOUNT [parameters]
 #### Parameters
 `ACCOUNT`: The name of the account to operate on.
  * `--add-docker-registry`: Add this docker registry to the list of docker registries to use as a source of images.
+ * `--add-read-permission`: Add this permission to the list of read permissions.
  * `--add-required-group-membership`: Add this group to the list of required group memberships.
+ * `--add-write-permission`: Add this permission to the list of write permissions.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--docker-registries`: (*Default*: `[]`) Provide the list of docker registries to use with this DC/OS account
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
+ * `--read-permissions`: A user must have at least one of these roles in order to view this account's cloud resources.
  * `--remove-credential`: (*Default*: `[]`) Provide the cluster name and uid of credentials to remove: --remove-credential my-cluster my-user
  * `--remove-docker-registry`: Remove this docker registry from the list of docker registries to use as a source of images.
+ * `--remove-read-permission`: Remove this permission from the list of read permissions.
  * `--remove-required-group-membership`: Remove this group from the list of required group memberships.
+ * `--remove-write-permission`: Remove this permission to from list of write permissions.
  * `--required-group-membership`: A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
  * `--update-service-credential`: (*Default*: `[]`) A DC/OS cluster service account credential in 3 parts: cluster-name uid serviceKey
  * `--update-user-credential`: (*Default*: `[]`) A DC/OS cluster user credential in 3 parts: cluster-name uid password
+ * `--write-permissions`: A user must have at least one of these roles in order to make changes to this account's cloud resources.
 
 
 ---
@@ -3706,11 +4249,13 @@ hal config provider docker-registry account add ACCOUNT [parameters]
  * `--password`: (*Sensitive data* - user will be prompted on standard input) Your docker registry password
  * `--password-file`: The path to a file containing your docker password in plaintext (not a docker/config.json file)
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
+ * `--read-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to view this account's cloud resources.
  * `--repositories`: (*Default*: `[]`) An optional list of repositories to cache images from. If not provided, Spinnaker will attempt to read accessible repositories from the registries _catalog endpoint
  * `--required-group-membership`: (*Default*: `[]`) A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
  * `--sort-tags-by-date`: (*Default*: `false`) Sort tags by creation date.
  * `--track-digests`: (*Default*: `false`) Track digest changes. This is not recommended as it consumes a high QPM, and most registries are flaky.
  * `--username`: Your docker registry username
+ * `--write-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to make changes to this account's cloud resources.
 
 
 ---
@@ -3741,8 +4286,10 @@ hal config provider docker-registry account edit ACCOUNT [parameters]
 
 #### Parameters
 `ACCOUNT`: The name of the account to operate on.
+ * `--add-read-permission`: Add this permission to the list of read permissions.
  * `--add-repository`: Add this repository to the list of repositories to cache images from.
  * `--add-required-group-membership`: Add this group to the list of required group memberships.
+ * `--add-write-permission`: Add this permission to the list of write permissions.
  * `--address`: The registry address you want to pull and deploy images from. For example:
 
   index.docker.io     - DockerHub
@@ -3761,13 +4308,17 @@ hal config provider docker-registry account edit ACCOUNT [parameters]
  * `--password`: (*Sensitive data* - user will be prompted on standard input) Your docker registry password
  * `--password-file`: The path to a file containing your docker password in plaintext (not a docker/config.json file)
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
+ * `--read-permissions`: A user must have at least one of these roles in order to view this account's cloud resources.
+ * `--remove-read-permission`: Remove this permission from the list of read permissions.
  * `--remove-repository`: Remove this repository to the list of repositories to cache images from.
  * `--remove-required-group-membership`: Remove this group from the list of required group memberships.
+ * `--remove-write-permission`: Remove this permission to from list of write permissions.
  * `--repositories`: (*Default*: `[]`) An optional list of repositories to cache images from. If not provided, Spinnaker will attempt to read accessible repositories from the registries _catalog endpoint
  * `--required-group-membership`: A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
  * `--sort-tags-by-date`: Sort tags by creation date.
  * `--track-digests`: Track digest changes. This is not recommended as it consumes a high QPM, and most registries are flaky.
  * `--username`: Your docker registry username
+ * `--write-permissions`: A user must have at least one of these roles in order to make changes to this account's cloud resources.
 
 
 ---
@@ -3888,7 +4439,9 @@ hal config provider ecs account add ACCOUNT [parameters]
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
+ * `--read-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to view this account's cloud resources.
  * `--required-group-membership`: (*Default*: `[]`) A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
+ * `--write-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to make changes to this account's cloud resources.
 
 
 ---
@@ -3919,13 +4472,19 @@ hal config provider ecs account edit ACCOUNT [parameters]
 
 #### Parameters
 `ACCOUNT`: The name of the account to operate on.
+ * `--add-read-permission`: Add this permission to the list of read permissions.
  * `--add-required-group-membership`: Add this group to the list of required group memberships.
+ * `--add-write-permission`: Add this permission to the list of write permissions.
  * `--aws-account`: Provide the name of the AWS account associated with this ECS account.See https://github.com/spinnaker/clouddriver/blob/master/clouddriver-ecs/README.md for more information.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
+ * `--read-permissions`: A user must have at least one of these roles in order to view this account's cloud resources.
+ * `--remove-read-permission`: Remove this permission from the list of read permissions.
  * `--remove-required-group-membership`: Remove this group from the list of required group memberships.
+ * `--remove-write-permission`: Remove this permission to from list of write permissions.
  * `--required-group-membership`: A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
+ * `--write-permissions`: A user must have at least one of these roles in order to make changes to this account's cloud resources.
 
 
 ---
@@ -4051,9 +4610,11 @@ hal config provider google account add ACCOUNT [parameters]
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--project`: (*Required*) The Google Cloud Platform project this Spinnaker account will manage.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
+ * `--read-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to view this account's cloud resources.
  * `--regions`: A list of regions for caching and mutating calls. This overwrites any default-regions set on the provider.
  * `--required-group-membership`: (*Default*: `[]`) A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
  * `--user-data`: The path to user data template file. Spinnaker has the ability to inject userdata into generated instance templates. The mechanism is via a template file that is token replaced to provide some specifics about the deployment. See https://github.com/spinnaker/clouddriver/blob/master/clouddriver-aws/UserData.md for more information.
+ * `--write-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to make changes to this account's cloud resources.
 
 
 ---
@@ -4085,21 +4646,27 @@ hal config provider google account edit ACCOUNT [parameters]
 #### Parameters
 `ACCOUNT`: The name of the account to operate on.
  * `--add-image-project`: Add this image project to the list of image projects to cache and deploy images from.
+ * `--add-read-permission`: Add this permission to the list of read permissions.
  * `--add-region`: Add this region to the list of regions for caching and mutating calls.
  * `--add-required-group-membership`: Add this group to the list of required group memberships.
+ * `--add-write-permission`: Add this permission to the list of write permissions.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--image-projects`: A list of Google Cloud Platform projects Spinnaker will be able to cache and deploy images from. When this is omitted, it defaults to the current project. Each project must have granted the IAM role `compute.imageUser` to the service account associated with the json key used by this account, as well as to the 'Google APIs service account' automatically created for the project being managed (should look similar to `12345678912@cloudservices.gserviceaccount.com`). See https://cloud.google.com/compute/docs/images/sharing-images-across-projects for more information about sharing images across GCP projects.
  * `--json-path`: The path to a JSON service account that Spinnaker will use as credentials. This is only needed if Spinnaker is not deployed on a Google Compute Engine VM, or needs permissions not afforded to the VM it is running on. See https://cloud.google.com/compute/docs/access/service-accounts for more information.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--project`: The Google Cloud Platform project this Spinnaker account will manage.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
+ * `--read-permissions`: A user must have at least one of these roles in order to view this account's cloud resources.
  * `--regions`: A list of regions for caching and mutating calls. This overwrites any default-regions set on the provider.
  * `--remove-image-project`: Remove this image project from the list of image projects to cache and deploy images from.
+ * `--remove-read-permission`: Remove this permission from the list of read permissions.
  * `--remove-region`: Remove this region from the list of regions for caching and mutating calls.
  * `--remove-required-group-membership`: Remove this group from the list of required group memberships.
+ * `--remove-write-permission`: Remove this permission to from list of write permissions.
  * `--required-group-membership`: A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
  * `--set-alpha-listed`: Enable this flag if your project has access to alpha features and you want Spinnaker to take advantage of them.
  * `--user-data`: The path to user data template file. Spinnaker has the ability to inject userdata into generated instance templates. The mechanism is via a template file that is token replaced to provide some specifics about the deployment. See https://github.com/spinnaker/clouddriver/blob/master/clouddriver-aws/UserData.md for more information.
+ * `--write-permissions`: A user must have at least one of these roles in order to make changes to this account's cloud resources.
 
 
 ---
@@ -4408,8 +4975,10 @@ This can only be set when --kinds is empty or not set.
  * `--omit-namespaces`: (*Default*: `[]`) A list of namespaces this Spinnaker account cannot deploy to or cache.
 This can only be set when --namespaces is empty or not set.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
+ * `--read-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to view this account's cloud resources.
  * `--required-group-membership`: (*Default*: `[]`) A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
  * `--service-account`: When true, Spinnaker attempt to authenticate against Kubernetes using a Kubernetes service account. This only works when Halyard & Spinnaker are deployed in Kubernetes. Read more about service accounts here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/.
+ * `--write-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to make changes to this account's cloud resources.
 
 
 ---
@@ -4445,7 +5014,9 @@ hal config provider kubernetes account edit ACCOUNT [parameters]
  * `--add-namespace`: Add this namespace to the list of namespaces to manage.
  * `--add-omit-kind`: Add this kind to the list of kinds to omit.
  * `--add-omit-namespace`: Add this namespace to the list of namespaces to omit.
+ * `--add-read-permission`: Add this permission to the list of read permissions.
  * `--add-required-group-membership`: Add this group to the list of required group memberships.
+ * `--add-write-permission`: Add this permission to the list of write permissions.
  * `--all-kinds`: (*Default*: `false`) Set the list of kinds to cache and deploy to every kind available to your supplied credentials.
  * `--all-namespaces`: (*Default*: `false`) Set the list of namespaces to cache and deploy to every namespace available to your supplied credentials.
  * `--clear-context`: (*Default*: `false`) Removes the currently configured context, defaulting to 'current-context' in your kubeconfig.See http://kubernetes.io/docs/user-guide/kubeconfig-file/#context for more information.
@@ -4465,14 +5036,18 @@ This can only be set when --kinds is empty or not set.
  * `--omit-namespaces`: (*Default*: `[]`) A list of namespaces this Spinnaker account cannot deploy to or cache.
 This can only be set when --namespaces is empty or not set.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
+ * `--read-permissions`: A user must have at least one of these roles in order to view this account's cloud resources.
  * `--remove-docker-registry`: Remove this docker registry from the list of docker registries to use as a source of images.
  * `--remove-kind`: Remove this kind to the list of kinds to manage.
  * `--remove-namespace`: Remove this namespace to the list of namespaces to manage.
  * `--remove-omit-kind`: Remove this kind to the list of kinds to omit.
  * `--remove-omit-namespace`: Remove this namespace to the list of namespaces to omit.
+ * `--remove-read-permission`: Remove this permission from the list of read permissions.
  * `--remove-required-group-membership`: Remove this group from the list of required group memberships.
+ * `--remove-write-permission`: Remove this permission to from list of write permissions.
  * `--required-group-membership`: A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
  * `--service-account`: When true, Spinnaker attempt to authenticate against Kubernetes using a Kubernetes service account. This only works when Halyard & Spinnaker are deployed in Kubernetes. Read more about service accounts here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/.
+ * `--write-permissions`: A user must have at least one of these roles in order to make changes to this account's cloud resources.
 
 
 ---
@@ -4619,10 +5194,12 @@ hal config provider openstack account add ACCOUNT [parameters]
  * `--password`: (*Required*) The password used to access your cloud.
  * `--project-name`: (*Required*) The name of the project (formerly tenant) within the cloud. Can be found in the RC file.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
+ * `--read-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to view this account's cloud resources.
  * `--regions`: (*Default*: `[]`) (*Required*) The region(s) of the cloud. Can be found in the RC file.
  * `--required-group-membership`: (*Default*: `[]`) A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
  * `--user-data-file`: User data passed to Heat Orchestration Template. Replacement of tokens supported, see http://www.spinnaker.io/v1.0/docs/target-deployment-configuration#section-openstack for details.
  * `--username`: (*Required*) The username used to access your cloud.
+ * `--write-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to make changes to this account's cloud resources.
 
 
 ---
@@ -4654,8 +5231,10 @@ hal config provider openstack account edit ACCOUNT [parameters]
 #### Parameters
 `ACCOUNT`: The name of the account to operate on.
  * `--account-type`: The type of Openstack account.
+ * `--add-read-permission`: Add this permission to the list of read permissions.
  * `--add-region`: Add this region to the list of managed regions.
  * `--add-required-group-membership`: Add this group to the list of required group memberships.
+ * `--add-write-permission`: Add this permission to the list of write permissions.
  * `--auth-url`: The auth url of your cloud, usually found in the Horizon console under Compute > Access & Security > API Access > url for Identity. Must be Keystone v3
  * `--consul-config`: This is the path for your consul config file
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
@@ -4669,12 +5248,16 @@ hal config provider openstack account edit ACCOUNT [parameters]
  * `--password`: The password used to access your cloud.
  * `--project-name`: The name of the project (formerly tenant) within the cloud. Can be found in the RC file.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
+ * `--read-permissions`: A user must have at least one of these roles in order to view this account's cloud resources.
  * `--regions`: (*Default*: `[]`) The region(s) of the cloud. Can be found in the RC file.
+ * `--remove-read-permission`: Remove this permission from the list of read permissions.
  * `--remove-region`: Remove this region from the list of managed regions.
  * `--remove-required-group-membership`: Remove this group from the list of required group memberships.
+ * `--remove-write-permission`: Remove this permission to from list of write permissions.
  * `--required-group-membership`: A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
  * `--user-data-file`: User data passed to Heat Orchestration Template. Replacement of tokens supported, see http://www.spinnaker.io/v1.0/docs/target-deployment-configuration#section-openstack for details.
  * `--username`: The username used to access your cloud.
+ * `--write-permissions`: A user must have at least one of these roles in order to make changes to this account's cloud resources.
 
 
 ---
@@ -4899,13 +5482,13 @@ hal config provider openstack enable [parameters]
 
 
 ---
-## hal config provider oraclebmcs
+## hal config provider oracle
 
-Manage and view Spinnaker configuration for the oraclebmcs provider
+Manage and view Spinnaker configuration for the oracle provider
 
 #### Usage
 ```
-hal config provider oraclebmcs [parameters] [subcommands]
+hal config provider oracle [parameters] [subcommands]
 ```
 
 #### Parameters
@@ -4913,18 +5496,18 @@ hal config provider oraclebmcs [parameters] [subcommands]
  * `--no-validate`: (*Default*: `false`) Skip validation.
 
 #### Subcommands
- * `account`: Manage and view Spinnaker configuration for the oraclebmcs provider's account
- * `disable`: Set the oraclebmcs provider as disabled
- * `enable`: Set the oraclebmcs provider as enabled
+ * `account`: Manage and view Spinnaker configuration for the oracle provider's account
+ * `disable`: Set the oracle provider as disabled
+ * `enable`: Set the oracle provider as enabled
 
 ---
-## hal config provider oraclebmcs account
+## hal config provider oracle account
 
-Manage and view Spinnaker configuration for the oraclebmcs provider's account
+Manage and view Spinnaker configuration for the oracle provider's account
 
 #### Usage
 ```
-hal config provider oraclebmcs account ACCOUNT [parameters] [subcommands]
+hal config provider oracle account ACCOUNT [parameters] [subcommands]
 ```
 
 #### Parameters
@@ -4933,44 +5516,46 @@ hal config provider oraclebmcs account ACCOUNT [parameters] [subcommands]
  * `--no-validate`: (*Default*: `false`) Skip validation.
 
 #### Subcommands
- * `add`: Add an account to the oraclebmcs provider.
- * `delete`: Delete a specific oraclebmcs account by name.
- * `edit`: Edit an account in the oraclebmcs provider.
- * `get`: Get the specified account details for the oraclebmcs provider.
- * `list`: List the account names for the oraclebmcs provider.
+ * `add`: Add an account to the oracle provider.
+ * `delete`: Delete a specific oracle account by name.
+ * `edit`: Edit an account in the oracle provider.
+ * `get`: Get the specified account details for the oracle provider.
+ * `list`: List the account names for the oracle provider.
 
 ---
-## hal config provider oraclebmcs account add
+## hal config provider oracle account add
 
-Add an account to the oraclebmcs provider.
+Add an account to the oracle provider.
 
 #### Usage
 ```
-hal config provider oraclebmcs account add ACCOUNT [parameters]
+hal config provider oracle account add ACCOUNT [parameters]
 ```
 
 #### Parameters
 `ACCOUNT`: The name of the account to operate on.
- * `--compartment-id`: (*Required*) Provide the OCID of the Oracle BMCS Compartment to use.
+ * `--compartment-id`: (*Required*) Provide the OCID of the Oracle Compartment to use.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--fingerprint`: (*Required*) Fingerprint of the public key
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
- * `--region`: (*Required*) An Oracle BMCS region (e.g., us-phoenix-1)
+ * `--read-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to view this account's cloud resources.
+ * `--region`: (*Required*) An Oracle region (e.g., us-phoenix-1)
  * `--required-group-membership`: (*Default*: `[]`) A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
  * `--ssh-private-key-file-path`: (*Required*) Path to the private key in PEM format
- * `--tenancyId`: (*Required*) Provide the OCID of the Oracle BMCS Tenancy to use.
- * `--user-id`: (*Required*) Provide the OCID of the Oracle BMCS User you're authenticating as
+ * `--tenancyId`: (*Required*) Provide the OCID of the Oracle Tenancy to use.
+ * `--user-id`: (*Required*) Provide the OCID of the Oracle User you're authenticating as
+ * `--write-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to make changes to this account's cloud resources.
 
 
 ---
-## hal config provider oraclebmcs account delete
+## hal config provider oracle account delete
 
-Delete a specific oraclebmcs account by name.
+Delete a specific oracle account by name.
 
 #### Usage
 ```
-hal config provider oraclebmcs account delete ACCOUNT [parameters]
+hal config provider oracle account delete ACCOUNT [parameters]
 ```
 
 #### Parameters
@@ -4980,39 +5565,45 @@ hal config provider oraclebmcs account delete ACCOUNT [parameters]
 
 
 ---
-## hal config provider oraclebmcs account edit
+## hal config provider oracle account edit
 
-Edit an account in the oraclebmcs provider.
+Edit an account in the oracle provider.
 
 #### Usage
 ```
-hal config provider oraclebmcs account edit ACCOUNT [parameters]
+hal config provider oracle account edit ACCOUNT [parameters]
 ```
 
 #### Parameters
 `ACCOUNT`: The name of the account to operate on.
+ * `--add-read-permission`: Add this permission to the list of read permissions.
  * `--add-required-group-membership`: Add this group to the list of required group memberships.
- * `--compartment-id`: Provide the OCID of the Oracle BMCS Compartment to use.
+ * `--add-write-permission`: Add this permission to the list of write permissions.
+ * `--compartment-id`: Provide the OCID of the Oracle Compartment to use.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--fingerprint`: Fingerprint of the public key
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
- * `--region`: An Oracle BMCS region (e.g., us-phoenix-1)
+ * `--read-permissions`: A user must have at least one of these roles in order to view this account's cloud resources.
+ * `--region`: An Oracle region (e.g., us-phoenix-1)
+ * `--remove-read-permission`: Remove this permission from the list of read permissions.
  * `--remove-required-group-membership`: Remove this group from the list of required group memberships.
+ * `--remove-write-permission`: Remove this permission to from list of write permissions.
  * `--required-group-membership`: A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
  * `--ssh-private-key-file-path`: Path to the private key in PEM format
- * `--tenancyId`: Provide the OCID of the Oracle BMCS Tenancy to use.
- * `--user-id`: Provide the OCID of the Oracle BMCS User you're authenticating as
+ * `--tenancyId`: Provide the OCID of the Oracle Tenancy to use.
+ * `--user-id`: Provide the OCID of the Oracle User you're authenticating as
+ * `--write-permissions`: A user must have at least one of these roles in order to make changes to this account's cloud resources.
 
 
 ---
-## hal config provider oraclebmcs account get
+## hal config provider oracle account get
 
-Get the specified account details for the oraclebmcs provider.
+Get the specified account details for the oracle provider.
 
 #### Usage
 ```
-hal config provider oraclebmcs account get ACCOUNT [parameters]
+hal config provider oracle account get ACCOUNT [parameters]
 ```
 
 #### Parameters
@@ -5022,13 +5613,13 @@ hal config provider oraclebmcs account get ACCOUNT [parameters]
 
 
 ---
-## hal config provider oraclebmcs account list
+## hal config provider oracle account list
 
-List the account names for the oraclebmcs provider.
+List the account names for the oracle provider.
 
 #### Usage
 ```
-hal config provider oraclebmcs account list [parameters]
+hal config provider oracle account list [parameters]
 ```
 
 #### Parameters
@@ -5037,13 +5628,13 @@ hal config provider oraclebmcs account list [parameters]
 
 
 ---
-## hal config provider oraclebmcs disable
+## hal config provider oracle disable
 
-Set the oraclebmcs provider as disabled
+Set the oracle provider as disabled
 
 #### Usage
 ```
-hal config provider oraclebmcs disable [parameters]
+hal config provider oracle disable [parameters]
 ```
 
 #### Parameters
@@ -5052,13 +5643,13 @@ hal config provider oraclebmcs disable [parameters]
 
 
 ---
-## hal config provider oraclebmcs enable
+## hal config provider oracle enable
 
-Set the oraclebmcs provider as enabled
+Set the oracle provider as enabled
 
 #### Usage
 ```
-hal config provider oraclebmcs enable [parameters]
+hal config provider oracle enable [parameters]
 ```
 
 #### Parameters
@@ -5387,10 +5978,79 @@ hal config security authn [parameters] [subcommands]
  * `--no-validate`: (*Default*: `false`) Skip validation.
 
 #### Subcommands
+ * `iap`: Configure the iap method for authenticating.
  * `ldap`: Configure the ldap method for authenticating.
  * `oauth2`: Configure the oauth2 method for authenticating.
  * `saml`: Configure the saml method for authenticating.
  * `x509`: Configure the x509 method for authenticating.
+
+---
+## hal config security authn iap
+
+Configure the iap method for authenticating.
+
+#### Usage
+```
+hal config security authn iap [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `disable`: Set the iap method as disabled
+ * `edit`: Configure authentication using the Google Cloud Identity-Aware Proxy authentication model.
+ * `enable`: Set the iap method as enabled
+
+---
+## hal config security authn iap disable
+
+Set the iap method as disabled
+
+#### Usage
+```
+hal config security authn iap disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config security authn iap edit
+
+Google Cloud Identity-Aware Proxy (IAP) is an authentication model that utilizes Google OAuth2.0 and an authorization service to provide access control for users of GCP. After a user has been authenticated and authorized by IAP's service, a JWT token is passed along which Spinnaker uses to check for authenticity and to get the user email from the payload and sign the user in.
+
+#### Usage
+```
+hal config security authn iap edit [parameters]
+```
+
+#### Parameters
+ * `--audience`: The Audience from the ID token payload. You can retrieve this field from the IAP console: https://cloud.google.com/iap/docs/signed-headers-howto#verify_the_id_token_header.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--iap-verify-key-url`: The URL containing the Cloud IAP public keys in JWK format.
+ * `--issuer-id`: The Issuer from the ID token payload.
+ * `--jwt-header`: The HTTP request header that contains the JWT token.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config security authn iap enable
+
+Set the iap method as enabled
+
+#### Usage
+```
+hal config security authn iap enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
 
 ---
 ## hal config security authn ldap
@@ -5505,13 +6165,22 @@ hal config security authn oauth2 edit [parameters]
 ```
 
 #### Parameters
+ * `--access-token-uri`: The access token uri for your OAuth provider.
+ * `--client-authentication-scheme`: The client authentication scheme for your OAuth provider.
  * `--client-id`: The OAuth client ID you have configured with your OAuth provider.
  * `--client-secret`: The OAuth client secret you have configured with your OAuth provider.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--pre-established-redirect-uri`: The externally accessible URL for Gate. For use with load balancers that do any kind of address manipulation for Gate traffic, such as an SSL terminating load balancer.
- * `--provider`: The OAuth provider handling authentication. The supported options are Google, GitHub, and Azure
+ * `--provider`: The OAuth provider handling authentication. The supported options are Google, GitHub, Oracle, Azure and Other
+ * `--scope`: The scope for your OAuth provider.
+ * `--user-authorization-uri`: The user authorization uri for your OAuth provider.
+ * `--user-info-mapping-email`: The email field returned from your OAuth provider.
+ * `--user-info-mapping-first-name`: The first name field returned from your OAuth provider.
+ * `--user-info-mapping-last-name`: The last name field returned from your OAuth provider.
+ * `--user-info-mapping-username`: The username field returned from your OAuth provider.
  * `--user-info-requirements`: (*Default*: `(empty)`) The map of requirements the userInfo request must have. This is used to restrict user login to specific domains or having a specific attribute. Use equal signs between key and value, and additional key/value pairs need to repeat the flag. Example: '--user-info-requirements foo=bar --userInfoRequirements baz=qux'.
+ * `--user-info-uri`: The user info uri for your OAuth provider.
 
 
 ---
@@ -5955,7 +6624,7 @@ hal config storage [parameters] [subcommands]
  * `azs`: Manage and view Spinnaker configuration for the "azs" persistent store.
  * `edit`: Edit Spinnaker's persistent storage.
  * `gcs`: Manage and view Spinnaker configuration for the "gcs" persistent store.
- * `oraclebmcs`: Manage and view Spinnaker configuration for the "oraclebmcs" persistent store.
+ * `oracle`: Manage and view Spinnaker configuration for the "oracle" persistent store.
  * `s3`: Manage and view Spinnaker configuration for the "s3" persistent store.
 
 ---
@@ -6047,13 +6716,13 @@ hal config storage gcs edit [parameters]
 
 
 ---
-## hal config storage oraclebmcs
+## hal config storage oracle
 
-Manage and view Spinnaker configuration for the "oraclebmcs" persistent store.
+Manage and view Spinnaker configuration for the "oracle" persistent store.
 
 #### Usage
 ```
-hal config storage oraclebmcs [parameters] [subcommands]
+hal config storage oracle [parameters] [subcommands]
 ```
 
 #### Parameters
@@ -6061,29 +6730,29 @@ hal config storage oraclebmcs [parameters] [subcommands]
  * `--no-validate`: (*Default*: `false`) Skip validation.
 
 #### Subcommands
- * `edit`: Edit configuration for the "oraclebmcs" persistent store.
+ * `edit`: Edit configuration for the "oracle" persistent store.
 
 ---
-## hal config storage oraclebmcs edit
+## hal config storage oracle edit
 
-Edit configuration for the "oraclebmcs" persistent store.
+Edit configuration for the "oracle" persistent store.
 
 #### Usage
 ```
-hal config storage oraclebmcs edit [parameters]
+hal config storage oracle edit [parameters]
 ```
 
 #### Parameters
  * `--bucket-name`: The bucket name to store persistent state object in
- * `--compartment-id`: Provide the OCID of the Oracle BMCS Compartment to use.
+ * `--compartment-id`: Provide the OCID of the Oracle Compartment to use.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--fingerprint`: Fingerprint of the public key
  * `--namespace`: The namespace the bucket and objects should be created in
  * `--no-validate`: (*Default*: `false`) Skip validation.
- * `--region`: An Oracle BMCS region (e.g., us-phoenix-1)
+ * `--region`: An Oracle region (e.g., us-phoenix-1)
  * `--ssh-private-key-file-path`: Path to the private key in PEM format
- * `--tenancy-id`: Provide the OCID of the Oracle BMCS Tenancy to use.
- * `--user-id`: Provide the OCID of the Oracle BMCS User you're authenticating as
+ * `--tenancy-id`: Provide the OCID of the Oracle Tenancy to use.
+ * `--user-id`: Provide the OCID of the Oracle User you're authenticating as
 
 
 ---
@@ -6192,6 +6861,7 @@ hal deploy apply [parameters]
 #### Parameters
  * `--auto-run`: This command will generate a script to be run on your behalf. By default, the script will run without intervention - if you want to override this, provide "true" or "false" to this flag.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--exclude-service-names`: (*Default*: `[]`) When supplied, do not install or update the specified Spinnaker services.
  * `--flush-infrastructure-caches`: (*Default*: `false`) WARNING: This is considered an advanced command, and may break your deployment if used incorrectly.
 
 This flushes infrastructure caches (clouddriver) after the deploy succeeds.
@@ -6230,6 +6900,7 @@ hal deploy collect-logs [parameters]
 
 #### Parameters
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--exclude-service-names`: (*Default*: `[]`) When supplied, logs from the specified services will be not collected
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--service-names`: (*Default*: `[]`) When supplied, logs from only the specified services will be collected.
 
@@ -6294,8 +6965,20 @@ hal deploy rollback [parameters]
 
 #### Parameters
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--exclude-service-names`: (*Default*: `[]`) When supplied, do not install or update the specified Spinnaker services.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--service-names`: (*Default*: `[]`) When supplied, only install or update the specified Spinnaker services.
+
+
+---
+## hal shutdown
+
+Shutdown the halyard daemon.
+
+#### Usage
+```
+hal shutdown
+```
 
 
 ---

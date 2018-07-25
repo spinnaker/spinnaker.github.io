@@ -264,6 +264,7 @@ Outputs:
     Value: !Ref EksClusterName
 
   SpinnakerInstanceProfileArn:
+    Condition: CreateEc2Role
     Value: !GetAtt SpinnakerInstanceProfile.Arn
 
   VpcId:

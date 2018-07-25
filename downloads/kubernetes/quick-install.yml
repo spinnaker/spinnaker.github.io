@@ -286,7 +286,38 @@ data:
         google:
           enabled: false
           subscriptions: []
-
+      canary:
+        enabled: true
+        serviceIntegrations:
+        - name: google
+          enabled: false
+          accounts: []
+          gcsEnabled: false
+          stackdriverEnabled: false
+        - name: prometheus
+          enabled: false
+          accounts: []
+        - name: datadog
+          enabled: false
+          accounts: []
+        - name: aws
+          enabled: true
+          accounts:
+          - name: kayenta-minio
+            bucket: spinnaker-artifacts
+            rootFolder: kayenta
+            endpoint: http://minio-service.spinnaker:9000
+            accessKeyId: dont-use-this
+            secretAccessKey: for-production
+            supportedTypes:
+            - CONFIGURATION_STORE
+            - OBJECT_STORE
+          s3Enabled: true
+        reduxLoggerEnabled: true
+        defaultJudge: NetflixACAJudge-v1.0
+        stagesEnabled: true
+        templatesEnabled: true
+        showAllConfigsEnabled: true
 ---
 
 apiVersion: v1
