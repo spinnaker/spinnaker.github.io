@@ -18,6 +18,9 @@ Each pipeline expression is made of `$` followed by opening/closing brackets:
 `${ }`. Within these brackets, you can add arbitrary expressions to access and
 modify the details of your pipeline during pipeline execution.
 
+Note that expressions can't be nested: `${ expression1 ${expression2} }` won't
+be evaluated.
+
 ### Code
 
 Spinnaker allows you to execute Java code within a pipeline expression. This can
@@ -71,9 +74,12 @@ the full list of functions [here](#helper-functions).
 You can also use lists in your expressions. Spinnaker always provides a list
 called _stages_, which you can use to access each stage by index:
 `${execution["stages"][0]}` returns the value of the first stage in your
-pipeline.  Keep in mind, though, that if you change the order in which your
-stages execute in the pipeline (separately from your expression), the value of
-`stages[i]` will also change.
+pipeline.
+
+Note that `stages` is mostly referenced here for illustration purposes. The
+value of `stages[i]` depends on the order in which your stages execute, which
+makes it fragile. The recommended way to access a specific stage is to use the
+[`#stage("Stage Name")` helper function](#stagestring).
 
 ### Maps
 
@@ -94,7 +100,9 @@ are a few places where using dot notation produces unexpected results, such as
 after a filter operation or when getting nested JSON values from an URL.
 
 You can filter maps using `.?`. For example, to filter a list of stages by type,
-you would use `${execution["stages"].?[type == "bake"]}`.
+you would use `${execution["stages"].?[type == "bake"]}`. The result is a
+list, and can be accessed as such: `${execution["stages"].?[type == "bake"][0]}`
+returns the first bake stage in your pipeline.
 
 ### Math
 
@@ -116,8 +124,8 @@ attribute shortcuts that you can use in Spinnaker. The specific properties are:
 * `trigger`: refers to the pipeline trigger.
 * `scmInfo`: refers to the git details of either the trigger or the most
 recently executed Jenkins stage.
-  * `scmInfo.sha1` returns the hash of the last build
-  * `scmInfo.branch` returns the branch name
+  * `scmInfo.sha1` returns the git commit hash of the last build
+  * `scmInfo.branch` returns the git branch name of the last build
 * `deployedServerGroups`: refers to the server group that was created by the
   last deploy stage. It should look something like:
   `{"account":"my-gce-account",
@@ -143,8 +151,7 @@ Returns the contents of the specified URL as a String.
 ### #jsonFromUrl(String)
 
 Retrieves the contents of the given URL and converts it into either a map or a
-list. You can use this to fetch information from the Spinnaker API or other
-sources.
+list. You can use this to fetch information from unauthenticated URL endpoints.
 
 ### #judgment(String)
 
@@ -155,17 +162,17 @@ named _"My Manual Judgment Stage"_.
 
 ### #propertiesFromUrl(String)
 
-Retrieves the contents of the properties file at the given URL and converts it
-into a map. You can use this to fetch information from Jenkins properties files
-or other similar endpoints.
+Retrieves the contents of a [Java properties file](https://docs.oracle.com/javase/tutorial/essential/environment/properties.html)
+at the given URL and converts it into a map. You can use this to fetch
+information from Jenkins properties files or other similar endpoints.
 
 ### #stage(String)
 
 A shortcut to get the stage by name. For example, `${#stage("Bake")}` allows
 you to access your Bake stage. Note that `#stage` is case sensitive: if your
-stage is actually named "_bake_", `${#stage("Bake")}` will not find it. Remember
-that the values for the stage are still under the context, so you would access a
-property via `${#stage("Bake")["context"]["desiredProperty"]}`.
+stage is actually named "bake", `${#stage("Bake")}` will not find it. Remember
+that the values for the stage are still under the _context_ map, so you can
+access a property via `${#stage("Bake")["context"]["desiredProperty"]}`.
 
 ### #toBoolean(String)
 
@@ -181,7 +188,7 @@ Converts a value to an integer.
 
 ### #toJson(Object)
 
-Converts a map into a JSON string.
+Converts an arbitrary JSON object into a JSON string.
 
 ## Whitelisted Java classes
 

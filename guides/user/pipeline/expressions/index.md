@@ -43,6 +43,9 @@ You also can interpolate expressions and strings. For example if
 
 evaluates to _Hello-randomString-world_.
 
+Note that expressions can't be nested: `${ expression1 ${expression2} }` won't
+be evaluated.
+
 ## How do I use a pipeline expression?
 
 ### Where can I use pipeline expressions?
