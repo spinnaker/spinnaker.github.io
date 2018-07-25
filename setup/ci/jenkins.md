@@ -129,38 +129,6 @@ In the UI, go to `"Manage Jenkins"` >> `"Configure System"` and set your git `us
 At this point, you should be able to manually run the script job in Jenkins
 (with parameters) and see it succeed.
 
-### Configure Spinnaker
-
-1. Make sure Igor is enabled.
-
-   Because you [enabled Jenkins](#add-your-jenkins-master), Igor should be
-   enabled automatically by Spinnaker. You can confirm this by checking your
-   `~/.hal/default/service-settings/`
-
-   If it's not enabled, you can override it to enable it in
-   `~/.hal/default/service-settings/igor.yml`:
-
-   `enabled:true`
-
-1. In spinnaker-local.yml, set:
-
-   ```
-   jenkins.enabled = true
-   jenkins.masters[0].name = <jenkins_name>
-   jenkins.masters[0].address = http://<jenkins_host>/jenkins Note that "/jenkins" might not be the base path, it depends on how Jenkins is configured.
-   jenkins.masters[0].username = <username>
-   jenkins.masters[0].password = <user_api_token>
-   ```
-
-1. In orca-local.yml, add:
-
-   ```
-   script:
-     master: <jenkins_name> # name of Jenkins master in Spinnaker
-     job: <JOB_NAME> # from Jenkins job configuration
-   ```
-
-
 ### Summary
 
 You should now be able to add a stage called "Script" to your pipelines,
