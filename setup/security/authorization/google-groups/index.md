@@ -33,7 +33,7 @@ create a service account that will access the G Suite Directory API.
     1. Transfer this JSON file to a known location in your Spinnaker deployment.
     1. You should see your newly created service account in the list, along with "DwD" and an
     option to "View Client ID". Click "View Client ID" (see figure below).
-    1. Note the Client ID displayed. It will be used in step 2.
+    1. Note the Client ID displayed. It will be used in the next step.
 
     ![View the client ID](fiat-cliend-id.png)
 
@@ -52,22 +52,22 @@ create a service account that will access the G Suite Directory API.
 
 ## Configure with Halyard
 
-With the authorized service account's credentials in hand, use Halyard to configure Fiat:
+1. Make sure you've configured roles for accounts, as described [here](/setup/security/authorization/#accounts). Each role included in the command is the name of a group in
+the organization.
 
-```bash
-ADMIN=admin@your.org              # An administrator's email address
-CREDENTIALS=/path/to/creds.json   # The downloaded service account credentials
-DOMAIN=your.org                   # Your organization's domain.
+1. With the authorized service account's credentials in hand, use Halyard to configure Fiat:
 
-hal config security authz google edit \
-    --admin-username $ADMIN \
-    --credential-path $CREDENTIALS \
-    --domain $DOMAIN
-
-hal config security authz edit --type google
-
-hal config security authz enable
-```
-
-
-## Troubleshooting
+   ```bash
+   ADMIN=admin@your.org              # An administrator's email address
+   CREDENTIALS=/path/to/creds.json   # The downloaded service account credentials
+   DOMAIN=your.org                   # Your organization's domain.
+   
+   hal config security authz google edit \
+       --admin-username $ADMIN \
+       --credential-path $CREDENTIALS \
+       --domain $DOMAIN
+   
+   hal config security authz edit --type google
+   
+   hal config security authz enable
+   ```
