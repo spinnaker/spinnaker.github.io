@@ -22,7 +22,7 @@ to see the commit hash and tag matching `version-<version>` of each
 subcomponent.
 
 ## Latest stable
-{% assign reversed = site.changelogs | reverse |  %}
+{% assign reversed = site.changelogs | sort: 'title' | reverse |  %}
 {% for post in reversed %}
   {% unless post.tags contains 'deprecated' %}
 #### {{ post.title }}  
