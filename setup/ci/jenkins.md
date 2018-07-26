@@ -6,6 +6,8 @@ sidebar:
 redirect_from: /docs/jenkins-script-execution-stage
 ---
 
+{% include toc %}
+
 Setting up [Jenkins](https://jenkins.io/){:target="\_blank"} as a Continuous
 Integration (CI) system within Spinnaker enables using Jenkins as a Pipeline
 Trigger, as well as the Run Script stage, which depends on Jenkins as a job
@@ -23,27 +25,31 @@ HTTP Basic Auth.
 
 ## Add your Jenkins master
 
-First, make sure that your Jenkins master is enabled:
+1. First, make sure that your Jenkins master is enabled:
 
-```bash
-hal config ci jenkins enable
-```
+   ```bash
+   hal config ci jenkins enable
+   ```
 
-Next, we will add Jenkins master named `my-jenkins-master` (an arbitrary,
+1. Next, add Jenkins master named `my-jenkins-master` (an arbitrary,
 human-readable name), to your list of Jenkins masters:
 
-```bash
-echo $PASSWORD | hal config ci jenkins master add my-jenkins-master \
-    --address $BASEURL \
-    --username $USERNAME \
-    --password # password will be read from STDIN to avoid appearing
-               # in your .bash_history
-```
+   ```bash
+   echo $PASSWORD | hal config ci jenkins master add my-jenkins-master \
+       --address $BASEURL \
+       --username $USERNAME \
+       --password # password will be read from STDIN to avoid appearing
+                  # in your .bash_history
+   ```
 
-> *Note*: If you use the [GitHub OAuth
-> plugin](https://wiki.jenkins.io/display/JENKINS/GitHub+OAuth+Plugin){:target="_blank"}
-> for authentication into Jenkins, you can use the GitHub $USERNAME, and use the
-> OAuth token as the $PASSWORD.
+   > *Note*: If you use the [GitHub OAuth
+   > plugin](https://wiki.jenkins.io/display/JENKINS/GitHub+OAuth+Plugin){:target="\_blank"}
+   > for authentication into Jenkins, you can use the GitHub $USERNAME, and use the
+   > OAuth token as the $PASSWORD.
+
+1. Apply your changes:
+
+   `hal deploy apply`
 
 ## Configure Jenkins and Spinnaker for CSRF protection
 
@@ -74,6 +80,8 @@ jenkins:
         csrf: true
 ```
 
+Be sure to invoke `hal deploy apply` to apply your changes.
+
 ### 2. Enable CSRF protection in Jenkins:
 
 a. Under __Manage Jenkins__ > __Configure Global Security__, select __Prevent
@@ -98,7 +106,7 @@ You have a running Spinnaker instance, with access to configuration files.
 
 You have a running Jenkins instance at `<jenkins_host>`, with a user profile set up with admin access.
 
-### Configuring Jenkins
+### Configure Jenkins
 `ssh` into your Jenkins machine.
 
 `wget` or `curl` the [raw job xml config file](https://storage.googleapis.com/jenkins-script-stage-config/scriptJobConfig.xml).
@@ -120,30 +128,6 @@ In the UI, go to `"Manage Jenkins"` >> `"Configure System"` and set your git `us
 
 At this point, you should be able to manually run the script job in Jenkins
 (with parameters) and see it succeed.
-
-### Configuring Spinnaker
-Enable Igor.
-
-In spinnaker-local.yml, set:
-
-```
-jenkins.enabled = true
-jenkins.masters[0].name = <jenkins_name>
-jenkins.masters[0].address = http://<jenkins_host>/jenkins Note that "/jenkins" might not be the base path, it depends on how Jenkins is configured.
-jenkins.masters[0].username = <username>
-jenkins.masters[0].password = <user_api_token>
-```
-
-In orca.yml, add:
-
-```
-script:
-  master: <jenkins_name> # name of Jenkins master in Spinnaker
-  job: <JOB_NAME> # from Jenkins job configuration
-```
-
-Restart Orca and Igor if you didn't have a Jenkins master
-configured in Spinnaker.
 
 ### Summary
 

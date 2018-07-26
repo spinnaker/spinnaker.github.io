@@ -72,16 +72,14 @@ service.
  deck(Deck) --> gate;
  api(Custom Script/API Caller) --> gate(Gate);
  gate --> kayenta(Kayenta);
- orca --> kayenta(Kayenta);
  gate --> orca(Orca);
  gate --> clouddriver(Clouddriver);
  orca --> clouddriver;
  gate --> rosco(Rosco);
  orca --> front50;
- orca --> rosco
+ orca --> rosco;
  gate --> front50(Front50);
  gate --> fiat(Fiat);
- gate --> kayenta(Kayenta);
  orca --> kayenta;
  clouddriver --> fiat;
  orca --> fiat;
@@ -114,14 +112,14 @@ By default Spinnaker binds ports according to the following table
 
 | Service     | Port              |
 | :---------- | :---------------- |
-| Deck        | 9000              |
-| Gate        | 8084              |
-| Orca        | 8083              |
 | Clouddriver | 7002              |
-| Front50     | 8080              |
-| Rosco       | 8087              |
-| Igor        | 8088              |
+| Deck        | 9000              |
 | Echo        | 8089              |
 | Fiat        | 7003              |
+| Front50     | 8080              |
+| Gate        | 8084              |
 | Halyard     | 8064              |
+| Igor        | 8088              |
 | Kayenta     | 8090              |
+| Orca        | 8083              |
+| Rosco       | 8087              |

@@ -15,11 +15,13 @@ The following Kubernetes settings can be tweaked within custom sizing.
 
 ### CPU & Memory requests/limits
 
-Container requests and limits for cpu and memory can be specified in the customSizing section of the Halyard Configuration. Note that these sizings will also be applied to any sidecars running along side the container as well. Please see the example for details.
+Container requests and limits for cpu and memory can be specified in the customSizing section of the Halyard Configuration. Note that if you specify the service name, these sizings will also be applied to any sidecars running alongside the primary container. To apply sizing to only a specfic container and not the sidecars, specify the container name instead of the service name. Please see the example for details.
 
 ```
 deploymentEnvironment:
   customSizing:
+    # This applies sizings to the cloudriver container as well as any sidecar 
+    # containers running with clouddriver.
     spin-clouddriver:
       limits:
         cpu: 1
@@ -27,7 +29,9 @@ deploymentEnvironment:
       requests:
         cpu: 250m
         memory: 512Mi
-    spin-echo:
+    # This applies sizings to only the echo container and not to any sidecar 
+    # containers running with echo.
+    echo:
       limits:
         cpu: 250m
         memory: 512Mi
