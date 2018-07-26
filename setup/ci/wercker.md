@@ -19,8 +19,8 @@ is described below.
 ## Prerequisites
 
 To enable Wercker integration in Spinnaker, you will need to have:
-1. A login to Wercker, which you can set up at https://app.wercker.com/
-2. A Wercker "personal token" to provide to Spinnaker so that it can access 
+- A login to Wercker, which you can set up at https://app.wercker.com/
+- A Wercker "personal token" to provide to Spinnaker so that it can access 
 the Wercker API on your behalf. Personal tokens can be generated on Wercker by logging in 
 and visiting your "Settings" page.
 
@@ -52,8 +52,5 @@ and then choose from the applications and pipelines available for the configured
 credentials. When the selected Wercker pipeline completes, it will trigger the Spinnaker pipeline.
 
 ## Wercker as Pipeline Stage
-When adding a pipeline stage, Wercker will be available as one of the stage types in Spinnaker. The
-Wercker masters configured, and the applications and pipelines available for your master's 
-credentials.
-When a Wercker Stage runs in a Spinnaker pipeline, a link to the Wercker run will be
-available, and the status of the Wercker run will be reported in Spinnaker.
+When adding a pipeline stage, Wercker will be available as one of the stage types in Spinnaker. For
+details, see the [pipeline stage reference](/reference/pipeline/stages)
