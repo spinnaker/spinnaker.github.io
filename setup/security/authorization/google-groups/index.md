@@ -52,8 +52,8 @@ create a service account that will access the G Suite Directory API.
 
 ## Configure with Halyard
 
-1. Make sure you've configured roles for accounts, as described [here](/setup/security/authorization/#accounts). Each role included in the command is the name of a group in
-the organization.
+1. Make sure you've configured roles for accounts, as described [here](/setup/security/authorization/#accounts). Each role included in the command must match the name of a group
+in the organization.
 
 1. With the authorized service account's credentials in hand, use Halyard to configure Fiat:
 
