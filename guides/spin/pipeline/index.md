@@ -59,7 +59,7 @@ You can also template the pipeline JSON using your favorite templating engine.
 ### List pipelines in an application with `list`
 
 ```bash
-spin application list --application my-app
+spin pipeline list --application my-app
 
 [
 ...
