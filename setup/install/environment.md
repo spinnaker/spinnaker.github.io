@@ -40,6 +40,13 @@ Spinnaker is deployed to a remote cloud, with each
 creates a smaller, headless Spinnaker to update your Spinnaker and its
 microservices, ensuring zero-downtime updates.
 
+1. Run the following command, using the `$ACCOUNT` name you created when you
+configured the provider:
+
+   ```
+   hal config deploy edit --type distributed --account-name $ACCOUNT
+   ```
+
 1. If you haven't already done so, configure a provider for the environment in
 which you will install Spinnaker.
 
@@ -64,13 +71,6 @@ on the machine running Halyard.
    `hal shutdown`
 
    Then invoke any `hal` command to restart the Halyard daemon.
-
-1. Run the following command, using the `$ACCOUNT` name you created when you
-configured the provider:
-
-   ```
-   hal config deploy edit --type distributed --account-name $ACCOUNT
-   ```
 
 <span class="begin-collapsible-section"></span>
 
