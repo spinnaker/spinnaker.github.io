@@ -128,6 +128,14 @@ command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
   ConfigMap or Secret to be deployed without appending a new version when the
   contents change, for example.
 
+* `strategy.spinnaker.io/use-source-capacity`
+
+  When set to `'true'` or `'false'`, this overrides the resources replicas size
+  with the currently deployed resource size. This is supported for 
+  deployment, replicaset or stateful set. 
+  This can be used to allow resizing a resource and maintaining the same 
+  number of replicas on subsequent manifest deployments.
+
 * `strategy.spinnaker.io/max-version-history`
 
   When set to a non-negative integer, this configures how many versions of a
