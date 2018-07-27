@@ -11,15 +11,10 @@ sidebar:
 enabled within Spinnaker as a pipeline trigger and also as a pipeline stage. The setup required
 is described below.
 
-## Links
-[Main Wercker Site](https://app.wercker.com)
-
-[Wercker Documentation](https://devcenter.wercker.com/)
-
 ## Prerequisites
 
 To enable Wercker integration in Spinnaker, you will need to have:
-- A login to Wercker, which you can set up at https://app.wercker.com/
+- A login to Wercker, which can be set up [here](https://app.wercker.com/).
 - A Wercker "personal token" to provide to Spinnaker so that it can access 
 the Wercker API on your behalf. Personal tokens can be generated on Wercker by logging in 
 and visiting your "Settings" page.
@@ -54,3 +49,8 @@ credentials. When the selected Wercker pipeline completes, it will trigger the S
 ## Wercker as Pipeline Stage
 When adding a pipeline stage, Wercker will be available as one of the stage types in Spinnaker. For
 details, see the [pipeline stage reference](/reference/pipeline/stages)
+
+## Links
+[Main Wercker Site](https://app.wercker.com)
+
+[Wercker Documentation](https://devcenter.wercker.com/)
