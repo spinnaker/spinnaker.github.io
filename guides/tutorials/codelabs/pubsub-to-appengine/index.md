@@ -193,7 +193,7 @@ Wait a few minutes for the deploy to complete.
     b. Select 'Pub/Sub' as the trigger type.
 
     c. Select 'google' as the `Pub/Sub System Type` and select 'my-gcs-subscription' as the `Subscription Name`.
-    
+
     d. Add an attribute constraint with key 'eventType' and value 'OBJECT_FINALIZE'. This prevents your pipeline from triggering twice from one GCS event.
 
     e. Select the '.../app.tar' expected artifact in the `Expected Artifacts` drop down.
@@ -224,7 +224,7 @@ Wait a few minutes for the deploy to complete.
 `git clone https://github.com/GoogleCloudPlatform/python-docs-samples.git`
 
 2. Package your application as a tarball:
-`cd python-docs-samples/appengine/standard/hello_world tar -cvf app.tar *`
+`cd python-docs-samples/appengine/standard/hello_world; tar -cvf app.tar *`
 
 3. Upload the tarball to the GCS bucket:
 `gsutil cp app.tar $BUCKET_NAME`
