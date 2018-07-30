@@ -50,7 +50,7 @@ completes, it will trigger the Spinnaker pipeline.
 ## Wercker as Pipeline Stage
 When [adding a pipeline stage](/guides/user/pipeline/managing-pipelines/#add-a-stage), Wercker is
 available as one of the stage types in Spinnaker. For details, see the
-[pipeline stage reference](/reference/pipeline/stages)
+[pipeline stage reference](/reference/pipeline/stages/#wercker)
 
 ## Links
 [Main Wercker Site](https://app.wercker.com)
