@@ -128,11 +128,33 @@ and assigning it to the Pub/Sub Trigger as shown below:
   image_path="./expected-artifact.png"
 %}
 
-In order to run this pipeline, you will need to supply the required artifact in
-the pub/sub message payload, and provide Spinnaker with a _translation template_
-to translate the pub/sub payload into a Spinnaker artifact.
+In order for this to work, you need to supply the required artifact in the
+pub/sub message payload, and configure Spinnaker so that it can translate the
+pub/sub payload into a Spinnaker artifact.
 
-As an example, suppose your message payload contained the following structure:
+If you're using GCR, you can use the `--message-format` flag and Spinnaker will
+translate the payload automatically:
+
+```
+hal config pubsub google subscription edit my-gcr-subscription \
+  --message-format GCR
+```
+
+Otherwise, you need to supply a translation template so that Spinnaker can
+translate the pub/sub payload into a Spinnaker artifact. To do this, create a
+[Jinja template](http://jinja.pocoo.org/docs/2.10/templates). Note that the
+output of the Jinja transform must be a JSON list of Spinnaker artifacts. The
+translation template itself can be any valid Jinja transform.
+
+Use the following `hal` command to tell Spinnaker how to find the template:
+
+```
+hal config pubsub google subscription edit my-gcs-subscription \
+  --template-path /path/to/jinja/template
+```
+
+### Example
+Let's say you have a message payload containing the following structure:
 
 ```json
 {
@@ -142,8 +164,8 @@ As an example, suppose your message payload contained the following structure:
 }
 ```
 
-You would then need to supply a Jinja template to Spinnaker that translates this
-message payload to the Spinnaker artifact format:
+You can use the following Jinja template to translate the above into the
+Spinnaker artifact format:
 
 ```
 [
@@ -153,6 +175,3 @@ message payload to the Spinnaker artifact format:
   }
 ]
 ```
-
-Note that the output of the Jinja transform must be a __json list_ of Spinnaker artifacts.
-The translation template can be any valid [Jinja transforms](http://jinja.pocoo.org/docs/2.10/templates).
