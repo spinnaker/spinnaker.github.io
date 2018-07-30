@@ -16,8 +16,8 @@ is described below.
 To enable Wercker integration in Spinnaker, you will need to have:
 - A login to Wercker, which can be set up [here](https://app.wercker.com/).
 - A Wercker "personal token" to provide to Spinnaker so that it can access 
-the Wercker API on your behalf. Personal tokens can be generated on Wercker by logging in 
-and visiting your "Settings" page.
+the Wercker API on your behalf. Personal tokens [can be generated](https://devcenter.wercker.com/development/api/authentication/)
+on Wercker by logging in and visiting your "Settings" page.
 
 ## Add a Wercker 'Master' to Spinnaker Using Halyard
 A "master" is a connection to Wercker from Spinnaker. It consists of the Wercker URL 
@@ -41,14 +41,16 @@ and credentials.
    `hal deploy apply`
 
 ## Wercker as Pipeline Trigger
-When configuring a Spinnaker Pipeline, Wercker will be available as one of the automated 
-trigger type options. You will be able to select a Wercker master that you configured earlier,
-and then choose from the applications and pipelines available for the configured master's
-credentials. When the selected Wercker pipeline completes, it will trigger the Spinnaker pipeline.
+When configuring a Spinnaker Pipeline, Wercker is available as one of the [automated
+trigger](/guides/user/pipeline/managing-pipelines/#add-a-trigger) type options. You can
+select a Wercker master that you configured earlier, and then choose from the applications and
+pipelines available for the configured master's credentials. When the selected Wercker pipeline
+completes, it will trigger the Spinnaker pipeline.
 
 ## Wercker as Pipeline Stage
-When adding a pipeline stage, Wercker will be available as one of the stage types in Spinnaker. For
-details, see the [pipeline stage reference](/reference/pipeline/stages)
+When [adding a pipeline stage](/guides/user/pipeline/managing-pipelines/#add-a-stage), Wercker is
+available as one of the stage types in Spinnaker. For details, see the
+[pipeline stage reference](/reference/pipeline/stages)
 
 ## Links
 [Main Wercker Site](https://app.wercker.com)
