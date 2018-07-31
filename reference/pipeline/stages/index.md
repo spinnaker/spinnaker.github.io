@@ -156,6 +156,14 @@ Wait a specified period of time.
 ### Webhook
 Run a Webhook job.
 
+### Wercker
+Run the specified Wercker pipeline. You must [set up Wercker](/setup/ci/wercker/)
+in order to use this stage. Once Wercker has been configured, your Wercker masters 
+and the applications and pipelines available for your master's credentials will be shown 
+in the drop-down menus.
+When a Wercker pipeline stage runs, a link to the Wercker run will be available, and the status of
+the Wercker run will be reported in Spinnaker.
+
 ## AppEngine
 
 ### Start AppEngine Server Group
