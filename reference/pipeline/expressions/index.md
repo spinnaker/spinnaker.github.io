@@ -158,7 +158,8 @@ list. You can use this to fetch information from unauthenticated URL endpoints.
 Returns the selected judgment value from the Manual Judgment stage whose name
 matches the input string. Note that `#judgment` is case sensitive:
 `${#judgment("my manual judgment stage")}` returns an error if your stage is
-named _"My Manual Judgment Stage"_.
+named _"My Manual Judgment Stage"_. Note that this function is aliased to the
+spelling `#judgement`.
 
 ### #propertiesFromUrl(String)
 
