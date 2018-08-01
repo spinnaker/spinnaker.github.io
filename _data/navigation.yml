@@ -237,7 +237,7 @@ guides:
         collapsed: true
         children:
           - title: Managing Pipelines
-            url: /guides/user/pipeline/managing-pipelines/c
+            url: /guides/user/pipeline/managing-pipelines/
           - title: Triggering Pipelines
             collapsed: true
             children:
