@@ -240,6 +240,8 @@ guides:
                 url: /guides/user/pipeline/triggers/gcs/
               - title: Receiving Artifacts From GitHub
                 url: /guides/user/pipeline/triggers/github/
+              - title: Pipeline Stages
+                url: /reference/pipeline/stages/
           - title: Pipeline Expressions
             url: /guides/user/pipeline/expressions/
       - title: Tagging
