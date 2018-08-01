@@ -130,11 +130,11 @@ command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
 
 * `strategy.spinnaker.io/use-source-capacity`
 
-  When set to `'true'` or `'false'`, this overrides the resources replicas size
-  with the currently deployed resource size. This is supported for 
-  deployment, replicaset or stateful set. 
-  This can be used to allow resizing a resource and maintaining the same 
-  number of replicas on subsequent manifest deployments.
+  When set to `'true'` or `'false'`, this overrides the resource's replica count 
+  with the currently deployed resource's replica count. This is supported for 
+  Deployment, ReplicaSet or StatefulSet. This can be used to allow resizing a resource 
+  in the Spinnaker UI or with kubectl without overriding the new size during subsequent 
+  manifest deployments.
 
 * `strategy.spinnaker.io/max-version-history`
 
