@@ -200,11 +200,15 @@ before plugging it into your pipeline. To use the endpoint, you need a running
 instance of Spinnaker and the ID of a previous pipeline execution that you want
 to use in the test.
 
-To find the pipeline execution ID, expand the **Details** of a particular
-execution. Then, click **Source** in the lower right corner, which opens a JSON
-representation of the execution in a new tab. The execution ID is the value of
-the top-level **id** field in the JSON, and looks something like
-_01CGYV7Q4PMEBDYS146CCED0M6_.
+You can find the pipeline execution ID through the execution JSON:
+1. Expand the **Details** of a particular execution.
+2. Click **Source** in the lower right corner, which opens a new tab containing
+the pipeline execution JSON.
+
+    ![](images/execution-json.png)
+
+3. The execution ID is the value of the top-level **id** field in the JSON, and
+looks something like _01CGYV7Q4PMEBDYS146CCED0M6_.
 
 You can use `curl` to pass an expression to the testing endpoint:
 

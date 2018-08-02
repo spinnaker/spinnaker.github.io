@@ -97,7 +97,8 @@ Note that while Spinnaker supports both dot (`map.value`) and square bracket
 (`map["value"]`) notation, we recommend using square brackets. That is, prefer
 `trigger["properties"]["value"]` instead of `trigger.properties.value`. There
 are a few places where using dot notation produces unexpected results, such as
-after a filter operation or when getting nested JSON values from an URL.
+after a filter operation or when getting nested JSON values from an URL. Bracket
+notation also allows you to access non-alphanumeric properties.
 
 You can filter maps using `.?`. For example, to filter a list of stages by type,
 you would use `${execution["stages"].?[type == "bake"]}`. The result is a
@@ -126,12 +127,14 @@ attribute shortcuts that you can use in Spinnaker. The specific properties are:
 recently executed Jenkins stage.
   * `scmInfo.sha1` returns the git commit hash of the last build
   * `scmInfo.branch` returns the git branch name of the last build
-* `deployedServerGroups`: refers to the server group that was created by the
+* `deployedServerGroups`: refers to the Server Group that was created by the
   last deploy stage. It should look something like:
   `{"account":"my-gce-account",
     "capacity": { "desired":1.0,"max":1.0,"min":1.0},
     "region":"us-central1",
-    "serverGroup":"gcespin-dev-v005"}`
+    "serverGroup":"myapp-dev-v005"}`. Note that you can use
+    `deployedServerGroups` [as a function](#deployedservergroupsstring) to
+    return information about an arbitrary deploy stage.
 
 ## Helper functions
 
@@ -139,6 +142,11 @@ recently executed Jenkins stage.
 
 Returns the alphanumerical value of the passed-in string. That is, the input
 string with all characters aside from A-Z and 0-9 stripped out.
+
+### #deployedServerGroups(String)
+
+Takes the name of a deploy stage as an argument and returns the Server Group
+that was created by the specified stage.
 
 ### #readJson(String)
 
