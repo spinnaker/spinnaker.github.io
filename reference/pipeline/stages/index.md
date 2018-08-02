@@ -187,7 +187,11 @@ Bake a manifest (or multi-doc manifest set) using a template renderer such as
 Helm.
 
 ### Delete (Manifest)
-Destroy a Kubernetes object created from a manifest.
+Destroy a Kubernetes object created from a manifest. If multiple label selectors
+are specified, they are combined with the logical _AND_ operator. See [the 
+Kubernetes reference
+page](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors)
+for more details.
 
 ### Deploy (Manifest)
 Deploy a Kubernetes manifest YAML/JSON file.
