@@ -22,8 +22,7 @@ With Fiat, you can&hellip;
 
 * Restrict access to specific [_accounts_](#accounts).
 * Restrict access to specific [_applications_](#applications).
-* Run externally-triggered pipelines against access-controlled applications using [_Fiat service
-accounts_](#service-accounts).
+* Run pipelines using [automated triggers](#automated-pipeline-triggers) against access-controlled applications.
 * Use and periodically update user roles from a backing [role provider](#role-providers).
 
 
@@ -124,12 +123,16 @@ should be denied:
 
 ![chrome network traffic is returning 403 Forbidden errors](restricted-network-traffic.png)
 
-## Service accounts
+## Automated pipeline triggers
 
 A popular feature in Spinnaker is the ability to run pipelines automatically based on a
 triggering event, such as a `git push` or a Jenkins build completing. When pipelines run against
-accounts and applications that are protected, it is necessary to use a Fiat [service account](
-./service-accounts/) with enough permissions to access those protected resources.
+accounts and applications that are protected, it is necessary to configure 
+them with enough permissions to access those protected resources. This can
+be done in two ways:
+
+* Using [Pipeline Permissions](./pipeline-permissions/)
+* Using a Fiat [service account](./service-accounts/)
 
 ## Role providers
 
