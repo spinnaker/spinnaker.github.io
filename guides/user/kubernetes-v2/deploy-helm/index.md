@@ -27,6 +27,9 @@ When configuring the "Bake (Manifest)" stage, you can specify the following:
   The Helm release name for this chart. This determines the name of the
   artifact produced by this stage.
 
+> Note: this name will override any changes you make to the name
+> in the Produces Artifacts section.
+
 * __The template artifact__ (required)
 
   The Helm chart that you will be deploying, stored remotely as a
