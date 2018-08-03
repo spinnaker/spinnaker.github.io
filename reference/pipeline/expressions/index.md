@@ -24,12 +24,12 @@ be evaluated.
 ### Code
 
 Spinnaker allows you to execute Java code within a pipeline expression. This can
-be useful for string manipulation or to build more complex expressions than
-would otherwise be possible. For security reasons, you can only use whitelisted
-Java classes. You can find the full list of whitelisted classes
+be useful for string manipulation or more advanced custom logic than
+would otherwise be possible. For security reasons, you can only call methods of
+whitelisted Java classes. You can find the full list of whitelisted classes
 [here](#whitelisted-java-classes).
 
-You can use methods available to the whitelisted classes without importing them.
+You can use methods directly on existing map values based on their Java class.
 For example, you can process a list of values entered as a parameter using
 Java's String `split()` function, provided users enter them using a standard
 split character. You can process the list `us-east-1,us-west-1,eu-west-1` with
@@ -108,7 +108,9 @@ returns the first bake stage in your pipeline.
 ### Math
 
 You can use arithmetic operations in your expressions, such as
-`${trigger["buildInfo"]["number"] * 2}`.
+`${trigger["buildInfo"]["number"] * 2}`. You can use helper functions such as
+[#toInt](#tointstring) or [#toFloat](#tofloatstring) if type conversion is
+necessary.
 
 ### Strings
 
@@ -121,7 +123,8 @@ String."
 attribute shortcuts that you can use in Spinnaker. The specific properties are:
 
 * `execution`: refers to the current pipeline execution.
-* `parameters`: refers to pipeline parameters.
+* `parameters`: refers to pipeline parameters. This is a shortcut for accessing
+the value of `trigger["parameters"]`.
 * `trigger`: refers to the pipeline trigger.
 * `scmInfo`: refers to the git details of either the trigger or the most
 recently executed Jenkins stage.
