@@ -89,7 +89,13 @@ Server Groups and any existing Server Groups. Enabling a Server Group also
 re-enables auto-scaling policies, if applicable.
 
 ### Find Artifact From Execution
-Find and bind an artifact from another pipeline execution.
+Find and bind an artifact from a different execution to the current one,
+including artifacts from different Spinnaker applications. To do this, specify
+the type of artifact (GCS, GitLab, Docker, etc) and its path. You can specify
+that Spinnaker should only consider executions that meet certain criteria, such
+as ones that have completed successfully or that are currently running.
+Spinnaker will always return the artifact from the most recent execution that
+matches your criteria.
 
 ### Find Image From Cluster
 Find an image to deploy from an existing Cluster. Make sure that you specify the
@@ -97,7 +103,9 @@ Cluster and Server Group such that there is exactly one match, or this may
 behave in unexpected ways.
 
 ### Find Image From Tags
-Find an image to deploy from tags.
+Find the newest image that matches all specified tags. Tags can only contain
+lowercase letters, numeric characters, underscores and dashes. Depending on your
+provider, you may need to specify what region to search for the image.
 
 ### Jenkins
 Run the specified job in Jenkins. You must [set up Jenkins](/setup/ci/jenkins/)
@@ -113,8 +121,12 @@ Preconditions**](#check-preconditions) stage to ensure that a given stage only
 runs if a particular input is specified.
 
 ### Pipeline
-Run an existing pipeline: you can select any pipeline from this application and
-run it as a sub-pipeline.
+Select any pipeline and run it as a sub-pipeline. You can run pipelines from
+both the current application and any other Spinnaker applications that you have
+access to. You can choose whether to wait for the results of the sub-pipeline
+before this stage completes. If you wait for results, the end state of this
+stage reflects the end state of the sub-pipeline. Otherwise, the this stage is
+marked successful as soon as the sub-pipeline starts.
 
 ### Resize Server Group
 Resize the oldest, newest, or second newest Server Group. You can resize the
@@ -148,20 +160,24 @@ the newest or the largest Server Groups. You can choose whether to delete active
 Server Groups if they don’t fit the specified criteria.
 
 ### Tag Image
-Tag an image.
+Tag the current image in your pipeline with all specified tags. Tags can only
+contain lowercase letters, numeric characters, underscores and dashes. Spinnaker
+converts the tags to your provider's equivalent: for example, it creates labels
+for GCE images, whereas it creates tags for AWS images, and so on.
 
 ### Wait
-Wait a specified period of time.
+Wait a specified period of time before proceeding. You can choose to manually
+skip some or all of the wait period during execution.
 
 ### Webhook
 Run a Webhook job.
 
 ### Wercker
 Run the specified Wercker pipeline. You must [set up Wercker](/setup/ci/wercker/)
-in order to use this stage. Once Wercker has been configured, your Wercker masters 
-and the applications and pipelines available for your master's credentials will be shown 
-in the drop-down menus.
-When a Wercker pipeline stage runs, a link to the Wercker run will be available, and the status of
+in order to use this stage. Once Wercker has been configured, your Wercker
+masters and the applications and pipelines available for your master's
+credentials will be shown in the drop-down menus. When a Wercker pipeline stage
+runs, a link to the Wercker run will be available, and the status of
 the Wercker run will be reported in Spinnaker.
 
 ## AppEngine
@@ -188,7 +204,7 @@ Helm.
 
 ### Delete (Manifest)
 Destroy a Kubernetes object created from a manifest. If multiple label selectors
-are specified, they are combined with the logical _AND_ operator. See [the 
+are specified, they are combined with the logical _AND_ operator. See [the
 Kubernetes reference
 page](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors)
 for more details.
