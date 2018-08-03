@@ -158,7 +158,7 @@ API](https://console.developers.google.com/apis/api/cloudresourcemanager.googlea
    ```bash
    hal config provider docker-registry account add my-docker-registry \
     --address $ADDRESS \
-    --username $USERNAME \
+    --username _json_key \
     --password-file $PASSWORD_FILE
 
    ```
