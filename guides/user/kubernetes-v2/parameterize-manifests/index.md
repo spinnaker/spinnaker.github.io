@@ -55,8 +55,7 @@ When you go to run the pipeline by hand, you will see the following:
 
 When parameterizing a YAML value that's not a string (such as the replica
 count), you will need to explicitly convert the evaluated expression [to the
-correct
-type](/guides/user/pipeline/expressions/#helper-functions-in-spinnaker).
+correct type](/reference/pipeline/expressions/#helper-functions).
 
 If you were expecting the replica count to arrive in parameter `replicas`, you
 would write:
