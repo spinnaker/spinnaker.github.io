@@ -326,6 +326,11 @@ guides:
         url: /guides/spin/app/
       - title: Manage Pipelines
         url: /guides/spin/pipeline/
+  - title: Service Overviews
+    collapsed: true
+    children:
+      - title: Orca
+        url: /guides/developer/service-overviews/orca/
 reference:
   - title: API
     collapsed: true
