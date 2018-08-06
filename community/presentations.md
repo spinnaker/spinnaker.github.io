@@ -10,7 +10,7 @@ Conference and Meetup Presentations on Spinnaker
 
 ### 
 <a href="https://youtu.be/PLNheBiWOGI" target="_blank">Large-Scale Continuous Delivery at Netflix and Waze Using Spinnaker (Cloud Next '18)</a> 
-Google Cloud Next ‘18 | July 24, 2019 | Andy Glover (Netflix), Matt Duftler (Google), Tom Feiner (Waze)
+Google Cloud Next ‘18 | July 24, 2018 | Andy Glover (Netflix), Matt Duftler (Google), Tom Feiner (Waze)
 
 In this session that feature representatives from Netflix, Waze, and Google, we’ll present how Spinnaker helps achieve higher velocity, production stability, and safety through advanced deployment pipeline templates and the new canary analysis component (Kayenta). 
  
