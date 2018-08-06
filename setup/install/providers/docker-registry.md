@@ -138,8 +138,6 @@ API](https://console.developers.google.com/apis/api/cloudresourcemanager.googlea
    vars to be passed to `hal` [later](#add-the-account):
 
    ```bash
-   # this is always the username for this authentication format
-   USERNAME=_json_key
    PASSWORD_FILE=$SERVICE_ACCOUNT_DEST
    ```
 
@@ -158,7 +156,7 @@ API](https://console.developers.google.com/apis/api/cloudresourcemanager.googlea
    ```bash
    hal config provider docker-registry account add my-docker-registry \
     --address $ADDRESS \
-    --username $USERNAME \
+    --username _json_key \
     --password-file $PASSWORD_FILE
 
    ```
