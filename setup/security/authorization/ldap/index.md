@@ -12,23 +12,8 @@ groups.
 
 ## User DNs
 
-Sample configuration:
-```yaml
-auth:
-  groupMembership:
-    service: ldap
-    ldap:
-      url: ldaps://ldap.mydomain.net:636/dc=mydomain,dc=net
-      managerDn: uid=admin,ou=system
-      managerPassword: batman
-      userDnPattern: uid={0},ou=users
-      groupSearchBase: ou=groups
-      groupSearchFilter: (uniqueMember={0})
-      groupRoleAttributes: cn
-```
-
-When searching for a user's groups, the `userDnPattern` is used to construct the user's full
-distinguished name (DN). In the case above, the user `joe` would have a full DN of
+When searching for a user's groups, a `userDnPattern` is used to construct the user's full
+distinguished name (DN). In the case below, the user `joe` would have a full DN of
 `uid=joe,ou=users,dc=mydomain,dc=net`.
 
 The search would be rooted at `ou=groups,dc=mydomain,dc=net`, looking for directory entries that
@@ -42,16 +27,18 @@ pass the filter will then have the `cn` (common name) attribute returned.
 
 ## Configure with Halyard
 
-TODO: Update these details when halyard supports LDAP.
+With the ldap manager credentials and search patterns in hand, use Halyard to configure Fiat:
 
-In the mean time...
-
-1. Put the above configuration in `~/.hal/$DEPLOYMENT/profiles/fiat-local.yml`,
-creating the file if it doesn't exist yet.
-
-1. Use Halyard to deploy Fiat:
-
-   ```bash
-   hal config security authz edit --type ldap
-   hal config security authz enable
-   ```
+```bash
+hal config security authz ldap edit \
+    --url ldaps://ldap.mydomain.net:636/dc=mydomain,dc=net \
+    --manager-dn uid=admin,ou=system \
+    --manager-password \
+    --user-dn-pattern uid={0},ou=users \
+    --group-search-base ou=groups \
+    --group-search-filter "(uniqueMember={0})" \
+    --group-role-attributes cn
+      
+ hal config security authz edit --type ldap
+ hal config security authz enable
+```
