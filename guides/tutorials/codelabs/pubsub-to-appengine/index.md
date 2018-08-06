@@ -106,54 +106,8 @@ Now configure Spinnaker to receive messages from your Google Cloud Pub/Sub subsc
 1. Enable Google Pub/Sub:
 `hal config pubsub google enable`
 
-2. Create a transformation template file.
-
-    a. Create a JSON file named 'gcs-jinja.json' and add the following contents to the file:
-
-    <script src="https://gist.github.com/spinnaker-release/3f72a7efe5bc7914ba81170af6a59ffa.js"></script>
-
-    This is a [Jinja](http://jinja.pocoo.org/docs/2.9/) template that defines the tranformation from the Pub/Sub message structure to the artifact format
-    Spinnaker understands. The JSON snippet above defines the mapping specific to the GCS Pub/Sub message, but these are entirely
-    user-supplied and can specify any valid Jinja transformation.
-
-    Here is an example message payload from uploading an object to a GCS bucket:
-
-    ```
-    {
-      "kind": "storage#object",
-      "id": "gcs-pub-sub/app.tar/1511803705417483",
-      "selfLink": "https://www.googleapis.com/storage/v1/b/gcs-pub-sub/o/app.tar",
-      "name": "app.tar",
-      "bucket": "gcs-pub-sub",
-      "generation": "1511803705417483",
-      "metageneration": "1",
-      "contentType": "application/x-tar",
-      "timeCreated": "2017-11-27T17:28:25.218Z",
-      "updated": "2017-11-27T17:28:25.218Z",
-      "storageClass": "MULTI_REGIONAL",
-      "timeStorageClassUpdated": "2017-11-27T17:28:25.218Z",
-      "size": "20480",
-      "md5Hash": "K8fipg9xurPwrBEEfrkP9w==",
-      "mediaLink": "https://www.googleapis.com/download/storage/v1/b/gcs-pub-sub/o/app.tar?generation=1511803705417483&alt=media",
-      "crc32c": "T4DRpw==",
-      "etag": "CIu+09aj39cCEAE="
-    }
-    ```
-
-    Any of the keys present in this message can be used in the transformation definition. Jinja is expressive, so you can even include
-    things like loops, array indices, and paths to sub-objects in your template. The only constraint on the template file is that
-    the resultant object must match [the artifact model class](https://github.com/spinnaker/kork/blob/master/kork-artifacts/src/main/java/com/netflix/spinnaker/kork/artifacts/model/Artifact.java),
-    and that one must be supplied to Spinnaker.
-
-    b. Store the path to 'gcs-jinja.json' as an environment variable for the next step:
-    `TEMPLATE_PATH="$(pwd)/gcs-jinja.json"`
-
-    c. Make sure the file permissions on this template file are configured so that Spinnaker can read it:
-    `sudo chown spinnaker $TEMPLATE_PATH`
-
-
-3. Add your subscription to Google Pub/Sub:
-`hal config pubsub google subscription add --project $PROJECT_ID --json-path $SERVICE_ACCOUNT_DEST --subscription-name $SUBSCRIPTION_NAME --template-path $TEMPLATE_PATH my-gcs-subscription`
+2. Add your subscription to Google Pub/Sub:
+`hal config pubsub google subscription add --project $PROJECT_ID --json-path $SERVICE_ACCOUNT_DEST --subscription-name $SUBSCRIPTION_NAME --template-path $TEMPLATE_PATH my-gcs-subscription --message-format GCS`
 
 ### Deploy Spinnaker with Halyard
 
@@ -193,7 +147,7 @@ Wait a few minutes for the deploy to complete.
     b. Select 'Pub/Sub' as the trigger type.
 
     c. Select 'google' as the `Pub/Sub System Type` and select 'my-gcs-subscription' as the `Subscription Name`.
-    
+
     d. Add an attribute constraint with key 'eventType' and value 'OBJECT_FINALIZE'. This prevents your pipeline from triggering twice from one GCS event.
 
     e. Select the '.../app.tar' expected artifact in the `Expected Artifacts` drop down.
@@ -224,7 +178,7 @@ Wait a few minutes for the deploy to complete.
 `git clone https://github.com/GoogleCloudPlatform/python-docs-samples.git`
 
 2. Package your application as a tarball:
-`cd python-docs-samples/appengine/standard/hello_world tar -cvf app.tar *`
+`cd python-docs-samples/appengine/standard/hello_world; tar -cvf app.tar *`
 
 3. Upload the tarball to the GCS bucket:
 `gsutil cp app.tar $BUCKET_NAME`

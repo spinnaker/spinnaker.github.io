@@ -87,7 +87,7 @@ auth:
     - scope2
 ```
 
-See https://www.spinnaker.io/setup/security/authentication/oauth/providers/ 
+Read [the OAuth setup instructions](https://www.spinnaker.io/setup/security/authentication/oauth/providers/)
 to see examples for acquiring a clientId/clientSecret from your provider.
 
 Unlike X.509, OAuth2 needs to be initialized once to authenticate with the provider before

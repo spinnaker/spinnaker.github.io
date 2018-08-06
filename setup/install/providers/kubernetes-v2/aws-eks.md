@@ -20,7 +20,7 @@ In the managing account, create a two-subnet VPC, IAM roles, instance profiles, 
 > This step will take around 15-20 minutes to complete
    
 ```bash
-curl -O https://www.spinnaker.io/setup/install/providers/aws/managing.yaml  
+curl -O https://d3079gxvs8ayeg.cloudfront.net/templates/managing.yaml  
 aws cloudformation deploy --stack-name spinnaker-managing-infrastructure-setup --template-file managing.yaml \
 --parameter-overrides UseAccessKeyForAuthentication=false EksClusterName=spinnaker-cluster --capabilities CAPABILITY_NAMED_IAM
 ```
@@ -46,7 +46,7 @@ In each of managed accounts, create a IAM role that can be assumed by Spinnaker:
 > This needs to be executed in managing account as well.
 
 ```bash
-curl -O https://www.spinnaker.io/setup/install/providers/aws/managed.yaml  
+curl -O https://d3079gxvs8ayeg.cloudfront.net/templates/managed.yaml  
 
 aws cloudformation deploy --stack-name spinnaker-managed-infrastructure-setup --template-file managed.yaml \
 --parameter-overrides AuthArn=$AUTH_ARN ManagingAccountId=$MANAGING_ACCOUNT_ID --capabilities CAPABILITY_NAMED_IAM
@@ -124,7 +124,7 @@ hal config features edit --artifacts true
 Worker nodes launched using the below commands are standard Amazon EC2 instances and use [EKS optimized AMIs](https://docs.aws.amazon.com/eks/latest/userguide/worker.html).
 
 ```bash
-curl -O https://www.spinnaker.io/setup/install/providers/aws/eks/amazon-eks-nodegroup.yaml
+curl -O https://d3079gxvs8ayeg.cloudfront.net/templates/amazon-eks-nodegroup.yaml
 aws cloudformation deploy --stack-name spinnaker-eks-nodes --template-file amazon-eks-nodegroup.yaml \
 --parameter-overrides NodeInstanceProfile=$SPINNAKER_INSTANCE_PROFILE_ARN \
 NodeInstanceType=t2.large ClusterName=$EKS_CLUSTER_NAME NodeGroupName=spinnaker-cluster-nodes ClusterControlPlaneSecurityGroup=$CONTROL_PLANE_SG \

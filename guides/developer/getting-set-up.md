@@ -113,16 +113,14 @@ JVM arguments can be seen and modified as needed in the service's `build.gradle`
 
 # Next Steps
 
-If you haven't done so already, read through the
+* If you haven't done so already, read through the
 [Spinnaker Architecture reference](/reference/architecture/) to learn more about the individual
 services' responsibilities and their dependencies on one-another. The
 [list of ports each Spinnaker service uses](https://www.spinnaker.io/reference/architecture/#port-mappings)
 can be very useful when querying and debugging a service's API.
-
-Consider working on one of the
-[issues marked "beginner-friendly"](https://github.com/spinnaker/spinnaker/issues/3065) to start
-learning and contributing to Spinnaker right away.
-
-[Sign up for Spinnaker's Slack community](https://join.spinnaker.io) and join the
+* Consider working on one of the
+[issues marked "beginner-friendly"](https://github.com/spinnaker/spinnaker/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+label%3A%22beginner+friendly%22)
+to start learning and contributing to Spinnaker right away.
+* [Sign up for Spinnaker's Slack community](https://join.spinnaker.io) and join the
 [#dev](https://spinnakerteam.slack.com/messages/C0DPVDMQE/) channel to ask questions and get feedback
 while developing Spinnaker.
