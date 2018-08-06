@@ -295,6 +295,8 @@ guides:
   - title: Developer How-Tos
     collapsed: true
     children:
+      - title: Getting Set Up
+        url: /guides/developer/getting-set-up/
       - title: Writing a New Stage
         url: /guides/developer/new-stage/
       - title: Kork Library
