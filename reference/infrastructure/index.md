@@ -12,7 +12,7 @@ sidebar:
 * [Cluster](#cluster)
 * [Server group](#server-group)
 * [Load balancer](#load-balancer)
-* [Firewall](firewall)
+* [Firewall](#firewall)
 
 ## Application
 An application in Spinnaker is a collection of clusters, which in turn are

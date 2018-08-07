@@ -95,7 +95,7 @@ use a different port, begin the path with `:`.
 1. In the **Links** fields, type the text that you want to display, and the path
 to the link target.
 
-   You can reference [these specific instance attributes](/guides/user/instance-links/#available-template-fields/)
+   You can reference [these specific instance attributes](/guides/user/instance-links/#available-template-fields)
    by wrapping them in curly braces. For example, to include the region where
    the instance lives, for a GCE or AWS instance, use `{region}`. These are for
    the path only, not the link display text.
@@ -114,7 +114,7 @@ section.
 1. Click **Save Changes** when you're finished.
 
 Note that you can set default links across all applications, as described
-[here](/guides/user/instance-links/#default-links/).
+[here](/guides/user/instance-links/#default-links).
 
 
 ## Refresh caches
