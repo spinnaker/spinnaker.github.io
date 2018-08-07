@@ -52,9 +52,8 @@ Read more about applications, and how to create and configure them,
 
 ### Cluster
 
-You can define *Clusters*, which are logical groupings of Server Groups in Spinnaker. These
-groups are based on the [**application-stack
--detail**](#the-application-stack-detail-naming-convention) naming convention.
+You can define *Clusters*, which are logical groupings of Server Groups in
+Spinnaker.
 
 > **Note:** cluster, here, does not map to a Kubernetes cluster. It's merely a
 > collection Server Groups, irrespective of any Kubernetes clusters that might
@@ -66,9 +65,6 @@ The base resource, the *Server Group*, identifies the deployable artifact (VM im
 This resource is optionall associated with a Load Balancer and a Firewall.
 When deployed, a Server Group is a collection of instances of the running
 software (VM instances, Kubernetes pods).
-
-Server groups follow the [**application-stack-detail
--version**](#the-application-stack-detail-naming-convention) naming convention.
 
 ### Load Balancer
 
@@ -116,21 +112,3 @@ provider in the [Reference](/reference/providers) section.
 Spinnaker treats cloud-native deployment strategies as first class constructs, handling the underlying orchestration such as verifying health checks, disabling old server groups and enabling new server groups. Spinnaker supports the red/black (a.k.a. blue/green) strategy, with rolling red/black and canary strategies in active development.
 
 > Learn more about deployment management on the [Pipelines](/concepts/pipelines/) page.
-
-## The application-stack-detail naming convention
-
-Applications, clusters, and server groups following the
-application-stack-detail-version naming convention.
-
-Resources you deploy using Spinnaker follow this convention naturally, because
-you assign these names (not including version) when you create those resources.
-If you try to use pre-existing infrastructure, you will have to rename some resources to use
-this convention in order for Spinnaker to recognize them.
-
-![](create_new_server_group_naming.png)
-
-The version number is applied automatically to the end, beginning with `-v000`.
-
-Note that each component is free form. You can name your application and your
-stack anything you want, and can put anything descriptive in the **Detail** as
-well.

@@ -19,8 +19,9 @@ Spinnaker screen.
    app](/guides/user/applications/create/) are shown at the top.
 
    > **Note** Spinnaker can infer applications based on existing infrastructure.
-   > In these cases, there are no application attributes, and you'll have to
-   > add them.
+   > In these cases, there are no application attributes. For applications that
+   > you want to use *as applications* (as described in this guide) you'll have
+   > to add the attributes.
 
 1. If you want to change any of these attributes, click **Edit Application
 Attributes**.
