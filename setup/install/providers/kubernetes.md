@@ -138,7 +138,7 @@ rules:
 - apiGroups: ["apps"]
   resources: ["controllerrevisions", "statefulsets"]
   verbs: ["list"]
-- apiGroups: ["extensions", "app"]
+- apiGroups: ["extensions", "app", "apps"]
   resources: ["deployments", "replicasets", "ingresses", "daemonsets"]
   verbs: ["*"]
 ---
