@@ -33,6 +33,7 @@ configuration is needed, Spinnaker will automatically add a
 
    ```bash
    hal config features edit --artifacts true
+   hal config artifact http enable
    ```
 
 3. Add an artifact account:
