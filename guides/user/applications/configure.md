@@ -127,9 +127,9 @@ configuration merely gives you a way to refresh those caches.
 A traffic guard is a [cluster](/concepts/clusters/) which you have designated as
 always having at least one active instance.
 
-If anyone tries to delete, disable, or resize a server group, Spinnaker fails
-the operation if it would leave the cluster without any active instances.
-The traffic guard helps ensure this doesn't happen.
+Without a traffic guard, if anyone were to try to delete, disable, or resize a
+server group, Spinnaker fails the operation if it would leave the cluster
+without any active instances. The traffic guard helps ensure this doesn't happen.
 
 1. In the **Traffic Guards** section, clck **Add Traffic Guard**.
 

@@ -35,13 +35,17 @@ Configuration for an application includes the following fields:
 
 ## Cluster
 
-
+**TODO** [#956](https://github.com/spinnaker/spinnaker.github.io/issues/956)
 
 ## Server group
+
+**TODO** [#956](https://github.com/spinnaker/spinnaker.github.io/issues/956)
 
 
 ## Load balancer
 
-
+**TODO** [#956](https://github.com/spinnaker/spinnaker.github.io/issues/956)
 
 ## Firewall
+
+**TODO** [#956](https://github.com/spinnaker/spinnaker.github.io/issues/956)

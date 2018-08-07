@@ -11,10 +11,14 @@ applications available, the first thing you're going to do is create one.
 
 1. From any screen, click on the **Applications** tab.
 
-   Note that there might be some (unconfigured) applications there already.
-   these might be created automatically, based on existing infrastructure, but
-   they're not suitable for putting your pipelines in; go ahead and create a
-   new one.
+   Note that there might be some applications there already. In some cases,
+   Spinnaker creates applications automatically based on existing
+   infrastructure.
+
+   These applications will be marked "unconfigured"; they won't have the
+   application attributes that are added when you create a new application.
+   These inferred applications are not suitable for putting your pipelines in;
+   go ahead and create a new one.
 
 1. Click **Actions**, then **Create Application**.
 
@@ -22,9 +26,13 @@ applications available, the first thing you're going to do is create one.
 
 1. Provide the application attributes in the **New Application** dialog.
 
-   * Resources created inside this application will follow the
-   [application-stack-detail naming convention](/concepts/#the-application-stack-detail-naming-convention/),
-   such that **Name** is used for application.
+   * Provide a **Name**
+
+     Resources created inside this application will follow the
+     [application-stack-detail naming convention](/concepts/#the-application-stack-detail-naming-convention/),
+     such that **Name** is used for application.
+
+     This name can't be changed later.
 
    * **Owner Email** is your email address, or that of someone else who will own
    this application.
