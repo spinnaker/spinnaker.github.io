@@ -25,7 +25,11 @@ subcomponent.
 {% assign reversed = site.changelogs | sort: 'title' | reverse |  %}
 {% for post in reversed %}
   {% unless post.tags contains 'deprecated' %}
-#### {{ post.title }}  
+{% if post.version == blank %}
+#### {{ post.title }}
+{% else %}
+#### Version {{ post.version }}
+{% endif %}
 Released: {{ post.date | date_to_rfc822 }}  
 <a href="{{ post.url }}">Changelog</a>
   {% endunless %}
