@@ -28,10 +28,6 @@ applications available, the first thing you're going to do is create one.
 
    * Provide a **Name**
 
-     Resources created inside this application will follow the
-     [application-stack-detail naming convention](/concepts/#the-application-stack-detail-naming-convention),
-     such that **Name** is used for application.
-
      This name can't be changed later.
 
    * **Owner Email** is your email address, or that of someone else who will own
