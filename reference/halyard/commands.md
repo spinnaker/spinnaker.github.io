@@ -4,7 +4,7 @@ title: "Commands"
 sidebar:
   nav: reference
 ---
-Published: 2018-07-13 20:07:20
+Published: 2018-08-07 16:41:10
 
 
 # Table of Contents
@@ -142,6 +142,15 @@ Published: 2018-07-13 20:07:20
  * [**hal config ci travis master edit**](#hal-config-ci-travis-master-edit)
  * [**hal config ci travis master get**](#hal-config-ci-travis-master-get)
  * [**hal config ci travis master list**](#hal-config-ci-travis-master-list)
+ * [**hal config ci wercker**](#hal-config-ci-wercker)
+ * [**hal config ci wercker disable**](#hal-config-ci-wercker-disable)
+ * [**hal config ci wercker enable**](#hal-config-ci-wercker-enable)
+ * [**hal config ci wercker master**](#hal-config-ci-wercker-master)
+ * [**hal config ci wercker master add**](#hal-config-ci-wercker-master-add)
+ * [**hal config ci wercker master delete**](#hal-config-ci-wercker-master-delete)
+ * [**hal config ci wercker master edit**](#hal-config-ci-wercker-master-edit)
+ * [**hal config ci wercker master get**](#hal-config-ci-wercker-master-get)
+ * [**hal config ci wercker master list**](#hal-config-ci-wercker-master-list)
  * [**hal config deploy**](#hal-config-deploy)
  * [**hal config deploy edit**](#hal-config-deploy-edit)
  * [**hal config edit**](#hal-config-edit)
@@ -341,6 +350,8 @@ Published: 2018-07-13 20:07:20
  * [**hal config security authz github edit**](#hal-config-security-authz-github-edit)
  * [**hal config security authz google**](#hal-config-security-authz-google)
  * [**hal config security authz google edit**](#hal-config-security-authz-google-edit)
+ * [**hal config security authz ldap**](#hal-config-security-authz-ldap)
+ * [**hal config security authz ldap edit**](#hal-config-security-authz-ldap-edit)
  * [**hal config security ui**](#hal-config-security-ui)
  * [**hal config security ui edit**](#hal-config-security-ui-edit)
  * [**hal config security ui ssl**](#hal-config-security-ui-ssl)
@@ -368,6 +379,8 @@ Published: 2018-07-13 20:07:20
  * [**hal deploy diff**](#hal-deploy-diff)
  * [**hal deploy rollback**](#hal-deploy-rollback)
  * [**hal shutdown**](#hal-shutdown)
+ * [**hal spin**](#hal-spin)
+ * [**hal spin install**](#hal-spin-install)
  * [**hal task**](#hal-task)
  * [**hal task interrupt**](#hal-task-interrupt)
  * [**hal task list**](#hal-task-list)
@@ -409,6 +422,7 @@ hal [parameters] [subcommands]
  * `config`: Configure, validate, and view your halconfig.
  * `deploy`: Manage the deployment of Spinnaker. This includes where it's deployed, what the infrastructure footprint looks like, what the currently running deployment looks like, etc...
  * `shutdown`: Shutdown the halyard daemon.
+ * `spin`: Manage the lifecycle of spin CLI.
  * `task`: This set of commands exposes utilities of dealing with Halyard's task engine.
  * `version`: Get information about the available Spinnaker versions.
 
@@ -613,7 +627,7 @@ hal config [parameters] [subcommands]
  * `deploy`: Display the configured Spinnaker deployment.
  * `edit`: Configure top-level, global configuration parameters.
  * `features`: Display the state of Spinnaker's feature flags.
- * `generate`: Generate the full Spinnaker config for your current deployment.
+ * `generate`: Generate the full Spinnaker config for your current deployment. This does _not_ apply that configuration to your running Spinnaker installation. That either needs to be done manually, or with `hal deploy apply`.
  * `metric-stores`: Configure Spinnaker's metric stores. Metrics stores are used to store metrics for the various Spinnaker micro-services. These metrics are not related in any way to canary deployments. The technologies backing both are similar, but metrics stores are places to push metrics regarding Spinnaker metrics, whereas canary metrics stores are used to pull metrics to analyze deployments. This configuration only affects the publishing of metrics against whichever metric stores you enable (it can be more than one).
  * `notification`: Display the state of Spinnaker's notification settings.
  * `provider`: Configure, validate, and view the specified provider.
@@ -2349,6 +2363,7 @@ hal config ci [subcommands]
 #### Subcommands
  * `jenkins`: Manage and view Spinnaker configuration for the jenkins ci
  * `travis`: Manage and view Spinnaker configuration for the travis ci
+ * `wercker`: Manage and view Spinnaker configuration for the wercker ci
 
 ---
 ## hal config ci jenkins
@@ -2667,6 +2682,162 @@ hal config ci travis master list [parameters]
 
 
 ---
+## hal config ci wercker
+
+Manage and view Spinnaker configuration for the wercker ci
+
+#### Usage
+```
+hal config ci wercker [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `disable`: Set the wercker ci as disabled
+ * `enable`: Set the wercker ci as enabled
+ * `master`: Manage and view Spinnaker configuration for the wercker Continuous Integration services's master
+
+---
+## hal config ci wercker disable
+
+Set the wercker ci as disabled
+
+#### Usage
+```
+hal config ci wercker disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config ci wercker enable
+
+Set the wercker ci as enabled
+
+#### Usage
+```
+hal config ci wercker enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config ci wercker master
+
+Manage and view Spinnaker configuration for the wercker Continuous Integration services's master
+
+#### Usage
+```
+hal config ci wercker master MASTER [parameters] [subcommands]
+```
+
+#### Parameters
+`MASTER`: The name of the master to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `add`: Add a master for the wercker Continuous Integration service.
+ * `delete`: Delete a specific wercker master by name.
+ * `edit`: Edit a master for the wercker Continuous Integration service.
+ * `get`: Get the specified master details for wercker.
+ * `list`: List the master names for wercker.
+
+---
+## hal config ci wercker master add
+
+Add a master for the wercker Continuous Integration service.
+
+#### Usage
+```
+hal config ci wercker master add MASTER [parameters]
+```
+
+#### Parameters
+`MASTER`: The name of the master to operate on.
+ * `--address`: (*Required*) The address your Wercker master is reachable at.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--token`: (*Sensitive data* - user will be prompted on standard input) The personal token of the Wercker user to authenticate as.
+ * `--user`: The username of the Wercker user to authenticate as.
+
+
+---
+## hal config ci wercker master delete
+
+Delete a specific wercker master by name.
+
+#### Usage
+```
+hal config ci wercker master delete MASTER [parameters]
+```
+
+#### Parameters
+`MASTER`: The name of the master to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config ci wercker master edit
+
+Edit a master for the wercker Continuous Integration service.
+
+#### Usage
+```
+hal config ci wercker master edit MASTER [parameters]
+```
+
+#### Parameters
+`MASTER`: The name of the master to operate on.
+ * `--address`: The address your Wercker master is reachable at.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--token`: (*Sensitive data* - user will be prompted on standard input) The personal token of the Wercker user to authenticate as.
+ * `--user`: The username of the Wercker user to authenticate as.
+
+
+---
+## hal config ci wercker master get
+
+Get the specified master details for wercker.
+
+#### Usage
+```
+hal config ci wercker master get MASTER [parameters]
+```
+
+#### Parameters
+`MASTER`: The name of the master to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config ci wercker master list
+
+List the master names for wercker.
+
+#### Usage
+```
+hal config ci wercker master list [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
 ## hal config deploy
 
 Display the configured Spinnaker deployment.
@@ -2770,7 +2941,7 @@ hal config features edit [parameters]
 ---
 ## hal config generate
 
-Generate the full Spinnaker config for your current deployment.
+Generate the full Spinnaker config for your current deployment. This does _not_ apply that configuration to your running Spinnaker installation. That either needs to be done manually, or with `hal deploy apply`.
 
 #### Usage
 ```
@@ -6355,6 +6526,7 @@ hal config security authz [parameters] [subcommands]
  * `file`: Configure the file role provider.
  * `github`: Configure the github role provider.
  * `google`: Configure the google role provider.
+ * `ldap`: Configure the ldap role provider.
 
 ---
 ## hal config security authz disable
@@ -6503,6 +6675,47 @@ hal config security authz google edit [parameters]
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--domain`: The domain your role provider is configured for e.g. myorg.net.
  * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config security authz ldap
+
+Configure the ldap role provider.
+
+#### Usage
+```
+hal config security authz ldap [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `edit`: Edit the ldap role provider.
+
+---
+## hal config security authz ldap edit
+
+Edit the ldap role provider.
+
+#### Usage
+```
+hal config security authz ldap edit [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--group-role-attributes`: The attribute which contains the name of the authority defined by the group entry. Defaults to 'cn'.
+ * `--group-search-base`: The part of the directory tree under which group searches should be performed. 
+ * `--group-search-filter`: The filter which is used to search for group membership. The default is 'uniqueMember={0}', corresponding to the groupOfUniqueMembers LDAP class. In this case, the substituted parameter is the full distinguished name of the user. The parameter '{1}' can be used if you want to filter on the login name.
+ * `--manager-dn`: The manager user's distinguished name (principal) to use for querying ldap groups.
+ * `--manager-password`: (*Sensitive data* - user will be prompted on standard input) The manager user's password to use for querying ldap groups.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--url`: ldap:// or ldaps:// url of the LDAP server
+ * `--user-dn-pattern`: The pattern for finding a user's DN using simple pattern matching. For example, if your LDAP server has the URL ldap://mysite.com/dc=spinnaker,dc=org, and you have the pattern 'uid={0},ou=members', 'me' will map to a DN uid=me,ou=members,dc=spinnaker,dc=org. If no match is found, will try to find the user using --user-search-filter, if set.
+ * `--user-search-base`: The part of the directory tree under which user searches should be performed. If --user-search-base isn't supplied, the search will be performed from the root.
+ * `--user-search-filter`: The filter to use when searching for a user's DN. Will search either from --user-search-base (if specified) or root for entires matching the filter.
 
 
 ---
@@ -6876,7 +7089,7 @@ This guarantees that no configuration will be generated for this deployment. Thi
 ---
 ## hal deploy clean
 
-This command destroys all Spinnaker artifacts in your target deployment environment. This cannot be undone, so use with care.
+This command destroys all Spinnaker artifacts in your target deployment environment. This cannot be undone, so use with care. This does not delete Halyard nor any of the configuration.
 
 #### Usage
 ```
@@ -6979,6 +7192,35 @@ Shutdown the halyard daemon.
 ```
 hal shutdown
 ```
+
+
+---
+## hal spin
+
+Manage the lifecycle of spin CLI.
+
+#### Usage
+```
+hal spin [subcommands]
+```
+
+#### Subcommands
+ * `install`: Installs the spin CLI.
+
+---
+## hal spin install
+
+This command installs the spin CLI.
+
+#### Usage
+```
+hal spin install [parameters]
+```
+
+#### Parameters
+ * `--auto-run`: This command will generate a script to be run on your behalf. By default, the script will run without intervention - if you want to override this, provide "true" or "false" to this flag.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
 
 
 ---
