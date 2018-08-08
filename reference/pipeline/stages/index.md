@@ -89,13 +89,13 @@ Server Groups and any existing Server Groups. Enabling a Server Group also
 re-enables auto-scaling policies, if applicable.
 
 ### Find Artifact From Execution
-Find and bind an artifact from a different execution to the current one,
-including artifacts from different Spinnaker applications. To do this, specify
-the type of artifact (GCS, GitLab, Docker, etc) and its path. You can specify
-that Spinnaker should only consider executions that meet certain criteria, such
-as ones that have completed successfully or that are currently running.
-Spinnaker will always return the artifact from the most recent execution that
-matches your criteria.
+Find and bind an artifact from a different pipeline execution to the current
+one, including artifacts from different Spinnaker applications. To do this,
+specify the type of artifact (GCS, GitLab, Docker, etc) and its name. You can
+specify that Spinnaker should only consider executions that meet certain
+criteria, such as ones that have completed successfully or that are currently
+running. Spinnaker will always return the artifact from the most recent
+execution that matches your criteria.
 
 ### Find Image From Cluster
 Find an image to deploy from an existing Cluster. Make sure that you specify the
@@ -103,9 +103,15 @@ Cluster and Server Group such that there is exactly one match, or this may
 behave in unexpected ways.
 
 ### Find Image From Tags
-Find the newest image that matches all specified tags. Tags can only contain
-lowercase letters, numeric characters, underscores and dashes. Depending on your
-provider, you may need to specify what region to search for the image.
+Find the newest image that matches all specified tags. The image tag can come
+from any source. Regardless of whether you tagged your image through the
+Spinnaker [Tag Image](#tag-image) stage or through a process outside of
+Spinnaker, the **Find Image From Tags** stage can find it as long as Spinnaker
+has previously interacted with the image.
+
+In Spinnaker, tags can only contain lowercase letters, numeric characters,
+underscores and dashes. Depending on your provider, you may need to specify what
+region to search for the image.
 
 ### Jenkins
 Run the specified job in Jenkins. You must [set up Jenkins](/setup/ci/jenkins/)
