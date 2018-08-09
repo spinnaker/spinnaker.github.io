@@ -20,7 +20,7 @@ the whole group fails every time.
 
 You might be tempted to compare the canary deployment against your current
 production deployment. Instead always compare the canary against an equivalent
-baseline, with both deployed together.
+baseline, deployed at the same time.
 
 The baseline uses the same version and configuration that is currently running
 in production, but is otherwise identical to the canary:
@@ -29,21 +29,21 @@ in production, but is otherwise identical to the canary:
 * Same size of deployment
 * Both receive the same amount of traffic
 
-Doing this, you control for version and configuration only, and you reduce
+In this way, you control for version and configuration only, and you reduce
 factors that could affect the analysis, like the cache warmup time, the heap
 size, and so on.
 
-## Run the canary for a long-enough time
+## Run the canary for enough time
 
-You need at least 50 data points for the statistical analysis to produce
-accurate results for each metric. That is 50 data points per canary run, with
-potentially several runs per canary analysis. In the end, you should plan for
-canary analyses several hours long.
+You need at least 50 pieces of time series data per metric for the statistical
+analysis to produce accurate results. That is 50 data points per canary run,
+with potentially several runs per canary analysis. In the end, you should plan
+for canary analyses several hours long.
 
 You will need to tune the time parameters to your particular application. A good
-starting point is to use a lifetime of 3 hours, an interval of 1 hour and no
-warm-up period (unless you already know your application needs one). This gives
-you 3 canary runs, each 1 hour long.
+starting point is to have a canary lifetime of 3 hours, an interval of 1 hour
+and no warm-up period (unless you already know your application needs one).
+This gives you 3 canary runs, each 1 hour long.
 
 ## Carefully choose your thresholds
 
@@ -57,7 +57,7 @@ You need to configure two thresholds for a canary analysis:
 * pass
 
   The last canary run of the analysis must score higher than this threshold for
-  the whole analysis to be considered successful.
+  the whole analysis to be considered successful. Otherwise it fails.
 
 These thresholds are very important for the analysis to give an accurate result.
 You need to experiment with them, in the context of your own application, its
@@ -109,7 +109,7 @@ instead of a real-time analysis. This analysis is based on past monitoring data,
 without having to wait for the data points to be generated. With this mode, you
 can iterate more quickly on the development of the canary configuration.
 
-## Compare apples to apples
+## Compare equivalent deployments
 
 To compare the metrics between baseline and canary, Kayenta needs the exact same
 metrics for both. This means that metrics should have the same labels. Problems
@@ -119,8 +119,7 @@ If you see that Kayenta is not actually comparing the metrics, confirm that the
 queries that it does to your monitoring system return metrics with the same
 labels.
 
-If you're using Stackdriver, you can use the Google APIs Explorer to debug such
-problems.
+If you're using Stackdriver, you can use the Google [APIs Explorer](https://developers.google.com/apis-explorer/#search/timeseries/m/monitoring/v3/monitoring.projects.timeSeries.list) to debug such problems.
 
 ## Some configuration values to start with
 
