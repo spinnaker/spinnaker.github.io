@@ -27,7 +27,7 @@ in production, but is otherwise identical to the canary:
 
 * Same time of deployment
 * Same size of deployment
-* Both receive the same amount of traffic
+* Same type and amount of traffic
 
 In this way, you control for version and configuration only, and you reduce
 factors that could affect the analysis, like the cache warmup time, the heap
@@ -63,6 +63,9 @@ These thresholds are very important for the analysis to give an accurate result.
 You need to experiment with them, in the context of your own application, its
 traffic and its metrics.
 
+Keep in mind that your configuration will be refined over time. Don't think of
+it as something you set up once and never think about again.
+
 Good starting points:
 
 * marginal threshold of 75
@@ -83,9 +86,10 @@ the [SRE Book](https://landing.google.com/sre/book/chapters/monitoring-distribut
 
 If you consider some other specific metrics critical, place them in their own
 group in the canary configuration. That allows you to fail the whole canary
-analysis if there is a problem with one of those specific metrics.
+analysis if there is a problem with one of those specific metrics. You can also
+use the criticality flag on the individual metric.
 
-## Create a standard, resusable canary config
+## Create a set of standard, resusable canary configs
 
 Configuring a canary is difficult, and not every developer in your organization
 will be able to do so. Also, if you let all the teams in the org manage their
@@ -93,14 +97,14 @@ own configs, you will likely end up with too many configs, too many metrics,
 nobody will know what is happening, and people will be afraid to change
 anything.
 
-For these reasons, it's a good idea to curate a config that all the teams can
-reuse.
+For these reasons, it's a good idea to curate a set of configs that all the
+teams can reuse.
 
 ## Use retrospective analysis to make debugging faster
 
 It takes a long time to configure a canary analysis. It can take a long time to
 debug it too, partly because with [a long-running canary
-analysis](#run-the-canary-for-a-long-enough-time) you have to wait a long time
+analysis](#run-the-canary-enough-time) you have to wait a long time
 for the analysis to finish before you can refine it.
 
 Fortunately, a Canary Analysis stage can be configured to use a [retrospective
@@ -109,6 +113,9 @@ instead of a real-time analysis. This analysis is based on past monitoring data,
 without having to wait for the data points to be generated. With this mode, you
 can iterate more quickly on the development of the canary configuration.
 
+> **Tip**: Use the copy-to-clipboard icons in the canary stage execution details
+> view to capture the needed timestamps.
+
 ## Compare equivalent deployments
 
 To compare the metrics between baseline and canary, Kayenta needs the exact same
@@ -116,8 +123,8 @@ metrics for both. This means that metrics should have the same labels. Problems
 can arise if the metrics are labeled with their respective instance names.
 
 If you see that Kayenta is not actually comparing the metrics, confirm that the
-queries that it does to your monitoring system return metrics with the same
-labels.
+queries that it executes against your monitoring system return metrics with the
+same labels.
 
 If you're using Stackdriver, you can use the Google [APIs Explorer](https://developers.google.com/apis-explorer/#search/timeseries/m/monitoring/v3/monitoring.projects.timeSeries.list) to debug such problems.
 
