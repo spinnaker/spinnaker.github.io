@@ -25,7 +25,11 @@ This article is an overview of these features:
 ## Application management
 
 You use Spinnaker's application management features to view and manage your
-resources in the cloud environment.
+cloud resources.
+
+Modern tech organizations operate collections of services&mdash;sometimes
+referred to as "applications" or "microservices." A Spinnaker application models
+this concept.
 
 [Applications](#application), [clusters](#cluster), and [server
 groups](#server-group) are the key concepts Spinnaker uses to describe your
@@ -62,7 +66,7 @@ be included in your underlying architecture.
 ### Server Group
 
 The base resource, the *Server Group*, identifies the deployable artifact (VM image, Docker image, source location) and basic configuration settings such as number of instances, autoscaling policies, metadata, etc.
-This resource is optionall associated with a Load Balancer and a Firewall.
+This resource is optionally associated with a Load Balancer and a Firewall.
 When deployed, a Server Group is a collection of instances of the running
 software (VM instances, Kubernetes pods).
 
