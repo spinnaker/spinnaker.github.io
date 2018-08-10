@@ -13,7 +13,7 @@ Kubernetes v2 provider. The process is very simple, but you need to do some
 specific things to allow Spinnaker to authenticate against your cluster.
 
 > Note: To manage and create clusters in a given project, you need the
-> `roles.container/admin` role as described
+> `roles/container.admin` role as described
 > [here](https://cloud.google.com/kubernetes-engine/docs/how-to/iam#predefined).
 
 # Create a cluster
