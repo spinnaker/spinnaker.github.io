@@ -2,8 +2,9 @@
 layout: single
 title:  "Articles"
 sidebar:
-  nav: community
+  nav: publications
 redirect_from: /docs/articles-and-blog-posts
+redirect_from: /community/articles/
 ---
 
 {% include toc %}
@@ -40,4 +41,3 @@ redirect_from: /docs/articles-and-blog-posts
 * [Amazon poster-child Netflix's new tool manages other clouds too](http://www.networkworld.com/article/3005477/public-cloud/amazon-poster-child-netflix-goes-multi-cloud-with-google-microsoft-too.html), *Network World*
 * [New Netflix Tool Could Ease Cloud Deployment for Big Companies](http://fortune.com/2015/11/16/netflix-spinnaker-multi-cloud/), *Forbes*
 * [Netflix launches open source project ready for Amazon, Google clouds](http://www.zdnet.com/article/netflix-unveils-open-source-project-ready-for-amazon-google-clouds/), *ZDNet*
-
