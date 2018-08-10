@@ -104,7 +104,7 @@ teams can reuse.
 
 It takes a long time to configure a canary analysis. It can take a long time to
 debug it too, partly because with [a long-running canary
-analysis](#run-the-canary-enough-time) you have to wait a long time
+analysis](#run-the-canary-for-enough-time) you have to wait a long time
 for the analysis to finish before you can refine it.
 
 Fortunately, a Canary Analysis stage can be configured to use a [retrospective
