@@ -222,6 +222,17 @@ guides:
   - title: User How-Tos
     collapsed: true
     children:
+      - title: Applications
+        collapsed: true
+        children:
+          - title: About Applications
+            url: /guides/user/applications/
+          - title: Create an Application
+            url: /guides/user/applications/create/
+          - title: Configure an Application
+            url: /guides/user/applications/configure/
+          - title: Delete an Application
+            url: /guides/user/applications/delete/
       - title: Pipelines
         collapsed: true
         children:

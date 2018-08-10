@@ -17,7 +17,7 @@ canary stage)
 * Optionally, one or more filter templates
 
 Canary configuration is done per Spinnaker
-[application](/concepts/#applications). For each
+[application](/concepts/#application). For each
 application set up to support canary, you create one or more configs.
 
 > Note: By default, all the canary configs you create are visible to all
