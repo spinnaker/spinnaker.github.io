@@ -11,8 +11,8 @@ main:
     url: /community/
   - title: Blog
     url: https://blog.spinnaker.io
-  - title: Ebook
-    url: /ebook/
+  - title: Publications
+    url: /publications/
 
 concepts:
   - children:
@@ -442,13 +442,6 @@ community:
         url: /community/contributing/releasing/
       - title: Code Conventions for Server-side Components
         url: /community/contributing/back-end-code/
-  - title: Publications
-    collapsed: true
-    children:
-      - title: Presentations
-        url: /community/presentations/
-      - title: Articles
-        url: /community/articles/
   - title: Governance
     collapsed: true
     children:
@@ -459,3 +452,11 @@ community:
     children:
       - title: FAQs
         url: /community/faqs/
+
+publications:
+  - title: eBook
+    url: /publications/ebook/
+  - title: Presentations
+    url: /publications/presentations/
+  - title: Articles
+    url: /publications/articles/
