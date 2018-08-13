@@ -42,8 +42,8 @@ When configuring the "Bake (Manifest)" stage, you can specify the following:
   The Kubernetes namespace to install release into. If parameter is not
   specified default namespace will be used.
 
-> Note: Not all Helm charts contains namespace definition in manifests.
-> Make sure that your manifests contains the following code:
+> Note: Not all Helm charts contain namespace definitions in their manifests.
+> Make sure that your manifests contain the following code:
 
 ```yaml
 metadata:
