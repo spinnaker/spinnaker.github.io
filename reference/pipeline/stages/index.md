@@ -176,18 +176,20 @@ Wait a specified period of time before proceeding. You can choose to manually
 skip some or all of the wait period during execution.
 
 ### Webhook
-Make an API call to an external system as part of your pipeline. Supply the URL
-to send the request to and the desired HTTP method, as well as optionally any
-desired custom headers and a JSON payload to add to the request. At this point,
-this stage is marked successful as if it receives a 2XX or 3XX response, fail on
-a 4XX, or retry on 5XX. The webhook URL, payload, status endpoint, and final
-status are all shown under the pipeline execution details in the Spinnaker UI.
+Make an API call to an external system as part of your pipeline.
+
+Supply the URL to send the request to and the desired HTTP method, as well as
+optionally any desired custom headers and a JSON payload to add to the request.
+At this point, this stage is marked successful as if it receives a 2XX or 3XX
+response, fails on a 4XX, or retries on 5XX. The webhook URL, payload, status
+endpoint, and final status are all shown under the pipeline execution details in
+the Spinnaker UI.
 
 Note that you can use [pipeline expressions](/reference/pipeline/expressions/)
-in both the URL field and the payload, if desired. When the stage completes, the
-`webhook` field of the stage context contains the payload, which allows you to
-use it in future pipeline expressions. For example, you can reference the final
-status code with the expression `${#stage("My Webhook
+in both the URL field and the payload. When the stage completes, the `webhook`
+field of the stage context contains the payload, which allows you to use it in
+future pipeline expressions. For example, you can reference the final status
+code with the expression `${#stage("My Webhook
 Stage")["context"]["webhook"]["statusCode"]}`.
 
 If you need more details to determine the success of your request, check the
