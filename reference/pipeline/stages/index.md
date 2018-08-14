@@ -176,7 +176,55 @@ Wait a specified period of time before proceeding. You can choose to manually
 skip some or all of the wait period during execution.
 
 ### Webhook
-Run a Webhook job.
+Make an API call to an external system as part of your pipeline.
+
+Supply the URL to send the request to and the desired HTTP method, as well as
+optionally any desired custom headers and a JSON payload to add to the request.
+At this point, this stage is marked successful as if it receives a 2XX or 3XX
+response, fails on a 4XX, or retries on 5XX. The webhook URL, payload, status
+endpoint, and final status are all shown under the pipeline execution details in
+the Spinnaker UI.
+
+Note that you can use [pipeline expressions](/reference/pipeline/expressions/)
+in both the URL field and the payload. When the stage completes, the `webhook`
+field of the stage context contains the payload, which allows you to use it in
+future pipeline expressions. For example, you can reference the final status
+code with the expression `${#stage("My Webhook
+Stage")["context"]["webhook"]["statusCode"]}`.
+
+If you need more details to determine the success of your request, check the
+**Wait for completion** checkbox. Spinnaker then polls a status URL to determine
+the progress of the stage. You can supply the status URL to Spinnaker in one of
+the following ways:
+
+*   **GET method against webhook URL**: Spinnaker polls the webhook URL using
+    GET to determine the status.
+*   **From the Location header**: Spinnaker parses the Location header of the
+    webhook's response call to find the status URL, and polls that URL.
+*   **From webhook's response**: Spinnaker parses the response from the original
+    request, and polls the returned URL.
+
+In all cases, you then need to provide details about how to access and interpret
+the status:
+
+*   **Status JsonPath** is a required field which you use to specify the path to
+    the status information in the response JSON of the status URL, such as
+    `buildInfo.status`.
+*   **SUCCESS, CANCELED, and TERMINAL status mappings** are comma-separated
+    lists of strings that represent successful, canceled, or terminal (failed)
+    statuses, respectively. These are required fields: Spinnaker continues
+    polling until it sees one of the specified statuses in the status URL's
+    response.
+*   **Progress location** is optional, and lets you specify the path to detailed
+    progress information in the status URL's response JSON, such as
+    `buildInfo.progress`. It shows up in the **Info** field of the pipeline
+    execution details.
+
+If you find yourself recreating the same webhook stage repeatedly, you can
+create a [custom webhook](/guides/operator/custom-webhook-stages/) stage. A
+custom webhook stage is a webhook stage specifically named and configured for
+your application's needs, which shows up in the standard pipeline stages
+dropdown menu.
 
 ### Wercker
 Run the specified Wercker pipeline. You must [set up Wercker](/setup/ci/wercker/)
