@@ -416,6 +416,8 @@ reference:
       url: /reference/pipeline/expressions/
     - title: Pipeline Stages
       url: /reference/pipeline/stages/
+  - title: Deployment Infrastructure
+    url: /reference/infrastructure/
 
 community:
   - title: Releases
