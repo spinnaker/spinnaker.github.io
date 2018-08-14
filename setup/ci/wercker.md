@@ -22,13 +22,19 @@ on Wercker by logging in and visiting your "Settings" page.
 ## Add a Wercker 'Master' to Spinnaker Using Halyard
 A "master" is a connection to Wercker from Spinnaker. It consists of the Wercker URL 
 and credentials.
-1. First, make sure that Wercker is enabled:
+1. First, make sure that the Wercker CI integration is enabled:
 
    ```bash
    hal config ci wercker enable
    ```
 
-2. Next, add a Wercker master i.e. a connection to Wercker from Spinnaker.
+2. And that the Wercker stage feature flag is turned on:
+
+   ```bash
+   hal config features edit --wercker true
+   ```
+
+3. Next, add a Wercker master i.e. a connection to Wercker from Spinnaker.
       ```bash
       hal config ci wercker master add mywercker1
           --address https://app.wercker.com/ 
@@ -36,7 +42,7 @@ and credentials.
           --token
       ```
 
-3. Apply your changes:
+4. Apply your changes:
 
    `hal deploy apply`
 
