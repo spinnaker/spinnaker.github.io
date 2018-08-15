@@ -142,10 +142,12 @@ setup:
         children:
           - title: Set Up Continuous Integration
             url: /setup/ci/
-          - title: Travis CI
-            url: /setup/ci/travis/
+          - title: Google Cloud Build
+            url: /setup/ci/gcb/
           - title: Jenkins
             url: /setup/ci/jenkins/
+          - title: Travis CI
+            url: /setup/ci/travis/
           - title: Wercker
             url: /setup/ci/wercker/
       - title: Enable Monitoring
