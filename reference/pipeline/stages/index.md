@@ -158,7 +158,15 @@ Groups, or choose to keep a certain number of Server Groups at their current
 size while the rest are scaled down.
 
 ### Script
-Run a script.
+Execute an arbitrary script as part of your pipeline. Spinnaker uses Jenkins to
+sandbox your scripts, so you need to [set up Jenkins](/setup/ci/jenkins/) in
+order to use it. If you already have Jenkins set up, make sure that you have
+[configured it to run scripts](/setup/ci/jenkins//#configure-script-stage).
+
+The only required field in this stage is **Command**, where you must specify the
+command to run the script. Otherwise, you can use any of the fields that are
+relevant to your use case in order to describe the script location and specifics
+about its output, environment, and so on.
 
 ### Shrink Cluster
 Shrink a given cluster to contain nothing except a specified number of either
