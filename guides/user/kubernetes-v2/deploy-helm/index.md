@@ -14,6 +14,12 @@ with the help of a templating engine. Currently, the only supported templating
 engine is [Helm](https://helm.sh/), by relying on the `helm template` command.
 See more details [here](https://docs.helm.sh/helm/#helm-template).
 
+> Note: This stage is intended to help you package and deploy applications 
+> that you own, and are actively developing and redeploying frequently.
+> It is not intended to serve as a one-time installation method for
+> third-party packages. If that is your goal, it's arguably better to call
+> `helm apply` once when bootstrapping your Kubernetes cluster.
+
 > Note: Make sure that you have configured [artifact support](/setup/artifacts)
 > in Spinnaker first. All Helm charts are fetched/stored as artifacts in
 > Spinnaker. Read more in the [reference pages](/reference/artifacts).
