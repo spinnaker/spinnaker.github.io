@@ -95,7 +95,7 @@ b. Under __Crumb Algorithm__, select __Default Crumb Issuer__.
 
 ### Purpose
 The [Script stage](/reference/pipeline/stages/#script) lets you run an arbitrary
-shell, python, or groovy script on a Jenkins instance as a first class stage in
+shell, Python, or Groovy script on a Jenkins instance as a first class stage in
 Spinnaker. This is good for launching an integration/functional test battery
 after a bake and deploy stage from a pipeline instead of doing it manually.
 
@@ -103,9 +103,9 @@ after a bake and deploy stage from a pipeline instead of doing it manually.
 
 In order to configure a Script stage, you need:
 
-*   A running Spinnaker instance, with access to configuration files.
+*   A running Spinnaker instance, with access to configuration files
 *   A running Jenkins instance at `$JENKINS_HOST`, with a user profile set up
-    with admin access.
+    with admin access
 
 ### Configure Jenkins
 
@@ -147,8 +147,8 @@ In order to configure a Script stage, you need:
         jobs, or de-select the **Restrict where this project can be run**
         checkbox.
 
-    At this point, you should be able to manually run the script job in Jenkins
-    (including manually adding necessary parameters) and see it succeed.
+    At this point, you can manually run the script job in Jenkins (including
+    manually adding necessary parameters) and see it succeed.
 
 5.  If your Jenkins master is named anything other than `master` in your
     Spinnaker configuration, you'll need to add the following to
@@ -160,4 +160,4 @@ In order to configure a Script stage, you need:
       job: $JOB_NAME  # from step #3
     ```
 
-You should now be able to use the Script stage in your pipelines.
+You can now use the Script stage in your pipelines.
