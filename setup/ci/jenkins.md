@@ -96,8 +96,8 @@ b. Under __Crumb Algorithm__, select __Default Crumb Issuer__.
 ### Purpose
 The [Script stage](/reference/pipeline/stages/#script) lets you run an arbitrary
 shell, Python, or Groovy script on a Jenkins instance as a first class stage in
-Spinnaker. This is good for launching an integration/functional test battery
-after a bake and deploy stage from a pipeline instead of doing it manually.
+Spinnaker. For example, you can use it to launch a test suite from a pipeline
+instead of doing it manually.
 
 ### Prerequisites
 
