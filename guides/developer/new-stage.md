@@ -100,7 +100,7 @@ In our example, the `ChapStage` consists of two tasks:
 
 The `BeginChapTask`:
 
-1. retrieves the `testCaseId` specified by the suer during the task configuration stage
+1. retrieves the `testCaseId` specified by the user during the task configuration stage
 1. calls the ChAP service via REST API call (see `ChapService.startChap`)
 1. returns a `DefaultTaskResult`, passing it the response from the ChAP REST API call
 
