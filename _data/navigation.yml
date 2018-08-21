@@ -224,6 +224,8 @@ guides:
   - title: User How-Tos
     collapsed: true
     children:
+      - title: Get Started
+        url: /guides/user/get-started/
       - title: Applications
         collapsed: true
         children:
