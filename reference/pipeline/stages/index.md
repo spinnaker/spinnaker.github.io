@@ -7,9 +7,6 @@ sidebar:
 
 {% include toc %}
 
-> Note: this is a first pass at this documentation; more details will be added
-> soon.
-
 This article describes the currently-supported stages that you can add to your
 Spinnaker pipelines.
 
@@ -242,16 +239,40 @@ credentials will be shown in the drop-down menus. When a Wercker pipeline stage
 runs, a link to the Wercker run will be available, and the status of
 the Wercker run will be reported in Spinnaker.
 
-## AppEngine
+## App Engine
 
-### Start AppEngine Server Group
-Start a Server Group.
+### Start a Server Group
+Spin up instances for the Server Group according to its scaling settings. This
+is distinct from [Enable Server Group](#enable-server-group) because it entails
+starting new instances, rather than sending traffic to existing instances. You
+can choose whether to start the newest, oldest, or previous
+(second-most-recently deployed) Server Group.
 
-### Stop AppEngine Server Group
-Stop a Server Group.
+Note that you can only use this stage if you're using an App Engine flexible
+environment or are using manual scaling. Both options can be configured in your
+`app.yaml`.
 
-### Upsert AppEngine Load Balancers
-Edit a Load Balancer.
+### Stop a Server Group
+
+Scale the specified Server Group down to zero instances. This is distinct from
+[Disable Server Group](#disable-server-group), where the specified server group
+remains up but stops handling traffic. You can choose whether to stop the
+newest, oldest, or previous (second-most-recently deployed) Server Group.
+
+Note that you can only use this stage if you're using an App Engine flexible
+environment or are using manual scaling. Both options can be configured in your
+`app.yaml`.
+
+### Edit Load Balancer
+Set how much traffic a given version of your app should receive. You can specify
+versions by name — for example, `sample-cluster-v000` — or choose to send
+traffic to the newest, oldest, or previous (second-most-recently deployed)
+Server Group. For an example of how to do this, see the
+[App Engine Source to Prod codelab](/guides/tutorials/codelabs/appengine-source-to-prod/#edit-load-balancer-stage).
+
+Note that a Spinnaker load balancer maps to an App Engine service, as specified
+in a version's `app.yaml`. Your version will be deployed to the `default`
+service if one was not specified.
 
 ## AWS
 
