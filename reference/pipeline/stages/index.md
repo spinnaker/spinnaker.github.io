@@ -264,13 +264,13 @@ environment or are using manual scaling. Both options can be configured in your
 `app.yaml`.
 
 ### Edit Load Balancer
-Set how much traffic a given version of your app should receive. You can specify
+Set how much traffic a given version of your app can receive. You can specify
 versions by name — for example, `sample-cluster-v000` — or choose to send
 traffic to the newest, oldest, or previous (second-most-recently deployed)
 Server Group. For an example of how to do this, see the
 [App Engine Source to Prod codelab](/guides/tutorials/codelabs/appengine-source-to-prod/#edit-load-balancer-stage).
 
-Note that a Spinnaker load balancer maps to an App Engine service, as specified
+Note that a Spinnaker Load Balancer maps to an App Engine service, as specified
 in a version's `app.yaml`. Your version will be deployed to the `default`
 service if one was not specified.
 
