@@ -38,6 +38,14 @@ overrideBaseUrl: $REDIS_ENDPOINT
 skipLifeCycleManagement: true
 ```
 
+Additionally, we will create the following file in order to customize the gate service. `~/.hal/$DEPLOYMENT/profiles/gate-local.yml`:
+```yaml
+redis:
+    configuration:
+         secure:
+              true
+```
+
 > `$DEPLOYMENT` is typically `default`. See [the
 > documentation](/reference/halyard#deployments) for more details.
 
