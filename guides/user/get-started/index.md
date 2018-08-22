@@ -13,7 +13,13 @@ This article is for Spinnaker *users*. *Operators* of Spinnaker can start with
 This article assumes you are new to Spinnaker. It contains basic information
 about what Spinnaker does and what you do to get Spinnaker to do it.
 
+
+
+
 Spinnaker deploys services to one or more cloud providers. It
+
+
+
 
 
 <!--move this -->
