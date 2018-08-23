@@ -13,23 +13,21 @@ This article is for Spinnaker *users*. *Operators* of Spinnaker can start with
 This article assumes you are new to Spinnaker. It contains basic information
 about what Spinnaker does and what you do to get Spinnaker to do it.
 
+If Spinnaker is not installed in your organization yet, and you just want to
+test-drive it, here are some [quickstarts](/setup/quickstart/).
 
+If Spinnaker *is* installed in your org, and you want to practice it using some
+guided tutorials, [here are some codelabs](/guides/tutorials/codelabs/).
 
+If you want more explanation of how to use Spinnaker, read on...
 
-Spinnaker deploys services to one or more cloud providers. It
+## Using Spinnaker: the high-level process
 
+Spinnaker deploys your services to your chosen cloud platform, using a flexible
+pipeline framework. Spinnaker also makes it easy for you to view and monitor
+your infrastructure.
 
-
-
-
-<!--move this -->
-## A note about inferred applications
-
-If you've deployed Spinnaker on a Kubernetes cluster, you might several
-application already available
-
-
-## Using Spinnaker&mdash;the high-level process
+To get there, you'll follow this general process:
 
 1. Create an application
 
@@ -51,6 +49,12 @@ run on.
    covered by the application, in whatever ways you want to deploy.
 
    Find out more [here](/guides/user/pipeline/managing-pipelines/).  
+
+## A note about inferred applications
+
+If you've deployed Spinnaker on a Kubernetes cluster, you might several
+applications already available
+
 
 
 
