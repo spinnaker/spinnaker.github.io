@@ -185,6 +185,11 @@ setup:
         children:
           - title: Horizontally Scale Spinnaker
             url: /setup/productionize/scaling/horizontal-scaling/
+      - title: Configure Persistence
+        collapsed: true
+        children:
+          - title: Orca SQL
+            url: /setup/productionize/persistence/orca-sql/
 
 guides:
   - title: Tutorials
@@ -316,6 +321,13 @@ guides:
         url: /guides/developer/kork-library/
       - title: Kubernetes CRD extensions
         url: /guides/developer/crd-extensions/
+  - title: Operator How-Tos
+    collapsed: true
+    children:
+      - title: Custom Webhook Stages
+        url: /guides/operator/custom-webhook-stages/
+      - title: "Orca: Redis to SQL"
+        url: /guides/operator/orca-redis-to-sql/
   - title: Runbooks
     collapsed: true
     children:
