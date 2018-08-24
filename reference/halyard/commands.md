@@ -4,7 +4,7 @@ title: "Commands"
 sidebar:
   nav: reference
 ---
-Published: 2018-08-07 16:41:10
+Published: 2018-08-24 14:19:35
 
 
 # Table of Contents
@@ -2936,6 +2936,8 @@ hal config features edit [parameters]
  * `--mine-canary`: Enable canary support. For this to work, you'll need a canary judge configured. Currently, Halyard does not configure canary judge for you.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--pipeline-templates`: Enable pipeline template support. Read more at https://github.com/spinnaker/dcd-spec.
+ * `--travis`: Enable the Travis CI stage.
+ * `--wercker`: Enable the Wercker CI stage.
 
 
 ---
@@ -5928,7 +5930,7 @@ hal config pubsub google subscription add SUBSCRIPTION [parameters]
 Configurable in your Google Cloud Pubsub subscription. See the docs here: https://cloud.google.com/pubsub/docs/subscriber
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--json-path`: The path to a JSON service account that Spinnaker will use as credentials. This is only needed if Spinnaker is not deployed on a Google Compute Engine VM, or needs permissions not afforded to the VM it is running on. See https://cloud.google.com/compute/docs/access/service-accounts for more information.
- * `--message-format`: (*Default*: `CUSTOM`) One of 'GCS', 'GCR', or 'CUSTOM'. This can be used to help Spinnaker translate the contents of the
+ * `--message-format`: (*Default*: `CUSTOM`) One of 'GCB', 'GCS', 'GCR', or 'CUSTOM'. This can be used to help Spinnaker translate the contents of the
 Pub/Sub message into Spinnaker artifacts.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--project`: The name of the GCP project your subscription lives in.
@@ -5968,7 +5970,7 @@ hal config pubsub google subscription edit SUBSCRIPTION [parameters]
 Configurable in your Google Cloud Pubsub subscription. See the docs here: https://cloud.google.com/pubsub/docs/subscriber
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--json-path`: The path to a JSON service account that Spinnaker will use as credentials. This is only needed if Spinnaker is not deployed on a Google Compute Engine VM, or needs permissions not afforded to the VM it is running on. See https://cloud.google.com/compute/docs/access/service-accounts for more information.
- * `--message-format`: One of 'GCS', 'GCR', or 'CUSTOM'. This can be used to help Spinnaker translate the contents of the
+ * `--message-format`: One of 'GCB', 'GCS', 'GCR', or 'CUSTOM'. This can be used to help Spinnaker translate the contents of the
 Pub/Sub message into Spinnaker artifacts.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--project`: The name of the GCP project your subscription lives in.
