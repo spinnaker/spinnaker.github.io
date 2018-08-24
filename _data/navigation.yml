@@ -296,6 +296,11 @@ guides:
             url: /guides/user/canary/judge/
           - title: Best practices
             url: /guides/user/canary/best-practices/
+  - title: Operator How-Tos
+    collapsed: true
+    children:
+      - title: Custom Webhook Stages
+        url: /guides/operator/custom-webhook-stages/
   - title: Developer How-Tos
     collapsed: true
     children:
@@ -307,11 +312,6 @@ guides:
         url: /guides/developer/kork-library/
       - title: Kubernetes CRD extensions
         url: /guides/developer/crd-extensions/
-  - title: Operator How-Tos
-    collapsed: true
-    children:
-      - title: Custom Webhook Stages
-        url: /guides/operator/custom-webhook-stages/
   - title: Runbooks
     collapsed: true
     children:
@@ -422,8 +422,6 @@ reference:
       url: /reference/pipeline/expressions/
     - title: Pipeline Stages
       url: /reference/pipeline/stages/
-  - title: Deployment Infrastructure
-    url: /reference/infrastructure/
 
 community:
   - title: Releases

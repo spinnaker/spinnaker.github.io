@@ -30,4 +30,4 @@ Installing a complete Spinnaker involves these steps:
   stuff you need before you can use Spinnaker in production)
 1. [Productionize Spinnaker](/setup/productionize/) (which mainly helps you
   configure Spinnaker to scale for production)
-1. [Get started](/guides/user/get-started/).
+1. [Get started](/guides/user/get-started/)

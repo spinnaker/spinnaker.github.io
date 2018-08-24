@@ -7,57 +7,48 @@ sidebar:
 
 {% include toc %}
 
-This article is for Spinnaker *users*. *Operators* of Spinnaker can start with
-[Set up Spinnaker](/setup/).
+> This article assumes you are new to Spinnaker. It contains basic information
+> about what to do after [installing Spinnaker](/setup/install/).
 
-This article assumes you are new to Spinnaker. It contains basic information
-about what Spinnaker does and what you do to get Spinnaker to do it.
+## Before you get going...
 
-If Spinnaker is not installed in your organization yet, and you just want to
+* If Spinnaker is not installed in your organization yet, and you just want to
 test-drive it, here are some [quickstarts](/setup/quickstart/).
 
-If Spinnaker *is* installed in your org, and you want to practice it using some
-guided tutorials, [here are some codelabs](/guides/tutorials/codelabs/).
+* If Spinnaker is not installed yet in your org and you want to install it,
+[here you go](/setup/install/).
 
-If you want more explanation of how to use Spinnaker, read on...
+* If Spinnaker *is* installed in your org, and you want to practice it using
+some guided tutorials, [here are some codelabs](/guides/tutorials/codelabs/).
+
+If you want a very basic overview of to use Spinnaker, read on...
 
 ## Using Spinnaker: the high-level process
 
-Spinnaker deploys your services to your chosen cloud platform, using a flexible
-pipeline framework. Spinnaker also makes it easy for you to view and monitor
-your infrastructure.
-
-To get there, you'll follow this general process:
-
-1. Create an application
+1. [Create an application](/guides/user/applications/)
 
    In fact, create as many applications as you want. Typically, you'll have one
-   application per microservice. [Find out more about applications
-   here](/guides/user/applications/).
+   application per microservice.
 
    Note that your application configuration affects what you can do with
-   Spinnaker. You can enable or disable Spinnaker features.
+   Spinnaker; you can enable or disable Spinnaker features.
 
-1. Open an application and start defining the infrastructure the service will
-run on.
+1. Define the [infrastructure](/concepts/) the service will run on
 
-   Your pipelines will deploy your services to
+   Your pipelines will deploy services to the server groups you define for each
+   application.
 
-1. Create a pipeline
+1. [Create a pipeline](/guides/pipeline/managing-pipelines/)
 
-   In fact, create all the pipelines you need, to deploy the service or services
+   In fact, create all the pipelines you need to deploy the service or services
    covered by the application, in whatever ways you want to deploy.
 
-   Find out more [here](/guides/user/pipeline/managing-pipelines/).  
+   Find out more [here](/guides/user/pipelin/managing-pipelines/).  
 
-## A note about inferred applications
+1. Run your pipeline to deploy your service.
 
-If you've deployed Spinnaker on a Kubernetes cluster, you might several
-applications already available
-
-
-
-
+   You can run a pipeline manually, but most pipelines are [automatically
+   triggered](/guides/user/pipeline/triggers/).
 
 
 <!--
