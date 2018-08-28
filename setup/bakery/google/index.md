@@ -16,7 +16,9 @@ hal config provider google bakery edit --zone $ZONE
 
 And to set the default network:
 
+```bash
 hal config provider google bakery edit --network $YOUR_NETWORK
+```
 
 You can also define custom base images:
 
