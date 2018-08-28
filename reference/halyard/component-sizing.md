@@ -19,22 +19,22 @@ Container requests and limits for cpu and memory can be specified in the `deploy
 
 There are two ways to specify requests and limits
 
-1. _(Recommended)_ By supplying the container name, e.g. `echo:`, followed by the container requests and limits.
+* _(Recommended)_ By supplying the container name, e.g. `echo:`, followed by the container requests and limits.
 
-   This sets resource configuration for the echo container in `spin-echo` service's pod only, not any sidecars
-   (e.g. the monitoring daemon).
+  This sets resource configuration for the echo container in `spin-echo` service's pod only, not any sidecars
+  (e.g. the monitoring daemon).
    
-2. By supplying the service name, e.g. `spin-clouddriver:`, followed by the container requests and limits.
+* By supplying the service name, e.g. `spin-clouddriver:`, followed by the container requests and limits.
 
-   This sets the resource configuration for the clouddriver container as well as any sidecar containers in the
-   `spin-clouddriver` service.
+  This sets the resource configuration for the clouddriver container as well as any sidecar containers in the
+  `spin-clouddriver` service.
 
 Here is an example of this configuration:
 
 ```yaml
 deploymentEnvironment:
   customSizing:
-    # 1. This applies sizings to only the echo container and not to any sidecar 
+    # This applies sizings to only the echo container and not to any sidecar 
     # containers running with echo.
     echo:
       limits:
@@ -43,7 +43,7 @@ deploymentEnvironment:
       requests:
         cpu: 100m
         memory: 128Mi
-    # 2. This applies sizings to the clouddriver container as well as any sidecar 
+    # This applies sizings to the clouddriver container as well as any sidecar 
     # containers running with clouddriver.
     spin-clouddriver:
       limits:
@@ -58,16 +58,16 @@ Limits and requests follow the Kubernetes conventions [documented here](https://
 
 #### Updating JAVA_OPTS
 
-As of Halyard 1.8, all JVM-based services will automatically have the following JAVA_OPTS set:
+As of Halyard 1.8, all JVM-based services have the following JAVA_OPTS set:
 
 ```
 JAVA_OPTS=-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=2
 ```
 
-This sets the JVMs heap to half the memory allocated per container. This can be overriden by specifying your own `JAVA_OPTS` 
+This sets the JVM's heap size to half the memory allocated per container. This can be overriden by specifying your own `JAVA_OPTS` 
 using the `env` key in [service-settings](/reference/halyard/custom/#tweakable-service-settings).
 
-In general, the `-Xms` should be 80%-90% of the requests memory allotment and `-Xmx` should be 80-90% of the limits memory allotment. For the clouddriver example above, the `env` key is as follows:
+As a starting point, the `-Xms` can be set to 80%-90% of the requests memory allotment and `-Xmx` can be set to 80-90% of the limits memory allotment. For the clouddriver example above, the `env` key is as follows:
 
 ```
 env:
