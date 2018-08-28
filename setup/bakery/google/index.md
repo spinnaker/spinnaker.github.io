@@ -11,8 +11,12 @@ address of the VM used for baking the image.
 For example, to set the default zone:
 
 ```bash
-hal config provider google bakery edit --network $YOUR_NETWORK
+hal config provider google bakery edit --zone $ZONE
 ```
+
+And to set the default network:
+
+hal config provider google bakery edit --network $YOUR_NETWORK
 
 You can also define custom base images:
 
