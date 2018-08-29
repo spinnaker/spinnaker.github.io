@@ -208,7 +208,7 @@ the pipeline execution JSON.
     ![](images/execution-json.png)
 
 3. The execution ID is the value of the top-level **id** field in the JSON, and
-looks something like 6d2e7b36-5132-46ca-8a5a-fc4c52e6d9a6.
+looks something like _01CGYV7Q4PMEBDYS146CCED0M6_.
 
 API Reference : https://www.spinnaker.io/reference/api/docs.html#api-Pipelinecontroller
 
