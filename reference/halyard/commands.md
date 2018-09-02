@@ -4,7 +4,7 @@ title: "Commands"
 sidebar:
   nav: reference
 ---
-Published: 2018-08-24 14:19:35
+Published: 2018-08-30 20:37:23
 
 
 # Table of Contents
@@ -153,6 +153,14 @@ Published: 2018-08-24 14:19:35
  * [**hal config ci wercker master list**](#hal-config-ci-wercker-master-list)
  * [**hal config deploy**](#hal-config-deploy)
  * [**hal config deploy edit**](#hal-config-deploy-edit)
+ * [**hal config deploy ha**](#hal-config-deploy-ha)
+ * [**hal config deploy ha clouddriver**](#hal-config-deploy-ha-clouddriver)
+ * [**hal config deploy ha clouddriver disable**](#hal-config-deploy-ha-clouddriver-disable)
+ * [**hal config deploy ha clouddriver edit**](#hal-config-deploy-ha-clouddriver-edit)
+ * [**hal config deploy ha clouddriver enable**](#hal-config-deploy-ha-clouddriver-enable)
+ * [**hal config deploy ha echo**](#hal-config-deploy-ha-echo)
+ * [**hal config deploy ha echo disable**](#hal-config-deploy-ha-echo-disable)
+ * [**hal config deploy ha echo enable**](#hal-config-deploy-ha-echo-enable)
  * [**hal config edit**](#hal-config-edit)
  * [**hal config features**](#hal-config-features)
  * [**hal config features edit**](#hal-config-features-edit)
@@ -2853,6 +2861,7 @@ hal config deploy [parameters] [subcommands]
 
 #### Subcommands
  * `edit`: Edit Spinnaker's deployment footprint and configuration.
+ * `ha`: Configure, validate, and view the specified high availability Spinnaker service configuration.
 
 ---
 ## hal config deploy edit
@@ -2881,6 +2890,134 @@ LocalGit: Download and run the Spinnaker git repos on the machine running the Da
  * `--update-versions`: When set to "false", any *local* version of Spinnaker components will be used instead of attempting to update. This does not work for distributed installations of Spinnaker, where no *local* version exists.
  * `--vault-address`: The address of a running Vault datastore. See https://www.vaultproject.io/. This is only required when Spinnaker is being deployed in non-Kubernetes clustered configuration.
  * `--vault-enabled`: Whether or not to use Vault as a secret storage mechanism to deploy Spinnaker.
+
+
+---
+## hal config deploy ha
+
+Configure, validate, and view the specified high availability Spinnaker service configuration.
+
+#### Usage
+```
+hal config deploy ha [subcommands]
+```
+
+#### Subcommands
+ * `clouddriver`: Manage and view Spinnaker configuration for the clouddriver high availability service
+ * `echo`: Manage and view Spinnaker configuration for the echo high availability service
+
+---
+## hal config deploy ha clouddriver
+
+Manage and view Spinnaker configuration for the clouddriver high availability service Manage and view Spinnaker configuration for the clouddriver high availability service. When clouddriver high availability is enabled, Halyard will deploy clouddriver as three separate services in order to increase availability: clouddriver-rw, clouddriver-ro, and clouddriver-caching. The clouddriver-rw service handles mutation operations sent via orca. The clouddriver-ro service handles read queries and does not perform write operations to redis. The clouddriver-caching service handles the periodic caching of cloud provider data, and is isolated from the rest of Spinnaker. The three services are configured to use the shared redis provisioned by Halyard, by default. To achieve more scale, a redis master endpoint and a redis slave endpoint can be supplied. The clouddriver-rw and clouddriver-caching services will use the redis master and the clouddriver-ro service will use the redis slave.
+
+#### Usage
+```
+hal config deploy ha clouddriver [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `disable`: Set the clouddriver high availability service as disabled
+ * `edit`: Edit the clouddriver high availability service
+ * `enable`: Set the clouddriver high availability service as enabled
+
+---
+## hal config deploy ha clouddriver disable
+
+Set the clouddriver high availability service as disabled
+
+#### Usage
+```
+hal config deploy ha clouddriver disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config deploy ha clouddriver edit
+
+Edit the clouddriver high availability service
+
+#### Usage
+```
+hal config deploy ha clouddriver edit [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--redis-master-endpoint`: Set external Redis endpoint for clouddriver-rw and clouddriver-caching. clouddriver-rw and clouddriver-caching are configured to use the shared Redis, by default.
+ * `--redis-slave-endpoint`: Set external Redis endpoint for clouddriver-ro. clouddriver-ro is configured to use the shared Redis, by default.
+
+
+---
+## hal config deploy ha clouddriver enable
+
+Set the clouddriver high availability service as enabled
+
+#### Usage
+```
+hal config deploy ha clouddriver enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config deploy ha echo
+
+Manage and view Spinnaker configuration for the echo high availability service Manage and view Spinnaker configuration for the echo high availability service. When echo high availability is enabled, Halyard will deploy echo as two separate services in order to increase availability: echo-scheduler and echo-slave. The echo-scheduler service only handles Spinnaker cron-jobs and is isolated from the rest of Spinnaker.. The echo-slave handles everything else.
+
+#### Usage
+```
+hal config deploy ha echo [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `disable`: Set the echo high availability service as disabled
+ * `enable`: Set the echo high availability service as enabled
+
+---
+## hal config deploy ha echo disable
+
+Set the echo high availability service as disabled
+
+#### Usage
+```
+hal config deploy ha echo disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config deploy ha echo enable
+
+Set the echo high availability service as enabled
+
+#### Usage
+```
+hal config deploy ha echo enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
 
 
 ---
