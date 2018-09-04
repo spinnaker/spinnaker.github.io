@@ -368,7 +368,7 @@ kubectl proxy --context $STAGING_CONTEXT
 ```
 
 And then visit [the sample
-service](http://localhost:8001/api/v1/proxy/namespaces/default/services/spinnaker-demo:80/)
+service](http://localhost:8001/api/v1/namespaces/default/services/spinnaker-demo/proxy)
 in your browser. Let's make a change to this service, and configure Spinnaker
 to listen to Docker builds.
 
