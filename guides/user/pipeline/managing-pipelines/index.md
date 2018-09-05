@@ -165,3 +165,11 @@ pipeline.
 2. Click **Pipeline actions** in the upper right corner, and select
 **Rename**.
   ![](images/pipeline-actions.png)
+
+## Manually run a pipeline
+
+From the pipelines tab, click **Start Manual Execution** on the pipeline you
+want to run. Spinnaker then shows you a confirmation dialog, where you can add
+any necessary parameters.
+
+![](images/manual-execution.png)
