@@ -59,6 +59,14 @@ depends on the desired upstream stage(s) using the **Depends on** field.
 You can add as many stages as your pipeline needs, in any order that makes sense
 for you.
 
+## Manually run a pipeline
+
+From the **Pipelines** tab, click **Start Manual Execution** on the pipeline you
+want to run. Spinnaker then shows you a confirmation dialog, where you can add
+any necessary parameters.
+
+![](images/manual-execution.png)
+
 ## Disable a pipeline
 
 Disabling a pipeline prevents any triggers from firing, as well as preventing
