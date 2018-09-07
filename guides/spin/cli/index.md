@@ -97,3 +97,35 @@ and paste an access code. `spin` then exchanges the code for an OAuth2 access/re
 which it caches in your `~/.spin/config` file for future use. All subsequent `spin` calls will
 use the cached OAuth2 token for authentication with no user input required. If an OAuth2
 access token expires, `spin` will use the refresh token to renew the access token expiry.
+
+## Global Flags
+
+`spin` has a few helpful global flags:
+
+```
+Global Options:
+
+        --gate-endpoint               Gate (API server) endpoint.
+        --no-color                    Removes color from CLI output.
+        --insecure=false              Ignore certificate errors during connection to endpoints.
+        --quiet=false                 Squelch non-essential output.
+        --output <output format>      Formats CLI output.
+
+```
+
+### Output Formatting
+
+The global `--output` flag allows users to manipulate `spin`'s output format.
+By default, `spin` will print the command output in json. Users can also specify
+a `jsonpath` in the output flag to extract nested data from the command output:
+
+```bash
+spin pipeline get --name pipelineName --application app --output jsonpath="{.stages}"
+
+[
+<stages>
+]
+```
+
+`spin` leverages the `kubectl` `jsonpath` libraries to support this. Follow the [kubectl documentation](https://kubernetes.io/docs/reference/kubectl/jsonpath/)
+for more information about the possible `jsonpath` arguments.

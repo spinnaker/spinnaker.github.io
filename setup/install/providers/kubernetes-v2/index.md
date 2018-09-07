@@ -136,17 +136,24 @@ metadata:
  name: spinnaker-role
 rules:
 - apiGroups: [""]
-  resources: ["configmaps", "namespaces", "pods", "secrets", "services"]
-  verbs: ["*"]
+  resources: ["namespaces", "configmaps", "events", "replicationcontrollers", "serviceaccounts", "pods/logs"]
+  verbs: ["get", "list"]
 - apiGroups: [""]
-  resources: ["pods/log"]
+  resources: ["pods", "services", "secrets"]
+  verbs: ["create", "delete", "deletecollection", "get", "list", "patch", "update", "watch"]
+- apiGroups: ["autoscaling"]
+  resources: ["horizontalpodautoscalers"]
   verbs: ["list", "get"]
 - apiGroups: ["apps"]
-  resources: ["controllerrevisions", "deployments", "statefulsets"]
-  verbs: ["*"]
-- apiGroups: ["extensions", "app"]
-  resources: ["daemonsets", "deployments", "ingresses", "networkpolicies", "replicasets"]
-  verbs: ["*"]
+  resources: ["controllerrevisions", "statefulsets"]
+  verbs: ["list"]
+- apiGroups: ["extensions", "apps"]
+  resources: ["deployments", "replicasets", "ingresses"]
+  verbs: ["create", "delete", "deletecollection", "get", "list", "patch", "update", "watch"]
+# These permissions are necessary for halyard to operate. We use this role also to deploy Spinnaker itself.
+- apiGroups: [""]
+  resources: ["services/proxy", "pods/portforward"]
+  verbs: ["create", "delete", "deletecollection", "get", "list", "patch", "update", "watch"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -157,7 +164,7 @@ roleRef:
  kind: ClusterRole
  name: spinnaker-role
 subjects:
-- namespace: default
+- namespace: spinnaker
   kind: ServiceAccount
   name: spinnaker-service-account
 ---
@@ -165,7 +172,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
  name: spinnaker-service-account
- namespace: default
+ namespace: spinnaker
 ```
 
 <span class="end-collapsible-section"></span>
