@@ -18,7 +18,8 @@ See more details [here](https://docs.helm.sh/helm/#helm-template).
 > that you own, and are actively developing and redeploying frequently.
 > It is not intended to serve as a one-time installation method for
 > third-party packages. If that is your goal, it's arguably better to call
-> `helm apply` once when bootstrapping your Kubernetes cluster.
+> [`helm install`](https://docs.helm.sh/helm/#helm-install) once when 
+> bootstrapping your Kubernetes cluster.
 
 > Note: Make sure that you have configured [artifact support](/setup/artifacts)
 > in Spinnaker first. All Helm charts are fetched/stored as artifacts in
