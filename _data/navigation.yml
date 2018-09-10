@@ -144,6 +144,8 @@ setup:
             url: /setup/ci/travis/
           - title: Jenkins
             url: /setup/ci/jenkins/
+          - title: Wercker
+            url: /setup/ci/wercker/
       - title: Enable Monitoring
         collapsed: true
         children:
