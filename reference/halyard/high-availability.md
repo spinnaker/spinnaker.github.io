@@ -15,6 +15,22 @@ __Important:__ Please note that Halyard only supports this functionality for a [
 
 ## HA Clouddriver
 
+ <div class="mermaid">
+ graph TB
+
+ clouddriver(Clouddriver) --> clouddriver-caching(Clouddriver-Caching);
+ clouddriver --> clouddriver-rw(Clouddriver-Read-Write);
+ clouddriver --> clouddriver-ro(Clouddriver-Read-Only);
+
+ classDef default fill:#d8e8ec,stroke:#39546a;
+ linkStyle default stroke:#39546a,stroke-width:1px,fill:none;
+
+ classDef split fill:#42f4c2,stroke:#39546a;
+ class clouddriver-caching,clouddriver-ro,clouddriver-rw,echo-scheduler,echo-slave split
+ </div>
+
+ {% include mermaid %}
+
 Clouddriver benefits greatly from isolating its operations into separate services. To split Clouddriver for increased availability, run:
 
 ```hal config deploy ha clouddriver enable```
@@ -50,6 +66,21 @@ This service's name when [configuring its sizing](/reference/halyard/component-s
 To add a [custom profile](/reference/halyard/custom/#custom-profiles) or [custom service settings](/reference/halyard/custom/#custom-service-settings) for this service, use the name `clouddriver-ro`.
 
 ## HA Echo
+
+ <div class="mermaid">
+ graph TB
+
+ echo(Echo) --> echo-scheduler(Echo-Scheduler);
+ echo(Echo) --> echo-slave(Echo-Slave);
+
+ classDef default fill:#d8e8ec,stroke:#39546a;
+ linkStyle default stroke:#39546a,stroke-width:1px,fill:none;
+
+ classDef split fill:#42f4c2,stroke:#39546a;
+ class clouddriver-caching,clouddriver-ro,clouddriver-rw,echo-scheduler,echo-slave split
+ </div>
+
+ {% include mermaid %}
 
 Echo can be split into two separate services that handle different operations. To split Echo for increased availability, run:
 
