@@ -4,7 +4,7 @@ title: "Commands"
 sidebar:
   nav: reference
 ---
-Published: 2018-08-30 20:37:23
+Published: 2018-09-12 13:36:07
 
 
 # Table of Contents
@@ -165,6 +165,7 @@ Published: 2018-08-30 20:37:23
  * [**hal config features**](#hal-config-features)
  * [**hal config features edit**](#hal-config-features-edit)
  * [**hal config generate**](#hal-config-generate)
+ * [**hal config list**](#hal-config-list)
  * [**hal config metric-stores**](#hal-config-metric-stores)
  * [**hal config metric-stores datadog**](#hal-config-metric-stores-datadog)
  * [**hal config metric-stores datadog disable**](#hal-config-metric-stores-datadog-disable)
@@ -636,6 +637,7 @@ hal config [parameters] [subcommands]
  * `edit`: Configure top-level, global configuration parameters.
  * `features`: Display the state of Spinnaker's feature flags.
  * `generate`: Generate the full Spinnaker config for your current deployment. This does _not_ apply that configuration to your running Spinnaker installation. That either needs to be done manually, or with `hal deploy apply`.
+ * `list`: Lists all deployments
  * `metric-stores`: Configure Spinnaker's metric stores. Metrics stores are used to store metrics for the various Spinnaker micro-services. These metrics are not related in any way to canary deployments. The technologies backing both are similar, but metrics stores are places to push metrics regarding Spinnaker metrics, whereas canary metrics stores are used to pull metrics to analyze deployments. This configuration only affects the publishing of metrics against whichever metric stores you enable (it can be more than one).
  * `notification`: Display the state of Spinnaker's notification settings.
  * `provider`: Configure, validate, and view the specified provider.
@@ -3093,6 +3095,21 @@ hal config generate [parameters]
 
 
 ---
+## hal config list
+
+Lists all deployments
+
+#### Usage
+```
+hal config list [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
 ## hal config metric-stores
 
 Configure Spinnaker's metric stores. Metrics stores are used to store metrics for the various Spinnaker micro-services. These metrics are not related in any way to canary deployments. The technologies backing both are similar, but metrics stores are places to push metrics regarding Spinnaker metrics, whereas canary metrics stores are used to pull metrics to analyze deployments. This configuration only affects the publishing of metrics against whichever metric stores you enable (it can be more than one).
@@ -3485,6 +3502,7 @@ hal config provider appengine account add ACCOUNT [parameters]
 #### Parameters
 `ACCOUNT`: The name of the account to operate on.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
  * `--gcloud-release-track`: The gcloud release track (ALPHA, BETA, or STABLE) that Spinnaker will use when deploying to App Engine.
  * `--git-https-password`: (*Sensitive data* - user will be prompted on standard input) A password to be used when connecting with a remote git repository server over HTTPS.
  * `--git-https-username`: A username to be used when connecting with a remote git repository server over HTTPS.
@@ -3535,6 +3553,7 @@ hal config provider appengine account edit ACCOUNT [parameters]
  * `--add-required-group-membership`: Add this group to the list of required group memberships.
  * `--add-write-permission`: Add this permission to the list of write permissions.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
  * `--gcloud-release-track`: The gcloud release track (ALPHA, BETA, or STABLE) that Spinnaker will use when deploying to App Engine.
  * `--git-https-password`: (*Sensitive data* - user will be prompted on standard input) A password to be used when connecting with a remote git repository server over HTTPS.
  * `--git-https-username`: A username to be used when connecting with a remote git repository server over HTTPS.
@@ -3684,6 +3703,7 @@ Example: http://{{region}}.eureka.url.to.use:8080/eureka-server/v2
 
 Using {{region}} will make Spinnaker use AWS regions in the hostname to access discovery so that you can have discovery for multiple regions.
  * `--edda`: The endpoint Edda is reachable at. Edda is not a hard dependency of Spinnaker, but is helpful for reducing the request volume against AWS. See https://github.com/Netflix/edda for more information.
+ * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
  * `--read-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to view this account's cloud resources.
@@ -3736,6 +3756,7 @@ Example: http://{{region}}.eureka.url.to.use:8080/eureka-server/v2
 
 Using {{region}} will make Spinnaker use AWS regions in the hostname to access discovery so that you can have discovery for multiple regions.
  * `--edda`: The endpoint Edda is reachable at. Edda is not a hard dependency of Spinnaker, but is helpful for reducing the request volume against AWS. See https://github.com/Netflix/edda for more information.
+ * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
  * `--read-permissions`: A user must have at least one of these roles in order to view this account's cloud resources.
@@ -3924,6 +3945,7 @@ hal config provider azure account add ACCOUNT [parameters]
  * `--default-key-vault`: (*Required*) The name of a KeyVault that contains the default user name and password used to create VMs
  * `--default-resource-group`: (*Required*) The default resource group to contain any non-application specific resources.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--object-id`: The objectId of your service principal. This is only required if using Packer to bake Windows images.
  * `--packer-resource-group`: The resource group to use if baking images with Packer.
@@ -3972,6 +3994,7 @@ hal config provider azure account edit ACCOUNT [parameters]
  * `--default-key-vault`: The name of a KeyVault that contains the default user name and password used to create VMs
  * `--default-resource-group`: The default resource group to contain any non-application specific resources.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--object-id`: The objectId of your service principal. This is only required if using Packer to bake Windows images.
  * `--packer-resource-group`: The resource group to use if baking images with Packer.
@@ -4255,6 +4278,7 @@ hal config provider dcos account add ACCOUNT [parameters]
  * `--cluster`: (*Required*) Reference to the name of the cluster from the set of clusters defined for this provider
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--docker-registries`: (*Default*: `[]`) (*Required*) Provide the list of docker registries to use with this DC/OS account
+ * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--password`: Password for a user account
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
@@ -4299,6 +4323,7 @@ hal config provider dcos account edit ACCOUNT [parameters]
  * `--add-write-permission`: Add this permission to the list of write permissions.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--docker-registries`: (*Default*: `[]`) Provide the list of docker registries to use with this DC/OS account
+ * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
  * `--read-permissions`: A user must have at least one of these roles in order to view this account's cloud resources.
@@ -4553,6 +4578,7 @@ hal config provider docker-registry account add ACCOUNT [parameters]
  * `--client-timeout-millis`: (*Default*: `60000`) Timeout time in milliseconds for this repository.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--email`: (*Default*: `fake.email@spinnaker.io`) Your docker registry email (often this only needs to be well-formed, rather than be a real address)
+ * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
  * `--insecure-registry`: (*Default*: `false`) Treat the docker registry as insecure (don't validate the ssl cert).
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--paginate-size`: (*Default*: `100`) Paginate size for the docker repository _catalog endpoint.
@@ -4612,6 +4638,7 @@ hal config provider docker-registry account edit ACCOUNT [parameters]
  * `--client-timeout-millis`: Timeout time in milliseconds for this repository.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--email`: Your docker registry email (often this only needs to be well-formed, rather than be a real address)
+ * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
  * `--insecure-registry`: Treat the docker registry as insecure (don't validate the ssl cert).
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--paginate-size`: Paginate size for the docker repository _catalog endpoint.
@@ -4747,6 +4774,7 @@ hal config provider ecs account add ACCOUNT [parameters]
 `ACCOUNT`: The name of the account to operate on.
  * `--aws-account`: (*Required*) Provide the name of the AWS account associated with this ECS account.See https://github.com/spinnaker/clouddriver/blob/master/clouddriver-ecs/README.md for more information.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
  * `--read-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to view this account's cloud resources.
@@ -4787,6 +4815,7 @@ hal config provider ecs account edit ACCOUNT [parameters]
  * `--add-write-permission`: Add this permission to the list of write permissions.
  * `--aws-account`: Provide the name of the AWS account associated with this ECS account.See https://github.com/spinnaker/clouddriver/blob/master/clouddriver-ecs/README.md for more information.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
  * `--read-permissions`: A user must have at least one of these roles in order to view this account's cloud resources.
@@ -4915,6 +4944,7 @@ hal config provider google account add ACCOUNT [parameters]
 `ACCOUNT`: The name of the account to operate on.
  * `--alpha-listed`: (*Default*: `false`) Enable this flag if your project has access to alpha features and you want Spinnaker to take advantage of them.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
  * `--image-projects`: (*Default*: `[]`) A list of Google Cloud Platform projects Spinnaker will be able to cache and deploy images from. When this is omitted, it defaults to the current project. Each project must have granted the IAM role `compute.imageUser` to the service account associated with the json key used by this account, as well as to the 'Google APIs service account' automatically created for the project being managed (should look similar to `12345678912@cloudservices.gserviceaccount.com`). See https://cloud.google.com/compute/docs/images/sharing-images-across-projects for more information about sharing images across GCP projects.
  * `--json-path`: The path to a JSON service account that Spinnaker will use as credentials. This is only needed if Spinnaker is not deployed on a Google Compute Engine VM, or needs permissions not afforded to the VM it is running on. See https://cloud.google.com/compute/docs/access/service-accounts for more information.
  * `--no-validate`: (*Default*: `false`) Skip validation.
@@ -4961,6 +4991,7 @@ hal config provider google account edit ACCOUNT [parameters]
  * `--add-required-group-membership`: Add this group to the list of required group memberships.
  * `--add-write-permission`: Add this permission to the list of write permissions.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
  * `--image-projects`: A list of Google Cloud Platform projects Spinnaker will be able to cache and deploy images from. When this is omitted, it defaults to the current project. Each project must have granted the IAM role `compute.imageUser` to the service account associated with the json key used by this account, as well as to the 'Google APIs service account' automatically created for the project being managed (should look similar to `12345678912@cloudservices.gserviceaccount.com`). See https://cloud.google.com/compute/docs/images/sharing-images-across-projects for more information about sharing images across GCP projects.
  * `--json-path`: The path to a JSON service account that Spinnaker will use as credentials. This is only needed if Spinnaker is not deployed on a Google Compute Engine VM, or needs permissions not afforded to the VM it is running on. See https://cloud.google.com/compute/docs/access/service-accounts for more information.
  * `--no-validate`: (*Default*: `false`) Skip validation.
@@ -5274,6 +5305,7 @@ hal config provider kubernetes account add ACCOUNT [parameters]
 When no context is configured for an account the 'current-context' in your kubeconfig is assumed.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--docker-registries`: (*Default*: `[]`) A list of the Spinnaker docker registry account names this Spinnaker account can use as image sources. These docker registry accounts must be registered in your halconfig before you can add them here.
+ * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
  * `--kinds`: (*Default*: `[]`) (V2 Only) A list of resource kinds this Spinnaker account can deploy to and will cache.
 When no kinds are configured, this defaults to 'all kinds described here https://spinnaker.io/reference/providers/kubernetes-v2'.
  * `--kubeconfig-file`: The path to your kubeconfig file. By default, it will be under the Spinnaker user's home directory in the typical .kube/config location.
@@ -5335,6 +5367,7 @@ hal config provider kubernetes account edit ACCOUNT [parameters]
 When no context is configured for an account the 'current-context' in your kubeconfig is assumed.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--docker-registries`: (*Default*: `[]`) A list of the Spinnaker docker registry account names this Spinnaker account can use as image sources. These docker registry accounts must be registered in your halconfig before you can add them here.
+ * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
  * `--kinds`: (*Default*: `[]`) (V2 Only) A list of resource kinds this Spinnaker account can deploy to and will cache.
 When no kinds are configured, this defaults to 'all kinds described here https://spinnaker.io/reference/providers/kubernetes-v2'.
  * `--kubeconfig-file`: The path to your kubeconfig file. By default, it will be under the Spinnaker user's home directory in the typical .kube/config location.
@@ -5495,7 +5528,7 @@ hal config provider openstack account add ACCOUNT [parameters]
  * `--consul-config`: This is the path for your consul config file
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--domain-name`: (*Required*) The domain of the cloud. Can be found in the RC file.
- * `--environment`: The name of your Openstack environment.
+ * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
  * `--heat-template-location`: The location of your heat template file. (Replacing the Heat template is not recommended)
  * `--insecure`: (*Default*: `false`) Disable certificate validation on SSL connections. Needed if certificates are self signed. Default false.
  * `--lbaas-poll-interval`: Interval in seconds to poll octavia when an entity is created, updated, or deleted. Default 5.
@@ -5549,7 +5582,7 @@ hal config provider openstack account edit ACCOUNT [parameters]
  * `--consul-config`: This is the path for your consul config file
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--domain-name`: The domain of the cloud. Can be found in the RC file.
- * `--environment`: The name of your Openstack environment.
+ * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
  * `--heat-template-location`: The location of your heat template file. (Replacing the Heat template is not recommended)
  * `--insecure`: Disable certificate validation on SSL connections. Needed if certificates are self signed. Default false.
  * `--lbaas-poll-interval`: Interval in seconds to poll octavia when an entity is created, updated, or deleted. Default 5.
@@ -5846,6 +5879,7 @@ hal config provider oracle account add ACCOUNT [parameters]
 `ACCOUNT`: The name of the account to operate on.
  * `--compartment-id`: (*Required*) Provide the OCID of the Oracle Compartment to use.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
  * `--fingerprint`: (*Required*) Fingerprint of the public key
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
@@ -5891,6 +5925,7 @@ hal config provider oracle account edit ACCOUNT [parameters]
  * `--add-write-permission`: Add this permission to the list of write permissions.
  * `--compartment-id`: Provide the OCID of the Oracle Compartment to use.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
  * `--fingerprint`: Fingerprint of the public key
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
