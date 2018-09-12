@@ -7,9 +7,9 @@ sidebar:
 
 {% include toc %}
 
-This page describes how you can configure a Halyard deployment to increase the availability of specific services beyond simply [horizontally scaling](/setup/productionize/scaling/horizontal-scaling/) the service. Halyard does this by splitting the functionalities of a service into separate logical services. The benefits of doing this is specific to the service that is being split.
+This page describes how you can configure a Halyard deployment to increase the availability of specific services beyond simply [horizontally scaling](/setup/productionize/scaling/horizontal-scaling/) the service. Halyard does this by splitting the functionalities of a service into separate logical roles. The benefits of doing this is specific to the service that is being split. These deployment strategies are inspired by [Netflix's large scale experience](https://blog.spinnaker.io/scaling-spinnaker-at-netflix-part-1-8a5ae51ee6de).
 
-It is important to know that, when split, the new logical services are given new names. This means that these logical services can be configured and scaled independently of each other.
+When split into different roles, the new logical services are given new names. This means that these logical services can be configured and scaled independently of each other.
 
 __Important:__ Please note that Halyard only supports this functionality for a [distributed Spinnaker deployment](/setup/install/environment/#distributed-installation) configured with a [manifest based Kubernetes account](/setup/install/providers/kubernetes-v2/).
 
@@ -19,7 +19,7 @@ Clouddriver benefits greatly from isolating its operations into separate service
 
 ```hal config deploy ha clouddriver enable```
 
-When Spinnaker is deployed with this flag enabled, Clouddriver will be deploy as three different services, each only performing a subset of the base Clouddriver's operations. Although by default the three Clouddriver services will communicate with the global Redis (all Spinnaker services speak to this Redis) provided by Halyard, it is recommended that the logical Clouddriver services be configured to communicate with an external Redis service. To be most effective, the Clouddriver-Read-Only should be configured to speak to a Redis slave, while the other two should be configured to speak to the master. This is handled by automatically by Halyard if the user provides the two endpoints using this command:
+When Spinnaker is deployed with this flag enabled, Clouddriver will be deployed as three different services, each only performing a subset of the base Clouddriver's operations. Although by default the three Clouddriver services will communicate with the global Redis (all Spinnaker services speak to this Redis) provided by Halyard, it is recommended that the logical Clouddriver services be configured to communicate with an external Redis service. To be most effective, the Clouddriver-Read-Only should be configured to speak to a Redis read replica, while the other two should be configured to speak to the master. This is handled by automatically by Halyard if the user provides the two endpoints using this command:
 
 ```hal config deploy ha services clouddriver edit --redis-master-endpoint $REDIS_MASTER_ENDPOINT --redis-slave-endpoint $REDIS_SLAVE_ENDPOINT```
 
@@ -41,7 +41,7 @@ To add a [custom profile](/reference/halyard/custom/#custom-profiles) or [custom
 
 ### Clouddriver-Read-Only
 
-Inspired by [Netflix](https://blog.spinnaker.io/scaling-spinnaker-at-netflix-part-1-8a5ae51ee6de), the Clouddriver-Read-Only service, or ```clouddriver-ro``` handles all read requests to Clouddriver. This service can be scaled to handle an increased number of reads.
+The Clouddriver-Read-Only service, or ```clouddriver-ro``` handles all read requests to Clouddriver. This service can be scaled to handle an increased number of reads.
 
 This service's name when [configuring its sizing](/reference/halyard/component-sizing/) is ```spin-clouddriver-ro```.
 
@@ -73,7 +73,7 @@ To add a [custom profile](/reference/halyard/custom/#custom-profiles) or [custom
 
 ## HA Topology
 
-With all services enabled for high availability, the new architecture looks like this (split services in :
+With all services enabled for high availability, the new architecture looks like this:
 
  <div class="mermaid">
  graph TB
