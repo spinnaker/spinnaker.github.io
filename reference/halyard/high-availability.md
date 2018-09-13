@@ -35,7 +35,9 @@ __Important:__ Halyard only supports this functionality for a [distributed Spinn
 
 Clouddriver benefits greatly from isolating its operations into separate services. To split Clouddriver for increased availability, run:
 
-```hal config deploy ha clouddriver enable```
+```bash
+hal config deploy ha clouddriver enable
+```
 
 When Spinnaker is deployed with this flag enabled, Clouddriver will be deployed as three different services, each only performing a subset of the base Clouddriver's operations:
 
@@ -45,13 +47,15 @@ When Spinnaker is deployed with this flag enabled, Clouddriver will be deployed 
 
 Although by default the three Clouddriver services will communicate with the global Redis (all Spinnaker services speak to this Redis) provided by Halyard, it is recommended that the logical Clouddriver services be configured to communicate with an external Redis service. To be most effective, `clouddriver-ro` should be configured to speak to a Redis read replica, while the other two should be configured to speak to the master. This is handled automatically by Halyard if the user provides the two endpoints using this command:
 
-```hal config deploy ha services clouddriver edit --redis-master-endpoint $REDIS_MASTER_ENDPOINT --redis-slave-endpoint $REDIS_SLAVE_ENDPOINT```
+```bash
+hal config deploy ha services clouddriver edit --redis-master-endpoint $REDIS_MASTER_ENDPOINT --redis-slave-endpoint $REDIS_SLAVE_ENDPOINT
+```
 
 More information on Redis replication can be [found here](https://redis.io/topics/replication).
 
 ### `clouddriver-caching`
 
-The first of the three logical Clouddriver services is the `clouddriver-caching` service. This service caches and retrieves of cloud infrastructure data. Since this is all that `clouddriver-caching` is doing, there is no communication between this service and any other Spinnaker service.
+The first of the three logical Clouddriver services is the `clouddriver-caching` service. This service caches and retrieves cloud infrastructure data. Since this is all that `clouddriver-caching` is doing, there is no communication between this service and any other Spinnaker service.
 
 This service's name when [configuring its sizing](/reference/halyard/component-sizing/) is `spin-clouddriver-caching`.
 
@@ -92,7 +96,9 @@ To add a [custom profile](/reference/halyard/custom/#custom-profiles) or [custom
 
 Echo can be split into two separate services that handle different operations. To split Echo for increased availability, run:
 
-```hal config deploy ha echo enable```
+```bash
+hal config deploy ha echo enable
+```
 
 When Spinnaker is deployed with this enabled, Echo will be deploy as two different services:
 
