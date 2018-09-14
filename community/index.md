@@ -97,6 +97,9 @@ xiaohongshu_user:
 mercari_user:
   image_path: assets/images/users/mercari_logo.png
   alt: "Mercari Logo"
+plaid_user:
+  image_path: assets/images/users/plaid_logo.png
+  alt: "Plaid Logo"
 ---
 
 ## Engage the community and get support
@@ -157,23 +160,26 @@ The Spinnaker OSS project was started at Netflix, and today thrives on the contr
  </div>
   <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="optimizely_user" %}
+    {% include spinnaker_user id="plaid_user" %}
     {% include spinnaker_user id="plangrid_user" %}
-    {% include spinnaker_user id="purestorage_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="purestorage_user" %}
     {% include spinnaker_user id="smartthings_user" %}
     {% include spinnaker_user id="schibsted_user" %}
-    {% include spinnaker_user id="scopely_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="scopely_user" %}
     {% include spinnaker_user id="skuid_user" %}
     {% include spinnaker_user id="target_user" %}
-    {% include spinnaker_user id="underarmour_user" %}
   </div>
-    <div class="clearfix flex items-center mb3">
+  <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="underarmour_user" %}
     {% include spinnaker_user id="waze_user" %}
     {% include spinnaker_user id="weatherbug_user" %}
-    {% include spinnaker_user id="xiaohongshu_user" %}
+  </div>
+  <div class="clearfix flex items-center mb3">
+      {% include spinnaker_user id="xiaohongshu_user" %}
   </div>
 </div>
 

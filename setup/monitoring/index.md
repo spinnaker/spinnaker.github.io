@@ -15,7 +15,7 @@ which you then use to view overview dashboards, receive alerts, and
 informally browse depending on your needs.
 
 Spinnaker publishes internal metrics using a multi-dimensional data model
-based on "tags". The metrics, data-model, and usage a discussed further
+based on "tags". The metrics, data-model, and usage are discussed further
 in the sections [Consuming Metrics](#consuming-metrics) and in the
 [Monitoring Reference document](/reference/monitoring/).
 

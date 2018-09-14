@@ -144,6 +144,8 @@ setup:
             url: /setup/ci/travis/
           - title: Jenkins
             url: /setup/ci/jenkins/
+          - title: Wercker
+            url: /setup/ci/wercker/
       - title: Enable Monitoring
         collapsed: true
         children:
@@ -399,7 +401,9 @@ reference:
       - title: Custom Configuration
         url: /reference/halyard/custom/
       - title: Component Sizing
-        url: /reference/halyard/component-sizing
+        url: /reference/halyard/component-sizing/
+      - title: High Availability
+        url: /reference/halyard/high-availability/
   - title: Architecture
     collapsed: true
     children:
