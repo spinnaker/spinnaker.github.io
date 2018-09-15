@@ -34,7 +34,7 @@ The role that Clouddriver assumes for your ECS account needs to have the trust r
                 "Service": [
                   "ecs.amazonaws.com",
                   "application-autoscaling.amazonaws.com"
-                ],
+                ]
       },
       "Action": "sts:AssumeRole"
     }

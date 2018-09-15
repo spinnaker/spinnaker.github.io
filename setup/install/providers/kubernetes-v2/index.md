@@ -53,7 +53,8 @@ to grant Spinnaker certain roles in the cluster later on, or you typically
 depend on an authentication mechanism that doesn't work in all environments.
 
 Given that you want to create a Service Account in context `$CONTEXT`, create
-the following resources with `kubectl apply --context $CONTEXT ...`
+the following resources with `kubectl apply --context $CONTEXT -f
+https://spinnaker.io/downloads/kubernetes/service-account.yml` 
 
 ```yaml
 apiVersion: v1
