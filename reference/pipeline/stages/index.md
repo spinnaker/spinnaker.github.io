@@ -147,7 +147,11 @@ match the specified capacity.
 Roll back one or more regions in a Cluster.
 
 ### Run Job
-Run a container.
+Run a container. You need to
+[set up a docker registry](/setup/install/providers/docker-registry/) so that
+Spinnaker can access the images to run. Once you're set up correctly, placing
+your cursor in the the **Image** field displays a drop-down menu of available
+images.
 
 ### Scale Down Cluster
 Scale down a cluster. You can prevent this stage from scaling down active Server
