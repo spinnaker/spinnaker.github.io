@@ -12,16 +12,30 @@ sidebar:
 
 ## Before you get going...
 
-* If you just want to test-drive Spinnaker, here are some
-[quickstarts](/setup/quickstart/).
+Whether you're an operator creating or managing a Spinnaker deployment, or an
+end user getting started with Spinnaker, here are some pointers to get you
+started.
 
-* If you want to install Spinnaker, [here you go](/setup/install/).
+### Operators
 
-* If Spinnaker is alrady installed in your org, and you want to practice it
+* If you want to install Spinnaker, [here you go](/setup/install/)
+
+* If you want to find out more about tuning and maintaining Spinnaker, here are
+some things to check out:
+
+  - [Advanced configuration](/setup/other_config/)
+  - [Productionize Spinnaker](/setup/productionize/)
+
+### Users
+
+* If you just want to try out Spinnaker, here are some
+[quickstarts](/setup/quickstart/)
+
+* If Spinnaker is already installed in your org, and you want to practice it
 using some guided tutorials, [here are some
-codelabs](/guides/tutorials/codelabs/).
+codelabs](/guides/tutorials/codelabs/)
 
-If you want a very basic overview of to use Spinnaker, read on...
+* If you want a very basic overview of how to use Spinnaker, read on...
 
 ## Using Spinnaker: the high-level process
 
@@ -31,7 +45,7 @@ Notes:
 pipelines to create infrastructure. Creating infrastructure manually, using the
 ui, is optional, and I can go straight to creating a pipeline.
 
-So, it' more like
+So, it's more like
 
 1. Create an application
 2. Do all of this other stuff
@@ -62,76 +76,42 @@ install...
 
 1. [Create an application](/guides/user/applications/)
 
-   In fact, create as many applications as you want. Typically, you'll have one
-   application per microservice.
+   Typically, you'll have one application per microservice.
 
    Note that your application configuration affects what you can do with
-   Spinnaker; you can enable or disable Spinnaker features.
+   Spinnaker&mdash;you can enable or disable some Spinnaker features.
 
 1. Define the [infrastructure](/concepts/) the service will run on
 
-   Your pipelines will deploy services to the server groups you define for each
-   application.
+   You define infrastructure for each application. Your pipelines deploy
+   services to the server groups you define.
+
+   > Note: this step is not a prerequisite for creating pipelines. In fact, you
+   > can use pipelines to create infrastructure.
 
 1. [Create a pipeline](/guides/user/pipeline/managing-pipelines/)
 
    In fact, create all the pipelines you need to deploy the service or services
    covered by the application, in whatever ways you want to deploy.
 
-   Find out more [here](/guides/user/pipeline/managing-pipelines/).  
+   Find out more [here in the Managing pipelines
+   guide](/guides/user/pipeline/managing-pipelines/).  
 
-1. [Run your pipeline](/guides/user/pipeline/triggers/) to deploy your service.
+1. [Run your pipeline](/guides/user/pipeline/triggers/) to deploy your service
 
-   You can run a pipeline manually, but most pipelines are [automatically
-   triggered](/guides/user/pipeline/triggers/).
+   You can run a pipeline manually, but most pipelines are [triggered
+   automatically](/guides/user/pipeline/triggers/).
+
+1. For practice, and to see some sample deployment schenarios, check out our
+[codelabs](/guides/tutorials/codelabs/).
 
 ## The advanced stuff
 
 You've got the basics down, but there's a lot more you can do with Spinnaker.
 
-* [Configure and execute automated canary analysis]() for your deployments
+* [Configure and execute automated canary analysis](/guides/user/canary/)
+for your deployments
 
-* [Use a deployment strategy]()
+* [Choose a deployment strategy](/concepts/#deployment-strategies)
 
-
-<!--
-
-* generalized statement of the fact that what you're gonna use Spinnaker for:
-  - configuring (identifying?) infrastructure for the services you're going to deploy
-  - make pipelines to deploy those services
-  - something about how there are other things you can do too, like ACA, but
-     that this guides is only about the first, fundamental, things you're going
-     to need to do.
-
-* Note about inferred applications
-
-  Because our context here is "I've just installed spinnaker, and now I don't
-  know what I'm looking at (or what to do), we've got to mention that there
-  might be some applications there already.
-
-  - How did they get there if I didn't create anything?
-  - What do I do with them?
-
-* Create an application
-And obviously link to the new applications guide
-
-* Configure the application
-
-* Configure your infrastructure for the application
-Be  sure to note that this is done per application
-
-* Create your first pipeline
-Write a synopsis, then link to
-* Best practices for...things?
-
-
-
-
-
-Other things to do:
-
-* Add link to here from the end of setup process, or links to all possible ends:
-"Next step: "get started with Spinnaker," and of course link to this guide.
-
-*
--->
+* Get to know the [`spin` command-line interface](/guides/spin/cli/)
