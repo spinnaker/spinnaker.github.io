@@ -44,12 +44,12 @@ their services by checking `~/.hal/$DEPLOYMENT/history/service-profiles.yml`.
 
 ### Custom Packer Scripts
 
-You may also supply custom [Packer](https://www.packer.io/) scripts to support more advanced
+You can also supply custom [Packer](https://www.packer.io/) scripts to support more advanced
 image bakes. These scripts should be placed in `~/.hal/$DEPLOYMENT/profiles/rosco/packer`.
 The next execution of `hal deploy apply` will deploy these scripts in addition to the
 default scripts, including any subdirectories.
 
-You may also overwrite the default Packer scripts using a file with the same name. The
+You can also overwrite the default Packer scripts using a file with the same name. The
 default scripts may be found in [the Rosco GitHub
 repository](https://github.com/spinnaker/rosco/tree/master/rosco-web/config/packer).
 
