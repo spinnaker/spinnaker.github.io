@@ -105,7 +105,7 @@ When Spinnaker is deployed with this enabled, Echo will be deploy as two differe
 * [`echo-scheduler`](#echo-scheduler)
 * [`echo-replica`](#echo-replica)
 
-Although the logical Echo services still cannot be horizontally scaled, splitting the services will reduce the load on both.
+Although only the `echo-replica` service can be horizontally scaled, splitting the services will reduce the load on both.
 
 ### `echo-scheduler`
 
