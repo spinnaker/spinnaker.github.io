@@ -30,7 +30,7 @@ The following types of user guides are included:
 
   - [Getting started](/guides/user/get-started/)
   - [Applications](/guides/user/applications)
-  - [Pipelines](/guides/user/pipelines/managing-pipelines/)
+  - [Pipelines](/guides/user/pipeline/managing-pipelines/)
   - [Tagging](/guides/user/tagging/)
   - [Custom instance links](/guides/user/instance-links/)
   - [Kubernetes \(manifest based\)](/guides/user/kubernetes-v2/deploy-manifest/)

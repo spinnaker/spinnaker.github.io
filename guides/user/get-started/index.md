@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Get started using Spinnaker"
+title:  "Get Started Using Spinnaker"
 sidebar:
   nav: guides
 ---
