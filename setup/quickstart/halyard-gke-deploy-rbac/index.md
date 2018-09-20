@@ -154,6 +154,10 @@ At the end of this guide you will have:
 5. Apply your changes to Spinnaker.
 
    ```bash
+   hal config deploy edit \
+       --account-name my-test-account \
+       --type distributed
+
    hal deploy apply
    ```
 
