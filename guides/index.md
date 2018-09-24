@@ -5,7 +5,7 @@ sidebar:
   nav: guides
 ---
 
-The number of Spinnaker guides in increasing incrementally, with contributions
+The number of Spinnaker guides is increasing incrementally, with contributions
 from the community. If you'd like to add a guide, or suggest one, feel free to
 [reach out](https://github.com/spinnaker/spinnaker.github.io/issues/).
 
@@ -13,7 +13,7 @@ The following types of user guides are included:
 
 * [Codelabs](/guides/tutorials/codelabs/)
 
-  Follow along with our brief codelabs to practice some of Spinnakers primary
+  Follow along with our brief codelabs to practice some of Spinnaker's primary
   features, in various deployment environments.
 
 * [Videos](/guides/tutorials/videos/)
