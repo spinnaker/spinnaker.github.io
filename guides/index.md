@@ -5,7 +5,7 @@ sidebar:
   nav: guides
 ---
 
-The number of Spinnaker guides is increasing incrementally, with contributions
+The number of Spinnaker guides is growing incrementally, with contributions
 from the community. If you'd like to add a guide, or suggest one, feel free to
 [reach out](https://github.com/spinnaker/spinnaker.github.io/issues/).
 
