@@ -71,6 +71,7 @@ process is described below.
 1. For practice, and to see some sample deployment schenarios, check out our
 [codelabs](/guides/tutorials/codelabs/).
 
+<!--
 ## The advanced stuff
 
 When you can create and run pipelines, you've got the basics down, but there's a
@@ -82,3 +83,4 @@ for your deployments
 * [Choose a deployment strategy](/concepts/#deployment-strategies)
 
 * Get to know the [`spin` command-line interface](/guides/spin/cli/)
+-->
