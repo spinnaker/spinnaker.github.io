@@ -166,6 +166,8 @@ setup:
             url: /setup/features/notifications/
           - title: Configure User Data (metadata)
             url: /setup/features/user-data/
+          - title: Configure the Script stage
+            url: /setup/features/script-stage/
   - title: Productionize Spinnaker
     collapsed: true
     children:
@@ -247,6 +249,8 @@ guides:
             children:
               - title: Overview
                 url: /guides/user/pipeline/triggers/
+              - title: Triggering pipelines with Jenkins
+                url: /guides/user/pipeline/triggers/jenkins/
               - title: Triggering on Pub/Sub Messages
                 url: /guides/user/pipeline/triggers/pubsub/
               - title: Triggering on Webhooks
