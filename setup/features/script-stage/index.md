@@ -11,12 +11,12 @@ sidebar:
 The [Script stage](/reference/pipeline/stages/#script) lets you run an arbitrary
 shell, Python, or Groovy script on a Jenkins instance as a first class stage in
 Spinnaker. For example, you can use it to launch a test suite from a pipeline
-instead of doing it manually. In order to be able to use the Script stage, you
-need to configure
+instead of doing it manually. Using the Script stage requires some additional
+setup after you add Jenkins to your Spinnaker deployment.
 
 ## Prerequisites
 
-In order to configure a Script stage, you need:
+To configure a Script stage, you need:
 
 *   A running Jenkins instance at `$JENKINS_HOST`, with a user profile set up
     with admin access
@@ -37,8 +37,8 @@ In order to configure a Script stage, you need:
         "https://storage.googleapis.com/jenkins-script-stage-config/scriptJobConfig.xml"
     ```
 
-3.  Create the Jenkins job where your script will run. To do this, you need the
-    following information:
+3.  Create the Jenkins job where your script will run. To create the job, you
+    need the following information:
 
     *   `$JENKINS_HOST`: your running Jenkins instance.
     *   `$JOB_NAME`: the name of the Jenkins job where your script runs.
@@ -55,8 +55,8 @@ In order to configure a Script stage, you need:
         -H "Content-Type:text/xml"
     ```
 
-4.  Navigate to Jenkins >> the job you just created >> **Configure** and do two
-    things:
+4.  Navigate to Jenkins >> the job you just created >> **Configure** and do the
+    following:
 
     1.  Add the GitHub repository containing your scripts.
     2.  Either create a `Spinnaker` node in which Jenkins will run all Script

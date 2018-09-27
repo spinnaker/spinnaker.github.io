@@ -15,7 +15,7 @@ pipeline.
 
 ## Prerequisites
 
-In order to connect Jenkins to Spinnaker, you need:
+To connect Jenkins to Spinnaker, you need:
 
 *   A running Jenkins Master at version 1.x - 2.x, reachable at a URL
     (`$BASEURL`) from the provider that Spinnaker will be deployed in.
@@ -99,10 +99,10 @@ You can use Jenkins in your pipelines in one of three ways:
 *   Using the built-in [Jenkins stage](/reference/pipeline/stages/#jenkins)
 *   Using the [Script stage](/reference/pipeline/stages/#script)
 
-Once you've completed the setup above, you're ready to trigger pipelines with
+After you've completed the setup above, you're ready to trigger pipelines with
 Jenkins or run the Jenkins stage. This is sufficient for most use cases. See
-the [guide](/guides/user/pipeline/triggers/jenkins/) to using Jenkins as a
-pipeline trigger for more information.
+[Triggering Pipelines with Jenkins](/guides/user/pipeline/triggers/jenkins/)
+for more information.
 
-Using the Script stage requires further configuration. Follow
-[this guide](/setup/features/script-stage/) to finish setting it up.
+Using the Script stage requires further configuration. See [Configuring
+the Script Stage](/setup/features/script-stage/) to finish setting it up.
