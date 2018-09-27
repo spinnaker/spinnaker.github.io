@@ -22,11 +22,11 @@ to see the commit hash and tag matching `version-<version>` of each
 subcomponent.
 
 ## Latest stable
-{% assign reversed = site.changelogs | sort: 'title' | reverse |  %}
+{% assign reversed = site.changelogs | sort: 'changelog_title' | reverse |  %}
 {% for post in reversed %}
   {% unless post.tags contains 'deprecated' %}
 {% if post.version == blank %}
-#### {{ post.title }}
+#### {{ post.changelog_title }}
 {% else %}
 #### Version {{ post.version }}
 {% endif %}
@@ -42,9 +42,8 @@ Group (requires a Google account).
 ## Deprecated Versions
 {% for post in reversed %}
   {% if post.tags contains 'deprecated' %}
-#### {{ post.title }}  
+#### {{ post.changelog_title }}  
 Released: {{ post.date }}  
 <a href="{{ post.url }}">Changelog</a>
   {% endif %}
 {% endfor %}
-
