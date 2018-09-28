@@ -150,6 +150,26 @@ command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
   If instead Spinnaker is deploying ReplicaSets directly without a Deployment,
   this annotation does the job.
 
+## Traffic
+
+* `traffic.spinnaker.io/load-balancers`
+
+  As of Spinnaker 1.10, you can specify which load balancers
+  ([Services](https://kubernetes.io/docs/concepts/services-networking/service/))
+  a workload is attached to at deployment time. This will automatically set the
+  required labels on the workload's Pods to match that of the Services' [label
+  selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors).
+
+  This annotation must be supplied as a list of `<kind> <name>` pairs where
+  `kind` and `name` refer to the load balancer in the same namespace as the 
+  resource. For example:
+
+  * `traffic.spinnaker.io/load-balancers: '["service my-service"]'` attaches to
+    the Service named `my-service`.
+
+  * `traffic.spinnaker.io/load-balancers: '["service my-service", "service my-canary-service"]'` 
+    attaches to the Services named `my-service` and `my-canary-service`.
+
 # Reserved labels
 
 In accordance with [Kubernetes' recommendations on common
