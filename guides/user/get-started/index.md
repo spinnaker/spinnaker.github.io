@@ -68,7 +68,7 @@ process is described below.
    You can run a pipeline manually, but most pipelines are [triggered
    automatically](/guides/user/pipeline/triggers/).
 
-1. For practice, and to see some sample deployment schenarios, check out our
+1. For practice, and to see some sample deployment scenarios, check out our
 [codelabs](/guides/tutorials/codelabs/).
 
 <!--
