@@ -28,7 +28,7 @@ __Important:__ Halyard only supports this functionality for a [distributed Spinn
  linkStyle default stroke:#39546a,stroke-width:1px,fill:none;
 
  classDef split fill:#42f4c2,stroke:#39546a;
- class clouddriver-caching,clouddriver-ro,clouddriver-rw,echo-scheduler,echo-replica split
+ class clouddriver-caching,clouddriver-ro,clouddriver-rw,echo-scheduler,echo-worker split
  </div>
 
  {% include mermaid %}
@@ -83,13 +83,13 @@ To add a [custom profile](/reference/halyard/custom/#custom-profiles) or [custom
  graph TB
 
  echo(Echo) --> echo-scheduler(Echo-Scheduler);
- echo(Echo) --> echo-replica(Echo-Replica);
+ echo(Echo) --> echo-worker(Echo-Worker);
 
  classDef default fill:#d8e8ec,stroke:#39546a;
  linkStyle default stroke:#39546a,stroke-width:1px,fill:none;
 
  classDef split fill:#42f4c2,stroke:#39546a;
- class clouddriver-caching,clouddriver-ro,clouddriver-rw,echo-scheduler,echo-replica split
+ class clouddriver-caching,clouddriver-ro,clouddriver-rw,echo-scheduler,echo-worker split
  </div>
 
  {% include mermaid %}
@@ -103,9 +103,9 @@ hal config deploy ha echo enable
 When Spinnaker is deployed with this enabled, Echo will be deploy as two different services:
 
 * [`echo-scheduler`](#echo-scheduler)
-* [`echo-replica`](#echo-replica)
+* [`echo-worker`](#echo-worker)
 
-Although only the `echo-replica` service can be horizontally scaled, splitting the services will reduce the load on both.
+Although only the `echo-worker` service can be horizontally scaled, splitting the services will reduce the load on both.
 
 ### `echo-scheduler`
 
@@ -115,13 +115,13 @@ This service's name when [configuring its sizing](/reference/halyard/component-s
 
 To add a [custom profile](/reference/halyard/custom/#custom-profiles) or [custom service settings](/reference/halyard/custom/#custom-service-settings) for this service, use the name `echo-scheduler`.
 
-### `echo-replica`
+### `echo-worker`
 
-The `echo-replica` service handles all operations of Echo besides the cron-jobs.
+The `echo-worker` service handles all operations of Echo besides the cron-jobs.
 
-This service's name when [configuring its sizing](/reference/halyard/component-sizing/) is `spin-echo-replica`. This service can be scaled to more than one pod, unlike the `echo-scheduler`.
+This service's name when [configuring its sizing](/reference/halyard/component-sizing/) is `spin-echo-worker`. This service can be scaled to more than one pod, unlike the `echo-scheduler`.
 
-To add a [custom profile](/reference/halyard/custom/#custom-profiles) or [custom service settings](/reference/halyard/custom/#custom-service-settings) for this service, use the name `echo-replica`.
+To add a [custom profile](/reference/halyard/custom/#custom-profiles) or [custom service settings](/reference/halyard/custom/#custom-service-settings) for this service, use the name `echo-worker`.
 
 ## HA Topology
 
@@ -146,9 +146,9 @@ With all services enabled for high availability, the new architecture looks like
  clouddriver-rw --> fiat;
  orca --> fiat;
  front50 --> fiat;
- echo-replica(Echo-Replica) --> orca;
- echo-replica --> front50;
- igor(Igor) --> echo-replica;
+ echo-worker(Echo-Worker) --> orca;
+ echo-worker --> front50;
+ igor(Igor) --> echo-worker;
  clouddriver-caching(Clouddriver-Caching);
  echo-scheduler(Echo-Scheduler);
 
@@ -159,7 +159,7 @@ With all services enabled for high availability, the new architecture looks like
  class deck,api external
 
  classDef split fill:#42f4c2,stroke:#39546a;
- class clouddriver-caching,clouddriver-ro,clouddriver-rw,echo-scheduler,echo-replica split
+ class clouddriver-caching,clouddriver-ro,clouddriver-rw,echo-scheduler,echo-worker split
  </div>
 
  {% include mermaid %}
