@@ -48,7 +48,7 @@ When Spinnaker is deployed with this flag enabled, Clouddriver will be deployed 
 Although by default the three Clouddriver services will communicate with the global Redis (all Spinnaker services speak to this Redis) provided by Halyard, it is recommended that the logical Clouddriver services be configured to communicate with an external Redis service. To be most effective, `clouddriver-ro` should be configured to speak to a Redis read replica, while the other two should be configured to speak to the master. This is handled automatically by Halyard if the user provides the two endpoints using this command:
 
 ```bash
-hal config deploy ha services clouddriver edit --redis-master-endpoint $REDIS_MASTER_ENDPOINT --redis-slave-endpoint $REDIS_SLAVE_ENDPOINT
+hal config deploy ha clouddriver edit --redis-master-endpoint $REDIS_MASTER_ENDPOINT --redis-slave-endpoint $REDIS_SLAVE_ENDPOINT
 ```
 
 More information on Redis replication can be [found here](https://redis.io/topics/replication).
