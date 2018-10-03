@@ -51,6 +51,8 @@ Although by default the three Clouddriver services will communicate with the glo
 hal config deploy ha clouddriver edit --redis-master-endpoint $REDIS_MASTER_ENDPOINT --redis-slave-endpoint $REDIS_SLAVE_ENDPOINT
 ```
 
+The values for `REDIS_MASTER_ENDPOINT` and `REDIS_SLAVE_ENDPOINT` must be [valid Redis URIs](https://www.iana.org/assignments/uri-schemes/prov/redis).
+
 More information on Redis replication can be [found here](https://redis.io/topics/replication).
 
 ### `clouddriver-caching`
