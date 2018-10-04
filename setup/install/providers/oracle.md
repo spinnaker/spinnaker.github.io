@@ -15,11 +15,10 @@ the account](#add-an-oracle-cloud-account).
 
 ## Prerequisites
 
-You will need the followings to enable Oracle Cloud provider in Spinnaker:
-- Create a user in IAM for the person or system who will be using the Spinnaker, and put that user in at 
+You will need the following to enable Oracle Cloud provider in Spinnaker:
+- A user in IAM for the person or system who will be using the Spinnaker, and put that user in at 
 least one IAM group with any desired permissions. 
-See [Adding Users](https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/addingusers.htm){:target="\_blank"}. 
-You can skip this if the user exists already.
+See [Adding Users](https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/addingusers.htm#one){:target="\_blank"}. 
 - The user's home region. 
 See [Managing Regions](https://docs.cloud.oracle.com/iaas/Content/Identity/Tasks/managingregions.htm){:target="\_blank"}. 
 (e.g. `--region us-ashburn-1`)
@@ -40,7 +39,7 @@ See [How to Upload the Public Key](https://docs.cloud.oracle.com/iaas/Content/AP
 
 ## Add an Oracle Cloud account
 
-1. Run the following `hal` command to add an account named my-oci-acct to your list of Azure accounts:
+1. Run the following `hal` command to add an account named `my-oci-acct` to your list of Azure accounts:
 
    ```bash
    hal config provider oracle account add my-oci-acct \
