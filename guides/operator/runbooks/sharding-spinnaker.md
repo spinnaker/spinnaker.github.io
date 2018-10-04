@@ -3,13 +3,14 @@ layout: single
 title:  "Sharding Spinnaker"
 sidebar:
   nav: guides
+redirect_from: /guides/runbooks/sharding-spinnaker.md
 ---
 
 {% include toc %}
 
 # Intro
 
-This document shows you how to shard traffic to different areas of Spinnaker: 
+This document shows you how to shard traffic to different areas of Spinnaker:
 
 The general pattern is that you define a selector class in your configuration. The requests will then be propagated to the defined selected shard.
 
@@ -22,11 +23,11 @@ Selectors exist at these levels:
 * Origin
 * Authenticated User
 
-You want to modify your deployment pipelines to ensure the infrastructure for each shard is correctly created. 
+You want to modify your deployment pipelines to ensure the infrastructure for each shard is correctly created.
 
 If no selector is specified, the default request will be used.
 
-There is a special additional dynamicEndpoints configuration in gate.yml to send all requests from Deck to that particular shard. 
+There is a special additional dynamicEndpoints configuration in gate.yml to send all requests from Deck to that particular shard.
 
 # Sharding Orca Requests
 
@@ -57,7 +58,7 @@ services:
       dynamicEndpoints:
         deck: https://clouddriver-readonly-deck.example.com
 ```
-       
+
 orca.yml
 
 ```

@@ -3,11 +3,12 @@ layout: single
 title:  "Orca Quality of Service"
 sidebar:
   nav: guides
+  redirect_from: /guides/runbooks/orca-quality-of-service/
 ---
 
 {% include toc %}
 
-**EXPERIMENTAL**: This feature is still in an early adoption / experimental phase. 
+**EXPERIMENTAL**: This feature is still in an early adoption / experimental phase.
 While you can use it today (Orca v6.71.0), Netflix is currently running this in learning mode / judiciously enabling in response to on-call events.
 
 Spinnaker ships with an optional Quality of Service (QoS) module that can be used to manage the amount of active executions running at any given time.
@@ -22,17 +23,17 @@ The rest of this section assumes that QoS is enabled.
 
 When an execution is submitted to Orca (either manually via the API or UI, or through an automated trigger), Orca will first emit a synchronous `BeforeExecutionPersist` event which the QoS [ExecutionBufferActuator][actuator] is listening on.
 The behavior of the `ExecutionBufferActuator` depends firstly on the result of a
-[BufferStateSupplier][buffer-state-supplier]. 
-The `BufferStateSupplier` can perform whatever heuristics necessary to determine whether or not any new execution should go through the QoS process. 
+[BufferStateSupplier][buffer-state-supplier].
+The `BufferStateSupplier` can perform whatever heuristics necessary to determine whether or not any new execution should go through the QoS process.
 If the `BufferStateSupplier` returns `false`, no other QoS actions occur and the execution is started as normal.
 
 In the event `BufferStateSupplier` returns `true`, the execution is passed through a chain of ordered [BufferPolicy][buffer-policy] functions.
-These `BufferPolicy` functions return a result defining whether or not to `BUFFER` or `ENQUEUE` the execution. 
+These `BufferPolicy` functions return a result defining whether or not to `BUFFER` or `ENQUEUE` the execution.
 All `BufferPolicy` functions must return `ENQUEUE`, otherwise the execution will be assigned a status of `BUFFERED`, delaying the initialization of the execution.
 When an execution is `BUFFERED`, it will effectively stay in a waiting state until it is unbuffered, which we'll go over later.
 
-`BufferPolicy` functions are pluggable and can contain arbitrary logic. 
-For example, one `BufferPolicy` that is always enabled is [EnqueueDeckOrchestrationBufferPolicy][deck-buffer-policy], which will always `ENQUEUE` an execution it is an Orchestration and from the UI. 
+`BufferPolicy` functions are pluggable and can contain arbitrary logic.
+For example, one `BufferPolicy` that is always enabled is [EnqueueDeckOrchestrationBufferPolicy][deck-buffer-policy], which will always `ENQUEUE` an execution it is an Orchestration and from the UI.
 This specific policy forces the `ENQUEUE` status, even if other policies call for the execution to be buffered; this is done through a `force` flag that policies can return.
 An example of other pluggable behavior is determining buffering action based on criticality of the execution: At Netflix we have a custom concept of application criticality, so we can buffer low criticality executions to allow capacity for higher criticality executions.
 
