@@ -39,7 +39,7 @@ See [How to Upload the Public Key](https://docs.cloud.oracle.com/iaas/Content/AP
 
 ## Add an Oracle Cloud account
 
-1. Run the following `hal` command to add an account named `my-oci-acct` to your list of Azure accounts:
+1. Run the following `hal` command to add an account named `my-oci-acct` to your list of Oracle Cloud accounts:
 
    ```bash
    hal config provider oracle account add my-oci-acct \
