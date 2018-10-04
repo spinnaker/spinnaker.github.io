@@ -455,6 +455,8 @@ community:
   - title: Governance
     collapsed: true
     children:
+      - title: Overview
+        url: /community/governance/
       - title: Special Interest Groups
         url: /community/governance/sigs
   - title: Misc
