@@ -80,7 +80,7 @@ There are two things to take note of here:
    not require Deployment objects to exist to handle udpates. In fact, one
    __should not__ attempt to let Spinnaker's orchestration (Red/Black,
    Highlander) manage Server Groups handled by Kubernetes' orchestration
-   (Rolling Update), since do not, and are not intended to work together.
+   (Rolling Update), since they do not, and are not intended to work together.
 
 The labeling scheme is a little more complex when Deployment objects are
 involved, because Kubernetes deployments find Pods to manage using
