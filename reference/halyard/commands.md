@@ -4,7 +4,7 @@ title: "Commands"
 sidebar:
   nav: reference
 ---
-Published: 2018-09-12 17:44:28
+Published: 2018-10-08 21:46:40
 
 
 # Table of Contents
@@ -71,6 +71,15 @@ Published: 2018-09-12 17:44:28
  * [**hal config artifact http account list**](#hal-config-artifact-http-account-list)
  * [**hal config artifact http disable**](#hal-config-artifact-http-disable)
  * [**hal config artifact http enable**](#hal-config-artifact-http-enable)
+ * [**hal config artifact oracle**](#hal-config-artifact-oracle)
+ * [**hal config artifact oracle account**](#hal-config-artifact-oracle-account)
+ * [**hal config artifact oracle account add**](#hal-config-artifact-oracle-account-add)
+ * [**hal config artifact oracle account delete**](#hal-config-artifact-oracle-account-delete)
+ * [**hal config artifact oracle account edit**](#hal-config-artifact-oracle-account-edit)
+ * [**hal config artifact oracle account get**](#hal-config-artifact-oracle-account-get)
+ * [**hal config artifact oracle account list**](#hal-config-artifact-oracle-account-list)
+ * [**hal config artifact oracle disable**](#hal-config-artifact-oracle-disable)
+ * [**hal config artifact oracle enable**](#hal-config-artifact-oracle-enable)
  * [**hal config artifact s3**](#hal-config-artifact-s3)
  * [**hal config artifact s3 account**](#hal-config-artifact-s3-account)
  * [**hal config artifact s3 account add**](#hal-config-artifact-s3-account-add)
@@ -309,6 +318,14 @@ Published: 2018-09-12 17:44:28
  * [**hal config provider oracle account edit**](#hal-config-provider-oracle-account-edit)
  * [**hal config provider oracle account get**](#hal-config-provider-oracle-account-get)
  * [**hal config provider oracle account list**](#hal-config-provider-oracle-account-list)
+ * [**hal config provider oracle bakery**](#hal-config-provider-oracle-bakery)
+ * [**hal config provider oracle bakery base-image**](#hal-config-provider-oracle-bakery-base-image)
+ * [**hal config provider oracle bakery base-image add**](#hal-config-provider-oracle-bakery-base-image-add)
+ * [**hal config provider oracle bakery base-image delete**](#hal-config-provider-oracle-bakery-base-image-delete)
+ * [**hal config provider oracle bakery base-image edit**](#hal-config-provider-oracle-bakery-base-image-edit)
+ * [**hal config provider oracle bakery base-image get**](#hal-config-provider-oracle-bakery-base-image-get)
+ * [**hal config provider oracle bakery base-image list**](#hal-config-provider-oracle-bakery-base-image-list)
+ * [**hal config provider oracle bakery edit**](#hal-config-provider-oracle-bakery-edit)
  * [**hal config provider oracle disable**](#hal-config-provider-oracle-disable)
  * [**hal config provider oracle enable**](#hal-config-provider-oracle-enable)
  * [**hal config pubsub**](#hal-config-pubsub)
@@ -662,6 +679,7 @@ hal config artifact [subcommands]
  * `github`: Manage and view Spinnaker configuration for the github provider
  * `gitlab`: Manage and view Spinnaker configuration for the gitlab provider
  * `http`: Manage and view Spinnaker configuration for the http provider
+ * `oracle`: Manage and view Spinnaker configuration for the oracle provider
  * `s3`: Manage and view Spinnaker configuration for the s3 provider
 
 ---
@@ -1435,6 +1453,168 @@ Set the http artifact provider as enabled
 #### Usage
 ```
 hal config artifact http enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact oracle
+
+Manage and view Spinnaker configuration for the oracle provider
+
+#### Usage
+```
+hal config artifact oracle [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `account`: Manage and view Spinnaker configuration for the oracle artifact provider's account
+ * `disable`: Set the oracle artifact provider as disabled
+ * `enable`: Set the oracle artifact provider as enabled
+
+---
+## hal config artifact oracle account
+
+Manage and view Spinnaker configuration for the oracle artifact provider's account
+
+#### Usage
+```
+hal config artifact oracle account ACCOUNT [parameters] [subcommands]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `add`: Add an artifact account to the oracle artifact provider.
+ * `delete`: Delete a specific oracle artifact account by name.
+ * `edit`: Edit an artifact account in the oracle artifact provider.
+ * `get`: Get the specified account details for the oracle provider.
+ * `list`: List the artifact account names for the oracle artifact provider.
+
+---
+## hal config artifact oracle account add
+
+Add an artifact account to the oracle artifact provider.
+
+#### Usage
+```
+hal config artifact oracle account add ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--fingerprint`: Fingerprint of the public key
+ * `--namespace`: The namespace the bucket and objects should be created in
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--region`: An Oracle region (e.g., us-phoenix-1)
+ * `--ssh-private-key-file-path`: Path to the private key in PEM format
+ * `--tenancy-id`: Provide the OCID of the Oracle Tenancy to use.
+ * `--user-id`: Provide the OCID of the Oracle User you're authenticating as
+
+
+---
+## hal config artifact oracle account delete
+
+Delete a specific oracle artifact account by name.
+
+#### Usage
+```
+hal config artifact oracle account delete ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact oracle account edit
+
+Edit an artifact account in the oracle artifact provider.
+
+#### Usage
+```
+hal config artifact oracle account edit ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--fingerprint`: Fingerprint of the public key
+ * `--namespace`: The namespace the bucket and objects should be created in
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--region`: An Oracle region (e.g., us-phoenix-1)
+ * `--ssh-private-key-file-path`: Path to the private key in PEM format
+ * `--tenancy-id`: Provide the OCID of the Oracle Tenancy to use.
+ * `--user-id`: Provide the OCID of the Oracle User you're authenticating as
+
+
+---
+## hal config artifact oracle account get
+
+Get the specified account details for the oracle provider.
+
+#### Usage
+```
+hal config artifact oracle account get ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact oracle account list
+
+List the artifact account names for the oracle artifact provider.
+
+#### Usage
+```
+hal config artifact oracle account list [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact oracle disable
+
+Set the oracle artifact provider as disabled
+
+#### Usage
+```
+hal config artifact oracle disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact oracle enable
+
+Set the oracle artifact provider as enabled
+
+#### Usage
+```
+hal config artifact oracle enable [parameters]
 ```
 
 #### Parameters
@@ -2955,8 +3135,8 @@ hal config deploy ha clouddriver edit [parameters]
 #### Parameters
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--no-validate`: (*Default*: `false`) Skip validation.
- * `--redis-master-endpoint`: Set external Redis endpoint for clouddriver-rw and clouddriver-caching. clouddriver-rw and clouddriver-caching are configured to use the shared Redis, by default.
- * `--redis-slave-endpoint`: Set external Redis endpoint for clouddriver-ro. clouddriver-ro is configured to use the shared Redis, by default.
+ * `--redis-master-endpoint`: Set external Redis endpoint for clouddriver-rw and clouddriver-caching. The Redis URI schema is described here: https://www.iana.org/assignments/uri-schemes/prov/redis. clouddriver-rw and clouddriver-caching are configured to use the shared Redis, by default.
+ * `--redis-slave-endpoint`: Set external Redis endpoint for clouddriver-ro. The Redis URI schema is described here: https://www.iana.org/assignments/uri-schemes/prov/redis. clouddriver-ro is configured to use the shared Redis, by default.
 
 
 ---
@@ -2977,7 +3157,7 @@ hal config deploy ha clouddriver enable [parameters]
 ---
 ## hal config deploy ha echo
 
-Manage and view Spinnaker configuration for the echo high availability service Manage and view Spinnaker configuration for the echo high availability service. When echo high availability is enabled, Halyard will deploy echo as two separate services in order to increase availability: echo-scheduler and echo-slave. The echo-scheduler service only handles Spinnaker cron-jobs and is isolated from the rest of Spinnaker.. The echo-slave handles everything else.
+Manage and view Spinnaker configuration for the echo high availability service Manage and view Spinnaker configuration for the echo high availability service. When echo high availability is enabled, Halyard will deploy echo as two separate services in order to increase availability: echo-scheduler and echo-worker. The echo-scheduler service only handles Spinnaker cron-jobs and is isolated from the rest of Spinnaker. The echo-worker handles everything else.
 
 #### Usage
 ```
@@ -3174,10 +3354,13 @@ hal config metric-stores datadog edit [parameters]
 ```
 
 #### Parameters
+ * `--add-tag`: Add this tag to the list of Datadog tags.
  * `--api-key`: Your datadog API key.
  * `--app-key`: Your datadog app key. This is only required if you want Spinnaker to push pre-configured Spinnaker dashboards to your Datadog account.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--remove-tag`: Remove this tag from the list of Datadog tags.
+ * `--tags`: (*Default*: `[]`) Your datadog custom tags. Please delimit the KVP with colons i.e. --tags app:test env:dev
 
 
 ---
@@ -4583,6 +4766,7 @@ hal config provider docker-registry account add ACCOUNT [parameters]
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--paginate-size`: (*Default*: `100`) Paginate size for the docker repository _catalog endpoint.
  * `--password`: (*Sensitive data* - user will be prompted on standard input) Your docker registry password
+ * `--password-command`: Command to retrieve docker token/password, commands must be available in environment
  * `--password-file`: The path to a file containing your docker password in plaintext (not a docker/config.json file)
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
  * `--read-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to view this account's cloud resources.
@@ -4643,6 +4827,7 @@ hal config provider docker-registry account edit ACCOUNT [parameters]
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--paginate-size`: Paginate size for the docker repository _catalog endpoint.
  * `--password`: (*Sensitive data* - user will be prompted on standard input) Your docker registry password
+ * `--password-command`: Command to retrieve docker token/password, commands must be available in environment
  * `--password-file`: The path to a file containing your docker password in plaintext (not a docker/config.json file)
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
  * `--read-permissions`: A user must have at least one of these roles in order to view this account's cloud resources.
@@ -5840,6 +6025,7 @@ hal config provider oracle [parameters] [subcommands]
 
 #### Subcommands
  * `account`: Manage and view Spinnaker configuration for the oracle provider's account
+ * `bakery`: Manage and view Spinnaker configuration for the oracle provider's image bakery configuration.
  * `disable`: Set the oracle provider as disabled
  * `enable`: Set the oracle provider as enabled
 
@@ -5970,6 +6156,156 @@ hal config provider oracle account list [parameters]
 #### Parameters
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config provider oracle bakery
+
+Manage and view Spinnaker configuration for the oracle provider's image bakery configuration.
+
+#### Usage
+```
+hal config provider oracle bakery [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `base-image`: Manage and view Spinnaker configuration for the oracle provider's base image.
+ * `edit`: Edit the oracle provider's bakery default options.
+
+---
+## hal config provider oracle bakery base-image
+
+Manage and view Spinnaker configuration for the oracle provider's base image.
+
+#### Usage
+```
+hal config provider oracle bakery base-image [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `add`: Add a base image for the oracle provider's bakery.
+ * `delete`: Delete a specific oracle base image by name.
+ * `edit`: Edit a base image for the oracle provider's bakery.
+ * `get`: Get the specified base image details for the oracle provider.
+ * `list`: List the base image names for the oracle provider.
+
+---
+## hal config provider oracle bakery base-image add
+
+Add a base image for the oracle provider's bakery.
+
+#### Usage
+```
+hal config provider oracle bakery base-image add BASE-IMAGE [parameters]
+```
+
+#### Parameters
+`BASE-IMAGE`: The name of the base image to operate on.
+ * `--base-image-id`: (*Required*) The OCID of the base image ID for the baking configuration.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--detailed-description`: A long description to help human operators identify the image.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--package-type`: This is used to help Spinnaker's bakery download the build artifacts you supply it with. For example, specifying 'deb' indicates that your artifacts will need to be fetched from a debian repository.
+ * `--short-description`: A short description to help human operators identify the image.
+ * `--ssh-user-name`: (*Required*) The ssh username for the baking configuration.
+ * `--template-file`: This is the name of the packer template that will be used to bake images from this base image. The template file must be found in this list https://github.com/spinnaker/rosco/tree/master/rosco-web/config/packer, or supplied as described here: https://spinnaker.io/setup/bakery/
+
+
+---
+## hal config provider oracle bakery base-image delete
+
+Delete a specific oracle base image by name.
+
+#### Usage
+```
+hal config provider oracle bakery base-image delete BASE-IMAGE [parameters]
+```
+
+#### Parameters
+`BASE-IMAGE`: The name of the base image to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config provider oracle bakery base-image edit
+
+Edit a base image for the oracle provider's bakery.
+
+#### Usage
+```
+hal config provider oracle bakery base-image edit BASE-IMAGE [parameters]
+```
+
+#### Parameters
+`BASE-IMAGE`: The name of the base image to operate on.
+ * `--base-image-id`: The OCID of the base image ID for the baking configuration.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--detailed-description`: A long description to help human operators identify the image.
+ * `--id`: This is the identifier used by your cloud to find this base image.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--package-type`: This is used to help Spinnaker's bakery download the build artifacts you supply it with. For example, specifying 'deb' indicates that your artifacts will need to be fetched from a debian repository.
+ * `--short-description`: A short description to help human operators identify the image.
+ * `--ssh-user-name`: The ssh username for the baking configuration.
+ * `--template-file`: This is the name of the packer template that will be used to bake images from this base image. The template file must be found in this list https://github.com/spinnaker/rosco/tree/master/rosco-web/config/packer, or supplied as described here: https://spinnaker.io/setup/bakery/
+
+
+---
+## hal config provider oracle bakery base-image get
+
+Get the specified base image details for the oracle provider.
+
+#### Usage
+```
+hal config provider oracle bakery base-image get BASE-IMAGE [parameters]
+```
+
+#### Parameters
+`BASE-IMAGE`: The name of the base image to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config provider oracle bakery base-image list
+
+List the base image names for the oracle provider.
+
+#### Usage
+```
+hal config provider oracle bakery base-image list [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config provider oracle bakery edit
+
+Edit the oracle provider's bakery default options.
+
+#### Usage
+```
+hal config provider oracle bakery edit [parameters]
+```
+
+#### Parameters
+ * `--availability-domain`: (*Required*) The name of the Availability Domain within which a new instance is launched and provisioned.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--instance-shape`: (*Required*) The shape for allocated to a newly created instance.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--subnet-id`: (*Required*) The name of the subnet within which a new instance is launched and provisioned.
+ * `--template-file`: This is the name of the packer template that will be used to bake images from this base image. The template file must be found in this list https://github.com/spinnaker/rosco/tree/master/rosco-web/config/packer, or supplied as described here: https://spinnaker.io/setup/bakery/
 
 
 ---
@@ -6281,7 +6617,7 @@ hal config security api ssl edit [parameters]
 ```
 
 #### Parameters
- * `--client-auth`: (*Sensitive data* - user will be prompted on standard input) Declare 'WANT' when client auth is wanted but not mandatory, or 'NEED', when client auth is mandatory.
+ * `--client-auth`: Declare 'WANT' when client auth is wanted but not mandatory, or 'NEED', when client auth is mandatory.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--key-alias`: Name of your keystore entry as generated with your keytool.
  * `--keystore`: Path to the keystore holding your security certificates.
@@ -6973,6 +7309,7 @@ hal config security ui ssl edit [parameters]
 #### Parameters
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--ssl-certificate-ca-file`: Path to the .crt file for the CA that issued your SSL certificate. This is only needed for localgitdeployments that serve the UI using webpack dev server.
  * `--ssl-certificate-file`: Path to your .crt file.
  * `--ssl-certificate-key-file`: Path to your .key file.
  * `--ssl-certificate-passphrase`: (*Sensitive data* - user will be prompted on standard input) The passphrase needed to unlock your SSL certificate. This will be provided to Apache on startup.
