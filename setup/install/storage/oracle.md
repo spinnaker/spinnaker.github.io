@@ -3,7 +3,6 @@ layout: single
 title:  "Oracle Cloud Infrastructure Object Storage"
 sidebar:
   nav: setup
-redirect_from: /setup/storage/oracle/
 ---
 
 Using [Oracle Object Storage](https://docs.cloud.oracle.com/iaas/Content/Object/Concepts/objectstorageoverview.htm){:target="\_blank"} as a storage source means that Spinnaker will store all of its persistent data in a
@@ -12,7 +11,7 @@ Using [Oracle Object Storage](https://docs.cloud.oracle.com/iaas/Content/Object/
 ## Prerequisites
 
 If you have enabled [Oracle Cloud provider](/setup/install/providers/oracle/) in Spinnaker, you may use the same region, Tenancy’s OCID, user’s OCID, Compartment's OCID, private key file, and fingerprint to enable Oracle Object Storage. You will need the following to enable Oracle Object Storage in Spinnaker:
-- A user in IAM for the person or system who will be using the Spinnaker, and the user must be granted the access to Object Storage or in one IAM group with permissions of Object Storage.
+- A user in IAM for the person or system who will be using Spinnaker, and that user must be granted access to Object Storage or in one IAM group with permissions of Object Storage.
 See [Adding Users](https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/addingusers.htm){:target="\_blank"}, and [Object Storage Policy](https://docs.cloud.oracle.com/iaas/Content/Identity/Reference/objectstoragepolicyreference.htm){:target="\_blank"}
 - The user's home region. 
 See [Managing Regions](https://docs.cloud.oracle.com/iaas/Content/Identity/Tasks/managingregions.htm){:target="\_blank"}. 
@@ -34,7 +33,7 @@ See [How to Upload the Public Key](https://docs.cloud.oracle.com/iaas/Content/AP
 - Namespace: this is your Tenancy name. On Oracle Cloud Console, click on the user menu. The Tenancy name is next to your user name. See [Object Storage Namespaces](https://docs.cloud.oracle.com/iaas/Content/Object/Tasks/understandingnamespaces.htm){:target="\_blank"}.
 See [Managing Compartments](https://docs.cloud.oracle.com/iaas/Content/Identity/Tasks/managingcompartments.htm){:target="\_blank"}. 
 (e.g. `--namespace my-tenancy`)
-- A bucket to store persistent data within the Object Storage namespace. If you do not already have a bucket that you want to use, Halyard will create one for you (either with the `--bucket` name provided, or `_spinnaker_front50_data` by default).
+- A bucket to store persistent data within the Object Storage namespace. If you do not already have a bucket that you want to use, Halyard will create one for you (either with the `--bucket-name` name provided, or `_spinnaker_front50_data` by default).
 See [Managing Buckets](https://docs.cloud.oracle.com/iaas/Content/Object/Tasks/managingbuckets.htm){:target="\_blank"}. 
 (e.g. `--bucket-name my-spinnaker-bucket`) 
 
