@@ -77,7 +77,7 @@ There are two things to take note of here:
    replicated sets of Instances that are updated by some orchestration
    mechanism, this is an apt mapping.
 2. This mapping is optional because Spinnaker's orchestration capabilities do
-   not require Deployment objects to exist to handle udpates. In fact, one
+   not require Deployment objects to exist to handle updates. In fact, one
    __should not__ attempt to let Spinnaker's orchestration (Red/Black,
    Highlander) manage Server Groups handled by Kubernetes' orchestration
    (Rolling Update), since they do not, and are not intended to work together.
