@@ -16,7 +16,7 @@ the account](#add-an-oracle-cloud-account).
 ## Prerequisites
 
 You will need the following to enable Oracle Cloud provider in Spinnaker:
-- A user in IAM for the person or system who will be using the Spinnaker, and put that user in at 
+- A user in IAM for the person or system who will be using Spinnaker, and put that user in at 
 least one IAM group with any desired permissions. 
 See [Adding Users](https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/addingusers.htm#one){:target="\_blank"}. 
 - The user's home region. 
