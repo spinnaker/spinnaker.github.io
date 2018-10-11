@@ -29,6 +29,7 @@ Before deploying Orca, the schema and database uses must first be manually setup
 
 1. Set MySQL Server `tx_isolation` setting to `READ-COMMITTED`
 2. Setup the schema and database users
+  
   ```sql
   CREATE SCHEMA `orca` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
