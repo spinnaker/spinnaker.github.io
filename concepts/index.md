@@ -60,8 +60,8 @@ You can define *Clusters*, which are logical groupings of Server Groups in
 Spinnaker.
 
 > **Note:** cluster, here, does not map to a Kubernetes cluster. It's merely a
-> collection Server Groups, irrespective of any Kubernetes clusters that might
-be included in your underlying architecture.
+> collection of Server Groups, irrespective of any Kubernetes clusters that might
+> be included in your underlying architecture.
 
 ### Server Group
 
