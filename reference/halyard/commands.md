@@ -5501,6 +5501,7 @@ When no namespaces are configured, this defaults to 'all namespaces'.
 This can only be set when --kinds is empty or not set.
  * `--omit-namespaces`: (*Default*: `[]`) A list of namespaces this Spinnaker account cannot deploy to or cache.
 This can only be set when --namespaces is empty or not set.
+ * `--only-spinnaker-managed`: (*Default*: `false`) (V2 Only) When true, Spinnaker only caches resources that it has created and annotated.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
  * `--read-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to view this account's cloud resources.
  * `--required-group-membership`: (*Default*: `[]`) A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
@@ -5563,6 +5564,7 @@ When no namespaces are configured, this defaults to 'all namespaces'.
 This can only be set when --kinds is empty or not set.
  * `--omit-namespaces`: (*Default*: `[]`) A list of namespaces this Spinnaker account cannot deploy to or cache.
 This can only be set when --namespaces is empty or not set.
+ * `--only-spinnaker-managed`: (*Default*: `false`) (V2 Only) When true, Spinnaker only caches resources that it has created and annotated.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
  * `--read-permissions`: A user must have at least one of these roles in order to view this account's cloud resources.
  * `--remove-docker-registry`: Remove this docker registry from the list of docker registries to use as a source of images.
