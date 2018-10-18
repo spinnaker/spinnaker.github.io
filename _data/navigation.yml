@@ -114,6 +114,8 @@ setup:
             url: /setup/artifacts/github/
           - title: HTTP
             url: /setup/artifacts/http/
+          - title: Oracle Object
+            url: /setup/artifacts/oracle/
       - title: Configure the Image Bakery
         collapsed: true
         children:
@@ -121,6 +123,8 @@ setup:
             url: /setup/bakery/
           - title: Google Compute Engine
             url: /setup/bakery/google/
+          - title: Oracle
+            url: /setup/bakery/oracle/
       - title: Secure Spinnaker
         collapsed: true
         children:
@@ -411,6 +415,8 @@ reference:
             url: /reference/artifacts/types/http-file/
           - title: Kubernetes Object
             url: /reference/artifacts/types/kubernetes-object/
+          - title: Oracle Object
+            url: /reference/artifacts/types/oracle-object/
   - title: Halyard
     collapsed: true
     children:
