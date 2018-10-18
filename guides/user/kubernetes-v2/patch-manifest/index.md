@@ -106,7 +106,7 @@ Assuming you have declared an expected artifact upstream to your Patch (Manifest
 
 ## Override artifacts
 
-The Patch (Manifest) stage also allows you to [override artifacts](/guides/user/kubernetes-v2/deploy-manifest#override-artifacts) like in the deploy manifest stage.
+When patching with a _strategic_ or _merge_ strategy, the Patch (Manifest) stage also allows you to [override artifacts](/guides/user/kubernetes-v2/deploy-manifest#override-artifacts) like in the deploy manifest stage.
 
 For instance, say you have a pipeline with a Patch (Manifest) stage with the following patch content:
 
