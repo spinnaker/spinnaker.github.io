@@ -5,8 +5,6 @@ sidebar:
   nav: guides
 ---
 
-{% include alpha version="1.8" %}
-
 {% include toc %}
 
 Spinnaker surfaces a "Bake (Manifest)" stage to turn templates into manifests
