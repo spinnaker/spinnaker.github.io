@@ -1,10 +1,5 @@
 ---
 layout: home
-summit_row:
-  title: "Come join us at the 2nd-annual Spinnaker Summit"
-  excerpt: "Oct. 8-9 in Seattle, WA"
-  image_path: assets/images/spinnaker_summit.png
-  alt: ""
 spinnaker_row:
   title: Spinnaker is an open source, multi-cloud continuous delivery platform for releasing software changes with high velocity and confidence.
   excerpt: "Created at Netflix, it has been battle-tested in production by hundreds of teams over millions of deployments. It combines a powerful and flexible pipeline management system with integrations to the major cloud providers."
