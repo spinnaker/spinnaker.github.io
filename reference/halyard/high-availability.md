@@ -137,10 +137,10 @@ To add a [custom profile](/reference/halyard/custom/#custom-profiles) or [custom
 
 ## Deleting Orphaned Services
 
-When enabling or disabling HA for a service on a running Spinnaker, Halyard will not clean up the old service(s) by default. This means that if a non-HA Clouddriver is running and Spinnaker is then deployed with HA Clouddriver enabled, the non-HA Clouddriver will still be running, even though it is no longer used. To clean up these orphaned services, add a `--delete-orphaned-services` flag to `hal deploy apply`:
+When enabling or disabling HA for a service on a running Spinnaker, Halyard will not clean up the old service(s) by default. This means that if a non-HA Clouddriver is running (for example) and Spinnaker is then deployed with HA Clouddriver enabled, the non-HA Clouddriver will still be running, even though it is no longer used. To clean up these orphaned services, add a `--delete-orphaned-services` flag to `hal deploy apply`:
 
 ```bash
-hal deploy apply --delete-orphan-services
+hal deploy apply --delete-orphaned-services
 ```
 
 ## HA Topology
