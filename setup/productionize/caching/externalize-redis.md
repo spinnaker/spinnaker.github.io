@@ -24,7 +24,7 @@ First, determine the URL of your Redis installation. Some examples include:
 * `redis://admin:passw0rd@some.redis.url:6379`: Same as above, but with
   a username/password pair.
 
-* `redis://admin:passw0rd@some.redis.url:6379?db=1`: Same as above, but using
+* `redis://admin:passw0rd@some.redis.url:6379/1`: Same as above, but using
   database 1. See [SELECT documentation](https://redis.io/commands/select).
 
 We will refer to this as `$REDIS_ENDPOINT`.
