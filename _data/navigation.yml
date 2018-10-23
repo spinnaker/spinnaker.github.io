@@ -307,11 +307,6 @@ guides:
             url: /guides/user/canary/judge/
           - title: Best practices
             url: /guides/user/canary/best-practices/
-  - title: Operator How-Tos
-    collapsed: true
-    children:
-      - title: Custom Webhook Stages
-        url: /guides/operator/custom-webhook-stages/
   - title: Developer How-Tos
     collapsed: true
     children:
@@ -337,8 +332,10 @@ guides:
         url: /guides/runbooks/api-rate-limiting/
       - title: Sharding Spinnaker
         url: /guides/runbooks/sharding-spinnaker/
-      - title: Orca Quality of Service
+      - title: "Orca: Quality of Service"
         url: /guides/runbooks/orca-quality-of-service/
+      - title: "Orca: Zombie Executions"
+        url: /guides/runbooks/orca-zombie-executions/
   - title: Spin CLI
     collapsed: true
     children:
