@@ -251,6 +251,8 @@ data:
           add_source_metalabels: true
         stackdriver:
           enabled: false
+        signalfx:
+          enabled: false
         period: 30
         enabled: false
       notifications:

@@ -30,8 +30,9 @@ metrics, using some telemetry provider, which Kayenta can then use to make the
 canary judgment.
 
 Support is built in for [Stackdriver](https://cloud.google.com/stackdriver/docs/),
-[Datadog](https://docs.datadoghq.com/), and
-[Prometheus](https://prometheus.io/docs/introduction/overview/).
+[Datadog](https://docs.datadoghq.com/),
+[Prometheus](https://prometheus.io/docs/introduction/overview/), and
+[Signalfx](https://docs.signalfx.com).
 
 ### Set up your canary environment
 
