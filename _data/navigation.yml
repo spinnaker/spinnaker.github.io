@@ -450,7 +450,9 @@ community:
         url: /community/releases/release-cadence/
       - title: Support Policy
         url: /community/releases/support-policy/
-  - title: Contributing
+  - title: User Stories
+    url: /community/user-stories/
+  - title: Contributing!
     collapsed: true
     children:
       - title: Overview
