@@ -452,7 +452,7 @@ community:
         url: /community/releases/support-policy/
   - title: User Stories
     url: /community/user-stories/
-  - title: Contributing!
+  - title: Contributing
     collapsed: true
     children:
       - title: Overview
