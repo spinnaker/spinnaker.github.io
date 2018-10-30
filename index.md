@@ -54,7 +54,7 @@ ci_integrations_feature:
   content: "Listen to events, collect artifacts, and trigger pipelines from Jenkins or Travis CI. Triggers via git, cron, or a new image in a docker registry are also supported."
 monitoring_integrations_feature:
   title: Monitoring Integrations
-  content: "Tie your releases to monitoring services Datadog, Prometheus, or Stackdriver, using their metrics for canary analysis."
+  content: "Tie your releases to monitoring services Datadog, Prometheus, Stackdriver, or SignalFx, using their metrics for canary analysis."
 cli_feature:
   title: CLI for Setup and Admin
   content: "Install, configure, and update your Spinnaker instance with halyard, Spinnaker’s CLI tool."

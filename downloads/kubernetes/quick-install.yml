@@ -323,6 +323,9 @@ data:
         - name: datadog
           enabled: false
           accounts: []
+        - name: signalfx
+          enabled: false
+          accounts: []
         - name: aws
           enabled: true
           accounts:

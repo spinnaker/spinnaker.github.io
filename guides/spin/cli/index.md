@@ -71,7 +71,9 @@ and the [README](https://github.com/spinnaker/spin/blob/master/README.md) for mo
 
 ### OAuth2
 
-`spin` can be configured with OAuth2.0 to authenticate calls against Spinnaker. The configuration
+#### Client ID and Client Secret
+
+`spin` can be configured with an OAuth2 client ID and secret to authenticate calls against Spinnaker. The configuration
 block looks like this:
 
 ```yaml
@@ -90,13 +92,45 @@ auth:
 Read [the OAuth setup instructions](https://www.spinnaker.io/setup/security/authentication/oauth/providers/)
 to see examples for acquiring a clientId/clientSecret from your provider.
 
-Unlike X.509, OAuth2 needs to be initialized once to authenticate with the provider before
+This OAuth2 configuration method needs to be initialized once to authenticate with the provider before
 it can be used for automation. To authenticate, configure OAuth2 as shown above and execute
 any `spin` command. You will be prompted to authenticate with your OAuth2 provider
 and paste an access code. `spin` then exchanges the code for an OAuth2 access/refresh token pair,
 which it caches in your `~/.spin/config` file for future use. All subsequent `spin` calls will
 use the cached OAuth2 token for authentication with no user input required. If an OAuth2
 access token expires, `spin` will use the refresh token to renew the access token expiry.
+
+#### Access and Refresh Token
+
+`spin` can also be configured with an OAuth2 access token and refresh token in lieu of configuring
+an OAuth2 client ID and secret. The `spin` configuration looks like this:
+
+```yaml
+auth:
+  enabled: true
+  oauth2:
+    authUrl: # OAuth2 provider auth url
+    tokenUrl: # OAuth2 provider token url
+    # no clientId or clientSecret
+    scopes: # Scopes requested for the token
+    - scope1
+    - scope2
+    cachedToken:
+      accesstoken: ${ACCESS_TOKEN} # Note the key capitalization
+      refreshtoken: ${REFRESH_TOKEN} # Note the key capitalization
+```
+
+This method is OAuth2-provider specific since the workflow to acquire
+a token is different for each provider. To do so using Google OAuth2 and `gcloud`:
+
+  1. Authenticate with Google via `gcloud auth login`.
+
+  2. Use the following commands to acquire the tokens:
+
+    ```
+    ACCESS_TOKEN=$(gcloud auth print-access-token)
+    REFRESH_TOKEN=$(gcloud auth print-refresh-token)
+    ```
 
 ## Global Flags
 
