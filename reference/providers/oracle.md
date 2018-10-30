@@ -55,9 +55,8 @@ Lists to provide a virtual firewall for an instance.
 
 Deploys a group of VM instances in OCI.
 
-A new server group template is created for each new server group and stored in Oracle Object 
-Storage. The Oracle Cloud provider in Spinnaker creates a bucket named `_spinnaker_server_group_data`
-to store all the server group templates.
+The Oracle Cloud provider in Spinnaker creates a bucket named `_spinnaker_server_group_data`
+within the user's tenancy to keep track of all the server groups created.
 
 If a deployed server group is configured with load balancer, all VM instances of the server group 
 are added to the backend set of corresponding listener in the load balancer.
@@ -65,7 +64,7 @@ are added to the backend set of corresponding listener in the load balancer.
 ### Destroy
 
 Destroys a server group and terminates all its VM instances. This also removes the server group 
-template stored in `_spinnaker_server_group_data` bucket. If the server group is configured with 
+information stored in `_spinnaker_server_group_data` bucket. If the server group is configured with 
 a load balancer, all the VM instances of the server group are removed from the backend set.
 
 ### Resize
