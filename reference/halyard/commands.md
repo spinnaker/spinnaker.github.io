@@ -4,7 +4,7 @@ title: "Commands"
 sidebar:
   nav: reference
 ---
-Published: 2018-10-08 23:13:36
+Published: 2018-10-25 16:50:20
 
 
 # Table of Contents
@@ -132,6 +132,15 @@ Published: 2018-10-08 23:13:36
  * [**hal config canary prometheus disable**](#hal-config-canary-prometheus-disable)
  * [**hal config canary prometheus edit**](#hal-config-canary-prometheus-edit)
  * [**hal config canary prometheus enable**](#hal-config-canary-prometheus-enable)
+ * [**hal config canary signalfx**](#hal-config-canary-signalfx)
+ * [**hal config canary signalfx account**](#hal-config-canary-signalfx-account)
+ * [**hal config canary signalfx account add**](#hal-config-canary-signalfx-account-add)
+ * [**hal config canary signalfx account delete**](#hal-config-canary-signalfx-account-delete)
+ * [**hal config canary signalfx account edit**](#hal-config-canary-signalfx-account-edit)
+ * [**hal config canary signalfx account get**](#hal-config-canary-signalfx-account-get)
+ * [**hal config canary signalfx account list**](#hal-config-canary-signalfx-account-list)
+ * [**hal config canary signalfx disable**](#hal-config-canary-signalfx-disable)
+ * [**hal config canary signalfx enable**](#hal-config-canary-signalfx-enable)
  * [**hal config ci**](#hal-config-ci)
  * [**hal config ci jenkins**](#hal-config-ci-jenkins)
  * [**hal config ci jenkins disable**](#hal-config-ci-jenkins-disable)
@@ -1517,6 +1526,7 @@ hal config artifact oracle account add ACCOUNT [parameters]
  * `--fingerprint`: Fingerprint of the public key
  * `--namespace`: The namespace the bucket and objects should be created in
  * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--private-key-passphrase`: (*Sensitive data* - user will be prompted on standard input) Passphrase used for the private key, if it is encrypted
  * `--region`: An Oracle region (e.g., us-phoenix-1)
  * `--ssh-private-key-file-path`: Path to the private key in PEM format
  * `--tenancy-id`: Provide the OCID of the Oracle Tenancy to use.
@@ -1555,6 +1565,7 @@ hal config artifact oracle account edit ACCOUNT [parameters]
  * `--fingerprint`: Fingerprint of the public key
  * `--namespace`: The namespace the bucket and objects should be created in
  * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--private-key-passphrase`: (*Sensitive data* - user will be prompted on standard input) Passphrase used for the private key, if it is encrypted
  * `--region`: An Oracle region (e.g., us-phoenix-1)
  * `--ssh-private-key-file-path`: Path to the private key in PEM format
  * `--tenancy-id`: Provide the OCID of the Oracle Tenancy to use.
@@ -1800,6 +1811,7 @@ hal config canary [parameters] [subcommands]
  * `enable`: Set Spinnaker's canary analysis to enabled.
  * `google`: Configure your canary analysis Google service integration settings for Spinnaker.
  * `prometheus`: Configure your canary analysis Prometheus service integration settings for Spinnaker.
+ * `signalfx`: Configure your canary analysis SignalFx service integration settings for Spinnaker.
 
 ---
 ## hal config canary aws
@@ -2541,6 +2553,158 @@ hal config canary prometheus enable [parameters]
 
 
 ---
+## hal config canary signalfx
+
+Configure your canary analysis SignalFx service integration settings for Spinnaker.
+
+#### Usage
+```
+hal config canary signalfx [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `account`: Manage and view Spinnaker configuration for the Signalfx service integration's canary accounts.
+ * `disable`: Set Spinnaker's canary analysis Signalfx service integration to disabled.
+ * `enable`: Set Spinnaker's canary analysis Signalfx service integration to enabled.
+
+---
+## hal config canary signalfx account
+
+Manage and view Spinnaker configuration for the Signalfx service integration's canary accounts.
+
+#### Usage
+```
+hal config canary signalfx account ACCOUNT [parameters] [subcommands]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `add`: Add a canary account to the Signalfx service integration.
+ * `delete`: Delete a specific Signalfx canary account by name.
+ * `edit`: Edit a canary account in the Signalfx service integration.
+ * `get`: Get the specified canary account details for the Signalfx service integration.
+ * `list`: List the canary account names for the Signalfx service integration.
+
+---
+## hal config canary signalfx account add
+
+Add a canary account to the Signalfx service integration.
+
+#### Usage
+```
+hal config canary signalfx account add ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--access-token`: (*Required*) (*Sensitive data* - user will be prompted on standard input) The SignalFx access token.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary signalfx account delete
+
+Delete a specific Signalfx canary account by name.
+
+#### Usage
+```
+hal config canary signalfx account delete ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary signalfx account edit
+
+Edit a canary account in the Signalfx service integration.
+
+#### Usage
+```
+hal config canary signalfx account edit ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--access-token`: (*Sensitive data* - user will be prompted on standard input) The SignalFx access token.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary signalfx account get
+
+Get the specified canary account details for the Signalfx service integration.
+
+#### Usage
+```
+hal config canary signalfx account get ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary signalfx account list
+
+List the canary account names for the Signalfx service integration.
+
+#### Usage
+```
+hal config canary signalfx account list [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary signalfx disable
+
+Set Spinnaker's canary analysis Signalfx service integration to disabled.
+
+#### Usage
+```
+hal config canary signalfx disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary signalfx enable
+
+Set Spinnaker's canary analysis Signalfx service integration to enabled.
+
+#### Usage
+```
+hal config canary signalfx enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
 ## hal config ci
 
 Configure, validate, and view the specified Continuous Integration service.
@@ -3136,6 +3300,7 @@ hal config deploy ha clouddriver edit [parameters]
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--redis-master-endpoint`: Set external Redis endpoint for clouddriver-rw and clouddriver-caching. The Redis URI schema is described here: https://www.iana.org/assignments/uri-schemes/prov/redis. clouddriver-rw and clouddriver-caching are configured to use the shared Redis, by default.
+ * `--redis-slave-deck-endpoint`: Set external Redis endpoint for clouddriver-ro-deck. The Redis URI schema is described here: https://www.iana.org/assignments/uri-schemes/prov/redis. clouddriver-ro-deck is configured to use the shared Redis, by default.
  * `--redis-slave-endpoint`: Set external Redis endpoint for clouddriver-ro. The Redis URI schema is described here: https://www.iana.org/assignments/uri-schemes/prov/redis. clouddriver-ro is configured to use the shared Redis, by default.
 
 
@@ -5501,6 +5666,8 @@ When no namespaces are configured, this defaults to 'all namespaces'.
 This can only be set when --kinds is empty or not set.
  * `--omit-namespaces`: (*Default*: `[]`) A list of namespaces this Spinnaker account cannot deploy to or cache.
 This can only be set when --namespaces is empty or not set.
+ * `--only-spinnaker-managed`: (*Default*: `false`) (V2 Only) When true, Spinnaker will only cache/display applications that have been
+created by Spinnaker; as opposed to attempting to configure applications for resources already present in Kubernetes.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
  * `--read-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to view this account's cloud resources.
  * `--required-group-membership`: (*Default*: `[]`) A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
@@ -5563,6 +5730,8 @@ When no namespaces are configured, this defaults to 'all namespaces'.
 This can only be set when --kinds is empty or not set.
  * `--omit-namespaces`: (*Default*: `[]`) A list of namespaces this Spinnaker account cannot deploy to or cache.
 This can only be set when --namespaces is empty or not set.
+ * `--only-spinnaker-managed`: (V2 Only) When true, Spinnaker will only cache/display applications that have been
+created by Spinnaker; as opposed to attempting to configure applications for resources already present in Kubernetes.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
  * `--read-permissions`: A user must have at least one of these roles in order to view this account's cloud resources.
  * `--remove-docker-registry`: Remove this docker registry from the list of docker registries to use as a source of images.
@@ -6068,6 +6237,7 @@ hal config provider oracle account add ACCOUNT [parameters]
  * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
  * `--fingerprint`: (*Required*) Fingerprint of the public key
  * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--private-key-passphrase`: (*Sensitive data* - user will be prompted on standard input) Passphrase used for the private key, if it is encrypted
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
  * `--read-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to view this account's cloud resources.
  * `--region`: (*Required*) An Oracle region (e.g., us-phoenix-1)
@@ -6114,6 +6284,7 @@ hal config provider oracle account edit ACCOUNT [parameters]
  * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
  * `--fingerprint`: Fingerprint of the public key
  * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--private-key-passphrase`: (*Sensitive data* - user will be prompted on standard input) Passphrase used for the private key, if it is encrypted
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
  * `--read-permissions`: A user must have at least one of these roles in order to view this account's cloud resources.
  * `--region`: An Oracle region (e.g., us-phoenix-1)
@@ -7473,6 +7644,7 @@ hal config storage oracle edit [parameters]
  * `--fingerprint`: Fingerprint of the public key
  * `--namespace`: The namespace the bucket and objects should be created in
  * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--private-key-passphrase`: (*Sensitive data* - user will be prompted on standard input) Passphrase used for the private key, if it is encrypted
  * `--region`: An Oracle region (e.g., us-phoenix-1)
  * `--ssh-private-key-file-path`: Path to the private key in PEM format
  * `--tenancy-id`: Provide the OCID of the Oracle Tenancy to use.
@@ -7584,6 +7756,7 @@ hal deploy apply [parameters]
 
 #### Parameters
  * `--auto-run`: This command will generate a script to be run on your behalf. By default, the script will run without intervention - if you want to override this, provide "true" or "false" to this flag.
+ * `--delete-orphaned-services`: (*Default*: `false`) Deletes unused Spinnaker services after the deploy succeeds. This flag is not allowed when using the --service-names or --exclude-service-names arg.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--exclude-service-names`: (*Default*: `[]`) When supplied, do not install or update the specified Spinnaker services.
  * `--flush-infrastructure-caches`: (*Default*: `false`) WARNING: This is considered an advanced command, and may break your deployment if used incorrectly.
