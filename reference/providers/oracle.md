@@ -55,8 +55,8 @@ Lists to provide a virtual firewall for an instance.
 
 Deploys a group of VM instances in OCI.
 
-The Oracle Cloud provider in Spinnaker creates a bucket named `_spinnaker_server_group_data`
-within the user's tenancy to keep track of all the server groups created.
+The Oracle Cloud provider in Spinnaker creates an Oracle Object Storage bucket named `_spinnaker_server_group_data`
+in the user’s tenancy to keep track of all the server groups created.
 
 If a deployed server group is configured with load balancer, all VM instances of the server group 
 are added to the backend set of corresponding listener in the load balancer.
