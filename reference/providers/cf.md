@@ -9,6 +9,8 @@ sidebar:
 
 If you are not familiar with Cloud Foundry (CF) or any of the terms used below, please consult [Cloud Foundry's reference documentation](https://docs.cloudfoundry.org).
 
+**NOTE:** The Cloud Foundry provider is currently in alpha phase.
+
 ## Resource mapping
 
 ### Account
