@@ -24,7 +24,7 @@ For the backend, you need to define:
 
 ## Stage class
 
-A stage class must implement the [com.netflix.spinnaker.orca.pipeline.StageDefinitionBuilder](https://github.com/spinnaker/orca/blob/master/orca-core/src/main/groovy/com/netflix/spinnaker/orca/pipeline/StageDefinitionBuilder.java) interface.
+A stage class must implement the [com.netflix.spinnaker.orca.pipeline.StageDefinitionBuilder](https://github.com/spinnaker/orca/blob/master/orca-core/src/main/java/com/netflix/spinnaker/orca/pipeline/StageDefinitionBuilder.java) interface.
 
 For providing additional functionality, it can also implement other interfaces:
 
