@@ -133,8 +133,6 @@ waze_case_study:
 </div>
 
 <div class="spin_header__push_down">
-<a href="https://www.spinnakersummit.com" target="_blank">{% include splash_feature_row id="summit_row" type="left" %}</a>
-<hr width="100%" size="4" noshade>
 {% include splash_feature_row id="spinnaker_row" type="right" %}
 {% include splash_feature_row id="multi_cloud_row" type="left" %}
 {% include splash_feature_row id="automated_releases_row" type="right" %}
