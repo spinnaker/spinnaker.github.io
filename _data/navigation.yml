@@ -376,8 +376,8 @@ reference:
         url: /reference/providers/kubernetes-v2/
 #      - title: OpenStack
 #        url: /reference/providers/openstack/
-#      - title: Oracle
-#        url: /reference/providers/oracle/
+      - title: Oracle Cloud
+        url: /reference/providers/oracle/
   - title: Artifacts
     collapsed: true
     children:
