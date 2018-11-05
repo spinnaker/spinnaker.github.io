@@ -64,4 +64,6 @@ stages](/guides/user/canary/stage/).
    The canary stage includes information that scopes the templated query (canary
      config) to a specified set of resources and time boundaries.
 
-See also: [The Canary Judge&mdash;how does it work?](/guides/user/canary/judge/)
+See also:  
+[The Canary Judge&mdash;how does it work?](/guides/user/canary/judge/)  
+[Automating Canary Analysis on GKE with Spinnaker](https://cloud.google.com/solutions/automated-canary-analysis-kubernetes-engine-spinnaker)
