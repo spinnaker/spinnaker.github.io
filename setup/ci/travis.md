@@ -13,7 +13,8 @@ system, trigger pipelines with Travis, or add a Travis stage to a pipeline.
 
 ## Prerequisites
 
-* You need a Travis user with an [API access token]() so that you get only the repos you should see.
+* You need a Travis user with an [API access token](https://docs.travis-ci.com/api/#authentication) so that you get only the
+repos you should see.
 
 * That user needs adequate access in GitHub to trigger builds.
 
