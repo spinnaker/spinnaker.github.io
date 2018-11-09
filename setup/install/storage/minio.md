@@ -67,3 +67,8 @@ echo $MINIO_SECRET_KEY | hal config storage s3 edit --endpoint $ENDPOINT \
 
 hal config storage edit --type s3
 ```
+
+## Next steps
+
+After you've set up Minio as your external storage service, you're ready to
+[deploy Spinnaker](/setup/install/deploy/).

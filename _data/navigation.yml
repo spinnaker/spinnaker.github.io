@@ -5,14 +5,14 @@ main:
     url: /setup/
   - title: Guides
     url: /guides/
-  - title: Ebook
-    url: /ebook/
   - title: Reference
     url: /reference/
   - title: Community
     url: /community/
   - title: Blog
     url: https://blog.spinnaker.io
+  - title: Publications
+    url: /publications/
 
 concepts:
   - children:
@@ -41,9 +41,14 @@ setup:
           - title: Overview
             url: /setup/install/providers/
           - title: Amazon Web Services
-            url: /setup/install/providers/aws/
-          - title: ECS (Amazon Web Services)
-            url: /setup/install/providers/ecs/
+            collapsed: true
+            children:
+              - title: Overview
+                url: /setup/install/providers/aws/
+              - title: EC2
+                url: /setup/install/providers/aws/aws-ec2/
+              - title: ECS
+                url: /setup/install/providers/aws/aws-ecs/
           - title: Azure
             url: /setup/install/providers/azure/
           - title: DC/OS
@@ -58,6 +63,12 @@ setup:
             url: /setup/install/providers/kubernetes/
           - title: Kubernetes (Manifest Based)
             url: /setup/install/providers/kubernetes-v2/
+            collapsed: false
+            children:
+              - title: Amazon EKS
+                url: /setup/install/providers/kubernetes-v2/aws-eks/
+              - title: Google Kubernetes Engine
+                url: /setup/install/providers/kubernetes-v2/gke/
           - title: OpenStack
             url: /setup/install/providers/openstack/
           - title: Oracle
@@ -79,7 +90,9 @@ setup:
             url: /setup/install/storage/redis/
           - title: S3
             url: /setup/install/storage/s3/
-      - title: 5. Deploy Spinnaker
+          - title: Oracle Object Storage
+            url: /setup/install/storage/oracle/
+      - title: 5. Deploy and Connect
         url: /setup/install/deploy/
       - title: 6. Back Up Your Config
         url: /setup/install/backups/
@@ -133,6 +146,8 @@ setup:
             url: /setup/ci/travis/
           - title: Jenkins
             url: /setup/ci/jenkins/
+          - title: Wercker
+            url: /setup/ci/wercker/
       - title: Enable Monitoring
         collapsed: true
         children:
@@ -153,6 +168,8 @@ setup:
             url: /setup/features/notifications/
           - title: Configure User Data (metadata)
             url: /setup/features/user-data/
+          - title: Configure the Script stage
+            url: /setup/features/script-stage/
   - title: Productionize Spinnaker
     collapsed: true
     children:
@@ -165,6 +182,16 @@ setup:
             url: /setup/productionize/caching/configure-redis-usage/
           - title: Externalize Redis
             url: /setup/productionize/caching/externalize-redis/
+      - title: Configure Scaling
+        collapsed: true
+        children:
+          - title: Horizontally Scale Spinnaker
+            url: /setup/productionize/scaling/horizontal-scaling/
+      - title: Configure Persistence
+        collapsed: true
+        children:
+          - title: Orca SQL
+            url: /setup/productionize/persistence/orca-sql/
 
 guides:
   - title: Tutorials
@@ -203,15 +230,36 @@ guides:
             url: /guides/tutorials/codelabs/dcos-source-to-prod/
           - title: Deploying GCS Pub/Sub Artifacts to App Engine
             url: /guides/tutorials/codelabs/pubsub-to-appengine/
+          - title: Automating Canary Analysis on GKE with Spinnaker
+            url: https://cloud.google.com/solutions/automated-canary-analysis-kubernetes-engine-spinnaker
   - title: User How-Tos
     collapsed: true
     children:
+      - title: Get Started
+        url: /guides/user/get-started/
+      - title: Applications
+        collapsed: true
+        children:
+          - title: About Applications
+            url: /guides/user/applications/
+          - title: Create an Application
+            url: /guides/user/applications/create/
+          - title: Configure an Application
+            url: /guides/user/applications/configure/
+          - title: Delete an Application
+            url: /guides/user/applications/delete/
       - title: Pipelines
         collapsed: true
         children:
+          - title: Managing Pipelines
+            url: /guides/user/pipeline/managing-pipelines/
           - title: Triggering Pipelines
             collapsed: true
             children:
+              - title: Overview
+                url: /guides/user/pipeline/triggers/
+              - title: Triggering pipelines with Jenkins
+                url: /guides/user/pipeline/triggers/jenkins/
               - title: Triggering on Pub/Sub Messages
                 url: /guides/user/pipeline/triggers/pubsub/
               - title: Triggering on Webhooks
@@ -241,6 +289,8 @@ guides:
             url: /guides/user/kubernetes-v2/automated-rollbacks/
           - title: Annotation-Driven UI
             url: /guides/user/kubernetes-v2/annotations-ui/
+          - title: Patch a Manifest
+            url: /guides/user/kubernetes-v2/patch-manifest/
       - title: Automated Canary Analysis
         collapsed: true
         children:
@@ -262,12 +312,21 @@ guides:
   - title: Developer How-Tos
     collapsed: true
     children:
+      - title: Getting Set Up
+        url: /guides/developer/getting-set-up/
       - title: Writing a New Stage
         url: /guides/developer/new-stage/
       - title: Kork Library
         url: /guides/developer/kork-library/
       - title: Kubernetes CRD extensions
         url: /guides/developer/crd-extensions/
+  - title: Operator How-Tos
+    collapsed: true
+    children:
+      - title: Custom Webhook Stages
+        url: /guides/operator/custom-webhook-stages/
+      - title: "Orca: Redis to SQL"
+        url: /guides/operator/orca-redis-to-sql/
   - title: Runbooks
     collapsed: true
     children:
@@ -275,9 +334,19 @@ guides:
         url: /guides/runbooks/api-rate-limiting/
       - title: Sharding Spinnaker
         url: /guides/runbooks/sharding-spinnaker/
-      - title: Orca Quality of Service
+      - title: "Orca: Quality of Service"
         url: /guides/runbooks/orca-quality-of-service/
-
+      - title: "Orca: Zombie Executions"
+        url: /guides/runbooks/orca-zombie-executions/
+  - title: Spin CLI
+    collapsed: true
+    children:
+      - title: Install and Configure Spin CLI
+        url: /guides/spin/cli/
+      - title: Manage Applications
+        url: /guides/spin/app/
+      - title: Manage Pipelines
+        url: /guides/spin/pipeline/
 reference:
   - title: API
     collapsed: true
@@ -295,6 +364,8 @@ reference:
 #        url: /reference/providers/aws/
       - title: Azure
         url: /reference/providers/azure/
+      - title: Cloud Foundry
+        url: /reference/providers/cf/
       - title: ECS (Amazon Web Services)
         url: /reference/providers/ecs/
       - title: Google App Engine
@@ -307,8 +378,8 @@ reference:
         url: /reference/providers/kubernetes-v2/
 #      - title: OpenStack
 #        url: /reference/providers/openstack/
-#      - title: Oracle
-#        url: /reference/providers/oracle/
+      - title: Oracle Cloud
+        url: /reference/providers/oracle/
   - title: Artifacts
     collapsed: true
     children:
@@ -351,7 +422,9 @@ reference:
       - title: Custom Configuration
         url: /reference/halyard/custom/
       - title: Component Sizing
-        url: /reference/halyard/component-sizing
+        url: /reference/halyard/component-sizing/
+      - title: High Availability
+        url: /reference/halyard/high-availability/
   - title: Architecture
     collapsed: true
     children:
@@ -361,6 +434,13 @@ reference:
         url: /reference/architecture/load/
       - title: Life of a Bake
         url: /reference/architecture/loab/
+  - title: Pipelines
+    collapsed: true
+    children:
+    - title: Pipeline Expressions
+      url: /reference/pipeline/expressions/
+    - title: Pipeline Stages
+      url: /reference/pipeline/stages/
 
 community:
   - title: Releases
@@ -387,16 +467,11 @@ community:
         url: /community/contributing/releasing/
       - title: Code Conventions for Server-side Components
         url: /community/contributing/back-end-code/
-  - title: Publications
-    collapsed: true
-    children:
-      - title: Presentations
-        url: /community/presentations/
-      - title: Articles
-        url: /community/articles/
   - title: Governance
     collapsed: true
     children:
+      - title: Overview
+        url: /community/governance/
       - title: Special Interest Groups
         url: /community/governance/sigs
   - title: Misc
@@ -404,3 +479,11 @@ community:
     children:
       - title: FAQs
         url: /community/faqs/
+
+publications:
+  - title: eBook
+    url: /publications/ebook/
+  - title: Presentations
+    url: /publications/presentations/
+  - title: Articles
+    url: /publications/articles/

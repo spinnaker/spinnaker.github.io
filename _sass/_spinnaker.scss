@@ -86,8 +86,9 @@ text.actor {
    Splash Page
    ========================================================================== */
 @font-face {
-  font-family: 'Source Sans Pro';
-  src: url(/assets/fonts/SourceSansPro-Light.ttf) format("truetype");
+  font-family: 'Assistant';
+  src: url(https://fonts.googleapis.com/css?family=Assistant);
+/*  src: url(/assets/fonts/SourceSansPro-Light.ttf) format("truetype"); */
 }
 
 $spin-light-blue: #e2f3f6;
@@ -234,7 +235,7 @@ h2.splash__item-title {
   color: $spin-dark-blue;
   font-weight: 100;
   margin-left: 0;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Assistant', sans-serif;
 }
 
 h1.spin__heading {
@@ -243,7 +244,7 @@ h1.spin__heading {
   color: $spin-dark-blue;
   font-weight: 100;
   margin-left: 0;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Assistant', sans-serif;
 }
 
 .spin_row {
@@ -345,7 +346,7 @@ $cloud-providers-bar-mobile-height: $blue-bar-mobile-height + $white-bar-height;
     color: $spin-dark-blue;
     font-weight: 100;
     margin-left: 0;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Assistant', sans-serif;
     margin-top: 1em;
   }
 
@@ -416,6 +417,18 @@ $cloud-providers-bar-mobile-height: $blue-bar-mobile-height + $white-bar-height;
   }
 }
 
+h3.collapsible-section-header {
+  margin-left: 30px;
+
+  + .collapsible-section {
+    margin-left: 30px;
+  }
+}
+
 li > div.highlighter-rouge {
   font-size: 0.75em;
+}
+
+div.highlighter-rouge {
+  overflow: auto;
 }

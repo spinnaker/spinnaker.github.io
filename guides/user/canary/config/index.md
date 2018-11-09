@@ -17,7 +17,7 @@ canary stage)
 * Optionally, one or more filter templates
 
 Canary configuration is done per Spinnaker
-[application](/concepts/#applications). For each
+[application](/concepts/#application). For each
 application set up to support canary, you create one or more configs.
 
 > Note: By default, all the canary configs you create are visible to all
@@ -83,7 +83,8 @@ and weights.
 
 The metrics available depend on the telemetry provider you use. Spinnaker
 currently supports [Stackdriver](https://cloud.google.com/Stackdriver/),
-[Prometheus](https://Prometheus.io), and [Datadog](https://www.datadoghq.com).
+[Prometheus](https://Prometheus.io), [Datadog](https://www.datadoghq.com),
+and [Signalfx](https://docs.signalfx.com).
 
 Metrics are evaluated even if they're not added to groups, but if you want to
 apply the weighting that determines the relative importance of different metrics,

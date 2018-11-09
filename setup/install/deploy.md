@@ -1,49 +1,67 @@
 ---
 layout: single
-title:  "Deploy"
+title:  "Deploy Spinnaker and Connect to the UI"
 sidebar:
   nav: setup
 redirect_from: /setup/install/upgrades/
 ---
 
-Now that we've picked a [Deployment Environment](/setup/install/environment/),
-configured [Persistent Storage](/setup/install/storage/), and enabled a [Cloud
-Provider](/setup/providers/) we're ready to pick a version of Spinnaker
-and deploy it. First, list the available versions:
+Now that we've enabled one or more [Cloud Providers](/setup/providers/), picked
+a [Deployment Environment](/setup/install/environment/), and configured
+[Persistent Storage](/setup/install/storage/), we're ready to pick a version of
+Spinnaker, deploy it, and connect to it.
 
-```bash
-hal version list
-```
+## Pick a version
 
-You can follow the links to their changelogs to see what features each version
-has included since the last release. Once you've picked a version (e.g.
-`VERSION=1.0.0`), you can set it with
+1. List the available versions:
 
-```bash
-hal config version edit --version $VERSION
-```
+   ```bash
+   hal version list
+   ```
 
-And finally, deploy Spinnaker with the following command:
+   You can follow the links to the versions' respective changelogs to see what
+   features each adds.
+
+1. Set the version you want to use:
+
+   ```bash
+   hal config version edit --version $VERSION
+   ```
+
+## Deploy Spinnaker
 
 ```bash
 hal deploy apply
 ```
 
-__Note:__ If you're deploying to your local machine, that command may need to
-be run with `sudo`.
+__Note:__ If you're deploying to your local machine, you might need `sudo hal
+deploy apply`.
 
 ## Connect to the Spinnaker UI
 
-If you have not enabled any sort of authentication, Spinnaker will not be
-publically reachable by default. In this case, you will need to run the
-following command to reach the UI on [localhost:9000](http://localhost:9000):
+1. Run the following command:
 
-```bash
-hal deploy connect
-```
+   ```bash
+   hal deploy connect
+   ```
 
-If you want to make Spinnaker publically reachable without running that command,
-please read the [Halyard FAQ](/setup/quickstart/faq/).
+   If necessary, set up an SSH tunnel to the host running Halyard.
+
+   This  command automatically forwards ports 9000 (Deck UI) and 8084 (Gate API
+     service).
+
+1. Navigate to [localhost:9000](localhost:9000).
+
+### Alternatives
+
+* You can make Spinnaker publicly reachable without running this command,
+as described
+[here](/setup/quickstart/faq//#i-want-to-expose-localdebian-spinnaker-on-a-public-ip-address-but-it-always-binds-to-localhost)
+(for local Debian) and
+[here](/setup/quickstart/faq/#i-want-to-expose-the-distributed-kubernetes-hosted-spinnaker-publicly)
+(for Kubernetes).
+
+* You can [set up authentication](/setup/security/authentication/).
 
 ## Troubleshooting
 
@@ -74,7 +92,14 @@ hal deploy apply
 ## Next steps
 
 Now that Spinnaker is deployed and capable managing your cloud provider, you
-can either visit the [Guides](/guides/) pages to learn how to use Spinnaker, or
-continue with additional configuration, such as your [image bakery](/setup/bakery/).
+can...
+
+* Continue with additional configuration, such as your [image
+bakery](/setup/bakery/)
+
+* If you're a Spinnaker end user, read how to [get started using
+Spinnaker](/guides/user/get-started)
+
+* Visit the [Guides](/guides/) pages to learn more
 
 You might also want to [back up your configuration](/setup/install/backups/).

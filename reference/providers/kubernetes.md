@@ -3,6 +3,7 @@ layout: single
 title:  "Kubernetes"
 sidebar:
   nav: reference
+redirect_from: /reference/providers/kubernetes-v1/
 ---
 
 {% include toc %}
@@ -25,7 +26,7 @@ to be used as a source of images.
 A Spinnaker **Instance** maps to a Kubernetes
 [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/). What
 differentiates this from other Cloud Providers is the ability for Pods to run
-multiple containers at once, whereas typical IAAS providers in Spinanker run
+multiple containers at once, whereas typical IAAS providers in Spinnaker run
 exactly one image per Instance. This means that extra care must be taken when
 updating Pods with more than one container to ensure that the correct container is
 replaced.
@@ -76,10 +77,10 @@ There are two things to take note of here:
    replicated sets of Instances that are updated by some orchestration
    mechanism, this is an apt mapping.
 2. This mapping is optional because Spinnaker's orchestration capabilities do
-   not require Deployment objects to exist to handle udpates. In fact, one
+   not require Deployment objects to exist to handle updates. In fact, one
    __should not__ attempt to let Spinnaker's orchestration (Red/Black,
    Highlander) manage Server Groups handled by Kubernetes' orchestration
-   (Rolling Update), since do not, and are not intended to work together.
+   (Rolling Update), since they do not, and are not intended to work together.
 
 The labeling scheme is a little more complex when Deployment objects are
 involved, because Kubernetes deployments find Pods to manage using

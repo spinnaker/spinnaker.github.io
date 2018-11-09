@@ -5,8 +5,6 @@ sidebar:
   nav: guides
 ---
 
-{% include alpha version="1.6" %}
-
 {% include toc %}
 
 In this codelab you will configure:

@@ -25,3 +25,8 @@ resources on this Setup page will assume you're following those instructions.
   [Spinnaker Architecture](/reference/architecture/).
 * Take a look at the [Releases](/community/releases/) page to pick a version of
   Spinnaker to install.
+
+## Then what?
+
+After you've done all this setup stuff, go to [Get started using
+Spinnaker](/guides/user/get-started/) to get to work.

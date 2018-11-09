@@ -5,8 +5,6 @@ sidebar:
   nav: reference
 ---
 
-{% include alpha version="1.6" %}
-
 {% include
    warning 
    content="Much of the behavior described here depends on looking up execution

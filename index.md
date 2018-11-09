@@ -1,10 +1,5 @@
 ---
 layout: home
-summit_row:
-  title: "Come join us at the 2nd-annual Spinnaker Summit"
-  excerpt: "Oct. 8-9 in Seattle, WA"
-  image_path: assets/images/spinnaker_summit.png
-  alt: ""
 spinnaker_row:
   title: Spinnaker is an open source, multi-cloud continuous delivery platform for releasing software changes with high velocity and confidence.
   excerpt: "Created at Netflix, it has been battle-tested in production by hundreds of teams over millions of deployments. It combines a powerful and flexible pipeline management system with integrations to the major cloud providers."
@@ -59,7 +54,7 @@ ci_integrations_feature:
   content: "Listen to events, collect artifacts, and trigger pipelines from Jenkins or Travis CI. Triggers via git, cron, or a new image in a docker registry are also supported."
 monitoring_integrations_feature:
   title: Monitoring Integrations
-  content: "Tie your releases to monitoring services Datadog, Prometheus, or Stackdriver, using their metrics for canary analysis."
+  content: "Tie your releases to monitoring services Datadog, Prometheus, Stackdriver, or SignalFx, using their metrics for canary analysis."
 cli_feature:
   title: CLI for Setup and Admin
   content: "Install, configure, and update your Spinnaker instance with halyard, Spinnaker’s CLI tool."
@@ -131,14 +126,13 @@ waze_case_study:
     <ul class="spin_call_to_action">
       <li><a href="/concepts/">HOW IT WORKS</a></li>
       <li><a href="/setup/">INSTALL SPINNAKER</a></li>
-      <li><a href="/ebook/">READ OUR EBOOK</a></li>
+      <li><a href="/guides/user/get-started/">GET STARTED</a></li>
+      <li><a href="/publications/ebook/">READ OUR EBOOK</a></li>
     </ul>
   </div>
 </div>
 
 <div class="spin_header__push_down">
-<a href="https://www.spinnakersummit.com" target="_blank">{% include splash_feature_row id="summit_row" type="left" %}</a>
-<hr width="100%" size="4" noshade>
 {% include splash_feature_row id="spinnaker_row" type="right" %}
 {% include splash_feature_row id="multi_cloud_row" type="left" %}
 {% include splash_feature_row id="automated_releases_row" type="right" %}

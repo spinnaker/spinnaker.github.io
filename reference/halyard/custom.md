@@ -40,7 +40,7 @@ Settings](/reference/halyard/custom/#custom-service-settings) for more
 information.
 
 You can validate that your Custom Profiles have been picked up and applied to
-their services by checking `~/.hal/$DEPLOYMENT/history/profile-settings.yml`.
+their services by checking `~/.hal/$DEPLOYMENT/history/service-profiles.yml`.
 
 ## Custom Service Settings
 
@@ -104,4 +104,15 @@ kubernetes:
   imagePullSecrets:
   - desired-image-pull-secret1
   - desired-image-pull-secret2
+```
+
+#### podAnnotations 
+
+Annotations can often be used to specify special behavior within Kubernetes. To apply annotations to the Pods for a particular service, use the following configuration:
+
+```
+kubernetes:
+  podAnnotations:
+    example/annotation: spinnaker.io
+    example/annotation-2: halyard
 ```

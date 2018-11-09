@@ -5,8 +5,6 @@ sidebar:
   nav: reference
 ---
 
-{% include alpha version="1.6" %}
-
 {% include toc %}
 
 This article describes how the Kubernetes provider v2 works and how it differs
@@ -117,18 +115,26 @@ command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
 
 * `caching.spinnaker.io/ignore`
 
-  When set to `true`, tells Spinnaker to ignore this resource.
+  When set to `'true'`, tells Spinnaker to ignore this resource.
   The resource is not cached and does not show up in the Spinnaker UI.
 
 ## Strategy
 
 * `strategy.spinnaker.io/versioned`
 
-  When set to `true` or `false`, this overrides the resource's default
+  When set to `'true'` or `'false'`, this overrides the resource's default
   "version" behavior described in the [resource management
   policies](#resource-management-policies). This can be used to force a
   ConfigMap or Secret to be deployed without appending a new version when the
   contents change, for example.
+
+* `strategy.spinnaker.io/use-source-capacity`
+
+  When set to `'true'` or `'false'`, this overrides the resource's replica count 
+  with the currently deployed resource's replica count. This is supported for 
+  Deployment, ReplicaSet or StatefulSet. This can be used to allow resizing a resource 
+  in the Spinnaker UI or with kubectl without overriding the new size during subsequent 
+  manifest deployments.
 
 * `strategy.spinnaker.io/max-version-history`
 
@@ -143,6 +149,45 @@ command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
   [`spec.revisionHistoryLimit`](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#clean-up-policy).
   If instead Spinnaker is deploying ReplicaSets directly without a Deployment,
   this annotation does the job.
+
+## Traffic
+
+* `traffic.spinnaker.io/load-balancers`
+
+  As of Spinnaker 1.10, you can specify which load balancers
+  ([Services](https://kubernetes.io/docs/concepts/services-networking/service/))
+  a workload is attached to at deployment time. This will automatically set the
+  required labels on the workload's Pods to match that of the Services' [label
+  selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors).
+
+  This annotation must be supplied as a list of `<kind> <name>` pairs where
+  `kind` and `name` refer to the load balancer in the same namespace as the 
+  resource. For example:
+
+  * `traffic.spinnaker.io/load-balancers: '["service my-service"]'` attaches to
+    the Service named `my-service`.
+
+  * `traffic.spinnaker.io/load-balancers: '["service my-service", "service my-canary-service"]'` 
+    attaches to the Services named `my-service` and `my-canary-service`.
+
+# Reserved labels
+
+In accordance with [Kubernetes' recommendations on common
+labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/#labels),
+Spinnaker applies the following labels as of release 1.9:
+
+* `app.kubernetes.io/name`
+
+  This is the name of the Spinnaker application this resource is deployed to,
+  and matches the value of the `moniker.spinnaker.io/application` annotation
+  desribed [here](#moniker).
+
+* `app.kubernetes.io/managed-by`
+
+  Always set to `"spinnaker"`.
+
+> This labeling behavior can be disabled by setting the property
+> `kubernetes.v2.applyAppLabels: false` in `clouddriver-local.yml`.
 
 # How Kubernetes resources are managed by Spinnaker
 
@@ -165,13 +210,13 @@ There are three major groupings of resources in Spinnaker:
 
 * server groups
 * load balancers
-* security groups
+* firewalls
 
 These correspond to Kubernetes resource kinds as follows:
 
 * Server Groups ≈ Workloads
 * Load Balancers ≈ Services, Ingresses
-* Security Groups ≈ NetworkPolicies
+* Firewalls ≈ NetworkPolicies
 
 ## Resource management policies
 

@@ -5,7 +5,6 @@ sidebar:
   nav: setup
 ---
 
-{% include alpha version="1.6" %}
 
 {% include toc %}
 
@@ -53,63 +52,28 @@ even when managing multiple Kubernetes clusters. This can be useful if you need
 to grant Spinnaker certain roles in the cluster later on, or you typically
 depend on an authentication mechanism that doesn't work in all environments.
 
-Given that you want to create a Service Account in context `$CONTEXT`, create
-the following resources with `kubectl apply --context $CONTEXT ...`
-
-```yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: spinnaker
-  namespace: spinnaker
-
----
-
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: spinnaker-admin
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-admin
-subjects:
-- kind: ServiceAccount
-  name: spinnaker-service-account
-  namespace: spinnaker
-```
-
-> Note, this grants Spinnaker full access to the Kubernetes cluster using the
-> `cluster-admin` role binding. This isn't necessary -- it's used as a simple
-> example. For more fine-grained control, see the
-> [RBAC](#optional-configure-kubernetes-roles-rbac) section.
-
-Next, grab the token that this service account relies on:
+Given that you want to create a Service Account in existing context `$CONTEXT`,
+the following commands will create `spinnaker-service-account`, and add its
+token under a new user called `${CONTEXT}-token-user` in context `$CONTEXT`.
 
 ```bash
+# This service account uses the ClusterAdmin role -- this is not necessary, 
+# more restrictive roles can by applied.
+kubectl apply --context $CONTEXT \
+    -f https://spinnaker.io/downloads/kubernetes/service-account.yml
+
 TOKEN=$(kubectl get secret --context $CONTEXT \
    $(kubectl get serviceaccount spinnaker-service-account \
        --context $CONTEXT \
        -n spinnaker \
        -o jsonpath='{.secrets[0].name}') \
    -n spinnaker \
-   -o jsonpath='{.data.token}')
-```
+   -o jsonpath='{.data.token}' | base64 --decode)
 
-Place this token into your `kubeconfig` under a new user called
-`${CONTEXT}-token-user`:
-
-```bash
 kubectl config set-credentials ${CONTEXT}-token-user --token $TOKEN
-```
 
-Now configure your context `$CONTEXT` to use this new user:
-
-```bash
 kubectl config set-context $CONTEXT --user ${CONTEXT}-token-user
 ```
-
-Now `$CONTEXT` will authenticate using the token we created above.
 
 <span class="end-collapsible-section"></span>
 
@@ -137,17 +101,24 @@ metadata:
  name: spinnaker-role
 rules:
 - apiGroups: [""]
-  resources: ["configmaps", "namespaces", "pods", "secrets", "services"]
-  verbs: ["*"]
+  resources: ["namespaces", "configmaps", "events", "replicationcontrollers", "serviceaccounts", "pods/logs"]
+  verbs: ["get", "list"]
 - apiGroups: [""]
-  resources: ["pods/log"]
+  resources: ["pods", "services", "secrets"]
+  verbs: ["create", "delete", "deletecollection", "get", "list", "patch", "update", "watch"]
+- apiGroups: ["autoscaling"]
+  resources: ["horizontalpodautoscalers"]
   verbs: ["list", "get"]
 - apiGroups: ["apps"]
-  resources: ["controllerrevisions", "deployments", "statefulsets"]
-  verbs: ["*"]
-- apiGroups: ["extensions", "app"]
-  resources: ["daemonsets", "deployments", "ingresses", "networkpolicies", "replicasets"]
-  verbs: ["*"]
+  resources: ["controllerrevisions", "statefulsets"]
+  verbs: ["list"]
+- apiGroups: ["extensions", "apps"]
+  resources: ["deployments", "replicasets", "ingresses"]
+  verbs: ["create", "delete", "deletecollection", "get", "list", "patch", "update", "watch"]
+# These permissions are necessary for halyard to operate. We use this role also to deploy Spinnaker itself.
+- apiGroups: [""]
+  resources: ["services/proxy", "pods/portforward"]
+  verbs: ["create", "delete", "deletecollection", "get", "list", "patch", "update", "watch"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -158,7 +129,7 @@ roleRef:
  kind: ClusterRole
  name: spinnaker-role
 subjects:
-- namespace: default
+- namespace: spinnaker
   kind: ServiceAccount
   name: spinnaker-service-account
 ---
@@ -166,7 +137,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
  name: spinnaker-service-account
- namespace: default
+ namespace: spinnaker
 ```
 
 <span class="end-collapsible-section"></span>
