@@ -146,10 +146,12 @@ setup:
         children:
           - title: Set Up Continuous Integration
             url: /setup/ci/
-          - title: Travis CI
-            url: /setup/ci/travis/
+          - title: Google Cloud Build
+            url: /setup/ci/gcb/
           - title: Jenkins
             url: /setup/ci/jenkins/
+          - title: Travis CI
+            url: /setup/ci/travis/
           - title: Wercker
             url: /setup/ci/wercker/
       - title: Enable Monitoring
@@ -234,6 +236,8 @@ guides:
             url: /guides/tutorials/codelabs/dcos-source-to-prod/
           - title: Deploying GCS Pub/Sub Artifacts to App Engine
             url: /guides/tutorials/codelabs/pubsub-to-appengine/
+          - title: Automating Canary Analysis on GKE with Spinnaker
+            url: https://cloud.google.com/solutions/automated-canary-analysis-kubernetes-engine-spinnaker
   - title: User How-Tos
     collapsed: true
     children:
@@ -380,8 +384,8 @@ reference:
         url: /reference/providers/kubernetes-v2/
 #      - title: OpenStack
 #        url: /reference/providers/openstack/
-#      - title: Oracle
-#        url: /reference/providers/oracle/
+      - title: Oracle Cloud
+        url: /reference/providers/oracle/
   - title: Artifacts
     collapsed: true
     children:

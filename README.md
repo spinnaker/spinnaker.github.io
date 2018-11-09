@@ -78,4 +78,4 @@ Keep the "broken window theory" at bay by ensuring all links work with
 [HTML Proofer](https://github.com/gjtorikian/html-proofer)
 
 Run link checker before committing: 
-`rake test`
+`rake test` 
