@@ -22,6 +22,7 @@ independently of one-another, enumerated below.
 
 These are the CI systems currently supported by Spinnaker:
 
+* [Google Cloud Build](/setup/ci/gcb/)
 * [Jenkins](/setup/ci/jenkins/)
 * [Travis CI](/setup/ci/travis/)
 * [Wercker](/setup/ci/wercker/)
