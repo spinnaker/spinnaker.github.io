@@ -272,6 +272,8 @@ guides:
                 url: /guides/user/pipeline/triggers/github/
           - title: Pipeline Expressions
             url: /guides/user/pipeline/expressions/
+          - title: Searching for Triggered Pipeline Executions
+            url: /guides/user/pipeline/searching/
       - title: Tagging
         url: /guides/user/tagging/
       - title: Custom Instance Links
