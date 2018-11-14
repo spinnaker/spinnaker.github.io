@@ -295,6 +295,8 @@ guides:
             url: /guides/user/kubernetes-v2/annotations-ui/
           - title: Patch a Manifest
             url: /guides/user/kubernetes-v2/patch-manifest/
+          - title: Manage Traffic
+            url: /guides/user/kubernetes-v2/traffic-management/
       - title: Automated Canary Analysis
         collapsed: true
         children:
