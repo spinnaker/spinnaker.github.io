@@ -8,15 +8,13 @@ redirect_from: /guides/user/triggers/searching
 
 {% include toc %}
 
-There exists an API that can be used to search for pipeline executions given information about what triggered them. This guide details the best practices to structure your triggers so that their corresponding pipeline executions can be easily queried.
-
-TODO: Link to API here
+This guide describes how to use the `searchForPipelineExecutionsByTrigger` API to search for pipeline executions triggered by Pub/Sub messages or webhooks.
 
 ## Pub/Sub
 
-### Structuring your trigger
+### Structure your trigger
 
-Structure your Pub/Sub messages to be unique by adding a random key/value pair for each message. For example, you can add an `id` field for each message with a randomly generated value.
+When you create the Pub/Sub message, add a field that can be used to identify the message. For example, you can add an `id` field with a randomly generated GUID string as its value.
 
 ```json
 {
@@ -26,7 +24,7 @@ Structure your Pub/Sub messages to be unique by adding a random key/value pair f
 
 This `id` field can be used later to search for all pipelines executed by this trigger.
 
-### Querying your triggered pipelines
+### Query your triggered pipelines
 
 To query for pipeline triggered by a specific Pub/Sub message, you can structure your API call with the following information:
 
@@ -41,19 +39,15 @@ curl localhost:8084/applications/$APPLICATION/executions/search?triggerTypes=$TR
 
 This call will return a list of pipeline executions triggered by a trigger with the given information, sorted by trigger time in reverse order so that newer executions are first in the list.
 
-##  Webhook
+##  Query your webhook-triggered pipeline
 
-### Structuring your trigger
-
-Triggering a pipeline via a webhook returns a unique ID that can later be used to search for all pipelines executed by this trigger. The response body will contain a `eventId` field with a unique value.
+Triggering a pipeline via a webhook returns a unique ID that can later be used to search for all pipelines executed by this trigger. The response body will contain an `eventId` field with a unique value.
 
 ```json
 {
   "eventId": "c581dc8c-af6d-4ef0-8d84-27a64764b2f3"
 }
 ```
-
-### Querying your triggered pipelines
 
 To query for pipeline executions triggered by a specific webhook call, you can structure your API call with the following information:
 
@@ -66,3 +60,4 @@ EVENT_ID=c581dc8c-af6d-4ef0-8d84-27a64764b2f3  # eventId value returned by webho
 curl localhost:8084/applications/$APPLICATION/executions/search?triggerTypes=$TRIGGER_TYPE&eventId=$EVENT_ID
 ```
 
+This call will return a list of pipeline executions triggered by a trigger with the given information, sorted by trigger time in reverse order so that newer executions are first in the list.
