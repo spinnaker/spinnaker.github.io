@@ -46,7 +46,7 @@ Pipeline save succeeded
 ```
 
 Note that `save` accepts pipeline in JSON format. You can quickly export an
-existing pipeline into a valid argument to the `--file` flag by using the `get` command.
+existing pipeline into a valid argument to the `--file` flag by using the `save` command.
 You can also export pipeline JSON from the pipeline UI in Deck by clicking
 `Pipeline Actions > Edit as JSON` and copying the JSON contents, e.g.
 
