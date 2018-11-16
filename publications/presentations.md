@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Presentations"
+title:  "Presentations and Videos"
 sidebar:
   nav: publications
 redirect_from: /docs/presentations
@@ -8,6 +8,18 @@ redirect_from: /community/presentations
 ---
 
 Conference and Meetup Presentations on Spinnaker
+
+### <a href="https://www.youtube.com/watch?v=nK9XBSJvKE8&list=PL4yLrwUObNksZ8svJWu5HOHT3e_dpa5Ih" target="_blank">Spinnaker Summit 2018</a>
+**Videos of presentations from Spinnaker Summit 2018** \| Oct 8-9, 2018
+
+### <a href="https://www.youtube.com/watch?v=qo1-JUkh3U0&list=PL4yLrwUObNkuiPqDu5S_65lfMQl218alP" target="_blank">Spinnaker Customer Stories 2018</a>
+**Videos of interviews conducted during Spinnaker Summit 2018**
+
+### <a href="https://www.youtube.com/playlist?list=PL4yLrwUObNktZDWIlAA3gl8Pi_m3ktxeR" target="_blank">Spinnaker Summit 2017</a>
+**Videos from Spinnaker Summit 2017** \| Sept 11-12, 2017
+
+A playlist of recorded videos from the Spinnaker Summit held at the Netflix
+offices in 2017
 
 ### <a href="https://youtu.be/PLNheBiWOGI" target="_blank">Large-Scale Continuous Delivery at Netflix and Waze Using Spinnaker (Cloud Next '18)</a>
 **Google Cloud Next ‘18** \| July 24, 2018 \| Andy Glover (Netflix), Matt Duftler (Google), Tom Feiner (Waze)
@@ -29,11 +41,6 @@ We’ll cover examples of architecting for low risk, self service deployment pip
 * [Community Update](https://video.cisco.com/detail/videos/customer-case-studies/video/5625309847001?autoStart=true)
 * Intuit Spinnaker Use Cases - please contact Intuit for the video
 * [Pure Storage Spinnaker Use Cases](https://video.cisco.com/detail/videos/service-provider/video/5625309849001?autoStart=true)
-
-### <a href="https://www.youtube.com/playlist?list=PL4yLrwUObNktZDWIlAA3gl8Pi_m3ktxeR" target="_blank">Spinnaker Summit 2017</a>
-**Videos from Spinnaker Summit 2017** \| Sept 11-12, 2017
-
-A playlist of recorded videos from the Spinnaker Summit held at the Netflix offices in 201
 
 ### <a href="https://www.slideshare.net/MedyaGhazizadeh/win-spinnaker-with-winnaker" target="_blank">Winning Spinnaker with Winnaker</a>
 **Open Source North Conference '17** \| June 8, 2017 \| *Medya Ghazizadeh (Target Corp)*
