@@ -11,3 +11,4 @@ a few guides to help you get started using pipelines:
 * [Managing Pipelines](/guides/user/pipeline/managing-pipelines/)
 * [Triggering Pipelines](/guides/user/pipeline/triggers/)
 * [Pipeline Expressions](/guides/user/pipeline/expressions/)
+* [Searching for Triggered Pipeline Executions](/guides/user/pipeline/searching/)

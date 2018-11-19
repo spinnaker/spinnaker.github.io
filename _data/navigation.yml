@@ -142,10 +142,12 @@ setup:
         children:
           - title: Set Up Continuous Integration
             url: /setup/ci/
-          - title: Travis CI
-            url: /setup/ci/travis/
+          - title: Google Cloud Build
+            url: /setup/ci/gcb/
           - title: Jenkins
             url: /setup/ci/jenkins/
+          - title: Travis CI
+            url: /setup/ci/travis/
           - title: Wercker
             url: /setup/ci/wercker/
       - title: Enable Monitoring
@@ -270,6 +272,8 @@ guides:
                 url: /guides/user/pipeline/triggers/github/
           - title: Pipeline Expressions
             url: /guides/user/pipeline/expressions/
+          - title: Searching for Triggered Pipeline Executions
+            url: /guides/user/pipeline/searching/
       - title: Tagging
         url: /guides/user/tagging/
       - title: Custom Instance Links
@@ -291,6 +295,8 @@ guides:
             url: /guides/user/kubernetes-v2/annotations-ui/
           - title: Patch a Manifest
             url: /guides/user/kubernetes-v2/patch-manifest/
+          - title: Manage Traffic
+            url: /guides/user/kubernetes-v2/traffic-management/
       - title: Automated Canary Analysis
         collapsed: true
         children:
