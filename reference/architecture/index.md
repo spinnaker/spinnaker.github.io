@@ -99,7 +99,7 @@ service.
 
 In the table below, A filled cell indicates that the system listed in the
 heading of that column has a dependency on the system listed in the heading of
-that row. As all Spinnaker services can be run in their own server group, it' i's
+that row. As all Spinnaker services can be run in their own server group, it is
 typical for services to resolve their dependencies via load balancers or
 discovery systems (for example [Eureka](https://github.com/Netflix/eureka) or
 [Consul](https://www.consul.io/)).

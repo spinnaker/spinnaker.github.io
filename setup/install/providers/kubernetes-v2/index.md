@@ -101,7 +101,7 @@ metadata:
  name: spinnaker-role
 rules:
 - apiGroups: [""]
-  resources: ["namespaces", "configmaps", "events", "replicationcontrollers", "serviceaccounts", "pods/logs"]
+  resources: ["namespaces", "configmaps", "events", "replicationcontrollers", "serviceaccounts", "pods/log"]
   verbs: ["get", "list"]
 - apiGroups: [""]
   resources: ["pods", "services", "secrets"]
