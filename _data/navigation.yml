@@ -329,6 +329,8 @@ guides:
   - title: Operator How-Tos
     collapsed: true
     children:
+      - title: Custom Spinnaker Builds
+        url: /guides/operator/custom-boms/
       - title: Custom Webhook Stages
         url: /guides/operator/custom-webhook-stages/
       - title: "Orca: Redis to SQL"
