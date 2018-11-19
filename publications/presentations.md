@@ -12,7 +12,7 @@ Conference and Meetup Presentations on Spinnaker
 ### <a href="https://www.youtube.com/watch?v=nK9XBSJvKE8&list=PL4yLrwUObNksZ8svJWu5HOHT3e_dpa5Ih" target="_blank">Spinnaker Summit 2018</a>
 **Videos of presentations from Spinnaker Summit 2018** \| Oct 8-9, 2018
 
-### <a href="https://www.youtube.com/watch?v=qo1-JUkh3U0&list=PL4yLrwUObNkuiPqDu5S_65lfMQl218alP" target="_blank">Spinnaker Customer Stories 2018</a>
+### <a href="https://www.youtube.com/playlist?list=PL4yLrwUObNkuiPqDu5S_65lfMQl218alP" target="_blank">Spinnaker User Stories 2018</a>
 **Videos of interviews conducted during Spinnaker Summit 2018**
 
 ### <a href="https://www.youtube.com/playlist?list=PL4yLrwUObNktZDWIlAA3gl8Pi_m3ktxeR" target="_blank">Spinnaker Summit 2017</a>
