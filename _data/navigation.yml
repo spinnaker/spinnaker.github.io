@@ -68,7 +68,7 @@ setup:
               - title: Amazon EKS
                 url: /setup/install/providers/kubernetes-v2/aws-eks/
               - title: Google Kubernetes Engine
-                url: /setup/install/providers/kubernetes-v2/gke/
+                url: /setup/install/providers/kubernetes-v2//
           - title: OpenStack
             url: /setup/install/providers/openstack/
           - title: Oracle
@@ -489,7 +489,7 @@ community:
 publications:
   - title: eBook
     url: /publications/ebook/
-  - title: Presentations
+  - title: Presentations and Videos
     url: /publications/presentations/
   - title: Articles
     url: /publications/articles/
