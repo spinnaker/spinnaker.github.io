@@ -13,7 +13,8 @@ system, trigger pipelines with Travis, or add a Travis stage to a pipeline.
 
 ## Prerequisites
 
-* You need a Travis user with an [API access token](https://docs.travis-ci.com/api/#authentication) so that you get only the
+* You need a Travis user with an [API access
+token](https://docs.travis-ci.com/api/#authentication) so that you get only the
 repos you should see.
 
 * That user needs adequate access in GitHub to trigger builds.
@@ -36,7 +37,7 @@ name):
    --address https://api.travis-ci.org \
    --base-url https://travis-ci.org \
    --github-token <token> \ # The GitHub token to authenticate to Travis
-   --number-of-repositories # How many repos the intergration should fetch each
+   --number-of-repositories # How many repos the integration should fetch each
                             # time the poller runs, higher than max expected
                             # during polling interval
    ```
