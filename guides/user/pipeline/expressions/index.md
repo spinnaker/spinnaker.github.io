@@ -210,45 +210,28 @@ the pipeline execution JSON.
 3. The execution ID is the value of the top-level **id** field in the JSON, and
 looks something like _01CGYV7Q4PMEBDYS146CCED0M6_.
 
+API Reference : https://www.spinnaker.io/reference/api/docs.html#api-Pipelinecontroller
+
 You can use `curl` to pass an expression to the testing endpoint:
 
 ```
 PIPELINE_ID=[your_pipeline_id]
-curl http://api.my.spinnaker/pipelines/$PIPELINE_ID/evaluateExpression \
+PIPELINE_EXPRESSION=[expression]
+curl http://api.my.spinnaker/pipelines/$PIPELINE_ID/evaluateExpression?expression=$PIPELINE_EXPRESSION \
        -H "Content-Type: text/plain" \
-       --data '${ #stage("Deploy").status.toString() }'
 ```
 
-This example outputs the status of your Deploy stage:
+This example outputs the application name:
 
 ```
-{"result": "SUCCEEDED"}
+{"result": "demo"}
 ```
 
-If Spinnaker cannot evaluate the expression, the result includes error details.
-For example, if you forget the closing bracket in the example above, it outputs
-the following:
+If Spinnaker cannot evaluate the expression, the result is raw string.
+For example, it outputs the following:
 
 ```
-{  
-  "detail":
-    {  
-      "{ #stage(\"Deploy\").status.toString() ":
-        [  
-          {  
-            "description":
-              "Failed to evaluate [expression] Expression
-              [{ #stage( #root.execution, \"Deploy\").status.toString() ]
-              @0: No ending suffix '}' for expression starting at character 0:
-              { #stage( #root.execution, \"Deploy\").status.toString() ",
-            "exceptionType":"org.springframework.expression.ParseException",
-            "level":"ERROR",
-            "timestamp":1531254890849
-         }
-        ]
-   },
-  "result":"${#stage(\"Deploy\").status.toString() "
-}
+{"result": "${wrong expression}"}
 ```
 
 Note that [Gate](https://github.com/spinnaker/gate) is the microservice that
