@@ -10,13 +10,13 @@ redirect_from: /setup/providers/cf/
 
 {% include toc %}
 
-In [Cloud Foundry](https://www.cloudfoundry.org) (CF), an Account maps to a user account on a CF foundation. You can add multiple accounts for one or more CF foundations.
+In [Cloud Foundry](https://www.cloudfoundry.org) (CF), an Account maps to a user account on a CF foundation (a BOSH Director and all the VMs it deploys). You can add multiple accounts for one or more CF foundations.
 
 ## Prerequisites
 
 Your CF foundations' [API endpoints](https://docs.cloudfoundry.org/running/cf-api-endpoint.html) must be reachable from your installation of Spinnaker.
 
-## Adding an account
+## Add an account
 
 While the Cloud Foundry provider is in alpha, the hal CLI does not have support for adding a CF account (this support will be added soon). Instead, you can use Halyard's [custom configuration](https://www.spinnaker.io/reference/halyard/custom/) to add a CF account to an existing installation of Spinnaker.
 
