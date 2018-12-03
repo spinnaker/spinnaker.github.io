@@ -51,6 +51,8 @@ setup:
                 url: /setup/install/providers/aws/aws-ecs/
           - title: Azure
             url: /setup/install/providers/azure/
+          - title: Cloud Foundry
+            url: /setup/install/providers/cf/
           - title: DC/OS
             url: /setup/install/providers/dcos/
           - title: Docker Registry

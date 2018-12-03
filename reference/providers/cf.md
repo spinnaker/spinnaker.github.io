@@ -5,7 +5,7 @@ sidebar:
   nav: reference
 ---
 
-{% include alpha version="1.10" %}
+{% include alpha version="1.10 and later" %}
 
 {% include toc %}
 
