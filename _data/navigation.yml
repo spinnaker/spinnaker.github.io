@@ -212,6 +212,8 @@ guides:
             url: /guides/tutorials/codelabs/bake-and-deploy-pipeline/
           - title: Hello Deployment
             url: /guides/tutorials/codelabs/hello-deployment/
+          - title: Deploy GCS Pub/Sub Artifacts to Cloud Foundry
+            url: /guides/tutorials/codelabs/pubsub-to-cf/
           - title: GCE Source To Prod
             url: /guides/tutorials/codelabs/gce-source-to-prod/
           - title: Kubernetes Source To Prod
