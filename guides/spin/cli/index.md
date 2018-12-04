@@ -132,6 +132,19 @@ a token is different for each provider. To do so using Google OAuth2 and `gcloud
     REFRESH_TOKEN=$(gcloud auth print-refresh-token)
     ```
 
+### Basic
+
+`spin` can be configured with basic authentication credentials to authenticate calls against Spinnaker. The configuration
+block looks like this:
+
+```yaml
+auth:
+  enabled: true
+  basic:
+    username: < username >
+    password: < password >
+```
+
 ## Global Flags
 
 `spin` has a few helpful global flags:
