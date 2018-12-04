@@ -4,6 +4,8 @@
  sidebar:
    nav: guides
 ---
+
+ {% include alpha version="1.10 and later" %}
  
  {% include toc %}
  
