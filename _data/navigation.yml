@@ -401,6 +401,8 @@ reference:
         url: /reference/artifacts/in-pipelines/
       - title: In Kubernetes (Manifest Based)
         url: /reference/artifacts/in-kubernetes-v2/
+      - title: In Google App Engine
+        url: /reference/artifacts/in-appengine/
       - title: Types of Artifacts
         collapsed: true
         children:
