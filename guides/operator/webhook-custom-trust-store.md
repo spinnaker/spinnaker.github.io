@@ -27,12 +27,11 @@ will not be used for any other connection initiated by Spinnaker. There is no
 way to specify additional CAs on a per-webhook basis; the additional CAs will apply to
 all webhooks.
 
-## Creating a trust store
+## Create a trust store
 
 Create a trust store in Java KeyStore (JKS) format via:
 ```bash
 keytool -import -file <path-to-ca-certificate> -alias <name-of-first-ca> -keystore <name-for-keystore>.jks
-
 ```
 where `<path-to-ca-certificate>` is the path to the certificate for the CA you'd like to trust in
 PEM format, `<name-of-first-ca>` is an arbitrary alias for that CA, and `<name-for-keystore>` is
@@ -44,12 +43,11 @@ Spinnaker in the next step.
 After creating the key store with the above command, you can add additional CAs to the keystore
 by running the same command but supplying a different CA certificate and alias. You'll be prompted
 for the keystore password before the new CA can be added. As this trust store will augment the default
-trust store, there is no need to add all of the root CAs to this custom trust store; only CAs that are
+trust store, you don't need to add all of the root CAs to this custom trust store; only CAs that are
 not in the default trust store need to be added.
 
-## Configuring Spinnaker to use the trust store
+## Configure Spinnaker to use the trust store
 
-The trust store can be configured via Halyard as follows:
 ```bash
 hal config webhook trust edit --trustStore <path-to-trust-store> --trustStorePassword
 hal config webhook trust enable
