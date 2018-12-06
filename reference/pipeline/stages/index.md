@@ -235,6 +235,9 @@ custom webhook stage is a webhook stage specifically named and configured for
 your application's needs, which shows up in the standard pipeline stages
 dropdown menu.
 
+It is possible to add additional certification authorities to trust when
+making webhook calls over HTTPS by following these [instructions](/guides/operator/webhook-custom-trust-store/).
+
 ### Wercker
 Run the specified Wercker pipeline. You must [set up Wercker](/setup/ci/wercker/)
 in order to use this stage. Once Wercker has been configured, your Wercker
