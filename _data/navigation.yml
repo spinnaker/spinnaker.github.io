@@ -337,6 +337,8 @@ guides:
         url: /guides/operator/custom-boms/
       - title: Custom Webhook Stages
         url: /guides/operator/custom-webhook-stages/
+      - title: Custom CAs for Webhooks
+        url: /guides/operator/webhook-custom-trust-store/
       - title: "Orca: Redis to SQL"
         url: /guides/operator/orca-redis-to-sql/
   - title: Runbooks
