@@ -70,7 +70,7 @@ Once you have a working LocalGit deployment you can begin to make changes to the
 After you've made edits in the code of a service you can see those changes reflected
 by restarting the service you've modified.
 
-To restart a service call `hal deploy apply --service-name clouddriver`, replacing `clouddriver`
+To restart a service call `hal deploy apply --service-names clouddriver`, replacing `clouddriver`
 with whichever service you want to restart. The only service that does not require this kind
 of restart is Deck; its webserver watches for file changes and re-compiles the application as
 necessary.

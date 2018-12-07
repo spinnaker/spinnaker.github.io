@@ -51,6 +51,8 @@ setup:
                 url: /setup/install/providers/aws/aws-ecs/
           - title: Azure
             url: /setup/install/providers/azure/
+          - title: Cloud Foundry
+            url: /setup/install/providers/cf/
           - title: DC/OS
             url: /setup/install/providers/dcos/
           - title: Docker Registry
@@ -333,6 +335,8 @@ guides:
         url: /guides/operator/custom-boms/
       - title: Custom Webhook Stages
         url: /guides/operator/custom-webhook-stages/
+      - title: Custom CAs for Webhooks
+        url: /guides/operator/webhook-custom-trust-store/
       - title: "Orca: Redis to SQL"
         url: /guides/operator/orca-redis-to-sql/
   - title: Runbooks
@@ -397,6 +401,8 @@ reference:
         url: /reference/artifacts/in-pipelines/
       - title: In Kubernetes (Manifest Based)
         url: /reference/artifacts/in-kubernetes-v2/
+      - title: In Google App Engine
+        url: /reference/artifacts/in-appengine/
       - title: Types of Artifacts
         collapsed: true
         children:
