@@ -25,6 +25,7 @@ Add as many of the following providers as you need. When you're done, return to 
 * [App Engine](/setup/install/providers/appengine/)
 * [Amazon Web Services](/setup/install/providers/aws/)
 * [Azure](/setup/install/providers/azure/)
+* [Cloud Foundry](/setup/install/providers/cf/)
 * [DC/OS](/setup/install/providers/dcos/)
 * [Google Compute Engine](/setup/install/providers/gce/)
 * [Kubernetes (legacy)](/setup/install/providers/kubernetes/)
