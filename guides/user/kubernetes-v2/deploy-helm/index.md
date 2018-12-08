@@ -50,10 +50,12 @@ When configuring the "Bake (Manifest)" stage, you can specify the following:
 > Note: Not all Helm charts contain namespace definitions in their manifests.
 > Make sure that your manifests contain the following code:
 
+{% raw %}
 ```yaml
 metadata:
   namespace: {{ .Release.Namespace }}
 ```
+{% endraw %}
 
 * __Zero or more override artifacts__ (optional)
 
