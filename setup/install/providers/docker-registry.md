@@ -161,6 +161,29 @@ API](https://console.developers.google.com/apis/api/cloudresourcemanager.googlea
 
    ```
 
+## AWS Elastic Container Registry
+
+1. Set the registry address.
+
+   ECR registry addresses are account specific, you can retrieve the address from the console, or with `aws ecr describe-repositories`
+
+1. Enable the provider.
+
+   ```bash
+   hal config provider docker-registry enable
+   ```
+
+1. Add the account.
+
+   Because the docker registry API does not have support for AWS IAM, a password must be retrieved on a regular interval using IAM credentials. The ECR API returns the token as a base64 encoded string comprised of the username and password. Because clouddriver is expecting a username and password (which it then encodes) we must decode and strip the username from the payload from AWS. The instance profile being used by clouddriver will need permission to interact with the ECR repository.
+
+   ```bash
+   hal config provider docker-registry account $PROVIDER_COMMAND my-ecr-registry \
+    --address $ADDRESS \
+    --username AWS \
+    --password-command \"aws --region $REGION ecr get-authorization-token --output text --query 'authorizationData[].authorizationToken' | base64 -d | sed 's/^AWS://'\"
+   ```
+
 ### Other registries
 
 Most registries fit either the Dockerhub or GCR pattern described above,
@@ -177,7 +200,7 @@ verifies this for you.
 | GCR | gcr.io, eu.gcr.io, us.gcr.io, asia.gcr.io, b.gcr.io | Yes |
 | DockerHub | index.docker.io | No |
 | Quay | quay.io | Yes |
-| ECR | `account-id`.dkr.ecr.`region`.amazon.aws.com | ? |
+| ECR | `account-id`.dkr.ecr.`region`.amazon.aws.com | Yes |
 | JFrog Artifactory | `server`-`repo`.jfrog.io | ? |
 
 ## Add the account
