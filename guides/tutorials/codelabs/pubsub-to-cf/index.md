@@ -1,5 +1,5 @@
---
- Layout: single
+---
+ layout: single
  title:  "Deploy GCS Pub/Sub Artifacts to CF"
  sidebar:
    nav: guides
