@@ -15,8 +15,8 @@ CI builds to Spinnaker pipelines.
 
 The extraction of artifacts from the build information is done via a Jinja template; the
 template uses the trigger as context and outputs a list of artifacts to inject into the
-pipeline. Spinnaker provides a set of standard templates to use for artifact extraction,
-which users can augment with custom templates.
+pipeline. Spinnaker provides a set of [standard templates](#supplied-templates) to use for
+artifact extraction, which users can augment with custom templates.
 
 ## Selecting a template
 
@@ -75,3 +75,16 @@ version=123
 messageFormat=custom-jar
 customFormat=true
 ```
+
+## Supplied templates
+
+### JAR
+
+The JAR template creates an artifact representing a `jar` file in a Maven or Ivy repository. This
+template expects the following properties to be exported:
+* group
+* artifact
+* version
+* *(optional)* classifier
+By default, the artifact represents a file in a Maven repository; to create an artifact for a file
+in an Ivy repository, export the property `repotype=ivy`.
