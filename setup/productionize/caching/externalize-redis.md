@@ -64,3 +64,18 @@ services.redis.baseUrl: $REDIS_ENDPOINT
 
 > `$SERVICE` is the service name (e.g. `clouddriver`) that is being configured
 > to use another endpoint.
+
+## Using a hosted Redis
+
+Gate requires keyspace notifications to be enabled in Redis, and tries to configure
+this when it starts up. Some hosted Redis services disable the `CONFIG` command, blocking
+Gate from modifying the configuration. In this case:
+1. Manually set the configuration parameter `notify-keyspace-events` to `gxE` on your Redis
+instance by following the documentation provided by your hosted Redis provider.
+2. Disable automatic Redis configuration in Gate by adding the following to your
+`gate-local.yml` file:
+   ```yaml
+      redis:
+        configuration:
+          secure: true
+   ```
