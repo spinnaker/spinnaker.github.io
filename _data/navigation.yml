@@ -401,6 +401,8 @@ reference:
         url: /reference/artifacts/
       - title: In Pipelines
         url: /reference/artifacts/in-pipelines/
+      - title: From Build Triggers
+        url: /reference/artifacts/from-build-triggers/
       - title: In Kubernetes (Manifest Based)
         url: /reference/artifacts/in-kubernetes-v2/
       - title: In Google App Engine
