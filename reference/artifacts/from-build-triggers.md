@@ -80,11 +80,12 @@ customFormat=true
 
 ### JAR
 
-The JAR template creates an artifact representing a `jar` file in a Maven or Ivy repository. This
+The JAR template creates an artifact representing a JAR archive in a Maven or Ivy repository. This
 template expects the following properties to be exported:
 * group
 * artifact
 * version
 * *(optional)* classifier
-By default, the artifact represents a file in a Maven repository; to create an artifact for a file
-in an Ivy repository, export the property `repotype=ivy`.
+
+By default, the artifact represents an archive in a Maven repository; to create an artifact for an
+archive in an Ivy repository, export the property `repotype=ivy`.
