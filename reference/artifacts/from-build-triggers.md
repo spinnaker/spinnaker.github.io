@@ -18,7 +18,7 @@ template uses the trigger as context and outputs a list of artifacts to inject i
 pipeline. Spinnaker provides a set of [standard templates](#supplied-templates) to use for
 artifact extraction, which users can augment with custom templates.
 
-## Selecting a template
+## Select a template
 
 To configure Spinnaker to use a Jinja template for artifact extraction, export the
 following properties from your CI build:
@@ -46,7 +46,7 @@ messageFormat=<name of template>
 customFormat=true
 ```
 
-## Binding variables into templates
+## Bind variables into templates
 
 In general, artifact-extracting templates will read other properties that are exported
 by the CI job. The general pattern is to export any build-specific information in the
@@ -77,6 +77,9 @@ customFormat=true
 ```
 
 ## Supplied templates
+
+The templates that are supplied with Spinnaker can be found in the
+[following folder](https://github.com/spinnaker/echo/tree/master/echo-pipelinetriggers/src/main/resources).
 
 ### JAR
 
