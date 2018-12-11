@@ -4,7 +4,7 @@ title: "Commands"
 sidebar:
   nav: reference
 ---
-Published: 2018-10-25 16:50:20
+Published: 2018-12-11 16:37:47
 
 
 # Table of Contents
@@ -62,6 +62,15 @@ Published: 2018-10-25 16:50:20
  * [**hal config artifact gitlab account list**](#hal-config-artifact-gitlab-account-list)
  * [**hal config artifact gitlab disable**](#hal-config-artifact-gitlab-disable)
  * [**hal config artifact gitlab enable**](#hal-config-artifact-gitlab-enable)
+ * [**hal config artifact helm**](#hal-config-artifact-helm)
+ * [**hal config artifact helm account**](#hal-config-artifact-helm-account)
+ * [**hal config artifact helm account add**](#hal-config-artifact-helm-account-add)
+ * [**hal config artifact helm account delete**](#hal-config-artifact-helm-account-delete)
+ * [**hal config artifact helm account edit**](#hal-config-artifact-helm-account-edit)
+ * [**hal config artifact helm account get**](#hal-config-artifact-helm-account-get)
+ * [**hal config artifact helm account list**](#hal-config-artifact-helm-account-list)
+ * [**hal config artifact helm disable**](#hal-config-artifact-helm-disable)
+ * [**hal config artifact helm enable**](#hal-config-artifact-helm-enable)
  * [**hal config artifact http**](#hal-config-artifact-http)
  * [**hal config artifact http account**](#hal-config-artifact-http-account)
  * [**hal config artifact http account add**](#hal-config-artifact-http-account-add)
@@ -405,6 +414,11 @@ Published: 2018-10-25 16:50:20
  * [**hal config storage s3 edit**](#hal-config-storage-s3-edit)
  * [**hal config version**](#hal-config-version)
  * [**hal config version edit**](#hal-config-version-edit)
+ * [**hal config webhook**](#hal-config-webhook)
+ * [**hal config webhook trust**](#hal-config-webhook-trust)
+ * [**hal config webhook trust disable**](#hal-config-webhook-trust-disable)
+ * [**hal config webhook trust edit**](#hal-config-webhook-trust-edit)
+ * [**hal config webhook trust enable**](#hal-config-webhook-trust-enable)
  * [**hal deploy**](#hal-deploy)
  * [**hal deploy apply**](#hal-deploy-apply)
  * [**hal deploy clean**](#hal-deploy-clean)
@@ -671,6 +685,7 @@ hal config [parameters] [subcommands]
  * `security`: Configure Spinnaker's security. This includes external SSL, authentication mechanisms, and authorization policies.
  * `storage`: Show Spinnaker's persistent storage configuration.
  * `version`: Configure & view the current deployment of Spinnaker's version.
+ * `webhook`: Show Spinnaker's webhook configuration.
 
 ---
 ## hal config artifact
@@ -687,6 +702,7 @@ hal config artifact [subcommands]
  * `gcs`: Manage and view Spinnaker configuration for the gcs provider
  * `github`: Manage and view Spinnaker configuration for the github provider
  * `gitlab`: Manage and view Spinnaker configuration for the gitlab provider
+ * `helm`: Manage and view Spinnaker configuration for the helm provider
  * `http`: Manage and view Spinnaker configuration for the http provider
  * `oracle`: Manage and view Spinnaker configuration for the oracle provider
  * `s3`: Manage and view Spinnaker configuration for the s3 provider
@@ -1314,6 +1330,164 @@ hal config artifact gitlab enable [parameters]
 
 
 ---
+## hal config artifact helm
+
+Manage and view Spinnaker configuration for the helm provider
+
+#### Usage
+```
+hal config artifact helm [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `account`: Manage and view Spinnaker configuration for the helm artifact provider's account
+ * `disable`: Set the helm artifact provider as disabled
+ * `enable`: Set the helm artifact provider as enabled
+
+---
+## hal config artifact helm account
+
+Manage and view Spinnaker configuration for the helm artifact provider's account
+
+#### Usage
+```
+hal config artifact helm account ACCOUNT [parameters] [subcommands]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `add`: Add an artifact account to the helm artifact provider.
+ * `delete`: Delete a specific helm artifact account by name.
+ * `edit`: Edit an artifact account in the helm artifact provider.
+ * `get`: Get the specified account details for the helm provider.
+ * `list`: List the artifact account names for the helm artifact provider.
+
+---
+## hal config artifact helm account add
+
+Add an artifact account to the helm artifact provider.
+
+#### Usage
+```
+hal config artifact helm account add ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--password`: (*Sensitive data* - user will be prompted on standard input) Helm chart repository basic auth password
+ * `--repository`: Helm chart repository
+ * `--username`: Helm chart repository basic auth username
+ * `--username-password-file`: File containing "username:password" to use for helm chart repository basic auth
+
+
+---
+## hal config artifact helm account delete
+
+Delete a specific helm artifact account by name.
+
+#### Usage
+```
+hal config artifact helm account delete ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact helm account edit
+
+Edit an artifact account in the helm artifact provider.
+
+#### Usage
+```
+hal config artifact helm account edit ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--password`: (*Sensitive data* - user will be prompted on standard input) Helm chart repository basic auth password
+ * `--repository`: Helm chart repository
+ * `--username`: Helm chart repository basic auth username
+ * `--username-password-file`: File containing "username:password" to use for helm chart repository basic auth
+
+
+---
+## hal config artifact helm account get
+
+Get the specified account details for the helm provider.
+
+#### Usage
+```
+hal config artifact helm account get ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact helm account list
+
+List the artifact account names for the helm artifact provider.
+
+#### Usage
+```
+hal config artifact helm account list [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact helm disable
+
+Set the helm artifact provider as disabled
+
+#### Usage
+```
+hal config artifact helm disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact helm enable
+
+Set the helm artifact provider as enabled
+
+#### Usage
+```
+hal config artifact helm enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
 ## hal config artifact http
 
 Manage and view Spinnaker configuration for the http provider
@@ -1686,8 +1860,10 @@ hal config artifact s3 account add ACCOUNT [parameters]
 
 #### Parameters
 `ACCOUNT`: The name of the account to operate on.
- * `--api-endpoint`: S3 api endpoint
- * `--api-region`: S3 api region
+ * `--api-endpoint`: S3 api endpoint; only required when using an S3 clone such as Minio
+ * `--api-region`: S3 api region; only required when using an S3 clone such as Minio
+ * `--aws-access-key-id`: Your AWS Access Key ID. If not provided, Halyard/Spinnaker will try to find AWS credentials as described at http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html#credentials-default
+ * `--aws-secret-access-key`: (*Sensitive data* - user will be prompted on standard input) Your AWS Secret Key.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--region`: S3 region
@@ -1721,8 +1897,10 @@ hal config artifact s3 account edit ACCOUNT [parameters]
 
 #### Parameters
 `ACCOUNT`: The name of the account to operate on.
- * `--api-endpoint`: S3 api endpoint
- * `--api-region`: S3 api region
+ * `--api-endpoint`: S3 api endpoint; only required when using an S3 clone such as Minio
+ * `--api-region`: S3 api region; only required when using an S3 clone such as Minio
+ * `--aws-access-key-id`: Your AWS Access Key ID. If not provided, Halyard/Spinnaker will try to find AWS credentials as described at http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html#credentials-default
+ * `--aws-secret-access-key`: (*Sensitive data* - user will be prompted on standard input) Your AWS Secret Key.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--region`: S3 region
@@ -3858,14 +4036,18 @@ hal config provider appengine account add ACCOUNT [parameters]
  * `--json-path`: The path to a JSON service account that Spinnaker will use as credentials. This is only needed if Spinnaker is not deployed on a Google Compute Engine VM, or needs permissions not afforded to the VM it is running on. See https://cloud.google.com/compute/docs/access/service-accounts for more information.
  * `--local-repository-directory`: (*Default*: `/var/tmp/clouddriver`) A local directory to be used to stage source files for App Engine deployments within Spinnaker's Clouddriver microservice.
  * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--omit-services`: A list of regular expressions. Any service matching one of these regexes will be ignored by Spinnaker.
+ * `--omit-versions`: A list of regular expressions. Any version matching one of these regexes will be ignored by Spinnaker.
  * `--project`: (*Required*) The Google Cloud Platform project this Spinnaker account will manage.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
  * `--read-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to view this account's cloud resources.
  * `--required-group-membership`: (*Default*: `[]`) A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
+ * `--services`: A list of regular expressions. Any service matching one of these regexes will be indexed by Spinnaker.
  * `--ssh-known-hosts-file-path`: The path to a known_hosts file to be used when connecting with a remote git repository over SSH.
  * `--ssh-private-key-file-path`: The path to an SSH private key to be used when connecting with a remote git repository over SSH.
  * `--ssh-private-key-passphrase`: (*Sensitive data* - user will be prompted on standard input) The passphrase to an SSH private key to be used when connecting with a remote git repository over SSH.
  * `--ssh-trust-unknown-hosts`: (*Default*: `false`) Enabling this flag will allow Spinnaker to connect with a remote git repository over SSH without verifying the server's IP address against a known_hosts file.
+ * `--versions`: A list of regular expressions. Any version matching one of these regexes will be indexed by Spinnaker.
  * `--write-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to make changes to this account's cloud resources.
 
 
@@ -3909,6 +4091,8 @@ hal config provider appengine account edit ACCOUNT [parameters]
  * `--json-path`: The path to a JSON service account that Spinnaker will use as credentials. This is only needed if Spinnaker is not deployed on a Google Compute Engine VM, or needs permissions not afforded to the VM it is running on. See https://cloud.google.com/compute/docs/access/service-accounts for more information.
  * `--local-repository-directory`: A local directory to be used to stage source files for App Engine deployments within Spinnaker's Clouddriver microservice.
  * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--omit-services`: A list of regular expressions. Any service matching one of these regexes will be ignored by Spinnaker.
+ * `--omit-versions`: A list of regular expressions. Any version matching one of these regexes will be ignored by Spinnaker.
  * `--project`: The Google Cloud Platform project this Spinnaker account will manage.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
  * `--read-permissions`: A user must have at least one of these roles in order to view this account's cloud resources.
@@ -3916,10 +4100,12 @@ hal config provider appengine account edit ACCOUNT [parameters]
  * `--remove-required-group-membership`: Remove this group from the list of required group memberships.
  * `--remove-write-permission`: Remove this permission to from list of write permissions.
  * `--required-group-membership`: A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
+ * `--services`: A list of regular expressions. Any service matching one of these regexes will be indexed by Spinnaker.
  * `--ssh-known-hosts-file-path`: The path to a known_hosts file to be used when connecting with a remote git repository over SSH.
  * `--ssh-private-key-file-path`: The path to an SSH private key to be used when connecting with a remote git repository over SSH.
  * `--ssh-private-key-passphrase`: (*Sensitive data* - user will be prompted on standard input) The passphrase to an SSH private key to be used when connecting with a remote git repository over SSH.
  * `--ssh-trust-unknown-hosts`: Enabling this flag will allow Spinnaker to connect with a remote git repository over SSH without verifying the server's IP address against a known_hosts file.
+ * `--versions`: A list of regular expressions. Any version matching one of these regexes will be indexed by Spinnaker.
  * `--write-permissions`: A user must have at least one of these roles in order to make changes to this account's cloud resources.
 
 
@@ -5650,6 +5836,8 @@ hal config provider kubernetes account add ACCOUNT [parameters]
 
 #### Parameters
 `ACCOUNT`: The name of the account to operate on.
+ * `--check-permissions-on-startup`: When false, clouddriver will skip the permission checks for all kubernetes kinds at startup. This can save a great deal of time
+during clouddriver startup when you have many kubernetes accounts configured. This disables the log messages at startup about missing permissions.
  * `--configure-image-pull-secrets`: (*Default*: `true`) (Only applicable to the v1 provider). When true, Spinnaker will create & manage your image pull secrets for you; when false, you will have to create and attach them to your pod specs by hand.
  * `--context`: The kubernetes context to be managed by Spinnaker. See http://kubernetes.io/docs/user-guide/kubeconfig-file/#context for more information.
 When no context is configured for an account the 'current-context' in your kubeconfig is assumed.
@@ -5713,6 +5901,8 @@ hal config provider kubernetes account edit ACCOUNT [parameters]
  * `--add-write-permission`: Add this permission to the list of write permissions.
  * `--all-kinds`: (*Default*: `false`) Set the list of kinds to cache and deploy to every kind available to your supplied credentials.
  * `--all-namespaces`: (*Default*: `false`) Set the list of namespaces to cache and deploy to every namespace available to your supplied credentials.
+ * `--check-permissions-on-startup`: When false, clouddriver will skip the permission checks for all kubernetes kinds at startup. This can save a great deal of time
+during clouddriver startup when you have many kubernetes accounts configured. This disables the log messages at startup about missing permissions.
  * `--clear-context`: (*Default*: `false`) Removes the currently configured context, defaulting to 'current-context' in your kubeconfig.See http://kubernetes.io/docs/user-guide/kubeconfig-file/#context for more information.
  * `--configure-image-pull-secrets`: (Only applicable to the v1 provider). When true, Spinnaker will create & manage your image pull secrets for you; when false, you will have to create and attach them to your pod specs by hand.
  * `--context`: The kubernetes context to be managed by Spinnaker. See http://kubernetes.io/docs/user-guide/kubeconfig-file/#context for more information.
@@ -7723,6 +7913,89 @@ hal config version edit [parameters]
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--version`: (*Required*) Must be either a version number "X.Y.Z" for a specific release of Spinnaker, or "$BRANCH-latest-unvalidated" for the most recently built (unvalidated) Spinnaker on $BRANCH.
+
+
+---
+## hal config webhook
+
+Show Spinnaker's webhook configuration.
+
+#### Usage
+```
+hal config webhook [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `trust`: Show Spinnaker's webhook trust configuration.
+
+---
+## hal config webhook trust
+
+Show Spinnaker's webhook trust configuration.
+
+#### Usage
+```
+hal config webhook trust [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `disable`: Set Spinnaker's webhook trust to disabled.
+ * `edit`: Edit Spinnaker's webhook trust configuration.
+ * `enable`: Set Spinnaker's webhook trust to enabled.
+
+---
+## hal config webhook trust disable
+
+Set Spinnaker's webhook trust to disabled.
+
+#### Usage
+```
+hal config webhook trust disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config webhook trust edit
+
+Edit Spinnaker's webhook trust configuration.
+
+#### Usage
+```
+hal config webhook trust edit [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--trustStore`: The path to a key store in JKS format containing certification authorities that should be trusted by webhook stages.
+ * `--trustStorePassword`: (*Sensitive data* - user will be prompted on standard input) The password for the supplied trustStore.
+
+
+---
+## hal config webhook trust enable
+
+Set Spinnaker's webhook trust to enabled.
+
+#### Usage
+```
+hal config webhook trust enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
 
 
 ---
