@@ -53,7 +53,7 @@ installations yourself, Halyard does not create them for you_.
 
 Using [Halyard's custom
 configuration](/reference/halyard/custom#custom-profiles) we will
-create the following file `~/.hal/$DEPLOYMENT/profile-settings/$SERVICE-local.yml`:
+create the following file `~/.hal/$DEPLOYMENT/profiles/$SERVICE-local.yml`:
 
 ```yaml
 services.redis.baseUrl: $REDIS_ENDPOINT
