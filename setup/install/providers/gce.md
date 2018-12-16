@@ -101,7 +101,8 @@ SERVICE_ACCOUNT_DEST=# see Prerequisites section above
 Finally, add your new google account:
 
 ```bash
-hal config provider google account add my-gce-account --project $PROJECT \
+ACCOUNT=my-gce-account
+hal config provider google account add $ACCOUNT --project $PROJECT \
     --json-path $SERVICE_ACCOUNT_DEST
 ```
 
