@@ -57,6 +57,8 @@ the following commands will create `spinnaker-service-account`, and add its
 token under a new user called `${CONTEXT}-token-user` in context `$CONTEXT`.
 
 ```bash
+CONTEXT=$(kubectl config current-context)
+
 # This service account uses the ClusterAdmin role -- this is not necessary, 
 # more restrictive roles can by applied.
 kubectl apply --context $CONTEXT \
@@ -193,9 +195,11 @@ hal config provider kubernetes enable
 Then add the account:
 
 ```bash
+CONTEXT=$(kubectl config current-context)
+
 hal config provider kubernetes account add my-k8s-v2-account \
     --provider-version v2 \
-    --context $(kubectl config current-context)
+    --context $CONTEXT
 ```
 
 You'll also need to run
