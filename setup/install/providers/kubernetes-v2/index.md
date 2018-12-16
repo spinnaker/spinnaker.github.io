@@ -195,6 +195,8 @@ hal config provider kubernetes enable
 Then add the account:
 
 ```bash
+CONTEXT=$(kubectl config current-context)
+
 hal config provider kubernetes account add my-k8s-v2-account \
     --provider-version v2 \
     --context $CONTEXT
