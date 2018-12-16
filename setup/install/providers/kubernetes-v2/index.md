@@ -57,6 +57,8 @@ the following commands will create `spinnaker-service-account`, and add its
 token under a new user called `${CONTEXT}-token-user` in context `$CONTEXT`.
 
 ```bash
+CONTEXT=$(kubectl config current-context)
+
 # This service account uses the ClusterAdmin role -- this is not necessary, 
 # more restrictive roles can by applied.
 kubectl apply --context $CONTEXT \
