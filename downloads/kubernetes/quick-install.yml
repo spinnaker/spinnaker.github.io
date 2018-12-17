@@ -151,7 +151,7 @@ data:
     currentDeployment: default
     deploymentConfigurations:
     - name: default
-      version: 1.9.5
+      version: 1.10.5
       providers:
         appengine:
           enabled: false
