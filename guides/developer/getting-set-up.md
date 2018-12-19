@@ -79,7 +79,7 @@ necessary.
 
 ## IntelliJ
 
-Run `./gradlew idea` in a service's directory to generate IntelliJ project files
+Import the project into IntelliJ by selecting `New` > `Project from Existing Sources` > Navigating to a service's `build.gradle` file. Example: `~/dev/spinnaker/clouddriver/build.gradle`.
 
 ### Repairing a Broken Project
 
