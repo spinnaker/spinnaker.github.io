@@ -79,7 +79,9 @@ necessary.
 
 ## IntelliJ
 
-Import the project into IntelliJ by selecting `New` > `Project from Existing Sources` > Navigating to a service's `build.gradle` file. Example: `~/dev/spinnaker/clouddriver/build.gradle`.
+Import the project into IntelliJ: 
+1. Select `New` > `Project from Existing Sources`
+1. Navigating to a service's `build.gradle` file (i.e., `~/dev/spinnaker/clouddriver/build.gradle`)
 
 ### Repairing a Broken Project
 
