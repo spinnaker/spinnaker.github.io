@@ -38,6 +38,7 @@ are subtle differences in how to get them to work with Spinnaker.
 
 * [DockerHub](#dockerhub)
 * [Google Container Registry](#google-container-registry)
+* [Amazon Elastic Container Registry (ECR)](#amazon-elastic-container-registry-ecr)
 * [Other Registries](#other-registries)
 
 ### DockerHub
@@ -161,11 +162,16 @@ API](https://console.developers.google.com/apis/api/cloudresourcemanager.googlea
 
    ```
 
-## AWS Elastic Container Registry
+### Amazon Elastic Container Registry (ECR)
 
 1. Set the registry address.
 
-   ECR registry addresses are account specific, you can retrieve the address from the console, or with `aws ecr describe-repositories`
+   ECR registry addresses are specific to an AWS account and region.  You can retrieve the address from the ECR console, or with `aws ecr describe-repositories`.
+
+   ```bash
+   ADDRESS=012345678910.dkr.ecr.us-east-1.amazonaws.com
+   REGION=us-east-1
+   ```
 
 1. Enable the provider.
 
@@ -173,9 +179,30 @@ API](https://console.developers.google.com/apis/api/cloudresourcemanager.googlea
    hal config provider docker-registry enable
    ```
 
-1. Add the account.
+1. Set up authentication.
 
-   Because the docker registry API does not have support for AWS IAM, a password must be retrieved on a regular interval using IAM credentials. The ECR API returns the token as a base64 encoded string comprised of the username and password. Because clouddriver is expecting a username and password (which it then encodes) we must decode and strip the username from the payload from AWS. The instance profile being used by clouddriver will need permission to interact with the ECR repository.
+   Because the Docker Registry API does not support the standard AWS authentication methods, the Halyard `--password-command` option will be configured to use the AWS CLI to retrieve an ECR authentication token on a regular interval with IAM credentials on the Spinnaker instance.  The ECR API returns the authentication token as a base64 encoded string comprised of the username and password, which the password command will decode and retrieve the password from the payload.
+
+   Ensure that the AWS CLI is installed on the Spinnaker instance running the Clouddriver service. For example:
+
+   ```bash
+   apt install python3-pip
+   pip3 install awscli
+   ```
+
+   The Spinnaker instance running the Clouddriver service will also need permissions to interact with the ECR repository.  Attach the `AmazonEC2ContainerRegistryReadOnly` managed policy to the IAM role for your Spinnaker instance profile or (if IAM user credentials are saved in ~/.aws) your Spinnaker IAM user.  For example,
+
+   ```bash
+   aws iam attach-role-policy --policy-arn arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly --role-name SpinnakerInstanceRole
+   ```
+
+   or:
+
+   ```bash
+   aws iam attach-user-policy --policy-arn arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly --user-name spinnaker
+   ```
+
+1. Add the account.
 
    ```bash
    hal config provider docker-registry account add my-ecr-registry \
