@@ -47,17 +47,24 @@ It will produce the following items:
 If you have different DNS names for your Deck and Gate endpoints, you can either create a certificate with a CN and/or SAN that covers both DNS names, or you can create two certificates.  This document details creating these items, signed by the self-signed CA cert created above:
 
 * `deck.crt` and `deck.key`, which are the `pem`-formatted certificate and private key for use by Deck.  The key will have a password.
-* `gate.jks`, which is a Java KeyStore that contains the following:
+* `gate.jks`, which is a Java KeyStore (JKS) that contains the following:
   * The certificate and private key for use by Gate (with alias *gate*)
   * The certificate for the Certificate Authority created above (with alias *ca*)
 
-1. Create a server key for Deck. Keep this file safe!
+Additionally, these intermediate files will be created:
+
+* `deck.csr`: a Certificate Signing Request file, generated from `deck.key` and used in conjunction with `ca.key` to sign `deck.crt`
+* `gate.csr`: a Certificate Signing Request file, generated from `gate.key` and used in conjunction with `ca.key` to sign `gate.crt`
+* `gate.crt`: a `pem`-formatted certificate for Gate.  This will be converted to .p12 and imported into the JKS.
+* `gate.p12`: a `p12`-formatted certificate and private key for Gate.  This will be imported into the JKS.
+
+1. Create a server key for Deck. This will prompt for a password to encrypt the key.  Keep this file safe!
 ```
 openssl genrsa -des3 -out deck.key 4096
 ```
 
 1. Generate a certificate signing request for Deck. Specify `localhost` or Deck's eventual
-fully-qualified domain name (FQDN) as the Common Name (CN).
+fully-qualified domain name (FQDN) as the Common Name (CN).  This will prompt for the password for `deck.key`.
 ```
 openssl req -new -key deck.key -out deck.csr
 ```
@@ -67,13 +74,13 @@ openssl req -new -key deck.key -out deck.csr
 openssl x509 -req -days 365 -in deck.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out deck.crt
 ```
 
-1. Create a server key for Gate. Keep this file safe!
+1. Create a server key for Gate. This will prompt for a password to encrypt the key.  Keep this file safe!
 ```
 openssl genrsa -des3 -out gate.key 4096
 ```
 
 1. Generate a certificate signing request for Gate. Specify `localhost` or Gate's eventual
-fully-qualified domain name (FQDN) as the Common Name (CN).
+fully-qualified domain name (FQDN) as the Common Name (CN).  This will prompt for the password for `gate.key`.
 ```
 openssl req -new -key gate.key -out gate.csr
 ```
