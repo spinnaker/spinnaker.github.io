@@ -30,24 +30,32 @@ Use the steps below to create a certificate authority. (If you're using an
 external CA, skip to the next section.)
 
 It will produce the following items:
-* `ca.crt` and `ca.key`, which are a `pem`-formatted certificate and private key used as a self-signed Certificate Authority.  The private key will have a password.
 
-1. Create the CA key.  This will prompt for a password to encrypt the key.
-   ```
-   openssl genrsa -des3 -out ca.key 4096
-   ```
+* `ca.key`: a `pem`-formatted private key, which will have a pass phrase.
+* `ca.crt`: a `pem`-formatted certificate, which (with the private key) acts as a self-signed Certificate Authority.
 
-1. Self-sign the CA certificate.  This will prompt for the password used to encrypt `ca.key`.
-   ```
-   openssl req -new -x509 -days 365 -key ca.key -out ca.crt
-   ```
+1. Create the CA key.  This will prompt for a pass phrase to encrypt the key.
+
+    ```bash
+    openssl genrsa -des3 -out ca.key 4096
+
+    ```
+    *Optional flag to avoid pass phrase prompt: `-passout pass:$CA_KEY_PASSWORD` (place before `4096`)*
+
+1. Self-sign the CA certificate.  This will prompt for the pass phrase used to encrypt `ca.key`.
+
+    ```bash
+    openssl req -new -x509 -days 365 -key ca.key -out ca.crt
+    ```
+    *Optional flag to avoid pass phrase prompt: `-passin pass:$CA_KEY_PASSWORD`*
 
 ## 2. Create the server certificate(s)
 
 If you have different DNS names for your Deck and Gate endpoints, you can either create a certificate with a CN and/or SAN that covers both DNS names, or you can create two certificates.  This document details creating these items, signed by the self-signed CA cert created above:
 
-* `deck.crt` and `deck.key`, which are the `pem`-formatted certificate and private key for use by Deck.  The key will have a password.
-* `gate.jks`, which is a Java KeyStore (JKS) that contains the following:
+* `deck.key`: a `pem`-formatted private key, which will have a pass phrase.
+* `deck.key`: a `pem`-formatted certificate, which (with the private key) serves as the server certificate used by Deck.
+* `gate.jks`: a Java KeyStore (JKS) that contains the following:
   * The certificate and private key for use by Gate (with alias *gate*)
   * The certificate for the Certificate Authority created above (with alias *ca*)
 
@@ -58,68 +66,103 @@ Additionally, these intermediate files will be created:
 * `gate.crt`: a `pem`-formatted certificate for Gate.  This will be converted to .p12 and imported into the JKS.
 * `gate.p12`: a `p12`-formatted certificate and private key for Gate.  This will be imported into the JKS.
 
-1. Create a server key for Deck. This will prompt for a password to encrypt the key.  Keep this file safe!
-```
-openssl genrsa -des3 -out deck.key 4096
-```
+1. Create a server key for Deck. This will prompt for a pass phrase to encrypt the key. Keep this file safe!
 
-1. Generate a certificate signing request for Deck. Specify `localhost` or Deck's eventual
-fully-qualified domain name (FQDN) as the Common Name (CN).  This will prompt for the password for `deck.key`.
-```
-openssl req -new -key deck.key -out deck.csr
-```
+    ```bash
+    openssl genrsa -des3 -out deck.key 4096
+    ```
+    *Optional flag to avoid pass phrase prompt: `-passout pass:$DECK_KEY_PASSWORD` (place before `4096`)*
 
-1. Use the CA to sign the server's request and create the Deck server certificate (in `pem` format). If using an external CA, they will do this for you.
-```
-openssl x509 -req -days 365 -in deck.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out deck.crt
-```
+1. Generate a certificate signing request for Deck. Specify `localhost` or Deck's eventual fully-qualified domain name (FQDN) as the Common Name (CN).  This will prompt for the pass phrase for `deck.key`.
 
-1. Create a server key for Gate. This will prompt for a password to encrypt the key.  Keep this file safe!
-```
-openssl genrsa -des3 -out gate.key 4096
-```
+    ```bash
+    openssl req -new -key deck.key -out deck.csr
+    ```
+    *Optional flag to avoid pass phrase prompt: `-passin pass:$DECK_KEY_PASSWORD`*
 
-1. Generate a certificate signing request for Gate. Specify `localhost` or Gate's eventual
-fully-qualified domain name (FQDN) as the Common Name (CN).  This will prompt for the password for `gate.key`.
-```
-openssl req -new -key gate.key -out gate.csr
-```
+1. Use the CA to sign the server's request and create the Deck server certificate (in `pem` format). If using an external CA, they will do this for you.  This will prompt for the pass phrase used to encrypt `ca.key`.
 
-1. Use the CA to sign the server's request and create the Gate server certificate (in `pem` format). If using an external CA, they will do this for you.
-```
-openssl x509 -req -days 365 -in gate.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out gate.crt
-```
+    ```bash
+    openssl x509 -req -days 365 -in deck.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out deck.crt
+    ```
+    *Optional flag to avoid pass phrase prompt: `-passin pass:$CA_KEY_PASSWORD`*
 
-1. Convert the `pem` format Gate server certificate into a PKCS12 file, which is importable into a Java Keystore (JKS).
-```
-YOUR_KEY_PASSWORD=hunter2
-openssl pkcs12 -export -clcerts -in gate.crt -inkey gate.key -out gate.p12 -name gate -password pass:$YOUR_KEY_PASSWORD
-```
-This creates a p12 keystore file with your certificate imported under the alias "gate"
-with the key password $YOUR_KEY_PASSWORD.
+1. Create a server key for Gate. This will prompt for a pass phrase to encrypt the key. Keep this file safe!
 
-1. Create a Java Keystore containing the CA certificate
-```
-keytool -keystore gate.pks -import -trustcacerts -alias ca -file ca.crt
-```
+    ```bash
+    openssl genrsa -des3 -out gate.key 4096
+    ```
+    *Optional flag to avoid pass phrase prompt: `-passout pass:$GATE_KEY_PASSWORD` (place before `4096`)*
 
-1. Import the Gate `p12`-formatted server certificate into your new keystore
-```
-$ keytool -importkeystore \
+1. Generate a certificate signing request for Gate. Specify `localhost` or Gate's eventual fully-qualified domain name (FQDN) as the Common Name (CN).  This will prompt for the pass phrase for `gate.key`.
+
+    ```bash
+    openssl req -new -key gate.key -out gate.csr
+    ```
+    *Optional flag to avoid pass phrase prompt: `-passin pass:$GATE_KEY_PASSWORD`*
+
+1. Use the CA to sign the server's request and create the Gate server certificate (in `pem` format). If using an external CA, they will do this for you.  This will prompt for the pass phrase used to encrypt `ca.key`.
+
+    ```bash
+    openssl x509 -req -days 365 -in gate.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out gate.crt
+    ```
+    *Optional flag to avoid pass phrase prompt: `-passin pass:$CA_KEY_PASSWORD`*
+
+1. Convert the `pem` format Gate server certificate into a PKCS12 (`p12`) file, which is importable into a Java Keystore (JKS).  This will first prompt for the pass phrase used to encrypt `gate.key`, and then for an import/export password to use to encrypt the `p12` file.
+
+    ```bash
+    openssl pkcs12 -export -clcerts -in gate.crt -inkey gate.key -out gate.p12 -name gate
+    ```
+    * *Optional flag to avoid gate.key pass phrase prompt: `-passin pass:$GATE_KEY_PASSWORD`*
+    * *Optional flag to avoid export password prompt: `-password pass:$GATE_EXPORT_PASSWORD`*
+
+    This creates a p12 keystore file with your certificate imported under the alias "gate".
+
+1. Create a new Java Keystore (JKS) containing your `p12`-formatted Gate server certificate.  Because Gate assumes that the keystore password and the password for the key in the keystore are the same, we must provide both via the command line.  This will prompt for the import/export password used to encrypt the `p12` file.
+
+    ```bash
+    JKS_PASSWORD=hunter2
+
+    keytool -importkeystore \
       -srckeystore gate.p12 \
       -srcstoretype pkcs12 \
       -srcalias gate \
-      -srcstorepass $YOUR_KEY_PASSWORD \
-      -destkeystore gate.pks \
+      -destkeystore gate.jks \
       -deststoretype jks \
       -destalias gate \
-      -deststorepass $YOUR_KEY_PASSWORD \
-      -destkeypass $YOUR_KEY_PASSWORD
-```
+      -deststoretype pkcs12 \
+      -deststorepass $JKS_PASSWORD \
+      -destkeypass $JKS_PASSWORD
+    ```
+    *Optional flag to avoid `p12` import/export password prompt: `-srcstorepass $GATE_EXPORT_PASSWORD`*
+
+1. Import the CA certificate into the Java Keystore.  This will prompt for a password to encrypt the Keystore file.
+
+    ```bash
+    keytool -importcert \
+      -keystore gate.jks \
+      -alias ca \
+      -file ca.crt
+
+    keytool -keystore gate.jks -import -alias ca -file ca.crt
+    ```
+    * *Optional flag to avoid keystore password prompt: `-storepass $JKS_PASSWORD`*
+    * *Optional flag to avoid verification prompt: `-noprompt`*
+
+1. Verify the Java Keystore contains the correct contents.
+
+    ```bash
+    keytool -list -keystore gate.jks
+    ```
+    * *Optional flag to avoid keystore password prompt: `-storepass $JKS_PASSWORD`*
+
+    It should contain two entries:
+
+    * `gate` as a `PrivateKeyEntry`
+    * `ca` as a `trustedCertEntry`
 
 Voilà! You now have a Java Keystore with your certificate authority and server certificate ready to
-be used by Spinnaker!
-
+be used by Spinnaker Gate, and, separately, a pem-formatted key and server certificate ready to be used by Spinnaker Deck!
 
 ## 3. Configure SSL for Gate and Deck
 
@@ -128,8 +171,10 @@ for [Gate and Deck](/reference/architecture/).
 
 For Gate:
 
+*This will prompt twice, once for the keystore password and once for the truststore password, which are the same.*
+
 ```bash
-KEYSTORE_PATH= # /path/to/gate.pks
+KEYSTORE_PATH= # /path/to/gate.jks
 
 hal config security api ssl edit \
   --key-alias gate \
@@ -144,6 +189,8 @@ hal config security api ssl enable
 ```
 
 For Deck:
+
+*This will prompt for the pass phrase used to encrypt `deck.crt`.*
 
 ```bash
 SERVER_CERT=   # /path/to/deck.crt
