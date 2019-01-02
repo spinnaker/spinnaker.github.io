@@ -143,8 +143,6 @@ Additionally, these intermediate files will be created:
       -keystore gate.jks \
       -alias ca \
       -file ca.crt
-
-    keytool -keystore gate.jks -import -alias ca -file ca.crt
     ```
     * *Optional flag to avoid keystore password prompt: `-storepass $JKS_PASSWORD`*
     * *Optional flag to avoid verification prompt: `-noprompt`*
