@@ -15,16 +15,32 @@ your Spinnaker application's lifecycle.
 `spin` can manage the whole lifecycle of your application:
 
 ```bash
-# NOTE: You can inspect any command with the `--help` flag.
-$ spin application --help
+$ spin application
 
-This command is accessed by using one of the subcommands below.
+Usage:
+   application [command]
 
-Subcommands:
-    delete    Delete the specified application.
-    get       Get the specified application.
-    list      List all applications.
-    save      Save the provided application.
+Aliases:
+  application, applications, app
+
+Available Commands:
+  delete      Delete the specified application
+  get         Get the specified application
+  list        List the all applications
+  save        Save the provided application
+
+Flags:
+  -h, --help   help for application
+
+Global Flags:
+      --config string          path to config file (default $HOME/.spin/config)
+      --gate-endpoint string   Gate (API server) endpoint (default http://localhost:8084)
+  -k, --insecure               ignore certificate errors
+      --no-color               disable color (default true)
+      --output string          configure output formatting
+  -q, --quiet                  squelch non-essential output
+
+Use " application [command] --help" for more information about a command.
 ```
 
 The following assumes Spinnaker is running and Gate is

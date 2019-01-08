@@ -45,6 +45,10 @@ appengine_provider:
   image_path: assets/images/appengine.svg
   alt: "App Engine Logo"
   image_class: spin_cloud_provider__appengine
+oracle_provider:
+  image_path: assets/images/oracle.svg
+  alt: "Oracle Cloud Infrastructure Logo"
+  image_class: spin_cloud_provider__oracle
 active_community_row:
   title: Active Community
   excerpt: "Join a community that includes Netflix, Google, Microsoft, Veritas, Target, Kenzan, Schibsted, and many others, actively working to maintain and improve Spinnaker."
@@ -148,11 +152,12 @@ waze_case_study:
         {% include spinnaker_cloud_provider id="aws_provider" %}
         {% include spinnaker_cloud_provider id="gcp_provider" %}
         {% include spinnaker_cloud_provider id="k8s_provider" %}
+        {% include spinnaker_cloud_provider id="oracle_provider" %}
+      </div>
       <div class="clearfix">
         {% include spinnaker_cloud_provider id="azure_provider" %}
         {% include spinnaker_cloud_provider id="os_provider" %}
         {% include spinnaker_cloud_provider id="appengine_provider" %}
-      </div>
       </div>
     </div>
   </div>  
