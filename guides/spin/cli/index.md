@@ -95,7 +95,7 @@ to see examples for acquiring a clientId/clientSecret from your provider.
 This OAuth2 configuration method needs to be initialized once to authenticate with the provider before
 it can be used for automation. To authenticate, configure OAuth2 as shown above and execute
 any `spin` command. You will be prompted to authenticate with your OAuth2 provider
-and paste an access code. `spin` then exchanges the code for an OAuth2 access/refresh token pair,
+and paste an access code. This process may involve configuring the `callback url` to be http://localhost:8085 in order to view and retrieve the access code to be provided to the prompt. `spin` then exchanges the code for an OAuth2 access/refresh token pair,
 which it caches in your `~/.spin/config` file for future use. All subsequent `spin` calls will
 use the cached OAuth2 token for authentication with no user input required. If an OAuth2
 access token expires, `spin` will use the refresh token to renew the access token expiry.
