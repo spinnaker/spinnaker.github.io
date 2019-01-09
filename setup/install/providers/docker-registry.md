@@ -178,10 +178,10 @@ API](https://console.developers.google.com/apis/api/cloudresourcemanager.googlea
    Because the docker registry API does not have support for AWS IAM, a password must be retrieved on a regular interval using IAM credentials. The ECR API returns the token as a base64 encoded string comprised of the username and password. Because clouddriver is expecting a username and password (which it then encodes) we must decode and strip the username from the payload from AWS. The instance profile being used by clouddriver will need permission to interact with the ECR repository.
 
    ```bash
-   hal config provider docker-registry account $PROVIDER_COMMAND my-ecr-registry \
+   hal config provider docker-registry account add my-ecr-registry \
     --address $ADDRESS \
     --username AWS \
-    --password-command \"aws --region $REGION ecr get-authorization-token --output text --query 'authorizationData[].authorizationToken' | base64 -d | sed 's/^AWS://'\"
+    --password-command aws --region $REGION ecr get-authorization-token --output text --query 'authorizationData[].authorizationToken' | base64 -d | sed 's/^AWS://'
    ```
 
 ### Other registries
