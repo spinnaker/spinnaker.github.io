@@ -127,7 +127,6 @@ Ensure that the following are installed on your system:
 
 * git: `sudo apt-get install git`
 * curl: `sudo apt-get install curl`
-* netcat: `sudo apt-get install netcat`
 * redis-server: `sudo apt-get install redis-server`
 * OpenJDK 8 - JDK (we're building from source, so a JRE is not sufficient)
     ```
