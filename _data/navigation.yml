@@ -361,6 +361,8 @@ guides:
         url: /guides/spin/app/
       - title: Manage Pipelines
         url: /guides/spin/pipeline/
+      - title: Manage Pipeline Templates
+        url: /guides/spin/pipeline-templates/
 reference:
   - title: API
     collapsed: true
