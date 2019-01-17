@@ -14,11 +14,14 @@ account](https://aws.amazon.com/account/){:target="\_blank"}.
 ## Prerequisites
 
 ### ECS cluster
-You need to [create an ECS cluster](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create_cluster.html){:target="\_blank"}
-and have enough capacity in it to deploy your containers.  
+
+You need to [create an ECS cluster](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create_cluster.html){:target="\_blank"}. If using the 'EC2' launch type, this cluster must have enough EC2 instance capacity in it to deploy your containers.  If using the 'Fargate' launch type, there is no need to add any capacity to this cluster.
 
 ### Networking
-As Elastic Network Interfaces (ENIs) are not yet supported in Spinnaker, you do not need to setup any further networking.  The cluster's networking configuration will be passed from your cluster instances to your containers.   
+
+If using the 'awsvpc' networking mode (required for the 'Fargate' launch type), you need a VPC with at least one subnet group and security group visible in Spinnaker.
+
+If using other networking modes like 'bridge', you do not need to setup any further networking.  The cluster's networking configuration will be passed from your cluster's EC2 instances to your containers.
 
 ### Spinnaker Clouddriver role
 
@@ -40,7 +43,7 @@ The role that Clouddriver assumes for your ECS account needs to have the trust r
     }
   ]
 }
-```  
+```
 
 ### Optional setups
 
@@ -63,7 +66,7 @@ You may create IAM roles that have the `ecs-tasks.amazonaws.com` trust relations
 ```
 
 You may create [Application Auto Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html){:target="\_blank"}
-using Cloudwatch Alarms (tracking e.g. CPU utilization of an ECS service, or a custom metric) that have an autoscaling action.  These alarms will be available for you to clone from when deploying new server groups, and can be selected in the deploy server group modal in the UI.       
+using Cloudwatch Alarms (tracking e.g. CPU utilization of an ECS service, or a custom metric) that have an autoscaling action.  These alarms will be available for you to clone from when deploying new server groups, and can be selected in the deploy server group modal in the UI.
 
 ### Halyard
 
