@@ -51,6 +51,8 @@ setup:
                 url: /setup/install/providers/aws/aws-ecs/
           - title: Azure
             url: /setup/install/providers/azure/
+          - title: Cloud Foundry
+            url: /setup/install/providers/cf/
           - title: DC/OS
             url: /setup/install/providers/dcos/
           - title: Docker Registry
@@ -68,7 +70,7 @@ setup:
               - title: Amazon EKS
                 url: /setup/install/providers/kubernetes-v2/aws-eks/
               - title: Google Kubernetes Engine
-                url: /setup/install/providers/kubernetes-v2//
+                url: /setup/install/providers/kubernetes-v2/gke/
           - title: OpenStack
             url: /setup/install/providers/openstack/
           - title: Oracle
@@ -210,6 +212,8 @@ guides:
             url: /guides/tutorials/codelabs/bake-and-deploy-pipeline/
           - title: Hello Deployment
             url: /guides/tutorials/codelabs/hello-deployment/
+          - title: Deploy GCS Pub/Sub Artifacts to Cloud Foundry
+            url: /guides/tutorials/codelabs/pubsub-to-cf/
           - title: GCE Source To Prod
             url: /guides/tutorials/codelabs/gce-source-to-prod/
           - title: Kubernetes Source To Prod
@@ -333,6 +337,8 @@ guides:
         url: /guides/operator/custom-boms/
       - title: Custom Webhook Stages
         url: /guides/operator/custom-webhook-stages/
+      - title: Custom CAs for Webhooks
+        url: /guides/operator/webhook-custom-trust-store/
       - title: "Orca: Redis to SQL"
         url: /guides/operator/orca-redis-to-sql/
   - title: Runbooks
@@ -355,6 +361,8 @@ guides:
         url: /guides/spin/app/
       - title: Manage Pipelines
         url: /guides/spin/pipeline/
+      - title: Manage Pipeline Templates
+        url: /guides/spin/pipeline-templates/
 reference:
   - title: API
     collapsed: true
@@ -395,8 +403,12 @@ reference:
         url: /reference/artifacts/
       - title: In Pipelines
         url: /reference/artifacts/in-pipelines/
+      - title: From Build Triggers
+        url: /reference/artifacts/from-build-triggers/
       - title: In Kubernetes (Manifest Based)
         url: /reference/artifacts/in-kubernetes-v2/
+      - title: In Google App Engine
+        url: /reference/artifacts/in-appengine/
       - title: Types of Artifacts
         collapsed: true
         children:

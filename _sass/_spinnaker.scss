@@ -298,7 +298,7 @@ $blue-bar-height: 400px;
 $white-bar-height: 150px;
 $cloud-providers-bar-height: $blue-bar-height + $white-bar-height;
 
-$blue-bar-mobile-height: 800px;
+$blue-bar-mobile-height: 840px;
 $cloud-providers-bar-mobile-height: $blue-bar-mobile-height + $white-bar-height;
 
 .spin_cloud_providers {
@@ -306,8 +306,11 @@ $cloud-providers-bar-mobile-height: $blue-bar-mobile-height + $white-bar-height;
     position: absolute;
     left: 0;
     z-index: 10;
-    margin-top: 35em;
+    margin-top: 41em;
     @include breakpoint($medium) {
+      margin-top: 11em;
+    }
+    @include breakpoint($large) {
       margin-top: 8em;
     }
   }
@@ -325,7 +328,7 @@ $cloud-providers-bar-mobile-height: $blue-bar-mobile-height + $white-bar-height;
     @include container;
     @include clearfix;
 
-    padding: 0 0.5em;
+    padding: 0 0.5em 0 3.25em;
 
     @include breakpoint($x-large) {
       max-width: $x-large;
@@ -375,6 +378,10 @@ $cloud-providers-bar-mobile-height: $blue-bar-mobile-height + $white-bar-height;
 
     &__azure {
       filter: invert(1);
+      width: 300px;
+    }
+
+    &__oracle {
       width: 300px;
     }
 
