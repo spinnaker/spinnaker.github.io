@@ -64,7 +64,8 @@ service.
 
  This diagram shows which microservices depend on each other. The green
  boxes represent "external" components, including the Deck UI, a single-page
- JavaScript application that runs in your browser.
+ JavaScript application that runs in your browser. The gold boxes represent Halyard components
+ which are only ran when configuring Spinnaker.
 
  <div class="mermaid">
  graph TB
@@ -88,11 +89,16 @@ service.
  echo --> front50;
  igor(Igor) --> echo;
 
+ hal(Halyard CLI) --> halyard(Halyard Daemon);
+
  classDef default fill:#d8e8ec,stroke:#39546a;
  linkStyle default stroke:#39546a,stroke-width:1px,fill:none;
 
+ classDef halStyle fill:#eebb3c,stroke:#39546a;
+ class halyard,hal halStyle;
+
  classDef external fill:#c0d89d,stroke:#39546a;
- class deck,api external
+ class deck,api external;
  </div>
 
  {% include mermaid %}
