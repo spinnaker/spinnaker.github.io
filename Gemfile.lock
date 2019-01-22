@@ -32,7 +32,7 @@ GEM
     gemoji (3.0.0)
     html-pipeline (2.9.1)
       activesupport (>= 2)
-      nokogiri (>= 1.4)
+      nokogiri (>= 1.8.5)
     html-proofer (3.9.3)
       activesupport (>= 4.2, < 6.0)
       addressable (~> 2.3)
