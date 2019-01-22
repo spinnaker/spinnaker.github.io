@@ -25,7 +25,9 @@ Installing a complete Spinnaker involves these steps:
 1. [Install Halyard](/setup/install/halyard/)
 1. [Choose a cloud provider](/setup/install/providers/)
 1. [Choose an environment](/setup/install/environment/)
+1. [Choose a storage service](/setup/install/storage/)
 1. [Deploy Spinnaker](/setup/install/deploy/)
+1. [Back up your config](/setup/install/backups/)
 1. [Configure everything else](/setup/other_config/) (which includes a lot of
   stuff you need before you can use Spinnaker in production)
 1. [Productionize Spinnaker](/setup/productionize/) (which mainly helps you
