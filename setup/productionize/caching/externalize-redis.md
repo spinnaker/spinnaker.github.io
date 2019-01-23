@@ -45,10 +45,12 @@ skipLifeCycleManagement: true
 > deploying/check the status of the Redis instance. If Halyard has already
 > created a Redis instance, you will have to manually delete it.
 
-You can confirm that this works by checking that the contents of 
-`~/.hal/$DEPLOYMENT/staging/spinnaker.yml` under the `services.redis.baseUrl:` section
-match `$REDIS_ENDPOINT` after running `hal config generate` (you will 
-still need to run `hal deploy apply` to deploy these changes).
+You can confirm that this works by doing the following:
+
+1. Run `hal config generate`
+2. Check that the contents of `~/.hal/$DEPLOYMENT/staging/spinnaker.yml` under the `services.redis.baseUrl:` section
+matches `$REDIS_ENDPOINT`
+3. (Optional) deploy your changes with `hal deploy apply`
 
 ## Configure per-service Redis
 
@@ -84,4 +86,3 @@ instance by following the documentation provided by your hosted Redis provider.
         configuration:
           secure: true
    ```
-
