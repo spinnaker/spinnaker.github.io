@@ -123,6 +123,9 @@ pipeline behavior in downstream stages. For example, you can use the [**Check
 Preconditions**](#check-preconditions) stage to ensure that a given stage only
 runs if a particular input is specified.
 
+Note: The Manual Judgement stage requires that Spinnaker's Echo service is
+enabled in order to work.
+
 ### Pipeline
 Select any pipeline and run it as a sub-pipeline. You can run pipelines from
 both the current application and any other Spinnaker applications that you have
@@ -234,6 +237,9 @@ create a [custom webhook](/guides/operator/custom-webhook-stages/) stage. A
 custom webhook stage is a webhook stage specifically named and configured for
 your application's needs, which shows up in the standard pipeline stages
 dropdown menu.
+
+You can [add more certification authorities](/guides/operator/webhook-custom-trust-store/)
+to trust when making webhook calls over HTTPS.
 
 ### Wercker
 Run the specified Wercker pipeline. You must [set up Wercker](/setup/ci/wercker/)

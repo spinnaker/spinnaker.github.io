@@ -66,6 +66,10 @@ on the status of your build.
 
 7. In the **Payload Constraints** field, you can enter any of the top-level fields from the
 [Build object documentation](https://cloud.google.com/cloud-build/docs/api/reference/rest/v1/projects.builds#resource-build)
-as the key, and a Java regular expression as the value. For example, to match on an image produced,
-you can use the key `images` and the value `gcr\.io/my-project-id/my-application:latest` (replacing
-`my-project-id` and `my-application` with appropriate values).
+as the key, and a Java regular expression as the value.
+
+8. In the **Expected Artifacts** field, you can add any build artifacts as expected artifacts. For example,
+if the build produces a Docker image, you can add an expected artifact of type *Docker* with a value of
+`gcr.io/my-project-id/my-application:tag` (replacing `my-project-id`, `my-application`, and `tag` with
+appropriate values). You can then [use the produced image](/reference/artifacts/in-pipelines/)
+in downstream stages.

@@ -146,12 +146,12 @@ data:
   deck.yml: |
     host: 0.0.0.0
     env:
-      API_HOST: http://spin-gate.spinnaker:8084/
+      API_HOST: http://spin-gate.spinnaker:8084
   config: |
     currentDeployment: default
     deploymentConfigurations:
     - name: default
-      version: 1.9.0
+      version: 1.10.5
       providers:
         appengine:
           enabled: false

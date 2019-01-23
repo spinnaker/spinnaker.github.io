@@ -22,9 +22,21 @@ cadence](/community/releases/release-cadence).
 If your patch fixes a bug, and doesn't introduce a feature or breaking change,
 you can release your change even sooner by cherry-picking into a release
 branch. Every release `X.Y.0` creates a `release-X.Y.x` branch in each
-repository. If you cherry-pick your change into that branch, and open a PR
-against that branch with your patch, it will make it into the next patch
-release.
+repository, and we release patches to release `X.Y` on a roughly weekly basis.
+
+There are two ways to cherry-pick into a release branch:
+
+* [Using the Spinnaker GitHub bot](#cherry-pick-using-the-github-bot)
+* [Manually via the command-line](#cherry-pick-using-the-command-line)
+
+## Cherry-pick using the GitHub bot
+
+To cherry-pick into release `X.Y`, add the following comment to the _merged_ PR
+for your change:
+
+> @spinnakerbot cherry-pick X.Y
+
+## Cherry-pick using the command line
 
 For example: say you've fixed a bug and had the fix merged into master. You're
 running Spinnaker 1.5.1, and want the fix in Spinnaker 1.5.2. First, find the

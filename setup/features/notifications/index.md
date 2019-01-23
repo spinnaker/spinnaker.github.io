@@ -121,26 +121,11 @@ Note: your users will need to invite the slack bot to private rooms that want to
 
 ## Twilio
 
-For Twilio, you need to add your account [credentials](https://www.twilio.com/help/faq/twilio-basics/what-is-the-auth-token-and-how-can-i-change-it){:target="\_blank"}.
+For Twilio, you need to add your account [credentials](https://support.twilio.com/hc/en-us/articles/223136027-Auth-Tokens-and-how-to-change-them){:target="\_blank"}. Then...
 
-in echo.yml
-```
-twilio:
-  enabled: true
-  baseUrl: https://api.twilio.com/
-  account: xxx
-  token: xxx
-  from: +18sp-inn-aker
-```
-in settings.js (deck)
-```
-window.spinnakerSettings = {
-// ...
-  notifications: {
-    sms: {
-      enabled: true
-    },
-// ...
+```bash
+hal config notification twilio enable
+echo $TWILIO_AUTH_TOKEN | hal config notification twilio edit --account $TWILIO_ACCOUNT_SID --from $TWILIO_PHONE_NUMBER --token
 ```
 
 ## Using notifications

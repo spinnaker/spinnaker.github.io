@@ -26,9 +26,7 @@ image. Spinnaker expects all applications to be deployed as deb packages.
 
 ### Installing Jenkins
 
-If you already have a Jenkins server, you can skip this step. However be sure that port 9999 on the
-server is open to the internet if you plan to host your deb repository there. Also be sure that your
- Jenkins port is accessible by your Spinnaker instance.
+If you already have a Jenkins server, you can skip this step.
 
 SSH into your instance and run the following:
 
@@ -40,10 +38,23 @@ wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add
 sudo sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list'
 sudo apt-get update
 sudo apt-get install jenkins git
-sudo service jenkins start
 ```
 
-Visit port :8080 on your instance and you should see Jenkins startup and present the dashboard.
+### Configuring Jenkins
+
+By default, Jenkins listens on port 8080, which is the same port that Spinnaker's front50
+microservice uses. In order to have both installed on the same machine, you'll need to configure
+one of them to listen on a different port.  These instructions will configure Jenkins to listen
+on port 5656.  You'll need to ensure that this port is accessible by your Spinnaker instance.
+
+Edit your Jenkins configuration file at `/etc/default/jenkins` and change the `HTTP_PORT`
+entry to:
+```
+HTTP_PORT=5656
+```
+
+Now run `sudo service jenkins restart` to restart Jenkins. Visit port :5656 on your instance and you
+should see Jenkins start up and present the dashboard.
 
 ### Enable Jenkins API
 
@@ -234,7 +245,7 @@ Scroll down to jenkins section and add your url, username and password from abov
   jenkins:
     defaultMaster:
       name: Jenkins # The display name for this server
-      baseUrl: http://jenkins-server:8080
+      baseUrl: http://jenkins-server:5656
       username: jenkinsuser
       password: jenkinspassword
 ```
@@ -279,7 +290,7 @@ our app.
 
 Now we will create a firewall to allow access to our application. Spinnaker only allows you to
  attach ingress sources based on another firewall, so we first must create a base security
- group via the aws console to allow traffic on port 8080 (AWS Security Groups map to Firewalls in
+ group via the aws console to allow traffic on port 5656 (AWS Security Groups map to Firewalls in
  Spinnaker).
 
 ![](group1.png)
