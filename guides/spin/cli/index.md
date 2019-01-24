@@ -35,7 +35,20 @@ sudo mv spin /usr/local/bin/spin
 
 ## Configure `spin`
 
-`spin` reads its configuration from `~/.spin/config`. Currently, all configuration is for authentication mechanisms only.
+`spin` reads its configuration from `~/.spin/config`. 
+
+This configuration file doesn't exist yet, after you install `spin`. You need to create it.
+
+1. Create the directory:
+```bash
+mkdir ~/.spin/
+```
+
+1. In that directory, create the `config` file. 
+
+   Use [example.yaml](https://github.com/spinnaker/spin/blob/master/config/example.yaml) to populate it.
+
+Currently, all configuration is for authentication mechanisms only.
 
 ### X.509
 
