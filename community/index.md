@@ -103,6 +103,9 @@ plaid_user:
 centeredge_user:
   image_path: assets/images/users/centeredge_logo.png
   alt: "CenterEdge Logo"
+redbox_user:
+  image_path: assets/images/users/redbox_logo.png
+  alt: "Redbox Logo"
 ---
 
 ## Engage the community and get support
@@ -169,19 +172,20 @@ The Spinnaker OSS project was started at Netflix, and today thrives on the contr
   <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="plangrid_user" %}
     {% include spinnaker_user id="purestorage_user" %}
-    {% include spinnaker_user id="smartthings_user" %}
+    {% include spinnaker_user id="redbox_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="smartthings_user" %}
     {% include spinnaker_user id="schibsted_user" %}
     {% include spinnaker_user id="scopely_user" %}
-    {% include spinnaker_user id="skuid_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="skuid_user" %}
     {% include spinnaker_user id="target_user" %}
     {% include spinnaker_user id="underarmour_user" %}
-    {% include spinnaker_user id="waze_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="waze_user" %}
     {% include spinnaker_user id="weatherbug_user" %}
     {% include spinnaker_user id="xiaohongshu_user" %}
   </div>

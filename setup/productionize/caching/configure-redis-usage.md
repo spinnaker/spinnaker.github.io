@@ -50,18 +50,13 @@ default. This can be configured by setting the following properties in
 ```yaml
 pollers:
   oldPipelineCleanup:
-    enabled: true       # This enables old pipline cleanup.
-
-    intervalMs:         # (Default 3,600,000, or 1 hour) How many milliseconds
-                        # between pipeline cleanup runs.
-
-    thresholdDays:      # (Default 30) How old a pipeline must be to be deleted.
-
-    minimumPipelineExecutions: # (Default 5) How many executions to keep around.
+    enabled: true                  # This enables old pipline cleanup (default: false)
+    intervalMs: 3600000            # How many milliseconds between pipeline cleanup runs (default: 1hr or 3600000)
+    thresholdDays: 30              # How old a pipeline must be to be deleted (default: 30)
+    minimumPipelineExecutions: 5   # How many executions to keep around (default: 5)
 
 tasks:
-  daysOfExecutionHistory: 180  # How many days to keep old task executions
-                               # around.
+  daysOfExecutionHistory: 180      # How many days to keep old task executions around.
 ```
 
 > `$DEPLOYMENT` is typically `default`. See [the
