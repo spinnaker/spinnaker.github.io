@@ -30,7 +30,7 @@ on the status of your build.
 
     ```
     PROJECT_ID=
-    SUBSCRIPTION_NAME=googleCloudBuilds
+    SUBSCRIPTION_NAME=gCloudBuilds
 
     gcloud pubsub subscriptions create $SUBSCRIPTION_NAME \
       --topic projects/$PROJECT_ID/topics/cloud-builds \
