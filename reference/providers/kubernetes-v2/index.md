@@ -150,6 +150,19 @@ command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
   If instead Spinnaker is deploying ReplicaSets directly without a Deployment,
   this annotation does the job.
 
+* `strategy.spinnaker.io/recreate`
+
+  As of Spinnaker 1.13, you can force Spinnaker to delete a resource (if it
+  already exists) before creating it again. This is useful for kinds such
+  as [`Job`](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/),
+  which cannot be edited once created, or must be re-created to run again.
+  
+  When set to `'true'` for a versioned resource, this will only re-create your
+  resource if no edits have been made since the last deployment (i.e. the 
+  same version of the resource is redeployed).
+  
+  The default behavior is `'false'`.
+
 ## Traffic
 
 * `traffic.spinnaker.io/load-balancers`
