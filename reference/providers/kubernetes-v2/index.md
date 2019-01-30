@@ -154,10 +154,10 @@ command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
 
   As of Spinnaker 1.13, you can force Spinnaker to delete a resource (if it
   already exists) before creating it again. This is useful for kinds such
-  as [`Job`](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/)
-  which cannot be edited once created, or must be recreated to run again.
+  as [`Job`](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/),
+  which cannot be edited once created, or must be re-created to run again.
   
-  When set to `'true'` for a versioned resource, this will only recreate your
+  When set to `'true'` for a versioned resource, this will only re-create your
   resource if no edits have been made since the last deployment (i.e. the 
   same version of the resource is redeployed).
   
