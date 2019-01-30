@@ -35,7 +35,20 @@ sudo mv spin /usr/local/bin/spin
 
 ## Configure `spin`
 
-`spin` reads its configuration from `~/.spin/config`. Currently, all configuration is for authentication mechanisms only.
+`spin` reads its configuration from `~/.spin/config`. 
+
+This configuration file doesn't exist yet, after you install `spin`. You need to create it.
+
+1. Create the directory:
+```bash
+mkdir ~/.spin/
+```
+
+1. In that directory, create the `config` file. 
+
+   Use [example.yaml](https://github.com/spinnaker/spin/blob/master/config/example.yaml) to populate it.
+
+Currently, all configuration is for authentication mechanisms only.
 
 ### X.509
 
@@ -95,7 +108,7 @@ to see examples for acquiring a clientId/clientSecret from your provider.
 This OAuth2 configuration method needs to be initialized once to authenticate with the provider before
 it can be used for automation. To authenticate, configure OAuth2 as shown above and execute
 any `spin` command. You will be prompted to authenticate with your OAuth2 provider
-and paste an access code. `spin` then exchanges the code for an OAuth2 access/refresh token pair,
+and paste an access code. This process involves configuring the `callback url` to be http://localhost:8085 in order to view and retrieve the access code to be provided to the prompt. `spin` then exchanges the code for an OAuth2 access/refresh token pair,
 which it caches in your `~/.spin/config` file for future use. All subsequent `spin` calls will
 use the cached OAuth2 token for authentication with no user input required. If an OAuth2
 access token expires, `spin` will use the refresh token to renew the access token expiry.

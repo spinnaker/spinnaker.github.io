@@ -4,7 +4,7 @@ title: "Commands"
 sidebar:
   nav: reference
 ---
-Published: 2018-12-11 16:37:47
+Published: 2019-01-17 20:24:08
 
 
 # Table of Contents
@@ -98,6 +98,11 @@ Published: 2018-12-11 16:37:47
  * [**hal config artifact s3 account list**](#hal-config-artifact-s3-account-list)
  * [**hal config artifact s3 disable**](#hal-config-artifact-s3-disable)
  * [**hal config artifact s3 enable**](#hal-config-artifact-s3-enable)
+ * [**hal config artifact templates**](#hal-config-artifact-templates)
+ * [**hal config artifact templates add**](#hal-config-artifact-templates-add)
+ * [**hal config artifact templates delete**](#hal-config-artifact-templates-delete)
+ * [**hal config artifact templates edit**](#hal-config-artifact-templates-edit)
+ * [**hal config artifact templates list**](#hal-config-artifact-templates-list)
  * [**hal config canary**](#hal-config-canary)
  * [**hal config canary aws**](#hal-config-canary-aws)
  * [**hal config canary aws account**](#hal-config-canary-aws-account)
@@ -212,6 +217,10 @@ Published: 2018-12-11 16:37:47
  * [**hal config notification slack disable**](#hal-config-notification-slack-disable)
  * [**hal config notification slack edit**](#hal-config-notification-slack-edit)
  * [**hal config notification slack enable**](#hal-config-notification-slack-enable)
+ * [**hal config notification twilio**](#hal-config-notification-twilio)
+ * [**hal config notification twilio disable**](#hal-config-notification-twilio-disable)
+ * [**hal config notification twilio edit**](#hal-config-notification-twilio-edit)
+ * [**hal config notification twilio enable**](#hal-config-notification-twilio-enable)
  * [**hal config provider**](#hal-config-provider)
  * [**hal config provider appengine**](#hal-config-provider-appengine)
  * [**hal config provider appengine account**](#hal-config-provider-appengine-account)
@@ -706,6 +715,7 @@ hal config artifact [subcommands]
  * `http`: Manage and view Spinnaker configuration for the http provider
  * `oracle`: Manage and view Spinnaker configuration for the oracle provider
  * `s3`: Manage and view Spinnaker configuration for the s3 provider
+ * `templates`: Show Spinnaker's configured artifact templates.
 
 ---
 ## hal config artifact bitbucket
@@ -1968,6 +1978,91 @@ hal config artifact s3 enable [parameters]
 
 
 ---
+## hal config artifact templates
+
+Show Spinnaker's configured artifact templates.
+
+#### Usage
+```
+hal config artifact templates [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `add`: Add an artifact template
+ * `delete`: Delete an artifact template
+ * `edit`: Edit an artifact template
+ * `list`: List an artifact templates
+
+---
+## hal config artifact templates add
+
+Add an artifact template
+
+#### Usage
+```
+hal config artifact templates add TEMPLATE [parameters]
+```
+
+#### Parameters
+`TEMPLATE`: The name of the artifact template to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--template-path`: (*Required*) The path to the Jinja template to use for artifact extraction
+
+
+---
+## hal config artifact templates delete
+
+Delete an artifact template
+
+#### Usage
+```
+hal config artifact templates delete TEMPLATE [parameters]
+```
+
+#### Parameters
+`TEMPLATE`: The name of the artifact template to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact templates edit
+
+Edit an artifact template
+
+#### Usage
+```
+hal config artifact templates edit TEMPLATE [parameters]
+```
+
+#### Parameters
+`TEMPLATE`: The name of the artifact template to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--template-path`: The path to the Jinja template to use for artifact extraction
+
+
+---
+## hal config artifact templates list
+
+List an artifact templates
+
+#### Usage
+```
+hal config artifact templates list [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
 ## hal config canary
 
 Configure your canary analysis settings for Spinnaker.
@@ -2618,6 +2713,9 @@ hal config canary prometheus account add ACCOUNT [parameters]
  * `--base-url`: (*Required*) The base URL to the Prometheus server.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--password`: (*Sensitive data* - user will be prompted on standard input) A basic auth password.
+ * `--username`: A basic auth username.
+ * `--username-password-file`: The path to a file containing "username:password".
 
 
 ---
@@ -2651,6 +2749,9 @@ hal config canary prometheus account edit ACCOUNT [parameters]
  * `--base-url`: The base URL to the Prometheus server.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--password`: (*Sensitive data* - user will be prompted on standard input) A basic auth password.
+ * `--username`: A basic auth username.
+ * `--username-password-file`: The path to a file containing "username:password".
 
 
 ---
@@ -3885,6 +3986,7 @@ hal config notification [parameters] [subcommands]
 
 #### Subcommands
  * `slack`: Manage and view Spinnaker configuration for the slack notification
+ * `twilio`: Manage and view Spinnaker configuration for the twilio notification
 
 ---
 ## hal config notification slack
@@ -3945,6 +4047,73 @@ Set the slack notification as enabled
 #### Usage
 ```
 hal config notification slack enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config notification twilio
+
+Manage and view Spinnaker configuration for the twilio notification
+
+#### Usage
+```
+hal config notification twilio [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `disable`: Set the twilio notification as disabled
+ * `edit`: Edit the twilio notification type
+ * `enable`: Set the twilio notification as enabled
+
+---
+## hal config notification twilio disable
+
+Set the twilio notification as disabled
+
+#### Usage
+```
+hal config notification twilio disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config notification twilio edit
+
+Edit the twilio notification type
+
+#### Usage
+```
+hal config notification twilio edit [parameters]
+```
+
+#### Parameters
+ * `--account`: Your Twilio account SID.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--from`: The phone number from which the SMS will be sent (i.e. +1234-567-8910).
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--token`: (*Sensitive data* - user will be prompted on standard input) Your Twilio auth token.
+
+
+---
+## hal config notification twilio enable
+
+Set the twilio notification as enabled
+
+#### Usage
+```
+hal config notification twilio enable [parameters]
 ```
 
 #### Parameters
@@ -8041,6 +8210,7 @@ This flushes infrastructure caches (clouddriver) after the deploy succeeds.
 This guarantees that no configuration will be generated for this deployment. This is useful for staging artifacts for later manual configuration.
  * `--prep-only`: (*Default*: `false`) This does just the prep work, and not the actual deployment. Only useful at the moment if you want to just clone the repositories for a localgit setup.
  * `--service-names`: (*Default*: `[]`) When supplied, only install or update the specified Spinnaker services.
+ * `--wait-for-completion`: (*Default*: `false`) When supplied, wait for all containers to be ready before returning (only applies to Kubernetes V2 provider).
 
 
 ---

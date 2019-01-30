@@ -8,7 +8,7 @@ redirect_from: /setup/scaling/externalize-redis/
 
 {% include toc %}
 
-One of easiest ways to improve Spinnaker's reliability at scale is to use an
+One of the easiest ways to improve Spinnaker's reliability at scale is to use an
 external Redis. The Redis installed by Spinnaker (either locally, or in
 Kubernetes) isn't configured to be production-ready. If you have a hosted Redis
 alternative, or a database team managing a Redis installation, we highly
@@ -44,6 +44,13 @@ skipLifeCycleManagement: true
 > __Note__: By setting `skipLifeCycleManagement` we are telling Halyard to stop
 > deploying/check the status of the Redis instance. If Halyard has already
 > created a Redis instance, you will have to manually delete it.
+
+You can confirm that this works by doing the following:
+
+1. Run `hal config generate`
+2. Check that the contents of `~/.hal/$DEPLOYMENT/staging/spinnaker.yml` under the `services.redis.baseUrl:` section
+matches `$REDIS_ENDPOINT`
+3. (Optional) deploy your changes with `hal deploy apply`
 
 ## Configure per-service Redis
 
