@@ -33,6 +33,24 @@ chmod +x spin
 sudo mv spin /usr/local/bin/spin
 ```
 
+### On Windows
+
+```powershell
+New-Item -ItemType Directory $env:LOCALAPPDATA\spin -ErrorAction SilentlyContinue
+
+Invoke-WebRequest -OutFile $env:LOCALAPPDATA\spin\spin.exe -UseBasicParsing "https://storage.googleapis.com/spinnaker-artifacts/spin/$([System.Text.Encoding]::ASCII.GetString((Invoke-WebRequest https://storage.googleapis.com/spinnaker-artifacts/spin/latest).Content))/windows/amd64/spin.exe"
+
+Unblock-File $env:LOCALAPPDATA\spin\spin.exe
+
+$path = [Environment]::GetEnvironmentVariable("PATH", [EnvironmentVariableTarget]::User) -split ";"
+if ($path -inotcontains "$env:LOCALAPPDATA\spin") {
+  $path += "$env:LOCALAPPDATA\spin"
+  [Environment]::SetEnvironmentVariable("PATH", $path -join ";", [EnvironmentVariableTarget]::User)
+
+  $env:PATH = (([Environment]::GetEnvironmentVariable("PATH", [EnvironmentVariableTarget]::Machine) -split ";") + $path) -join ";"
+}
+```
+
 ## Configure `spin`
 
 `spin` reads its configuration from `~/.spin/config`. 
