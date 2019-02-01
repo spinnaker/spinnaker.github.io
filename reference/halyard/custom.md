@@ -79,6 +79,7 @@ cluster.
 | `enabled` | Whether or not this service is enabled. Be careful, since disabling critical services like `consul-client` can make your entire installation unusable and un-upgradable. |
 | `env` | Environment variables to make available to this Service. Supplied as YAML key-value pairs. |
 | `healthEndpoint` | The HTTP endpoint that can be queried for health status.  Leave empty if you want Halyard to simply check that a TCP connection is openable. This information is typically transmitted to the platform's discovery system. |
+| `useExecHealthCheck` | Determines whether the kubernetes liveness check should use `exec` or `httpGet` method (`exec` is required for some istio compantibilty and is default, `httpGet` is a bit more "pure" and is required for some Ingress Controllers). | 
 | `host` | The host that this service will bind to. `0.0.0.0` will always work, but more restrictive bindings may be more secure. |
 | `kubernetes` | You can add Kubernetes specific service settings, see details below. |
 | `location` | The Spinnaker "location" this will be installed in. This is a namespace in Kubernetes, and a zone in GCE. |
