@@ -23,3 +23,5 @@ Run through these codelabs to get hands-on experience with Spinnaker in a guided
 * [DC/OS Source to Prod](./dcos-source-to-prod) - create a set of basic pipelines for deploying code from a Github repo to a DC/OS cluster
 * [Deploying GCS Pub/Sub Artifacts to App Engine](./pubsub-to-appengine/) - Trigger a pipeline from a Pub/Sub message from GCS upon upload of a tarball
 * [Automating Canary Analysis on GKE with Spinnaker](https://cloud.google.com/solutions/automated-canary-analysis-kubernetes-engine-spinnaker) - Configure automated canary analysis on GKE
+* [Oracle Cloud Infrastructure Source To Prod](./oci-source-to-prod/) - create a cohesive workflow which takes source code and builds, tests, and promotes it to production on Oracle Cloud Infrastructure 
+* [Continuous Delivery to Kubernetes on Oracle](./oracle-kubernetes-source-to-prod/) - deploy an application from Kubernetes manifest files targeting Kubernetes on Oracle Cloud Infrastructure Container Engine
