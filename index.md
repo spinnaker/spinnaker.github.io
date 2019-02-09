@@ -7,7 +7,7 @@ spinnaker_row:
   alt: "Spinnaker Logo"
 multi_cloud_row:
   title: Multi-Cloud
-  excerpt: "Deploy across multiple cloud providers including AWS EC2, Kubernetes, Google Compute Engine, Google Kubernetes Engine, Google App Engine, Microsoft Azure, and Openstack, with Oracle Bare Metal and DC/OS coming soon."
+  excerpt: "Deploy across multiple cloud providers including AWS EC2, Kubernetes, Google Compute Engine, Google Kubernetes Engine, Google App Engine, Microsoft Azure, Openstack, and Oracle Cloud Infrastructure, with DC/OS coming soon."
   image_path: assets/images/cloud.svg
   alt: "Multi-Cloud Logo"
 automated_releases_row:

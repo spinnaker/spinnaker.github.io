@@ -83,10 +83,10 @@ may look something like this:
     $ISSUER_ID=spinnaker.test
     
     hal config security authn saml edit \
-      --keystore $KEYSTORE_PATH
-      --keystore-alias saml
-      --keystore-password $KEYSTORE_PASSWORD
-      --metadata $METADATA_PATH
+      --keystore $KEYSTORE_PATH \
+      --keystore-alias saml \
+      --keystore-password $KEYSTORE_PASSWORD \
+      --metadata $METADATA_PATH \
       --issuer-id $ISSUER_ID \
       --service-address-url $SERVICE_ADDR_URL
       
