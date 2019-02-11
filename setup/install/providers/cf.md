@@ -16,7 +16,49 @@ In [Cloud Foundry](https://www.cloudfoundry.org) (CF), an Account maps to a user
 
 Your CF foundations' [API endpoints](https://docs.cloudfoundry.org/running/cf-api-endpoint.html) must be reachable from your installation of Spinnaker.
 
+You will also need to know the co-ordinates to your Cloud Foundry Foundation which means you have a `user`, `password`, `api-endpoint` and `environment` at a minimum. The environment is somewhat arbitrary at this point but it is required for the proper operation of the Spinnaker UI.
+
+Additionally you can supply optional `application manager` and `cloud foundry metrics` endpoints to your configuration that will allow you to link directly from your Spinnaker UI to your `application manager` and `metrics` UIs.
+
 ## Add an account
+
+### Halyard release > 1.15.0
+
+First, make sure the provider is enabled:
+
+``` bash
+hal config provider cloudfoundry enable
+```
+
+Next, run the `hal` command (replacing the parameter values with your own) to add an account named `cf-account` to your list of Cloud Foundry accounts:
+
+``` bash
+hal config provider account cloudfoundry add cf-account \
+  --user=admin \
+  --password=notsoverysecret \
+  --api=api.sys.cf-apps.com \
+  --apps-manager-uri=http://apps.sys.cf-apps.com \
+  --metrics-uri=http://metrics.sys.cf-apps.com
+```
+
+To verify your account was added to the list you can run:
+
+``` bash
+hal config provider account cloudfoundry list
+```
+
+Additionally for details on the specific account you can run:
+
+``` bash
+hal config provider account cloudfoundry get cf-account
+```
+
+### Halyard release <= 1.15.0
+
+```
+This description will continue to work for newer releases of Halyard but it is not the
+recommended way of configuring provider accounts for Spinnaker.
+```
 
 While the Cloud Foundry provider is in alpha, the hal CLI does not have support for adding a CF account (this support will be added soon). Instead, you can use Halyard's [custom configuration](https://www.spinnaker.io/reference/halyard/custom/) to add a CF account to an existing installation of Spinnaker.
 
