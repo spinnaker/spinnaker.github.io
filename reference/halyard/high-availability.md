@@ -188,6 +188,6 @@ With all services enabled for high availability, the new architecture looks like
 
 ## Recoverability
 
-If you've [configured an external Redis](/setup/productionize/caching/externalize-redis/), Spinnaker will be able to recover from failure events. Spot instances on AWS or Preemtible nodes can be used as well to lower cost.
+If you've [configured an external Redis](/setup/productionize/caching/externalize-redis/), Spinnaker can recover from failure events. Spot instances on AWS or Preemtible nodes can be used as well to lower cost.
 
 It's also recommended to spread out services over multiple availability zones, as described in [the Netflix implementation](https://blog.spinnaker.io/scaling-spinnaker-at-netflix-part-1-8a5ae51ee6de).
