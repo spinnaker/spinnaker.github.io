@@ -22,4 +22,6 @@ Here's what it's going to be like, creating and managing pipeline templates:
 1. Create a pipeline, or find an existing one, that is similar to the template
 you want to create.
 
-1. 
+1. Turn that pipeline into a template
+
+   To do this, you use variables. 
