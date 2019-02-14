@@ -20,13 +20,16 @@ In Spinnaker, it is possible to define that users belonging to a certain role ar
 ### Halyard
 TBD
 
-### Manually add configuration in fiat
+### Manually add configuration in Fiat
 
-In the fiat config file, add the following:
+In the Fiat config file, add the following:
 
 ```yaml
 fiat:
   admin:
     roles:
-      - "role of the spinnaker gods"
+      - devops-admin
 ```
+
+> For installations managed by Halyard, the file should be located in the following path
+`~/.hal/$DEPLOYMENT/profiles/fiat-local.yml` and remember to `hal deploy apply` after the change
