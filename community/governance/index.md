@@ -92,7 +92,6 @@ Logistics
 Current TOC members:
 
 * Adam Jordens (Netflix)
-* Lars Wander (Google)
 * Rob Zienert (Netflix)
 * Travis Tomsu (Google)
 
