@@ -75,15 +75,15 @@ keytool -keystore keystore.jks -import -trustcacerts -alias ca -file ca.crt
 1. Import server certificate
 ```
 $ keytool -importkeystore \
-      -srckeystore server.p12 \
-      -srcstoretype pkcs12 \
-      -srcalias spinnaker \
-      -srcstorepass $YOUR_KEY_PASSWORD \
-      -destkeystore keystore.jks \
-      -deststoretype jks \
-      -destalias spinnaker \
-      -deststorepass $YOUR_KEY_PASSWORD \
-      -destkeypass $YOUR_KEY_PASSWORD
+      --srckeystore server.p12 \
+      --srcstoretype pkcs12 \
+      --srcalias spinnaker \
+      --srcstorepass $YOUR_KEY_PASSWORD \
+      --destkeystore keystore.jks \
+      --deststoretype jks \
+      --destalias spinnaker \
+      --deststorepass $YOUR_KEY_PASSWORD \
+      --destkeypass $YOUR_KEY_PASSWORD
 ```
 
 Voilà! You now have a Java Keystore with your certificate authority and server certificate ready to
