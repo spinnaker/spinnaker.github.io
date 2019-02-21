@@ -63,6 +63,9 @@ At this point, you can use the [publisher
 guide](https://cloud.google.com/pubsub/docs/publisher){:target="\_blank"} to
 learn how to publish messages programmatically to the topic you have created.
 
+Note that your topic messages need to be valid JSON, otherwise an exception
+will be raised.
+
 ### Receiving messages from Google Cloud Storage (GCS)
 
 First, record the fact that your `$MESSAGE_FORMAT` is `GCS`, this will be
