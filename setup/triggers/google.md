@@ -64,7 +64,7 @@ guide](https://cloud.google.com/pubsub/docs/publisher){:target="\_blank"} to
 learn how to publish messages programmatically to the topic you have created.
 
 Note that your topic messages need to be valid JSON, otherwise an exception
-will be raised.
+will be raised in the `echo` service and your pipeline will not be triggered.
 
 ### Receiving messages from Google Cloud Storage (GCS)
 
