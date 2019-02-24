@@ -54,7 +54,7 @@ You can use pipeline expressions any place in the UI where you can enter
 free-form text, with the exception of the pipeline **Configuration** stage. If
 you want to set the value of a field using a pipeline expression but there is no
 text box available, you can use the [Edit as
-JSON](/guides/user/pipeline/managing-pipelines/#edit-a-pipeline-as-JSON)
+JSON](/guides/user/pipeline/managing-pipelines/#edit-a-pipeline-as-json)
 pipeline feature.
 
 ### When are pipeline expressions evaluated?
@@ -230,12 +230,12 @@ For example, if you forget the closing bracket in the example above, it outputs
 the following:
 
 ```
-{  
+{
   "detail":
-    {  
+    {
       "{ #stage(\"Deploy\").status.toString() ":
-        [  
-          {  
+        [
+          {
             "description":
               "Failed to evaluate [expression] Expression
               [{ #stage( #root.execution, \"Deploy\").status.toString() ]

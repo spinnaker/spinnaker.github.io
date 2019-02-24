@@ -7,9 +7,9 @@ sidebar:
 
 {% include toc %}
 
-This page describes how you can configure a Halyard deployment to increase the availability of specific services beyond simply [horizontally scaling](/setup/productionize/scaling/horizontal-scaling/) the service. Halyard does this by splitting the functionalities of a service into separate logical roles. The benefits of doing this is specific to the service that is being split. These deployment strategies are inspired by [Netflix's large scale experience](https://blog.spinnaker.io/scaling-spinnaker-at-netflix-part-1-8a5ae51ee6de).
+This page describes how you can configure a Halyard deployment to increase the availability of specific services beyond simply [horizontally scaling](/setup/productionize/scaling/horizontal-scaling/) the service. Halyard does this by splitting the functionalities of a service into separate logical roles (also known as sharding). The benefits of doing this is specific to the service that is being sharded. These deployment strategies are inspired by [Netflix's large scale experience](https://blog.spinnaker.io/scaling-spinnaker-at-netflix-part-1-8a5ae51ee6de).
 
-When split, the new logical services are given new names. This means that these logical services can be configured and scaled independently of each other.
+When sharded, the new logical services are given new names. This means that these logical services can be configured and scaled independently of each other.
 
 Currently, this feature is only for Clouddriver and Echo.
 
@@ -23,12 +23,13 @@ __Important:__ Halyard only supports this functionality for a [distributed Spinn
  clouddriver(Clouddriver) --> clouddriver-caching(Clouddriver-Caching);
  clouddriver --> clouddriver-rw(Clouddriver-RW);
  clouddriver --> clouddriver-ro(Clouddriver-RO);
+ clouddriver --> clouddriver-ro-deck(Clouddriver-RO-Deck)
 
  classDef default fill:#d8e8ec,stroke:#39546a;
  linkStyle default stroke:#39546a,stroke-width:1px,fill:none;
 
  classDef split fill:#42f4c2,stroke:#39546a;
- class clouddriver-caching,clouddriver-ro,clouddriver-rw,echo-scheduler,echo-replica split
+ class clouddriver-caching,clouddriver-ro,clouddriver-ro-deck,clouddriver-rw,echo-scheduler,echo-worker split
  </div>
 
  {% include mermaid %}
@@ -39,23 +40,26 @@ Clouddriver benefits greatly from isolating its operations into separate service
 hal config deploy ha clouddriver enable
 ```
 
-When Spinnaker is deployed with this flag enabled, Clouddriver will be deployed as three different services, each only performing a subset of the base Clouddriver's operations:
+When Spinnaker is deployed with this flag enabled, Clouddriver will be deployed as four different services, each only performing a subset of the base Clouddriver's operations:
 
 * [`clouddriver-caching`](#clouddriver-caching)
 * [`clouddriver-rw`](#clouddriver-rw)
 * [`clouddriver-ro`](#clouddriver-ro)
+* [`clouddriver-ro-deck`](#clouddriver-ro-deck)
 
-Although by default the three Clouddriver services will communicate with the global Redis (all Spinnaker services speak to this Redis) provided by Halyard, it is recommended that the logical Clouddriver services be configured to communicate with an external Redis service. To be most effective, `clouddriver-ro` should be configured to speak to a Redis read replica, while the other two should be configured to speak to the master. This is handled automatically by Halyard if the user provides the two endpoints using this command:
+Although by default the four Clouddriver services will communicate with the global Redis (all Spinnaker services speak to this Redis) provided by Halyard, it is recommended that the logical Clouddriver services be configured to communicate with an external Redis service. To be most effective, `clouddriver-ro` should be configured to speak to a Redis read replica, `clouddriver-ro-deck` should be configured to speak to a different Redis read replica, and the other two should be configured to speak to the master. This is handled automatically by Halyard if the user provides the two endpoints using this command:
 
 ```bash
-hal config deploy ha services clouddriver edit --redis-master-endpoint $REDIS_MASTER_ENDPOINT --redis-slave-endpoint $REDIS_SLAVE_ENDPOINT
+hal config deploy ha clouddriver edit --redis-master-endpoint $REDIS_MASTER_ENDPOINT --redis-slave-endpoint $REDIS_SLAVE_ENDPOINT --redis-slave-deck-endpoint $REDIS_SLAVE_DECK_ENDPOINT
 ```
+
+The values for `REDIS_MASTER_ENDPOINT`, `REDIS_SLAVE_ENDPOINT`, and `REDIS_SLAVE_DECK_ENDPOINT` must be [valid Redis URIs](https://www.iana.org/assignments/uri-schemes/prov/redis).
 
 More information on Redis replication can be [found here](https://redis.io/topics/replication).
 
 ### `clouddriver-caching`
 
-The first of the three logical Clouddriver services is the `clouddriver-caching` service. This service caches and retrieves cloud infrastructure data. Since this is all that `clouddriver-caching` is doing, there is no communication between this service and any other Spinnaker service.
+The first of the four logical Clouddriver services is the `clouddriver-caching` service. This service caches and retrieves cloud infrastructure data. Since this is all that `clouddriver-caching` is doing, there is no communication between this service and any other Spinnaker service.
 
 This service's name when [configuring its sizing](/reference/halyard/component-sizing/) is `spin-clouddriver-caching`.
 
@@ -77,19 +81,27 @@ This service's name when [configuring its sizing](/reference/halyard/component-s
 
 To add a [custom profile](/reference/halyard/custom/#custom-profiles) or [custom service settings](/reference/halyard/custom/#custom-service-settings) for this service, use the name `clouddriver-ro`.
 
+### `clouddriver-ro-deck`
+
+The `clouddriver-ro-deck` service handles all read requests to Clouddriver from Deck (through Gate). This service can be scaled to handle an increased number of reads.
+
+This service's name when [configuring its sizing](/reference/halyard/component-sizing/) is `spin-clouddriver-ro-deck`.
+
+To add a [custom profile](/reference/halyard/custom/#custom-profiles) or [custom service settings](/reference/halyard/custom/#custom-service-settings) for this service, use the name `clouddriver-ro-deck`.
+
 ## HA Echo
 
  <div class="mermaid">
  graph TB
 
  echo(Echo) --> echo-scheduler(Echo-Scheduler);
- echo(Echo) --> echo-replica(Echo-Replica);
+ echo(Echo) --> echo-worker(Echo-Worker);
 
  classDef default fill:#d8e8ec,stroke:#39546a;
  linkStyle default stroke:#39546a,stroke-width:1px,fill:none;
 
  classDef split fill:#42f4c2,stroke:#39546a;
- class clouddriver-caching,clouddriver-ro,clouddriver-rw,echo-scheduler,echo-replica split
+ class clouddriver-caching,clouddriver-ro,clouddriver-rw,echo-scheduler,echo-worker split
  </div>
 
  {% include mermaid %}
@@ -103,9 +115,9 @@ hal config deploy ha echo enable
 When Spinnaker is deployed with this enabled, Echo will be deploy as two different services:
 
 * [`echo-scheduler`](#echo-scheduler)
-* [`echo-replica`](#echo-replica)
+* [`echo-worker`](#echo-worker)
 
-Although only the `echo-replica` service can be horizontally scaled, splitting the services will reduce the load on both.
+Although only the `echo-worker` service can be horizontally scaled, splitting the services will reduce the load on both.
 
 ### `echo-scheduler`
 
@@ -115,13 +127,21 @@ This service's name when [configuring its sizing](/reference/halyard/component-s
 
 To add a [custom profile](/reference/halyard/custom/#custom-profiles) or [custom service settings](/reference/halyard/custom/#custom-service-settings) for this service, use the name `echo-scheduler`.
 
-### `echo-replica`
+### `echo-worker`
 
-The `echo-replica` service handles all operations of Echo besides the cron-jobs.
+The `echo-worker` service handles all operations of Echo besides the cron-jobs.
 
-This service's name when [configuring its sizing](/reference/halyard/component-sizing/) is `spin-echo-replica`. This service can be scaled to more than one pod, unlike the `echo-scheduler`.
+This service's name when [configuring its sizing](/reference/halyard/component-sizing/) is `spin-echo-worker`. This service can be scaled to more than one pod, unlike the `echo-scheduler`.
 
-To add a [custom profile](/reference/halyard/custom/#custom-profiles) or [custom service settings](/reference/halyard/custom/#custom-service-settings) for this service, use the name `echo-replica`.
+To add a [custom profile](/reference/halyard/custom/#custom-profiles) or [custom service settings](/reference/halyard/custom/#custom-service-settings) for this service, use the name `echo-worker`.
+
+## Deleting Orphaned Services
+
+When enabling or disabling HA for a service on a running Spinnaker, Halyard will not clean up the old service(s) by default. This means that if a non-HA Clouddriver is running (for example) and Spinnaker is then deployed with HA Clouddriver enabled, the non-HA Clouddriver will still be running, even though it is no longer used. To clean up these orphaned services, add a `--delete-orphaned-services` flag to `hal deploy apply`:
+
+```bash
+hal deploy apply --delete-orphaned-services
+```
 
 ## HA Topology
 
@@ -135,6 +155,7 @@ With all services enabled for high availability, the new architecture looks like
  gate --> kayenta(Kayenta);
  gate --> orca(Orca);
  gate --> clouddriver-ro(Clouddriver-RO);
+ gate --> clouddriver-ro-deck(Clouddriver-RO-Deck)
  orca --> clouddriver-rw(Clouddriver-RW);
  gate --> rosco(Rosco);
  orca --> front50;
@@ -143,12 +164,13 @@ With all services enabled for high availability, the new architecture looks like
  gate --> fiat(Fiat);
  orca --> kayenta;
  clouddriver-ro --> fiat;
+ clouddriver-ro-deck --> fiat;
  clouddriver-rw --> fiat;
  orca --> fiat;
  front50 --> fiat;
- echo-replica(Echo-Replica) --> orca;
- echo-replica --> front50;
- igor(Igor) --> echo-replica;
+ echo-worker(Echo-Worker) --> orca;
+ echo-worker --> front50;
+ igor(Igor) --> echo-worker;
  clouddriver-caching(Clouddriver-Caching);
  echo-scheduler(Echo-Scheduler);
 
@@ -159,9 +181,15 @@ With all services enabled for high availability, the new architecture looks like
  class deck,api external
 
  classDef split fill:#42f4c2,stroke:#39546a;
- class clouddriver-caching,clouddriver-ro,clouddriver-rw,echo-scheduler,echo-replica split
+ class clouddriver-caching,clouddriver-ro,clouddriver-ro-deck,clouddriver-rw,echo-scheduler,echo-worker split
  </div>
 
  {% include mermaid %}
 
+## Recoverability
 
+If you've [configured an external Redis](/setup/productionize/caching/externalize-redis/), Spinnaker can recover from failure events. Igor is responsible for polling the state store (Redis) and recreating state. During a recovery, numerous old pipelines may be re-triggered. To protect against this scenario, Igor has a setting called `pollingSafeguard.itemUpperThreshold`, which is the max number of pipeline triggers to accept before recognizing the scenario of numerous old re-triggers and stopping the state update. [Read the inline documentation for this setting](https://github.com/spinnaker/igor/blob/master/igor-web/src/main/groovy/com/netflix/spinnaker/igor/IgorConfigurationProperties.groovy#L47).
+
+Although it's possible, it is not recommended to use spot instances on AWS or preemtible nodes to lower cost in production, as outages in your continuous deployment tool will likely cost more than any savings. Also consider hosting Spinnaker on isolated infrastructure to reduce the possibility that other applications or teams will affect your Spinnaker instance.
+
+It's also recommended to spread out services over multiple availability zones, as described in [the Netflix implementation](https://blog.spinnaker.io/scaling-spinnaker-at-netflix-part-1-8a5ae51ee6de).

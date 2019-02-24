@@ -53,7 +53,7 @@ This is similar to the behavior of
 Once pipeline permissions are enabled, the `RunAsUser` selector will be hidden
 from Deck. However, any previously configured triggers will continue to use
 the previously selected service account in order to maintain backwards
-compatibility. Newly added triggers will use the permssions specified. If you
+compatibility. Newly added triggers will use the permissions specified. If you
 wish to use pipeline permissions for the older triggers and already have
 permissions specified, edit your pipeline JSON and remove the `RunAsUser` field
 from your trigger.

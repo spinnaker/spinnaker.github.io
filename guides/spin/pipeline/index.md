@@ -15,18 +15,33 @@ managing your Spinnaker pipelines.
 `spin` can manage the whole lifecycle of your pipeline:
 
 ```bash
-# NOTE: You can inspect any command with the `--help` flag.
-$ spin pipeline --help
+$ spin pipeline
 
-This command is accessed by using one of the subcommands below.
+Usage:
+   pipeline [command]
 
-Subcommands:
-    delete     Delete the provided pipeline.
-    execute    Execute the provided pipeline.
-    get        Get the pipeline with the provided name from the provided pipeline.
-    list       List the pipelines for the provided pipeline.
-    save       Save the provided pipeline.
+Aliases:
+  pipeline, pipelines, pi
 
+Available Commands:
+  delete      Delete the provided pipeline
+  execute     Execute the provided pipeline
+  get         Get the pipeline with the provided name from the provided application
+  list        List the pipelines for the provided application
+  save        Save the provided pipeline
+
+Flags:
+  -h, --help   help for pipeline
+
+Global Flags:
+      --config string          path to config file (default $HOME/.spin/config)
+      --gate-endpoint string   Gate (API server) endpoint (default http://localhost:8084)
+  -k, --insecure               ignore certificate errors
+      --no-color               disable color (default true)
+      --output string          configure output formatting
+  -q, --quiet                  squelch non-essential output
+
+Use " pipeline [command] --help" for more information about a command.
 ```
 
 The following assumes Spinnaker is running and Gate is
@@ -59,7 +74,7 @@ You can also template the pipeline JSON using your favorite templating engine.
 ### List pipelines in an application with `list`
 
 ```bash
-spin application list --application my-app
+spin pipeline list --application my-app
 
 [
 ...
@@ -92,6 +107,17 @@ Start a pipeline execution with `execute`:
 spin pipeline execute --name my-pipeline --application my-app
 
 Pipeline execution started
+```
+If your pipeline is parameterized, you can submit a JSON-formatted
+map of the parameters and their values either via the `--parameter-file`
+flag or via STDIN, e.g.
+
+```bash
+{
+  "parameter1": "value1",
+  "parameter2": "value2",
+  ...
+}
 ```
 
 ### Delete a pipeline with `delete`

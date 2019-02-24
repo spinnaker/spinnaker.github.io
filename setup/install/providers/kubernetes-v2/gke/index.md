@@ -45,7 +45,7 @@ This is a good thing because it prevents authenticating from a different
 machine that hasn't already authenticated with `gcloud`. But it also
 complicates configuring Spinnaker because each machine running Spinnaker needs
 its own service account. `gcloud` checks the permissions of that service
-account in order to generate an authenication token.
+account in order to generate an authentication token.
 
 Given that all pods on GKE share the same service account, granting Spinnaker
 on GKE permission also grants permission to all pods running alongside

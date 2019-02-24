@@ -30,7 +30,7 @@ The Tenant ID of your organization is required for Azure OAuth2.0 login. To obta
 2. On the left hand navigation pane, click "Azure Active Directory" --> "Properties".
 3. "Directory ID" is your Tenant ID.
 
-In order to pass the Tenant ID to gate, we need to insert is as an environment variable. Add the following to ~/.hal/default/service-settings/gate.yaml:
+In order to pass the Tenant ID to gate, we need to insert is as an environment variable. Add the following to ~/.hal/default/service-settings/gate.yml:
 ```
 env:
   azureTenantId: (your tenant id)

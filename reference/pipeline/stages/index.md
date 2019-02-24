@@ -123,6 +123,9 @@ pipeline behavior in downstream stages. For example, you can use the [**Check
 Preconditions**](#check-preconditions) stage to ensure that a given stage only
 runs if a particular input is specified.
 
+Note: The Manual Judgement stage requires that Spinnaker's Echo service is
+enabled in order to work.
+
 ### Pipeline
 Select any pipeline and run it as a sub-pipeline. You can run pipelines from
 both the current application and any other Spinnaker applications that you have
@@ -162,7 +165,7 @@ size while the rest are scaled down.
 Execute an arbitrary script as part of your pipeline. Spinnaker uses Jenkins to
 sandbox your scripts, so you need to [set up Jenkins](/setup/ci/jenkins/) in
 order to use it. If you already have Jenkins set up, make sure that you have
-[configured it to run scripts](/setup/ci/jenkins//#configure-script-stage).
+[configured it to run scripts](/setup/features/script-stage/).
 
 The only required field in this stage is **Command**, where you must specify the
 command to run the script. Otherwise, you can use any of the fields that are
@@ -234,6 +237,9 @@ create a [custom webhook](/guides/operator/custom-webhook-stages/) stage. A
 custom webhook stage is a webhook stage specifically named and configured for
 your application's needs, which shows up in the standard pipeline stages
 dropdown menu.
+
+You can [add more certification authorities](/guides/operator/webhook-custom-trust-store/)
+to trust when making webhook calls over HTTPS.
 
 ### Wercker
 Run the specified Wercker pipeline. You must [set up Wercker](/setup/ci/wercker/)
@@ -314,7 +320,7 @@ for a set of resources. It can also be used to implement a [rainbow deployment
 strategy for Kubernetes by first deploying a new ReplicaSet and then patching
 the fronting service's selectors to point to the new ReplicaSet.
 
-Spinnaker also supports [artifact substitution
+When patching with a _strategic_ or _merge_ strategy, Spinnaker also supports [artifact substitution
 ](/reference/artifacts/in-kubernetes-v2/#binding-artifacts-in-manifests) for the
 patch content just like the resource manifest in the deploy stage.
 

@@ -63,6 +63,9 @@ At this point, you can use the [publisher
 guide](https://cloud.google.com/pubsub/docs/publisher){:target="\_blank"} to
 learn how to publish messages programmatically to the topic you have created.
 
+Note that your topic messages need to be valid JSON, otherwise an exception
+will be raised in the `echo` service and your pipeline will not be triggered.
+
 ### Receiving messages from Google Cloud Storage (GCS)
 
 First, record the fact that your `$MESSAGE_FORMAT` is `GCS`, this will be
@@ -164,10 +167,13 @@ gcloud iam service-accounts keys create $SERVICE_ACCOUNT_DEST \
     --iam-account $SA_EMAIL
 ```
 
-> :warning: It's possible to restrict access to a subscription by service
-> account in GCP. If this is how your subscription is configured, you may need
-> to grant `$SA_EMAIL` additional permissions following the instructions on the
-> [Pub/Sub IAM page](https://cloud.google.com/pubsub/docs/access_control){:target="\_blank"}.
+{% include
+   warning
+   content="It's possible to restrict access to a subscription by service
+   account in GCP. If this is how your subscription is configured, you may need
+   to grant `$SA_EMAIL` additional permissions following the instructions on the
+   [Pub/Sub IAM page](https://cloud.google.com/pubsub/docs/access_control){:target='\_blank'}."
+%}
 
 Once you have run these commands, your GCS JSON key is sitting in a file
 called `$SERVICE_ACCOUNT_DEST`.

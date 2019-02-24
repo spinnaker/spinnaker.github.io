@@ -125,7 +125,14 @@ hal config security ui ssl edit \
 
 hal config security ui ssl enable
 ```
-## 4. Verify your SSL setup
+
+## 4. Deploy Spinnaker
+
+```
+hal deploy apply
+```
+
+## 5. Verify your SSL setup
 
 To verify that you've successfully set up SSL, try to reach one of the
 endpoints, like Gate or Deck, over SSL.

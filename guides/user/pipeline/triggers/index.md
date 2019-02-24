@@ -20,6 +20,7 @@ specific types of triggers, see the rest of the pipeline triggers
 documentation:
 
 <!-- TODO:add other links as they're added. -->
+* [Triggering on Jenkins job completion](/guides/user/pipeline/triggers/jenkins/)
 * [Triggering on Pub/Sub messages](/guides/user/pipeline/triggers/pubsub/)
 * [Triggering on webhooks](/guides/user/pipeline/triggers/webhooks/)
 * [Triggering on receiving artifacts from GCS](/guides/user/pipeline/triggers/gcs/)

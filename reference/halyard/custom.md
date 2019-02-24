@@ -105,3 +105,14 @@ kubernetes:
   - desired-image-pull-secret1
   - desired-image-pull-secret2
 ```
+
+#### podAnnotations 
+
+Annotations can often be used to specify special behavior within Kubernetes. To apply annotations to the Pods for a particular service, use the following configuration:
+
+```
+kubernetes:
+  podAnnotations:
+    example/annotation: spinnaker.io
+    example/annotation-2: halyard
+```

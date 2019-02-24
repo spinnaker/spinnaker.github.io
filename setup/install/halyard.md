@@ -24,6 +24,9 @@ There are two ways you can install Halyard:
 * [locally on Debian/Ubuntu or macOS](#install-on-debianubuntu-and-macos)
 * [on Docker](#install-halyard-on-docker)
 
+> **Note**: If you need to run Halyard without access to public internet, read
+> [Deploy Custom Spinnaker Builds](/guides/operator/custom-boms/).
+
 ## Install on Debian/Ubuntu and macOS
 
 Halyard runs on...

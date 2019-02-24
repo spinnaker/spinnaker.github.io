@@ -37,8 +37,8 @@ the expression `${parameters.regions.split(",")}`.
 
 You can instantiate new classes inside of an expression using the fully
 qualified package name. For example, you might want to use the [SimpleDateFormat](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html)
-class to get the current date in MM-DD-YYYY format. You can do this using the
-expression `${new java.text.SimpleDateFormat("MM-DD-YYYY").format(new
+class to get the current date in MM-dd-yyyy format. You can do this using the
+expression `${new java.text.SimpleDateFormat("MM-dd-yyyy").format(new
 java.util.Date())}`.
 
 Similarly, you can call static methods using the syntax
@@ -209,8 +209,10 @@ The whitelisted classes are:
 
 * [Boolean](https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html)
 * [Byte](https://docs.oracle.com/javase/8/docs/api/java/lang/Byte.html)
+* [ChronoUnit](https://docs.oracle.com/javase/8/docs/api/java/time/temporal/ChronoUnit.html)
 * [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html)
 * [Double](https://docs.oracle.com/javase/8/docs/api/java/lang/Double.html)
+* [Instant](https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html)
 * [Integer](https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html)
 * [LocalDate](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html)
 * [Long](https://docs.oracle.com/javase/8/docs/api/java/lang/Long.html)

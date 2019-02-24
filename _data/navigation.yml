@@ -51,6 +51,8 @@ setup:
                 url: /setup/install/providers/aws/aws-ecs/
           - title: Azure
             url: /setup/install/providers/azure/
+          - title: Cloud Foundry
+            url: /setup/install/providers/cf/
           - title: DC/OS
             url: /setup/install/providers/dcos/
           - title: Docker Registry
@@ -69,6 +71,8 @@ setup:
                 url: /setup/install/providers/kubernetes-v2/aws-eks/
               - title: Google Kubernetes Engine
                 url: /setup/install/providers/kubernetes-v2/gke/
+              - title: Oracle Container Engine
+                url: /setup/install/providers/kubernetes-v2/oke/
           - title: OpenStack
             url: /setup/install/providers/openstack/
           - title: Oracle
@@ -90,6 +94,8 @@ setup:
             url: /setup/install/storage/redis/
           - title: S3
             url: /setup/install/storage/s3/
+          - title: Oracle Object Storage
+            url: /setup/install/storage/oracle/
       - title: 5. Deploy and Connect
         url: /setup/install/deploy/
       - title: 6. Back Up Your Config
@@ -112,6 +118,8 @@ setup:
             url: /setup/artifacts/github/
           - title: HTTP
             url: /setup/artifacts/http/
+          - title: Oracle Object
+            url: /setup/artifacts/oracle/
       - title: Configure the Image Bakery
         collapsed: true
         children:
@@ -119,6 +127,8 @@ setup:
             url: /setup/bakery/
           - title: Google Compute Engine
             url: /setup/bakery/google/
+          - title: Oracle
+            url: /setup/bakery/oracle/
       - title: Secure Spinnaker
         collapsed: true
         children:
@@ -128,6 +138,8 @@ setup:
              url: /setup/security/authentication/
            - title: Authorization
              url: /setup/security/authorization/
+           - title: Administrator functionality
+             url: /setup/security/admin/
       - title: Set up Triggers
         collapsed: true
         children:
@@ -140,10 +152,12 @@ setup:
         children:
           - title: Set Up Continuous Integration
             url: /setup/ci/
-          - title: Travis CI
-            url: /setup/ci/travis/
+          - title: Google Cloud Build
+            url: /setup/ci/gcb/
           - title: Jenkins
             url: /setup/ci/jenkins/
+          - title: Travis CI
+            url: /setup/ci/travis/
           - title: Wercker
             url: /setup/ci/wercker/
       - title: Enable Monitoring
@@ -166,6 +180,8 @@ setup:
             url: /setup/features/notifications/
           - title: Configure User Data (metadata)
             url: /setup/features/user-data/
+          - title: Configure the Script stage
+            url: /setup/features/script-stage/
   - title: Productionize Spinnaker
     collapsed: true
     children:
@@ -183,6 +199,11 @@ setup:
         children:
           - title: Horizontally Scale Spinnaker
             url: /setup/productionize/scaling/horizontal-scaling/
+      - title: Configure Persistence
+        collapsed: true
+        children:
+          - title: Orca SQL
+            url: /setup/productionize/persistence/orca-sql/
 
 guides:
   - title: Tutorials
@@ -199,6 +220,8 @@ guides:
             url: /guides/tutorials/codelabs/bake-and-deploy-pipeline/
           - title: Hello Deployment
             url: /guides/tutorials/codelabs/hello-deployment/
+          - title: Deploy GCS Pub/Sub Artifacts to Cloud Foundry
+            url: /guides/tutorials/codelabs/pubsub-to-cf/
           - title: GCE Source To Prod
             url: /guides/tutorials/codelabs/gce-source-to-prod/
           - title: Kubernetes Source To Prod
@@ -207,6 +230,10 @@ guides:
             url: /guides/tutorials/codelabs/kubernetes-v2-source-to-prod/
           - title: OpenStack Source To Prod
             url: /guides/tutorials/codelabs/openstack-source-to-prod/
+          - title: Oracle Cloud Infrastructure Source To Prod
+            url: /guides/tutorials/codelabs/oci-source-to-prod/
+          - title: Continuous Delivery to Kubernetes on Oracle
+            url: /guides/tutorials/codelabs/oracle-kubernetes-source-to-prod/
           - title: Continuous Delivery with Containers on GCP
             url: /guides/tutorials/codelabs/gcp-kubernetes-source-to-prod/
           - title: Continuous Delivery to Kubernetes on Azure
@@ -221,9 +248,13 @@ guides:
             url: /guides/tutorials/codelabs/dcos-source-to-prod/
           - title: Deploying GCS Pub/Sub Artifacts to App Engine
             url: /guides/tutorials/codelabs/pubsub-to-appengine/
+          - title: Automating Canary Analysis on GKE with Spinnaker
+            url: https://cloud.google.com/solutions/automated-canary-analysis-kubernetes-engine-spinnaker
   - title: User How-Tos
     collapsed: true
     children:
+      - title: Get Started
+        url: /guides/user/get-started/
       - title: Applications
         collapsed: true
         children:
@@ -245,6 +276,8 @@ guides:
             children:
               - title: Overview
                 url: /guides/user/pipeline/triggers/
+              - title: Triggering pipelines with Jenkins
+                url: /guides/user/pipeline/triggers/jenkins/
               - title: Triggering on Pub/Sub Messages
                 url: /guides/user/pipeline/triggers/pubsub/
               - title: Triggering on Webhooks
@@ -255,6 +288,8 @@ guides:
                 url: /guides/user/pipeline/triggers/github/
           - title: Pipeline Expressions
             url: /guides/user/pipeline/expressions/
+          - title: Searching for Triggered Pipeline Executions
+            url: /guides/user/pipeline/searching/
       - title: Tagging
         url: /guides/user/tagging/
       - title: Custom Instance Links
@@ -276,6 +311,8 @@ guides:
             url: /guides/user/kubernetes-v2/annotations-ui/
           - title: Patch a Manifest
             url: /guides/user/kubernetes-v2/patch-manifest/
+          - title: Manage Traffic
+            url: /guides/user/kubernetes-v2/traffic-management/
       - title: Automated Canary Analysis
         collapsed: true
         children:
@@ -308,8 +345,14 @@ guides:
   - title: Operator How-Tos
     collapsed: true
     children:
+      - title: Custom Spinnaker Builds
+        url: /guides/operator/custom-boms/
       - title: Custom Webhook Stages
         url: /guides/operator/custom-webhook-stages/
+      - title: Custom CAs for Webhooks
+        url: /guides/operator/webhook-custom-trust-store/
+      - title: "Orca: Redis to SQL"
+        url: /guides/operator/orca-redis-to-sql/
   - title: Runbooks
     collapsed: true
     children:
@@ -317,8 +360,10 @@ guides:
         url: /guides/runbooks/api-rate-limiting/
       - title: Sharding Spinnaker
         url: /guides/runbooks/sharding-spinnaker/
-      - title: Orca Quality of Service
+      - title: "Orca: Quality of Service"
         url: /guides/runbooks/orca-quality-of-service/
+      - title: "Orca: Zombie Executions"
+        url: /guides/runbooks/orca-zombie-executions/
   - title: Spin CLI
     collapsed: true
     children:
@@ -328,6 +373,8 @@ guides:
         url: /guides/spin/app/
       - title: Manage Pipelines
         url: /guides/spin/pipeline/
+      - title: Manage Pipeline Templates
+        url: /guides/spin/pipeline-templates/
 reference:
   - title: API
     collapsed: true
@@ -345,6 +392,8 @@ reference:
 #        url: /reference/providers/aws/
       - title: Azure
         url: /reference/providers/azure/
+      - title: Cloud Foundry
+        url: /reference/providers/cf/
       - title: ECS (Amazon Web Services)
         url: /reference/providers/ecs/
       - title: Google App Engine
@@ -357,8 +406,8 @@ reference:
         url: /reference/providers/kubernetes-v2/
 #      - title: OpenStack
 #        url: /reference/providers/openstack/
-#      - title: Oracle
-#        url: /reference/providers/oracle/
+      - title: Oracle Cloud
+        url: /reference/providers/oracle/
   - title: Artifacts
     collapsed: true
     children:
@@ -366,8 +415,12 @@ reference:
         url: /reference/artifacts/
       - title: In Pipelines
         url: /reference/artifacts/in-pipelines/
+      - title: From Build Triggers
+        url: /reference/artifacts/from-build-triggers/
       - title: In Kubernetes (Manifest Based)
         url: /reference/artifacts/in-kubernetes-v2/
+      - title: In Google App Engine
+        url: /reference/artifacts/in-appengine/
       - title: Types of Artifacts
         collapsed: true
         children:
@@ -391,6 +444,8 @@ reference:
             url: /reference/artifacts/types/http-file/
           - title: Kubernetes Object
             url: /reference/artifacts/types/kubernetes-object/
+          - title: Oracle Object
+            url: /reference/artifacts/types/oracle-object/
   - title: Halyard
     collapsed: true
     children:
@@ -420,8 +475,6 @@ reference:
       url: /reference/pipeline/expressions/
     - title: Pipeline Stages
       url: /reference/pipeline/stages/
-  - title: Deployment Infrastructure
-    url: /reference/infrastructure/
 
 community:
   - title: Releases
@@ -451,6 +504,8 @@ community:
   - title: Governance
     collapsed: true
     children:
+      - title: Overview
+        url: /community/governance/
       - title: Special Interest Groups
         url: /community/governance/sigs
   - title: Misc
@@ -462,7 +517,7 @@ community:
 publications:
   - title: eBook
     url: /publications/ebook/
-  - title: Presentations
+  - title: Presentations and Videos
     url: /publications/presentations/
   - title: Articles
     url: /publications/articles/

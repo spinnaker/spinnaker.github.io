@@ -75,9 +75,10 @@ future patch releases (e.g. `M.N.1`).
 
 | Version | Window Opens |
 |-|-|
-| `1.9.0`  | 2018-08-06 |
-| `1.10.0` | 2018-10-01 |
-| `1.11.0` | 2018-11-26 |
+| `1.12.0` | 2019-01-21 |
+| `1.13.0` | 2019-03-18 |
+| `1.14.0` | 2019-05-13 |
+| `1.15.0` | 2019-07-08 |
 
 > Keep in mind, when the window opens, the release candidate becomes available.
 > The actual release happens one to two weeks later.

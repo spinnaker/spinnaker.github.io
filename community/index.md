@@ -100,6 +100,15 @@ mercari_user:
 plaid_user:
   image_path: assets/images/users/plaid_logo.png
   alt: "Plaid Logo"
+centeredge_user:
+  image_path: assets/images/users/centeredge_logo.png
+  alt: "CenterEdge Logo"
+redbox_user:
+  image_path: assets/images/users/redbox_logo.png
+  alt: "Redbox Logo"
+armory_user:
+  image_path: assets/images/users/armory_logo.png
+  alt: "Armory Logo"
 ---
 
 ## Engage the community and get support
@@ -129,42 +138,47 @@ The Spinnaker OSS project was started at Netflix, and today thrives on the contr
 
 <div class="clearfix mb4">
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="armory_user" %}
     {% include spinnaker_user id="box_user" %}
     {% include spinnaker_user id="cerner_user" %}
-    {% include spinnaker_user id="chartboost_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="centeredge_user" %}
+    {% include spinnaker_user id="chartboost_user" %}
     {% include spinnaker_user id="clarivate_user" %}
+  </div>
+  <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="cleartax_in_user" %}
     {% include spinnaker_user id="cloudera_user" %}
+    {% include spinnaker_user id="contaazul_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
-    {% include spinnaker_user id="contaazul_user" %}
     {% include spinnaker_user id="gogo_user" %}
     {% include spinnaker_user id="google_user" %}
+    {% include spinnaker_user id="grubhub_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
-    {% include spinnaker_user id="grubhub_user" %}
     {% include spinnaker_user id="informatica_user" %}
     {% include spinnaker_user id="kenzan_user" %}
+    {% include spinnaker_user id="lookout_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
-    {% include spinnaker_user id="lookout_user" %}
     {% include spinnaker_user id="makerbot_user" %}
     {% include spinnaker_user id="mercari_user" %}
+    {% include spinnaker_user id="mulesoft_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
-    {% include spinnaker_user id="mulesoft_user" %}
     {% include spinnaker_user id="nest_user" %}
     {% include spinnaker_user id="netflix_user" %}
- </div>
-  <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="optimizely_user" %}
-    {% include spinnaker_user id="plaid_user" %}
-    {% include spinnaker_user id="plangrid_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="plaid_user" %}
+    {% include spinnaker_user id="plangrid_user" %}
     {% include spinnaker_user id="purestorage_user" %}
+  </div>
+  <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="redbox_user" %}
     {% include spinnaker_user id="smartthings_user" %}
     {% include spinnaker_user id="schibsted_user" %}
   </div>
@@ -179,24 +193,13 @@ The Spinnaker OSS project was started at Netflix, and today thrives on the contr
     {% include spinnaker_user id="weatherbug_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
-      {% include spinnaker_user id="xiaohongshu_user" %}
+    {% include spinnaker_user id="xiaohongshu_user" %}
   </div>
 </div>
 
-## Core contributors
+## Project Governance
 
-The list of contributors is growing with some core contributors below. Please reach out to us with a PR or on slack if you'd like to be added to this list!
+Spinnaker is an OSS project owned and run by the community, through a structure of appointed roles. One important goal of this governance model is to make it easier for everyone to figure out how to get involved. If you want to get involved, we want to help you get there! As the project grows and its needs evolve, we will - as a community - continue to revisit and shape this structure.
 
-* [Amazon](https://aws.amazon.com/opensource/)
-* [Armory](http://www.armory.io/)
-* [Cerner Corporation](http://cerner.com/)
-* [Google](https://opensource.google.com/)
-* [Kenzan](http://kenzan.com/)
-* [Microsoft](https://opensource.microsoft.com/)
-* [Netflix](https://netflix.github.io/)
-* [Oracle](http://oracle.com/)
-* [Pivotal](http://pivotal.io/)
-* [Schibsted](http://www.schibsted.com/)
-* [Skuid](http://www.skuid.com/)
-* [Target](http://target.github.io/)
-* [Veritas Technologies LLC](https://github.com/VeritasOS)
+You can read more about how you can get involved through project SIGs, roles, and standing committees in the [Governance](/community/governance) section.
+
