@@ -138,6 +138,8 @@ setup:
              url: /setup/security/authentication/
            - title: Authorization
              url: /setup/security/authorization/
+           - title: Administrator functionality
+             url: /setup/security/admin/
       - title: Set up Triggers
         collapsed: true
         children:
