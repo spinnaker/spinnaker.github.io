@@ -18,6 +18,42 @@ Your CF foundations' [API endpoints](https://docs.cloudfoundry.org/running/cf-ap
 
 ## Add an account
 
+### Halyard version > 1.15.0
+
+First, we make sure the provider is enabled:
+
+``` bash
+hal config provider cloudfoundry enabled
+```
+
+Next, run the following `hal` command (replacing placeholders with actual values) to add an account named `my-cf-account` to your list of Cloud Foundry accounts:
+
+``` bash
+hal config provider cloudfoundry account add my-cf-account \
+  --api=[api.sys.endpoint.for.foundation] \
+  --user=[user-account] \
+  --password=[user-password] \
+  --environment=[dev,prod,...] \
+  --app-manager-uri=[http://apps.sys.endpoint.for.foundation] \
+  --metrics-uri=[http://metrics.sys.endpoint.for.foundation]
+```
+
+As part of the command execution Halyard will attempt to connect to the Cloud Foundry Foundation and return an error when this attempt fails.
+
+To see the current accounts for the provider run:
+
+``` bash
+hal config provider cloudfoundry account list
+```
+
+To see details about any account for the provider run:
+
+``` bash
+hal config provider cloudfoundry account get [account-name]
+```
+
+### Halyard version <= 1.15.0
+
 While the Cloud Foundry provider is in alpha, the hal CLI does not have support for adding a CF account (this support will be added soon). Instead, you can use Halyard's [custom configuration](https://www.spinnaker.io/reference/halyard/custom/) to add a CF account to an existing installation of Spinnaker.
 
 On the machine running Halyard, Halyard creates a `.hal` directory. It contains a subdirectory for your Spinnaker deployment; by default, this subdirectory is called `default`. The deployment subdirectory itself contains a `profiles` subdirectory. Change to this subdirectory (an example path might be something like `~/.hal/default/profiles/`) and within it, create the two files shown below.
@@ -49,6 +85,8 @@ cloudfoundry:
 ```
 
 This file gives Spinnaker account information with which to reach your CF instance.
+
+### For any version of Halyard
 
 If you are setting up a new installation of Spinnaker, proceed to "Next steps" below.
 
