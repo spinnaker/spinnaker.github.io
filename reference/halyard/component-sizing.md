@@ -58,7 +58,7 @@ Limits and requests follow the Kubernetes conventions [documented here](https://
 
 #### Updating JAVA_OPTS
 
-As of Halyard 1.8, all JVM-based services have the following JAVA_OPTS set:
+All JVM-based services have the following JAVA_OPTS set:
 
 ```
 JAVA_OPTS=-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=2
