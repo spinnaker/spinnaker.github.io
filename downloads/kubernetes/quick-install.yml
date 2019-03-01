@@ -47,6 +47,8 @@ metadata:
     stack: halyard
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: spin
@@ -100,6 +102,9 @@ spec:
           mountPath: /home/spinnaker/staging/.hal/default/service-settings/fiat.yml
           subPath: fiat.yml
         - name: halconfig
+          mountPath: /home/spinnaker/staging/.hal/default/service-settings/redis.yml
+          subPath: redis.yml
+        - name: halconfig
           mountPath: /home/spinnaker/staging/.hal/default/profiles/front50-local.yml
           subPath: front50-local.yml
       volumes:
@@ -147,11 +152,13 @@ data:
     host: 0.0.0.0
     env:
       API_HOST: http://spin-gate.spinnaker:8084
+  redis.yml: |
+    overrideBaseUrl: redis://spin-redis:6379
   config: |
     currentDeployment: default
     deploymentConfigurations:
     - name: default
-      version: 1.10.5
+      version: 1.12.2
       providers:
         appengine:
           enabled: false
