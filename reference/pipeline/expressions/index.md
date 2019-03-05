@@ -172,6 +172,12 @@ matches the input string. Note that `#judgment` is case sensitive:
 named _"My Manual Judgment Stage"_. Note that this function is aliased to the
 spelling `#judgement`.
 
+### #manifestLabelValue(String stageName, String manifestKind, String labelKey)
+
+Returns the value of a label with key `labelKey` from a Kubernetes
+Deployment or ReplicaSet manifest of kind `manifestKind`, deployed by a 
+stage of type `deployManifest` and name `stageName`.
+
 ### #propertiesFromUrl(String)
 
 Retrieves the contents of a [Java properties file](https://docs.oracle.com/javase/tutorial/essential/environment/properties.html)
