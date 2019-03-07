@@ -60,9 +60,10 @@ from your trigger, or enable the automatic migration (see next section).
 
 ### Automatic migration
 
-Front50 can automatically migrate all pipelines from using Fiat service accounts to
-use Pipeline Permissions and managed service accounts. The migrator is disabled by
-default, and can be enabled by setting the following flag:
+Front50 can automatically migrate all pipelines from using [Fiat Service
+Accounts](../service-accounts/) to use Pipeline Permissions and managed service
+accounts. The migrator is disabled by default, and can be enabled by setting
+the following flag:
 
 * Add the following to `front50-local.yml` (`~/.hal/default/profiles/front50-local.yml`
 if you're using Halyard):
