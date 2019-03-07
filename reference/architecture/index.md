@@ -28,7 +28,7 @@ resources.
 metadata of applications, pipelines, projects and notifications.
 
 * [Rosco](https://github.com/spinnaker/rosco) is the bakery. It produces immutable 
-VM images (or image templates for various cloud providers.
+VM images (or image templates) for various cloud providers.
 
   It is used to produce machine images (for example [GCE
     images](https://cloud.google.com/compute/docs/images),
