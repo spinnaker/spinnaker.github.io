@@ -27,7 +27,8 @@ resources.
 * [Front50](https://github.com/spinnaker/front50) is used to persist the
 metadata of applications, pipelines, projects and notifications.
 
-* [Rosco](https://github.com/spinnaker/rosco) is the bakery.
+* [Rosco](https://github.com/spinnaker/rosco) is the bakery. It produces immutable 
+VM images (or image templates) for various cloud providers.
 
   It is used to produce machine images (for example [GCE
     images](https://cloud.google.com/compute/docs/images),
@@ -87,6 +88,7 @@ service.
  front50 --> fiat;
  echo(Echo) --> orca;
  echo --> front50;
+ gate --> echo;
  igor(Igor) --> echo;
 
  hal(Halyard CLI) --> halyard(Halyard Daemon);
