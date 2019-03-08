@@ -269,6 +269,8 @@ guides:
       - title: Pipelines
         collapsed: true
         children:
+          - title: Overview
+            url: /guides/user/pipeline/
           - title: Managing Pipelines
             url: /guides/user/pipeline/managing-pipelines/
           - title: Triggering Pipelines
@@ -290,6 +292,8 @@ guides:
             url: /guides/user/pipeline/expressions/
           - title: Searching for Triggered Pipeline Executions
             url: /guides/user/pipeline/searching/
+          - title: Using Pipeline Templates
+            url: /guides/user/pipeline/pipeline-templates/
       - title: Tagging
         url: /guides/user/tagging/
       - title: Custom Instance Links

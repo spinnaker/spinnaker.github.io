@@ -5,6 +5,10 @@ sidebar:
   nav: concepts
 ---
 
+{% include toc %}
+
+## About pipelines
+
 Pipelines are your way of managing deployments in a consistent, repeatable and safe way. A pipeline is a sequence of stages provided by Spinnaker, ranging from functions that manipulate infrastructure (deploy, resize, disable) as well as utility scaffolding functions (manual judgment, wait, run Jenkins job) that together precisely define your runbook for managing your deployments.
 
 ![](edit-pipeline.png)
@@ -26,3 +30,53 @@ Automation does not end with orchestrating only the high-level steps of your rel
 * Each given step is actually a set of tasks that need polling, remediation to ensure requisite state is reached prior to proceeding
 
 * A given task often entails multiple API calls to the specific cloud platform, cognizant of expected response codes and remediating actions in failure
+
+## Pipeline templates
+
+Managed pipeline templates are a way to scalably manage pipelines across different teams. 
+
+Pipeline templates have two main components:
+
+* Template
+
+  A pipeline template defines a parameterized pipeline, with the set of
+  variables for which your users will provide values.
+
+* Configuration
+
+  A concrete implementation of a template. Configurations can inject new stages
+  into the final pipeline graph and inherit or override, or both, triggers,
+  notifications, and parameters.
+
+Pipeline templates work like this:
+
+ <div class="mermaid">
+ graph LR
+
+ id1(template) --> id2(config);
+ id2(config) --> id3(pipeline);
+
+ classDef default fill:#d8e8ec,stroke:#39546a;
+ linkStyle default stroke:#39546a,stroke-width:1px,fill:none;
+
+ </div>
+
+ {% include mermaid %}
+
+### Terminology
+
+#### Pipeline template
+
+A parameterized pipeline, minus the pipeline configuration found on a pipeline
+instance. 
+
+#### Pipeline configuration
+
+The same as the [configuration for a pipeline not created from a
+template](/guides/user/pipeline/managing-pipelines/#create-a-pipeline), plus
+variable bindings and a reference to the template.
+
+#### Pipeline
+
+Whether it's created from a template or not, an executable pipeline that can
+be visualized in the Deck UI, and can be run by [Orca](/reference/architecture/).
