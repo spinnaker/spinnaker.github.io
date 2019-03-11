@@ -293,7 +293,18 @@ guides:
           - title: Searching for Triggered Pipeline Executions
             url: /guides/user/pipeline/searching/
           - title: Using Pipeline Templates
-            url: /guides/user/pipeline/pipeline-templates/
+            collapsed: true
+            children:
+              title: Overview
+              url: /guides/user/pipeline/pipeline-templates/
+              title: Create a pipeline template
+              url: /guides/user/pipeline/pipeline-templates/create/
+              title: Parameterize the  Pipeline Template
+              url: /guides/user/pipeline/pipeline-templates/parameterize/
+              title: Instantiate a Pipeline from a Template
+              url: /guides/user/pipeline/pipeline-templates/instantiate/
+              title: Provide Values for the Template Parameters
+              url: /guides/user/pipeline/pipeline-templates/hydrate/
       - title: Tagging
         url: /guides/user/tagging/
       - title: Custom Instance Links

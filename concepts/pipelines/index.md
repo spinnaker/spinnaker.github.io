@@ -50,6 +50,9 @@ Pipeline templates have two main components:
 
 Pipeline templates work like this:
 
+<!--
+This is nowhere near done yet
+-->
  <div class="mermaid">
  graph LR
 
@@ -68,7 +71,8 @@ Pipeline templates work like this:
 #### Pipeline template
 
 A parameterized pipeline, minus the pipeline configuration found on a pipeline
-instance. 
+instance. Based on this template, your Spinnaker users can more easily create
+pipelines that follow the pattern
 
 #### Pipeline configuration
 
