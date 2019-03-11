@@ -28,7 +28,7 @@ gcloud info
 
 Spinnaker needs a [service
 account](https://cloud.google.com/compute/docs/access/service-accounts){:target="\_blank"}
-to authenticate as against GCP, with the `roles/storage.admin` role enabled. If
+to authenticate as against GCP, with the `roles/storage.admin` role enabled if you do not currently have buckets created. If you already have buckets created you only need `roles/object.admin`. Object admin is a much lower scoped permission and suites the needs of most Spinnaker installations if you create your buckets ahead of time through the Cloud Console or Terraform. If
 you don't already have such a service account with the corresponding JSON key
 downloaded, you can run the following commands to do so:
 
