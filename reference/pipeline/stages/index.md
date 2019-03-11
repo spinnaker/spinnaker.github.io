@@ -123,6 +123,9 @@ pipeline behavior in downstream stages. For example, you can use the [**Check
 Preconditions**](#check-preconditions) stage to ensure that a given stage only
 runs if a particular input is specified.
 
+Note: The Manual Judgement stage requires that Spinnaker's Echo service is
+enabled in order to work.
+
 ### Pipeline
 Select any pipeline and run it as a sub-pipeline. You can run pipelines from
 both the current application and any other Spinnaker applications that you have

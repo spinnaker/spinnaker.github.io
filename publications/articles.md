@@ -11,6 +11,7 @@ redirect_from: /community/articles/
 
 ## Community blog posts & tutorials
 
+* [Spinnaker Canary Pipelines: How to set up Kayenta with Prometheus](https://www.mirantis.com/blog/spinnaker-canary-pipelines-how-to-set-up-kayenta-with-prometheus/?utm_campaign=spinnaker.io&utm_medium=web&utm_source=spinnakerioblogs) *Andrey Pavlov (Mirantis)*
 * [Managing Kubernetes with Spinnaker at scale](http://blog.armory.io/managing-kubernetes-with-spinnaker/) *Colin Mo (Armory)*
 * [Codifying your Spinnaker Pipelines](https://medium.com/continuous-delivery-scale/codifying-your-spinnaker-pipelines-ea8e9164998f), *Rob Zienert (Netflix)*
 * [Running Chaos Monkey on Spinnaker/Google Compute Engine (GCE)](https://medium.com/continuous-delivery-scale/running-chaos-monkey-on-spinnaker-google-compute-engine-gce-155dc52f20ef), *Deb Bakshiyev (Google)*

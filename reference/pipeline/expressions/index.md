@@ -37,8 +37,8 @@ the expression `${parameters.regions.split(",")}`.
 
 You can instantiate new classes inside of an expression using the fully
 qualified package name. For example, you might want to use the [SimpleDateFormat](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html)
-class to get the current date in MM-DD-YYYY format. You can do this using the
-expression `${new java.text.SimpleDateFormat("MM-DD-YYYY").format(new
+class to get the current date in MM-dd-yyyy format. You can do this using the
+expression `${new java.text.SimpleDateFormat("MM-dd-yyyy").format(new
 java.util.Date())}`.
 
 Similarly, you can call static methods using the syntax
@@ -171,6 +171,12 @@ matches the input string. Note that `#judgment` is case sensitive:
 `${#judgment("my manual judgment stage")}` returns an error if your stage is
 named _"My Manual Judgment Stage"_. Note that this function is aliased to the
 spelling `#judgement`.
+
+### #manifestLabelValue(String stageName, String manifestKind, String labelKey)
+
+Returns the value of a label with key `labelKey` from a Kubernetes
+Deployment or ReplicaSet manifest of kind `manifestKind`, deployed by a 
+stage of type `deployManifest` and name `stageName`.
 
 ### #propertiesFromUrl(String)
 

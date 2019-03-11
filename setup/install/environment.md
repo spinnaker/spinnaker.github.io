@@ -79,6 +79,8 @@ on the machine running Halyard.
 The __Local Debian__ installation means Spinnaker will be downloaded and run on the
 single machine Halyard is currently installed on.
 
+> **Note**: Local Debian installation requires Ubuntu 14.04 or 16.04.
+
 ### Intended use case
 
 The __Local Debian__ installation is intended for smaller deployments of Spinnaker,

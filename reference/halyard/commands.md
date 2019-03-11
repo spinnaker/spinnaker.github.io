@@ -4,7 +4,7 @@ title: "Commands"
 sidebar:
   nav: reference
 ---
-Published: 2019-01-17 20:24:08
+Published: 2019-02-22 21:21:31
 
 
 # Table of Contents
@@ -80,6 +80,15 @@ Published: 2019-01-17 20:24:08
  * [**hal config artifact http account list**](#hal-config-artifact-http-account-list)
  * [**hal config artifact http disable**](#hal-config-artifact-http-disable)
  * [**hal config artifact http enable**](#hal-config-artifact-http-enable)
+ * [**hal config artifact maven**](#hal-config-artifact-maven)
+ * [**hal config artifact maven account**](#hal-config-artifact-maven-account)
+ * [**hal config artifact maven account add**](#hal-config-artifact-maven-account-add)
+ * [**hal config artifact maven account delete**](#hal-config-artifact-maven-account-delete)
+ * [**hal config artifact maven account edit**](#hal-config-artifact-maven-account-edit)
+ * [**hal config artifact maven account get**](#hal-config-artifact-maven-account-get)
+ * [**hal config artifact maven account list**](#hal-config-artifact-maven-account-list)
+ * [**hal config artifact maven disable**](#hal-config-artifact-maven-disable)
+ * [**hal config artifact maven enable**](#hal-config-artifact-maven-enable)
  * [**hal config artifact oracle**](#hal-config-artifact-oracle)
  * [**hal config artifact oracle account**](#hal-config-artifact-oracle-account)
  * [**hal config artifact oracle account add**](#hal-config-artifact-oracle-account-add)
@@ -213,6 +222,15 @@ Published: 2019-01-17 20:24:08
  * [**hal config metric-stores stackdriver edit**](#hal-config-metric-stores-stackdriver-edit)
  * [**hal config metric-stores stackdriver enable**](#hal-config-metric-stores-stackdriver-enable)
  * [**hal config notification**](#hal-config-notification)
+ * [**hal config notification pubsub**](#hal-config-notification-pubsub)
+ * [**hal config notification pubsub google**](#hal-config-notification-pubsub-google)
+ * [**hal config notification pubsub google add**](#hal-config-notification-pubsub-google-add)
+ * [**hal config notification pubsub google delete**](#hal-config-notification-pubsub-google-delete)
+ * [**hal config notification pubsub google disable**](#hal-config-notification-pubsub-google-disable)
+ * [**hal config notification pubsub google edit**](#hal-config-notification-pubsub-google-edit)
+ * [**hal config notification pubsub google enable**](#hal-config-notification-pubsub-google-enable)
+ * [**hal config notification pubsub google get**](#hal-config-notification-pubsub-google-get)
+ * [**hal config notification pubsub google list**](#hal-config-notification-pubsub-google-list)
  * [**hal config notification slack**](#hal-config-notification-slack)
  * [**hal config notification slack disable**](#hal-config-notification-slack-disable)
  * [**hal config notification slack edit**](#hal-config-notification-slack-edit)
@@ -260,6 +278,15 @@ Published: 2019-01-17 20:24:08
  * [**hal config provider azure bakery edit**](#hal-config-provider-azure-bakery-edit)
  * [**hal config provider azure disable**](#hal-config-provider-azure-disable)
  * [**hal config provider azure enable**](#hal-config-provider-azure-enable)
+ * [**hal config provider cloudfoundry**](#hal-config-provider-cloudfoundry)
+ * [**hal config provider cloudfoundry account**](#hal-config-provider-cloudfoundry-account)
+ * [**hal config provider cloudfoundry account add**](#hal-config-provider-cloudfoundry-account-add)
+ * [**hal config provider cloudfoundry account delete**](#hal-config-provider-cloudfoundry-account-delete)
+ * [**hal config provider cloudfoundry account edit**](#hal-config-provider-cloudfoundry-account-edit)
+ * [**hal config provider cloudfoundry account get**](#hal-config-provider-cloudfoundry-account-get)
+ * [**hal config provider cloudfoundry account list**](#hal-config-provider-cloudfoundry-account-list)
+ * [**hal config provider cloudfoundry disable**](#hal-config-provider-cloudfoundry-disable)
+ * [**hal config provider cloudfoundry enable**](#hal-config-provider-cloudfoundry-enable)
  * [**hal config provider dcos**](#hal-config-provider-dcos)
  * [**hal config provider dcos account**](#hal-config-provider-dcos-account)
  * [**hal config provider dcos account add**](#hal-config-provider-dcos-account-add)
@@ -713,6 +740,7 @@ hal config artifact [subcommands]
  * `gitlab`: Manage and view Spinnaker configuration for the gitlab provider
  * `helm`: Manage and view Spinnaker configuration for the helm provider
  * `http`: Manage and view Spinnaker configuration for the http provider
+ * `maven`: Manage and view Spinnaker configuration for the maven provider
  * `oracle`: Manage and view Spinnaker configuration for the oracle provider
  * `s3`: Manage and view Spinnaker configuration for the s3 provider
  * `templates`: Show Spinnaker's configured artifact templates.
@@ -1646,6 +1674,158 @@ Set the http artifact provider as enabled
 #### Usage
 ```
 hal config artifact http enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact maven
+
+Manage and view Spinnaker configuration for the maven provider
+
+#### Usage
+```
+hal config artifact maven [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `account`: Manage and view Spinnaker configuration for the maven artifact provider's account
+ * `disable`: Set the maven artifact provider as disabled
+ * `enable`: Set the maven artifact provider as enabled
+
+---
+## hal config artifact maven account
+
+Manage and view Spinnaker configuration for the maven artifact provider's account
+
+#### Usage
+```
+hal config artifact maven account ACCOUNT [parameters] [subcommands]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `add`: Add an artifact account to the maven artifact provider.
+ * `delete`: Delete a specific maven artifact account by name.
+ * `edit`: Edit an artifact account in the maven artifact provider.
+ * `get`: Get the specified account details for the maven provider.
+ * `list`: List the artifact account names for the maven artifact provider.
+
+---
+## hal config artifact maven account add
+
+Add an artifact account to the maven artifact provider.
+
+#### Usage
+```
+hal config artifact maven account add ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--repository-url`: (*Required*) Full URI for the Maven repository ie. `http://some.host.com/repository/path`
+
+
+---
+## hal config artifact maven account delete
+
+Delete a specific maven artifact account by name.
+
+#### Usage
+```
+hal config artifact maven account delete ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact maven account edit
+
+Edit an artifact account in the maven artifact provider.
+
+#### Usage
+```
+hal config artifact maven account edit ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--repository-url`: Full URI for the Maven repository ie. `http://some.host.com/repository/path`
+
+
+---
+## hal config artifact maven account get
+
+Get the specified account details for the maven provider.
+
+#### Usage
+```
+hal config artifact maven account get ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact maven account list
+
+List the artifact account names for the maven artifact provider.
+
+#### Usage
+```
+hal config artifact maven account list [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact maven disable
+
+Set the maven artifact provider as disabled
+
+#### Usage
+```
+hal config artifact maven disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config artifact maven enable
+
+Set the maven artifact provider as enabled
+
+#### Usage
+```
+hal config artifact maven enable [parameters]
 ```
 
 #### Parameters
@@ -3696,6 +3876,7 @@ hal config features edit [parameters]
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--infrastructure-stages`: Enable infrastructure stages. Allows for creating Load Balancers as part of pipelines.
  * `--jobs`: Allow Spinnaker to run containers in Kubernetes and Titus as Job stages in pipelines.
+ * `--managed-pipeline-templates-v2-ui`: Enable managed pipeline templates v2 UI support.
  * `--mine-canary`: Enable canary support. For this to work, you'll need a canary judge configured. Currently, Halyard does not configure canary judge for you.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--pipeline-templates`: Enable pipeline template support. Read more at https://github.com/spinnaker/dcd-spec.
@@ -3985,8 +4166,160 @@ hal config notification [parameters] [subcommands]
  * `--no-validate`: (*Default*: `false`) Skip validation.
 
 #### Subcommands
+ * `pubsub`: Configure, validate, and view the specified pubsub.
  * `slack`: Manage and view Spinnaker configuration for the slack notification
  * `twilio`: Manage and view Spinnaker configuration for the twilio notification
+
+---
+## hal config notification pubsub
+
+Configure, validate, and view the specified pubsub.
+
+#### Usage
+```
+hal config notification pubsub [subcommands]
+```
+
+#### Subcommands
+ * `google`: Manage and view Spinnaker configuration for the google pubsub
+
+---
+## hal config notification pubsub google
+
+Manage and view Spinnaker configuration for the google pubsub
+
+#### Usage
+```
+hal config notification pubsub google [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `add`: Add a publisher of type google
+ * `delete`: Delete a specific google publisher by name.
+ * `disable`: Set the google pubsub as disabled
+ * `edit`: Edit an publisher in the google pubsub.
+ * `enable`: Set the google pubsub as enabled
+ * `get`: Get the specified publisher details for the google pubsub.
+ * `list`: List the publisher names for the google pubsub.
+
+---
+## hal config notification pubsub google add
+
+Add a publisher of type google
+
+#### Usage
+```
+hal config notification pubsub google add PUBLISHER [parameters]
+```
+
+#### Parameters
+`PUBLISHER`: The name of the publishers to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--json-path`: The path to a JSON service account that Spinnaker will use as credentials. This is only needed if Spinnaker is not deployed on a Google Compute Engine VM, or needs permissions not afforded to the VM it is running on. See https://cloud.google.com/compute/docs/access/service-accounts for more information.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--project`: The name of the GCP project your subscription lives in.
+ * `--topic-name`: The name of the topic to publish to. This identifier does not include the name of the project, and must already be configured for Spinnaker to work.
+
+
+---
+## hal config notification pubsub google delete
+
+Delete a specific google publisher by name.
+
+#### Usage
+```
+hal config notification pubsub google delete PUBLISHER [parameters]
+```
+
+#### Parameters
+`PUBLISHER`: The name of the publishers to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config notification pubsub google disable
+
+Set the google pubsub as disabled
+
+#### Usage
+```
+hal config notification pubsub google disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config notification pubsub google edit
+
+Edit an publisher in the google pubsub.
+
+#### Usage
+```
+hal config notification pubsub google edit PUBLISHER [parameters]
+```
+
+#### Parameters
+`PUBLISHER`: The name of the publishers to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--json-path`: The path to a JSON service account that Spinnaker will use as credentials. This is only needed if Spinnaker is not deployed on a Google Compute Engine VM, or needs permissions not afforded to the VM it is running on. See https://cloud.google.com/compute/docs/access/service-accounts for more information.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--project`: The name of the GCP project your subscription lives in.
+ * `--topic-name`: The name of the topic to publish to. This identifier does not include the name of the project, and must already be configured for Spinnaker to work.
+
+
+---
+## hal config notification pubsub google enable
+
+Set the google pubsub as enabled
+
+#### Usage
+```
+hal config notification pubsub google enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config notification pubsub google get
+
+Get the specified publisher details for the google pubsub.
+
+#### Usage
+```
+hal config notification pubsub google get PUBLISHER [parameters]
+```
+
+#### Parameters
+`PUBLISHER`: The name of the publishers to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config notification pubsub google list
+
+List the publisher names for the google pubsub.
+
+#### Usage
+```
+hal config notification pubsub google list [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
 
 ---
 ## hal config notification slack
@@ -4135,6 +4468,7 @@ hal config provider [subcommands]
  * `appengine`: Manage and view Spinnaker configuration for the appengine provider
  * `aws`: Manage and view Spinnaker configuration for the aws provider
  * `azure`: Manage and view Spinnaker configuration for the azure provider
+ * `cloudfoundry`: Manage and view Spinnaker configuration for the cloudfoundry provider
  * `dcos`: Manage and view Spinnaker configuration for the dcos provider
  * `docker-registry`: Manage and view Spinnaker configuration for the dockerRegistry provider
  * `ecs`: Manage and view Spinnaker configuration for the ecs provider
@@ -4655,6 +4989,7 @@ hal config provider azure account add ACCOUNT [parameters]
  * `--packer-storage-account`: The storage account to use if baking images with Packer.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
  * `--read-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to view this account's cloud resources.
+ * `--regions`: (*Default*: `[westus, eastus]`) The Azure regions this Spinnaker account will manage.
  * `--required-group-membership`: (*Default*: `[]`) A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
  * `--subscription-id`: (*Required*) The subscriptionId that your service principal is assigned to.
  * `--tenant-id`: (*Required*) The tenantId that your service principal is assigned to.
@@ -4704,6 +5039,7 @@ hal config provider azure account edit ACCOUNT [parameters]
  * `--packer-storage-account`: The storage account to use if baking images with Packer.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
  * `--read-permissions`: A user must have at least one of these roles in order to view this account's cloud resources.
+ * `--regions`: The Azure regions this Spinnaker account will manage.
  * `--remove-read-permission`: Remove this permission from the list of read permissions.
  * `--remove-required-group-membership`: Remove this group from the list of required group memberships.
  * `--remove-write-permission`: Remove this permission to from list of write permissions.
@@ -4917,6 +5253,182 @@ Set the azure provider as enabled
 #### Usage
 ```
 hal config provider azure enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config provider cloudfoundry
+
+Manage and view Spinnaker configuration for the cloudfoundry provider
+
+#### Usage
+```
+hal config provider cloudfoundry [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `account`: Manage and view Spinnaker configuration for the cloudfoundry provider's account
+ * `disable`: Set the cloudfoundry provider as disabled
+ * `enable`: Set the cloudfoundry provider as enabled
+
+---
+## hal config provider cloudfoundry account
+
+Manage and view Spinnaker configuration for the cloudfoundry provider's account
+
+#### Usage
+```
+hal config provider cloudfoundry account ACCOUNT [parameters] [subcommands]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `add`: Add an account to the cloudfoundry provider.
+ * `delete`: Delete a specific cloudfoundry account by name.
+ * `edit`: Edit an account in the cloudfoundry provider.
+ * `get`: Get the specified account details for the cloudfoundry provider.
+ * `list`: List the account names for the cloudfoundry provider.
+
+---
+## hal config provider cloudfoundry account add
+
+Add an account to the cloudfoundry provider.
+
+#### Usage
+```
+hal config provider cloudfoundry account add ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--api`: (*Required*) Host name of the CloudFoundry Foundation API endpoint without protocol indicator ie. `api.sys.somesystem.com`
+ * `--appsManagerURI`: Full URI for the Apps Manager application for the CloudFoundry Foundation ie. `https://apps.sys.somesystem.com`
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
+ * `--metricsURI`: Full URI for the metrics application for the CloudFoundry Foundation ie. `https://metrics.sys.somesystem.com`
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--password`: (*Required*) Password for the account to use on for this CloudFoundry Foundation
+ * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
+ * `--read-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to view this account's cloud resources.
+ * `--required-group-membership`: (*Default*: `[]`) A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
+ * `--user`: (*Required*) User name for the account to use on for this CloudFoundry Foundation
+ * `--write-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to make changes to this account's cloud resources.
+
+
+---
+## hal config provider cloudfoundry account delete
+
+Delete a specific cloudfoundry account by name.
+
+#### Usage
+```
+hal config provider cloudfoundry account delete ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config provider cloudfoundry account edit
+
+Edit an account in the cloudfoundry provider.
+
+#### Usage
+```
+hal config provider cloudfoundry account edit ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--add-read-permission`: Add this permission to the list of read permissions.
+ * `--add-required-group-membership`: Add this group to the list of required group memberships.
+ * `--add-write-permission`: Add this permission to the list of write permissions.
+ * `--api`: (*Required*) Host name of the CloudFoundry Foundation API endpoint without protocol indicator ie. `api.sys.somesystem.com`
+ * `--appsManagerURI`: Full URI for the Apps Manager application for the CloudFoundry Foundation ie. `https://apps.sys.somesystem.com`
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
+ * `--metricsURI`: Full URI for the metrics application for the CloudFoundry Foundation ie. `https://metrics.sys.somesystem.com`
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--password`: (*Required*) Password for the account to use on for this CloudFoundry Foundation
+ * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
+ * `--read-permissions`: A user must have at least one of these roles in order to view this account's cloud resources.
+ * `--remove-read-permission`: Remove this permission from the list of read permissions.
+ * `--remove-required-group-membership`: Remove this group from the list of required group memberships.
+ * `--remove-write-permission`: Remove this permission to from list of write permissions.
+ * `--required-group-membership`: A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
+ * `--user`: (*Required*) User name for the account to use on for this CloudFoundry Foundation
+ * `--write-permissions`: A user must have at least one of these roles in order to make changes to this account's cloud resources.
+
+
+---
+## hal config provider cloudfoundry account get
+
+Get the specified account details for the cloudfoundry provider.
+
+#### Usage
+```
+hal config provider cloudfoundry account get ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config provider cloudfoundry account list
+
+List the account names for the cloudfoundry provider.
+
+#### Usage
+```
+hal config provider cloudfoundry account list [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config provider cloudfoundry disable
+
+Set the cloudfoundry provider as disabled
+
+#### Usage
+```
+hal config provider cloudfoundry disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config provider cloudfoundry enable
+
+Set the cloudfoundry provider as enabled
+
+#### Usage
+```
+hal config provider cloudfoundry enable [parameters]
 ```
 
 #### Parameters
@@ -7462,6 +7974,11 @@ hal config security authn saml edit [parameters]
  * `--metadata`: The address to your identity provider's metadata XML file. This can be a URL or the path of a local file.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--service-address-url`: The address of the Gate server that will be accesible by the SAML identity provider. This should be the full URL, including port, e.g. https://gate.org.com:8084/. If deployed behind a load balancer, this would be the laod balancer's address.
+ * `--user-attribute-mapping-first-name`: The first name field returned from your SAML provider.
+ * `--user-attribute-mapping-last-name`: The last name field returned from your SAML provider.
+ * `--user-attribute-mapping-roles`: The roles field returned from your SAML provider.
+ * `--user-attribute-mapping-roles-delimiter`: The roles delimiter field returned from your SAML provider.
+ * `--user-attribute-mapping-username`: The username field returned from your SAML provider.
 
 
 ---

@@ -32,6 +32,7 @@ See also [`hal config security`](/reference/halyard/commands/#hal-config-securit
       * [LDAP](./authorization/ldap/)
       * [SAML](./authorization/saml/)
   * [Service Accounts](./authorization/service-accounts/)
+* [Administrator functionality](./admin/)
 
 
 ## Next steps
