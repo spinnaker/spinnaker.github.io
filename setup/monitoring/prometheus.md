@@ -110,7 +110,7 @@ run `hal deploy apply`.
 
   2. Run the server-side configuration script.
      ```
-     /opt/spinnaker-monitoring/third_party/prometheus/install \
+     /opt/spinnaker-monitoring/third_party/prometheus/install.sh \
          --server_only
      ```
 
@@ -141,7 +141,7 @@ the `spinnaker-monitoring-third-party` package as described above, do so now.
 
   1. Install the dashboards
   ```
-  /opt/spinnaker-monitoring/third_party/prometheus/install --dashboards_only
+  /opt/spinnaker-monitoring/third_party/prometheus/install.sh --dashboards_only
   ```
 
   2. Open http://localhost:3000 in your browser
