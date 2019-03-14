@@ -35,7 +35,7 @@ gcloud app create --region <e.g., us-central>
 You will also need to enable the App Engine Admin API for your project:
 
 ```bash
-gcloud service-management enable appengine.googleapis.com
+gcloud services enable appengine.googleapis.com
 ```
 
 ## Downloading credentials
