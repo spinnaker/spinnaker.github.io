@@ -81,6 +81,9 @@ mulesoft_user:
 cleartax_in_user:
   image_path: assets/images/users/cleartax_in_logo.png
   alt: "ClearTax.in Logo"
+opsmx_user:
+  image_path: assets/images/users/opsmx_logo.png
+  alt: "OpsMx Logo"
 ---
 
 ## Who's using Spinnaker?
@@ -109,24 +112,25 @@ cleartax_in_user:
   <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="nest_user" %}
     {% include spinnaker_user id="netflix_user" %}
-    {% include spinnaker_user id="optimizely_user" %}
+    {% include spinnaker_user id="opsmx_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="optimizely_user" %}
     {% include spinnaker_user id="purestorage_user" %}
     {% include spinnaker_user id="plangrid_user" %}
-    {% include spinnaker_user id="smartthings_user" %}
  </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="smartthings_user" %}
     {% include spinnaker_user id="schibsted_user" %}
     {% include spinnaker_user id="scopely_user" %}
-    {% include spinnaker_user id="skuid_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="skuid_user" %}
     {% include spinnaker_user id="target_user" %}
     {% include spinnaker_user id="underarmour_user" %}
-    {% include spinnaker_user id="waze_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="waze_user" %}
     {% include spinnaker_user id="weatherbug_user" %}
   </div>
 </div>
