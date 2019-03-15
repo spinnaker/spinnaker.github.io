@@ -42,6 +42,8 @@ With Fiat, you can&hellip;
         > SAML roles are fixed at login time, and cannot be changed until the user needs to
         reauthenticate.
 
+1. Enable the [authorization](/reference/halyard/commands/#hal-config-security-authz-enable) feature.
+
 1. Patience&mdash;there are a lot of small details that must be _just_ right with anything related to
  authentication and authorization.
 
