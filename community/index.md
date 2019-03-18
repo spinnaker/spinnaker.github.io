@@ -116,7 +116,7 @@ dins_user:
   image_path: assets/images/users/dins_logo.png
   alt: "DINS Logo"
 nearpod_user:
-  image_path: assets/images/users/nearpod_logo.png
+  image_path: assets/images/users/nearpod_logo.svg
   alt: "Nearpod Logo"
 opsmx_user:
   image_path: assets/images/users/opsmx_logo.png
