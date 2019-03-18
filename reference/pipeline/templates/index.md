@@ -7,3 +7,7 @@ sidebar:
 
 {% include toc %}
 
+## Pipeline JSON
+
+
+## Pipeline template JSON

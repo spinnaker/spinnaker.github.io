@@ -48,23 +48,6 @@ Pipeline templates have two main components:
   into the final pipeline graph and inherit or override, or both, triggers,
   notifications, and parameters.
 
-Pipeline templates work like this:
-
-<!--
-This is nowhere near done yet
--->
- <div class="mermaid">
- graph LR
-
- id1(template) --> id2(config);
- id2(config) --> id3(pipeline);
-
- classDef default fill:#d8e8ec,stroke:#39546a;
- linkStyle default stroke:#39546a,stroke-width:1px,fill:none;
-
- </div>
-
- {% include mermaid %}
 
 ### Terminology
 
@@ -84,3 +67,9 @@ variable bindings and a reference to the template.
 
 Whether it's created from a template or not, an executable pipeline that can
 be visualized in the Deck UI, and can be run by [Orca](/reference/architecture/).
+
+### Pipeline template variable
+
+A variable defined in a pipeline template, whose value is deteremined when a
+pipeline is instantiated based on the template. Contrast with pipeline
+variables, which vary per execution of the pipeline.
