@@ -31,6 +31,7 @@ following issues:
    These settings will configure cross-origin resource sharing (CORS) between your Gate and Deck
    endpoints; if this is not properly configured, your browser will reject requests from Deck to
    Gate.
+ * If you have a local deployment of Spinnaker, ensure that Redis is available at the configured address (localhost:6379 by default). If not, start redis by running `sudo systemctl enable redis-server && sudo systemctl start redis-server` and restart spinnaker by running `sudo systemctl restart spinnaker`.
 
 ## I want to expose LocalDebian Spinnaker on a public IP address, but it always binds to localhost
 
