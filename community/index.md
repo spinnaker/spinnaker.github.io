@@ -169,7 +169,6 @@ The Spinnaker OSS project was started at Netflix, and today thrives on the contr
     {% include spinnaker_user id="cisco_user" %}
     {% include spinnaker_user id="clarivate_user" %}
     {% include spinnaker_user id="cleartax_in_user" %}
-    {% include spinnaker_user id="cloudera_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="cloudera_user" %}
