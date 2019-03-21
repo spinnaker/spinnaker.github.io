@@ -23,7 +23,7 @@ Your CF foundations' [API endpoints](https://docs.cloudfoundry.org/running/cf-ap
 First, we make sure the provider is enabled:
 
 ``` bash
-hal config provider cloudfoundry enabled
+hal config provider cloudfoundry enable
 ```
 
 Next, run the following `hal` command (replacing placeholders with actual values) to add an account named `my-cf-account` to your list of Cloud Foundry accounts:
