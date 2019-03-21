@@ -14,82 +14,132 @@ When you create a pipeline template, you start with the underlying JSON of a
 pipeline that already resembles the template you want. You turn this JSON into
 template JSON.
 
+<!--
 ## The high-level process
+
+Here's a brief look at the process described in this doc. The detailed process
+starts [below](#get-a-pipelines-json).
 
 1. [Get the JSON blob](#get_a_pipelines_json) from an existing pipeline that is close to what your
 template will be.
 
-  If necessary, create a new pipeline for this purpose.
-
 1. Examine the JSON to determine the fields you want to parameterize.
-
-   That is, see which fields in the pipeline JSON will become variables in the
-   ensuing pipeline template. A pipeline template variable is a field whose
-   value will differ per instantiation&mdash;each pipeline created based on the
-   template. 
 
 1. Save the pipeline JSON into a file.
 
 1. Edit the file to indicate the variables for the template.
 
-   You'll define all the variables in the `"Variables"` section, and reference those variables in the
-   `"stages"` section.
-
 1. Save the JSON as a pipeline template.
 
-1. Make the template available to your team
+1. Make the template available to your team.
 
-## Get a pipeline's JSON
+-->
+
+## 1. Get a pipeline's JSON
 
 You can create a new pipeline template by using `spin` CLI to get the JSON of
 an existing pipeline that is close to what your template will be.
 
+1. [Install `spin` CLI](/guides/spin/cli/), if you haven't already done so.
 
-```
-spin pi get <pipelineName>
-```
+1. Get the pipeline.
 
-...where `<pipelineName>` is the name shown for the pipeline in the Deck UI.
+   ```
+   spin pipeline get <pipelineName>
+   ```
 
-This returns the pipeline JSON. You'll create a pipeline template from this by
-saving the contents to a file and editing the JSON. You can `tee` it to a file
-from the above command, or you can copy the content, create a new file, and
-paste the content into the new file.
+   ...where `<pipelineName>` is the name shown for the pipeline in the Deck UI.
+
+   This returns the pipeline JSON. You'll create a pipeline template from this by
+   saving the contents to a file and editing the JSON. You can `tee` it to a file
+   from the above command, or you can copy the content, create a new file, and
+   paste the content into the new file.
 
 You can also view the pipeline JSON from within the Deck UI, copy it there, and
 and paste it into a file.
 
-## Determine what your variables will be
-
-
-## Save the pipeline JSON to a file
+## 2. Save the pipeline JSON to a file
 
 If you want, you can do this when you first get the pipeline:
 
-```
-spin pi get <pipelineName> | tee new_template.txt
+```bash
+spin pipeline get <pipelineName> | tee new_template.txt
 ```
 
-## Edit the file to make it a template
+## 3. Edit the file for template format
 
-Just by adding a few fields, you can turn this pipeilne JSON into pipeline-template JSON:
+Just by adding a few fields, you can turn this pipeline JSON into
+pipeline-template JSON.
 
 The following is the pipeline-template config format. Note the `"pipeline" :`
-section; that contains the pipeline JSON, so as you start with a pipeline blob,
-you move that entire JSON fragment to the `pipeline` section.
+section; that contains the pipeline JSON, the same as what's in ordinary
+pipeline JSON, but referencing any variables that are used. So as you start
+with a pipeline blob, you move that entire JSON fragment to the `pipeline`
+section.
+
+1. Add a reference to the pipeline templates schema.
+
+   It will always be...
+
+   ```json
+   "schema" : "v2",
+   ```
+
+1. Declare your variables.
+
+   Add a `variables` section, in which to list all the variables that you
+   reference in this template:
+
+   ```json
+   "variables" : [
+   {
+     "type" : "<type>",
+     "defaultValue" : <defaultValue>,
+     "description" : "<some description>",
+     "var1Name" : "<name of this variable>"
+   } 
+   {
+     "type" : "<type>",
+     "defaultValue" : <defaultValue>,
+     "description" : "<some description>",
+     "var2Name" : "<name of this variable>"
+   }
+     ]
+   ```
+
+1. For everything in the `pipeline` section that will be a variable, replace
+the value of each item with a SpEL expression that references the variable
+declared in `variables`:
+
+   `${ templateVariables.<varName> }`
+
+   For example in a non-templated pipeline, the amount of time to wait in a Wait
+   stagewould be represented by...
+
+   `"waitTime" : <time>`
+
+   In our parameterized template, it would be...
+
+   `"waitTime" : "${ templateVariables.timeToWait }",`
+
+   ...where `timeToWait` is a variable already defined in the `variables`
+   section of the template.
+
+Here's a complete set of pipeline-template JSON, with the schema, variables
+list, and the pipeline definition:
 
 ```json
 {
-  “schema” : “v2”,
+  “schema” : “v2”, # Reference to the MPTv2 schema
   “variables” : [
   {
     “type” : “int”,
     “defaultValue” : 42,
     “description” : “The time a wait stage shall pauseth”,
-    “name” : “waitTime”
+    “name” : timeToWait # This is the name that's referenced in the SpEL expression later
   }
   ],
-  “id” : “newSpelTemplate”, # Main identifier to reference this   template
+  “id” : “newSpelTemplate”, # Main identifier to reference this template from instance
   “protect” : false,
   “metadata” : {
     “name” : “Variable Wait”,
@@ -108,7 +158,7 @@ you move that entire JSON fragment to the `pipeline` section.
     “notifications” : [],
     “stages” : [
     {
-      “waitTime” : “${ templateVariables.waitTime }”, # Templated   field.
+      “waitTime” : “${ templateVariables.timeToWait }”, # Templated   field.
       “name”: “My Wait Stage”,
       “type” : “wait”,
       “refId” : “wait1”,
@@ -119,17 +169,24 @@ you move that entire JSON fragment to the `pipeline` section.
 }
 ```
 
-## Parameterize the template
+## 4. Save the template
 
-In the file, now containing the JSON of the original pipeline, identify which
-values should be variables. 
+```bash
+spin pipeline-templates save --file my_template.txt
+```
 
+...where `my_template.txt` is the file in which you constructed the template JSON. 
 
-## Save the template
+`spin` checks that the file has a reference to the v2 schema and that it has a `pipeline` section.
+
+Spinnaker uses the value of the `id` field in the JSON as the name of the
+pipeline template. That's the name you use when you [reference the template
+from a pipeline instance](/guides/user/pipeline/pipeline-templates/instantiate/).
 
 
 ## Next steps
 
-* Distirbute the pipeline template to your team
+* [Parameterize the template](/guides/user/pipeline/pipeline-templates/parameterize/)
+* [Distirbute the pipeline template](/guides/user/pipeline/pipeline-templates/distribute/) to your team
 * Create a pipeline from the template
 

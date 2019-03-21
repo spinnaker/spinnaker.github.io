@@ -7,11 +7,12 @@ sidebar:
 
 {% include toc %}
 
-Pipeline Templates are a way to standardize and distribute reusable Pipelines
+Pipeline Templates help you standardize and distribute reusable Pipelines
 across your team or among multiple teams.
 
-You can share these templates within a single application, across different
-applications, or even across different deployments of Spinnaker itself.
+You can share these templates with your teams within a single application,
+across different applications, or even across different deployments of
+Spinnaker itself.
 
 > **Note**: You can use `spin` CLI to manage pipelines and pipeline templates,
 > but first you need to [install it](/guides/spin/cli/).
@@ -20,17 +21,21 @@ applications, or even across different deployments of Spinnaker itself.
 
 The underlying structure of a pipeline template is very close to the pipeline
 JSON configuration format viewable in the Deck UI. But it includes information
-that describes the parameterization of the template
+about the variables the template uses.
 
-## The high-level process
+## The things you can do with pipeline templates
 
-Here's what it's going to be like, creating and managing pipeline templates:
+* [Create a template](/guides/user/pipeline/pipeline-templates/create/) based
+on an existing pipeline.
 
-1. Create a pipeline, or find an existing one, that is similar to the template
-you want to create.
+* [Share the template](/guides/user/pipeline/pipeline-templates/distribute/)
+with one or more teams of Spinnaker users.
 
-1. Turn that pipeline into a template
+* [Create pipelines based on a
+template](/guides/user/pipeline/pipeline-templates/instantiate/). 
 
-   To do this, you use variables. 
+* [Use the `spin` CLI to plan how to parameterize the
+template](/guides/user/pipeline/pipeline-templates/parameterize/#visualize-the-hydrated-pipeline),
+by visualizing a hydrated pipeline. 
 
-1. 
+* [List and get pipeline templates](/guides/user/spin/pipeline-templates/).

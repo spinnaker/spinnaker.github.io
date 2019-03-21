@@ -299,8 +299,6 @@ guides:
                 url: /guides/user/pipeline/pipeline-templates/
               - title: Create a Pipeline Template
                 url: /guides/user/pipeline/pipeline-templates/create/
-              - title: Parameterize the Pipeline Template
-                url: /guides/user/pipeline/pipeline-templates/parameterize
               - title: Instantiate a Pipeline from a Template
                 url: /guides/user/pipeline/pipeline-templates/instantiate
               - title: Provide Values for the Template Parameters
