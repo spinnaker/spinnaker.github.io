@@ -23,13 +23,14 @@ Accounts.
 
 The Kubernetes provider has two requirements:
 
-* A [`kubeconfig`](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/){:target="\_blank"}
+* A [`kubeconfig`](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/){:target="\_blank"} file
 
-    The `kubeconfig` allows Spinnaker to authenticate against your cluster and
-    to have read/write access to any resources you expect it to manage. You can
-    request this from your Kubernetes cluster administrator.
+    The `kubeconfig` file allows Spinnaker to authenticate against your cluster 
+    and to have read/write access to any resources you expect it to manage. You
+    can think of it as private key file to let Spinnaker connect to your cluster.
+    You can request this from your Kubernetes cluster administrator.
 
-* [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/){:target="\_blank"}
+* [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/){:target="\_blank"} CLI tool
 
     Spinnaker relies on `kubectl` to manage all API access. It's installed
     along with Spinnaker.
