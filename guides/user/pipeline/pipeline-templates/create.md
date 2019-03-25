@@ -14,31 +14,12 @@ When you create a pipeline template, you start with the underlying JSON of a
 pipeline that already resembles the template you want. You turn this JSON into
 template JSON.
 
-<!--
-## The high-level process
-
-Here's a brief look at the process described in this doc. The detailed process
-starts [below](#get-a-pipelines-json).
-
-1. [Get the JSON blob](#get_a_pipelines_json) from an existing pipeline that is close to what your
-template will be.
-
-1. Examine the JSON to determine the fields you want to parameterize.
-
-1. Save the pipeline JSON into a file.
-
-1. Edit the file to indicate the variables for the template.
-
-1. Save the JSON as a pipeline template.
-
-1. Make the template available to your team.
-
--->
 
 ## 1. Get a pipeline's JSON
 
-You can create a new pipeline template by using `spin` CLI to get the JSON of
-an existing pipeline that is close to what your template will be.
+Use `spin` CLI to get the JSON of an existing pipeline that is close to what
+your template will be. Altenatively, you can create a new pipeline in the model
+of your intended template.
 
 1. [Install `spin` CLI](/guides/spin/cli/), if you haven't already done so.
 
@@ -65,6 +46,10 @@ If you want, you can do this when you first get the pipeline:
 ```bash
 spin pipeline get <pipelineName> | tee new_template.txt
 ```
+
+...and then edit the content in that file. But you can also copy the pipeline
+JSON and paste it into your favorite editor. The important thing is to wind up
+with a file that you can make available to `spin` CLI.
 
 ## 3. Edit the file for template format
 
@@ -114,7 +99,7 @@ declared in `variables`:
    `${ templateVariables.<varName> }`
 
    For example in a non-templated pipeline, the amount of time to wait in a Wait
-   stagewould be represented by...
+   stage would be represented by...
 
    `"waitTime" : <time>`
 
@@ -122,8 +107,8 @@ declared in `variables`:
 
    `"waitTime" : "${ templateVariables.timeToWait }",`
 
-   ...where `timeToWait` is a variable already defined in the `variables`
-   section of the template.
+   ...where `timeToWait` is declared in the `variables` section of the template
+   for this purpose.
 
 Here's a complete set of pipeline-template JSON, with the schema, variables
 list, and the pipeline definition:
@@ -136,7 +121,7 @@ list, and the pipeline definition:
     “type” : “int”,
     “defaultValue” : 42,
     “description” : “The time a wait stage shall pauseth”,
-    “name” : timeToWait # This is the name that's referenced in the SpEL expression later
+    “name” : "timeToWait" # This is the name that's referenced in the SpEL expression later
   }
   ],
   “id” : “newSpelTemplate”, # Main identifier to reference this template from instance
@@ -158,7 +143,7 @@ list, and the pipeline definition:
     “notifications” : [],
     “stages” : [
     {
-      “waitTime” : “${ templateVariables.timeToWait }”, # Templated   field.
+      “waitTime” : “${ templateVariables.timeToWait }”, # Templated field.
       “name”: “My Wait Stage”,
       “type” : “wait”,
       “refId” : “wait1”,
@@ -186,7 +171,6 @@ from a pipeline instance](/guides/user/pipeline/pipeline-templates/instantiate/)
 
 ## Next steps
 
-* [Parameterize the template](/guides/user/pipeline/pipeline-templates/parameterize/)
 * [Distirbute the pipeline template](/guides/user/pipeline/pipeline-templates/distribute/) to your team
-* Create a pipeline from the template
+* [Create a pipeline from the template](/guides/user/pipeline/pipeline-templates/instantiate/)
 

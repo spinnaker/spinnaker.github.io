@@ -299,10 +299,8 @@ guides:
                 url: /guides/user/pipeline/pipeline-templates/
               - title: Create a Pipeline Template
                 url: /guides/user/pipeline/pipeline-templates/create/
-              - title: Instantiate a Pipeline from a Template
-                url: /guides/user/pipeline/pipeline-templates/instantiate
-              - title: Provide Values for the Template Parameters
-                url: /guides/user/pipeline/pipeline-templates/hydrate
+              - title: Create a Pipeline from a Template
+                url: /guides/user/pipeline/pipeline-templates/instantiate/
       - title: Tagging
         url: /guides/user/tagging/
       - title: Custom Instance Links
