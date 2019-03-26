@@ -184,9 +184,9 @@ These settings will forward all external communication through the proxy server 
 keeping internal traffic non-proxied. Additional information can be found 
 [here.](https://docs.oracle.com/javase/8/docs/technotes/guides/net/proxies.html){:target="\_blank"}
 
-The Kubernetes V2 provider in the Clouddriver must be handled differently. Because the 
-Kubernetes V2 provider uses `kubectl` (which uses curl), you must set environment variables
-if you want Kubernetes V2 traffic to be proxied. 
+The Kubernetes V2 provider must be handled differently. Because the Kubernetes V2 provider 
+uses `kubectl` (which uses curl), you must set environment variablesif you want 
+Kubernetes V2 traffic to be proxied. 
 
 An example `clouddriver.yml` that will proxy Kubernetes V2 traffic will look like:
 ```yaml
