@@ -166,10 +166,10 @@ For example,
 DEFAULT_JVM_OPTS=-Dhttp.proxyHost=my.proxy.domain.com -Dhttp.proxyPort=3128
 ```
 
-## I want to run a Spinnaker service (clouddriver, echo, etc) behind an http proxy server
+## I want to run a Spinnaker service (Clouddriver, Echo, etc) behind an HTTP proxy server
 
 For most Spinnaker service communication, this can be accomplished by setting appropriate 
-JVM options for the service you want to proxy. For example, if you wanted to proxy echo
+JVM options for the service you want to proxy. For example, if you wanted to proxy Echo
 communication for Slack notifications, you would add the following proxy settings to 
 `~/.hal/default/service-settings/echo.yml`
 
@@ -182,9 +182,9 @@ env:
 
 These settings will forward all external communication through the proxy server specified while
 keeping internal traffic non-proxied. Additional information can be found 
-[here.](https://docs.oracle.com/javase/8/docs/technotes/guides/net/proxies.html)
+[here.](https://docs.oracle.com/javase/8/docs/technotes/guides/net/proxies.html){:target="\_blank"}
 
-The Kubernetes V2 provider in the clouddriver must be handled differently. Because the 
+The Kubernetes V2 provider in the Clouddriver must be handled differently. Because the 
 Kubernetes V2 provider uses `kubectl` (which uses curl), you must set environment variables
 if you want Kubernetes V2 traffic to be proxied. 
 
