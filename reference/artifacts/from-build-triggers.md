@@ -32,14 +32,23 @@ properties from your CI job:
 messageFormat=JAR
 ```
 
-Custom templates can be configured by adding the following to `echo-local.yml`:
+The recommended way to configure artifact templates is by using the `hal config artifact templates`
+ [Halyard command](reference/halyard/commands/#hal-config-artifact-templates):
+ ```
+hal config artifact templates add <name of template> --template-path <path to the template> 
+```
+
+As an alternative, you can manually configure templates by adding the following to `igor-local.yml`:
 ```yaml
 artifacts:
   templates:
   - name: <name of template>
     templatePath: <path to the template>
 ```
-You can then use the custom template by exporting the following as properties from your
+(Prior to Spinnaker 1.13, these templates needed to be confgiured in `echo-local.yml`; as of
+Spinnaker 1.13.0, they must be configured in `igor-local.yml`.)
+
+You can then use the configure custom template by exporting the following as properties from your
 CI build:
 ```sh
 messageFormat=<name of template>
