@@ -299,8 +299,12 @@ guides:
                 url: /guides/user/pipeline/pipeline-templates/
               - title: Create a Pipeline Template
                 url: /guides/user/pipeline/pipeline-templates/create/
+              - title: Find a Pipeline Template
+                url: /guides/user/pipeline/pipeline-templates/find/
               - title: Create a Pipeline from a Template
                 url: /guides/user/pipeline/pipeline-templates/instantiate/
+              - title: Inherit from a Template, or Override it
+                url: /guides/user/pipeline/pipeline-templates/override/
       - title: Tagging
         url: /guides/user/tagging/
       - title: Custom Instance Links

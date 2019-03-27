@@ -64,8 +64,6 @@ section.
 
 1. Add a reference to the pipeline templates schema.
 
-   It will always be...
-
    ```json
    "schema" : "v2",
    ```
@@ -166,11 +164,15 @@ spin pipeline-templates save --file my_template.txt
 
 Spinnaker uses the value of the `id` field in the JSON as the name of the
 pipeline template. That's the name you use when you [reference the template
-from a pipeline instance](/guides/user/pipeline/pipeline-templates/instantiate/).
+from a pipeline instance](/guides/user/pipeline/pipeline-templates/instantiate/),
+and the name a user looks for when listing pipeline templates. So it's a good
+practice to give your templates descriptive names. You might also institute a
+naming convention for your team or teams that makes it even clearer what each
+template is meant for.
 
 
 ## Next steps
 
-* [Distirbute the pipeline template](/guides/user/pipeline/pipeline-templates/distribute/) to your team
+* [Find pipeline template](/guides/user/pipeline/pipeline-templates/find/) to your team
 * [Create a pipeline from the template](/guides/user/pipeline/pipeline-templates/instantiate/)
 

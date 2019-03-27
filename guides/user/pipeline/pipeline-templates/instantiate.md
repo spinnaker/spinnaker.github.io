@@ -13,6 +13,21 @@ for all of those variables.
 
 ## Instantiate a pipeline
 
+1. Get the pipeline template.
+
+    `spin pipeline-template list`
+
+    This returns a list of all pipeline templates avaialble in the Spinnaker
+    deployment.
+
+1. From the list, determine which of the listed templates is the one you want,
+and get it using the following command:
+
+   `spin pipeline-template get --id <pipelineTemplateId>`
+
+   This outputs the JSON content of the template. You can save it in a file, or
+   just examine it so that you know what you're implementing.
+
 1. Create a file, which will contain the JSON for the pipeline. 
 
    Use the following format:
@@ -37,6 +52,22 @@ for all of those variables.
    }
    ```
 
+   Make sure the content of the file includes, at the beginning, the `"schema": "v2",` reference.
+
+1. Add a reference to the pipeline template:
+
+   For the `"template"` field, add a reference to the specific template, using
+   the following format:
+
+   ```json
+   "template": {
+   	 "source": "spinnaker://<templateName>"
+   }
+   ```
+   
+   Because the template was "saved," using `spin pipeline-template save`, it's
+   added to the Spinnaker deployment and is available using `spinnaker://`.
+
 ## Provide values for the variables
 
 > Note: the variables [defined in the pipeline
@@ -46,4 +77,34 @@ for all of those variables.
 You can code each value by hand in the pipeline JSON that you create. You can
 also generate the JSON and populate the values programatically. For simplicity
 This doc describes doing it by hand.
+
+1. In the pipeline JSON file, in the `variables` section, list each variable
+for which you're providing values, and write that value.
+
+   Use the following format:
+
+   ```json
+   "variables": {
+   	 "varName": <value>
+   }
+   ```
+
+## Specify inheritance and overrides
+
+1. [Indicate which elements of the template you want to
+inherit](/guides/user/pipeline/pipeline-templates/override/).
+
+   By default, you have to explicitly identify what in the template you want to
+   inherit. For example, the template might have a trigger defined in the
+   `"triggers"` element, but that trigger is not used in your pipeline unless
+   you include `"triggers"` inside the `"inherit"` element.
+
+1. If you want, you can
+[override](/guides/user/pipeline/pipeline-templates/override/) elements in the
+template.
+
+
+## Save the pipeline
+
+`spin pipeline save --file <path to pipeline json>`
 

@@ -31,11 +31,11 @@ on an existing pipeline.
 * [Share the template](/guides/user/pipeline/pipeline-templates/distribute/)
 with one or more teams of Spinnaker users.
 
-* [Create pipelines based on a
+* [Create a pipeline based on a
 template](/guides/user/pipeline/pipeline-templates/instantiate/). 
 
 * [Use the `spin` CLI to plan how to parameterize the
-template](/guides/user/pipeline/pipeline-templates/parameterize/#visualize-the-hydrated-pipeline),
+template](/guides/user/pipeline/pipeline-templates/plan/),
 by visualizing a hydrated pipeline. 
 
 * [List and get pipeline templates](/guides/user/spin/pipeline-templates/).
