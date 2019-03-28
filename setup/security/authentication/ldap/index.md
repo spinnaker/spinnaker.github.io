@@ -35,8 +35,6 @@ Use `hal config` to enable and configure LDAP. Here's an example:
 
 `hal config security authn ldap enable`
 
-You should enable after configured LDAP.
-
 You can also use `ldap.userSearchBase` and `ldap.userSearchFilter` if the simpler
 `ldap.userDnPattern` does not match what your organization uses for `userDn`s. We don't explore this
 use case here, but you can read up more on LDAP search filters
