@@ -31,3 +31,6 @@ instantiated a pipeline based on the template.
 
 
 ## Now what do I do with it?
+
+Use the output JSON to visualize what your resulting pipeline config will look
+like after you instantiate it and save it as a pipeline in Spinnaker.

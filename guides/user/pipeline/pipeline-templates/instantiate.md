@@ -74,30 +74,32 @@ and get it using the following command:
 > template](/guides/user/pipeline/pipeline-templates/create/#3-edit-the-file-for-template-format)
 > include default values, so you don't have to provdide a value for every variabled defined.
 
-You can code each value by hand in the pipeline JSON that you create. You can
-also generate the JSON and populate the values programatically. For simplicity
-This doc describes doing it by hand.
-
-1. In the pipeline JSON file, in the `variables` section, list each variable
+In the pipeline JSON file, in the `variables` section, list each variable
 for which you're providing values, and write that value.
 
    Use the following format:
 
    ```json
    "variables": {
-   	 "varName": <value>
+     "varName": <value>
+     "otherVarName": <its_value>
    }
    ```
+You can code each value by hand in the pipeline JSON that you create. You can
+also generate the JSON and populate the values programatically. For simplicity
+This doc describes doing it by hand.
+
 
 ## Specify inheritance and overrides
 
 1. [Indicate which elements of the template you want to
 inherit](/guides/user/pipeline/pipeline-templates/override/).
 
-   By default, you have to explicitly identify what in the template you want to
-   inherit. For example, the template might have a trigger defined in the
-   `"triggers"` element, but that trigger is not used in your pipeline unless
-   you include `"triggers"` inside the `"inherit"` element.
+   By default, the pipeline instance inherits the stages from `pipeline.stages`
+   only. Anything else you want to inherit, from inside `pipeline` you have to 
+   identify explicitly. For example, the template might have a trigger defined
+   in the `"triggers"` element, but that trigger is not used in your pipeline
+   unless you include `"triggers"` inside the `"inherit"` element.
 
 1. If you want, you can
 [override](/guides/user/pipeline/pipeline-templates/override/) elements in the

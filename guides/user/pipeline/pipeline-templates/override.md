@@ -15,9 +15,9 @@ template variables you can...
 
 ## Inherit from the template
 
-By default, the pipeline instance does not inherit items defined in the
-template. You have to explicitly identify what in the template you want to
-inherit. 
+By default, the pipeline instance inherits from `pipeline.stages` only. The
+pipeline does not inherit any other items defined in the template. You have to
+explicitly identify anything else from the template you want to inherit. 
 
 For example, the template might have a trigger defined in the
 `"triggers"` element, but that trigger is not used in your pipeline unless you
@@ -43,11 +43,10 @@ each element of the template that you want to inherit.
    The same goes for anything else found inside `"pipeline"`.
 
    ```json
-   "inherit": ["triggers", "notifications", "stages"] # and so on...
+   "inherit": ["triggers", "notifications"] # for example
    ```   
 
-Now, all the triggers, notificatons, and stages (in this example) defined in
-the template are part of the pipeline instance.
+Now, all the triggers and notificatons (in this example) defined in the template are part of the pipeline instance.
 
 ## Override the template
 
@@ -55,14 +54,21 @@ To override an element from a pipeline template is to *add to* that element.
 You can only override an element if you inherit it, and you can only add to
 it&mdash;you can't remove or edit individual members.
 
+The stage definitions inside `stages` are inherited by default. You can add
+further stages, and the configuration required to wire added stages with
+inherited stages.
+
 1. Make sure you're inheriting from the element or elements you want to
 override. 
 
    [See above](#inherit-from-the-template)
 
+   Also, as mentioned above, stages defined in the tempate are inherited by
+   default.
+
 1. In `"override"`, add the names of the element or elements you are overriding.
 
    ``` "override": "triggers", "notifications"```
 
-Now any triggers and notificatons (in this example) you specifiy in your
-pipeline body are *added* to those inherited from the template.
+Now any triggers and notificatons (for example) you specifiy in your pipeline
+body are *added* to those inherited from the template.

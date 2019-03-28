@@ -54,8 +54,8 @@ Pipeline templates have two main components:
 #### Pipeline template
 
 A parameterized pipeline, minus the pipeline configuration found on a pipeline
-instance. Based on this template, your Spinnaker users can more easily create
-pipelines that follow the pattern
+instance. This template helps developers create pipelines that follow a pattern
+that you establish.
 
 #### Pipeline configuration
 

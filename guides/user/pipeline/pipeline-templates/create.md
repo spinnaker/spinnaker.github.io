@@ -173,6 +173,5 @@ template is meant for.
 
 ## Next steps
 
-* [Find pipeline template](/guides/user/pipeline/pipeline-templates/find/) to your team
 * [Create a pipeline from the template](/guides/user/pipeline/pipeline-templates/instantiate/)
 

@@ -28,11 +28,18 @@ about the variables the template uses.
 * [Create a template](/guides/user/pipeline/pipeline-templates/create/) based
 on an existing pipeline.
 
-* [Share the template](/guides/user/pipeline/pipeline-templates/distribute/)
-with one or more teams of Spinnaker users.
+* Share the template with one or more teams of developers using Spinnaker.
+
+  To [save a pipeline
+  template](/guides/user/pipeline/pipeline-templates/create/#4-save-the-template)
+  to Spinnaker is to make it available to developers. It's a good idea though
+  to communicate to the team what templates are available.
 
 * [Create a pipeline based on a
 template](/guides/user/pipeline/pipeline-templates/instantiate/). 
+
+* [Override](/guides/pipeline/pipeline-templates/override) template definitions
+in your pipeline.
 
 * [Use the `spin` CLI to plan how to parameterize the
 template](/guides/user/pipeline/pipeline-templates/plan/),
