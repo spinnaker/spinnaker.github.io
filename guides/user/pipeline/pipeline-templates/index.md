@@ -38,7 +38,7 @@ on an existing pipeline.
 * [Create a pipeline based on a
 template](/guides/user/pipeline/pipeline-templates/instantiate/). 
 
-* [Override](/guides/pipeline/pipeline-templates/override/) template definitions
+* [Override](/guides/user/pipeline/pipeline-templates/override/) template definitions
 in your pipeline.
 
 * [Use the `spin` CLI to plan how to parameterize the
