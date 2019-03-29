@@ -208,7 +208,7 @@ API](https://console.developers.google.com/apis/api/cloudresourcemanager.googlea
    hal config provider docker-registry account add my-ecr-registry \
     --address $ADDRESS \
     --username AWS \
-    --password-command aws --region $REGION ecr get-authorization-token --output text --query 'authorizationData[].authorizationToken' | base64 -d | sed 's/^AWS://'
+    --password-command "aws --region $REGION ecr get-authorization-token --output text --query 'authorizationData[].authorizationToken' | base64 -d | sed 's/^AWS://'"
    ```
 
 ### Other registries
