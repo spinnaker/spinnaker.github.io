@@ -192,6 +192,30 @@ stage is actually named "bake", `${#stage("Bake")}` will not find it. Remember
 that the values for the stage are still under the _context_ map, so you can
 access a property via `${#stage("Bake")["context"]["desiredProperty"]}`.
 
+### #stageByRefId(String)
+
+A shortcut to get the stage by its `refId`. For example, `${#stage("3")}` allows
+you to access the stage with `refId = 3`.
+
+### #currentStage()
+
+Returns the current stage.
+
+### #stageExists(String)
+
+Checks if a given stage exists. You can search by `name` or `id`.
+Returns `true` if at least one stage is found with the `name` or `id` given.  
+Since the `id` is generated at runtime, most of the time it will make sense to search by `name` instead.
+Note that stage names are set by default so if you create a Webhook stage it will be called Webhook; 
+giving the stage a unique name when you create it makes it easier to find when using this helper function.
+
+### #pipelineId(String)
+
+This function looks up the pipeline id given a pipeline name (within the same Spinnaker application). 
+This is useful if you generate pipelines programmatically and don't want to modify pipelines to reference a new id
+when a dependent pipeline is automatically regenerated.    
+For example, `${#pipelineId("Deploy to prod")}` might return `9b2395dc-7a2b-4845-b623-838bd74d059b`.
+
 ### #toBoolean(String)
 
 Converts the input string to a boolean.
@@ -231,8 +255,11 @@ The whitelisted classes are:
 ## Source code
 
 Source code for the expression language is in the [spinnaker/orca
-repository](https://github.com/spinnaker/orca), mostly in the
-[ContextParameterProcessor class](https://github.com/spinnaker/orca/blob/master/orca-core/src/main/java/com/netflix/spinnaker/orca/pipeline/util/ContextParameterProcessor.java).
+repository](https://github.com/spinnaker/orca), mostly in the following classes:
+
+* [ContextParameterProcessor class](https://github.com/spinnaker/orca/blob/master/orca-core/src/main/java/com/netflix/spinnaker/orca/pipeline/util/ContextParameterProcessor.java)
+* [ExpressionsSupport class](https://github.com/spinnaker/orca/blob/master/orca-core/src/main/java/com/netflix/spinnaker/orca/pipeline/expressions/ExpressionsSupport.java)
+* Subclasses of [ExpressionFunctionProvider](https://github.com/spinnaker/orca/blob/master/orca-core/src/main/java/com/netflix/spinnaker/orca/pipeline/expressions/ExpressionFunctionProvider.kt)
 
 
 ## Pipeline expression implementation

@@ -70,6 +70,6 @@ as the key, and a Java regular expression as the value.
 
 8. In the **Expected Artifacts** field, you can add any build artifacts as expected artifacts. For example,
 if the build produces a Docker image, you can add an expected artifact of type *Docker* with a value of
-`gcr.io/my-project-id/my-application:tag` (replacing `my-project-id`, `my-application`, and `tag` with
+`gcr.io/my-project-id/my-application` (replacing `my-project-id` and `my-application` with
 appropriate values). You can then [use the produced image](/reference/artifacts/in-pipelines/)
 in downstream stages.
