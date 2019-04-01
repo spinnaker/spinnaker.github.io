@@ -119,7 +119,6 @@ stage.
 "stages": [
     {
         "id": "wait2",
-        "dependsOn": ["wait1"],
         "type": "wait",
         "config": {
             "waitTime": 67
