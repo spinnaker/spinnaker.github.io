@@ -105,6 +105,45 @@ inherit](/guides/user/pipeline/pipeline-templates/override/).
 [override](/guides/user/pipeline/pipeline-templates/override/) elements in the
 template.
 
+## Add new stages
+
+Create a new stage by adding the stage spec to the pipeline JSON.
+
+Include an `inject` element, indicating the stage's position by identifying
+which stage this new stage comes after.
+
+In the example below, the new stage `wait0` is injected after the `wait2`
+stage.
+
+```json
+"stages": [
+    {
+        "id": "wait2",
+        "dependsOn": ["wait1"],
+        "type": "wait",
+        "config": {
+            "waitTime": 67
+        }
+    },
+    {
+        "id": "wait0",
+        "inject": {
+            "after": ["wait2"]
+        },
+        "type": "wait",
+        "config": {
+            "waitTime": 2
+        }
+    }
+]
+```
+
+## Add a branch to the pipeline
+
+The template you're using might itself have branches, but if it doesn't, and
+you want your pipeline instance to have a branch, inject new stages as
+described [above](#add-new-stages), but include multiple `before` or multiple
+`after` elements (or both) to describe the graph. 
 
 ## Save the pipeline
 

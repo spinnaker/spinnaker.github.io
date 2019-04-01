@@ -19,8 +19,8 @@ Spinnaker itself.
 
 ## Structure of a pipeline template
 
-The underlying structure of a pipeline template is very close to the pipeline
-JSON configuration format viewable in the Deck UI. But it includes information
+[The underlying structure](/reference/pipeline/templates/) of a pipeline template is very close to the pipeline
+JSON configuration format, viewable in the Deck UI. But it includes information
 about the variables the template uses.
 
 ## The things you can do with pipeline templates
