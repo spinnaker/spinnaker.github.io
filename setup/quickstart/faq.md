@@ -165,3 +165,36 @@ For example,
 ```bash
 DEFAULT_JVM_OPTS=-Dhttp.proxyHost=my.proxy.domain.com -Dhttp.proxyPort=3128
 ```
+
+## I want to run a Spinnaker service (Clouddriver, Echo, etc) behind an HTTP proxy server
+
+For most Spinnaker service communication, this can be accomplished by setting appropriate 
+JVM options for the service you want to proxy. For example, if you wanted to proxy Echo
+communication for Slack notifications, you would add the following proxy settings to 
+`~/.hal/default/service-settings/echo.yml`
+
+```yaml
+env:
+  JAVA_OPTS: "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=2
+              -Dhttp.proxyHost=<proxy host> -Dhttp.proxyPort=<proxy port> -Dhttps.proxyHost=<proxy host>
+              -Dhttps.proxyPort=<proxy port> -Dhttp.nonProxyHosts='localhost|127.*|[::1]|*.spinnaker'"
+```
+
+These settings will forward all external communication through the proxy server specified while
+keeping internal traffic non-proxied. Additional information can be found 
+[here.](https://docs.oracle.com/javase/8/docs/technotes/guides/net/proxies.html){:target="\_blank"}
+
+The Kubernetes V2 provider must be handled differently. Because the Kubernetes V2 provider 
+uses `kubectl` (which uses curl), you must set environment variablesif you want 
+Kubernetes V2 traffic to be proxied. 
+
+An example `clouddriver.yml` that will proxy Kubernetes V2 traffic will look like:
+```yaml
+env:
+  HTTP_PROXY: "proxyaddress:proxyport"
+  HTTPS_PROXY: "proxyaddress:proxyport"
+  NO_PROXY: "localhost,127.0.0.1,*.spinnaker" 
+```
+
+If you are using both the V1 and V2 version of the Kubernetes provider, you'll need to supply both sets of 
+proxy definitions. 
