@@ -97,7 +97,7 @@ meters:
     # If the name matches a regex here, it will not be included,
     # unless it also appears in byLiteralName.
     - <metric name regex>
-```yaml
+```
 
 ### Example Filter configurations
 
@@ -129,7 +129,7 @@ Exclude all jvm metrics except for `jvm.memory.used`
 monitoring:
   filters:
     meters:
-      byNameLiteral:
+      byLiteralName:
         - jvm.memory.used
 
       excludeNameRegex:
