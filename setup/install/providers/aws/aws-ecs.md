@@ -45,9 +45,9 @@ The role that Clouddriver assumes for your Amazon ECS account needs to have the 
 }
 ```
 
-### Optional setups
+### Optional: IAM Roles for Tasks
 
-You may create IAM roles that have the `ecs-tasks.amazonaws.com` trust relationship so that your containers have an IAM role associated to them.  For information on how to modify IAM roles in the AWS console, see the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html){:target="\_blank"}
+You can create IAM roles that have the `ecs-tasks.amazonaws.com` trust relationship so that your containers have an IAM role associated to them.  For information on how to modify IAM roles in the AWS console, see the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html){:target="\_blank"}
 
 ```json
 {
@@ -65,11 +65,13 @@ You may create IAM roles that have the `ecs-tasks.amazonaws.com` trust relations
 }
 ```
 
-You may create [Application Auto Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html){:target="\_blank"}
-using Cloudwatch Alarms (tracking e.g. CPU utilization of an Amazon ECS service, or a custom metric) that have an autoscaling action.  These alarms will be available for you to clone from when deploying new server groups, and can be selected in the deploy server group modal in the UI.
+### Optional: Service Auto Scaling
+
+You can configure your Amazon ECS services to use [Service Auto Scaling](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-auto-scaling.html){:target="\_blank"}.  Service Auto Scaling policies adjust your Amazon ECS service's desired count up or down in response to CloudWatch alarms (e.g. tracking the CPU utilization of an Amazon ECS service, or tracking a custom metric) or on a schedule (e.g. scale up on Monday, scale down on Friday).
+
+Configure scaling policies on your Amazon ECS services using the Application Auto Scaling APIs or in the Amazon ECS console, outside of Spinnaker.  When deploying a new server group in Spinnaker, you can copy these scaling policies from the previous service group by enabling the "copy the previous server group's autoscaling policies" option.
 
 ### Halyard
-
 
 Example command:
 ```bash
@@ -77,7 +79,6 @@ hal config provider ecs account add ecs-account-name --aws-account aws-account-n
 ```
 
 In the above example, `ecs-account-name` is the name of the Amazon ECS account, and `aws-account-name` is the name of a previously added, valid AWS account.  Do note that the Amazon ECS account will use credentials from the corresponding AWS account.
-
 
 ### Clouddriver yaml properties
 
