@@ -96,6 +96,16 @@ run `hal deploy apply`.
 
 ## Configure the metric and dashboard servers
 
+### Running Spinnaker + Prometheus Operator on Kubernetes
+
+  When running Spinnaker on a Kubernetes cluster, [Prometheus Operator](https://github.com/coreos/prometheus-operator)
+  is often used to install and run Prometheus on your Kubernetes clusters.
+
+  Read about support for [Prometheus Operator](https://github.com/spinnaker/spinnaker-monitoring/tree/master/spinnaker-monitoring-third-party/third_party/prometheus_operator/README.md)
+  and leverage the `setup.sh` script to complete your Prometheus Operator + Spinnaker configuration.
+
+### Running Spinnaker + Prometheus on virtual machines
+
   When you ssh into the machine to perform this installation, forward
   the ports 3000 and 9090 so you can install the dashboards. e.g.
   ```
@@ -127,9 +137,6 @@ run `hal deploy apply`.
        If on Azure, see [Prometheus azure_sd_config](https://prometheus.io/docs/operating/configuration/#<azure_sd_config>){:target="\_blank"}.
        If you pursue one of these, please contribute back the work to
        improve the installer for those that follow your lead.
-
-     * If you are deploying Spinnaker on Kubernetes, hang tight, or
-       contact the slack channel; support is forthcoming.
 
   3. Proceed to [install the operational dashboards](#install-the-operational-dashboards)
 
