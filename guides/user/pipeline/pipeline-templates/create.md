@@ -32,9 +32,8 @@ of your intended template.
    ...where `<pipelineName>` is the name shown for the pipeline in the Deck UI.
 
    This returns the pipeline JSON. You'll create a pipeline template from this by
-   saving the contents to a file and editing the JSON. You can `tee` it to a file
-   from the above command, or you can copy the content, create a new file, and
-   paste the content into the new file.
+   [saving the contents to a file](#2-save-the-pipeline-json-to-a-file) and
+   editing the JSON.
 
 You can also view the pipeline JSON from within the Deck UI, copy it there, and
 and paste it into a file.
@@ -57,10 +56,9 @@ Just by adding a few fields, you can turn this pipeline JSON into
 pipeline-template JSON.
 
 The following is the pipeline-template config format. Note the `"pipeline" :`
-section; that contains the pipeline JSON, the same as what's in ordinary
-pipeline JSON, but referencing any variables that are used. So as you start
-with a pipeline blob, you move that entire JSON fragment to the `pipeline`
-section.
+section; it contains the pipeline JSON, the same as what's in ordinary pipeline
+JSON, but referencing any variables that are used. So as you start with a
+pipeline blob, you move that entire JSON fragment to the `pipeline` section.
 
 1. Add a reference to the pipeline templates schema.
 

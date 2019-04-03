@@ -52,11 +52,11 @@ and get it using the following command:
    }
    ```
 
-   Make sure the content of the file includes, at the beginning, the `"schema": "v2",` reference.
+   Make sure the content of the file includes, at the beginning, the `schema: v2,` reference.
 
 1. Add a reference to the pipeline template:
 
-   For the `"template"` field, add a reference to the specific template, using
+   In the `template` element, add a reference to the specific template, using
    the following format:
 
    ```json
@@ -65,8 +65,8 @@ and get it using the following command:
    }
    ```
    
-   Because the template was "saved," using `spin pipeline-template save`, it's
-   added to the Spinnaker deployment and is available using `spinnaker://`.
+   Because the template was "saved," using `spin pipeline-template save`, it
+   was added to the Spinnaker deployment and is available using `spinnaker://`.
 
 ## Provide values for the variables
 
@@ -98,8 +98,8 @@ inherit](/guides/user/pipeline/pipeline-templates/override/).
    By default, the pipeline instance inherits the stages from `pipeline.stages`
    only. Anything else you want to inherit, from inside `pipeline` you have to 
    identify explicitly. For example, the template might have a trigger defined
-   in the `"triggers"` element, but that trigger is not used in your pipeline
-   unless you include `"triggers"` inside the `"inherit"` element.
+   in the `triggers` element, but that trigger is not used in your pipeline
+   unless you include `triggers` inside the `inherit` element.
 
 1. If you want, you can
 [override](/guides/user/pipeline/pipeline-templates/override/) elements in the

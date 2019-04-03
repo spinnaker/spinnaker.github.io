@@ -20,27 +20,27 @@ pipeline does not inherit any other items defined in the template. You have to
 explicitly identify anything else from the template you want to inherit. 
 
 For example, the template might have a trigger defined in the
-`"triggers"` element, but that trigger is not used in your pipeline unless you
-include `"triggers"` inside the `"inherit"` element.
+`triggers` element, but that trigger is not used in your pipeline unless you
+include `triggers` inside the `inherit` element.
 
 1. In the pipeline template you are instantiating, examine what's in the
-`"pipeline"` element to see what you want to use in your pipeline.
+`pipeline` element to see what you want to use in your pipeline.
 
    ```bash
    spin pipeline-template get --id <templateName>
    ```
 
-1. In the `"inherit": [] ` section of the pipeline JSON, include the key for
+1. In the `inherit: [] ` section of the pipeline JSON, include the key for
 each element of the template that you want to inherit.
 
    For example, to inherit triggers defined in `pipeline.triggers`, include
-   `"triggers"` inside the `"inherit"` element of the new pipeline:
+   `triggers` inside the `inherit` element of the new pipeline:
 
    ```json
    "inherit": ["triggers"]
    ```
 
-   The same goes for anything else found inside `"pipeline"`.
+   The same goes for anything else found inside `pipeline`.
 
    ```json
    "inherit": ["triggers", "notifications"] # for example
@@ -66,9 +66,11 @@ override.
    Also, as mentioned above, stages defined in the tempate are inherited by
    default.
 
-1. In `"override"`, add the names of the element or elements you are overriding.
+1. In `override`, add the names of the element or elements you are overriding.
 
-   ``` "override": "triggers", "notifications"```
+   ```json
+   "override": "triggers", "notifications"
+   ```
 
 Now any triggers and notificatons (for example) you specifiy in your pipeline
 body are *added* to those inherited from the template.
