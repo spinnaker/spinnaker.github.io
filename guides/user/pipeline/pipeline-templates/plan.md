@@ -25,7 +25,7 @@ spin pipeline-templates plan --config <path to pipeline config>
 }
 ```
 
-...where `<path to pipeline config` points to the [file you
+...where `<path to pipeline config>` points to the [file you
 created](/guides/user/pipeline/pipeline-templates/create/) when you
 instantiated a pipeline based on the template.
 
@@ -39,3 +39,8 @@ in Spinnaker:
 ```bash
 spin pipeline save --file <path to pipeline config>
 ```
+
+## Next steps
+
+* [Create a pipeline from the template](/guides/user/pipeline/pipeline-templates/instantiate/)
+
