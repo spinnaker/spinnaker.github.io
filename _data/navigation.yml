@@ -312,6 +312,8 @@ guides:
       - title: Kubernetes (Manifest Based)
         collapsed: true
         children:
+          - title: Overview
+            url: /guides/user/kubernetes-v2/
           - title: Deploy a Manifest
             url: /guides/user/kubernetes-v2/deploy-manifest/
           - title: Deploy a Helm Chart
