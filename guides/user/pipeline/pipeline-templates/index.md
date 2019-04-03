@@ -35,14 +35,14 @@ on an existing pipeline.
   to Spinnaker is to make it available to developers. It's a good idea though
   to communicate to the team what templates are available.
 
+* [Use the `spin` CLI to plan how to parameterize the
+template](/guides/user/pipeline/pipeline-templates/plan/),
+by visualizing a hydrated pipeline. 
+
 * [Create a pipeline based on a
 template](/guides/user/pipeline/pipeline-templates/instantiate/). 
 
 * [Override](/guides/user/pipeline/pipeline-templates/override/) template definitions
 in your pipeline.
-
-* [Use the `spin` CLI to plan how to parameterize the
-template](/guides/user/pipeline/pipeline-templates/plan/),
-by visualizing a hydrated pipeline. 
 
 * [List and get pipeline templates](/guides/spin/pipeline-templates/).

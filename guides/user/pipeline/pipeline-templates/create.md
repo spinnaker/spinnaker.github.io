@@ -173,5 +173,6 @@ template is meant for.
 
 ## Next steps
 
+* [Visualize a hydrated pipeline](/guides/user/pipeline/pipeline-templates/plan/)
 * [Create a pipeline from the template](/guides/user/pipeline/pipeline-templates/instantiate/)
 
