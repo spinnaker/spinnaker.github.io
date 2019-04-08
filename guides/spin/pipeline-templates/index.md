@@ -90,10 +90,10 @@ spin pipeline-templates get --id myPipelineTemplate
 }
 ```
 
-### Visualize a hydrated pipeline template with `plan`
+### Visualize a hydrated pipeline with `plan`
 
 ```bash
-spin pipeline-templates plan --config <path to template config>
+spin pipeline-templates plan --file <path to pipeline config>
 
 {
   "application": "my-spinnaker-app"

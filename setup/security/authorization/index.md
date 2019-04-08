@@ -28,12 +28,12 @@ With Fiat, you can&hellip;
 
 ## Requirements
 
-1. [Authentication](../authentication) successfully setup in Gate.
+* [Authentication](../authentication) successfully setup in Gate.
 
-1. Configured Front50 to use S3 or Google Cloud Storage (GCS) as the backing storage mechanism for
+* Configured Front50 to use S3 or Google Cloud Storage (GCS) as the backing storage mechanism for
  persistent application configurations.
 
-1. An external role provider from one of the following:
+* An external role provider from one of the following:
     * Google Groups via a G Suite Account
         * With access to the G Suite Admin console
     * GitHub Team
@@ -42,15 +42,17 @@ With Fiat, you can&hellip;
         > SAML roles are fixed at login time, and cannot be changed until the user needs to
         reauthenticate.
 
-1. Patience&mdash;there are a lot of small details that must be _just_ right with anything related to
+* Enable the [authorization](/reference/halyard/commands/#hal-config-security-authz-enable) feature.
+
+* Patience&mdash;there are a lot of small details that must be _just_ right with anything related to
  authentication and authorization.
 
-1. (Highly Suggested) All Spinnaker component microservices are either:
-    1. Firewalled off as a collective group, or:
+* (Highly Suggested) All Spinnaker component microservices are either:
+    * Firewalled off as a collective group, or:
 
         ![all service firewalled off](fiat-firewall.png)
 
-    1. Use mutual TLS authentication:
+    * Use mutual TLS authentication:
 
         ![all services use mutual TLS authentication](fiat-mTLS.png)
 
