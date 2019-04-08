@@ -108,6 +108,17 @@ spin pipeline execute --name my-pipeline --application my-app
 
 Pipeline execution started
 ```
+If your pipeline is parameterized, you can submit a JSON-formatted
+map of the parameters and their values either via the `--parameter-file`
+flag or via STDIN, e.g.
+
+```bash
+{
+  "parameter1": "value1",
+  "parameter2": "value2",
+  ...
+}
+```
 
 ### Delete a pipeline with `delete`
 

@@ -30,6 +30,8 @@ curl -X POST \
   $FRONT50/serviceAccounts
 ```
 
+> **Note**: In the above command, `myApp-prod` and `myApp-qa` are roles, not application names.
+
 You can see your new service account that just got created:
 ```bash
 curl $FRONT50/serviceAccounts
