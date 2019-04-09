@@ -8,7 +8,7 @@ sidebar:
 ## The Bill of Materials (BOM)
 
 Spinnaker is composed of many microservices, each of which has their own
-version. When Spinanker is built, the microservices are tested together to
+version. When Spinnaker is built, the microservices are tested together to
 ensure that they interoperate correctly, and then their versions are recorded
 in a [BOM](/reference/halyard/#bill-of-materials). The BOM also includes
 information on what commits for each service were built, what repositories they
