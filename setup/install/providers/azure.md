@@ -66,7 +66,7 @@ az keyvault secret set --name VMSshPublicKey --vault-name $VAULT_NAME --value <I
 `az keyvault secret set --name VMSshPublicKey --vault-name $VAULT_NAME --value` `<Insert default SSH public key>`<br/>
 with<br/>
 `az keyvault secret set --name VMPassword --vault-name $VAULT_NAME --value` `<Insert default password>`<br/>
-Azure has requirements for setting the username and password. Follow the [rule](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm){:target="\_blank"} otherwise the provisioning of VM scale set will fail.
+Azure has requirements for setting the username and password to provision VM. Follow the [rule](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm){:target="\_blank"} otherwise the provisioning of VM scale set will fail.
 
 ## Adding an account
 
@@ -94,7 +94,7 @@ hal config provider azure account add my-azure-account \
 you can generate a new key: `az ad sp credential reset --name $APP_ID`<br/>
 > 2. Starting from Halyard v1.19, SSH public key will be used to provision VM scale set by default. If you prefer to use password, add the parameter<br/>
 `--useSshPublicKey "false" \`<br/>
-Prior to Halyard v1.19, the default credential option is password.<br/>
+Prior to Halyard v1.19, the default credential option is password and halyard does not support the above parameter to switch the option to SSH public key.<br/>
 Secret values of either the SSH public key or password are stored in the Azure key vault specified by the parameter `--default-key-vault`, in which the stored secret names are called "VMPassword" and "VMSshPublicKey", separately.<br/>
 > 3. The used Azure region by default is "eastus" and "westus". If you would like to add custom regions, add the parameter<br/>
 `--regions <input regions seperated by comma without quotation marks> \`
