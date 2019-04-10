@@ -52,15 +52,21 @@ RESOURCE_GROUP="Spinnaker"
 az group create --name $RESOURCE_GROUP --location <Insert Location>
 ```
 
-Finally, create a Key Vault (where the vault name is globally unique) and add a default username/password:
+Finally, create a Key Vault (where the vault name is globally unique) and add a default username/ssh public key. This credential is used to provision Azure VM scale set. You can log on to VM instances in the VM scale set with this credential.
 
 ```bash
 VAULT_NAME=<Insert Vault Name>
 az keyvault create --enabled-for-template-deployment true --resource-group $RESOURCE_GROUP --name $VAULT_NAME
 az keyvault set-policy --secret-permissions get --name $VAULT_NAME --spn $APP_ID
 az keyvault secret set --name VMUsername --vault-name $VAULT_NAME --value <Insert default username>
-az keyvault secret set --name VMPassword --vault-name $VAULT_NAME --value <Insert default password>
+az keyvault secret set --name VMSshPublicKey --vault-name $VAULT_NAME --value <Insert default SSH public key>
 ```
+
+> NOTE: If you prefer to use password instead of SSH public key, then replace<br/>
+`az keyvault secret set --name VMSshPublicKey --vault-name $VAULT_NAME --value` `<Insert default SSH public key>`<br/>
+with<br/>
+`az keyvault secret set --name VMPassword --vault-name $VAULT_NAME --value` `<Insert default password>`<br/>
+Azure has requirements for setting the username and password. Follow the [rule](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm){:target="\_blank"} otherwise the provisioning of VM scale set will fail.
 
 ## Adding an account
 
@@ -79,11 +85,19 @@ hal config provider azure account add my-azure-account \
   --subscription-id $SUBSCRIPTION_ID \
   --default-key-vault $VAULT_NAME \
   --default-resource-group $RESOURCE_GROUP \
+  --packer-resource-group $RESOURCE_GROUP \
   --app-key
 ```
 
-> NOTE: You will be prompted for the App Key on standard input. If necessary,
-you can generate a new key: `az ad sp credential reset --name $APP_ID`
+> NOTE:
+> 1. You will be prompted for the App Key on standard input. If necessary,
+you can generate a new key: `az ad sp credential reset --name $APP_ID`<br/>
+> 2. Starting from Halyard v1.19, SSH public key will be used to provision VM scale set by default. If you prefer to use password, add the parameter<br/>
+`--useSshPublicKey "false" \`<br/>
+Prior to Halyard v1.19, the default credential option is password.<br/>
+Secret values of either the SSH public key or password are stored in the Azure key vault specified by the parameter `--default-key-vault`, in which the stored secret names are called "VMPassword" and "VMSshPublicKey", separately.<br/>
+> 3. The used Azure region by default is "eastus" and "westus". If you would like to add custom regions, add the parameter<br/>
+`--regions <input regions seperated by comma without quotation marks> \`
 
 ## Advanced account settings
 
