@@ -32,14 +32,14 @@ The Kubernetes provider has two requirements:
 
 * [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/){:target="\_blank"} CLI tool
 
-    Spinnaker relies on `kubectl` to manage all API access. It's installed
-    along with Spinnaker.
+    Halyard relies on `kubectl` to manage all API access. It's installed
+    along with Halyard.
 
-    Spinnaker also relies on `kubectl` to access your Kubernetes cluster; only
+    Halyard also relies on `kubectl` to access your Kubernetes cluster; only
     `kubectl` fully supports many aspects of the Kubernetes API, such as 3-way
     merges on `kubectl apply`, and API discovery. Though this creates a
     dependency on a binary, the good news is that any authentication method or
-    API resource that `kubectl` supports is also supported by Spinnaker. This
+    API resource that `kubectl` supports is also supported by Halyard. This
     is an improvement over the original Kubernetes provider in Spinnaker.
 
 
