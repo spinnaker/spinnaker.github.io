@@ -70,8 +70,22 @@ If you have enabled [Oracle Cloud provider](/setup/install/providers/oracle/) in
        --tenancy-id $TENANCY_OCID \
        --user-id $USER_OCID 
    ```
+For example: 
 
-1. Set the storage source to Oracle Object Storage:
+  ```bash
+    hal config storage oracle edit \
+       --bucket-name spinnaker \
+       --compartment-id ocid1.compartment.oc1..aaaaaaaatjuwhxwkspkxhumqke \
+       --fingerprint 8f:05:f4:94:f3:5f:e3:30:ec:35:8e:77:3e:40:34:10 \
+       --namespace oracle-cloud-tenancy \
+       --region us-phoenix-1 \
+       --ssh-private-key-file-path /Users/.oci/oci_api_key.pem \
+       --tenancy-id ocid1.tenancy.oc1..aaaaaaaa225wmphohitdve3d2qmq4a \
+       --user-id ocid1.user.oc1..aaaaaaaagosdr3zsh3clobgeqqawsq
+   ```
+
+
+2. Set the storage source to Oracle Object Storage:
 
    ```bash
    hal config storage edit --type oracle
