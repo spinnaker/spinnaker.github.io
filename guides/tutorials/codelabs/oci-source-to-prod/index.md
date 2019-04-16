@@ -170,13 +170,23 @@ In the *New Application* dialog:
 
 ![](create-app.png)
 
-### Set up Virtual Cloud Network
+### Set up Virtual Cloud Network (VCN)
 
-Log into the OCI console and create a Virtual Cloud Network “codelabVCN” with "PLUS RELATED RESOURCES" option.
+Log into the Oracle Cloud Infrastructure console and navigate to the Networking tab. Click "Create Virtual Cloud Network" and select the option to CREATE VIRTUAL CLOUD NETWORK PLUS RELATED RESOURCES. Choose a name for your VCN, for example “codelabVCN”. 
 
-Take all the defaults for “codelabVCN”, with a couple of additions to the Ingress Rules in the “Default Security List for codelabVCN”.
-* the instance to be deployed uses port 8080, add an Ingress Rule to allow TCP traffic for port 8080.
-* the load balancer to be created in this tutorial listens on port 80, add an Ingress Rule to allow TCP traffic for port 80.
+Click on your newly created VCN, navigate to the Security Lists tab, and click on your security list. We will keep all of the default rules and make a couple of additions. Click Edit All Rules in the “Default Security List for codelabVCN”. Under Allow Rules for Ingress add the following two rules:  
+
+1. The instance to be deployed uses port 8080. Add an Ingress Rule to allow TCP traffic for port 8080 
+* Source: 0.0.0.0/0
+* IP Protocol: TCP
+* Source Port Range: All
+* Destination Port Range: 8080
+
+2. The load balancer to be created in this tutorial listens on port 80. Add an Ingress Rule to allow TCP traffic for port 80:
+* Source: 0.0.0.0/0
+* IP Protocol: TCP
+* Source Port Range: All
+* Destination Port Range: 80
 
 The Oracle Cloud Infrastructure Documentation on [Security Lists](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm) has more details.
 
