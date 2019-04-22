@@ -34,8 +34,8 @@ hal config provider cloudfoundry account add my-cf-account \
   --user=[user-account] \
   --password=[user-password] \
   --environment=[dev,prod,...] \
-  --appsManagerURI=[http://apps.sys.endpoint.for.foundation] \
-  --metricsURI=[http://metrics.sys.endpoint.for.foundation]
+  --appsManagerUri=[http://apps.sys.endpoint.for.foundation] \
+  --metricsUri=[http://metrics.sys.endpoint.for.foundation]
 ```
 
 As part of the command execution Halyard will attempt to connect to the Cloud Foundry Foundation and return an error when this attempt fails.
