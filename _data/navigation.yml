@@ -223,7 +223,7 @@ guides:
           - title: Deploy GCS Pub/Sub Artifacts to Cloud Foundry
             url: /guides/tutorials/codelabs/pubsub-to-cf/
           - title: GCE Source To Prod
-            url: /guides/tutorials/codelabs/gce-source-to-prod/
+            url: https://codelabs.developers.google.com/codelabs/bake-and-deploy-pipeline
           - title: Kubernetes Source To Prod
             url: /guides/tutorials/codelabs/kubernetes-source-to-prod/
           - title: Kubernetes (Manifest Based) Source To Prod
@@ -366,6 +366,8 @@ guides:
         url: /guides/operator/custom-boms/
       - title: Custom Webhook Stages
         url: /guides/operator/custom-webhook-stages/
+      - title: Custom Job Stages
+        url: /guides/operator/custom-job-stages/
       - title: Custom CAs for Webhooks
         url: /guides/operator/webhook-custom-trust-store/
       - title: "Orca: Redis to SQL"
