@@ -204,6 +204,9 @@ setup:
         children:
           - title: Orca SQL
             url: /setup/productionize/persistence/orca-sql/
+        children:
+          - title: Clouddriver SQL
+            url: /setup/productionize/persistence/clouddriver-sql/
 
 guides:
   - title: Tutorials
