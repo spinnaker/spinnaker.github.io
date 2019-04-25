@@ -152,7 +152,6 @@ waze_case_study:
       </div>
       <div class="clearfix">
         {% include spinnaker_cloud_provider id="azure_provider" %}
-        {% include spinnaker_cloud_provider id="os_provider" %}
         {% include spinnaker_cloud_provider id="appengine_provider" %}
       </div>
     </div>
