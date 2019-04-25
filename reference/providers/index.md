@@ -21,5 +21,4 @@ These are the Cloud Providers currently supported by Spinnaker:
 * [Google Compute Engine](/reference/providers/gce/)
 * [Kubernetes](/reference/providers/kubernetes/) (legacy)
 * [Kubernetes V2](/reference/providers/kubernetes-v2) (manifest based)
-* Openstack
 * [Oracle Cloud](/reference/providers/oracle/)
