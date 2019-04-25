@@ -51,7 +51,7 @@ See [How to Upload the Public Key](https://docs.cloud.oracle.com/iaas/Content/AP
        --user-id $USER_OCID
    ```
 
-For example
+   For example
 
    ```bash
    hal config provider oracle account edit my-oci-acct \
