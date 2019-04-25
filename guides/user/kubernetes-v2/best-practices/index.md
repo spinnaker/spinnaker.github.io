@@ -52,7 +52,7 @@ hydrated manifest recorded.
 
 Anytime Spinnaker deploys a ConfigMap or Secret, it appends a version to
 its name. If that exact ConfigMap or secret is already running in the cluster,
-it's not' redeployed. Downstream stages that reference the ConfigMap or
+it's not redeployed. Downstream stages that reference the ConfigMap or
 secret will deploy the version chosen by Spinnaker. __Unless your application
 requires hot-reloading of configuration, this is essential for practicing
 safe delivery__.

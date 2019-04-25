@@ -17,6 +17,9 @@ you, will be available in the Pipeline's execution.
 > __☞ Note__:  It's possible to configure multiple pipelines to trigger off of
 > a single webhook.
 
+If you're triggering from a *GitHub* webhook, see the instructions
+[here](/setup/triggers/github/) to set up that webhook.
+
 ## Adding a webhook trigger to a pipeline
 
 Assuming you have created a pipeline, under __Configuration__, select __Add

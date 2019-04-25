@@ -23,7 +23,7 @@ Your CF foundations' [API endpoints](https://docs.cloudfoundry.org/running/cf-ap
 First, we make sure the provider is enabled:
 
 ``` bash
-hal config provider cloudfoundry enabled
+hal config provider cloudfoundry enable
 ```
 
 Next, run the following `hal` command (replacing placeholders with actual values) to add an account named `my-cf-account` to your list of Cloud Foundry accounts:
@@ -34,8 +34,8 @@ hal config provider cloudfoundry account add my-cf-account \
   --user=[user-account] \
   --password=[user-password] \
   --environment=[dev,prod,...] \
-  --app-manager-uri=[http://apps.sys.endpoint.for.foundation] \
-  --metrics-uri=[http://metrics.sys.endpoint.for.foundation]
+  --appsManagerUri=[http://apps.sys.endpoint.for.foundation] \
+  --metricsUri=[http://metrics.sys.endpoint.for.foundation]
 ```
 
 As part of the command execution Halyard will attempt to connect to the Cloud Foundry Foundation and return an error when this attempt fails.

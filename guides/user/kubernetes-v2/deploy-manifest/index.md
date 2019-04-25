@@ -67,11 +67,6 @@ them into the UI, the stage definition would look more like this:
   "source": "text",
   "manifest": {
                                   // manifest contents go here
-  },
-  "moniker": {                    // specifies app & cluster for grouping
-                                  // resources in UI
-    "app": "xnat",
-    "cluster": "c7",
   }
 }
 ```
