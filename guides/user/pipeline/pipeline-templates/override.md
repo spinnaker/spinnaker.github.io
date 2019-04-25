@@ -66,11 +66,6 @@ override.
    Also, as mentioned above, stages defined in the tempate are inherited by
    default.
 
-1. In `override`, add the names of the element or elements you are overriding.
+1. Add any triggers, notifications, parameters, etc., inside their respective elements.
 
-   ```json
-   "override": "triggers", "notifications"
-   ```
-
-Now any triggers and notificatons (for example) you specifiy in your pipeline
-body are *added* to those inherited from the template.
+These items are now *added* to those inherited from the template.
