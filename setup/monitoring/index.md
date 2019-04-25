@@ -77,7 +77,7 @@ the name of the meter is the name of the metric. The specification is flexible t
 allow for general rules about what to include or exclude. Only the clauses of
 interest need to be present.
 
-```
+```yaml
 meters:
   # If this section is empty, then all meters are assumed to match.
   #
@@ -103,7 +103,7 @@ meters:
 
 Only include two metrics:
 
-```
+```yaml
 monitoring:
   filters:
     meters:
@@ -114,7 +114,7 @@ monitoring:
 
 Exclude add jvm and redis metrics
 
-```
+```yaml
 monitoring:
   filters:
     meters:
@@ -125,11 +125,11 @@ monitoring:
 
 Exclude all jvm metrics except for `jvm.memory.used`
 
-```
+```yaml
 monitoring:
   filters:
     meters:
-      byNameLiteral:
+      byLiteralName:
         - jvm.memory.used
 
       excludeNameRegex:
@@ -138,7 +138,7 @@ monitoring:
 
 Include all jvm metrics except for `jvm.memory.used`
 
-```
+```yaml
 monitoring:
   filters:
     meters:

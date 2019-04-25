@@ -221,7 +221,7 @@ guides:
           - title: Deploy GCS Pub/Sub Artifacts to Cloud Foundry
             url: /guides/tutorials/codelabs/pubsub-to-cf/
           - title: GCE Source To Prod
-            url: /guides/tutorials/codelabs/gce-source-to-prod/
+            url: https://codelabs.developers.google.com/codelabs/bake-and-deploy-pipeline
           - title: Kubernetes Source To Prod
             url: /guides/tutorials/codelabs/kubernetes-source-to-prod/
           - title: Kubernetes (Manifest Based) Source To Prod
@@ -265,6 +265,8 @@ guides:
       - title: Pipelines
         collapsed: true
         children:
+          - title: Overview
+            url: /guides/user/pipeline/
           - title: Managing Pipelines
             url: /guides/user/pipeline/managing-pipelines/
           - title: Triggering Pipelines
@@ -286,6 +288,19 @@ guides:
             url: /guides/user/pipeline/expressions/
           - title: Searching for Triggered Pipeline Executions
             url: /guides/user/pipeline/searching/
+          - title: Using Pipeline Templates
+            collapsed: true
+            children:
+              - title: Overview
+                url: /guides/user/pipeline/pipeline-templates/
+              - title: Create a Pipeline Template
+                url: /guides/user/pipeline/pipeline-templates/create/
+              - title: Visualize a hydrated pipeline
+                url: /guides/user/pipeline/pipeline-templates/plan/
+              - title: Create a Pipeline from a Template
+                url: /guides/user/pipeline/pipeline-templates/instantiate/
+              - title: Inherit from a Template, or Override it
+                url: /guides/user/pipeline/pipeline-templates/override/
       - title: Tagging
         url: /guides/user/tagging/
       - title: Custom Instance Links
@@ -293,6 +308,8 @@ guides:
       - title: Kubernetes (Manifest Based)
         collapsed: true
         children:
+          - title: Overview
+            url: /guides/user/kubernetes-v2/
           - title: Deploy a Manifest
             url: /guides/user/kubernetes-v2/deploy-manifest/
           - title: Deploy a Helm Chart
@@ -309,6 +326,8 @@ guides:
             url: /guides/user/kubernetes-v2/patch-manifest/
           - title: Manage Traffic
             url: /guides/user/kubernetes-v2/traffic-management/
+          - title: Rollout Strategies
+            url: /guides/user/kubernetes-v2/rollout-strategies/
       - title: Automated Canary Analysis
         collapsed: true
         children:
@@ -345,6 +364,8 @@ guides:
         url: /guides/operator/custom-boms/
       - title: Custom Webhook Stages
         url: /guides/operator/custom-webhook-stages/
+      - title: Custom Job Stages
+        url: /guides/operator/custom-job-stages/
       - title: Custom CAs for Webhooks
         url: /guides/operator/webhook-custom-trust-store/
       - title: "Orca: Redis to SQL"
@@ -386,12 +407,12 @@ reference:
         url: /reference/providers/
 #      - title: Amazon Web Services
 #        url: /reference/providers/aws/
+      - title: Amazon ECS
+        url: /reference/providers/ecs/
       - title: Azure
         url: /reference/providers/azure/
       - title: Cloud Foundry
         url: /reference/providers/cf/
-      - title: ECS (Amazon Web Services)
-        url: /reference/providers/ecs/
       - title: Google App Engine
         url: /reference/providers/appengine/
       - title: Google Compute Engine
@@ -469,6 +490,8 @@ reference:
       url: /reference/pipeline/expressions/
     - title: Pipeline Stages
       url: /reference/pipeline/stages/
+    - title: Pipeline Templates
+      url: /reference/pipeline/templates/
 
 community:
   - title: Releases

@@ -16,3 +16,4 @@ also known as the manifest-based Kubernetes provider.
 * [Annotation-Driven UI](/guides/user/kubernetes-v2/annotations-ui/)
 * [Patch Kubernetes Manifests](/guides/user/kubernetes-v2/patch-manifest/)
 * [Manage Traffic](/guides/user/kubernetes-v2/traffic-management/)
+* [Rollout Strategies](/guides/user/kubernetes-v2/rollout-strategies/)

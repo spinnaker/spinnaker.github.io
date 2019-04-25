@@ -116,3 +116,7 @@ kubernetes:
     example/annotation: spinnaker.io
     example/annotation-2: halyard
 ```
+
+#### useExecHealthCheck
+
+by default halyard deploys services with an `exec` based health check in order to improve compatibility with istio. This however can break functionality for implementations of Load Balancer service types and Ingress Controllers that rely on having a http health check to validate. Setting `kubernetes.useExecHealthCheck: false` will switch the check method to be http based for such use cases.

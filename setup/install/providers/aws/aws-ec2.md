@@ -18,10 +18,10 @@ Use this option to deploy Spinnaker, if you are familar with deployment using [A
 ### Managing Account
 1. Navigate to [Console](https://console.aws.amazon.com/){:target="\_blank"} > CloudFormation and [select](https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/getting-started.html#select-region) your preferred region.
 2. Download [the template](https://d3079gxvs8ayeg.cloudfront.net/templates/managing.yaml) locally to your workstation.
-    
-    2.a (Optional). Add additional managed account as shown [here](https://github.com/spinnaker/spinnaker.github.io/tree/master/setup/install/providers/aws/managing.yaml#L104)
+
+    2.a (Optional). Add additional managed account as shown on line 158 in the SpinnakerAssumeRolePolicy section of the downloaded template file.
 3. Creating the CloudFormation Stack
-    * __Create Stack__ > __Upload a template to Amazon S3__ > __Browse to template you downloaded in Step-2 above__ > __Next__  
+    * __Create Stack__ > __Upload a template to Amazon S3__ > __Browse to template you downloaded in Step-2 above__ > __Next__
     * Enter __Stack Name__ as spinnaker-**managing**-infrastructure-setup and follow the prompts on screen to create the stack
 4. Once the stack is select the stack you created in Step-3 > Outputs and note the values. You will need these values for subsequent configurations.
 
@@ -33,7 +33,7 @@ Use this option to deploy Spinnaker, if you are familar with deployment using [A
 1. Navigate to [Console](https://console.aws.amazon.com/){:target="\_blank"} > CloudFormation and [select](https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/getting-started.html#select-region) your preferred region.
 2. Download [the template](https://d3079gxvs8ayeg.cloudfront.net/templates/managed.yaml) locally to your workstation.
 3. Creating the CloudFormation Stack
-    * __Create Stack__ > __Upload a template to Amazon S3__ > __Browse to template you downloaded in Step-2 above__ > __Next__  
+    * __Create Stack__ > __Upload a template to Amazon S3__ > __Browse to template you downloaded in Step-2 above__ > __Next__
     * Enter __Stack Name__ as spinnaker-**managed**-infrastructure-setup and follow the prompts on screen to create the stack
     * Enter __AuthArn__ and __ManagingAccountId__ as the value noted above and follow the prompts on screen to create the stack
 
@@ -52,7 +52,7 @@ If you want to use AccessKeys and Secrets to run Spinnaker
 ```bash
 
 curl https://d3079gxvs8ayeg.cloudfront.net/templates/managing.yaml
-echo "Optionally add Managing account to the file downloaded as shown at https://github.com/spinnaker/spinnaker.github.io/tree/master/setup/install/providers/aws/managing.yaml#L104"
+echo "Optionally add Managing account to the file downloaded as shown on line 158 in the SpinnakerAssumeRolePolicy section of the downloaded file."
 aws cloudformation deploy --stack-name spinnaker-managing-infrastructure-setup --template-file managing.yaml \
 --parameter-overrides UseAccessKeyForAuthentication=true --capabilities CAPABILITY_NAMED_IAM --region us-west-2
 ```
@@ -62,7 +62,7 @@ If you want to use InstanceProfile run Spinnaker
 ```bash
 
 curl https://d3079gxvs8ayeg.cloudfront.net/templates/managing.yaml
-echo "Optionally add Managing account to the file downloaded as shown at https://github.com/spinnaker/spinnaker.github.io/tree/master/setup/install/providers/aws/managing.yaml#L104"
+echo "Optionally add Managing account to the file downloaded as shown on line 158 in the SpinnakerAssumeRolePolicy section of the downloaded file."
 aws cloudformation deploy --stack-name spinnaker-managing-infrastructure-setup --template-file managing.yaml \
 --parameter-overrides UseAccessKeyForAuthentication=false --capabilities CAPABILITY_NAMED_IAM --region us-west-2
 ```
@@ -78,8 +78,8 @@ curl https://d3079gxvs8ayeg.cloudfront.net/templates/managed.yaml
 aws cloudformation deploy --stack-name spinnaker-managed-infrastructure-setup --template-file managed.yaml \
 --parameter-overrides AuthArn=FROM_ABOVE ManagingAccountId=FROM_ABOVE --capabilities CAPABILITY_NAMED_IAM --region us-west-2
 ```
- 
- 
+
+
 ## Configure Halyard to use AccessKeys (if configured)
 
 > These steps need to be carried out only if you selected UseAccessKeyForAuthentication as true in Option-1 or Option-2 above
