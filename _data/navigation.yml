@@ -330,6 +330,8 @@ guides:
             url: /guides/user/kubernetes-v2/patch-manifest/
           - title: Manage Traffic
             url: /guides/user/kubernetes-v2/traffic-management/
+          - title: Rollout Strategies
+            url: /guides/user/kubernetes-v2/rollout-strategies/
       - title: Automated Canary Analysis
         collapsed: true
         children:

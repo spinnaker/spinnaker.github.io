@@ -182,6 +182,10 @@ command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
 
   * `traffic.spinnaker.io/load-balancers: '["service my-service", "service my-canary-service"]'` 
     attaches to the Services named `my-service` and `my-canary-service`.
+    
+  As of Spinnaker 1.14, instead of manually adding the `traffic.spinnaker.io/load-balancers`
+  annotation, you can select which load balancers to associate with a workload from the Deploy
+  (Manifest) stage. Spinnaker will then add the appropriate annotation for you. 
 
 # Reserved labels
 
