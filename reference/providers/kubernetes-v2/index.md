@@ -170,7 +170,7 @@ command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
   such as `ConfigMap` which may exceed the annotation size limit of 262144 characters.
 
   When set to `'true'` for a versioned resource, this will update your resources using
-  `replace`. Refer to [Kubernetes Object Management](https://kubernetes.io/docs/concepts/overview/object-management-kubectl/overview/#imperative-object-configuration) for more details on objection
+  `replace`. Refer to [Kubernetes Object Management](https://kubernetes.io/docs/concepts/overview/object-management-kubectl/overview/#imperative-object-configuration) for more details on object
   configuration and trade-offs.
 
   The default behavior is `'false'`.
