@@ -5,8 +5,6 @@ sidebar:
   nav: guides
 ---
 
-{% include alpha version="1.11" %}
-
 {% include toc %}
 
 This guide shows the basics of how to manage traffic during deployments using
