@@ -73,8 +73,6 @@ setup:
                 url: /setup/install/providers/kubernetes-v2/gke/
               - title: Oracle Container Engine
                 url: /setup/install/providers/kubernetes-v2/oke/
-          - title: OpenStack
-            url: /setup/install/providers/openstack/
           - title: Oracle
             url: /setup/install/providers/oracle/
       - title: 3. Choose an Environment
@@ -231,8 +229,6 @@ guides:
             url: /guides/tutorials/codelabs/kubernetes-source-to-prod/
           - title: Kubernetes (Manifest Based) Source To Prod
             url: /guides/tutorials/codelabs/kubernetes-v2-source-to-prod/
-          - title: OpenStack Source To Prod
-            url: /guides/tutorials/codelabs/openstack-source-to-prod/
           - title: Oracle Cloud Infrastructure Source To Prod
             url: /guides/tutorials/codelabs/oci-source-to-prod/
           - title: Continuous Delivery to Kubernetes on Oracle
@@ -428,8 +424,6 @@ reference:
         url: /reference/providers/kubernetes/
       - title: Kubernetes (Manifest Based)
         url: /reference/providers/kubernetes-v2/
-#      - title: OpenStack
-#        url: /reference/providers/openstack/
       - title: Oracle Cloud
         url: /reference/providers/oracle/
   - title: Artifacts
