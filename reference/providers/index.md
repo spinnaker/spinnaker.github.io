@@ -22,3 +22,5 @@ These are the Cloud Providers currently supported by Spinnaker:
 * [Kubernetes](/reference/providers/kubernetes/) (legacy)
 * [Kubernetes V2](/reference/providers/kubernetes-v2) (manifest based)
 * [Oracle Cloud](/reference/providers/oracle/)
+
+*Note:* The OpenStack provider was supported for a period of time, but after several releases without support [this RFC](https://github.com/spinnaker/spinnaker/issues/4316) concluded with the removal of the provider from Spinnaker. If you are interested in adding this provider back in and supporting it we would be more than happy to help revert the removal.
