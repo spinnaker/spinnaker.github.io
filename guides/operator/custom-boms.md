@@ -174,7 +174,7 @@ found at `gs://${BUCKET}/${SUBCOMPONENT}/${SUBCOMPONENT_VERSION}/${PROFILE}`.
 
 You can also completely disable reads from GCS by setting
 `spinnaker.config.input.gcs.enabled: false` in
-`/opt/spinanker/config/halyard-local.yml`. Be sure to restart the Halyard
+`/opt/spinnaker/config/halyard-local.yml`. Be sure to restart the Halyard
 daemon for this configuration to take effect: `hal shutdown && hal`.
 
 ### BOMs and Configuration on your Filesystem
