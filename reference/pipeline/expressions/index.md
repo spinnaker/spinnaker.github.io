@@ -232,6 +232,15 @@ Converts a value to an integer.
 
 Converts an arbitrary JSON object into a JSON string.
 
+### #cfServiceKey(String stageName)
+
+A shortcut to refer to a service key which has been created in a previous stage.  Remember that the
+stage's name is case-sensitive.  Note also that the values for the service key are contained in a
+map, so one may access a property via `${#cfServiceKey("stageName")["desiredProperty"]}`.
+For example, `${#cfServiceKey("Create MySQL Service Key")["username"]}` will retrieve the `username`
+field of a service key which has been created for a MySQL service in a `Create Service Key` stage named
+"Create MySQL Service Key".
+
 ## Whitelisted Java classes
 
 You can find the code which whitelists Java classes [here](https://github.com/spinnaker/orca/blob/6d0ba0bf8af5e06c5b405b8294f07e7a5a4c335a/orca-core/src/main/java/com/netflix/spinnaker/orca/pipeline/expressions/whitelisting/InstantiationTypeRestrictor.java#L26).
