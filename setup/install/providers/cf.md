@@ -6,8 +6,6 @@ sidebar:
 redirect_from: /setup/providers/cf/
 ---
 
-{% include alpha version="1.10 and later" %}
-
 {% include toc %}
 
 In [Cloud Foundry](https://www.cloudfoundry.org) (CF), an Account maps to a user account on a CF foundation (a BOSH Director and all the VMs it deploys). You can add multiple accounts for one or more CF foundations.
