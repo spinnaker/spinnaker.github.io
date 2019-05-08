@@ -5,8 +5,6 @@ sidebar:
   nav: guides
 ---
 
-{% include alpha version="1.8" %}
-
 {% include toc %}
 
 This guide shows the basics of how to update a Kubernetes resource in place using the patch manifest stage for the [Kubernetes Provider V2](/setup/install/providers/kubernetes-v2) provider.

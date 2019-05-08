@@ -109,7 +109,7 @@ If the Execution cannot be rehydrated, it will need to be canceled.
 You can cancel the Execution via the UI or force cancellation via an Orca admin API:
 
 ```
-POST /admin/forceCancelExecution?executionId=01CS076X85RX6MWBTQ0VGBF8VX&executionType=PIPELINE
+PUT /admin/forceCancelExecution?executionId=01CS076X85RX6MWBTQ0VGBF8VX&executionType=PIPELINE
 ```
 
 ## Known Causes

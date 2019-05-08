@@ -329,3 +329,15 @@ Scale a Kubernetes object created from a manifest.
 
 ### Undo Rollout (Manifest)
 Rollback a manifest a target number of revisions.
+
+
+## Custom Stages
+
+
+### Custom Webhook
+
+Extend Spinnaker with [predefined Webhook stages](/guides/operator/custom-webhook-stages/).
+
+### Custom Job
+
+Extend Spinnaker with [predefined Run Job stages](/guides/operator/custom-job-stages/).

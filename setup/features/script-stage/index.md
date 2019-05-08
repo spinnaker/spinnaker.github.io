@@ -48,7 +48,7 @@ To configure a Script stage, you need:
 
     ```bash
     curl -s -XPOST "$JENKINS_HOST/createItem?name=$JOB_NAME" \
-        -u $USER:$USER_API_TOKEN
+        -u $USER:$USER_API_TOKEN \
         --data-binary @scriptJobConfig.xml \
         -H "Content-Type:text/xml"
     ```

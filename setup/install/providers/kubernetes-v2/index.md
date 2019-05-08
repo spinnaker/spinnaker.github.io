@@ -23,13 +23,14 @@ Accounts.
 
 The Kubernetes provider has two requirements:
 
-* A [`kubeconfig`](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/){:target="\_blank"}
+* A [`kubeconfig`](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/){:target="\_blank"} file
 
-    The `kubeconfig` allows Spinnaker to authenticate against your cluster and
-    to have read/write access to any resources you expect it to manage. You can
-    request this from your Kubernetes cluster administrator.
+    The `kubeconfig` file allows Spinnaker to authenticate against your cluster 
+    and to have read/write access to any resources you expect it to manage. You
+    can think of it as private key file to let Spinnaker connect to your cluster.
+    You can request this from your Kubernetes cluster administrator.
 
-* [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/){:target="\_blank"}
+* [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/){:target="\_blank"} CLI tool
 
     Spinnaker relies on `kubectl` to manage all API access. It's installed
     along with Spinnaker.
@@ -95,6 +96,12 @@ namespaces (using the `namespaces` option), you need to use `Role` &
 `Role` and `RoleBinding` to each namespace Spinnaker manages. You can read
 about the difference between `ClusterRole` and `Role`
 [here](https://kubernetes.io/docs/admin/authorization/rbac/#rolebinding-and-clusterrolebinding){:target="\_blank"}.
+If you're using RBAC to restrict the Spinnaker service account to a particular namespace,
+you must specify that namespace when you add the account to Spinnaker.
+If you don't specify any namespaces, then Spinnaker will attempt to list all namespaces,
+which requires a cluster-wide role. Without a cluster-wide role configured
+and specified namespaces, you will see deployment
+[timeouts in the "Wait for Manifest to Stabilize" task](https://github.com/spinnaker/spinnaker/issues/3666#issuecomment-485001361).
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
