@@ -17,7 +17,7 @@ creating the actual pipeline in Spinnaker.
 ## Using `spin pt plan`
 
 ```bash
-spin pipeline-templates plan --config <path to pipeline config>
+spin pipeline-templates plan --file <path to pipeline config>
 
 {
   "application": "my-spinnaker-app"
