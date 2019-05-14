@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Set Up Triggers"
+title:  "`spin` CLI Guide"
 sidebar:
   nav: guides
 ---
