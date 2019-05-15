@@ -330,6 +330,8 @@ guides:
             url: /guides/user/kubernetes-v2/traffic-management/
           - title: Rollout Strategies
             url: /guides/user/kubernetes-v2/rollout-strategies/
+          - title: Run Job (Manifest)
+            url: /guides/user/kubernetes-v2/run-job-manifest/
       - title: Automated Canary Analysis
         collapsed: true
         children:
