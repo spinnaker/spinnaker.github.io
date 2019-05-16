@@ -534,6 +534,11 @@ community:
     children:
       - title: FAQs
         url: /community/faqs/
+  - title: Security
+    collapsed: true
+    children:
+      - title: Security
+        url: /community/security/
 
 publications:
   - title: eBook
