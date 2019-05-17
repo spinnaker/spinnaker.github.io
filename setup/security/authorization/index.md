@@ -69,7 +69,7 @@ accounts.
 ### Accounts
 In the dark ages (before Fiat), only accounts could be restricted. Because
 Clouddriver is the source of truth for accounts, Fiat reaches out to Clouddriver
-to gather the list of available accounts. 
+to gather the list of available accounts.
 
 There are two types of access restrictions to an account, `READ` and `WRITE`. Users must have
 at least one `READ` permission of an account to view the account's cloud resources, and at least one
@@ -92,14 +92,21 @@ hal config provider $PROVIDER account edit $ACCOUNT \
   --write-permissions role1,role2,role3
 ```
 
-(Deprecated) `requiredGroupMembership` is the old way to add access restrictions to an account. 
+(Deprecated) `requiredGroupMembership` is the old way to add access restrictions to an account.
 This method does not distinguish between `READ` and `WRITE` - users with access will have both.
 
 
 ### Applications
-Before Spinnaker 1.14, there were two types of restrictions to an application `READ` and `WRITE`. In the 1.14 release, a new permission type called `EXECUTE` was added. For any new applications, the permission required to trigger pipelines changes from groups with READ access to those with EXECUTE access.
+Before Spinnaker 1.14, there were two types of restrictions to an application `READ` and `WRITE`.
+In the 1.14 release, a new permission type called `EXECUTE` was added. For any new applications,
+the permission required to trigger pipelines changes from groups with READ access to those with
+EXECUTE access.
 
-To maintain backwards compatibility for existing applications, groups with READ access will implicitly get EXECUTE access. To change this behavior for a specific application, modify the application config in the UI to explicitly add EXECUTE permissions to a group. You can also flip the default behavior across all applications to only grant WRITE users implicit EXECUTE access across all applications, set the `fiat.executeFallback` in fiat-local.yml to `WRITE`.
+To maintain backwards compatibility for existing applications, groups with READ access will implicitly
+get EXECUTE access. To change this behavior for a specific application, modify the application config
+in the UI to explicitly add EXECUTE permissions to a group. You can also flip the default behavior
+across all applications to only grant WRITE users implicit EXECUTE access across all applications,
+set the `fiat.executeFallback` in fiat-local.yml to `WRITE`.
 
 Set permissions for an existing application using the application configuration:
 
@@ -132,7 +139,7 @@ should be denied:
 
 A popular feature in Spinnaker is the ability to run pipelines automatically based on a
 triggering event, such as a `git push` or a Jenkins build completing. When pipelines run against
-accounts and applications that are protected, it is necessary to configure 
+accounts and applications that are protected, it is necessary to configure
 them with enough permissions to access those protected resources. This can
 be done in two ways:
 
