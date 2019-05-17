@@ -76,11 +76,11 @@ may look something like this:
 1. Execute the following halyard commands and redeploy Gate:
 
     ```
-    $KEYSTORE_PATH= # /path/to/keystore.jks
-    $KEYSTORE_PASSWORD=hunter2
-    $METADATA_PATH= # /path/to/metadata.xml
-    $SERVICE_ADDR_URL=https://localhost:8084
-    $ISSUER_ID=spinnaker.test
+    KEYSTORE_PATH= # /path/to/keystore.jks
+    KEYSTORE_PASSWORD=hunter2
+    METADATA_PATH= # /path/to/metadata.xml
+    SERVICE_ADDR_URL=https://localhost:8084
+    ISSUER_ID=spinnaker.test
     
     hal config security authn saml edit \
       --keystore $KEYSTORE_PATH \

@@ -38,7 +38,9 @@ and get it using the following command:
      “application”: “myApp”, # Set this to the app you want to create the pipeline in.
      “name”: “<pipeline name>”, # Pipeline name, remember this for the next part.
      “template”: {
-       “source”: “spinnaker://newSpelTemplate” # Reference to the pipeline template we published above. We saved it in Spinnaker, so we prefix the template id with ‘spinnaker://’. ‘http://’ and ‘file://’ prefixes are also supported.
+       “artifactAccount”: “front50ArtifactCredentials”, # Static constant
+       “reference”: “spinnaker://newSpelTemplate”, # Reference to the pipeline template we published above. We saved it in Spinnaker, so we prefix the template id with ‘spinnaker://’.
+       “type”: “front50/pipelineTemplate”, # Static constant
      },
      “variables”: {
        “waitTime”: 4 # Value for the template variable.
@@ -61,7 +63,9 @@ and get it using the following command:
 
    ```json
    "template": {
-   	 "source": "spinnaker://<templateName>"
+     "artifactAccount": "front50ArtifactCredentials", # Static constant
+     "reference": "spinnaker://<templateName>",
+     "type": "front50/pipelineTemplate" # Static constant
    }
    ```
    
