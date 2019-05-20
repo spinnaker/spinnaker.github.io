@@ -99,21 +99,24 @@ This method does not distinguish between `READ` and `WRITE` - users with access 
 ### Applications
 Before Spinnaker 1.14, there were two types of restrictions to an application `READ` and `WRITE`.
 In the 1.14 release, a new permission type called `EXECUTE` was added. For any new applications,
-the permission required to trigger pipelines changes from groups with READ access to those with
-EXECUTE access.
+the permission required to trigger pipelines changes from groups with `READ` access to those with
+`EXECUTE` access.
 
-To maintain backwards compatibility for existing applications, groups with READ access will implicitly
-get EXECUTE access. To change this behavior for a specific application, modify the application config
-in the UI to explicitly add EXECUTE permissions to a group. You can also flip the default behavior
-across all applications to only grant WRITE users implicit EXECUTE access across all applications,
-set the `fiat.executeFallback` in fiat-local.yml to `WRITE`.
+To maintain backward compatibility for existing applications, groups with `READ` access will implicitly
+get `EXECUTE` access. There are two ways to change this behavior:
 
-Set permissions for an existing application using the application configuration:
+* Modify the application config in the UI to explicitly add `EXECUTE` permissions to a group for an application:
 
 {% include figure
    image_path="./applications_permissions.png"
-   caption="Application configuration, with Permissions"
 %}
+
+* Flip the default behavior across all applications to only grant `WRITE` users implicit `EXECUTE` access by
+setting the following property in `fiat-local.yml`:
+
+```yml
+  fiat.executeFallback: 'WRITE'
+```
 
 ### Unrestricted accounts and applications
 
