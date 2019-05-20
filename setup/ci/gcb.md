@@ -23,8 +23,9 @@ gcloud services enable cloudbuild.googleapis.com
 ```
 
 Google Cloud Build sends [Build Notifications](https://cloud.google.com/cloud-build/docs/send-build-notifications)
-when the state of your build changes.  Spinnaker subscribes to these pub/sub messages so that in can track the status
-of builds it has initiated in a GCB stage and to trigger pipelines based on build status changes.
+when the state of your build changes.  Spinnaker subscribes to these pub/sub messages so that it can...
+* track the status of builds it has initiated in a GCB stage
+* trigger pipelines based on build-status changes
 
 Create a Subscription object for the `cloud-builds` topic in your project:
 
@@ -37,10 +38,10 @@ Create a Subscription object for the `cloud-builds` topic in your project:
       --project $PROJECT_ID
     ```
     
-Finally, you will need a service account that has both Cloud Build Editor and Pub/Sub Subscriber permissions, which is
-assumed to be in a file at path `$SERVICE_ACCOUNT_KEY` in the below commands.
+Finally, you will need a service account that has both Cloud Build Editor and Pub/Sub Subscriber permissions.
+The commands below look for the service account key in a path/file defined in `$SERVICE_ACCOUNT_KEY`.
 
-## Configure Spinnaker for Google Cloud Build Support
+## Configure Spinnaker to work with Google Cloud Build
 
 Use the following Halyard command to create a GCB account, enable the GCB integration, and re-deploy Spinnaker.
 ```
@@ -54,7 +55,7 @@ Use the following Halyard command to create a GCB account, enable the GCB integr
     hal deploy apply
 ```
 
-## Configure Your Pipeline Trigger
+## Configure your pipeline trigger
 
 1. In your Pipeline configuration, click the **Configuration** stage on the far left of the pipeline diagram.
 
@@ -78,9 +79,9 @@ if the build produces a Docker image, you can add an expected artifact of type *
 appropriate values). You can then [use the produced image](/reference/artifacts/in-pipelines/)
 in downstream stages.
 
-## Configure a Google Cloud Build Stage
+## Configure a Google Cloud Build stage
 
-To run a Google Cloud Build as part of a Spinnaker pipeline, create a stage of type *Google Cloud Build*.  Configure the
+To run a GCB build as part of a Spinnaker pipeline, create a stage of type *Google Cloud Build*.  Configure the
 stage by selecting the GCB account to use to run the build, and entering the [build configuration YAML](https://cloud.google.com/cloud-build/docs/build-config)
 in the provided text box:
 ![](/setup/ci/gcb_config.png)
