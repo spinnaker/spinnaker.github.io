@@ -33,14 +33,14 @@ when the state of your build changes.  Spinnaker subscribes to these pub/sub mes
 
 Create a Subscription object for the `cloud-builds` topic in your project:
 
-    ```
+```
     PROJECT_ID=
     SUBSCRIPTION_NAME=spinnaker-cloud-build
 
     gcloud pubsub subscriptions create $SUBSCRIPTION_NAME \
       --topic projects/$PROJECT_ID/topics/cloud-builds \
       --project $PROJECT_ID
-    ```
+```
     
 
 ### Service account
@@ -63,6 +63,8 @@ Use the following Halyard command to create a GCB account, enable the GCB integr
 ```
 
 ## Configure your pipeline trigger
+
+Configure your pipeline to be triggered by a completed GCB build:
 
 1. In your Pipeline configuration, click the **Configuration** stage on the far left of the pipeline diagram.
 
@@ -88,13 +90,16 @@ in downstream stages.
 
 ## Configure a Google Cloud Build stage
 
-To run a GCB build as part of a Spinnaker pipeline, create a stage of type *Google Cloud Build*.  Configure the
-stage by selecting the GCB account to use to run the build, and entering the [build configuration YAML](https://cloud.google.com/cloud-build/docs/build-config)
-in the provided text box:
+To run a GCB build as part of a Spinnaker pipeline:
+
+1. create a stage of type *Google Cloud Build*.
+
+2. Configure the stage by selecting the GCB account to use to run the build, and entering the
+[build configuration YAML](https://cloud.google.com/cloud-build/docs/build-config) in the provided text box:
 ![](/setup/ci/gcb_config.png)
 You may also provide the build definition YAML as an artifact.
 
-In the *Produces Artifacts* section, you may supply any artifacts that you expect the build to create in order to
+3. In the *Produces Artifacts* section, you may supply any artifacts that you expect the build to create in order to
 make these artifacts available to downstream stages.  Google Cloud Build supports creating either GCS or Docker image
 [artifacts](https://cloud.google.com/cloud-build/docs/configuring-builds/store-images-artifacts), either of which
 will be converted to Spinnaker artifacts and injected into the pipeline on completion of the build.
@@ -103,12 +108,12 @@ While your build is executing, the stage details will provide the current status
 the build logs in the Google Cloud Console:
 ![](/setup/ci/gcb_status.png)
 
-## Configuration via Pub/Sub
+## Configuration prior to Spinnaker 1.14
 
 Prior to version 1.14, Spinnaker did not have built-in support for Google Cloud Build, but pipelines could be
 triggered on changes to the build status by directly listening on the Pub/Sub subscription:
 
-    ```
+```
     hal config pubsub google subscription add $PUBSUB_SUBSCRIPTION_NAME \
       --project $PROJECT_ID \
       --subscription-name $SUBSCRIPTION_NAME \
@@ -117,10 +122,11 @@ triggered on changes to the build status by directly listening on the Pub/Sub su
     hal config pubsub google enable
 
     hal deploy apply
-    ```
+```
 
-The steps to create a pipeline trigger in this case are exactly the same except that the **Subscription Name** field
-should be set to `$PUBSUB_SUBSCRIPTION_NAME`.
+The steps to create a pipeline trigger in this case are exactly the same as [above](#configure-your-pipeline-trigger)
+except that the **Subscription Name** field should be set to `$PUBSUB_SUBSCRIPTION_NAME`.  With this
+configuration, there is no support for starting a GCB build using the Google Cloud Build stage.
 
 These two methods of triggering pipelines on GCB builds can co-exist, with two important caveats:
 * Pub/Sub subscriptions can only have a single listener, so you cannot use the same Pub/Sub subscription in both the
