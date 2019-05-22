@@ -50,6 +50,12 @@ The commands below look for the service account key in a path/file defined in `$
 
 ## Configure Spinnaker to work with Google Cloud Build
 
+Add the following entry to your `igor-local.yml` file (in `~/.hal/default/profiles/`):
+```
+locking:
+  enabled: true
+```
+
 Use the following Halyard command to create a GCB account, enable the GCB integration, and re-deploy Spinnaker:
 ```
     hal config ci gcb account add $ACCOUNT_NAME \
