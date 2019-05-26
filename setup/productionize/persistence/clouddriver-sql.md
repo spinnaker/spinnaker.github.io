@@ -98,7 +98,7 @@ sql:
       jdbcUrl: jdbc:mysql://your.database:3306/clouddriver
   migration:
     user: clouddriver_migrate
-  jdbcUrl: jdbc:mysql://your.database:3306/clouddriver
+    jdbcUrl: jdbc:mysql://your.database:3306/clouddriver
 
 redis:
   enabled: false
@@ -179,7 +179,7 @@ The following steps were taken to live migrate Clouddriver in the Netflix produc
           password: hi! # actually injected from encrypted secrets
       migration:
         user: clouddriver_migrate
-      jdbcUrl: jdbc:mysql://clouddriver-aurora-cluster-endpoint:3306/clouddriver
+        jdbcUrl: jdbc:mysql://clouddriver-aurora-cluster-endpoint:3306/clouddriver
 
     dualTaskRepository:
       enabled: true
@@ -206,7 +206,7 @@ The following steps were taken to live migrate Clouddriver in the Netflix produc
           password: hi! # actually injected from encrypted secrets
       migration:
         user: clouddriver_migrate
-      jdbcUrl: jdbc:mysql://clouddriver-aurora-cluster-endpoint:3306/clouddriver
+        jdbcUrl: jdbc:mysql://clouddriver-aurora-cluster-endpoint:3306/clouddriver
 
     redis:
       enabled: true
