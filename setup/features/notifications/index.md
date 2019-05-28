@@ -11,7 +11,6 @@ redirect_from: /docs/notifications-and-events-guide
 Out of the box, Spinnaker allows you to configure the following types of notifications:
 
 * [Email](#email)
-* [HipChat](#hipchat)
 * [Slack](#slack)
 * [SMS](#twilio) via Twilio
 
@@ -76,35 +75,6 @@ window.spinnakerSettings = {
     },
 // ...
 ```
-
-
-## HipChat
-
-For Hipchat, you will need to create a hipchat [authentication
-token](https://www.hipchat.com/docs/apiv2/auth){:target="\_blank"} that can post
-messages.
-
-in echo.yml
-```
-hipchat:
-  enabled: true
-  baseUrl: https://xxx.hipchat.com
-  token: <authToken>
-```
-in settings.js (deck)
-```
-window.spinnakerSettings = {
-// ...
-  notifications: {
-    hipchat: {
-      enabled: true,
-      botName: '<username of bot>'
-    },
-// ...
-```
-
-
-Note: your users will need to invite the hipchat bot to private rooms that want to be notified.
 
 ## Slack
 
