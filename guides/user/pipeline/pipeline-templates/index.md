@@ -17,6 +17,8 @@ Spinnaker itself.
 > **Note**: You can use `spin` CLI to manage pipelines and pipeline templates,
 > but first you need to [install it](/guides/spin/cli/).
 
+> **Note**: You first need to [enable the feature](/guides/user/pipeline/pipeline-templates/enable/) if you haven't done it yet.
+
 ## Structure of a pipeline template
 
 [The underlying structure](/reference/pipeline/templates/) of a pipeline template is very close to the pipeline
