@@ -77,13 +77,13 @@ pipeline blob, you move that entire JSON fragment to the `pipeline` section.
      "type" : "<type>",
      "defaultValue" : <defaultValue>,
      "description" : "<some description>",
-     "var1Name" : "<name of this variable>"
+     "name" : "<name of this variable>"
    } 
    {
      "type" : "<type>",
      "defaultValue" : <defaultValue>,
      "description" : "<some description>",
-     "var2Name" : "<name of this variable>"
+     "name" : "<name of this variable>"
    }
      ]
    ```
