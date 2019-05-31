@@ -11,14 +11,14 @@
 >
 > `window.spinnakerSettings.feature.artifactsRewrite = true;`
 
-In this codelab, you will deploy an artifact to Cloud Foundry via a Spinnaker pipeline that is triggered by an artifact published to a JFrog Artifactory Maven repository or by an app manifest stored in a GitHub Git repository.
+In this codelab, you will deploy an artifact to Cloud Foundry via a Spinnaker pipeline. The pipeline is triggered by an artifact published to a JFrog Artifactory Maven repository or by an app manifest stored in a GitHub repository.
 
 ## Prerequisites
 
 This codelab assumes you have the following:
 
-1. An Artifactory repository configured to accept a Maven artifact--the JAR for your application.
-1. A GitHub repository containing a manifest with which to deploy your application.
+* An Artifactory repository configured to accept a Maven artifact&mdash;the JAR for your application
+* A GitHub repository containing a manifest with which to deploy your application
 
 ## 1. Add Artifactory Search to Spinnaker
 
@@ -109,7 +109,7 @@ d. In the Artifact Constraints dropdown for the Git trigger, select "Define a ne
      image_path="./git-expected-artifact.png"
   %}
 
-e. Add a "Deploy" stage to the pipeline. This stage will deploy to the test environment.
+e. Add a "Deploy" stage to the pipeline. This stage deploys to the test environment.
 
   {% include figure
      image_path="./pipeline-first-stage.png"
@@ -133,9 +133,9 @@ Add any desired configuration, such as notifications for when the stage is await
      image_path="./manual-judgment-configuration.png"
   %}
 
-After you have validated and approved the deployment, the next stage (following this "Manual Judgment" stage) will deploy to the production environment.
+After you have validated and approved the deployment, the next stage (following this "Manual Judgment" stage) deploys to the production environment.
 
-h. Add a "Clone Server Group" stage to the pipeline. This stage will promote the deployed application to the production environment.
+h. Add a "Clone Server Group" stage to the pipeline. This stage promotes the deployed application to the production environment.
 
   {% include figure
      image_path="./pipeline-third-stage.png"
@@ -147,10 +147,12 @@ i. Add a clone configuration and provide details on deployment settings, the sou
      image_path="./clone-configuration.png"
   %}
 
-This clone configuration will promote the exact same application to the production environment as you deployed to the test environment with the "Deploy" stage in Step 5e. (You may wish to provide a different manifest when deploying the application to the production environment. For this alternate manifest to trigger pipeline executions, you would need to create a separate pipeline that deploys to the production environment.)
+This clone configuration promotes the exact same application to the production environment as you deployed to the test environment with the "Deploy" stage in Step 5e. 
+
+You may wish to provide a different manifest when deploying the application to the production environment. For this alternate manifest to trigger pipeline executions, you would need to create a separate pipeline that deploys to the production environment.
 
 ## 6. Publish the Application Artifact or Commit Configuration Changes
 
 a. Publish the application artifact to your Artifactory repository. You can also update the application manifest and push a new commit to its GitHub repository.
 
-b. The published artifact or Git repository push will trigger a pipeline execution, and you should see the pipeline deploy a new server group for the application, then promote the application to staging.
+b. The published artifact or Git repository push triggers your pipeline, and you should see it deploy a new server group for the application, then promote the application to staging.
