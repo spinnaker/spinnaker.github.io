@@ -5,6 +5,8 @@
    nav: guides
 ---
 
+ {% include alpha version="1.10 and later" %}
+ 
  {% include toc %}
  
 In this codelab, you will deploy an artifact to Cloud Foundry via a Spinnaker pipeline that is triggered by JAR uploads to a Google Cloud Storage (GCS) bucket.
@@ -38,7 +40,7 @@ a. Enable the GCP Cloud Pub/Sub API, then use `gsutil` to create a pub/sub notif
 
   ```
   $ TOPIC=<Insert Topic Name>
-  $ gsutil notification create -t $TOPIC -f json gs://$BUCKET
+  $ gsutil notification create -t $TOPIC -f json $BUCKET
   ```
 
 b. Now create a pull subscription, giving a subscription name (`GCP_SUB_NAME`) and the topic name used in the last command (`TOPIC`):
@@ -60,10 +62,10 @@ b. Create a key for the service account and download the key in JSON format to y
 
 ## 4. Tell Spinnaker to Use the Pub/Sub Subscription
 
-a. Enable the `artifactsRewrite` feature flag, then enable the GCS artifact provider:
+a. Enable artifact support, then enable the GCS artifact provider:
 
   ```
-  $ hal config features edit --artifactsRewrite true
+  $ hal config features edit --artifacts true
   $ hal config artifact gcs enable
   ```
 
