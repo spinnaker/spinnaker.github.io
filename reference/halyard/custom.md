@@ -45,7 +45,7 @@ their services by checking `~/.hal/$DEPLOYMENT/history/service-profiles.yml`.
 ### Custom Profile for Deck
 
 To supply custom settings or new values that override generated settings for the
-Deck service, you can place them in a file called `settings-local.js`. For
+Deck UI, you can place them in a file called `settings-local.js`. For
 example, to enable the `artifactsRewrite` feature flag, you can create the
 following file:
 
