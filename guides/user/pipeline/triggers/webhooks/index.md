@@ -146,7 +146,8 @@ your payload under a list of `artifacts`:
   "artifacts": [
     {
       "type": "gcs/object",
-      "name": "gs://lw-artifacts/manifest.yml"
+      "name": "manifest.yml",
+      "reference": "gs://lw-artifacts/manifest.yml"
     }
   ]
 }

@@ -222,6 +222,8 @@ guides:
             url: /guides/tutorials/codelabs/hello-deployment/
           - title: Deploy GCS Pub/Sub Artifacts to Cloud Foundry
             url: /guides/tutorials/codelabs/pubsub-to-cf/
+          - title: Deploy Artifacts from Artifactory to Cloud Foundry
+            url: /guides/tutorials/codelabs/artifactory-to-cf/
           - title: GCE Source To Prod
             url: https://codelabs.developers.google.com/codelabs/bake-and-deploy-pipeline
           - title: Kubernetes Source To Prod
@@ -330,6 +332,8 @@ guides:
             url: /guides/user/kubernetes-v2/traffic-management/
           - title: Rollout Strategies
             url: /guides/user/kubernetes-v2/rollout-strategies/
+          - title: Run Job (Manifest)
+            url: /guides/user/kubernetes-v2/run-job-manifest/
       - title: Automated Canary Analysis
         collapsed: true
         children:
