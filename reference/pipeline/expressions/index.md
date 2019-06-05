@@ -157,7 +157,7 @@ Converts a JSON String into a Map that can then be processed further.
 
 ### #readYaml(String)
 
-Converts a Yaml String into a Map that can then be processed further.
+Converts a YAML String into a Map that can then be processed further.
 
 ### #fromUrl(String)
 
