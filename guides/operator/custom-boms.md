@@ -170,6 +170,9 @@ As a result, a BOM at version `${VERSION}` can be found at
 subcomponent `${SUBCOMPONENT}` at version `${SUBCOMPONENT_VERSION}` can be
 found at `gs://${BUCKET}/${SUBCOMPONENT}/${SUBCOMPONENT_VERSION}/${PROFILE}`.
 
+If Halyard can't read from the GCS bucket, please see the [troubleshooting
+instructions](https://www.spinnaker.io/setup/quickstart/faq/#halyard-times-out-during-a-config-change).
+
 #### Disabling GCS reads
 
 You can also completely disable reads from GCS by setting
