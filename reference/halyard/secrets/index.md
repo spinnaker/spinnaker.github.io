@@ -7,21 +7,21 @@ sidebar:
 
 {% include toc %}
 
-Managing Spinnaker secrets separately from its configuration is a necessary step to enabling Spinnaker through an SCM like git. Spinnaker supports end-to-end secrets management, starting in version 1.14. Simply replace secrets in the Halconfig and service profiles with the syntax described here and Spinnaker will decrypt them as needed. 
+Managing Spinnaker secrets separately from its configuration is a necessary step to enabling Spinnaker through an SCM like git. As of version 1.14, Spinnaker supports end-to-end secrets management. Simply replace secrets in the Halconfig and service profiles with the syntax described here, and Spinnaker will decrypt them as needed. 
 
 
-### Secret Format
-When referencing secrets in configs, we use the following general format:
+## Secret Format
+To reference secrets in configs, use the following general format:
 
 ```
 encrypted:<secret engine>!<key1>:<value1>!<key2>:<value2>!...
 ```
 The key-value parameters making up the string vary with each secret engine. Refer to the specific documentation for each engine for more information.
 
-### In Halyard
-Halyard knows how to decrypt the secrets we provide and will do so when the secret is needed, such as for validation and deployment. If the service we're deploying is able to decrypt secrets, Halyard will keep the secret in encrypted form when printing the service profiles. However if running an older version of a service, it will decrypt the configuration before sending it. 
+## In Halyard
+Halyard decrypts your secrets as needed, for example for validation and deployment. If the service you're deploying can decrypt secrets, Halyard keeps the secret in encrypted form when printing the service profiles. However if you're running an older version of a service, it decrypts the configuration before sending it. 
 
-For instance, if we replace the GitHub token in our hal config with an encrypted syntax:
+For instance, if you replace the GitHub token in your hal config with an encrypted syntax:
 ```yaml
 ...
   github:
@@ -32,7 +32,7 @@ For instance, if we replace the GitHub token in our hal config with an encrypted
 ...
 ```
 
-We'd find it still encrypted in `profiles/clouddriver.yml`:
+You'd find it still encrypted in `profiles/clouddriver.yml`:
 ```yaml
 ...
   github:
@@ -54,10 +54,10 @@ And for an older release of Clouddriver that does not support decryption, the se
 ...
 ```
 
-### Non Halyard Configuration
-We can also provide the same syntax in `*-local.yml` profile files or directly to Spinnaker services, since the services can also decrypt secrets.
+## Non Halyard Configuration
+You can also provide the same syntax in `*-local.yml` profile files or directly to Spinnaker services, since the services can also decrypt secrets.
 
-### Supported Secret Engines
+## Supported Secret Engines
 The secrets framework is extensible and support for new engines can easily be added. Currently the following are supported:
 
 * [S3](/reference/halyard/secrets/s3-secrets/)
