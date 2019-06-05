@@ -11,4 +11,5 @@ Here are a few quickstart solutions. These are not meant for production use. To 
 * [Google Cloud Launcher](https://cloud.google.com/launcher/solution/click-to-deploy-images/spinnaker?q=spinnaker) 
 * [Microsoft Azure](https://aka.ms/azspinnaker)
 * [Kubernetes Helm Chart](https://github.com/kubernetes/charts/tree/master/stable/spinnaker)
+* [Kuberetes Operator](https://operatorhub.io/operator/spinnaker-operator)
 
