@@ -74,6 +74,9 @@ for the version of Spinnaker you want to install. The bucket is
 The remediation will depend on your local network. You can also always omit
 validation with the `--no-validate` flag.
 
+As an alternative to `gsutil`, you can try querying the bucket directly using its
+fully-qualified URI: `curl storage.googleapis.com/halconfig`.
+
 ## Halyard times out during a deployment
 
 If this happens, there are one of two causes:
