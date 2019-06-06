@@ -18,6 +18,7 @@ Remember to run Halyard's daemon and Spinnaker services with IAM roles that allo
 
 
 ## Storing secrets
+
 ### Storing credentials
 Store your GitHub credentials in `mybucket/spinnaker-secrets.yml`:
 
@@ -27,10 +28,14 @@ github:
   token: <TOKEN>
 ```
 
-Note: You could chose to store the password under different keys than `github.password` and `github.token`. You'd just need to change how to reference the secret further down.
+Note: You could choose to store the password under different keys than `github.password` and `github.token`. You'd just need to change how to reference the secret further down.
 
 ### Storing sensitive files
-Some Spinnaker configuration uses information stored as files. For example, upload the `kubeconfig` file of your Kubernetes account directly to `mybucket/mykubeconfig`.
+Some Spinnaker configuration uses information stored as files. For example, upload the `kubeconfig` file of your Kubernetes account directly to `mybucket/mykubeconfig`:
+
+```
+aws s3 cp /path/to/mykubeconfig s3://mybucket/mykubeconfig
+```
 
 
 ## Referencing secrets

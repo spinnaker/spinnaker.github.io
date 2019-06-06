@@ -7,7 +7,7 @@ sidebar:
 
 {% include toc %}
 
-Managing Spinnaker secrets separately from its configuration is a necessary step to enabling Spinnaker through an SCM like git. As of version 1.14, Spinnaker supports end-to-end secrets management. Simply replace secrets in the Halconfig and service profiles with the syntax described here, and Spinnaker will decrypt them as needed. 
+Storing Spinnaker configs in a git repository is a great solution for maintaining versions of your configurations, but storing secrets in plain text is a bad security practice. As of version 1.14, Spinnaker supports separating your secrets from your configs through end-to-end secrets management. Simply replace secrets in the Halconfig and service profiles with the syntax described here, and Spinnaker will decrypt them as needed. 
 
 
 ## Secret Format
@@ -53,8 +53,9 @@ And for an older release of Clouddriver that does not support decryption, the se
       token: <TOKEN>
 ...
 ```
+Note: Using the encrypted syntax in a `hal` command will not work, so you'll need to edit the hal config directly.
 
-## Non Halyard Configuration
+## Non-Halyard Configuration
 You can also provide the same syntax in `*-local.yml` profile files or directly to Spinnaker services, since the services can also decrypt secrets.
 
 ## Supported Secret Engines
