@@ -11,7 +11,7 @@ For users of Kubernetes or Titus, Custom Job Stages offer a native solution for 
 
 ## How it works
 
-At its core, Custom Job Stages use the [Run Job stage](/reference/pipeline/stages/#run-job) to start a Task (Titus) or Job (Kubernetes) to perform some type of work. These jobs are defined as configuration for Orca and registered when the application starts. When used in a pipeline, Orca takes this configuration, generates a Run Job stage and then exeucutes it. To support a more native experience, we provide configuration options for things like stage name, description and parameters so that this stage feels less like a Run Job stage and more like an out of the box stage. 
+At its core, Custom Job Stages use the [Run Job stage](/reference/pipeline/stages/#run-job) to start a Task (Titus) or Job (Kubernetes) to perform some type of work. These jobs are defined as configuration for Orca and registered when the application starts. When used in a pipeline, Orca takes this configuration, generates a Run Job stage and then executes it. To support a more native experience, we provide configuration options for things like stage name, description and parameters so that this stage feels less like a Run Job stage and more like an out of the box stage. 
 
 ### When should I use Custom Job Stages?
 
