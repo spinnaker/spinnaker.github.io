@@ -145,6 +145,8 @@ setup:
             url: /setup/triggers/google/
           - title: GitHub Webhook
             url: /setup/triggers/github/
+      - title: Set up the spin CLI
+        url: /setup/spin/
       - title: Add Your CI system
         collapsed: true
         children:
@@ -390,8 +392,8 @@ guides:
   - title: Spin CLI
     collapsed: true
     children:
-      - title: Install and Configure Spin CLI
-        url: /guides/spin/cli/
+      - title: Spin CLI Guide
+        url: /guides/spin/
       - title: Manage Applications
         url: /guides/spin/app/
       - title: Manage Pipelines
