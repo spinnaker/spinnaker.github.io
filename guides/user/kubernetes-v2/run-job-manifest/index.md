@@ -18,7 +18,7 @@ As with any job runner, logs are the primary form of feedback and it's important
 
 Most Kubernetes deployments will have some utility for forwarding logs from containers and into external systems for log analysis. If you're using one of these platforms, you can configure your `Job` with the annotation `jobs.spinnaker.io/logs` and a templated URL to your logging system. This value of this annotation will be used to render a link in the UI. 
 
-To make it easier to pinpoint the specific job, the annotation value can be templated with values from the deployed `Job` manifest. To use templates, use `{{ templateKey }}` where `templateKey` is the path to the value you wish to use. The deployed manifest will be passed into the template as JSON. This functionality mirrors that of the [Annotation Driven UI](/guides/user/kubernetes-v2/annotations-ui/).
+To make it easier to pinpoint the specific job, the annotation value can be templated with values from the deployed `Job` manifest. To use templates, use `{{ "{{ templateKey }}" }}` where `templateKey` is the path to the value you wish to use. The deployed manifest will be passed into the template as JSON. This functionality mirrors that of the [Annotation Driven UI](/guides/user/kubernetes-v2/annotations-ui/).
 
 For example, if your `Job` is deployed with name `myjob-12345`, the annotation...
 

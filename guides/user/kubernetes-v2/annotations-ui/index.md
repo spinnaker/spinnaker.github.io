@@ -70,7 +70,7 @@ a single section title.
 
 Template values can be included in the content of the annotation and will be replaced when
 they are rendered by Deck.  A templated value has the following appearance in an annotation:
-`{{"{{ templateKey "}}}}` where `templateKey` will vary depending on the available set of keys
+`{{"{{ templateKey }}"}}` where `templateKey` will vary depending on the available set of keys
 for the resource that is annotated.  The complete set of available keys is documented below.
 
 #### Instances
