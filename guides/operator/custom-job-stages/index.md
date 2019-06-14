@@ -79,6 +79,7 @@ job:
         application: k8s2
         parameters:
           - name: PHRASE
+            label: Phrase to say
             description: Phrase to be echoed.
             mapping: manifest.spec.template.spec.containers[0].env[0].value
             defaultValue: "Hello world!"
