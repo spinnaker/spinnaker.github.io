@@ -59,7 +59,7 @@ Note: Using the encrypted syntax in a `hal` command will not work, so you'll nee
 You can also provide the same syntax in `*-local.yml` profile files or directly to Spinnaker services, since the services can also decrypt secrets.
 
 ## Supported Secret Engines
-The secrets framework is extensible and support for new engines can easily be added. Currently the following are supported:
+The secrets framework is extensible and support for new engines can easily be added. Currently the following is supported:
 
 * [S3](/reference/halyard/secrets/s3-secrets/)
 
