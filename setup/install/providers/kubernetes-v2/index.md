@@ -96,6 +96,12 @@ namespaces (using the `namespaces` option), you need to use `Role` &
 `Role` and `RoleBinding` to each namespace Spinnaker manages. You can read
 about the difference between `ClusterRole` and `Role`
 [here](https://kubernetes.io/docs/admin/authorization/rbac/#rolebinding-and-clusterrolebinding){:target="\_blank"}.
+If you're using RBAC to restrict the Spinnaker service account to a particular namespace,
+you must specify that namespace when you add the account to Spinnaker.
+If you don't specify any namespaces, then Spinnaker will attempt to list all namespaces,
+which requires a cluster-wide role. Without a cluster-wide role configured
+and specified namespaces, you will see deployment
+[timeouts in the "Wait for Manifest to Stabilize" task](https://github.com/spinnaker/spinnaker/issues/3666#issuecomment-485001361).
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1

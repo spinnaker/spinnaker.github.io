@@ -52,7 +52,7 @@ hydrated manifest recorded.
 
 Anytime Spinnaker deploys a ConfigMap or Secret, it appends a version to
 its name. If that exact ConfigMap or secret is already running in the cluster,
-it's not' redeployed. Downstream stages that reference the ConfigMap or
+it's not redeployed. Downstream stages that reference the ConfigMap or
 secret will deploy the version chosen by Spinnaker. __Unless your application
 requires hot-reloading of configuration, this is essential for practicing
 safe delivery__.
@@ -78,7 +78,7 @@ enabled.
 With an unversioned ConfigMap, the "Rollback" feature on Deployments,
 StatefulSets, and DaemonSets does not have the desired effect, because a material
 change to a ConfigMap referenced by a Pod in these controllers does not show up
-in your PodSpec, only the the ConfigMap's `data` section. In this case, the
+in your PodSpec, only the ConfigMap's `data` section. In this case, the
 only option is to "Roll forward" by pushing an update to your ConfigMap, and
 any (potentially related) changes to controllers depending on your ConfigMap.
 However, this approach can have a few problems:

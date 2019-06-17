@@ -50,8 +50,20 @@ See [How to Upload the Public Key](https://docs.cloud.oracle.com/iaas/Content/AP
        --tenancyId $TENANCY_OCID \
        --user-id $USER_OCID
    ```
+
+   For example
+
+   ```bash
+   hal config provider oracle account edit my-oci-acct \
+       --compartment-id ocid1.compartment.oc1..aaaaaaaatjuwhxwkspkxhumqke4o73b2b \
+       --fingerprint 8f:05:f4:94:f3:5f:e3:30:ec:35 \
+       --region us-phoenix-1 \
+       --ssh-private-key-file-path /home/user/.oci/oci_api_key.pem \
+       --tenancyId ocid1.tenancy.oc1..aaaaaaaa225wmphohi3iiyxxxjruo \
+       --user-id ocid1.user.oc1..aaaaaaaagosdr3zsh67tvgpnmw42ywqc
+   ```
    
-1. Enable the Oracle Cloud provider:
+2. Enable the Oracle Cloud provider:
 
    ```bash
    hal config provider oracle enable

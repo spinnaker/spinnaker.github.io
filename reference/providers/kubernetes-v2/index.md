@@ -163,6 +163,18 @@ command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
   
   The default behavior is `'false'`.
 
+* `strategy.spinnaker.io/replace`
+
+  As of Spinnaker 1.14, you can force Spinnaker to use `replace` instead of
+  of `apply` while deploying a Kubernetes resource. This may be useful for resources
+  such as `ConfigMap` which may exceed the annotation size limit of 262144 characters.
+
+  When set to `'true'` for a versioned resource, this will update your resources using
+  `replace`. Refer to [Kubernetes Object Management](https://kubernetes.io/docs/concepts/overview/object-management-kubectl/overview/#imperative-object-configuration) for more details on object
+  configuration and trade-offs.
+
+  The default behavior is `'false'`.
+
 ## Traffic
 
 * `traffic.spinnaker.io/load-balancers`
@@ -182,6 +194,10 @@ command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
 
   * `traffic.spinnaker.io/load-balancers: '["service my-service", "service my-canary-service"]'` 
     attaches to the Services named `my-service` and `my-canary-service`.
+    
+  As of Spinnaker 1.14, instead of manually adding the `traffic.spinnaker.io/load-balancers`
+  annotation, you can select which load balancers to associate with a workload from the Deploy
+  (Manifest) stage. Spinnaker will then add the appropriate annotation for you. 
 
 # Reserved labels
 

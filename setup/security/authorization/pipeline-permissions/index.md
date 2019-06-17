@@ -56,4 +56,35 @@ the previously selected service account in order to maintain backwards
 compatibility. Newly added triggers will use the permissions specified. If you
 wish to use pipeline permissions for the older triggers and already have
 permissions specified, edit your pipeline JSON and remove the `RunAsUser` field
-from your trigger.
+from your trigger, or enable the automatic migration (see next section).
+
+### Automatic migration
+
+Front50 can automatically migrate all pipelines from using [Fiat Service
+Accounts](../service-accounts/) to use Pipeline Permissions and managed service
+accounts. The migrator is disabled by default, and can be enabled by adding the
+following flag to `front50-local.yml`:
+
+```yaml
+migrations:
+  migrateToManagedServiceAccounts: true
+```
+
+If you're using Halyard, the file is `~/.hal/default/profiles/front50-local.yml`.
+
+This migration will migrate pipelines that have Fiat service accounts set to the
+new Pipeline Permissions. It will only run on pipelines where `roles` are not
+already present and `runAsUser` is set to a non-managed service account.
+
+The migration job will automatically create the new managed service users, and the
+new service user will get the same permissions as the manual service user that it
+replaces.
+
+{% include
+   warning
+   content="**Note:** If a pipeline has multiple triggers with different
+   `runAsUser` fields set, the new managed service user will get all of the roles
+   of the different manual service users (as you can only have one managed service
+   user per pipeline). This can potentially remove some users ability to edit or
+   execute affected pipelines."
+%}

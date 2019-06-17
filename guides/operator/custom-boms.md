@@ -8,7 +8,7 @@ sidebar:
 ## The Bill of Materials (BOM)
 
 Spinnaker is composed of many microservices, each of which has their own
-version. When Spinanker is built, the microservices are tested together to
+version. When Spinnaker is built, the microservices are tested together to
 ensure that they interoperate correctly, and then their versions are recorded
 in a [BOM](/reference/halyard/#bill-of-materials). The BOM also includes
 information on what commits for each service were built, what repositories they
@@ -170,11 +170,14 @@ As a result, a BOM at version `${VERSION}` can be found at
 subcomponent `${SUBCOMPONENT}` at version `${SUBCOMPONENT_VERSION}` can be
 found at `gs://${BUCKET}/${SUBCOMPONENT}/${SUBCOMPONENT_VERSION}/${PROFILE}`.
 
+If Halyard can't read from the GCS bucket, please see the [troubleshooting
+instructions](https://www.spinnaker.io/setup/quickstart/faq/#halyard-times-out-during-a-config-change).
+
 #### Disabling GCS reads
 
 You can also completely disable reads from GCS by setting
 `spinnaker.config.input.gcs.enabled: false` in
-`/opt/spinanker/config/halyard-local.yml`. Be sure to restart the Halyard
+`/opt/spinnaker/config/halyard-local.yml`. Be sure to restart the Halyard
 daemon for this configuration to take effect: `hal shutdown && hal`.
 
 ### BOMs and Configuration on your Filesystem
