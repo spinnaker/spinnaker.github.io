@@ -481,7 +481,14 @@ reference:
       - title: Component Sizing
         url: /reference/halyard/component-sizing/
       - title: High Availability
-        url: /reference/halyard/high-availability/
+        url: /reference/halyard/high-availability/         
+      - title: Secrets Management
+        collapsed: true
+        children:
+          - title: Overview
+            url: /reference/halyard/secrets/
+          - title: S3
+            url: /reference/halyard/secrets/s3-secrets/
   - title: Architecture
     collapsed: true
     children:
