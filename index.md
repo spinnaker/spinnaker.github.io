@@ -7,7 +7,7 @@ spinnaker_row:
   alt: "Spinnaker Logo"
 multi_cloud_row:
   title: Multi-Cloud
-  excerpt: "Deploy across multiple cloud providers including AWS EC2, Kubernetes, Google Compute Engine, Google Kubernetes Engine, Google App Engine, Microsoft Azure, and Oracle Cloud Infrastructure, with DC/OS coming soon."
+  excerpt: "Deploy across multiple cloud providers including AWS EC2, Kubernetes, Google Compute Engine, Google Kubernetes Engine, Google App Engine, Microsoft Azure, Openstack, Cloud Foundry, and Oracle Cloud Infrastructure, with DC/OS coming soon."
   image_path: assets/images/cloud.svg
   alt: "Multi-Cloud Logo"
 automated_releases_row:
@@ -41,6 +41,10 @@ appengine_provider:
   image_path: assets/images/appengine.svg
   alt: "App Engine Logo"
   image_class: spin_cloud_provider__appengine
+cf_provider:
+  image_path: assets/images/cf.png
+  alt: "Cloud Foundry Logo"
+  image_class: spin_cloud_provider__cf
 oracle_provider:
   image_path: assets/images/oracle.svg
   alt: "Oracle Cloud Infrastructure Logo"
@@ -153,6 +157,7 @@ waze_case_study:
       <div class="clearfix">
         {% include spinnaker_cloud_provider id="azure_provider" %}
         {% include spinnaker_cloud_provider id="appengine_provider" %}
+        {% include spinnaker_cloud_provider id="cf_provider" %}
       </div>
     </div>
   </div>  
