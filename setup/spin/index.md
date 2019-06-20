@@ -2,10 +2,13 @@
 layout: single
 title:  "Install and Configure Spin CLI"
 sidebar:
-  nav: guides
+  nav: setup
+redirect_from: /guides/spin/cli/
 ---
 
 {% include toc %}
+
+For more information, see the [spin CLI Guide](/guides/spin/)
 
 ## Install `spin`
 
