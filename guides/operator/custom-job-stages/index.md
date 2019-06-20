@@ -45,6 +45,8 @@ The following properties are supported for the `kubernetes` cloud provider.
 * `application` - Name of the application to associate the job with.
 * `manifest` - YAML definition for the [Kubernetes Job](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/) that will be run when the stage is executed.
 
+_Note: If you're using the slash (`/`) character in any manifest annotations, you'll need to use this [special syntax](https://github.com/spring-projects/spring-boot/issues/13404#issuecomment-395307439) to prevent the slash from being dropped when the application reads its configuration. For example, if your annotation key is `iam.amazonaws.com/role` you'll need to define it like so: `[iam.amazonaws.com/role]`.
+
 ### Custom Job Stages - Titus
 
 * `cluster` - Definition of the cluster to be created when the stage is executed.
