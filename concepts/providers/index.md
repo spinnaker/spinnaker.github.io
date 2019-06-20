@@ -37,6 +37,7 @@ These are the cloud providers currently supported by Spinnaker:
 * <a href="https://cloud.google.com/appengine/" target="_blank">App Engine</a>
 * <a href="https://aws.amazon.com/" target="_blank">Amazon Web Services</a>
 * <a href="https://azure.microsoft.com/" target="_blank">Azure</a>
+* <a href="https://www.cloudfoundry.org/" target="_blank">Cloud Foundry</a>
 * <a href="https://dcos.io/" target="_blank">DC/OS</a>
 * <a href="https://docs.docker.com/registry/" target="_blank">Docker v2 Registry</a> (__Note:__ This only
   acts as a source of images, and does not include support for deploying Docker
