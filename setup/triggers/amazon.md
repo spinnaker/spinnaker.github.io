@@ -7,7 +7,7 @@ sidebar:
 
 {% include toc %}
 
-Spinnaker pipelines can be triggered from a queue in [Amazon Simple Queue Service (SQS)] (https://aws.amazon.com/sqs/){:target="\_blank"} that receives new notifications from [Amazon Simple Notification Service (SNS)](https://aws.amazon.com/sns/){:target="\_blank"}.
+Spinnaker pipelines can be triggered from a queue in [Amazon Simple Queue Service (SQS)](https://aws.amazon.com/sqs/){:target="\_blank"} that receives new notifications from [Amazon Simple Notification Service (SNS)](https://aws.amazon.com/sns/){:target="\_blank"}.
 
 # Prerequisites
 
@@ -15,7 +15,7 @@ You need an AWS Account and the [AWS Command Line Interface (cli)](https://aws.a
 
 ## Creating an Simple Notification Service (SNS) Topic
 
-* Use the AWS Command Line tool or the AWS Console website to create a SNS Topic that will receive the messages destined for the queue and Spinnaker. You can do this by running the following commands:
+Use the AWS Command Line tool or the AWS Console website to create a SNS Topic that will receive the messages destined for the queue and Spinnaker. You can do this by running the following commands:
 
 ```
  bash4.4$ export AWS_TOPIC_NAME=aws-pubsub-test-topic
@@ -30,7 +30,7 @@ You need an AWS Account and the [AWS Command Line Interface (cli)](https://aws.a
 
 The next step is to create an SQS Queue that will receive the notification messages.
 
-* Use the AWS Command Line tool or the AWS Console website to create an SQS Queue that Spinnaker will listen to. You can do this by running the following commands:
+Use the AWS Command Line tool or the AWS Console website to create an SQS Queue that Spinnaker will listen to. You can do this by running the following commands:
 
 ```
  # Create the queue
@@ -50,7 +50,7 @@ The next step is to create an SQS Queue that will receive the notification messa
     }
  }
  # Now subscribe the queue to the topic you created above.
- bash4.4$ aws sns --topic-arn arn:aws:sns:us-east-1:12345467890:aws-pubsub-test-topic \
+ bash4.4$ aws sns subscribe --topic-arn arn:aws:sns:us-east-1:12345467890:aws-pubsub-test-topic \
  --protocol sqs --notification-endpoint arn:aws:sqs:us-east-1:1234567890:aws-pubsub-test-queue
  {
     "SubscriptionArn": "arn:aws:sns:us-east-1:1234567890:aws-pubsub-test-topic:e8d02657-e92c-43aa-a785-8d93cb8738fd"
@@ -64,25 +64,31 @@ You have now set up an SNS topic and created a SQS queue which is subscribed to 
 
 The next step is to create an S3 bucket, or use an existing bucket, and automatically deliver notifications when a file is uploaded. The following commands can be used to create a bucket and configure the notifications.
 
-
-* Now you have to tell AWS that your SNS topic can receive messages from your S3 bucket. To do this, you'll need to change the Access Policy for the SNS topic. You can do this by issuing the following command, swapping out the values with the resources created above:
+Now you have to tell AWS that your SNS topic can receive messages from your S3 bucket. To do this, you'll need to change the Access Policy for the SNS topic. You can do this by issuing the following command, swapping out the values with the resources created above:
 
 ```
+# CREATE THE BUCKET
+bash4.4$ export AWS_TOPIC_ARN=<INSERT TOPIC ARN HERE>
+bash4.4$ export AWS_PUBSUB_BUCKET=spin-pubsub-test-bucket
+bash4.4$ aws s3 mb s3://${AWS_PUBSUB_BUCKET}/
+make_bucket: spin-pubsub-test-bucket
 
-bash4.4$ aws sns set-topic-attributes --topic-arn <YOUR_TOPIC_ARN_HERE> --attribute-name Policy --attribute-value "{\"Version\":\"2008-10-17\",\"Id\":\"__default_policy_ID\",\"Statement\":[{\"Sid\":\"s3Publish\",\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"*\"},\"Action\":[\"SNS:GetTopicAttributes\",\"SNS:Publish\"],\"Resource\":\"arn:aws:sns:us-east-2:791719295754:test-topic\",\"Condition\":{\"ArnLike\":{\"aws:SourceArn\":\"arn:aws:s3:::spin-pubsub-test-bucket\"}}}]}"
+bash4.4$ aws sns set-topic-attributes --topic-arn ${AWS_TOPIC_ARN} --attribute-name Policy --attribute-value \
+"{\"Version\":\"2008-10-17\",\"Id\":\"__default_policy_ID\",\"Statement\":[{\"Sid\":\"s3Publish\",\
+\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"*\"},\"Action\":[\"SNS:GetTopicAttributes\",\
+\"SNS:Publish\"],\"Resource\":\"${AWS_TOPIC_ARN}\",\"Condition\":{\"ArnLike\":\
+{\"aws:SourceArn\":\"arn:aws:s3:::${AWS_PUBSUB_BUCKET}\"}}}]}"
 bash4.4$
 ```
-* Now that you've given your topic permission to have messages published to it, you can update your bucket's `put-bucket-notification-configuration` with the following `spin-pubsub-notification.json`. You'll need to swap out any values for the values for your configuration.  
+Now that you've given your topic permission to have messages published to it, you can update your bucket's `put-bucket-notification-configuration` with the following `spin-pubsub-notification.json`. You'll need to swap out any values for the values for your configuration.  
 
 ```
- bash4.4$ aws s3 mb s3://spin-pubsub-test-bucket/
- make_bucket: spin-pubsub-test-bucket
  # You need to create a file with the notification information in json format
  bash4.4$ cat << EOF > /tmp/spin-pubsub-notification.json
  {
     "TopicConfigurations": [
         {
-            "TopicArn": "arn:aws:sns:us-east-1:1234567890:aws-pubsub-test-topic",
+            "TopicArn": "${AWS_TOPIC_ARN}",
             "Events": [
                 "s3:ObjectCreated:*"
             ]
@@ -90,7 +96,7 @@ bash4.4$
     ]
  }
 EOF
- bash4.4$ aws s3api put-bucket-notification-configuration --bucket spin-pubsub-test-bucket \
+ bash4.4$ aws s3api put-bucket-notification-configuration --bucket ${AWS_PUBSUB_BUCKET} \
  --notification-configuration file:///tmp/spin-pubsub-notification.json    
  bash4.4$
 ```
@@ -100,7 +106,7 @@ EOF
 
 Amazon pubsub configuration is not yet supported via Halyard, so you'll need to define the details regarding your subscription in an echo-local.yml file. Put this echo-local.yml file in `~/.hal/<Deployment Profile>/profiles/` directory and Halyard will automatically deploy it alongside echo the next time you run `hal deploy apply`. Halyard's default profile is named `default`, so if you haven't set up a different profile, this `echo-local.yaml` file would go in the `~/.hal/default/profiles/` directory on your halyard instance.
 
-```echo-local.yaml
+```
 
 pubsub:
   enabled: true
@@ -150,4 +156,4 @@ logging:
   level:
     com.netflix.spinnaker.echo.pubsub.aws: DEBUG
 ```
-This will print out a message each time that Spinnaker goes out and attempts to pull messages from the queue. 
+This will print out a message each time that Spinnaker goes out and attempts to pull messages from the queue.
