@@ -104,21 +104,30 @@ e. Apply your changes:
 
 ## 5. Configure the Application and Pipeline
 
-a. Create a new pipeline for your application. In the pipeline configuration, under Automated Triggers, add a new trigger of **Type** "Pub/Sub". Select GCP Cloud Pub/Sub as the **Pub/Sub System Type**, select your GCP Cloud Pub/Sub Spinnaker subscription in **Subscription Name**, and under **Attribute Constraints**, add an entry with the key `eventType` and value `OBJECT_FINALIZE ` (see the [Google Cloud Storage documentation](https://cloud.google.com/storage/docs/pubsub-notifications)).
+a. Create a new pipeline for your application. In the pipeline configuration, under Automated Triggers, add a new trigger and configure it as follows:
+
+  * For **Type**, select "Pub/Sub".
+  * For **Pub/Sub System Type**, select **GCP Cloud Pub/Sub**.
+  * For **Subscription Name**, select your GCP Cloud Pub/Sub Spinnaker subscription.
+  * Under **Attribute Constraints**, add an entry with the key `eventType` and value `OBJECT_FINALIZE ` (see the [Google Cloud Storage documentation](https://cloud.google.com/storage/docs/pubsub-notifications)).
 
   {% include figure
      image_path="./add-a-trigger.png"
   %}
 
-b. In the **Artifact Constraints** dropdown, select "Define a new artifact..." to bring up the **Expected Artifact** form. Enter a **Display Name** or keep the auto-generated default. Select your GCS account in the **Account** dropdown and enter the path to the artifact in the **Object path** field.
+b. In the **Artifact Constraints** dropdown, select "Define a new artifact..." to bring up the **Expected Artifact** form. Provide the artifact information:
+
+  * For **Display Name**, enter your own artifact display name or keep the auto-generated default.
+  * In the **Account** dropdown, select your GCS account.
+  * In the **Object path** field, enter the path to the artifact.
 
   {% include figure
      image_path="./expected-artifact.png"
   %}
 
-Click **Save Artifact**.
+c. Click **Save Artifact**.
 
-c. Add a Deploy stage to the pipeline. Create a new server group and provide details on deployment settings, the application artifact, and the manifest artifact:
+d. Add a Deploy stage to the pipeline. Create a new server group and provide details on deployment settings, the application artifact, and the manifest artifact:
 
   {% include figure
      image_path="./server-group.png"
