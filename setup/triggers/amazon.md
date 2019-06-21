@@ -106,6 +106,8 @@ EOF
 
 Amazon pubsub configuration is not yet supported via Halyard, so you'll need to define the details regarding your subscription in an echo-local.yml file. Put this echo-local.yml file in `~/.hal/<Deployment Profile>/profiles/` directory and Halyard will automatically deploy it alongside echo the next time you run `hal deploy apply`. Halyard's default profile is named `default`, so if you haven't set up a different profile, this `echo-local.yaml` file would go in the `~/.hal/default/profiles/` directory on your halyard instance.
 
+If you are interested in contributing to Spinnaker in code but haven't found something simple to start on, this might be just the thing for you!
+
 ```
 
 pubsub:
@@ -122,7 +124,7 @@ pubsub:
 
 ## Turning on Amazon as an option in the UI (Deck)
 
-As of release 1.14.5, Amazon pubsub support is not supported by default in the UI, even if it's configured in echo-local.yaml as laid out above. In order to get `amazon` to show up in the list of pubsub, you must make a slight change to the settings.js file that is deployed with Gate and Deck.
+As of release 1.14.6, Amazon pubsub support is not supported by default in the UI, even if it's configured in echo-local.yaml as laid out above. In order to get `amazon` to show up in the list of pubsub, you must make a slight change to the settings.js file that is deployed with Gate and Deck.
 
 The easiest way to do this is to take it from an existing deployment in Halyard. Each time you run `hal deploy apply`, a copy of the configuration files that are deployed to your Spinnaker instance are copied to your Halyard pod in the ~/.hal/<Deployment Profile>/staging/ directory.
 
