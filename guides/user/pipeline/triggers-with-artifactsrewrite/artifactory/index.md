@@ -24,11 +24,6 @@ This guide assumes you have the following:
 
 * A Maven account configured in Spinnaker (see the [documentation for the `hal config artifact maven` Halyard commands](https://www.spinnaker.io/reference/halyard/commands/#hal-config-artifact-maven))
 
-At this point, we will configure Pub/Sub, and a GCS artifact account. The
-intent is that the Pub/Sub messages will be received by Spinnaker whenever a
-file is uploaded or changed, and the artifact account will allow you to
-download these where necessary.
-
 # Adding an Artifactory Trigger
 
 1. Create a pipeline.
