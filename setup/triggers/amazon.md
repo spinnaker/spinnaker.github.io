@@ -26,9 +26,14 @@ Use the AWS Command Line tool or the AWS Console website to create a SNS Topic t
 ```
 * Make a note of the TopicArn. You will need this to configure Echo via the echo-local.yml file to tell Spinnaker to subscribe to this topic.
 
-## Creating an Simple Queue Service (SQS) Queue
+## Creating an Simple Queue Service (SQS) Queue (Optional)
 
-The next step is to create an SQS Queue that will receive the notification messages.
+At this point, you can also create an SQS Queue that will receive the notification messages.
+
+Spinnaker will do this part for you, provided that you specify what would be a valid name for the QueueARN in the `echo-local.yml`.
+
+If you'd like to create the queue yourself manually, follow these instructions. Otherwise skip to
+the section below about [Configuring your S3 Bucket](#configuring-an-s3-bucket-to-send-notifications).
 
 Use the AWS Command Line tool or the AWS Console website to create an SQS Queue that Spinnaker will listen to. You can do this by running the following commands:
 
@@ -61,6 +66,7 @@ Use the AWS Command Line tool or the AWS Console website to create an SQS Queue 
 You have now set up an SNS topic and created a SQS queue which is subscribed to the topic. When messages are delivered to the topic, they will be delivered to the queue.
 
 ## Configuring an S3 bucket to send notifications
+
 
 The next step is to create an S3 bucket, or use an existing bucket, and automatically deliver notifications when a file is uploaded. The following commands can be used to create a bucket and configure the notifications.
 
