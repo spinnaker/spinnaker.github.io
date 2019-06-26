@@ -145,6 +145,8 @@ setup:
             url: /setup/triggers/google/
           - title: GitHub Webhook
             url: /setup/triggers/github/
+          - title: Amazon Pub/Sub
+            url: /setup/triggers/amazon/
       - title: Set up the spin CLI
         url: /setup/spin/
       - title: Add Your CI system
@@ -481,7 +483,7 @@ reference:
       - title: Component Sizing
         url: /reference/halyard/component-sizing/
       - title: High Availability
-        url: /reference/halyard/high-availability/         
+        url: /reference/halyard/high-availability/
       - title: Secrets Management
         collapsed: true
         children:
