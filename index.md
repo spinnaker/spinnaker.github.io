@@ -1,10 +1,5 @@
 ---
 layout: home
-summit_row:
-  title: "Come join us at the 2nd-annual Spinnaker Summit"
-  excerpt: "Oct. 8-9 in Seattle, WA"
-  image_path: assets/images/spinnaker_summit.png
-  alt: ""
 spinnaker_row:
   title: Spinnaker is an open source, multi-cloud continuous delivery platform for releasing software changes with high velocity and confidence.
   excerpt: "Created at Netflix, it has been battle-tested in production by hundreds of teams over millions of deployments. It combines a powerful and flexible pipeline management system with integrations to the major cloud providers."
@@ -12,7 +7,7 @@ spinnaker_row:
   alt: "Spinnaker Logo"
 multi_cloud_row:
   title: Multi-Cloud
-  excerpt: "Deploy across multiple cloud providers including AWS EC2, Kubernetes, Google Compute Engine, Google Kubernetes Engine, Google App Engine, Microsoft Azure, and Openstack, with Oracle Bare Metal and DC/OS coming soon."
+  excerpt: "Deploy across multiple cloud providers including AWS EC2, Kubernetes, Google Compute Engine, Google Kubernetes Engine, Google App Engine, Microsoft Azure, Openstack, Cloud Foundry, and Oracle Cloud Infrastructure, with DC/OS coming soon."
   image_path: assets/images/cloud.svg
   alt: "Multi-Cloud Logo"
 automated_releases_row:
@@ -42,14 +37,18 @@ azure_provider:
   image_path: assets/images/azure.png
   alt: "Azure Logo"
   image_class: spin_cloud_provider__azure
-os_provider:
-  image_path: assets/images/os.png
-  alt: "Openstack Logo"
-  image_class: spin_cloud_provider__os
 appengine_provider:
   image_path: assets/images/appengine.svg
   alt: "App Engine Logo"
   image_class: spin_cloud_provider__appengine
+cf_provider:
+  image_path: assets/images/cf.png
+  alt: "Cloud Foundry Logo"
+  image_class: spin_cloud_provider__cf
+oracle_provider:
+  image_path: assets/images/oracle.svg
+  alt: "Oracle Cloud Infrastructure Logo"
+  image_class: spin_cloud_provider__oracle
 active_community_row:
   title: Active Community
   excerpt: "Join a community that includes Netflix, Google, Microsoft, Veritas, Target, Kenzan, Schibsted, and many others, actively working to maintain and improve Spinnaker."
@@ -59,7 +58,7 @@ ci_integrations_feature:
   content: "Listen to events, collect artifacts, and trigger pipelines from Jenkins or Travis CI. Triggers via git, cron, or a new image in a docker registry are also supported."
 monitoring_integrations_feature:
   title: Monitoring Integrations
-  content: "Tie your releases to monitoring services Datadog, Prometheus, or Stackdriver, using their metrics for canary analysis."
+  content: "Tie your releases to monitoring services Datadog, Prometheus, Stackdriver, or SignalFx, using their metrics for canary analysis."
 cli_feature:
   title: CLI for Setup and Admin
   content: "Install, configure, and update your Spinnaker instance with halyard, Spinnaker’s CLI tool."
@@ -131,14 +130,13 @@ waze_case_study:
     <ul class="spin_call_to_action">
       <li><a href="/concepts/">HOW IT WORKS</a></li>
       <li><a href="/setup/">INSTALL SPINNAKER</a></li>
+      <li><a href="/guides/user/get-started/">GET STARTED</a></li>
       <li><a href="/publications/ebook/">READ OUR EBOOK</a></li>
     </ul>
   </div>
 </div>
 
 <div class="spin_header__push_down">
-<a href="https://www.spinnakersummit.com" target="_blank">{% include splash_feature_row id="summit_row" type="left" %}</a>
-<hr width="100%" size="4" noshade>
 {% include splash_feature_row id="spinnaker_row" type="right" %}
 {% include splash_feature_row id="multi_cloud_row" type="left" %}
 {% include splash_feature_row id="automated_releases_row" type="right" %}
@@ -154,11 +152,12 @@ waze_case_study:
         {% include spinnaker_cloud_provider id="aws_provider" %}
         {% include spinnaker_cloud_provider id="gcp_provider" %}
         {% include spinnaker_cloud_provider id="k8s_provider" %}
+        {% include spinnaker_cloud_provider id="oracle_provider" %}
+      </div>
       <div class="clearfix">
         {% include spinnaker_cloud_provider id="azure_provider" %}
-        {% include spinnaker_cloud_provider id="os_provider" %}
         {% include spinnaker_cloud_provider id="appengine_provider" %}
-      </div>
+        {% include spinnaker_cloud_provider id="cf_provider" %}
       </div>
     </div>
   </div>  

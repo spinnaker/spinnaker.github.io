@@ -31,6 +31,10 @@ You can also use the microservice HTTP endpoint `/spectator/metrics`
 directly to scrape metrics yourself. The JSON document structure is
 further documented in the Monitoring reference section.
 
+The daemon can be configured to control which collected metrics are forwarded
+to the persistent metrics store. This can alleviate costs and pressure on the
+underlying metric stores depending on your situation.
+
 
 ## Configuring Spinnaker monitoring
 
@@ -50,6 +54,101 @@ Once this is complete and Spinnaker is deployed, you can optionally use the
 dashboards](#supplied-dashboards) to your third-party system of choice.
 
 See also [`hal config metric-stores`](/reference/halyard/commands/#hal-config-metric-stores).
+
+### Configuring metric filters
+
+*Experimental*: This is an experimental feature added into Spinnaker 1.10
+which will likely hang around for a few future versions but likely be
+obsoleted by a different longer term mechanism to control filtering
+metrics.
+
+The daemon has a "metric_filter_dir" property that can point to a directory containing
+metric filter specifications. The default directory is /opt/spinnaker-monitoring/filters.
+You can configure filters for all services in `default.yml`, and override the filters per
+service in <service>.yml. By default, all metrics will be forwarded.
+
+Halyard will automatically configure the metric_filter_dir and install the
+filters if you place the yaml files in the directory
+`~/.hal/default/profiles/monitoring-daemon/filters`.
+
+A filter specification is a collection of regular expressions indicating which meters
+to include and/or exclude. Internal to spinnaker, metrics are produced by meters where
+the name of the meter is the name of the metric. The specification is flexible to
+allow for general rules about what to include or exclude. Only the clauses of
+interest need to be present.
+
+```yaml
+meters:
+  # If this section is empty, then all meters are assumed to match.
+  #
+  # names in byLiteralName have highest precedence.
+  # Otherwise, the metric will not be included if it matches excludeNameRegex.
+  # Otherwise, the metric will be included if it matches byNameRegex.
+  #    If the name matches multiple byNameRegex then a random entry is taken.
+  byLiteralName:
+    # If the name appears here, it will be included
+    - <explicit metric name>:
+
+  byNameRegex:
+    # If the name matches a regex here, it will be included.
+    - <metric name regex>:
+
+  excludeNameRegex:
+    # If the name matches a regex here, it will not be included,
+    # unless it also appears in byLiteralName.
+    - <metric name regex>
+```
+
+### Example Filter configurations
+
+Only include two metrics:
+
+```yaml
+monitoring:
+  filters:
+    meters:
+      byLiteralName:
+        - controller.invocations
+        - jvm.memory.used
+```
+
+Exclude add jvm and redis metrics
+
+```yaml
+monitoring:
+  filters:
+    meters:
+      excludeNameRegex:
+        - redis.*
+        - jvm.*
+```
+
+Exclude all jvm metrics except for `jvm.memory.used`
+
+```yaml
+monitoring:
+  filters:
+    meters:
+      byLiteralName:
+        - jvm.memory.used
+
+      excludeNameRegex:
+        - jvm.*
+```
+
+Include all jvm metrics except for `jvm.memory.used`
+
+```yaml
+monitoring:
+  filters:
+    meters:
+      byNameRegex:
+        - jvm.*
+
+      excludeNameRegex:
+        - jvm.memory.used
+```
+
 
 ## Consuming metrics
 
@@ -71,9 +170,9 @@ the metrics have many tags providing a lot of granularity and ways in
 which you can aggregate and interpret them. The data model is described
 further in [the Monitoring reference section](/reference/monitoring/).
 
-In practice there are relatively few distinct metric names (a few hundred).
+In practice there are relatively few distinct metric names (hundreds).
 However when considering all the distinct time-series streams from the
-different label values there are several thousand distinct streams. Some
+different label values there are thousands of distinct streams. Some
 metrics are tagged with the application or account they were used on
 behalf of, so the number of streams may grow as the scope of your
 deployment grows. Typically you will be aggregating these dimensions

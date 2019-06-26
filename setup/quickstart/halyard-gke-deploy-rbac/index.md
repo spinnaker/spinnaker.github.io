@@ -156,4 +156,3 @@ At the end of this guide you will have:
    ```bash
    hal deploy apply
    ```
-

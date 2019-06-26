@@ -12,7 +12,7 @@ In this codelab, you will create a source-to-prod continuous delivery pipeline f
 After completing this lab the following workflow will happen: 
   1. A developer pushes a commit to Github
   2. Jenkins automatically builds a Debian package and pushes it to an Aptly repository
-  3. Spinnake bakes the new package into an image
+  3. Spinnaker bakes the new package into an image
   4. Spinnaker deploys to a test environment and disables the previous deployment
   4. Spinnaker waits for a manual judgement of the test environment
   5. Spinnaker deploys the image to the production environment and disables the previous deployment.

@@ -8,7 +8,7 @@ redirect_from: /setup/scaling/externalize-redis/
 
 {% include toc %}
 
-One of easiest ways to improve Spinnaker's reliability at scale is to use an
+One of the easiest ways to improve Spinnaker's reliability at scale is to use an
 external Redis. The Redis installed by Spinnaker (either locally, or in
 Kubernetes) isn't configured to be production-ready. If you have a hosted Redis
 alternative, or a database team managing a Redis installation, we highly
@@ -24,7 +24,7 @@ First, determine the URL of your Redis installation. Some examples include:
 * `redis://admin:passw0rd@some.redis.url:6379`: Same as above, but with
   a username/password pair.
 
-* `redis://admin:passw0rd@some.redis.url:6379?db=1`: Same as above, but using
+* `redis://admin:passw0rd@some.redis.url:6379/1`: Same as above, but using
   database 1. See [SELECT documentation](https://redis.io/commands/select).
 
 We will refer to this as `$REDIS_ENDPOINT`.
@@ -45,6 +45,13 @@ skipLifeCycleManagement: true
 > deploying/check the status of the Redis instance. If Halyard has already
 > created a Redis instance, you will have to manually delete it.
 
+You can confirm that this works by doing the following:
+
+1. Run `hal config generate`
+2. Check that the contents of `~/.hal/$DEPLOYMENT/staging/spinnaker.yml` under the `services.redis.baseUrl:` section
+matches `$REDIS_ENDPOINT`
+3. (Optional) deploy your changes with `hal deploy apply`
+
 ## Configure per-service Redis
 
 If your single Redis node is overloaded, you can configure Spinnaker's services
@@ -53,7 +60,7 @@ installations yourself, Halyard does not create them for you_.
 
 Using [Halyard's custom
 configuration](/reference/halyard/custom#custom-profiles) we will
-create the following file `~/.hal/$DEPLOYMENT/profile-settings/$SERVICE-local.yml`:
+create the following file `~/.hal/$DEPLOYMENT/profiles/$SERVICE-local.yml`:
 
 ```yaml
 services.redis.baseUrl: $REDIS_ENDPOINT
@@ -64,3 +71,18 @@ services.redis.baseUrl: $REDIS_ENDPOINT
 
 > `$SERVICE` is the service name (e.g. `clouddriver`) that is being configured
 > to use another endpoint.
+
+## Using a hosted Redis
+
+Gate requires keyspace notifications to be enabled in Redis, and tries to configure
+this when it starts up. Some hosted Redis services disable the `CONFIG` command, blocking
+Gate from modifying the configuration. In this case:
+1. Manually set the configuration parameter `notify-keyspace-events` to `gxE` on your Redis
+instance by following the documentation provided by your hosted Redis provider.
+2. Disable automatic Redis configuration in Gate by adding the following to your
+`gate-local.yml` file:
+   ```yaml
+      redis:
+        configuration:
+          secure: true
+   ```

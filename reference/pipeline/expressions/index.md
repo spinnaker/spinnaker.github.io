@@ -37,8 +37,8 @@ the expression `${parameters.regions.split(",")}`.
 
 You can instantiate new classes inside of an expression using the fully
 qualified package name. For example, you might want to use the [SimpleDateFormat](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html)
-class to get the current date in MM-DD-YYYY format. You can do this using the
-expression `${new java.text.SimpleDateFormat("MM-DD-YYYY").format(new
+class to get the current date in MM-dd-yyyy format. You can do this using the
+expression `${new java.text.SimpleDateFormat("MM-dd-yyyy").format(new
 java.util.Date())}`.
 
 Similarly, you can call static methods using the syntax
@@ -155,14 +155,24 @@ that was created by the specified stage.
 
 Converts a JSON String into a Map that can then be processed further.
 
+### #readYaml(String)
+
+Converts a YAML String into a Map that can then be processed further.
+
 ### #fromUrl(String)
 
-Returns the contents of the specified URL as a String.
+Returns the contents of the specified URL as a String. You can use this
+to fetch information from unauthenticated URL endpoints.
 
 ### #jsonFromUrl(String)
 
 Retrieves the contents of the given URL and converts it into either a map or a
-list. You can use this to fetch information from unauthenticated URL endpoints.
+list. It uses the #fromUrl(String) helper function underneath.
+
+### #yamlFromUrl(String)
+
+Retrieves the contents of the given URL and converts it into a map. It uses
+the #fromUrl(String) helper function underneath.
 
 ### #judgment(String)
 
@@ -171,6 +181,12 @@ matches the input string. Note that `#judgment` is case sensitive:
 `${#judgment("my manual judgment stage")}` returns an error if your stage is
 named _"My Manual Judgment Stage"_. Note that this function is aliased to the
 spelling `#judgement`.
+
+### #manifestLabelValue(String stageName, String manifestKind, String labelKey)
+
+Returns the value of a label with key `labelKey` from a Kubernetes
+Deployment or ReplicaSet manifest of kind `manifestKind`, deployed by a 
+stage of type `deployManifest` and name `stageName`.
 
 ### #propertiesFromUrl(String)
 
@@ -185,6 +201,30 @@ you to access your Bake stage. Note that `#stage` is case sensitive: if your
 stage is actually named "bake", `${#stage("Bake")}` will not find it. Remember
 that the values for the stage are still under the _context_ map, so you can
 access a property via `${#stage("Bake")["context"]["desiredProperty"]}`.
+
+### #stageByRefId(String)
+
+A shortcut to get the stage by its `refId`. For example, `${#stage("3")}` allows
+you to access the stage with `refId = 3`.
+
+### #currentStage()
+
+Returns the current stage.
+
+### #stageExists(String)
+
+Checks if a given stage exists. You can search by `name` or `id`.
+Returns `true` if at least one stage is found with the `name` or `id` given.  
+Since the `id` is generated at runtime, most of the time it will make sense to search by `name` instead.
+Note that stage names are set by default so if you create a Webhook stage it will be called Webhook; 
+giving the stage a unique name when you create it makes it easier to find when using this helper function.
+
+### #pipelineId(String)
+
+This function looks up the pipeline id given a pipeline name (within the same Spinnaker application). 
+This is useful if you generate pipelines programmatically and don't want to modify pipelines to reference a new id
+when a dependent pipeline is automatically regenerated.    
+For example, `${#pipelineId("Deploy to prod")}` might return `9b2395dc-7a2b-4845-b623-838bd74d059b`.
 
 ### #toBoolean(String)
 
@@ -202,6 +242,15 @@ Converts a value to an integer.
 
 Converts an arbitrary JSON object into a JSON string.
 
+### #cfServiceKey(String stageName)
+
+A shortcut to refer to a service key which has been created in a previous stage.  Remember that the
+stage's name is case-sensitive.  Note also that the values for the service key are contained in a
+map, so one may access a property via `${#cfServiceKey("stageName")["desiredProperty"]}`.
+For example, `${#cfServiceKey("Create MySQL Service Key")["username"]}` will retrieve the `username`
+field of a service key which has been created for a MySQL service in a `Create Service Key` stage named
+"Create MySQL Service Key".
+
 ## Whitelisted Java classes
 
 You can find the code which whitelists Java classes [here](https://github.com/spinnaker/orca/blob/6d0ba0bf8af5e06c5b405b8294f07e7a5a4c335a/orca-core/src/main/java/com/netflix/spinnaker/orca/pipeline/expressions/whitelisting/InstantiationTypeRestrictor.java#L26).
@@ -209,8 +258,10 @@ The whitelisted classes are:
 
 * [Boolean](https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html)
 * [Byte](https://docs.oracle.com/javase/8/docs/api/java/lang/Byte.html)
+* [ChronoUnit](https://docs.oracle.com/javase/8/docs/api/java/time/temporal/ChronoUnit.html)
 * [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html)
 * [Double](https://docs.oracle.com/javase/8/docs/api/java/lang/Double.html)
+* [Instant](https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html)
 * [Integer](https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html)
 * [LocalDate](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html)
 * [Long](https://docs.oracle.com/javase/8/docs/api/java/lang/Long.html)
@@ -223,8 +274,11 @@ The whitelisted classes are:
 ## Source code
 
 Source code for the expression language is in the [spinnaker/orca
-repository](https://github.com/spinnaker/orca), mostly in the
-[ContextParameterProcessor class](https://github.com/spinnaker/orca/blob/master/orca-core/src/main/java/com/netflix/spinnaker/orca/pipeline/util/ContextParameterProcessor.java).
+repository](https://github.com/spinnaker/orca), mostly in the following classes:
+
+* [ContextParameterProcessor class](https://github.com/spinnaker/orca/blob/master/orca-core/src/main/java/com/netflix/spinnaker/orca/pipeline/util/ContextParameterProcessor.java)
+* [ExpressionsSupport class](https://github.com/spinnaker/orca/blob/master/orca-core/src/main/java/com/netflix/spinnaker/orca/pipeline/expressions/ExpressionsSupport.java)
+* Subclasses of [ExpressionFunctionProvider](https://github.com/spinnaker/orca/blob/master/orca-core/src/main/java/com/netflix/spinnaker/orca/pipeline/expressions/ExpressionFunctionProvider.kt)
 
 
 ## Pipeline expression implementation

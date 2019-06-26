@@ -42,6 +42,18 @@ information.
 You can validate that your Custom Profiles have been picked up and applied to
 their services by checking `~/.hal/$DEPLOYMENT/history/service-profiles.yml`.
 
+### Custom Profile for Deck
+
+To supply custom settings or new values that override generated settings for the
+Deck UI, you can place them in a file called `settings-local.js`. For
+example, to enable the `artifactsRewrite` feature flag, you can create the
+following file:
+
+__`~/.hal/default/profiles/settings-local.js`:__
+```js
+window.spinnakerSettings.feature.artifactsRewrite = true;
+```
+
 ## Custom Service Settings
 
 For each service, `$SERVICENAME`, you can supply a file
@@ -105,3 +117,18 @@ kubernetes:
   - desired-image-pull-secret1
   - desired-image-pull-secret2
 ```
+
+#### podAnnotations 
+
+Annotations can often be used to specify special behavior within Kubernetes. To apply annotations to the Pods for a particular service, use the following configuration:
+
+```
+kubernetes:
+  podAnnotations:
+    example/annotation: spinnaker.io
+    example/annotation-2: halyard
+```
+
+#### useExecHealthCheck
+
+by default halyard deploys services with an `exec` based health check in order to improve compatibility with istio. This however can break functionality for implementations of Load Balancer service types and Ingress Controllers that rely on having a http health check to validate. Setting `kubernetes.useExecHealthCheck: false` will switch the check method to be http based for such use cases.

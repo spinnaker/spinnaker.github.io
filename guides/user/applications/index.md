@@ -51,4 +51,4 @@ that promote the same service into the next environment.
 
 ## Next
 
-[Configure An Application](/guides/user/applications/configure/)
+[Create An Application](/guides/user/applications/create/)

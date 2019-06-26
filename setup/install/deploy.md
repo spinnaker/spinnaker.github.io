@@ -92,7 +92,14 @@ hal deploy apply
 ## Next steps
 
 Now that Spinnaker is deployed and capable managing your cloud provider, you
-can either visit the [Guides](/guides/) pages to learn how to use Spinnaker, or
-continue with additional configuration, such as your [image bakery](/setup/bakery/).
+can...
+
+* Continue with additional configuration, such as your [image
+bakery](/setup/bakery/)
+
+* If you're a Spinnaker end user, read how to [get started using
+Spinnaker](/guides/user/get-started)
+
+* Visit the [Guides](/guides/) pages to learn more
 
 You might also want to [back up your configuration](/setup/install/backups/).

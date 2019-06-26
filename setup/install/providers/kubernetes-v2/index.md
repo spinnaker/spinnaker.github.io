@@ -23,13 +23,14 @@ Accounts.
 
 The Kubernetes provider has two requirements:
 
-* A [`kubeconfig`](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/){:target="\_blank"}
+* A [`kubeconfig`](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/){:target="\_blank"} file
 
-    The `kubeconfig` allows Spinnaker to authenticate against your cluster and
-    to have read/write access to any resources you expect it to manage. You can
-    request this from your Kubernetes cluster administrator.
+    The `kubeconfig` file allows Spinnaker to authenticate against your cluster 
+    and to have read/write access to any resources you expect it to manage. You
+    can think of it as private key file to let Spinnaker connect to your cluster.
+    You can request this from your Kubernetes cluster administrator.
 
-* [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/){:target="\_blank"}
+* [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/){:target="\_blank"} CLI tool
 
     Spinnaker relies on `kubectl` to manage all API access. It's installed
     along with Spinnaker.
@@ -52,41 +53,18 @@ even when managing multiple Kubernetes clusters. This can be useful if you need
 to grant Spinnaker certain roles in the cluster later on, or you typically
 depend on an authentication mechanism that doesn't work in all environments.
 
-Given that you want to create a Service Account in context `$CONTEXT`, create
-the following resources with `kubectl apply --context $CONTEXT -f
-https://spinnaker.io/downloads/kubernetes/service-account.yml` 
-
-```yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: spinnaker-service-account
-  namespace: spinnaker
-
----
-
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: spinnaker-admin
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-admin
-subjects:
-- kind: ServiceAccount
-  name: spinnaker-service-account
-  namespace: spinnaker
-```
-
-> Note, this grants Spinnaker full access to the Kubernetes cluster using the
-> `cluster-admin` role binding. This isn't necessary -- it's used as a simple
-> example. For more fine-grained control, see the
-> [RBAC](#optional-configure-kubernetes-roles-rbac) section.
-
-Next, grab the token that this service account relies on:
+Given that you want to create a Service Account in existing context `$CONTEXT`,
+the following commands will create `spinnaker-service-account`, and add its
+token under a new user called `${CONTEXT}-token-user` in context `$CONTEXT`.
 
 ```bash
+CONTEXT=$(kubectl config current-context)
+
+# This service account uses the ClusterAdmin role -- this is not necessary, 
+# more restrictive roles can by applied.
+kubectl apply --context $CONTEXT \
+    -f https://spinnaker.io/downloads/kubernetes/service-account.yml
+
 TOKEN=$(kubectl get secret --context $CONTEXT \
    $(kubectl get serviceaccount spinnaker-service-account \
        --context $CONTEXT \
@@ -94,22 +72,11 @@ TOKEN=$(kubectl get secret --context $CONTEXT \
        -o jsonpath='{.secrets[0].name}') \
    -n spinnaker \
    -o jsonpath='{.data.token}' | base64 --decode)
-```
 
-Place this token into your `kubeconfig` under a new user called
-`${CONTEXT}-token-user`:
-
-```bash
 kubectl config set-credentials ${CONTEXT}-token-user --token $TOKEN
-```
 
-Now configure your context `$CONTEXT` to use this new user:
-
-```bash
 kubectl config set-context $CONTEXT --user ${CONTEXT}-token-user
 ```
-
-Now `$CONTEXT` will authenticate using the token we created above.
 
 <span class="end-collapsible-section"></span>
 
@@ -129,6 +96,12 @@ namespaces (using the `namespaces` option), you need to use `Role` &
 `Role` and `RoleBinding` to each namespace Spinnaker manages. You can read
 about the difference between `ClusterRole` and `Role`
 [here](https://kubernetes.io/docs/admin/authorization/rbac/#rolebinding-and-clusterrolebinding){:target="\_blank"}.
+If you're using RBAC to restrict the Spinnaker service account to a particular namespace,
+you must specify that namespace when you add the account to Spinnaker.
+If you don't specify any namespaces, then Spinnaker will attempt to list all namespaces,
+which requires a cluster-wide role. Without a cluster-wide role configured
+and specified namespaces, you will see deployment
+[timeouts in the "Wait for Manifest to Stabilize" task](https://github.com/spinnaker/spinnaker/issues/3666#issuecomment-485001361).
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -137,7 +110,7 @@ metadata:
  name: spinnaker-role
 rules:
 - apiGroups: [""]
-  resources: ["namespaces", "configmaps", "events", "replicationcontrollers", "serviceaccounts", "pods/logs"]
+  resources: ["namespaces", "configmaps", "events", "replicationcontrollers", "serviceaccounts", "pods/log"]
   verbs: ["get", "list"]
 - apiGroups: [""]
   resources: ["pods", "services", "secrets"]
@@ -229,9 +202,11 @@ hal config provider kubernetes enable
 Then add the account:
 
 ```bash
+CONTEXT=$(kubectl config current-context)
+
 hal config provider kubernetes account add my-k8s-v2-account \
     --provider-version v2 \
-    --context $(kubectl config current-context)
+    --context $CONTEXT
 ```
 
 You'll also need to run

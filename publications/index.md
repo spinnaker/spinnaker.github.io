@@ -9,7 +9,7 @@ sidebar:
 
   Read *Continuous Delivery With Spinnaker*
 
-* [Presentations](/publications/presentations/)
+* [Presentations and Videos](/publications/presentations/)
 
   Spinnaker presentations from conferences and meetups
 

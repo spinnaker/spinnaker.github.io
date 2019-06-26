@@ -150,6 +150,55 @@ command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
   If instead Spinnaker is deploying ReplicaSets directly without a Deployment,
   this annotation does the job.
 
+* `strategy.spinnaker.io/recreate`
+
+  As of Spinnaker 1.13, you can force Spinnaker to delete a resource (if it
+  already exists) before creating it again. This is useful for kinds such
+  as [`Job`](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/),
+  which cannot be edited once created, or must be re-created to run again.
+  
+  When set to `'true'` for a versioned resource, this will only re-create your
+  resource if no edits have been made since the last deployment (i.e. the 
+  same version of the resource is redeployed).
+  
+  The default behavior is `'false'`.
+
+* `strategy.spinnaker.io/replace`
+
+  As of Spinnaker 1.14, you can force Spinnaker to use `replace` instead of
+  of `apply` while deploying a Kubernetes resource. This may be useful for resources
+  such as `ConfigMap` which may exceed the annotation size limit of 262144 characters.
+
+  When set to `'true'` for a versioned resource, this will update your resources using
+  `replace`. Refer to [Kubernetes Object Management](https://kubernetes.io/docs/concepts/overview/object-management-kubectl/overview/#imperative-object-configuration) for more details on object
+  configuration and trade-offs.
+
+  The default behavior is `'false'`.
+
+## Traffic
+
+* `traffic.spinnaker.io/load-balancers`
+
+  As of Spinnaker 1.10, you can specify which load balancers
+  ([Services](https://kubernetes.io/docs/concepts/services-networking/service/))
+  a workload is attached to at deployment time. This will automatically set the
+  required labels on the workload's Pods to match that of the Services' [label
+  selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors).
+
+  This annotation must be supplied as a list of `<kind> <name>` pairs where
+  `kind` and `name` refer to the load balancer in the same namespace as the 
+  resource. For example:
+
+  * `traffic.spinnaker.io/load-balancers: '["service my-service"]'` attaches to
+    the Service named `my-service`.
+
+  * `traffic.spinnaker.io/load-balancers: '["service my-service", "service my-canary-service"]'` 
+    attaches to the Services named `my-service` and `my-canary-service`.
+    
+  As of Spinnaker 1.14, instead of manually adding the `traffic.spinnaker.io/load-balancers`
+  annotation, you can select which load balancers to associate with a workload from the Deploy
+  (Manifest) stage. Spinnaker will then add the appropriate annotation for you. 
+
 # Reserved labels
 
 In accordance with [Kubernetes' recommendations on common
@@ -178,7 +227,8 @@ resources Kubernetes supports. Also the Kubernetes extension
 mechanisms&mdash;called [Custom Resource Definitions
 (CRDs)](https://kubernetes.io/docs/concepts/api-extension/custom-resources/)&mdash;make
 it easy to build new types of resources, and Spinnaker accommodates that by
-making it simple to extend Spinnaker to support a user's CRDs.
+making it simple to [extend Spinnaker to support a user's 
+CRDs](https://www.spinnaker.io/guides/developer/crd-extensions/).
 
 ## Terminology mapping
 

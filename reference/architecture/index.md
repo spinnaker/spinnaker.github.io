@@ -28,7 +28,8 @@ resources.
 * [Front50](https://github.com/spinnaker/front50) is used to persist the
 metadata of applications, pipelines, projects and notifications.
 
-* [Rosco](https://github.com/spinnaker/rosco) is the bakery.
+* [Rosco](https://github.com/spinnaker/rosco) is the bakery. It produces immutable 
+VM images (or image templates) for various cloud providers.
 
   It is used to produce machine images (for example [GCE
     images](https://cloud.google.com/compute/docs/images),
@@ -65,7 +66,8 @@ service.
 
  This diagram shows which microservices depend on each other. The green
  boxes represent "external" components, including the Deck UI, a single-page
- JavaScript application that runs in your browser.
+ JavaScript application that runs in your browser. The gold boxes represent Halyard components
+ which are only ran when configuring Spinnaker.
 
  <div class="mermaid">
  graph TB
@@ -87,20 +89,26 @@ service.
  front50 --> fiat;
  echo(Echo) --> orca;
  echo --> front50;
+ gate --> echo;
  igor(Igor) --> echo;
+
+ hal(Halyard CLI) --> halyard(Halyard Daemon);
 
  classDef default fill:#d8e8ec,stroke:#39546a;
  linkStyle default stroke:#39546a,stroke-width:1px,fill:none;
 
+ classDef halStyle fill:#eebb3c,stroke:#39546a;
+ class halyard,hal halStyle;
+
  classDef external fill:#c0d89d,stroke:#39546a;
- class deck,api external
+ class deck,api external;
  </div>
 
  {% include mermaid %}
 
 In the table below, A filled cell indicates that the system listed in the
 heading of that column has a dependency on the system listed in the heading of
-that row. As all Spinnaker services can be run in their own server group, it' i's
+that row. As all Spinnaker services can be run in their own server group, it is
 typical for services to resolve their dependencies via load balancers or
 discovery systems (for example [Eureka](https://github.com/Netflix/eureka) or
 [Consul](https://www.consul.io/)).

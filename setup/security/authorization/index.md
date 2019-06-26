@@ -28,12 +28,12 @@ With Fiat, you can&hellip;
 
 ## Requirements
 
-1. [Authentication](../authentication) successfully setup in Gate.
+* [Authentication](../authentication) successfully setup in Gate.
 
-1. Configured Front50 to use S3 or Google Cloud Storage (GCS) as the backing storage mechanism for
+* Configured Front50 to use S3 or Google Cloud Storage (GCS) as the backing storage mechanism for
  persistent application configurations.
 
-1. An external role provider from one of the following:
+* An external role provider from one of the following:
     * Google Groups via a G Suite Account
         * With access to the G Suite Admin console
     * GitHub Team
@@ -42,15 +42,17 @@ With Fiat, you can&hellip;
         > SAML roles are fixed at login time, and cannot be changed until the user needs to
         reauthenticate.
 
-1. Patience&mdash;there are a lot of small details that must be _just_ right with anything related to
+* Enable the [authorization](/reference/halyard/commands/#hal-config-security-authz-enable) feature.
+
+* Patience&mdash;there are a lot of small details that must be _just_ right with anything related to
  authentication and authorization.
 
-1. (Highly Suggested) All Spinnaker component microservices are either:
-    1. Firewalled off as a collective group, or:
+* (Highly Suggested) All Spinnaker component microservices are either:
+    * Firewalled off as a collective group, or:
 
         ![all service firewalled off](fiat-firewall.png)
 
-    1. Use mutual TLS authentication:
+    * Use mutual TLS authentication:
 
         ![all services use mutual TLS authentication](fiat-mTLS.png)
 
@@ -67,7 +69,7 @@ accounts.
 ### Accounts
 In the dark ages (before Fiat), only accounts could be restricted. Because
 Clouddriver is the source of truth for accounts, Fiat reaches out to Clouddriver
-to gather the list of available accounts. 
+to gather the list of available accounts.
 
 There are two types of access restrictions to an account, `READ` and `WRITE`. Users must have
 at least one `READ` permission of an account to view the account's cloud resources, and at least one
@@ -90,18 +92,31 @@ hal config provider $PROVIDER account edit $ACCOUNT \
   --write-permissions role1,role2,role3
 ```
 
-(Deprecated) `requiredGroupMembership` is the old way to add access restrictions to an account. 
+(Deprecated) `requiredGroupMembership` is the old way to add access restrictions to an account.
 This method does not distinguish between `READ` and `WRITE` - users with access will have both.
 
 
 ### Applications
+Before Spinnaker 1.14, there were two types of restrictions to an application `READ` and `WRITE`.
+In the 1.14 release, a new permission type called `EXECUTE` was added. For any new applications,
+the permission required to trigger pipelines changes from groups with `READ` access to those with
+`EXECUTE` access.
 
-Set permissions for an existing application using the application configuration:
+To maintain backward compatibility for existing applications, groups with `READ` access will implicitly
+get `EXECUTE` access. There are two ways to change this behavior:
+
+* Modify the application config in the UI to explicitly add `EXECUTE` permissions to a group for an application:
 
 {% include figure
    image_path="./applications_permissions.png"
-   caption="Application configuration, with Permissions"
 %}
+
+* Flip the default behavior across all applications to only grant `WRITE` users implicit `EXECUTE` access by
+setting the following property in `fiat-local.yml`:
+
+```yml
+  fiat.executeFallback: 'WRITE'
+```
 
 ### Unrestricted accounts and applications
 
@@ -127,7 +142,7 @@ should be denied:
 
 A popular feature in Spinnaker is the ability to run pipelines automatically based on a
 triggering event, such as a `git push` or a Jenkins build completing. When pipelines run against
-accounts and applications that are protected, it is necessary to configure 
+accounts and applications that are protected, it is necessary to configure
 them with enough permissions to access those protected resources. This can
 be done in two ways:
 

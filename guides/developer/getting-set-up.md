@@ -70,7 +70,7 @@ Once you have a working LocalGit deployment you can begin to make changes to the
 After you've made edits in the code of a service you can see those changes reflected
 by restarting the service you've modified.
 
-To restart a service call `hal deploy apply --service-name clouddriver`, replacing `clouddriver`
+To restart a service call `hal deploy apply --service-names clouddriver`, replacing `clouddriver`
 with whichever service you want to restart. The only service that does not require this kind
 of restart is Deck; its webserver watches for file changes and re-compiles the application as
 necessary.
@@ -79,7 +79,9 @@ necessary.
 
 ## IntelliJ
 
-Run `./gradlew idea` in a service's directory to generate IntelliJ project files
+Import the project into IntelliJ: 
+1. Select `New` > `Project from Existing Sources`
+1. Navigating to a service's `build.gradle` file (i.e., `~/dev/spinnaker/clouddriver/build.gradle`)
 
 ### Repairing a Broken Project
 

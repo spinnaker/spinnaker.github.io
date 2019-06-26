@@ -5,8 +5,6 @@ sidebar:
   nav: guides
 ---
 
-{% include alpha version="1.8" %}
-
 {% include toc %}
 
 This guide shows the basics of how to update a Kubernetes resource in place using the patch manifest stage for the [Kubernetes Provider V2](/setup/install/providers/kubernetes-v2) provider.
@@ -106,7 +104,7 @@ Assuming you have declared an expected artifact upstream to your Patch (Manifest
 
 ## Override artifacts
 
-The Patch (Manifest) stage also allows you to [override artifacts](/guides/user/kubernetes-v2/deploy-manifest#override-artifacts) like in the deploy manifest stage.
+When patching with a _strategic_ or _merge_ strategy, the Patch (Manifest) stage also allows you to [override artifacts](/guides/user/kubernetes-v2/deploy-manifest#override-artifacts) like in the deploy manifest stage.
 
 For instance, say you have a pipeline with a Patch (Manifest) stage with the following patch content:
 
