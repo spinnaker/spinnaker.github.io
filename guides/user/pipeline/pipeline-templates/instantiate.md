@@ -28,29 +28,29 @@ and get it using the following command:
    This outputs the JSON content of the template. You can save it in a file, or
    just examine it so that you know what you're implementing.
 
-1. Create a file, which will contain the JSON for the pipeline. 
+1. Create a file, which will contain the JSON for the pipeline.
 
    Use the following format:
 
    ```json
    {
-     “schema”: “v2”,
-     “application”: “myApp”, # Set this to the app you want to create the pipeline in.
-     “name”: “<pipeline name>”, # Pipeline name, remember this for the next part.
-     “template”: {
-       “artifactAccount”: “front50ArtifactCredentials”, # Static constant
-       “reference”: “spinnaker://newSpelTemplate”, # Reference to the pipeline template we published above. We saved it in Spinnaker, so we prefix the template id with ‘spinnaker://’.
-       “type”: “front50/pipelineTemplate”, # Static constant
+     "schema": "v2",
+     "application": "myApp", # Set this to the app you want to create the pipeline in.
+     "name": "<pipeline name>", # Pipeline name, remember this for the next part.
+     "template": {
+       "artifactAccount": "front50ArtifactCredentials", # Static constant
+       "reference": "spinnaker://newSpelTemplate", # Reference to the pipeline template we published above. We saved it in Spinnaker, so we prefix the template id with ‘spinnaker://’.
+       "type": "front50/pipelineTemplate", # Static constant
      },
-     “variables”: {
-       “waitTime”: 4 # Value for the template variable.
+     "variables": {
+       "waitTime": 4 # Value for the template variable.
      },
-     “inherit”: [],
-     “triggers”: [],
-     “parameters”: [],
-     “notifications”: [],
-     “description”: “”,
-     “stages”: []
+     "inherit": [],
+     "triggers": [],
+     "parameters": [],
+     "notifications": [],
+     "description": "",
+     "stages": []
    }
    ```
 
