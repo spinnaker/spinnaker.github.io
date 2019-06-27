@@ -16,7 +16,7 @@ template variables you can...
 ## Inherit from the template
 
 By default, the pipeline instance inherits the stages, expected artifacts, triggers, parameters, and notifications from the template.
-It is possible to opt out of inheriting triggers, parameters, and notifications by including the corresponding string in the `exclude` element.
+It's possible to opt out of inheriting triggers, parameters, and notifications by including the corresponding string in the `exclude` element.
 
 For example, the template might have a trigger defined in the `triggers` element, but you can opt out of inheriting it by including `triggers` inside the `exclude` element.
 
