@@ -7,21 +7,31 @@ sidebar:
 
 {% include toc %}
 
-In order to programatically trigger pipelines one can send a `POST` call to
-Spinnaker at a preconfigured endpoint. This can be used to trigger pipelines
+> This guide assumes that you have enabled the `artifactsRewrite` feature flag.
+> See [Prerequisites](#prerequisites).
+
+In order to programatically trigger pipelines you can send a `POST` call to
+Spinnaker at a preconfigured endpoint. You can use this to trigger pipelines
 when a CI job finishes, from the command line, or from a third-party system.
 The payload, whether it is one you are able to write, or it is provided for
 you, will be available in the Pipeline's execution.
 
-> __☞ Note__:  It's possible to configure multiple pipelines to trigger off of
-> a single webhook.
+> __☞ Note__:  You can configure multiple pipelines to trigger off of a single
+> webhook.
 
 If you're triggering from a *GitHub* webhook, see the instructions
 [here](/setup/triggers/github/) to set up that webhook.
 
+## Prerequisites
+
+* Enable the `artifactsRewrite` feature flag in Spinnaker. In
+  `~/.hal/$DEPLOYMENT/profiles/settings-local.js` (where `$DEPLOYMENT` is
+  typically `default`), add the line
+  `window.spinnakerSettings.feature.artifactsRewrite = true;`.
+
 ## Adding a webhook trigger to a pipeline
 
-Assuming you have created a pipeline, under __Configuration__, select __Add
+Assuming you've created a pipeline, under __Configuration__, select __Add
 Trigger__ and make its type selector __Webhook__.
 
 To assign an endpoint that must be hit, you can provide a value to the

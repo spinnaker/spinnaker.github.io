@@ -7,7 +7,8 @@ sidebar:
 
 {% include toc %}
 
-> This guide assumes that you have enabled the `artifactsRewrite` feature flag. See the [Prerequisites](#prerequisites).
+> This guide assumes that you have enabled the `artifactsRewrite` feature flag.
+> See [Prerequisite configuration/setup](#prerequisite-configurationsetup).
 
 This guide explains how to configure Spinnaker to trigger pipelines based on
 changes in a [Google Cloud Storage](https://cloud.google.com/storage/) (GCS)
@@ -36,16 +37,19 @@ You need the following:
 * [`gcloud`](https://cloud.google.com/sdk/gcloud/). Make sure to run `gcloud
   auth login` if you have installed `gcloud` for the first time.
 
-* [A running Spinnaker instance](/setup/install). This guide shows you how
+* [A running Spinnaker instance](/setup/install/). This guide shows you how
   to configure an existing one to accept GCS messages, and download the files
   referenced by the messages in your pipelines.
 
-* The `artifactsRewrite` feature flag enabled in Spinnaker. In `~/.hal/$DEPLOYMENT/profiles/settings-local.js` (where `$DEPLOYMENT` is typically `default`), add the line `window.spinnakerSettings.feature.artifactsRewrite = true;`.
+* The `artifactsRewrite` feature flag enabled in Spinnaker. In
+  `~/.hal/$DEPLOYMENT/profiles/settings-local.js` (where `$DEPLOYMENT` is
+  typically `default`), add the line
+  `window.spinnakerSettings.feature.artifactsRewrite = true;`.
 
 At this point, we will configure Pub/Sub, and a GCS artifact account. The
-intent is that the Pub/Sub messages will be received by Spinnaker whenever a
-file is uploaded or changed, and the artifact account will allow you to
-download these where necessary.
+Pub/Sub messages will be received by Spinnaker whenever a file is uploaded or
+changed, and the artifact account will allow you to download these where
+necessary.
 
 ## 1. Configure Google Pub/Sub for GCS
 

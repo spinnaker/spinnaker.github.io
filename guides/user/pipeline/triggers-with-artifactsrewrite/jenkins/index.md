@@ -7,19 +7,20 @@ sidebar:
 
 {% include toc %}
 
-> This guide assumes that you have enabled the `artifactsRewrite` feature flag. In
-> `~/.hal/$DEPLOYMENT/profiles/settings-local.js` (where `$DEPLOYMENT` is typically
-> `default`), add:
->
-> `window.spinnakerSettings.feature.artifactsRewrite = true;`
+> This guide assumes that you have enabled the `artifactsRewrite` feature flag.
+> See [Prerequisites](#prerequisites).
 
 This guide explains how to add a [Jenkins](https://jenkins.io/){:target="\_blank"}
 trigger to your pipeline.
 
 ## Prerequisites
 
-*   [Set up Jenkins](/setup/ci/jenkins/) as a continuous integration system in
-    your Spinnaker deployment
+* [Set up Jenkins](/setup/ci/jenkins/) as a continuous integration system in
+    your Spinnaker deployment.
+* Enable the `artifactsRewrite` feature flag in Spinnaker. In
+  `~/.hal/$DEPLOYMENT/profiles/settings-local.js` (where `$DEPLOYMENT` is
+  typically `default`), add the line
+  `window.spinnakerSettings.feature.artifactsRewrite = true;`.
 
 ## Adding a Jenkins trigger
 

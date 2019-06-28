@@ -7,30 +7,34 @@ sidebar:
 
 {% include toc %}
 
-> This guide assumes that you have enabled the `artifactsRewrite` feature flag. In
-> `~/.hal/$DEPLOYMENT/profiles/settings-local.js` (where `$DEPLOYMENT` is typically
-> `default`), add:
->
-> `window.spinnakerSettings.feature.artifactsRewrite = true;`
+> This guide assumes that you have enabled the `artifactsRewrite` feature flag.
+> See [Prerequisites](#prerequisites).
 
 In order to programatically trigger pipelines one can configure Spinnaker to
-subscribe and listen to a pub/sub topic and push messages to the configured
+subscribe and listen to a Pub/Sub topic and push messages to the configured
 topic. This can be used to trigger pipelines during CI jobs, from the command line,
 or from a third-party system. The message payload will be available in the
 Pipeline's execution.
 
 > __☞ Note__:  It's possible to configure multiple pipelines to trigger off of
-> a single pub/sub message.
+> a single Pub/Sub message.
 
 Only Google Pub/Sub is supported. See the instructions
 [here](/setup/triggers/google/) to set up Google Pub/Sub.
 
-## Adding a pub/sub trigger to a pipeline
+## Prerequisites
+
+* Enable the `artifactsRewrite` feature flag in Spinnaker. In
+  `~/.hal/$DEPLOYMENT/profiles/settings-local.js` (where `$DEPLOYMENT` is
+  typically `default`), add the line
+  `window.spinnakerSettings.feature.artifactsRewrite = true;`.
+
+## Adding a Pub/Sub trigger to a pipeline
 
 Assuming you have created a pipeline, under __Configuration__, select __Add
 Trigger__ and make its type selector __Pub/Sub__.
 
-To select a pub/sub subscription to trigger from, select values for
+To select a Pub/Sub subscription to trigger from, select values for
 __Pub/Sub System Type__ and __Subscription Name__. Note that the subscription
 must be configured before it is available to select in the UI.
 
@@ -42,7 +46,7 @@ must be configured before it is available to select in the UI.
 
 ### Payload constraints
 
-If you want to ensure that a pub/sub trigger only fires when a certain message payload
+If you want to ensure that a Pub/Sub trigger only fires when a certain message payload
 arrives, you can provide __Payload Constraints__ in the trigger. These are
 key/value pairs where the key must be found in the incoming message payload, and the
 value must match using regex.
@@ -77,9 +81,9 @@ But this message payload would be rejected (pipeline would not trigger):
 
 ## Passing parameters
 
-Say your pipeline accepted some parameters (e.g. the desired stack to deploy
-to), you can make this explicit by adding a pipeline parameter on the same
-configuration screen as the pub/sub trigger:
+Say your pipeline accepted some parameters (for example, the desired stack to
+deploy to), you can make this explicit by adding a pipeline parameter on the
+same configuration screen as the Pub/Sub trigger:
 
 {%
   include
@@ -111,7 +115,7 @@ following message payload for example:
 ```
 
 > __☞ Note__: If you had selected the __Required__ checkbox for a parameter
-> without providing a default, the pipeline will not trigger if a parameter is
+> without providing a default, the pipeline doesn't trigger if a parameter is
 > not present. The difference between this and the preconditions covered
 > earlier is that when a precondition isn't met, Spinnaker will not even try to
 > run the pipeline. However, when a required parameter doesn't exist, Spinnaker
@@ -138,8 +142,8 @@ and assigning it to the Pub/Sub Trigger. Under **Artifact Constraints**, select
 %}
 
 In order for this to work, you need to supply the required artifact in the
-pub/sub message payload, and configure Spinnaker so that it can translate the
-pub/sub payload into a Spinnaker artifact.
+Pub/Sub message payload, and configure Spinnaker so that it can translate the
+Pub/Sub payload into a Spinnaker artifact.
 
 If you're using GCR, you can use the `--message-format` flag and Spinnaker will
 translate the payload automatically:
@@ -150,7 +154,7 @@ hal config pubsub google subscription edit my-gcr-subscription \
 ```
 
 Otherwise, you need to supply a translation template so that Spinnaker can
-translate the pub/sub payload into a Spinnaker artifact. To do this, create a
+translate the Pub/Sub payload into a Spinnaker artifact. To do this, create a
 [Jinja template](http://jinja.pocoo.org/docs/2.10/templates). Note that the
 output of the Jinja transform must be a JSON list of Spinnaker artifacts. The
 translation template itself can be any valid Jinja transform.
@@ -180,7 +184,7 @@ Spinnaker artifact format:
 [
   {
     "type": "gcs/object", # static type.
-    "reference": "{{"{{ location "}}}}", # 'location' in the pub/sub payload.
+    "reference": "{{"{{ location "}}}}", # 'location' in the Pub/Sub payload.
   }
 ]
 ```
