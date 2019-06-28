@@ -277,8 +277,9 @@ Each stage has a _Conditional on Expression_ checkbox in the _Execution Options_
 section of its configuration. If you select _Conditional on Expression_ and
 enter an expression, the stage only runs if the expression evaluates to true.
 
-For example, if you input the expression `${trigger["dryRun"] == false}`, the
-stage will be skipped during dry runs.
+For example, if you input the expression `trigger["dryRun"] == false`, the
+stage will be skipped during dry runs.  Note: expressions in this field do not
+need to be wrapped in `${}`.
 
 ![](images/conditional-on-expression.png)
 
