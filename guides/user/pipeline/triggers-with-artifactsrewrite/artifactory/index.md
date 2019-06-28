@@ -3,7 +3,6 @@ layout: single
 title:  "Triggering pipelines with Artifactory"
 sidebar:
   nav: guides
-redirect_from: /guides/user/triggers-with-artifactsrewrite/artifactory/
 ---
 
 {% include toc %}

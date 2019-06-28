@@ -3,7 +3,6 @@ layout: single
 title:  "Triggering on Pub/Sub Messages"
 sidebar:
   nav: guides
-redirect_from: /guides/user/triggers/pubsub/
 ---
 
 {% include toc %}
