@@ -7,11 +7,7 @@ sidebar:
 
 {% include toc %}
 
-> This guide assumes that you have enabled the `artifactsRewrite` feature flag. In
-> `~/.hal/$DEPLOYMENT/profiles/settings-local.js` (where `$DEPLOYMENT` is typically
-> `default`), add:
->
-> `window.spinnakerSettings.feature.artifactsRewrite = true;`
+> This guide assumes that you have enabled the `artifactsRewrite` feature flag. See the [Prerequisites](#prerequisites).
 
 This guide explains how to add a [JFrog Artifactory](https://jfrog.com/artifactory/) trigger to your pipeline.
 
@@ -19,9 +15,11 @@ This guide explains how to add a [JFrog Artifactory](https://jfrog.com/artifacto
 
 This guide assumes you have the following:
 
-* An Artifactory search configured in Spinnaker (see the [documentation for the `hal config repository artifactory` Halyard commands](https://www.spinnaker.io/reference/halyard/commands/#hal-config-repository-artifactory))
+* An Artifactory search configured in Spinnaker (see the [documentation for the `hal config repository artifactory` Halyard commands](/reference/halyard/commands/#hal-config-repository-artifactory))
 
-* A Maven account configured in Spinnaker (see the [documentation for the `hal config artifact maven` Halyard commands](https://www.spinnaker.io/reference/halyard/commands/#hal-config-artifact-maven))
+* A Maven account configured in Spinnaker (see the [documentation for the `hal config artifact maven` Halyard commands](/reference/halyard/commands/#hal-config-artifact-maven))
+
+* The `artifactsRewrite` feature flag enabled in Spinnaker. In `~/.hal/$DEPLOYMENT/profiles/settings-local.js` (where `$DEPLOYMENT` is typically `default`), add the line `window.spinnakerSettings.feature.artifactsRewrite = true;`.
 
 # Adding an Artifactory Trigger
 

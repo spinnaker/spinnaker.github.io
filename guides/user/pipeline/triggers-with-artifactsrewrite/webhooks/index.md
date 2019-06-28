@@ -37,8 +37,8 @@ Notice that in the above image below the __Type__ dropdown, the webhook
 configuration points out that we can hit
 `http://localhost:8084/webhooks/webhook/demo` to trigger the pipeline. The
 endpoint depends on how you've configured your [Spinnaker
-endpoints](/setup/security) -- if you're running on a different endpoint, e.g.
-`https://api.spinnaker-prod.net`, that'll be shown instead.
+endpoints](/setup/security) -- if you're running on a different endpoint, for
+example `https://api.spinnaker-prod.net`, that'll be shown instead.
 
 Keeping track of that endpoint as `$ENDPOINT` (it will depend on where
 Spinnaker is installed), save that pipeline, and run:
@@ -84,9 +84,9 @@ But this payload would be rejected (pipeline would not trigger):
 
 ## Passing parameters
 
-Say your pipeline accepted some parameters (e.g. the desired stack to deploy
-to), you can make this explicit by adding a pipeline parameter on the same
-configuration screen as the webhook trigger:
+Say your pipeline accepted some parameters (for example, the desired stack to
+deploy to), you can make this explicit by adding a pipeline parameter on the
+same configuration screen as the webhook trigger:
 
 {%
   include
@@ -117,13 +117,12 @@ following payload for example:
 }
 ```
 
-> __☞ Note__: If you had selected the __Required__ checkbox for a parameter
-> without providing a default, the pipeline will not trigger if a parameter is
-> not present. The difference between this and the preconditions covered
-> earlier is that when a precondition isn't met, Spinnaker will not even try to
-> run the pipeline. However, when a required parameter doesn't exist, Spinnaker
-> will try and fail to run a pipeline, surfacing a "Failed Execution" in the
-> UI.
+> __☞ Note__: If you select the __Required__ checkbox for a parameter without
+> providing a default, the pipeline does not trigger if a parameter is not
+> present. The difference between this and the preconditions covered earlier is
+> that when a precondition isn't met, Spinnaker doesn't even try to run the
+> pipeline. However, when a required parameter doesn't exist, Spinnaker tries
+> and fails to run a pipeline, surfacing a "Failed Execution" in the UI.
 
 ## Passing artifacts
 

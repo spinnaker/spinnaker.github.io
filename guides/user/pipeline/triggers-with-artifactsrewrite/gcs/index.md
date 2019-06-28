@@ -7,11 +7,7 @@ sidebar:
 
 {% include toc %}
 
-> This guide assumes that you have enabled the `artifactsRewrite` feature flag. In
-> `~/.hal/$DEPLOYMENT/profiles/settings-local.js` (where `$DEPLOYMENT` is typically
-> `default`), add:
->
-> `window.spinnakerSettings.feature.artifactsRewrite = true;`
+> This guide assumes that you have enabled the `artifactsRewrite` feature flag. See the [Prerequisites](#prerequisites).
 
 This guide explains how to configure Spinnaker to trigger pipelines based on
 changes in a [Google Cloud Storage](https://cloud.google.com/storage/) (GCS)
@@ -25,8 +21,8 @@ Spinnaker's event bus as shown below.
 
 # Prerequisite configuration/setup
 
-If you (or your Spinnaker admin) has already configured Spinnaker to listen to
-a Pub/Sub messages from the GCS bucket you plan to publish objects to, you can
+If you or your Spinnaker admin have already configured Spinnaker to listen to
+Pub/Sub messages from the GCS bucket you plan to publish objects to, you can
 skip this section. _One Pub/Sub subscription can be used to trigger as many
 independent Spinnaker pipelines as needed_.
 
@@ -43,6 +39,8 @@ You need the following:
 * [A running Spinnaker instance](/setup/install). This guide shows you how
   to configure an existing one to accept GCS messages, and download the files
   referenced by the messages in your pipelines.
+
+* The `artifactsRewrite` feature flag enabled in Spinnaker. In `~/.hal/$DEPLOYMENT/profiles/settings-local.js` (where `$DEPLOYMENT` is typically `default`), add the line `window.spinnakerSettings.feature.artifactsRewrite = true;`.
 
 At this point, we will configure Pub/Sub, and a GCS artifact account. The
 intent is that the Pub/Sub messages will be received by Spinnaker whenever a
