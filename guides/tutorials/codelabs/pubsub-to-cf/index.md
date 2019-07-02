@@ -38,7 +38,7 @@ b. Run the `gsutil mb` command to create a bucket within your GCP project, givin
 
 ## 2. Enable Google Cloud Pub/Sub
 
-a. Enable the GCP Cloud Pub/Sub API, then use `gsutil` to create a pub/sub notification, giving a topic name (`TOPIC`) and your GCS bucket name (`BUCKET`):
+a. Enable the GCP Cloud Pub/Sub API, then use `gsutil` to create a Pub/Sub notification, giving a topic name (`TOPIC`) and your GCS bucket name (`BUCKET`):
 
   ```
   $ TOPIC=<Insert Topic Name>

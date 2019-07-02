@@ -277,7 +277,7 @@ guides:
             url: /guides/user/pipeline/
           - title: Managing Pipelines
             url: /guides/user/pipeline/managing-pipelines/
-          - title: Triggering Pipelines
+          - title: Triggering Pipelines (Standard Artifacts UI)
             collapsed: true
             children:
               - title: Overview
@@ -292,6 +292,23 @@ guides:
                 url: /guides/user/pipeline/triggers/gcs/
               - title: Receiving Artifacts From GitHub
                 url: /guides/user/pipeline/triggers/github/
+          - title: Triggering Pipelines (New Artifacts UI)
+            collapsed: true
+            children:
+              - title: Overview
+                url: /guides/user/pipeline/triggers-with-artifactsrewrite/
+              - title: Triggering pipelines with Jenkins
+                url: /guides/user/pipeline/triggers-with-artifactsrewrite/jenkins/
+              - title: Triggering on Pub/Sub Messages
+                url: /guides/user/pipeline/triggers-with-artifactsrewrite/pubsub/
+              - title: Triggering on Webhooks
+                url: /guides/user/pipeline/triggers-with-artifactsrewrite/webhooks/
+              - title: Receiving Artifacts From GCS
+                url: /guides/user/pipeline/triggers-with-artifactsrewrite/gcs/
+              - title: Receiving Artifacts From GitHub
+                url: /guides/user/pipeline/triggers-with-artifactsrewrite/github/
+              - title: Triggering pipelines with Artifactory
+                url: /guides/user/pipeline/triggers-with-artifactsrewrite/artifactory/
           - title: Pipeline Expressions
             url: /guides/user/pipeline/expressions/
           - title: Searching for Triggered Pipeline Executions
