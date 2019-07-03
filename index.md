@@ -1,5 +1,10 @@
 ---
 layout: home
+conference_ad_row:
+  title: Spinnaker Summit 2019
+  excerpt: "We're hosting a [conference](https://www.spinnakersummit.com) in San Diego, CA on November 16-17th. If you're a community member, we'd love for you to [submit a proposal](https://www.spinnakersummit.com/cfp) to speak. Have you struggled or triumphed with Spinnaker? Do you have tips to share? Do you work in the DevOps space but on different tools? If so, we'd love to see a proposal from you."
+  image_path: assets/images/summit-socialmedia-transparent.png
+  alt: "Spinnaker Summit Logo"
 spinnaker_row:
   title: Spinnaker is an open source, multi-cloud continuous delivery platform for releasing software changes with high velocity and confidence.
   excerpt: "Created at Netflix, it has been battle-tested in production by hundreds of teams over millions of deployments. It combines a powerful and flexible pipeline management system with integrations to the major cloud providers."
@@ -137,6 +142,7 @@ waze_case_study:
 </div>
 
 <div class="spin_header__push_down">
+{% include splash_feature_row id="conference_ad_row" type="summit" %}
 {% include splash_feature_row id="spinnaker_row" type="right" %}
 {% include splash_feature_row id="multi_cloud_row" type="left" %}
 {% include splash_feature_row id="automated_releases_row" type="right" %}
