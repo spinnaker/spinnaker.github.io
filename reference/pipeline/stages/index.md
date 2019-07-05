@@ -316,6 +316,11 @@ The domain must already exist in the Cloud Foundry org.
 If the route does not already exist, it will be created.
 Similar to `cf map-route`; see the Cloud Foundry documentation about how to [Map a Route to Your App](https://docs.cloudfoundry.org/devguide/deploy-apps/routes-domains.html#map-route).
 
+### Run Job
+Run a Cloud Foundry task using a droplet (container) from an already deployed Server Group (Cloud Foundry app).
+Logs of the task can optionally be saved into the stage context; they are downloaded from [loggregator/doppler](https://docs.cloudfoundry.org/loggregator/architecture.html) once the task has succeeded. The fetched logs may be incomplete or absent depending on the buffer state in doppler.
+See the Cloud Foundry documentation about [Tasks](https://docs.cloudfoundry.org/devguide/using-tasks.html).
+
 ### Share Service
 Share a service instance with a specific org / spaces.
 Similar to `cf share-service`; see the Cloud Foundry documentation about [Sharing a Service Instance](https://docs.cloudfoundry.org/devguide/services/sharing-instances.html#sharing).
