@@ -26,13 +26,18 @@ Next, run the following `hal` command (replacing placeholders with actual values
 
 ``` bash
 hal config provider cloudfoundry account add my-cf-account \
-  --api=[api.sys.endpoint.for.foundation] \
+  --api-host=[api.sys.endpoint.for.foundation] \
   --user=[user-account] \
   --password=[user-password] \
   --environment=[dev,prod,...] \
-  --appsManagerUri=[http://apps.sys.endpoint.for.foundation] \
-  --metricsUri=[http://metrics.sys.endpoint.for.foundation]
+  --apps-manager-url=[http://apps.sys.endpoint.for.foundation] \
+  --metrics-url=[http://metrics.sys.endpoint.for.foundation] \
+  --skip-ssl-validation=[true|false] (optional, default: false)
 ```
+
+> NOTE:
+> 1. `--skip-ssl-validation=true` may be necessary when adding an account with a CF API endpoint using a self-signed SSL certificate or a certificate issued by an internal certificate authority. Turning this on will generate a warning.
+
 
 As part of the command execution, Halyard will attempt to connect to the Cloud Foundry instance. Halyard will return an error if this attempt fails.
 
