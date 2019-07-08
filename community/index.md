@@ -127,9 +127,6 @@ opsmx_user:
 cisco_user:
   image_path: assets/images/users/cisco_logo.png
   alt: "Cisco Logo"
-grab_user:
-  image_path: assets/images/users/grab.png
-  alt: "Grab"
 ---
 
 ## Engage the community and get support
@@ -225,7 +222,6 @@ The Spinnaker OSS project was started at Netflix, and today thrives on the contr
   </div>
   <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="xiaohongshu_user" %}
-    {% include spinnaker_user id="grab_user" %}
   </div>
 </div>
 
