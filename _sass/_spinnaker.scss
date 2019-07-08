@@ -166,7 +166,7 @@ $header-height: 400px;
   }
 
   &__push_down {
-    margin-top: $header-height + 50px;
+    margin-top: $header-height + 100px;
   }
 
   ul.spin_call_to_action {
@@ -226,6 +226,23 @@ h2.splash__item-title {
     @extend .archive__item-teaser;
     width: 10%;
     box-shadow: none !important;
+  }
+}
+
+.feature__item--summit {
+  margin-top: 20px;
+  background-color: $spin-light-blue;
+  border-radius: 8px;
+
+  .splash__item-teaser {
+    @extend .archive__item-teaser;
+    float: left;
+    width: 25% !important;
+    box-shadow: none !important;
+  }
+
+  .splash__item-body {
+    padding: 16px 20px 40px calc(25% + 20px);
   }
 }
 
