@@ -26,10 +26,10 @@ of your intended template.
 1. Get the pipeline.
 
    ```
-   spin pipeline get <pipelineName>
+   spin pipeline get --name <pipelineName> --application <appName>
    ```
 
-   ...where `<pipelineName>` is the name shown for the pipeline in the Deck UI.
+   ...where `<pipelineName>` and `<appName>` are the names shown for the pipeline in the Deck UI.
 
    This returns the pipeline JSON. You'll create a pipeline template from this by
    [saving the contents to a file](#2-save-the-pipeline-json-to-a-file) and
@@ -43,7 +43,7 @@ and paste it into a file.
 If you want, you can do this when you first get the pipeline:
 
 ```bash
-spin pipeline get <pipelineName> | tee new_template.txt
+spin pipeline get --name <pipelineName> --application <appName> | tee new_template.txt
 ```
 
 ...and then edit the content in that file. But you can also copy the pipeline
