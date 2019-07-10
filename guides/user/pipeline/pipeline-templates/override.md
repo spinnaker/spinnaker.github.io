@@ -15,13 +15,10 @@ template variables you can...
 
 ## Inherit from the template
 
-By default, the pipeline instance inherits from `pipeline.stages` only. The
-pipeline does not inherit any other items defined in the template. You have to
-explicitly identify anything else from the template you want to inherit. 
+By default, the pipeline instance inherits the stages, expected artifacts, triggers, parameters, and notifications from the template.
+It's possible to opt out of inheriting triggers, parameters, and notifications by including the corresponding string in the `exclude` element.
 
-For example, the template might have a trigger defined in the
-`triggers` element, but that trigger is not used in your pipeline unless you
-include `triggers` inside the `inherit` element.
+For example, the template might have a trigger defined in the `triggers` element, but you can opt out of inheriting it by including `triggers` inside the `exclude` element.
 
 1. In the pipeline template you are instantiating, examine what's in the
 `pipeline` element to see what you want to use in your pipeline.
@@ -30,23 +27,23 @@ include `triggers` inside the `inherit` element.
    spin pipeline-template get --id <templateName>
    ```
 
-1. In the `inherit: [] ` section of the pipeline JSON, include the key for
-each element of the template that you want to inherit.
+1. In the `exclude: [] ` section of the pipeline JSON, include the key for
+each element of the template that you want to opt out of inheriting.
 
-   For example, to inherit triggers defined in `pipeline.triggers`, include
-   `triggers` inside the `inherit` element of the new pipeline:
+   For example, to opt out of inheriting triggers defined in `pipeline.triggers`, include
+   `triggers` inside the `exclude` element of the new pipeline:
 
    ```json
-   "inherit": ["triggers"]
+   "exclude": ["triggers"]
    ```
 
-   The same goes for anything else found inside `pipeline`.
+   The same goes for other items found inside `pipeline`.
 
    ```json
-   "inherit": ["triggers", "notifications"] # for example
+   "exclude": ["triggers", "notifications"] # for example
    ```   
 
-Now, all the triggers and notificatons (in this example) defined in the template are part of the pipeline instance.
+Now, all the triggers and notificatons (in this example) defined in the template are excluded from the pipeline instance.
 
 ## Override the template
 

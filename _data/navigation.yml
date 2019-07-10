@@ -145,6 +145,8 @@ setup:
             url: /setup/triggers/google/
           - title: GitHub Webhook
             url: /setup/triggers/github/
+          - title: Amazon Pub/Sub
+            url: /setup/triggers/amazon/
       - title: Set up the spin CLI
         url: /setup/spin/
       - title: Add Your CI system
@@ -275,7 +277,7 @@ guides:
             url: /guides/user/pipeline/
           - title: Managing Pipelines
             url: /guides/user/pipeline/managing-pipelines/
-          - title: Triggering Pipelines
+          - title: Triggering Pipelines (Standard Artifacts UI)
             collapsed: true
             children:
               - title: Overview
@@ -290,6 +292,23 @@ guides:
                 url: /guides/user/pipeline/triggers/gcs/
               - title: Receiving Artifacts From GitHub
                 url: /guides/user/pipeline/triggers/github/
+          - title: Triggering Pipelines (New Artifacts UI)
+            collapsed: true
+            children:
+              - title: Overview
+                url: /guides/user/pipeline/triggers-with-artifactsrewrite/
+              - title: Triggering pipelines with Jenkins
+                url: /guides/user/pipeline/triggers-with-artifactsrewrite/jenkins/
+              - title: Triggering on Pub/Sub Messages
+                url: /guides/user/pipeline/triggers-with-artifactsrewrite/pubsub/
+              - title: Triggering on Webhooks
+                url: /guides/user/pipeline/triggers-with-artifactsrewrite/webhooks/
+              - title: Receiving Artifacts From GCS
+                url: /guides/user/pipeline/triggers-with-artifactsrewrite/gcs/
+              - title: Receiving Artifacts From GitHub
+                url: /guides/user/pipeline/triggers-with-artifactsrewrite/github/
+              - title: Triggering pipelines with Artifactory
+                url: /guides/user/pipeline/triggers-with-artifactsrewrite/artifactory/
           - title: Pipeline Expressions
             url: /guides/user/pipeline/expressions/
           - title: Searching for Triggered Pipeline Executions
@@ -400,6 +419,11 @@ guides:
         url: /guides/spin/pipeline/
       - title: Manage Pipeline Templates
         url: /guides/spin/pipeline-templates/
+  - title: Service Overviews
+    collapsed: true
+    children:
+      - title: Orca
+        url: /guides/developer/service-overviews/orca/
 reference:
   - title: API
     collapsed: true
@@ -481,7 +505,7 @@ reference:
       - title: Component Sizing
         url: /reference/halyard/component-sizing/
       - title: High Availability
-        url: /reference/halyard/high-availability/         
+        url: /reference/halyard/high-availability/
       - title: Secrets Management
         collapsed: true
         children:
