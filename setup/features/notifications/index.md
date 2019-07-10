@@ -11,7 +11,6 @@ redirect_from: /docs/notifications-and-events-guide
 Out of the box, Spinnaker allows you to configure the following types of notifications:
 
 * [Email](#email)
-* [HipChat](#hipchat)
 * [Slack](#slack)
 * [SMS](#twilio) via Twilio
 
@@ -77,35 +76,6 @@ window.spinnakerSettings = {
 // ...
 ```
 
-
-## HipChat
-
-For Hipchat, you will need to create a hipchat [authentication
-token](https://www.hipchat.com/docs/apiv2/auth){:target="\_blank"} that can post
-messages.
-
-in echo.yml
-```
-hipchat:
-  enabled: true
-  baseUrl: https://xxx.hipchat.com
-  token: <authToken>
-```
-in settings.js (deck)
-```
-window.spinnakerSettings = {
-// ...
-  notifications: {
-    hipchat: {
-      enabled: true,
-      botName: '<username of bot>'
-    },
-// ...
-```
-
-
-Note: your users will need to invite the hipchat bot to private rooms that want to be notified.
-
 ## Slack
 
 For slack, you need to [create a custom bot
@@ -141,6 +111,60 @@ Click on 'Add Notification'
 Enter your notification details.
 
 You can also set Notifications at the Pipeline level ( under configuration ) and at the stage level ( by clicking on the [ ] Send Notifications for this stage checkbox.
+
+### Customizing notifications
+Spinnaker will send a standard message based on the event that triggered the notification, indicating the stage (if applicable), the pipeline, the application, and the status of the event. It will also include a link to the pipeline.
+
+For stage-level notifications, you can override the message by editing the JSON of the stage, adding a `customBody` field (for email) or a `customMessage` field (for Slack). If you are customizing an email notification, you can use Markdown or HTML to customize the format of the email. If you are using Slack, you can use a more [limited range of formatting](https://api.slack.com/docs/message-formatting#message_formatting).
+
+For email messages, you can customize the subject by adding a `customSubject` field.
+
+All standard [SpEL expressions](https://www.spinnaker.io/guides/user/pipeline/expressions/) will be evaluated prior to sending the notifications, and can be used in the custom notification fields.
+
+There are two special variables available when adding a custom message or body: `executionId` (the ID of the execution) and `link` (a fully-formed URL for the pipeline or stage that triggered the notification). To use either of these fields, just wrap them in two curly brackets, e.g. `{% raw %}{{link}}{% endraw %}`.
+
+An example of a custom email notification:
+{% raw %}
+```json
+{
+  "customSubject": "Beginning deployment to production (started by: ${trigger.user})",
+  "customBody": "*Pipeline parameters:* ${parameters.toString()}\n\n [View the stage]({{link}}) here.",
+  "notifications": [
+    {
+      "address": "spinnakerteam@spinnaker.io",
+      "level": "stage",
+      "type": "email",
+      "when": [
+        "stage.starting"
+      ],
+    }
+  ],
+  //...
+}
+```
+{% endraw %}
+
+A custom Slack message:
+{% raw %}
+```json
+  {
+    "customMessage": "${trigger.user} started a <{{link}}|deploy to production>",
+    "notifications": [
+      {
+        "address": "spinnaker-prod-deploys",
+        "level": "stage",
+        "type": "slack",
+        "when": [
+          "stage.starting"
+        ],
+      }
+    ],
+    //...
+  }
+```
+{% endraw %}
+
+> **Note**: the custom fields will apply to **all** notifications within a stage. If you have different notifications for different events (e.g. a Slack message when the stage starts **and** when it completes), the custom fields will be applied to both messages.
 
 # Setting up Git Triggers in Spinnaker
 
