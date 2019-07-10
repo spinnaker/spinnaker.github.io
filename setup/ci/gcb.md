@@ -56,8 +56,10 @@ locking:
   enabled: true
 ```
 
-Use the following Halyard command to create a GCB account, enable the GCB integration, and re-deploy Spinnaker:
+Use the following Halyard commands to create a GCB account, enable the GCB integration, and re-deploy Spinnaker:
 ```
+    hal config pubsub google enable
+
     hal config ci gcb account add $ACCOUNT_NAME \
       --project $PROJECT_ID \
       --subscription-name $SUBSCRIPTION_NAME \
