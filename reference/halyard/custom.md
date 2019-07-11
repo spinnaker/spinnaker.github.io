@@ -105,7 +105,7 @@ cluster.
 
 ### Kubernetes
 
-Inside the `kubernetes` item at the top level you can add a number of custom service settings that will impact the way that the Spinnaker services are deployed onto a Kubernetes cluster. This provides you the ability to configure parts of how the Kubernetes `Deployment`, `Service`, `Pods` and other Kubernetes resources are deployed by Halyard. This allows you to do things like adding a Kubernetes `secret` or `emptydir` to be mounted as a `Volume` and `VolumeMount`, change the default Kubernetes deployment strategy and more.
+Inside the `kubernetes` item at the top level you can add a number of custom service settings that will impact the way that the Spinnaker services are deployed onto a Kubernetes cluster. This provides you the ability to configure parts of how the Kubernetes `Deployment`, `Service`, `Pods` and other Kubernetes resources are deployed by Halyard. This allows you to do things like add a Kubernetes `secret` or `emptydir` to be mounted as a `Volume` and `VolumeMount`, change the default Kubernetes deployment strategy and more.
 
 At a high level, the configurable items inside the Kubernetes service settings are:
 
