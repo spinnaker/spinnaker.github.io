@@ -110,6 +110,13 @@ In Spinnaker, tags can only contain lowercase letters, numeric characters,
 underscores and dashes. Depending on your provider, you may need to specify what
 region to search for the image.
 
+### Google Cloud Build
+
+Run a Google Cloud Build build by specifing a build config as either an artifact or
+as inline YAML. Artifacts produced by the build can be injected into the pipeline
+and used by downstream stages. You must [configure Google Cloud Build](/setup/ci/gcb/)
+in order to use this stage.
+
 ### Jenkins
 Run the specified job in Jenkins. You must [set up Jenkins](/setup/ci/jenkins/)
 in order to use this stage. Once Jenkins is configured, your Jenkins master and
