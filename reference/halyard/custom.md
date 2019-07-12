@@ -98,7 +98,7 @@ cluster.
 | `overrideBaseUrl` | The baseURL this service is reachable on. This is already made configurable for Deck & Gate via `hal config security`, since these are both public-facing and may service from different hosts than they are discoverable on internal to Spinnaker. |
 | `port` | The port number this service is bound to, and will accept requests on. |
 | `safeToUpdate` | Whether or not this service can be shutdown, and spun on a new VM/container. This protects datastores like Vault & Redis from being taken down from Halyard. |
-| `scheme` | The URI scheme used to address this service, e.g. `http` vs.  `https`. |
+| `scheme` | The URI scheme for addressing this service, e.g. `http` vs.  `https`. |
 | `skipLifeCycleManagement` | Whether or not Halyard should skip managing a service's life cycle. |
 | `targetSize` | The initial number of nodes this service will be created with.  This is only respected on the initial deployment, and further edits will be rejected in favor of the prior service version's size. |
 
@@ -112,17 +112,17 @@ At a high level, the configurable items inside the Kubernetes service settings a
 | Item | Details |
 | ----- | ----------- |
 | `deploymentStrategy` | Defines either `RollingUpdate` or `Recreate` deployment strategy, including setting `MaxSurge` and `MaxUnavailable` See [Deployment Strategy](#deployment-strategy) below. |
-| `imagePullSecrets` | Used to define secrets to use to pull a custom artifact when using an artifactId to swap out docker image. More details can be found in the [Image Pull Secrets section](#imagepullsecrets). |
-| `nodePort` | When using a serviceType of NodePort, this is used to provide the NodePort value. |
-| `nodeSelector` | Used to provide a list of `nodeSelector` key-value pairs to add to the pod specification. See [Node Selector](#nodeselector) below. |
-| `podAnnotations` | Used to provide a list of annotations to put on the deployed pods. See [Annotations and Labels](#podannotations-podlabels-and-servicelabels) below. |
-| `podLabels` |  Used to provide a list of labels to put on the deployed pods. See [Annotations and Labels](#podannotations-podlabels-and-servicelabels) below. |
+| `imagePullSecrets` | Define secrets to use to pull a custom artifact when using an artifactId to swap out docker image. More details can be found in the [Image Pull Secrets section](#imagepullsecrets). |
+| `nodePort` | When using a serviceType of NodePort, this provides the NodePort value. |
+| `nodeSelector` | Provide a list of `nodeSelector` key-value pairs to add to the pod specification. See [Node Selector](#nodeselector) below. |
+| `podAnnotations` | Provide a list of annotations to put on the deployed pods. See [Annotations and Labels](#podannotations-podlabels-and-servicelabels) below. |
+| `podLabels` |  Provide a list of labels to put on the deployed pods. See [Annotations and Labels](#podannotations-podlabels-and-servicelabels) below. |
 | `securityContext` | Set the securityContext that the Spinnaker services should run using in Kubernetes |
-| `serviceLabels` | Used to provide a list of labels to put on the deployed services. See [Annotations and Labels](#podannotations-podlabels-and-servicelabels) below. |
-| `serviceAccountName` | Used to provide a default `serviceAccount` under which to run Spinnaker services. |
-| `serviceType` | Used to define a specific serviceType for deployed services, `ClusterIP` (Default) or `NodePort` |
-| `useExecHealthCheck` | Used to disable the exec-based healthcheck if necessary. See [useExecHealthCheck](#useexechealthcheck) for details. |
-| `volumes` | Used to define a set of `Volume` and `VolumeMount` items to be attached to the Pods through the Deployment. See [Custom Volumes](#using-custom-volumes) |
+| `serviceLabels` | Provide a list of labels to put on the deployed services. See [Annotations and Labels](#podannotations-podlabels-and-servicelabels) below. |
+| `serviceAccountName` | Provide a default `serviceAccount` under which to run Spinnaker services. |
+| `serviceType` | Define a specific serviceType for deployed services, `ClusterIP` (Default) or `NodePort` |
+| `useExecHealthCheck` | Disable the exec-based healthcheck if necessary. See [useExecHealthCheck](#useexechealthcheck) for details. |
+| `volumes` | Define a set of `Volume` and `VolumeMount` items to be attached to the Pods through the Deployment. See [Custom Volumes](#using-custom-volumes) |
 
 
 ### imagePullSecrets
@@ -155,7 +155,7 @@ These are all optional ways to control what metadata elements exist on the resou
 
 ### nodeSelector
 
-Node selector annotations can be used to put out `nodeSelector` values in the Pod specification. They generally follow a similar syntax to the annotations and labels. For example:
+Node selector annotations will put out `nodeSelector` values in the Pod specification. They generally follow a similar syntax to the annotations and labels. For example:
 
 ```
 kubernetes:
@@ -193,7 +193,7 @@ Make sure that the `id` field matches the `name` of the existing `secret` or `co
 
 ### Deployment Strategy
 
-You can change the deployment strategy that is used when deploying Spinnaker services.
+You can change the deployment strategy that Kubernetes uses when deploying Spinnaker services.
 For example, if you wanted to adjust the `maxSurge` and `maxUnavailable` percentages for a rolling update of Clouddriver, you would define a `clouddriver.yml` file in your Halyard `service-settings` like the one below.
 
 ```
