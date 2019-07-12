@@ -112,7 +112,7 @@ The conventions are as follows:
 
 ```
 ${CONFIG_INPUT_ROOT}/
-├── boms/
+├── bom/
 │   └── ${VERSION}.yml            # for each top-level spinnaker version
 └── ${SUBCOMPONENT}
     ├── ${DEFAULT_PROFILE}        # when a given version isn't found
@@ -125,7 +125,7 @@ published, looks like (with a lot of omissions):
 
 ```
 gs://halconfig/
-├── boms/
+├── bom/
 │   ├── 1.10.1.yml
 │   ├── 1.10.0.yml
 │   ├── 1.9.5.yml
@@ -166,7 +166,7 @@ Given any GCS bucket, `gs://${BUCKET}`, the `${CONFIG_INPUT_ROOT}` is
 `gs://${BUCKET}`. 
 
 As a result, a BOM at version `${VERSION}` can be found at
-`gs://${BUCKET}/boms/${VERSION}.yml`, and a configuration file `${PROFILE}` for
+`gs://${BUCKET}/bom/${VERSION}.yml`, and a configuration file `${PROFILE}` for
 subcomponent `${SUBCOMPONENT}` at version `${SUBCOMPONENT_VERSION}` can be
 found at `gs://${BUCKET}/${SUBCOMPONENT}/${SUBCOMPONENT_VERSION}/${PROFILE}`.
 
@@ -192,14 +192,14 @@ hal config version edit --version local:${VERSION}
 
 In this case, the `${CONFIG_INPUT_ROOT}` is `${HALCONFIG_DIR}/.boms`. As a
 result, the BOM will be found under
-`${HALCONFIG_DIR}/.boms/boms/${VERSION}.yml`.
+`${HALCONFIG_DIR}/.boms/bom/${VERSION}.yml`.
 
 > `${HALCONFIG_DIR}` is typically `~/.hal`
 
 At this point, the configuration files for each service will by default be read
 from GCS, unless you modify the BOM to indicate that they should be sourced
 locally. This is done by prefixing the subcompent version with `local:` as well.
-For example, in `~/.hal/.boms/boms/1.10.1.yml`:
+For example, in `~/.hal/.boms/bom/1.10.1.yml`:
 
 ```yaml
 version: 1.10.1
