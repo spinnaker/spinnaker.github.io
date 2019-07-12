@@ -167,7 +167,7 @@ Additional information regarding Node Selectors can be found in [the Kubernetes 
 
 ### useExecHealthCheck
 
-By default halyard deploys services with an `exec` based health check in order to improve compatibility with istio. This however can break functionality for implementations of Load Balancer service types and Ingress Controllers that rely on having a http health check to validate. Setting `kubernetes.useExecHealthCheck: false` will switch the check method to be http based for such use cases.
+By default halyard deploys services with an `exec`-based health check in order to improve compatibility with Istio. This however can break functionality for implementations of Load Balancer service types and Ingress Controllers that rely on having an http health check to validate. Setting `kubernetes.useExecHealthCheck: false` will switch the check method to be http based for such use cases.
 
 
 ### Using Custom Volumes
