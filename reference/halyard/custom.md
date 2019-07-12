@@ -213,4 +213,4 @@ kubernetes:
     type: recreate
 ```
 
-For additional information regarding the implication of each of these Deployment Strategies, consult the [Updating a Deployment](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) documentation.
+For additional information regarding the implication of each of these deployment strategies, consult the [Updating a Deployment](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) documentation.
