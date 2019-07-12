@@ -193,7 +193,7 @@ Make sure that the `id` field matches the `name` of the existing `secret` or `co
 
 ### Deployment Strategy
 
-You can change the Deployment Strategy that is used when deploying Spinnaker services.
+You can change the deployment strategy that is used when deploying Spinnaker services.
 For example, if you wanted to adjust the `maxSurge` and `maxUnavailable` percentages for a rolling update of Clouddriver, you would define a `clouddriver.yml` file in your Halyard `service-settings` like the one below.
 
 ```
