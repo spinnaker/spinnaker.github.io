@@ -111,7 +111,7 @@ At a high level, the configurable items inside the Kubernetes service settings a
 
 | Item | Details |
 | ----- | ----------- |
-| `deploymentStrategy` | Used to define either `RollingUpdate` or `Recreate` deployment strategy, including setting `MaxSurge` and `MaxUnavailable` See [Deployment Strategy](#deployment-strategy) below. |
+| `deploymentStrategy` | Defines either `RollingUpdate` or `Recreate` deployment strategy, including setting `MaxSurge` and `MaxUnavailable` See [Deployment Strategy](#deployment-strategy) below. |
 | `imagePullSecrets` | Used to define secrets to use to pull a custom artifact when using an artifactId to swap out docker image. More details can be found in the [Image Pull Secrets section](#imagepullsecrets). |
 | `nodePort` | When using a serviceType of NodePort, this is used to provide the NodePort value. |
 | `nodeSelector` | Used to provide a list of `nodeSelector` key-value pairs to add to the pod specification. See [Node Selector](#nodeselector) below. |
