@@ -18,7 +18,7 @@ Netflix has been plagued by eventual consistency-related issues around our usage
 
 Attempts to work around S3's consistency model have resulted in an operationally complicated production deployment. 
 
-Our SQL implementation provides a strongly consistent storage service that is performant, operationally simple and feature rich. It supports object versioning out-of-the-box.
+The SQL implementation provides a strongly consistent storage service that is performant, operationally simple and feature rich. It supports object versioning out-of-the-box.
 
 
 ## Configuration Considerations
@@ -98,7 +98,7 @@ spinnaker:
         previous: true
 ```
 
-Lastly, you can enable primary reads and optionally fallback to the previous storage service if an object is not found.
+Lastly, you can enable primary reads and optionally fallback to previous if an object is not found.
 
 ```yaml
 spinnaker:
