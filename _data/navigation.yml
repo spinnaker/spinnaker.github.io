@@ -208,6 +208,9 @@ setup:
             url: /setup/productionize/persistence/orca-sql/
           - title: Clouddriver SQL
             url: /setup/productionize/persistence/clouddriver-sql/
+          - title: Front50 SQL
+            url: /setup/productionize/persistence/front50-sql/
+
 
 guides:
   - title: Tutorials
