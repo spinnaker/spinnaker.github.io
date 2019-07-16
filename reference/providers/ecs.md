@@ -9,13 +9,13 @@ sidebar:
 
 ## Resource mapping
 
-### Server Group
-A Spinnaker **Server Group** maps to an [Amazon ECS service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html#service_concepts).
+### Server group
+A Spinnaker **server group** maps to an [Amazon ECS service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html#service_concepts).
 
-There are two ways to specify Server Group settings for Amazon ECS:
+There are two ways to specify server group settings for Amazon ECS:
 
 * __Inputs (default)__: 
-  Specify the container image, resource limits, and other settings needed to create an [Amazon ECS task definition](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html) and [service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html#service_concepts) directly in the Server Group. This option supports deploying one container per Amazon ECS task (equivalent to a Spinnaker "instance").
+  Specify the container image, resource limits, and other settings needed to create an [Amazon ECS task definition](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html) and [service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html#service_concepts) directly in the server group. This option supports deploying one container per Amazon ECS task (equivalent to a Spinnaker "instance").
 
 * __Artifact (supported as of 1.15.0)__:
   Specify a pipeline artifact to use as an Amazon ECS task definition for the service. The artifact should be a JSON file in the format of an Amazon ECS [Register Task Definiton request](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RegisterTaskDefinition.html). This option also requires that you specify `containerName`:`imageDescription` mappings for each image in your pipeline that you want to be deployed within the service. You can deploy multiple containers (up to 10) per Amazon ECS task using this option.
@@ -30,7 +30,7 @@ An [Amazon ECS cluster](https://docs.aws.amazon.com/AmazonECS/latest/developergu
 ## Operation mapping
 
 ### Deploy
-Deploys a new Amazon ECS service to the specified Server Group(s). For load balanced services, the previous service will be drained after the new service is considered healthy.
+Deploys a new Amazon ECS service to the specified server group(s). For load balanced services, the previous service will be drained after the new service is considered healthy.
 
 Deployments to Amazon ECS take two actions in regards to Amazon ECS resources:
 
