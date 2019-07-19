@@ -8,7 +8,7 @@ sidebar:
 {% include toc %}
 
 
-Within the Halyard Configuration custom sizing can be specified for each Spinnaker component. Custom sizing must be manually added to the Halyard Configuration, there are no CLI commands or flags to enable these settings. This feature is currently only supported for distributed deployments using Kubernetes (`hal config deploy edit --type distributed --account-name my-k8s-cluster`).
+Custom sizing can be specified for each Spinnaker component within the Halyard configuration. You can either add these sizes to the Halyard config manually, or use any of the [Halyard component sizing commands](https://www.spinnaker.io/reference/halyard/commands/#hal-config-deploy-component-sizing). This feature is currently only supported for distributed deployments using Kubernetes (`hal config deploy edit --type distributed --account-name my-k8s-cluster`).
 
 ## Kubernetes
 The following Kubernetes settings can be tweaked within custom sizing. 
