@@ -16,6 +16,16 @@ configuration into Halyard. For these users & use-cases, Halyard supports
 custom [Profiles](/reference/halyard/#profiles), and custom [Service
 Settings](/reference/halyard/#service-settings).
 
+## Custom Profiles versus Service settings
+
+The two most common ways of customizing your Spinnaker installation is through the use of either a Custom profile, for example `clouddriver-local.yml` or a Service Setting, for example clouddriver.yml. Each of these are created in separate subfolders inside the main Halyard deployment profile folder. In a `default` Halyard profile, this means profiles go in `.hal/default/profiles/` while service-settings go in `.hal/default/service-settings`.
+
+ Custom profiles are configuration files that override the default configuration files for each Spinnaker Service. Service-Settings are used by Halyard to determine how to build the Spinnaker deployment and contain information specific to how each Spinnaker Service will be deployed.
+
+For example, if you want to substitute which image file will be used for a Spinnaker Service, or what environment variables the service will be run with, then you'll need to modify the Service-Settings for that Service.
+
+If you want to override the level of debugging that is specified by default inside the clouddriver.yml configuration, then you'll need to create a custom clouddriver-local.yml file and put it in the Profiles directory.
+
 ## Custom Profiles
 
 If you want to supply custom Profiles, for a particular
