@@ -23,7 +23,7 @@ To make it easier to pinpoint the specific job, the annotation value can be temp
 For example, if your `Job` is deployed with name `myjob-12345`, the annotation...
 
 ```
-jobs.spinnaker.io/logs: 'https://internal-logging/jobs/{{ metadata.name }}'
+jobs.spinnaker.io/logs: 'https://internal-logging/jobs/{{ "{{ metadata.name "}}}}'
 ```
 
 ...will result in the value
