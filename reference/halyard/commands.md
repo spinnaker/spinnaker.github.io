@@ -4,7 +4,7 @@ title: "Commands"
 sidebar:
   nav: reference
 ---
-Published: 2019-07-01 17:46:37
+Published: 2019-07-19 18:46:36
 
 
 # Table of Contents
@@ -5467,6 +5467,8 @@ This is only required when Spinnaker is being deployed in non-Kubernetes cluster
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--git-origin-user`: This is the git user your github fork exists under.
  * `--git-upstream-user`: This is the upstream git user you are configuring to pull changes from & push PRs to.
+ * `--liveness-probe-enabled`: When true, enable Kubernetes liveness probes on Spinnaker services deployed in a Distributed installation. See docs for more information: [https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/)
+ * `--liveness-probe-initial-delay-seconds`: The number of seconds to wait before performing the first liveness probe. Should be set to the longest service startup time. See docs for more information: [https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/)
  * `--location`: This is the location spinnaker will be deployed to. When deploying to Kubernetes, use this flag to specify the namespace to deploy to (defaults to 'spinnaker')
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--type`: Distributed: Deploy Spinnaker with one server group per microservice, and a single shared Redis.
@@ -7115,10 +7117,10 @@ hal config provider cloudfoundry account add ACCOUNT [parameters]
 #### Parameters
 `ACCOUNT`: The name of the account to operate on.
  * `--api-host, --api`: (*Required*) Host of the CloudFoundry Foundation API endpoint ie. `api.sys.somesystem.com`
- * `--apps-manager-uri, --appsManagerUri`: Full URI for the Apps Manager application for the CloudFoundry Foundation ie. `[https://apps.sys.somesystem.com](https://apps.sys.somesystem.com)`
+ * `--apps-manager-url, --apps-manager-uri, --appsManagerUri`: HTTP(S) URL of the Apps Manager application for the CloudFoundry Foundation ie. `[https://apps.sys.somesystem.com](https://apps.sys.somesystem.com)`
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
- * `--metrics-uri, --metricsUri`: Full URI for the metrics application for the CloudFoundry Foundation ie. `[https://metrics.sys.somesystem.com](https://metrics.sys.somesystem.com)`
+ * `--metrics-url, --metrics-uri, --metricsUri`: HTTP(S) URL of the metrics application for the CloudFoundry Foundation ie. `[https://metrics.sys.somesystem.com](https://metrics.sys.somesystem.com)`
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--password`: (*Required*) Password for the account to use on for this CloudFoundry Foundation
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
@@ -7161,10 +7163,10 @@ hal config provider cloudfoundry account edit ACCOUNT [parameters]
  * `--add-required-group-membership`: Add this group to the list of required group memberships.
  * `--add-write-permission`: Add this permission to the list of write permissions.
  * `--api-host, --api`: Host of the CloudFoundry Foundation API endpoint ie. `api.sys.somesystem.com`
- * `--apps-manager-uri, --appsManagerUri`: Full URI for the Apps Manager application for the CloudFoundry Foundation ie. `[https://apps.sys.somesystem.com](https://apps.sys.somesystem.com)`
+ * `--apps-manager-url, --apps-manager-uri, --appsManagerUri`: HTTP(S) URL of the Apps Manager application for the CloudFoundry Foundation ie. `[https://apps.sys.somesystem.com](https://apps.sys.somesystem.com)`
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
- * `--metrics-uri, --metricsUri`: Full URI for the metrics application for the CloudFoundry Foundation ie. `[https://metrics.sys.somesystem.com](https://metrics.sys.somesystem.com)`
+ * `--metrics-url, --metrics-uri, --metricsUri`: HTTP(S) URL of the metrics application for the CloudFoundry Foundation ie. `[https://metrics.sys.somesystem.com](https://metrics.sys.somesystem.com)`
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--password`: Password for the account to use on for this CloudFoundry Foundation
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
