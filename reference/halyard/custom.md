@@ -24,7 +24,7 @@ The two most common ways of customizing your Spinnaker installation is through t
 
 For example, if you want to substitute which image file will be used for a Spinnaker service, or what environment variables the service will be run with, then you'll need to modify the service settings for that service.
 
-If you want to override the level of debugging that is specified by default inside the clouddriver.yml configuration, then you'll need to create a custom clouddriver-local.yml file and put it in the Profiles directory.
+To override the debugging level specified in `clouddriver.yml`, create a custom `clouddriver-local.yml` file and put it in the `/profiles/` directory.
 
 ## Custom Profiles
 
