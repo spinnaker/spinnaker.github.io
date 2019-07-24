@@ -155,14 +155,24 @@ that was created by the specified stage.
 
 Converts a JSON String into a Map that can then be processed further.
 
+### #readYaml(String)
+
+Converts a YAML String into a Map that can then be processed further.
+
 ### #fromUrl(String)
 
-Returns the contents of the specified URL as a String.
+Returns the contents of the specified URL as a String. You can use this
+to fetch information from unauthenticated URL endpoints.
 
 ### #jsonFromUrl(String)
 
 Retrieves the contents of the given URL and converts it into either a map or a
-list. You can use this to fetch information from unauthenticated URL endpoints.
+list. It uses the #fromUrl(String) helper function underneath.
+
+### #yamlFromUrl(String)
+
+Retrieves the contents of the given URL and converts it into a map. It uses
+the #fromUrl(String) helper function underneath.
 
 ### #judgment(String)
 

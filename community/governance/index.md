@@ -45,7 +45,7 @@ Qualification guidelines
 [Current Reviewers](https://github.com/spinnaker/spinnaker/blob/master/reviewers.md)
 
 If you’d like to nominate yourself as a Reviewer, please reach out to the [TOC](#technical-oversight-committee), or 
-self-nominate using [this form](https://docs.google.com/forms/d/e/1FAIpQLScJtnQc4VJNSoZj9JivoMBNzbULDCzpg3IZgp5ScIeeGF1onQ/viewform?usp=sf_link)
+self-nominate using [this form](https://github.com/spinnaker/community/issues/new?assignees=&labels=committee%2Ftoc&template=reviewer-application.md&title=REQUEST%3A+New+Reviewer+status+for+%3Cyour-GH-username%3E)
 
 ### Approvers
 
@@ -66,7 +66,7 @@ Qualification guidelines
 [Current Approvers](https://github.com/spinnaker/spinnaker/blob/master/approvers.md)
 
 If you’d like to nominate yourself as an Approver, please reach out to the [TOC](#technical-oversight-committee), or
-self-nominate using [this form](https://docs.google.com/forms/d/e/1FAIpQLSfmDfZWTSG2uQ66i9mSD7zuBO59Fg31sNkx47M3KpqlLK_wAg/viewform?usp=sf_link).
+self-nominate using [this form](https://github.com/spinnaker/community/issues/new?assignees=&labels=committee%2Ftoc&template=approver-application.md&title=REQUEST%3A+New+Approver+status+for+%3Cyour-GH-username%3E).
 
 ### Technical Oversight Committee
 
@@ -93,7 +93,7 @@ Current TOC members:
 
 * Adam Jordens (Netflix)
 * Rob Zienert (Netflix)
-* Travis Tomsu (Google)
+* Eric Zimanyi (Google)
 
 The technical oversight committee is initially seeded with core members from Netflix and Google. We will leave further details such as number of seats, qualifications, tenure, TBD for the time being.
 

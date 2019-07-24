@@ -116,6 +116,8 @@ The above yaml configures Clouddriver to use a MySQL table as part of a locking 
 
 The following modification to the above example configures Clouddriver to use SQL for the cache and task repository, and Redis for agent scheduling.
 
+**IMPORTANT NOTE FOR GOOGLE CLOUDSQL USERS**: The SQL Agent Scheduler does not work in CloudSQL. You must continue to use the Redis scheduler for now.
+
 ```yaml
 sql:
   scheduler:

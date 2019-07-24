@@ -145,6 +145,10 @@ setup:
             url: /setup/triggers/google/
           - title: GitHub Webhook
             url: /setup/triggers/github/
+          - title: Amazon Pub/Sub
+            url: /setup/triggers/amazon/
+      - title: Set up the spin CLI
+        url: /setup/spin/
       - title: Add Your CI system
         collapsed: true
         children:
@@ -204,6 +208,9 @@ setup:
             url: /setup/productionize/persistence/orca-sql/
           - title: Clouddriver SQL
             url: /setup/productionize/persistence/clouddriver-sql/
+          - title: Front50 SQL
+            url: /setup/productionize/persistence/front50-sql/
+
 
 guides:
   - title: Tutorials
@@ -222,6 +229,8 @@ guides:
             url: /guides/tutorials/codelabs/hello-deployment/
           - title: Deploy GCS Pub/Sub Artifacts to Cloud Foundry
             url: /guides/tutorials/codelabs/pubsub-to-cf/
+          - title: Deploy Artifacts from Artifactory to Cloud Foundry
+            url: /guides/tutorials/codelabs/artifactory-to-cf/
           - title: GCE Source To Prod
             url: https://codelabs.developers.google.com/codelabs/bake-and-deploy-pipeline
           - title: Kubernetes Source To Prod
@@ -271,7 +280,7 @@ guides:
             url: /guides/user/pipeline/
           - title: Managing Pipelines
             url: /guides/user/pipeline/managing-pipelines/
-          - title: Triggering Pipelines
+          - title: Triggering Pipelines (Standard Artifacts UI)
             collapsed: true
             children:
               - title: Overview
@@ -286,6 +295,23 @@ guides:
                 url: /guides/user/pipeline/triggers/gcs/
               - title: Receiving Artifacts From GitHub
                 url: /guides/user/pipeline/triggers/github/
+          - title: Triggering Pipelines (New Artifacts UI)
+            collapsed: true
+            children:
+              - title: Overview
+                url: /guides/user/pipeline/triggers-with-artifactsrewrite/
+              - title: Triggering pipelines with Jenkins
+                url: /guides/user/pipeline/triggers-with-artifactsrewrite/jenkins/
+              - title: Triggering on Pub/Sub Messages
+                url: /guides/user/pipeline/triggers-with-artifactsrewrite/pubsub/
+              - title: Triggering on Webhooks
+                url: /guides/user/pipeline/triggers-with-artifactsrewrite/webhooks/
+              - title: Receiving Artifacts From GCS
+                url: /guides/user/pipeline/triggers-with-artifactsrewrite/gcs/
+              - title: Receiving Artifacts From GitHub
+                url: /guides/user/pipeline/triggers-with-artifactsrewrite/github/
+              - title: Triggering pipelines with Artifactory
+                url: /guides/user/pipeline/triggers-with-artifactsrewrite/artifactory/
           - title: Pipeline Expressions
             url: /guides/user/pipeline/expressions/
           - title: Searching for Triggered Pipeline Executions
@@ -388,14 +414,19 @@ guides:
   - title: Spin CLI
     collapsed: true
     children:
-      - title: Install and Configure Spin CLI
-        url: /guides/spin/cli/
+      - title: Spin CLI Guide
+        url: /guides/spin/
       - title: Manage Applications
         url: /guides/spin/app/
       - title: Manage Pipelines
         url: /guides/spin/pipeline/
       - title: Manage Pipeline Templates
         url: /guides/spin/pipeline-templates/
+  - title: Service Overviews
+    collapsed: true
+    children:
+      - title: Orca
+        url: /guides/developer/service-overviews/orca/
 reference:
   - title: API
     collapsed: true
@@ -478,6 +509,13 @@ reference:
         url: /reference/halyard/component-sizing/
       - title: High Availability
         url: /reference/halyard/high-availability/
+      - title: Secrets Management
+        collapsed: true
+        children:
+          - title: Overview
+            url: /reference/halyard/secrets/
+          - title: S3
+            url: /reference/halyard/secrets/s3-secrets/
   - title: Architecture
     collapsed: true
     children:
@@ -534,6 +572,11 @@ community:
     children:
       - title: FAQs
         url: /community/faqs/
+  - title: Security
+    collapsed: true
+    children:
+      - title: Security
+        url: /community/security/
 
 publications:
   - title: eBook
