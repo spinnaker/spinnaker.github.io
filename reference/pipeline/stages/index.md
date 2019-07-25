@@ -317,9 +317,17 @@ If the route does not already exist, it will be created.
 Similar to `cf map-route`; see the Cloud Foundry documentation about how to [Map a Route to Your App](https://docs.cloudfoundry.org/devguide/deploy-apps/routes-domains.html#map-route).
 
 ### Run Job
-Run a Cloud Foundry task using a droplet (container) from an already deployed Server Group (Cloud Foundry app).
-Logs of the task can optionally be saved into the stage context; they are downloaded from [loggregator/doppler](https://docs.cloudfoundry.org/loggregator/architecture.html) once the task has succeeded. The fetched logs may be incomplete or absent depending on the buffer state in doppler.
+Run a Cloud Foundry task using a droplet (container) from an already deployed Server Group (Cloud Foundry app). Similar to `cf run-task`.
 See the Cloud Foundry documentation about [Tasks](https://docs.cloudfoundry.org/devguide/using-tasks.html).
+
+#### Viewing execution logs
+Logs are the primary form of feedback for any job runner. The Cloud Foundry Run Job stage provides two main ways to view run job execution logs. 
+ 
+##### Recent logs
+Recent logs of the job can be viewed in the pipeline execution details. They are fetched from [loggregator/doppler](https://docs.cloudfoundry.org/loggregator/architecture.html)'s temporary cache. The recent logs may be incomplete or absent depending on doppler's buffer. This is similar to using `cf logs --recent` but integrated in Spinnaker's UI.
+
+##### Link to external system
+Most Cloud Foundry deployments will have some utility to forward logs from loggregator into external systems for log analysis, for example PCF Metrics or Splunk. The Run Job stage can be configured with a templated URL linking to such system. The rendered URL will be shown as a link in the pipeline execution detail.
 
 ### Share Service
 Share a service instance with a specific org / spaces.
