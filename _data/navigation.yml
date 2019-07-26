@@ -431,15 +431,13 @@ reference:
         url: /reference/providers/kubernetes-v2/
       - title: Oracle Cloud
         url: /reference/providers/oracle/
-  - title: Artifacts
+  - title: Artifacts (Standard UI)
     collapsed: true
     children:
       - title: Overview
         url: /reference/artifacts/
-      - title: In Pipelines (Standard UI)
+      - title: In Pipelines
         url: /reference/artifacts/in-pipelines/
-      - title: In Pipelines (New UI)
-        url: /reference/artifacts/in-pipelines-with-artifactsrewrite/
       - title: From Build Triggers
         url: /reference/artifacts/from-build-triggers/
       - title: In Kubernetes (Manifest Based)
@@ -448,7 +446,7 @@ reference:
         url: /reference/artifacts/in-appengine/
       - title: In Cloud Foundry
         url: /reference/artifacts/in-cloud-foundry/
-      - title: Types of Artifacts (Standard UI)
+      - title: Types of Artifacts
         collapsed: true
         children:
           - title: Overview
@@ -473,31 +471,48 @@ reference:
             url: /reference/artifacts/types/kubernetes-object/
           - title: Oracle Object
             url: /reference/artifacts/types/oracle-object/
-      - title: Types of Artifacts (New UI)
+  - title: Artifacts (New UI)
+    collapsed: true
+    children:
+      - title: Overview
+        url: /reference/artifacts-with-artifactsrewrite/
+      - title: In Pipelines
+        url: /reference/artifacts-with-artifactsrewrite/in-pipelines/
+      - title: From Build Triggers
+        url: /reference/artifacts-with-artifactsrewrite/from-build-triggers/
+      - title: In Kubernetes (Manifest Based)
+        url: /reference/artifacts-with-artifactsrewrite/in-kubernetes-v2/
+      - title: In Google App Engine
+        url: /reference/artifacts-with-artifactsrewrite/in-appengine/
+      - title: In Cloud Foundry
+        url: /reference/artifacts-with-artifactsrewrite/in-cloud-foundry/
+      - title: Types of Artifacts
         collapsed: true
         children:
           - title: Overview
-            url: /reference/artifacts/types-with-artifactsrewrite/overview/
+            url: /reference/artifacts-with-artifactsrewrite/types/overview/
           - title: Docker Image
-            url: /reference/artifacts/types-with-artifactsrewrite/docker-image/
+            url: /reference/artifacts-with-artifactsrewrite/types/docker-image/
           - title: Embedded Base64
-            url: /reference/artifacts/types-with-artifactsrewrite/embedded-base64/
+            url: /reference/artifacts-with-artifactsrewrite/types/embedded-base64/
           - title: GCS Object
-            url: /reference/artifacts/types-with-artifactsrewrite/gcs-object/
+            url: /reference/artifacts-with-artifactsrewrite/types/gcs-object/
           - title: S3 Object
-            url: /reference/artifacts/types-with-artifactsrewrite/s3-object/
+            url: /reference/artifacts-with-artifactsrewrite/types/s3-object/
           - title: GitHub File
-            url: /reference/artifacts/types-with-artifactsrewrite/github-file/
+            url: /reference/artifacts-with-artifactsrewrite/types/github-file/
           - title: GitLab File
-            url: /reference/artifacts/types-with-artifactsrewrite/gitlab-file/
+            url: /reference/artifacts-with-artifactsrewrite/types/gitlab-file/
           - title: Bitbucket File
-            url: /reference/artifacts/types-with-artifactsrewrite/bitbucket-file/
+            url: /reference/artifacts-with-artifactsrewrite/types/bitbucket-file/
           - title: HTTP File
-            url: /reference/artifacts/types-with-artifactsrewrite/http-file/
+            url: /reference/artifacts-with-artifactsrewrite/types/http-file/
           - title: Kubernetes Object
-            url: /reference/artifacts/types-with-artifactsrewrite/kubernetes-object/
+            url: /reference/artifacts-with-artifactsrewrite/types/kubernetes-object/
           - title: Oracle Object
-            url: /reference/artifacts/types-with-artifactsrewrite/oracle-object/
+            url: /reference/artifacts-with-artifactsrewrite/types/oracle-object/
+          - title: Maven Artifact
+            url: /reference/artifacts-with-artifactsrewrite/types/maven-artifact/
   - title: Halyard
     collapsed: true
     children:
