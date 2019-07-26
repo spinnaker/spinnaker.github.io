@@ -95,7 +95,7 @@ from stage to stage along the pipeline.
 You can start a pipeline manually, or you can configure it to be automatically
 triggered by an event, such as a Jenkins job completing, a new Docker image appearing in your registry, a CRON schedule, or a stage in another pipeline.
 
-You can configure the pipeline to emit notifications, by email, SMS or HipChat,
+You can configure the pipeline to emit notifications, by email, Slack, or SMS,
 to interested parties at various points during pipeline execution (such as on
 pipeline start/complete/fail).
 
