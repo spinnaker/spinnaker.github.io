@@ -9,6 +9,30 @@ sidebar:
 
 Here are a few Q/A pairs that come up fairly frequently.
 
+## I can't load the Applications screen
+
+After installing Spinnaker and navigating to the <em>Applications</em> screen, you may see one of
+following issues:
+ * The loading indicator spins continuously (prior to release 1.9)
+ * The following error message is displayed (release 1.9 and later):
+ ![Error fetching applications. Check that your gate endpoint is accessible. Further information on troubleshooting this error is available here](applications-error.png)
+
+ The most common cause of this error is that your browser can't communicate with your Gate endpoint.
+ (This endpoint defaults to `http://localhost:8084`, but can be customized.)
+
+ Check your browser console log and/or network for any failed requests to `<gate-endpoint>/applications`.
+
+ Some things to check while troubleshooting:
+ * If you are accessing Spinnaker via the default `http://localhost:9000`, check that you have
+   forwarded Gate's port (8084 by default) to the machine where your browser is running.
+ * If you are accessing Spinnaker via a custom URL, ensure that you have set `override-base-url`
+   for both the UI (Deck) and API (Gate) services, as described in the
+   [question below](#i-want-to-expose-localdebian-spinnaker-on-a-public-ip-address-but-it-always-binds-to-localhost).
+   These settings will configure cross-origin resource sharing (CORS) between your Gate and Deck
+   endpoints; if this is not properly configured, your browser will reject requests from Deck to
+   Gate.
+ * If you have a local deployment of Spinnaker, ensure that Redis is available at the configured address (localhost:6379 by default). If not, start redis by running `sudo systemctl enable redis-server && sudo systemctl start redis-server` and restart spinnaker by running `sudo systemctl restart spinnaker`.
+
 ## I want to expose LocalDebian Spinnaker on a public IP address, but it always binds to localhost
 
 First off, on a local deployment Spinnaker binds to `localhost` intentionally.
@@ -49,6 +73,9 @@ for the version of Spinnaker you want to install. The bucket is
 [`gsutil`](https://cloud.google.com/storage/docs/gsutil){:target="\_blank"} CLI.
 The remediation will depend on your local network. You can also always omit
 validation with the `--no-validate` flag.
+
+As an alternative to `gsutil`, you can try querying the bucket directly using its
+fully-qualified URI: `curl storage.googleapis.com/halconfig`.
 
 ## Halyard times out during a deployment
 
@@ -141,3 +168,36 @@ For example,
 ```bash
 DEFAULT_JVM_OPTS=-Dhttp.proxyHost=my.proxy.domain.com -Dhttp.proxyPort=3128
 ```
+
+## I want to run a Spinnaker service (Clouddriver, Echo, etc) behind an HTTP proxy server
+
+For most Spinnaker service communication, this can be accomplished by setting appropriate 
+JVM options for the service you want to proxy. For example, if you wanted to proxy Echo
+communication for Slack notifications, you would add the following proxy settings to 
+`~/.hal/default/service-settings/echo.yml`
+
+```yaml
+env:
+  JAVA_OPTS: "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=2
+              -Dhttp.proxyHost=<proxy host> -Dhttp.proxyPort=<proxy port> -Dhttps.proxyHost=<proxy host>
+              -Dhttps.proxyPort=<proxy port> -Dhttp.nonProxyHosts='localhost|127.*|[::1]|*.spinnaker'"
+```
+
+These settings will forward all external communication through the proxy server specified while
+keeping internal traffic non-proxied. Additional information can be found 
+[here.](https://docs.oracle.com/javase/8/docs/technotes/guides/net/proxies.html){:target="\_blank"}
+
+The Kubernetes V2 provider must be handled differently. Because the Kubernetes V2 provider 
+uses `kubectl` (which uses curl), you must set environment variablesif you want 
+Kubernetes V2 traffic to be proxied. 
+
+An example `clouddriver.yml` that will proxy Kubernetes V2 traffic will look like:
+```yaml
+env:
+  HTTP_PROXY: "proxyaddress:proxyport"
+  HTTPS_PROXY: "proxyaddress:proxyport"
+  NO_PROXY: "localhost,127.0.0.1,*.spinnaker" 
+```
+
+If you are using both the V1 and V2 version of the Kubernetes provider, you'll need to supply both sets of 
+proxy definitions. 

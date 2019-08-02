@@ -88,3 +88,8 @@ Finally, set the storage source to GCS:
 ```bash
 hal config storage edit --type gcs
 ```
+
+## Next steps
+
+After you've set up GCS as your external storage service, you're ready to
+[deploy Spinnaker](/setup/install/deploy/).

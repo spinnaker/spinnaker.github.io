@@ -19,6 +19,7 @@ Spinnaker is composed of a number of independent microservices:
 
 * [Orca](https://github.com/spinnaker/orca) is the orchestration engine.
   It handles all ad-hoc operations and pipelines.
+  Read more on the [Orca Service Overview](/guides/developer/service-overviews/orca).
 
 * [Clouddriver](https://github.com/spinnaker/clouddriver) is responsible for all
 mutating calls to the cloud providers and for indexing/caching all deployed
@@ -27,7 +28,8 @@ resources.
 * [Front50](https://github.com/spinnaker/front50) is used to persist the
 metadata of applications, pipelines, projects and notifications.
 
-* [Rosco](https://github.com/spinnaker/rosco) is the bakery.
+* [Rosco](https://github.com/spinnaker/rosco) is the bakery. It produces immutable 
+VM images (or image templates) for various cloud providers.
 
   It is used to produce machine images (for example [GCE
     images](https://cloud.google.com/compute/docs/images),
@@ -42,7 +44,7 @@ Jenkins/Travis stages to be used in pipelines.
 
 * [Echo](https://github.com/spinnaker/echo) is Spinnaker's eventing bus.
 
-  It supports sending notifications (e.g. Slack, email, Hipchat, SMS), and acts
+  It supports sending notifications (e.g. Slack, email, SMS), and acts
   on incoming webhooks from services like Github.
 
 * [Fiat](https://github.com/spinnaker/fiat) is Spinnaker's authorization
@@ -64,7 +66,8 @@ service.
 
  This diagram shows which microservices depend on each other. The green
  boxes represent "external" components, including the Deck UI, a single-page
- JavaScript application that runs in your browser.
+ JavaScript application that runs in your browser. The gold boxes represent Halyard components
+ which are only ran when configuring Spinnaker.
 
  <div class="mermaid">
  graph TB
@@ -72,36 +75,40 @@ service.
  deck(Deck) --> gate;
  api(Custom Script/API Caller) --> gate(Gate);
  gate --> kayenta(Kayenta);
- orca --> kayenta(Kayenta);
  gate --> orca(Orca);
  gate --> clouddriver(Clouddriver);
  orca --> clouddriver;
  gate --> rosco(Rosco);
  orca --> front50;
- orca --> rosco
+ orca --> rosco;
  gate --> front50(Front50);
  gate --> fiat(Fiat);
- gate --> kayenta(Kayenta);
  orca --> kayenta;
  clouddriver --> fiat;
  orca --> fiat;
  front50 --> fiat;
  echo(Echo) --> orca;
  echo --> front50;
+ gate --> echo;
  igor(Igor) --> echo;
+
+ hal(Halyard CLI) --> halyard(Halyard Daemon);
 
  classDef default fill:#d8e8ec,stroke:#39546a;
  linkStyle default stroke:#39546a,stroke-width:1px,fill:none;
 
+ classDef halStyle fill:#eebb3c,stroke:#39546a;
+ class halyard,hal halStyle;
+
  classDef external fill:#c0d89d,stroke:#39546a;
- class deck,api external
+ class deck,api external;
  </div>
 
  {% include mermaid %}
 
 In the table below, A filled cell indicates that the system listed in the
 heading of that column has a dependency on the system listed in the heading of
-that row. As all Spinnaker services can be run in their own server group, it' i's
+that row. As all Spinnaker services can be run in their own server group, it is
 typical for services to resolve their dependencies via load balancers or
 discovery systems (for example [Eureka](https://github.com/Netflix/eureka) or
 [Consul](https://www.consul.io/)).
@@ -114,14 +121,14 @@ By default Spinnaker binds ports according to the following table
 
 | Service     | Port              |
 | :---------- | :---------------- |
-| Deck        | 9000              |
-| Gate        | 8084              |
-| Orca        | 8083              |
 | Clouddriver | 7002              |
-| Front50     | 8080              |
-| Rosco       | 8087              |
-| Igor        | 8088              |
+| Deck        | 9000              |
 | Echo        | 8089              |
 | Fiat        | 7003              |
+| Front50     | 8080              |
+| Gate        | 8084              |
 | Halyard     | 8064              |
+| Igor        | 8088              |
 | Kayenta     | 8090              |
+| Orca        | 8083              |
+| Rosco       | 8087              |

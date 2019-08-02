@@ -5,8 +5,6 @@ sidebar:
   nav: guides
 ---
 
-{% include alpha version="1.6" %}
-
 {% include toc %}
 
 This guide shows the basics of how to deploy a Kubernetes manifest using the
@@ -69,11 +67,6 @@ them into the UI, the stage definition would look more like this:
   "source": "text",
   "manifest": {
                                   // manifest contents go here
-  },
-  "moniker": {                    // specifies app & cluster for grouping
-                                  // resources in UI
-    "app": "xnat",
-    "cluster": "c7",
   }
 }
 ```

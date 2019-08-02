@@ -86,8 +86,9 @@ text.actor {
    Splash Page
    ========================================================================== */
 @font-face {
-  font-family: 'Source Sans Pro';
-  src: url(/assets/fonts/SourceSansPro-Light.ttf) format("truetype");
+  font-family: 'Assistant';
+  src: url(https://fonts.googleapis.com/css?family=Assistant);
+/*  src: url(/assets/fonts/SourceSansPro-Light.ttf) format("truetype"); */
 }
 
 $spin-light-blue: #e2f3f6;
@@ -165,7 +166,7 @@ $header-height: 400px;
   }
 
   &__push_down {
-    margin-top: $header-height + 50px;
+    margin-top: $header-height + 100px;
   }
 
   ul.spin_call_to_action {
@@ -228,13 +229,30 @@ h2.splash__item-title {
   }
 }
 
+.feature__item--summit {
+  margin-top: 20px;
+  background-color: $spin-light-blue;
+  border-radius: 8px;
+
+  .splash__item-teaser {
+    @extend .archive__item-teaser;
+    float: left;
+    width: 25% !important;
+    box-shadow: none !important;
+  }
+
+  .splash__item-body {
+    padding: 16px 20px 40px calc(25% + 20px);
+  }
+}
+
 h2.splash__item-title {
   border: none;
   padding: 0;
   color: $spin-dark-blue;
   font-weight: 100;
   margin-left: 0;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Assistant', sans-serif;
 }
 
 h1.spin__heading {
@@ -243,7 +261,7 @@ h1.spin__heading {
   color: $spin-dark-blue;
   font-weight: 100;
   margin-left: 0;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Assistant', sans-serif;
 }
 
 .spin_row {
@@ -297,7 +315,7 @@ $blue-bar-height: 400px;
 $white-bar-height: 150px;
 $cloud-providers-bar-height: $blue-bar-height + $white-bar-height;
 
-$blue-bar-mobile-height: 800px;
+$blue-bar-mobile-height: 840px;
 $cloud-providers-bar-mobile-height: $blue-bar-mobile-height + $white-bar-height;
 
 .spin_cloud_providers {
@@ -305,8 +323,11 @@ $cloud-providers-bar-mobile-height: $blue-bar-mobile-height + $white-bar-height;
     position: absolute;
     left: 0;
     z-index: 10;
-    margin-top: 35em;
+    margin-top: 41em;
     @include breakpoint($medium) {
+      margin-top: 11em;
+    }
+    @include breakpoint($large) {
       margin-top: 8em;
     }
   }
@@ -324,7 +345,7 @@ $cloud-providers-bar-mobile-height: $blue-bar-mobile-height + $white-bar-height;
     @include container;
     @include clearfix;
 
-    padding: 0 0.5em;
+    padding: 0 0.5em 0 3.25em;
 
     @include breakpoint($x-large) {
       max-width: $x-large;
@@ -345,7 +366,7 @@ $cloud-providers-bar-mobile-height: $blue-bar-mobile-height + $white-bar-height;
     color: $spin-dark-blue;
     font-weight: 100;
     margin-left: 0;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Assistant', sans-serif;
     margin-top: 1em;
   }
 
@@ -374,6 +395,10 @@ $cloud-providers-bar-mobile-height: $blue-bar-mobile-height + $white-bar-height;
 
     &__azure {
       filter: invert(1);
+      width: 300px;
+    }
+
+    &__oracle {
       width: 300px;
     }
 
@@ -416,6 +441,18 @@ $cloud-providers-bar-mobile-height: $blue-bar-mobile-height + $white-bar-height;
   }
 }
 
+h3.collapsible-section-header {
+  margin-left: 30px;
+
+  + .collapsible-section {
+    margin-left: 30px;
+  }
+}
+
 li > div.highlighter-rouge {
   font-size: 0.75em;
+}
+
+div.highlighter-rouge {
+  overflow: auto;
 }

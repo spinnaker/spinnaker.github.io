@@ -158,7 +158,7 @@ for more about these parameters.
 #### Enable S3 for your canary
 
 ```
-hal config canary aws account edit --s3-enabled
+hal config canary aws edit --s3-enabled true
 ```
 
 #### View your AWS canary account details

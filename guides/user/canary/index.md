@@ -30,8 +30,9 @@ metrics, using some telemetry provider, which Kayenta can then use to make the
 canary judgment.
 
 Support is built in for [Stackdriver](https://cloud.google.com/stackdriver/docs/),
-[Datadog](https://docs.datadoghq.com/), and
-[Prometheus](https://prometheus.io/docs/introduction/overview/).
+[Datadog](https://docs.datadoghq.com/),
+[Prometheus](https://prometheus.io/docs/introduction/overview/), and
+[Signalfx](https://docs.signalfx.com).
 
 ### Set up your canary environment
 
@@ -63,4 +64,6 @@ stages](/guides/user/canary/stage/).
    The canary stage includes information that scopes the templated query (canary
      config) to a specified set of resources and time boundaries.
 
-See also: [The Canary Judge&mdash;how does it work?](/guides/user/canary/judge/)
+See also:  
+[The Canary Judge&mdash;how does it work?](/guides/user/canary/judge/)  
+[Automating Canary Analysis on GKE with Spinnaker](https://cloud.google.com/solutions/automated-canary-analysis-kubernetes-engine-spinnaker)

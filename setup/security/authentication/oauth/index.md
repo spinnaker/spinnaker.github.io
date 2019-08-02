@@ -6,7 +6,7 @@ sidebar:
 
 {% include toc %}
 
-OAuth 2.0 is the preferred way authenticate and authorize third parties access to your data guarded
+OAuth 2.0 is the preferred way to authenticate and authorize third parties access to your data guarded
 by the identity provider. To confirm your identity, Spinnaker requests access to your email address
 from your identity provider.
 
@@ -47,7 +47,7 @@ a new file under your [deployment](/reference/halyard/#deployments) (typically `
 `~/.hal/$DEPLOYMENT/profiles/gate-local.yml`.
 
 ```yaml
-spring:
+security:
   oauth2:
     client:
       clientId:
@@ -194,7 +194,7 @@ additional `code` parameter.
 server.
 
 1. Gate uses the _access token_ to request user profile data from the resource server
-(`spring.oauth2.resource.userInfoUri`).
+(`security.oauth2.resource.userInfoUri`).
 
 1. Gate uses the `userInfoMapping` to extract specific fields from the response, such as your
 username and email address, and associates it with the established session cookie with your user.

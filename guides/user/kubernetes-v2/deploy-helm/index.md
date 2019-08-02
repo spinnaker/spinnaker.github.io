@@ -5,14 +5,19 @@ sidebar:
   nav: guides
 ---
 
-{% include alpha version="1.8" %}
-
 {% include toc %}
 
 Spinnaker surfaces a "Bake (Manifest)" stage to turn templates into manifests
 with the help of a templating engine. Currently, the only supported templating
 engine is [Helm](https://helm.sh/), by relying on the `helm template` command.
-See more details [here](https://docs.helm.sh/helm/#helm_template).
+See more details [here](https://helm.sh/docs/helm/#helm-template).
+
+> Note: This stage is intended to help you package and deploy applications
+> that you own, and are actively developing and redeploying frequently.
+> It is not intended to serve as a one-time installation method for
+> third-party packages. If that is your goal, it's arguably better to call
+> [`helm install`](https://helm.sh/docs/helm/#helm-install) once when
+> bootstrapping your Kubernetes cluster.
 
 > Note: Make sure that you have configured [artifact support](/setup/artifacts)
 > in Spinnaker first. All Helm charts are fetched/stored as artifacts in
@@ -27,24 +32,42 @@ When configuring the "Bake (Manifest)" stage, you can specify the following:
   The Helm release name for this chart. This determines the name of the
   artifact produced by this stage.
 
+> Note: this name will override any changes you make to the name
+> in the Produces Artifacts section.
+
 * __The template artifact__ (required)
 
   The Helm chart that you will be deploying, stored remotely as a
   `.tar.gz` archive. You can produce this by running `helm package
   /path/to/chart`. See more details
-  [here](https://docs.helm.sh/helm/#helm-package).
+  [here](https://helm.sh/docs/helm/#helm-package).
+
+* __The release namespace__ (optional)
+
+  The Kubernetes namespace to install release into. If parameter is not
+  specified default namespace will be used.
+
+> Note: Not all Helm charts contain namespace definitions in their manifests.
+> Make sure that your manifests contain the following code:
+
+{% raw %}
+```yaml
+metadata:
+  namespace: {{ .Release.Namespace }}
+```
+{% endraw %}
 
 * __Zero or more override artifacts__ (optional)
 
   The files passed to `--values` parameter in the [`helm
-  template` command](https://docs.helm.sh/helm/#helm_template). Each is a
+  template` command](https://helm.sh/docs/helm/#helm-template). Each is a
   remotely stored artifact representing a [Helm Value
-  File](https://docs.helm.sh/chart_template_guide/#values-files).
+  File](https://helm.sh/docs/chart_template_guide/#values-files).
 
 * __Statically specified overrides__
 
   The set of static of key/value pairs that are passed as `--set` parameters to
-  the [`helm template` command](https://docs.helm.sh/helm/#helm_template).
+  the [`helm template` command](https://helm.sh/docs/helm/#helm-template).
 
 As an example, we have a fully configured Bake (Manifest) stage below:
 

@@ -1,11 +1,11 @@
 ---
-title:  "Google Apps for Work"
+title:  "G Suite"
 sidebar:
   nav: setup
 ---
 
-This page instructs you on how to obtain an OAuth 2.0 client ID and client secret for use with your Google Apps for 
-Work/G Suite organization.
+This page instructs you on how to obtain an OAuth 2.0 client ID and client secret for use with your G Suite organization
+(previously known as Google Apps for Work).
 
 1. Navigate to [https://console.developers.google.com/apis/credentials](https://console.developers.google.com/apis/credentials).
 2. Click "Create credentials" --> OAuth client ID.

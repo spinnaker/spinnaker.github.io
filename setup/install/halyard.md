@@ -10,8 +10,8 @@ redirect_from:
 
 {% include toc %}
 
-Halyard manages the lifecycle of your Spinnaker deployment, including writing &
-validating your deployment's configuration, deploying each of Spinnaker's
+Halyard is a command-line administration tool that manages the lifecycle of your Spinnaker deployment,
+including writing & validating your deployment's configuration, deploying each of Spinnaker's
 microservices, and updating the deployment.
 
 All production-capable deployments of Spinnaker require Halyard in order to
@@ -21,16 +21,84 @@ just going to tell you to use Halyard.
 
 There are two ways you can install Halyard:
 
+* [locally on Debian/Ubuntu or macOS](#install-on-debianubuntu-and-macos)
+
+   This can be on a desktop or laptop computer, or on a VM.
+   
 * [on Docker](#install-halyard-on-docker)
 
-  Docker installation is strongly recommended.
+> **Note**: If you need to run Halyard without access to public internet, read
+> [Deploy Custom Spinnaker Builds](/guides/operator/custom-boms/).
 
-* [on Ubuntu](#install-on-ubuntu-14041604)
+## Install on Debian/Ubuntu and macOS
 
-  We support installation on 14.04 and 16.04. Installing on 16.04 requires
-  Spinnaker 1.6.0 or later.
+Halyard runs on...
+
+* Ubuntu 14.04 or 16.04 (Ubuntu 16.04 requires Spinnaker 1.6.0 or later)
+* Debian 8 or 9
+* macOS (tested on 10.13 High Sierra only)
+
+1. Get the latest version of Halyard:
+
+   For Debian/Ubuntu:
+   ```bash
+  curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/debian/InstallHalyard.sh
+   ```
+
+   For macOS:
+   ```bash
+   curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/macos/InstallHalyard.sh
+   ```
+
+1. Install it:
+
+   `sudo bash InstallHalyard.sh`
+
+   If you're prompted for any information, default answers are usually suitable.
+
+1. Check whether Halyard was installed properly:
+
+   `hal -v`
+
+   If this command fails, make sure `hal` is in your `$PATH`, and check the logs
+under `/var/log/spinnaker/halyard/halyard.log`.
+
+1. Run `. ~/.bashrc` to enable command completion.
+
+To get help with any `hal` command, append `-h`. Also, see the [Halyard command
+Reference](/reference/halyard/commands).
+
+### Update Halyard on Debian/Ubuntu or macOS
+
+```bash
+sudo update-halyard
+```
+
+### Uninstall Halyard from Debian/Ubuntu or macOS
+
+> __Important__: uninstalling Halyard deletes the entire contents of your `~/.hal`
+directory. Don't do it unless you're prepared to lose your configuration.
+
+1. If you used Halyard to deploy Spinnaker, and you want to purge that deployment,
+run the following command:
+
+   ```bash
+   hal deploy clean
+   ```
+
+1. Now you can safely uninstall Halyard:
+
+   ```bash
+   sudo ~/.hal/uninstall.sh
+   ```
+
+<span class="begin-collapsible-section"></span>
 
 ## Install Halyard on Docker
+
+> Note: If you install Halyard in a Docker container, you will need to manually
+> change permissions on the mounted ~/.hal directory to ensure Halyard can read
+> and write to it.
 
 1. Make sure you have [Docker CE
 installed](https://docs.docker.com/engine/installation/){:target="\_blank"}.
@@ -83,7 +151,6 @@ installed](https://docs.docker.com/engine/installation/){:target="\_blank"}.
 To get help with any `hal` command, append `-h`. Also, see the [Halyard command
 Reference](/reference/halyard/commands).
 
-<span class="begin-collapsible-section"></span>
 
 ### Update Halyard on Docker
 
@@ -115,9 +182,6 @@ Reference](/reference/halyard/commands).
    docker exec -it halyard bash
    ```
 
-<span class="end-collapsible-section"></span>
-
-<span class="begin-collapsible-section"></span>
 
 ### Uninstall Halyard from Docker
 
@@ -125,66 +189,6 @@ To uninstall Halyard, just delete the container.
 
 ` docker rm halyard`
 
-<span class="end-collapsible-section"></span>
-
-
-<span class="begin-collapsible-section"></span>
-
-## Install on Ubuntu 14.04/16.04
-
-> __Note__: Ubuntu 16.04 is supported for Spinnaker versions 1.6.0 and later.
-
-1. Get the latest version of Halyard:
-
-   `curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/debian/InstallHalyard.sh`
-
-1. Install it:
-
-   `sudo bash InstallHalyard.sh`
-
-   If you're prompted for any information, default answers are usually suitable.
-
-1. Check whether Halyard was installed properly:
-
-   `hal -v`
-
-   If this command fails, make sure `hal` is in your `$PATH`, and check the logs
-under `/var/log/spinnaker/halyard/halyard.log`.
-
-1. Run `. ~/.bashrc` to enable command completion.
-
-To get help with any `hal` command, append `-h`. Also, see the [Halyard command
-Reference](/reference/halyard/commands).
-
-### Update Halyard on Ubuntu
-
-If you're running a version of Halyard before 0.40.0, run these commands:
-
-```bash
-sudo apt-get update
-sudo apt-get install spinnaker-halyard
-```
-
-Otherwise, run this one:
-
-```bash
-sudo update-halyard
-```
-
-### Uninstall Halyard from Ubuntu
-
-If you used Halyard to deploy Spinnaker, and you want to purge that deployment,
-run the following command:
-
-```bash
-hal deploy clean
-```
-
-Now you can safely uninstall Halyard:
-
-```bash
-sudo ~/.hal/uninstall.sh
-```
 <span class="end-collapsible-section"></span>
 
 ## Next steps

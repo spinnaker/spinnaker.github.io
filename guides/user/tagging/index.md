@@ -82,6 +82,7 @@ A unique identifier representing a tagged entity:
 `region` The identifier of the region associated with this entity (supports `*` wildcard)
 `entityType` The type of entity being tagged
 `entityId` The identifier of the entity being tagged
+`application` The identifier of the application associated with this entity
 
 > Supported Entity Types
 >
@@ -119,7 +120,8 @@ A unique identifier representing a tagged entity:
         "accountId": "100000000001",
         "region": "us-west-2",
         "entityType": "servergroup",
-        "entityId": "myservergroup-v001"
+        "entityId": "myservergroup-v001",
+        "application": "app"
       }
     }
 ```
@@ -130,12 +132,13 @@ The following APIs are exposed in `gate` but are subject to change given the cur
 
 ## GET /tags
 
-Fetch all tags
+Fetch all tags. Parameters are case-sensitive.
 
 Parameter Name | Description | Examples
 -- | -- | --
 entityType | Filter by Entity Type | ?entityType=servergroup
 entityId | Filter by Entity Id | ?entityId=myservergroup-v001
+application | Filter by Application | ?application=app
 tag | Filter by Tag (specific value)<br/>Filter by Tag (any value) | ?tag:my_tag=my_value<br />?tag:my_tag=*
 maxResults | Maximum # of results to return (defaults to 100) | ?maxResults=1000
 
@@ -145,13 +148,14 @@ Parameter Name | Description | Examples
 -- | -- | --
 entityType | Entity Type | ?entityType=servergroup
 entityId | Entity Id | ?entityId=myservergroup-v001
+application | application | ?application=app
 account | Account Name | ?account=production<br/>?account=* (wildcard)
 region | Region | ?region=us-west-2<br/>?region=* (wildcard)
 cloudProvider | cloudProvider | ?cloudProvider=aws<br/>?cloudProvider=* (wildcard)
 
 #### Upsert tags
 ```
-    curl -X "POST" "http://gate/tags?entityId=myservergroup-v001&entityType=servergroup&account=production&region=us-west-2&cloudProvider=aws" \
+    curl -X "POST" "http://gate/tags?entityId=myservergroup-v001&entityType=servergroup&account=production&region=us-west-2&cloudProvider=aws&application=app" \
          -H "Content-Type: application/json" \
          -d $'[
       {
@@ -195,7 +199,8 @@ This API provides backwards compatibility with traditional Spinnaker tasks and c
             "entityType": "servergroup",
             "entityId": "myservergroup-v001",
             "region": "us-west-2",
-            "account": "production"            
+            "account": "production",
+            "application": "app"            
           }
         }
       ],
@@ -220,7 +225,7 @@ This API provides backwards compatibility with traditional Spinnaker tasks and c
 
 #### Add alert
 ```
-    curl -X "POST" "http://gate/tags?entityId=spintest-v003&entityType=servergroup&account=test&region=us-west-2&cloudProvider=aws" \
+    curl -X "POST" "http://gate/tags?entityId=spintest-v003&entityType=servergroup&account=test&region=us-west-2&cloudProvider=aws&application=app" \
          -H "Content-Type: application/json" \
          -d $'[
       {
@@ -237,7 +242,7 @@ This API provides backwards compatibility with traditional Spinnaker tasks and c
 
 #### Add notice
 ```
-    curl -X "POST" "http://gate/tags?entityId=spintest-v003&entityType=servergroup&account=test&region=us-west-2&cloudProvider=aws" \
+    curl -X "POST" "http://gate/tags?entityId=spintest-v003&entityType=servergroup&account=test&region=us-west-2&cloudProvider=aws&application=app" \
          -H "Content-Type: application/json" \
          -d $'[
       {
@@ -264,11 +269,19 @@ This API provides backwards compatibility with traditional Spinnaker tasks and c
 #### clouddriver-local.yml
 ```
 elasticSearch:
-  activeIndex: "tags_v1"
-  connection: http://my-elastic-search-cluster:7104
+  activeIndex: "tags_v2"
+  connection: http://my-elastic-search-cluster:9200
+```
+
+#### deck/settings-local.js
+```
+window.spinnakerSettings.feature.entityTags=true;
 ```
 
 #### elasticsearch index template
+
+Make a POST request to http://my-elastic-search-cluster:9200/_template/entityTags with the following template.
+
 ```
 {
   "order": 0,
@@ -327,6 +340,10 @@ elasticSearch:
             "account": {
               "index": "not_analyzed",
               "type": "string"
+            },
+            "application": {
+              "index": "not_analyzed",
+              "type": "string"  
             }
           }
         },

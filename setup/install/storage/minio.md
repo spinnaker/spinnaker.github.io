@@ -37,7 +37,7 @@ in Spinnaker. Add the following line to `~/.hal/$DEPLOYMENT/profiles/front50-loc
 spinnaker.s3.versioning: false
 ```
 
-`$DEPLOYMENT` is typically `default`. Read more [here](/reference/halyard/#deployments).
+`$DEPLOYMENT` is typically `default`. Read more [here](/reference/halyard/#deployments). If this file does not exit, it may have to be created.
 
 Run the following commands (notice we are picking S3 as our storage type,
 because Minio implements the S3 API):
@@ -67,3 +67,8 @@ echo $MINIO_SECRET_KEY | hal config storage s3 edit --endpoint $ENDPOINT \
 
 hal config storage edit --type s3
 ```
+
+## Next steps
+
+After you've set up Minio as your external storage service, you're ready to
+[deploy Spinnaker](/setup/install/deploy/).

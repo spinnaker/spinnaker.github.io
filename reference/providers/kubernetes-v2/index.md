@@ -5,8 +5,6 @@ sidebar:
   nav: reference
 ---
 
-{% include alpha version="1.6" %}
-
 {% include toc %}
 
 This article describes how the Kubernetes provider v2 works and how it differs
@@ -117,18 +115,108 @@ command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
 
 * `caching.spinnaker.io/ignore`
 
-  When set to `true`, tells Spinnaker to ignore this resource.
+  When set to `'true'`, tells Spinnaker to ignore this resource.
   The resource is not cached and does not show up in the Spinnaker UI.
 
 ## Strategy
 
 * `strategy.spinnaker.io/versioned`
 
-  When set to `true` or `false`, this overrides the resource's default
+  When set to `'true'` or `'false'`, this overrides the resource's default
   "version" behavior described in the [resource management
   policies](#resource-management-policies). This can be used to force a
   ConfigMap or Secret to be deployed without appending a new version when the
   contents change, for example.
+
+* `strategy.spinnaker.io/use-source-capacity`
+
+  When set to `'true'` or `'false'`, this overrides the resource's replica count 
+  with the currently deployed resource's replica count. This is supported for 
+  Deployment, ReplicaSet or StatefulSet. This can be used to allow resizing a resource 
+  in the Spinnaker UI or with kubectl without overriding the new size during subsequent 
+  manifest deployments.
+
+* `strategy.spinnaker.io/max-version-history`
+
+  When set to a non-negative integer, this configures how many versions of a
+  resource to keep around. When more than `max-version-history` versions of a
+  Kubernetes artifact exist, Spinnaker deletes all older versions.
+  __Resources are sorted by the `metadata.creationTimestamp` kubernetes property
+  rather than the version number.__
+
+  Keep in mind, if you are trying to restrict how many copies of a ReplicaSet
+  a Deployment is managing, that is configured by
+  [`spec.revisionHistoryLimit`](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#clean-up-policy).
+  If instead Spinnaker is deploying ReplicaSets directly without a Deployment,
+  this annotation does the job.
+
+* `strategy.spinnaker.io/recreate`
+
+  As of Spinnaker 1.13, you can force Spinnaker to delete a resource (if it
+  already exists) before creating it again. This is useful for kinds such
+  as [`Job`](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/),
+  which cannot be edited once created, or must be re-created to run again.
+  
+  When set to `'true'` for a versioned resource, this will only re-create your
+  resource if no edits have been made since the last deployment (i.e. the 
+  same version of the resource is redeployed).
+  
+  The default behavior is `'false'`.
+
+* `strategy.spinnaker.io/replace`
+
+  As of Spinnaker 1.14, you can force Spinnaker to use `replace` instead of
+  of `apply` while deploying a Kubernetes resource. This may be useful for resources
+  such as `ConfigMap` which may exceed the annotation size limit of 262144 characters.
+
+  When set to `'true'` for a versioned resource, this will update your resources using
+  `replace`. Refer to [Kubernetes Object Management](https://kubernetes.io/docs/concepts/overview/object-management-kubectl/overview/#imperative-object-configuration) for more details on object
+  configuration and trade-offs.
+
+  The default behavior is `'false'`.
+
+## Traffic
+
+* `traffic.spinnaker.io/load-balancers`
+
+  As of Spinnaker 1.10, you can specify which load balancers
+  ([Services](https://kubernetes.io/docs/concepts/services-networking/service/))
+  a workload is attached to at deployment time. This will automatically set the
+  required labels on the workload's Pods to match that of the Services' [label
+  selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors).
+
+  This annotation must be supplied as a list of `<kind> <name>` pairs where
+  `kind` and `name` refer to the load balancer in the same namespace as the 
+  resource. For example:
+
+  * `traffic.spinnaker.io/load-balancers: '["service my-service"]'` attaches to
+    the Service named `my-service`.
+
+  * `traffic.spinnaker.io/load-balancers: '["service my-service", "service my-canary-service"]'` 
+    attaches to the Services named `my-service` and `my-canary-service`.
+    
+  As of Spinnaker 1.14, instead of manually adding the `traffic.spinnaker.io/load-balancers`
+  annotation, you can select which load balancers to associate with a workload from the Deploy
+  (Manifest) stage. Spinnaker will then add the appropriate annotation for you. 
+
+# Reserved labels
+
+In accordance with [Kubernetes' recommendations on common
+labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/#labels),
+Spinnaker applies the following labels as of release 1.9:
+
+* `app.kubernetes.io/name`
+
+  This is the name of the Spinnaker application this resource is deployed to,
+  and matches the value of the `moniker.spinnaker.io/application` annotation
+  desribed [here](#moniker).
+
+* `app.kubernetes.io/managed-by`
+
+  Always set to `"spinnaker"`.
+
+> This labeling behavior can be disabled by setting the property
+> `kubernetes.v2.applyAppLabels: false` in `clouddriver-local.yml`.
 
 # How Kubernetes resources are managed by Spinnaker
 
@@ -139,7 +227,8 @@ resources Kubernetes supports. Also the Kubernetes extension
 mechanisms&mdash;called [Custom Resource Definitions
 (CRDs)](https://kubernetes.io/docs/concepts/api-extension/custom-resources/)&mdash;make
 it easy to build new types of resources, and Spinnaker accommodates that by
-making it simple to extend Spinnaker to support a user's CRDs.
+making it simple to [extend Spinnaker to support a user's 
+CRDs](https://www.spinnaker.io/guides/developer/crd-extensions/).
 
 ## Terminology mapping
 
@@ -151,13 +240,13 @@ There are three major groupings of resources in Spinnaker:
 
 * server groups
 * load balancers
-* security groups
+* firewalls
 
 These correspond to Kubernetes resource kinds as follows:
 
 * Server Groups ≈ Workloads
 * Load Balancers ≈ Services, Ingresses
-* Security Groups ≈ NetworkPolicies
+* Firewalls ≈ NetworkPolicies
 
 ## Resource management policies
 
