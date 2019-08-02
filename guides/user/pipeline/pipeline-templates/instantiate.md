@@ -120,14 +120,14 @@ stage.
 ```json
 "stages": [
     {
-        "id": "wait2",
+        "refId": "wait2",
         "type": "wait",
         "config": {
             "waitTime": 67
         }
     },
     {
-        "id": "wait0",
+        "refId": "wait0",
         "inject": {
             "after": ["wait2"]
         },
