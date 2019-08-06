@@ -39,26 +39,10 @@ The pipeline UI exposes the following fields for the Kubernetes object artifact:
 When configuring certain triggers, you can use a Kubernetes object as an
 expected artifact.
 
-{%
-  include
-  figure
-  image_path="./expected-artifact-kubernetes-object.png"
-  caption="Configuring Kubernetes object fields in a pipeline trigger's
-           expected artifact settings."
-%}
-
 ### In a Pipeline Stage
 
 When configuring a "Deploy (Manifest)" or "Deploy" stage, you can use a
 Kubernetes object as a manifest or application artifact.
-
-{%
-  include
-  figure
-  image_path="./deploy-manifest-stage-kubernetes-object.png"
-  caption="Configuring a Deploy (Manifest) stage to use a Kubernetes object as
-           a manifest source."
-%}
 
 ## Kubernetes Object Artifact in a Pipeline Definition
 
