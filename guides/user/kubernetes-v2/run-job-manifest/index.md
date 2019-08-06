@@ -16,14 +16,14 @@ As with any job runner, logs are the primary form of feedback and it's important
 
 ### Link to external system
 
-Most Kubernetes deployments will have some utility for forwarding logs from containers and into external systems for log analysis. If you're using one of these platforms, you can configure your `Job` with the annotation `jobs.spinnaker.io/logs` and a templated URL to your logging system. This value of this annotation will be used to render a link in the UI. 
+Most Kubernetes deployments will have some utility for forwarding logs from containers and into external systems for log analysis. If you're using one of these platforms, you can configure your `Job` with the annotation `job.spinnaker.io/logs` and a templated URL to your logging system. This value of this annotation will be used to render a link in the UI. 
 
 To make it easier to pinpoint the specific job, the annotation value can be templated with values from the deployed `Job` manifest. To use templates, use `{{ "{{ templateKey "}} }}` where `templateKey` is the path to the value you wish to use. The deployed manifest will be passed into the template as JSON. This functionality mirrors that of the [Annotation Driven UI](/guides/user/kubernetes-v2/annotations-ui/).
 
 For example, if your `Job` is deployed with name `myjob-12345`, the annotation...
 
 ```
-jobs.spinnaker.io/logs: 'https://internal-logging/jobs/{{ metadata.name }}'
+job.spinnaker.io/logs: 'https://internal-logging/jobs/{{ "{{ manifest.metadata.name "}}}}'
 ```
 
 ...will result in the value
@@ -34,7 +34,7 @@ https://internal-logging/jobs/myjob-12345
 
 ### Within Spinnaker
 
-You can still view the logs of your `Job` within Spinnaker even if your Kubernetes deployment doesn't forward them to an external system. In the absense of the `jobs.spinnaker.io/logs` annotation, Spinnaker fetches the deployed manifest and displays logs directly in the UI. These logs are only be available for a short period following the job's completion because Kubernetes only stores events about an object for a shot amount of time. If you'd like to view your logs for longer than this timeframe, it's recommended that you use a tool like [Fluentd](https://www.fluentd.org) to forward logs to a more persistent platform like Elasticsearch or Datadog.
+You can still view the logs of your `Job` within Spinnaker even if your Kubernetes deployment doesn't forward them to an external system. In the absense of the `job.spinnaker.io/logs` annotation, Spinnaker fetches the deployed manifest and displays logs directly in the UI. These logs are only be available for a short period following the job's completion because Kubernetes only stores events about an object for a shot amount of time. If you'd like to view your logs for longer than this timeframe, it's recommended that you use a tool like [Fluentd](https://www.fluentd.org) to forward logs to a more persistent platform like Elasticsearch or Datadog.
 
 
 ## Capturing output

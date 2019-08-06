@@ -6,4 +6,5 @@ sidebar:
 ---
 
 * [Google Pub/Sub](/setup/triggers/google/)
+* [Amazon Pub/Sub](/setup/triggers/amazon/)
 * [GitHub Webhook](/setup/triggers/github/)

@@ -16,6 +16,16 @@ configuration into Halyard. For these users & use-cases, Halyard supports
 custom [Profiles](/reference/halyard/#profiles), and custom [Service
 Settings](/reference/halyard/#service-settings).
 
+## Custom Profiles versus Service settings
+
+The two most common ways of customizing your Spinnaker installation is through the use of either a custom profile, for example `clouddriver-local.yml`, or a service setting, for example `clouddriver.yml`. Each of these is created in separate subfolders inside the main Halyard deployment profile folder. In a `default` Halyard profile, this means profiles go in `.hal/default/profiles/` while service settings go in `.hal/default/service-settings`.
+
+ Custom profiles are configuration files that override the default configuration files for each Spinnaker Service. Service-Settings are used by Halyard to determine how to build the Spinnaker deployment and contain information specific to how each Spinnaker Service will be deployed.
+
+For example, if you want to substitute which image file will be used for a Spinnaker service, or what environment variables the service will be run with, then you'll need to modify the service settings for that service.
+
+To override the debugging level specified in `clouddriver.yml`, create a custom `clouddriver-local.yml` file and put it in the `/profiles/` directory.
+
 ## Custom Profiles
 
 If you want to supply custom Profiles, for a particular
@@ -98,16 +108,34 @@ cluster.
 | `overrideBaseUrl` | The baseURL this service is reachable on. This is already made configurable for Deck & Gate via `hal config security`, since these are both public-facing and may service from different hosts than they are discoverable on internal to Spinnaker. |
 | `port` | The port number this service is bound to, and will accept requests on. |
 | `safeToUpdate` | Whether or not this service can be shutdown, and spun on a new VM/container. This protects datastores like Vault & Redis from being taken down from Halyard. |
-| `scheme` | The URI scheme used to address this service, e.g. `http` vs.  `https`. |
+| `scheme` | The URI scheme for addressing this service, e.g. `http` vs.  `https`. |
 | `skipLifeCycleManagement` | Whether or not Halyard should skip managing a service's life cycle. |
 | `targetSize` | The initial number of nodes this service will be created with.  This is only respected on the initial deployment, and further edits will be rejected in favor of the prior service version's size. |
 
 
 ### Kubernetes
 
-The following Kubernetes specific setting can be specified
+Inside the `kubernetes` item at the top level you can add a number of custom service settings that  impact how the Spinnaker services are deployed onto a Kubernetes cluster. This lets you partially configure how the Kubernetes `Deployment`, `Service`, `Pods` and other Kubernetes resources are deployed by Halyard. This allows you to do things like add a Kubernetes `secret` or `emptydir` to be mounted as a `Volume` and `VolumeMount`, change the default Kubernetes deployment strategy and more.
 
-#### imagePullSecrets
+At a high level, the configurable items inside the Kubernetes service settings are:
+
+| Item | Details |
+| ----- | ----------- |
+| `deploymentStrategy` | Defines either `RollingUpdate` or `Recreate` deployment strategy, including setting `MaxSurge` and `MaxUnavailable` See [Deployment Strategy](#deployment-strategy) below. |
+| `imagePullSecrets` | Define secrets to use to pull a custom artifact when using an artifactId to swap out docker image. More details can be found in the [Image Pull Secrets section](#imagepullsecrets). |
+| `nodePort` | When using a serviceType of NodePort, this provides the NodePort value. |
+| `nodeSelector` | Provide a list of `nodeSelector` key-value pairs to add to the pod specification. See [Node Selector](#nodeselector) below. |
+| `podAnnotations` | Provide a list of annotations to put on the deployed pods. See [Annotations and Labels](#podannotations-podlabels-and-servicelabels) below. |
+| `podLabels` |  Provide a list of labels to put on the deployed pods. See [Annotations and Labels](#podannotations-podlabels-and-servicelabels) below. |
+| `securityContext` | Set the securityContext that the Spinnaker services should run using in Kubernetes |
+| `serviceLabels` | Provide a list of labels to put on the deployed services. See [Annotations and Labels](#podannotations-podlabels-and-servicelabels) below. |
+| `serviceAccountName` | Provide a default `serviceAccount` under which to run Spinnaker services. |
+| `serviceType` | Define a specific serviceType for deployed services, `ClusterIP` (Default) or `NodePort` |
+| `useExecHealthCheck` | Disable the exec-based healthcheck if necessary. See [useExecHealthCheck](#useexechealthcheck) for details. |
+| `volumes` | Define a set of `Volume` and `VolumeMount` items to be attached to the Pods through the Deployment. See [Custom Volumes](#using-custom-volumes) |
+
+
+### imagePullSecrets
 
 If making use of custom artifactIds from an authenticated docker registry imagePullSecrets must be made available in the replicaset definition. To specify imagePullSecrets to custom artifactIds they can be specified as follows:
 
@@ -118,17 +146,81 @@ kubernetes:
   - desired-image-pull-secret2
 ```
 
-#### podAnnotations 
+### podAnnotations, podLabels and serviceLabels
 
-Annotations can often be used to specify special behavior within Kubernetes. To apply annotations to the Pods for a particular service, use the following configuration:
+Annotations and labels hold metadata that can be used to specify special behavior within Kubernetes. To apply annotations or labels to the `Pod` and `Service` resources for a particular Spinnaker service you can use something like:
 
 ```
 kubernetes:
   podAnnotations:
     example/annotation: spinnaker.io
     example/annotation-2: halyard
+  podLabels:
+    examplePodLabel: examplePodLabelValue
+  serviceLabels:
+    exampleServiceLabel: exampleServiceLabelValue
 ```
 
-#### useExecHealthCheck
+These are all optional ways to control what metadata elements exist on the resources deployed by Halyard. For additional information about how these can be used, you can look at the [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) or [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) pages from Kubernetes.
 
-by default halyard deploys services with an `exec` based health check in order to improve compatibility with istio. This however can break functionality for implementations of Load Balancer service types and Ingress Controllers that rely on having a http health check to validate. Setting `kubernetes.useExecHealthCheck: false` will switch the check method to be http based for such use cases.
+### nodeSelector
+
+Node selector annotations will put out `nodeSelector` values in the Pod specification. They generally follow a similar syntax to the annotations and labels. For example:
+
+```
+kubernetes:
+  nodeSelector:
+     exampleNodeKey: exampleNodeValue
+```
+
+Additional information regarding Node Selectors can be found in [the Kubernetes NodeSelector documentation](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector).
+
+### useExecHealthCheck
+
+By default halyard deploys services with an `exec`-based health check in order to improve compatibility with Istio. This however can break functionality for implementations of Load Balancer service types and Ingress Controllers that rely on having an http health check to validate. Setting `kubernetes.useExecHealthCheck: false` will switch the check method to be http based for such use cases.
+
+
+### Using Custom Volumes
+
+You can define a set of custom volumes for a particular service that will become `Volume` and `VolumeMount` items in the generated pod specifications when Halyard deploys Spinnaker on Kubernetes. This can be useful if you need to add custom CA Certificates or other files to Spinnaker service consistently.
+
+The Kubernetes service settings allow you to mount volumes of type `configMap`, `secret` and `emptyDir` with the below syntax.
+
+```
+kubernetes:
+  volumes:
+  - id: secret-example-vol
+    type: secret
+    mountPath: /path/to/location/of/secret
+  - id: configmap-example-vol
+    type: configMap
+    mountPath: /path/to/location/of/configMap
+  - id: emptydir-example-vol
+    type: emptyDir
+    mountPath: /path/to/location/of/emptyDir
+```
+Make sure that the `id` field matches the `name` of the existing `secret` or `configmap` resource in Kubernetes that you need mounted.
+
+### Deployment Strategy
+
+You can change the deployment strategy that Kubernetes uses when deploying Spinnaker services.
+For example, if you wanted to adjust the `maxSurge` and `maxUnavailable` percentages for a rolling update of Clouddriver, you would define a `clouddriver.yml` file in your Halyard `service-settings` like the one below.
+
+```
+kubernetes:
+  deploymentStrategy:
+    type: rollingUpdate
+    strategySettings:
+      maxSurge: 100%
+      maxUnavailable: 50%
+```
+
+If you wanted to use a `Recreate` strategy instead, you would use:
+
+```
+kubernetes:
+  deploymentStrategy:
+    type: recreate
+```
+
+For additional information regarding the implication of each of these deployment strategies, consult the [Updating a Deployment](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) documentation.
