@@ -269,7 +269,7 @@ descriptions of these policies, followed by a mapping of kinds to policies.
 
 ## Workloads
 
-Anything classified as a Spinnaker server group besides CronJobs and Jobs is rendered on the
+Anything classified as a Spinnaker server group is rendered on the
 __Clusters__ tab in Spinnaker. If possible, any pods owned by the workload are rendered as well.
 
 | __Resource__ | _Deploy_ | _Delete_ | _Scale_ | _Undo Rollout_ | _Pause Rollout_ | _Resume Rollout_ | Versioned | Stability |
