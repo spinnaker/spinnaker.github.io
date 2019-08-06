@@ -22,7 +22,7 @@ on an endpoint reachable by Spinnaker. Record the following values:
 
 * `ENDPOINT`: The fully-qualifed endpoint Minio is reachable on. If Minio is
   running on the same machine as Spinnaker, this might be
-  `http://localhost:9001`.
+  `http://127.0.0.1:9001` (note that using `localhost` instead of `127.0.0.1` generally won't work).
 
 * `MINIO_ACCESS_KEY`, `MINIO_SECRET_KEY`: The access/secret keypair you've
   configured Minio with. These env vars need to be visible to the Minio process
