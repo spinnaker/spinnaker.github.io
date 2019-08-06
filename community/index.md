@@ -127,6 +127,9 @@ opsmx_user:
 cisco_user:
   image_path: assets/images/users/cisco_logo.png
   alt: "Cisco Logo"
+grab_user:
+  image_path: assets/images/users/grab.png
+  alt: "Grab"
 ---
 
 ## Engage the community and get support
@@ -178,49 +181,50 @@ The Spinnaker OSS project was started at Netflix, and today thrives on the contr
   <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="gogo_user" %}
     {% include spinnaker_user id="google_user" %}
-    {% include spinnaker_user id="grubhub_user" %}
+    {% include spinnaker_user id="grab_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="grubhub_user" %}
     {% include spinnaker_user id="informatica_user" %}
     {% include spinnaker_user id="kenzan_user" %}
-    {% include spinnaker_user id="launchdarkly_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="launchdarkly_user" %}
     {% include spinnaker_user id="lookout_user" %}
     {% include spinnaker_user id="makerbot_user" %}
+  </div>
+  <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="mercari_user" %}
-  </div>
-  <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="mulesoft_user" %}
-    {% include spinnaker_user id="nearpod_user" %}
-    {% include spinnaker_user id="nest_user" %}
+    {% include spinnaker_user id="nearpod_user" %}    
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="nest_user" %}
     {% include spinnaker_user id="netflix_user" %}
     {% include spinnaker_user id="opsmx_user" %}
-    {% include spinnaker_user id="optimizely_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="optimizely_user" %}
     {% include spinnaker_user id="plaid_user" %}
     {% include spinnaker_user id="plangrid_user" %}
-    {% include spinnaker_user id="purestorage_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="purestorage_user" %}
     {% include spinnaker_user id="redbox_user" %}
     {% include spinnaker_user id="smartthings_user" %}
-    {% include spinnaker_user id="schibsted_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="schibsted_user" %}
     {% include spinnaker_user id="scopely_user" %}
     {% include spinnaker_user id="skuid_user" %}
-    {% include spinnaker_user id="target_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="target_user" %}
     {% include spinnaker_user id="underarmour_user" %}
     {% include spinnaker_user id="waze_user" %}
-    {% include spinnaker_user id="weatherbug_user" %}
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="weatherbug_user" %}
     {% include spinnaker_user id="xiaohongshu_user" %}
   </div>
 </div>

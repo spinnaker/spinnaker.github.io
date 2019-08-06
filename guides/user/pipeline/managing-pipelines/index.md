@@ -67,6 +67,31 @@ any necessary parameters.
 
 ![](images/manual-execution.png)
 
+### Linking to the Manual Execution dialog
+You can create a deep link to the confirmation dialog for any pipeline by adding
+a `startManualExecution` parameter to the URL for an application's pipelines 
+view. The parameter's value can be either the pipeline name or its ID.
+
+To prepopulate pipeline parameter values in the dialog, just include them as
+parameters in the URL.
+
+For example: 
+  * you have an an application named "myapp"
+  * the application has a pipeline named "deploy-to-prod" 
+  * the pipeline has one parameter, `region`
+  * the pipeline's ID is `12345`
+  * your Spinnaker installation is hosted at https://my.spinnaker.example.com
+
+These links would open the dialog automatically:
+  * https://my.spinnaker.example.com/#/applications/myapp/executions?startManualExecution=deploy-to-prod
+  * https://my.spinnaker.example.com/#/applications/myapp/executions?startManualExecution=12345
+
+These links would open the dialog automatically, and pre-populate the region
+parameter with `us-central-1`
+  * https://my.spinnaker.example.com/#/applications/myapp/executions?startManualExecution=deploy-to-prod&region=us-central-1
+  * https://my.spinnaker.example.com/#/applications/myapp/executions?startManualExecution=12345&region=us-central-1
+
+
 ## Disable a pipeline
 
 Disabling a pipeline prevents any triggers from firing, as well as preventing

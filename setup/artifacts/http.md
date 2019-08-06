@@ -47,3 +47,7 @@ config for this is hidden, and the single account is automatically used.
    hal config artifact http account add my-http-account \
        --username-password-file $USERNAME_PASSWORD_FILE
    ```
+
+There are more options described
+[here](/reference/halyard/commands#hal-config-artifact-http-account-edit)
+if you need more control over your configuration.
