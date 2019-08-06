@@ -24,7 +24,7 @@ source code to deploy to App Engine:
 {%
   include
   figure
-  image_path="./gcs_bucket_source_code_artifact.png"
+  image_path="./gcs-bucket-source-code-artifact.png"
 %}
 
 ## Artifacts Referencing Docker Images From GCR
@@ -38,7 +38,7 @@ container image URL to use for deployment to App Engine Flex:
 {%
   include
   figure
-  image_path="./container_image_artifact.png"
+  image_path="./container-image-artifact.png"
 %}
 
 ## Artifacts Referencing Config Files
@@ -51,5 +51,5 @@ In the below image a GCS Artifact has been added to the Config Files section of 
 {%
   include
   figure
-  image_path="./config_file_artifact.png"
+  image_path="./config-file-artifact.png"
 %}

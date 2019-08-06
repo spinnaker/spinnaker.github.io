@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Artifacts In Pipelines (New UI)"
+title:  "Artifacts In Pipelines"
 sidebar:
   nav: reference
 ---
@@ -27,10 +27,10 @@ artifacts the trigger expects to have present before it begins a pipeline
 execution.
 
 {% include figure
-   image_path="./expected-artifact-trigger.png"
+   image_path="./expected-artifact-github-file.png"
    caption="The UI provides short-hand for defining some types of
-            artifacts&mdash;in this example a docker image. This is optional, but helps
-            quickly define common types of artifacts."
+            artifacts&mdash;in this example a file stored in GitHub. This is
+            optional, but helps quickly define common types of artifacts."
 %}
 
 You can define fallback behavior for when the artifact
@@ -46,17 +46,6 @@ order:
 2. __Use Default Artifact__
 
    Specify exactly which artifact to bind.
-
-Once you have declared which artifacts are expected by this pipeline, you can
-assign expected artifacts to individual triggers.
-
-{% include figure
-   image_path="./pubsub-trigger-artifact.png"
-   caption="A pubsub subscription configured to listen to changes in
-            one GCR registry. Since this registry can contain many
-            repositories, we've assigned it an expected artifact to ensure only
-            changes in one repository can run this pipeline."
-%}
 
 When a trigger has one or more expected artifacts, it only runs when each
 expected artifact can bind to one of the artifacts in the trigger's payload.
@@ -101,7 +90,7 @@ To allow you to promote artifacts between executions, you can make use of the
 whose execution history to search, and an expected artifact to bind.
 
 {% include figure
-   image_path="./find-artifact-from-execution.png"
+   image_path="./find-artifacts-from-execution.png"
 %}
 
 A common use case would be to "promote" the image deployed to staging to a
@@ -138,7 +127,15 @@ Stage configuration:
 {%
    include
    figure
+   image_path="./produces-artifacts.png"
+   caption="Produces Artifacts configuration in a Deploy (Manifest) stage."
+%}
+
+{%
+   include
+   figure
    image_path="./produced-artifact.png"
+   caption="List of produced artifacts for a Deploy (Manifest) stage."
 %}
 
 If you are configuring your stages using JSON, the expected artifacts are
@@ -228,7 +225,7 @@ here.
 
 If stages _C_ or _D_ needed to reference an upstream artifact, they would have
 different artifacts accessible to them, since they have different upstream
-stages. For examples, stage _D_ does not have access to artifact _2_.
+stages. For example, stage _D_ does not have access to artifact _2_.
 
 {%
    include
