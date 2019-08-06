@@ -116,6 +116,12 @@ setup:
             url: /setup/artifacts/github/
           - title: HTTP
             url: /setup/artifacts/http/
+          - title: Bitbucket
+            url: /setup/artifacts/bitbucket/
+          - title: GitLab
+            url: /setup/artifacts/gitlab/
+          - title: S3
+            url: /setup/artifacts/s3/
           - title: Oracle Object
             url: /setup/artifacts/oracle/
       - title: Configure the Image Bakery
