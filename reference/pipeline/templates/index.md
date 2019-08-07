@@ -13,41 +13,41 @@ A pipeline template uses the following config JSON:
 
 ```
 {
-  "schema" : "v2",
-  "variables" : [
-  {
-    "type" : "<type>",
-    "defaultValue" : <value>,
-    "description" : "<description>",
-    "name" : "<varName>"
-  }
+  "schema": "v2",
+  "variables": [
+    {
+      "type": "<type>",
+      "defaultValue": <value>,
+      "description": "<description>",
+      "name": "<varName>"
+    }
   ],
-  "id" : "<templateName>", # The pipeline instance references the template using this
-  "protect" : <true | false>,
-  "metadata" : {
-    "name" : "displayName", # The display name shown in Deck
-    "description" : "<description>",
-    "owner" : "example@example.com",
-    "scopes" : ["global"] # not used
+  "id": "<templateName>", # The pipeline instance references the template using this
+  "protect": <true | false>,
+  "metadata": {
+    "name": "displayName", # The display name shown in Deck
+    "description": "<description>",
+    "owner": "example@example.com",
+    "scopes": ["global"] # not used
   },
   "pipeline": { # Contains the templatized pipeline itself
-    "lastModifiedBy" : "anonymous", # Not used
-    "updateTs" : "0", # not used
-    "parameterConfig" : [], # Same as in a regular pipeline
+    "lastModifiedBy": "anonymous", # Not used
+    "updateTs": "0", # not used
+    "parameterConfig": [], # Same as in a regular pipeline
     "limitConcurrent": true, # Same as in a regular pipeline
     "keepWaitingPipelines": false, # Same as in a regular pipeline
-    "description" : "", # Same as in a regular pipeline
-    "triggers" : [], # Same as in a regular pipeline
-    "notifications" : [], # Same as in a regular pipeline
-    "stages" : [  # Contains the templated stages
-    {
-      # This one is an example stage:
-      "waitTime" : "${ templateVariables.waitTime }", # Templated field.
-      "name": "My Wait Stage",
-      "type" : "wait",
-      "refId" : "wait1",
-      "requisiteStageRefIds": []
-    }
+    "description": "", # Same as in a regular pipeline
+    "triggers": [], # Same as in a regular pipeline
+    "notifications": [], # Same as in a regular pipeline
+    "stages": [  # Contains the templated stages
+      {
+        # This one is an example stage:
+        "waitTime": "${ templateVariables.waitTime }", # Templated field.
+        "name": "My Wait Stage",
+        "type": "wait",
+        "refId": "wait1",
+        "requisiteStageRefIds": []
+      }
     ]
   }
 }
