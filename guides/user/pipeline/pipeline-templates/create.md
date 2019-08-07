@@ -78,7 +78,7 @@ pipeline blob, you move that entire JSON fragment to the `pipeline` section.
      "defaultValue" : <defaultValue>,
      "description" : "<some description>",
      "name" : "<name of this variable>"
-   } 
+   }
    {
      "type" : "<type>",
      "defaultValue" : <defaultValue>,
@@ -111,39 +111,39 @@ list, and the pipeline definition:
 
 ```json
 {
-  “schema” : “v2”, # Reference to the MPTv2 schema
-  “variables” : [
+  "schema" : "v2", # Reference to the MPTv2 schema
+  "variables" : [
   {
-    “type” : “int”,
-    “defaultValue” : 42,
-    “description” : “The time a wait stage shall pauseth”,
-    “name” : "timeToWait" # This is the name that's referenced in the SpEL expression later
+    "type" : "int",
+    "defaultValue" : 42,
+    "description" : "The time a wait stage shall pauseth",
+    "name" : "timeToWait" # This is the name that's referenced in the SpEL expression later
   }
   ],
-  “id” : “newSpelTemplate”, # Main identifier to reference this template from instance
-  “protect” : false,
-  “metadata” : {
-    “name” : “Variable Wait”,
-    “description” : “A demonstrative Wait Pipeline.”,
-    “owner” : “example@example.com”,
-    “scopes” : [“global”]
+  "id" : "newSpelTemplate", # Main identifier to reference this template from instance
+  "protect" : false,
+  "metadata" : {
+    "name" : "Variable Wait",
+    "description" : "A demonstrative Wait Pipeline.",
+    "owner" : "example@example.com",
+    "scopes" : ["global"]
   },
-  “pipeline”: { # A “normal” pipeline definition.
-    “lastModifiedBy” : “anonymous”,
-    “updateTs” : “0”,
-    “parameterConfig” : [],
-    “limitConcurrent”: true,
-    “keepWaitingPipelines”: false,
-    “description” : “”,
-    “triggers” : [],
-    “notifications” : [],
-    “stages” : [
+  "pipeline": { # A "normal" pipeline definition.
+    "lastModifiedBy" : "anonymous",
+    "updateTs" : "0",
+    "parameterConfig" : [],
+    "limitConcurrent": true,
+    "keepWaitingPipelines": false,
+    "description" : "",
+    "triggers" : [],
+    "notifications" : [],
+    "stages" : [
     {
-      “waitTime” : “${ templateVariables.timeToWait }”, # Templated field.
-      “name”: “My Wait Stage”,
-      “type” : “wait”,
-      “refId” : “wait1”,
-      “requisiteStageRefIds”: []
+      "waitTime" : "${ templateVariables.timeToWait }", # Templated field.
+      "name": "My Wait Stage",
+      "type" : "wait",
+      "refId" : "wait1",
+      "requisiteStageRefIds": []
     }
     ]
   }
@@ -156,7 +156,7 @@ list, and the pipeline definition:
 spin pipeline-templates save --file my_template.txt
 ```
 
-...where `my_template.txt` is the file in which you constructed the template JSON. 
+...where `my_template.txt` is the file in which you constructed the template JSON.
 
 `spin` checks that the file has a reference to the v2 schema and that it has a `pipeline` section.
 
