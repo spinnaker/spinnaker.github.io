@@ -78,7 +78,7 @@ pipeline blob, you move that entire JSON fragment to the `pipeline` section.
        "defaultValue": <defaultValue>,
        "description": "<some description>",
        "name": "<name of this variable>"
-     }
+     },
      {
        "type": "<type>",
        "defaultValue": <defaultValue>,
