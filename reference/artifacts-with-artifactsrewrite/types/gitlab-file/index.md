@@ -11,7 +11,7 @@ A GitLab file artifact is a reference to a file stored in
 [GitLab](https://gitlab.com). These artifacts are generally consumed by stages
 that read configuration from text files, such as a Deploy Manifest stage.
 
-## GitLab File Artifact in the UI
+## GitLab file artifact in the UI
 
 The pipeline UI exposes the following fields for the GitLab file artifact:
 
@@ -38,7 +38,7 @@ The pipeline UI exposes the following fields for the GitLab file artifact:
   </tbody>
 </table>
 
-### In a Trigger
+### In a trigger
 
 When configuring a Git trigger with __Type__ "GitLab", you can use a GitLab file
 as an expected artifact.
@@ -51,12 +51,12 @@ as an expected artifact.
            artifact settings."
 %}
 
-### In a Pipeline Stage
+### In a pipeline stage
 
 When configuring certain stages, such as a "Deploy (Manifest)" or "Deploy"
 stage, you can use a GitLab file as a manifest or application artifact.
 
-## GitLab File Artifact in a Pipeline Definition
+## GitLab file artifact in a pipeline definition
 
 The following are the fields that make up a GitLab file artifact:
 

@@ -14,7 +14,7 @@ configuration from text files, such as a Deploy Manifest stage.
 A file represented by an HTTP file artifact can be downloaded using HTTP Basic
 authentication.
 
-## HTTP File Artifact in the UI
+## HTTP file artifact in the UI
 
 The pipeline UI exposes the following fields for the HTTP file artifact:
 
@@ -37,7 +37,7 @@ The pipeline UI exposes the following fields for the HTTP file artifact:
   </tbody>
 </table>
 
-### In a Trigger
+### In a trigger
 
 When configuring certain triggers, you can use an HTTP file as an expected
 artifact.
@@ -50,7 +50,7 @@ artifact.
            artifact settings."
 %}
 
-### In a Pipeline Stage
+### In a pipeline stage
 
 When configuring a "Deploy (Manifest)" or "Deploy" stage, you can use an HTTP
 file as a manifest or application artifact.
@@ -63,7 +63,7 @@ file as a manifest or application artifact.
            manifest source."
 %}
 
-## HTTP File Artifact in a Pipeline Definition
+## HTTP file artifact in a pipeline definition
 
 The following are the fields that make up an HTTP file artifact:
 

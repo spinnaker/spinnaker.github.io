@@ -22,7 +22,7 @@ To incorporate metadata such as this along with the resource's URI, Spinnaker ar
 
 Keep in mind that the artifact in Spinnaker is a _reference_ to an external resource--it is not the resource itself. The resource itself could be of any type supported by Spinnaker; the artifact is the named JSON object that contains information about the resource.
 
-## The Artifact Format
+## The artifact format
 
 As an example, an object stored in Google Cloud Storage (GCS) might be accessed using the following Spinnaker artifact:
 
@@ -101,7 +101,7 @@ The fields that make up a Spinnaker artifact are described below.
   </tbody>
 </table>
 
-## Expected Artifacts
+## Expected artifacts
 
 Within a pipeline trigger or stage, you can declare that the trigger or stage expects a particular artifact to be available. This artifact is called an _expected artifact_. Spinnaker compares an incoming artifact (for example, a manifest file stored in GitHub) to the expected artifact (for example, a manifest with the file path `path/to/my/manifest.yml`); if the incoming artifact matches the specified expected artifact, the incoming artifact is _bound_ to that expected artifact and used by the trigger or stage.
 
@@ -114,10 +114,10 @@ Within a pipeline trigger or stage, you can declare that the trigger or stage ex
            auto-generated."
 %}
 
-### Match Artifact
+### Match artifact
 
 When declaring an expected artifact for a trigger, you can use fields under **Match Artifact** to specify metadata against which to compare the incoming artifact. This is how you can distinguish between similar artifacts coming from the same artifact account (for example, multiple manifest files stored in a single Git repository) and specify that the trigger should begin pipeline execution only if the incoming artifact matches the parameters that you provided.
 
-### Prior Execution and Default Artifact
+### Prior execution and default artifact
 
 In the fields under **If Missing**, you can provide fallback behavior for the expected artifact in case the trigger doesn't find the desired artifact. If you enable the **Use prior execution** checkbox, Spinnaker will fall back to the artifact used in the last execution. If you enable the **Use default artifact** checkbox, Spinnaker will use a default artifact, which you can specify in the form (this allows you to provide fallback behavior for the first time a trigger is used, when there is no previous execution yet).

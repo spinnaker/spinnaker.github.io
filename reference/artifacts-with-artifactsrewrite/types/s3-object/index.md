@@ -12,7 +12,7 @@ artifacts are references to objects stored in S3 buckets. These artifacts are
 generally consumed by stages that read configuration from text files, such as a
 Deploy Manifest or AWS Deploy stage.
 
-## S3 Object Artifact in the UI
+## S3 object artifact in the UI
 
 The pipeline UI exposes the following fields for the S3 object artifact:
 
@@ -35,7 +35,7 @@ The pipeline UI exposes the following fields for the S3 object artifact:
   </tbody>
 </table>
 
-### In a Trigger
+### In a trigger
 
 When configuring a trigger, you can use an S3 object as an expected artifact.
 
@@ -47,7 +47,7 @@ When configuring a trigger, you can use an S3 object as an expected artifact.
            artifact settings."
 %}
 
-### In a Pipeline Stage
+### In a pipeline stage
 
 When configuring a "Deploy (Manifest)" or "Deploy" stage, you can use an S3
 object as a manifest or application artifact.
@@ -60,7 +60,7 @@ object as a manifest or application artifact.
            manifest source."
 %}
 
-## S3 Object Artifact in a Pipeline Definition
+## S3 object artifact in a pipeline definition
 
 The following are the fields that make up an S3 object artifact:
 

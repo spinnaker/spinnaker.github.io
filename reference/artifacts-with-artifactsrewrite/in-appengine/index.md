@@ -13,7 +13,7 @@ Artifacts can be used for several things in the Google App Engine provider:
 2. They can be used to reference a docker image stored in Google Container Registry to be deployed on App Engine Flex.
 3. They can be used to reference config files (such as app.yaml) to be used during deployment to App Engine.
 
-## Artifacts Referencing Source Code From GCS
+## Artifacts referencing source code from GCS
 
 To use an artifact to reference source code that is stored in a GCS bucket, use the "GCS" Source Type
 when configuring a Server Group.
@@ -27,7 +27,7 @@ source code to deploy to App Engine:
   image_path="./gcs-bucket-source-code-artifact.png"
 %}
 
-## Artifacts Referencing Docker Images From GCR
+## Artifacts referencing Docker images from GCR
 
 To use an artifact to reference docker images stored in Google Container Registry, set the Server
 Group's Source Type to "Container Image" and set the "Resolve URL" field to "via pipeline artifact".
@@ -41,7 +41,7 @@ container image URL to use for deployment to App Engine Flex:
   image_path="./container-image-artifact.png"
 %}
 
-## Artifacts Referencing Config Files
+## Artifacts referencing config files
 
 To use an artifact to reference config files used during deployment to App Engine, click the
 "Add Config Artifact" button in the Create Server Group modal.

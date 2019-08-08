@@ -11,7 +11,7 @@ Kubernetes Object artifacts are _running_, _deployed_ Kubernetes manifests.
 This is in contrast to something like a GitHub file that only contains the
 specification of a deployable Kubernetes manifest.
 
-## Kubernetes Object Artifact in the UI
+## Kubernetes object artifact in the UI
 
 The pipeline UI exposes the following fields for the Kubernetes object artifact:
 
@@ -34,17 +34,7 @@ The pipeline UI exposes the following fields for the Kubernetes object artifact:
   </tbody>
 </table>
 
-### In a Trigger
-
-When configuring certain triggers, you can use a Kubernetes object as an
-expected artifact.
-
-### In a Pipeline Stage
-
-When configuring a "Deploy (Manifest)" or "Deploy" stage, you can use a
-Kubernetes object as a manifest or application artifact.
-
-## Kubernetes Object Artifact in a Pipeline Definition
+## Kubernetes object artifact in a pipeline definition
 
 The following are the fields that make up a Kubernetes object artifact:
 

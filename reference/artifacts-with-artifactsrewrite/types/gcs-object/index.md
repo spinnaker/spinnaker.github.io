@@ -12,7 +12,7 @@ artifacts are references to objects stored in GCS buckets. These artifacts are
 generally consumed by stages that read configuration from text files, such as a
 Deploy Manifest or App Engine Deploy stage.
 
-## GCS Object Artifact in the UI
+## GCS object artifact in the UI
 
 The pipeline UI exposes the following fields for the GCS object artifact:
 
@@ -35,7 +35,7 @@ The pipeline UI exposes the following fields for the GCS object artifact:
   </tbody>
 </table>
 
-### In a Trigger
+### In a trigger
 
 When configuring certain triggers (such as a Pub/Sub trigger with __Pub/Sub
 System Type__ "Google"), you can use a GCS object as an expected artifact.
@@ -48,7 +48,7 @@ System Type__ "Google"), you can use a GCS object as an expected artifact.
            artifact settings."
 %}
 
-### In a Pipeline Stage
+### In a pipeline stage
 
 When configuring a "Deploy (Manifest)" or "Deploy" stage, you can use a GCS
 object as a manifest or application artifact.
@@ -61,7 +61,7 @@ object as a manifest or application artifact.
            manifest source."
 %}
 
-## GCS Object Artifact in a Pipeline Definition
+## GCS object artifact in a pipeline definition
 
 The following are the fields that make up a GCS object artifact:
 

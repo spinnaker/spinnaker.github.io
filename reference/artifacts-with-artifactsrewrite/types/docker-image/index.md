@@ -10,12 +10,12 @@ sidebar:
 A Docker image is a snapshot of a container, to be run locally or in the
 cloud. Docker image artifacts are used as references to images in
 [registries](https://docs.docker.com/registry/), such as
-[Google Cloud Container Registry](https://cloud.google.com/container-registry/)
+[Google Container Registry](https://cloud.google.com/container-registry/)
 or [Docker Hub](https://index.docker.io). The artifacts can be deployed to
 Kubernetes or App Engine, and generally trigger pipelines from notifications
 sent by their registry.
 
-## Docker Image Artifact in the UI
+## Docker image artifact in the UI
 
 The pipeline UI exposes the following fields for the Docker image artifact:
 
@@ -38,7 +38,7 @@ The pipeline UI exposes the following fields for the Docker image artifact:
   </tbody>
 </table>
 
-### In a Trigger
+### In a trigger
 
 When configuring the Docker Registry trigger, you can use a Docker image as an
 expected artifact.
@@ -51,7 +51,7 @@ expected artifact.
            artifact settings."
 %}
 
-### In a Pipeline Stage
+### In a pipeline stage
 
 When configuring certain stages, such as a  "Deploy (Manifest)" stage, you can
 use a Docker image as a required artifact.
@@ -64,7 +64,7 @@ use a Docker image as a required artifact.
            required artifact."
 %}
 
-## Docker Image Artifact in a Pipeline Definition
+## Docker image artifact in a pipeline definition
 
 The following are the fields that make up a Docker image artifact:
 

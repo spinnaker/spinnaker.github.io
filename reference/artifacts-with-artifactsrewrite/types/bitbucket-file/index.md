@@ -12,7 +12,7 @@ A Bitbucket file artifact is a reference to a file stored in
 stages that read configuration from text files, such as a Deploy Manifest
 stage.
 
-## Bitbucket File Artifact in the UI
+## Bitbucket file artifact in the UI
 
 The pipeline UI exposes the following fields for the Bitbucket file artifact:
 
@@ -35,7 +35,7 @@ The pipeline UI exposes the following fields for the Bitbucket file artifact:
   </tbody>
 </table>
 
-### In a Trigger
+### In a trigger
 
 When configuring certain triggers, you can use a Bitbucket file as an expected
 artifact.
@@ -48,12 +48,12 @@ artifact.
            artifact settings."
 %}
 
-### In a Pipeline Stage
+### In a pipeline stage
 
 When configuring a "Deploy (Manifest)" or "Deploy" stage, you can use a
 Bitbucket file as a manifest or application artifact.
 
-## Bitbucket File Artifact in a Pipeline Definition
+## Bitbucket file artifact in a pipeline definition
 
 The following are the fields that make up a Bitbucket file artifact:
 

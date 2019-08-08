@@ -7,7 +7,7 @@ sidebar:
 
 {% include toc %}
 
-Artifacts play an important role in the Kubernetes provider v2. Everything from
+Artifacts play an important role in the Kubernetes V2 Provider. Everything from
 the manifests you deploy to the Docker images or ConfigMaps they reference
 can be expressed or deployed in terms of artifacts.
 

@@ -11,7 +11,7 @@ sidebar:
 
 > The files stored in a Maven repository are typically called "artifacts", so on this page, "Maven artifact" may refer to a Spinnaker artifact of type `maven/file` or to a file (e.g. a JAR file) stored in a Maven repository.
 
-## Maven Artifact in the UI
+## Maven artifact in the UI
 
 The pipeline UI exposes the following fields for the Maven artifact:
 
@@ -34,7 +34,7 @@ The pipeline UI exposes the following fields for the Maven artifact:
   </tbody>
 </table>
 
-### In a Trigger
+### In a trigger
 
 When configuring certain triggers (such as an Artifactory trigger), you can use a Maven artifact as an expected artifact.
 
@@ -46,7 +46,7 @@ When configuring certain triggers (such as an Artifactory trigger), you can use 
            artifact settings."
 %}
 
-### In a Pipeline Stage
+### In a pipeline stage
 
 When configuring a "Deploy" stage, you can use a Maven artifact as an application artifact.
 
@@ -58,7 +58,7 @@ When configuring a "Deploy" stage, you can use a Maven artifact as an applicatio
            application artifact."
 %}
 
-## Maven Artifact in a Pipeline Definition
+## Maven artifact in a pipeline definition
 
 The following are the fields that make up a Maven artifact:
 

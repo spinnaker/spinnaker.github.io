@@ -10,7 +10,7 @@ sidebar:
 Rather than refer to a resource by a URI, you can embed the artifact's contents
 directly into the `"reference"` field in Base64.
 
-## Embedded Base64 Artifact in the UI
+## Embedded Base64 artifact in the UI
 
 The pipeline UI exposes the following fields for the embedded Base64 artifact:
 
@@ -24,7 +24,7 @@ The pipeline UI exposes the following fields for the embedded Base64 artifact:
   <tbody>
     <tr>
       <td><strong>Account</strong></td>
-      <td>The "embedded-artifact" account.</td>
+      <td>Always "embedded-artifact".</td>
     </tr>
     <tr>
       <td><strong>Name</strong></td>
@@ -37,7 +37,7 @@ The pipeline UI exposes the following fields for the embedded Base64 artifact:
   </tbody>
 </table>
 
-### In a Trigger
+### In a trigger
 
 When configuring a trigger, you can (for example) configure an embedded Base64
 default artifact.
@@ -50,7 +50,7 @@ default artifact.
            expected artifact."
 %}
 
-### In a Pipeline Stage
+### In a pipeline stage
 
 When configuring certain stages, such as a "Deploy (Manifest)" stage, you can
 use embedded Base64 for a required artifact.
@@ -63,7 +63,7 @@ use embedded Base64 for a required artifact.
            artifact."
 %}
 
-## Embedded Base64 Artifact in a Pipeline Definition
+## Embedded Base64 artifact in a pipeline definition
 
 The following are the fields that make up an embedded Base64 artifact:
 
