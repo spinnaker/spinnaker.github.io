@@ -17,7 +17,7 @@ To use an artifact to reference a manifest file (such as a manifest stored in a 
   include
   figure
   image_path="./cf-manifest-artifact-github.png"
-  caption="In a Deploy stage, choosing a GitHub file artifact as the manifest source for a server group."
+  caption="In a Deploy stage, choose a GitHub file artifact as the manifest source for a server group."
 %}
 
 ## Artifacts referencing app archive
@@ -27,5 +27,5 @@ To use an artifact to reference an application archive (such as a JAR file from 
   include
   figure
   image_path="./cf-application-artifact-maven.png"
-  caption="In a Deploy stage, choosing a Maven artifact as the application source for a server group."
+  caption="In a Deploy stage, choose a Maven artifact as the application source for a server group."
 %}

@@ -15,24 +15,10 @@ sidebar:
 
 The pipeline UI exposes the following fields for the Maven artifact:
 
-<table>
-  <thead>
-    <tr>
-      <th>Field</th>
-      <th>Explanation</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Account</strong></td>
-      <td>A Maven artifact account.</td>
-    </tr>
-    <tr>
-      <td><strong>Maven Coordinate</strong></td>
-      <td>The Maven coordinates for the artifact (in the standard Maven form <code>groupId:artifactId:version</code>).</td>
-    </tr>
-  </tbody>
-</table>
+| Field                | Explanation                                                                                       |
+|----------------------|---------------------------------------------------------------------------------------------------|
+| **Account**          | A Maven artifact account.                                                                         |
+| **Maven Coordinate** | The Maven coordinates for the artifact (in the standard Maven form `groupId:artifactId:version`). |
 
 ### In a trigger
 
@@ -48,7 +34,7 @@ When configuring certain triggers (such as an Artifactory trigger), you can use 
 
 ### In a pipeline stage
 
-When configuring a "Deploy" stage, you can use a Maven artifact as an application artifact.
+When configuring a Deploy stage, you can use a Maven artifact as an application artifact.
 
 {%
   include

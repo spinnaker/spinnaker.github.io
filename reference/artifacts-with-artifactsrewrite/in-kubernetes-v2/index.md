@@ -7,7 +7,7 @@ sidebar:
 
 {% include toc %}
 
-Artifacts play an important role in the Kubernetes V2 Provider. Everything from
+Artifacts play an important role in the Kubernetes V2 provider. Everything from
 the manifests you deploy to the Docker images or ConfigMaps they reference
 can be expressed or deployed in terms of artifacts.
 
@@ -59,7 +59,7 @@ As described in the [manifests as artifacts](#manifests-as-artifacts) section,
 a deploy stage would _consume_ artifact 1, but _produce_ artifact 2 as an output.
 
 When running pipelines, you can always check the produced outputs for any stage
-by examinging the execution's "source" directly:
+by examining the execution's "source" directly:
 
 {%
   include
