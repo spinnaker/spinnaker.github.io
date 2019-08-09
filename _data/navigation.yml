@@ -464,7 +464,7 @@ reference:
         url: /reference/providers/kubernetes-v2/
       - title: Oracle Cloud
         url: /reference/providers/oracle/
-  - title: Artifacts
+  - title: Artifacts (Standard UI)
     collapsed: true
     children:
       - title: Overview
@@ -502,6 +502,46 @@ reference:
             url: /reference/artifacts/types/kubernetes-object/
           - title: Oracle Object
             url: /reference/artifacts/types/oracle-object/
+  - title: Artifacts (New UI)
+    collapsed: true
+    children:
+      - title: Overview
+        url: /reference/artifacts-with-artifactsrewrite/
+      - title: In Pipelines
+        url: /reference/artifacts-with-artifactsrewrite/in-pipelines/
+      - title: From Build Triggers
+        url: /reference/artifacts-with-artifactsrewrite/from-build-triggers/
+      - title: In Kubernetes (Manifest Based)
+        url: /reference/artifacts-with-artifactsrewrite/in-kubernetes-v2/
+      - title: In Google App Engine
+        url: /reference/artifacts-with-artifactsrewrite/in-appengine/
+      - title: In Cloud Foundry
+        url: /reference/artifacts-with-artifactsrewrite/in-cloud-foundry/
+      - title: Types of Artifacts
+        collapsed: true
+        children:
+          - title: Overview
+            url: /reference/artifacts-with-artifactsrewrite/types/overview/
+          - title: Docker Image
+            url: /reference/artifacts-with-artifactsrewrite/types/docker-image/
+          - title: Embedded Base64
+            url: /reference/artifacts-with-artifactsrewrite/types/embedded-base64/
+          - title: GCS Object
+            url: /reference/artifacts-with-artifactsrewrite/types/gcs-object/
+          - title: S3 Object
+            url: /reference/artifacts-with-artifactsrewrite/types/s3-object/
+          - title: GitHub File
+            url: /reference/artifacts-with-artifactsrewrite/types/github-file/
+          - title: GitLab File
+            url: /reference/artifacts-with-artifactsrewrite/types/gitlab-file/
+          - title: Bitbucket File
+            url: /reference/artifacts-with-artifactsrewrite/types/bitbucket-file/
+          - title: HTTP File
+            url: /reference/artifacts-with-artifactsrewrite/types/http-file/
+          - title: Kubernetes Object
+            url: /reference/artifacts-with-artifactsrewrite/types/kubernetes-object/
+          - title: Oracle Object
+            url: /reference/artifacts-with-artifactsrewrite/types/oracle-object/
   - title: Halyard
     collapsed: true
     children:
