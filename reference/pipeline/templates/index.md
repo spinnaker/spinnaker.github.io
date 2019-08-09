@@ -64,13 +64,14 @@ config:
   "application": "<appName>", # Set this to the app you want to create the pipeline in.
   "name": "New Pipeline Name", # The name of your pipeline.
   "template": {
-    "source": "spinnaker://<pipelineTemplateName>" # The `id` field from the pipeline template.
-                                                   # Assuming the template was saved in Spinnaker,
-                                                   # you can prefix the id with ‘spinnaker://’.
-                                                   # ‘http://’ and ‘file://’ prefixes are also supported.
+    "type": "front50/pipelineTemplate",
+    "artifactAccount": "front50ArtifactCredentials",
+    "reference": "spinnaker://<templateName>"   # The `id` field from the pipeline template.
+                                                        # Assuming the template was saved in Spinnaker,
+                                                        # you can prefix the id with ‘spinnaker://’.
   },
   "variables": {
-    "someVar": <value> # Value for the template variable.
+    "<varName>": <value>, # Value for the template variable.
     "someOtherVar": <value>
   },
   "inherit": [],
@@ -81,3 +82,5 @@ config:
   "stages": []
 }
 ```
+
+In `.template` section, `http://` and `file://` prefixes are also supported.
