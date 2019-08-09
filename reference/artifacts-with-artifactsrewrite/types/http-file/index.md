@@ -53,7 +53,9 @@ artifact.
 ### In a pipeline stage
 
 When configuring a "Deploy (Manifest)" or "Deploy" stage, you can use an HTTP
-file as a manifest or application artifact.
+file as a manifest or application artifact. You can either use a
+previously-defined artifact (for example, an artifact defined in a trigger) or
+define an artifact inline.
 
 {%
   include
