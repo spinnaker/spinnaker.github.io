@@ -66,9 +66,7 @@ config:
   "template": {
     "type": "front50/pipelineTemplate",
     "artifactAccount": "front50ArtifactCredentials",
-    "reference": "spinnaker://<templateName>"   # The `id` field from the pipeline template.
-                                                # Assuming the template was saved in Spinnaker,
-                                                # you can prefix the id with ‘spinnaker://’.
+    "reference": "spinnaker://<templateName>"
   },
   "variables": {
     "<varName>": <value>,         # Value for the template variable.
@@ -82,5 +80,3 @@ config:
   "stages": []
 }
 ```
-
-In `.template` section, `http://` and `file://` prefixes are also supported.
