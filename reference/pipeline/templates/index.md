@@ -11,7 +11,7 @@ sidebar:
 
 A pipeline template uses the following config JSON:
 
-```
+```json
 {
   "schema": "v2",
   "variables": [
@@ -58,7 +58,7 @@ A pipeline template uses the following config JSON:
 A pipeline instance that implements a pipeline template uses the following
 config:
 
-```
+```json
 {
   "schema": "v2",
   "application": "<appName>",     # Set this to the app you want to create the pipeline in.
