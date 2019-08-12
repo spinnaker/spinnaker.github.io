@@ -118,7 +118,7 @@ Current SC members:
 * Matt Duftler (Google)
 * Peter Stout (Netflix)
 * Ruslan Meshenberg (Netflix)
-* Steven Kim (Google)
+* Andrew Phillips (Google)
 
 The steering committee is initially seeded by Netflix and Google as the project matures and its structure stabilizes. We will leave further details such as number of seats, qualifications, tenure, appointing measures, TBD for the time being.
 
