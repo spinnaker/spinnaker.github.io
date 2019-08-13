@@ -53,7 +53,9 @@ default artifact.
 ### In a pipeline stage
 
 When configuring certain stages, such as a "Deploy (Manifest)" stage, you can
-use embedded Base64 for a required artifact.
+use embedded Base64 for a required artifact. You can either use a
+previously-defined artifact (for example, an artifact defined in a trigger) or
+define an artifact inline.
 
 {%
   include

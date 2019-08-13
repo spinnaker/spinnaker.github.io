@@ -542,6 +542,8 @@ reference:
             url: /reference/artifacts-with-artifactsrewrite/types/kubernetes-object/
           - title: Oracle Object
             url: /reference/artifacts-with-artifactsrewrite/types/oracle-object/
+          - title: Maven Artifact
+            url: /reference/artifacts-with-artifactsrewrite/types/maven-artifact/
   - title: Halyard
     collapsed: true
     children:
