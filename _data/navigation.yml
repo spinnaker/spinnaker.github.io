@@ -431,6 +431,8 @@ guides:
   - title: Service Overviews
     collapsed: true
     children:
+      - title: Front50
+        url: /guides/developer/service-overviews/front50/
       - title: Orca
         url: /guides/developer/service-overviews/orca/
 reference:
