@@ -2,7 +2,7 @@
 layout: home
 conference_ad_row:
   title: Spinnaker Summit 2019
-  excerpt: "We're hosting a [conference](https://www.spinnakersummit.com) in San Diego, CA on November 16-17th. If you're interested in using Spinnaker, a current Spinnaker user, a Spinnaker operator, or in the DevOps space this conference will be interesting to you! \n \n We'd like to also extend a big \"Thank You!\" to the many many folks who submitted talks for this year. The review committee has started the process of reading through all of the proposals and will be reaching out to all of you in the coming weeks with updates."
+  excerpt: "We're hosting a [conference](https://www.spinnakersummit.com) in San Diego, CA on November 15-17th. If you're interested in using Spinnaker, a current Spinnaker user, a Spinnaker operator, or in the DevOps space this conference will be interesting to you! \n \n We'd like to also extend a big \"Thank You!\" to the many many folks who submitted talks for this year. The review committee has started the process of reading through all of the proposals and will be publishing an official summit agenda soon."
   image_path: assets/images/summit-socialmedia-transparent.png
   alt: "Spinnaker Summit Logo"
 spinnaker_row:
