@@ -431,6 +431,8 @@ guides:
   - title: Service Overviews
     collapsed: true
     children:
+      - title: Common Internals
+        url: /guides/developer/common-internals/
       - title: Front50
         url: /guides/developer/service-overviews/front50/
       - title: Orca
