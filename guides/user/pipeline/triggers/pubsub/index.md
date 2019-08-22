@@ -17,6 +17,9 @@ Pipeline's execution.
 > __☞ Note__:  It's possible to configure multiple pipelines to trigger off of
 > a single pub/sub message.
 
+Only Google Pub/Sub is supported. See the instructions
+[here](/setup/triggers/google/) to set up Google Pub/Sub.
+
 ## Adding a pub/sub trigger to a pipeline
 
 Assuming you have created a pipeline, under __Configuration__, select __Add

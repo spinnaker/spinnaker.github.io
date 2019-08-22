@@ -10,13 +10,13 @@ sidebar:
 Spinnaker surfaces a "Bake (Manifest)" stage to turn templates into manifests
 with the help of a templating engine. Currently, the only supported templating
 engine is [Helm](https://helm.sh/), by relying on the `helm template` command.
-See more details [here](https://docs.helm.sh/helm/#helm-template).
+See more details [here](https://helm.sh/docs/helm/#helm-template).
 
-> Note: This stage is intended to help you package and deploy applications 
+> Note: This stage is intended to help you package and deploy applications
 > that you own, and are actively developing and redeploying frequently.
 > It is not intended to serve as a one-time installation method for
 > third-party packages. If that is your goal, it's arguably better to call
-> [`helm install`](https://docs.helm.sh/helm/#helm-install) once when 
+> [`helm install`](https://helm.sh/docs/helm/#helm-install) once when
 > bootstrapping your Kubernetes cluster.
 
 > Note: Make sure that you have configured [artifact support](/setup/artifacts)
@@ -40,7 +40,7 @@ When configuring the "Bake (Manifest)" stage, you can specify the following:
   The Helm chart that you will be deploying, stored remotely as a
   `.tar.gz` archive. You can produce this by running `helm package
   /path/to/chart`. See more details
-  [here](https://docs.helm.sh/helm/#helm-package).
+  [here](https://helm.sh/docs/helm/#helm-package).
 
 * __The release namespace__ (optional)
 
@@ -60,14 +60,14 @@ metadata:
 * __Zero or more override artifacts__ (optional)
 
   The files passed to `--values` parameter in the [`helm
-  template` command](https://docs.helm.sh/helm/#helm-template). Each is a
+  template` command](https://helm.sh/docs/helm/#helm-template). Each is a
   remotely stored artifact representing a [Helm Value
-  File](https://docs.helm.sh/chart_template_guide/#values-files).
+  File](https://helm.sh/docs/chart_template_guide/#values-files).
 
 * __Statically specified overrides__
 
   The set of static of key/value pairs that are passed as `--set` parameters to
-  the [`helm template` command](https://docs.helm.sh/helm/#helm-template).
+  the [`helm template` command](https://helm.sh/docs/helm/#helm-template).
 
 As an example, we have a fully configured Bake (Manifest) stage below:
 

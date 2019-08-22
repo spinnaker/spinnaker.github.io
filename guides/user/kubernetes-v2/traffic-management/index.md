@@ -5,8 +5,6 @@ sidebar:
   nav: guides
 ---
 
-{% include alpha version="1.11" %}
-
 {% include toc %}
 
 This guide shows the basics of how to manage traffic during deployments using
@@ -171,7 +169,7 @@ You need the following:
     name: my-service
   spec:
     selector:
-      app: myapp
+      frontedBy: my-service # will be applied to backends by Spinnaker
     ports:
     - protocol: TCP
       port: 80
@@ -190,17 +188,17 @@ metadata:
     strategy.spinnaker.io/max-version-history: '2'
     traffic.spinnaker.io/load-balancers: '["service my-service"]'
   labels:
-    tier: frontend
-  name: frontend
+    app: myapp
+  name: myapp-frontend
 spec:
   replicas: 3
   selector:
     matchLabels:
-      tier: frontend
+      app: myapp
   template:
     metadata:
       labels:
-        tier: frontend
+        app: myapp
     spec:
       containers:
         - image: 'gcr.io/google_samples/gb-frontend:v3'

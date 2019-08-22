@@ -71,6 +71,13 @@ on the machine running Halyard.
    `hal shutdown`
 
    Then invoke any `hal` command to restart the Halyard daemon.
+   
+1. Optionally, configure [Kubernetes liveness probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/)
+for your Spinnaker services, setting the `initialDelaySeconds` to the upper bound of your longest service startup time:
+
+   ```
+   hal config deploy edit --liveness-probe-enabled true --liveness-probe-initial-delay-seconds $LONGEST_SERVICE_STARTUP_TIME
+   ```  
 
 <span class="begin-collapsible-section"></span>
 
@@ -137,12 +144,12 @@ Ensure that the following are installed on your system:
     sudo apt-get update
     sudo apt-get install openjdk-8-jdk
     ```
-* node (version >=8.9.0, [can be installed via nvm](https://github.com/creationix/nvm#install-script), summarized below)
+* node (version >=10.15.1, [can be installed via nvm](https://github.com/creationix/nvm#install-script), summarized below)
     ```
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
     # Follow instructions at end of script to add nvm to ~/.bash_rc
 
-    nvm install v8.9.0
+    nvm install v10.15.3
     ```
 * yarn: `npm install -g yarn` or [guide](https://yarnpkg.com/lang/en/docs/install/)
 

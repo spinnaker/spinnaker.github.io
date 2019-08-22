@@ -155,14 +155,24 @@ that was created by the specified stage.
 
 Converts a JSON String into a Map that can then be processed further.
 
+### #readYaml(String)
+
+Converts a YAML String into a Map that can then be processed further.
+
 ### #fromUrl(String)
 
-Returns the contents of the specified URL as a String.
+Returns the contents of the specified URL as a String. You can use this
+to fetch information from unauthenticated URL endpoints.
 
 ### #jsonFromUrl(String)
 
 Retrieves the contents of the given URL and converts it into either a map or a
-list. You can use this to fetch information from unauthenticated URL endpoints.
+list. It uses the #fromUrl(String) helper function underneath.
+
+### #yamlFromUrl(String)
+
+Retrieves the contents of the given URL and converts it into a map. It uses
+the #fromUrl(String) helper function underneath.
 
 ### #judgment(String)
 
@@ -231,6 +241,15 @@ Converts a value to an integer.
 ### #toJson(Object)
 
 Converts an arbitrary JSON object into a JSON string.
+
+### #cfServiceKey(String stageName)
+
+A shortcut to refer to a service key which has been created in a previous stage.  Remember that the
+stage's name is case-sensitive.  Note also that the values for the service key are contained in a
+map, so one may access a property via `${#cfServiceKey("stageName")["desiredProperty"]}`.
+For example, `${#cfServiceKey("Create MySQL Service Key")["username"]}` will retrieve the `username`
+field of a service key which has been created for a MySQL service in a `Create Service Key` stage named
+"Create MySQL Service Key".
 
 ## Whitelisted Java classes
 
