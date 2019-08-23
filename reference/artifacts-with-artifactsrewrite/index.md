@@ -7,6 +7,12 @@ sidebar:
 
 {% include toc %}
 
+> The pages in this section assume that you have enabled the `artifactsRewrite`
+> feature flag. In `~/.hal/$DEPLOYMENT/profiles/settings-local.js` (where
+> `$DEPLOYMENT` is typically `default`), add:
+>
+> `window.spinnakerSettings.feature.artifactsRewrite = true;`
+
 A Spinnaker artifact is a named JSON object that refers to an external resource.
 
 Spinnaker supports a wide range of providers. An artifact can reference any of many different external resources, such as&#8230;

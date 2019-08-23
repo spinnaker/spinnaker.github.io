@@ -431,6 +431,10 @@ guides:
   - title: Service Overviews
     collapsed: true
     children:
+      - title: Common Internals
+        url: /guides/developer/common-internals/
+      - title: Front50
+        url: /guides/developer/service-overviews/front50/
       - title: Orca
         url: /guides/developer/service-overviews/orca/
 reference:
@@ -542,6 +546,8 @@ reference:
             url: /reference/artifacts-with-artifactsrewrite/types/kubernetes-object/
           - title: Oracle Object
             url: /reference/artifacts-with-artifactsrewrite/types/oracle-object/
+          - title: Maven Artifact
+            url: /reference/artifacts-with-artifactsrewrite/types/maven-artifact/
   - title: Halyard
     collapsed: true
     children:

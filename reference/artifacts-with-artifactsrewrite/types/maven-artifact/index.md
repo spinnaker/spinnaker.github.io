@@ -34,7 +34,9 @@ When configuring certain triggers (such as an Artifactory trigger), you can use 
 
 ### In a pipeline stage
 
-When configuring a Deploy stage, you can use a Maven artifact as an application artifact.
+When configuring a Deploy stage, you can use a Maven artifact as an application
+artifact. You can either use a previously-defined artifact (for example, an
+artifact defined in a trigger) or define an artifact inline.
 
 {%
   include

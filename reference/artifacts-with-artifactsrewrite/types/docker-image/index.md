@@ -54,7 +54,9 @@ expected artifact.
 ### In a pipeline stage
 
 When configuring certain stages, such as a  "Deploy (Manifest)" stage, you can
-use a Docker image as a required artifact.
+use a Docker image as a required artifact. You can either use a
+previously-defined artifact (for example, an artifact defined in a trigger) or
+define an artifact inline.
 
 {%
   include

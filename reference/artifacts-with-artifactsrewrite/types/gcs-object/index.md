@@ -51,7 +51,9 @@ System Type__ "Google"), you can use a GCS object as an expected artifact.
 ### In a pipeline stage
 
 When configuring a "Deploy (Manifest)" or "Deploy" stage, you can use a GCS
-object as a manifest or application artifact.
+object as a manifest or application artifact. You can either use a
+previously-defined artifact (for example, an artifact defined in a trigger) or
+define an artifact inline.
 
 {%
   include

@@ -51,7 +51,9 @@ artifact.
 ### In a pipeline stage
 
 When configuring a "Deploy (Manifest)" or "Deploy" stage, you can use a
-Bitbucket file as a manifest or application artifact.
+Bitbucket file as a manifest or application artifact. You can either use a
+previously-defined artifact (for example, an artifact defined in a trigger) or
+define an artifact inline.
 
 ## Bitbucket file artifact in a pipeline definition
 
