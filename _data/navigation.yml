@@ -434,7 +434,7 @@ guides:
       - title: Common Internals
         url: /guides/developer/common-internals/
       - title: Front50
-        url: /guides/developer/service-overviews/front50/
+        url: https://github.com/spinnaker/front50/blob/master/README.md
       - title: Orca
         url: /guides/developer/service-overviews/orca/
 reference:
