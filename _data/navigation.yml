@@ -433,10 +433,10 @@ guides:
     children:
       - title: Common Internals
         url: /guides/developer/common-internals/
+      - title: Front50 
+        url: https://github.com/spinnaker/front50/blob/master/README.md
       - title: Igor
         url: https://github.com/spinnaker/igor/blob/master/README.md
-      - title: Front50
-        url: https://github.com/spinnaker/front50/blob/master/README.md
       - title: Orca
         url: /guides/developer/service-overviews/orca/
 reference:
