@@ -13,11 +13,13 @@ Dynamic configuration uses the open-source [Spring Cloud Config](https://spring.
 
 The following table lists the Spinnaker services that currently incorporate dynamic configuration.
 
-| Service     | Account Types            | Notes                                                                                                          |
-|-------------|--------------------------|----------------------------------------------------------------------------------------------------------------|
-| Clouddriver | Cloud provider, artifact | Automatic configuration refreshing is supported for Cloud Foundry and Kubernetes cloud provider accounts only. |
-| Echo        | Pub/Sub                  |                                                                                                                |
-| Igor        | CI system                |                                                                                                                |
+| Service     | Account Types             | Notes                                                                                                          |
+|-------------|---------------------------|----------------------------------------------------------------------------------------------------------------|
+| Clouddriver | Cloud provider, artifact  | Automatic configuration refreshing is supported for Cloud Foundry and Kubernetes cloud provider accounts only. |
+| Echo        | Pub/Sub                   |                                                                                                                |
+| Igor        | CI system, SCM (e.g. Git) |                                                                                                                |
+
+> For Clouddriver, support for dynamic configuration was added in Spinnaker 1.15. For Echo and Igor, support was added in Spinnaker 1.16.
 
 ## Enabling dynamic configuration
 
@@ -65,86 +67,88 @@ You can use the Config Server to dynamically manage all of your account configur
 
 If you wish to use dynamic configuration instead of Halyard to store complete configuration for your accounts, you can move the account configuration to files stored in a Config Server backend, such as a Git repository or HashiCorp Vault server.
 
-To store complete account configuration in Git, create a Git repository and within it, place a file named `spinnaker.yml`. The file should contain the account configuration, as in the following example:
+To store complete account configuration in Git, create a Git repository and within it, place a file named `spinnaker.yml`. The file should contain the account configuration, as in the following example of Echo configuration for a Pub/Sub account:
 
 ```yml
-cloudfoundry:
+pubsub:
   enabled: true
-  accounts:
-    - name: foundation1
-      user: admin
-      password: 'secret1'
-      api: api.sys.foundation1.example.com
-      appsManagerUri: https://apps.sys.foundation1.example.com
-    - name: foundation2
-      user: admin
-      password: 'secret2'
-      api: api.sys.foundation2.example.com
-      appsManagerUri: https://apps.sys.foundation2.example.com
+  google:
+    enabled: true
+    pubsubType: GOOGLE
+    subscriptions:
+    - name: my-gcs-subscription
+      project: my-project
+      subscriptionName: my-gcs-subscription
+      jsonPath: /path/to/my-gce-account.json
+      ackDeadlineSeconds: 10
+      messageFormat: GCS
+    publishers: []
 ```
 
-To store complete account configuration in HashiCorp Vault, create a JSON file (for example, `clouddriver.json`) containing the account configuration, as in the following example:
+To store complete account configuration in HashiCorp Vault, create a JSON file (for example, `echo.json`) containing the account configuration, as in the following example:
 
 ```json
 {
-  "cloudfoundry": {
-    "enabled": true,
-    "accounts": [
-      {
-        "name": "foundation1",
-        "user": "admin",
-        "password": "secret1",
-        "api": "api.sys.foundation1.example.com",
-        "appsManagerUri": "https://apps.sys.foundation1.example.com"
-      },
-      {
-        "name": "foundation2",
-        "user": "admin",
-        "password": "secret2",
-        "api": "api.sys.foundation2.example.com",
-        "appsManagerUri": "https://apps.sys.foundation2.example.com"
+   "pubsub": {
+      "enabled": true,
+      "google": {
+         "enabled": true,
+         "pubsubType": "GOOGLE",
+         "subscriptions": [
+            {
+               "name": "gcs-subscription",
+               "project": "CF-spinnaker",
+               "subscriptionName": "gcs-pipeline-subscription",
+               "jsonPath": "/home/spinnaker/.hal/default/staging/dependencies/183311315-gce-account.json",
+               "ackDeadlineSeconds": 10,
+               "messageFormat": "GCS"
+            }
+         ],
+         "publishers": []
       }
-    ]
-  }
+   }
 }
 ```
 
 Then use the `vault` command-line interface tool to store this JSON in Vault: 
 
 ```bash
-$ vault kv put secret/clouddriver @clouddriver.json
+$ vault kv put secret/echo @echo.json
 ```
 
 ### Secrets
 
 If you wish to use Halyard to manage account configuration but store secrets (such as account passwords) externally, you can move the account secrets into files stored in a Config Server backend, such as a Git repository or HashiCorp Vault server. You can then use Spring property placeholders to reference the secret values.
 
-If you are configuring a Cloud Foundry cloud provider account, your `spinnaker.yml` file might look like the following example:
+If you are configuring a Jenkins account in Igor, your `spinnaker.yml` file might look like the following example:
 
 ```yml
-cloudfoundry:
+jenkins:
   enabled: true
-  accounts:
-    - name: foundation1
-      user: admin
-      password: ${cloudfoundry.foundation1.password}
-      api: api.sys.foundation1.example.com
-      appsManagerUri: https://apps.sys.foundation1.example.com
-    - name: foundation2
-      user: admin
-      password: ${cloudfoundry.foundation2.password}
-      api: api.sys.foundation2.example.com
-      appsManagerUri: https://apps.sys.foundation2.example.com
+  masters:
+  - name: my-jenkins-master
+    permissions: {}
+    address: http://my-jenkins.ci.example.com
+    username: myuser
+    password: ${ci.my-jenkins.password}
+```
+
+You could add this configuration using the `hal` CLI, as in the following example:
+
+```
+$ hal config provider jenkins account add \
+   my-jenkins-master \
+   --address http://my-jenkins.ci.example.com \
+   --username myuser \
+   --password ${ci.my-jenkins.password}
 ```
 
 In the Config Server backend (such as a Git repository), the account secrets file might look like the following example:
 
 ```yml
-cloudfoundry:
-  foundation1:
-    password: 'secret1'
-  foundation2:
-    password: 'secret2'
+ci:
+  my-jenkins:
+    password: 'secret'
 ```
 
 ### Configuration files
