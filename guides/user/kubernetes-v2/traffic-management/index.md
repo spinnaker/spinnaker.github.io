@@ -217,7 +217,7 @@ There are _two_ important annotations to pay attention to here:
 
 * `traffic.spinnaker.io/load-balancers`
 
-  This annotation is explained [above](#attach-a-service-to-a-workload), and
+  This annotation is explained [above](#attach-a-service-to-a-workload),
   and is used here to both indicate to Spinnaker which Service to attach during
   deployment time, and which Service to detach during the disable stage.
 
