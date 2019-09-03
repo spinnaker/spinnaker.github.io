@@ -588,6 +588,13 @@ reference:
       url: /reference/pipeline/stages/
     - title: Pipeline Templates
       url: /reference/pipeline/templates/
+  - title: Configuration
+    collapsed: true
+    children:
+      - title: Overview
+        url: /reference/configuration/
+      - title: Dynamic Configuration
+        url: /reference/configuration/dynamic/
 
 community:
   - title: Releases
