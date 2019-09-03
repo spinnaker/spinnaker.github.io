@@ -433,8 +433,10 @@ guides:
     children:
       - title: Common Internals
         url: /guides/developer/common-internals/
-      - title: Front50
-        url: /guides/developer/service-overviews/front50/
+      - title: Front50 
+        url: https://github.com/spinnaker/front50/blob/master/README.md
+      - title: Igor
+        url: https://github.com/spinnaker/igor/blob/master/README.md
       - title: Orca
         url: /guides/developer/service-overviews/orca/
 reference:
@@ -586,6 +588,13 @@ reference:
       url: /reference/pipeline/stages/
     - title: Pipeline Templates
       url: /reference/pipeline/templates/
+  - title: Configuration
+    collapsed: true
+    children:
+      - title: Overview
+        url: /reference/configuration/
+      - title: Dynamic Configuration
+        url: /reference/configuration/dynamic/
 
 community:
   - title: Releases
