@@ -96,10 +96,10 @@ To store complete account configuration in HashiCorp Vault, create a JSON file (
          "pubsubType": "GOOGLE",
          "subscriptions": [
             {
-               "name": "gcs-subscription",
-               "project": "CF-spinnaker",
-               "subscriptionName": "gcs-pipeline-subscription",
-               "jsonPath": "/home/spinnaker/.hal/default/staging/dependencies/183311315-gce-account.json",
+               "name": "my-gcs",
+               "project": "My-Project",
+               "subscriptionName": "my-gcs-subscription",
+               "jsonPath": "/home/spinnaker/.hal/default/staging/dependencies/my-gce-account.json",
                "ackDeadlineSeconds": 10,
                "messageFormat": "GCS"
             }
