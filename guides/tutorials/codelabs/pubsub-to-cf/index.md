@@ -4,10 +4,12 @@
  sidebar:
    nav: guides
 ---
-
- {% include alpha version="1.10 and later" %}
  
  {% include toc %}
+
+> This codelab assumes that you have enabled the `artifactsRewrite` feature flag. In `~/.hal/$DEPLOYMENT/profiles/settings-local.js` (where `$DEPLOYMENT` is typically `default`), add:
+>
+> `window.spinnakerSettings.feature.artifactsRewrite = true;`
  
 In this codelab, you will deploy an artifact to Cloud Foundry via a Spinnaker pipeline that is triggered by JAR uploads to a Google Cloud Storage (GCS) bucket.
 
@@ -30,13 +32,13 @@ b. Run the `gsutil mb` command to create a bucket within your GCP project, givin
 
   ```
   $ PROJECT_ID=<Insert Project ID>
-  $ BUCKET=<Insert Bucket Name>
-  $ gsutil mb -p $PROJECT_ID gs://$BUCKET
+  $ BUCKET=gs://<Insert Bucket Name>
+  $ gsutil mb -p $PROJECT_ID $BUCKET
   ```
 
 ## 2. Enable Google Cloud Pub/Sub
 
-a. Enable the GCP Cloud Pub/Sub API, then use `gsutil` to create a pub/sub notification, giving a topic name (`TOPIC`) and your GCS bucket name (`BUCKET`):
+a. Enable the GCP Cloud Pub/Sub API, then use `gsutil` to create a Pub/Sub notification, giving a topic name (`TOPIC`) and your GCS bucket name (`BUCKET`):
 
   ```
   $ TOPIC=<Insert Topic Name>
@@ -102,31 +104,38 @@ e. Apply your changes:
 
 ## 5. Configure the Application and Pipeline
 
-a. Create a new pipeline for your application. In the pipeline configuration, configure the Expected Artifacts as shown below, a GCS object with the path to the application archive in your GCS bucket:
+a. Create a new pipeline for your application. In the pipeline configuration, under Automated Triggers, add a new trigger and configure it as follows:
+
+  * For **Type**, select "Pub/Sub".
+  * For **Pub/Sub System Type**, select **GCP Cloud Pub/Sub**.
+  * For **Subscription Name**, select your GCP Cloud Pub/Sub Spinnaker subscription.
+  * Under **Attribute Constraints**, add an entry with the key `eventType` and value `OBJECT_FINALIZE ` (see the [Google Cloud Storage documentation](https://cloud.google.com/storage/docs/pubsub-notifications)).
 
   {% include figure
-     image_path="./expected-artifacts.png"
+     image_path="./add-a-trigger.png"
   %}
 
-b. Configure Automated Triggers, adding the GCP Cloud Pub/Sub Spinnaker subscription as a trigger and selecting the Artifact Constraints:
+b. In the **Artifact Constraints** dropdown, select "Define a new artifact..." to bring up the **Expected Artifact** form. Provide the artifact information:
+
+  * For **Display Name**, enter your own artifact display name or keep the auto-generated default.
+  * In the **Account** dropdown, select your GCS account.
+  * In the **Object path** field, enter the path to the artifact.
 
   {% include figure
-     image_path="./triggers.png"
+     image_path="./expected-artifact.png"
   %}
 
-c. Add a Deploy stage to the pipeline. Create a new server group and provide details on deployment settings, the application artifact, and the manifest artifact:
+c. Click **Save Artifact**.
+
+d. Add a Deploy stage to the pipeline. Create a new server group and provide details on deployment settings, the application artifact, and the manifest artifact:
 
   {% include figure
-     image_path="./server-group-basic-settings.png"
-  %}
-
-  {% include figure
-     image_path="./server-group-artifacts.png"
+     image_path="./server-group.png"
   %}
 
 ## 6. Upload the Application and Manifest Artifacts
 
-a. Upload the application archive and manifest to your GCS bucket. With the pipeline trigger for your GCP Cloud Pub/Sub subscription, the pipeline will run when you upload the application archive to the bucket. The below example uses the `gsutil cp` command:
+a. Upload the application manifest and application archive to your GCS bucket. With the pipeline trigger for your GCP Cloud Pub/Sub subscription, the pipeline will run when you upload the application archive to the bucket. The below example uses the `gsutil cp` command:
 
   ```
   $ gsutil cp application.jar $BUCKET

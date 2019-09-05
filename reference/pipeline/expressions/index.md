@@ -155,14 +155,24 @@ that was created by the specified stage.
 
 Converts a JSON String into a Map that can then be processed further.
 
+### #readYaml(String)
+
+Converts a YAML String into a Map that can then be processed further.
+
 ### #fromUrl(String)
 
-Returns the contents of the specified URL as a String.
+Returns the contents of the specified URL as a String. You can use this
+to fetch information from unauthenticated URL endpoints.
 
 ### #jsonFromUrl(String)
 
 Retrieves the contents of the given URL and converts it into either a map or a
-list. You can use this to fetch information from unauthenticated URL endpoints.
+list. It uses the #fromUrl(String) helper function underneath.
+
+### #yamlFromUrl(String)
+
+Retrieves the contents of the given URL and converts it into a map. It uses
+the #fromUrl(String) helper function underneath.
 
 ### #judgment(String)
 
@@ -240,6 +250,16 @@ map, so one may access a property via `${#cfServiceKey("stageName")["desiredProp
 For example, `${#cfServiceKey("Create MySQL Service Key")["username"]}` will retrieve the `username`
 field of a service key which has been created for a MySQL service in a `Create Service Key` stage named
 "Create MySQL Service Key".
+
+### #triggerResolvedArtifact(String name)
+
+A shortcut to look up the resolved artifact in execution trigger by its name. If multiple artifacts are found, only 1 will be returned.
+For example, `${#triggerResolvedArtifact("my-image")["reference"]}` might return `gcr.io/spinnaker-marketplace/orca@sha256:b48dbe7d7cb580db8512e4687d31f3710185b08afcf3cb53c0203025f93f9091`.
+
+### #triggerResolvedArtifactByType(String type)
+
+A shortcut to look up the resolved artifact in execution trigger by its type. If multiple artifacts are found, only 1 will be returned.
+For example, `${#triggerResolvedArtifactByType("docker/image")["reference"]}` might return `gcr.io/spinnaker-marketplace/orca@sha256:b48dbe7d7cb580db8512e4687d31f3710185b08afcf3cb53c0203025f93f9091`.
 
 ## Whitelisted Java classes
 
