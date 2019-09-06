@@ -153,7 +153,7 @@ ci:
 
 ### Configuration files
 
-The Kubernetes, Google Cloud, and App Engine cloud providers can load account information from files that are separate from the service YAML configuration. You can load these separate files externally using the Config Server's Resource abstraction. In the service YAML configuration, prefix a file path with `configserver:` to indicate that the file should be retrieved by the Config Server. 
+The Kubernetes, Google Cloud, and App Engine cloud providers can load account information from files that are separate from the service YAML configuration. You can load these separate files from an external source using the Config Server's Resource abstraction. In the service YAML configuration, prefix a file path with `configserver:` to indicate that the file should be retrieved by the Config Server. 
 
 If you are configuring a Kubernetes cloud provider account and want to load an external `kubeconfig.yml` file using Config Server, your account configuration might look like the following example:
 
