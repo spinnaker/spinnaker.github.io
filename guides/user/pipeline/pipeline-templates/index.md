@@ -14,6 +14,8 @@ You can share these templates with your teams within a single application,
 across different applications, or even across different deployments of
 Spinnaker itself.
 
+Templates can be managed using [Spin](https://www.spinnaker.io/guides/spin/pipeline-templates/) or the UI. To manage templates through the UI, enable the requisite feature flag: `hal config features edit --managed-pipeline-templates-v2-ui true` 
+
 > **Note**: You can use `spin` CLI to manage pipelines and pipeline templates,
 > but first you need to [install it](/guides/spin/cli/).
 
