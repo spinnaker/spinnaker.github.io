@@ -124,7 +124,7 @@ hal config features edit --artifacts true
 Worker nodes launched using the below commands are standard Amazon EC2 instances and use [EKS optimized AMIs](https://docs.aws.amazon.com/eks/latest/userguide/worker.html).
 
 ```bash
-curl -O https://d3079gxvs8ayeg.cloudfront.net/templates/amazon-eks-nodegroup.yaml
+curl -O https://raw.githubusercontent.com/awslabs/amazon-eks-ami/master/amazon-eks-nodegroup.yaml
 aws cloudformation deploy --stack-name spinnaker-eks-nodes --template-file amazon-eks-nodegroup.yaml \
 --parameter-overrides NodeInstanceProfile=$SPINNAKER_INSTANCE_PROFILE_ARN \
 NodeInstanceType=t2.large ClusterName=$EKS_CLUSTER_NAME NodeGroupName=spinnaker-cluster-nodes ClusterControlPlaneSecurityGroup=$CONTROL_PLANE_SG \
