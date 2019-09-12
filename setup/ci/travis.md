@@ -38,6 +38,7 @@ name):
    --base-url https://travis-ci.org \
    --github-token <token> \ # The GitHub token to authenticate to Travis
    --number-of-jobs # How many jobs the integration should fetch each
-                    # time the poller runs, higher than max expected
-                    # during polling interval. Defaults to 100.
+                    # time the poller runs. Set this higher than the max
+                    # you expect during polling interval.
+                    # Defaults to 100.
    ```
