@@ -68,6 +68,9 @@ echo $MINIO_SECRET_KEY | hal config storage s3 edit --endpoint $ENDPOINT \
 hal config storage edit --type s3
 ```
 
+## Notes
+> :warning: Unless Minio is configured to [support virtual-host-style requests](https://docs.min.io/docs/minio-server-configuration-guide.html#Domain), the path style access mode will have to be enabled: `hal config storage s3 edit --path-style-access true`. Front50 will otherwise refuse to start and throw `java.net.UnknownHostException: $BUCKET_NAME.localhost` exceptions.
+
 ## Next steps
 
 After you've set up Minio as your external storage service, you're ready to
