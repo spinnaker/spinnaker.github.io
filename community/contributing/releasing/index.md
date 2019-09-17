@@ -13,9 +13,9 @@ Spinnaker you manage. You have a few options available:
 
 # Wait for the non-patch release
 
-Any time we release a new minor version of Spinnaker (e.g. 1.16.0), we include
-all commits merged into `master` for each service. We do this on a [regular
-cadence](/community/releases/release-cadence).
+Any time we release a new minor version of Spinnaker (e.g. 1.16.0 or 1.17.0), we
+include all commits merged into `master` for each service. We do this on a
+[regular cadence](/community/releases/release-cadence).
 
 # Merge into the release branch
 
