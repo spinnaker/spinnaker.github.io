@@ -94,6 +94,7 @@ Current TOC members:
 * Adam Jordens (Netflix)
 * Rob Zienert (Netflix)
 * Eric Zimanyi (Google)
+* Michael Plump (Google)
 
 The technical oversight committee is initially seeded with core members from Netflix and Google. We will leave further details such as number of seats, qualifications, tenure, TBD for the time being.
 
