@@ -19,7 +19,7 @@ include all commits merged into `master` for each service. We do this on a
 
 # Merge into the release branch
 
-If your patch is a relatively small, localized change that fixes a bug, and
+If your patch is a relatively small localized change that fixes a bug, and
 doesn't introduce a feature or breaking change, you can request that your patch
 be merged into a release branch. Every minor release of Spinnaker has its own
 release branch. For example, all Spinnaker 1.16 releases (1.16.0, 1.16.1, etc.)
