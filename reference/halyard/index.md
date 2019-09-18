@@ -12,6 +12,10 @@ than is needed to deploy most Spinnaker environments. If you're a new user
 looking for instructions for how to use Halyard to deploy Spinnaker, checkout
 the [setup instructions](/setup/install/) first.
 
+## About
+
+Halyard is a tool for configuring, installing, and updating Spinnaker.
+
 ## Terminology
 
 ### Halconfig
@@ -44,7 +48,7 @@ hal config --set-current-deployment $DEPLOYMENT
 Artifacts are unconfigured, versioned, prebuilt deployables consumed by
 Halyard. 
 
-For example, the Clouddriver Docker container
+For example, the Clouddriver Docker image
 `gcr.io/spinnaker-marketplace/clouddriver:0.2.0-348` is an Artifact, or the
 Debian Echo package `spinnaker-releases/debians/spinnaker-echo=0.2.0-214` is
 another Artifact.
@@ -143,3 +147,7 @@ version: master-2017-05-26-393
 
 If you're curious how to deploy Spinnaker yourself using a validated BOM, read
 more in the [deployments](/reference/halyard/#deployments) section.
+
+## Links
+
+Halyards code lives on GitHub at [spinnaker/halyard](https://github.com/spinnaker/halyard).
