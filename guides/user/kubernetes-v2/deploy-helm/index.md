@@ -8,8 +8,7 @@ sidebar:
 {% include toc %}
 
 Spinnaker surfaces a "Bake (Manifest)" stage to turn templates into manifests
-with the help of a templating engine. Currently, the only supported templating
-engine is [Helm](https://helm.sh/), by relying on the `helm template` command.
+with the help of a templating engine. [Helm](https://helm.sh/) relies on the `helm template` command.
 See more details [here](https://helm.sh/docs/helm/#helm-template).
 
 > Note: This stage is intended to help you package and deploy applications
