@@ -17,6 +17,8 @@ To learn more about Kustomize and how to define a `kustomization.yaml` file, see
 
 In the context of Spinnaker, Kustomize lets you generate a custom manifest, which can be deployed in a downstream `Deploy (Manifest)` stage. This manifest is tailored to your requirements and built on existing configurations.
 
+Note that Spinnaker uses the latest non-kubectl version of Kustomize.
+
 ## Enabling Kustomize in 1.16 (Beta)
 
 Kustomize can be enabled by a feature flag in 1.16.
@@ -57,3 +59,7 @@ Define the artifact:
 %}
 
 You can now run your pipeline and get a Kustomize rendered manifest!
+
+## Other Templating Engines
+
+In addition to Kustomize, Spinnaker also supports Helm as a templating engine. For more information, see [Deploy Helm Charts](/guides/user/kubernetes-v2/deploy-helm/).
