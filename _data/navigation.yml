@@ -350,6 +350,8 @@ guides:
             url: /guides/user/kubernetes-v2/deploy-manifest/
           - title: Deploy a Helm Chart
             url: /guides/user/kubernetes-v2/deploy-helm/
+          - title: Use Kustomize for Manifests
+            url: /guides/user/kubernetes-v2/kustomize-manifests/
           - title: Best Practices
             url: /guides/user/kubernetes-v2/best-practices/
           - title: Parameterize Manifests
