@@ -151,4 +151,4 @@ deployed at once:
 
 ## Other Templating Engines
 
-In addition to Kustomize, Spinnaker also supports Helm as a templating engine. For more information, see [Using Kustomize for Manifests](/guides/user/kubernetes-v2/kustomize-manifests/).
+In addition to Helm, Spinnaker also supports Kustomize as a templating engine. For more information, see [Using Kustomize for Manifests](/guides/user/kubernetes-v2/kustomize-manifests/).
