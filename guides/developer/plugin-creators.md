@@ -245,4 +245,6 @@ The `manifestVersion` tells Spinnaker what version to use to validate the manife
 
 The `options` key gives the plugin users that flexibility to change some settings to control how the plugin works. For example, controlling what username and password to use to connect to S3. The plugin user can modify anything under `options`.
 
-The next section in the manifest is for `resources`. Resources are things that are required for the plugin to run. For example, when creating a stage, there will be jar(s) and Javascript code that need to be consumed by the plugin user. Currently, there are two different types of `resources`. The first is for `orca`. 
+The next section in the manifest is for `resources`. Resources are things that are required for the plugin to run. For example, when creating a stage, there will be jar(s) and Javascript code that need to be consumed by the plugin user. Currently, there are two different types of `resources`. The first is for `orca`.  This is where we list a URL locations of where the jar(s) are for Orca to use.
+
+The second item under `resources` is for `deck`. `deck` is the frontend for Spinnaker. Here is where a list of javascript resources would be put for `deck` to consume.
