@@ -7,9 +7,10 @@ sidebar:
 
 {% include toc %}
 
-This is an early alpha feature that is under active development and will likely change
+This is an early alpha feature that is under active development and will likely change.
 
-# Create The Backend For Stage Plugins
+# Create the Backend For Stage Plugins
+
 ## Example Plugin
 
 This document shows how to create a simple plugin that waits a random amount of time, from zero to the number of seconds that is entered in the UI. Use this guide as a starting point to facilitate creating more complex plugins. 
@@ -24,7 +25,7 @@ Keep the following recommendations and requirements in mind:
 - You must set the base package path for the plugin to the following path: `com.netflix.spinnaker.plugin`. You can add anything else after that, but that is required. 
 - You can add any dependencies you need to make your plugin successful.
 
-Generate the project and unzip it to a location of your choosing. Modify the `build.gradle`  file to look like:
+Generate the project and unzip it to a location of your choosing. Modify the `build.gradle`  file to look like the following example:
 ```
 plugins {
     id 'org.springframework.boot' version '2.1.8.RELEASE' apply false
@@ -62,7 +63,7 @@ Then, we can remove both of the tests and the main application. (Don’t worry, 
 In order to create the stage plugin, we first have to define three classes. The three classes that we need to define are our Stage Input, Stage Output Context, and Stage Output Outputs. 
 
 **SimpleStage Input**
-SimpleStage Input is what our stage needs to use to do its job. The stage input comes from the Spinnaker UI. First we have to create a class that will be used as our Stage input. In this example, the plugin will take the max time to wait.
+SimpleStage Input is what our stage needs to use to do its job. The stage input comes from the Spinnaker UI. First, we have to create a class that will be used as our Stage input. In this example, the plugin will take the max time to wait.
 ```
 @Data
 class RandomWaitInput {
@@ -83,7 +84,8 @@ class Context {
 ```
 
 **SimpleStage Output**
-Output is what can be used later in other stages. In this case the output will contain the actual number of seconds waited for the stage. 
+Output is what can be used later in other stages. In this case, the output contains the actual number of seconds the stage waits.
+ 
 ```
 @Data
 class Output {
@@ -143,7 +145,7 @@ public class RandomWait<RandomWaitInput> {
 # Create The Frontend For Stage Plugins
 ## Setting Up Your Project
 
-React is the suggested framework to use for plugin frontend code. When setting up webpack or rollup, make sure that React is added to the resulting transpiled ouput. That way as the plugin developer, you can manage your own dependencies. The only dependency that is needed from Spinnaker is `@spinnaker/plugins`. 
+We suggest React as the framework for the plugin frontend code. When setting up webpack or rollup, make sure that React is added to the resulting transpiled ouput. That way, you can manage your own dependencies as the plugin developer. The only dependency that is needed from Spinnaker is `@spinnaker/plugins`. 
 
 ## Writing The Frontend
 ```
@@ -199,19 +201,21 @@ window.spinnakerSettings.onPluginLoaded(plugin);
 Anything can go in the render method. What is in the render method will be shown to plugin users when configuring their Spinnaker pipeline. In this example, the user can input the maximum number of seconds to wait to continue executing the pipeline.
 
 **Set Methods**
-Stages are made up of JSON that contains all information that will be passed to the backend. To update the stage JSON with the data the user enters use `this.props.updateStageField` method that takes in a valid JSON object of what to update. In this example we are updating the `maxWaitTime` field with the value that the user enters.
+Stages are made up of JSON that contains all information that will be passed to the backend. To update the stage JSON with the data the user enters, use the `this.props.updateStageField` method that takes in a valid JSON object of what to update. In this example, we are updating the `maxWaitTime` field with the value that the user enters.
 
 **Register Stage**
-The `registerStage` method is what makes the stage available to be used. These are the required fields for registering a stage.
+The `registerStage` method is what makes the stage available for use. These are the required fields for registering a stage:
 
-1. key → a unique name of the stage
-2. label → is what is used inside the UI to display, saying what the name of the stage is
-3. description → a short description of what the stage will do
-4. component → if using React to create a stage, this is where you would put the component to render
+1. key → A unique name of the stage
+2. label → Text used inside the UI to display what the name of the stage is
+3. description → A short description of what the stage does
+4. component → (If using React to create a stage) Place where you would put the component to render
 
 Optional Fields:
 
-1. cloudProvider → if the stage can only be ran in one of the cloud providers, that can be selected here
+- cloudProvider → if the stage can only be ran in one of the cloud providers, that can be selected here.
+
+
 # Writing The Plugin Manifest
 
 Here is an example of a plugin manifest:
@@ -231,14 +235,14 @@ resources:
   - https://stage-plugin-test.s3-us-west-2.amazonaws.com/stage-plugin-ui-0.0.1-SNAPSHOT.js
 ```
 
-The `name` is the name of the plugin that is being written. Names are namespaced so that plugins can have the same name, but be by different vendors. In this case the namespace is `armory` and the name of the plugin is `s3copy`.
+The `name` is the name of the plugin that is being written. Names are namespaced so that plugins can have the same name but be made by different vendors. In this case, the namespace is `armory` and the name of the plugin is `s3copy`.
 
 The `description` gives the plugin user an idea of what the plugin will be doing.
 
-Plugin manifests can change overtime, the `manifestVersion` tells Spinnaker what version to use to validate the manifest. Currently there is only the `plugins/v1` version.
+The `manifestVersion` tells Spinnaker what version to use to validate the manifest. This is needed because lugin manifests can change overtime. Currently, there is only the `plugins/v1` version.
 
 `version` is the version of the plugin. 
 
-Plugin users may want to change some settings to control how the plugin works. For example controlling what username and password to use to connect to S3. The `options` key gives the plugin users that flexibility. Anything under `options` the plugin user can modify.
+The `options` key gives the plugin users that flexibility to change some settings to control how the plugin works. For example, controlling what username and password to use to connect to S3. The plugin user can modify anything under `options`.
 
-The next section in the manifest is for `resources`. Resources are things that are required for the plugin to run. For example when creating a stage there will be jar(s) and Javascript code that needs to be consumed by the plugin user. Currently there are two different types of `resources`. The first is for `orca`. 
+The next section in the manifest is for `resources`. Resources are things that are required for the plugin to run. For example, when creating a stage, there will be jar(s) and Javascript code that need to be consumed by the plugin user. Currently, there are two different types of `resources`. The first is for `orca`. 
