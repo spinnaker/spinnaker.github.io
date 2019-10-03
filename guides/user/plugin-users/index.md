@@ -1,18 +1,23 @@
 ---
 layout: single
-title:  "Get Started Using Spinnaker"
+title:  "Plugin Users Guide"
 sidebar:
   nav: guides
 ---
 
 {% include toc %}
 
-This is an early alpha feature that is under active development and will likely change
+Plugins are an early alpha feature that is under active development and will likely change.
 
-# Plugin Users Guide
-This guide is for adding plugins to Spinnaker. This assumes that Spinnaker is already setup and configured. Currently this is only support in 1.16 version of Spinnaker or later. This also requires version 1.23.0 of Halyard or later.
+This guide is for adding existing plugins to Spinnaker. For information about how to develop a new plugin, see [Plugin Creators Guide](/guides/developer/plugin-creators). 
 
-Note that adding a plugin to Spinnaker requires redeploying Spinnaker with Halyard.
+## Requirements
+
+To use plugins, ensure that the following requirements are met:
+* Your Spinnaker deployment must be version 1.16 or later
+* You must use Halyard 1.23.0 or later
+* You can redeploy Spinnaker with Halyard to apply changes
+
 
 ## Plugin Manifests
 
@@ -35,46 +40,49 @@ resources:
 ```
 ## Enabling Plugins
 
-To enable plugins for Spinnaker run the following [command](https://www.spinnaker.io/reference/halyard/commands/#hal-plugins-enable)
+To enable plugins for Spinnaker, run the following [command](https://www.spinnaker.io/reference/halyard/commands/#hal-plugins-enable):
 `hal plugins enable`
 
-This will enable plugins to be loaded if the individual plugin(s) are enabled.
+This will enable plugins to be loaded if the individual plugins are enabled.
 
 ## Adding A Plugin
 
-To add a plugin to Spinnaker, the plugin manifest location needs to be known. Adding the plugin is as easy as:
+To add a plugin to Spinnaker, the plugin manifest location needs to be known. Adding the plugin is as easy as running the following command:
 
 ```
 hal plugins add plugin-name --enabled\
   --manifest-location="https://path/to/plugin/manifest.yml"
 ```
-The `--enabled` is to automatically enable the plugin. Plugins by default are disabled, unless the `--enabled` flag is passed when adding the plugin.
+The `--enabled` is to automatically enable the plugin. Plugins by default are disabled unless the `--enabled` flag is passed when adding the plugin.
 
 **Applying Changes**
-Anytime things via Halyard change, the command `hal deploy apply` needs to be ran to send the configuration off to Spinnaker. Plugins are no different. After modifying any plugin remember to run `hal deploy apply` for the changes to be passed to Spinnaker.
+Anytime things due to a Halyard change, the command `hal deploy apply` needs to be ran to apply the configuration to Spinnaker. Plugins are no different. After modifying any plugin, remember to run `hal deploy apply` for the changes to be passed to Spinnaker.
 
 ## Controlling Plugin Downloading
 
 If Spinnaker is deployed to Kubernetes, Halyard has to enable Spinnaker to download the plugin resources. To do that, run the following command to enable plugin downloading:
 `hal plugins enable-downloading` 
 
-If Spinnaker is deployed to something else besides Kubernetes, plugin resources will have to be manually added to the correct locations.
+If Spinnaker is deployed to something else besides Kubernetes, plugin resources have to be manually added to the correct locations.
 
 ## Modifying Plugins
 
-To modify an existing plugin, the `hal plugins edit` [command](https://www.spinnaker.io/reference/halyard/commands/#hal-plugins-edit) is where we recommend to start. Add the plugin name that needs to be modified to the command and then the manifest location can be modified.
+To modify an existing plugin, we recommend using the `hal plugins edit` [command](https://www.spinnaker.io/reference/halyard/commands/#hal-plugins-edit). Add the plugin name that needs to be modified to the command. The command allows you to modify parameters like the manifest location.
 
-For example, to disable a plugin, run the following command
-`hal plugins edit plugin-name` `--``disable` 
+For example, the following command disables a plugin named `puppy-facts`:
+`hal plugins edit puppy-facts` `--``disable` 
 
-Remember to run `hal deploy apply` after running any modifications
+Remember to run `hal deploy apply` after modifying a plugin.
 
 ## Deleting Plugins
 
-To delete a plugin, run the `hal plugins delete plugin-name` command
+To delete a plugin, run the `hal plugins delete plugin-name` command.
 
-Remember to run `hal deploy apply` after running any deletions
+For example, the following command deletes a plugin named `puppy-facts`:
+`hal plugins delete puppy-facts`
+
+Remember to run `hal deploy apply` after deleting a plugin.
 
 ## Listing All Plugins Configured
 
-Run `hal plugins list` to see what plugins are currently configured for Spinnaker
+Run `hal plugins list` to see which plugins are currently configured for Spinnaker.

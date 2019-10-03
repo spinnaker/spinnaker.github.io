@@ -7,7 +7,9 @@ sidebar:
 
 {% include toc %}
 
-This is an early alpha feature that is under active development and will likely change.
+Plugins are an early alpha feature that is under active development and will likely change.
+
+This guide is for creating a new plugin to Spinnaker. For information about how to use an existing plugin, see [Plugin Users Guide](/guides/user/plugin-users/).
 
 # Create the Backend For Stage Plugins
 
