@@ -399,6 +399,8 @@ guides:
         url: /guides/developer/kork-library/
       - title: Kubernetes CRD extensions
         url: /guides/developer/crd-extensions/
+      - title: Plugin Creators Guide
+        url: /guides/developer/plugin-creators/
   - title: Operator How-Tos
     collapsed: true
     children:
