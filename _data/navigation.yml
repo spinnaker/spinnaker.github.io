@@ -67,6 +67,8 @@ setup:
             url: /setup/install/providers/kubernetes-v2/
             collapsed: false
             children:
+              - title: Alibaba Cloud ACK
+                url: /setup/install/providers/kubernetes-v2/ack/
               - title: Amazon EKS
                 url: /setup/install/providers/kubernetes-v2/aws-eks/
               - title: Google Kubernetes Engine
