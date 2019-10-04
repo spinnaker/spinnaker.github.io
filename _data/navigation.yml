@@ -67,6 +67,8 @@ setup:
             url: /setup/install/providers/kubernetes-v2/
             collapsed: false
             children:
+              - title: Alibaba Cloud ACK
+                url: /setup/install/providers/kubernetes-v2/ack/
               - title: Amazon EKS
                 url: /setup/install/providers/kubernetes-v2/aws-eks/
               - title: Google Kubernetes Engine
@@ -341,6 +343,8 @@ guides:
         url: /guides/user/tagging/
       - title: Custom Instance Links
         url: /guides/user/instance-links/
+      - title: Plugin Users Guide
+        url: /guides/user/plugin-users/
       - title: Kubernetes (Manifest Based)
         collapsed: true
         children:
@@ -350,6 +354,8 @@ guides:
             url: /guides/user/kubernetes-v2/deploy-manifest/
           - title: Deploy a Helm Chart
             url: /guides/user/kubernetes-v2/deploy-helm/
+          - title: Use Kustomize for Manifests
+            url: /guides/user/kubernetes-v2/kustomize-manifests/
           - title: Best Practices
             url: /guides/user/kubernetes-v2/best-practices/
           - title: Parameterize Manifests
@@ -395,6 +401,8 @@ guides:
         url: /guides/developer/kork-library/
       - title: Kubernetes CRD extensions
         url: /guides/developer/crd-extensions/
+      - title: Plugin Creators Guide
+        url: /guides/developer/plugin-creators/
   - title: Operator How-Tos
     collapsed: true
     children:
