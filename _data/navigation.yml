@@ -343,6 +343,8 @@ guides:
         url: /guides/user/tagging/
       - title: Custom Instance Links
         url: /guides/user/instance-links/
+      - title: Plugin Users Guide
+        url: /guides/user/plugin-users/
       - title: Kubernetes (Manifest Based)
         collapsed: true
         children:
@@ -399,6 +401,8 @@ guides:
         url: /guides/developer/kork-library/
       - title: Kubernetes CRD extensions
         url: /guides/developer/crd-extensions/
+      - title: Plugin Creators Guide
+        url: /guides/developer/plugin-creators/
   - title: Operator How-Tos
     collapsed: true
     children:
