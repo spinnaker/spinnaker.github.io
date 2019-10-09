@@ -133,6 +133,9 @@ grab_user:
 getyourguide_user:
   image_path: assets/images/users/GYG_logo.png
   alt: "GetYourGuide"
+uneeq_user:
+  image_path: assets/images/users/uneeq_logo.png
+  alt: "UneeQ"
 ---
 
 ## Engage the community and get support
@@ -236,8 +239,12 @@ The Spinnaker OSS project was started at Netflix, and today thrives on the contr
     
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="uneeq_user" %}
     {% include spinnaker_user id="waze_user" %}
     {% include spinnaker_user id="weatherbug_user" %}
+    
+  </div>
+  <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="xiaohongshu_user" %}
   </div>
 </div>
