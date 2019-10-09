@@ -2,6 +2,8 @@
 title:  "SSL"
 sidebar:
   nav: setup
+redirect_from: /setup/security/authentication/ssl
+
 ---
 {% include toc %}
 

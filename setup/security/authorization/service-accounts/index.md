@@ -1,4 +1,4 @@
----
+--
 layout: single
 title:  "Service Accounts"
 sidebar:
@@ -7,10 +7,11 @@ sidebar:
 
 {% include toc %}
 
-Fiat Service Accounts enable the ability for automatically triggered pipelines to modify 
+Service Accounts enable the ability for automatically triggered pipelines to modify 
 resources in protected accounts or applications. Practically speaking, this means that a git 
 commit could trigger a Jenkins build that could kick off a pipeline to deploy the newly built 
-image in your access-controlled QA environment.
+image in your access-controlled QA environment.  Service accounts are NOT authenticated accounts but
+abstractions around permissions for roles.
 
 
 ## Creating service accounts
@@ -19,7 +20,12 @@ Service accounts are persistent and configuration merely consists of giving it a
 of roles. Therefore, Front50 is the most logical place to configure a service account. There is 
 no UI for creating service accounts at the moment. 
 
-TODO: Update when Halyard supports service accounts. Until then, you'll need to run:
+Users with all the roles defined in the service account can grant a pipeline "Run as <service account>"
+ but only if the service account itself has EXECUTE  access to that app. Users with EXECUTE access to 
+ the app can then run the pipeline with additional set of roles (e.g. access to a provider account or 
+ some other app).
+
+Until Halyard supports creation of service accounts, you'll need to run:
 
 ```bash
 FRONT50=http://front50.url:8080

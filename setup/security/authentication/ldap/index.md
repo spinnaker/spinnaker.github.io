@@ -11,6 +11,24 @@ credentials and group memberships. Spinnaker uses the standard "*bind*" approach
 authentication. This is a fancy way of saying that Gate uses your username and password to login
 to the LDAP server, and if the connection is successful, you're considered authenticated.
 
+
+### Notes
+*  Make sure you’re using Halyard greater than 1.6.0 as that adds the ability to set the manager user/password settings. 
+You can use a prior version, but you will need to use a gate-local.yml to define the properties vs. being able
+to use halyard.
+
+* We highly suggest the use of SSL for the LDAP connection (over `ldaps`). Otherwise, **user passwords are passed in 
+clear text over the wire.**
+
+* Ports commonly used/referenced/how:
+    *  636 - ldaps port. (aka ldap with SSL)
+    *  389 - ldap 
+    *  3268 - AD Global Directory NON ssl port
+    *  3269 - AD Global Directory SSL port
+
+From a protocol perspective, ldap://host/whatever implies port 389 by defualt.  ldaps://host/whatever will use 636 by 
+default.
+
 ## Directory Structure
 
 LDAP directories are generally organized by first defining a "root" distinguished name (DN). User
@@ -22,69 +40,57 @@ For example, if your root DN is `dc=my-organization,dc=com` and your user patter
 
 When `joe` is trying to login, this full user DN is constructed and passed to the LDAP server with
 his password. The password is hashed on the server and compared to its own hashed version. If
-successful, the bind is successful and a session is established.
+successful, the bind (aka connection) is successful and a Gate creates a session.
 
-> We highly suggest the use of SSL for the LDAP connection (over `ldaps`). Otherwise,
-**user passwords are passed in clear text over the wire.**
 
 ## Configure LDAP using Halyard
 
 Use `hal config` to enable and configure LDAP. Here's an example:
 
-`hal config security authn ldap edit --user-dn-pattern="uid={0},ou=users" --url=ldaps://ldap.my-organization.com:10636/dc=my-organization,dc=com`
+```bash
 
-`hal config security authn ldap enable`
+hal config security authn ldap edit --user-dn-pattern="uid={0},ou=users" \ 
+       --url=ldaps://ldap.my-organization.com:636/dc=my-organization,dc=com
 
-You can also use `ldap.userSearchBase` and `ldap.userSearchFilter` if the simpler
-`ldap.userDnPattern` does not match what your organization uses for `userDn`s. We don't explore this
+hal config security authn ldap enable
+```
+
+You can also use `user-search-base` (optional) and `user-search-filter` if the simpler
+`user-dn-pattern` does not match what your organization uses for `userDn`s. We don't explore this
 use case here, but you can read up more on LDAP search filters
 [here](https://confluence.atlassian.com/kb/how-to-write-ldap-search-filters-792496933.html){:target="\_blank"}.
 
 
-## Workflow
+## Active Directory
 
-<div class="mermaid">
-    sequenceDiagram
+1. It is recommend to NOT use the userDnPattern for AD. Per an issue ticket: “userDnPattern should remain unset - 
+AD groups store user DNs in the memberOf attribute; finding DNs from sAMAccountNames is easily doable 
+but not with a simple, single-level pattern. The DN contains the the CN, and that can’t really be constructed 
+without sub searches. userSearchFilter takes precedence if there’s no user-dn-pattern set.”
 
-    participant Deck
-    participant Gate
-    participant LDAPServer
+1. Here's the raw settings that will eventually be there in gate as an example.
+```
+ldap:
+  enabled: true
+  url:  ldaps://somethingsomething:686/ou=users,ou=company,o=com
+  userSearchFilter: (&(objectClass=user)(sAMAccountName={0}))
+  managerDn: CN=SVC_LDAP_USER_RO,OU=service-users,OU=company,O=com
+  managerPassword: super-secret-password
+```
+The managerUser will then find a user in your ou=users,ou=company,o=com directory via a subtree search. You 
+should be able to set the user-search-base parameter vs. including it on the URL to have it specified separately.
 
-    Deck->>+Gate: GET /something/protected
-    Gate->>-Deck: HTTP 302 to /login
-    Deck->>+Gate: GET /login
-    Gate->>-Deck: Returns login page    
-</div>
+Last, here’s the halyard commands to configure these:
+```bash
+hal config security authn ldap enable
+hal config security authn ldap edit \
+  --manager-dn 'CN=blah,OU=blah,OU=blah,O=blah' \
+  --user-search-filter '(&(objectClass=user)(sAMAccountName={0}))' \
+  --url ldaps://blah:686/searchbase
+## This one will prompt you for the password don't set it on the command
+hal config security authn ldap edit --manager-password
+```
 
-1. User attempts to access a protected resource.
-
-1. Gate redirects to a basic `/login` page. This page is hosted on the Gate server.
-
-    <div class="mermaid">
-        sequenceDiagram
-
-        participant Deck
-        participant Gate
-        participant LDAPServer
-
-        Deck->>+Gate: User sends credentials
-        Gate->>+LDAPServer: Gate attempts to bind using user credentials
-        Note right of LDAPServer: Server compares password hashes
-        LDAPServer->>-Gate: Session established
-        Gate->>-Deck: HTTP 302 to /something/protected
-    </div>
-
-1. User enters credentials
-
-1. Gate attempts to establish a session (preferably over SSL) with the LDAP server, sending the
-username and password
-
-1. The LDAP server hashes the user's password and compares it to its local copy. If successful,
-the session is established. Otherwise, a "Bad Credentials" exception is thrown.
-
-1. Gate redirects the user to the originally requested URL.
-
-{% include mermaid %}
 
 ## Next steps
 

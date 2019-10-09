@@ -136,13 +136,35 @@ setup:
       - title: Secure Spinnaker
         collapsed: true
         children:
-           - title: Secure Your Spinnaker Installation
+           - title: Overview
              url: /setup/security/
+           - title: SSL Configuration
+             url: /setup/security/ssl/
            - title: Authentication
              url: /setup/security/authentication/
+             collapsed: true
+             children:
+               - title: SAML
+                 url: /setup/security/authentication/saml/
+               - title: OAUTH
+                 url: /setup/security/authentication/oauth/
+               - title: LDAP/Active Directory
+                 url: /setup/security/authentication/ldap/
+               - title: x509
+                 url: /setup/security/authentication/x509/
            - title: Authorization
              url: /setup/security/authorization/
-           - title: Administrator functionality
+             collapsed: true
+             children:
+               - title: SAML
+                 url: /setup/security/authorization/saml/
+               - title: LDAP/Active Directory
+                 url: /setup/security/authorization/ldap/
+               - title: GitHub Teams
+                 url: /setup/security/authorization/github-teams/
+               - title: Google Groups
+                 url: /setup/security/authorization/google-groups/
+           - title: Administrators
              url: /setup/security/admin/
       - title: Set up Triggers
         collapsed: true
@@ -579,6 +601,13 @@ reference:
         url: /reference/architecture/load/
       - title: Life of a Bake
         url: /reference/architecture/loab/
+      - title: Authentication & Authorization
+        url: /reference/architecture/authz_authn/
+        children:
+          - title: Authentication
+            url: /reference/architecture/authz_authn/authentication/
+          - title: Authorization
+            url: /reference/architecture/authz_authn/authorization/
   - title: Pipelines
     collapsed: true
     children:
