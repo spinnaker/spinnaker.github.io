@@ -1,0 +1,61 @@
+/* ==========================================================================
+   PAGE SUCCESS STORIES
+   ========================================================================== */
+
+   .success-stories-container {
+       margin-top: 450px;
+       display: grid;
+       grid-template-columns: repeat(3, calc(33% - 10px) );
+       justify-content: space-between;
+
+       article {
+           text-align: center;
+
+           h3 {
+               font-size: 1.5em;
+           }
+
+           h5 {
+               font-size: .9em;
+               font-weight: bold;
+               margin-bottom: 10px;
+           }
+
+           p {
+               font-size: .75em;
+           }
+
+           span {
+                font-size: 1.5em;
+                font-weight: bold;
+           }
+
+           figure {
+               margin: 0;
+
+               img {
+                    margin: 0;
+               }
+           }
+
+           a {
+               color: black;
+
+               &:hover {
+                   text-decoration: none;
+               }
+           }
+       }
+   }
+
+   @media (max-width: 900px) {
+    .success-stories-container {
+            grid-template-columns: repeat(2, calc(50% - 10px) );
+        }
+   }
+
+   @media (max-width: 450px) {
+    .success-stories-container {
+            grid-template-columns: repeat(1, calc(100% - 10px) );
+        }
+   }

@@ -191,12 +191,12 @@ waze_case_study:
   {% include spinnaker_feature_box id="chaos_monkey_feature" %}
 </div>
 
-<h1 class="spin__heading mt2">Case Studies</h1>
+<!-- <h1 class="spin__heading mt2">Case Studies</h1>
 
 <div class="clearfix">
   {% include spinnaker_case_study id="netflix_case_study" %}
   {% include spinnaker_case_study id="waze_case_study" %}
-</div>
+</div> -->
 
 <!-- <div class="clearfix">
   {% include spinnaker_case_study id="target_case_study" %}

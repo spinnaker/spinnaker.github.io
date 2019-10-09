@@ -1,0 +1,31 @@
+---
+layout: splash
+---
+
+<div class="spin_header success-stories-header">
+    <div class="spin_header__inner_wrap">
+
+        {% include masthead.html %}
+
+        <div class="spin_header__text">
+            <img src="{{ site.url}}/assets/images/stories.svg" width="80" alt="Logo">
+            <h1>{{ page.intro }}</h1>
+            <h2>{{ page.subIntro }}</h2>
+        </div>
+
+    </div>
+</div>
+
+
+<div id="main" role="main">
+  <article itemscope itemtype="http://schema.org/CreativeWork">
+        {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
+        {% if page.excerpt %}<meta itemprop="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
+        {% if page.date %}<meta itemprop="datePublished" content="{{ page.date | date: "%B %d, %Y" }}">{% endif %}
+        {% if page.modified %}<meta itemprop="dateModified" content="{{ page.modified | date: "%B %d, %Y" }}">{% endif %}
+
+        <div class="success-stories-container">
+            {{ content }}
+        </div>
+    </article>
+</div>
