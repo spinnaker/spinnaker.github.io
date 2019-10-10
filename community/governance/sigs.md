@@ -26,6 +26,7 @@ Below is a list of the current Spinnaker SIGs.
 | __On Boarding__ | [alexmbe@](https://github.com/alexmbe) | | | [#sig-on-boarding](https://spinnakerteam.slack.com/app_redirect?team=T091CRSGH&channel=CH9G32NLD) |
 | __2019 Summit__ | [michaelgalloway@](https://github.com/michaelgalloway), [gcomstock@](https://github.com/gcomstock) | [Link](https://docs.google.com/document/d/1Z65IHImNlJbYq3XvVgnWtijhWj3iUlMGG5uQudjhTe4/edit) | [Link (Meet)](https://meet.google.com/yrj-yewn-akt) | [#spinnakersummit](https://spinnakerteam.slack.com/app_redirect?team=T091CRSGH&channel=CAEBZDY1E) | Every other Wednesday, 1 PM EST / 10 AM PST
 | __Documentation__ | [brian-armory@](https://github.com/brian-armory), [dorbin@](https://github.com/dorbin), [bklein@](https://github.com/fifthposition) | [Link](https://docs.google.com/document/d/1uErNfK3Yr6LKELNSO7YfsRFyJVHqjivfzIO4nBmMCUw/edit?usp=sharing) | [Link (Meet)](https://meet.google.com/umg-qugw-mjy) | [#sig-documentation](https://spinnakerteam.slack.com/messages/CMPS49682) | First Wednesday of the month, 11 AM PST / 2 PM EST
+| __Operational Validation__ | [mgraff@](https://github.com/skandragon), [sanden@](https://github.com/csanden), [duftler@](https://github.com/duftler) | | | [#sig-operational-validation](https://spinnakerteam.slack.com/app_redirect?team=T091CRSGH&channel=CP7RCB4RK) | T.B.D.
 
 If you think a new SIG should be launched in support of an under-served and important need in the project, please reach out to the [steering committee](/community/governance/#steering-committee) to start one!
 
