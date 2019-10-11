@@ -8,7 +8,7 @@ sidebar:
 {% include toc %}
 
 ## Overview
-Fiat works closely with Front50 (that has the apps permissions), Clouddriver (that has the account permissions), and Igor (for build services permissions)
+Fiat works closely with Front50 (apps permissions), Clouddriver (account permissions), and Igor (build services permissions).
 
 ## Source code
 * Fiat: https://github.com/spinnaker/fiat/blob/master/fiat-ldap/src/main/java/com/netflix/spinnaker/fiat/roles/ldap/LdapUserRolesProvider.java
@@ -18,30 +18,31 @@ Fiat works closely with Front50 (that has the apps permissions), Clouddriver (th
 
 ### Ingress:
 
+Ingress involves the following components: 
+
 - Clouddriver
 - Front50 to query apps and service accounts.
-- Gate: used to sign in users with externally provided roles (e.g. OpenID Connect, SAML). These roles which are then merged with provider sourced roles (if any), tagged with the `EXTERNAL` source, and cached in Redis.
-- Igor to get list of build systems and roles required to access them
+- Gate signs users in with externally provided roles (e.g. OpenID Connect, SAML). These roles are then merged with provider sourced roles (if any), tagged with the `EXTERNAL` source, and cached in Redis.
+- Igor gets the list of build systems and roles required to access them.
 
 ### Egress:
 
-- Redis to store computed roles, default permissions, roles from external systems
-- Clouddriver to get known accounts
-- Front50 to get known apps
+Egress involves the following components: 
 
+- Redis stores computed roles, default permissions, and roles from external systems.
+- Clouddriver gets known accounts.
+- Front50 gets known apps.
 
+### Scaling
 
-Scaling
-
-Fiat can be scaled by adding replicas. `fiat.writeMode.enabled` will dictate if the Fiat instance will try to sync 
+Fiat can be scaled by adding replicas. `fiat.writeMode.enabled` dictates if the Fiat instance will try to sync 
 roles. Fiat instances coordinate around locks (in Redis) to ensure that only one instance synchronizes roles at a time.
 
+## Implementation Details
 
-
-## The nitty gritty
 ### Roles and Permissions
 
-Fiat has the following model of user permissions:
+Fiat uses the following model for user permissions:
 
 - a user ID (= a real one or [`__unrestricted_user__`](#unrestricted-user)  )
 - Accounts permission = list of { name + cloudProvider + Permissions)
@@ -49,18 +50,20 @@ Fiat has the following model of user permissions:
 - Service accounts = list of service accounts the user belongs to
 - Roles: list of roles the user has
 - build services: list of build services the user has access to
+
 ### Sync
 
-Every 30s Fiat checks if it needs to sync roles. Every 10m (by default), it will then sync user ↔ roles. It may mean querying the provider for all the roles of the all the users that Fiat knows about (= are cached in Redis).
+Every 30 seconds, Fiat checks if it needs to sync roles. Every 10 minutes (by default), it will sync user ↔ roles. It may mean querying the provider for all the roles of the all the users that Fiat knows about (= are cached in Redis).
 
 #### Unrestricted user
 
 - At any point, the unrestricted virtual user should have `UserPermission` in the permission repository (Redis for now) for all accounts, apps, service accounts, build services that have not been restricted (no permission specified).
-- The unrestricted user’s permissions is updated on every sync to account for permission changes as well as new apps/accounts/etc.
+- The unrestricted user’s permissions is updated on every sync to account for permission changes as well as new for new apps, accounts, etc.
 - When returning a user’s permission, it is merged with the unrestricted user. By having the account, app, service account, build service in the `UserPermission` of the user, it is known and the default access for unrestricted app/.. should apply.
 
 #### Note:
-for apps during the sync while reading apps permissions from Front50 (in the app definition), Fiat will check if the app has roles defined for `EXECUTE` if not if will copy the list of roles defined on the app for `fiat.executeFallback` (which can be `READ` or `WRITE`) to the `EXECUTE` permission list. This is done to ensure that at least some roles can execute a pipeline as that role has been introduced recently.
+
+During the sync while reading apps permissions from Front50 (in the app definition), Fiat checks if the app has roles defined for `EXECUTE`. If not, Fiat copies the list of roles defined on the app for `fiat.executeFallback` (which can be `READ` or `WRITE`) to the `EXECUTE` permission list. This is done to ensure that at least some roles can execute a pipeline as that role has been introduced recently.
 
 ### Verifying access from a service
 
@@ -106,6 +109,7 @@ Fiat can be asked to return all permissions to a user `U`. These permissions are
     6) "{\n  \"name\" : \"app3\",\n  \"permissions\" : { }\n}"
 
 ### Permissions Returned
+
 Fiat will look up permissions in Redis:
 
 - If the user is not known to Fiat (edge case, should not happen under normal circumstances but will happen if you try to `curl` to Fiat directly) or if there was a communication issue/bug with Redis
@@ -134,4 +138,3 @@ Fiat will look up permissions in Redis:
 | `fiat.admin.roles`                      | List of roles that grant admin access. Roles listed here are transformed to lower case.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | `[]`    |
 | `fiat.role.orMode`                      | If true, a user has access to a service account if they have any role defined in the service account roles. <br>By default, it is false and the user needs to have all roles in the service accounts.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | `false` |
 | `services.fiat.*`                       | These properties are listed here but actually live in services that use Fiat, they dictate how to use Fiat:<br><br><br>- `refreshable` (true): If true, the service will check every 30s the status of the props defined here<br>- `baseUrl`: Fiat’s base URL<br>- `enabled` (false): Is Fiat enabled? <br>- `legacyFallback` (false): On a permission retrieval failure, should the user be granted access?<br>- `connectTimeoutMs` (none): If set, overrides the OkHTTP connection’s connection timeout when connecting to Fiat<br>- `readTimeoutMs` (none): If set, overrides the OkHTTP connection’s read timeout when querying Fiat<br>- `cache.expiresAfterWriteSeconds` (20): Expiration of local service cache of Fiat properties <br>- `cache.maxEntries` (1000): Max number of items in the local service cache<br>- `retry.maxBackoffMillis` (10000): On Fiat request failure, max backoff<br>- `retry.initialBackoffMillis` (500): Initial back off on Fiat request failure<br>- `retry.retryMultiplier` (1.5): Backoff multiplier |         |
-

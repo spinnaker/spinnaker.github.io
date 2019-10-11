@@ -9,7 +9,7 @@ sidebar:
 
 ## Authentication
 
-There are 3 basic players in Spinnaker's authentication workflow:
+There are three basic players in Spinnaker's authentication workflow:
 
 <div class="mermaid">
 graph LR
@@ -35,14 +35,13 @@ through Gate. It is the point at which _authentication_ is confirmed and one poi
 where _authorization_ is enforced.
 
 1. **Identity Provider**: This is your organization's OAuth 2.0, SAML 2.0, or LDAP service. X.509
-client certificates can be used in addition to any of these services, or used standalone.
+client certificates can be used in addition to any of these services or as a standalone identity provider.
 
 ### Workflow
 
-Deck is a Javascript Single Page Application (SPA), which means that when we leave the page to let
-the user enter their credentials, we must reload the entire thing when we return. As a result, the
+Deck is a Javascript Single Page Application (SPA). This means that when a user leaves the page to enter their credentials, the entire application gets loaded again when they return. As a result, the
 process below involves numerous redirects between the three parties (Deck, Gate, and the
-Authentication provider).
+Identity Provider).
 
 <div class="mermaid">
     sequenceDiagram
@@ -64,9 +63,9 @@ Authentication provider).
 
 1. Deck checks for the user's identity: `https://gate.url:8084/auth/user`. Specifically, a user is
 logged in if the response contains a JSON object with a non-null "username" field. `/auth/user` is
-an _unprotected_ URL, but will only return the currently logged in user.
+an _unprotected_ URL but will only return the currently logged in user.
 
-    a. If a user is found - all done!
+    If a user is found - all done!
     
 1. Without a user logged in, Deck requests a _protected_ URL: `https://gate.url:8084/auth/redirect?to=https://deck.url:9000`.
 
@@ -108,7 +107,7 @@ redirect to an authentication-method-specific page. It saves the requested URL
 		IdentityProvider->>-Gate: .
 		deactivate Gate
 	</div>
-1. In the case of LDAP, the /login page is hosted in Gate and is a basic form asking for credentials. Gate attempts to
+1. In the case of LDAP, the `/login` page is hosted in Gate and is a basic form asking for credentials. Gate attempts to
  establish a session (preferably over SSL) with the LDAP server, sending the username and password.   If successful,
  the session is established. Otherwise, a “Bad Credentials” exception is thrown.  For SAML/OAauth methods, these 
  will redirect to the appropriate login page for the IDP.

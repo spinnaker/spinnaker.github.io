@@ -8,12 +8,12 @@ sidebar:
 {% include toc %}
 
 ## Authentication & Authorization
-This is a high level of how authentication and authorization work with-in spinnaker itself.  
+This is a high-level explanation of how authentication and authorization work within Spinnaker itself.  
 
 
-- Redis to store computed roles, default permissions, roles from external systems
-- Clouddriver to get known accounts
-- Front50 to get known apps
+- Redis stores computed roles, default permissions, and roles from external systems
+- Clouddriver gets known accounts
+- Front50 gets known apps
 
 [Details on authentication](./authentication/)
 
