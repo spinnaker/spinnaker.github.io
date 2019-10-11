@@ -141,9 +141,10 @@ setup:
            - title: SSL Configuration
              url: /setup/security/ssl/
            - title: Authentication
-             url: /setup/security/authentication/
              collapsed: true
              children:
+               - title: Overview
+                 url: /setup/security/authentication/
                - title: SAML
                  url: /setup/security/authentication/saml/
                - title: OAUTH
@@ -152,10 +153,11 @@ setup:
                  url: /setup/security/authentication/ldap/
                - title: x509
                  url: /setup/security/authentication/x509/
-           - title: Authorization
-             url: /setup/security/authorization/
+           - title: Authorization (RBAC)
              collapsed: true
              children:
+               - title: Overview
+                 url: /setup/security/authorization/
                - title: SAML
                  url: /setup/security/authorization/saml/
                - title: LDAP/Active Directory
@@ -603,6 +605,7 @@ reference:
         url: /reference/architecture/loab/
       - title: Authentication & Authorization
         url: /reference/architecture/authz_authn/
+        collapsed: true
         children:
           - title: Authentication
             url: /reference/architecture/authz_authn/authentication/

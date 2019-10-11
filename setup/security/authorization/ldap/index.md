@@ -8,9 +8,28 @@ sidebar:
 {% include toc %}
 
 
-Please note that LDAP is flexible enough to offer lots of other options and configuration possibilities.  Note, where 
-possible, we'll use the halyard parameter vs the file parameter.  Certain settings can be set only directly not with
-halyard.
+Please note that LDAP is flexible enough to offer lots of other options and configuration possibilities.  Spinnaker
+uses the spring-security libraries which solves a number of challenges.  
+
+
+## Configure with Halyard
+
+With the ldap manager credentials and search patterns in hand, use Halyard to configure Fiat:
+
+```bash
+hal config security authz ldap edit \
+    --url ldaps://ldap.mydomain.net:636/dc=mydomain,dc=net \
+    --manager-dn uid=admin,ou=system \
+    --manager-password \
+    --user-dn-pattern uid={0},ou=users \
+    --group-search-base ou=groups \
+    --group-search-filter "(uniqueMember={0})" \
+    --group-role-attributes cn
+      
+ hal config security authz edit --type ldap
+ hal config security authz enable
+```
+The above is a sample.  See below for more information.
 
 ## How does Fiat determine group membership
 The LDAP provider works by querying the LDAP server utilizing a user as set by the 
@@ -19,8 +38,8 @@ query. If a manager is NOT set, Spinnaker will fallback to attempting to validat
 in users credentials.  
 
 Fiat will use the "bound" account to do the following:
-- Make a query for `group-search-base`
-- Filter the obtained groups with `group-search-filter`
+- Make a query for `group-search-base`. <strong>THIS IS A REQUIRED FIELD.</strong>  If not set, no roles will be queried.
+- Filter the obtained groups with `group-search-filter`.  This will use the group-role-attribute (`cn=X`) field on the query to find role names. 
 - For the groups associated with the user’s full DN = `the user id of the user`
 - For the groups retrieved, the roles will be the `group-role-attributes` attributes.
 
@@ -47,25 +66,9 @@ include the attribute `uniqueMember=uid=joe,ou=users,dc=mydomain,dc=net`, which 
 for the `groupOfUniqueNames` group standard.
 
 The `group-role-attribute` is how the group/role name is extracted. For example, all entries that
-pass the filter will then have the `cn` (common name) attribute returned.
+pass the filter will then have the `cn` (common name) attribute returned. 
 
+NOTE IF you want to use a username instead of a user dn for group membership, you can specificy `{1}` instead of `{0}` for 
+the `group-search-filter` parameter.  
 
-
-## Configure with Halyard
-
-With the ldap manager credentials and search patterns in hand, use Halyard to configure Fiat:
-
-```bash
-hal config security authz ldap edit \
-    --url ldaps://ldap.mydomain.net:636/dc=mydomain,dc=net \
-    --manager-dn uid=admin,ou=system \
-    --manager-password \
-    --user-dn-pattern uid={0},ou=users \
-    --group-search-base ou=groups \
-    --group-search-filter "(uniqueMember={0})" \
-    --group-role-attributes cn
-      
- hal config security authz edit --type ldap
- hal config security authz enable
-```
 

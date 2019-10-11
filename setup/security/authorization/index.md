@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Authorization"
+title:  "Authorization (RBAC)"
 sidebar:
   nav: setup
 redirect_from: /docs/fiat-setup
@@ -165,3 +165,6 @@ be done in two ways:
 
 * Using [Pipeline Permissions](./pipeline-permissions/)
 * Using a Fiat [service account](./service-accounts/)
+
+## Reference Documentation
+[Deeper details on Authorization in Spinnaker](/reference/architecture/authz_authn/authorization/)

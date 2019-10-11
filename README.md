@@ -70,7 +70,7 @@ for an example.
 
 ## Breadcrumbs
 
-Each page has ed breadcrumb trail at the top that is based on the URL structure. You should ensure that there is at 
+Each page has a breadcrumb trail at the top that is based on the URL structure. You should ensure that there is at 
 least an `index.md` file within each URL directory, otherwise the links will break.
 
 ## Link Checker
