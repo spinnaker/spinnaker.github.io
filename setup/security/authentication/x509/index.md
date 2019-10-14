@@ -6,8 +6,8 @@ sidebar:
 
 {% include toc %}
 
-X.509 client certificates utilize the public-key infrastructure (PKI) in order to authenticate
-clients. X.509 can be used simultaneously with one of the other authentication methods, or by
+X.509 client certificates utilize public-key infrastructure (PKI) in order to authenticate
+clients. X.509 can be used simultaneously with one of the other authentication methods or by
 itself. Users commonly generate a certificate for their non-UI or script based clients, as this
 is generally easier than dynamically obtaining an OAuth Bearer token or SAML assertion.
 
@@ -39,13 +39,13 @@ authority**
 
 ## Encoding role information in x509 extensions
 
-The certificates generated here only allow for authentication of a user's identity, but not user roles. If using Fiat, these certificates are not sufficient for authorization.
+The certificates generated here only allow for the authentication of a user's identity, not user roles. If using Fiat, these certificates are not sufficient for authorization.
 
 `roleOid` is used for this example.
 
-Client certificates with role information are parsed when roleOid is provided. This OID is configurable and is set via halyard. The OID provided in the example below is defined [here](http://www.oid-info.com/cgi-bin/display?oid=1.2.840.10070.8.1&action=display){:target="\_blank"}.
+Client certificates with role information are parsed when roleOid is provided. This OID is configurable and is set via Halyard. The OID provided in the example below is defined [here](http://www.oid-info.com/cgi-bin/display?oid=1.2.840.10070.8.1&action=display){:target="\_blank"}.
 
-Encoding with any another OID can be done by editing the openssl.conf.
+Encoding with any another OID can be done by editing the `openssl.conf`.
 
 ## Creating an x509 client certificate with user role information
 
@@ -84,7 +84,7 @@ Encoding with any another OID can be done by editing the openssl.conf.
     ```
     The final line in this file `1.2.840.10070.8.1= ASN1:UTF8String:spinnaker-example0\nspinnaker-example1` is what matters for creating a client certificate with user role information, as anything after `UTF8String:` is encoded inside of the x509 certificate under the given OID.
 
-    where:
+    Where:
     - 1.2.840.10070.8.1 - OID
     - spinnaker-example0\nspinnaker-example1 - Spinnaker user groups
 
@@ -109,8 +109,9 @@ hal config security authn x509 edit --role-oid 1.2.840.10070.8.1
 ```
 
 ### Configure SSL to require certs
+
 If you have SSL enabled, you need to set the Apache Tomcat SSL stack to require a valid certificate 
-chain, as required by the Spring Security integration. 
+chain as required by the Spring Security integration. 
 
 ```
 hal config security api ssl edit --client-auth # Set to WANT or NEED
@@ -148,19 +149,14 @@ hal config security authn x509 edit --subject-principal-regex "EMAILADDRESS=(.*?
 ![browser's client certificate request](cert-auth.png)
 
 By enabling X.509 on the main 8084 port, it causes the browser to ask the user to present their
-client certificate. Many end-users can get confused or annoyed by this message, so it is
-preferable by many to move this off of the main port.
+client certificate. Many end-users can get confused or annoyed by this message, so it is preferable to move this off of the main port.
 
-You can move the client certificate-enabled port by setting `default.apiPort` value to something
-other than 8084. This enables an additional port configuration that is
-[hardcoded](https://github.com/spinnaker/kork/blob/master/kork-web/src/main/groovy/com/netflix/spinnaker/config/TomcatConfiguration.groovy){:target="\_blank"}
-to _need_ a valid X.509 certificate before allowing the request to proceed.
+You can move the client certificate-enabled port by setting `default.apiPort` value to something other than 8084. This enables an additional port configuration that is [hardcoded](https://github.com/spinnaker/kork/blob/master/kork-web/src/main/groovy/com/netflix/spinnaker/config/TomcatConfiguration.groovy){:target="\_blank"} to _need_ a valid X.509 certificate before allowing the request to proceed.
 
 ## Workflow
 
 Unlike the other authentication methods, X.509 does not have any redirects or fancy control
-passing between Deck, Gate, and a third-party identity provider. Connections are either
-established with a valid certificate or they're not.
+passing between Deck, Gate, and a third-party identity provider. Connections are either established with a valid certificate or they're not.
 
 ## Next steps
 

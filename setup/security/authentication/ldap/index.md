@@ -9,30 +9,31 @@ sidebar:
 Lightweight Directory Access Protocol (LDAP) is a standard way many organizations maintain user
 credentials and group memberships. Spinnaker uses the standard "*bind*" approach for user
 authentication. This is a fancy way of saying that Gate uses your username and password to login
-to the LDAP server, and if the connection is successful, you're considered authenticated.  Note, that there is a
-fair bit of crossover with the authorization pieces on this.  
+to the LDAP server, and if the connection is successful, you're considered authenticated.  Note that there is a
+fair bit of crossover with authorization.  
 
 
 ### Notes
-*  Make sure you’re using Halyard greater than 1.20+ as that adds the ability to set the manager user/password settings. 
-You can use a prior version, but you will need to use a gate-local.yml to define the manager properties vs. being able
-to use halyard.
 
-* IF the manager dn is NOT set, all searches will attempt to use the user currently logging in.  You'll often see errors
+*  Make sure you’re using Halyard 1.20 or later as that adds the ability to set the manager user/password settings. 
+You can use a prior version, but you will need to use a `gate-local.yml` to define the manager properties instead of being able
+to use Halyard.
+
+* If the manager Domain Name (DN) is NOT set, all searches attempt to use the user currently logging in.  You'll often see errors
 in the log files tied to "bind failures" and LDAP error codes.
 
-* Escaping of things like spaces is handled by the library.  You do NOT need to use LDAP escape codes to handle spaces.  
+* Escaping things like spaces is handled by the library.  You do NOT need to use LDAP escape codes to handle spaces.  
 
 * We highly suggest the use of SSL for the LDAP connection (`ldaps://...`). Otherwise, **user passwords are passed in 
 clear text over the wire.**
 
-* Ports commonly used/referenced/how:
-    *  636 - ldaps port. (aka ldap with SSL)
-    *  389 - ldap 
-    *  3268 - AD Global Directory NON ssl port
+* Ports commonly used or referenced:
+    *  636 - LDAP with SSL (`ldaps`)
+    *  389 - LDAP 
+    *  3268 - Active Directory (AD) Global Directory NON ssl port
     *  3269 - AD Global Directory SSL port
 
-When a port is not specified, ldap://host/whatever implies port 389 by defualt.  ldaps://host/whatever will use 636 by 
+When a port is not specified, `ldap://host/whatever` implies port 389 by default.  `ldaps://host/whatever` uses port 636 by 
 default.
 
 ## How to determine the "User DN" 
@@ -43,47 +44,52 @@ default.
 - If `--user-search-filter` is provided:
     - Search LDAP:
         - Search in  `--user-search-base` OR the root (would be `a/b/c` in this example) if user-search-base is not set.
-        - Filtered by `--user-search-filter="(id={0})"` where uid=the username as typed in (joe).
+        - Filtered by `--user-search-filter="(d={0})"` where `uid=<the username as typed in>`, such as `joe`.
         - Start at the rootDn and use sub tree searches
-    - Return root DN computed + found user DN
+    - Return root DN computed + the found user DN
 - If `user-search-filter` is not provided:
     - Calculate the user DN using `user-dn-pattern`.  In the case below, the user `joe` would have a full DN of 
     `uid=joe,ou=users,dc=mydomain,dc=net`.
     - Return root DN computed + user DN
     
 
-For example, if your root DN is `dc=my-organization,dc=com` and your `user-dn-pattern` is
-`uid={0},ou=users`, and user with the id `joe` would have a full, unique DN of
-`uid=joe,ou=users,dc=my-organization,dc=com`.
+For example, given the following parameters:
+
+* Root DN is `dc=my-organization,dc=com` 
+* `user-dn-pattern` is `uid={0},ou=users`
+* User with the id `joe` 
+
+The full, unique DN would be `uid=joe,ou=users,dc=my-organization,dc=com`.
 
 When `joe` is trying to login, this full user DN is constructed and passed to the LDAP server with
 his password. The password is hashed on the server and compared to its own hashed version. If
-successful, the bind (aka connection) is successful and a Gate creates a session.
+successful, the bind (aka connection) is successful and Gate creates a session.
 
 ## Testing with ldapsearch
+
 In the above example, you could test with:
+
 ```bash
-//Search usering manager dn, manager password on url with base of "X"
+//Search using manager dn, manager password on url with base of "X"
 # When: --user-search-filter=(uid={0}) --user-search-base=DC=USERS,OU=Y,O=io 
 ldapsearch -D "MANAGER_DN" -w 'MANAGER_PASSWORD' -H ldaps://1.2.3.4 -x -b "DC=USERS,OU=Y,O=io" "(UID=USERNAME)"
 ```
-With out a user-search-base
+Without a user-search-base
 ```bash
 //Search usering manager dn, manager password on url with base of "X"
 # When: --user-search-filter=(uid={0}) 
 ldapsearch -D "MANAGER_DN" -w 'MANAGER_PASSWORD' -H ldaps://1.2.3.4 -x   "(UID=USERNAME})"
 ```
-With out a user-search-filter
+Without a user-search-filter
 ```bash
 //Search usering manager dn, manager password on url with base of "X"
 # When: --user-dn-pattern=(uid={0},ou=users) 
 ldapsearch -D "MANAGER_DN" -w 'MANAGER_PASSWORD' -H ldaps://1.2.3.4/OU=Y,O=io -x "(CN=USERNAME,OU=users,OU=Y,O=IO))"
 ```
 
+## Configure LDAP Using Halyard
 
-## Configure LDAP using Halyard
-
-Use `hal config` to enable and configure LDAP. Here's an example:
+You can use `hal config` to enable and configure LDAP. Here's an example:
 
 ```bash
 
@@ -101,10 +107,9 @@ use case here, but you can read up more on LDAP search filters
 
 ## Active Directory
 
-1. It is recommend to NOT use the `--user-dn-pattern` argument for AD. Per an issue ticket: “userDnPattern should 
-remain unset - AD groups store user DNs in the memberOf attribute; finding DNs from sAMAccountNames is easily doable 
-but not with a simple, single-level pattern. The DN contains the the CN, and that can’t really be constructed 
-without sub searches. userSearchFilter takes precedence if there’s no user-dn-pattern set.”
+1. We recommend NOT using the `--user-dn-pattern` argument for AD. The following issue has been reported in an issue ticket:
+ 
+    “userDnPattern should remain unset - AD groups store user DNs in the memberOf attribute; finding DNs from sAMAccountNames is easily doable but not with a simple, single-level pattern. The DN contains the the CN, and that can’t really be constructed without sub searches. userSearchFilter takes precedence if there’s no user-dn-pattern set.”
 
 1. Here's the raw settings that will eventually be there in gate as an example.
 ```
@@ -118,7 +123,7 @@ ldap:
 The managerUser will then find a user in your ou=users,ou=company,o=com directory via a subtree search. You 
 should be able to set the user-search-base parameter vs. including it on the URL to have it specified separately.
 
-Last, here’s the halyard commands to configure these:
+Last, here are the Halyard commands to configure these:
 ```bash
 hal config security authn ldap enable
 hal config security authn ldap edit \
@@ -138,7 +143,7 @@ Now that you've authenticated the user, proceed to setting up their [authorizati
 
 * Review the general [authentication workflow](/reference/architecture/authz_authn/authentication//#workflow).
 
-* Use an [incognito window](/setup/security/authentication/#incognito-mode).
+* Use an [Incognito window](/setup/security/authentication#incognito-mode). Close all Incognito windows between attempts.
 
 * I'm getting the "Bad Credentials" exception mentioned above, but my username and password is
 correct!
