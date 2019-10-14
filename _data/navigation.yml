@@ -331,6 +331,8 @@ guides:
             children:
               - title: Overview
                 url: /guides/user/pipeline/pipeline-templates/
+              - title: Enable Pipeline Templates
+                url: /guides/user/pipeline/pipeline-templates/enable/
               - title: Create a Pipeline Template
                 url: /guides/user/pipeline/pipeline-templates/create/
               - title: Visualize a hydrated pipeline
