@@ -83,8 +83,8 @@ and weights.
 
 The metrics available depend on the telemetry provider you use. Spinnaker
 currently supports [Stackdriver](https://cloud.google.com/Stackdriver/),
-[Prometheus](https://Prometheus.io), [Datadog](https://www.datadoghq.com),
-and [Signalfx](https://docs.signalfx.com).
+[Prometheus](https://Prometheus.io), [Datadog](https://www.datadoghq.com), 
+[Signalfx](https://docs.signalfx.com), and [New Relic](https://docs.newrelic.com/).
 
 Metrics are evaluated even if they're not added to groups, but if you want to
 apply the weighting that determines the relative importance of different metrics,
