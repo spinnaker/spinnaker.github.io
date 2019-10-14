@@ -10,6 +10,7 @@ also known as the manifest-based Kubernetes provider.
 
 * [Deploy Kubernetes Manifests](/guides/user/kubernetes-v2/deploy-manifest/)
 * [Deploy Helm Charts](/guides/user/kubernetes-v2/deploy-helm/)
+* [Use Kustomize for Manifests](/guides/user/kubernetes-v2/kustomize-manifests/)
 * [Best Practices for the Kubernetes Provider V2](/guides/user/kubernetes-v2/best-practices/)
 * [Parameterize Kubernetes Manifests](/guides/user/kubernetes-v2/parameterize-manifests/)
 * [Configure Automated Rollbacks in the Kubernetes Provider V2](/guides/user/kubernetes-v2/automated-rollbacks/)

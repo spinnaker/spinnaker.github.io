@@ -19,6 +19,7 @@ Spinnaker is composed of a number of independent microservices:
 
 * [Orca](https://github.com/spinnaker/orca) is the orchestration engine.
   It handles all ad-hoc operations and pipelines.
+  Read more on the [Orca Service Overview](/guides/developer/service-overviews/orca).
 
 * [Clouddriver](https://github.com/spinnaker/clouddriver) is responsible for all
 mutating calls to the cloud providers and for indexing/caching all deployed
@@ -43,7 +44,7 @@ Jenkins/Travis stages to be used in pipelines.
 
 * [Echo](https://github.com/spinnaker/echo) is Spinnaker's eventing bus.
 
-  It supports sending notifications (e.g. Slack, email, Hipchat, SMS), and acts
+  It supports sending notifications (e.g. Slack, email, SMS), and acts
   on incoming webhooks from services like Github.
 
 * [Fiat](https://github.com/spinnaker/fiat) is Spinnaker's authorization

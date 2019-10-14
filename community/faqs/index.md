@@ -29,7 +29,6 @@ redirect_from: /docs/frequently-asked-questions
 ### Messaging support
 * Email
 * Slack
-* HipChat
 * Twilio
 
 ### Docker Registries

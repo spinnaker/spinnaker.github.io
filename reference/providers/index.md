@@ -18,6 +18,7 @@ These are the Cloud Providers currently supported by Spinnaker:
 * [App Engine](/reference/providers/appengine/)
 * Amazon Web Services
 * [Azure](/reference/providers/azure/)
+* [Cloud Foundry](/reference/providers/cf)
 * [Google Compute Engine](/reference/providers/gce/)
 * [Kubernetes](/reference/providers/kubernetes/) (legacy)
 * [Kubernetes V2](/reference/providers/kubernetes-v2) (manifest based)
