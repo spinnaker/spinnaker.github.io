@@ -9,12 +9,12 @@ sidebar:
 
 
 Please note that LDAP is flexible enough to offer lots of other options and configuration possibilities.  Spinnaker
-uses the spring-security libraries which solves a number of challenges.  
+uses the Spring Security libraries, which solves a number of challenges.  
 
 
 ## Configure with Halyard
 
-With the ldap manager credentials and search patterns in hand, use Halyard to configure Fiat:
+With the LDAP manager credentials and search patterns in hand, use Halyard to configure Fiat:
 
 ```bash
 hal config security authz ldap edit \
@@ -34,12 +34,11 @@ The above is a sample.  See below for more information.
 ## How does Fiat determine group membership
 The LDAP provider works by querying the LDAP server utilizing a user as set by the 
 [manager-dn and managerPassword](/reference/halyard/commands/#hal-config-security-authz-ldap-edit) and making a 
-query. If a manager is NOT set, Spinnaker will fallback to attempting to validate group membership using the logging 
-in users credentials.  
+query. If a manager is NOT set, Spinnaker falls back to validating group membership using the login user's credentials.  
 
 Fiat will use the "bound" account to do the following:
-- Make a query for `group-search-base`. <strong>THIS IS A REQUIRED FIELD.</strong>  If not set, no roles will be queried.
-- Filter the obtained groups with `group-search-filter`.  This will use the group-role-attribute (`cn=X`) field on the query to find role names. 
+- Make a query for `group-search-base`. **THIS IS A REQUIRED FIELD.**  If not set, no roles get queried.
+- Filter the obtained groups with `group-search-filter`.  This uses the group-role-attribute (`cn=X`) field on the query to find role names. 
 - For the groups associated with the user’s full DN = `the user id of the user`
 - For the groups retrieved, the roles will be the `group-role-attributes` attributes.
 
@@ -47,7 +46,7 @@ Fiat will use the "bound" account to do the following:
 
 - Extract the Root DN from the `url` (`ldaps://my.server/a/b/c` → `a/b/c`)
     - If `com.netflix.spinnaker.fiat.roles.ldap.LdapUserRolesProvider` log level is at debug, you should 
-    see `Root DN: <the actual root DN extracted`
+    see `Root DN: <the actual root DN extracted>`
 - If `user-search-filter` is provided:
     - Search LDAP:
         - For `user-search-base`
@@ -70,5 +69,3 @@ pass the filter will then have the `cn` (common name) attribute returned.
 
 NOTE IF you want to use a username instead of a user dn for group membership, you can specificy `{1}` instead of `{0}` for 
 the `group-search-filter` parameter.  
-
-

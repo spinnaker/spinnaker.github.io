@@ -22,7 +22,7 @@ With Fiat, you can&hellip;
 * Use and periodically update user roles from a backing [role provider](#role-providers).
 
 Permissions can be attached to applications and (provider) accounts. A permission associates a role with one of these
- options: `READ`, `WRITE`, and `EXECUTE` (for apps only).
+ options: `READ`, `WRITE`, or `EXECUTE` (for apps only).
  
 
 ### Important Notes
