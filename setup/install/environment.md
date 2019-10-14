@@ -71,6 +71,13 @@ on the machine running Halyard.
    `hal shutdown`
 
    Then invoke any `hal` command to restart the Halyard daemon.
+   
+1. Optionally, configure [Kubernetes liveness probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/)
+for your Spinnaker services, setting the `initialDelaySeconds` to the upper bound of your longest service startup time:
+
+   ```
+   hal config deploy edit --liveness-probe-enabled true --liveness-probe-initial-delay-seconds $LONGEST_SERVICE_STARTUP_TIME
+   ```  
 
 <span class="begin-collapsible-section"></span>
 

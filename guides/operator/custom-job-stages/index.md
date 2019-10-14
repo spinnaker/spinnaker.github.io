@@ -11,7 +11,7 @@ For users of Kubernetes or Titus, Custom Job Stages offer a native solution for 
 
 ## How it works
 
-At its core, Custom Job Stages use the [Run Job stage](/reference/pipeline/stages/#run-job) to start a Task (Titus) or Job (Kubernetes) to perform some type of work. These jobs are defined as configuration for Orca and registered when the application starts. When used in a pipeline, Orca takes this configuration, generates a Run Job stage and then exeucutes it. To support a more native experience, we provide configuration options for things like stage name, description and parameters so that this stage feels less like a Run Job stage and more like an out of the box stage. 
+At its core, Custom Job Stages use the [Run Job stage](/reference/pipeline/stages/#run-job) to start a Task (Titus) or Job (Kubernetes) to perform some type of work. These jobs are defined as configuration for Orca and registered when the application starts. When used in a pipeline, Orca takes this configuration, generates a Run Job stage and then executes it. To support a more native experience, we provide configuration options for things like stage name, description and parameters so that this stage feels less like a Run Job stage and more like an out of the box stage. 
 
 ### When should I use Custom Job Stages?
 
@@ -44,6 +44,9 @@ The following properties are supported for the `kubernetes` cloud provider.
 * `account` - Account name used when executing the job. Must be valid account for `cloudProvider`.
 * `application` - Name of the application to associate the job with.
 * `manifest` - YAML definition for the [Kubernetes Job](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/) that will be run when the stage is executed.
+* `propertyFile` - Use logs from this container to capture output data. Captured output will be available in the pipeline context for use in downstream stages.
+
+_Note: If you're using the slash (`/`) character in any manifest annotations, you'll need to use this [special syntax](https://github.com/spring-projects/spring-boot/issues/13404#issuecomment-395307439) to prevent the slash from being dropped when the application reads its configuration. For example, if your annotation key is `iam.amazonaws.com/role` you'll need to define it like so: `[iam.amazonaws.com/role]`._
 
 ### Custom Job Stages - Titus
 
@@ -79,6 +82,7 @@ job:
         application: k8s2
         parameters:
           - name: PHRASE
+            label: Phrase to say
             description: Phrase to be echoed.
             mapping: manifest.spec.template.spec.containers[0].env[0].value
             defaultValue: "Hello world!"

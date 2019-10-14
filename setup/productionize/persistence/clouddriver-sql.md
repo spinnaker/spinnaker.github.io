@@ -98,7 +98,7 @@ sql:
       jdbcUrl: jdbc:mysql://your.database:3306/clouddriver
   migration:
     user: clouddriver_migrate
-  jdbcUrl: jdbc:mysql://your.database:3306/clouddriver
+    jdbcUrl: jdbc:mysql://your.database:3306/clouddriver
 
 redis:
   enabled: false
@@ -115,6 +115,8 @@ redis:
 The above yaml configures Clouddriver to use a MySQL table as part of a locking service for the caching agent scheduler. This works well for Netflix in production against Aurora, but could result in poor overall performance for all of Clouddriver, depending on how your database is configured. If you observe high database CPU utilization, lock contention, or if caching agents aren't consistently running at the expected frequency, you may want to try using the Redis-based scheduler to determine if this is a contributing factor.
 
 The following modification to the above example configures Clouddriver to use SQL for the cache and task repository, and Redis for agent scheduling.
+
+**IMPORTANT NOTE FOR GOOGLE CLOUDSQL USERS**: The SQL Agent Scheduler does not work in CloudSQL. You must continue to use the Redis scheduler for now.
 
 ```yaml
 sql:
@@ -179,7 +181,7 @@ The following steps were taken to live migrate Clouddriver in the Netflix produc
           password: hi! # actually injected from encrypted secrets
       migration:
         user: clouddriver_migrate
-      jdbcUrl: jdbc:mysql://clouddriver-aurora-cluster-endpoint:3306/clouddriver
+        jdbcUrl: jdbc:mysql://clouddriver-aurora-cluster-endpoint:3306/clouddriver
 
     dualTaskRepository:
       enabled: true
@@ -206,7 +208,7 @@ The following steps were taken to live migrate Clouddriver in the Netflix produc
           password: hi! # actually injected from encrypted secrets
       migration:
         user: clouddriver_migrate
-      jdbcUrl: jdbc:mysql://clouddriver-aurora-cluster-endpoint:3306/clouddriver
+        jdbcUrl: jdbc:mysql://clouddriver-aurora-cluster-endpoint:3306/clouddriver
 
     redis:
       enabled: true

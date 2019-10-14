@@ -78,7 +78,7 @@ enabled.
 With an unversioned ConfigMap, the "Rollback" feature on Deployments,
 StatefulSets, and DaemonSets does not have the desired effect, because a material
 change to a ConfigMap referenced by a Pod in these controllers does not show up
-in your PodSpec, only the the ConfigMap's `data` section. In this case, the
+in your PodSpec, only the ConfigMap's `data` section. In this case, the
 only option is to "Roll forward" by pushing an update to your ConfigMap, and
 any (potentially related) changes to controllers depending on your ConfigMap.
 However, this approach can have a few problems:

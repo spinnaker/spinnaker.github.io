@@ -275,6 +275,7 @@ elasticSearch:
 
 #### deck/settings-local.js
 ```
+window.spinnakerSettings.entityTags = {};
 window.spinnakerSettings.feature.entityTags=true;
 ```
 

@@ -26,10 +26,10 @@ of your intended template.
 1. Get the pipeline.
 
    ```
-   spin pipeline get <pipelineName>
+   spin pipeline get --name <pipelineName> --application <appName>
    ```
 
-   ...where `<pipelineName>` is the name shown for the pipeline in the Deck UI.
+   ...where `<pipelineName>` and `<appName>` are the names shown for the pipeline in the Deck UI.
 
    This returns the pipeline JSON. You'll create a pipeline template from this by
    [saving the contents to a file](#2-save-the-pipeline-json-to-a-file) and
@@ -43,7 +43,7 @@ and paste it into a file.
 If you want, you can do this when you first get the pipeline:
 
 ```bash
-spin pipeline get <pipelineName> | tee new_template.txt
+spin pipeline get --name <pipelineName> --application <appName> | tee new_template.txt
 ```
 
 ...and then edit the content in that file. But you can also copy the pipeline
@@ -55,7 +55,7 @@ with a file that you can make available to `spin` CLI.
 Just by adding a few fields, you can turn this pipeline JSON into
 pipeline-template JSON.
 
-The following is the pipeline-template config format. Note the `"pipeline" :`
+The following is the pipeline-template config format. Note the `"pipeline":`
 section; it contains the pipeline JSON, the same as what's in ordinary pipeline
 JSON, but referencing any variables that are used. So as you start with a
 pipeline blob, you move that entire JSON fragment to the `pipeline` section.
@@ -63,7 +63,7 @@ pipeline blob, you move that entire JSON fragment to the `pipeline` section.
 1. Add a reference to the pipeline templates schema.
 
    ```json
-   "schema" : "v2",
+   "schema": "v2",
    ```
 
 1. Declare your variables.
@@ -72,20 +72,20 @@ pipeline blob, you move that entire JSON fragment to the `pipeline` section.
    reference in this template:
 
    ```json
-   "variables" : [
-   {
-     "type" : "<type>",
-     "defaultValue" : <defaultValue>,
-     "description" : "<some description>",
-     "var1Name" : "<name of this variable>"
-   } 
-   {
-     "type" : "<type>",
-     "defaultValue" : <defaultValue>,
-     "description" : "<some description>",
-     "var2Name" : "<name of this variable>"
-   }
-     ]
+   "variables": [
+     {
+       "type": "<type>",
+       "defaultValue": <defaultValue>,
+       "description": "<some description>",
+       "name": "<name of this variable>"
+     },
+     {
+       "type": "<type>",
+       "defaultValue": <defaultValue>,
+       "description": "<some description>",
+       "name": "<name of this variable>"
+     }
+   ]
    ```
 
 1. For everything in the `pipeline` section that will be a variable, replace
@@ -97,11 +97,11 @@ declared in `variables`:
    For example in a non-templated pipeline, the amount of time to wait in a Wait
    stage would be represented by...
 
-   `"waitTime" : <time>`
+   `"waitTime": <time>`
 
    In our parameterized template, it would be...
 
-   `"waitTime" : "${ templateVariables.timeToWait }",`
+   `"waitTime": "${ templateVariables.timeToWait }",`
 
    ...where `timeToWait` is declared in the `variables` section of the template
    for this purpose.
@@ -111,40 +111,40 @@ list, and the pipeline definition:
 
 ```json
 {
-  “schema” : “v2”, # Reference to the MPTv2 schema
-  “variables” : [
-  {
-    “type” : “int”,
-    “defaultValue” : 42,
-    “description” : “The time a wait stage shall pauseth”,
-    “name” : "timeToWait" # This is the name that's referenced in the SpEL expression later
-  }
-  ],
-  “id” : “newSpelTemplate”, # Main identifier to reference this template from instance
-  “protect” : false,
-  “metadata” : {
-    “name” : “Variable Wait”,
-    “description” : “A demonstrative Wait Pipeline.”,
-    “owner” : “example@example.com”,
-    “scopes” : [“global”]
-  },
-  “pipeline”: { # A “normal” pipeline definition.
-    “lastModifiedBy” : “anonymous”,
-    “updateTs” : “0”,
-    “parameterConfig” : [],
-    “limitConcurrent”: true,
-    “keepWaitingPipelines”: false,
-    “description” : “”,
-    “triggers” : [],
-    “notifications” : [],
-    “stages” : [
+  "schema": "v2", # Reference to the MPTv2 schema
+  "variables": [
     {
-      “waitTime” : “${ templateVariables.timeToWait }”, # Templated field.
-      “name”: “My Wait Stage”,
-      “type” : “wait”,
-      “refId” : “wait1”,
-      “requisiteStageRefIds”: []
+      "type": "int",
+      "defaultValue": 42,
+      "description": "The time a wait stage shall pauseth",
+      "name": "timeToWait" # This is the name that's referenced in the SpEL expression later
     }
+  ],
+  "id": "newSpelTemplate", # Main identifier to reference this template from instance
+  "protect": false,
+  "metadata": {
+    "name": "Variable Wait",
+    "description": "A demonstrative Wait Pipeline.",
+    "owner": "example@example.com",
+    "scopes": ["global"]
+  },
+  "pipeline": { # A "normal" pipeline definition.
+    "lastModifiedBy": "anonymous",
+    "updateTs": "0",
+    "parameterConfig": [],
+    "limitConcurrent": true,
+    "keepWaitingPipelines": false,
+    "description": "",
+    "triggers": [],
+    "notifications": [],
+    "stages": [
+      {
+        "waitTime": "${ templateVariables.timeToWait }", # Templated field.
+        "name": "My Wait Stage",
+        "type": "wait",
+        "refId": "wait1",
+        "requisiteStageRefIds": []
+      }
     ]
   }
 }
@@ -156,7 +156,7 @@ list, and the pipeline definition:
 spin pipeline-templates save --file my_template.txt
 ```
 
-...where `my_template.txt` is the file in which you constructed the template JSON. 
+...where `my_template.txt` is the file in which you constructed the template JSON.
 
 `spin` checks that the file has a reference to the v2 schema and that it has a `pipeline` section.
 

@@ -67,6 +67,8 @@ setup:
             url: /setup/install/providers/kubernetes-v2/
             collapsed: false
             children:
+              - title: Alibaba Cloud ACK
+                url: /setup/install/providers/kubernetes-v2/ack/
               - title: Amazon EKS
                 url: /setup/install/providers/kubernetes-v2/aws-eks/
               - title: Google Kubernetes Engine
@@ -116,6 +118,12 @@ setup:
             url: /setup/artifacts/github/
           - title: HTTP
             url: /setup/artifacts/http/
+          - title: Bitbucket
+            url: /setup/artifacts/bitbucket/
+          - title: GitLab
+            url: /setup/artifacts/gitlab/
+          - title: S3
+            url: /setup/artifacts/s3/
           - title: Oracle Object
             url: /setup/artifacts/oracle/
       - title: Configure the Image Bakery
@@ -145,6 +153,10 @@ setup:
             url: /setup/triggers/google/
           - title: GitHub Webhook
             url: /setup/triggers/github/
+          - title: Amazon Pub/Sub
+            url: /setup/triggers/amazon/
+      - title: Set up the spin CLI
+        url: /setup/spin/
       - title: Add Your CI system
         collapsed: true
         children:
@@ -180,6 +192,8 @@ setup:
             url: /setup/features/user-data/
           - title: Configure the Script stage
             url: /setup/features/script-stage/
+      - title: Use External Account Configuration
+        url: /setup/configuration/
   - title: Productionize Spinnaker
     collapsed: true
     children:
@@ -204,6 +218,9 @@ setup:
             url: /setup/productionize/persistence/orca-sql/
           - title: Clouddriver SQL
             url: /setup/productionize/persistence/clouddriver-sql/
+          - title: Front50 SQL
+            url: /setup/productionize/persistence/front50-sql/
+
 
 guides:
   - title: Tutorials
@@ -222,6 +239,8 @@ guides:
             url: /guides/tutorials/codelabs/hello-deployment/
           - title: Deploy GCS Pub/Sub Artifacts to Cloud Foundry
             url: /guides/tutorials/codelabs/pubsub-to-cf/
+          - title: Deploy Artifacts from Artifactory to Cloud Foundry
+            url: /guides/tutorials/codelabs/artifactory-to-cf/
           - title: GCE Source To Prod
             url: https://codelabs.developers.google.com/codelabs/bake-and-deploy-pipeline
           - title: Kubernetes Source To Prod
@@ -271,7 +290,7 @@ guides:
             url: /guides/user/pipeline/
           - title: Managing Pipelines
             url: /guides/user/pipeline/managing-pipelines/
-          - title: Triggering Pipelines
+          - title: Triggering Pipelines (Standard Artifacts UI)
             collapsed: true
             children:
               - title: Overview
@@ -286,6 +305,23 @@ guides:
                 url: /guides/user/pipeline/triggers/gcs/
               - title: Receiving Artifacts From GitHub
                 url: /guides/user/pipeline/triggers/github/
+          - title: Triggering Pipelines (New Artifacts UI)
+            collapsed: true
+            children:
+              - title: Overview
+                url: /guides/user/pipeline/triggers-with-artifactsrewrite/
+              - title: Triggering pipelines with Jenkins
+                url: /guides/user/pipeline/triggers-with-artifactsrewrite/jenkins/
+              - title: Triggering on Pub/Sub Messages
+                url: /guides/user/pipeline/triggers-with-artifactsrewrite/pubsub/
+              - title: Triggering on Webhooks
+                url: /guides/user/pipeline/triggers-with-artifactsrewrite/webhooks/
+              - title: Receiving Artifacts From GCS
+                url: /guides/user/pipeline/triggers-with-artifactsrewrite/gcs/
+              - title: Receiving Artifacts From GitHub
+                url: /guides/user/pipeline/triggers-with-artifactsrewrite/github/
+              - title: Triggering pipelines with Artifactory
+                url: /guides/user/pipeline/triggers-with-artifactsrewrite/artifactory/
           - title: Pipeline Expressions
             url: /guides/user/pipeline/expressions/
           - title: Searching for Triggered Pipeline Executions
@@ -295,6 +331,8 @@ guides:
             children:
               - title: Overview
                 url: /guides/user/pipeline/pipeline-templates/
+              - title: Enable Pipeline Templates
+                url: /guides/user/pipeline/pipeline-templates/enable/
               - title: Create a Pipeline Template
                 url: /guides/user/pipeline/pipeline-templates/create/
               - title: Visualize a hydrated pipeline
@@ -307,6 +345,8 @@ guides:
         url: /guides/user/tagging/
       - title: Custom Instance Links
         url: /guides/user/instance-links/
+      - title: Plugin Users Guide
+        url: /guides/user/plugin-users/
       - title: Kubernetes (Manifest Based)
         collapsed: true
         children:
@@ -316,6 +356,8 @@ guides:
             url: /guides/user/kubernetes-v2/deploy-manifest/
           - title: Deploy a Helm Chart
             url: /guides/user/kubernetes-v2/deploy-helm/
+          - title: Use Kustomize for Manifests
+            url: /guides/user/kubernetes-v2/kustomize-manifests/
           - title: Best Practices
             url: /guides/user/kubernetes-v2/best-practices/
           - title: Parameterize Manifests
@@ -361,6 +403,8 @@ guides:
         url: /guides/developer/kork-library/
       - title: Kubernetes CRD extensions
         url: /guides/developer/crd-extensions/
+      - title: Plugin Creators Guide
+        url: /guides/developer/plugin-creators/
   - title: Operator How-Tos
     collapsed: true
     children:
@@ -388,14 +432,25 @@ guides:
   - title: Spin CLI
     collapsed: true
     children:
-      - title: Install and Configure Spin CLI
-        url: /guides/spin/cli/
+      - title: Spin CLI Guide
+        url: /guides/spin/
       - title: Manage Applications
         url: /guides/spin/app/
       - title: Manage Pipelines
         url: /guides/spin/pipeline/
       - title: Manage Pipeline Templates
         url: /guides/spin/pipeline-templates/
+  - title: Service Overviews
+    collapsed: true
+    children:
+      - title: Common Internals
+        url: /guides/developer/common-internals/
+      - title: Front50 
+        url: https://github.com/spinnaker/front50/blob/master/README.md
+      - title: Igor
+        url: https://github.com/spinnaker/igor/blob/master/README.md
+      - title: Orca
+        url: /guides/developer/service-overviews/orca/
 reference:
   - title: API
     collapsed: true
@@ -427,7 +482,7 @@ reference:
         url: /reference/providers/kubernetes-v2/
       - title: Oracle Cloud
         url: /reference/providers/oracle/
-  - title: Artifacts
+  - title: Artifacts (Standard UI)
     collapsed: true
     children:
       - title: Overview
@@ -465,6 +520,48 @@ reference:
             url: /reference/artifacts/types/kubernetes-object/
           - title: Oracle Object
             url: /reference/artifacts/types/oracle-object/
+  - title: Artifacts (New UI)
+    collapsed: true
+    children:
+      - title: Overview
+        url: /reference/artifacts-with-artifactsrewrite/
+      - title: In Pipelines
+        url: /reference/artifacts-with-artifactsrewrite/in-pipelines/
+      - title: From Build Triggers
+        url: /reference/artifacts-with-artifactsrewrite/from-build-triggers/
+      - title: In Kubernetes (Manifest Based)
+        url: /reference/artifacts-with-artifactsrewrite/in-kubernetes-v2/
+      - title: In Google App Engine
+        url: /reference/artifacts-with-artifactsrewrite/in-appengine/
+      - title: In Cloud Foundry
+        url: /reference/artifacts-with-artifactsrewrite/in-cloud-foundry/
+      - title: Types of Artifacts
+        collapsed: true
+        children:
+          - title: Overview
+            url: /reference/artifacts-with-artifactsrewrite/types/overview/
+          - title: Docker Image
+            url: /reference/artifacts-with-artifactsrewrite/types/docker-image/
+          - title: Embedded Base64
+            url: /reference/artifacts-with-artifactsrewrite/types/embedded-base64/
+          - title: GCS Object
+            url: /reference/artifacts-with-artifactsrewrite/types/gcs-object/
+          - title: S3 Object
+            url: /reference/artifacts-with-artifactsrewrite/types/s3-object/
+          - title: GitHub File
+            url: /reference/artifacts-with-artifactsrewrite/types/github-file/
+          - title: GitLab File
+            url: /reference/artifacts-with-artifactsrewrite/types/gitlab-file/
+          - title: Bitbucket File
+            url: /reference/artifacts-with-artifactsrewrite/types/bitbucket-file/
+          - title: HTTP File
+            url: /reference/artifacts-with-artifactsrewrite/types/http-file/
+          - title: Kubernetes Object
+            url: /reference/artifacts-with-artifactsrewrite/types/kubernetes-object/
+          - title: Oracle Object
+            url: /reference/artifacts-with-artifactsrewrite/types/oracle-object/
+          - title: Maven Artifact
+            url: /reference/artifacts-with-artifactsrewrite/types/maven-artifact/
   - title: Halyard
     collapsed: true
     children:
@@ -478,6 +575,13 @@ reference:
         url: /reference/halyard/component-sizing/
       - title: High Availability
         url: /reference/halyard/high-availability/
+      - title: Secrets Management
+        collapsed: true
+        children:
+          - title: Overview
+            url: /reference/halyard/secrets/
+          - title: S3
+            url: /reference/halyard/secrets/s3-secrets/
   - title: Architecture
     collapsed: true
     children:
@@ -534,6 +638,11 @@ community:
     children:
       - title: FAQs
         url: /community/faqs/
+  - title: Security
+    collapsed: true
+    children:
+      - title: Security
+        url: /community/security/
 
 publications:
   - title: eBook

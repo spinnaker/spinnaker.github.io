@@ -207,7 +207,6 @@ data:
             kinds: []
             omitKinds: []
             customResources: []
-            oauthScopes: []
             oAuthScopes: []
           primaryAccount: my-kubernetes-account
         oraclebmcs:
@@ -326,6 +325,9 @@ data:
           enabled: false
           accounts: []
         - name: signalfx
+          enabled: false
+          accounts: []
+        - name: newrelic
           enabled: false
           accounts: []
         - name: aws
