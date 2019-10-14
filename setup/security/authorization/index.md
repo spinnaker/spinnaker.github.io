@@ -38,8 +38,8 @@ define who is allowed to access it, it is considered unrestricted.  This means:
    instance names and counts within server groups.
 
 1)  Every permission in Spinnaker is granted to a role. Individual users cannot be granted permissions. You also grant
- [Super admin](./admin/) access to a role. You may see discussions of users in Fiat’s implementation but it’s just an
- optimization in the storage to not recompute user → roles → permissions.
+ [Super admin](/setup/security/admin/) access to a role. You may see discussions of users in Fiat’s implementation but
+  it’s just an optimization in the storage to not recompute user → roles → permissions.
 
 1)  Accounts and applications access control can be confusing unless you understand the core
 relationship: accounts can contain multiple applications, and applications can span multiple

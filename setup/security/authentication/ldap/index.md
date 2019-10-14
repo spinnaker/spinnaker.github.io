@@ -43,7 +43,7 @@ default.
 - If `--user-search-filter` is provided:
     - Search LDAP:
         - Search in  `--user-search-base` OR the root (would be `a/b/c` in this example) if user-search-base is not set.
-        - Filtered by `--user-search-filter="(d={0})"` where uid=the username as typed in (joe).
+        - Filtered by `--user-search-filter="(id={0})"` where uid=the username as typed in (joe).
         - Start at the rootDn and use sub tree searches
     - Return root DN computed + found user DN
 - If `user-search-filter` is not provided:
@@ -136,9 +136,9 @@ Now that you've authenticated the user, proceed to setting up their [authorizati
 
 ## Troubleshooting
 
-* Review the general [authentication workflow](/setup/security/authentication#workflow).
+* Review the general [authentication workflow](/reference/architecture/authz_authn/authentication//#workflow).
 
-* Use an [incognito window](/setup/security/authentication#incognito-mode).
+* Use an [incognito window](/setup/security/authentication/#incognito-mode).
 
 * I'm getting the "Bad Credentials" exception mentioned above, but my username and password is
 correct!

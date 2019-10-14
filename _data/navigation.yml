@@ -147,8 +147,17 @@ setup:
                  url: /setup/security/authentication/
                - title: SAML
                  url: /setup/security/authentication/saml/
-               - title: OAUTH
-                 url: /setup/security/authentication/oauth/
+               - title: Oauth
+                 collapsed: true
+                 children:
+                   - title: Overview
+                     url: /setup/security/authentication/oauth/
+                   - title: Google
+                     url: /setup/security/authentication/oauth/google/
+                   - title: GitHub
+                     url: /setup/security/authentication/oauth/github/
+                   - title: Azure
+                     url: /setup/security/authentication/oauth/azure/
                - title: LDAP/Active Directory
                  url: /setup/security/authentication/ldap/
                - title: x509
@@ -158,14 +167,21 @@ setup:
              children:
                - title: Overview
                  url: /setup/security/authorization/
-               - title: SAML
-                 url: /setup/security/authorization/saml/
-               - title: LDAP/Active Directory
-                 url: /setup/security/authorization/ldap/
-               - title: GitHub Teams
-                 url: /setup/security/authorization/github-teams/
-               - title: Google Groups
-                 url: /setup/security/authorization/google-groups/
+               - title: Providers
+                 collapsed: true
+                 children:
+                 - title: SAML
+                   url: /setup/security/authorization/saml/
+                 - title: LDAP/Active Directory
+                   url: /setup/security/authorization/ldap/
+                 - title: GitHub Teams
+                   url: /setup/security/authorization/github-teams/
+                 - title: Google Groups
+                   url: /setup/security/authorization/google-groups/
+               - title: Service Accounts
+                 url: /setup/security/authorization/service-accounts/
+               - title: Pipeline Permissions
+                 url: /setup/security/authorization/pipeline-permissions/
            - title: Administrators
              url: /setup/security/admin/
       - title: Set up Triggers

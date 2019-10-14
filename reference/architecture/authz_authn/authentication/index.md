@@ -160,4 +160,96 @@ user's identity.
 1. Repeat this process from step 1. Now, the response from `https://gate.url:8084/auth/user` will contain a proper JSON object and the rest of application will proceed to load.
 
 
+## OAUTH Workflow
+
+The OAuth specification defines numerous flows for various scenarios. Spinnaker utilizes the
+**_authorization code flow_**, more commonly known as the three-legged OAuth.  The three-legged
+OAuth
+flow looks like:
+
+<div class="mermaid">
+    sequenceDiagram
+
+    participant Deck
+    participant Gate
+    participant IdentityProvider
+    participant ResourceServer
+
+    Deck->>+Gate: GET /something/protected
+    Gate->>-Deck: HTTP 302 to /login
+    Deck->>+Gate: GET /login
+    Gate->>-Deck: HTTP 302 to https://idp.url/userLogin?client_id=foo...
+
+    Deck->>+IdentityProvider: GET https://idp.url/userLogin?client_id=foo...
+    IdentityProvider->>-Deck: Returns login page
+</div>
+
+1. User attempts to access a protected resource.
+
+1. Gate redirects to OAuth provider, passing the following important bits:
+    * `client_id`: A pre-established identifier for this Gate instance.
+    * `redirect_uri`: Where to send the user after login. Must be accessible by the user's
+    browser.
+
+    > Gate attempts to intelligently guess the `redirect_uri` value, but outside components like
+    SSL terminating load balancers can cause this guess to be wrong. See
+    [here](/setup/security/ssl/#network-configurations) for how to fix this.
+
+    * `response_type=code`: Indicating that we are performing the three-legged OAuth flow.
+    * `scope`: What data or resources Gate would like access to. This is generally something like
+    `email profile` to access the user's email address.
+
+1. OAuth provider prompts user for username & password.
+    <div class="mermaid">
+        sequenceDiagram
+
+        participant Deck
+        participant Gate
+        participant IdentityProvider
+        participant ResourceServer
+
+        Deck->>+IdentityProvider: User sends credentials
+        IdentityProvider->>-Deck: Confirms client_id 'foo' can access user's information
+        Deck->>+IdentityProvider: User confirms
+        IdentityProvider->>-Deck: HTTP 302 to https://gate.url/login?code=abcdef
+    </div>
+
+1. OAuth provider confirms that the user is granting Gate access to his profile.
+
+1. Using the `redirect_uri`, the OAuth provider redirects the user to this address, providing an
+additional `code` parameter.
+
+    <div class="mermaid">
+        sequenceDiagram
+
+        participant Deck
+        participant Gate
+        participant IdentityProvider
+        participant ResourceServer
+
+        Deck->>+Gate: GET /login?code=abcdef
+        Gate->>+IdentityProvider: POST /token "{code:abcdef, client_id:..., client_secret:...}"
+        IdentityProvider->>-Gate: Responds with access token `12345`
+        Gate->>+ResourceServer: GET /userInfo with "Authorization: Bearer 12345" header
+        ResourceServer->>-Gate: Respondes with JSON of user profile information
+        Note left of Gate: Gate extracts data based on userInfoMapping
+        Gate->>-Deck: HTTP 302 to originally requested URL
+    </div>
+
+1. Gate uses this `code` parameter to request an _access token_ from the OAuth provider's token
+server.
+
+1. Gate uses the _access token_ to request user profile data from the resource server
+(`security.oauth2.resource.userInfoUri`).
+
+1. Gate uses the `userInfoMapping` to extract specific fields from the response, such as your
+username and email address, and associates it with the established session cookie with your user.
+See UserInfoMapping below.
+
+
+The authorization code flow is the most secure way to get this data, because the _access token_
+is never revealed outside of the server using it.
+
+{% include mermaid %}
+
 {% include mermaid %}

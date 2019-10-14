@@ -10,12 +10,6 @@ sidebar:
 ## Overview
 Fiat works closely with Front50 (apps permissions), Clouddriver (account permissions), and Igor (build services permissions).
 
-## Source code
-* Fiat: https://github.com/spinnaker/fiat/blob/master/fiat-ldap/src/main/java/com/netflix/spinnaker/fiat/roles/ldap/LdapUserRolesProvider.java
-* Spring Auth Provider: https://github.com/spring-projects/spring-security/blob/master/config/src/main/java/org/springframework/security/config/annotation/authentication/configurers/ldap/LdapAuthenticationProviderConfigurer.java
-* Gate: https://github.com/spinnaker/gate/blob/master/gate-ldap/src/main/groovy/com/netflix/spinnaker/gate/security/ldap/LdapSsoConfig.groovy
-
-
 ### Ingress:
 
 Ingress involves the following components: 

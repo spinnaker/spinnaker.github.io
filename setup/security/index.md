@@ -21,20 +21,23 @@ See also [`hal config security`](/reference/halyard/commands/#hal-config-securit
 ## Contents
 
 * Overview (this page)
-* [SSL](./authentication/ssl/)
-* [Authentication Methods](./authentication/)
+* [SSL](./ssl)
+* Authentication
+  * [Overview](./authentication/)
   * Methods
     * [OAuth 2.0](./authentication/oauth/)
     * [SAML](./authentication/saml/)
     * [LDAP](./authentication/ldap/)
     * [X.509](./authentication/x509/)
-* [Authorization Methods](./authorization/)
+* Authorization 
+  * [Overview](./authorization/)
   * Role Providers
       * [Google Groups](./authorization/google-groups/)
       * [GitHub Teams](./authorization/github-teams/)
       * [LDAP](./authorization/ldap/)
       * [SAML](./authorization/saml/)
   * [Service Accounts](./authorization/service-accounts/)
+  * [Pipeline Permissions](./authorization/pipeline-permissions/)
 * [Administrator functionality](./admin/)
 
 

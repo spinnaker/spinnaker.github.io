@@ -1,4 +1,4 @@
---
+---
 layout: single
 title:  "Service Accounts"
 sidebar:
@@ -71,7 +71,7 @@ roles `foo` and `bar`, then "Batman" has access to use "Alfred" in his pipelines
 With Fiat enabled, you should now see a “Run As User” option in your Trigger configuration. This
 list contains all of the service accounts you currently have access to.
 
-![run as user from pipeline config in UI](run-as-user.png)
+![run as user from pipeline config in UI](./run-as-user.png)
 
 Upon saving this pipeline, two authorization checks occur:
 1. Does this user have access to this service account? (If using the UI, this should always be 

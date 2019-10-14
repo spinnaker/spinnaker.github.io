@@ -38,27 +38,27 @@ query. If a manager is NOT set, Spinnaker will fallback to attempting to validat
 in users credentials.  
 
 Fiat will use the "bound" account to do the following:
-- Make a query for `group-search-base`. <strong>THIS IS A REQUIRED FIELD.</strong>  If not set, no roles will be queried.
-- Filter the obtained groups with `group-search-filter`.  This will use the group-role-attribute (`cn=X`) field on the query to find role names. 
-- For the groups associated with the user’s full DN = `the user id of the user`
-- For the groups retrieved, the roles will be the `group-role-attributes` attributes.
+- Make a query using `group-search-base`. <strong>THIS IS A REQUIRED FIELD.</strong>  If not set, no roles will be 
+queried.
+- Filter the obtained groups with `group-search-filter`.  
+- For the groups retrieved, get the role names.  This uses the `group-role-attributes` attribute (defaults to `cn`).
+- Filter to the groups associated with the user.  This uses the users full DN as a parameter.
 
-## How to determine the "User DN" 
+## How to determine the "Full DN" 
 
 - Extract the Root DN from the `url` (`ldaps://my.server/a/b/c` → `a/b/c`)
-    - If `com.netflix.spinnaker.fiat.roles.ldap.LdapUserRolesProvider` log level is at debug, you should 
-    see `Root DN: <the actual root DN extracted`
-- If `user-search-filter` is provided:
+    >If `com.netflix.spinnaker.fiat.roles.ldap.LdapUserRolesProvider` log level is at debug, you should 
+    see `Root DN: <the actual root DN extracted>`
+- If `user-search-filter` is provided then:
     - Search LDAP:
         - For `user-search-base`
-        - Filtered by `user-search-filter` = `the user id`
+        - Using `user-search-filter` aka `(uid={0})`
     - Return root DN computed + found user DN
-- If `user-search-filter` is not provided:
+- ELSE when `user-search-filter` is not provided:
     - Make user DN using `user-dn-pattern`
     - Return root DN computed + user DN
-    
-When searching for a user's groups, a `user-dn-pattern` is used to construct the user's full
-distinguished name (DN). In the case below, the user `joe` would have a full DN of
+
+You must provide either a search filter or a dn pattern.  In the case below, the user `joe` would have a full DN of
 `uid=joe,ou=users,dc=mydomain,dc=net`.
 
 The search would be rooted at `ou=groups,dc=mydomain,dc=net`, looking for directory entries that
@@ -70,5 +70,18 @@ pass the filter will then have the `cn` (common name) attribute returned.
 
 NOTE IF you want to use a username instead of a user dn for group membership, you can specificy `{1}` instead of `{0}` for 
 the `group-search-filter` parameter.  
+
+
+## Source code
+
+To see the internals (can be useful for debugging):
+* Fiat: [LdapUserRolesProvider](https://github.com/spinnaker/fiat/blob/master/fiat-ldap/src/main/java/com/netflix/spinnaker/fiat/roles/ldap/LdapUserRolesProvider.java)
+* Spring Auth Provider: [LdapAuthenticationProviderConfigurer](https://github.com/spring-projects/spring-security/blob/master/config/src/main/java/org/springframework/security/config/annotation/authentication/configurers/ldap/LdapAuthenticationProviderConfigurer.java)
+* Gate: [LdapSsoConfig](https://github.com/spinnaker/gate/blob/master/gate-ldap/src/main/groovy/com/netflix/spinnaker/gate/security/ldap/LdapSsoConfig.groovy)
+
+## Next steps...
+
+* Read through [Authorization Overview](/setup/security/authorization/)
+* Read through [LDAP Authorization](/setup/security/authorization/ldap/)
 
 

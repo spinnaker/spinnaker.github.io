@@ -13,7 +13,7 @@ is generally easier than dynamically obtaining an OAuth Bearer token or SAML ass
 
 ## Certificates
 
-If you followed the [SSL](../ssl/) guide, you may already have generated a **certificate
+If you followed the [SSL](/setup/security/ssl) guide, you may already have generated a **certificate
 authority**
 (CA). Using this CA, we can generate a client certificate using `openssl`.
 
@@ -168,6 +168,8 @@ Now that you've authenticated the user, proceed to setting up their [authorizati
 
 ## Troubleshooting
 
-* Review the general [authentication workflow](/setup/security/authentication#workflow).
+* Review the general [authentication guide](/setup/security/authentication).
+* Review the authentication [reference guide](/reference/architecture/authz_authn/authentication).
+
 
 * Use an [incognito window](/setup/security/authentication#incognito-mode).
