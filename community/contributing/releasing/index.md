@@ -13,21 +13,31 @@ Spinnaker you manage. You have a few options available:
 
 # Wait for the non-patch release
 
-Any time we release `X+1.Y.0` or `X.Y+1.0`, we include all commits merged into
-`master` for each service. We do this on a [regular
-cadence](/community/releases/release-cadence).
+Any time we release a new minor version of Spinnaker (e.g. 1.16.0 or 1.17.0), we
+include all commits merged into `master` for each service. We do this on a
+[regular cadence](/community/releases/release-cadence).
 
 # Merge into the release branch
 
-If your patch fixes a bug, and doesn't introduce a feature or breaking change,
-you can release your change even sooner by cherry-picking into a release
-branch. Every release `X.Y.0` creates a `release-X.Y.x` branch in each
-repository, and we release patches to release `X.Y` on a roughly weekly basis.
+If your patch is a relatively small localized change that fixes a bug, and
+doesn't introduce a feature or breaking change, you can request that your patch
+be merged into a release branch. Every minor release of Spinnaker has its own
+release branch. For example, all Spinnaker 1.16 releases (1.16.0, 1.16.1, etc.)
+are built from the `release-1.16.x` release branch. To get your patch into 1.16,
+it must be cherry-picked onto that release branch.
 
-There are two ways to cherry-pick into a release branch:
+There are two ways to create a pull request for a cherry-pick:
 
 * [Using the Spinnaker GitHub bot](#cherry-pick-using-the-github-bot)
 * [Manually via the command-line](#cherry-pick-using-the-command-line)
+
+After creating a cherry-pick pull request, you should assign the review to the
+current release manager. The release manager rotation calendar is currently only
+available inside Google, but it only rotates every eight weeks. The release
+manager will be the person posting about the releases in [the
+`#spinnaker-releases` Slack
+channel](https://app.slack.com/client/T091CRSGH/CHD4ATAMV/). They will evaluate
+the patch, make sure it's appropriate and safe, and merge it if so.
 
 ## Cherry-pick using the GitHub bot
 
