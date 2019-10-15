@@ -1,6 +1,11 @@
 /* ==========================================================================
    PAGE SUCCESS STORIES
    ========================================================================== */
+   .success-stories-header {
+       .spin_header__text h1 {
+           font-size: 2.6em;
+       }
+   }
 
    .success-stories-container {
        margin-top: 450px;
@@ -15,16 +20,10 @@
                font-size: 1.5em;
            }
 
-           h5 {
-               font-size: .9em;
-               font-weight: bold;
-               margin-bottom: 15px;
-               padding: 0 20px;
-           }
-
            p {
                font-size: .75em;
                padding: 0 20px;
+               margin-top: 25px;;
            }
 
            span {
@@ -79,13 +78,27 @@
    }
 
    @media (max-width: 900px) {
-    .success-stories-container {
+        .success-stories-container {
             grid-template-columns: repeat(2, calc(50% - 10px) );
         }
    }
 
+   @media (max-width: 500px) {
+        .success-stories-header {
+            .spin_header__text {
+                h1 {
+                    font-size: 2em;
+                }
+
+                h2 {
+                    font-size: 1.2em;
+                }
+            }
+        }
+   }
+
    @media (max-width: 450px) {
-    .success-stories-container {
+        .success-stories-container {
             grid-template-columns: repeat(1, calc(100% - 10px) );
         }
    }
