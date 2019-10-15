@@ -1,12 +1,6 @@
 /* ==========================================================================
    PAGE SUCCESS STORIES
    ========================================================================== */
-   .success-stories-header {
-       .spin_header__text h1 {
-           font-size: 2.6em;
-       }
-   }
-
    .success-stories-container {
        margin-top: 450px;
        display: grid;
@@ -80,20 +74,6 @@
    @media (max-width: 900px) {
         .success-stories-container {
             grid-template-columns: repeat(2, calc(50% - 10px) );
-        }
-   }
-
-   @media (max-width: 500px) {
-        .success-stories-header {
-            .spin_header__text {
-                h1 {
-                    font-size: 2em;
-                }
-
-                h2 {
-                    font-size: 1.2em;
-                }
-            }
         }
    }
 
