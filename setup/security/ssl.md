@@ -58,6 +58,10 @@ server:
     protocolHeader: X-Forwarded-Proto
     remoteIpHeader: X-Forwarded-For
     internalProxies: .*
+    ## This may or may not be needed depending upon your environment.  
+    ## See https://tomcat.apache.org/tomcat-9.0-doc/api/org/apache/catalina/filters/RemoteIpFilter.html
+    httpsServerPort: X-Forwarded-Port
+
 ```
 
 ## Server-terminated SSL
