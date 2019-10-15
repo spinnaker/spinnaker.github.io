@@ -7,7 +7,9 @@ sidebar:
 
 {% include toc %}
 
-Plugins are an early alpha feature that is under active development and will likely change.
+<div class="notice--danger">
+  <strong>Note:</strong> Plugins are an early alpha feature that is under active development and will likely change.
+</div>
 
 This guide is for adding existing plugins to Spinnaker. For information about how to develop a new plugin, see [Plugin Creators Guide](/guides/developer/plugin-creators). 
 
@@ -35,8 +37,6 @@ options:
 resources:
   orca:
   - https://stage-plugin-test.s3-us-west-2.amazonaws.com/stage-plugin-0.0.1-SNAPSHOT.jar
-  deck:
-  - https://stage-plugin-test.s3-us-west-2.amazonaws.com/stage-plugin-ui-0.0.1-SNAPSHOT.js
 ```
 ## Enabling Plugins
 
