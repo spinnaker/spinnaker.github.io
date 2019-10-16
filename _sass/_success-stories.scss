@@ -1,6 +1,13 @@
 /* ==========================================================================
    PAGE SUCCESS STORIES
    ========================================================================== */
+    .success-stories-header {
+        .spin_header__text h2 {
+            font-size: 1.6em;
+            margin-top: 25px;
+        }
+    }
+
    .success-stories-container {
        margin-top: 450px;
        display: grid;
