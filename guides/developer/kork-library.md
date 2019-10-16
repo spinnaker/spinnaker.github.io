@@ -20,7 +20,7 @@ redirect_from: /docs/kork-library-dev
 3. Make note of the version printed:
 
 ```
-$ ./gradlew publishToMavenLocal
+$ ./gradlew -PenablePublishing=true publishToMavenLocal
 Inferred project: kork, version: 0.1.0-SNAPSHOT
 ```
 
