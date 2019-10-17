@@ -35,7 +35,7 @@ method](/setup/security/authentication/) for specifics.
 
 ![SSL terminated at load balancer](/setup/security/authentication/network-arch/lb-ssl-termination.png)
 
-During the certain authentication workflows, Gate makes an intelligent guess on how to assemble a URI to
+During certain authentication workflows, Gate makes an intelligent guess on how to assemble a URI to
 itself, called the **`redirect_uri`**. Sometimes this guess is wrong when Spinnaker is deployed
 in concert with other networking components, such as an SSL-terminating load balancer, or in the
 case of the [Quickstart](/setup/quickstart) images, a fronting Apache instance.
@@ -49,7 +49,7 @@ hal config security authn <authtype> edit --pre-established-redirect-uri https:/
 > Be sure to include the `/login` suffix at the end of the `--pre-established-redirect-uri` flag!
 
 Additionally, some configurations make it necessary to "unwind" external proxy instances. This makes the request to 
-Gate look like the original request to the outer-most proxy. Add this to your `gate-local.yml` file in your Halyard
+Gate look like the original request to the outermost proxy. Add this to your `gate-local.yml` file in your Halyard
 [custom profile](/reference/halyard/custom/#custom-profiles):
 
 ```
@@ -371,7 +371,7 @@ If you have problems...
 ## Using a custom CA for internal communications
 There are a lot of places in Spinnaker which support the ability to configure custom Java trust/key stores for 
 organizations who use internally signed certificates. In some cases, however, this isn’t supported yet but you still 
-need to talk to a service which serves one of these certificates. This post will show you how to import your 
+need to talk to a service which serves one of these certificates. This section will show you how to import your 
 certificate into a Java trust/key store and configure a Spinnaker service with it.
 
 Create a temporary copy of your system’s Java trust/key store and import your internal certificate. If you’re on a Mac,
@@ -382,7 +382,7 @@ cp {path-to-cacerts} /tmp/custom-trust-store
 keytool import -alias custom-ca -keystore /tmp/custom-trust-store/cacerts -file {your-internal-certificate}
 ```
 
-The below example instructions apply when use kubernetes to deploy spinnaker.  If not using spinnaker, you'll have 
+The below example applies when using Kubernetes to deploy Spinnaker.  If you are not using Spinnaker, you'll have 
 to get the cacerts file updated as appropriate for your environment.  
 ```bash
 kubectl create secret generic -n {your-spinnaker-namespace} internal-trust-store \
@@ -401,8 +401,8 @@ kubernetes:
 ```
 
 Redeploy Spinnaker using `hal deploy apply`.
-The Spinnaker component for which you configured the volume mount should now be using the new trust/key store by 
-default.
+The Spinnaker component (front 50 in this example) for which you configured the volume mount should now be using the 
+new trust/key store by default.
 
 ## Next steps
 

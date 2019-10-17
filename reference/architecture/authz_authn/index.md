@@ -7,7 +7,6 @@ sidebar:
 
 {% include toc %}
 
-## Authentication & Authorization
 This is a high-level explanation of how authentication and authorization work within Spinnaker itself.  
 
 

@@ -87,7 +87,7 @@ an _unprotected_ URL but will only return the currently logged in user.
 		IdentityProvider->>-Deck: Login Page
 	</div>
 	
-1. Given that the URL is protected, Gate sees that there is no logged in user, so it issues a HTTP 302
+1. Given that the URL is protected, Gate sees that there is no logged-in user, so it issues an HTTP 302
 redirect to an authentication-method-specific page. It saves the requested URL
 (`https://gate.url:8084/auth/redirect?to=https://deck.url:9000`) in the session state.
 
@@ -157,10 +157,10 @@ user's identity.
 		deactivate Deck
 	</div>
 
-1. Repeat this process from step 1. Now, the response from `https://gate.url:8084/auth/user` will contain a proper JSON object and the rest of application will proceed to load.
+1. Repeat this process from step 1. Now, the response from `https://gate.url:8084/auth/user` will contain a proper JSON object and the rest of the application will proceed to load.
 
 
-## OAUTH Workflow
+## OAuth Workflow
 
 The OAuth specification defines numerous flows for various scenarios. Spinnaker utilizes the
 **_authorization code flow_**, more commonly known as the three-legged OAuth.  The three-legged
@@ -193,7 +193,7 @@ flow looks like:
 
     > Gate attempts to intelligently guess the `redirect_uri` value, but outside components like
     SSL terminating load balancers can cause this guess to be wrong. See
-    [here](/setup/security/ssl/#network-configurations) for how to fix this.
+    [SSL documentation](/setup/security/ssl/#network-configurations) for how to fix this.
 
     * `response_type=code`: Indicating that we are performing the three-legged OAuth flow.
     * `scope`: What data or resources Gate would like access to. This is generally something like
@@ -242,8 +242,8 @@ server.
 1. Gate uses the _access token_ to request user profile data from the resource server
 (`security.oauth2.resource.userInfoUri`).
 
-1. Gate uses the `userInfoMapping` to extract specific fields from the response, such as your
-username and email address, and associates it with the established session cookie with your user.
+1. Gate uses the `userInfoMapping` to extract specific fields from the response, such as the
+username and email address, and associates it with the established session cookie with the user.
 See UserInfoMapping below.
 
 

@@ -10,8 +10,8 @@ redirect_from: /docs/fiat-setup
 
 ### Overview
 
-Fiat/FIAT (Fix it Again Travis) is the authorization (authz) microservice of Spinnaker. It can grant access to users 
-to execute pipelines, view infrastructure, etc. It is off by default. Much like authentication, Spinnaker allows for a 
+Fiat (Fix it Again Travis) is the authorization (authz) microservice of Spinnaker. It can grant access to users 
+to execute pipelines, view infrastructure, etc. It is disabled by default. Much like authentication, Spinnaker allows for a 
 variety of pluggable authorization mechanisms. 
 
 With Fiat, you can&hellip;
@@ -25,9 +25,9 @@ Permissions can be attached to applications and (provider) accounts. A permissio
  options: `READ`, `WRITE`, or `EXECUTE` (for apps only).
  
 
-### Important Notes
+### Important notes
 
-Keep these in mind as you consider your authorization strategy
+Keep these in mind as you consider your authorization strategy:
 
 1) Fiat's authorization model is a whitelist that is open by default. In other words, when a resource does _not_ 
 define who is allowed to access it, it is considered unrestricted.  This means:
@@ -41,7 +41,7 @@ define who is allowed to access it, it is considered unrestricted.  This means:
  [Super admin](/setup/security/admin/) access to a role. You may see discussions of users in Fiat’s implementation but
   it’s just an optimization in the storage to not recompute user → roles → permissions.
 
-1)  Accounts and applications access control can be confusing unless you understand the core
+1)  Account and application access control can be confusing unless you understand the core
 relationship: accounts can contain multiple applications, and applications can span multiple
 accounts.  Giving access to an account does not grant access to the application and vice versa.  Sometimes you need 
 both permissions to perform certain actions.
@@ -84,7 +84,7 @@ both permissions to perform certain actions.
 
 ### Accounts
  Because Clouddriver is the source of truth for accounts, Fiat reaches out to Clouddriver
-to gather the list of available accounts. There are two types of access restrictions to an account, `READ` and 
+to gather the list of available accounts. There are two types of access restrictions to an account: `READ` and 
 `WRITE`. Users must have at least one `READ` permission of an account to view the account's cloud resources, and at 
 least one `WRITE` permission to make changes to the resources.
 
@@ -140,10 +140,10 @@ In Spinnaker there are a few ways you can associate a role with a user:
 
 - With a file that contains user ↔ role (YAML parseable map with [user]: list of roles)
 - Via [GitHub teams](./github-teams/): roles are the teams a user belongs to in a configured Org
-- Via [Google groups](./google-groups/): roles are mapped (see settings) from the Google directory
+- Via [Google Groups](./google-groups/): roles are mapped (see settings) from the Google directory
 - Via [LDAP](./ldap/): roles are searched in LDAP from the user
-- Via [SAML Groups](./saml/) (also covers Oauth ONLY with OIDC): The authentication method can also bring its own roles. In this case, roles are referred
- in Fiat as `EXTERNAL`. They can be used in addition to authz roles.
+- Via [SAML Groups](./saml/) (also covers OAuth ONLY with OIDC): The authentication method can also bring its own roles. In this case, roles are referred
+ in Fiat as `EXTERNAL`. They can be used in addition to authorization roles.
  
 In all these methods, users are referenced by a userId which is determined by the authentication method of your choice.
 

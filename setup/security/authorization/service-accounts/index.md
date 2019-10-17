@@ -9,9 +9,9 @@ sidebar:
 
 Service Accounts enable the ability for automatically triggered pipelines to modify 
 resources in protected accounts or applications. Practically speaking, this means that a Git 
-commit could trigger a Jenkins build that could kick then off a pipeline to deploy the newly built 
-image in your access-controlled QA environment.  Service accounts are NOT authenticated accounts but
-abstractions around permissions for roles.
+commit could trigger a Jenkins build that could then kick off a pipeline to deploy the newly built 
+image in your access-controlled QA environment.  The pipeline would run utilizing the permissions of the service 
+account.  Service accounts are NOT authenticated accounts but abstractions around permissions for roles.
 
 
 ## Creating service accounts

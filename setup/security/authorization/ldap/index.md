@@ -9,7 +9,7 @@ sidebar:
 
 
 Please note that LDAP is flexible enough to offer lots of other options and configuration possibilities.  Spinnaker
-uses the Spring Security libraries, which solves a number of challenges.  
+uses the Spring Security libraries, which solve a number of challenges.  
 
 
 ## Configure with Halyard
@@ -31,7 +31,7 @@ hal config security authz ldap edit \
 ```
 The above is a sample.  See below for more information.
 
-## How does Fiat determine group membership
+## How Fiat determines group membership
 The LDAP provider works by querying the LDAP server utilizing a user as set by the 
 [manager-dn and managerPassword](/reference/halyard/commands/#hal-config-security-authz-ldap-edit) and making a 
 query. If a manager is NOT set, Spinnaker falls back to validating group membership using the login user's credentials.  
@@ -39,7 +39,7 @@ query. If a manager is NOT set, Spinnaker falls back to validating group members
 Fiat will use the "bound" account to do the following:
 - Make a query using a base of `group-search-base`. **THIS IS A REQUIRED FIELD.** If not set, no roles get queried.
 - That query uses `group-search-filter` to find the results.  
-- This uses a parameter of the users full DN as a filter.  This means the ONLY groups shown are those the user is a 
+- This uses a parameter of the user's full DN as a filter.  This means the ONLY groups shown are those which the user is a member.
 - For the groups retrieved, get the role names.  This uses the `group-role-attributes` attribute (defaults to `cn`).
 
 ## How to determine the "Full DN" 
@@ -47,7 +47,6 @@ Fiat will use the "bound" account to do the following:
 - Extract the Root DN from the `url` (`ldaps://my.server/a/b/c` → `a/b/c`)
     >If `com.netflix.spinnaker.fiat.roles.ldap.LdapUserRolesProvider` log level is at debug, you should 
     see `Root DN: <the actual root DN extracted>`
-- If `user-search-filter` is provided then:
 - If `user-search-filter` is provided then:
     - Search LDAP:
         - For `user-search-base`
@@ -57,7 +56,7 @@ Fiat will use the "bound" account to do the following:
     - Make user DN using `user-dn-pattern`
     - Return root DN computed + user DN
 
-You must provide either a search filter or a dn pattern.  In the case below, the user `joe` would have a full DN of
+You must provide either a search filter or a DN pattern.  In the case below, the user `joe` would have a full DN of
 `uid=joe,ou=users,dc=mydomain,dc=net`.
 
 The search would be rooted at `ou=groups,dc=mydomain,dc=net`, looking for directory entries that
@@ -67,7 +66,7 @@ for the `groupOfUniqueNames` group standard.
 The `group-role-attribute` is how the group/role name is extracted. For example, all entries that
 pass the filter will then have the `cn` (common name) attribute returned. 
 
-NOTE IF you want to use a username instead of a user dn for group membership, you can specificy `{1}` instead of `{0}` for 
+> IF you want to use a username instead of a user DN for group membership, you can specify `{1}` instead of `{0}` for 
 the `group-search-filter` parameter.  
 
 ## Source code

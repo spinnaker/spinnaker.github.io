@@ -14,7 +14,7 @@ yet-another-login system, Spinnaker hooks into a login system your organization 
 has, such as OAuth 2.0, SAML, or LDAP.
 
 For authorization, Spinnaker similarly leverages a role-provider that your organization may already
-have set up, including Google Groups, GitHub Teams, SAML Roles or LDAP groups.  
+have set up, including Google Groups, GitHub Teams, SAML Roles, or LDAP groups.  
 
 See also [`hal config security`](/reference/halyard/commands/#hal-config-security).
 

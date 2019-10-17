@@ -10,7 +10,7 @@ Lightweight Directory Access Protocol (LDAP) is a standard way many organization
 credentials and group memberships. Spinnaker uses the standard "*bind*" approach for user
 authentication. This is a fancy way of saying that Gate uses your username and password to login
 to the LDAP server, and if the connection is successful, you're considered authenticated.  Note that there is a
-fair bit of crossover with authorization.  
+fair bit of crossover between the authorization and authentication settings. 
 
 
 ### Notes
@@ -30,7 +30,7 @@ clear text over the wire.**
 * Ports commonly used or referenced:
     *  636 - LDAP with SSL (`ldaps`)
     *  389 - LDAP 
-    *  3268 - Active Directory (AD) Global Directory NON ssl port
+    *  3268 - Active Directory (AD) Global Directory non-SSL port
     *  3269 - AD Global Directory SSL port
 
 When a port is not specified, `ldap://host/whatever` implies port 389 by default.  `ldaps://host/whatever` uses port 636 by 
@@ -61,7 +61,7 @@ For example, given the following parameters:
 
 The full, unique DN would be `uid=joe,ou=users,dc=my-organization,dc=com`.
 
-When `joe` is trying to login, this full user DN is constructed and passed to the LDAP server with
+When `joe` is trying to log in, this full user DN is constructed and passed to the LDAP server with
 his password. The password is hashed on the server and compared to its own hashed version. If
 successful, the bind (aka connection) is successful and Gate creates a session.
 
@@ -70,24 +70,24 @@ successful, the bind (aka connection) is successful and Gate creates a session.
 In the above example, you could test with:
 
 ```bash
-//Search using manager dn, manager password on url with base of "X"
+//Search using manager DN, manager password on url with base of "X"
 # When: --user-search-filter=(uid={0}) --user-search-base=DC=USERS,OU=Y,O=io 
 ldapsearch -D "MANAGER_DN" -w 'MANAGER_PASSWORD' -H ldaps://1.2.3.4 -x -b "DC=USERS,OU=Y,O=io" "(UID=USERNAME)"
 ```
 Without a user-search-base
 ```bash
-//Search usering manager dn, manager password on url with base of "X"
+//Search using manager DN, manager password on url with base of "X"
 # When: --user-search-filter=(uid={0}) 
 ldapsearch -D "MANAGER_DN" -w 'MANAGER_PASSWORD' -H ldaps://1.2.3.4 -x   "(UID=USERNAME})"
 ```
 Without a user-search-filter
 ```bash
-//Search usering manager dn, manager password on url with base of "X"
+//Search using manager DN, manager password on url with base of "X"
 # When: --user-dn-pattern=(uid={0},ou=users) 
 ldapsearch -D "MANAGER_DN" -w 'MANAGER_PASSWORD' -H ldaps://1.2.3.4/OU=Y,O=io -x "(CN=USERNAME,OU=users,OU=Y,O=IO))"
 ```
 
-## Configure LDAP Using Halyard
+## Configure LDAP using Halyard
 
 You can use `hal config` to enable and configure LDAP. Here's an example:
 
@@ -111,7 +111,7 @@ use case here, but you can read up more on LDAP search filters
  
     “userDnPattern should remain unset - AD groups store user DNs in the memberOf attribute; finding DNs from sAMAccountNames is easily doable but not with a simple, single-level pattern. The DN contains the the CN, and that can’t really be constructed without sub searches. userSearchFilter takes precedence if there’s no user-dn-pattern set.”
 
-1. Here's the raw settings that will eventually be there in gate as an example.
+1. Here's the raw settings that will eventually be there in Gate as an example.
 ```
 ldap:
   enabled: true

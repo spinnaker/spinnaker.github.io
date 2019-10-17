@@ -12,7 +12,7 @@ getting this to work just right.  Here are some of the basics and tools that mak
 
 ## Introduction
 
-There are three basic systems involved with Spinnaker's authentication workflow: your identity provider, Gate, and Deck.  The changes made will primarily be made to either your identity provider or Gate.  Deck itself will not require changes or updates, but it's useful to understand how all three parts interact.
+There are three basic systems involved with Spinnaker's authentication workflow: your identity provider, Gate, and Deck.  The changes will primarily be made to either your identity provider or Gate.  Deck itself will not require changes or updates, but it's useful to understand how all three parts interact.
 
 <div class="mermaid">
 graph LR
@@ -31,7 +31,7 @@ idp-->deck
 
 1. **Deck**: Spinnaker's UI. Consists of a set of static HTML, JavaScript, and CSS files. Generally
  served from an Apache server, but there is nothing special about Apache that makes Deck work.
- Replace with your favorite HTTP(S) server if you'd like.  The Javascript being an SPA is going to do 
+ Replace with your favorite HTTP(S) server if you'd like.  The Javascript being an SPA [Single Page Application](https://en.wikipedia.org/wiki/Single-page_application) is going to do 
  the communication with your identity provider.  Which IDP is determined by Gate.
 
 1. **Gate**: Spinnaker's API Gateway. All traffic (including traffic generated from Deck) flows
@@ -67,15 +67,15 @@ A common issue with Incognito windows is that they _all share the same cookie ja
 {% include mermaid %}
 
 
-## Available options
+## Available Options
 * Methods
-    * [OAuth 2.0/OIDC](./oauth/) - The main examples are Google & Github end points.  
+    * [OAuth 2.0/OIDC](./oauth/) - The main examples are Google & GitHub endpoints.  
     * [SAML](./saml/) - Lots of examples on this with one of the most prevalent being Okta.  
-    * [LDAP](./ldap/) - This covers Active Directory and other LDAP servers, such as OpenLdap.
-    * [X.509](./x509/) - Often used for client or application communications.  Can operate in conjunction with other authentication. methods.  
+    * [LDAP](./ldap/) - This covers Active Directory and other LDAP servers, such as OpenLDAP.
+    * [X.509](./x509/) - Often used for client or application communications.  Can operate in conjunction with other authentication methods.  
 
 ## Next steps
 
-Setup [Authorization](/setup/security/authorization/).
+Set up [Authorization](/setup/security/authorization/).
 
 Learn how to configure Spinnaker to communicate over [SSL](/setup/security/ssl).

@@ -45,7 +45,7 @@ The certificates generated here only allow for the authentication of a user's id
 
 Client certificates with role information are parsed when roleOid is provided. This OID is configurable and is set via Halyard. The OID provided in the example below is defined [here](http://www.oid-info.com/cgi-bin/display?oid=1.2.840.10070.8.1&action=display){:target="\_blank"}.
 
-Encoding with any another OID can be done by editing the `openssl.conf`.
+Encoding with any other OID can be done by editing the `openssl.conf`.
 
 ## Creating an x509 client certificate with user role information
 
