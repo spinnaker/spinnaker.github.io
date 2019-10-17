@@ -1,82 +1,56 @@
 ---
 layout: success-stories 
 title:  "Success Stories"
-intro: "Real world use cases from global 2000 companies about the impact of using Spinnaker in their organizations. Click on the box to learn how developers are the key change agents in their companies."
+intro: "Real world use cases from global <strong>2000 companies</strong> about the impact of using <strong>Spinnaker</strong> in their organizations."
+description: "Click on the box to learn how developers are the key change agents in their companies."
 sidebar:
   nav: success-stories 
 ---
 
-<article>
-    <a href="https://medium.com/netflix-techblog/global-continuous-delivery-with-spinnaker-2a6896c23ba7" target="_blank">
-        <h3>Netflix</h3>
-        <figure>
-            <img src="stories-logos/netflix.jpg" alt="Netflix">
-        </figure>
+<div class="success-stories-container">
+    {% for story in site.data.success-stories.cases %}  
+        <article>
+            <a href="{{story.link}}" target="_blank">
+                <h4>{{story.name}}</h4>
+                <figure>
+                    <img src="{{story.logo}}" alt="{{story.name}}">
+                </figure>
 
-        <p>
-            <strong>Andrew Glover:</strong> “The community uptake has been tremendous! Having a platform that out-of-the-box accommodates multiple cloud providers and an extendable model to participate within, means that we are one large community rather than a bunch of micro-communities focused on various forks. This has the benefit that everyone within the community can take advantage of various innovations.”
-        </p>
+                <p class="author">{{story.author}}:</p>
+                <p class="text">{{story.text}}</p>
 
-        <span>> Learn</span>
-    </a>
-</article>
+                <span>> Learn</span>
+            </a>
+        </article>
+    {% endfor %}
+</div>
 
-<article>
-    <a href="https://cloud.google.com/blog/products/gcp/guest-post-multi-cloud-continuous-delivery-using-spinnaker-at-waze" target="_blank">
-        <h3>Waze</h3>
-        <figure>
-            <img src="stories-logos/waze.jpg" alt="Waze">
-        </figure>
+<div class="testimonials-container">
+    <h3>Testimonials</h3>
 
-        <p>
-            <strong>Andrew Philips:</strong> “Thanks to Spinnaker, developers can focus on developing business logic, rather than becoming experts on each cloud platform. Teams can track the lifecycle of a deployment using several notification mechanisms including email, Slack and SMS, allowing them to coordinate handoffs between developer and QA teams”.
-        </p>
+    <div class="testimonials-wrapper">
+        {% for test in site.data.success-stories.testimonials %}  
+            <article>
+                <header>
+                    <figure>
+                        <img src="{{test.logo}}" alt="{{test.name}}">
+                    </figure>
 
-        <span>> Learn</span>
-    </a>
-</article>
-
-<article>
-    <a href="#" target="_blank">
-        <h3>Avast</h3>
-        <figure>
-            <img src="stories-logos/avast.jpg" alt="Avast">
-        </figure>
-
-        <p>
-            <strong>David Byron:</strong> “Spinnaker helped the team cut down the time and work needed for the versioning of ConfigMaps and secrets. That’s a pain to do other ways. Maybe it seems simple, but it’s a big deal for our team. The whole goal here is to not wake people up in the middle of the night. The rollback and no-downtime deployment features are things everybody wants to do. "The thing that Spinnaker promises is automated canary analysis. That to me is the holy grail to enabling continuous deployment.”
-        </p>
-
-        <span>> Learn</span>
-    </a>
-</article>
-
-<article>
-    <a href="/success-stories/Case%20Study%20Makerbot%20-%20Letter%20size_10-12-19.pdf" target="_blank">
-        <h3>Markerbot</h3>
-        <figure>
-            <img src="stories-logos/markerbot.jpg" alt="Markerbot">
-        </figure>
-
-        <p>
-            <strong>Richard Genthner:</strong> “We originally envisioned transitioning toward Kubernetes on Google Cloud over three quarters. With Spinnaker’s open source flexibility, we completed the full migration in just 2.5 months!". 	
-        </p>
-
-        <span>> Learn</span>
-    </a>
-</article>
-
-<article>
-    <a href="/success-stories/Lookout_10072019.pdf" target="_blank">
-        <h3>Lookout</h3>
-        <figure>
-            <img src="stories-logos/lookout.jpg" alt="Lookout">
-        </figure>
-
-        <p>
-            <strong>Brandon Leach:</strong> “We knew our product had game-changing potential in the government sector, but our existing deployment framework was too human-intensive and time-consuming for FedRAMP compliance. Spinnaker provided the platform, support, and delivery pipeline we needed to bring our patch deployment times up to speed.”	
-        </p>
-
-        <span>> Learn</span>
-    </a>
-</article>
+                    <div>
+                        <h4>{{test.name}}</h4>
+                        <p>{{test.job}}</p>
+                    </div>
+                </header>
+    
+                <div class="questions-wrapper">
+                    {% for quest in test.questions %}  
+                        <p class="question">{{quest.question}}</p>
+                        <p class="answer">{{quest.answer}}</p>
+                    {% endfor %}
+                </div>
+            </article>
+        {% endfor %}
+    </div>
+    
+    <img class="bottom-right-swoosh" src="{{ "assets/images/bottom-right-swoosh.svg" | absolute_url }}" alt="Spinnaker Swoosh"/>
+</div>

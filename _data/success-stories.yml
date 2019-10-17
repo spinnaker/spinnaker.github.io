@@ -1,0 +1,77 @@
+cases:
+  - name: Netflix
+    link: https://medium.com/netflix-techblog/global-continuous-delivery-with-spinnaker-2a6896c23ba7
+    logo: cases-logos/netflix.jpg
+    author: Andrew Glover
+    text: “The community uptake has been tremendous! Having a platform that out-of-the-box accommodates multiple cloud providers and an extendable model to participate within, means that we are one large community rather than a bunch of micro-communities focused on various forks. This has the benefit that everyone within the community can take advantage of various innovations.”
+
+  - name: Waze
+    link: https://cloud.google.com/blog/products/gcp/guest-post-multi-cloud-continuous-delivery-using-spinnaker-at-waze
+    logo: cases-logos/waze.jpg
+    author: Andrew Philips
+    text: “Thanks to Spinnaker, developers can focus on developing business logic, rather than becoming experts on each cloud platform. Teams can track the lifecycle of a deployment using several notification mechanisms including email, Slack and SMS, allowing them to coordinate handoffs between developer and QA teams”.
+
+  - name: Avast
+    link: Avast_v3-10-15-2019.pdf
+    logo: cases-logos/avast.jpg
+    author: David Byron
+    text: “Spinnaker helped the team cut down the time and work needed for the versioning of ConfigMaps and secrets. That’s a pain to do other ways. Maybe it seems simple, but it’s a big deal for our team. The whole goal here is to not wake people up in the middle of the night. The rollback and no-downtime deployment features are things everybody wants to do. "The thing that Spinnaker promises is automated canary analysis. That to me is the holy grail to enabling continuous deployment.”
+
+  - name: Markerbot
+    link: Case%20Study%20Makerbot%20-%20Letter%20size_10-12-19.pdf
+    logo: cases-logos/markerbot.jpg
+    author: Richard Genthner
+    text: “We originally envisioned transitioning toward Kubernetes on Google Cloud over three quarters. With Spinnaker’s open source flexibility, we completed the full migration in just 2.5 months!". 
+
+  - name: Lookout
+    link: Lookout_10072019.pdf
+    logo: cases-logos/lookout.jpg
+    author: Brandon Leach
+    text: “We knew our product had game-changing potential in the government sector, but our existing deployment framework was too human-intensive and time-consuming for FedRAMP compliance. Spinnaker provided the platform, support, and delivery pipeline we needed to bring our patch deployment times up to speed.”	
+
+
+
+testimonials:
+  - name: Raja Babu
+    job: DevOps Engineer - TransUnion
+    logo: testimonials-logos/transunion.jpg
+    questions:
+      - question: How did you discover Spinnaker?
+        answer: Spinnaker is a multi-cloud continuous integration & deployment tool <br>
+                Simple command line interface for administration <br>
+                Integration with multiple platforms <br>
+                Easily configurable using pipelines
+
+      - question: What was your experience getting started with Spinnaker?
+        answer: In our infrastructure, we were using Ansible and slowly Spinnaker started replacing it
+
+      - question: Where are you today with Spinnaker? What benefits has it provided to your team?
+        answer: Yes, we are using spinnaker in production,test & qa <br>
+                we have implemented spinnaker as a deployment tool for many applications and still more to go <br>
+                It gives us very faster deployments, user confirmation when needed, different strategies, access control ...etc
+
+      - question: What is missing or could be improved in Spinnaker?
+        answer: As it's UI based, I believe it's difficult for me to revert back the settings after changes <br>
+                I feel the troubleshooting is difficult
+
+      - question: Are you interested in signing up for the monthly Spinnaker newsletter?
+        answer: Yes, please!
+
+  - name: Akhilesh Reddy
+    job: Senior Devops - Comcast
+    logo: testimonials-logos/comcast.jpg
+    questions:
+      - question: How did you discover Spinnaker?
+        answer: Was using it actively in my previous client project
+
+      - question: What was your experience getting started with Spinnaker?
+        answer: Installing it on VM was a breeze , where as installing it on K8s needed some extra steps which were not in documentation.
+
+      - question: Where are you today with Spinnaker? What benefits has it provided to your team?
+        answer: It helped us a good CD tool for K8s deployments. 
+
+      - question: What is missing or could be improved in Spinnaker?
+        answer: Documentation at places is not very clear.
+
+      - question: Are you interested in signing up for the monthly Spinnaker newsletter?
+        answer: Yes, please!
