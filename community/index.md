@@ -137,10 +137,10 @@ uneeq_user:
   image_path: assets/images/users/uneeq_logo.png
   alt: "UneeQ Logo"
 jpmc_user:
-  image_path: assets/images/users/jpmc_logo.png
+  image_path: assets/images/users/jpmc-logo.png
   alt: "JPMC Logo"
 groundtruth_user:
-  image_path: assets/images/users/groundtruth_logo.png
+  image_path: assets/images/users/groundtruth-logo.png
   alt: "GroundTruth Logo"  
 ---
 
