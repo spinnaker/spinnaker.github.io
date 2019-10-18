@@ -12,4 +12,6 @@ Here are a few quickstart solutions. These are not meant for production use. To 
 * [Microsoft Azure](https://aka.ms/azspinnaker)
 * [Kubernetes Helm Chart](https://github.com/kubernetes/charts/tree/master/stable/spinnaker)
 * [Kubernetes Operator](https://operatorhub.io/operator/spinnaker-operator)
+* [Red Hat certified Spinnaker Operator](https://access.redhat.com/containers/#/registry.connect.redhat.com/opsmx/spinnaker-operator)
+* [Spinnaker Operator based on ubi containers](https://github.com/OpsMx/opsmx-spinnaker-operator/tree/rhel)
 
