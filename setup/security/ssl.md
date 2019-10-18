@@ -2,6 +2,8 @@
 title:  "SSL"
 sidebar:
   nav: setup
+redirect_from: /setup/security/authentication/ssl
+
 ---
 {% include toc %}
 
@@ -15,9 +17,54 @@ Spinnaker instance. That is, any requests between...
 
 * any other client and Gate
 
-> **Info**: Many operators like to get authentication working before adding
+## Network configurations
+
+**Warning**: Many operators like to get authentication working before adding
 HTTPS, but experience bears out that the transition is not smooth. We recommend
 you implement at least a temporary SSL solution **first**.
+
+
+
+
+## Load Balancer-terminated SSL
+
+A common practice is to offload SSL-related bits to outside of the server in
+question. This is fully supported in Spinnaker, but it does affect the
+authentication configuration slightly. See your [authentication
+method](/setup/security/authentication/) for specifics.
+
+![SSL terminated at load balancer](/setup/security/authentication/network-arch/lb-ssl-termination.png)
+
+During certain authentication workflows, Gate makes an intelligent guess on how to assemble a URI to
+itself, called the **`redirect_uri`**. Sometimes this guess is wrong when Spinnaker is deployed
+in concert with other networking components, such as an SSL-terminating load balancer, or in the
+case of the [Quickstart](/setup/quickstart) images, a fronting Apache instance.
+
+To manually set the `redirect_uri` for Gate, use the following `hal` command:
+
+```bash
+hal config security authn <authtype> edit --pre-established-redirect-uri https://my-real-gate-address.com:8084/login
+```
+
+> Be sure to include the `/login` suffix at the end of the `--pre-established-redirect-uri` flag!
+
+Additionally, some configurations make it necessary to "unwind" external proxy instances. This makes the request to 
+Gate look like the original request to the outermost proxy. Add this to your `gate-local.yml` file in your Halyard
+[custom profile](/reference/halyard/custom/#custom-profiles):
+
+```
+server:
+  tomcat:
+    protocolHeader: X-Forwarded-Proto
+    remoteIpHeader: X-Forwarded-For
+    internalProxies: .*
+    ## This may or may not be needed depending upon your environment.  
+    ## See https://tomcat.apache.org/tomcat-9.0-doc/api/org/apache/catalina/filters/RemoteIpFilter.html
+    httpsServerPort: X-Forwarded-Port
+
+```
+
+## Server-terminated SSL
 
 Each private key, and several other of the sensitive files generated in this doc
 will have a password/passphrase.  These are the password/passphrases bash variables 
@@ -34,7 +81,14 @@ GATE_EXPORT_PASSWORD=SOME_PASSWORD_FOR_GATE_P12
 In addition, in many of the calls below, if you want `openssl` or `keytool` to prompt
 for the key rather than providing them via the CLI, you can just remove the relevant flag.
 
-## 1. Generate key and self-signed certificate
+
+Terminating SSL within the Gate server is the de-facto way to enable SSL for
+Spinnaker. This works with or without a load balancer proxying traffic to this
+instance.  
+
+![SSL terminated at server through load balancer](/setup/security/authentication/network-arch/server-ssl-termination.png)
+
+#### 1. Generate key and self-signed certificate
 
 We will use `openssl` to generate a Certificate Authority (CA) key and a server
 certificate. These instructions create a self-signed CA. You might want to
@@ -73,7 +127,7 @@ encrypt `ca.key`.
       -passin pass:${CA_KEY_PASSWORD}
     ```
 
-## 2. Create the server certificate(s)
+#### 2. Create the server certificate(s)
 
 If you have different DNS names for your Deck and Gate endpoints, you can either
 create a certificate with a CN and/or SAN that covers both DNS names, or you can
@@ -252,7 +306,7 @@ Voilà! You now have a Java Keystore with your certificate authority and server
 certificate ready to be used by Spinnaker Gate, and, separately, a pem-formatted
 key and server certificate ready to be used by Spinnaker Deck!
 
-## 3. Configure SSL for Gate and Deck
+#### 3. Configure SSL for Gate and Deck
 
 With the above certificates and keys in hand, you can use Halyard to set up SSL
 for [Gate and Deck](/reference/architecture/).
@@ -293,13 +347,13 @@ hal config security ui ssl edit \
 hal config security ui ssl enable
 ```
 
-## 4. Deploy Spinnaker
+#### 4. Deploy Spinnaker
 
 ```
 hal deploy apply
 ```
 
-## 5. Verify your SSL setup
+## Verify your SSL setup
 
 To verify that you've successfully set up SSL, try to reach one of the
 endpoints, like Gate or Deck, over SSL.
@@ -313,27 +367,42 @@ If you have problems...
 * If you are running Spinnaker in a distributed environment, have you run
 `hal deploy connect`?
 
-## About network configurations
 
-Each authentication mechanism is configured differently depending on where the
-SSL connection terminates.
+## Using a custom CA for internal communications
+There are a lot of places in Spinnaker which support the ability to configure custom Java trust/key stores for 
+organizations who use internally signed certificates. In some cases, however, this isn’t supported yet but you still 
+need to talk to a service which serves one of these certificates. This section will show you how to import your 
+certificate into a Java trust/key store and configure a Spinnaker service with it.
 
-### Server-terminated SSL
+Create a temporary copy of your system’s Java trust/key store and import your internal certificate. If you’re on a Mac,
+this will be located at `/usr/libexec/java_home/)/jre/lib/security/cacerts`. It will be different on Linux.
+```
+mkdir /tmp/custom-trust-store`
+cp {path-to-cacerts} /tmp/custom-trust-store
+keytool import -alias custom-ca -keystore /tmp/custom-trust-store/cacerts -file {your-internal-certificate}
+```
 
-Terminating SSL within the Gate server is the de-facto way to enable SSL for
-Spinnaker. This works with or without a load balancer proxying traffic to this
-instance.
+The below example applies when using Kubernetes to deploy Spinnaker.  If you are not using Spinnaker, you'll have 
+to get the cacerts file updated as appropriate for your environment.  
+```bash
+kubectl create secret generic -n {your-spinnaker-namespace} internal-trust-store \
+   --from-file /tmp/custom-trust-store/cacerts
+```
+Configure a Spinnaker service with the new trust/key store using a volume mount. In this example we’ll be configuring 
+Front50 with this new store.
 
-![SSL terminated at server through load balancer](/setup/security/authentication/network-arch/server-ssl-termination.png)
+In `~/.hal/default/service-settings/front50.yml`
+```
+kubernetes:
+  volumes:
+  - id: internal-trust-store
+    mountPath: /etc/ssl/certs/java
+    type: secret
+```
 
-### Load Balancer-terminated SSL
-
-A common practice is to offload SSL-related bits to outside of the server in
-question. This is fully supported in Spinnaker, but it does affect the
-authentication configuration slightly. See your [authentication
-method](/setup/security/authentication/) for specifics.
-
-![SSL terminated at load balancer](/setup/security/authentication/network-arch/lb-ssl-termination.png)
+Redeploy Spinnaker using `hal deploy apply`.
+The Spinnaker component (front 50 in this example) for which you configured the volume mount should now be using the 
+new trust/key store by default.
 
 ## Next steps
 

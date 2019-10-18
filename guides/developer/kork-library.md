@@ -16,11 +16,11 @@ redirect_from: /docs/kork-library-dev
 ### Kork
 
 1. Make desired changes to `kork` module locally.
-2. Invoke `$ ./gradlew publishToMavenLocal`.
+2. Invoke `$ ./gradlew -PenablePublishing=true publishToMavenLocal`.
 3. Make note of the version printed:
 
 ```
-$ ./gradlew publishToMavenLocal
+$ ./gradlew -PenablePublishing=true publishToMavenLocal
 Inferred project: kork, version: 0.1.0-SNAPSHOT
 ```
 
