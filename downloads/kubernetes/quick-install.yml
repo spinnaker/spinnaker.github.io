@@ -327,6 +327,9 @@ data:
         - name: signalfx
           enabled: false
           accounts: []
+        - name: newrelic
+          enabled: false
+          accounts: []
         - name: aws
           enabled: true
           accounts:
