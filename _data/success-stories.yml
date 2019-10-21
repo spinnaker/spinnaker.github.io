@@ -57,3 +57,24 @@ testimonials:
 
       - question: What is missing or could be improved in Spinnaker?
         answer: Documentation
+
+  - name: SAP
+    logo: testimonials-logos/sap.png
+    questions:
+      - question: How did you discover Spinnaker?
+        answer: We discovered Spinnaker around summer 2018. At that time our team was tasked to build a blueprint for a standard CI/CD pipeline that could improve developer's productivity and reduce the length development cycles. We explored various solutions from GitLab, to Bamboo, Jenkins or Concourse and during our POCs, we got a lot of success with Spinnaker.
+
+      - question: What was your experience getting started with Spinnaker?
+        answer: The experience in general was a mix of challenges and positiveness coming from the fact that Spinnaker was open source. We spent a lot of time on the various community slack channels, asking questions and getting help from peers. We also did a lot of trial and errors while configuring spinnaker. But eventually, we started to understand how Spinnaker was architected and it made our experience more intuitive. We did not attend a class or webinar on Spinnaker back then. so the decision to use it was solely based on the successful POC we did.
+
+      - question: Where are you today with Spinnaker? What benefits has it provided to your team?
+        answer: Today, we are using Spinnaker to run deployment pipelines for 10 development units. It translates to 30 kubernetes clusters in production and 40 distinct deployment pipelines based on official templates that our team is maintaining. <br>
+                Our largest development projects are deploying 25 times in production (in average). We have teams performing 200 deployments in what we call PR namespaces, which are temporary namespaces to validate features before they reach the master branch and hit production. <br><br>
+                Spinnaker has helped us scaling our CI/CD service beyond our line of business and we are now offering it as a shared service across SAP. In addition to the scale it provided, the speed to onboard new teams has also been another important benefit. By leveraging the halyard configuration coupled with a GitOps approach, we are able to onboard teams using a self service model. Spinnaker also allows transparency and collaboration, its integration with slack which was already widely used helps the teams providing insights on their deployment flows.
+
+      - question: What is missing or could be improved in Spinnaker?
+        answer: Documentation and API to manage the halyard configuration are two important things for us. We would to programmatically configure Spinnaker without having to manipulate config files. our team has started wrapping Halyard into an API, but that work is moving slowly since we want to see where Spinnaker is heading to. We also need more security, especially around the docker images that are used by Spinnaker.
+
+
+
+        
