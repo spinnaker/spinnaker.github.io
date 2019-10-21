@@ -14,7 +14,7 @@ cases:
     logo: cases-logos/avast.jpg
     text: “Spinnaker helped the team cut down the time and work needed for the versioning of ConfigMaps and secrets. That’s a pain to do other ways. Maybe it seems simple, but it’s a big deal for our team. The whole goal here is to not wake people up in the middle of the night. The rollback and no-downtime deployment features are things everybody wants to do. "The thing that Spinnaker promises is automated canary analysis. That to me is the holy grail to enabling continuous deployment.”
 
-  - name: Markerbot
+  - name: MarkerBot
     link: Case%20Study%20Makerbot%20-%20Letter%20size_10-12-19.pdf
     logo: cases-logos/markerbot.jpg
     text: “We originally envisioned transitioning toward Kubernetes on Google Cloud over three quarters. With Spinnaker’s open source flexibility, we completed the full migration in just 2.5 months!". 
@@ -27,42 +27,33 @@ cases:
 
 
 testimonials:
-  - logo: testimonials-logos/transunion.png
+  - name: TransUnion
+    logo: testimonials-logos/transunion.png
     questions:
       - question: How did you discover Spinnaker?
-        answer: Spinnaker is a multi-cloud continuous integration & deployment tool <br>
-                Simple command line interface for administration <br>
-                Integration with multiple platforms <br>
-                Easily configurable using pipelines
+        answer: Spinnaker is a multi-cloud continuous integration & deployment tool . We love the simple command line interface for administration, integration with multiple platforms and easily configurable using pipelines
 
       - question: What was your experience getting started with Spinnaker?
         answer: In our infrastructure, we were using Ansible and slowly Spinnaker started replacing it
 
       - question: Where are you today with Spinnaker? What benefits has it provided to your team?
-        answer: Yes, we are using spinnaker in production,test & qa <br>
-                we have implemented spinnaker as a deployment tool for many applications and still more to go <br>
-                It gives us very faster deployments, user confirmation when needed, different strategies, access control ...etc
+        answer: We are using spinnaker in dev, test and production. We have implemented Spinnaker as a deployment tool for many applications.Key advantages include faster deployments, user confirmation when needed, access control. automated rollbacks. 
 
       - question: What is missing or could be improved in Spinnaker?
-        answer: As it's UI based, I believe it's difficult for me to revert back the settings after changes <br>
-                I feel the troubleshooting is difficult
+        answer: The UI can be made more easy to use and troubleshooting can be made a lot easier.
 
-      - question: Are you interested in signing up for the monthly Spinnaker newsletter?
-        answer: Yes, please!
 
-  - logo: testimonials-logos/comcast.png
+  - name: Comcast
+    logo: testimonials-logos/comcast.png
     questions:
       - question: How did you discover Spinnaker?
         answer: Was using it actively in my previous client project
 
       - question: What was your experience getting started with Spinnaker?
-        answer: Installing it on VM was a breeze , where as installing it on K8s needed some extra steps which were not in documentation.
+        answer: Installing it on VM was a breeze , where as installing it on K8s needed some extra steps and was not clearly documented
 
       - question: Where are you today with Spinnaker? What benefits has it provided to your team?
-        answer: It helped us a good CD tool for K8s deployments. 
+        answer: A good CD tool for K8s deployments.
 
       - question: What is missing or could be improved in Spinnaker?
-        answer: Documentation at places is not very clear.
-
-      - question: Are you interested in signing up for the monthly Spinnaker newsletter?
-        answer: Yes, please!
+        answer: Documentation
