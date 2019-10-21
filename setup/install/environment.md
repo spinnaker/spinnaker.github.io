@@ -134,6 +134,8 @@ For a short guide to getting up and running with developing Spinnaker, see the
 
 Ensure that the following are installed on your system:
 
+##### Ubuntu
+
 * git: `sudo apt-get install git`
 * curl: `sudo apt-get install curl`
 * netcat: `sudo apt-get install netcat`
@@ -153,6 +155,30 @@ Ensure that the following are installed on your system:
     ```
 * yarn: `npm install -g yarn` or [guide](https://yarnpkg.com/lang/en/docs/install/)
 
+##### MacOS
+
+* brew (a package manager for MacOS, [can be installed via here](https://brew.sh/), summarized below)
+    ```
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    ```
+* git: `brew install git`
+* curl: `brew install curl`
+* netcat: `brew install netcat`
+* redis-server:
+  * Install: `brew install redis`
+  * Start: `brew services start redis`
+* OpenJDK 8 - JDK (we're building from source, so a JRE is not sufficient)
+    ```
+  brew cask install adoptopenjdk/openjdk/adoptopenjdk8
+    ```
+* node (version >=10.15.1, [can be installed via nvm](https://github.com/creationix/nvm#install-script), summarized below)
+    ```
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+    # Follow instructions at end of script to add nvm to ~/.bash_rc
+
+    nvm install v10.15.3
+    ```
+* yarn: `npm install -g yarn` or [guide](https://yarnpkg.com/lang/en/docs/install/)
 
 #### Fork all Spinnaker repos
 

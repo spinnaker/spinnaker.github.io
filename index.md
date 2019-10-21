@@ -129,8 +129,8 @@ waze_case_study:
     {% include masthead.html %}
 
     <div class="spin_header__text">
-      <h1>Continuous Delivery for Enterprise</h1>
-      <h2>Fast, safe, repeatable deployments</h2>
+      <h1>Cloud Native Continuous Delivery</h1>
+      <h2>Fast, safe, repeatable deployments for every Enterprise</h2>
     </div>
     <ul class="spin_call_to_action">
       <li><a href="/concepts/">HOW IT WORKS</a></li>

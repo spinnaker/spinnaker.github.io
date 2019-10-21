@@ -140,13 +140,53 @@ setup:
       - title: Secure Spinnaker
         collapsed: true
         children:
-           - title: Secure Your Spinnaker Installation
+           - title: Overview
              url: /setup/security/
+           - title: SSL Configuration
+             url: /setup/security/ssl/
            - title: Authentication
-             url: /setup/security/authentication/
-           - title: Authorization
-             url: /setup/security/authorization/
-           - title: Administrator functionality
+             collapsed: true
+             children:
+               - title: Overview
+                 url: /setup/security/authentication/
+               - title: SAML
+                 url: /setup/security/authentication/saml/
+               - title: Oauth
+                 collapsed: true
+                 children:
+                   - title: Overview
+                     url: /setup/security/authentication/oauth/
+                   - title: Google
+                     url: /setup/security/authentication/oauth/google/
+                   - title: GitHub
+                     url: /setup/security/authentication/oauth/github/
+                   - title: Azure
+                     url: /setup/security/authentication/oauth/azure/
+               - title: LDAP/Active Directory
+                 url: /setup/security/authentication/ldap/
+               - title: x509
+                 url: /setup/security/authentication/x509/
+           - title: Authorization (RBAC)
+             collapsed: true
+             children:
+               - title: Overview
+                 url: /setup/security/authorization/
+               - title: Providers
+                 collapsed: true
+                 children:
+                 - title: SAML
+                   url: /setup/security/authorization/saml/
+                 - title: LDAP/Active Directory
+                   url: /setup/security/authorization/ldap/
+                 - title: GitHub Teams
+                   url: /setup/security/authorization/github-teams/
+                 - title: Google Groups
+                   url: /setup/security/authorization/google-groups/
+               - title: Service Accounts
+                 url: /setup/security/authorization/service-accounts/
+               - title: Pipeline Permissions
+                 url: /setup/security/authorization/pipeline-permissions/
+           - title: Administrators
              url: /setup/security/admin/
       - title: Set up Triggers
         collapsed: true
@@ -333,6 +373,8 @@ guides:
             children:
               - title: Overview
                 url: /guides/user/pipeline/pipeline-templates/
+              - title: Enable Pipeline Templates
+                url: /guides/user/pipeline/pipeline-templates/enable/
               - title: Create a Pipeline Template
                 url: /guides/user/pipeline/pipeline-templates/create/
               - title: Visualize a hydrated pipeline
@@ -591,6 +633,14 @@ reference:
         url: /reference/architecture/load/
       - title: Life of a Bake
         url: /reference/architecture/loab/
+      - title: Authentication & Authorization
+        url: /reference/architecture/authz_authn/
+        collapsed: true
+        children:
+          - title: Authentication
+            url: /reference/architecture/authz_authn/authentication/
+          - title: Authorization
+            url: /reference/architecture/authz_authn/authorization/
   - title: Pipelines
     collapsed: true
     children:
