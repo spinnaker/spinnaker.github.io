@@ -51,14 +51,15 @@
                 margin: 0;
            }
 
-           .author {
-               margin-top: 20px;
-               font-size: .9em;
-               color: $masthead-color;
-               font-weight: 900;
-           }
+        //    .author {
+        //        margin-top: 20px;
+        //        font-size: .9em;
+        //        color: $masthead-color;
+        //        font-weight: 900;
+        //    }
 
            .text {
+                margin-top: 23px;
                 font-size: .75em;
                 margin-bottom: 15px;
                 font-style: italic;
@@ -140,6 +141,7 @@
                 display: flex;
                 background: #eff7f9;
                 padding: 18px 25px;
+                justify-content: center;
 
                 figure {
                     margin: 0;
@@ -147,39 +149,39 @@
                     img {
                         margin: 0;
                         border: none;
-                        width: 55px;
-                        height: 55px;
+                        width: auto;
+                        height: 68px;
                     }
                 }
 
-                div {
-                    padding: 4px 12px;
-                    position: relative;
+                // div {
+                //     padding: 4px 12px;
+                //     position: relative;
 
-                    &:before {
-                        content: '';
-                        width: 60px;
-                        height: 3px;
-                        position: absolute;
-                        left: 12px;
-                        bottom: 0;
-                        background: $masthead-color;
-                    }
-                }
+                //     &:before {
+                //         content: '';
+                //         width: 60px;
+                //         height: 3px;
+                //         position: absolute;
+                //         left: 12px;
+                //         bottom: 0;
+                //         background: $masthead-color;
+                //     }
+                // }
 
-                h4 {
-                    font-size: .9em;
-                    color: $masthead-link-color-hover;
-                    font-weight: 900;
-                    margin: 0;
-                }
+                // h4 {
+                //     font-size: .9em;
+                //     color: $masthead-link-color-hover;
+                //     font-weight: 900;
+                //     margin: 0;
+                // }
 
-                p {
-                    font-size: .75em;
-                    color: $masthead-link-color-hover;
-                    font-weight: 100;
-                    margin: 0;
-                }
+                // p {
+                //     font-size: .75em;
+                //     color: $masthead-link-color-hover;
+                //     font-weight: 100;
+                //     margin: 0;
+                // }
             }
 
             .questions-wrapper {
