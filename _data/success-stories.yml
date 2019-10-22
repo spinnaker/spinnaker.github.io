@@ -47,7 +47,7 @@ testimonials:
         answer: Actively using Spinnaker in a previous client project.
 
       - question: What was your experience getting started with Spinnaker?
-        answer: Installing it on VM was a breeze, whereas installing it on K8s needed some extra steps and was not clearly documented.
+        answer: Installing it on VM was a breeze whereas installing it on K8s needed some extra steps and was not clearly documented.
 
       - question: Where are you today with Spinnaker? What benefits has it provided to your team?
         answer: A good CD tool for K8s deployments.
