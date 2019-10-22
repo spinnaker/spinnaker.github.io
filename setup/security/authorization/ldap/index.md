@@ -34,7 +34,7 @@ The above is a sample.  See below for more information.
 ## How Fiat determines group membership
 The LDAP provider works by querying the LDAP server utilizing a user as set by the 
 [manager-dn and managerPassword](/reference/halyard/commands/#hal-config-security-authz-ldap-edit) and making a 
-query. If a manager is NOT set, Spinnaker falls back to validating group membership using the login user's credentials.  
+query.  This query will use the logged in users username to filter results. 
 
 Fiat will use the "bound" account to do the following:
 - Make a query using a base of `group-search-base`. **THIS IS A REQUIRED FIELD.** If not set, no roles get queried.
