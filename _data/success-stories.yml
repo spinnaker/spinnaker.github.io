@@ -2,7 +2,7 @@ cases:
   - name: Netflix
     link: https://medium.com/netflix-techblog/global-continuous-delivery-with-spinnaker-2a6896c23ba7
     logo: cases-logos/netflix.jpg
-    text: The community uptake has been tremendous. Having a platform that out-of-the-box accommodates multiple cloud providers and an extensible model to participate within, means that we are one large community rather than a bunch of micro-communities focused on various forks. This has the benefit that everyone within the community can take advantage of various innovations.
+    text: The community uptake has been tremendous. Having a platform that is out-of-the-box accommodates multiple cloud providers and an extensible model to participate within, means that we are one large community rather than a bunch of micro-communities focused on various forks. This has the benefit that everyone within the community can take advantage of various innovations.
 
   - name: Waze
     link: https://cloud.google.com/blog/products/gcp/guest-post-multi-cloud-continuous-delivery-using-spinnaker-at-waze
