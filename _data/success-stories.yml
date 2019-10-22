@@ -17,7 +17,7 @@ cases:
   - name: MakerBot
     link: Case%20Study%20Makerbot%20-%20Letter%20size_10-12-19.pdf
     logo: cases-logos/markerbot.jpg
-    text: We originally envisioned transitioning toward Kubernetes on Google Cloud over three quarters. With Spinnaker’s open source flexibility, we completed the full migration in just 2.5 months!". 
+    text: We originally envisioned transitioning toward Kubernetes on Google Cloud over three quarters. With Spinnaker’s open source flexibility, we completed the full migration in just 2.5 months. 
 
   - name: Lookout
     link: Lookout_10072019.pdf
