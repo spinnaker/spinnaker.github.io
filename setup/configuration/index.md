@@ -36,8 +36,11 @@ spring:
       server:
         git:
           uri: https://github.com/example/spinnaker-config
+          basedir: /tmp/config-repo
           refresh-rate: 10
 ```
+
+> The repository will be cloned to the directory specified by the `git.basedir` property. If using multiple Git repositories, you must give each repository a unique value for `basedir`.
 
 To use a HashiCorp Vault backend, configure the settings under `spring.cloud.config.server.vault`. Your configuration might look like the following example:
 
@@ -187,6 +190,7 @@ spring:
       server:
         git:
           uri: https://github.com/example/spinnaker-config
+          basedir: /tmp/config-repo
           refresh-rate: 10
 encrypt:
   key: mykey
