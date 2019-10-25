@@ -10,7 +10,7 @@ cases:
     text: Thanks to Spinnaker, developers can focus on developing business logic rather than becoming experts on each cloud platform. Teams can track the lifecycle of a deployment using several notification mechanisms including email, Slack and SMS, allowing them to coordinate handoffs between developer and QA teams.
 
   - name: Avast
-    link: Avast_v4-10-21-2019.pdf
+    link: Avast_10-25-19.pdf
     logo: cases-logos/avast.jpg
     text: Spinnaker helped the team cut down the time and work needed for the versioning of ConfigMaps and secrets. That's a pain to do other ways. Maybe it seems simple, but it’s a big deal for our team. The whole goal here is to not wake people up in the middle of the night. The rollback and no-downtime deployment features are things everybody wants to do. The thing that Spinnaker promises is automated canary analysis. That to me is the holy grail to enabling continuous deployment.
 
