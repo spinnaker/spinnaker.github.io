@@ -23,7 +23,9 @@ The following table lists the Spinnaker services that currently incorporate exte
 
 ## Enabling external configuration
 
-To enable external configuration via the Config Server, add Spring Cloud Config configuration properties, which are under `spring.cloud.config.server`, and include settings for the backend you wish to use. If you deploy Spinnaker manually, you might place this configuration in a YAML file called `spinnakerconfig.yml`, alongside your `spinnaker.yml` file.
+To enable external configuration via the Config Server, add Spring Cloud Config configuration properties, which are under `spring.cloud.config.server`, and include settings for the backend you wish to use. 
+
+If you are deploying Spinnaker using Halyard, you can place this file under the `~/.hal/$DEPLOYMENT/profiles` directory in the machine on which Halyard is installed, as described in [Custom Profiles](/reference/halyard/custom/#custom-profiles) (`$DEPLOYMENT` is typically `default`). If you are deploying Spinnaker manually, you might place this configuration in a YAML file called `spinnakerconfig.yml`, alongside your `spinnaker.yml` file.
 
 To use a Git backend, configure the settings under `spring.cloud.config.server.git`. Your configuration might look like the following example:
 
@@ -36,8 +38,11 @@ spring:
       server:
         git:
           uri: https://github.com/example/spinnaker-config
+          basedir: /tmp/config-repo
           refresh-rate: 10
 ```
+
+> The repository will be cloned to the directory specified by the `git.basedir` property. If using multiple Git repositories, you must give each repository a unique value for `basedir`.
 
 To use a HashiCorp Vault backend, configure the settings under `spring.cloud.config.server.vault`. Your configuration might look like the following example:
 
@@ -187,6 +192,7 @@ spring:
       server:
         git:
           uri: https://github.com/example/spinnaker-config
+          basedir: /tmp/config-repo
           refresh-rate: 10
 encrypt:
   key: mykey
