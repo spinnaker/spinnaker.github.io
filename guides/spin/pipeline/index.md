@@ -9,7 +9,7 @@ sidebar:
 
 ## Overview
 
-Once you have `spin` install and configured, you can use it to start
+Once you have `spin` installed and configured, you can use it to start
 managing your Spinnaker pipelines.
 
 `spin` can manage the whole lifecycle of your pipeline:
