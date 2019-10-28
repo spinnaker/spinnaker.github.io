@@ -9,7 +9,7 @@ sidebar:
 
 ## Overview
 
-`spin` can manage the whole lifecycle of your canary configs:
+You can use `spin` to manage the whole lifecycle of your canary configs:
 
 ```bash
 $ spin canary canary-configs
@@ -41,12 +41,11 @@ Global Flags:
 Use " canary canary-config [command] --help" for more information about a command.
 ```
 
-The following assumes Spinnaker is running and Gate is listening on `http://localhost:8084`. If
+The following instructions assume Spinnaker is running and Gate is listening on `http://localhost:8084`. If
 gate is running elsewhere, you can set the Gate endpoint with the global `--gate-endpoint` flag.
 
-## Managing Your Canary Config's Lifecycle
 
-### Create and update canary configs with `save`
+## Create and update canary configs with `save`
 
 ```bash
 $ spin canary canary-configs save --file <path to canary config json>
@@ -55,7 +54,7 @@ $ spin canary canary-configs save --file <path to canary config json>
 Note that `save` accepts the canary config in JSON format. You can quickly export an existing
 canary config into a valid argument to the `--file` flag by using the `get` command.
 
-### List canary configs with `list`
+## List canary configs with `list`
 
 ```bash
 spin canary canary-config list
@@ -72,7 +71,7 @@ spin canary canary-config list
 
 ```
 
-### Retrieve a single canary config with `get`
+## Retrieve a single canary config with `get`
 
 ```bash
 spin canary canary-config get canaryConfigId
@@ -82,13 +81,13 @@ spin canary canary-config get canaryConfigId
 }
 ```
 
-### Delete a canary config with `delete`
+## Delete a canary config with `delete`
 
 ```bash
 spin canary canary-config delete canaryConfigId
 ```
 
-### Test a canary config with `retro`
+## Test a canary config with `retro`
 
 The `retro` command runs a retrospective analysis given a canary config. You must also supply the
 control and experiment group locators and analysis time window.
