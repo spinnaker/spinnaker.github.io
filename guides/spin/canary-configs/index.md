@@ -57,7 +57,7 @@ canary config into a valid argument to the `--file` flag by using the `get` comm
 ## List canary configs with `list`
 
 ```bash
-spin canary canary-config list
+$ spin canary canary-config list
 
 [
 ...
@@ -74,7 +74,8 @@ spin canary canary-config list
 ## Retrieve a single canary config with `get`
 
 ```bash
-spin canary canary-config get canaryConfigId
+$ spin canary canary-config get canaryConfigId
+
 {
   "id": "myPipelineTemplate"
   ...
@@ -84,7 +85,7 @@ spin canary canary-config get canaryConfigId
 ## Delete a canary config with `delete`
 
 ```bash
-spin canary canary-config delete canaryConfigId
+$ spin canary canary-config delete canaryConfigId
 ```
 
 ## Test a canary config with `retro`
@@ -92,9 +93,9 @@ spin canary canary-config delete canaryConfigId
 The `retro` command runs a retrospective analysis given a canary config. You must also supply the
 control and experiment group locators and analysis time window.
 
-```$bash
+```bash
 $ spin canary canary-configs retro \
-  -f <path to canary config json>
+  -f <path to canary config json> \
   --control-group app-control-v001 --control-location us-central1 \
   --experiment-group app-experiment-v001 --experiment-location us-central1 \
   --start 2019-09-17T16:27:19.867Z \
