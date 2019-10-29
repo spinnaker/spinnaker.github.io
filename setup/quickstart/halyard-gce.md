@@ -54,7 +54,7 @@ Navigate to the [Google Cloud Console](https://console.developers.google.com/api
 Create a service account for our Halyard host VM:
 
 ```bash
-GCP_PROJECT=$(gcloud info --format='value(config.project)')
+GCP_PROJECT=$(gcloud config get-value project
 HALYARD_SERVICE_ACCOUNT_NAME=halyard-vm-account
 
 gcloud iam service-accounts create $HALYARD_SERVICE_ACCOUNT_NAME \
@@ -75,7 +75,7 @@ gcloud projects add-iam-policy-binding $GCP_PROJECT \
 Create a service account for GCS that you'll later be handing to Spinnaker
 
 ```bash
-GCP_PROJECT=$(gcloud info --format='value(config.project)')
+GCP_PROJECT=$(gcloud config get-value project
 GCS_SERVICE_ACCOUNT_NAME=spinnaker-gcs-account
 
 gcloud iam service-accounts create $GCS_SERVICE_ACCOUNT_NAME \
@@ -96,7 +96,7 @@ gcloud projects add-iam-policy-binding $GCP_PROJECT \
 Create a service account for GCE that you'll also be handing to Spinnaker
 
 ```bash
-GCP_PROJECT=$(gcloud info --format='value(config.project)')
+GCP_PROJECT=$(gcloud config get-value project
 GCE_SERVICE_ACCOUNT_NAME=spinnaker-gce-account
 
 gcloud iam service-accounts create \
@@ -232,7 +232,7 @@ Set up to persist to GCS
 
 ```bash
 hal config storage gcs edit \
-    --project $(gcloud info --format='value(config.project)') \
+    --project $(gcloud config get-value project \
     --json-path $GCS_SERVICE_ACCOUNT_DEST
 
 hal config storage edit --type gcs
@@ -242,7 +242,7 @@ Set up the GCE provider
 
 ```bash
 hal config provider google account add my-gce-account \
-    --project $(gcloud info --format='value(config.project)') \
+    --project $(gcloud config get-value project \
     --json-path $GCE_SERVICE_ACCOUNT_DEST
 
 hal config provider google enable

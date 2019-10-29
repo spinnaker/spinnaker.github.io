@@ -118,7 +118,7 @@ API](https://console.developers.google.com/apis/api/cloudresourcemanager.googlea
        --filter="displayName:$SERVICE_ACCOUNT_NAME" \
        --format='value(email)')
 
-   PROJECT=$(gcloud info --format='value(config.project)')
+   PROJECT=$(gcloud config get-value project
 
    gcloud projects add-iam-policy-binding $PROJECT \
        --member serviceAccount:$SA_EMAIL \

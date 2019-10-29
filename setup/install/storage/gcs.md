@@ -44,7 +44,7 @@ SA_EMAIL=$(gcloud iam service-accounts list \
     --filter="displayName:$SERVICE_ACCOUNT_NAME" \
     --format='value(email)')
 
-PROJECT=$(gcloud info --format='value(config.project)')
+PROJECT=$(gcloud config get-value project
 
 gcloud projects add-iam-policy-binding $PROJECT \
     --role roles/storage.admin --member serviceAccount:$SA_EMAIL
@@ -65,7 +65,7 @@ yet, or if you don't specify one at all. All that's required are the following
 values (we've provided defaults for you):
 
 ```bash
-PROJECT=$(gcloud info --format='value(config.project)')
+PROJECT=$(gcloud config get-value project
 # see https://cloud.google.com/storage/docs/bucket-locations
 BUCKET_LOCATION=us
 SERVICE_ACCOUNT_DEST=# see Prerequisites section above
