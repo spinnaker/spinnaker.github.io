@@ -11078,7 +11078,7 @@ hal plugins edit PLUGIN [parameters]
 #### Parameters
 `PLUGIN`: The name of the plugin to operate on.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
- * `--enabled`: To enable or disable the plugin.
+ * `--enabled`: Boolean. Set to `true` to enable the plugin or `false` to disable the plugin.
  * `--manifest-location`: The location of the plugin's manifest file.
  * `--no-validate`: (*Default*: `false`) Skip validation.
 
@@ -11263,4 +11263,3 @@ hal version list [parameters]
 
 
 ---
-
