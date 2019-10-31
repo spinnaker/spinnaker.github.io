@@ -590,6 +590,8 @@ reference:
             url: /reference/artifacts-with-artifactsrewrite/types/gcs-object/
           - title: S3 Object
             url: /reference/artifacts-with-artifactsrewrite/types/s3-object/
+          - title: Git Repo
+            url: /reference/artifacts-with-artifactsrewrite/types/git-repo/
           - title: GitHub File
             url: /reference/artifacts-with-artifactsrewrite/types/github-file/
           - title: GitLab File
