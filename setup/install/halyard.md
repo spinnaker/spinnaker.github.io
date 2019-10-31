@@ -34,7 +34,7 @@ There are two ways you can install Halyard:
 
 Halyard runs on...
 
-* Ubuntu 14.04 or 16.04 (Ubuntu 16.04 requires Spinnaker 1.6.0 or later)
+* Ubuntu 14.04, 16.04 or 18.04 (Ubuntu 16.04 requires Spinnaker 1.6.0 or later)
 * Debian 8 or 9
 * macOS (tested on 10.13 High Sierra only)
 
