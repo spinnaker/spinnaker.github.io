@@ -63,7 +63,7 @@ ci_integrations_feature:
   content: "Listen to events, collect artifacts, and trigger pipelines from Jenkins or Travis CI. Triggers via git, cron, or a new image in a docker registry are also supported."
 monitoring_integrations_feature:
   title: Monitoring Integrations
-  content: "Tie your releases to monitoring services Datadog, Prometheus, Stackdriver, or SignalFx, using their metrics for canary analysis."
+  content: "Tie your releases to monitoring services Datadog, Prometheus, Stackdriver, SignalFx, or New Relic using their metrics for canary analysis."
 cli_feature:
   title: CLI for Setup and Admin
   content: "Install, configure, and update your Spinnaker instance with halyard, Spinnaker’s CLI tool."
@@ -129,8 +129,8 @@ waze_case_study:
     {% include masthead.html %}
 
     <div class="spin_header__text">
-      <h1>Continuous Delivery for Enterprise</h1>
-      <h2>Fast, safe, repeatable deployments</h2>
+      <h1>Cloud Native Continuous Delivery</h1>
+      <h2>Fast, safe, repeatable deployments for every Enterprise</h2>
     </div>
     <ul class="spin_call_to_action">
       <li><a href="/concepts/">HOW IT WORKS</a></li>
@@ -191,12 +191,12 @@ waze_case_study:
   {% include spinnaker_feature_box id="chaos_monkey_feature" %}
 </div>
 
-<h1 class="spin__heading mt2">Case Studies</h1>
+<!-- <h1 class="spin__heading mt2">Case Studies</h1>
 
 <div class="clearfix">
   {% include spinnaker_case_study id="netflix_case_study" %}
   {% include spinnaker_case_study id="waze_case_study" %}
-</div>
+</div> -->
 
 <!-- <div class="clearfix">
   {% include spinnaker_case_study id="target_case_study" %}

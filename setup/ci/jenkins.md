@@ -83,14 +83,22 @@ To enable Spinnaker and Jenkins to share a crumb to protect against CSRF...
 
     Be sure to invoke `hal deploy apply` to apply your changes.
 
-2. Enable CSRF protection in Jenkins:
+2. Install Strict Crumb Issuer Plugin in Jenkins:
+
+    a. Under __Manage Jenkins__ > __Plugin Manager__ > __Available__, search for __Strict Crumb Issuer Plugin__, select __Install__
+
+    ![](/setup/ci/strict_crumb_issuer_plugin_install.png)
+
+3. Enable CSRF protection in Jenkins:
 
     a. Under __Manage Jenkins__ > __Configure Global Security__, select __Prevent
     Cross Site Request Forgery exploits__.
 
-    b. Under __Crumb Algorithm__, select __Default Crumb Issuer__.
+    b. Under __Crumb Algorithm__, select __Strict Crumb Issuer__.
 
-    ![](/setup/ci/jenkins_enable_csrf.png)
+    c. Under __Strict Crumb Issuer__ > __Advanced__, deselect __Check the session ID__
+
+    ![](/setup/ci/jenkins_enable_csrf_strict.png)
 
 ## Next steps
 

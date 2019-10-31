@@ -1,0 +1,58 @@
+---
+layout: success-stories 
+title:  "Success Stories"
+intro: "Real world use cases from global software enterprise companies and start ups about the impact of using Spinnaker in their organizations."
+description: "Click on the box to learn how developers are the key change agents in their companies."
+sidebar:
+  nav: success-stories 
+---
+
+<div class="success-stories-container">
+    {% for story in site.data.success-stories.cases %}  
+        <article>
+            <a href="{{story.link}}" target="_blank">
+                <h4>{{story.name}}</h4>
+                <figure>
+                    <img src="{{story.logo}}" alt="{{story.name}}">
+                </figure>
+
+                <p class="text">{{story.text}}</p>
+
+                <span>> Learn</span>
+            </a>
+        </article>
+    {% endfor %}
+</div>
+
+<div class="testimonials-container">
+    <h3>Testimonials</h3>
+
+    <p>
+        Want to share your Spinnaker Success Story? <a href="https://spinnaker.formstack.com/forms/spinnaker_testimonials" target="_blank">Click here!</a>
+    </p>
+
+    <div class="testimonials-wrapper">
+        {% for test in site.data.success-stories.testimonials %}  
+            <article>
+                <header>
+                    <figure>
+                        <img src="{{test.logo}}" alt="{{test.name}}">
+                    </figure>
+                </header>
+    
+                <div class="questions-wrapper">
+                    {% for quest in test.questions %}  
+                        <p class="question">{{quest.question}}</p>
+                        <p class="answer">{{quest.answer}}</p>
+                    {% endfor %}
+                </div>
+            </article>
+        {% endfor %}
+    </div>
+
+    <p>
+        Want to share your Spinnaker Success Story? <a href="https://spinnaker.formstack.com/forms/spinnaker_testimonials" target="_blank">Click here!</a>
+    </p>
+    
+    <img class="bottom-right-swoosh" src="{{ "assets/images/bottom-right-swoosh.svg" | absolute_url }}" alt="Spinnaker Swoosh"/>
+</div>

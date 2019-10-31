@@ -4,7 +4,7 @@ title: "Commands"
 sidebar:
   nav: reference
 ---
-Published: 2019-09-04 19:47:07
+Published: 2019-10-30 14:31:10
 
 
 # Table of Contents
@@ -145,6 +145,15 @@ Published: 2019-09-04 19:47:07
  * [**hal config canary google disable**](#hal-config-canary-google-disable)
  * [**hal config canary google edit**](#hal-config-canary-google-edit)
  * [**hal config canary google enable**](#hal-config-canary-google-enable)
+ * [**hal config canary newrelic**](#hal-config-canary-newrelic)
+ * [**hal config canary newrelic account**](#hal-config-canary-newrelic-account)
+ * [**hal config canary newrelic account add**](#hal-config-canary-newrelic-account-add)
+ * [**hal config canary newrelic account delete**](#hal-config-canary-newrelic-account-delete)
+ * [**hal config canary newrelic account edit**](#hal-config-canary-newrelic-account-edit)
+ * [**hal config canary newrelic account get**](#hal-config-canary-newrelic-account-get)
+ * [**hal config canary newrelic account list**](#hal-config-canary-newrelic-account-list)
+ * [**hal config canary newrelic disable**](#hal-config-canary-newrelic-disable)
+ * [**hal config canary newrelic enable**](#hal-config-canary-newrelic-enable)
  * [**hal config canary prometheus**](#hal-config-canary-prometheus)
  * [**hal config canary prometheus account**](#hal-config-canary-prometheus-account)
  * [**hal config canary prometheus account add**](#hal-config-canary-prometheus-account-add)
@@ -306,6 +315,10 @@ Published: 2019-09-04 19:47:07
  * [**hal config metric-stores datadog edit**](#hal-config-metric-stores-datadog-edit)
  * [**hal config metric-stores datadog enable**](#hal-config-metric-stores-datadog-enable)
  * [**hal config metric-stores edit**](#hal-config-metric-stores-edit)
+ * [**hal config metric-stores newrelic**](#hal-config-metric-stores-newrelic)
+ * [**hal config metric-stores newrelic disable**](#hal-config-metric-stores-newrelic-disable)
+ * [**hal config metric-stores newrelic edit**](#hal-config-metric-stores-newrelic-edit)
+ * [**hal config metric-stores newrelic enable**](#hal-config-metric-stores-newrelic-enable)
  * [**hal config metric-stores prometheus**](#hal-config-metric-stores-prometheus)
  * [**hal config metric-stores prometheus disable**](#hal-config-metric-stores-prometheus-disable)
  * [**hal config metric-stores prometheus edit**](#hal-config-metric-stores-prometheus-edit)
@@ -539,6 +552,10 @@ Published: 2019-09-04 19:47:07
  * [**hal config storage oracle edit**](#hal-config-storage-oracle-edit)
  * [**hal config storage s3**](#hal-config-storage-s3)
  * [**hal config storage s3 edit**](#hal-config-storage-s3-edit)
+ * [**hal config telemetry**](#hal-config-telemetry)
+ * [**hal config telemetry disable**](#hal-config-telemetry-disable)
+ * [**hal config telemetry edit**](#hal-config-telemetry-edit)
+ * [**hal config telemetry enable**](#hal-config-telemetry-enable)
  * [**hal config version**](#hal-config-version)
  * [**hal config version edit**](#hal-config-version-edit)
  * [**hal config webhook**](#hal-config-webhook)
@@ -822,6 +839,7 @@ hal config [parameters] [subcommands]
  * `repository`: Configure, validate, and view the specified repository.
  * `security`: Configure Spinnaker's security. This includes external SSL, authentication mechanisms, and authorization policies.
  * `storage`: Show Spinnaker's persistent storage configuration.
+ * `telemetry`: Show Spinnaker's telemetry settings.
  * `version`: Configure & view the current deployment of Spinnaker's version.
  * `webhook`: Show Spinnaker's webhook configuration.
 
@@ -2365,6 +2383,7 @@ hal config canary [parameters] [subcommands]
  * `edit`: Edit Spinnaker's canary analysis settings.
  * `enable`: Set Spinnaker's canary analysis to enabled.
  * `google`: Configure your canary analysis Google service integration settings for Spinnaker.
+ * `newrelic`: Configure your canary analysis New Relic service integration settings for Spinnaker.
  * `prometheus`: Configure your canary analysis Prometheus service integration settings for Spinnaker.
  * `signalfx`: Configure your canary analysis SignalFx service integration settings for Spinnaker.
 
@@ -2939,6 +2958,162 @@ hal config canary google enable [parameters]
 
 
 ---
+## hal config canary newrelic
+
+Configure your canary analysis New Relic service integration settings for Spinnaker.
+
+#### Usage
+```
+hal config canary newrelic [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `account`: Manage and view Spinnaker configuration for the newrelic service integration's canary accounts.
+ * `disable`: Set Spinnaker's canary analysis newrelic service integration to disabled.
+ * `enable`: Set Spinnaker's canary analysis newrelic service integration to enabled.
+
+---
+## hal config canary newrelic account
+
+Manage and view Spinnaker configuration for the newrelic service integration's canary accounts.
+
+#### Usage
+```
+hal config canary newrelic account ACCOUNT [parameters] [subcommands]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `add`: Add a canary account to the NewRelic service integration.
+ * `delete`: Delete a specific newrelic canary account by name.
+ * `edit`: Edit a canary account in the newrelic service integration.
+ * `get`: Get the specified canary account details for the newrelic service integration.
+ * `list`: List the canary account names for the newrelic service integration.
+
+---
+## hal config canary newrelic account add
+
+Add a canary account to the NewRelic service integration.
+
+#### Usage
+```
+hal config canary newrelic account add ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--api-key`: (*Required*) (*Sensitive data* - user will be prompted on standard input) Your account's unique New Relic Insights API key. See [https://docs.newrelic.com/docs/insights/insights-api/get-data/query-insights-event-data-api](https://docs.newrelic.com/docs/insights/insights-api/get-data/query-insights-event-data-api).
+ * `--application-key`: (*Required*) Your New Relic account id. See [https://docs.newrelic.com/docs/accounts/install-new-relic/account-setup/account-id](https://docs.newrelic.com/docs/accounts/install-new-relic/account-setup/account-id).
+ * `--base-url`: (*Required*) The base URL to the New Relic Insights server.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary newrelic account delete
+
+Delete a specific newrelic canary account by name.
+
+#### Usage
+```
+hal config canary newrelic account delete ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary newrelic account edit
+
+Edit a canary account in the newrelic service integration.
+
+#### Usage
+```
+hal config canary newrelic account edit ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--api-key`: (*Sensitive data* - user will be prompted on standard input) Your account's unique New Relic Insights API key. See [https://docs.newrelic.com/docs/insights/insights-api/get-data/query-insights-event-data-api](https://docs.newrelic.com/docs/insights/insights-api/get-data/query-insights-event-data-api).
+ * `--application-key`: Your New Relic account id. See [https://docs.newrelic.com/docs/accounts/install-new-relic/account-setup/account-id](https://docs.newrelic.com/docs/accounts/install-new-relic/account-setup/account-id).
+ * `--base-url`: The base URL to the New Relic Insights server.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary newrelic account get
+
+Get the specified canary account details for the newrelic service integration.
+
+#### Usage
+```
+hal config canary newrelic account get ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the canary account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary newrelic account list
+
+List the canary account names for the newrelic service integration.
+
+#### Usage
+```
+hal config canary newrelic account list [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary newrelic disable
+
+Set Spinnaker's canary analysis newrelic service integration to disabled.
+
+#### Usage
+```
+hal config canary newrelic disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config canary newrelic enable
+
+Set Spinnaker's canary analysis newrelic service integration to enabled.
+
+#### Usage
+```
+hal config canary newrelic enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
 ## hal config canary prometheus
 
 Configure your canary analysis Prometheus service integration settings for Spinnaker.
@@ -3167,6 +3342,9 @@ hal config canary signalfx account add ACCOUNT [parameters]
 #### Parameters
 `ACCOUNT`: The name of the canary account to operate on.
  * `--access-token`: (*Required*) (*Sensitive data* - user will be prompted on standard input) The SignalFx access token.
+ * `--base-url`: The base URL to the SignalFx server. Defaults to [https://stream.signalfx.com](https://stream.signalfx.com)
+ * `--default-location-key`: Location key is used to filter by deployment region. If omitted requests must supply the _location_key if it is needed.
+ * `--default-scope-key`: Scope key is used to distinguish between base and canary deployments. If omitted every request must supply the _scope_key param in extended scope params
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--no-validate`: (*Default*: `false`) Skip validation.
 
@@ -3200,6 +3378,9 @@ hal config canary signalfx account edit ACCOUNT [parameters]
 #### Parameters
 `ACCOUNT`: The name of the canary account to operate on.
  * `--access-token`: (*Sensitive data* - user will be prompted on standard input) The SignalFx access token.
+ * `--base-url`: The base URL to the SignalFx server. Defaults to [https://stream.signalfx.com](https://stream.signalfx.com)
+ * `--default-location-key`: Location key is used to filter by deployment region. If omitted requests must supply the _location_key if it is needed.
+ * `--default-scope-key`: Scope key is used to distinguish between base and canary deployments. If omitted every request must supply the _scope_key param in extended scope params
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--no-validate`: (*Default*: `false`) Skip validation.
 
@@ -5778,7 +5959,6 @@ hal config features edit [parameters]
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--gremlin`: Enable Gremlin fault-injection support.
  * `--infrastructure-stages`: Enable infrastructure stages. Allows for creating Load Balancers as part of pipelines.
- * `--jobs`: Allow Spinnaker to run containers in Kubernetes and Titus as Job stages in pipelines.
  * `--managed-pipeline-templates-v2-ui`: Enable managed pipeline templates v2 UI support.
  * `--mine-canary`: Enable canary support. For this to work, you'll need a canary judge configured. Currently, Halyard does not configure canary judge for you.
  * `--no-validate`: (*Default*: `false`) Skip validation.
@@ -5834,6 +6014,7 @@ hal config metric-stores [parameters] [subcommands]
 #### Subcommands
  * `datadog`: Configure your datadog metric store.
  * `edit`: Configure global metric stores properties.
+ * `newrelic`: Configure your newrelic metric store.
  * `prometheus`: Configure your prometheus metric store.
  * `stackdriver`: Configure your stackdriver metric store.
 
@@ -5853,7 +6034,7 @@ hal config metric-stores datadog [parameters] [subcommands]
 
 #### Subcommands
  * `disable`: Set the datadog method as disabled
- * `edit`: Edit the datadog authentication method.
+ * `edit`: Edit the datadog metric store.
  * `enable`: Set the datadog method as enabled
 
 ---
@@ -5874,7 +6055,7 @@ hal config metric-stores datadog disable [parameters]
 ---
 ## hal config metric-stores datadog edit
 
-Edit the datadog authentication method.
+Edit the datadog metric store.
 
 #### Usage
 ```
@@ -5923,6 +6104,75 @@ hal config metric-stores edit [parameters]
 
 
 ---
+## hal config metric-stores newrelic
+
+Configure your newrelic metric store.
+
+#### Usage
+```
+hal config metric-stores newrelic [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `disable`: Set the newrelic method as disabled
+ * `edit`: Edit the newrelic metric store.
+ * `enable`: Set the newrelic method as enabled
+
+---
+## hal config metric-stores newrelic disable
+
+Set the newrelic method as disabled
+
+#### Usage
+```
+hal config metric-stores newrelic disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config metric-stores newrelic edit
+
+Edit the newrelic metric store.
+
+#### Usage
+```
+hal config metric-stores newrelic edit [parameters]
+```
+
+#### Parameters
+ * `--add-tag`: Add this tag to the list of tags. Use the format key:value i.e. --add-tag app:test
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--host`: The URL to post metric data to. In almost all cases, this is set correctly by default and should not be used.
+ * `--insert-key`: Your New Relic Insights insert key
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--remove-tag`: Remove this tag from the list of tags. Use the name of the tag you want to remove i.e. --remove-tag app
+ * `--tags`: (*Default*: `[]`) Your custom tags. Please delimit the KVP with colons i.e. --tags app:test env:dev
+
+
+---
+## hal config metric-stores newrelic enable
+
+Set the newrelic method as enabled
+
+#### Usage
+```
+hal config metric-stores newrelic enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
 ## hal config metric-stores prometheus
 
 Configure your prometheus metric store.
@@ -5938,7 +6188,7 @@ hal config metric-stores prometheus [parameters] [subcommands]
 
 #### Subcommands
  * `disable`: Set the prometheus method as disabled
- * `edit`: Edit the prometheus authentication method.
+ * `edit`: Edit the prometheus metric store.
  * `enable`: Set the prometheus method as enabled
 
 ---
@@ -5959,7 +6209,7 @@ hal config metric-stores prometheus disable [parameters]
 ---
 ## hal config metric-stores prometheus edit
 
-Edit the prometheus authentication method.
+Edit the prometheus metric store.
 
 #### Usage
 ```
@@ -6003,7 +6253,7 @@ hal config metric-stores stackdriver [parameters] [subcommands]
 
 #### Subcommands
  * `disable`: Set the stackdriver method as disabled
- * `edit`: Edit the stackdriver authentication method.
+ * `edit`: Edit the stackdriver metric store.
  * `enable`: Set the stackdriver method as enabled
 
 ---
@@ -6024,7 +6274,7 @@ hal config metric-stores stackdriver disable [parameters]
 ---
 ## hal config metric-stores stackdriver edit
 
-Edit the stackdriver authentication method.
+Edit the stackdriver metric store.
 
 #### Usage
 ```
@@ -6335,8 +6585,10 @@ hal config notification slack edit [parameters]
 ```
 
 #### Parameters
+ * `--base-url`: Slack endpoint. Optional, only set if using a compatible API.
  * `--bot-name`: The name of your slack bot.
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--force-use-incoming-webhook`: Force usage of incoming webhooks endpoint for slack. Optional, only set if using a compatible API.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--token`: (*Sensitive data* - user will be prompted on standard input) Your slack bot token.
 
@@ -8566,6 +8818,7 @@ hal config provider kubernetes account edit ACCOUNT [parameters]
 
 #### Parameters
 `ACCOUNT`: The name of the account to operate on.
+ * `--add-custom-resource`: (V2 Only) Add Kubernetes custom resource to the list of custom resources to managed by clouddriver and made available for use in patch and delete manifest stages. Fields besides the Kubernetes Kind (resource name) can be set using the flags "--spinnaker-kind" and "--versioned"
  * `--add-docker-registry`: Add this docker registry to the list of docker registries to use as a source of images.
  * `--add-kind`: Add this kind to the list of kinds to manage.
  * `--add-namespace`: Add this namespace to the list of namespaces to manage.
@@ -8602,6 +8855,7 @@ This can only be set when --namespaces is empty or not set.
 created by Spinnaker; as opposed to attempting to configure applications for resources already present in Kubernetes.
  * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
  * `--read-permissions`: A user must have at least one of these roles in order to view this account's cloud resources.
+ * `--remove-custom-resource`: Remove this Kubernetes custom resource by name from the list of custom resources to manage.
  * `--remove-docker-registry`: Remove this docker registry from the list of docker registries to use as a source of images.
  * `--remove-kind`: Remove this kind to the list of kinds to manage.
  * `--remove-namespace`: Remove this namespace to the list of namespaces to manage.
@@ -8612,6 +8866,8 @@ created by Spinnaker; as opposed to attempting to configure applications for res
  * `--remove-write-permission`: Remove this permission to from list of write permissions.
  * `--required-group-membership`: A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
  * `--service-account`: When true, Spinnaker attempt to authenticate against Kubernetes using a Kubernetes service account. This only works when Halyard & Spinnaker are deployed in Kubernetes. Read more about service accounts here: [https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/).
+ * `--spinnaker-kind`: Set the Spinnaker kind for custom resource being added.
+ * `--versioned`: Configure whether the custom resource being added is versioned by Spinnaker.
  * `--write-permissions`: A user must have at least one of these roles in order to make changes to this account's cloud resources.
 
 
@@ -9800,6 +10056,7 @@ hal config security authn saml edit [parameters]
  * `--metadata`: The address to your identity provider's metadata XML file. This can be a URL or the path of a local file.
  * `--no-validate`: (*Default*: `false`) Skip validation.
  * `--service-address-url`: The address of the Gate server that will be accesible by the SAML identity provider. This should be the full URL, including port, e.g. [https://gate.org.com:8084/](https://gate.org.com:8084/). If deployed behind a load balancer, this would be the laod balancer's address.
+ * `--user-attribute-mapping-email`: The email field returned from your SAML provider.
  * `--user-attribute-mapping-first-name`: The first name field returned from your SAML provider.
  * `--user-attribute-mapping-last-name`: The last name field returned from your SAML provider.
  * `--user-attribute-mapping-roles`: The roles field returned from your SAML provider.
@@ -10393,6 +10650,72 @@ Example: "user/spinnaker" or "role/spinnakerManaged"
  * `--region`: This is only required if the bucket you specify doesn't exist yet. In that case, the bucket will be created in that region. See [http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region](http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region).
  * `--root-folder`: The root folder in the chosen bucket to place all of Spinnaker's persistent data in.
  * `--secret-access-key`: (*Sensitive data* - user will be prompted on standard input) Your AWS Secret Key.
+ * `--server-side-encryption`: Use Amazon Server-Side Encryption ('x-amz-server-side-encryption' header). Supports 'AES256' (for Amazon S3-managed encryption keys, equivalent to a header value of 'AES256') and 'AWSKMS' (for AWS KMS-managed encryption keys, equivalent to a header value of 'aws:kms'.
+
+
+---
+## hal config telemetry
+
+Show Spinnaker's telemetry settings.
+
+#### Usage
+```
+hal config telemetry [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `disable`: Set Spinnaker's telemetry settings to disabled.
+ * `edit`: Edit Spinnaker's telemetry settings.
+ * `enable`: Set Spinnaker's telemetry settings to enabled.
+
+---
+## hal config telemetry disable
+
+Set Spinnaker's telemetry settings to disabled.
+
+#### Usage
+```
+hal config telemetry disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config telemetry edit
+
+Edit Spinnaker's telemetry settings.
+
+#### Usage
+```
+hal config telemetry edit [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--endpoint`: Set the endpoint for telemetry metrics.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config telemetry enable
+
+Set Spinnaker's telemetry settings to enabled.
+
+#### Usage
+```
+hal config telemetry enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
 
 
 ---

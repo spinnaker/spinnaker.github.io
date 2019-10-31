@@ -11,5 +11,5 @@ Here are a few quickstart solutions. These are not meant for production use. To 
 * [Spinnaker for Google Cloud Platform](https://cloud.google.com/docs/ci-cd/spinnaker/spinnaker-for-gcp)
 * [Microsoft Azure](https://aka.ms/azspinnaker)
 * [Kubernetes Helm Chart](https://github.com/kubernetes/charts/tree/master/stable/spinnaker)
-* [Kuberetes Operator](https://operatorhub.io/operator/spinnaker-operator)
+* [Kubernetes Operator](https://operatorhub.io/operator/spinnaker-operator)
 
