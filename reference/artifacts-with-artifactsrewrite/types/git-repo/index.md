@@ -5,9 +5,8 @@ sidebar:
   nav: reference
 ---
 
-<div class="notice--info">
-    <strong>The Git Repo artifact will be introduced in the upcoming 1.17 release.</strong>
-</div>
+**The Git Repo artifact will be introduced in the upcoming 1.17 release.**
+{: .notice--info}
 
 {% include toc %}
 
@@ -20,7 +19,7 @@ repository can be cloned using the Git CLI.
 
 The pipeline UI exposes the following fields for the GitHub file artifact:
 
-| Field | Explaination |
+| Field | Explanation |
 | ------|--------------|
 |Account| A Git Repo artifact account. |
 |URL| HTTP or SSH URL of your Git repository. Artifact accounts configured to use a username and password should use HTTP while accounts configured to use an SSH private key should use the SSH URL format. |
