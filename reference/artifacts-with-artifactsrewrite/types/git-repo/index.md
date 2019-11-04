@@ -5,6 +5,10 @@ sidebar:
   nav: reference
 ---
 
+<div class="notice--info">
+    <strong>The Git Repo artifact will be introduced in the upcoming 1.17 release.</strong>
+</div>
+
 {% include toc %}
 
 Git Repo artifacts are references to Git repositories that are hosted by a Git hosting service. They are consumed
@@ -16,36 +20,16 @@ repository can be cloned using the Git CLI.
 
 The pipeline UI exposes the following fields for the GitHub file artifact:
 
-<table>
-  <thead>
-    <tr>
-      <th>Field</th>
-      <th>Explanation</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Account</strong></td>
-      <td>A Git Repo artifact account.</td>
-    </tr>
-    <tr>
-      <td><strong>URL</strong></td>
-      <td>HTTP or SSH URL of your Git repository. Artifact accounts configured to use a username and password should use HTTP while accounts configured to use an SSH private key should use the SSH URL format.</td>
-    </tr>
-    <tr>
-      <td><strong>Branch</strong></td>
-      <td>Name of the branch to check out. Default is `master`.</td>
-    </tr>
-    <tr>
-      <td><strong>Sub Path (optional)</strong></td>
-      <td>Relative path of files within the repository to fetch. If set, only files this path will be available to stages consuming this artifact.</td>
-    </tr>
-  </tbody>
-</table>
+| Field | Explaination |
+| ------|--------------|
+|Account| A Git Repo artifact account. |
+|URL| HTTP or SSH URL of your Git repository. Artifact accounts configured to use a username and password should use HTTP while accounts configured to use an SSH private key should use the SSH URL format. |
+|Branch| Name of the branch to check out. Default is `master`. |
+|Sub Path (Optional) | Relative path of files within the repository to fetch. If set, only files this path will be available to stages consuming this artifact. |
 
 ### In a trigger
 
-Work to support Git Repo artifacts in triggers is currently underway. 
+_Work to support Git Repo artifacts in triggers is currently underway._
 
 ### In a pipeline stage
 
@@ -67,7 +51,7 @@ When configuring the "Bake (Manifest)" stage, you can use a Git Repo artifact as
 |  `version`         | Name of the branch to check out. Default is `master`.                                                                                                                                                   |
 | `metadata.subPath` |  Relative path of files within the repository to fetch. If set, only files in this path are available to stages consuming this artifact.                                                               |
 
-### Artifact accounts using an SSH private key for authentication.
+**Artifact accounts using an SSH private key for authentication.**
 
 ```json
 {
@@ -77,7 +61,7 @@ When configuring the "Bake (Manifest)" stage, you can use a Git Repo artifact as
 }
 ```
 
-### Artifact accounts using a username and password _or_ token for authentication.
+**Artifact accounts using a username and password _or_ token for authentication.**
 
 ```json
 {
@@ -87,7 +71,7 @@ When configuring the "Bake (Manifest)" stage, you can use a Git Repo artifact as
 }
 ```
 
-### When checking out an explicit sub path within repository
+**When checking out an explicit sub path within repository.**
 
 ```json
 {

@@ -5,6 +5,10 @@ sidebar:
   nav: reference
 ---
 
+<div class="notice--info">
+    <strong>The Git Repo artifact will be introduced in the upcoming 1.17 release.</strong>
+</div>
+
 {% include toc %}
 
 Git Repo artifacts are references to Git repositories that are hosted by a Git hosting service. They are consumed
