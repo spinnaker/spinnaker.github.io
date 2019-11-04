@@ -5,9 +5,8 @@ sidebar:
   nav: reference
 ---
 
-<div class="notice--info">
-    <strong>The Git Repo artifact will be introduced in the upcoming 1.17 release.</strong>
-</div>
+**The Git Repo artifact is available in version 1.17 or later.**
+{: .notice--info}
 
 {% include toc %}
 
@@ -19,10 +18,10 @@ repository can be cloned using the Git CLI.
 ## Fields
 
 
-| Field              | Explaination                                                                                                                                                                                            |
+| Field              | Explanation                                                                                                                                                                                            |
 |--------------------|--------|
 | `type`             | Always `git/repo`.                                                                                                                                                                                       |
-| `reference`        |  HTTP or SSH URL of your Git repository. Artifact accounts configured to use a username and password should use HTTP while accounts configured to use an SSH private key should use the SSH URL format. |
+| `reference`        |  HTTP or SSH URL of your Git repository. Use HTTP for artifact accounts configured to use a username and password, and use the SSH URL format for accounts configured to use the SSH private key. |
 |  `version`         | Name of the branch to check out. Default is `master`.                                                                                                                                                   |
 | `metadata.subPath` |  Relative path of files within the repository to fetch. If set, only files this path will be available to stages consuming this artifact.                                                               |
 

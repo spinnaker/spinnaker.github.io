@@ -22,7 +22,7 @@ The pipeline UI exposes the following fields for the GitHub file artifact:
 | Field | Explanation |
 | ------|--------------|
 |Account| A Git Repo artifact account. |
-|URL| HTTP or SSH URL of your Git repository. Artifact accounts configured to use a username and password should use HTTP while accounts configured to use an SSH private key should use the SSH URL format. |
+|URL| HTTP or SSH URL of your Git repository. Use HTTP for artifact accounts configured to use a username and password, and use the SSH URL format for accounts configured to use the SSH private key. |
 |Branch| Name of the branch to check out. Default is `master`. |
 |Sub Path (Optional) | Relative path of files within the repository to fetch. If set, only files this path will be available to stages consuming this artifact. |
 
@@ -43,10 +43,10 @@ When configuring the "Bake (Manifest)" stage, you can use a Git Repo artifact as
 
 ## Git Repo artifact in a pipeline definition
 
-| Field              | Explaination                                                                                                                                                                                            |
+| Field              | Explanation                                                                                                                                                                                            |
 |--------------------|--------|
 | `type`             | Always `git/repo`.                                                                                                                                                                                       |
-| `reference`        |  HTTPS or SSH URL of your Git repository. Artifact accounts configured to use a username and password should use HTTPS while accounts configured to use an SSH private key should use the SSH URL format. |
+| `reference`        |  HTTPS or SSH URL of your Git repository. Use HTTPS for artifact accounts configured to use a username and password, and use the SSH URL format for accounts configured to use an SSH private key. |
 |  `version`         | Name of the branch to check out. Default is `master`.                                                                                                                                                   |
 | `metadata.subPath` |  Relative path of files within the repository to fetch. If set, only files in this path are available to stages consuming this artifact.                                                               |
 
