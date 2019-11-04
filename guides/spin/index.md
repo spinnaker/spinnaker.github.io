@@ -12,3 +12,4 @@ Before you begin, see [Install and Configure Spin CLI](/setup/spin/).
 * [Manage Applications](/guides/spin/app/)
 * [Manage Pipelines](/guides/spin/pipeline/)
 * [Manage Pipelines Templates](/guides/spin/pipeline-templates/)
+* [Manage Canary Configs](/guides/spin/canary-configs/)

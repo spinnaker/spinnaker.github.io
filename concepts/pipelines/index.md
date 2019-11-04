@@ -68,7 +68,7 @@ variable bindings and a reference to the template.
 Whether it's created from a template or not, an executable pipeline that can
 be visualized in the Deck UI, and can be run by [Orca](/reference/architecture/).
 
-### Pipeline template variable
+#### Pipeline template variable
 
 A variable defined in a pipeline template, whose value is deteremined when a
 pipeline is instantiated based on the template. Contrast with pipeline

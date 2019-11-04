@@ -10,12 +10,12 @@ cases:
     text: Thanks to Spinnaker, developers can focus on developing business logic rather than becoming experts on each cloud platform. Teams can track the lifecycle of a deployment using several notification mechanisms including email, Slack and SMS, allowing them to coordinate handoffs between developer and QA teams.
 
   - name: Avast
-    link: Avast_v4-10-21-2019.pdf
+    link: Avast_10-25-19.pdf
     logo: cases-logos/avast.jpg
     text: Spinnaker helped the team cut down the time and work needed for the versioning of ConfigMaps and secrets. That's a pain to do other ways. Maybe it seems simple, but it’s a big deal for our team. The whole goal here is to not wake people up in the middle of the night. The rollback and no-downtime deployment features are things everybody wants to do. The thing that Spinnaker promises is automated canary analysis. That to me is the holy grail to enabling continuous deployment.
 
   - name: MakerBot
-    link: Case%20Study%20Makerbot%20-%20Letter%20size_10-12-19.pdf
+    link: Case%20Study%20Makerbot%20-%20Letter%20size_10-23-19.pdf
     logo: cases-logos/markerbot.jpg
     text: We originally envisioned transitioning toward Kubernetes on Google Cloud over three quarters. With Spinnaker’s open source flexibility, we completed the full migration in just 2.5 months. 
 
@@ -55,18 +55,18 @@ testimonials:
       - question: What is missing or could be improved in Spinnaker?
         answer: Documentation.
 
-  - name: SAP
+  - name: SAP Customer Experience
     logo: testimonials-logos/sap.png
     questions:
       - question: How did you discover Spinnaker?
-        answer: We discovered Spinnaker around summer 2018. At that time our team was tasked to build a blueprint for a standard CI/CD pipeline that could improve developer's productivity and reduce the lengthy development cycles. We explored various solutions from GitLab, Bamboo, Jenkins and Concourse. During our POCs, we got a lot of success with Spinnaker.
+        answer: SAP CX Site Reliability Engineering team discovered Spinnaker a year ago. At that time our team was tasked to build a blueprint for a standard CI/CD pipeline that could improve developer's productivity and reduce the lengthy development cycles. We explored various solutions from GitLab, Bamboo, Jenkins and Concourse. During our POCs, we got a lot of success with Spinnaker.
 
       - question: What was your experience getting started with Spinnaker?
         answer: The experience in general was a mix of challenges and positiveness coming from the fact that Spinnaker was open source. We spent a lot of time on the various community slack channels, asking questions and getting help from peers. We also did a lot of trial and error while configuring Spinnaker. But eventually, we started to understand how Spinnaker was architected and it made our experience more intuitive. We did not attend a class or webinar on Spinnaker back then. The decision to use it was solely based on the successful POC we did.
 
       - question: Where are you today with Spinnaker? What benefits has it provided to your team?
         answer: Today, we are using Spinnaker to run deployment pipelines for 10 development units. It translates to 30 kubernetes clusters in production and 40 distinct deployment pipelines based on official templates that our team is maintaining.
-                Our largest development projects are deploying 25 times in production (on average). We have teams performing 200 deployments in what we call PR namespaces, which are temporary namespaces to validate features before they reach the master branch and hit production.
+                Our largest development projects are deploying 25 times in production (daily average). We have teams performing 200 daily deployments in what we call PR namespaces, which are temporary namespaces to validate features before they reach the master branch and hit production.
                 Spinnaker has helped us scaling our CI/CD service beyond our line of business. We are now offering it as a shared service across SAP. In addition to the scale it provided, the speed to onboard new teams has also been another important benefit. By leveraging the Halyard configuration coupled with a GitOps approach, we are able to onboard teams using a self service model. Spinnaker also allows transparency and collaboration, its integration with slack which was already widely used helps the teams providing insights on their deployment flows.
 
       - question: What is missing or could be improved in Spinnaker?
