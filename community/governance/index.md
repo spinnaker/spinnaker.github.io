@@ -15,7 +15,7 @@ The broader community is organized around a set of special interest groups (SIGs
 
 To make clearer to community members how they might progressively get more involved and take more ownership in the project, we define the following appointed roles with their respective duties and qualifications.
 
-Roles are appointed by the Technical Oversight Committee (TOC). Roles can be revoked for reasons such as falling out of qualification, inactivity, or for violations of community guidelines.
+Roles are appointed by the Technical Oversight Committee (TOC). Roles can be revoked for reasons such as falling out of qualification, inactivity, or for violations of community guidelines. All role appointments and revocations are performed through a TOC vote.
 
 ### Active Community Members
 
@@ -94,6 +94,7 @@ Current TOC members:
 * Adam Jordens (Netflix)
 * Rob Zienert (Netflix)
 * Eric Zimanyi (Google)
+* Michael Plump (Google)
 
 The technical oversight committee is initially seeded with core members from Netflix and Google. We will leave further details such as number of seats, qualifications, tenure, TBD for the time being.
 
@@ -118,7 +119,7 @@ Current SC members:
 * Matt Duftler (Google)
 * Peter Stout (Netflix)
 * Ruslan Meshenberg (Netflix)
-* Steven Kim (Google)
+* Andrew Phillips (Google)
 
 The steering committee is initially seeded by Netflix and Google as the project matures and its structure stabilizes. We will leave further details such as number of seats, qualifications, tenure, appointing measures, TBD for the time being.
 

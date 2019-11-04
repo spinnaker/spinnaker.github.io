@@ -4,8 +4,25 @@ title:  "Stackdriver"
 sidebar:
   nav: setup
 ---
-
 {% include toc %}
+
+### Regarding using Spinnaker Monitoring metrics directly as Stackdriver Monitoring Custom Metrics
+
+As of July 2019, it should be noted that multiple teams running Spinnaker on clusters in GKE have have opted to export metrics to DataDog, Prometheus or other tools rather than using the spinnaker-monitoring daemon to create StackDriver Custom Metrics from the spinnaker-monitoring daemon as described below.
+
+The reason for this is that the spinnaker-monitoring service was not initially designed to run on Stackdriver Monitoring and contains a large number of metrics. Google bills for each of these Custom Metrics individually, which can add *substantial* cost with the number of metrics present in the daemon. It's also problematic that installing the default dashboards in the daemon directly into a Stackdriver Monitoring Dashboard requires a manual step of communicating with Google to get access to the Stackdriver Dashboard API ([as described below](#installing-the-stackdriver-dashboards)).
+
+### Are you saying Spinnaker doesn't support Stackdriver Logging and/or Monitoring?
+
+No! Spinnaker logs can be captured and searched by Stackdriver Logging with excellent results! Creating your own Stackdriver Custom Metrics from these logs can also be very useful! Stackdriver Logging, Monitoring and Stackdriver Custom Metrics have their place for those running Spinnaker on Google Cloud whether in GCE or GKE.
+
+What we are saying is that using the default spinnaker-monitoring microservices's metrics directly as Stackdriver Custom Metrics is not advised by multiple members of the community that have tried to go this course with undesirable results. The issues include higher than expected Stackdriver Monitoring charges and Stackdriver Monitoring Dashboards that did not function correctly after installation.
+
+Datadog and Prometheus are used with great success by a much larger portion of the Spinnaker community and are updated frequently, so the general recommendation from the Spinnaker Community would be to go one of those routes and then export specific metrics to Stackdriver Custom Metrics when necessary.
+
+With that said, *if you want to try it anyways*, below are instructions on how to automatically create Stackdriver Monitoring Custom Metrics from the stackdriver-monitoring daemon.  
+
+## Using Spinnaker for metric collection using Stackdriver Monitoring directly
 
 There are two ways to use [Stackdriver](https://cloud.google.com/stackdriver){:target="\_blank"}
 with Spinnaker. The easiest is
@@ -30,7 +47,7 @@ depending on your situation. If you are interested in using
 Stackdriver, please contact us through the Spinnaker Slack channel.
 
 
-# Installing Stackdriver
+
 
 ## Configure the Spinnaker monitoring daemon for Stackdriver
 
@@ -112,7 +129,7 @@ With your browser, log into
 [app.google.stackdriver.com](https://app.google.stackdriver.com){:target="\_blank"}
 and select your project. You should be able to see the various Spinnaker
 dashboards and select from them.
-
+                                                                                                         
 
 ## Caveats
 

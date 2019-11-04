@@ -8,10 +8,18 @@ sidebar:
 
 OAuth 2.0 is the preferred way to authenticate and authorize third parties access to your data guarded
 by the identity provider. To confirm your identity, Spinnaker requests access to your email address
-from your identity provider.
+from your identity provider.  Please read ALL of the documentation on this page as just setting the provider
+may not work for your environment.
 
 
 ## OAuth providers
+
+These OAuth 2.0 providers below have been pre-configured in Spinnaker. Follow the instructions to obtain a client ID 
+and client secret.
+
+* [Google Apps for Work / G Suite](./google/)
+* [GitHub Teams](./github/)
+* [Azure](./azure/)
 
 ### Pre-configured providers
 
@@ -21,7 +29,7 @@ For convenience, several providers are already pre-configured. As an administrat
 
 Provider | Halyard value | Provider-Specific Docs
 --- | --- | ---
-Google Apps for Work / G Suite | `google` | [Google Apps for Work / G Suite](./providers/google/)
+Google Apps for Work / G Suite | `google` | [Google Apps for Work / G Suite](./google/)
 GitHub | `github` | [GitHub Teams](https://help.github.com/articles/authorizing-oauth-apps/){:target="\_blank"}
 Azure | `azure` | [Azure](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-oauth-code){:target="\_blank"}
 
@@ -89,7 +97,8 @@ userInfoMapping:
 
 ## Network architecture and SSL termination
 
-During the OAuth [workflow](#workflow), Gate makes an intelligent guess on how to assemble a URI to
+During the OAuth [workflow](/reference/architecture/authz_authn/authentication/#workflow), Gate makes an intelligent 
+guess on how to assemble a URI to
 itself, called the **`redirect_uri`**. Sometimes this guess is wrong when Spinnaker is deployed
 in concert with other networking components, such as an SSL-terminating load balancer, or in the
 case of the [Quickstart](/setup/quickstart) images, a fronting Apache instance.
@@ -114,98 +123,6 @@ server:
     internalProxies: .*
 ```
 
-## Workflow
-
-The OAuth specification defines numerous flows for various scenarios. Spinnaker utilizes the
-**_authorization code flow_**, more commonly known as the three-legged OAuth.  The three-legged
-OAuth
-flow looks like:
-
-<div class="mermaid">
-    sequenceDiagram
-
-    participant Deck
-    participant Gate
-    participant IdentityProvider
-    participant ResourceServer
-
-    Deck->>+Gate: GET /something/protected
-    Gate->>-Deck: HTTP 302 to /login
-    Deck->>+Gate: GET /login
-    Gate->>-Deck: HTTP 302 to https://idp.url/userLogin?client_id=foo...
-
-    Deck->>+IdentityProvider: GET https://idp.url/userLogin?client_id=foo...
-    IdentityProvider->>-Deck: Returns login page
-</div>
-
-1. User attempts to access a protected resource.
-
-1. Gate redirects to OAuth provider, passing the following important bits:
-    * `client_id`: A pre-established identifier for this Gate instance.
-    * `redirect_uri`: Where to send the user after login. Must be accessible by the user's
-    browser.
-
-    > Gate attempts to intelligently guess the `redirect_uri` value, but outside components like
-    SSL terminating load balancers can cause this guess to be wrong. See
-    [here](#network-architecture-and-ssl-termination) for how to fix this.
-
-    * `response_type=code`: Indicating that we are performing the three-legged OAuth flow.
-    * `scope`: What data or resources Gate would like access to. This is generally something like
-    `email profile` to access the user's email address.
-
-1. OAuth provider prompts user for username & password.
-    <div class="mermaid">
-        sequenceDiagram
-
-        participant Deck
-        participant Gate
-        participant IdentityProvider
-        participant ResourceServer
-
-        Deck->>+IdentityProvider: User sends credentials
-        IdentityProvider->>-Deck: Confirms client_id 'foo' can access user's information
-        Deck->>+IdentityProvider: User confirms
-        IdentityProvider->>-Deck: HTTP 302 to https://gate.url/login?code=abcdef
-    </div>
-
-1. OAuth provider confirms that the user is granting Gate access to his profile.
-
-1. Using the `redirect_uri`, the OAuth provider redirects the user to this address, providing an
-additional `code` parameter.
-
-    <div class="mermaid">
-        sequenceDiagram
-
-        participant Deck
-        participant Gate
-        participant IdentityProvider
-        participant ResourceServer
-
-        Deck->>+Gate: GET /login?code=abcdef
-        Gate->>+IdentityProvider: POST /token "{code:abcdef, client_id:..., client_secret:...}"
-        IdentityProvider->>-Gate: Responds with access token `12345`
-        Gate->>+ResourceServer: GET /userInfo with "Authorization: Bearer 12345" header
-        ResourceServer->>-Gate: Respondes with JSON of user profile information
-        Note left of Gate: Gate extracts data based on userInfoMapping
-        Gate->>-Deck: HTTP 302 to originally requested URL
-    </div>
-
-1. Gate uses this `code` parameter to request an _access token_ from the OAuth provider's token
-server.
-
-1. Gate uses the _access token_ to request user profile data from the resource server
-(`security.oauth2.resource.userInfoUri`).
-
-1. Gate uses the `userInfoMapping` to extract specific fields from the response, such as your
-username and email address, and associates it with the established session cookie with your user.
-See UserInfoMapping below.
-
-
-The authorization code flow is the most secure way to get this data, because the _access token_
-is never revealed outside of the server using it.
-
-{% include mermaid %}
-
 ## Restricting access based on User Info
 
 User access can be restricted further based on the user info from an OAuth ID token. This
@@ -227,7 +144,7 @@ Now that you've authenticated the user, proceed to setting up their [authorizati
 
 ## Troubleshooting
 
-* Review the general [authentication workflow](/setup/security/authentication#workflow).
+* Review the general [authentication workflow](/reference/architecture/authz_authn/authentication/#workflow).
 
 * Use an [incognito window](/setup/security/authentication#incognito-mode).
 

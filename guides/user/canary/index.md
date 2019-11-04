@@ -31,8 +31,8 @@ canary judgment.
 
 Support is built in for [Stackdriver](https://cloud.google.com/stackdriver/docs/),
 [Datadog](https://docs.datadoghq.com/),
-[Prometheus](https://prometheus.io/docs/introduction/overview/), and
-[Signalfx](https://docs.signalfx.com).
+[Prometheus](https://prometheus.io/docs/introduction/overview/),
+[Signalfx](https://docs.signalfx.com), and [New Relic](https://docs.newrelic.com/).
 
 ### Set up your canary environment
 

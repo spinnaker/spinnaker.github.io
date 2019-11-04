@@ -15,14 +15,14 @@ _This doc will remain undiscoverable from the side navigation until we start alp
 
 ### Where am I?
 
-You probably arrived here from a tooltip on a declaratively manged resource.
+You probably arrived here from a tooltip on a declaratively managed resource.
 This page has some helpful information to get oriented, as well as some other links (coming...).
 
 
 ### What is happening?
 
 Spinnaker is managing this resource. 
-That means that the state of this resource is conrolled using a declarative config submitted to Spinnaker.
+That means that the state of this resource is controlled using a declarative config submitted to Spinnaker.
 
 
 ### Can I make changes in the UI to this resource?

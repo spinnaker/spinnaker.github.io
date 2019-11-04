@@ -76,17 +76,7 @@ sql:
 
 The following steps support a no downtime migration to SQL, substitute `S3StorageService` for the implementation specific to your environment.
 
-```yaml
-spinnaker:
-  migration:
-    enabled: true
-    primaryClass: com.netflix.spinnaker.front50.model.SqlStorageService
-    previousClass: com.netflix.spinnaker.front50.model.S3StorageService
-    compositeStorageService:
-      enabled: false
-```
-
-Assuming the migration looks good, the following will enable primary and previous writes while leaving reads pointed at previous.
+It will enable primary and previous writes while leaving reads pointed at previous.
 
 ```yaml
 spinnaker:

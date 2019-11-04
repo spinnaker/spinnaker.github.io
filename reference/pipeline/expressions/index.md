@@ -251,6 +251,16 @@ For example, `${#cfServiceKey("Create MySQL Service Key")["username"]}` will ret
 field of a service key which has been created for a MySQL service in a `Create Service Key` stage named
 "Create MySQL Service Key".
 
+### #triggerResolvedArtifact(String name)
+
+A shortcut to look up the resolved artifact in execution trigger by its name. If multiple artifacts are found, only 1 will be returned.
+For example, `${#triggerResolvedArtifact("my-image")["reference"]}` might return `gcr.io/spinnaker-marketplace/orca@sha256:b48dbe7d7cb580db8512e4687d31f3710185b08afcf3cb53c0203025f93f9091`.
+
+### #triggerResolvedArtifactByType(String type)
+
+A shortcut to look up the resolved artifact in execution trigger by its type. If multiple artifacts are found, only 1 will be returned.
+For example, `${#triggerResolvedArtifactByType("docker/image")["reference"]}` might return `gcr.io/spinnaker-marketplace/orca@sha256:b48dbe7d7cb580db8512e4687d31f3710185b08afcf3cb53c0203025f93f9091`.
+
 ## Whitelisted Java classes
 
 You can find the code which whitelists Java classes [here](https://github.com/spinnaker/orca/blob/6d0ba0bf8af5e06c5b405b8294f07e7a5a4c335a/orca-core/src/main/java/com/netflix/spinnaker/orca/pipeline/expressions/whitelisting/InstantiationTypeRestrictor.java#L26).

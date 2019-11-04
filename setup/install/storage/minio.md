@@ -22,7 +22,7 @@ on an endpoint reachable by Spinnaker. Record the following values:
 
 * `ENDPOINT`: The fully-qualifed endpoint Minio is reachable on. If Minio is
   running on the same machine as Spinnaker, this might be
-  `http://localhost:9001`.
+  `http://127.0.0.1:9001` (note that using `localhost` instead of `127.0.0.1` doesn't work because the AWS SDK will then try to connect to http://<bucket-name>.localhost:9001).
 
 * `MINIO_ACCESS_KEY`, `MINIO_SECRET_KEY`: The access/secret keypair you've
   configured Minio with. These env vars need to be visible to the Minio process
@@ -67,6 +67,9 @@ echo $MINIO_SECRET_KEY | hal config storage s3 edit --endpoint $ENDPOINT \
 
 hal config storage edit --type s3
 ```
+
+## Notes
+> :warning: Unless you've configured Minio to [support virtual-host-style requests](https://docs.min.io/docs/minio-server-configuration-guide.html#Domain), you need to enable the path-style access mode: `hal config storage s3 edit --path-style-access true`. Otherwise, Front50 will fail with `java.net.UnknownHostException: $BUCKET_NAME.localhost` exceptions.
 
 ## Next steps
 
