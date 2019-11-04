@@ -5,7 +5,7 @@ sidebar:
   nav: reference
 ---
 
-**The Git Repo artifact will be introduced in the upcoming 1.17 release.**
+**The Git Repo artifact is available in version 1.17 or later.**
 {: .notice--info}
 
 {% include toc %}
