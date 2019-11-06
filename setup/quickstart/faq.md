@@ -205,6 +205,6 @@ proxy definitions.
 
 ## What is the best way to delete a Spinnaker deployment?
 
-You can run the command `hal deploy clean` to delete an existing Spinnaker deployment. Note, this command destroys all Spinnaker artifacts in your target deployment environment. So, use it with caution and backup your configuration if you want to restore them. 
+Run `hal deploy clean` to delete an existing Spinnaker deployment. Note that this command destroys all Spinnaker artifacts in your target deployment environment. So, use it with caution and back up your configuration in case you want to restore it. 
 
 Once Spinnaker is deleted, you can delete Halyard by running `sudo ~/.hal/uninstall.sh`
