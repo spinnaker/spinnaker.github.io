@@ -7,7 +7,7 @@ sidebar:
 
 {% include toc %}
 
-You'll be interacting with Spinnaker's Managed Delivery using `curl` and the Spinnaker API for now.
+UI and version control support for Managed Delivery are currently limited, so you'll be interacting with Managed Delivery using `curl` and the Spinnaker API for most operations.
 
 Spinnaker accepts resource definitions in `yaml` and in `json`.
 

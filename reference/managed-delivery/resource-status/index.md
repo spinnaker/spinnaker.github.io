@@ -7,12 +7,12 @@ sidebar:
 
 {% include toc %}
 
-*If you're not sure what a Managed Resource is, check out our [overview of Managed Delivery](/reference/managed-delivery) first.*
+💡 *If you're not sure what a Managed Resource is, check out our [overview of Managed Delivery](/reference/managed-delivery) first.*
 
 ## Overview
 Managed Resources will always have a **status** which describes the current state of the resource from Spinnaker's perspective. A resource's status can help you quickly answer questions like:
   - Is Spinnaker taking automatic action on this resource right now?
-  - Does the actual configuration of this resource match the declarative configuration I gave to Spinnaker?
+  - Does the actual state of this resource match the declarative configuration I gave to Spinnaker?
   - Is something wrong with this resource?
 
 ## How to find a resource's status
@@ -64,7 +64,7 @@ While Spinnaker is managing a resource, manual changes made via the UI or the AP
     caption="Example of a resource with the Created status"
 %}
 
-When a resource has a Created status, it means Spinnaker was just told to start management and hasn't taken any action yet.
+When a resource has a Created status, it means Spinnaker has just received the resource’s declarative configuration and hasn't taken any action yet.
 
 If the actual state of the resource matches its declarative configuration, the resource will transition to the [Happy](/reference/managed-delivery/resource-status/#happy) status the next time Spinnaker checks it.
 
