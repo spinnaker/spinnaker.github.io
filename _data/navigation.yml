@@ -285,8 +285,6 @@ guides:
             url: /guides/tutorials/codelabs/artifactory-to-cf/
           - title: GCE Source To Prod
             url: https://codelabs.developers.google.com/codelabs/bake-and-deploy-pipeline
-          - title: Kubernetes Source To Prod
-            url: /guides/tutorials/codelabs/kubernetes-source-to-prod/
           - title: Kubernetes (Manifest Based) Source To Prod
             url: /guides/tutorials/codelabs/kubernetes-v2-source-to-prod/
           - title: Oracle Cloud Infrastructure Source To Prod
