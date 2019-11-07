@@ -42,20 +42,6 @@ Example response:
 
 ## Status Reference
 
-### Happy
-{%
-  include
-  figure
-  image_path="./resource-status-happy.png"
-  caption="Example of a resource with the Happy status"
-%}
-
-When a resource has a Happy status, all is well and the actual state of the resource matches its declarative configuration.
-
-If Spinnaker detects a drift from the declarative configuration in the future, the resource status will change to [Diff](/reference/managed-delivery/resource-status/#diff). Once Spinnaker starts taking automatic action to correct the drift, the status will change to [Actuating](/reference/managed-delivery/resource-status/#actuating).
-
-While Spinnaker is managing a resource, manual changes made via the UI or the API will be automatically reversed ("stomped") in favor of the declarative configuration.
-
 ### Created
 {%
   include
@@ -100,6 +86,34 @@ If automatic actions successfully resolve the drift, the status will change to [
 
 While Spinnaker is managing a resource, manual changes made via the UI or the API will be automatically reversed ("stomped") in favor of the declarative configuration.
 
+### Happy
+{%
+  include
+  figure
+  image_path="./resource-status-happy.png"
+  caption="Example of a resource with the Happy status"
+%}
+
+When a resource has a Happy status, all is well and the actual state of the resource matches its declarative configuration.
+
+If Spinnaker detects a drift from the declarative configuration in the future, the resource status will change to [Diff](/reference/managed-delivery/resource-status/#diff). Once Spinnaker starts taking automatic action to correct the drift, the status will change to [Actuating](/reference/managed-delivery/resource-status/#actuating).
+
+While Spinnaker is managing a resource, manual changes made via the UI or the API will be automatically reversed ("stomped") in favor of the declarative configuration.
+
+### Unhappy
+{%
+  include
+  figure
+  image_path="./resource-status-unhappy.png"
+  caption="Example of a resource with the Unhappy status"
+%}
+
+When a resource has an Unhappy status, it means Spinnaker detected a drift from the declarative configuration but hasn't been able to resolve it through automatic actions. This might mean that the actions Spinnaker has taken are failing, or something else is preventing the actions from having their desired effect.
+
+While a resource is Unhappy, Spinnaker will continue trying to resolve the drift and may eventually succeed. If it does, the resource will transition to the [Happy](/reference/managed-delivery/resource-status/#happy) status.
+
+You can go to the Tasks view in your app to see the actions Spinnaker is taking and troubleshoot. If you decide manual intervention is needed to remedy any issues you might discover, you can temporarily pause management on the Config view for your app.
+
 ### Paused
 {%
   include
@@ -124,20 +138,6 @@ When a resource has a Resumed status, it means management was just resumed after
 
 If a drift is detected, the status will change to [Diff](/reference/managed-delivery/resource-status/#diff). If no drift is detected, the status will change to [Happy](/reference/managed-delivery/resource-status/#unhappy).
 
-### Unknown
-{%
-  include
-  figure
-  image_path="./resource-status-unknown.png"
-  caption="Example of a resource with the Unknown status"
-%}
-
-When a resource has an Unknown status, it means Spinnaker was unable to determine the current status for some reason. Because the status is unknown, it's tough to tell by the status alone whether something is *wrong*, or just unexpected.
-
-After encountering this status, Spinnaker will continue trying to check the resource for its status and may eventually succeed. If it does, the resource will transition to whatever status is applicable at that time.
-
-If you see this status, it's probably best to investigate the current state of the resource manually and double check that nothing is broken. If you decide manual intervention is needed to remedy any issues you might discover, you can temporarily pause management on the Config view for your app.
-
 ### Error
 {%
   include
@@ -156,17 +156,16 @@ After an error, Spinnaker will continue trying to check the resource and may eve
 
 If you see this status, it's probably best to investigate the current state of the resource manually and double check that nothing is broken. If you decide manual intervention is needed to remedy any issues you might discover, you can temporarily pause management on the Config view for your app.
 
-
-### Unhappy
+### Unknown
 {%
   include
   figure
-  image_path="./resource-status-unhappy.png"
-  caption="Example of a resource with the Unhappy status"
+  image_path="./resource-status-unknown.png"
+  caption="Example of a resource with the Unknown status"
 %}
 
-When a resource has an Unhappy status, it means Spinnaker detected a drift from the declarative configuration but hasn't been able to resolve it through automatic actions. This might mean that the actions Spinnaker has taken are failing, or something else is preventing the actions from having their desired effect.
+When a resource has an Unknown status, it means Spinnaker was unable to determine the current status for some reason. Because the status is unknown, it's tough to tell by the status alone whether something is *wrong*, or just unexpected.
 
-While a resource is Unhappy, Spinnaker will continue trying to resolve the drift and may eventually succeed. If it does, the resource will transition to the [Happy](/reference/managed-delivery/resource-status/#happy) status.
+After encountering this status, Spinnaker will continue trying to check the resource for its status and may eventually succeed. If it does, the resource will transition to whatever status is applicable at that time.
 
-You can go to the Tasks view in your app to see the actions Spinnaker is taking and troubleshoot. If you decide manual intervention is needed to remedy any issues you might discover, you can temporarily pause management on the Config view for your app.
+If you see this status, it's probably best to investigate the current state of the resource manually and double check that nothing is broken. If you decide manual intervention is needed to remedy any issues you might discover, you can temporarily pause management on the Config view for your app.
