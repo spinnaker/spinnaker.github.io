@@ -119,7 +119,7 @@
    }
 
    .testimonials-container {
-        margin-top: 80px;
+        margin-top: 60px;
         overflow: hidden;
 
         h3 {
@@ -203,6 +203,29 @@
             }
         }
    }
+
+   .videos-container {
+        margin-top: 60px;
+        overflow: hidden;
+        font-size: $type-size-3;
+
+        h3 {
+            color: $masthead-color;
+            font-weight: 900;
+        }
+
+        h4 {
+            justify-content: center;
+            font-size: $type-size-6;
+            font-weight: 400;
+
+                }
+
+            }
+    .videos-wrapper {
+        padding: 22px 30px;
+        background: #e2f3f6;
+    }
 
    .bottom-right-swoosh {
        position: absolute;
