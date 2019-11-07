@@ -29,7 +29,7 @@ Example on a cluster:
 
 
 ### API
-If you're [setup to use the API](/reference/managed-delivery/getting-started/#env-setup) and have the [ID of a resource](/reference/managed-delivery/getting-started/#find-a-resources-id) you can use it to call the `/managed/resources/<resourceId>/status` endpoint.
+If you're [setup to use the API](/reference/managed-delivery/getting-started/#env-setup) and have the [ID of a resource](/reference/managed-delivery/getting-started/#find-a-resources-id) you can call the `/managed/resources/<resourceId>/status` endpoint.
 
 Example request:
 ```bash
@@ -52,7 +52,7 @@ Example response:
 
 When a resource has a Happy status, all is well and the actual state of the resource matches its declarative configuration.
 
-If Spinnaker detects a drift from the declarative configuration in the future, the resource will change status to [Diff](/reference/managed-delivery/resource-status/#diff). Once Spinnaker starts taking automatic action to correct the drift, the status will change to [Actuating](/reference/managed-delivery/resource-status/#actuating).
+If Spinnaker detects a drift from the declarative configuration in the future, the resource status will change to [Diff](/reference/managed-delivery/resource-status/#diff). Once Spinnaker starts taking automatic action to correct the drift, the status will change to [Actuating](/reference/managed-delivery/resource-status/#actuating).
 
 While Spinnaker is managing a resource, manual changes made via the UI or the API will be automatically reversed ("stomped") in favor of the declarative configuration.
 
@@ -66,7 +66,7 @@ While Spinnaker is managing a resource, manual changes made via the UI or the AP
 
 When a resource has a Created status, it means Spinnaker has just received the resource’s declarative configuration and hasn't taken any action yet.
 
-If the actual state of the resource matches its declarative configuration, the resource will transition to the [Happy](/reference/managed-delivery/resource-status/#happy) status the next time Spinnaker checks it.
+If the actual state of the resource matches the declarative configuration, the resource will transition to the [Happy](/reference/managed-delivery/resource-status/#happy) status the next time Spinnaker checks it.
 
 If Spinnaker detects a drift from the declarative configuration in the future, the resource will change status to [Diff](/reference/managed-delivery/resource-status/#diff). Once Spinnaker starts taking automatic action to correct the drift, the status will change to [Actuating](/reference/managed-delivery/resource-status/#actuating).
 
@@ -94,7 +94,7 @@ While Spinnaker is managing a resource, manual changes made via the UI or the AP
   caption="Example of a resource with the Actuating status"
 %}
 
-When a resource has an Actuating status, it means Spinnaker detected a drift from the declarative configuration and automatic action is in progress to resolve it. You can go to the Tasks view in your app to see the actions Spinnaker is taking on your behalf, and whether they succeeded or failed.
+When a resource has an Actuating status, it means Spinnaker detected a drift from the declarative configuration and an automatic action is in progress to resolve it. You can go to the Tasks view in your app to see the actions Spinnaker is taking on your behalf, and whether they succeeded or failed.
 
 If automatic actions successfully resolve the drift, the status will change to [Happy](/reference/managed-delivery/resource-status/#happy). If automatic actions don't help to resolve the drift, the status will change to [Unhappy](/reference/managed-delivery/resource-status/#unhappy).
 
@@ -146,7 +146,7 @@ If you see this status, it's probably best to investigate the current state of t
   caption="Example of a resource with the Error status"
 %}
 
-When a resource has an Error status, it means something went wrong while trying to check the resource for drift from its declarative configuration. Because something went wrong, Spinnaker can't take automatic actions and drift from the declarative configuration won't be resolved. Some examples of problems that might lead to an error status:
+When a resource has an Error status, it means something went wrong while trying to check the resource for drift from its declarative configuration. Because something went wrong, Spinnaker can't take automatic actions and drift from the declarative configuration won't be resolved (until something changes). Some examples of problems that might lead to an error status:
 
   - A problem retrieving or processing information about the current state of the resource
   - A problem with the declarative configuration (invalid settings, etc.)
