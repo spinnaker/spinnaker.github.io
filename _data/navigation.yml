@@ -63,8 +63,6 @@ setup:
             url: /setup/install/providers/appengine/
           - title: Google Compute Engine
             url: /setup/install/providers/gce/
-          - title: Kubernetes (Legacy)
-            url: /setup/install/providers/kubernetes/
           - title: Kubernetes (Manifest Based)
             url: /setup/install/providers/kubernetes-v2/
             collapsed: false
@@ -77,6 +75,8 @@ setup:
                 url: /setup/install/providers/kubernetes-v2/gke/
               - title: Oracle Container Engine
                 url: /setup/install/providers/kubernetes-v2/oke/
+          - title: Kubernetes (Legacy)
+            url: /setup/install/providers/kubernetes/
           - title: Oracle
             url: /setup/install/providers/oracle/
       - title: 3. Choose an Environment
