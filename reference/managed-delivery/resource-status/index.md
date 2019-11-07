@@ -110,7 +110,19 @@ While Spinnaker is managing a resource, manual changes made via the UI or the AP
 
 When a resource has a Paused status, it means Spinnaker is configured to continuously manage the resource but you've chosen to temporarily pause management. While management is paused Spinnaker won't check for drift from the declarative configuration, and it won't take any automatic actions. You can go to the Config view in your app to pause and resume management across the entire application.
 
-When you resume management, Spinnaker will check for drift from the declarative configuration. If a drift is detected, the status will change to [Diff](/reference/managed-delivery/resource-status/#diff). If no drift is detected, the status will change to [Happy](/reference/managed-delivery/resource-status/#unhappy).
+When you resume management the status will change to [Resumed](/reference/managed-delivery/resource-status/#resumed).
+
+### Resumed
+{%
+  include
+  figure
+  image_path="./resource-status-resumed.png"
+  caption="Example of a resource with the Resumed status"
+%}
+
+When a resource has a Resumed status, it means management was just resumed after being temporarily paused and Spinnaker hasn't checked for drift from the declarative configuration yet. You can go to the Config view in your app to pause and resume management across the entire application.
+
+If a drift is detected, the status will change to [Diff](/reference/managed-delivery/resource-status/#diff). If no drift is detected, the status will change to [Happy](/reference/managed-delivery/resource-status/#unhappy).
 
 ### Unknown
 {%
