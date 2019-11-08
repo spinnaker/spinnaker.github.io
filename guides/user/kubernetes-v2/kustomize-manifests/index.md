@@ -107,6 +107,36 @@ Define the artifact:
 
 You can now run your pipeline and get a Kustomize rendered manifest!
 
+## Updating 1.16 "Bake (Manifest)" stage for 1.17
+
+As of 1.17, [git/repo](/reference/artifacts/types/git-repo/) is the only supported artifact type when configuring the `Bake (Manifest)` stage in the UI with the `Kustomize`. 
+
+Pipelines configured to use Kustomize in 1.16 will continue to work in 1.17. However, editing a `Bake (Manifest)` stage in 1.17, which was originally created in 1.16, will require you to update the `Bake (Manifest) Configuration` to use the `git/repo` artifact type.  To do so you should follow these instructions:
+
+1. Click on the `Account` dropdown and select a configured `git/repo` account.  If none appear, make sure you have [configured a git/repo account](/reference/artifacts/types/git-repo/#configuration)  
+__Note:__ You should click and select a `git/repo` account even if one already appears in the UI prior to your doing so. This will force the underlying JSON to be updated to use the new artifact. 
+
+1. Update the URL. This should be the location of the git repository.  
+__example__: `https://github.com/kubernetes-sigs/kustomize`
+
+1. Provide the Kustomize file path. This should be the relative path to the `kustomization.yaml` within the repository.  
+__example__: `examples/wordpress/mysql/kustomization.yaml`
+
+{%
+  include
+  figure
+  caption="Before updating. The fields highlighed in red should be updated as described above."
+  image_path="./render-engine-pre-migration.png"
+%}
+
+{%
+  include
+  figure
+  caption="After updating."
+  image_path="./render-engine-post-migration.png"
+%}
+
+
 ## Other Templating Engines
 
 In addition to Kustomize, Spinnaker also supports Helm as a templating engine. For more information, see [Deploy Helm Charts](/guides/user/kubernetes-v2/deploy-helm/).
