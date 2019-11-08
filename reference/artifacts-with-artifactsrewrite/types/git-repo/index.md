@@ -17,8 +17,8 @@ repository can be cloned using the Git CLI.
 
 ## Configuration
 
-Configuring `git/repo` artifacts is not currently supported by Halyard.  As such, configuration for this artifact type must be 
-performed through a custom Clouddriver profile. 
+Configuring `git/repo` artifacts is not currently supported by Halyard.  As such, configuration for this artifact type must be
+performed through a custom Clouddriver profile.
 
 To configure a `git/repo` artifact account, add the following to `~/.hal/default/profiles/clouddriver-local.yml`:
 
