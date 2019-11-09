@@ -91,10 +91,11 @@ Logistics
 
 Current TOC members:
 
-* Adam Jordens (Netflix)
-* Rob Zienert (Netflix)
-* Eric Zimanyi (Google)
-* Michael Plump (Google)
+* [Adam Jordens](https://github.com/ajordens) (Netflix)
+* [Rob Zienert](https://github.com/robzienert) (Netflix)
+* [Eric Zimanyi](https://github.com/ezimanyi) (Google)
+* [Michael Plump](https://github.com/plumpy) (Google)
+* [Ethan Rogers](https://github.com/ethanfrogers) (Armory)
 
 The technical oversight committee is initially seeded with core members from Netflix and Google. We will leave further details such as number of seats, qualifications, tenure, TBD for the time being.
 

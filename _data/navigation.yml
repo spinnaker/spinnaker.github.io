@@ -63,8 +63,6 @@ setup:
             url: /setup/install/providers/appengine/
           - title: Google Compute Engine
             url: /setup/install/providers/gce/
-          - title: Kubernetes (Legacy)
-            url: /setup/install/providers/kubernetes/
           - title: Kubernetes (Manifest Based)
             url: /setup/install/providers/kubernetes-v2/
             collapsed: false
@@ -77,6 +75,8 @@ setup:
                 url: /setup/install/providers/kubernetes-v2/gke/
               - title: Oracle Container Engine
                 url: /setup/install/providers/kubernetes-v2/oke/
+          - title: Kubernetes (Legacy)
+            url: /setup/install/providers/kubernetes/
           - title: Oracle
             url: /setup/install/providers/oracle/
       - title: 3. Choose an Environment
@@ -285,8 +285,6 @@ guides:
             url: /guides/tutorials/codelabs/artifactory-to-cf/
           - title: GCE Source To Prod
             url: https://codelabs.developers.google.com/codelabs/bake-and-deploy-pipeline
-          - title: Kubernetes Source To Prod
-            url: /guides/tutorials/codelabs/kubernetes-source-to-prod/
           - title: Kubernetes (Manifest Based) Source To Prod
             url: /guides/tutorials/codelabs/kubernetes-v2-source-to-prod/
           - title: Oracle Cloud Infrastructure Source To Prod
@@ -550,6 +548,8 @@ reference:
             url: /reference/artifacts/types/gcs-object/
           - title: S3 Object
             url: /reference/artifacts/types/s3-object/
+          - title: Git Repo
+            url: /reference/artifacts/types/git-repo/
           - title: GitHub File
             url: /reference/artifacts/types/github-file/
           - title: GitLab File
@@ -590,6 +590,8 @@ reference:
             url: /reference/artifacts-with-artifactsrewrite/types/gcs-object/
           - title: S3 Object
             url: /reference/artifacts-with-artifactsrewrite/types/s3-object/
+          - title: Git Repo
+            url: /reference/artifacts-with-artifactsrewrite/types/git-repo/
           - title: GitHub File
             url: /reference/artifacts-with-artifactsrewrite/types/github-file/
           - title: GitLab File

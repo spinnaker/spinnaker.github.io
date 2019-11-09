@@ -8,6 +8,9 @@ redirect_from:
  - /setup/install/providers/kubernetes-v1/
 ---
 
+> ⚠️ Spinnaker's legacy Kubernetes provider (V1) is in maintenance mode.
+> We recommend using the [manifest-based provider (V2)](/setup/install/providers/kubernetes-v2) instead. 
+
 {% include toc %}
 
 For the Kubernetes provider, a Spinnaker [Account](/concepts/providers/#accounts)
