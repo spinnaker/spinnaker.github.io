@@ -39,7 +39,7 @@ manager will be the person posting about the releases in [the
 channel](https://app.slack.com/client/T091CRSGH/CHD4ATAMV/). They will evaluate
 the patch, make sure it's appropriate and safe, and merge it if so.
 
-Please make sure your pull request references a GubHub issue with enough details
+Please make sure your pull request references a GitHub issue with enough details
 to allow the release manager to evaluate your request. It should detail exactly
 what the impact of the bug is to users, how long it's been around, whether or
 not there are workarounds, etc. If there isn't an issue already open, you can
