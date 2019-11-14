@@ -142,6 +142,30 @@ jpmc_user:
 groundtruth_user:
   image_path: assets/images/users/groundtruth-logo.png
   alt: "GroundTruth Logo"  
+avast_user:
+  image_path: assets/images/users/avast_logo.png
+  alt: "Avast Logo"
+transunion_user:
+  image_path: assets/images/users/transunion_logo.png
+  alt: "TransUnion Logo"
+comcast_user:
+  image_path: assets/images/users/comcast_logo.png
+  alt: "Comcast Logo"
+sap_user:
+  image_path: assets/images/users/sap_logo.png
+  alt: "SAP Logo"    
+glovo_user:
+  image_path: assets/images/users/glovo_logo.jpg
+  alt: "Glovo Logo"
+capsilon_user:
+  image_path: assets/images/users/capsilon_logo.png
+  alt: "Capsilon Logo"    
+patreon_user:
+  image_path: assets/images/users/patreon_logo.png
+  alt: "Patreon Logo"
+chime_user:
+  image_path: assets/images/users/chime_logo.png
+  alt: "Chime Logo" 
 ---
 
 ## Engage the community and get support
@@ -166,100 +190,122 @@ The Spinnaker OSS project was started at Netflix, and today thrives on the contr
 
     Many people involved in the Spinnaker community can answer questions posed here. However, the principal developers don't monitor Stack Overflow as closely.
 
-
 ## Who's using Spinnaker?
 
 <div class="clearfix mb4">
   <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="alto_user" %}
     {% include spinnaker_user id="armory_user" %}
+    {% include spinnaker_user id="avast_user" %}
+
+  </div>
+  <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="box_user" %}
+    {% include spinnaker_user id="capsilon_user" %}
+    {% include spinnaker_user id="centeredge_user" %}
+        
   </div>
   <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="cerner_user" %}
-    {% include spinnaker_user id="centeredge_user" %}
     {% include spinnaker_user id="chartboost_user" %}
+    {% include spinnaker_user id="chime_user" %}
+        
   </div>
   <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="cisco_user" %}
     {% include spinnaker_user id="clarivate_user" %}
     {% include spinnaker_user id="cleartax_in_user" %}
+        
   </div>
   <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="cloudera_user" %}
+    {% include spinnaker_user id="comcast_user" %}
     {% include spinnaker_user id="contaazul_user" %}
-    {% include spinnaker_user id="dins_user" %}
+        
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="dins_user" %}
     {% include spinnaker_user id="getyourguide_user" %}
     {% include spinnaker_user id="gogo_user" %}
-    {% include spinnaker_user id="google_user" %}
-    
+        
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="google_user" %}
+    {% include spinnaker_user id="glovo_user" %}
     {% include spinnaker_user id="grab_user" %}
+        
+  </div>
+  <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="groundtruth_user" %}
     {% include spinnaker_user id="grubhub_user" %}
+    {% include spinnaker_user id="informatica_user" %}
     
   </div>
   <div class="clearfix flex items-center mb3">
-    {% include spinnaker_user id="informatica_user" %}
     {% include spinnaker_user id="jpmc_user" %}
-    {% include spinnaker_user id="kenzan_user" %}
- 
+    {% include spinnaker_user id="kenzan_user" %} 
+    {% include spinnaker_user id="launchdarkly_user" %}
+            
   </div>
   <div class="clearfix flex items-center mb3">
-    {% include spinnaker_user id="launchdarkly_user" %}
     {% include spinnaker_user id="lookout_user" %}
     {% include spinnaker_user id="makerbot_user" %}
-    
+    {% include spinnaker_user id="mercari_user" %}
+            
   </div>
   <div class="clearfix flex items-center mb3">
-    {% include spinnaker_user id="mercari_user" %}
     {% include spinnaker_user id="mulesoft_user" %}
     {% include spinnaker_user id="nearpod_user" %}
-    
+    {% include spinnaker_user id="nest_user" %}
+            
   </div>
   <div class="clearfix flex items-center mb3">
-    {% include spinnaker_user id="nest_user" %}
     {% include spinnaker_user id="netflix_user" %}
     {% include spinnaker_user id="opsmx_user" %}
-    
+    {% include spinnaker_user id="optimizely_user" %}
+        
   </div>
   <div class="clearfix flex items-center mb3">
-    {% include spinnaker_user id="optimizely_user" %}
-    {% include spinnaker_user id="plaid_user" %} 
+    {% include spinnaker_user id="patreon_user" %}
+    {% include spinnaker_user id="plaid_user" %}
     {% include spinnaker_user id="plangrid_user" %}
-    
+       
   </div>
   <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="purestorage_user" %}
     {% include spinnaker_user id="redbox_user" %}
     {% include spinnaker_user id="smartthings_user" %}
-    
-  </div>
+            
+  </div>  
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="sap_user" %}
     {% include spinnaker_user id="schibsted_user" %}
     {% include spinnaker_user id="scopely_user" %}
-    {% include spinnaker_user id="skuid_user" %}
-    
+        
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="skuid_user" %}
     {% include spinnaker_user id="target_user" %}
+    {% include spinnaker_user id="transunion_user" %}
+        
+  </div>
+    <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="underarmour_user" %} 
     {% include spinnaker_user id="uneeq_user" %}
+    {% include spinnaker_user id="waze_user" %}
 
   </div>
-  <div class="clearfix flex items-center mb3">
-    {% include spinnaker_user id="waze_user" %}
+    <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="weatherbug_user" %}
     {% include spinnaker_user id="xiaohongshu_user" %}
+
   </div>
+
 </div>
 
 ## Project Governance
 
 Spinnaker is an OSS project owned and run by the community, through a structure of appointed roles. One important goal of this governance model is to make it easier for everyone to figure out how to get involved. If you want to get involved, we want to help you get there! As the project grows and its needs evolve, we will - as a community - continue to revisit and shape this structure.
 
-You can read more about how you can get involved through project SIGs, roles, and standing committees in the [Governance](/community/governance) section.
+You can read more about how you can get involved through project SIGs, roles, and standing committees in the [Governance](https://github.com/spinnaker/community) section.
 
