@@ -679,22 +679,11 @@ community:
       - title: Code Conventions for Server-side Components
         url: /community/contributing/back-end-code/
   - title: Governance
-    collapsed: true
-    children:
-      - title: Overview
-        url: /community/governance/
-      - title: Special Interest Groups
-        url: /community/governance/sigs
-  - title: Misc
-    collapsed: true
-    children:
-      - title: FAQs
-        url: /community/faqs/
+    url: https://github.com/spinnaker/community/
+  - title: FAQs
+    url: /community/faqs/
   - title: Security
-    collapsed: true
-    children:
-      - title: Security
-        url: /community/security/
+    url: /community/security/
 
 publications:
   - title: eBook
