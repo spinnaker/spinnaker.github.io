@@ -5,7 +5,7 @@
         overflow: hidden;
 
         .spin_header__text {
-            max-width: 1050px;
+            max-width: 750px;
 
             h1 {
                 font-size: $type-size-1;
@@ -119,7 +119,7 @@
    }
 
    .testimonials-container {
-        margin-top: 80px;
+        margin-top: 40px;
         overflow: hidden;
 
         h3 {
@@ -203,6 +203,76 @@
             }
         }
    }
+
+   .videos-container {
+        background: #e2f3f6;
+        margin-top: 40px;
+        margin: 0 auto;
+        padding: .75em .75em;
+        max-width: 100%;
+        font-size: $type-size-3;
+
+        h3 {
+            color: $masthead-color;
+            font-weight: 900;
+        }
+
+        h6 {
+            font-weight: 200;
+
+                }
+
+            }
+
+  .video-item {
+       overflow: hidden;
+  }
+
+  .video-wrap {
+       position: relative;
+       padding-bottom: 10%;
+   }
+
+  .video-item iframe {
+       position: absolute;
+       top: 0;
+       right: 0;
+       bottom: 0;
+       left: 0;
+       width: 95%;
+       height: 95%;
+       margin-top: 0;
+     }
+
+
+  .video-item p {
+       display: block;
+       margin-top: 1em;
+       margin-bottom: 0em;
+       margin-left: 10;
+       margin-right: 10;
+    }
+
+@supports (display: grid) {
+
+  .video-grid {
+       display: grid;
+       grid-template-columns: 1fr 1fr 1fr;
+       grid-template-rows: repeat(2, 1fr);
+       grid-column-gap: 10px;
+       margin: 0 0em;
+    }
+
+  .video-item {
+       margin-top: 0;
+    }
+
+  .video-item iframe {
+       border: 0.125rem solid transparent;
+    }
+
+}
+
 
    .bottom-right-swoosh {
        position: absolute;

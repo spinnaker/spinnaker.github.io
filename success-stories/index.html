@@ -1,14 +1,14 @@
 ---
-layout: success-stories 
+layout: success-stories
 title:  "Success Stories"
-intro: "Real world use cases from global software enterprise companies and start ups about the impact of using Spinnaker in their organizations."
-description: "Click on the box to learn how developers are the key change agents in their companies."
+intro: "Real world use cases about the transformative power of Spinnaker"
+description: "See how developers are the key change agents in their companies."
 sidebar:
-  nav: success-stories 
+  nav: success-stories
 ---
 
 <div class="success-stories-container">
-    {% for story in site.data.success-stories.cases %}  
+    {% for story in site.data.success-stories.cases %}
         <article>
             <a href="{{story.link}}" target="_blank">
                 <h4>{{story.name}}</h4>
@@ -32,16 +32,16 @@ sidebar:
     </p>
 
     <div class="testimonials-wrapper">
-        {% for test in site.data.success-stories.testimonials %}  
+        {% for test in site.data.success-stories.testimonials %}
             <article>
                 <header>
                     <figure>
                         <img src="{{test.logo}}" alt="{{test.name}}">
                     </figure>
                 </header>
-    
+
                 <div class="questions-wrapper">
-                    {% for quest in test.questions %}  
+                    {% for quest in test.questions %}
                         <p class="question">{{quest.question}}</p>
                         <p class="answer">{{quest.answer}}</p>
                     {% endfor %}
@@ -53,6 +53,51 @@ sidebar:
     <p>
         Want to share your Spinnaker Success Story? <a href="https://spinnaker.formstack.com/forms/spinnaker_testimonials" target="_blank">Click here!</a>
     </p>
-    
-    <img class="bottom-right-swoosh" src="{{ "assets/images/bottom-right-swoosh.svg" | absolute_url }}" alt="Spinnaker Swoosh"/>
 </div>
+<div class="videos-container">
+
+    <h3>Videos</h3>
+    <h6>Conference talks, interviews, and video testimonials from the Spinnaker Community<h6>
+
+    <div class="video-grid">
+
+    <div class="video-item">
+    <p>Migrating AirBnb To Spinnaker</p>
+   <div class="video-wrap">
+    <iframe width="640" height="360" src="https://www.youtube.com/embed/vQCkAkya_Yg" frameborder="0" allow="autoplay; encrypted-media" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div></div>
+
+    <div class="video-item">
+    <p>Cisco: On-Prem to Cloud Native & OSS Spinnaker</p>
+    <div class="video-wrap">
+    <iframe width="640" height="360" src="https://www.youtube.com/embed/i_IO2G-aNhI" frameborder="0" allow="autoplay; encrypted-media" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div></div>
+
+    <div class="video-item">
+    <p>Overcoming Challenges in Adopting Spinnaker</p>
+    <div class="video-wrap">
+    <iframe width="640" height="360" src="https://www.youtube.com/embed/qcXrJECtDqY" frameborder="0" allow="autoplay; encrypted-media" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div></div>
+
+    <div class="video-item">
+    <p>Andy Glover: How Netflix Runs Spinnaker @ Scale</p>
+    <div class="video-wrap">
+    <iframe width="640" height="360" src="https://www.youtube.com/embed/dPgiBXRJ3zs" frameborder="0" allow="autoplay; encrypted-media" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div></div>
+
+    <div class="video-item">
+    <p>Spinnaker Canary Deployments, Istio & K8S</p>
+    <div class="video-wrap">
+    <iframe width="640" height="360" src="https://www.youtube.com/embed/CmZWau04ZS4" frameborder="0" allow="autoplay; encrypted-media" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div></div>
+
+    <div class="video-item">
+    <p>Adopting Spinnaker Across Teams</p>
+    <div class="video-wrap">
+    <iframe width="640" height="360" src="https://www.youtube.com/embed/sCDbS5bAoWU" frameborder="0" allow="autoplay; encrypted-media" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div></div>
+
+</div></div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<img class="bottom-right-swoosh" src="{{ "assets/images/bottom-right-swoosh.svg" | absolute_url }}" alt="Spinnaker Swoosh"/>
