@@ -156,7 +156,7 @@ SA_EMAIL=$(gcloud iam service-accounts list \
     --filter="displayName:$SERVICE_ACCOUNT_NAME" \
     --format='value(email)')
 
-PROJECT=$(gcloud config get-value project
+PROJECT=$(gcloud config get-value project)
 
 gcloud projects add-iam-policy-binding $PROJECT \
     --role roles/pubsub.subscriber --member serviceAccount:$SA_EMAIL
