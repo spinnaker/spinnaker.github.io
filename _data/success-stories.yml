@@ -101,7 +101,7 @@ testimonials:
         answer: In our infrastructure, we were using Ansible and slowly Spinnaker started replacing it.
 
       - question: Where are you today with Spinnaker? What benefits has it provided to your team?
-        answer: We are using Spinnaker in dev, test and production. We have implemented Spinnaker as a deployment tool for many applications. Key advantages include faster deployments, user confirmation when needed, and access control. 
+        answer: We are using Spinnaker in dev, test, and production. We have implemented Spinnaker as a deployment tool for many applications. Key advantages include faster deployments, user confirmation when needed, and access control. 
 
       - question: What is missing or could be improved in Spinnaker?
         answer: The UI can be made more intuitive and troubleshooting can be made a lot easier.
