@@ -16,7 +16,7 @@ to manage the roles users are granted.
 In order to access a user's group membership, we must use the Google Admin Directory API. We will
 setup a Google Cloud Platform (GCP) service account and grant it access to the Directory API.
 
-1. Enable the Admin SDK [here](https://console.cloud.google.com/apis/api/admin/overview){:target="\_blank"}.
+1. Enable the Admin SDK [here](https://console.cloud.google.com/apis/library/admin.googleapis.com){:target="\_blank"}.
 
 1. In your [Cloud Console](https://console.cloud.google.com){:target="\_blank"},
 create a service account that will access the G Suite Directory API.
