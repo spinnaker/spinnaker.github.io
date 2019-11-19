@@ -95,7 +95,7 @@ testimonials:
     quote: "We love the simple command-line interface for administration, integration with multiple platforms, and easy configurability using pipelines."
     questions:
       - question: How did you discover Spinnaker?
-        answer: We love the simple command line interface for administration, integration with multiple platforms, and easy configurability using pipelines.
+        answer: We love the simple command-line interface for administration, integration with multiple platforms, and easy configurability using pipelines.
 
       - question: What was your experience getting started with Spinnaker?
         answer: In our infrastructure, we were using Ansible and slowly Spinnaker started replacing it.
