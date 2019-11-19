@@ -23,7 +23,7 @@ cases:
   - name: Waze
     link: https://cloud.google.com/blog/products/gcp/guest-post-multi-cloud-continuous-delivery-using-spinnaker-at-waze
     logo: cases-logos/waze.jpg
-    text: Thanks to Spinnaker, developers can focus on developing business logic rather than becoming experts on each cloud platform. Teams can track the lifecycle of a deployment using several notification mechanisms including email, Slack and SMS, allowing them to coordinate handoffs between developer and QA teams.
+    text: Thanks to Spinnaker, developers can focus on developing business logic rather than becoming experts on each cloud platform. Teams can track the lifecycle of a deployment using several notification mechanisms including email, Slack, and SMS, allowing them to coordinate handoffs between developer and QA teams.
 
 testimonials:
   - name: Airbnb
