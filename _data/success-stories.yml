@@ -92,7 +92,7 @@ testimonials:
 
   - name: TransUnion
     logo: testimonials-logos/transunion.png
-    quote: "We love the simple command line interface for administration, integration with multiple platforms, and easy configurability using pipelines."
+    quote: "We love the simple command-line interface for administration, integration with multiple platforms, and easy configurability using pipelines."
     questions:
       - question: How did you discover Spinnaker?
         answer: We love the simple command line interface for administration, integration with multiple platforms, and easy configurability using pipelines.
