@@ -626,6 +626,8 @@ reference:
             url: /reference/halyard/secrets/
           - title: S3
             url: /reference/halyard/secrets/s3-secrets/
+          - title: GCS
+            url: /reference/halyard/secrets/gcs-secrets/
   - title: Architecture
     collapsed: true
     children:
