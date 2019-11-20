@@ -28,7 +28,7 @@ github:
   token: <TOKEN>
 ```
 
-Note: You could choose to store the password under different keys than `github.password` and `github.token`. You'd just need to change how to reference the secret further down.
+Note: You could choose to store the password under different keys than `github.password` and `github.token`. You'd just need to [change how to reference the secret](#referencing-secrets).
 
 ### Storing sensitive files
 Some Spinnaker configuration uses information stored as files. For example, upload the `kubeconfig` file of your Kubernetes account directly to `mybucket/mykubeconfig`:
