@@ -123,7 +123,7 @@ auth:
     - scope2
 ```
 
-Read [the OAuth setup instructions](https://www.spinnaker.io/setup/security/authentication/oauth/providers/)
+Read [the OAuth setup instructions](https://www.spinnaker.io/setup/security/authentication/oauth/)
 to see examples for acquiring a clientId/clientSecret from your provider.
 
 This OAuth2 configuration method needs to be initialized once to authenticate with the provider before
