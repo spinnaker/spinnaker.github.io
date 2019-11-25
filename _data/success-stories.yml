@@ -1,77 +1,108 @@
 cases:
-  - name: Netflix
-    link: https://medium.com/netflix-techblog/global-continuous-delivery-with-spinnaker-2a6896c23ba7
-    logo: cases-logos/netflix.jpg
-    text: The community uptake has been tremendous. Having a platform that is out-of-the-box accommodates multiple cloud providers and an extensible model to participate within, means that we are one large community rather than a bunch of micro-communities focused on various forks. This has the benefit that everyone within the community can take advantage of various innovations.
-
-  - name: Waze
-    link: https://cloud.google.com/blog/products/gcp/guest-post-multi-cloud-continuous-delivery-using-spinnaker-at-waze
-    logo: cases-logos/waze.jpg
-    text: Thanks to Spinnaker, developers can focus on developing business logic rather than becoming experts on each cloud platform. Teams can track the lifecycle of a deployment using several notification mechanisms including email, Slack and SMS, allowing them to coordinate handoffs between developer and QA teams.
 
   - name: Avast
     link: Avast_10-25-19.pdf
     logo: cases-logos/avast.jpg
-    text: Spinnaker helped the team cut down the time and work needed for the versioning of ConfigMaps and secrets. That's a pain to do other ways. Maybe it seems simple, but it’s a big deal for our team. The whole goal here is to not wake people up in the middle of the night. The rollback and no-downtime deployment features are things everybody wants to do. The thing that Spinnaker promises is automated canary analysis. That to me is the holy grail to enabling continuous deployment.
-
-  - name: MakerBot
-    link: Case%20Study%20Makerbot%20-%20Letter%20size_10-23-19.pdf
-    logo: cases-logos/markerbot.jpg
-    text: We originally envisioned transitioning toward Kubernetes on Google Cloud over three quarters. With Spinnaker’s open source flexibility, we completed the full migration in just 2.5 months. 
+    text: The whole goal here is to not wake people up in the middle of the night. The rollback and no-downtime deployment features are things everybody wants to do. The thing that Spinnaker promises is automated canary analysis. That to me is the holy grail to enabling continuous deployment.
 
   - name: Lookout
     link: Lookout_10072019.pdf
     logo: cases-logos/lookout.jpg
     text: We knew our product had game changing potential in the government sector, but our existing deployment framework was too human-intensive and time consuming for FedRAMP compliance. Spinnaker provided the platform, support, and delivery pipeline we needed to bring our patch deployment times up to speed.	
+  
+  - name: MakerBot
+    link: Case%20Study%20Makerbot%20-%20Letter%20size_10-23-19.pdf
+    logo: cases-logos/markerbot.jpg
+    text: We originally envisioned transitioning toward Kubernetes on Google Cloud over three quarters. With Spinnaker’s open source flexibility, we completed the full migration in just 2.5 months. 
+
+  - name: Netflix
+    link: https://medium.com/netflix-techblog/global-continuous-delivery-with-spinnaker-2a6896c23ba7
+    logo: cases-logos/netflix.jpg
+    text: The community uptake has been tremendous. Having a platform that has an extensible model, and accommodates multiple cloud providers out of the box, means that we are one large community rather than a bunch of micro-communities focused on various forks. This has the benefit of allowing everyone within the community to take advantage of various innovations.
+
+  - name: Waze
+    link: https://cloud.google.com/blog/products/gcp/guest-post-multi-cloud-continuous-delivery-using-spinnaker-at-waze
+    logo: cases-logos/waze.jpg
+    text: Thanks to Spinnaker, developers can focus on developing business logic rather than becoming experts on each cloud platform. Teams can track the lifecycle of a deployment using several notification mechanisms including email, Slack, and SMS, allowing them to coordinate handoffs between developer and QA teams.
 
 testimonials:
-  - name: TransUnion
-    logo: testimonials-logos/transunion.png
+  - name: Airbnb
+    logo: testimonials-logos/airbnb_logo.png
+    quote: "We are planning to open up Spinnaker to all services and make it the default deployment tool in 2020."
     questions:
       - question: How did you discover Spinnaker?
-        answer: We love the simple command line interface for administration, integration with multiple platforms and easily configurable using pipelines.
+        answer: I watched a tech talk in 2017 about how Waze was using Spinnaker and Automated Canary Analysis. I'd been following Spinnaker's development ever since.
+                There had been several discussions in the past about Spinnaker, but these never really materialized.
+                Late 2018, when the time was right for Airbnb to consider a new solution for Continuous Delivery, Spinnaker was added to the shortlist.
 
       - question: What was your experience getting started with Spinnaker?
-        answer: In our infrastructure, we were using Ansible and slowly Spinnaker started replacing it.
+        answer: Airbnb's existing deployment tooling (Deployboard), wasn't built with multi-stage releases in mind. While it does a good job at deploying to a specific environment. It didn't allow for orchestration of deployment pipelines. While we built good validation tooling like integration testing frameworks and traffic replay tools in-house, we couldn't integrate them into the deployment process due to the lack of deployment pipelines. As a result, these tools were not living up to their full potential.
+               As Airbnb transitioned into a Service Oriented Architecture, the deployment process became more complex. Teams ended up writing manual run books with many steps to follow to deploy a service. As the complexity increased, so did the number of incidents.
+               Deployment related incidents started having a material effect on our overall website up-time. Spinnaker provides Automated Canary Analysis out of the box. Which is another big lever for us.
+               Rather than extending the tooling we have, we decided to invest in Spinnaker. We can leverage the community and contribute back, rather than building a closed-source in-house deployment tool. Many of the deployment challenges we face are not unique to just Airbnb.
 
       - question: Where are you today with Spinnaker? What benefits has it provided to your team?
-        answer: We are using Spinnaker in dev, test and production. We have implemented Spinnaker as a deployment tool for many applications. Key advantages include faster deployments, user confirmation when needed and access control. 
-
+        answer: Our tech stack consists of many Java and Ruby backend services running on Kubernetes. Our frontend is powered by Node. Airbnb is doing a large push to migrate all of its infrastructure to Kubernetes. We are migrating our monolith to SOA.
+               We are adopting Spinnaker slowly; rather than doing a forced mass-migration, we want to prove it's value-add for Airbnb engineering. We started by deploying Spinnaker with Spinnaker, so that we could get a handle on what it would take to deploy Airbnb services with Spinnaker.
+               After that, we migrated a small subset of non-critical services. We used customer feedback from these very early adopters to drive feature development. Some Airbnb specific tooling like our in-house CI system needed to be integrated with Spinnaker.
+               Once we'd proven that we could deploy these services, we moved towards onboarding the most critical services onto Spinnaker. The goal here is to prevent regressions. This is where we are currently at.
+               We are in the process migrating all of Airbnb's payments stack and most of our core services to Spinnaker. We are already seeing the effectiveness of Spinnaker and ACA. It has already prevented a dozen regressions.
+               In parallel, we continue feature development and are load-testing Spinnaker to ensure that we can handle all of Airbnb's services. We are planning to open up Spinnaker to all services and make it the default deployment tool in 2020.
+  
       - question: What is missing or could be improved in Spinnaker?
-        answer: The UI can be made more intuitive and troubleshooting can be made a lot easier.
+        answer: Spinnaker's User Interface can be hit or miss. Some parts are not as user-friendly. For example, figuring out why ACA failed can take up to 5 mouse-clicks. We are working on improving some parts of this and are hoping to eventually contribute back to the open source community.
+                We are very excited about the work being done around a plugin-based architecture. While Spinnaker itself is already fairly extensible as a result of it being built in Spring-boot, the team believes this will really turn Spinnaker into an extensible platform for Continuous Delivery.
+                In 2020, once our traffic tooling supports this, we will try and leverage some of the more advanced deployment patterns Spinnaker provides like Blue/Green deployments.
+                We are also excited to use Spinnaker as a more general workflow tool to run things like migrations, database schema changes, and many other processes that can be automated with deployment pipelines.
+                We'd also love to integrate ACA with our feature-flagging system (Trebuchet) so that we can safely launch features and ramp up the rollout over time.
 
   - name: Comcast
     logo: testimonials-logos/comcast.png
+    quote: "Installing it on a VM was a breeze."
     questions:
       - question: How did you discover Spinnaker?
-        answer: Actively using Spinnaker in a previous client project.
+        answer: I was actively using Spinnaker in a previous client project.
 
       - question: What was your experience getting started with Spinnaker?
         answer: Installing it on VM was a breeze whereas installing it on K8s needed some extra steps and was not clearly documented.
 
       - question: Where are you today with Spinnaker? What benefits has it provided to your team?
-        answer: A good CD tool for K8s deployments.
+        answer: Spinnaker is a good CD tool for K8s deployments.
 
       - question: What is missing or could be improved in Spinnaker?
-        answer: Documentation.
+        answer: Documentation could be improved.
 
   - name: SAP Customer Experience
     logo: testimonials-logos/sap.png
+    quote: "Our largest development projects are deploying 25 times in production (daily average)."
     questions:
       - question: How did you discover Spinnaker?
         answer: SAP CX Site Reliability Engineering team discovered Spinnaker a year ago. At that time our team was tasked to build a blueprint for a standard CI/CD pipeline that could improve developer's productivity and reduce the lengthy development cycles. We explored various solutions from GitLab, Bamboo, Jenkins and Concourse. During our POCs, we got a lot of success with Spinnaker.
 
       - question: What was your experience getting started with Spinnaker?
-        answer: The experience in general was a mix of challenges and positiveness coming from the fact that Spinnaker was open source. We spent a lot of time on the various community slack channels, asking questions and getting help from peers. We also did a lot of trial and error while configuring Spinnaker. But eventually, we started to understand how Spinnaker was architected and it made our experience more intuitive. We did not attend a class or webinar on Spinnaker back then. The decision to use it was solely based on the successful POC we did.
+        answer: The experience in general was a mix of challenges and positiveness coming from the fact that Spinnaker was open source. We spent a lot of time on the various community Slack channels, asking questions and getting help from peers. We also did a lot of trial and error while configuring Spinnaker. But eventually, we started to understand how Spinnaker was architected and it made our experience more intuitive. We did not attend a class or webinar on Spinnaker back then. The decision to use it was solely based on the successful POC we did.
 
       - question: Where are you today with Spinnaker? What benefits has it provided to your team?
-        answer: Today, we are using Spinnaker to run deployment pipelines for 10 development units. It translates to 30 kubernetes clusters in production and 40 distinct deployment pipelines based on official templates that our team is maintaining.
+        answer: Today, we are using Spinnaker to run deployment pipelines for 10 development units. It translates to 30 Kubernetes clusters in production and 40 distinct deployment pipelines based on official templates that our team is maintaining.
                 Our largest development projects are deploying 25 times in production (daily average). We have teams performing 200 daily deployments in what we call PR namespaces, which are temporary namespaces to validate features before they reach the master branch and hit production.
-                Spinnaker has helped us scaling our CI/CD service beyond our line of business. We are now offering it as a shared service across SAP. In addition to the scale it provided, the speed to onboard new teams has also been another important benefit. By leveraging the Halyard configuration coupled with a GitOps approach, we are able to onboard teams using a self service model. Spinnaker also allows transparency and collaboration, its integration with slack which was already widely used helps the teams providing insights on their deployment flows.
+                Spinnaker has helped us scale our CI/CD service beyond our line of business. We are now offering it as a shared service across SAP. In addition to the scale it provided, the speed to onboard new teams has been another important benefit. By leveraging the Halyard configuration coupled with a GitOps approach, we are able to onboard teams using a self service model. Spinnaker also allows transparency and collaboration, its integration with Slack which was already widely used helps the teams providing insights on their deployment flows.
 
       - question: What is missing or could be improved in Spinnaker?
         answer: Documentation and API to manage the Halyard configuration are two important things for us. We would to programmatically configure Spinnaker without having to manipulate config files. our team has started wrapping Halyard into an API, but that work is moving slowly since we want to see where Spinnaker is heading to. We also need more security, especially around the docker images that are used by Spinnaker.
 
+  - name: TransUnion
+    logo: testimonials-logos/transunion.png
+    quote: "We love the simple command-line interface for administration, integration with multiple platforms, and easy configurability using pipelines."
+    questions:
+      - question: How did you discover Spinnaker?
+        answer: We love the simple command-line interface for administration, integration with multiple platforms, and easy configurability using pipelines.
 
+      - question: What was your experience getting started with Spinnaker?
+        answer: In our infrastructure, we were using Ansible and slowly Spinnaker started replacing it.
 
-        
+      - question: Where are you today with Spinnaker? What benefits has it provided to your team?
+        answer: We are using Spinnaker in dev, test, and production. We have implemented Spinnaker as a deployment tool for many applications. Key advantages include faster deployments, user confirmation when needed, and access control. 
+
+      - question: What is missing or could be improved in Spinnaker?
+        answer: The UI can be made more intuitive and troubleshooting can be made a lot easier.
+

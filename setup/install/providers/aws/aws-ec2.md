@@ -51,7 +51,7 @@ If you want to use AccessKeys and Secrets to run Spinnaker
 
 ```bash
 
-curl https://d3079gxvs8ayeg.cloudfront.net/templates/managing.yaml
+curl -O https://d3079gxvs8ayeg.cloudfront.net/templates/managing.yaml
 echo "Optionally add Managing account to the file downloaded as shown on line 158 in the SpinnakerAssumeRolePolicy section of the downloaded file."
 aws cloudformation deploy --stack-name spinnaker-managing-infrastructure-setup --template-file managing.yaml \
 --parameter-overrides UseAccessKeyForAuthentication=true --capabilities CAPABILITY_NAMED_IAM --region us-west-2
@@ -61,7 +61,7 @@ If you want to use InstanceProfile run Spinnaker
 
 ```bash
 
-curl https://d3079gxvs8ayeg.cloudfront.net/templates/managing.yaml
+curl -O https://d3079gxvs8ayeg.cloudfront.net/templates/managing.yaml
 echo "Optionally add Managing account to the file downloaded as shown on line 158 in the SpinnakerAssumeRolePolicy section of the downloaded file."
 aws cloudformation deploy --stack-name spinnaker-managing-infrastructure-setup --template-file managing.yaml \
 --parameter-overrides UseAccessKeyForAuthentication=false --capabilities CAPABILITY_NAMED_IAM --region us-west-2
@@ -74,7 +74,7 @@ aws cloudformation deploy --stack-name spinnaker-managing-infrastructure-setup -
 
 ```bash
 
-curl https://d3079gxvs8ayeg.cloudfront.net/templates/managed.yaml
+curl -O https://d3079gxvs8ayeg.cloudfront.net/templates/managed.yaml
 aws cloudformation deploy --stack-name spinnaker-managed-infrastructure-setup --template-file managed.yaml \
 --parameter-overrides AuthArn=FROM_ABOVE ManagingAccountId=FROM_ABOVE --capabilities CAPABILITY_NAMED_IAM --region us-west-2
 ```

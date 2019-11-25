@@ -2,7 +2,8 @@
 # You must mount $(pwd) to /code (this allows pages to be dynamically regenerated without having to rebuild the Dockerfile)
 FROM ruby:2.4.1
 RUN apt-get install -y git bzip2 libssl-dev libreadline-dev zlib1g-dev
-RUN gem install bundler
+RUN gem install bundler -v "2.0.2"
+ENV BUNDLER_VERSION="2.0.2"
 
 # bundle install from a different directory to the /code mount for a large performance increase (at least on Docker-for-Mac)
 COPY Gemfile* /install/
