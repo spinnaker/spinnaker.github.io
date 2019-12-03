@@ -12,7 +12,7 @@ Swap out `rbenv` below for `rvm` if you prefer. RVM was giving me installation i
     1. `echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc`
     1. `echo 'eval "$(rbenv init -)"' >> ~/.bashrc`
     1. `. ~/.bashrc`
-1. Install and use ruby 2.4.1    
+1. Install and use ruby 2.4.1
     1. `rbenv install 2.4.1`
     1. `rbenv global 2.4.1`
 1. Fork and clone your forked repo:
@@ -20,15 +20,15 @@ Swap out `rbenv` below for `rvm` if you prefer. RVM was giving me installation i
     1. `git clone https://github.com/$GITHUB_USER/spinnaker.github.io.git`
 1. Install `bundle` gem
     1. `cd spinnaker.github.io`
-    1. `gem install bundle`
-    1. `bundle install`    
+    1. `gem install bundler`
+    1. `bundle install`
 
-## Local Development 
+## Local Development
 1. Start Jekyll server
     1. `bundle exec jekyll serve --watch`
 1. (Optional): Add `--incremental` to speed up page generation when working on one page
     1. `bundle exec jekyll serve --watch --incremental`
-1. Navigate to [http://localhost:4000](http://localhost:4000) to see your locally generated page.    
+1. Navigate to [http://localhost:4000](http://localhost:4000) to see your locally generated page.
 
 You can do the same within Docker using the included Dockerfile (the volume mount will still allow changes to files to be visible to Jekyll):
 
@@ -53,7 +53,7 @@ This allows peer reviews of a breaking change without needing any technical setu
 
 ## Page Generation
 
-A page named `foo.md` will be transformed to `foo/index.html` and links to `foo` will result in an HTTP 301 
+A page named `foo.md` will be transformed to `foo/index.html` and links to `foo` will result in an HTTP 301
 to `foo/`. This has two implications:
 
 1. It is more efficient to include the trailing `/` in links.
@@ -63,19 +63,19 @@ to `foo/`. This has two implications:
 
 ## Mermaid
 
-Sequence diagrams can be generated with the [mermaid.js](https://github.com/knsv/mermaid) library by adding `{% 
-include mermaid %}` near the bottom of the page. See some of the 
+Sequence diagrams can be generated with the [mermaid.js](https://github.com/knsv/mermaid) library by adding `{%
+include mermaid %}` near the bottom of the page. See some of the
 [security docs](https://github.com/spinnaker/spinnaker.github.io/blob/master/setup/security/authentication/index.md)
 for an example.
 
 ## Breadcrumbs
 
-Each page has a breadcrumb trail at the top that is based on the URL structure. You should ensure that there is at 
+Each page has a breadcrumb trail at the top that is based on the URL structure. You should ensure that there is at
 least an `index.md` file within each URL directory, otherwise the links will break.
 
 ## Link Checker
-Keep the "broken window theory" at bay by ensuring all links work with 
+Keep the "broken window theory" at bay by ensuring all links work with
 [HTML Proofer](https://github.com/gjtorikian/html-proofer)
 
-Run link checker before committing: 
-`rake test` 
+Run link checker before committing:
+`rake test`
