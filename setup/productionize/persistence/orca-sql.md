@@ -113,7 +113,7 @@ If you are only deploying Aurora into a single region, don't enable any binlog s
 - *sync_binlog*: `1`
 - *tx_isolation*: `READ-COMMITTED`
 
-#### Aurora DB Parameters Group
+#### Aurora DB Cluster Parameter Group
 
 - *binlog_checksum*: `NONE`
 - *binlog_error_action*: `IGNORE_ERROR`

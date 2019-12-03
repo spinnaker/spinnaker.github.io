@@ -307,5 +307,5 @@ The Spinnaker OSS project was started at Netflix, and today thrives on the contr
 
 Spinnaker is an OSS project owned and run by the community, through a structure of appointed roles. One important goal of this governance model is to make it easier for everyone to figure out how to get involved. If you want to get involved, we want to help you get there! As the project grows and its needs evolve, we will - as a community - continue to revisit and shape this structure.
 
-You can read more about how you can get involved through project SIGs, roles, and standing committees in the [Governance](/community/governance) section.
+You can read more about how you can get involved through project SIGs, roles, and standing committees in the [Governance](https://github.com/spinnaker/community) section.
 

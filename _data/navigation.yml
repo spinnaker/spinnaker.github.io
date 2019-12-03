@@ -63,8 +63,6 @@ setup:
             url: /setup/install/providers/appengine/
           - title: Google Compute Engine
             url: /setup/install/providers/gce/
-          - title: Kubernetes (Legacy)
-            url: /setup/install/providers/kubernetes/
           - title: Kubernetes (Manifest Based)
             url: /setup/install/providers/kubernetes-v2/
             collapsed: false
@@ -77,6 +75,8 @@ setup:
                 url: /setup/install/providers/kubernetes-v2/gke/
               - title: Oracle Container Engine
                 url: /setup/install/providers/kubernetes-v2/oke/
+          - title: Kubernetes (Legacy)
+            url: /setup/install/providers/kubernetes/
           - title: Oracle
             url: /setup/install/providers/oracle/
       - title: 3. Choose an Environment
@@ -285,8 +285,6 @@ guides:
             url: /guides/tutorials/codelabs/artifactory-to-cf/
           - title: GCE Source To Prod
             url: https://codelabs.developers.google.com/codelabs/bake-and-deploy-pipeline
-          - title: Kubernetes Source To Prod
-            url: /guides/tutorials/codelabs/kubernetes-source-to-prod/
           - title: Kubernetes (Manifest Based) Source To Prod
             url: /guides/tutorials/codelabs/kubernetes-v2-source-to-prod/
           - title: Oracle Cloud Infrastructure Source To Prod
@@ -628,6 +626,8 @@ reference:
             url: /reference/halyard/secrets/
           - title: S3
             url: /reference/halyard/secrets/s3-secrets/
+          - title: GCS
+            url: /reference/halyard/secrets/gcs-secrets/
   - title: Architecture
     collapsed: true
     children:
@@ -681,22 +681,11 @@ community:
       - title: Code Conventions for Server-side Components
         url: /community/contributing/back-end-code/
   - title: Governance
-    collapsed: true
-    children:
-      - title: Overview
-        url: /community/governance/
-      - title: Special Interest Groups
-        url: /community/governance/sigs
-  - title: Misc
-    collapsed: true
-    children:
-      - title: FAQs
-        url: /community/faqs/
+    url: https://github.com/spinnaker/community/
+  - title: FAQs
+    url: /community/faqs/
   - title: Security
-    collapsed: true
-    children:
-      - title: Security
-        url: /community/security/
+    url: /community/security/
 
 publications:
   - title: eBook
