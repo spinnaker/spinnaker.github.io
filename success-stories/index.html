@@ -8,20 +8,24 @@ sidebar:
 ---
 
 <div class="success-stories-container">
-    {% for story in site.data.success-stories.cases %}
-        <article>
-            <a href="{{story.link}}" target="_blank">
-                <h4>{{story.name}}</h4>
-                <figure>
-                    <img src="{{story.logo}}" alt="{{story.name}}">
-                </figure>
+    <h3>Case Studies</h3>
+    
+    <div class="success-stories-wrapper">
+        {% for story in site.data.success-stories.cases %}
+            <article>
+                <a href="{{story.link}}" target="_blank">
+                    <!-- <h4>{{story.name}}</h4> -->
+                    <figure>
+                        <img src="{{story.logo}}" alt="{{story.name}}">
+                    </figure>
 
-                <p class="text">{{story.text}}</p>
+                    <p class="text">{{story.text}}</p>
 
-                <span>> Learn</span>
-            </a>
-        </article>
-    {% endfor %}
+                    <span>> Learn</span>
+                </a>
+            </article>
+        {% endfor %}
+    </div>    
 </div>
 
 <div class="testimonials-container">
@@ -39,41 +43,73 @@ sidebar:
                         <img src="{{test.logo}}" alt="{{test.name}}">
                     </figure>
                 </header>
-
-                <div class="questions-wrapper">
-                    {% for quest in test.questions %}
-                        <p class="question">{{quest.question}}</p>
-                        <p class="answer">{{quest.answer}}</p>
-                    {% endfor %}
+                <div>
+                    <q class="quote">{{test.quote}}</q>
                 </div>
+                <details>
+                    <summary>Click here to learn more</summary>
+                    <div class="questions-wrapper">
+                        {% for quest in test.questions %}
+                            <p class="question">{{quest.question}}</p>
+                            <p class="answer">{{quest.answer}}</p>
+                        {% endfor %}
+                    </div>
+                </details>    
             </article>
         {% endfor %}
     </div>
 
-    <p>
+    <!-- <p>
         Want to share your Spinnaker Success Story? <a href="https://spinnaker.formstack.com/forms/spinnaker_testimonials" target="_blank">Click here!</a>
-    </p>
+    </p> -->
 </div>
+
 <div class="videos-container">
 
     <h3>Videos</h3>
-    <p>Conference talks, interviews, and video testimonials from the Spinnaker Community</p>
+    <h6>Conference talks, interviews, and video testimonials from the Spinnaker Community<h6>
 
-    <div class="videos-wrapper">
-    <p>Jens Vanderhaeghe of Airbnb on Migrating From Custom Deployment Tooling To Spinnaker</p>
-    <iframe width="476" height="289" src="https://www.youtube.com/embed/vQCkAkya_Yg" align="middle" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    <p>Brian Benke of Cisco on Contributing to Open Source Spinnaker & Migration from On-Prem to Cloud Native</p>
-    <iframe width="476" height="289" src="https://www.youtube.com/embed/i_IO2G-aNhI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      <p>Brandon Leach of Autodesk on Overcoming Organizational Challenges in Implementing CD with Spinnaker</p>
-    <iframe width="476" height="289" src="https://www.youtube.com/embed/qcXrJECtDqY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    <p>Andy Glover on How Netflix Runs Spinnaker at Scale</p>
-    <iframe width="476" height="289" src="https://www.youtube.com/embed/dPgiBXRJ3zs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    <p>Nora Lutz & Andrew Phillips on Spinnaker Canary Deployments With Istio and Kubernetes</p>
-    <iframe width="476" height="289" src="https://www.youtube.com/embed/CmZWau04ZS4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    <p>Anne Cesa Klein on Early Adoption of Spinnaker Across Teams at Pure Storage</p>
-    <iframe width="476" height="289" src="https://www.youtube.com/embed/sCDbS5bAoWU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    </div>
+    <div class="videos-wrapper"> 
+    <div class="video-grid">
 
-</div>
+    <div class="video-item">
+    <p>Migrating AirBnb To Spinnaker</p>
+    <div class="video-wrap">
+    <iframe width="640" height="360" src="https://www.youtube.com/embed/vQCkAkya_Yg" frameborder="0" allow="autoplay; encrypted-media" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div></div>
+
+    <div class="video-item">
+    <p>Cisco: On-Prem to Cloud Native & OSS Spinnaker</p>
+    <div class="video-wrap">
+    <iframe width="640" height="360" src="https://www.youtube.com/embed/i_IO2G-aNhI" frameborder="0" allow="autoplay; encrypted-media" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div></div>
+
+    <div class="video-item">
+    <p>Overcoming Challenges in Adopting Spinnaker</p>
+    <div class="video-wrap">
+    <iframe width="640" height="360" src="https://www.youtube.com/embed/qcXrJECtDqY" frameborder="0" allow="autoplay; encrypted-media" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div></div>
+
+    <div class="video-item">
+    <p>Andy Glover: How Netflix Runs Spinnaker @ Scale</p>
+    <div class="video-wrap">
+    <iframe width="640" height="360" src="https://www.youtube.com/embed/dPgiBXRJ3zs" frameborder="0" allow="autoplay; encrypted-media" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div></div>
+
+    <div class="video-item">
+    <p>Spinnaker Canary Deployments, Istio & K8S</p>
+    <div class="video-wrap">
+    <iframe width="640" height="360" src="https://www.youtube.com/embed/CmZWau04ZS4" frameborder="0" allow="autoplay; encrypted-media" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div></div>
+
+    <div class="video-item">
+    <p>Adopting Spinnaker Across Teams</p>
+    <div class="video-wrap">
+    <iframe width="640" height="360" src="https://www.youtube.com/embed/sCDbS5bAoWU" frameborder="0" allow="autoplay; encrypted-media" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div></div>
+
+</div></div>
+</div>  
+
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <img class="bottom-right-swoosh" src="{{ "assets/images/bottom-right-swoosh.svg" | absolute_url }}" alt="Spinnaker Swoosh"/>

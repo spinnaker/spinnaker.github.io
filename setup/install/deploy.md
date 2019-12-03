@@ -37,6 +37,7 @@ hal deploy apply
 __Note:__ If you're deploying to your local machine, you might need `sudo hal
 deploy apply`.
 
+
 ## Connect to the Spinnaker UI
 
 1. Run the following command:
@@ -51,6 +52,15 @@ deploy apply`.
      service).
 
 1. Navigate to [localhost:9000](localhost:9000).
+
+
+__Note:__ Even if the `hal deploy apply` command returns successfully, the 
+installation may not be complete yet. This is especially the case with 
+kubernetes distributed installs. If you see errors such as `Connection refused`
+it may be that all of the containers are not yet available. You can either wait, 
+or check the status of all of the containers using the commands for your cloud
+provider (such as `kubectl get pods --namespace spinnaker`).
+
 
 ### Alternatives
 
