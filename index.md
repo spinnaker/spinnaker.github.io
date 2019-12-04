@@ -1,5 +1,10 @@
 ---
 layout: home
+conference_ad_row:
+  title: Spinnaker Summit 2019
+  excerpt: "Spinnaker Summit 2019 took place in San Diego, CA from November 15-17th. Hundreds of people from the Spinnaker community gathered and shared stories about their experiences with Spinnaker and Continuous Delivery. See the insights from Spinnaker contributors and users [here](https://www.youtube.com/playlist?list=PL4yLrwUObNkvGzXKSEU8miQTlvZyZvXWq)."
+  image_path: assets/images/summit-socialmedia-transparent.png
+  alt: "Spinnaker Summit Logo"
 spinnaker_row:
   title: Spinnaker is an open source, multi-cloud continuous delivery platform for releasing software changes with high velocity and confidence.
   excerpt: "Created at Netflix, it has been battle-tested in production by hundreds of teams over millions of deployments. It combines a powerful and flexible pipeline management system with integrations to the major cloud providers."
