@@ -186,9 +186,6 @@ The Spinnaker OSS project was started at Netflix, and today thrives on the contr
 
     A great place to get quick answers to questions that do not require extended, threaded discussion.
 
-* [Stack Overflow](https://stackoverflow.com/search?q=spinnaker)
-
-    Many people involved in the Spinnaker community can answer questions posed here. However, the principal developers don't monitor Stack Overflow as closely.
 
 ## Who's using Spinnaker?
 
