@@ -78,7 +78,15 @@ Example command:
 hal config provider ecs account add ecs-account-name --aws-account aws-account-name
 ```
 
+
+
 In the above example, `ecs-account-name` is the name of the Amazon ECS account, and `aws-account-name` is the name of a previously added, valid AWS account.  Do note that the Amazon ECS account will use credentials from the corresponding AWS account.
+
+#### Enable ECS Provider
+Make sure that the AWS Provider is already enabled. Proceed to enable the ECS Provider with `halyard`
+```bash
+hal config provider ecs enable
+```
 
 ### Clouddriver yaml properties
 
@@ -101,6 +109,9 @@ ecs:
     - name: ecs-account-name
       awsAccount: aws-account-name
 ```
+
+
+
 
 
 ## Next steps
