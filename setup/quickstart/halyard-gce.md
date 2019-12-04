@@ -149,7 +149,7 @@ gcloud compute instances create $HALYARD_HOST \
     --scopes=cloud-platform \
     --service-account=$HALYARD_SERVICE_ACCOUNT_EMAIL \
     --image-project=ubuntu-os-cloud \
-    --image-family=ubuntu-1404-lts \
+    --image-family=ubuntu-1804-lts \
     --machine-type=n1-standard-4
 ```
 
