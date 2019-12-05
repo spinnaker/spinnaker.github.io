@@ -68,7 +68,7 @@ SA_EMAIL=$(gcloud iam service-accounts list \
     --filter="displayName:$SERVICE_ACCOUNT_NAME" \
     --format='value(email)')
 
-PROJECT=$(gcloud info --format='value(config.project)')
+PROJECT=$(gcloud config get-value project)
 
 # permission to read existing configured metrics
 gcloud projects add-iam-policy-binding $PROJECT \
