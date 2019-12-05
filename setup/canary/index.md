@@ -165,7 +165,7 @@ hal config canary aws edit --s3-enabled true
 #### View your AWS canary account details
 
 ```
-hal config canary aws account get
+hal config canary aws account get ACCOUNT
 ```
 
 #### List your canary AWS accounts
@@ -224,7 +224,7 @@ hal config canary datadog account delete ACCOUNT
 #### View your Datadog canary account details
 
 ```
-hal config canary datadog account get
+hal config canary datadog account get ACCOUNT
 ```
 
 #### List your canary Datadog accounts
@@ -286,7 +286,7 @@ hal config canary google account delete ACCOUNT
 #### View your Google canary account details
 
 ```
-hal config canary google account get
+hal config canary google account get ACCOUNT
 ```
 
 #### List your canary Google accounts
@@ -343,7 +343,7 @@ hal config canary prometheus account delete ACCOUNT
 #### View your Prometheus canary account details
 
 ```
-hal config canary prometheus account get
+hal config canary prometheus account get ACCOUNT
 ```
 
 #### List your canary Prometheus accounts
@@ -402,7 +402,7 @@ hal config canary newrelic account delete ACCOUNT
 #### View your New Relic canary account details
 
 ```
-hal config canary newrelic account get
+hal config canary newrelic account get ACCOUNT
 ```
 
 #### List your canary New Relic accounts
