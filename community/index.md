@@ -168,24 +168,35 @@ chime_user:
   alt: "Chime Logo" 
 ---
 
+The Spinnaker OSS project was started at Netflix. Now, it thrives on the contributions of the broader DevOps community who have adopted it as their Continuous Delivery tool. 
+
 ## Engage the community and get support
 
-The Spinnaker OSS project was started at Netflix, and today thrives on the contributions and broad adoption of the public devops community. Here are some ways to engage the community and find help&mdash;join us!
+Here are some ways to engage the Spinnaker community and find help&mdash;join us!
 
-* [Spinnaker community forum](https://community.spinnaker.io)
+### [Slack](http://join.spinnaker.io)
 
-    Closely monitored by Spinnaker principal developers, this forum is a good place to initiate discussions that might go on for a while and that won't scroll off the screen before you notice them.
+Start here! Many Spinnaker contributors and users are active on the Spinnaker Slack. It's a great place to get answers to questions or start a discussion about a feature or topic. Good places to begin on Slack include the following channels: a SIG channel (if there is a relevant one), a narrowly focused channel (such as #auth), or even #general.
+    
+All SIG slack channels start with the prefix `sig`. For example, the documentation SIG channel is `#sig-documentation`.
 
-* [GitHub](https://github.com/spinnaker)
+### [GitHub](https://github.com/spinnaker)
 
-    The Spinnaker org, with repos for its many services. Come here to contribute to the Spinnaker services and documentation.
+The Spinnaker org with repos for all the services and documentation. Come here to contribute to Spinnaker!
+    
+After engaging with the community to work through a problem, we encourage you to help us improve Spinnaker. File an issue if appropriate or even submit a fix. Reasons you might file an issue include the following: 
 
-    If you find a problem, you can file an issue [here](https://github.com/spinnaker/spinnaker/issues). (However, if you just have a question, use one of the other resources listed here.)
+* Your problem is due to a bug or limitation 
+* The documentation is confusing or missing
+* The behavior of a feature or field is unclear
 
-* [Slack](http://join.spinnaker.io)
+You can file an issue [here](https://github.com/spinnaker/spinnaker/issues). 
 
-    A great place to get quick answers to questions that do not require extended, threaded discussion.
+## Project Governance
 
+Spinnaker is an OSS project owned and run by the community, through a structure of appointed roles. One important goal of this governance model is to make it easier for everyone to figure out how to get involved. If you want to get involved, we want to help you get there! As the project grows and its needs evolve, we will - as a community - continue to revisit and shape this structure.
+
+You can read more about how you can get involved through project SIGs, roles, and standing committees in the [Governance](https://github.com/spinnaker/community) section.
 
 ## Who's using Spinnaker?
 
@@ -299,10 +310,3 @@ The Spinnaker OSS project was started at Netflix, and today thrives on the contr
   </div>
 
 </div>
-
-## Project Governance
-
-Spinnaker is an OSS project owned and run by the community, through a structure of appointed roles. One important goal of this governance model is to make it easier for everyone to figure out how to get involved. If you want to get involved, we want to help you get there! As the project grows and its needs evolve, we will - as a community - continue to revisit and shape this structure.
-
-You can read more about how you can get involved through project SIGs, roles, and standing committees in the [Governance](https://github.com/spinnaker/community) section.
-
