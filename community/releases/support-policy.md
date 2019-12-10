@@ -11,15 +11,13 @@ redirect_from: /docs/support-policy
 ## Q&A
 
 If you have a question that isn't answered by our documents and FAQ pages,
-please reach out for help on [Slack](#slack).
+please reach out for help on [Slack](https://spinnakerteam.slack.com).
 
 The Spinnaker team hangs out on Slack in both the <code>#general</code> channel
 for general user-related discussions and the <code>#dev</code> channel for
 developer-related discussions. Additionally, Special Interest Groups (SIGs) have dedicated Slack channels, like #sig-security for the Security SIG.
 
-You can participate in the Spinnaker
-discussions [here](https://spinnakerteam.slack.com). Slack requires
-registration, but the Spinnaker team is open invitation to anyone to register
+Slack requires registration, but the Spinnaker team is open invitation to anyone to register
 [here](http://join.spinnaker.io). Feel free to come and ask any and all
 questions.
 
