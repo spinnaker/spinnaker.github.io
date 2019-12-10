@@ -178,7 +178,7 @@ Here are some ways to engage the Spinnaker community and find help&mdash;join us
 
 Start here! Many Spinnaker contributors and users are active on the Spinnaker Slack. It's a great place to get answers to questions or start a discussion about a feature or topic. Good places to begin on Slack include the following channels: 
 
-* A Special Interest Group (SIG) channel if there is a relevant one. SIGs are groups that focus on specific topics, such as , such as `#sig-security` or `#sig-documentation`. All SIG slack channels start with the prefix `sig`.
+* A Special Interest Group (SIG) channel if there is a relevant one. SIGs are groups that focus on specific topics, such as `#sig-security` or `#sig-documentation`. All SIG Slack channels start with the prefix `sig`.
 * A narrowly focused channel, such as #auth
 * [#general](https://spinnakerteam.slack.com/archives/C091CCWRJ) for general questions and discussion 
 * [#dev](https://spinnakerteam.slack.com/archives/C0DPVDMQE) for help contributing to Spinnaker
