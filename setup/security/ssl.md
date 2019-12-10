@@ -206,7 +206,7 @@ Deck's eventual fully-qualified domain name (FQDN) as the Common Name (CN).
 1. Generate a certificate signing request for Gate. Specify `localhost` or Gate's
 eventual fully-qualified domain name (FQDN) as the Common Name (CN).  
 
-    This command below references the pass phrase environment variable used to decrypt the key for `gate.key`.
+    This command below references the pass phrase environment variable used to decrypt the key `gate.key`.
 
     ```bash
     openssl req \
@@ -219,7 +219,7 @@ eventual fully-qualified domain name (FQDN) as the Common Name (CN).
 1. Use the CA to sign the server's request and create the Gate server certificate
 (in `pem` format).  If using an external CA, they will do this for you.  
 
-     This command below references the pass phrase environment variable used to decrypt the key `ca.key`.
+    This command below references the pass phrase environment variable used to decrypt the key `ca.key`.
 
     ```bash
     openssl x509 \
