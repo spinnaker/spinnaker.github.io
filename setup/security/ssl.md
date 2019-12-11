@@ -104,7 +104,7 @@ It will produce the following items:
 * `ca.crt`: a `pem`-formatted certificate, which (with the private key) acts as
 a self-signed Certificate Authority.
 
-1. Create the CA key.  This will prompt for a pass phrase to encrypt the key.
+1. Create the CA key.  This command below references the pass phrase environment variable used to encrypt the key `ca.key`.
 
     ```bash
     openssl genrsa \
@@ -114,8 +114,7 @@ a self-signed Certificate Authority.
       4096
     ```
 
-1. Self-sign the CA certificate.  This will prompt for the pass phrase used to 
-encrypt `ca.key`.
+1. Self-sign the CA certificate.  This command below references the pass phrase environment variable used to decrypt the key `ca.key`.
 
     ```bash
     openssl req \
@@ -154,7 +153,7 @@ be imported into the JKS.
 
 1. Create a server key for Deck. Keep this file safe!
 
-    This will prompt for a pass phrase to encrypt the key.
+   This command below references the pass phrase environment variable used to encrypt the key `deck.key`.
 
     ```bash
     openssl genrsa \
@@ -167,7 +166,7 @@ be imported into the JKS.
 1. Generate a certificate signing request (CSR) for Deck. Specify `localhost` or
 Deck's eventual fully-qualified domain name (FQDN) as the Common Name (CN).  
 
-    This will prompt for the pass phrase for `deck.key`.
+    This command below references the pass phrase environment variable used to decrypt the key `deck.key`.
 
     ```bash
     openssl req \
@@ -180,7 +179,7 @@ Deck's eventual fully-qualified domain name (FQDN) as the Common Name (CN).
 1. Use the CA to sign the server's request and create the Deck server certificate
 (in `pem` format). If using an external CA, they will do this for you.  
 
-    This will prompt for the pass phrase used to encrypt `ca.key`.
+    This command below references the pass phrase environment variable used to decrypt the key `ca.key`.
 
     ```bash
     openssl x509 \
@@ -194,8 +193,7 @@ Deck's eventual fully-qualified domain name (FQDN) as the Common Name (CN).
       -passin pass:${CA_KEY_PASSWORD}
     ```
 
-1. Create a server key for Gate. This will prompt for a pass phrase to encrypt 
-the key. Keep this file safe!
+1. Create a server key for Gate. This command below references the pass phrase environment variable used to encrypt the key `gate.key`. Keep this file safe!
 
     ```bash
     openssl genrsa \
@@ -208,7 +206,7 @@ the key. Keep this file safe!
 1. Generate a certificate signing request for Gate. Specify `localhost` or Gate's
 eventual fully-qualified domain name (FQDN) as the Common Name (CN).  
 
-    This will prompt for the pass phrase for `gate.key`.
+    This command below references the pass phrase environment variable used to decrypt the key `gate.key`.
 
     ```bash
     openssl req \
@@ -221,7 +219,7 @@ eventual fully-qualified domain name (FQDN) as the Common Name (CN).
 1. Use the CA to sign the server's request and create the Gate server certificate
 (in `pem` format).  If using an external CA, they will do this for you.  
 
-    This will prompt for the pass phrase used to encrypt `ca.key`.
+    This command below references the pass phrase environment variable used to decrypt the key `ca.key`.
 
     ```bash
     openssl x509 \
@@ -238,7 +236,7 @@ eventual fully-qualified domain name (FQDN) as the Common Name (CN).
 1. Convert the `pem` format Gate server certificate into a PKCS12 (`p12`) file,
 which is importable into a Java Keystore (JKS).  
 
-    This will first prompt for the pass phrase used to encrypt `gate.key`, and
+    This command below references the pass phrase environment variable used to decrypt the key `gate.key`, and
     then for an import/export password to use to encrypt the `p12` file.
 
     ```bash
