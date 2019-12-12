@@ -485,7 +485,7 @@ guides:
     children:
       - title: Common Internals
         url: /guides/developer/common-internals/
-      - title: Front50 
+      - title: Front50
         url: https://github.com/spinnaker/front50/blob/master/README.md
       - title: Igor
         url: https://github.com/spinnaker/igor/blob/master/README.md
@@ -686,6 +686,8 @@ community:
     url: /community/faqs/
   - title: Security
     url: /community/security/
+  - title: Usage Stats
+    url: /community/stats
 
 publications:
   - title: eBook
