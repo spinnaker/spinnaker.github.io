@@ -80,13 +80,23 @@ It will enable primary and previous writes while leaving reads pointed at previo
 
 ```yaml
 spinnaker:
-  migration:
+  migration: 
+    primaryClass: com.netflix.spinnaker.front50.model.SqlStorageService
+    previousClass: com.netflix.spinnaker.front50.model.S3StorageService  
     compositeStorageService:
       enabled: true
       reads:
         primary: false
         previous: true
 ```
+
+Enable the migrator.
+
+```yaml
+spinnaker:
+  migration:
+    enabled: true
+```    
 
 Lastly, you can enable primary reads and optionally fallback to previous if an object is not found.
 
