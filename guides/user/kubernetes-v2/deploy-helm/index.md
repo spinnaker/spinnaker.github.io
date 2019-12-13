@@ -9,7 +9,7 @@ sidebar:
 
 Spinnaker surfaces a "Bake (Manifest)" stage to turn templates into manifests
 with the help of a templating engine. [Helm](https://helm.sh/) relies on the `helm template` command.
-See more details [here](https://helm.sh/docs/helm/#helm-template).
+For more details, see `helm template --help`.
 
 > Note: This stage is intended to help you package and deploy applications
 > that you own, and are actively developing and redeploying frequently.
