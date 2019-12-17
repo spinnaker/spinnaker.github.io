@@ -114,18 +114,20 @@ setup:
         children:
           - title: Overview
             url: /setup/artifacts/
-          - title: Google Cloud Storage
-            url: /setup/artifacts/gcs/
-          - title: GitHub
-            url: /setup/artifacts/github/
-          - title: HTTP
-            url: /setup/artifacts/http/
+          - title: Amazon S3
+            url: /setup/artifacts/s3/
           - title: Bitbucket
             url: /setup/artifacts/bitbucket/
+          - title: GitHub
+            url: /setup/artifacts/github/
           - title: GitLab
             url: /setup/artifacts/gitlab/
-          - title: S3
-            url: /setup/artifacts/s3/
+          - title: Google Cloud Storage
+            url: /setup/artifacts/gcs/
+          - title: HTTP
+            url: /setup/artifacts/http/
+          - title: Maven
+            url: /setup/artifacts/maven/
           - title: Oracle Object
             url: /setup/artifacts/oracle/
       - title: Configure the Image Bakery
