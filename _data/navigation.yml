@@ -234,6 +234,8 @@ setup:
             url: /setup/features/user-data/
           - title: Configure the Script stage
             url: /setup/features/script-stage/
+          - title: Configure Slack Support
+            url: /setup/features/slack-support
       - title: Use External Account Configuration
         url: /setup/configuration/
   - title: Productionize Spinnaker
