@@ -114,6 +114,8 @@ setup:
         children:
           - title: Overview
             url: /setup/artifacts/
+          - title: Amazon S3
+            url: /setup/artifacts/s3/
           - title: Bitbucket
             url: /setup/artifacts/bitbucket/
           - title: Google Cloud Storage
@@ -128,8 +130,6 @@ setup:
             url: /setup/artifacts/maven/
           - title: Oracle Object
             url: /setup/artifacts/oracle/
-          - title: Amazon S3
-            url: /setup/artifacts/s3/
       - title: Configure the Image Bakery
         collapsed: true
         children:
