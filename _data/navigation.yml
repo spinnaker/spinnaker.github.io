@@ -118,12 +118,12 @@ setup:
             url: /setup/artifacts/s3/
           - title: Bitbucket
             url: /setup/artifacts/bitbucket/
-          - title: Google Cloud Storage
-            url: /setup/artifacts/gcs/
           - title: GitHub
             url: /setup/artifacts/github/
           - title: GitLab
             url: /setup/artifacts/gitlab/
+          - title: Google Cloud Storage
+            url: /setup/artifacts/gcs/
           - title: HTTP
             url: /setup/artifacts/http/
           - title: Maven
