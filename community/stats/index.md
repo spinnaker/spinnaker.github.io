@@ -41,14 +41,14 @@ Spinnaker's telemetry project has been reviewed and approved as compliant with t
 
 The above payload is sent to `https://stats.spinnaker.io/log` upon the completion of any pipeline or ad-hoc UI operation.
 
-For release 1.18.x, telemetry is opt-in. Spinnaker administrators can turn **on** data collection by executing
+For release 1.18.x, telemetry is opt-in, as we test and scale the system and fine-tune the dashboards. Spinnaker administrators can help by turning **on** data collection by executing
 
 ```
 hal config telemetry enable
 ```
 and redeploying.
 
-As of 1.19.0+, telemetry will turn to opt-out. Spinnaker administrators can turn **off** data collection by executing
+As of 1.19.0+, telemetry will be enabled by default. Spinnaker administrators can turn **off** data collection by executing
 
 ```
 hal config telemetry disable
