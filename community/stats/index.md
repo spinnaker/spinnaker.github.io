@@ -7,7 +7,7 @@ sidebar:
 
 {% include toc %}
 
-[If enabled](#how-is-the-data-collected), Spinnaker collects data about how the tool is being used. This data is anonymized and aggregated.
+[If enabled](#how-is-the-data-collected), Spinnaker collects data about how the tool is being used. This data is anonymized (before being sent across the internet) and aggregated.
 
 ## Why is data being collected?
 
