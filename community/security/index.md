@@ -8,7 +8,7 @@ sidebar:
 {% include toc %}
 
 ## Responsible Disclosure Policy
-If you discover a security vulnerability, the [Spinnaker Security SIG](https://github.com/spinnaker/community/tree/master/sig-security) would like to know about it. The quicker we know, the quicker we can take steps to address the issue. We ask that you not publicly disclose the vulnerability until we have had the chance to investigate and determine the impact.
+If you discover a security vulnerability, the [Spinnaker Security SIG](https://github.com/spinnaker/governance/tree/master/sig-security) would like to know about it. The quicker we know, the quicker we can take steps to address the issue. We ask that you not publicly disclose the vulnerability until we have had the chance to investigate and determine the impact.
 
 ## How to report a security vulnerability in Spinnaker?
 If you believe that you have found a security vulnerability in Spinnaker, please email <security@spinnaker.io> to report the issue. Include the following in the report:
