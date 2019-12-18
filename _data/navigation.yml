@@ -683,7 +683,7 @@ community:
       - title: Code Conventions for Server-side Components
         url: /community/contributing/back-end-code/
   - title: Governance
-    url: https://github.com/spinnaker/community/
+    url: https://github.com/spinnaker/governance/
   - title: FAQs
     url: /community/faqs/
   - title: Security
