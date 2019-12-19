@@ -53,10 +53,7 @@ which you will install Spinnaker.
    This must be on a Kubernetes cluster. It does not have to be the same
    provider as the one you're using to deploy your applications.
 
-   * [Kubernetes](/setup/install/providers/kubernetes)
-
-   * [Kubernetes (Manifest Based)](/setup/install/providers/kubernetes-v2)<br />
-     :warning: This is still in alpha.
+   * [Kubernetes (Manifest Based)](/setup/install/providers/kubernetes-v2)
 
    We recommend at least 4 cores and 8GB of RAM available in the cluster where
    you will deploy Spinnaker.
