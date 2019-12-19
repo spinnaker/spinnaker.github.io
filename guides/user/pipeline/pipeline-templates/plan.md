@@ -17,7 +17,7 @@ creating the actual pipeline in Spinnaker.
 ## Using `spin pt plan`
 
 ```bash
-spin pipeline-templates plan --file <path to pipeline config>
+spin pipeline-templates plan --file <path to pipeline template file>
 
 {
   "application": "my-spinnaker-app"
@@ -25,9 +25,9 @@ spin pipeline-templates plan --file <path to pipeline config>
 }
 ```
 
-...where `<path to pipeline config>` points to the [file you
+...where `<path to pipeline template file>` points to the [file you
 created](/guides/user/pipeline/pipeline-templates/create/) when you
-instantiated a pipeline based on the template.
+created the pipeline template JSON file.
 
 
 ## Now what do I do with it?
