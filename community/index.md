@@ -17,7 +17,7 @@ target_user:
   alt: "Target logo"
   image_class: spinnaker_user__target
 schibsted_user:
-  image_path: assets/images/users/schibsted_logo.svg
+  image_path: assets/images/users/schibsted_logo.png
   alt: "Schibsted logo"
   image_class: spinnaker_user__schibsted
 gogo_user:
