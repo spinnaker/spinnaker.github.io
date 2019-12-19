@@ -76,7 +76,7 @@ and get it using the following command:
 
 > Note: the variables [defined in the pipeline
 > template](/guides/user/pipeline/pipeline-templates/create/#3-edit-the-file-for-template-format)
-> include default values, so you don't have to provide a value for every variabled defined.
+> include default values, so you don't have to provide a value for every variable defined.
 
 In the pipeline JSON file, in the `variables` section, list each variable
 for which you're providing values, and write that value.
@@ -149,4 +149,3 @@ described [above](#add-new-stages), but include multiple `before` or multiple
 ## Save the pipeline
 
 `spin pipeline save --file <path to pipeline json>`
-
