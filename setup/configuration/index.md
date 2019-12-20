@@ -94,7 +94,7 @@ spring:
 
 To configure authentication, you must use AWS's Default Credential Provider Chain. See the [AWS SDK documentation](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html) for more information.
 
-For information about configuring other supported Config Server backends, see the [Spring Cloud Config Server documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-config/2.2.1.RELEASE/single/spring-cloud-config.html#_environment_repository).
+For information about configuring other supported Config Server backends, see the [Spring Cloud Config Server documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-config/2.2.1.RELEASE/reference/html/#_environment_repository).
 
 ## Managing external configuration
 
