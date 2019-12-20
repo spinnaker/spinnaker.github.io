@@ -9,7 +9,9 @@ sidebar:
 
 This page describes Spinnaker's external configuration feature. Using external configuration, you can manage account configuration (either complete account configuration, or only secrets such as account passwords) externally from Spinnaker.
 
-External configuration uses the open-source [Spring Cloud Config](https://spring.io/projects/spring-cloud-config) project, which includes a configuration server and client libraries to support centralized external configuration in a distributed system. The Config Server connects to a remote configuration repository and serves stored configuration properties to client applications. Configuration properties can be organized by Spring profile and application name and can be stored in any of a number of backends, including Git, HashiCorp Vault, AWS S3, JDBC, CredHub, and others. For more information about Spring Cloud Config, see the [documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-config/2.2.1.RELEASE/single/spring-cloud-config.html).
+External configuration uses the open-source [Spring Cloud Config](https://spring.io/projects/spring-cloud-config) project, which includes a configuration server and client libraries to support centralized external configuration in a distributed system. The Config Server connects to a remote configuration repository and serves stored configuration properties to client applications. 
+
+Configuration properties can be organized by Spring profile and application name and can be stored in any of a number of backends, including GitHub, HashiCorp Vault, AWS S3, JDBC, CredHub, and others. For more information about Spring Cloud Config, see the [documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-config/2.2.1.RELEASE/single/spring-cloud-config.html).
 
 The following table lists the Spinnaker services that currently incorporate external configuration.
 
@@ -68,7 +70,7 @@ spring:
 
 > The above example configures authentication for Vault using the Vault
 > `X-Config-Token` header, via the setting of the
-> `spring.cloud.config.server.vault.token` property. In Spinnaker 1.18, you  can
+> `spring.cloud.config.server.vault.token` property. Starting with Spinnaker 1.18, you  can
 > use other methods of configuring authentication for Vault. See the relevant
 > [Spring Cloud Config Server
 > documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-config/2.2.1.RELEASE/reference/html/#vault-backend)
