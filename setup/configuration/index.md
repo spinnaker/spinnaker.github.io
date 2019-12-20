@@ -66,8 +66,8 @@ spring:
           token: [vault access token]
 ```
 
-> The above example configures authentication for Vault using the Vault
-> `X-Config-Token` header, via the setting of the
+> The above example configures authentication for Vault using using a static
+> authentication token, via the setting of the
 > `spring.cloud.config.server.vault.token` property. In Spinnaker 1.18, you  can
 > use other methods of configuring authentication for Vault. See the relevant
 > [Spring Cloud Config Server
@@ -188,7 +188,7 @@ ci:
 
 ### Configuration files
 
-The Kubernetes, Google Cloud, and App Engine cloud providers can load account information from files that are separate from the service YAML configuration. You can load these separate files from an external source using the Config Server's Resource abstraction. In the service YAML configuration, prefix a file path with `configserver:` to indicate that the file should be retrieved by the Config Server. 
+Some account configuration, including configuration for the Kubernetes, Google Compute Engine, and Google App Engine cloud providers in Clouddriver and Google Cloud Pub/Sub accounts in Echo, allows credentials to be loaded from files that are separate from the YAML configuration. You can load these separate files from an external source using the Config Server's Resource abstraction. In the service YAML configuration, prefix a file path with `configserver:` to indicate that the file should be retrieved by the Config Server. 
 
 > External configuration files (such as kubeconfig files and GCP JSON files)
 > can only be loaded from S3 or Git (not from Vault).
