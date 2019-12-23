@@ -38,6 +38,32 @@ users.
 
 ![](clusters.png)
 
+### Firewall
+
+A *Firewall* defines network traffic access. It is effectively a set of firewall rules defined by an IP range (CIDR) along with a communication protocol (e.g., TCP) and port range.
+
+> Learn more about cluster management on the [Clusters](/concepts/clusters/) page.
+
+### Load Balancer
+
+A *Load Balancer* is associated with an ingress protocol and port range. It balances traffic among instances in its Server Groups. Optionally, you can enable health checks for a load balancer, with flexibility to define health criteria and specify the health check endpoint.
+
+### Server Group
+
+The base resource, the *Server Group*, identifies the deployable artifact (VM image, Docker image, source location) and basic configuration settings such as number of instances, autoscaling policies, metadata, etc.
+This resource is optionally associated with a Load Balancer and a Firewall.
+When deployed, a Server Group is a collection of instances of the running
+software (VM instances, Kubernetes pods).
+
+### Cluster
+
+You can define *Clusters*, which are logical groupings of Server Groups in
+Spinnaker.
+
+> **Note:** cluster, here, does not map to a Kubernetes cluster. It's merely a
+> collection of Server Groups, irrespective of any Kubernetes clusters that might
+> be included in your underlying architecture.
+
 ### Application
 
 An application in Spinnaker is a collection of clusters, which in turn are
@@ -54,31 +80,6 @@ Spinnaker does not enforce that.
 Read more about applications, and how to create and configure them,
 [here](/guides/user/applications/).
 
-### Cluster
-
-You can define *Clusters*, which are logical groupings of Server Groups in
-Spinnaker.
-
-> **Note:** cluster, here, does not map to a Kubernetes cluster. It's merely a
-> collection of Server Groups, irrespective of any Kubernetes clusters that might
-> be included in your underlying architecture.
-
-### Server Group
-
-The base resource, the *Server Group*, identifies the deployable artifact (VM image, Docker image, source location) and basic configuration settings such as number of instances, autoscaling policies, metadata, etc.
-This resource is optionally associated with a Load Balancer and a Firewall.
-When deployed, a Server Group is a collection of instances of the running
-software (VM instances, Kubernetes pods).
-
-### Load Balancer
-
-A *Load Balancer* is associated with an ingress protocol and port range. It balances traffic among instances in its Server Groups. Optionally, you can enable health checks for a load balancer, with flexibility to define health criteria and specify the health check endpoint.
-
-### Firewall
-
-A *Firewall* defines network traffic access. It is effectively a set of firewall rules defined by an IP range (CIDR) along with a communication protocol (e.g., TCP) and port range.
-
-> Learn more about cluster management on the [Clusters](/concepts/clusters/) page.
 
 ## Application deployment
 
