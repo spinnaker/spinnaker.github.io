@@ -520,8 +520,6 @@ reference:
         url: /reference/providers/appengine/
       - title: Google Compute Engine
         url: /reference/providers/gce/
-      - title: Kubernetes (Legacy)
-        url: /reference/providers/kubernetes/
       - title: Kubernetes (Manifest Based)
         url: /reference/providers/kubernetes-v2/
       - title: Oracle Cloud
