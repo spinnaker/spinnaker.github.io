@@ -150,6 +150,116 @@ public class RandomWait<RandomWaitInput> {
 }
 ```
 
+# Create The Frontend For Stage Plugins
+
+## Setting Up Your Project
+
+### Rollup Configuration
+Here is an example of a `rollup.config.js` to build your plugin:
+
+```
+import nodeResolve from 'rollup-plugin-node-resolve';
+import commonjs from 'rollup-plugin-commonjs';
+import typescript from 'rollup-plugin-typescript';
+import postCss from 'rollup-plugin-postcss';
+import externalGlobals from 'rollup-plugin-external-globals';
+
+export default [
+  {
+    input: 'src/index.tsx',
+    plugins: [
+      nodeResolve(),
+      commonjs(),
+      typescript(),
+      // Map imports from shared libraries (React, etc) to global variables exposed by Spinnaker.
+      externalGlobals(spinnakerSharedLibraries()),
+      // Import from .css, .less, and inject into the document <head></head>.
+      postCss(),
+    ],
+    output: [{ dir: 'dist', format: 'es', }]
+  }
+];
+
+function spinnakerSharedLibraries() {
+  const libraries = ['react', 'react-dom', '@spinnaker/core'];
+
+  function getGlobalVariable(libraryName) {
+    const prefix = 'spinnaker.plugins.sharedLibraries';
+    const sanitizedLibraryName = libraryName.replace(/[^a-zA-Z0-9_]/g, '_');
+    return `${prefix}.${sanitizedLibraryName}`;
+  }
+
+  return libraries.reduce((globalsMap, libraryName) => {
+    return { ...globalsMap, [ libraryName ]: getGlobalVariable(libraryName) }
+  }, {});
+}
+```
+
+`spinnakerSharedLibraries` is used to pull depenedencies from Spinnaker. To see the list of depenedcies Spinnaker exposes to plugin creators, please take a look at [shared libraries](https://github.com/spinnaker/deck/blob/master/app/scripts/modules/core/src/plugins/sharedLibraries.ts#L32). `libraries` is the list of libraries needed from Spinnaker to make a plugin work correctly. This list must contain libraries from the shared libraries section in Spinnaker.
+
+### Dependencies
+As mentioned above, Spinnaker exposes depenedncies for plugins to use. But the depenedencies need to be defined in the `package.json`. For this example plugin, the dependcies needed are:
+
+```
+"@spinnaker/core": "0.0.432",
+"react": "^16.12.0",
+"react-dom": "^16.12.0"
+```
+
+## Writing The Frontend
+
+```
+import * as React from 'react';
+import { IStageTypeConfig, IStageConfigProps } from '@spinnaker/core';
+
+const customStage: IStageTypeConfig = {
+  label: 'Random Wait',
+  description: 'Stage that waits a random amount of time up to the max inputted',
+  key: 'randomWait',
+  component: RandomWaitStage,
+};
+
+function setMaxWaitTime(event: React.SyntheticEvent, props: IStageConfigProps) {
+  let target = event.target as HTMLInputElement;
+  props.updateStageField({'maxWaitTime': target.value});
+}
+
+// Our stage component
+function RandomWaitStage(props: IStageConfigProps) {
+  return (
+    <div>
+      <label>
+          Max Time To Wait
+          <input value={props.stage.maxWaitTime} onChange={(e) => setMaxWaitTime(e, props)} id="maxWaitTime" />
+      </label>
+    </div>
+  );
+}
+
+const plugin = {
+  name: 'randomWait',
+  stages: [customStage],
+};
+
+export { plugin };
+```
+
+### IStageTypeConfig
+`IStageTypeConfig` is how Spinnaker Stages are defined. There are only a few required [options](https://github.com/spinnaker/deck/blob/abac63ce5c88b809fcf5ed1509136fe96489a051/app/scripts/modules/core/src/domain/IStageTypeConfig.ts) for configuring a Stage.
+1. label -> The name of the Stage
+2. description -> Long form that describes what the Stage actually does
+3. key -> A unique name for the Stage
+4. component -> The React component that will be rendered to the user
+
+### IStageConfigProps
+`IStageConfigProps` are the properties passed to all Spinnaker Stages. For a complete list of what is available for `IStageConfigProps`, please check [IStageConfigProps.ts](https://github.com/spinnaker/deck/blob/master/app/scripts/modules/core/src/pipeline/config/stages/common/IStageConfigProps.ts). The method `updateStageField` is what is used to add the `maxWaitTime` to the stage. This method takes a JSON object.
+
+### RandomWaitStage
+This method returns [JSX](https://reactjs.org/docs/introducing-jsx.html) that gets displayed to the plugin user.
+
+### How Spinnaker Loads The Plugin
+Each plugin has to `export` an object named `plugin`. Currently only Stages can be added to this object. When Spinnaker starts up it will look at `plugin.stages` and add each stage that is defined to the stage registry.
+
 # Writing The Plugin Manifest
 
 Here is an example of a plugin manifest:
