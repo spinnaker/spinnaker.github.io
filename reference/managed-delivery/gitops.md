@@ -17,3 +17,6 @@ and containing a single `Import Delivery Config` stage. This stage will retrieve
 manifest from the source control repository associated with your pipeline's trigger, then save
 (or update) it in Spinnaker so it will automatically monitor and manage the resources, environments
 and deployments described in the manifest.
+
+Eventually, we might add support for direct monitoring of git commit events to Managed Delivery
+so that you don't even need a pipeline, but for now, this is the way to do it.
