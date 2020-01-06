@@ -1,0 +1,19 @@
+---
+layout: single
+title:  "Managed Delivery"
+sidebar:
+  nav: reference
+---
+
+{% include toc %}
+
+Spinnaker supports _GitOps_ workflows to create and update Managed Delivery configurations.
+This allows you to keep your Managed Delivery configuration in code and follow all the usual
+best practices like code review and approvals before a change is introduced to your managed
+resources, environments or deployments.
+ 
+GitOps support is currently achieved via a small pipeline configured with a git [trigger](../../guides/user/pipeline/triggers)
+and containing a single `Import Delivery Config` stage. This stage will retrieve a Delivery Config
+manifest from the source control repository associated with your pipeline's trigger, then save
+(or update) it in Spinnaker so it will automatically monitor and manage the resources, environments
+and deployments described in the manifest.
