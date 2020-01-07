@@ -12,7 +12,7 @@ This allows you to keep your Managed Delivery configuration in code and follow a
 best practices like code review and approvals before a change is introduced to your managed
 resources, environments or deployments.
  
-Git support is currently achieved via a small pipeline configured with a git
+Git support is currently achieved via a pipeline configured with a git
 [trigger](../../guides/user/pipeline/triggers/index.md) and containing a single
 `Import Delivery Config` stage. This stage will retrieve a Delivery Config manifest
 from the source control repository associated with your pipeline's trigger, then save (or update)
