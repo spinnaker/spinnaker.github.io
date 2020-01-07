@@ -3,6 +3,7 @@ layout: single
 title:  "Kubernetes Source To Prod (Manifest Based)"
 sidebar:
   nav: guides
+redirect_from: /guides/tutorials/codelabs/kubernetes-source-to-prod/
 ---
 
 {% include toc %}

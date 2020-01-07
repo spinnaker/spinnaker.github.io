@@ -9,13 +9,13 @@ sidebar:
 
 Spinnaker surfaces a "Bake (Manifest)" stage to turn templates into manifests
 with the help of a templating engine. [Helm](https://helm.sh/) relies on the `helm template` command.
-See more details [here](https://helm.sh/docs/helm/#helm-template).
+For more details, see `helm template --help`.
 
 > Note: This stage is intended to help you package and deploy applications
 > that you own, and are actively developing and redeploying frequently.
 > It is not intended to serve as a one-time installation method for
 > third-party packages. If that is your goal, it's arguably better to call
-> [`helm install`](https://helm.sh/docs/helm/#helm-install) once when
+> `helm install` once when
 > bootstrapping your Kubernetes cluster.
 
 > Note: Make sure that you have configured [artifact support](/setup/artifacts)
@@ -38,8 +38,7 @@ When configuring the "Bake (Manifest)" stage, you can specify the following:
 
   The Helm chart that you will be deploying, stored remotely as a
   `.tar.gz` archive. You can produce this by running `helm package
-  /path/to/chart`. See more details
-  [here](https://helm.sh/docs/helm/#helm-package).
+  /path/to/chart`. For more details, `helm package --help`.
 
 * __The release namespace__ (optional)
 
@@ -58,15 +57,15 @@ metadata:
 
 * __Zero or more override artifacts__ (optional)
 
-  The files passed to `--values` parameter in the [`helm
-  template` command](https://helm.sh/docs/helm/#helm-template). Each is a
+  The files passed to `--values` parameter in the `helm
+  template` command. Each is a
   remotely stored artifact representing a [Helm Value
-  File](https://helm.sh/docs/chart_template_guide/#values-files).
+  File](https://helm.sh/docs/topics/chart_template_guide/values_files/).
 
 * __Statically specified overrides__
 
   The set of static of key/value pairs that are passed as `--set` parameters to
-  the [`helm template` command](https://helm.sh/docs/helm/#helm-template).
+  the `helm template` command.
 
 As an example, we have a fully configured Bake (Manifest) stage below:
 

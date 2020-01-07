@@ -30,7 +30,7 @@ subcomponent.
 {% else %}
 #### Version {{ post.version }}
 {% endif %}
-Released: {{ post.date | date_to_rfc822 }}
+Released: {{ post.date | date: '%Y-%m-%d %H:%M %Z' }}
 <a href="{{ post.url }}">Changelog</a>
   {% endunless %}
 {% endfor %}
@@ -43,7 +43,7 @@ Group (requires a Google account).
 {% for post in reversed %}
   {% if post.tags contains 'deprecated' %}
 #### {{ post.changelog_title }}
-Released: {{ post.date | date_to_rfc822 }}
+Released: {{ post.date | date: '%Y-%m-%d %H:%M %Z' }}
 <a href="{{ post.url }}">Changelog</a>
   {% endif %}
 {% endfor %}

@@ -46,7 +46,7 @@ To actually rehydrate the queue, pass the query parameter `dryRun=false`.
 
 ```bash
 $ curl -XPOST \
-  https://localhost:8083/admin/queue/hydrate?executionId=01CS076X85RX6MWBTQ0VGBF8VX?dryRun=false
+  https://localhost:8083/admin/queue/hydrate?executionId=01CS076X85RX6MWBTQ0VGBF8VX&dryRun=false
 ```
 
 This command is **best effort** and may not be able to rehydrate the Execution, especially if the Execution was zombied while running a non-retryable task.

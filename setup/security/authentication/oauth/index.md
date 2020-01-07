@@ -95,6 +95,18 @@ userInfoMapping:
   username: user
 ```
 
+#### Enable your custom provider
+
+```
+CLIENT_ID=myClientId
+CLIENT_SECRET=myClientSecret
+
+hal config security authn oauth2 edit \
+  --client-id $CLIENT_ID \
+  --client-secret $CLIENT_SECRET \
+hal config security authn oauth2 enable
+```
+
 ## Network architecture and SSL termination
 
 During the OAuth [workflow](/reference/architecture/authz_authn/authentication/#workflow), Gate makes an intelligent 

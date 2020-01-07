@@ -22,6 +22,9 @@ This guide explains how and where to use expressions, and provides some examples
 of what you can do with them. For a list of available functions, see the
 [reference guide](/reference/pipeline/expressions/).
 
+> Note: Pipeline expression syntax is based on [Spring Expression Language
+> (SpEL)](https://docs.spring.io/spring/docs/current/spring-framework-reference/html/expressions.html).
+
 ## What does a pipeline expression look like?
 
 A pipeline expression is made up of `$` followed by opening/closing brackets:
