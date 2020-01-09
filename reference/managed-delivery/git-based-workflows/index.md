@@ -13,7 +13,7 @@ best practices like code review and approvals before a change is introduced to y
 resources, environments or deployments.
  
 Git support is currently achieved via a pipeline configured with a 
-[trigger](../../guides/user/pipeline/triggers/index.md) that can provide source repository
+[trigger](../../../guides/user/pipeline/triggers/index.md) that can provide source repository
 information (such as a Git trigger) and containing a single `Import Delivery Config` stage.
 This stage will retrieve a Delivery Config manifest from the repository associated with your
 pipeline's trigger, then save (or update) it in Spinnaker so it will automatically monitor
