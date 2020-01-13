@@ -13,6 +13,8 @@ sidebar:
 This guide explains how to add a [JFrog
 Artifactory](https://jfrog.com/artifactory/) trigger to your pipeline.
 
+> Currently, the Artifactory trigger only works with Maven artifacts.
+
 # Prerequisites
 
 This guide assumes you have the following:
