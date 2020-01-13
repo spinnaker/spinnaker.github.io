@@ -150,6 +150,116 @@ public class RandomWait<RandomWaitInput> {
 }
 ```
 
+# Create The Frontend For Stage Plugins
+
+## Setting Up Your Project
+
+### Rollup Configuration
+Here is an example of a `rollup.config.js` to build your plugin:
+
+```
+import nodeResolve from 'rollup-plugin-node-resolve';
+import commonjs from 'rollup-plugin-commonjs';
+import typescript from 'rollup-plugin-typescript';
+import postCss from 'rollup-plugin-postcss';
+import externalGlobals from 'rollup-plugin-external-globals';
+
+export default [
+  {
+    input: 'src/index.tsx',
+    plugins: [
+      nodeResolve(),
+      commonjs(),
+      typescript(),
+      // Map imports from shared libraries (React, etc) to global variables exposed by Spinnaker.
+      externalGlobals(spinnakerSharedLibraries()),
+      // Import from .css, .less, and inject into the document <head></head>.
+      postCss(),
+    ],
+    output: [{ dir: 'dist', format: 'es', }]
+  }
+];
+
+function spinnakerSharedLibraries() {
+  const libraries = ['react', 'react-dom', '@spinnaker/core'];
+
+  function getGlobalVariable(libraryName) {
+    const prefix = 'spinnaker.plugins.sharedLibraries';
+    const sanitizedLibraryName = libraryName.replace(/[^a-zA-Z0-9_]/g, '_');
+    return `${prefix}.${sanitizedLibraryName}`;
+  }
+
+  return libraries.reduce((globalsMap, libraryName) => {
+    return { ...globalsMap, [ libraryName ]: getGlobalVariable(libraryName) }
+  }, {});
+}
+```
+
+`spinnakerSharedLibraries` pulls dependencies from Spinnaker. The libraries constant is a list of libraries that make the plugin work correctly. Items in this list must be from the [shared libraries](https://github.com/spinnaker/deck/blob/master/app/scripts/modules/core/src/plugins/sharedLibraries.ts#L32) exposed to plugin creators.
+
+### Dependencies
+As mentioned above, Spinnaker exposes libraries for plugins to use. Define dependencies in package.json. For this example plugin, the dependencies are:
+
+```
+"@spinnaker/core": "0.0.432",
+"react": "^16.12.0",
+"react-dom": "^16.12.0"
+```
+
+## Writing The Frontend
+
+```
+import * as React from 'react';
+import { IStageTypeConfig, IStageConfigProps } from '@spinnaker/core';
+
+const customStage: IStageTypeConfig = {
+  label: 'Random Wait',
+  description: 'Stage that waits a random amount of time up to the max inputted',
+  key: 'randomWait',
+  component: RandomWaitStage,
+};
+
+function setMaxWaitTime(event: React.SyntheticEvent, props: IStageConfigProps) {
+  let target = event.target as HTMLInputElement;
+  props.updateStageField({'maxWaitTime': target.value});
+}
+
+// Our stage component
+function RandomWaitStage(props: IStageConfigProps) {
+  return (
+    <div>
+      <label>
+          Max Time To Wait
+          <input value={props.stage.maxWaitTime} onChange={(e) => setMaxWaitTime(e, props)} id="maxWaitTime" />
+      </label>
+    </div>
+  );
+}
+
+const plugin = {
+  name: 'randomWait',
+  stages: [customStage],
+};
+
+export { plugin };
+```
+
+### IStageTypeConfig
+Define Spinnaker Stages with IStageTypeConfig. Required [options:](https://github.com/spinnaker/deck/blob/abac63ce5c88b809fcf5ed1509136fe96489a051/app/scripts/modules/core/src/domain/IStageTypeConfig.ts)
+1. label -> The name of the Stage
+2. description -> Long form that describes what the Stage actually does
+3. key -> A unique name for the Stage
+4. component -> The rendered React component
+
+### IStageConfigProps
+`IStageConfigProps` defines properties passed to all Spinnaker Stages. See [IStageConfigProps.ts](https://github.com/spinnaker/deck/blob/master/app/scripts/modules/core/src/pipeline/config/stages/common/IStageConfigProps.ts) for a complete list of properties. Pass a JSON object to the `updateStageField` method to add the `maxWaitTime` to the Stage.
+
+### RandomWaitStage
+This method returns [JSX](https://reactjs.org/docs/introducing-jsx.html) that gets displayed to the plugin user.
+
+### How Spinnaker Loads The Plugin
+Each plugin must export an object named `plugin`. You can only add Stages to this object. At startup, Spinnaker looks at `plugin.stages` and adds each defined Stage to the Stage Registry.
+
 # Writing The Plugin Manifest
 
 Here is an example of a plugin manifest:
