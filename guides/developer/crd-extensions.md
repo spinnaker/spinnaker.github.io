@@ -26,7 +26,7 @@ of [Clouddriver](https://github.com/spinnaker/clouddriver) -
 
 ## Custom Handlers
 
-The central extension point is the [KubernetesHandler](https://github.com/spinnaker/clouddriver/blob/master/clouddriver-kubernetes/src/main/groovy/com/netflix/spinnaker/clouddriver/kubernetes/v2/op/handler/KubernetesHandler.java) class. A subclass of `KubernetesHandler` - e.g., [KubernetesReplicaSetHandler](https://github.com/spinnaker/clouddriver/blob/master/clouddriver-kubernetes/src/main/groovy/com/netflix/spinnaker/clouddriver/kubernetes/v2/op/handler/KubernetesReplicaSetHandler.java) - defines the
+The central extension point is the [KubernetesHandler](https://github.com/spinnaker/clouddriver/blob/master/clouddriver-kubernetes-v2/src/main/java/com/netflix/spinnaker/clouddriver/kubernetes/v2/op/handler/KubernetesHandler.java) class. A subclass of `KubernetesHandler` - e.g., [KubernetesReplicaSetHandler](https://github.com/spinnaker/clouddriver/blob/master/clouddriver-kubernetes-v2/src/main/java/com/netflix/spinnaker/clouddriver/kubernetes/v2/op/handler/KubernetesReplicaSetHandler.java) - defines the
 relationship between Spinnaker and your Kubernetes kind.
 
 For example, if you wanted to build a Spinnaker integration for your CRD of kind `MyCRDKind`, you would start with
@@ -81,7 +81,7 @@ public class MyCRDHandler extends KubernetesHandler {
 ## Custom Spinnaker Resource Models
 
 You may want to change how their CRD is represented in Spinnaker's API. By default, a CRD of `spinnakerKind` `serverGroups` will
-be represented with the model class [KubernetesV2ServerGroup](https://github.com/spinnaker/clouddriver/blob/master/clouddriver-kubernetes/src/main/groovy/com/netflix/spinnaker/clouddriver/kubernetes/v2/caching/view/model/KubernetesV2ServerGroup.java).
+be represented with the model class [KubernetesV2ServerGroup](https://github.com/spinnaker/clouddriver/blob/master/clouddriver-kubernetes-v2/src/main/java/com/netflix/spinnaker/clouddriver/kubernetes/v2/caching/view/model/KubernetesV2ServerGroup.java).
 
 You may want to override this representation, for example, if you want to define how your server group's `region` is resolved.
 
