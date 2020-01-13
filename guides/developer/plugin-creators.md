@@ -195,10 +195,10 @@ function spinnakerSharedLibraries() {
 }
 ```
 
-`spinnakerSharedLibraries` is used to pull depenedencies from Spinnaker. To see the list of depenedcies Spinnaker exposes to plugin creators, please take a look at [shared libraries](https://github.com/spinnaker/deck/blob/master/app/scripts/modules/core/src/plugins/sharedLibraries.ts#L32). `libraries` is the list of libraries needed from Spinnaker to make a plugin work correctly. This list must contain libraries from the shared libraries section in Spinnaker.
+`spinnakerSharedLibraries` pulls dependencies from Spinnaker. The libraries constant is a list of libraries that make the plugin work correctly. Items in this list must be from the [shared libraries](https://github.com/spinnaker/deck/blob/master/app/scripts/modules/core/src/plugins/sharedLibraries.ts#L32) exposed to plugin creators.
 
 ### Dependencies
-As mentioned above, Spinnaker exposes depenedncies for plugins to use. But the depenedencies need to be defined in the `package.json`. For this example plugin, the dependcies needed are:
+As mentioned above, Spinnaker exposes libraries for plugins to use. Define dependencies in package.json. For this example plugin, the dependencies are:
 
 ```
 "@spinnaker/core": "0.0.432",
@@ -245,20 +245,20 @@ export { plugin };
 ```
 
 ### IStageTypeConfig
-`IStageTypeConfig` is how Spinnaker Stages are defined. There are only a few required [options](https://github.com/spinnaker/deck/blob/abac63ce5c88b809fcf5ed1509136fe96489a051/app/scripts/modules/core/src/domain/IStageTypeConfig.ts) for configuring a Stage.
+Define Spinnaker Stages with IStageTypeConfig. Required [options:](https://github.com/spinnaker/deck/blob/abac63ce5c88b809fcf5ed1509136fe96489a051/app/scripts/modules/core/src/domain/IStageTypeConfig.ts)
 1. label -> The name of the Stage
 2. description -> Long form that describes what the Stage actually does
 3. key -> A unique name for the Stage
-4. component -> The React component that will be rendered to the user
+4. component -> The rendered React component
 
 ### IStageConfigProps
-`IStageConfigProps` are the properties passed to all Spinnaker Stages. For a complete list of what is available for `IStageConfigProps`, please check [IStageConfigProps.ts](https://github.com/spinnaker/deck/blob/master/app/scripts/modules/core/src/pipeline/config/stages/common/IStageConfigProps.ts). The method `updateStageField` is what is used to add the `maxWaitTime` to the stage. This method takes a JSON object.
+`IStageConfigProps` defines properties passed to all Spinnaker Stages. See [IStageConfigProps.ts](https://github.com/spinnaker/deck/blob/master/app/scripts/modules/core/src/pipeline/config/stages/common/IStageConfigProps.ts) for a complete list of properties. Pass a JSON object to the `updateStageField` method to add the `maxWaitTime` to the Stage.
 
 ### RandomWaitStage
 This method returns [JSX](https://reactjs.org/docs/introducing-jsx.html) that gets displayed to the plugin user.
 
 ### How Spinnaker Loads The Plugin
-Each plugin has to `export` an object named `plugin`. Currently only Stages can be added to this object. When Spinnaker starts up it will look at `plugin.stages` and add each stage that is defined to the stage registry.
+Each plugin must export an object named `plugin`. You can only add Stages to this object. At startup, Spinnaker looks at `plugin.stages` and adds each defined Stage to the Stage Registry.
 
 # Writing The Plugin Manifest
 
