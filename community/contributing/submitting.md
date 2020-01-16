@@ -34,7 +34,10 @@ Once your design doc is ready, the community will review it and leave feedback.
 
 * Provide a descriptive title for your changes.
 * Add inline code comments to changes that might not be obvious.
-* Squash your commits when you first submit your PR, and again when it's ready to be merged. It's much easier to review incremental changes to feedback when the commits are kept separate.
+* Squash your commits into logically reviewably chunks when you first submit
+  your PR. Address feedback in follow-up (unsquashed) commits. It's much easier
+  to review incremental changes to feedback when the commits are kept separate.
+* Squash your commits when merging to the branch.
 
 ## Commit message conventions
 
