@@ -34,7 +34,7 @@ Once your design doc is ready, the community will review it and leave feedback.
 
 * Provide a descriptive title for your changes.
 * Add inline code comments to changes that might not be obvious.
-* Squash your commits into logically reviewably chunks when you first submit
+* Squash your commits into logically reviewable chunks when you first submit
   your PR. Address feedback in follow-up (unsquashed) commits. It's much easier
   to review incremental changes to feedback when the commits are kept separate.
 * All pull requests should get reviewed by at least one other [member of the
