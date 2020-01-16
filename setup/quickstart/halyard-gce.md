@@ -129,11 +129,25 @@ gcloud projects add-iam-policy-binding $GCP_PROJECT \
     --member serviceAccount:$GCE_SERVICE_ACCOUNT_EMAIL \
     --role roles/compute.storageAdmin
 
+# Service Account Actor Role has been deprecated and has been replace with Service Account User role and Service Account Token Creator
+# Reference: https://cloud.google.com/iam/docs/service-accounts#the_service_account_actor_role
 # permission to download service account keys in your project
 # this is needed by packer to bake GCE images remotely
-gcloud projects add-iam-policy-binding $GCP_PROJECT \
-    --member serviceAccount:$GCE_SERVICE_ACCOUNT_EMAIL \
-    --role roles/iam.serviceAccountActor
+# gcloud projects add-iam-policy-binding $GCP_PROJECT \
+#    --member serviceAccount:$GCE_SERVICE_ACCOUNT_EMAIL \
+#    --role roles/iam.serviceAccountActor
+
+# Role Description: Run operations as the Service Account
+# Reference: https://cloud.google.com/iam/docs/understanding-roles#service-accounts-roles
+  gcloud projects add-iam-policy-binding $GCP_PROJECT \
+     --member serviceAccount:$GCE_SERVICE_ACCOUNT_EMAIL \
+     --role roles/iam.serviceAccountUser
+     
+# Role Description: Impersonate service accounts (create OAuth2 access tokens, sign blobs or JWTs, etc).
+# Reference: https://cloud.google.com/iam/docs/understanding-roles#service-accounts-roles
+  gcloud projects add-iam-policy-binding $GCP_PROJECT \
+     --member serviceAccount:$GCE_SERVICE_ACCOUNT_EMAIL \
+     --role roles/iam.serviceAccountTokenCreator
 ```
 
 ### Create Halyard host VM
