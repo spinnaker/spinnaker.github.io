@@ -39,8 +39,9 @@ Once your design doc is ready, the community will review it and leave feedback.
   to review incremental changes to feedback when the commits are kept separate.
 * All pull requests should get reviewed by at least one other [member of the
   Spinnaker organization](https://github.com/orgs/spinnaker/people) before
-  merging. While some members of the organization have access to merge without a
-  review, this should only be done very rarely in an emergency.
+  merging. (While some members of the organization have access to merge without
+  a review, this should *only* be done in an emergency or when merging a large
+  series of dependency bumps across repositories.)
 * Squash your commits when merging to the branch.
 
 ## Commit message conventions
