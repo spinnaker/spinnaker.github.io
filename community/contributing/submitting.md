@@ -37,6 +37,10 @@ Once your design doc is ready, the community will review it and leave feedback.
 * Squash your commits into logically reviewably chunks when you first submit
   your PR. Address feedback in follow-up (unsquashed) commits. It's much easier
   to review incremental changes to feedback when the commits are kept separate.
+* All pull requests should get reviewed by at least one other [member of the
+  Spinnaker organization](https://github.com/orgs/spinnaker/people) before
+  merging. While some members of the organization have access to merge without a
+  review, this should only be done very rarely in an emergency.
 * Squash your commits when merging to the branch.
 
 ## Commit message conventions
