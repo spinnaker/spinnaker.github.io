@@ -42,8 +42,8 @@ in the incoming artifact:
 - Normal strings must match exactly for the artifact to match because Spinnaker
 effectively treats them as regular expressions. For example, Spinnaker
 interprets `inputstring` as `^inputstring$`.
-- Explicit regular expressions are also valid. For example, Spinnaker will
- match `.*inputstring.*` to any string including the substring `inputstring`.
+- Explicit regular expressions are also valid. For example, Spinnaker
+ matches `.*inputstring.*` to any string including the substring `inputstring`.
 
 | Match Artifact | Incoming Artifact | Matches?  |
 |-|-|-|
