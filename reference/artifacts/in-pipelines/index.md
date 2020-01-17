@@ -38,12 +38,19 @@ artifact.
 The matching behavior is as follows: The artifact to match declared by the
 expected artifact has the same format as a regular artifact; however, its
 values are interpreted as regular expressions to match the corresponding values
-in the incoming artifact.
+in the incoming artifact:
+- Normal strings must match exactly for the artifact to match because Spinnaker
+effectively treats them as regular expressions. For example, Spinnaker
+interprets `inputstring` as `^inputstring$`.
+- Explicit regular expressions are also valid. For example, Spinnaker will
+ match `.*inputstring.*` to any string including the substring `inputstring`.
 
 | Match Artifact | Incoming Artifact | Matches?  |
 |-|-|-|
 | `{"type": "docker/image"}` | `{"type": "docker/image", "reference: "gcr.io/image"}` | ✔ |
 | `{"type": "docker/image"}` | `{"type": "gce/image", "reference: "www.googleapis.com/compute/v1/projects..."}` | ✘ |
+| `{"type": "docker/image", "version": "v1"}` | `{"type": "docker/image", "reference: "gcr.io/image:test", "version": "v1"}` | ✔ |
+| `{"type": "docker/image", "version": "v1"}` | `{"type": "docker/image", "reference: "gcr.io/image:test", "version": "v1.2"}` | ✘ |
 | `{"type": "docker/image", "version": "v1\..*"}` | `{"type": "docker/image", "reference: "gcr.io/image:v1.2", "version": "v1.2"}` | ✔ |
 | `{"type": "docker/image", "version": "v1\..*"}` | `{"type": "docker/image", "reference: "gcr.io/image:test", "version": "test"}` | ✘ |
 
