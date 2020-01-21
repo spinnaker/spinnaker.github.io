@@ -46,7 +46,7 @@ public class MyCRDHandler extends KubernetesHandler {
 
   @Override
   public KubernetesKind kind() {
-    return "MyCRDKind";
+    return KubernetesKind.from("MyCRDKind");
   }
 
   @Override
@@ -70,10 +70,8 @@ public class MyCRDHandler extends KubernetesHandler {
   }
 
   @Override
-  public Class<? extends KubernetesV2CachingAgent> cachingAgentClass() {
-    // Caching agent class for your CRD.
-    // See, e.g., `KubernetesReplicaSetCachingAgent`.
-    return MyCRDCachingAgent.class;
+  public KubernetesV2CachingAgentFactory cachingAgentFactory() {
+    return KubernetesCoreCachingAgent::new;
   }
 }
 ```
