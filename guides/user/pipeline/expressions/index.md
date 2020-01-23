@@ -225,7 +225,7 @@ curl http://api.my.spinnaker/pipelines/$PIPELINE_ID/evaluateExpression \
        --data '${ #stage("Deploy").status.toString() }'
 ```
 
-If you've enabled authz on Spinnaker, you can include your session cookie from your
+If you've [enabled authz](/setup/security/authorization/) on Spinnaker, you can include your session cookie from your
  browser into curl.
 `-H 'cookie: SESSION=<INSERT_SESSION_ID_FROM_BROWSER_HERE>'`
 
