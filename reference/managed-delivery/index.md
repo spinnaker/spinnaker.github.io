@@ -8,10 +8,6 @@ sidebar:
 {% include toc %}
 
 This is a quick reference for Managed Delivery. 
-More detailed docs are under construction.
-
-_This doc will remain undiscoverable from the side navigation until we start alpha adoption._
-
 
 ### Where am I?
 
