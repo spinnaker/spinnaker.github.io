@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Managed Delivery"
+title:  "Quick Reference"
 sidebar:
   nav: reference
 ---

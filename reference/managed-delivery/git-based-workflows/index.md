@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Managed Delivery"
+title:  "Import Delivery Config"
 sidebar:
   nav: reference
 ---
