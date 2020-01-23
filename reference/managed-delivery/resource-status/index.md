@@ -29,7 +29,7 @@ Example on a cluster:
 
 
 ### API
-If you're [setup to use the API](/reference/managed-delivery/getting-started/#env-setup) and have the [ID of a resource](/reference/managed-delivery/getting-started/#find-a-resources-id) you can call the `/managed/resources/<resourceId>/status` endpoint.
+Find the [ID of a resource](/reference/managed-delivery/getting-started/#find-your-resource-id) and call the `/managed/resources/<resourceId>/status` endpoint.
 
 Example request:
 ```bash

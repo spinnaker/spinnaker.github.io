@@ -656,6 +656,23 @@ reference:
       url: /reference/pipeline/stages/
     - title: Pipeline Templates
       url: /reference/pipeline/templates/
+  - title: Managed Delivery
+    collapsed: true
+    children:
+    - title: Getting Started
+      url: /reference/managed-delivery/getting-started/
+    - title: Git Based Workflows
+      url: /reference/managed-delivery/git-based-workflows/
+    - title: Delivery Configs
+      url: /reference/managed-delivery/delivery-configs/
+    - title: Artifacts
+      url: /reference/managed-delivery/artifacts/
+    - title: Resource Status
+      url: /reference/managed-delivery/resource-status/
+    - title: API
+      url: /reference/managed-delivery/api/
+    - title: Quick Reference
+      url: /reference/managed-delivery/
 
 community:
   - title: Releases
