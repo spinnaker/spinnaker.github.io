@@ -18,7 +18,7 @@ Bugs affecting more than one service commonly surface only when the whole system
 The **build cop** responsibilities include:
 
 * Triage integration test failures on `master` and the 3 most recent release branches
-* Clean up orphaned resources across target cloud providers
+* [Clean up](#cleaning-orphaned-resources) orphaned resources across target cloud providers
 * Route [new GitHub issues](https://github.com/spinnaker/spinnaker/issues){:target="\_blank"} to the appropriate SIG
   (applying GitHub labels as appropriate). You can find the full list of SIGs in the
   [governance repo](https://github.com/spinnaker/governance/blob/master/sig-index.md){:target="\_blank"}
@@ -48,7 +48,7 @@ As its name implies, `Flow_BuildAndValidate` builds and tests the whole Spinnake
 1. Publishes the BOM under the following names:
   * _With the floating tag:_ `<branchName>-latest-unvalidated` (e.g. `master-latest-unvalidated`)
   * _With a fixed tag:_ `<branchName>-<timestamp>` (e.g. `master-20191213154039`)
-1. Publishes the changelog
+1. Publishes the [changelog](https://gist.github.com/spinnaker-release/4f8cd09490870ae9ebf78be3be1763ee)
 
 ### 2. [Validate_BomAndReportMultiPlatform](https://builds.spinnaker.io/job/Validate_BomAndReportMultiPlatform/){:target="\_blank"}
 
