@@ -2,7 +2,8 @@
 layout: single
 title:  "Quick Reference"
 sidebar:
-  nav: reference
+  nav: guides
+redirect_from: /reference/managed-delivery/
 ---
 
 {% include toc %}
@@ -45,4 +46,4 @@ The infrastructure will not be deleted.
 
 ### Where are the getting started docs?
 
-They're at [/reference/managed-delivery/getting-started](/reference/managed-delivery/getting-started).
+They're at [/reference/managed-delivery/getting-started](/guides/user/managed-delivery/getting-started).

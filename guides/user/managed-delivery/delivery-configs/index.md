@@ -2,12 +2,13 @@
 layout: single
 title:  "Delivery Configs"
 sidebar:
-  nav: reference
+  nav: guides
+redirect_from: /reference/managed-delivery/delivery-configs/
 ---
 
 {% include toc %}
 
-_**Prerequisite:** read and complete the [getting started](/reference/managed-delivery/getting-started/) document!_
+_**Prerequisite:** read and complete the [getting started](/guides/user/managed-delivery/getting-started/) document!_
 
 ## What is a Delivery Config?
 
@@ -29,7 +30,7 @@ You can have multiple artifacts in your delivery config.
 We will watch for new versions of every artifact you define.
 In order to deploy a cluster that is running an artifact you'll need to use it within a resource (in an **Environment**).
 
-_For detailed artifact information, please refer to the [Artifacts](/reference/managed-delivery/artifacts/) page._
+_For detailed artifact information, please refer to the [Artifacts](/guides/user/managed-delivery/artifacts/) page._
 
 ### Environments
 
@@ -51,7 +52,7 @@ Before deploying to `production` you must manually approve each version.
 
 #### Defining an Environment
 
-An environment is made up of a list of Declarative Infrastructure resources (like the resource you created in the [getting started guide](/reference/managed-delivery/getting-started/)).
+An environment is made up of a list of Declarative Infrastructure resources (like the resource you created in the [getting started guide](/guides/user/managed-delivery/getting-started/)).
 An environment is configured as follows:
 
 ```yaml
