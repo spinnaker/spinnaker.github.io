@@ -52,7 +52,7 @@ Before deploying to `production` you must manually approve each version.
 
 #### Defining an Environment
 
-An environment is made up of a list of Declarative Infrastructure resources (like the resource you created in the [getting started guide](/guides/user/managed-delivery/getting-started/)).
+An environment is made up of a list of declarative infrastructure resources (like the resource you created in the [getting started guide](/guides/user/managed-delivery/getting-started/)).
 An environment is configured as follows:
 
 ```yaml
@@ -164,5 +164,4 @@ Also note that the first environment has no constraints.
 ## Example 
 
 TODO eb: add an example 
-
 
