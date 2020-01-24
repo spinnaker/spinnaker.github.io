@@ -158,7 +158,7 @@ Make sure your git repository is accessible by Spinnaker.
 
 ## Setting Up Resource Submission
 
-Since Spinnaker is the source of truth (and not git) you need to submit your managed resource configuration to Spinnaker every time there are changes.
+Since Spinnaker is the source of truth (and not Git) you need to submit your managed resource configuration to Spinnaker every time there are changes.
 There's a Spinnaker stage for this!
 See the docs on [git-based-workflows](/guides/user/managed-delivery/git-based-workflows/) for detailed instructions.
 
