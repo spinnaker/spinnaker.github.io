@@ -2,7 +2,8 @@
 layout: single
 title:  "API"
 sidebar:
-  nav: reference
+  nav: guides
+redirect_from: /reference/managed-delivery/api/
 ---
 
 {% include toc %}
