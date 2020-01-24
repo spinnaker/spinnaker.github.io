@@ -8,7 +8,7 @@ redirect_from: /reference/managed-delivery/resource-status/
 
 {% include toc %}
 
-💡 *If you're not sure what a Managed Resource is, check out our [overview of Managed Delivery](/guides/user/managed-delivery) first.*
+💡 *If you're not sure what a managed resource is, check out our [overview of Managed Delivery](/guides/user/managed-delivery) first.*
 
 ## Overview
 Managed Resources will always have a **status** which describes the current state of the resource from Spinnaker's perspective. A resource's status can help you quickly answer questions like:
