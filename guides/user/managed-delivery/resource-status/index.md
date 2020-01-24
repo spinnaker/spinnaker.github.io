@@ -67,7 +67,7 @@ While Spinnaker is managing a resource, manual changes made via the UI or the AP
 
 When a resource has a Diff status, it means Spinnaker detected a drift from the declarative configuration but hasn't taken any action yet.
 
-Once Spinnaker starts taking automatic action to correct the drift, the status will change to [Actuating](/guides/user/managed-delivery/resource-status/#actuating).
+Once Spinnaker starts taking automatic action to correct the drift, the status  changes to [Actuating](/guides/user/managed-delivery/resource-status/#actuating).
 
 While Spinnaker is managing a resource, manual changes made via the UI or the API will be automatically reversed ("stomped") in favor of the declarative configuration.
 
