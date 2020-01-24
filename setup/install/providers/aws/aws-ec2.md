@@ -88,11 +88,10 @@ Option number 1 is useful for creation of user with AWS Access Key and secret. T
 Option 2 uses the IAM roles *ManagingRole* and *ManagedRoles*. This setting is applied on some environments that have extra security considerations.
 
 ## Halyard Configurations
-After the AWS IAM user, roles, policies and trust relationship has been set up, the next step is to add the AWS configurations to Spinnaker via Halyard CLI.
+After the AWS IAM user, roles, policies and trust relationship have been set up, the next step is to add the AWS configurations to Spinnaker via Halyard CLI:
 
-*Apply the configurations to spinnaker*
-1. Access the Halyard Pod
-2. Add the configurations for AWS provider with `hal` command. Please check [hal config provider AWS](https://www.spinnaker.io/reference/halyard/commands/#hal-config-provider-aws)
+1. Access the Halyard Pod.
+2. Add the configurations for AWS provider with `hal` command. Please check [hal config provider AWS](https://www.spinnaker.io/reference/halyard/commands/#hal-config-provider-aws).
 3. Enable the AWS provider `hal config provider aws enable`.
 4. Apply the configurations to Spinnaker `hal deploy apply`.
 
