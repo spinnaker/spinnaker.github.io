@@ -441,7 +441,7 @@ guides:
         children:
         - title: Getting Started
           url: /guides/user/managed-delivery/getting-started/
-        - title: Git Based Workflows
+        - title: Git-Based Workflows
           url: /guides/user/managed-delivery/git-based-workflows/
         - title: Delivery Configs
           url: /guides/user/managed-delivery/delivery-configs/

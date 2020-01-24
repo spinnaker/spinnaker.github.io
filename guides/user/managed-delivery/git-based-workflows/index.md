@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Import Delivery Config"
+title:  "Git-Based Workflows"
 sidebar:
   nav: guides
 redirect_from: /reference/managed-delivery/git-based-workflows
