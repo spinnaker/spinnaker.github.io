@@ -160,7 +160,7 @@ Make sure your git repository is accessible by Spinnaker.
 
 Since Spinnaker is the source of truth (and not Git) you need to submit your managed resource configuration to Spinnaker every time there are changes.
 There's a Spinnaker stage for this!
-See the docs on [git-based-workflows](/guides/user/managed-delivery/git-based-workflows/) for detailed instructions.
+See the docs on [Git-based-workflows](/guides/user/managed-delivery/git-based-workflows/) for detailed instructions.
 
 
 ## Testing Out Resource Submission
