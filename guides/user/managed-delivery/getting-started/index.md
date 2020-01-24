@@ -2,7 +2,8 @@
 layout: single
 title:  "Getting Started"
 sidebar:
-  nav: reference
+  nav: guides
+redirect_from: /reference/managed-delivery/getting-started/
 ---
 
 {% include toc %}
@@ -81,7 +82,7 @@ You'll need to replace `APP_NAME_OR_SG_NAME` with either the name of your applic
 You probably have a security group with the same name as your app, which is the one you should use here.
 You'll need to replace `SERVICE_ACCOUNT` with the same service account you created or found in the [prerequisites](#prerequisites) step.
 
-If you've gotten all the information right a resource configuration will show up. For more information on how to use this API see the [API](/reference/managed-delivery/api/#export-an-existing-resource) doc.
+If you've gotten all the information right a resource configuration will show up. For more information on how to use this API see the [API](/guides/user/managed-delivery/api/#export-an-existing-resource) doc.
 
 
 ## Save Your Resource In Your Git Repository
@@ -157,9 +158,9 @@ Make sure your git repository is accessible by Spinnaker.
 
 ## Setting Up Resource Submission
 
-Since Spinnaker is the source of truth (and not git) you need to submit your managed resource configuration to Spinnaker every time there are changes.
+Since Spinnaker is the source of truth (and not Git) you need to submit your managed resource configuration to Spinnaker every time there are changes.
 There's a Spinnaker stage for this!
-See the docs on [git-based-workflows](/reference/managed-delivery/git-based-workflows/) for detailed instructions.
+See the docs on [Git-based-workflows](/guides/user/managed-delivery/git-based-workflows/) for detailed instructions.
 
 
 ## Testing Out Resource Submission
@@ -179,7 +180,7 @@ Paste in your delivery config YAML file, choose `application/x-yaml` for the con
 If the resource YAML has an invalid format, you'll get an error back with the reason why.
 If the resource YAML is correct, you'll see some information about whether or not there is a diff, and what that diff is.
 
-For more help with this endpoint, see the the [API](/reference/managed-delivery/api/#validating-yaml) doc.
+For more help with this endpoint, see the the [API](/guides/user/managed-delivery/api/#validating-yaml) doc.
 
 ## Is Anything Happening?
 

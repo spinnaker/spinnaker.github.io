@@ -2,7 +2,8 @@
 layout: single
 title:  "Artifacts"
 sidebar:
-  nav: reference
+  nav: guides
+redirect_from: /reference/managed-delivery/artifacts/
 ---
 
 {% include toc %}

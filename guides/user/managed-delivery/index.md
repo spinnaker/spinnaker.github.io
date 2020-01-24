@@ -2,7 +2,8 @@
 layout: single
 title:  "Quick Reference"
 sidebar:
-  nav: reference
+  nav: guides
+redirect_from: /reference/managed-delivery/
 ---
 
 {% include toc %}
@@ -12,7 +13,7 @@ This is a quick reference for Managed Delivery.
 ### Where am I?
 
 You probably arrived here from a tooltip on a declaratively managed resource.
-This page has some helpful information to get oriented, as well as some other links (coming...).
+This page has some helpful information to get oriented.
 
 
 ### What is happening?
@@ -45,4 +46,4 @@ The infrastructure will not be deleted.
 
 ### Where are the getting started docs?
 
-They're at [/reference/managed-delivery/getting-started](/reference/managed-delivery/getting-started).
+They're at [/reference/managed-delivery/getting-started](/guides/user/managed-delivery/getting-started).
