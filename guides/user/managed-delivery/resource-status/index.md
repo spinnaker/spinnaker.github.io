@@ -11,7 +11,7 @@ redirect_from: /reference/managed-delivery/resource-status/
 💡 *If you're not sure what a managed resource is, check out our [overview of Managed Delivery](/guides/user/managed-delivery) first.*
 
 ## Overview
-Managed Resources will always have a **status** which describes the current state of the resource from Spinnaker's perspective. A resource's status can help you quickly answer questions like:
+Managed resources always have a **status**, which describes the current state of the resource from Spinnaker's perspective. A resource's status can help you quickly answer questions like:
   - Is Spinnaker taking automatic action on this resource right now?
   - Does the actual state of this resource match the declarative configuration I gave to Spinnaker?
   - Is something wrong with this resource?
