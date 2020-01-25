@@ -94,10 +94,7 @@ There are two `type` options:
 
 #### Environment Constraints
 
-**Constraints are in early development stage, and there will be lots of change here soon**. 
-
 Constraints control how an artifact progresses through environments.
-We have one constraint available: a previous environment constraint.
 
 The config looks like:  
 
@@ -112,6 +109,9 @@ environments:
 ```
 
 This constraint definition says that an artifact must have been deployed successfully into the `testing` environment before it can be deployed into the `staging` environment.
+
+A growing set of constraints are available, see [Environment Constraints](/guides/user/managed-delivery/environment-constraints)
+for more information.
 
 ## Creating a delivery config
 
