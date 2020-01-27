@@ -693,6 +693,8 @@ community:
         url: /community/contributing/
       - title: Code Of Conduct
         url: /community/contributing/code-of-conduct/
+      - title: Build Statuses
+        url: /community/contributing/build-statuses/
       - title: Submitting A Patch
         url: /community/contributing/submitting/
       - title: Nightly Builds
