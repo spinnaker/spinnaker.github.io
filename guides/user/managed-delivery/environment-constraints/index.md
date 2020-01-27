@@ -7,7 +7,7 @@ sidebar:
 
 {% include toc %}
 
-_**Prerequisite:** understand the environment concept offered by [Delivery Configs](/guides/user/managed-delivery/delivery-configs/)_
+_**Prerequisite:** understand the environment concept offered by [Delivery Configs](/guides/user/managed-delivery/delivery-configs/#environments)_
 
 ## What is an Environment Constraint?
 
