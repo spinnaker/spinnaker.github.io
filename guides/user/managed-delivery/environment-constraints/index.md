@@ -47,7 +47,7 @@ types are `depends-on` and `allowed-times`.
 Stateless constraints are always evaluated first, and must be satisfied before any stateful constraints are
 evaluated. Stateful constraints are a powerful construct, with the ability to mutate cloud state during their 
 evaluation. Examples include deploying a new artifact version into an environment for the sake of canary
-analysis, or launching a smoke test pipeline against a prior environment, gating promotion on its success.
+analysis, or launching a smoke-test pipeline against a prior environment, gating promotion on its success.
 The implicit ordering by type ensures that a pipeline constraint on a production environment intended to
 run tests against a prior environment will not be launched until the artifact version being evaluated has
 actually been delivered into that prior environment. All stateful constraints can be manually overridden,
