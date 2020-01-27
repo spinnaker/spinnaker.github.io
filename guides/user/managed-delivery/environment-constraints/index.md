@@ -44,7 +44,7 @@ Constraints are currently bucketed into stateless and stateful types. Stateless 
 evaluated in a single pass and do not interact with users or external systems. The current stateless constraint
 types are `depends-on` and `allowed-times`.
 
-Stateless constraints are always evaluated first, and must be satisfied before any stateful constraints will be
+Stateless constraints are always evaluated first, and must be satisfied before any stateful constraints are
 evaluated. Stateful constraints are a powerful construct, with the ability to mutate cloud state during their 
 evaluation. Examples include deploying a new artifact version into an environment for the sake of canary
 analysis, or launching a smoke test pipeline against a prior environment, gating promotion on its success.
