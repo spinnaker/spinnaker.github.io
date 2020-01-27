@@ -53,7 +53,7 @@ run tests against a prior environment will not be launched until the artifact ve
 actually been delivered into that prior environment. All stateful constraints can be manually overridden,
 such as when a canary failure is deemed to be expected for a given change, or a false positive.
 
-When an environment defines multiple constraints, all must pass before a new artifact will be promoted into
+When an environment defines multiple constraints, all must pass before a new artifact is promoted into
 the environment.
  
 ## Available Constraints
