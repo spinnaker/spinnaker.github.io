@@ -111,7 +111,8 @@ between 2-4pm on Thursday.
 The `manual-judgement` constraint prevents an artifact from deploying to an environment without explicit
 approval via an external API client. UI support for approving or rejecting judgements as well as an 
 interactive slack bot are under development but direct use of Spinnaker's REST API is currently required to
-answer a manual judgement.
+answer a manual judgement. See [Interacting with and Overriding Constraints](#interacting-with-and-overriding-constraints)
+for details.
  
 **Parameters**
 
@@ -138,7 +139,8 @@ the final status of the execution.
 
 The configuration id of the pipeline to be executed during constraint evaluation. If unknown,
 edit the given pipeline from the Spinnaker UI. From the edit configuration view, the `pipelineId` is the
-final part of the URL.
+final part of the URL. The pipeline can be a part of any application, but must be runnable via
+the service account defined in the target environment's delivery config. 
 
 `retries`: *(Optional)*; Type: `Integer`
 
@@ -147,7 +149,8 @@ execution goes terminal for any reason. The constraint evaluation will fail once
 
 `parameters`: *(Optional)*; Type: `Map<String, Object>` 
 
-If set, the contents of this map are passed as trigger parameters when executing the pipeline.
+If set, the contents of this map are passed as trigger parameters when executing the pipeline. Expressions
+are not currently supported.
 
 `timeout`: *(Optional)*; Type: `Duration`; Default Value: `PT2H`
 
@@ -283,7 +286,7 @@ If set, overrides the `defaults.constraint.canary.storage-account` property. Not
 
 ### Reading status of pending and recent constraints
 
-- *`GET` https://gate/managed/delivery-configs/{delivery-config-name}/environment/{environment-name}/constraints?limit=20*
+- **`GET`** `https://gate/managed/delivery-configs/{delivery-config-name}/environment/{environment-name}/constraints?limit=20`
 
 Returns: `List<ConstraintState>` consisting of:
 ```
@@ -301,7 +304,7 @@ Returns: `List<ConstraintState>` consisting of:
 
 ### Setting or Overriding Constraint State
 
-- *`POST` https://gate/managed/delivery-configs/{delivery-config-name}/environment/{environment-name}/constraint*
+- **`POST`** `https://gate/managed/delivery-configs/{delivery-config-name}/environment/{environment-name}/constraint`
 
 `POST` Body:
 ```json
