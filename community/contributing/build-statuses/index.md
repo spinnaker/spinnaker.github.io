@@ -4,6 +4,15 @@ sidebar:
   nav: community
 ---
 
+## Nightly and Release Integration Tests
+
+> You must be a member of the `build-cops` GitHub Team to access nightly and release integration tests.
+
+* [![Master Build Status](https://builds.spinnaker.io/buildStatus/icon?job=Flow_BuildAndValidate&subject=All%20at%20HEAD) All services at `refs/heads/master`](https://builds.spinnaker.io/job/Flow_BuildAndValidate/){:target="\_blank"}
+* [![1.18.x Build Status](https://builds.spinnaker.io/buildStatus/icon?job=Flow_BuildAndValidate_1_18_x&subject=Release%201.18.x) Release 1.18.x](https://builds.spinnaker.io/job/Flow_BuildAndValidate_1_18_x/){:target="\_blank"}
+* [![1.17.x Build Status](https://builds.spinnaker.io/buildStatus/icon?job=Flow_BuildAndValidate_1.17.x&subject=Release%201.17.x) Release 1.17.x](https://builds.spinnaker.io/job/Flow_BuildAndValidate_1.17.x/){:target="\_blank"}
+* [![1.16.x Build Status](https://builds.spinnaker.io/buildStatus/icon?job=Flow_BuildAndValidate_1.16.x&subject=Release%201.16.x) Release 1.16.x](https://builds.spinnaker.io/job/Flow_BuildAndValidate_1.16.x/){:target="\_blank"}
+
 ## Core Services
 
 * [![Clouddriver Build Status](https://api.travis-ci.org/spinnaker/clouddriver.svg?branch=master) Clouddriver](https://travis-ci.org/spinnaker/clouddriver){:target="\_blank"}
@@ -30,13 +39,3 @@ sidebar:
 * [![Spinnaker-gradle-project Build Status](https://api.travis-ci.org/spinnaker/spinnaker-gradle-project.svg?branch=master) Spinnaker-gradle-project](https://travis-ci.org/spinnaker/spinnaker-gradle-project){:target="\_blank"}
 * [![Spinnaker-monitoring Build Status](https://api.travis-ci.org/spinnaker/spinnaker-monitoring.svg?branch=master) Spinnaker-monitoring](https://travis-ci.org/spinnaker/spinnaker-monitoring){:target="\_blank"}
 * [![Swabbie Build Status](https://api.travis-ci.org/spinnaker/swabbie.svg?branch=master) Swabbie](https://travis-ci.org/spinnaker/swabbie){:target="\_blank"}
-
-
-## Nightly and Release Integration Tests
-
-> You must be a member of the `build-cops` GitHub Team to access these builds.
-
-* [![Master Build Status](https://builds.spinnaker.io/buildStatus/icon?job=Flow_BuildAndValidate&subject=All%20at%20HEAD) All services at `refs/heads/master`](https://builds.spinnaker.io/job/Flow_BuildAndValidate/){:target="\_blank"}
-* [![1.18.x Build Status](https://builds.spinnaker.io/buildStatus/icon?job=Flow_BuildAndValidate_1_18_x&subject=Release%201.18.x) Release 1.18.x](https://builds.spinnaker.io/job/Flow_BuildAndValidate_1_18_x/){:target="\_blank"}
-* [![1.17.x Build Status](https://builds.spinnaker.io/buildStatus/icon?job=Flow_BuildAndValidate_1.17.x&subject=Release%201.17.x) Release 1.17.x](https://builds.spinnaker.io/job/Flow_BuildAndValidate_1.17.x/){:target="\_blank"}
-* [![1.16.x Build Status](https://builds.spinnaker.io/buildStatus/icon?job=Flow_BuildAndValidate_1.16.x&subject=Release%201.16.x) Release 1.16.x](https://builds.spinnaker.io/job/Flow_BuildAndValidate_1.16.x/){:target="\_blank"}
