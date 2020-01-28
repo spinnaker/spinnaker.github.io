@@ -3,18 +3,11 @@ layout: single
 title:  "FAQ"
 sidebar:
   nav: guides
-redirect_from: /reference/managed-delivery/
 ---
 
 {% include toc %}
 
 This is a quick reference for Managed Delivery. 
-
-### Where am I?
-
-You probably arrived here from a tooltip on a declaratively managed resource.
-This page has some helpful information to get oriented.
-
 
 ### What is happening?
 

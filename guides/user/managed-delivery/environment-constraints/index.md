@@ -48,13 +48,14 @@ Stateless constraints are always evaluated first, and must be satisfied before a
 evaluated. Stateful constraints are a powerful construct, with the ability to mutate cloud state during their 
 evaluation. Examples include deploying a new artifact version into an environment for the sake of canary
 analysis, or launching a smoke-test pipeline against a prior environment, gating promotion on its success.
-The implicit ordering by type ensures that a pipeline constraint on a production environment intended to
-run tests against a prior environment will not be launched until the artifact version being evaluated has
-actually been delivered into that prior environment. All stateful constraints can be manually overridden,
-such as when a canary failure is deemed to be expected for a given change, or a false positive.
 
-When an environment defines multiple constraints, all must pass before a new artifact is promoted into
-the environment.
+This implicit ordering by type ensures that a pipeline constraint gating promotion to a production environment
+on smoke-tests run against a prior environment will only invoke the test pipeline after the artifact version
+under evaluation is deployed to the prior environment. 
+
+All stateful constraints can be manually overridden, such as when a canary failure is deemed to be expected 
+for a given change, or a false alarm. When an environment defines multiple constraints, all must pass before a 
+new artifact is promoted into the environment.
  
 ## Available Constraints
 
@@ -283,6 +284,10 @@ If set, overrides the `defaults.constraint.canary.storage-account` property. Not
 ```
 
 ## Interacting with and Overriding Constraints
+
+Apart from the [depends-on](#depends-on) constraint, all constraint types either expect interaction from a user 
+(in the case of [manual-judgement](#manual-judgement)) or can have their automated judgements overruled by a
+user. The following API endpoints are currently available to interact with constraints.
 
 ### Reading status of pending and recent constraints
 
