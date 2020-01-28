@@ -34,6 +34,9 @@ sidebar:
 
 ## Nightly and Release Integration Tests
 
-Access the CI system here: [https://builds.spinnaker.io](https://builds.spinnaker.io){:target="\_blank"}
+> You must be a member of the `build-cops` GitHub Team to access these builds.
 
-> You must be a member of the `build-cops` GitHub Team to access this.
+* [![Master Build Status](https://builds.spinnaker.io/buildStatus/icon?job=Flow_BuildAndValidate&subject=All%20at%20HEAD) All services at `refs/heads/master`](https://builds.spinnaker.io/job/Flow_BuildAndValidate/)
+* [![1.18.x Build Status](https://builds.spinnaker.io/buildStatus/icon?job=Flow_BuildAndValidate_1_18_x&subject=Release%201.18.x) Release 1.18.x](https://builds.spinnaker.io/job/Flow_BuildAndValidate_1_18_x/)
+* [![1.17.x Build Status](https://builds.spinnaker.io/buildStatus/icon?job=Flow_BuildAndValidate_1.17.x&subject=Release%201.17.x) Release 1.17.x](https://builds.spinnaker.io/job/Flow_BuildAndValidate_1.17.x/)
+* [![1.16.x Build Status](https://builds.spinnaker.io/buildStatus/icon?job=Flow_BuildAndValidate_1.16.x&subject=Release%201.16.x) Release 1.16.x](https://builds.spinnaker.io/job/Flow_BuildAndValidate_1.16.x/)
