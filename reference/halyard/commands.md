@@ -4,7 +4,7 @@ title: "Commands"
 sidebar:
   nav: reference
 ---
-Published: 2020-01-27 16:06:32
+Published: 2020-01-30 16:39:48
 
 
 # Table of Contents
@@ -11453,6 +11453,7 @@ This guarantees that no configuration will be generated for this deployment. Thi
  * `--prep-only`: (*Default*: `false`) This does just the prep work, and not the actual deployment. Only useful at the moment if you want to just clone the repositories for a localgit setup.
  * `--service-names`: (*Default*: `[]`) When supplied, only install or update the specified Spinnaker services.
  * `--wait-for-completion`: (*Default*: `false`) When supplied, wait for all containers to be ready before returning (only applies to Kubernetes V2 provider).
+ * `--wait-for-completion-timeout-minutes`: Specify timeout for deploy apply command.
 
 
 ---
