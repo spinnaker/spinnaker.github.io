@@ -4,6 +4,10 @@ sidebar:
   nav: community
 ---
 
+[Build Cop Rotation History](https://github.com/spinnaker/spinnaker/issues?utf8=%E2%9C%93&q=is%3Aissue+label%3Abuild-cop-rotation)
+
+[Build Cop List of Responsibilities](https://www.spinnaker.io/community/contributing/nightly-builds/#build-cop)
+
 ## Nightly and Release Integration Tests
 
 > You must be a member of the `build-cops` GitHub Team to access nightly and release integration tests.
