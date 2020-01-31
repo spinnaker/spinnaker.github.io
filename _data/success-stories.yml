@@ -74,10 +74,10 @@ testimonials:
 
   - name: Cure.fit
     logo: testimonials-logos/curefit_logo.png
-    quote: "We wanted Jenkins to do nothing more than its CI job, and were looking for something that does CD reliably."
+    quote: "We wanted Jenkins to do nothing more than its CI job and were looking for something that does CD reliably."
     questions:
       - question: How did you discover Spinnaker?
-        answer: We were planning to move our backends from VMs to Kubernetes. kubectl is a CLI that is used to update k8s' metadata and perform deployments. However, when you are an engineering division with 100 engineers, allowing each one to independently perform `kubectl apply` may result in unexpected state of services, especially when you have 50 of those. And giving Jenkins significant permissions to do that also felt wrong. We wanted Jenkins to do nothing more than its CI job, and were looking for something that does CD reliably. We explored Jenkins-X, Harness, Kubeflow and Spinnaker. We tried them all, and finally settled with Spinnaker for multiple reasons':'
+        answer: We were planning to move our backends from VMs to Kubernetes. kubectl is a CLI that is used to update k8s' metadata and perform deployments. However, when you are an engineering division with 100 engineers, allowing each one to independently perform `kubectl apply` may result in unexpected state of services, especially when you have 50 of those. And giving Jenkins significant permissions to do that also felt wrong. We wanted Jenkins to do nothing more than its CI job and were looking for something that does CD reliably. We explored Jenkins-X, Harness, Kubeflow and Spinnaker. We tried them all and finally settled with Spinnaker for multiple reasons&#58
                 1. Easy pipelines
                 2. Auth and Authz
                 3. Capable of maintaining multiple k8s accounts easily':' stage, alpha, prod, backup, integration.
@@ -93,7 +93,7 @@ testimonials:
         answer: Currently Spinnaker serves 50% of all our service covering 70% of all our deployments pipelines. It allows for teams to test their changes on alpha before deploying to prod via manual judgement, which is the most popular feature here. It has reduced the amount of bad code entering production significantly. Moreover, having multiple environments has become easier because deploying in them is easy. Earlier we only had stage and prod as that alone was hard to manage for a small team. The deployment time is significantly lesser than what it was when we were on VMs, almost by 80%. Rollbacks is super easy, esp with versioned configmaps and secrets. This was one thing that went as a feature request in a meeting with Jenkins-X team.
 
       - question: What is missing or could be improved in Spinnaker?
-        answer: It takes 2 mins for new deployments to show up, after a bad deployment has been detected. So its not possible to immediately rollback on the first error occurrence. Instant rollback trigger is a much required feature. 
+        answer: It takes 2 mins for new deployments to show up after a bad deployment has been detected. So it's not possible to immediately rollback on the first error occurrence. Instant rollback trigger is a much required feature. 
                 For 2 mins, it wont show the new deployment under infrastructure, hence rollback is not possible. 
 
   - name: Diligent
