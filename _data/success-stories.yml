@@ -72,6 +72,49 @@ testimonials:
       - question: What is missing or could be improved in Spinnaker?
         answer: Documentation could be improved.
 
+  - name: Cure.fit
+    logo: testimonials-logos/curefit_logo.png
+    quote: "We wanted Jenkins to do nothing more than its CI job, and were looking for something that does CD reliably."
+    questions:
+      - question: How did you discover Spinnaker?
+        answer: We were planning to move our backends from VMs to Kubernetes. kubectl is a CLI that is used to update k8s' metadata and perform deployments. However, when you are an engineering division with 100 engineers, allowing each one to independently perform `kubectl apply` may result in unexpected state of services, especially when you have 50 of those. And giving Jenkins significant permissions to do that also felt wrong. We wanted Jenkins to do nothing more than its CI job, and were looking for something that does CD reliably. We explored Jenkins-X, Harness, Kubeflow and Spinnaker. We tried them all, and finally settled with Spinnaker for multiple reasons':'
+                1. Easy pipelines
+                2. Auth and Authz
+                3. Capable of maintaining multiple k8s accounts easily':' stage, alpha, prod, backup, integration.
+                4. versioned config maps and secrets.
+                5. Easy rollbacks...
+                Just to name a few. 
+
+      - question: What was your experience getting started with Spinnaker?
+        answer: Since the initial k8s setup was going to be small, we deployed Spinnaker as a part of the cluster itself. As of today, we're migrating Spinnaker to its own cluster because it needs to manage many clusters, so we see having it as a separate entity useful. We had Jenkins create Docker images for applications, and push it to ECR. Jenkins also updated the helm charts if required and pushed it to a chart museum. Spinnaker pipelines take Jenkins as a trigger, and uses the build.properties from Jenkins if required. It then bakes data from build.properties into the helm chart and deploys it to the respective cluster. 
+                We used halyard to deploy Spinnaker. We have a set of commands that are part of the values.yaml for Spinnaker. Using helm install deploys Spinnaker onto the prod cluster. 
+
+      - question: Where are you today with Spinnaker? What benefits has it provided to your team?
+        answer: Currently Spinnaker serves 50% of all our service covering 70% of all our deployments pipelines. It allows for teams to test their changes on alpha before deploying to prod via manual judgement, which is the most popular feature here. It has reduced the amount of bad code entering production significantly. Moreover, having multiple environments has become easier because deploying in them is easy. Earlier we only had stage and prod as that alone was hard to manage for a small team. The deployment time is significantly lesser than what it was when we were on VMs, almost by 80%. Rollbacks is super easy, esp with versioned configmaps and secrets. This was one thing that went as a feature request in a meeting with Jenkins-X team.
+
+      - question: What is missing or could be improved in Spinnaker?
+        answer: It takes 2 mins for new deployments to show up, after a bad deployment has been detected. So its not possible to immediately rollback on the first error occurrence. Instant rollback trigger is a much required feature. 
+                For 2 mins, it wont show the new deployment under infrastructure, hence rollback is not possible. 
+
+  - name: Diligent
+    logo: testimonials-logos/diligent_logo.png
+    quote: "2000% faster to create new services."
+    questions:
+      - question: How did you discover Spinnaker?
+        answer: After a lot of R&D looking at improving our delivery model, we found Spinnaker to be the best tool for the job.
+
+      - question: What was your experience getting started with Spinnaker?
+        answer: Some software solutions get harder to use the more you find their limitations. Spinnaker is the opposite - we have got faster and faster the more we use it.
+
+      - question: Where are you today with Spinnaker? What benefits has it provided to your team?
+        answer: A few metrics':'
+                1600% improvement in Cycle time in some spaces (68 days to 4 days).
+                2000% faster to create new services (160 elapsed hours to under a day)
+
+      - question: What is missing or could be improved in Spinnaker?
+        answer: The base Spinnaker docs are not good. 
+                Armory provides much more useful documentation.
+
   - name: SAP Customer Experience
     logo: testimonials-logos/sap.png
     quote: "Our largest development projects are deploying 25 times in production (daily average)."
