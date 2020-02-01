@@ -81,7 +81,7 @@ testimonials:
           We were planning to move our backends from VMs to Kubernetes. kubectl is a CLI that is used to update k8s' metadata and perform deployments. However, when you are an engineering division with 100 engineers, allowing each one to independently perform `kubectl apply` may result in unexpected state of services, especially when you have 50 of those. And giving Jenkins significant permissions to do that also felt wrong. We wanted Jenkins to do nothing more than its CI job and were looking for something that does CD reliably. We explored Jenkins-X, Harness, Kubeflow and Spinnaker. We tried them all and finally settled with Spinnaker for multiple reasons:
             1. Easy pipelines
             2. Auth and Authz
-            3. Capable of maintaining multiple k8s accounts easily':' stage, alpha, prod, backup, integration.
+            3. Capable of maintaining multiple k8s accounts easily: stage, alpha, prod, backup, integration.
             4. versioned config maps and secrets.
             5. Easy rollbacks...
             Just to name a few. 
