@@ -35,7 +35,7 @@ sidebar:
 
 ## Optional and Supporting Services
 
-* [![Keel Build Status](https://api.travis-ci.org/spinnaker/keel.svg?branch=master) Keel](https://travis-ci.org/spinnaker/keel){:target="\_blank"}
+* [![Keel Build Status](https://github.com/spinnaker/keel/workflows/Keel%20CI/badge.svg)](https://github.com/spinnaker/keel/actions?query=workflow%3A%22Keel+CI%22+branch%3Amaster){:target="\_blank"} [![Keel Build Status](https://api.travis-ci.org/spinnaker/keel.svg?branch=master) Keel](https://travis-ci.org/spinnaker/keel){:target="\_blank"}
 * [![Keiko Build Status](https://api.travis-ci.org/spinnaker/keiko.svg?branch=master) Keiko](https://travis-ci.org/spinnaker/keiko){:target="\_blank"}
 * [![Spin Build Status](https://api.travis-ci.org/spinnaker/spin.svg?branch=master) Spin](https://travis-ci.org/spinnaker/spin){:target="\_blank"}
 * [![Spinnaker Build Status](https://api.travis-ci.org/spinnaker/spinnaker.svg?branch=master) Spinnaker (main repo)](https://travis-ci.org/spinnaker/spinnaker){:target="\_blank"}
