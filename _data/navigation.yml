@@ -236,6 +236,8 @@ setup:
             url: /setup/features/user-data/
           - title: Configure the Script stage
             url: /setup/features/script-stage/
+          - title: Configure Slack Support
+            url: /setup/features/slack-support
       - title: Use External Account Configuration
         url: /setup/configuration/
   - title: Productionize Spinnaker
@@ -434,6 +436,27 @@ guides:
             url: /guides/user/canary/judge/
           - title: Best practices
             url: /guides/user/canary/best-practices/
+      - title: Managed Delivery
+        collapsed: true
+        children:
+        - title: Overview
+          url: /guides/user/managed-delivery/
+        - title: Getting Started
+          url: /guides/user/managed-delivery/getting-started/
+        - title: Git-Based Workflows
+          url: /guides/user/managed-delivery/git-based-workflows/
+        - title: Delivery Configs
+          url: /guides/user/managed-delivery/delivery-configs/
+        - title: Environment Constraints
+          url: /guides/user/managed-delivery/environment-constraints/
+        - title: Artifacts
+          url: /guides/user/managed-delivery/artifacts/
+        - title: Resource Status
+          url: /guides/user/managed-delivery/resource-status/
+        - title: API
+          url: /guides/user/managed-delivery/api/
+        - title: FAQ
+          url: /guides/user/managed-delivery/faq/
   - title: Developer How-Tos
     collapsed: true
     children:
@@ -674,8 +697,12 @@ community:
         url: /community/contributing/
       - title: Code Of Conduct
         url: /community/contributing/code-of-conduct/
+      - title: Build Statuses
+        url: /community/contributing/build-statuses/
       - title: Submitting A Patch
         url: /community/contributing/submitting/
+      - title: Nightly Builds
+        url: /community/contributing/nightly-builds/
       - title: Releasing a Patch
         url: /community/contributing/releasing/
       - title: Code Conventions for Server-side Components

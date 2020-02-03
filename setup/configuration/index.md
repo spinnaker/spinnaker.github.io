@@ -9,7 +9,9 @@ sidebar:
 
 This page describes Spinnaker's external configuration feature. Using external configuration, you can manage account configuration (either complete account configuration, or only secrets such as account passwords) externally from Spinnaker.
 
-External configuration uses the open-source [Spring Cloud Config](https://spring.io/projects/spring-cloud-config) project, which includes a configuration server and client libraries to support centralized external configuration in a distributed system. The Config Server connects to a remote configuration repository and serves stored configuration properties to client applications. Configuration properties can be organized by Spring profile and application name and can be stored in any of a number of backends, including Git, HashiCorp Vault, JDBC, CredHub, and others. For more information about Spring Cloud Config, see the [documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-config/2.1.0.RELEASE/single/spring-cloud-config.html).
+External configuration uses the open-source [Spring Cloud Config](https://spring.io/projects/spring-cloud-config) project, which includes a configuration server and client libraries to support centralized external configuration in a distributed system. The Config Server connects to a remote configuration repository and serves stored configuration properties to client applications. 
+
+Configuration properties can be organized by Spring profile and application name and can be stored in any of a number of backends, including GitHub, HashiCorp Vault, AWS S3, JDBC, CredHub, and others. For more information about Spring Cloud Config, see the [documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-config/2.2.1.RELEASE/single/spring-cloud-config.html).
 
 The following table lists the Spinnaker services that currently incorporate external configuration.
 
@@ -27,6 +29,8 @@ To enable external configuration via the Config Server, add Spring Cloud Config 
 
 If you are deploying Spinnaker using Halyard, you can place this file under the `~/.hal/$DEPLOYMENT/profiles` directory in the machine on which Halyard is installed, as described in [Custom Profiles](/reference/halyard/custom/#custom-profiles) (`$DEPLOYMENT` is typically `default`). If you are deploying Spinnaker manually, you might place this configuration in a YAML file called `spinnakerconfig.yml`, alongside your `spinnaker.yml` file.
 
+### Using a Git backend
+
 To use a Git backend, configure the settings under `spring.cloud.config.server.git`. Your configuration might look like the following example:
 
 ```yml
@@ -43,6 +47,8 @@ spring:
 ```
 
 > The repository will be cloned to the directory specified by the `git.basedir` property. If using multiple Git repositories, you must give each repository a unique value for `basedir`.
+
+### Using a Vault backend
 
 To use a HashiCorp Vault backend, configure the settings under `spring.cloud.config.server.vault`. Your configuration might look like the following example:
 
@@ -62,7 +68,33 @@ spring:
           token: [vault access token]
 ```
 
-For information about configuring other supported Config Server backends, see the [Spring Cloud Config Server documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-config/2.1.0.RELEASE/single/spring-cloud-config.html#_environment_repository).
+> The above example configures authentication for Vault using using a static
+> authentication token, via the setting of the
+> `spring.cloud.config.server.vault.token` property. Starting with Spinnaker
+> 1.18, you can use other methods of configuring authentication for Vault. See
+> the relevant [Spring Cloud Config Server
+> documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-config/2.2.1.RELEASE/reference/html/#vault-backend)
+> for more information.
+
+### Using an S3 backend
+
+To use an AWS S3 backend, enable the `awss3` profile and configure the settings under `spring.cloud.config.server.awss3`. Your configuration might look like the following example:
+
+```yml
+spring:
+  profiles:
+    active: awss3
+  cloud:
+    config:
+      server:
+        awss3:
+          region: us-west-2
+          bucket: my-bucket
+```
+
+To configure authentication, you must use AWS's Default Credential Provider Chain. See the [AWS SDK documentation](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html) for more information.
+
+For information about configuring other supported Config Server backends, see the [Spring Cloud Config Server documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-config/2.2.1.RELEASE/reference/html/#_environment_repository).
 
 ## Managing external configuration
 
@@ -158,7 +190,10 @@ ci:
 
 ### Configuration files
 
-The Kubernetes, Google Cloud, and App Engine cloud providers can load account information from files that are separate from the service YAML configuration. You can load these separate files from an external source using the Config Server's Resource abstraction. In the service YAML configuration, prefix a file path with `configserver:` to indicate that the file should be retrieved by the Config Server. 
+Some account configuration, including configuration for the Kubernetes, Google Compute Engine, and Google App Engine cloud providers in Clouddriver and Google Cloud Pub/Sub accounts in Echo, allows credentials to be loaded from files that are separate from the YAML configuration. You can load these separate files from an external source using the Config Server's Resource abstraction. In the service YAML configuration, prefix a file path with `configserver:` to indicate that the file should be retrieved by the Config Server. 
+
+> External configuration files (such as kubeconfig files and GCP JSON files)
+> can only be loaded from S3 or Git (not from Vault).
 
 If you are configuring a Kubernetes cloud provider account and want to load an external `kubeconfig.yml` file using Config Server, your account configuration might look like the following example:
 
@@ -198,7 +233,7 @@ encrypt:
   key: mykey
 ```
 
-For more information about using the Config Server's encryption and decryption features, see the [Spring Cloud Config Server documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-config/2.1.0.RELEASE/single/spring-cloud-config.html#_encryption_and_decryption). 
+For more information about using the Config Server's encryption and decryption features, see the [Spring Cloud Config Server documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-config/2.2.1.RELEASE/single/spring-cloud-config.html#_encryption_and_decryption). 
 
 ## External configuration refresh
 

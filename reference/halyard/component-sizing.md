@@ -36,7 +36,7 @@ deploymentEnvironment:
   customSizing:
     # This applies sizings to only the echo container and not to any sidecar 
     # containers running with echo.
-    echo:
+    spin-echo:
       limits:
         cpu: 250m
         memory: 512Mi
