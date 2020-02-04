@@ -18,6 +18,12 @@ These instructions assume that you have AWS CLI [installed](https://docs.aws.ama
 In the managing account, create a two-subnet VPC, IAM roles, instance profiles, and a Security Group for EKS control-plane communications and an EKS cluster.
 
 > This step will take around 15-20 minutes to complete
+
+** Not really an edit to this page, but the referenced managing.yaml; managing.yaml has k8s version set at 1.10; this is no longer supported on EKS and causes a failure in the deployment: 
+
+```bash
+unsupported Kubernetes version (Service: AmazonEKS; Status Code: 400; Error Code: InvalidParameterException; Request ID: 840095f0-f2db-4fab-b07b-e16897bda0f4)
+```
    
 ```bash
 curl -O https://d3079gxvs8ayeg.cloudfront.net/templates/managing.yaml  
