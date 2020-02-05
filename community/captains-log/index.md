@@ -28,7 +28,7 @@ You may have heard [success stories](/success-stories/) of enterprises moving fr
 {%
   include
   figure
-  image_path="./updated.png"
+  image_path="./stats-2020-02-05-with-logo.png"
 %}
 
 The Spinnaker community began as a partnership between Netflix and Google, eager to share the benefits of Continuous Delivery. It has grown into a vibrant Open Source project, attracting hundreds of companies to participate as it evolves, integrating unique use cases and tool chains. Check it out!
