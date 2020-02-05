@@ -17,7 +17,7 @@ pr_authors:
 You may have heard [success stories](/success-stories/) of enterprises moving from brittle deployments to continuous delivery with Spinnaker:
 * [Airbnb uses Spinnaker](https://techbeacon.com/app-dev-testing/how-airbnb-scaled-its-migration-continuous-delivery-spinnaker) to migrate from monolith to service-oriented architecture.
 * [SAP leverages Spinnaker](https://blog.spinnaker.io/pipeline-redemption-how-spinnaker-is-shaping-delivery-excellence-at-sap-3b3c931b4f63?) on its mission to run the world better.
-* [Pinterest uses Spinnaker](https://devops.com/devops-chat-ci-cd-velocity-for-large-monolithic-services-with-pinterest/) to boost productivity as it pioneers visual discovery.
+* [Pinterest boosts productivity with Spinnaker](https://devops.com/devops-chat-ci-cd-velocity-for-large-monolithic-services-with-pinterest/) as it pioneers visual discovery.
 * [Mercari champions Spinnaker](https://speakerdeck.com/tcnksm/continuous-delivery-for-microservices-with-spinnaker-at-mercari) as a safeguard against deployment fear while releasing new services.
 * [Salesforce adopted Spinnaker](https://engineering.salesforce.com/salesforce-speakers-at-spinnaker-summit-and-kubecon-2019-d968292fd681) to bake images for both Kubernetes and VMs, to support its complex delivery requirements.
 
@@ -44,7 +44,7 @@ After steadily building momentum since its first open-source release in 2015, Sp
 
 ### Contributions Per Company
 
-Building from a committed base of key orgs like Netflix, Google, Armory, OpsMx, and Amazon, 2019 saw significantly more contributions from end-user companies and new stakeholders:
+Building from a committed base of key organizations like Netflix, Google, Armory, OpsMx, and Amazon, 2019 saw significantly more contributions from end-user companies and new stakeholders:
 {%
   include
   figure
