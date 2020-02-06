@@ -3,15 +3,6 @@ layout: single
 title:  "Captain's Log: The State of Spinnaker"
 sidebar:
   nav: community
-github_events:
-  image_path: assets/images/graphs/GithubEvents_graph.png
-  alt: "Graph of Github Events Since Open-Sourced"
-activity:
-  image_path: assets/images/graphs/ActivityByRepo_graph.png
-  alt: "Graph of Github Activity by Repository Since Open-Sourced"
-pr_authors:
-  image_path: assets/images/graphs/PRAuthorsUnique_graph.png
-  alt: "Graph of Unique PR Authors Since Open-Sourced"
 ---
 
 You may have heard [success stories](/success-stories/) of enterprises moving from brittle deployments to continuous delivery with Spinnaker:
