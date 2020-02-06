@@ -46,7 +46,7 @@ Building from a committed base of key organizations like Netflix, Google, Armory
 
 ### Activity By Repository
 
-The Spinnaker ecosystem currently includes 44 repositories, including the microservices that deliver its core functionality and interface with deployment targets such as AWS, GCP, and Kubernetes. Also included: cleanup and monitoring tools, governance, community resources, and much more:
+The Spinnaker ecosystem currently includes 44 repositories, including the microservices that deliver its core functionality and interface with deployment targets such as AWS, GCP, and Kubernetes. Also included: cleanup and monitoring tools, documentation, governance, community resources, and much more:
 {%
   include
   figure
@@ -74,4 +74,4 @@ Unique authors contribute pull requests to Spinnaker repositories each week, bui
 
 ### Visit Spinnaker DevStats for More!
 
-We've collected the data presented here from [Spinnaker's DevStats Dashboard](https://spinnaker.devstats.cd.foundation/), an awesome project growth [visualization and monitoring tool](https://github.com/cncf/devstats) built by CNCF engineers in collaboration with Kubernetes and other CNCF project communities. DevStats defines a “contribution” as a review, comment, commit, PR, or issue. Big thanks to Lukasz Gryglicki and the CNCF!
+The data presented here comes from [Spinnaker's DevStats Dashboard](https://spinnaker.devstats.cd.foundation/), an awesome project growth [visualization and monitoring tool](https://github.com/cncf/devstats) built by CNCF engineers in collaboration with Kubernetes and other CNCF project communities. DevStats defines a “contribution” as a review, comment, commit, PR, or issue. Big thanks to Lukasz Gryglicki and the CNCF!
