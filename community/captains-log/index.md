@@ -4,9 +4,9 @@ title:  "Captain's Log: The State of Spinnaker"
 sidebar:
   nav: community
 ---
-_Welcome to the first report on the state of Spinnaker. This Captain's Log contains regularly updated contribution and code repository metrics, to visualize the story of the Spinnaker project's growth._
+_Welcome to the first report on the state of Spinnaker. This Captain's Log contains regularly updated project contribution and code repository metrics, to visualize the story of the Spinnaker's growth across its ecosystem._
 
-You may have heard [success stories](/success-stories/) of enterprises moving from brittle deployments to continuous delivery with Spinnaker:
+[Success stories](/success-stories/) from around the web tell of enterprises moving from brittle deployments to continuous delivery with Spinnaker:
 * [Airbnb uses Spinnaker](https://techbeacon.com/app-dev-testing/how-airbnb-scaled-its-migration-continuous-delivery-spinnaker) to migrate from monolith to service-oriented architecture.
 * [SAP leverages Spinnaker](https://blog.spinnaker.io/pipeline-redemption-how-spinnaker-is-shaping-delivery-excellence-at-sap-3b3c931b4f63?) on its mission to run the world better.
 * [Pinterest boosts productivity with Spinnaker](https://devops.com/devops-chat-ci-cd-velocity-for-large-monolithic-services-with-pinterest/) as it pioneers visual discovery.
@@ -36,7 +36,7 @@ After steadily building momentum since its first OSS release in 2015, Spinnaker 
 
 ### Contributions per company
 
-Building from a committed base of key organizations like Netflix, Google, Armory, OpsMx, and Amazon, 2019 saw significantly more contributions from end-user companies and new stakeholders:
+Building from a committed base of key organizations, 2019 saw a rise in contributions from end-user companies and new stakeholders like Armory, OpsMx, and Amazon. The average number of contributions from companies besides Netflix and Google in H2 2019 was more than 2.5 times the average from December 2015 to today:
 {%
   include
   figure
@@ -45,7 +45,7 @@ Building from a committed base of key organizations like Netflix, Google, Armory
 
 ### Activity by repository
 
-The Spinnaker ecosystem currently includes 44 repositories, including the microservices that deliver its core functionality and interface with deployment targets such as AWS, GCP, and Kubernetes. Also included: cleanup and monitoring tools, documentation, governance, community resources, and much more:
+The Spinnaker ecosystem currently includes 44 repositories, including the microservices that deliver its core functionality and interface with deployment targets such as AWS, GCP, and Kubernetes. Added as the project has diversified: cleanup and monitoring tools, documentation, governance, community resources, and much more:
 {%
   include
   figure
@@ -54,7 +54,7 @@ The Spinnaker ecosystem currently includes 44 repositories, including the micros
 
 ### Companies and developers contributing each week
 
-Spinnaker has seen steadily increasing engagement from companies, and spikes of developer activity around community initiatives:
+Spinnaker has seen steadily increasing engagement from companies, and spikes of developer activity around community initiatives. The average weekly number of contributing developers was double the prior average in 2019, with up to 21 companies and 124 developers contributing each week:
 {%
   include
   figure
@@ -63,16 +63,16 @@ Spinnaker has seen steadily increasing engagement from companies, and spikes of 
 
 ### Myriad pull request contributors
 
-Unique authors contribute pull requests to Spinnaker repositories each week, building the project collaboratively over time.
+Unique authors contribute pull requests to Spinnaker repositories each week, building the project collaboratively over time. 314 developers submitted PRs in 2019, compared to 282 in 2018, and 194 in 2017:
 
 {%
   include
   figure
-  image_path="./pr_authors.png"
+  image_path="./pr_authors_annual.png"
 %}
 
-### Visit Spinnaker devStats for more!
+### Visit Spinnaker DevStats for more!
 
-The data presented here comes from [Spinnaker's DevStats Dashboard](https://spinnaker.devstats.cd.foundation/), an awesome project growth [visualization and monitoring tool](https://github.com/cncf/devstats) built by CNCF engineers in collaboration with Kubernetes and other CNCF project communities. DevStats defines a “contribution” as a review, comment, commit, PR, or issue. Big thanks to Lukasz Gryglicki and the CNCF!
+The data presented here comes from [Spinnaker's DevStats Dashboard](https://spinnaker.devstats.cd.foundation/), an awesome project growth [visualization and monitoring tool](https://devstats.cncf.io/) built by CNCF engineers in collaboration with Kubernetes and other CNCF project communities. DevStats defines a “contribution” as a review, comment, commit, PR, or issue. Big thanks to Lukasz Gryglicki and the CNCF!
 
 _Last updated February 2020_
