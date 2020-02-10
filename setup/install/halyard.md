@@ -42,7 +42,7 @@ Halyard runs on...
 
    For Debian/Ubuntu:
    ```bash
-  curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/debian/InstallHalyard.sh
+   curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/debian/InstallHalyard.sh
    ```
 
    For macOS:

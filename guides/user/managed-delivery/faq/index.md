@@ -1,23 +1,13 @@
 ---
 layout: single
-title:  "Managed Delivery"
+title:  "FAQ"
 sidebar:
-  nav: reference
+  nav: guides
 ---
 
 {% include toc %}
 
 This is a quick reference for Managed Delivery. 
-More detailed docs are under construction.
-
-_This doc will remain undiscoverable from the side navigation until we start alpha adoption._
-
-
-### Where am I?
-
-You probably arrived here from a tooltip on a declaratively managed resource.
-This page has some helpful information to get oriented, as well as some other links (coming...).
-
 
 ### What is happening?
 
@@ -49,4 +39,4 @@ The infrastructure will not be deleted.
 
 ### Where are the getting started docs?
 
-They're at [/reference/managed-delivery/getting-started](/reference/managed-delivery/getting-started).
+They're at [/reference/managed-delivery/getting-started](/guides/user/managed-delivery/getting-started).
