@@ -4,7 +4,7 @@ title:  "Captain's Log: The State of Spinnaker"
 sidebar:
   nav: community
 ---
-_Welcome to the first report on the state of Spinnaker. This Captain's Log contains regularly updated project contribution and code repository metrics, to visualize the story of the Spinnaker's growth across its ecosystem._
+_Welcome to the Captain's Log! This report on the state of Spinnaker  contains regularly updated project contribution and code repository metrics, to visualize the story of the Spinnaker's growth across its ecosystem._
 
 [Success stories](/success-stories/) from around the web tell of enterprises moving from brittle deployments to continuous delivery with Spinnaker:
 * [Airbnb uses Spinnaker](https://techbeacon.com/app-dev-testing/how-airbnb-scaled-its-migration-continuous-delivery-spinnaker) to migrate from monolith to service-oriented architecture.
@@ -63,7 +63,7 @@ Spinnaker has seen steadily increasing engagement from companies, and spikes of 
 
 ### Myriad pull request contributors
 
-Unique authors contribute pull requests to Spinnaker repositories each week, building the project collaboratively over time. 314 developers submitted PRs in 2019, compared to 282 in 2018, and 194 in 2017:
+Authors contribute pull requests to Spinnaker repositories each week, building the project collaboratively over time. In 2019, 314 unique developers submitted PRs, compared to 282 in 2018, and 194 in 2017:
 
 {%
   include
