@@ -68,7 +68,7 @@ Unique authors contribute pull requests to Spinnaker repositories each week, bui
 {%
   include
   figure
-  image_path="./pr_authors_annual.png"
+  image_path="./PR_authors_annual.png"
 %}
 
 ### Visit Spinnaker DevStats for more!
