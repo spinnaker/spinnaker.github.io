@@ -63,8 +63,6 @@ setup:
             url: /setup/install/providers/appengine/
           - title: Google Compute Engine
             url: /setup/install/providers/gce/
-          - title: Kubernetes (Legacy)
-            url: /setup/install/providers/kubernetes/
           - title: Kubernetes (Manifest Based)
             url: /setup/install/providers/kubernetes-v2/
             collapsed: false
@@ -77,6 +75,8 @@ setup:
                 url: /setup/install/providers/kubernetes-v2/gke/
               - title: Oracle Container Engine
                 url: /setup/install/providers/kubernetes-v2/oke/
+          - title: Kubernetes (Legacy)
+            url: /setup/install/providers/kubernetes/
           - title: Oracle
             url: /setup/install/providers/oracle/
       - title: 3. Choose an Environment
@@ -114,18 +114,20 @@ setup:
         children:
           - title: Overview
             url: /setup/artifacts/
-          - title: Google Cloud Storage
-            url: /setup/artifacts/gcs/
-          - title: GitHub
-            url: /setup/artifacts/github/
-          - title: HTTP
-            url: /setup/artifacts/http/
+          - title: Amazon S3
+            url: /setup/artifacts/s3/
           - title: Bitbucket
             url: /setup/artifacts/bitbucket/
+          - title: GitHub
+            url: /setup/artifacts/github/
           - title: GitLab
             url: /setup/artifacts/gitlab/
-          - title: S3
-            url: /setup/artifacts/s3/
+          - title: Google Cloud Storage
+            url: /setup/artifacts/gcs/
+          - title: HTTP
+            url: /setup/artifacts/http/
+          - title: Maven
+            url: /setup/artifacts/maven/
           - title: Oracle Object
             url: /setup/artifacts/oracle/
       - title: Configure the Image Bakery
@@ -234,6 +236,8 @@ setup:
             url: /setup/features/user-data/
           - title: Configure the Script stage
             url: /setup/features/script-stage/
+          - title: Configure Slack Support
+            url: /setup/features/slack-support
       - title: Use External Account Configuration
         url: /setup/configuration/
   - title: Productionize Spinnaker
@@ -285,8 +289,6 @@ guides:
             url: /guides/tutorials/codelabs/artifactory-to-cf/
           - title: GCE Source To Prod
             url: https://codelabs.developers.google.com/codelabs/bake-and-deploy-pipeline
-          - title: Kubernetes Source To Prod
-            url: /guides/tutorials/codelabs/kubernetes-source-to-prod/
           - title: Kubernetes (Manifest Based) Source To Prod
             url: /guides/tutorials/codelabs/kubernetes-v2-source-to-prod/
           - title: Oracle Cloud Infrastructure Source To Prod
@@ -434,6 +436,27 @@ guides:
             url: /guides/user/canary/judge/
           - title: Best practices
             url: /guides/user/canary/best-practices/
+      - title: Managed Delivery
+        collapsed: true
+        children:
+        - title: Overview
+          url: /guides/user/managed-delivery/
+        - title: Getting Started
+          url: /guides/user/managed-delivery/getting-started/
+        - title: Git-Based Workflows
+          url: /guides/user/managed-delivery/git-based-workflows/
+        - title: Delivery Configs
+          url: /guides/user/managed-delivery/delivery-configs/
+        - title: Environment Constraints
+          url: /guides/user/managed-delivery/environment-constraints/
+        - title: Artifacts
+          url: /guides/user/managed-delivery/artifacts/
+        - title: Resource Status
+          url: /guides/user/managed-delivery/resource-status/
+        - title: API
+          url: /guides/user/managed-delivery/api/
+        - title: FAQ
+          url: /guides/user/managed-delivery/faq/
   - title: Developer How-Tos
     collapsed: true
     children:
@@ -487,7 +510,7 @@ guides:
     children:
       - title: Common Internals
         url: /guides/developer/common-internals/
-      - title: Front50 
+      - title: Front50
         url: https://github.com/spinnaker/front50/blob/master/README.md
       - title: Igor
         url: https://github.com/spinnaker/igor/blob/master/README.md
@@ -518,8 +541,6 @@ reference:
         url: /reference/providers/appengine/
       - title: Google Compute Engine
         url: /reference/providers/gce/
-      - title: Kubernetes (Legacy)
-        url: /reference/providers/kubernetes/
       - title: Kubernetes (Manifest Based)
         url: /reference/providers/kubernetes-v2/
       - title: Oracle Cloud
@@ -628,6 +649,8 @@ reference:
             url: /reference/halyard/secrets/
           - title: S3
             url: /reference/halyard/secrets/s3-secrets/
+          - title: GCS
+            url: /reference/halyard/secrets/gcs-secrets/
   - title: Architecture
     collapsed: true
     children:
@@ -674,29 +697,26 @@ community:
         url: /community/contributing/
       - title: Code Of Conduct
         url: /community/contributing/code-of-conduct/
+      - title: Build Statuses
+        url: /community/contributing/build-statuses/
       - title: Submitting A Patch
         url: /community/contributing/submitting/
+      - title: Nightly Builds
+        url: /community/contributing/nightly-builds/
       - title: Releasing a Patch
         url: /community/contributing/releasing/
       - title: Code Conventions for Server-side Components
         url: /community/contributing/back-end-code/
   - title: Governance
-    collapsed: true
-    children:
-      - title: Overview
-        url: /community/governance/
-      - title: Special Interest Groups
-        url: /community/governance/sigs
-  - title: Misc
-    collapsed: true
-    children:
-      - title: FAQs
-        url: /community/faqs/
+    url: https://github.com/spinnaker/governance/
+  - title: FAQs
+    url: /community/faqs/
   - title: Security
-    collapsed: true
-    children:
-      - title: Security
-        url: /community/security/
+    url: /community/security/
+  - title: Usage Stats
+    url: /community/stats
+  - title: Captain's Log
+    url: /community/captains-log/
 
 publications:
   - title: eBook

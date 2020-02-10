@@ -22,6 +22,13 @@ to see the commit hash and tag matching `version-<version>` of each
 subcomponent.
 
 ## Latest stable
+
+**Note**: In upcoming versions, Spinnaker will be migrating to Java 11 from Java 8. This should not affect Spinnaker users. If you extend Spinnaker, this may affect you. For more information about the current status of the migration, see the [Java 11 RFC](https://github.com/spinnaker/governance/blob/master/rfc/java11.md).
+{: .notice--info}
+
+**Note**: Spinnaker versions 1.18.0 and later require Halyard version 1.29.0 or later.
+{: .notice--info}
+
 {% assign reversed = site.changelogs | sort: 'date' | reverse  %}
 {% for post in reversed %}
   {% unless post.tags contains 'deprecated' %}
@@ -30,7 +37,7 @@ subcomponent.
 {% else %}
 #### Version {{ post.version }}
 {% endif %}
-Released: {{ post.date | date_to_rfc822 }}
+Released: {{ post.date | date: '%Y-%m-%d %H:%M %Z' }}
 <a href="{{ post.url }}">Changelog</a>
   {% endunless %}
 {% endfor %}
@@ -43,7 +50,7 @@ Group (requires a Google account).
 {% for post in reversed %}
   {% if post.tags contains 'deprecated' %}
 #### {{ post.changelog_title }}
-Released: {{ post.date }}
+Released: {{ post.date | date: '%Y-%m-%d %H:%M %Z' }}
 <a href="{{ post.url }}">Changelog</a>
   {% endif %}
 {% endfor %}

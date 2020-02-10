@@ -15,6 +15,23 @@ by stages that need multiple files to produce an output, such as the Bake (Manif
 renderer. Unlike other artifact implementations, the Git Repo artifact works with any Git hosting service as long as the
 repository can be cloned using the Git CLI.
 
+## Configuration
+
+Configuring `git/repo` artifacts is not currently supported by Halyard.  As such, configuration for this artifact type must be
+performed through a custom Clouddriver profile.
+
+To configure a `git/repo` artifact account, add the following to `~/.hal/default/profiles/clouddriver-local.yml`:
+
+```yaml
+artifacts:
+  gitRepo:
+    enabled: true
+    accounts:
+    - name: gitrepo
+      token: 12344 #github personal access token
+```
+Don't forget to run `hal deploy apply` after making your changes.
+
 ## Git Repo artifact in the UI
 
 The pipeline UI exposes the following fields for the GitHub file artifact:

@@ -54,7 +54,7 @@ Navigate to the [Google Cloud Console](https://console.developers.google.com/api
 Create a service account for our Halyard host VM:
 
 ```bash
-GCP_PROJECT=$(gcloud info --format='value(config.project)')
+GCP_PROJECT=$(gcloud config get-value project)
 HALYARD_SERVICE_ACCOUNT_NAME=halyard-vm-account
 
 gcloud iam service-accounts create $HALYARD_SERVICE_ACCOUNT_NAME \
@@ -75,7 +75,7 @@ gcloud projects add-iam-policy-binding $GCP_PROJECT \
 Create a service account for GCS that you'll later be handing to Spinnaker
 
 ```bash
-GCP_PROJECT=$(gcloud info --format='value(config.project)')
+GCP_PROJECT=$(gcloud config get-value project)
 GCS_SERVICE_ACCOUNT_NAME=spinnaker-gcs-account
 
 gcloud iam service-accounts create $GCS_SERVICE_ACCOUNT_NAME \
@@ -96,7 +96,7 @@ gcloud projects add-iam-policy-binding $GCP_PROJECT \
 Create a service account for GCE that you'll also be handing to Spinnaker
 
 ```bash
-GCP_PROJECT=$(gcloud info --format='value(config.project)')
+GCP_PROJECT=$(gcloud config get-value project)
 GCE_SERVICE_ACCOUNT_NAME=spinnaker-gce-account
 
 gcloud iam service-accounts create \
@@ -129,11 +129,25 @@ gcloud projects add-iam-policy-binding $GCP_PROJECT \
     --member serviceAccount:$GCE_SERVICE_ACCOUNT_EMAIL \
     --role roles/compute.storageAdmin
 
+# Service Account Actor Role has been deprecated and has been replace with Service Account User role and Service Account Token Creator
+# Reference: https://cloud.google.com/iam/docs/service-accounts#the_service_account_actor_role
 # permission to download service account keys in your project
 # this is needed by packer to bake GCE images remotely
-gcloud projects add-iam-policy-binding $GCP_PROJECT \
-    --member serviceAccount:$GCE_SERVICE_ACCOUNT_EMAIL \
-    --role roles/iam.serviceAccountActor
+# gcloud projects add-iam-policy-binding $GCP_PROJECT \
+#    --member serviceAccount:$GCE_SERVICE_ACCOUNT_EMAIL \
+#    --role roles/iam.serviceAccountActor
+
+# Role Description: Run operations as the Service Account
+# Reference: https://cloud.google.com/iam/docs/understanding-roles#service-accounts-roles
+  gcloud projects add-iam-policy-binding $GCP_PROJECT \
+     --member serviceAccount:$GCE_SERVICE_ACCOUNT_EMAIL \
+     --role roles/iam.serviceAccountUser
+     
+# Role Description: Impersonate service accounts (create OAuth2 access tokens, sign blobs or JWTs, etc).
+# Reference: https://cloud.google.com/iam/docs/understanding-roles#service-accounts-roles
+  gcloud projects add-iam-policy-binding $GCP_PROJECT \
+     --member serviceAccount:$GCE_SERVICE_ACCOUNT_EMAIL \
+     --role roles/iam.serviceAccountTokenCreator
 ```
 
 ### Create Halyard host VM
@@ -149,7 +163,7 @@ gcloud compute instances create $HALYARD_HOST \
     --scopes=cloud-platform \
     --service-account=$HALYARD_SERVICE_ACCOUNT_EMAIL \
     --image-project=ubuntu-os-cloud \
-    --image-family=ubuntu-1404-lts \
+    --image-family=ubuntu-1804-lts \
     --machine-type=n1-standard-4
 ```
 
@@ -232,7 +246,7 @@ Set up to persist to GCS
 
 ```bash
 hal config storage gcs edit \
-    --project $(gcloud info --format='value(config.project)') \
+    --project $(gcloud config get-value project) \
     --json-path $GCS_SERVICE_ACCOUNT_DEST
 
 hal config storage edit --type gcs
@@ -242,7 +256,7 @@ Set up the GCE provider
 
 ```bash
 hal config provider google account add my-gce-account \
-    --project $(gcloud info --format='value(config.project)') \
+    --project $(gcloud config get-value project) \
     --json-path $GCE_SERVICE_ACCOUNT_DEST
 
 hal config provider google enable

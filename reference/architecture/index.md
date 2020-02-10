@@ -90,6 +90,7 @@ service.
  echo(Echo) --> orca;
  echo --> front50;
  gate --> echo;
+ gate --> igor(Igor);
  igor(Igor) --> echo;
 
  hal(Halyard CLI) --> halyard(Halyard Daemon);

@@ -36,12 +36,12 @@ Before deploying Orca, the schema and database uses must first be manually setup
   GRANT 
     SELECT, INSERT, UPDATE, DELETE, EXECUTE, SHOW VIEW 
   ON `orca`.* 
-  TO 'orca_service'@'%';
+  TO 'orca_service'@'%'; -- IDENTIFIED BY "password" if using password based auth
 
   GRANT 
     SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, REFERENCES, INDEX, ALTER, LOCK TABLES, EXECUTE, SHOW VIEW 
   ON `orca`.* 
-  TO 'orca_migrate'@'%';
+  TO 'orca_migrate'@'%'; -- IDENTIFIED BY "password" if using password based auth
   ```
 
 When Orca starts up, it will perform database migrations to ensure its running the correct schema.
@@ -113,7 +113,7 @@ If you are only deploying Aurora into a single region, don't enable any binlog s
 - *sync_binlog*: `1`
 - *tx_isolation*: `READ-COMMITTED`
 
-#### Aurora DB Parameters Group
+#### Aurora DB Cluster Parameter Group
 
 - *binlog_checksum*: `NONE`
 - *binlog_error_action*: `IGNORE_ERROR`
