@@ -5,8 +5,6 @@ sidebar:
   nav: reference
 ---
 
-{% include alpha version="1.10 and later" %}
-
 {% include toc %}
 
 If you are not familiar with Cloud Foundry (CF) or any of the terms used below, please consult [Cloud Foundry's reference documentation](https://docs.cloudfoundry.org).

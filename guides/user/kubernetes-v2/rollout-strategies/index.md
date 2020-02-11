@@ -5,8 +5,6 @@ sidebar:
   nav: guides
 ---
 
-{% include alpha version="1.14" %}
-
 {% include toc %}
 
 This guide describes how to take advantage of the
