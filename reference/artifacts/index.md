@@ -117,7 +117,7 @@ within pipelines, or produced by pipelines.
 }
 ```
 
-### Example for Providing Artifacts with `spin` CLI
+### Example for providing artifacts with `spin` CLI
 
 When executing pipelines with the `spin` CLI, the `-t, --artifacts-file` option expects a valid json file containing artifact definitions. For example, you can call `spin pipeline execute --application ${APPLICATION} --name ${PIPELINE} --parameter-file ${PARAMETER_FILE_PATH} --artifacts-file ${ARTIFACTS_FILE_PATH}` with the contents of the file at `${ARTIFACTS_FILE_PATH}` as follows:
 
