@@ -36,7 +36,7 @@ replaced.
 A Spinnaker **Server Group** maps to a Kubernetes [Replica
 Set](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/).
 The Spinnaker API resource is defined
-[here](https://github.com/spinnaker/clouddriver/blob/master/clouddriver-kubernetes/src/main/groovy/com/netflix/spinnaker/clouddriver/kubernetes/deploy/description/servergroup/DeployKubernetesAtomicOperationDescription.groovy).
+[here](https://github.com/spinnaker/clouddriver/blob/master/clouddriver-kubernetes-v1/src/main/groovy/com/netflix/spinnaker/clouddriver/kubernetes/v1/deploy/ops/servergroup/DeployKubernetesAtomicOperation.groovy).
 
 When Spinnaker creates a Server Group named `${SERVER-GROUP}` it sets the
 following Pod labels:
