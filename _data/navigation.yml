@@ -13,8 +13,8 @@ main:
     url: /success-stories/
   - title: Blog
     url: https://blog.spinnaker.io
-  - title: Publications
-    url: /publications/
+  - title: News
+    url: /news/
 
 concepts:
   - children:
