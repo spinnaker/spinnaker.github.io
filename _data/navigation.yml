@@ -26,6 +26,8 @@ concepts:
       url: /concepts/pipelines/
     - title: Providers
       url: /concepts/providers/
+    - title: Read eBook
+      url: /concepts/ebook/
 
 setup:
   - title: Try it out
@@ -718,8 +720,12 @@ community:
   - title: Captain's Log
     url: /community/captains-log/
 
-publications:
-  - title: Presentations and Videos
-    url: /publications/presentations/
-  - title: Articles
-    url: /publications/articles/
+news:
+  -title: Sign Up
+   url: /news/signup
+  - title: Latest
+    url: /news/latest/
+  - title: Issues
+    url: /news/issues/
+  - title: Archive
+    url: /news/archive/
