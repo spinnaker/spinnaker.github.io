@@ -5,10 +5,6 @@ sidebar:
   nav: publications
 ---
 
-* [eBook](/publications/ebook/)
-
-  Read *Continuous Delivery With Spinnaker*
-
 * [Presentations and Videos](/publications/presentations/)
 
   Spinnaker presentations from conferences and meetups
