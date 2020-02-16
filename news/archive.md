@@ -2,9 +2,9 @@
 layout: single
 title:  "Archive"
 sidebar:
-  nav: publications
+  nav: news
 redirect_from: /docs/articles-and-blog-posts
-redirect_from: /community/archive/
+redirect_from: /community/publications/
 ---
 
 Archived news and community items from the the retired "Publications" area on this site live here.
