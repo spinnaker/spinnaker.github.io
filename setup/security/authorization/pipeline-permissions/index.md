@@ -5,8 +5,6 @@ sidebar:
   nav: setup
 ---
 
-{% include alpha version="1.9" %}
-
 {% include toc %}
 
 Pipeline permissions enable automatically triggered pipelines to modify
