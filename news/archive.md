@@ -34,6 +34,8 @@ Archived news and community items from the the retired "Publications" area on th
 * [How We Build Code at Netflix](http://techblog.netflix.com/2016/03/how-we-build-code-at-netflix.html), *Netflix Tech Blog*
 * [Deploying Node.js with Spinnaker](http://blog.greta.io/deploying-nodejs-with-spinnaker/), *Greta*
 * [Spinnaker Deployment Pipelines](http://riltsken.github.io/devops/infrastructure/deploymenttools/2016/02/08/spinnaker-deployment-pipelines.html), *Samuel Toriel*
+
+2015
 * [Setting up Spinnaker authentication with Okta and SAML](http://riltsken.github.io/devops/infrastructure/deploymenttools/2015/12/08/setup-okta-saml-with-spinnaker.html), *Samuel Toriel*
 * [Global Continuous Delivery with Spinnaker](http://techblog.netflix.com/2015/11/global-continuous-delivery-with.html), *Netflix Tech Blog*
 * [Moving from Asgard to Spinnaker](http://techblog.netflix.com/2015/09/moving-from-asgard-to-spinnaker.html), *Netflix Tech Blog*
@@ -42,9 +44,12 @@ Archived news and community items from the the retired "Publications" area on th
 
 ## Spinnaker in the news
 
+2016
 * [Why Amazon's most important cloud customer, Netflix, is speaking at Google's big cloud conference](http://finance.yahoo.com/news/why-amazons-most-important-cloud-154510446.html), *Yahoo Finance*
 * [Creating Microservice Deployment Pipelines with Netflix’s Spinnaker: A Perspective from Google](http://www.infoq.com/news/2016/02/microservice-deploys-spinnaker), *InfoQ*
 * [Netflix Spinnaker: Enabling Global Deployments](http://www.infoq.com/news/2016/02/netflix-spinnaker), *InfoQ*
+
+2015
 * [Netflix’s New Spinnaker Open Source Tool Makes It Easy to Use Amazon’s Cloud—And Google’s](https://www.wired.com/2015/11/netflixs-new-tool-makes-it-easy-to-use-amazons-cloud-and-googles/), *Wired*
 * [Amazon poster-child Netflix's new tool manages other clouds too](http://www.networkworld.com/article/3005477/public-cloud/amazon-poster-child-netflix-goes-multi-cloud-with-google-microsoft-too.html), *Network World*
 * [New Netflix Tool Could Ease Cloud Deployment for Big Companies](http://fortune.com/2015/11/16/netflix-spinnaker-multi-cloud/), *Forbes*
