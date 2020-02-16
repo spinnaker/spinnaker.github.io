@@ -7,8 +7,6 @@ redirect_from: /docs/articles-and-blog-posts
 redirect_from: /community/archive/
 ---
 
-{% include toc %}
-
 Archived news and community items from the the retired "Publications" area on this site live here.
 
 ## Archived community blog posts & tutorials
@@ -41,7 +39,20 @@ Archived news and community items from the the retired "Publications" area on th
 * [Moving from Asgard to Spinnaker](http://techblog.netflix.com/2015/09/moving-from-asgard-to-spinnaker.html), *Netflix Tech Blog*
 * [Netflix’s Spinnaker available now on Google Cloud Platform](https://cloudplatform.googleblog.com/2015/11/Netflixs-Spinnaker-available-now-on-Google-Cloud-Platform.html), *Google Cloud Platform Blog*
 
-Archived conference and meetup presentations on Spinnaker
+## Archived Spinnaker in the news
+
+2016
+* [Why Amazon's most important cloud customer, Netflix, is speaking at Google's big cloud conference](http://finance.yahoo.com/news/why-amazons-most-important-cloud-154510446.html), *Yahoo Finance*
+* [Creating Microservice Deployment Pipelines with Netflix’s Spinnaker: A Perspective from Google](http://www.infoq.com/news/2016/02/microservice-deploys-spinnaker), *InfoQ*
+* [Netflix Spinnaker: Enabling Global Deployments](http://www.infoq.com/news/2016/02/netflix-spinnaker), *InfoQ*
+
+2015
+* [Netflix’s New Spinnaker Open Source Tool Makes It Easy to Use Amazon’s Cloud—And Google’s](https://www.wired.com/2015/11/netflixs-new-tool-makes-it-easy-to-use-amazons-cloud-and-googles/), *Wired*
+* [Amazon poster-child Netflix's new tool manages other clouds too](http://www.networkworld.com/article/3005477/public-cloud/amazon-poster-child-netflix-goes-multi-cloud-with-google-microsoft-too.html), *Network World*
+* [New Netflix Tool Could Ease Cloud Deployment for Big Companies](http://fortune.com/2015/11/16/netflix-spinnaker-multi-cloud/), *Forbes*
+* [Netflix launches open source project ready for Amazon, Google clouds](http://www.zdnet.com/article/netflix-unveils-open-source-project-ready-for-amazon-google-clouds/), *ZDNet*
+
+## Archived Spinnaker Summit recordings
 
 ### <a href="https://www.youtube.com/playlist?list=PL4yLrwUObNksZ8svJWu5HOHT3e_dpa5Ih" target="_blank">Spinnaker Summit 2018</a>
 **Videos of presentations from Spinnaker Summit 2018** \| Oct 8-9, 2018
@@ -52,8 +63,8 @@ Archived conference and meetup presentations on Spinnaker
 ### <a href="https://www.youtube.com/playlist?list=PL4yLrwUObNktZDWIlAA3gl8Pi_m3ktxeR" target="_blank">Spinnaker Summit 2017</a>
 **Videos from Spinnaker Summit 2017** \| Sept 11-12, 2017
 
-A playlist of recorded videos from the Spinnaker Summit held at the Netflix
-offices in 2017
+
+## Archived conference and meetup presentations on Spinnaker
 
 ### <a href="https://youtu.be/PLNheBiWOGI" target="_blank">Large-Scale Continuous Delivery at Netflix and Waze Using Spinnaker (Cloud Next '18)</a>
 **Google Cloud Next ‘18** \| July 24, 2018 \| Andy Glover (Netflix), Matt Duftler (Google), Tom Feiner (Waze)
@@ -174,18 +185,3 @@ Also, we will discuss one of most recent key open source releases – Spinnaker 
 A core aspect of a microservice architecture is individual deployability of services. Thus, orchestrating the roll out of these services should be as easy as possible. Historically Netflix has rolled out deployments using an open-source tool called Asgard. Spinnaker – the successor of Asgard and an open-source project as well – is a complete reimplementation of its predecessor and heavily improved.
 
 The talk introduces Spinnaker, the challenges it's trying to solve as well as the core concepts it's talking about. We then discuss and demo setting up a build pipeline as well as the various options in deployment targets, rollout strategies etc.
-
-
-
-## Spinnaker in the news
-
-2016
-* [Why Amazon's most important cloud customer, Netflix, is speaking at Google's big cloud conference](http://finance.yahoo.com/news/why-amazons-most-important-cloud-154510446.html), *Yahoo Finance*
-* [Creating Microservice Deployment Pipelines with Netflix’s Spinnaker: A Perspective from Google](http://www.infoq.com/news/2016/02/microservice-deploys-spinnaker), *InfoQ*
-* [Netflix Spinnaker: Enabling Global Deployments](http://www.infoq.com/news/2016/02/netflix-spinnaker), *InfoQ*
-
-2015
-* [Netflix’s New Spinnaker Open Source Tool Makes It Easy to Use Amazon’s Cloud—And Google’s](https://www.wired.com/2015/11/netflixs-new-tool-makes-it-easy-to-use-amazons-cloud-and-googles/), *Wired*
-* [Amazon poster-child Netflix's new tool manages other clouds too](http://www.networkworld.com/article/3005477/public-cloud/amazon-poster-child-netflix-goes-multi-cloud-with-google-microsoft-too.html), *Network World*
-* [New Netflix Tool Could Ease Cloud Deployment for Big Companies](http://fortune.com/2015/11/16/netflix-spinnaker-multi-cloud/), *Forbes*
-* [Netflix launches open source project ready for Amazon, Google clouds](http://www.zdnet.com/article/netflix-unveils-open-source-project-ready-for-amazon-google-clouds/), *ZDNet*
