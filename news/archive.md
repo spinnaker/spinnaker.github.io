@@ -1,23 +1,30 @@
 ---
 layout: single
-title:  "Articles"
+title:  "Archive"
 sidebar:
   nav: publications
 redirect_from: /docs/articles-and-blog-posts
-redirect_from: /community/articles/
+redirect_from: /community/archive/
 ---
 
 {% include toc %}
 
+Archived news and community items from the the retired "Publications" area on this site live here.
+
 ## Community blog posts & tutorials
 
+2018
 * [Spinnaker Canary Pipelines: How to set up Kayenta with Prometheus](https://www.mirantis.com/blog/spinnaker-canary-pipelines-how-to-set-up-kayenta-with-prometheus/?utm_campaign=spinnaker.io&utm_medium=web&utm_source=spinnakerioblogs) *Andrey Pavlov (Mirantis)*
+
+2017
 * [Managing Kubernetes with Spinnaker at scale](http://blog.armory.io/managing-kubernetes-with-spinnaker/) *Colin Mo (Armory)*
 * [Codifying your Spinnaker Pipelines](https://medium.com/continuous-delivery-scale/codifying-your-spinnaker-pipelines-ea8e9164998f), *Rob Zienert (Netflix)*
 * [Running Chaos Monkey on Spinnaker/Google Compute Engine (GCE)](https://medium.com/continuous-delivery-scale/running-chaos-monkey-on-spinnaker-google-compute-engine-gce-155dc52f20ef), *Deb Bakshiyev (Google)*
 * [Rosco: Deduping Logic](https://medium.com/@duftler/spinnaker-rosco-deduping-logic-e03716e04a30), *Matt Duftler (Google)*
 * [Multi-Cloud continuous delivery using Spinnaker at Waze](https://cloudplatform.googleblog.com/2017/02/guest-post-multi-cloud-continuous-delivery-using-Spinnaker-at-Waze.html)
 * [Rosco: Troubleshooting Bakes](https://medium.com/@duftler/troubleshooting-spinnaker-rosco-bakes-c0c600aa3598), *Matt Duftler (Google)*
+
+2016
 * [Under the hood: Spinnaker Configuration](https://www.travistomsu.com/2016/12/19/configuring-spinnaker/), *Travis Tomsu (Google)*
 * [Q+A Engineer Aaron Bell on How Target Put a Spin on Netflix’s Spinnaker](https://corporate.target.com/article/2016/10/spinnaker), *Target Corp, A Bullseye View*
 * [Scaling Spinnaker at Netflix: Custom Features and Packaging](https://medium.com/@ajordens/scaling-spinnaker-at-netflix-custom-features-and-packaging-e78536d38040), *Adam Jordens (Netflix)*

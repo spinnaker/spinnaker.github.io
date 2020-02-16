@@ -721,8 +721,8 @@ community:
     url: /community/captains-log/
 
 news:
-  -title: Sign Up
-   url: /news/signup
+  - title: Sign Up
+    url: /news/signup
   - title: Latest
     url: /news/latest/
   - title: Issues
