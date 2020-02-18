@@ -6,7 +6,7 @@ sidebar:
 redirect_from: /news/latest/
 ---
 ### Laying the groundwork for Spinnaker success
-> This month's issue focuses on ways that cloud providers, project governors, contributors, and operators have laid the groundwork to make 2020 Spinnaker's best year ever. With telemetry, a plugin framework, an upcoming hackathon, and new ways to install, manage, and integrate with Spinnaker, we're ready to share the most mature and capable continuous delivery platform with **literally everyone**.
+> This month's issue focuses on ways that cloud providers, project governors, contributors, and operators have laid groundwork to make 2020 Spinnaker's best year ever. With telemetry, a plugin framework, a hackathon, and new ways to install, manage, and integrate with Spinnaker, we're ready to share the most mature and capable continuous delivery platform with **literally everyone**.
 
 
 ### [Deploy AWS Lambda With Spinnaker](https://aws.amazon.com/blogs/opensource/how-to-integrate-aws-lambda-with-spinnaker/)
