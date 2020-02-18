@@ -715,6 +715,8 @@ community:
     url: /community/security/
   - title: Usage Stats
     url: /community/stats
+  - title: Captain's Log
+    url: /community/captains-log/
 
 publications:
   - title: eBook
