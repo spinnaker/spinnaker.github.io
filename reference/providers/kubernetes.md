@@ -6,6 +6,9 @@ sidebar:
 redirect_from: /reference/providers/kubernetes-v1/
 ---
 
+> ⚠️ Spinnaker's legacy Kubernetes provider (V1) is [scheduled for removal](https://github.com/spinnaker/governance/blob/master/rfc/eol_kubernetes_v1.md) in Spinnaker 1.21.
+> We recommend using the [manifest-based provider (V2)](/setup/install/providers/kubernetes-v2) instead. 
+
 {% include toc %}
 
 If you are not familiar with Kubernetes or some of the Kubernetes terminology
