@@ -294,7 +294,7 @@ If your operator has configured [Slack app](https://api.slack.com/start/overview
 very convenient way to approve managed deployments gated by a Manual Judgement constraint is to use interactive Slack
 notifications.
 
-All you need to do is set up Slack notifications in your delivery config, which will enable interactive notifications
+All you need to do is [set up Slack notifications](/guides/user/managed-delivery/delivery-configs/#environment-notifications) in your delivery config, which will enable interactive notifications
 to a Slack channel of your choice, where you can simply click a button to approve or reject the deployment of the
 artifact into the environment.
 
