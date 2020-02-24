@@ -14,7 +14,7 @@ Hi! Welcome to the Spinnaker Newsletter, your source for info about the project 
 
 We just wrapped an incredible Summit. In case you missed it (or want to replay each delicious moment) here’s a [reflection from the Armory blog](http://go.armory.io/keynote) and a video of [Isaac Mosquera's keynote](https://www.youtube.com/watch?v=BBdFOZASQ_4), along with recaps from OpsMX highlighting [5 key takeaways](https://blog.opsmx.com/spinnaker-summit-2019-recap/),  as well as [technical and feature takeaways](https://blog.opsmx.com/spinnaker-summit-2019-some-key-technical-takeaways/).
 
-Along with many opportunities to connect, we found that attendees had numerous high-quality sessions to choose from. Apart from helpful accounts of enterprise Spinnaker adoption journeys, we also hosted discussions on:
+Attendees had numerous opportunities to connect, and high-quality sessions to choose from. Apart from helpful accounts of enterprise Spinnaker adoption journeys, we also hosted discussions on:
 * Learning from incidents and using Spinnaker to automate their resolution
 * Service Mesh & Spinnaker
 * Spinnaker Ops: provisioning w/ Terraform, debugging, monitoring, account mgmt, security
@@ -31,9 +31,9 @@ And much more! Access the [slides from all event presentations here](https://go.
 
 All eyes were on the [2020 roadmap](https://go.armory.io/spinmap) at the Summit, with themes of managed delivery, operator and developer experience, cloud-nativization, community, and runtime support on the brain. Dev workflows for those using K8S, the AWS clouddriver, Cloud Run, and Tekton figure prominently in H1, as do modern tools for managing Spinnaker: config-as-code approaches to provisioning, auto-generated docs, cloud integration tests, Prometheus monitoring, and more.
 
-Version 1.17
+### Version 1.17
 
-Read the [release highlights](https://www.spinnaker.io/community/releases/versions/1-17-0-changelog). Notable feature adds include baseline git repo artifact support, and Kustomize support to leverage that new artifact type. In addition, Spinnaker now proudly supports Kubernetes’ new kubectl-initiated rolling restart capability, as well as isolation between multiple K8S V2 accounts. Also added: a more flexible auth model which allows Fiat to accept and resolve permissions from various sources.
+Read the [release highlights](https://www.spinnaker.io/community/releases/versions/1-17-0-changelog). Notable feature adds include baseline git repo artifact support, and Kustomize support to leverage that new artifact type. In addition, Spinnaker now proudly supports Kubernetes’ new kubectl-initiated rolling restart capability, as well as isolation between multiple K8S V2 accounts. Also added: a more flexible authorization model which allows Fiat to accept and resolve permissions from various sources.
 
 ---
 
