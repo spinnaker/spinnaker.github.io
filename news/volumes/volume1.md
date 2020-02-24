@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "*Flying*  Issue 1"
+title:  "*Flying*  Volume 1"
 sidebar:
   nav: news
 ---

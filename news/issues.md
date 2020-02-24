@@ -1,11 +1,11 @@
 ---
 layout: single
-title:  "All Issues"
+title:  "All Volumes"
 sidebar:
   nav: news
 ---
 ## *Flying* Spinnaker Newsletter
 
-### [Issue 2 \| 02-17-2020](/issues/issue2.md/)
+### [Volume 2 \| 02-17-2020](/volumes/volume2.md/)
 
-### [Issue 1 \| 11-26-2019](/issues/issue1.md/)
+### [Volume 1 \| 11-26-2019](/volumes/volume1.md/)
