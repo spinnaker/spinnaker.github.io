@@ -24,7 +24,7 @@ you should use for this. There are also several [already-submitted
 RFCs](https://github.com/spinnaker/governance/tree/master/rfc) you can use for
 reference.
 
-Once your RFC is ready, add it to [the `spinnaker/governance/rfc`
+When your RFC is ready, add it to [the `spinnaker/governance/rfc`
 directory](https://github.com/spinnaker/governance/tree/master/rfc) by sending a
 pull request. It will then be reviewed by the community.
 
