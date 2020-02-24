@@ -31,7 +31,7 @@ redirect_from: /news/signup/
 </style>
 
 <div class="mc-field-group">
-<form action="https://cloudbees.us3.list-manage.com/subscribe/post?u=337682949220da87810dfa7a7&amp;id=aae9b6cff0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="wj-contact-form validate" target="_blank" novalidate>
+<form action="https://mailchi.mp/f6b5b51dd608/spinnakernewsletter" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="wj-contact-form validate" target="_blank" novalidate>
 	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="foo@foo.fo">
 <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
     <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_337682949220da87810dfa7a7_aae9b6cff0" tabindex="-1" value=""></div>
