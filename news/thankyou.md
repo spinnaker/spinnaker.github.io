@@ -8,4 +8,4 @@ sidebar:
 
 Thank you for subscribing to *Flying*.
 
-Read the [latest volume](/news/latest/) now, or browse past [volumes](volumes.md).
+Read the [latest edition](/news/latest/) now, or browse past [editions](editions.md).
