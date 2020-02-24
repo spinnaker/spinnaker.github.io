@@ -12,7 +12,7 @@ Hi! Welcome to the Spinnaker Newsletter, your source for info about the project 
 
 ### Spinnaker Summit 2019 (the best yet!)
 
-We just wrapped an incredible Summit. In case you missed it (or want to replay each delicious moment) here’s a [reflection from the Armory blog](http://go.armory.io/keynote) and a video of [Isaac Mosquera's keynote](https://www.youtube.com/watch?v=BBdFOZASQ_4) , along with recaps from OpsMX highlighting [5 key takeaways](https://blog.opsmx.com/spinnaker-summit-2019-recap/)  as well as [technical and feature takeaways](https://blog.opsmx.com/spinnaker-summit-2019-some-key-technical-takeaways/) .
+We just wrapped an incredible Summit. In case you missed it (or want to replay each delicious moment) here’s a [reflection from the Armory blog](http://go.armory.io/keynote) and a video of [Isaac Mosquera's keynote](https://www.youtube.com/watch?v=BBdFOZASQ_4), along with recaps from OpsMX highlighting [5 key takeaways](https://blog.opsmx.com/spinnaker-summit-2019-recap/),  as well as [technical and feature takeaways](https://blog.opsmx.com/spinnaker-summit-2019-some-key-technical-takeaways/).
 
 Along with many opportunities to connect, we found that attendees had numerous high-quality sessions to choose from. Apart from helpful accounts of enterprise Spinnaker adoption journeys, we also hosted discussions on:
 * Learning from incidents and using Spinnaker to automate their resolution
