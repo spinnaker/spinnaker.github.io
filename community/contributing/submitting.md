@@ -17,18 +17,16 @@ issue](https://github.com/spinnaker/spinnaker/issues/new), ping the [#dev
 channel](https://spinnakerteam.slack.com/messages/C0DPVDMQE/) in slack and
 discuss your ideas before implementing them.
 
-It's possible that we'll encourage you to write a "design doc" if your change
-is large or impactful enough. There are no formal requirements, but we
-encourage you to discuss the following points:
+It's possible that we'll encourage you to write an RFC if your change is large
+or impactful enough. There is an [RFC
+template](https://github.com/spinnaker/governance/blob/master/rfc/.template.md)
+you should use for this. There are also several [already-submitted
+RFCs](https://github.com/spinnaker/governance/tree/master/rfc) you can use for
+reference.
 
-* Why this change is necessary, and what problem(s) it solves.
-* What alternatives you considered.
-* How it will integrate with other Spinnaker features.
-* A rough, technical plan of the work required.
-* What integration testing you think is necessary.
-* (Optional) Implementation milestones you plan to hit.
-
-Once your design doc is ready, the community will review it and leave feedback.
+Once your RFC is ready, add it to [the `spinnaker/governance/rfc`
+directory](https://github.com/spinnaker/governance/tree/master/rfc) by sending a
+pull request. It will then be reviewed by the community.
 
 ## When you initiate a Pull Request from Github
 
