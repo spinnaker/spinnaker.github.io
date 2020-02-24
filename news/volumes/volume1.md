@@ -48,21 +48,23 @@ You can say that again, Serge! He also boldly shares his feature requests, inclu
 ---
 ### Spinnaker Contributor Experience
 
-As we invite users and contributors into the community, opportunities to unite on clear project goals and milestones arise. The TOC, SIG leads, and community advocates are working improve the Spinnaker contributor experience. If you have feedback about this, please share it at your next SIG meeting, and/or in the #community channel on [Spinnaker Slack](https://join.spinnaker.io/)
-. Look out for experiments that aim to organize issues and improve your experience in advance of our first hackathon. Also: please be un-shy in filing issues. We have a particular need for first-hand “end-user”/developer feedback. Don’t be afraid to engage!
+As we invite users and contributors into the community, opportunities to unite on clear project goals and milestones arise. The TOC, SIG leads, and community advocates are working improve the Spinnaker contributor experience. If you have feedback about this, please share it at your next SIG meeting, and/or in the #community channel on [Spinnaker Slack](https://join.spinnaker.io/).
+Look out for experiments that aim to organize issues and improve your experience in advance of our first hackathon. Also: please be un-shy in filing issues. We have a particular need for first-hand “end-user”/developer feedback. Don’t be afraid to engage!
 
 ---
 ### CDF Strategic Goals
 
-Netflix and Google donated Spinnaker to the [Continuous Delivery Foundation]https://go.armory.io/cdf) in March. The Foundation aims to tell the world the crucial story of CD, and to foster a vibrant community around it. From Spinnaker’s perspective, we want to improve collaboration amongst open-source partners, considering the importance of solution interoperability and clarity to our shared users (Jenkins, in particular, comes to mind here). Check out the strategic goals the CDF has charted for us:
+Netflix and Google donated Spinnaker to the [Continuous Delivery Foundation]https://go.armory.io/cdf) in March. The Foundation aims to tell the world the crucial story of CD, and to foster a vibrant community around it. From Spinnaker’s perspective, we want to improve collaboration among open-source partners, considering the importance of solution interoperability and clarity to our shared users (Jenkins, in particular, comes to mind here). 
+
+Check out the strategic goals the CDF has charted for us:
 * Drive continuous delivery adoption
 * Cultivate, grow, and promote adoption of projects
-* Foster Tool Interoperability
+* Foster tool interoperability
 * Champion diversity & inclusion in our communities
 * Foster community relations
 * Grow the membership base
 * Create value for all members
-* Promote security as a first class citizen
+* Promote security as a first-class citizen
 * Expand into emerging technology areas
 
 Looking forward to working with the amazing Spinnaker community to realize these!
