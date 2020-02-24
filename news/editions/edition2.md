@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "*Flying*  Issue 2"
+title:  "*Flying*  Edition 2"
 sidebar:
   nav: news
 redirect_from: /news/latest/
@@ -26,7 +26,7 @@ In 2020, the vision of data-driven product development for Spinnaker has taken a
 
 ## [Plugin Creators Guide](https://www.spinnaker.io/guides/user/plugin-users/)
 
-Armory and Netflix engineers have built a plug-in framework that helps you extend Spinnaker without having to add custom stages. The new plugin system allows us to integrate services with Spinnaker outside of runtime, with clearly defined extension points to work from. The new [Plugin Creators Guide](guides/developer/plugin-creators.md/) walks us through creating and loading a simple plugin. Use it as a starting point to build your own!
+Armory and Netflix engineers have built a plug-in framework that helps you extend Spinnaker without having to add custom stages. The new plugin system allows us to integrate services with Spinnaker outside of runtime, with clearly defined extension points to work from. The new [Plugin Creators Guide](/guides/developer/plugin-creators/) walks us through creating and loading a simple plugin. Use it as a starting point to build your own!
 
 
 ## [Continuous Delivery Summit Europe](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/program/colocated-events/#continuous-delivery-summit)
