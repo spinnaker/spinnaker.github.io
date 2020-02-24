@@ -67,9 +67,12 @@ To add a plugin to Spinnaker, you can run the following command:
 ```
 hal plugins add Armory.RandomWaitPlugin --enabled=true \
     --extensions=armory.randomWaitStage \
-    --ui-resource-location=<url> \   // TODO should have this ready when we post these docs
+    --ui-resource-location=<url> \
     --version=<version>              // TODO do we support versions?
 ```
+
+### UI Resource Location
+Use `--ui-resource-location=<url>` to configure the frontend portion of the plugin. If there is no UI component to the plugin, this can be left out. The `url` should be accessable by anyone using the Spinnaker UI. It also has to allow for [cross origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) requests.
 
 **Applying Changes**
 Anytime things due to a Halyard change, the command `hal deploy apply` needs to be ran to apply the configuration to Spinnaker. Plugins are no different. After modifying any plugin, remember to run `hal deploy apply` for the changes to be passed to Spinnaker.
