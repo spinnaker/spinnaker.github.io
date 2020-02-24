@@ -8,7 +8,7 @@ sidebar:
 
 ## Dear Spinnaker enthusiasts,
 
-Hi! Welcome to the Spinnaker Newsletter, your source for info about the project and community. We'll focus on news for Spinnaker operators, developers, and contributors.
+Hi! Welcome to the Spinnaker Newsletter, your source for info about the project and community. We'll focus on news for Spinnaker users, operators, and contributors.
 
 ### Spinnaker Summit 2019 (the best yet!)
 
