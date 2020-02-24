@@ -201,7 +201,6 @@ whitelist:
 # Newsletter Setup
 mailchimp-list: https://spinnaker.us3.list-manage.com/subscribe/post?u=337682949220da87810dfa7a7&amp;id=aae9b6cff0  # signup for Spinnaker list on Armory mailchimp
 
-
 # Archives
 #  Type
 #  - GitHub Pages compatible archive pages built with Liquid ~> type: liquid (default)

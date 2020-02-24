@@ -8,11 +8,11 @@ sidebar:
 
 ## Dear Spinnaker enthusiasts,
 
-Hi! Welcome to the Spinnaker Newsletter, your source for info about the project and community. We'll focus on news for Spinnaker operators, developers, and contributors.
+Hi! Welcome to the Spinnaker Newsletter, your source for info about the project and community. We'll focus on news for Spinnaker users, operators, and contributors.
 
 ### Spinnaker Summit 2019 (the best yet!)
 
-We just wrapped an incredible Summit. In case you missed it (or want to replay each delicious moment) here’s a [reflection from the Armory blog](http://go.armory.io/keynote) and a video of [Isaac Mosquera's keynote](https://www.youtube.com/watch?v=BBdFOZASQ_4) , along with recaps from OpsMX highlighting [5 key takeaways](https://blog.opsmx.com/spinnaker-summit-2019-recap/)  as well as [technical and feature takeaways](https://blog.opsmx.com/spinnaker-summit-2019-some-key-technical-takeaways/) .
+We just wrapped an incredible Summit. In case you missed it (or want to replay each delicious moment) here’s a [reflection from the Armory blog](http://go.armory.io/keynote) and a video of [Isaac Mosquera's keynote](https://www.youtube.com/watch?v=BBdFOZASQ_4), along with recaps from OpsMX highlighting [5 key takeaways](https://blog.opsmx.com/spinnaker-summit-2019-recap/),  as well as [technical and feature takeaways](https://blog.opsmx.com/spinnaker-summit-2019-some-key-technical-takeaways/).
 
 Along with many opportunities to connect, we found that attendees had numerous high-quality sessions to choose from. Apart from helpful accounts of enterprise Spinnaker adoption journeys, we also hosted discussions on:
 * Learning from incidents and using Spinnaker to automate their resolution
@@ -24,7 +24,7 @@ Along with many opportunities to connect, we found that attendees had numerous h
 * Experimentation using Canary analyses and more
 * [Using custom stages for your CD and Kubernetes workflows](https://blog.spinnaker.io/running-jobs-stories-from-the-field-pt-1-4330e1e6ebb)
 
-And much more! Access the [slides from all event presentations here](https://go.armory.io/spinsumslides). Look out for video, to be posted on YouTube and announced in [Spinnaker Slack](https://join.spinnaker.io/) . Important discussions about the roadmap and future of Spinnaker also took place. Read more on that below!
+And much more! Access the [slides from all event presentations here](https://go.armory.io/spinsumslides). Look out for video, to be posted on YouTube and announced in [Spinnaker Slack](https://join.spinnaker.io/). Important discussions about the roadmap and future of Spinnaker also took place. Read more on that below!
 
 ---
 ### Spinnaker Roadmap
