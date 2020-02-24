@@ -6,6 +6,9 @@ sidebar:
 redirect_from: /reference/providers/kubernetes-v1/
 ---
 
+> ⚠️ Spinnaker's legacy Kubernetes provider (V1) is [scheduled for removal](https://github.com/spinnaker/governance/blob/master/rfc/eol_kubernetes_v1.md) in Spinnaker 1.21.
+> We recommend using the [manifest-based provider (V2)](/reference/providers/kubernetes-v2) instead. 
+
 {% include toc %}
 
 If you are not familiar with Kubernetes or some of the Kubernetes terminology
@@ -36,7 +39,7 @@ replaced.
 A Spinnaker **Server Group** maps to a Kubernetes [Replica
 Set](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/).
 The Spinnaker API resource is defined
-[here](https://github.com/spinnaker/clouddriver/blob/master/clouddriver-kubernetes-v1/src/main/groovy/com/netflix/spinnaker/clouddriver/kubernetes/v1/deploy/ops/servergroup/DeployKubernetesAtomicOperation.groovy).
+[here](https://github.com/spinnaker/clouddriver/blob/f89de41a805f9a043cfbbb3b9e9c78df1ad53360/clouddriver-kubernetes-v1/src/main/groovy/com/netflix/spinnaker/clouddriver/kubernetes/v1/deploy/ops/servergroup/DeployKubernetesAtomicOperation.groovy).
 
 When Spinnaker creates a Server Group named `${SERVER-GROUP}` it sets the
 following Pod labels:

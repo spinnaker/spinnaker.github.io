@@ -287,9 +287,83 @@ If set, overrides the `defaults.constraint.canary.storage-account` property. Not
 
 Apart from the [depends-on](#depends-on) constraint, all constraint types either expect interaction from a user 
 (in the case of [manual-judgement](#manual-judgement)) or can have their automated judgements overruled by a
-user. The following API endpoints are currently available to interact with constraints.
+user.
 
-### Reading status of pending and recent constraints
+### Approving or rejecting Manual Judgement constraints from Slack
+If your operator has configured [Slack app](https://api.slack.com/start/overview) integration with Spinnaker, then a
+very convenient way to approve managed deployments gated by a Manual Judgement constraint is to use interactive Slack
+notifications.
+
+All you need to do is [set up Slack notifications](/guides/user/managed-delivery/delivery-configs/#environment-notifications) in your delivery config, which will enable interactive notifications
+to a Slack channel of your choice, where you can simply click a button to approve or reject the deployment of the
+artifact into the environment.
+
+Consider the following simplified delivery config:
+```yaml
+name: myspinapp
+application: myspinapp
+serviceAccount: myteam@mycompany.com
+artifacts:
+- name: myspinapp
+  type: deb
+environments:
+- name: test
+  constraints:
+  - type: manual-judgement
+  notifications:
+  - type: slack
+    address: "#myteam"
+    frequency: verbose
+  resources:
+  - apiVersion: bakery.spinnaker.netflix.com/v1
+    kind: image
+    spec:
+      artifactName: myspinapp
+      baseLabel: RELEASE
+      baseOs: xenial
+      regions:
+      - us-east-1
+      storeType: EBS
+      application: myspinapp  
+  - apiVersion: "ec2.spinnaker.netflix.com/v1"
+    kind: "cluster"
+    spec:
+      moniker:
+        app: "myspinapp"
+      imageProvider:
+        deliveryArtifact:
+          name: "myspinapp"
+          type: "deb"
+      locations:
+        account: "test"
+        regions:
+        - name: "us-east-1"
+```
+
+Upon evaluating whether a new Debian artifact for `myspinapp` should be deployed into the `test` environment,
+Spinnaker will gate the deployment on the `manual-judgement` constraint and send a notification that looks like
+the following to the `#myteam` Slack channel.
+{%
+  include
+  figure
+  image_path="./md-manual-judgment-notification.png"
+%}
+
+Once a user in the channel clicks on the `Approve` button, the notification changes to reflect the approval:
+{%
+  include
+  figure
+  image_path="./md-manual-judgment-approved.png"
+%}
+
+> :warning: Note that the `frequency` setting for notifications does not affect this behavior -- interactive
+> notifications will always be sent unless your operator has chosen to disable this feature entirely on your
+> company's instance of Spinnaker.
+
+### APIs to interact with constraints
+In addition to Slack integration, the following API endpoints are currently available to interact with constraints.
+
+#### Reading status of pending and recent constraints
 
 - **`GET`** `https://gate/managed/delivery-configs/{delivery-config-name}/environment/{environment-name}/constraints?limit=20`
 
@@ -307,7 +381,7 @@ Returns: `List<ConstraintState>` consisting of:
   Map<String, Object> attributes;
 ```
 
-### Setting or Overriding Constraint State
+#### Setting or Overriding Constraint State
 
 - **`POST`** `https://gate/managed/delivery-configs/{delivery-config-name}/environment/{environment-name}/constraint`
 

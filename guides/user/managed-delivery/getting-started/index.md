@@ -21,10 +21,10 @@ You can pick a new piece of infrastructure that you want to create (a new load b
 We recommend creating a new security group to test things out.
 This guide will walk you through creating a new managed security group.
 
-First, you'll create a YAML file to store your delivery config in.
-Then, you'll set up a Spinnaker pipeline to submit that YAML file to Spinnaker.
-Finally, you'll watch Spinnaker take actions to make your resource exist.
-
+Here are the steps you'll complete:
+1. First, you'll create a YAML file to store your delivery config in.
+2. Then, you'll set up a Spinnaker pipeline to submit that YAML file to Spinnaker.
+3. Finally, you'll watch Spinnaker take actions to make your resource exist.
 
 ## Background
 
@@ -33,9 +33,12 @@ These resources are security groups, load balancers, and clusters.
 To create these resources you manually define them by clicking the `create` button in the Spinnaker UI.
 
 Managed Delivery changes this interaction.
-To define resources that Spinnaker manages, you'll create a YAML "delivery config" file specifying the desired state of your infrastructure resources.
-"Desired state" is a new-to-Spinnaker phrase that means you're specifying **what** you want your infrastructure to always look like, regardless of **how** Spinnaker decides to make it look that way.
+To define resources that Spinnaker manages, you'll create a YAML-based "delivery config" file specifying the desired state of your infrastructure resources.
+"Desired state" is a new concept in Spinnaker that means you're specifying **what** you want your infrastructure to always look like, regardless of **how** Spinnaker decides to make it look that way.
 In practice, this desired state will often look like the configuration options you're used to defining through the Spinnaker UI.
+
+> :bulb: To learn more about delivery configs, check out <a href="/guides/user/managed-delivery/delivery-configs/" target="_blank">this section</a>
+> of the documentation.
 
 Once you create a YAML delivery config, you'll need to tell Spinnaker to manage it. 
 This is done by submitting the file to Spinnaker's API.
@@ -50,7 +53,6 @@ You must submit your YAML files to Spinnaker every time they change.
 All the instructions for this flow are captured in this doc. 
 
 Let's get started!
-
 
 ## Prerequisites
 
@@ -148,7 +150,7 @@ For example, my sample security group for my app `keeldemo` will have a moniker 
 
 which will name the security group `keeldemo-md`.
 
-**STOP! Don't commit your delivery config yet! Just save it locally.**
+:stop_sign: **STOP! Don't commit your delivery config yet! Just save it locally.**
 
 
 ## Repository Permissions
