@@ -24,7 +24,7 @@ Along with many opportunities to connect, we found that attendees had numerous h
 * Experimentation using Canary analyses and more
 * [Using custom stages for your CD and Kubernetes workflows](https://blog.spinnaker.io/running-jobs-stories-from-the-field-pt-1-4330e1e6ebb)
 
-And much more! Access the [slides from all event presentations here](https://go.armory.io/spinsumslides). Look out for video, to be posted on YouTube and announced in [Spinnaker Slack](https://join.spinnaker.io/) . Important discussions about the roadmap and future of Spinnaker also took place. Read more on that below!
+And much more! Access the [slides from all event presentations here](https://go.armory.io/spinsumslides). Look out for video, to be posted on YouTube and announced in [Spinnaker Slack](https://join.spinnaker.io/). Important discussions about the roadmap and future of Spinnaker also took place. Read more on that below!
 
 ---
 ### Spinnaker Roadmap
