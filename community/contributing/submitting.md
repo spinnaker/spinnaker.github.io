@@ -20,7 +20,7 @@ discuss your ideas before implementing them.
 It's possible that we'll encourage you to write an RFC if your change is large
 or impactful enough. There is an [RFC
 template](https://github.com/spinnaker/governance/blob/master/rfc/.template.md)
-you should use for this. There are also several [already-submitted
+to use for this. There are also several [already-submitted
 RFCs](https://github.com/spinnaker/governance/tree/master/rfc) you can use for
 reference.
 
