@@ -62,7 +62,7 @@ Netflix and Google donated Spinnaker to the [Continuous Delivery Foundation]http
 * Foster community relations
 * Grow the membership base
 * Create value for all members
-* Promote security as a first class citizen
+* Promote security as a first-class citizen
 * Expand into emerging technology areas
 
 Looking forward to working with the amazing Spinnaker community to realize these!
