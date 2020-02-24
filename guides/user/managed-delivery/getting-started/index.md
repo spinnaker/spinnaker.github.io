@@ -79,13 +79,19 @@ The base URL for exporting a security group is:
 /managed/resources/export/aws/AWS_ACCOUNT_NAME/securitygroup/APP_NAME_OR_SG_NAME?serviceAccount=SERVICE_ACCOUNT
 ```
 
-You'll need to replace `AWS_ACCOUNT_NAME` with the account your app is in.
-You'll need to replace `APP_NAME_OR_SG_NAME` with either the name of your application or the name of the security group you want to export. 
-You probably have a security group with the same name as your app, which is the one you should use here.
-You'll need to replace `SERVICE_ACCOUNT` with the same service account you created or found in the [prerequisites](#prerequisites) step.
+* Replace `AWS_ACCOUNT_NAME` with the account your app is in. You can check the [credentials]
+endpoint in Spinnaker API for a list of valid account names.
+* Replace `APP_NAME_OR_SG_NAME` with either the name of your application or the name of the
+security group you want to export. You probably have a security group with the same name as
+your app, which is the one you should use here.
+* Replace `SERVICE_ACCOUNT` with the same service account you created or found in the
+[prerequisites](#prerequisites) step.
 
-If you've gotten all the information right a resource configuration will show up. For more information on how to use this API see the [API](/guides/user/managed-delivery/api/#export-an-existing-resource) doc.
+If you've gotten all the information right a resource configuration will show up. See the [API]
+docs for more information on usage. 
 
+[credentials]: /reference/api/docs.html#api-Credentialscontroller-getAccountsUsingGET
+[API]: /guides/user/managed-delivery/api#export-an-existing-resource
 
 ## Save Your Resource In Your Git Repository
 
