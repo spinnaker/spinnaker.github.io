@@ -26,7 +26,7 @@ reference.
 
 When your RFC is ready, add it to [the `spinnaker/governance/rfc`
 directory](https://github.com/spinnaker/governance/tree/master/rfc) by sending a
-pull request. It will then be reviewed by the community.
+pull request. Members of the community will review it.
 
 ## When you initiate a Pull Request from Github
 
