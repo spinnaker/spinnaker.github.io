@@ -49,7 +49,7 @@ You can say that again, Serge! He also boldly shares his feature requests, inclu
 ### Spinnaker Contributor Experience
 
 As we invite users and contributors into the community, opportunities to unite on clear project goals and milestones arise. The TOC, SIG leads, and community advocates are working improve the Spinnaker contributor experience. If you have feedback about this, please share it at your next SIG meeting, and/or in the #community channel on [Spinnaker Slack](https://join.spinnaker.io/)
-. Look out for experiments that aim to organize issues and improve your experience in advance of our first hackathon. Also: please be un-shy in filing issues. We have a particular need for first-hand “end-user”/developer feedback. Don’t be afraid to engage!
+Look out for experiments that aim to organize issues and improve your experience in advance of our first hackathon. Also: please be un-shy in filing issues. We have a particular need for first-hand “end-user”/developer feedback. Don’t be afraid to engage!
 
 ---
 ### CDF Strategic Goals
