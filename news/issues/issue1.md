@@ -57,7 +57,7 @@ As we invite users and contributors into the community, opportunities to unite o
 Netflix and Google donated Spinnaker to the [Continuous Delivery Foundation]https://go.armory.io/cdf) in March. The Foundation aims to tell the world the crucial story of CD, and to foster a vibrant community around it. From Spinnaker’s perspective, we want to improve collaboration amongst open-source partners, considering the importance of solution interoperability and clarity to our shared users (Jenkins, in particular, comes to mind here). Check out the strategic goals the CDF has charted for us:
 * Drive continuous delivery adoption
 * Cultivate, grow, and promote adoption of projects
-* Foster Tool Interoperability
+* Foster tool interoperability
 * Champion diversity & inclusion in our communities
 * Foster community relations
 * Grow the membership base
