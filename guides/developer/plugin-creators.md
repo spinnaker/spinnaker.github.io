@@ -17,16 +17,16 @@ This guide is for creating a new plugin to Spinnaker. For information about how 
 
 ## Example Plugin
 
-This document shows how to create a simple plugin that waits a random amount of time, from zero to the number of seconds that is entered in the UI. Use this guide as a starting point to facilitate creating more complex plugins. 
+This document shows how to create a simple plugin that waits a random amount of time, from zero to the number of seconds that is entered in the UI. Use this guide as a starting point to facilitate creating more complex plugins.
 
 ## Setting Up Your Project
 
-To get started setting up your project, we highly suggest using [https://start.spring.io](https://start.spring.io/) to create your base project. 
+To get started setting up your project, we highly suggest using [https://start.spring.io](https://start.spring.io/) to create your base project.
 
 Keep the following recommendations and requirements in mind:
 
-- We recommend making the project a Gradle project. 
-- You must set the base package path for the plugin to the following path: `com.netflix.spinnaker.plugin`. You can add anything else after that, but that is required. 
+- We recommend making the project a Gradle project.
+- You must set the base package path for the plugin to the following path: `com.netflix.spinnaker.plugin`. You can add anything else after that, but that is required.
 - You can add any dependencies you need to make your plugin successful.
 
 Generate the project and unzip it to a location of your choosing. Modify the `build.gradle`  file to look like the following example:
@@ -64,7 +64,7 @@ Then, we can remove both of the tests and the main application. (Don’t worry, 
 
 ## Creating The Plugin Stage
 
-In order to create the stage plugin, we first have to define three classes. The three classes that we need to define are our Stage Input, Stage Output Context, and Stage Output Outputs. 
+In order to create the stage plugin, we first have to define three classes. The three classes that we need to define are our Stage Input, Stage Output Context, and Stage Output Outputs.
 
 **SimpleStage Input**
 
@@ -92,7 +92,7 @@ class Context {
 **SimpleStage Output**
 
 Output is what can be used later in other stages. In this case, the output contains the actual number of seconds the stage waits.
- 
+
 ```
 @Data
 class Output {
@@ -104,13 +104,15 @@ class Output {
 ```
 ## Create Stage Class
 
-The stage itself needs to implement the `[SimpleStage](https://github.com/spinnaker/orca/blob/ab89a0d7f847205ccd62e70f8a714040a8621ee7/orca-api/src/main/java/com/netflix/spinnaker/orca/api/SimpleStage.java)` interface. The two methods that we need to implement are `getName` and `execute`.
+The stage itself needs to implement the [SimpleStage][SimpleStageLink] interface. The two
+methods that we need to implement are `getName` and `execute`.
 
 **getName**
-`getName` is a method that tells Spinnaker what the name of the stage is. 
+`getName` is a method that tells Spinnaker what the name of the stage is.
 
 **execute**
-`execute` is the meat of the stage. `execute` takes in a `SimpleStageInput` that will take in as a generic the class that was created earlier for stage input. `execute` will return a `SimpleStageOutput` that has our `Output` and `Context` classes. `SimpleStageOutput` also needs to know the status of the stage. This is where the `[SimpleStageStatus](https://github.com/spinnaker/orca/blob/ab89a0d7f847205ccd62e70f8a714040a8621ee7/orca-api/src/main/java/com/netflix/spinnaker/orca/api/SimpleStageStatus.java)` comes into play. Currently stages can be in the following states:
+`execute` is the meat of the stage. `execute` takes in a `SimpleStageInput` that will take in as a generic the class that was created earlier for stage input. `execute` will return a `SimpleStageOutput` that has our `Output` and `Context` classes. `SimpleStageOutput` also needs to know the status of the stage.
+This is where the [SimpleStageStatus][SimpleStageStatusLink] comes into play. Currently stages can be in the following states:
 
 1. Terminal → the stage failed
 2. Running → the stage is still executing
@@ -195,7 +197,8 @@ function spinnakerSharedLibraries() {
 }
 ```
 
-`spinnakerSharedLibraries` pulls dependencies from Spinnaker. The libraries constant is a list of libraries that make the plugin work correctly. Items in this list must be from the [shared libraries](https://github.com/spinnaker/deck/blob/master/app/scripts/modules/core/src/plugins/sharedLibraries.ts#L32) exposed to plugin creators.
+`spinnakerSharedLibraries` pulls dependencies from Spinnaker. The libraries constant is a list of libraries that make the plugin work correctly.
+Items in this list must be from the [shared libraries](https://github.com/spinnaker/deck/blob/master/app/scripts/modules/core/src/plugins/sharedLibraries.ts#L32) exposed to plugin creators.
 
 ### Dependencies
 As mentioned above, Spinnaker exposes libraries for plugins to use. Define dependencies in package.json. For this example plugin, the dependencies are:
@@ -283,7 +286,7 @@ The `description` gives the plugin user an idea of what the plugin will be doing
 
 The `manifestVersion` tells Spinnaker what version to use to validate the manifest. This is needed because lugin manifests can change overtime. Currently, there is only the `plugins/v1` version.
 
-`version` is the version of the plugin. 
+`version` is the version of the plugin.
 
 The `options` key gives the plugin users that flexibility to change some settings to control how the plugin works. For example, controlling what username and password to use to connect to S3. The plugin user can modify anything under `options`.
 
@@ -292,3 +295,7 @@ For example, Orca needs access to a plugin's jar(s) in order to provide the func
 Since there are many Spinnaker services, we use the manifest to let Spinnaker operators know which resources need to be put on which service.
 In the example above, we include a list of URLs where the jar(s) are located for Orca to use.
 
+
+[SimpleStageLink]: https://github.com/spinnaker/orca/blob/ab89a0d7f847205ccd62e70f8a714040a8621ee7/orca-api/src/main/java/com/netflix/spinnaker/orca/api/SimpleStage.java
+
+[SimpleStageStatusLink]: https://github.com/spinnaker/orca/blob/ab89a0d7f847205ccd62e70f8a714040a8621ee7/orca-api/src/main/java/com/netflix/spinnaker/orca/api/SimpleStageStatus.java
