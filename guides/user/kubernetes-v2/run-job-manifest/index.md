@@ -34,7 +34,7 @@ https://internal-logging/jobs/myjob-12345
 
 ### Within Spinnaker
 
-You can still view the logs of your `Job` within Spinnaker even if your Kubernetes deployment doesn't forward them to an external system. In the absense of the `job.spinnaker.io/logs` annotation, Spinnaker fetches the deployed manifest and displays logs directly in the UI. These logs are only be available for a short period following the job's completion because Kubernetes only stores events about an object for a shot amount of time. If you'd like to view your logs for longer than this timeframe, it's recommended that you use a tool like [Fluentd](https://www.fluentd.org) to forward logs to a more persistent platform like Elasticsearch or Datadog.
+You can still view the logs of your `Job` within Spinnaker even if your Kubernetes deployment doesn't forward them to an external system. In the absense of the `job.spinnaker.io/logs` annotation, Spinnaker fetches the deployed manifest and displays logs directly in the UI. These logs are only be available for a short period following the job's completion because Kubernetes only stores events about an object for a short amount of time. If you'd like to view your logs for longer than this timeframe, it's recommended that you use a tool like [Fluentd](https://www.fluentd.org) to forward logs to a more persistent platform like Elasticsearch or Datadog.
 
 
 ## Capturing output
@@ -75,7 +75,7 @@ the captured output would be in the following format
 
 #### `SPINNAKER_CONFIG_JSON`
 
-`SPINNAKER_CONFIG_JSON` can be used to provide complex or structured data. In this case, anything following `SPINNAKER_CONFIG_JSON=` is directly consumed and parsed as JSON. Using the previous example, notice how the output has changed.
+`SPINNAKER_CONFIG_JSON` can be used to provide complex or structured data. In this case, anything following `SPINNAKER_CONFIG_JSON=` on a single line of `stdout` is directly consumed and parsed as JSON. Using the previous example, notice how the output has changed.
 
 ```
 Checkout spinnaker/spinnaker source code...
@@ -97,6 +97,8 @@ Again, using this solution would result in the following format:
 ```
 
 If `SPINNAKER_CONFIG_JSON` is found multiple times within the log then each is parsed and added to the resulting output. If multiple keys are the same, for example the key `foo` is contained in multiple instances of `SPINNAKER_CONFIG_JSON`, then the _last one_ wins. The results of multiple occurrences _are not merged_.
+
+If you source JSON from a file (`SPINNAKER_CONFIG_JSON=$(cat file.json)`), be sure that the file content does not introduce newline characters since each `SPINNAKER_CONFIG_JSON` is only parsed from one line in the log file. 
 
 
 ### Artifacts
