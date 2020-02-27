@@ -11,59 +11,118 @@ sidebar:
   <strong>Note:</strong> Plugins are an early alpha feature that is under active development and will likely change.
 </div>
 
-This guide is for adding existing plugins to Spinnaker. For information about how to develop a new plugin, see [Plugin Creators Guide](/guides/developer/plugin-creators). 
+In this guide, you add an existing plugin from an [example repository](https://github.com/spinnaker-plugin-examples/examplePluginRepository) to Spinnaker. See the [Plugin Creators Guide](/guides/developer/plugin-creators) for how to create a PF4J or Spring plugin.
 
 ## Requirements
 
-To use plugins, ensure that the following requirements are met:
-* Your Spinnaker deployment must be version 1.19 or later
-* You must use Halyard 1.32.0 or later
-* You can redeploy Spinnaker with Halyard to apply changes
+* The plugin is either a PF4J or a Spring plugin
+* The plugin resides in a publicly accessible place
+* Spinnaker v1.19 or later
+* Halyard v1.32.0 or later
+* You redeploy Spinnaker using Halyard to apply changes
 
-# Plugin Delivery
-There are multiple ways of delivering plugins to a Spinnaker installation.
-This doc describes using PF4J as a way to deliver plugins.
+### Define Plugins
 
-## PF4J Update
-This is how to add plugins to a spinnaker installation via [PF4J - Update](https://github.com/pf4j/pf4j-update).
-We will be using the [examplePluginRepository](https://github.com/spinnaker-plugin-examples/examplePluginRepository) plugin repository as an example.
+Define plugins in a file called `plugins.json`. This guide uses the  [file](https://raw.githubusercontent.com/spinnaker-plugin-examples/examplePluginRepository/master/plugins.json) in the example repository.
 
-### Add a Plugin Repository
+```json
+[
+	{
+   "id": <plugin-id>,
+   "description": <description>,
+   "provider": <provider>,
+   "releases": [
+	 {
+	   "version": <version>,
+	   "date": <date>,
+	   "requires": <comma-delimited-list-of-spinnaker-services>,
+	   "sha512sum": <checksum>,
+	   "state": <state>,
+	   "url": <complete-url-to-bundle-zip-file>
+	 }
+   ]
+ }
+]
+```
 
-To add a plugin repository to Spinnaker, you can run the following command:  
+1. **id**: defined by the plugin creator; find this value in the bundle's `MANIFEST.MF`; unique value
+2. **description**: what the plugin does
+3. **provider**: plugin provider name
+4. **releases**: one-to-many list; each release entry requires:
+
+	* **version**: plugin version (semantic version format, e.g. 1.2.3)
+	* **date**: plugin release date in ISO or yyyy-MM-dd format
+	* **requires**: list of comma-delimited Spinnaker services; ex: "orca>=0.0.0,deck>=0.0.0"
+	* **sha512sum**: a string of the SHA-512 HEX value or the URL to the SHA-512 file
+	* **state**: plugin state, usually "RELEASE"
+	* **url**: either an absolute or relative URL to the bundle zip file
+
+
+### Define a Plugin Repository
+
+Define plugin repositories in a file called `repositories.json`. This guide uses the [file](https://raw.githubusercontent.com/spinnaker-plugin-examples/examplePluginRepository/master/repositories.json) in the example repository.
+
+Each repository exposes the plugins in the corresponding `plugins.json` file.
+
+```json
+[
+  {
+    "id": <repo-name>,
+    "url": <url-of-plugins.json-file>
+  }
+]
+```
+
+1. **id**: unique name
+2. **url**: either an absolute or relative URL to the `plugins.json` file
+
+### Add the Plugin Repository
+
+Use `hal` to add the repository file:
+
 ```
 hal plugins repository add spinnaker-plugin-examples \
     --url=https://github.com/spinnaker-plugin-examples/examplePluginRepository/blob/master/repositories.json
 ```
 
-### Edit a Plugin Repository
-To update a plugin repository's url, you can run the following command:  
-```
-hal plugins repository add spinnaker-plugin-examples \
-    --url=https://github.com/spinnaker-plugin-examples/examplePluginRepository/blob/master/plugins.json
-```
-
-Note that you can point to either a `plugin.json` or a `repositories.json` file, as described in [PF4J - Update](https://github.com/pf4j/pf4j-update)
-
-### Delete a Plugin Repository
-To delete a plugin repository, run the following command:  
-```
-hal plugins repository delete spinnaker-plugin-examples
-```
+See the Halyard [commands](/reference/halyard/commands/) reference for a complete list of parameters.
 
 ### List Configured Plugin Repositories
-To view the configured plugin repositories, run the following command:
+
+View configured repositories:
+
 ```
 hal plugins repository list
 ```
 
+### Edit a Plugin Repository
+
+You can update a repository's URL using `hal`. For example:
+
+```
+hal plugins repository edit spinnaker-plugin-examples \
+    --url=https://github.com/aimeeu/examplePluginRepository/blob/master/plugins.json
+```
+
+
+### Delete a Plugin Repository
+
+You can use `hal` to delete a plugin repository. For example:  
+
+```
+hal plugins repository delete spinnaker-plugin-examples
+```
+
+
+
 # Installing Plugins
-Once you've configured your plugin repositories, you can then configure Spinnaker to use plugin(s) in the configured repositories.
-We will be using the [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin) plugin as an example.
+
+This guide uses the [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin) plugin as an example.
 
 ## Adding a Plugin
 
 To add a plugin to Spinnaker, you can run the following command:  
+
 ```
 hal plugins add Armory.RandomWaitPlugin --enabled=true \
     --extensions=armory.randomWaitStage \
@@ -119,4 +178,3 @@ Remember to run `hal deploy apply` after deleting a plugin.
 ## Display All Configured Plugins
 
 Run `hal plugins list` to see which plugins are currently configured for Spinnaker.
-
