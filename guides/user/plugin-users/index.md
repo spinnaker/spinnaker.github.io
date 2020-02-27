@@ -27,7 +27,7 @@ Define plugins in a file called `plugins.json`. This guide uses the  [file](http
 
 ```json
 [
-	{
+ {
    "id": <plugin-id>,
    "description": <description>,
    "provider": <provider>,
@@ -79,7 +79,7 @@ This guide uses the [file](https://raw.githubusercontent.com/spinnaker-plugin-ex
 
 # Configure Spinnaker for the Plugin Repository
 
-Run `hal plugins repository add REPOSITORY [parameters]` to add the repository file to Spinnaker's configuration:
+Use `hal plugins repository add REPOSITORY [parameters]` to add the repository file to Spinnaker's configuration:
 
 ```
 hal plugins repository add spinnaker-plugin-examples \
@@ -132,7 +132,7 @@ Use `hal` to enable your plugin so Spinnaker will load it. Do not use `hal plugi
 ```
 hal plugins add Armory.RandomWaitPlugin \
 	--enabled=true \
-    --extensions=armory.randomWaitStage \
+	--extensions=armory.randomWaitStage \
     --ui-resource-location=<location-of-plugin-ui-resource> \
     --version=<version>             
 ```
@@ -141,7 +141,7 @@ Use `--ui-resource-location=<location-of-plugin-ui-resource>` to configure the f
 
 See the command [reference](/reference/halyard/commands/#hal-plugins-add) for the complete list of parameters.
 
-## Configure the plugin
+## Configure the Plugin
 
 Manually edit the `.hal\config` file to configure custom values for your plugin.
 Find the `plugins` section, locate your plugin's definition, and then change values in the `config` section.
