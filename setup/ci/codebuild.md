@@ -16,7 +16,7 @@ system within Spinnaker allows you to:
 
 ### AWS CodeBuild project
 
-You need to have an [AWS CodeBuild](https://aws.amazon.com/codebuild/) project
+You need to have an [AWS CodeBuild](https://aws.amazon.com/codebuild/) project.
 
 ### IAM Role
 
@@ -80,25 +80,26 @@ To run an AWS CodeBuild build as part of a Spinnaker pipeline:
 from the dropdown list.
 
 3. (Optional) In the *Source Configuration* section, you might 
-  - Select the source artifact to use as build source. If not specified, the source configured in project is used.
+  - Select the source artifact to use as the build source. If not specified, the source configured in the project is used.
   - Specify the [source version](https://docs.aws.amazon.com/codebuild/latest/APIReference/API_StartBuild.html#CodeBuild-StartBuild-request-sourceVersion)
-  of the build source.If not specified, the latest version is used.
-  - Specify the buildspec file. If left blank, the buildspec configured in project is used.
-  - Select secondary build sources. If not specified, the secondary sources configured in project is used
+  of the build source. If not specified, the latest version is used.
+  - Specify the buildspec file. If left blank, the buildspec configured in the project is used.
+  - Select secondary build sources. If not specified, the secondary sources configured in the project is used.
 
 4. (Optional) In the *Environment Configuration* section, you might specify the image tag or image digest that identifies the Docker image
-to use. If not specified, the image configured in project is used. **Note:** As prerequisite, follow this
+to use. If not specified, the image configured in the project is used. **Note:** As a prerequisite, follow this
 [user guide](https://docs.aws.amazon.com/codebuild/latest/userguide/sample-private-registry.html) to set up your registry credentials
-in project configuration.
+in the project configuration.
 
 5. (Optional) In the *Advanced Configuration* section, you might specify environment variables to use in the build.
-Only environment variables in plain text are supported.
+Only environment variables in plain text are supported. Parameter Store / Secrets Manager environment variables
+can be configured in the project.
 
 6. (Optional) In the *Produces Artifacts* section, you might supply any artifacts that you expect the build to create in order to
-make these artifacts available to downstream stages. AWS CodeBuild supports creating S3 artifacts, which will be converted
+make these artifacts available to downstream stages. AWS CodeBuild supports creating S3 artifacts in ZIP format, which will be converted
 to Spinnaker artifacts and injected into the pipeline on completion of the build.
 
-While your build is executing, the stage details provide the following information
+While your build is running, the stage details provide the following information
 * Current status of the build
 * ARN of the build
 * The link to view the build in the AWS CodeBuild Console
@@ -113,9 +114,9 @@ Configure your pipeline to be triggered by AWS CodeBuild build phase or state ch
 set up a notification rule for your project.
 
 2. Follow [instructions](/setup/triggers/amazon/) to create an Amazon Pub/Sub trigger.
-  - Skip the step to create SNS topic, as we will be using the SNS topic created in step 1.
+  - Skip the step to create SNS topic, as we will use the SNS topic created in step 1.
   - Create an SQS queue and subscribe to the SNS topic.
-  - Skip the step to create S3 bucket, as the notification will be sent from CodeBuild instead of S3.
-  - Write Echo configuration and set up the Amazon Pub/Sub trigger in UI
+  - Skip the step to create an S3 bucket, as the notification will be sent from CodeBuild instead of from S3.
+  - Write the Echo configuration and set up the Amazon Pub/Sub trigger in the Spinnaker UI.
 
 3. Start a build in CodeBuild and your pipeline should be triggered.

@@ -17,7 +17,7 @@ provider.
 ## General
 
 ### AWS CodeBuild
-Run an AWS CodeBuild build by specifing the name of the project. Sources and image
+Run an AWS CodeBuild build by specifying the name of the project. The Sources and the image
 used by the build can be from upstream stages. Artifacts produced by the build can
 be injected into the pipeline and used by downstream stages.
 
