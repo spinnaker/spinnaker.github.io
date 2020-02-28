@@ -34,7 +34,7 @@ https://internal-logging/jobs/myjob-12345
 
 ### Within Spinnaker
 
-You can still view the logs of your `Job` within Spinnaker even if your Kubernetes deployment doesn't forward them to an external system. In the absense of the `job.spinnaker.io/logs` annotation, Spinnaker fetches the deployed manifest and displays logs directly in the UI. These logs are only be available for a short period following the job's completion because Kubernetes only stores events about an object for a shot amount of time. If you'd like to view your logs for longer than this timeframe, it's recommended that you use a tool like [Fluentd](https://www.fluentd.org) to forward logs to a more persistent platform like Elasticsearch or Datadog.
+You can still view the logs of your `Job` within Spinnaker even if your Kubernetes deployment doesn't forward them to an external system. In the absense of the `job.spinnaker.io/logs` annotation, Spinnaker fetches the deployed manifest and displays logs directly in the UI. These logs are only be available for a short period following the job's completion because Kubernetes only stores events about an object for a short amount of time. If you'd like to view your logs for longer than this timeframe, it's recommended that you use a tool like [Fluentd](https://www.fluentd.org) to forward logs to a more persistent platform like Elasticsearch or Datadog.
 
 
 ## Capturing output
