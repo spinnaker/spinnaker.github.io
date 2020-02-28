@@ -108,10 +108,11 @@ While your build is running, the stage details provide the following information
 
 ## Configure your pipeline trigger (Optional)
 
-Configure your pipeline to be triggered by AWS CodeBuild build phase or state changes:
+Configure your pipeline to be triggered when AWS CodeBuild build completes:
 
 1. Follow [instructions](https://docs.aws.amazon.com/codestar-notifications/latest/userguide/getting-started-build.html) to
-set up a notification rule for your project.
+set up a notification rule for your project. To trigger the pipeline on completion of the build,
+select *Succeeded* and *Failed* in *Events that trigger notifications* section under *Build state*.
 
 2. Follow [instructions](/setup/triggers/amazon/) to create an Amazon Pub/Sub trigger.
   - Skip the step to create SNS topic, as we will use the SNS topic created in step 1.
@@ -119,4 +120,4 @@ set up a notification rule for your project.
   - Skip the step to create an S3 bucket, as the notification will be sent from CodeBuild instead of from S3.
   - Write the Echo configuration and set up the Amazon Pub/Sub trigger in the Spinnaker UI.
 
-3. Start a build in CodeBuild and your pipeline should be triggered.
+3. Start a build in CodeBuild and your pipeline should be triggered when the build completes.
