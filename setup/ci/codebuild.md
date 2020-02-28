@@ -108,7 +108,7 @@ While your build is running, the stage details provide the following information
 
 ## Configure your pipeline trigger (Optional)
 
-Configure your pipeline to be triggered when AWS CodeBuild build completes:
+Configure your pipeline to be triggered when an AWS CodeBuild build completes:
 
 1. Follow [instructions](https://docs.aws.amazon.com/codestar-notifications/latest/userguide/getting-started-build.html) to
 set up a notification rule for your project. To trigger the pipeline on completion of the build,
