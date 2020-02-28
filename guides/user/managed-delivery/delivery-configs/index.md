@@ -12,7 +12,7 @@ _**Prerequisite:** read and complete the [getting started](/guides/user/managed-
 
 ## What is a Delivery Config?
 
-A **delivery config** allows you to group resources together in a single file (`spinnaker.yml`) and specify how these resources work together to promote an **artifact** between **environments**.
+A **delivery config** allows you to group resources together in a single file (e.g. `spinnaker.yml`) and specify how these resources work together to promote an **artifact** between **environments**.
 
 ### Artifacts
 
