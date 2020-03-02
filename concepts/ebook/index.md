@@ -2,7 +2,7 @@
 layout: single
 title:  "Continuous Delivery With Spinnaker"
 sidebar:
-  nav: publications
+  nav: concepts
 redirect_from: /ebook/
 ---
 

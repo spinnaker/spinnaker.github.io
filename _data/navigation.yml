@@ -13,8 +13,8 @@ main:
     url: /success-stories/
   - title: Blog
     url: https://blog.spinnaker.io
-  - title: Publications
-    url: /publications/
+  - title: News
+    url: /news/
 
 concepts:
   - children:
@@ -26,6 +26,8 @@ concepts:
       url: /concepts/pipelines/
     - title: Providers
       url: /concepts/providers/
+    - title: Read eBook
+      url: /concepts/ebook/
 
 setup:
   - title: Try it out
@@ -715,11 +717,15 @@ community:
     url: /community/security/
   - title: Usage Stats
     url: /community/stats
+  - title: Captain's Log
+    url: /community/captains-log/
 
-publications:
-  - title: eBook
-    url: /publications/ebook/
-  - title: Presentations and Videos
-    url: /publications/presentations/
-  - title: Articles
-    url: /publications/articles/
+news:
+  - title: Sign Up
+    url: /news/signup
+  - title: Latest
+    url: /news/latest/
+  - title: Editions
+    url: /news/editions/
+  - title: Archive
+    url: /news/archive/
