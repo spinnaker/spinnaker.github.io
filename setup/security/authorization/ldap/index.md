@@ -79,6 +79,5 @@ To see the internals (can be useful for debugging):
 ## Next steps...
 
 * Read through [Authorization Overview](/setup/security/authorization/)
-* Read through [LDAP Authorization](/setup/security/authorization/ldap/)
 
 
