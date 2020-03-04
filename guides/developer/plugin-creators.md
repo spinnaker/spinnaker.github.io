@@ -11,9 +11,29 @@ sidebar:
   <strong>Note:</strong> Plugins are an early alpha feature that is under active development and will likely change.
 </div>
 
-This guide is for creating a new plugin to Spinnaker. For information about how to use an existing plugin, see [Plugin Users Guide](/guides/user/plugin-users/).
+In this guide you create a plugin for Spinnaker. See the [Plugin Users Guide](/guides/user/plugin-users/) for instruction.
 
-# Create the Backend For Stage Plugins
+# Requirements
+
+* Spinnaker v1.19.0
+* IntelliJ IDEA
+
+# Plugin overview
+
+A plugin enables a Spinnaker user to inject custom functionality into a pipeline. Use cases include fetching credentials from a custom authorization service, adding a wait time, and updating a Jira ticket. Spinnaker supports two types of plugins:
+
+* [Plugin Framework for Java (PF4J)](https://github.com/pf4j/pf4j)-based plugins
+* Spring-based plugins
+
+Spinnaker's Orca service incorporates the  to two PF4J extension points in the Orca service:
+
+* [Pipeline Stage](SimpleStageLink)
+* [Pipeline Spring Expression Language (SpEL) Evaluator](PipelineSpELLink)
+
+
+A plugin that implements the  can hook into those extension points.  
+
+# Create the backend For Stage Plugins
 
 ## Example Plugin
 
@@ -299,3 +319,5 @@ In the example above, we include a list of URLs where the jar(s) are located for
 [SimpleStageLink]: https://github.com/spinnaker/orca/blob/ab89a0d7f847205ccd62e70f8a714040a8621ee7/orca-api/src/main/java/com/netflix/spinnaker/orca/api/SimpleStage.java
 
 [SimpleStageStatusLink]: https://github.com/spinnaker/orca/blob/ab89a0d7f847205ccd62e70f8a714040a8621ee7/orca-api/src/main/java/com/netflix/spinnaker/orca/api/SimpleStageStatus.java
+
+[PipelineSpELLink]: https://raw.githubusercontent.com/spinnaker/orca/master/orca-core/src/main/java/com/netflix/spinnaker/orca/pipeline/expressions/PipelineExpressionEvaluator.java
