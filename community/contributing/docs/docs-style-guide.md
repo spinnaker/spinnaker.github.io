@@ -2,7 +2,7 @@
 layout: single
 title:  "Documentation Style Guide"
 sidebar:
-  nav: style
+  nav: community
 ---
 
 {% include toc %}
@@ -12,7 +12,7 @@ This page gives writing style guidelines for the Spinnaker documentation. Since 
 
 If you have a style question that isn't answered in this guide, ask the SIG Docs team in the `#sig-documentation` channel.
 
-# Language
+## Language
 
 The Spinnaker documentation uses U.S. English spelling and grammar. However, use the international standard for punctuation inside quotes.
 
@@ -22,9 +22,9 @@ The Spinnaker documentation uses U.S. English spelling and grammar. However, use
 
 Create content using [Markdown](https://www.markdownguide.org/) with your favorite IDE.
 
-# Best practices for clear, concise, and consistent content
+## Best practices for clear, concise, and consistent content
 
-## Use present tense
+### Use present tense
 
 |**Do** |**Do Not**|
 |:------|:---------|
@@ -32,7 +32,7 @@ Create content using [Markdown](https://www.markdownguide.org/) with your favori
 
 Exception: Use future or past tense if it is required to convey the correct meaning.
 
-## Use active voice
+### Use active voice
 
 |**Do** |**Do Not**|
 |:------|:---------|
@@ -41,7 +41,7 @@ Exception: Use future or past tense if it is required to convey the correct mean
 
 Exception: Use passive voice if active voice leads to an awkward construction.
 
-## Use simple and direct language
+### Use simple and direct language
 
 Use simple and direct language. Avoid using unnecessary phrases like "please".
 
@@ -51,14 +51,14 @@ Use simple and direct language. Avoid using unnecessary phrases like "please".
 | See the configuration file. | Please see the configuration file.|
 | View the Pipeline logs. | With this next command, we'll view the Pipeline logs.|
 
-## Address the reader as "you"
+### Address the reader as "you"
 
 |**Do** |**Do Not**|
 |:------|:---------|
 | You can create a Pipeline by ... | We'll create a Pipeline by ...|
 | In the preceding output, you see... | In the preceding output, we see ...|
 
-## Avoid Latin phrases
+### Avoid Latin phrases
 
 Use English terms over Latin abbreviations.
 
@@ -69,11 +69,11 @@ Use English terms over Latin abbreviations.
 
 Exception: Use "etc." for et cetera.
 
-## Paragraphs
+### Paragraphs
 
 Try to keep paragraphs short, under 6 sentences, and limit to a single topic.
 
-## Links
+### Links
 
 Use hyperlinks that give the reader context for the linked content. Avoid ambiguous phrases like "click here" in favor of descriptive ones.
 
@@ -89,9 +89,9 @@ Click [here](https://github.com/pf4j/pf4j-update#repository-structure) to read m
 
 For long URLs, consider using [reference-style hyperlinks](ref-style-links) to maintain readability of the Markdown file.
 
-# Patterns to avoid
+## Patterns to avoid
 
-## Avoid using "we"
+### Avoid using "we"
 
 Do not use "we" because readers may not know if they are part of the "we".
 
@@ -101,7 +101,7 @@ Do not use "we" because readers may not know if they are part of the "we".
 | Spinnaker provides a new feature for ... | We provide a new feature for ...|
 | This guide teaches you how to use Plugins. | In this guide, we are going to learn about Plugins.|
 
-## Avoid jargon and idioms
+### Avoid jargon and idioms
 
 Avoid jargon and idioms to help non-native English speakers understand the content better.
 
@@ -110,11 +110,11 @@ Avoid jargon and idioms to help non-native English speakers understand the conte
 | Internally, ...| Under the hood, ...|
 | Create a new instance. | Spin up a new instance.|
 
-## Avoid statements about the future
+### Avoid statements about the future
 
 If you need to write about an alpha feature, put the text in a note or under a heading that identifies it as alpha information.
 
-## Avoid statements that will soon be out of date
+### Avoid statements that will soon be out of date
 
 Avoid using words like "currently" and "new." A feature that is new today might not be considered new in a few months.
 
@@ -123,9 +123,9 @@ Avoid using words like "currently" and "new." A feature that is new today might 
 | In version 1.4, ... | In the current version, ...|
 | The Plugins feature provides ... | The new Plugin feature provides ...|
 
-# Documentation formatting standards
+## Documentation formatting standards
 
-## Use sentence capitalization for headings
+### Use sentence capitalization for headings
 
 ~~~~~~~~~
 # Creating a custom webhook stage
@@ -133,10 +133,10 @@ Avoid using words like "currently" and "new." A feature that is new today might 
 ## Configuring parameters for custom webhook stages
 ~~~~~~~~~
 
-## Line breaks
-Use a single newline to separate block-level content like headings, lists, images, code blocks, paragraphs, and others.
+### Line breaks
+U#se a single newline to separate block-level content like headings, lists, images, code blocks, paragraphs, and others.
 
-## Use camel case for API objects
+### Use camel case for API objects
 
 Use the same uppercase and lowercase letters that are used in the
 actual object name when you write about API objects. The names of API objects use [Camel case](https://en.wikipedia.org/wiki/Camel_case).
@@ -150,7 +150,7 @@ Refer to API objects without saying "object," unless omitting "object" leads to 
 | The PipelineController restarts a Stage. | The pipeline controller restarts a stage.|
 | The AmazonInfrastructureController is responsible for ... | The AmazonInfrastructureController object is responsible for ...|
 
-## Use angle brackets for placeholders
+### Use angle brackets for placeholders
 
 Use angle brackets for placeholders. Describe what a placeholder represents.
 
@@ -158,7 +158,7 @@ For example:
 `hal plugins repository add <unique-repo-name> --url <repo-url>`
 
 
-## Use bold for user interface elements
+### Use bold for user interface elements
 
 |**Do** |**Do Not**|
 |:------|:---------|
@@ -166,13 +166,13 @@ For example:
 | Select **Other**. | Select "Other".|
 
 
-## Use italics to define or introduce new terms
+### Use italics to define or introduce new terms
 
 |**Do** |**Do Not**|
 |:------|:---------|
 |A _Stage_ is a step in a pipeline ... | A "Stage" is a step in a pipeline ...|
 
-## Use code style for filenames, directories, and paths
+### Use code style for filenames, directories, and paths
 
 |**Do** |**Do Not**|
 |:------|:---------|
@@ -180,7 +180,7 @@ For example:
 | Go to the `/docs/tutorials` directory. | Go to the /docs/tutorials directory.|
 | Open the `/.hal/config` file. | Open the /.hal/config file.|
 
-## Lists
+### Lists
 Group items in a list that are related to each other. Use a numbered list for items that need to appear in a specific order.
 
  - End each item in a list with a period if one or more items in the list are complete sentences. For the sake of consistency, normally either all items or none should be complete sentences.
@@ -199,9 +199,11 @@ For example, an ordered list with a code block looks like this in Markdown:
 1. Run these commands:
 
     ```
-	curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/debian/InstallHalyard.sh
-	sudo bash InstallHalyard.sh
+	  curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/debian/InstallHalyard.sh
+	  sudo bash InstallHalyard.sh
 	```
+
+1. Do the next thing
 ~~~
 
 The rendered output look like:
@@ -216,9 +218,11 @@ The rendered output look like:
 	sudo bash InstallHalyard.sh
 	```
 
-# Inline code formatting
+1. Do the next thing
 
-## Use code style for inline code and commands
+## Inline code formatting
+
+### Use code style for inline code and commands
 
 Use meaningful variable names that have a context rather than  'foo','bar', and similar meaningless variable names.
 
@@ -240,13 +244,13 @@ Use triple backticks to enclose a code block. In Markdown:
 
 Remove trailing spaces in all code blocks.
 
-## Don't include the command prompt in code snippets
+### Don't include the command prompt in code snippets
 
 |**Do** |**Do Not**|
 |:------|:---------|
 hal deploy apply| $ hal deploy apply
 
-## Separate commands from output
+### Separate commands from output
 
 Verify that the Pod is running on your chosen node:
 
@@ -257,7 +261,7 @@ The output is similar to this:
     NAME     READY     STATUS    RESTARTS   AGE    IP           NODE
     nginx    1/1       Running   0          13s    10.200.0.4   worker0
 
-## Use normal style for string and integer field values
+### Use normal style for string and integer field values
 
 For field values of type string or integer, use normal style without quotation marks.
 
@@ -266,13 +270,13 @@ For field values of type string or integer, use normal style without quotation m
 Set the value of `enabled` to True. | Set the value of `enabled` to "True".
 Set the value of `image` to nginx:1.8. | Set the value of `image` to `nginx:1.8`.
 
-# Versioning Spinnaker examples
+## Versioning Spinnaker examples
 
 Code examples and configuration examples that include version information should be consistent with the accompanying text.
 
 If the information is version specific, the Spinnaker version needs to be defined in the `Prerequisites` section of the guide.
 
-# Spinnaker.io word list
+## Spinnaker.io word list
 
 A list of Spinnaker-specific terms and words to be used consistently across the site:
 
