@@ -76,9 +76,4 @@ To see the internals (can be useful for debugging):
 * Spring Auth Provider: [LdapAuthenticationProviderConfigurer](https://github.com/spring-projects/spring-security/blob/master/config/src/main/java/org/springframework/security/config/annotation/authentication/configurers/ldap/LdapAuthenticationProviderConfigurer.java)
 * Gate: [LdapSsoConfig](https://github.com/spinnaker/gate/blob/master/gate-ldap/src/main/groovy/com/netflix/spinnaker/gate/security/ldap/LdapSsoConfig.groovy)
 
-## Next steps...
-
-* Read through [Authorization Overview](/setup/security/authorization/)
-* Read through [LDAP Authorization](/setup/security/authorization/ldap/)
-
 
