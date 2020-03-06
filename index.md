@@ -136,7 +136,7 @@ waze_case_study:
       <li><a href="/concepts/">HOW IT WORKS</a></li>
       <li><a href="/setup/">INSTALL SPINNAKER</a></li>
       <li><a href="/guides/user/get-started/">GET STARTED</a></li>
-      <li><a href="/publications/ebook/">READ OUR EBOOK</a></li>
+      <li><a href="/concepts/ebook/">READ OUR EBOOK</a></li>
     </ul>
   </div>
 </div>

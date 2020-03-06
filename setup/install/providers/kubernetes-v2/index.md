@@ -10,7 +10,7 @@ sidebar:
 
 The Spinnaker Kubernetes V2 provider fully supports manifest-based deployments and is the recommended provider for deploying to Kubernetes with Spinnaker.
 [Kubernetes provider V1](https://www.spinnaker.io/setup/install/providers/kubernetes/){:target="\_blank"}
-is in maintenance mode.
+is [scheduled for removal](https://github.com/spinnaker/governance/blob/master/rfc/eol_kubernetes_v1.md){:target="\_blank"} in Spinnaker 1.21.
 
 ## Accounts
 
