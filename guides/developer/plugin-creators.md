@@ -8,169 +8,48 @@ sidebar:
 {% include toc %}
 
 <div class="notice--danger">
-  <strong>Note:</strong> Plugins are an early alpha feature that is under active development and will likely change.
+  <strong>Note:</strong> Plugins are an alpha feature that is under active development and may change.
 </div>
 
-In this guide you create a plugin for Spinnaker. See the [Plugin Users Guide](/guides/user/plugin-users/) for instruction.
 
 # Requirements
 
 * Spinnaker v1.19.0
-* IntelliJ IDEA
+* Orca branch `release-1.19.x` (for local testing)
+* IntelliJ IDEA (for local testing)
 
 # Plugin overview
 
-A plugin enables a Spinnaker user to inject custom functionality into a pipeline. Use cases include fetching credentials from a custom authorization service, adding a wait time, and updating a Jira ticket. Spinnaker supports two types of plugins:
+A plugin enables a user to extend Spinnaker with custom functionality. Use cases include fetching credentials from a custom authorization service, adding a wait time stage to a pipeline, and updating a Jira ticket.
 
-* [Plugin Framework for Java (PF4J)](https://github.com/pf4j/pf4j)-based plugins
-* Spring-based plugins
+Spinnaker uses the [Plugin Framework for Java (PF4J)](https://github.com/pf4j/pf4j) to mark an interface or an abstract class as an _extension point_. Spinnaker's Orca service exposes two PF4J extension points:
 
-Spinnaker's Orca service incorporates the  to two PF4J extension points in the Orca service:
+* [SimpleStage.java](SimpleStageLink), for creating a custom pipeline stage
+* [Pipeline Spring Expression Language (SpEL) Evaluator](PipelineSpELLink), for pulling data from a context for use in the UI
 
-* [Pipeline Stage](SimpleStageLink)
-* [Pipeline Spring Expression Language (SpEL) Evaluator](PipelineSpELLink)
+A PF4J plugin can easily access those extension points.  
 
+When there isn't a defined extension point, you can create a PF4J plugin that implements an existing backend service interface. The downside to this approach is that there is no guarantee that future changes to the interface won't break your plugin.
 
-A plugin that implements the  can hook into those extension points.  
+Another way to extend Spinnaker is to create a Spring-based plugin. You need to know the Spinnaker codebase extremely well because you would be extending an existing class and overriding methods to customize behavior. This approach is the most powerful, the most complex, and the most easily broken.
 
-# Create the backend For Stage Plugins
+The `spinnaker-plugin-examples` [repository](https://github.com/spinnaker-plugin-examples) contains each type of plugin.
 
-## Example Plugin
+This guide walks through the backend pf4jStagePlugin code and how to debug it locally in IntelliJ.
 
-This document shows how to create a simple plugin that waits a random amount of time, from zero to the number of seconds that is entered in the UI. Use this guide as a starting point to facilitate creating more complex plugins.
+# pj4jStagePlugin
 
-## Setting Up Your Project
+The [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin) creates a custom pipeline stage that waits a specified number of seconds before signaling success.
 
-To get started setting up your project, we highly suggest using [https://start.spring.io](https://start.spring.io/) to create your base project.
+## Structure
 
-Keep the following recommendations and requirements in mind:
+The plugin has frontend (`random-wait-deck`) and backend (`random-wait-orca`) components.
 
-- We recommend making the project a Gradle project.
-- You must set the base package path for the plugin to the following path: `com.netflix.spinnaker.plugin`. You can add anything else after that, but that is required.
-- You can add any dependencies you need to make your plugin successful.
+The backend consists of five [Kotlin](https://kotlinlang.org/docs/reference/) classes in the `io.armory.plugin.state.wait.random` package:
 
-Generate the project and unzip it to a location of your choosing. Modify the `build.gradle`  file to look like the following example:
-```
-plugins {
-    id 'org.springframework.boot' version '2.1.8.RELEASE' apply false
-    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
-    id 'java'
-}
-
-dependencyManagement {
-    imports {
-        mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
-    }
-}
-
-group = 'com.netflix.spinnaker.plugin'  // make sure this is your package path!
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
-
-repositories {
-    mavenCentral()
-    jcenter()
-    maven { url "https://spinnaker.bintray.com/gradle" }
-}
-
-dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    compile group: 'com.netflix.spinnaker.orca', name: 'orca-api', version: '7.36.0'
-}
-```
-Then, we can remove both of the tests and the main application. (Don’t worry, we will add our own tests!)
-
-
-## Creating The Plugin Stage
-
-In order to create the stage plugin, we first have to define three classes. The three classes that we need to define are our Stage Input, Stage Output Context, and Stage Output Outputs.
-
-**SimpleStage Input**
-
-SimpleStage Input is what our stage needs to use to do its job. The stage input comes from the Spinnaker UI. First, we have to create a class that will be used as our Stage input. In this example, the plugin will take the max time to wait.
-```
-@Data
-class RandomWaitInput {
-    private int maxWaitTime;
-}
-```
-
-**SimpleStage Context**
-
-Context is used within the stage itself. In this example, the maxWaitTime will be added here.
-```
-@Data
-class Context {
-    private int maxWaitTime;
-    public Context(int maxWaitTime) {
-      this.maxWaitTime = maxWaitTime;
-    }
-}
-```
-
-**SimpleStage Output**
-
-Output is what can be used later in other stages. In this case, the output contains the actual number of seconds the stage waits.
-
-```
-@Data
-class Output {
-    private int timeToWait;
-    public Output(int timeToWait) {
-      this.timeToWait = timeToWait;
-    }
-}
-```
-## Create Stage Class
-
-The stage itself needs to implement the [SimpleStage][SimpleStageLink] interface. The two
-methods that we need to implement are `getName` and `execute`.
-
-**getName**
-`getName` is a method that tells Spinnaker what the name of the stage is.
-
-**execute**
-`execute` is the meat of the stage. `execute` takes in a `SimpleStageInput` that will take in as a generic the class that was created earlier for stage input. `execute` will return a `SimpleStageOutput` that has our `Output` and `Context` classes. `SimpleStageOutput` also needs to know the status of the stage.
-This is where the [SimpleStageStatus][SimpleStageStatusLink] comes into play. Currently stages can be in the following states:
-
-1. Terminal → the stage failed
-2. Running → the stage is still executing
-3. Succeeded → the stage has successfully completed
-4. Not Started → the stage has not started yet
-
-**Putting it all together**
-```
-public class RandomWait<RandomWaitInput> {
-  @Override
-  public String getName() {
-    return "randomWait";
-  }
-
-  @Override
-  public SimpleStageOutput execute(SimpleStageInput<RandomWaitInput> stageInput) {
-    Random rand = new Random();
-    int maxWaitTime = stageInput.getValue().getMaxWaitTime();
-    int timeToWait = rand.nextInt(maxWaitTime);
-
-    try {
-      TimeUnit.SECONDS.sleep(timeToWait);
-    } catch(Exception e) {
-      log.error("{}", e);
-    }
-
-    SimpleStageOutput<Output, Context> stageOutput = new SimpleStageOutput();
-    Output output = new Output(timeToWait);
-    Context context = new Context(maxWaitTime);
-
-    stageOutput.setOutput(output);
-    stageOutput.setContext(context);
-    stageOutput.setStatus(SimpleStageStatus.SUCCEEDED);
-
-    return stageOutput;
-  }
-}
-```
+* `Context.kt`: a data class that stores the `maxWaitTime` value
+* `Output.kt`: a data class that stores the `timeToWait` getValue
+The plugin backend implements the Orca `com.netflix.spinnaker.orca.api.SimpleStage` interface.
 
 # Create The Frontend For Stage Plugins
 
@@ -269,10 +148,10 @@ export { plugin };
 
 ### IStageTypeConfig
 Define Spinnaker Stages with IStageTypeConfig. Required [options:](https://github.com/spinnaker/deck/blob/abac63ce5c88b809fcf5ed1509136fe96489a051/app/scripts/modules/core/src/domain/IStageTypeConfig.ts)
-1. label -> The name of the Stage
-2. description -> Long form that describes what the Stage actually does
-3. key -> A unique name for the Stage
-4. component -> The rendered React component
+- label -> The name of the Stage
+- description -> Long form that describes what the Stage actually does
+- key -> A unique name for the Stage
+- component -> The rendered React component
 
 ### IStageConfigProps
 `IStageConfigProps` defines properties passed to all Spinnaker Stages. See [IStageConfigProps.ts](https://github.com/spinnaker/deck/blob/master/app/scripts/modules/core/src/pipeline/config/stages/common/IStageConfigProps.ts) for a complete list of properties. Pass a JSON object to the `updateStageField` method to add the `maxWaitTime` to the Stage.
