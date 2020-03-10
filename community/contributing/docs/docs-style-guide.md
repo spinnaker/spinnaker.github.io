@@ -87,7 +87,7 @@ rather than
 Click [here](https://github.com/pf4j/pf4j-update#repository-structure) to read more.
 ~~~~~~~~~~
 
-For long URLs, consider using [reference-style hyperlinks](RefStyleLinkDoc) to maintain readability of the Markdown file.
+For long URLs, consider using [reference-style hyperlinks](https://www.markdownguide.org/basic-syntax/#reference-style-links) to maintain readability of the Markdown file.
 
 ## Patterns to avoid
 
@@ -288,7 +288,3 @@ A list of Spinnaker-specific terms and words to be used consistently across the 
 | On-premises                    | On-premises or On-prem rather than On-premise or other variations. |
 | Halyard                        | halyard                                                                   |
 | Operator or Spinnaker Operator | operator or Spinnaker operator  |                                                                 
-
-
-
-[RefStyleLinkDoc]: https://www.markdownguide.org/basic-syntax/#reference-style-links
