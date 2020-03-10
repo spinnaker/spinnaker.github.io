@@ -87,7 +87,7 @@ rather than
 Click [here](https://github.com/pf4j/pf4j-update#repository-structure) to read more.
 ~~~~~~~~~~
 
-For long URLs, consider using [reference-style hyperlinks](ref-style-links) to maintain readability of the Markdown file.
+For long URLs, consider using [reference-style hyperlinks](RefStyleLinkDoc) to maintain readability of the Markdown file.
 
 ## Patterns to avoid
 
@@ -181,7 +181,7 @@ For example:
 | Open the `/.hal/config` file. | Open the /.hal/config file.|
 
 ### Lists
-Group items in a list that are related to each other. Use a numbered list for items that need to appear in a specific order.
+Group items in a list that are related to each other. Use a numbered list for instructions that need to be completed in a specific order.
 
  - End each item in a list with a period if one or more items in the list are complete sentences. For the sake of consistency, normally either all items or none should be complete sentences.
  - Use the number one (1.) for ordered lists.
@@ -289,4 +289,6 @@ A list of Spinnaker-specific terms and words to be used consistently across the 
 | Halyard                        | halyard                                                                   |
 | Operator or Spinnaker Operator | operator or Spinnaker operator  |                                                                 
 
-[ref-style-links]: https://www.markdownguide.org/basic-syntax/#reference-style-links
+
+
+[RefStyleLinkDoc]: https://www.markdownguide.org/basic-syntax/#reference-style-links
