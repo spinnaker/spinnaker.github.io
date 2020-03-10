@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Plugin Creators Guide"
+title: "ExtensionPoint Plugin Walkthrough"
 sidebar:
   nav: guides
 ---
@@ -12,32 +12,12 @@ sidebar:
 </div>
 
 
-# Requirements
+# Prerequisites
 
-* Spinnaker v1.19.0
-* Orca branch `release-1.19.x` (for local testing)
-* IntelliJ IDEA (for local testing)
+This walkthrough assumes you have read the [Plugin Creators Guide Overview](/guides/developer/plugin-creators-guide/overview/).
 
-# Plugin overview
 
-A plugin enables a user to extend Spinnaker with custom functionality. Use cases include fetching credentials from a custom authorization service, adding a wait time stage to a pipeline, and updating a Jira ticket.
-
-Spinnaker uses the [Plugin Framework for Java (PF4J)](https://github.com/pf4j/pf4j) to mark an interface or an abstract class as an _extension point_. Spinnaker's Orca service exposes two PF4J extension points:
-
-* [SimpleStage.java](SimpleStageLink), for creating a custom pipeline stage
-* [Pipeline Spring Expression Language (SpEL) Evaluator](PipelineSpELLink), for pulling data from a context for use in the UI
-
-A PF4J plugin can easily access those extension points.  
-
-When there isn't a defined extension point, you can create a PF4J plugin that implements an existing backend service interface. The downside to this approach is that there is no guarantee that future changes to the interface won't break your plugin.
-
-Another way to extend Spinnaker is to create a Spring-based plugin. You need to know the Spinnaker codebase extremely well because you would be extending an existing class and overriding methods to customize behavior. This approach is the most powerful, the most complex, and the most easily broken.
-
-The `spinnaker-plugin-examples` [repository](https://github.com/spinnaker-plugin-examples) contains each type of plugin.
-
-This guide walks through the backend pf4jStagePlugin code and how to debug it locally in IntelliJ.
-
-# pj4jStagePlugin
+# pf4jStagePlugin ExtensionPoint plugin
 
 The [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin) creates a custom pipeline stage that waits a specified number of seconds before signaling success.
 
@@ -195,8 +175,10 @@ Since there are many Spinnaker services, we use the manifest to let Spinnaker op
 In the example above, we include a list of URLs where the jar(s) are located for Orca to use.
 
 
-[SimpleStageLink]: https://github.com/spinnaker/orca/blob/ab89a0d7f847205ccd62e70f8a714040a8621ee7/orca-api/src/main/java/com/netflix/spinnaker/orca/api/SimpleStage.java
+[SimpleStage]: https://github.com/spinnaker/orca/blob/ab89a0d7f847205ccd62e70f8a714040a8621ee7/orca-api/src/main/java/com/netflix/spinnaker/orca/api/SimpleStage.java
+
+[PreconfiguredJobConfigurationProvider]: https://github.com/spinnaker/orca/blob/master/orca-api/src/main/java/com/netflix/spinnaker/orca/api/preconfigured/jobs/PreconfiguredJobConfigurationProvider.java
 
 [SimpleStageStatusLink]: https://github.com/spinnaker/orca/blob/ab89a0d7f847205ccd62e70f8a714040a8621ee7/orca-api/src/main/java/com/netflix/spinnaker/orca/api/SimpleStageStatus.java
 
-[PipelineSpELLink]: https://raw.githubusercontent.com/spinnaker/orca/master/orca-core/src/main/java/com/netflix/spinnaker/orca/pipeline/expressions/PipelineExpressionEvaluator.java
+[EchoEventListener]: https://github.com/spinnaker/echo/blob/master/echo-api/src/main/java/com/netflix/spinnaker/echo/api/events/EventListener.java
