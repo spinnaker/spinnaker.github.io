@@ -8,17 +8,15 @@ redirect_from: /docs/general-purpose-tags
 
 {% include toc %}
 
-<h1 style="margin-top: 0; font-size: 25px;"><span style="color: red">Release Candidate</span> (2017-01-13)</h1>
-
 This guide provides an introduction to the provider-agnostic tagging capabilities of Spinnaker, otherwise referred to as _Entity Tags_.
 
 # Requirements
 
 This is an *optional* feature of Spinnaker that requires
-- **Elasticsearch** (tested with 2.3.3)
-- **Front50** (backed by S3 or GCS)
+- **Elasticsearch** (tested with 6.8.2)
+- **Front50** (backed by SQL, S3 or GCS)
 
-See [appendix](#appendix) for specific configuration details.
+See [configuration](#Configuration) for specific configuration details.
 
 # Overview
 
@@ -219,7 +217,7 @@ This API provides backwards compatibility with traditional Spinnaker tasks and c
 
 # FEATURE: Server group alerts and notices
 
-*Server Group Alerts and Notices* is a new Spinnaker feature is built upon entity tags.
+*Server Group Alerts and Notices* is a Spinnaker feature is built upon entity tags.
 
 ![](alert.png)
 
@@ -264,13 +262,15 @@ This API provides backwards compatibility with traditional Spinnaker tasks and c
          -d $'{}'
 ```
 
-# Appendix
+# Configuration
+
+The following configuration changes are necessary to enable entity tags on your Spinnaker installation:
 
 #### clouddriver-local.yml
 ```
 elasticSearch:
   activeIndex: "tags_v2"
-  connection: http://my-elastic-search-cluster:9200
+  connection: http://my-elastic-search-cluster:port
 ```
 
 #### deck/settings-local.js
@@ -281,97 +281,4 @@ window.spinnakerSettings.feature.entityTags=true;
 
 #### elasticsearch index template
 
-Make a POST request to http://my-elastic-search-cluster:9200/_template/entityTags with the following template.
-
-```
-{
-  "order": 0,
-  "template": "tags_v*",
-  "settings": {
-    "index": {
-      "number_of_shards": "6",
-      "number_of_replicas": "2",
-      "refresh_interval": "1s"
-    }
-  },
-  "mappings": {
-    "_default_": {
-      "dynamic": "false",
-      "dynamic_templates": [
-        {
-          "tags_template": {
-            "path_match": "tagsMetadata",
-            "mapping": {
-              "index": "no"
-            }
-          }
-        },
-        {
-          "entityRef_template": {
-            "path_match": "entityRef.*",
-            "mapping": {
-              "index": "not_analyzed"
-            }
-          }
-        }
-      ],
-      "properties": {
-        "entityRef": {
-          "properties": {
-            "accountId": {
-              "index": "not_analyzed",
-              "type": "string"
-            },
-            "entityType": {
-              "index": "not_analyzed",
-              "type": "string"
-            },
-            "cloudProvider": {
-              "index": "not_analyzed",
-              "type": "string"
-            },
-            "entityId": {
-              "index": "not_analyzed",
-              "type": "string"
-            },
-            "region": {
-              "index": "not_analyzed",
-              "type": "string"
-            },
-            "account": {
-              "index": "not_analyzed",
-              "type": "string"
-            },
-            "application": {
-              "index": "not_analyzed",
-              "type": "string"  
-            }
-          }
-        },
-        "tags": {
-          "type": "nested",
-          "properties": {
-            "valueType": {
-              "index": "not_analyzed",
-              "type": "string"
-            },
-            "name": {
-              "index": "not_analyzed",
-              "type": "string"
-            },
-            "namespace": {
-              "index": "not_analyzed",
-              "type": "string"
-            },
-            "value": {
-              "index": "not_analyzed",
-              "type": "string"
-            }
-          }
-        }
-      }
-    }
-  },
-  "aliases": {}
-}
-```
+Make a `POST` request to `http://my-elastic-search-cluster:port/_template` with [this template](https://github.com/spinnaker/clouddriver/blob/master/clouddriver-elasticsearch/elasticsearch_index_template.json) template
