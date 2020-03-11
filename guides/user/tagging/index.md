@@ -16,7 +16,7 @@ This is an *optional* feature of Spinnaker that requires
 - **Elasticsearch** (tested with 6.8.2)
 - **Front50** (backed by SQL, S3 or GCS)
 
-See [configuration](#Configuration) for specific configuration details.
+See [configuration](#configuration) for specific configuration details.
 
 # Overview
 
