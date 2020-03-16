@@ -208,6 +208,8 @@ setup:
         children:
           - title: Set Up Continuous Integration
             url: /setup/ci/
+          - title: AWS CodeBuild
+            url: /setup/ci/codebuild/
           - title: Google Cloud Build
             url: /setup/ci/gcb/
           - title: Jenkins
