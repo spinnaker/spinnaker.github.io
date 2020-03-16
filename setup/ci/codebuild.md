@@ -12,6 +12,8 @@ system within Spinnaker allows you to:
  * trigger pipelines when an AWS CodeBuild build changes its phase or state
  * add an AWS CodeBuild stage to your pipeline
 
+The AWS Codebuild stage requires Spinnaker 1.19 or later.
+
 ## Prerequisites
 
 ### AWS CodeBuild project
