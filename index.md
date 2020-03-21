@@ -5,6 +5,11 @@ conference_ad_row:
   excerpt: "Have fun and move the needle on continuous delivery at Spinnaker Gardening Days #communityHack, sponsored by Salesforce! [Register](https://go.armory.io/gardening) and join Spinnaker users and companies on April 9 & 10 to learn and build. Enjoy a collaborative hackathon, free training, and community celebration. We’ll dig into open-source issues and features, and extend the ecosystem. [Click to learn more](https://github.com/spinnaker-hackathon/gardening)."
   image_path: assets/images/gardening.png
   alt: "Spinnaker Gardening Days Logo"
+slack_row:
+  title: [Join Spinnaker Slack](https://join.spinnaker.io/)
+  excerpt: "Visit [join.spinnaker.io](https://join.spinnaker.io/) to join Spinnaker Slack, a place for the community to come together. Use this vibrant workspace to ask and answer questions, connect with other operators and users, discuss issues with SIGs, and learn Spinnaker."
+  image_path: assets/images/slack-logo.png
+  alt: "Join Spinnaker Slack"
 spinnaker_row:
   title: Spinnaker is an open source, multi-cloud continuous delivery platform for releasing software changes with high velocity and confidence.
   excerpt: "Created at Netflix, it has been battle-tested in production by hundreds of teams over millions of deployments. It combines a powerful and flexible pipeline management system with integrations to the major cloud providers."
