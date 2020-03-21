@@ -148,6 +148,7 @@ waze_case_study:
 
 <div class="spin_header__push_down">
 {% include splash_feature_row id="conference_ad_row" type="summit" %}
+{% include splash_feature_row id="slack_row" type="left" %}
 {% include splash_feature_row id="spinnaker_row" type="right" %}
 {% include splash_feature_row id="multi_cloud_row" type="left" %}
 {% include splash_feature_row id="automated_releases_row" type="right" %}
