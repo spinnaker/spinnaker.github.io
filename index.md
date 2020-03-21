@@ -8,7 +8,7 @@ conference_ad_row:
 slack_row:
   title: [Join Spinnaker Slack](https://join.spinnaker.io/)
   excerpt: "Visit [join.spinnaker.io](https://join.spinnaker.io/) to join Spinnaker Slack, a place for the community to come together. Use this vibrant workspace to ask and answer questions, connect with other operators and users, discuss issues with SIGs, and learn Spinnaker."
-  image_path: assets/images/slack-logo.png
+  image_path: assets/images/slack_logo.png
   alt: "Join Spinnaker Slack"
 spinnaker_row:
   title: Spinnaker is an open source, multi-cloud continuous delivery platform for releasing software changes with high velocity and confidence.
