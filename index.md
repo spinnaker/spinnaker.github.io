@@ -2,7 +2,7 @@
 layout: home
 conference_ad_row:
   title: Sign Up for Virtual Spinnaker Gardening Days
-  excerpt: "Have fun and move the needle on continuous delivery at Spinnaker Gardening Days #communityHack, sponsored by Salesforce! [Register](https://go.armory.io/gardening) and join Spinnaker users and companies on April 9 & 10 to learn and build. Enjoy a collaborative hackathon, free training, and community celebration. We’ll dig into open-source issues and features, and extend the ecosystem. [Click to learn more](https://github.com/spinnaker-hackathon/gardening)."
+  excerpt: "Have fun and move the needle on continuous delivery at Spinnaker Gardening Days #communityHack, sponsored by Salesforce! [Register](https://go.armory.io/gardening) and join Spinnaker users and companies on April 9 & 10 to learn and build. Enjoy a collaborative hackathon, free training, and community celebration. We’ll dig into open-source issues and features as well as extend the ecosystem. [Click to learn more](https://github.com/spinnaker-hackathon/gardening)."
   image_path: assets/images/gardening.png
   alt: "Spinnaker Gardening Days Logo"
 slack_row:
