@@ -45,12 +45,10 @@ services:
 
 {% for svc in page.services.core %}
   {% capture altTxt%}{{svc | captialize }} Build Status{% endcapture %}
-  {% capture travisStatusImg%}https://api.travis-ci.org/spinnaker/{{svc}}.svg?branch=master{% endcapture %}
-  {% capture travisLink%}https://travis-ci.org/spinnaker/{{svc}}{% endcapture%}
   {% capture githubStatusImg%}https://github.com/spinnaker/{{svc}}/workflows/{{svc | capitalize}}%20CI/badge.svg{% endcapture %}
-  {% capture githubLink%}https://github.com/spinnaker/{{svc}}/actions?query=workflow%3A%22{{svc | capitalize}}+CI%22+branch%3Amaster{% endcapture%}
+  {% capture githubLink%}https://github.com/spinnaker/{{svc}}/actions?query=workflow%3A%22Branch+Build%22+branch%3Amaster{% endcapture%}
 
-  * [![{{altTxt}}]({{travisStatusImg}}){:style="height: 30px"}]({{travisLink}}){:target="\_blank"} [![{{altTxt}}]({{githubStatusImg}}){:style="height: 30px"}]({{githubLink}}){:target="\_blank"}
+  * [![{{altTxt}}]({{githubStatusImg}}){:style="height: 30px"}]({{githubLink}}){:target="\_blank"}
 {% endfor %}
 
 
@@ -58,10 +56,8 @@ services:
 
 {% for svc in page.services.supporting %}
   {% capture altTxt%}{{svc | captialize }} Build Status{% endcapture %}
-  {% capture travisStatusImg%}https://api.travis-ci.org/spinnaker/{{svc}}.svg?branch=master{% endcapture %}
-  {% capture travisLink%}https://travis-ci.org/spinnaker/{{svc}}{% endcapture%}
   {% capture githubStatusImg%}https://github.com/spinnaker/{{svc}}/workflows/{{svc | capitalize}}%20CI/badge.svg{% endcapture %}
-  {% capture githubLink%}https://github.com/spinnaker/{{svc}}/actions?query=workflow%3A%22{{svc | capitalize}}+CI%22+branch%3Amaster{% endcapture%}
+  {% capture githubLink%}https://github.com/spinnaker/{{svc}}/actions?query=workflow%3A%22Branch+Build%22+branch%3Amaster{% endcapture%}
 
-  * [![{{altTxt}}]({{travisStatusImg}}){:style="height: 30px"}]({{travisLink}}){:target="\_blank"} [![{{altTxt}}]({{githubStatusImg}}){:style="height: 30px"}]({{githubLink}}){:target="\_blank"}
+  * [![{{altTxt}}]({{githubStatusImg}}){:style="height: 30px"}]({{githubLink}}){:target="\_blank"}
 {% endfor %}
