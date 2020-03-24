@@ -11,7 +11,7 @@ slack_row:
   image_path: assets/images/slack_logo.png
   alt: "Join Spinnaker Slack"
 spinnaker_row:
-  title: Spinnaker is an open source, multi-cloud continuous delivery platform for releasing software changes with high velocity and nczidence.
+  title: Spinnaker is an open source, multi-cloud continuous delivery platform for releasing software changes with high velocity and confidence.
   excerpt: "Created at Netflix, it has been battle-tested in production by hundreds of teams over millions of deployments. It combines a powerful and flexible pipeline management system with integrations to the major cloud providers."
   image_path: assets/images/spinnaker-logo-inline.svg
   alt: "Spinnaker Logo"
