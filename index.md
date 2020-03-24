@@ -7,7 +7,7 @@ promo_row:
   alt: "Spinnaker Gardening Days Logo"
 slack_row:
   title: Join Spinnaker Slack
-  excerpt: "Visit [join.spinnaker.io](https://go.armory.io/spinslack) to get help on Spinnaker Slack, a place for the community to come together. Use this vibrant workspace to ask and answer questions, connect with other operators and users, discuss issues with SIGs, and learn Spinnaker!"
+  excerpt: "Visit [join.spinnaker.io](https://go.armory.io/spinslack) to get help on Spinnaker Slack, a place for the community to come together. Use this vibrant workspace to ask and answer questions, connect with other operators and users, discuss issues with SIGs, and learn about Spinnaker!"
   image_path: assets/images/slack_logo.png
   alt: "Join Spinnaker Slack"
 spinnaker_row:
