@@ -63,7 +63,7 @@ You can edit your trust relationship to add the following policy:
 Use the following Halyard commands to create an AWS CodeBuild account, enable the AWS CodeBuild integration, and re-deploy Spinnaker:
 ```
 hal config ci codebuild account add $ACCOUNT_NAME \
-  --accountId $ACCOUNT_ID \
+  --account-id $ACCOUNT_ID \
   --assume-role $ASSUME_ROLE \
   --region $REGION
 
