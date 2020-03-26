@@ -143,12 +143,12 @@ Ensure that the following are installed on your system:
     sudo apt-get update
     sudo apt-get install openjdk-8-jdk
     ```
-* node (version >=10.15.1, [can be installed via nvm](https://github.com/creationix/nvm#install-script), summarized below)
+* node (version >=12.16.0, [can be installed via nvm](https://github.com/creationix/nvm#install-script), summarized below)
     ```
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
     # Follow instructions at end of script to add nvm to ~/.bash_rc
 
-    nvm install v10.15.3
+    nvm install v12.16.0
     ```
 * yarn: `npm install -g yarn` or [guide](https://yarnpkg.com/lang/en/docs/install/)
 
@@ -168,12 +168,12 @@ Ensure that the following are installed on your system:
     ```
   brew cask install adoptopenjdk/openjdk/adoptopenjdk8
     ```
-* node (version >=10.15.1, [can be installed via nvm](https://github.com/creationix/nvm#install-script), summarized below)
+* node (version >=12.16.0, [can be installed via nvm](https://github.com/creationix/nvm#install-script), summarized below)
     ```
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
     # Follow instructions at end of script to add nvm to ~/.bash_rc
 
-    nvm install v10.15.3
+    nvm install v12.16.0
     ```
 * yarn: `npm install -g yarn` or [guide](https://yarnpkg.com/lang/en/docs/install/)
 
