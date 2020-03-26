@@ -6,22 +6,22 @@ sidebar:
 redirect_from: /news/latest/
 ---
 ## Open Source: #BetterTogether
-> This month's issue focuses Spinnaker's strong open source DNA. The OSS community embraces Spinnaker, as it builds a bridge between the collaboration and interoperability story at the core of Linux culture, and the powerful cloud economy that has leveraged it to transform software delivery. Efforts to build native Kubernetes integration highlight this unique strength.
+> This month's issue focuses Spinnaker's strong open source DNA. Spinnaker builds a bridge between the collaboration story at the core of Linux culture and the powerful cloud economy that has leveraged it to transform software delivery. OSS community efforts to build native Kubernetes|Spinnaker integration highlight this unique strength.
 
 ## [The New Age of the K8S Operator](https://www.armory.io/blog/introducing-spinnaker-operator-a-kubernetes-native-blueprint-for-success/)
-Spinnaker Operator, a Kubernetes operator for Spinnaker, has reached Beta. With it installed, you can use kubectl commands to install, deploy, and upgrade any version of Spinnaker through its lifecycle. Read the [doc](https://github.com/armory/spinnaker-operator/blob/release-0.3.x/README.md), try it out, and use the #kubernetes-operator channel in Spinnaker Slack to share your feedback.
+Spinnaker Operator, a Kubernetes operator for Spinnaker, has reached Beta. With it installed, you can use kubectl commands to install, deploy, upgrade, and manage any version of Spinnaker. Read the [doc](https://github.com/armory/spinnaker-operator/blob/release-0.3.x/README.md), try it out, and use the #kubernetes-operator channel in Spinnaker Slack to share your feedback.
 
 ## [Join Spinnaker Gardening Days #CommunityHack Virtually on April 9-10](https://github.com/spinnaker-hackathon/gardening)
-As contributors and project newcomers alike gear up for the first Spinnaker Gardening Days, we're collecting and discussing [project ideas](https://github.com/spinnaker-hackathon/gardening/wiki/Project-Ideas). Socializing your ideas at this stage will help shape them into projects, so please visit the Wiki and join or create #gardening-idea Slack channels, and discuss with your peers. Alternatively, visit your favorite SIG's channel or meeting, and ask where you can jump in. Don't forget to [register](https://www.eventbrite.com/e/spinnaker-gardening-days-communityhack-tickets-97845696111) to reserve your ticket!
+Over 80 contributors and project newcomers have signed up for the first Spinnaker Gardening Days! We're collecting and discussing [project ideas here](https://github.com/spinnaker-hackathon/gardening/wiki/Project-Ideas). Socializing your ideas at this stage will help shape them into projects! Please visit the Wiki and join or create #gardening-idea Slack channels, and discuss with your peers. Alternatively, visit your favorite SIG's channel or meeting, and ask where you can jump in. Don't forget to [register](https://www.eventbrite.com/e/spinnaker-gardening-days-communityhack-tickets-97845696111) to reserve your ticket!
 
 ## [How to Build a Centos RPM Via a Spinnaker "Bake"](https://blog.opsmx.com/how-to-build-bake-centos-rpm-using-spinnaker/)
-While Spinnaker doesn't offer a CentOS baking option by default, this tech blog demonstrates the use of package management and S3 to bake a build as a CentOS image, and deploying an instance of the baked image on AWS cloud. With the RPM built, configuring and executing the bake in Spinnaker requires just a few steps.
+Spinnaker doesn't offer a CentOS baking option by default. In this tech blog, learn to use package management and S3 to bake a build as a CentOS image. Then, deploy an instance of the baked image on AWS cloud. With the RPM built, configuring and executing the bake in Spinnaker requires just a few steps.
 
 ## ['Just Me and Opensource' Tutorials Available on Youtube](https://www.youtube.com/watch?v=9EUyMjR6jSc&t=2s)
 Fans of the __[Just me and Opensource](https://www.youtube.com/user/wenkatn)__ online tutorials got a nice dose of CD when the popular Youtuber published a new segment of his Kubernetes series focused on deploying Spinnaker to Kubernetes. Brilliant to learn hands-on how these open source software tools and technologies are better together.
 
 ## [Netflix's Interactive Slack Notifications for ChatOps with Spinnaker](https://blog.spinnaker.io/interacting-with-spinnaker-via-slack-at-netflix-9ab262e8218d)
-2-way interactive Slack notifications allow Netflix engineers deploying with Spinnaker's new Managed Delivery feature to approve a Spinnaker pipeline manual judgement directly from Slack. Learn how Echo fields communications between notifying services and Slack via interactive notification callbacks.
+2-way interactive Slack notifications allow Netflix engineers deploying with Spinnaker's new Managed Delivery feature to approve a Spinnaker pipeline manual judgement directly from Slack. Learn how Echo handles communications between notifying services and Slack via interactive notification callbacks.
 
 ## [Operating Spinnaker at Scale & the Ops SIG's Mission](https://www.armory.io/blog/scaling-spinnaker-at-salesforce-the-life-of-a-cloud-ops-architect/)
 Discover the mission of the new Operations SIG in this interview with the co-chair, Edgar Magana of Salesforce. This SIG will address several goals and challenges, including reference architecture. Edgar explains these through the lens of Salesforce's Spinnaker implementation, which targets both Kubernetes and EC2 deployments.  
@@ -36,12 +36,12 @@ Armory released a new "PaCRD" experience for experimental use this month. Watch 
 With Spring upon us, the annual Spinnaker Summit is closer than you think. The CFP recently opened, and the application contains plenty of inspiration. Newly created tracks - Deep Dive, Hands-On, and Solutions & Case Studies - aim to create a high-quality program that will appeal to any CD stakeholder. Visit the #spinnaker-summit-2020 channel for brainstorming support, and count on help with presentation prep as needed. Submit your proposals today!
 
 ## [Fix Applied for Clouddriver SQL Injection Bug Discovered by Autodesk](https://github.com/spinnaker/clouddriver/pull/4435)
-Engineers from Netflix and Armory acted quickly to include an important Clouddriver fix in the 1.17 release. The PEN testing team at longtime Spinnaker user company Autodesk discovered the SQL injection vulnerability and facilitated the quick fix. Community teamwork win!
+Engineers from Netflix and Armory acted quickly to include an important Clouddriver fix in the 1.17 release. The PEN testing team at Autodesk, a company using Spinnaker in production, discovered the SQL injection vulnerability and facilitated the quick fix. Community teamwork win!
 
 
 ## User Stories
 ## [Kubernetes-Native Spinnaker Pipelines with Istio at Descartes Labs](https://cd.foundation/blog/2020/02/24/descartes-labs-implementation-of-spinnaker-pipelines-the-end-of-waterfall/)
-Watch Louis Vernon's story of how Descartes Labs, an uber-cool geospatial analysis platform, evolved its waterfall deployments into modern Kubernetes pipelines, using GKE with Spinnaker, Istio and StackDriver.  Today, Istio routes updates between environments all running in the same cluster to deliver a stable SDLC.
+Watch Louis Vernon's story of how Descartes Labs, a cool AI-based geospatial analysis platform, evolved its waterfall deployments into modern Kubernetes pipelines, using GKE with Spinnaker, Istio and StackDriver.  Today, Istio routes updates between environments all running in the same cluster to deliver a stable SDLC.
 
 ## [Multi-environment Microservice Delivery With Spinnaker at JPMC](https://www.infoq.com/presentations/spinnaker-jpmorgan-chase/)
 Hear Richard Francois, a VP at JP Morgan Chase, and Olga Kundzich explain how Spinnaker has helped the bank deploy software experiences to both public clouds and on-prem private clouds from one central locus of control and visibility. Monitoring system integration and no-code, zero-downtime deployments to Kubernetes, AWS, and the private cloud code-named "Gaia" have set this financial giant apart.
