@@ -7,6 +7,10 @@ sidebar:
 
 {% include toc %}
 
+> :warning: These instructions are out-of-date and a new version is being
+> worked on. In the meantime, please use the following
+> [AWS install tutorial](https://aws.amazon.com/blogs/opensource/continuous-delivery-spinnaker-amazon-eks/).
+
 In [AWS](https://aws.amazon.com/){:target="\_blank"}, an [__Account__](/concepts/providers/#accounts)
 maps to a credential able to authenticate against a given [AWS
 account](https://aws.amazon.com/account/){:target="\_blank"}.
