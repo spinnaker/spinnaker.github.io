@@ -1,9 +1,9 @@
 ---
 layout: home
-promo_row:
+conference_ad_row:
   title: Sign Up for Virtual Spinnaker Gardening Days
   excerpt: "Have fun and move the needle on continuous delivery at Spinnaker Gardening Days #communityHack, sponsored by Salesforce! [Register](https://go.armory.io/gardening) and join Spinnaker users and companies on April 9 & 10 to learn and build. Enjoy a collaborative hackathon, free training, and community celebration. We’ll dig into open-source issues and features as well as extend the ecosystem. [Click to learn more](https://github.com/spinnaker-hackathon/gardening)."
-  image_path: assets/images/gardening.png
+  image_path: assets/images/Gardening_logo.png
   alt: "Spinnaker Gardening Days Logo"
 slack_row:
   title: Join Spinnaker Slack
@@ -147,7 +147,7 @@ waze_case_study:
 </div>
 
 <div class="spin_header__push_down">
-{% include splash_feature_row id="promo_row" type="event" %}
+{% include splash_feature_row id="conference_ad_row" type="summit" %}
 {% include splash_feature_row id="slack_row" type="left" %}
 {% include splash_feature_row id="spinnaker_row" type="right" %}
 {% include splash_feature_row id="multi_cloud_row" type="left" %}
