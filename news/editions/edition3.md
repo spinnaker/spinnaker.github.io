@@ -61,7 +61,6 @@ Noteworthy tweets this month
 
 ## Release Alerts
 Information about the latest Spinnaker releases:
-- [Release Notes: 1.19](https://gist.github.com/spinnaker-release/dbc44ac411d5076002b5db7c64b8c63e) and [What's New](https://blog.opsmx.com/spinnaker-1-19-whats-new/) summary from OpsMX
-- [Release Notes: 1.18](https://gist.github.com/spinnaker-release/306d7e241272980642e918f64ed91fe3) and [What's New](https://blog.opsmx.com/spinnaker-1-18-whats-new/) summary from OpsMX
-
+- [Release Notes: 1.19](https://gist.github.com/spinnaker-release/dbc44ac411d5076002b5db7c64b8c63e)
+- [Release Notes: 1.18](https://gist.github.com/spinnaker-release/306d7e241272980642e918f64ed91fe3)
 - [Release Notes: 1.17](https://gist.github.com/spinnaker-release/d020714e9190763f27e35701e14c6bc1)
