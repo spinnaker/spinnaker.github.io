@@ -50,7 +50,7 @@ Watch Louis Vernon's story of how Descartes Labs, an ultra-cool AI-based geospat
 Hear Richard Francois, a JPMC VP, and Olga Kundzich, a Pivotal PM, explain how Spinnaker has helped the bank deploy software experiences from one central locus of control and visibility. This financial giant counts on Spinnaker's mature CD features, such as monitoring system integration, to differentiate itself through software. It performs frequent no-code, zero-downtime Spinnaker deployments to Kubernetes, AWS, and the code-named private cloud "Gaia."
 
 ## [Adobe Experience Platform Leverages Spinnaker](https://www.facebook.com/costi.muraru/posts/3088480564511758)
-Adobe SREs Constantin Muraru and Dan Popescu presented the aptly named "Deploying your real-time apps on thousands of servers and still being able to breathe" at StrataData in London. They sought an open source platform to pick up where Jenkins leaves off for more automated and reliable delivery. They chose Spinnaker based on its rich out-of-the-box integrations and deployment strategies. [Read more](https://medium.com/adobetech/experiences-with-spinnaker-on-adobe-experience-platform-bae6cf351f34).
+Adobe SREs Constantin Muraru and Dan Popescu presented the aptly named "Deploying your real-time apps on thousands of servers and still being able to breathe" at StrataData in London. They sought an open-source platform to pick up where Jenkins leaves off for more automated and reliable delivery. They chose Spinnaker because of its rich out-of-the-box integrations and deployment strategies. [Read more](https://medium.com/adobetech/experiences-with-spinnaker-on-adobe-experience-platform-bae6cf351f34).
 
 ## Tweet Street
 Noteworthy tweets this month:
