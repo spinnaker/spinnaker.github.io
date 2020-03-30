@@ -53,7 +53,7 @@ Hear Richard Francois, a JPMC VP, and Olga Kundzich, a Pivotal PM, explain how S
 Adobe SREs Constantin Muraru and Dan Popescu presented the aptly named "Deploying your real-time apps on thousands of servers and still being able to breathe" at StrataData in London. They sought an open source platform to pick up where Jenkins leaves off for more automated and reliable delivery. They chose Spinnaker based on its rich out-of-the-box integrations and deployment strategies. [Read more](https://medium.com/adobetech/experiences-with-spinnaker-on-adobe-experience-platform-bae6cf351f34).
 
 ## Tweet Street
-Noteworthy tweets this month
+Noteworthy tweets this month:
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">It&#39;s now more reliable and highly scalable, providing customers data real time publishing.<br>Tech env: <a href="https://twitter.com/hashtag/Java13?src=hash&amp;ref_src=twsrc%5Etfw">#Java13</a> / <a href="https://twitter.com/hashtag/SpringBoot?src=hash&amp;ref_src=twsrc%5Etfw">#SpringBoot</a> hosted in GKE, PubSub, Storage and Redis. <a href="https://twitter.com/hashtag/Spinnaker?src=hash&amp;ref_src=twsrc%5Etfw">#Spinnaker</a> for deployment. It was the first time I used <a href="https://twitter.com/hashtag/GoogleCloudPlatform?src=hash&amp;ref_src=twsrc%5Etfw">#GoogleCloudPlatform</a> and I really love it. [2/2]</p>&mdash; Alan Menant (@AlanMenant) <a href="https://twitter.com/AlanMenant/status/1235982327085400067?ref_src=twsrc%5Etfw">March 6, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 ***
 
