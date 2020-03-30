@@ -44,10 +44,10 @@ The community has worked hard to make getting up and running with an open source
 
 ## User Stories
 ## [Kubernetes-Native Spinnaker Pipelines with Istio at Descartes Labs](https://cd.foundation/blog/2020/02/24/descartes-labs-implementation-of-spinnaker-pipelines-the-end-of-waterfall/)
-Watch Louis Vernon's story of how Descartes Labs, a cool AI-based geospatial analysis platform, evolved its waterfall deployments into modern Kubernetes pipelines, using GKE with Spinnaker, Istio and StackDriver.  Today, Istio routes updates between environments all running in the same cluster to deliver a stable SDLC.
+Watch Louis Vernon's story of how Descartes Labs, an ultra-cool AI-based geospatial analysis platform, evolved its waterfall deployments into modern Kubernetes pipelines, using GKE with Spinnaker, Istio and StackDriver.  Today, Istio routes updates between environments all running in the same cluster to deliver a stable SDLC.
 
 ## [Multi-environment Microservice Delivery With Spinnaker at JPMC](https://www.infoq.com/presentations/spinnaker-jpmorgan-chase/)
-Hear Richard Francois, a VP at JP Morgan Chase, and Olga Kundzich explain how Spinnaker has helped the bank deploy software experiences to both public clouds and on-prem private clouds from one central locus of control and visibility. Monitoring system integration and no-code, zero-downtime deployments to Kubernetes, AWS, and the private cloud code-named "Gaia" have set this financial giant apart.
+Hear Richard Francois, a JPMC VP, and Olga Kundzich, a Pivotal PM, explain how Spinnaker has helped the bank deploy software experiences from one central locus of control and visibility. This financial giant counts on Spinnaker's mature CD features, such as monitoring system integration, to differentiate itself through software. It performs frequent no-code, zero-downtime Spinnaker deployments to Kubernetes, AWS, and the code-named private cloud "Gaia."
 
 ## [Adobe Experience Platform Leverages Spinnaker](https://www.facebook.com/costi.muraru/posts/3088480564511758)
 Adobe SREs Constantin Muraru and Dan Popescu presented the aptly named "Deploying your real-time apps on thousands of servers and still being able to breathe" at StrataData in London. They sought an open source platform to pick up where Jenkins leaves off for more automated and reliable delivery. They chose Spinnaker based on its rich out-of-the-box integrations and deployment strategies. [Read more](https://medium.com/adobetech/experiences-with-spinnaker-on-adobe-experience-platform-bae6cf351f34).
