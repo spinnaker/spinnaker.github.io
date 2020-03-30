@@ -38,6 +38,9 @@ With Spring upon us, the annual Spinnaker Summit is closer than you think. The C
 ## [Fix Applied for Clouddriver SQL Injection Bug Discovered by Autodesk](https://github.com/spinnaker/clouddriver/pull/4435)
 Engineers from Netflix and Armory acted quickly to include an important Clouddriver fix in the 1.17 release. The PEN testing team at Autodesk, a company using Spinnaker in production, discovered the SQL injection vulnerability and facilitated the quick fix. Community teamwork win!
 
+## Getting Started with Spinnaker: Easier Than Ever
+The community has worked hard to make getting up and running with an open source Spinnaker instance easier than ever. OpsMX has shared their [Easy Spinnaker](https://github.com/OpsMx/enterprise-spinnaker/tree/master/scripts/easy-spinnaker) method, which creates a single-node install in Kubernetes. Meanwhile, Armory has developed [Minnaker](https://github.com/armory/minnaker) for POC and evaluation installs of Spinnaker in a Linux VM using K3S.
+
 
 ## User Stories
 ## [Kubernetes-Native Spinnaker Pipelines with Istio at Descartes Labs](https://cd.foundation/blog/2020/02/24/descartes-labs-implementation-of-spinnaker-pipelines-the-end-of-waterfall/)
