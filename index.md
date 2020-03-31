@@ -1,10 +1,15 @@
 ---
 layout: home
 conference_ad_row:
-  title: Spinnaker Summit 2019
-  excerpt: "Spinnaker Summit 2019 took place in San Diego, CA from November 15-17th. Hundreds of people from the Spinnaker community gathered and shared stories about their experiences with Spinnaker and Continuous Delivery. See the insights from Spinnaker contributors and users in [full session recordings here](https://www.youtube.com/playlist?list=PL4yLrwUObNkvGzXKSEU8miQTlvZyZvXWq)."
-  image_path: assets/images/summit-socialmedia-transparent.png
-  alt: "Spinnaker Summit Logo"
+  title: Sign Up for Virtual Spinnaker Gardening Days
+  excerpt: "Have fun and move the needle on continuous delivery at Spinnaker Gardening Days #communityHack, sponsored by Salesforce! [Register](https://go.armory.io/gardening) and join Spinnaker users and companies on April 9 & 10 to learn and build. Enjoy a collaborative hackathon, free training, and community celebration. We’ll dig into open-source issues and features as well as extend the ecosystem. [Click to learn more](https://github.com/spinnaker-hackathon/gardening)."
+  image_path: assets/images/Gardening_logo.png
+  alt: "Spinnaker Gardening Days Logo"
+slack_row:
+  title: Join Spinnaker Slack
+  excerpt: "Visit [join.spinnaker.io](https://join.spinnaker.io) to get help on Spinnaker Slack, a place for the community to come together. Use this vibrant workspace to ask and answer questions, connect with other operators and users, discuss issues with SIGs, and learn about Spinnaker!"
+  image_path: assets/images/slack_logo.png
+  alt: "Join Spinnaker Slack"
 spinnaker_row:
   title: Spinnaker is an open source, multi-cloud continuous delivery platform for releasing software changes with high velocity and confidence.
   excerpt: "Created at Netflix, it has been battle-tested in production by hundreds of teams over millions of deployments. It combines a powerful and flexible pipeline management system with integrations to the major cloud providers."
@@ -143,6 +148,7 @@ waze_case_study:
 
 <div class="spin_header__push_down">
 {% include splash_feature_row id="conference_ad_row" type="summit" %}
+{% include splash_feature_row id="slack_row" type="left" %}
 {% include splash_feature_row id="spinnaker_row" type="right" %}
 {% include splash_feature_row id="multi_cloud_row" type="left" %}
 {% include splash_feature_row id="automated_releases_row" type="right" %}

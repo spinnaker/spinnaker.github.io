@@ -120,7 +120,7 @@ Use `hal plugins repository add REPOSITORY [parameters]` to add the repository f
 
 ```
 hal plugins repository add spinnaker-plugin-examples \
-    --url=https://github.com/spinnaker-plugin-examples/examplePluginRepository/blob/master/repositories.json
+    --url=https://raw.githubusercontent.com/spinnaker-plugin-examples/examplePluginRepository/master/repositories.json
 ```
 
 See the command [reference](/reference/halyard/commands/#hal-plugins-repository) for a complete list of parameters.
