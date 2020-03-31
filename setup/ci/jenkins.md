@@ -19,8 +19,9 @@ To connect Jenkins to Spinnaker, you need:
 
 *   A running Jenkins Master at version 1.x - 2.x, reachable at a URL
     (`$BASEURL`) from the provider that Spinnaker will be deployed in.
-*   A username/password (`$USERNAME`/`$PASSWORD`) pair able to authenticate
-    against Jenkins using HTTP Basic Auth, if Jenkins is secured.
+*   A username/API key (`$USERNAME`/`$APIKEY`) pair able to authenticate
+    against Jenkins using HTTP Basic Auth, if Jenkins is secured. A user's
+    API key can be found at `$BASEURL/user/$USERNAME/configure`.
 
 ## Add your Jenkins master
 
@@ -34,17 +35,17 @@ To connect Jenkins to Spinnaker, you need:
 human-readable name), to your list of Jenkins masters:
 
    ```bash
-   echo $PASSWORD | hal config ci jenkins master add my-jenkins-master \
+   echo $APIKEY | hal config ci jenkins master add my-jenkins-master \
        --address $BASEURL \
        --username $USERNAME \
-       --password # password will be read from STDIN to avoid appearing
+       --password # api key will be read from STDIN to avoid appearing
                   # in your .bash_history
    ```
 
    > *Note*: If you use the [GitHub OAuth
    > plugin](https://wiki.jenkins.io/display/JENKINS/GitHub+OAuth+Plugin){:target="\_blank"}
    > for authentication into Jenkins, you can use the GitHub $USERNAME, and use the
-   > OAuth token as the $PASSWORD.
+   > OAuth token as the $APIKEY.
 
 1. Re-deploy Spinnaker to apply your changes:
 
