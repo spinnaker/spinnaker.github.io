@@ -29,7 +29,7 @@ Discover the mission of the new <span class="x x-first x-last">[</span>Operation
 This SIG will address several goals and challenges, including reference architecture. Edgar explains these through the lens of Salesforce's Spinnaker implementation, which targets both Kubernetes and EC2 deployments.  
 
 ## [Adopting the V2 K8S Provider As V1 Support Sunsets](https://blog.spinnaker.io/farewell-to-the-kubernetes-v1-provider-79d93861c6e4)
-Spinnaker 1.21, expected near the end of June, will be the final release that includes the Kubernetes V1 provider, as community best practices optimize for V2. Read more about generating V2-compliant, version-controlled Kubernetes manifests, and additional steps to migrate pipelines.
+Spinnaker 1.21<span class="x x-first x-last"> </span>will be the final release that includes the Kubernetes V1 provider. Read more about generating V2-compliant, version-controlled Kubernetes manifests, and additional steps to migrate pipelines.
 
 ## [PaCRD Deep Dive: Try Out Spinnaker Pipelines as CRDs](https://www.youtube.com/watch?v=HZtRCyGA7yM)
 Armory released a new "PaCRD" experience for experimental use this month. Watch to learn how to add a controller to your Spinnaker installation to manage application and pipeline objects as CRDs within your Kubernetes cluster. Store your pipeline definitions in the same format as other application resources, and provide your feedback.
