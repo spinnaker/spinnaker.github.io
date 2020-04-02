@@ -18,7 +18,7 @@ Over 80 contributors and project newcomers have signed up for the first Spinnake
 Spinnaker doesn't offer a CentOS baking option by default. In this tech blog, learn to use package management and S3 to bake a build as a CentOS image. Then, deploy an instance of the baked image on AWS cloud. With the RPM built, configuring and executing the bake in Spinnaker requires just a few steps.
 
 ## ['Just Me and Opensource' Tutorials Available on Youtube](https://www.youtube.com/watch?v=9EUyMjR6jSc&t=2s)
-Fans of the __[Just me and Opensource](https://www.youtube.com/user/wenkatn)__ online tutorials got a nice dose of CD when the popular Youtuber published a new segment of his Kubernetes series focused on deploying Spinnaker to Kubernetes. Brilliant to learn hands-on how these open source software tools and technologies are better together.
+Fans of the __[Just me and Opensource](https://www.youtube.com/user/wenkatn)__ online tutorials got a nice dose of CD when the popular <span class="x x-first x-last">YouTuber</span> published a new segment of his Kubernetes series focused on deploying Spinnaker to Kubernetes. Brilliant to learn hands-on how these open<span class="x x-first x-last">-</span>source software tools and technologies are better together.
 
 ## [Netflix's Interactive Slack Notifications for ChatOps with Spinnaker](https://blog.spinnaker.io/interacting-with-spinnaker-via-slack-at-netflix-9ab262e8218d)
 2-way interactive Slack notifications allow Netflix engineers deploying with Spinnaker's new Managed Delivery feature to approve a Spinnaker pipeline manual judgement directly from Slack. Learn how Echo handles communications between notifying services and Slack via interactive notification callbacks.
