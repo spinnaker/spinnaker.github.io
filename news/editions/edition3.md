@@ -24,7 +24,9 @@ Fans of the __[Just me and Opensource](https://www.youtube.com/user/wenkatn)__ o
 2-way interactive Slack notifications allow Netflix engineers deploying with Spinnaker's new Managed Delivery feature to approve a Spinnaker pipeline manual judgement directly from Slack. Learn how Echo handles communications between notifying services and Slack via interactive notification callbacks.
 
 ## [Operating Spinnaker at Scale & the Ops SIG's Mission](https://www.armory.io/blog/scaling-spinnaker-at-salesforce-the-life-of-a-cloud-ops-architect/)
-Discover the mission of the new Operations SIG in this interview with the co-chair, Edgar Magana of Salesforce. This SIG will address several goals and challenges, including reference architecture. Edgar explains these through the lens of Salesforce's Spinnaker implementation, which targets both Kubernetes and EC2 deployments.  
+Discover the mission of the new <span class="x x-first x-last">[</span>Operations SIG<span class="x x-first x-last">](https://github.com/spinnaker/governance/tree/master/sig-ops)</span> in this interview with the co-chair, Edgar Magana of Salesforce. 
+
+This SIG will address several goals and challenges, including reference architecture. Edgar explains these through the lens of Salesforce's Spinnaker implementation, which targets both Kubernetes and EC2 deployments.  
 
 ## [Adopting the V2 K8S Provider As V1 Support Sunsets](https://blog.spinnaker.io/farewell-to-the-kubernetes-v1-provider-79d93861c6e4)
 Spinnaker 1.21, expected near the end of June, will be the final release that includes the Kubernetes V1 provider, as community best practices optimize for V2. Read more about generating V2-compliant, version-controlled Kubernetes manifests, and additional steps to migrate pipelines.
