@@ -363,9 +363,11 @@ Once a user in the channel clicks on the `Approve` button, the notification chan
 ### APIs to interact with constraints
 In addition to Slack integration, the following API endpoints are currently available to interact with constraints.
 
+_Note: we limit to one delivery config per app, so these APIs currently use app name._
+
 #### Reading status of pending and recent constraints
 
-- **`GET`** `https://gate/managed/delivery-configs/{delivery-config-name}/environment/{environment-name}/constraints?limit=20`
+- **`GET`** `https://gate/managed/application/{application}/environment/{environment-name}/constraints?limit=20`
 
 Returns: `List<ConstraintState>` consisting of:
 ```
@@ -383,12 +385,12 @@ Returns: `List<ConstraintState>` consisting of:
 
 #### Setting or Overriding Constraint State
 
-- **`POST`** `https://gate/managed/delivery-configs/{delivery-config-name}/environment/{environment-name}/constraint`
+- **`POST`** `https://gate/managed/application/{application}/environment/{environment-name}/constraint`
 
 `POST` Body:
 ```json
 {
-  "type": "canary"
+  "type": "canary",
   "artifactVersion":  "fnord-1.2.3",
   "status": "OVERRIDE_PASS",
   "comment": "overriding false positive kayenta failure"
