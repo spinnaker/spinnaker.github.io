@@ -32,7 +32,7 @@ This SIG will address several goals and challenges, including reference architec
 Spinnaker 1.21<span class="x x-first x-last"> </span>will be the final release that includes the Kubernetes V1 provider. Read more about generating V2-compliant, version-controlled Kubernetes manifests, and additional steps to migrate pipelines.
 
 ## [PaCRD Deep Dive: Try Out Spinnaker Pipelines as CRDs](https://www.youtube.com/watch?v=HZtRCyGA7yM)
-Armory released a new "PaCRD" experience for experimental use this month. Watch to learn how to add a controller to your Spinnaker installation to manage application and pipeline objects as CRDs within your Kubernetes cluster. Store your pipeline definitions in the same format as other application resources, and provide your feedback.
+Armory released a new "PaCRD" experiment this month. Learn how to add a controller to your Spinnaker installation to manage application and pipeline objects as CRDs within your Kubernetes cluster. Store your pipeline definitions in the same format as other application resources, and provide your feedback.
 
 ## [Spinnaker Summit CFP Now Open](https://linuxfoundation.smapply.io/prog/spinnaker_summit_2020/)
 With Spring upon us, the annual Spinnaker Summit is closer than you think. The CFP recently opened, and the application contains plenty of inspiration. Newly created tracks (Deep Dive, Hands-On, and Solutions & Case Studies) aim to create a high-quality program that will appeal to any CD stakeholder. Visit the #spinnaker-summit-2020 channel for brainstorming support, and count on help with presentation prep as needed. Submit your proposals today!
