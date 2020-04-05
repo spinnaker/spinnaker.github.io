@@ -731,6 +731,8 @@ community:
         url: /community/gardening/slack-map/
       - title: What to Hack
         url: /community/gardening/what-to-hack/
+      - Hack Logistics
+        url: /community/gardening/hack-logistics/
 
 news:
   - title: Sign Up
