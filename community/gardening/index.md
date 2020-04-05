@@ -6,6 +6,7 @@ sidebar:
 ---
 _Welcome to the command center for Spinnaker Gardening Days, a community celebration and hackathon._
 
-### Schedule
+## Enter Spinnaker Gardening Days
+To attend Spinnaker Gardening Days, you'll need Zoom. See Zoom's ["Joining a Meeting" documentation](https://support.zoom.us/hc/en-us/articles/201362193-Joining-a-Meeting) to learn how to join.
 
-{% include gardening-schedule.html %}
+__Join the main sync Zoom room here: <zoom link>__
