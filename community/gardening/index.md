@@ -8,7 +8,7 @@ _Welcome to the command center for Spinnaker Gardening Days, a community celebra
 
 ### Schedule
 
-
+{% include schedule.html %}
 
 <table>
     <thead>

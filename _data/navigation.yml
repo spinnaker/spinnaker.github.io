@@ -721,6 +721,8 @@ community:
     url: /community/stats
   - title: Captain's Log
     url: /community/captains-log/
+  - title: Spinnaker Gardening days
+    url: /community/gardening/
 
 news:
   - title: Sign Up
