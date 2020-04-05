@@ -9,4 +9,4 @@ _Welcome to the command center for Spinnaker Gardening Days, a community celebra
 ## Enter Spinnaker Gardening Days
 To attend Spinnaker Gardening Days, you'll need Zoom. See Zoom's ["Joining a Meeting" documentation](https://support.zoom.us/hc/en-us/articles/201362193-Joining-a-Meeting) to learn how to join.
 
-__Join the main sync Zoom room here: <zoom link>__
+Join the __Gardening Central__ Zoom room here: <zoom link>
