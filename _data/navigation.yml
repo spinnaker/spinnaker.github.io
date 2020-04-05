@@ -726,11 +726,11 @@ community:
     url: /community/gardening/
     children:
       - title: Schedule
-      - url: /community/gardening/schedule/
+        url: /community/gardening/schedule/
       - title: Slack Map
-      - url: /community/gardening/schedule/
+        url: /community/gardening/schedule/
       - title: What to Hack
-      - url: /community/gardening/what-to-hack/
+        url: /community/gardening/what-to-hack/
 
 news:
   - title: Sign Up
