@@ -26,13 +26,15 @@ See also [`hal config notifications`](/reference/halyard/commands/#hal-config-no
 
 # Configuring notifications
 
-Notification configurations are in echo.yml and settings.js. For changes to echo.yml, create echo-local.yml and put your changes in there. You can customize settings.js directly.
+Notification configurations are in echo.yml and settings-local.js. For changes to echo.yml, create echo-local.yml and put your changes in there. You can customize settings-local.js directly.
 
 ## Where to put echo-local.yml and settings.js
 
-If you use Halyard to configure Spinnaker, put echo-local.yml and settings.js in `~/.hal/{deployment}/profiles/`.
+If you use Halyard to configure Spinnaker, put echo-local.yml  `~/.hal/{deployment}/profiles/`. 
 
-If you don’t use Halyard, put echo-local.yml in the same place as the current echo.yml, in `/opt/spinnaker/config`, and put settings.js in `/opt/deck/html/`.
+For settings-local.yml, follow the [Custom Profile for Deck](/reference/halyard/custom/#custom-profile-for-deck) reference and place it in the following location `~/.hal/{deployment}/profiles/settings-local.js`.
+
+If you don’t use Halyard, put echo-local.yml in the same place as the current echo.yml, in `/opt/spinnaker/config`, and put settings-local.js in `/opt/deck/html/`.
 
 ## Spinnaker baseURL
 
@@ -65,7 +67,7 @@ spring:
           protocol: smtp
 #	debug: true <- this is useful if you are mucking around with smtp properties  
 ```
-in settings.js (deck)
+in settings-local.js (deck)
 ```
 window.spinnakerSettings = window.spinnakerSettings || {};
 window.spinnakerSettings.notifications = window.spinnakerSettings.notifications || {};
