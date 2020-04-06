@@ -721,7 +721,7 @@ community:
     url: /community/stats
   - title: Captain's Log
     url: /community/captains-log/
-  - title: Spinnaker Gardening days
+  - title: Spinnaker Gardening Days
     collapsed: true
     url: /community/gardening/
     children:
@@ -731,8 +731,10 @@ community:
         url: /community/gardening/slack-map/
       - title: What to Hack
         url: /community/gardening/what-to-hack/
-      - Hack Logistics
+      - title: Hack Logistics
         url: /community/gardening/hack-logistics/
+      - title: Prizes
+        url: /community/gardening/prizes/
 
 news:
   - title: Sign Up
