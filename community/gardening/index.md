@@ -11,6 +11,13 @@ To attend Spinnaker Gardening Days, you'll need Zoom. See Zoom's ["Joining a Mee
 
 Join the [__Gardening Central__ Zoom room](<zoom link>) to enter Spinnaker Gardening Days
 
+### [Master schedule](schedule.md)
+### [What to hack](what-to-hack.md)
+### [Hackathon logistics](hack-logistics.md)
+### [Slack map](slack-map.md)
+### [Read about prizes](prizes.md)
+
+
 ### Guidelines
 1. No hate speech, put-downs, or sexual content allowed in hackathon meetings or channels. Keep it classy and remember, we all have the same intrinsic value.
 2. Don't be afraid to share your thoughts, ask for help in #gardening-ineedhelp, or try something new. This is a safe space!
