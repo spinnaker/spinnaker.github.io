@@ -67,13 +67,10 @@ spring:
 ```
 in settings.js (deck)
 ```
-window.spinnakerSettings = {
-// ...
-  notifications: {
-    email: {
-      enabled: true
-    },
-// ...
+window.spinnakerSettings = window.spinnakerSettings || {};
+window.spinnakerSettings.notifications = window.spinnakerSettings.notifications || {};
+window.spinnakerSettings.notifications.email = window.spinnakerSettings.notifications.email || {};
+window.spinnakerSettings.notifications.email.enabled = true;
 ```
 
 ## Slack
