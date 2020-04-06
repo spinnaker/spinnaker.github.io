@@ -10,10 +10,10 @@ Here's how we'll garden and hack together. Following these guidelines keeps you 
 _Even if you're starting solo_, create a team channel for your project in [Spinnaker Slack](https://join.spinnaker.io). Use the format #gardening-team-<projectString> and use a project string that describes your project and matches your repo name, if applicable.
 
 ### Project Matchmaking
-The [Project Matchmaking session(<zoom link>) at 8:40 AM PST on Thursday 4/9 will give teams and individuals the opportunity to pitch a project/task and recruit team members. Each spokesperson can take 90 seconds to pitch an idea and invite attendees to a Slack channel to discuss and organize.
+The [Project Matchmaking session](https://armory.zoom.us/j/4083689830) at 8:40 AM PST on Thursday 4/9 will give teams and individuals the opportunity to pitch a project/task and recruit team members. Each spokesperson can take 90 seconds to pitch an idea and invite attendees to a Slack channel to discuss and organize.
 
 ### Creating Repositories
-Starting fresh with some new plugin code, or writing a tutorial? Create all new project repositories in [Spinnaker-Hackathon](https://github.com/spinnaker-hackathon). Name your repo with a descriptive project string that you'll use in your Slack channel name. _Note: Your Github handle will be added as a member to the Spinnaker-Hackathon organization after check in. You must check in to receive repository creation privileges. Get the check-in link by joining the [Gardening Central](<zoom link>) Zoom room._
+Starting fresh with some new plugin code, or writing a tutorial? Create all new project repositories in [Spinnaker-Hackathon](https://github.com/spinnaker-hackathon). Name your repo with a descriptive project string that you'll use in your Slack channel name. _Note: Your Github handle will be added as a member to the Spinnaker-Hackathon organization after check in. You must check in to receive repository creation privileges. Get the check-in link by joining the [Gardening Central](https://armory.zoom.us/j/4083689830) Zoom room._
 
 ### Forking Spinnaker Repositories
 Need to fork an existing Spinnaker project(s) to hack? Fork into the [Spinnaker-Hackathon](https://github.com/spinnaker-hackathon):
