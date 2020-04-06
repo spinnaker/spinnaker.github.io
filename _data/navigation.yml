@@ -732,6 +732,8 @@ community:
         url: /community/gardening/what-to-hack/
       - title: Slack Map
         url: /community/gardening/slack-map/
+      - title: Development Environments
+        url: /community/gardening/dev-environment/
       - title: Prizes
         url: /community/gardening/prizes/
 news:
