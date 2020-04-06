@@ -17,9 +17,5 @@ Starting fresh with some new plugin code, or writing a tutorial? Create all new 
 
 ### Forking Spinnaker Repositories
 Need to fork an existing Spinnaker project(s) to hack? Fork into the [Spinnaker-Hackathon](https://github.com/spinnaker-hackathon):
-{%
-  include
-  figure
-  image_path="./org-fork.png"
-%}
+![where to fork](/org-fork.png)
 When it's time to submit a pull request, do so from your fork. Read more on [best practices in fork & pull request workflows](https://gist.github.com/Chaser324/ce0505fbed06b947d962).
