@@ -24,3 +24,5 @@ Your guide to Gardening Slack channels in [Spinnaker Slack](https://join.spinnak
 |#gardening-anonymous|Anonymous feedback|
 |#spinnaker-news|Share Spinnaker news & blog content for April newsletter|
 |#sig-documentation|Documentation SIG-hosted activities and chatter|
+|#sig-kubernetes|Kubernetes SIG-hosted chatter|
+|#sig-ui|UI SIG-hosted chatter|
