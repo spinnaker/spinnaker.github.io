@@ -14,7 +14,11 @@ sidebar:
 
 # Prerequisites
 
-This walkthrough assumes you have read the [Plugin Creators Guide Overview](/guides/developer/plugin-creators-guide/overview/).
+* Spinnaker v1.19.0
+* Halyard 1.32
+* Orca branch `release-1.19.x` (for local testing)
+* IntelliJ IDEA (for local testing)
+* You have read the [Plugin Creators Guide Overview](/guides/developer/plugin-creators-guide/overview/).
 
 
 # pf4jStagePlugin ExtensionPoint plugin

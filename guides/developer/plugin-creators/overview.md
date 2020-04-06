@@ -15,8 +15,7 @@ sidebar:
 # Requirements
 
 * Spinnaker v1.19.0
-* Orca branch `release-1.19.x` (for local testing)
-* IntelliJ IDEA (for local testing)
+* Halyard 1.32
 
 # Plugin overview
 
