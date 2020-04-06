@@ -23,5 +23,4 @@ Your guide to Gardening Slack channels in [Spinnaker Slack](https://join.spinnak
 |#gardening-yoga-mindfulness|Scheduled yoga & mindfulness breaks|
 |#gardening-anonymous|Anonymous feedback|
 |#spinnaker-news|Share Spinnaker news & blog content for April newsletter|
-|#gardening-random|Random off-topic chat|
 |#sig-documentation|Documentation SIG-hosted activities and chatter|
