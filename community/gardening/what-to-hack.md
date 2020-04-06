@@ -14,3 +14,4 @@ Not sure where to get started? Suggestions:
 * Help make Spinnaker documentation easier to use. Participate in a spinnaker.io card sorting exercise asynchronously. Start [here](https://www.provenbyusers.com/cs.php?c=26cc8242). Stop by the #sig-documentation Slack channel if you have questions or want to chat!
 * Create a custom separate stage plugin. This will leverage the new  SimpleStage extension point to add your custom pipeline stage to Spinnaker. Read more in the [Plugin Creators Guide](https://www.spinnaker.io/guides/developer/plugin-creators/)
 * Review the [Project Ideas Wiki](https://github.com/spinnaker-hackathon/gardening/wiki/Project-Ideas)for inspiration, then hop over Slack to discuss.
+* Add quality answers to [questions tagged "Spinnaker" on StackOverflow](https://stackoverflow.com/questions/tagged/spinnaker). To have your answers counted as contributions, share question links in the #gardening-stackoverflow channel and indicate your username. 
