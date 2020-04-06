@@ -9,13 +9,17 @@ _Welcome to the command center for Spinnaker Gardening Days, a community celebra
 ## Enter Spinnaker Gardening Days
 To attend Spinnaker Gardening Days, you'll need Zoom. See Zoom's ["Joining a Meeting" documentation](https://support.zoom.us/hc/en-us/articles/201362193-Joining-a-Meeting) to learn how to join.
 
-Join the [__Gardening Central__ Zoom room](<zoom link>) to enter Spinnaker Gardening Days
+## Essential Links:
 
+### Join the [__Gardening Central__ Zoom Room](<zoom link>) to enter Spinnaker Gardening Days
+### [Spinnaker-hackathon Github organizaion](https://github.com/spinnaker-hackathon)
+### [Spinnaker Gardening repository](https://github.com/spinnaker-hackathon/gardening)
 ### [Master schedule](schedule.md)
 ### [What to hack](what-to-hack.md)
 ### [Hackathon logistics](hack-logistics.md)
 ### [Slack map](slack-map.md)
 ### [Read about prizes](prizes.md)
+
 
 
 ### Guidelines
