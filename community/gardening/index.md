@@ -5,22 +5,23 @@ sidebar:
   nav: community
 ---
 _Welcome to the command center for Spinnaker Gardening Days, a community celebration and hackathon._
-
-## Enter Spinnaker Gardening Days
+{%
+  include
+  figure
+  image_path="./Spinnaker-Garden-1C.jpg"
+%}
+## Jump In!
 To attend Spinnaker Gardening Days, you'll need Zoom. See Zoom's ["Joining a Meeting" documentation](https://support.zoom.us/hc/en-us/articles/201362193-Joining-a-Meeting) to learn how to join.
 
-## Essential Links:
-
-#### Join the [__Gardening Central__ Zoom Room](<zoom link>) to enter Spinnaker Gardening Days
-#### [Spinnaker-hackathon Github organizaion](https://github.com/spinnaker-hackathon)
-#### [Spinnaker Gardening repository](https://github.com/spinnaker-hackathon/gardening)
-#### [Join Spinnaker Slack](https://join.spinnaker.io)
-#### [Master schedule](schedule.md)
-#### [What to hack](what-to-hack.md)
-#### [Hackathon logistics](hack-logistics.md)
-#### [Slack map](slack-map.md)
-#### [Read about prizes](prizes.md)
-
+* Join the [__Gardening Central__ Zoom Room](<zoom link>) to enter Spinnaker Gardening Days
+* Join [Spinnaker Slack](https://join.spinnaker.io) to chat in [event & team channels](slack-map.md)
+* [Master schedule](schedule.md)
+* [What to hack](what-to-hack.md)
+* [Hackathon logistics](hack-logistics.md)
+* [Slack map](slack-map.md)
+* [Read about prizes](prizes.md)
+* [Spinnaker-hackathon Github organizaion](https://github.com/spinnaker-hackathon)
+* [Spinnaker Gardening repository](https://github.com/spinnaker-hackathon/gardening)
 
 
 ## Guidelines
