@@ -722,20 +722,18 @@ community:
   - title: Captain's Log
     url: /community/captains-log/
   - title: Spinnaker Gardening Days
-    collapsed: true
     url: /community/gardening/
     children:
       - title: Schedule
         url: /community/gardening/schedule/
-      - title: Slack Map
-        url: /community/gardening/slack-map/
+      - title: Hackathon Logistics
+        url: /community/gardening/hack-logistics/hack-logistics/
       - title: What to Hack
         url: /community/gardening/what-to-hack/
-      - title: Hack Logistics
-        url: /community/gardening/hack-logistics/
+      - title: Slack Map
+        url: /community/gardening/slack-map/
       - title: Prizes
         url: /community/gardening/prizes/
-
 news:
   - title: Sign Up
     url: /news/signup
