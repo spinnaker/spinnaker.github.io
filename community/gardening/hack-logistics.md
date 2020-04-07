@@ -4,7 +4,7 @@ title:  "Hackathon Logistics at Spinnaker Gardening Days"
 sidebar:
   nav: community
 ---
-Here's how we'll garden and hack together. Following these guidelines keeps you eligible for prizes and charitable donations, and sets us up for for maximum community impact.
+Here's how we'll garden and hack together. Following these guidelines keeps you eligible for prizes and charitable donations, and sets us up for maximum community impact.
 
 ### Creating a Team Slack Channel
 _Even if you're starting solo_, create a team channel for your project in [Spinnaker Slack](https://join.spinnaker.io). Use the format #gardening-team-<projectString> and use a project string that describes your project and matches your repo name, if applicable.
