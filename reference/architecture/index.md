@@ -128,8 +128,11 @@ By default Spinnaker binds ports according to the following table
 | Fiat        | 7003              |
 | Front50     | 8080              |
 | Gate        | 8084              |
+| Gate x509   | 8085              |
 | Halyard     | 8064              |
 | Igor        | 8088              |
 | Kayenta     | 8090              |
 | Orca        | 8083              |
 | Rosco       | 8087              |
+| Redis       | 6379              |
+| MariaDB     | 3306              |
