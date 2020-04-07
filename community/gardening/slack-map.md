@@ -10,8 +10,8 @@ Your guide to Gardening Slack channels in [Spinnaker Slack](https://join.spinnak
 |Slack Channel|Description|
 |-----|-----------------------|
 |#gardening-ineedhelp|Event helpdesk|
-|#gardening-team-<projectString>|Team channels|
-|#gardening-idea-<projectString>|Brainstorming channels|
+|#gardening-team-[projectString]|Team channels|
+|#gardening-idea-[projectString]|Brainstorming channels|
 |#gardening-general|General event chat|
 |#gardening-spinnaker-tips|Share Spinnaker tips for Spinnaker.io & Twitter mention |
 |#gardening-training|Training questions and discussion|
