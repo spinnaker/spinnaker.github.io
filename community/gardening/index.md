@@ -10,6 +10,9 @@ _Welcome to the command center for Spinnaker Gardening Days, a community celebra
   figure
   image_path="./Spinnaker-Garden-1C.jpg"
 %}
+## Register
+[Register for Spinnaker Gardening Days](https://www.eventbrite.com/e/spinnaker-gardening-days-communityhack-tickets-97845696111) on Eventbrite to reserve your tickets. 
+
 ## Jump In!
 To attend Spinnaker Gardening Days, you'll need Zoom. See Zoom's ["Joining a Meeting" documentation](https://support.zoom.us/hc/en-us/articles/201362193-Joining-a-Meeting) to learn how to join.
 
