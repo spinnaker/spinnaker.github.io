@@ -57,6 +57,10 @@ hal config metric-stores datadog edit --app-key <APP_KEY>
 
 These changes will be picked up by your Spinnaker installation next time you run `hal deploy apply`.
 
+## Configure the Spinnaker monitoring daemon sidecar for Datadog (Kubernetes)
+
+To set up DataDog monitoring in a Dockerized environment (Kubernetes deployment) follow the steps from the previous [section](#configure-the-spinnaker-monitoring-daemon-for-datadog). These changes will be picked up by your Spinnaker installation next time you run `hal deploy apply` and then each Spinnaker microservice will be redeployed with a monitoring-daemon sidecar attached.
+
 ## Install tools and (optionally) the Datadog agent
 
 SSH into your machine however you do so. If you're using an ssh tunnel
@@ -88,6 +92,8 @@ Once complete you should have a running datadog agent and find more detailed met
 3. Proceed to [install the operational dashboards](#install-the-operational-dashboards)
 
 ## Install the operational dashboards
+
+> **Note**: Datadog [operational dashboards](https://github.com/spinnaker/spinnaker-monitoring/tree/master/spinnaker-monitoring-third-party/third_party/datadog) may be outdated.
 
 Having installed `spinnaker-monitoring-third-party` [above](#install-tools-and-optionally-the-datadog-agent),
 you can run the same script to install the Datadog dashboards

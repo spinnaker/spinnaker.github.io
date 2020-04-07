@@ -116,3 +116,30 @@ within pipelines, or produced by pipelines.
   "location": "us-east-1"
 }
 ```
+
+### Example for providing artifacts with `spin` CLI
+
+When you execute a pipeline with the [`spin` CLI](/guides/spin/), the `-t, --artifacts-file` option expects a valid JSON file containing a top-level `artifacts` key that maps to an array of artifact definitions as mentioned [here](https://www.spinnaker.io/reference/artifacts/in-pipelines/#artifacts-in-trigger-payloads). For example, you can call...
+
+```
+spin pipeline execute --application ${APPLICATION} --name ${PIPELINE} --parameter-file ${PARAMETER_FILE_PATH} --artifacts-file ${ARTIFACTS_FILE_PATH}
+```
+
+...with the contents of the file at `${ARTIFACTS_FILE_PATH}` as follows:
+
+```js
+{
+  "artifacts" : [
+    {
+      "type": "s3/object",
+      "name": "s3://bucket/file.json",
+      "location": "us-east-1"
+    },
+    {
+      "type": "s3/object",
+      "name": "s3://bucket/file2.json",
+      "location": "us-east-1"
+    }
+  ]
+}
+```

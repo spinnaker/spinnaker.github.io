@@ -33,8 +33,8 @@ Building atop the baseline configuration above, add the following to orca.yml:
 executionRepository:
   dual:
     enabled: true
-    primaryClass: com.netflix.spinnaker.orca.sql.telemetry.SqlInstrumentedExecutionRepository
-    previousClass: com.netflix.spinnaker.orca.telemetry.RedisInstrumentedExecutionRepository
+    primaryName: sqlExecutionRepository
+    previousName: redisExecutionRepository
   sql:
     enabled: true
   redis:

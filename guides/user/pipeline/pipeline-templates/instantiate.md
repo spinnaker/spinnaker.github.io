@@ -64,7 +64,7 @@ and get it using the following command:
    ```json
    "template": {
      "artifactAccount": "front50ArtifactCredentials", # Static constant
-     "reference": "spinnaker://<templateName>",
+     "reference": "spinnaker://<templateId>",
      "type": "front50/pipelineTemplate" # Static constant
    }
    ```

@@ -81,3 +81,54 @@ The following jobs assist in removing old artifacts created during the build pro
 * [Admin_DailyJanitor](https://builds.spinnaker.io/view/5%20Admin/job/Admin_DailyJanitor/){:target="\_blank"}
 * [Admin_AuditBoms](https://builds.spinnaker.io/view/5%20Admin/job/Admin_AuditBoms/){:target="\_blank"}
 * [Admin_DeleteObsoleteArtifacts](https://builds.spinnaker.io/view/5%20Admin/job/Admin_DeleteObsoleteArtifacts/){:target="\_blank"}
+
+## Troubleshooting Playbook
+
+Check whether the failure happened during the _build_ or the _test_ phase:
+
+1. Click the failing Flow.
+
+    ![](troubleshooting - base - 10 - flow.png)
+
+1. Click for the most recent failing build.
+
+    ![](troubleshooting - base - 20 - mostRecent.png)
+
+1. Click through to the failing phase.
+
+    ![](troubleshooting - base - 30 - phase.png)
+
+### Build Failures
+
+1. The build phase uses many subshells to perform its work in parallel. Use the `Console Output`
+to help narrow down which step of the build has failed, and use the collected logs to view more information
+on what specificially went wrong.
+
+    ![](troubleshooting - build - 10 - consoleOutput.png)
+
+1. The Console Output prints out after each completion how much work is still remaining.
+
+    ![](troubleshooting - build - 20 - buildSteps.png)
+
+1. Frequently, the build error will be printed out directly to the Console Output, but sometimes this output can be hard to read. View the raw file directly using the Build Artifacts link from Step 1.
+
+    ![](troubleshooting - build - 30 - failedOutput.png)
+
+
+### Test Failures
+
+1. View the Test Results Overview.
+
+    ![](troubleshooting - test - 10 - testResultsOverview.png)
+
+1. Identify the failing test.
+
+    ![](troubleshooting - test - 20 - failingTest.png)
+
+1. Identify which step in the test is failing.
+
+    ![](troubleshooting - test - 30 - failingStep.png)
+
+1. It can sometimes help to view the last call that was made prior to that stage failing.
+
+    ![](troubleshooting - test - 40 - failingDetails.png)
