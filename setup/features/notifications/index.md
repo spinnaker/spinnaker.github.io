@@ -32,7 +32,7 @@ Notification configurations are in echo.yml and settings-local.js. For changes t
 
 If you use Halyard to configure Spinnaker, put echo-local.yml  `~/.hal/{deployment}/profiles/`. 
 
-For settings-local.yml, follow the [Custom Profile for Deck](/reference/halyard/custom/#custom-profile-for-deck) reference and place it in the following location `~/.hal/{deployment}/profiles/settings-local.js`.
+For settings-local.js, follow the [Custom Profile for Deck](/reference/halyard/custom/#custom-profile-for-deck) reference and place it in the following location `~/.hal/{deployment}/profiles/settings-local.js`.
 
 If you don’t use Halyard, put echo-local.yml in the same place as the current echo.yml, in `/opt/spinnaker/config`, and put settings-local.js in `/opt/deck/html/`.
 
