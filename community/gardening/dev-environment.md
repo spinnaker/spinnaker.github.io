@@ -127,7 +127,7 @@ _The instructions for this method are in beta. Pull requests welcome!_
          gcr.io/spinnaker-marketplace/halyard:stable
        ```
    - Use the [Spinnaker for Google Cloud Engine](https://cloud.google.com/docs/ci-cd/spinnaker/spinnaker-for-gcp) solution, which installs Spinnaker to Google Kubernetes Engine.
-   - Consult installation guides for [Google Kubernetes Engine](https://www.spinnaker.io/setup/quickstart/halyard-gke/) and [Amazon Kubernetes Service](https://aws.amazon.com/blogs/opensource/continuous-delivery-spinnaker-amazon-eks/)
+   - Consult the installation guide for [Amazon Kubernetes Service](https://aws.amazon.com/blogs/opensource/continuous-delivery-spinnaker-amazon-eks/)
    - Use the new [Spinnaker Operator](https://docs.armory.io/spinnaker/operator/#install-operator) to quickly install with `kubectl` commands.
      - Install the Operator in [cluster mode](https://docs.armory.io/spinnaker/operator/#installing-operator-in-cluster-mode)
      - Front50 won't start up successfully until you point Spinnaker to persistent storage, such as an S3 bucket. Update `deploy/spinnaker/basic/SpinnakerService.yml` as in this snippet:
