@@ -97,7 +97,7 @@ If you're not sure which method to choose, we suggest following [these instructi
   * Consult the [port mappings reference](/reference/architecture/#port-mappings) to determine which ports to forward.
 * Configure the local service to communicate with the Spinnaker instance.
   * The `kubeconfig` you just created does part of the configuration.
-  * Use `kubectl port-forward` to forward the services required. For example, if running echo locally, you'll need it to communicate with orca and front50:
+  * Use `kubectl port-forward` to forward the services required. For example, if running Echo locally, you'll need it to communicate with Orca and Front50:
       * Option 1: Forward via Service:
             `kubectl` `--``kubeconfig config-minnaker -n spinnaker port-forward svc/spin-orca 8083:8083 &`
             `kubectl --kubeconfig config-minnaker -n spinnaker port-forward svc/spin-front50 8080:8080 &`
