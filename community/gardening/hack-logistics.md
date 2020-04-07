@@ -15,7 +15,7 @@ The [Project Matchmaking session](https://armory.zoom.us/j/4083689830) at 8:40 A
 ### Creating Repositories
 Starting fresh with some new plugin code, or writing a tutorial? Create all new project repositories in [Spinnaker-Hackathon](https://github.com/spinnaker-hackathon). Name your repo with a descriptive project string that you'll use in your Slack channel name. _Note: Your Github handle will be added as a member to the Spinnaker-Hackathon organization after check in. You must check in to receive repository creation privileges. Get the check-in link by joining the [Gardening Central](https://armory.zoom.us/j/4083689830) Zoom room._
 
-### Forking Spinnaker Repositories
+### Fork Spinnaker repositories
 Need to fork an existing Spinnaker project(s) to hack? Fork into the [Spinnaker-Hackathon](https://github.com/spinnaker-hackathon):
 ![where to fork](/org-fork.png)
 When it's time to submit a pull request, do so from your fork. Read more on [best practices in fork & pull request workflows](https://gist.github.com/Chaser324/ce0505fbed06b947d962).
