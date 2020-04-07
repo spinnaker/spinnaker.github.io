@@ -51,7 +51,7 @@ If you're not sure which method to choose, we suggest following [these instructi
           server: ec2-34-223-57-141.us-west-2.compute.amazonaws.com:6443
     ...
     ```
-   - If using Minnaker, make sure the security group on your VM allows port 6443.
+   - Make sure the security group on your VM allows port 6443.
    - Use `kubectl port-forward` to forward the services required. For example, if running echo locally, you'll need it to communicate with orca and front50:
   ```
   kubectl --kubeconfig config-minnaker -n spinnaker port-forward spin-orca-5f47b76f84-bvh98 8083:8083
