@@ -117,15 +117,16 @@ _The instructions for this method are in beta. Pull requests welcome!_
 
 1. Install Spinnaker to a Kubernetes cluster. There are several ways to do this:
    - [Install Halyard in Docker](/setup/install/halyard/#install-halyard-on-docker)
-   - In your `docker run` command, mount the `.kube` directory to the container to allow you to modify `.kube` config files on your local machine and persist the changes inside the container:
-    ```
-    docker run -p 8084:8084 -p 9000:9000 \
-      --name halyard --rm \
-      -v ~/.hal:/home/spinnaker/.hal \
-      -v ~/.kube:/home/spinnaker/.kube \
-      -it \
-      gcr.io/spinnaker-marketplace/halyard:stable
-    ```
+     - In your `docker run` command, mount the `.kube` directory to the container to allow you to modify `.kube` config files on your local machine and persist the changes inside the container:
+       ```
+       docker run -p 8084:8084 -p 9000:9000 \
+         --name halyard --rm \
+         -v ~/.hal:/home/spinnaker/.hal \
+         -v ~/.kube:/home/spinnaker/.kube \
+         -it \
+         gcr.io/spinnaker-marketplace/halyard:stable
+       ```
+   - Use the [Spinnaker for Google Cloud Engine](https://cloud.google.com/docs/ci-cd/spinnaker/spinnaker-for-gcp) solution, which installs Spinnaker to Google Kubernetes Engine.
    - Consult installation guides for [Google Kubernetes Engine](https://www.spinnaker.io/setup/quickstart/halyard-gke/) and [Amazon Kubernetes Service](https://aws.amazon.com/blogs/opensource/continuous-delivery-spinnaker-amazon-eks/)
    - Use the new [Spinnaker Operator](https://docs.armory.io/spinnaker/operator/#install-operator) to quickly install with `kubectl` commands.
      - Install the Operator in [cluster mode](https://docs.armory.io/spinnaker/operator/#installing-operator-in-cluster-mode)
