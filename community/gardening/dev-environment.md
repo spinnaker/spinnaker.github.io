@@ -6,7 +6,7 @@ sidebar:
 ---
 What's the best environment Spinnaker development? How can you set up your workstation to debug a Spinnaker service?  It depends! Consider these constraints when choosing your strategy:
 
-* __Locally available computing resources__: hosting Spinnaker services is memory-intensive.
+* __Locally available computing resources__: hosting Spinnaker services is memory intensive.
 * __Access and cost management for public clouds__: Spinnaker can be hosted in the cloud, where you'll pay for resources.
 * __Familiarity with Kubernetes__: you may use Kubernetes tools to manage your Spinnaker environment if you prefer.
 
