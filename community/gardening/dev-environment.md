@@ -117,7 +117,7 @@ _The instructions for this method are in beta. Pull requests welcome!_
 
 * Install Spinnaker to a Kubernetes cluster. There are several ways to do this:
   * [Install Halyard in Docker](/setup/install/halyard/#install-halyard-on-docker)
-    * In your Docker run command, add a mount the .kube directory to the container to allow you to modify .kube config files on your local machine and persist the changes inside the container:
+    * In your `docker run` command, mount the `.kube` directory to the container to allow you to modify `.kube` config files on your local machine and persist the changes inside the container:
     ```
     docker run -p 8084:8084 -p 9000:9000 \
       --name halyard --rm \
