@@ -4,7 +4,7 @@ title:  "Development Environments for Spinnaker Gardening Days"
 sidebar:
   nav: community
 ---
-What's the best way to get set up for Spinnaker development? It depends! Consider these constraints when choosing your strategy:
+What's the best environment Spinnaker development? How can you set up your workstation to debug a Spinnaker service?  It depends! Consider these constraints when choosing your strategy:
 
 * __Locally available computing resources__: hosting Spinnaker services is memory-intensive.
 * __Access and cost management for public clouds__: Spinnaker can be hosted in the cloud, where you'll pay for compute.
@@ -21,6 +21,7 @@ _If you're not sure which method to choose, we suggest trying this method first.
 * Install Spinnaker to a Kubernetes cluster running in your cloud provider or private cloud of choice.
   * Consult installation guides for [Google Kubernetes Engine](https://www.spinnaker.io/setup/quickstart/halyard-gke/) and [Amazon Kubernetes Service](https://aws.amazon.com/blogs/opensource/continuous-delivery-spinnaker-amazon-eks/)
   * Alternatively, use the [Spinnaker Operator](https://docs.armory.io/spinnaker/operator/#install-operator). Install the Operator in [cluster mode](https://docs.armory.io/spinnaker/operator/#installing-operator-in-cluster-mode)
+]* lone service locally
 * Port-forward the externally-hosted Spinnaker services to your local machine
   * Try using this Fish function:
   ```
@@ -42,6 +43,21 @@ _If you're not sure which method to choose, we suggest trying this method first.
   end
   ```
 
-## Additional tools:
+## Additional References:
 
-* [This repository](https://github.com/robzienert/spinnaker-oss-setup) will install all Spinnaker dependencies besides the JDK to your machine running OSX. With a few tweaks and a package manager swap, you could also use it to automate dependency setup on Linux.
+* Spinnaker service ports:
+  * clouddriver | 7002
+  * fiat | 7003
+  * halyard | 8064
+  * front50 | 8080
+  * dinghy | 8081
+  * orca | 8083
+  * gate | 8084
+  * gate (x509 enabled) | 8085
+  * rosco | 8087
+  * igor | 8088
+  * echo | 8089
+  * deck | 9000
+  * redis | 6379
+  * mariadb | 3306
+* [This repository](https://github.com/robzienert/spinnaker-oss-setup) installs all Spinnaker dependencies besides the JDK to your machine running OSX. With a few tweaks and a package manager swap, you could also use it to automate dependency setup on Linux.
