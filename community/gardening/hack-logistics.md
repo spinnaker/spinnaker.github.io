@@ -21,4 +21,6 @@ Need to fork an existing Spinnaker project(s) to hack? Fork into the [Spinnaker-
 When it's time to submit a pull request, do so from your fork. Read more on [best practices in fork & pull request workflows](https://gist.github.com/Chaser324/ce0505fbed06b947d962).
 
 ### Staging Environment
-For plugin development,
+When developing a Spinnaker plugin, it's useful to do integration testing in a running Spinnaker instance. This allows you to interact with the frontend. For this event, Armory will provide Spinnaker staging instances running in AWS for project teams to use as needed.
+
+_Look out for more details on how to gain access to a staging instance._
