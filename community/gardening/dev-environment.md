@@ -49,12 +49,12 @@ Follow the [Getting Set Up](https://www.spinnaker.io/guides/developer/getting-se
 * Build the project:
   * Open the 'Gradle' window and double-click the 'Build' task under Tasks > Builds
 * [Install NGROK](https://ngrok.com/download), a tunneling service. Run it to create a tunnel from the service to the Spinnaker instance:
-  * Consult the [port mappings reference](reference/architecture/#port-mappings) to determine which ports to forward. Create tunnels for the service(s) you're running locally.
+  * Consult the [port mappings reference](/reference/architecture/#port-mappings) to determine which ports to forward. Create tunnels for the service(s) you're running locally.
   * Execute `ngrok http <service port number>` e.g. `ngrok http 8089` for echo.
   * Copy the URL in the `Forwarding` output lines.
 * Configure your Spinnaker instance to use the forwarded NGROK address(es).
   * Create a `.hal/default/profiles/spinnaker-local.yml` file
-  * Add service settings, or copy settings from `staging/spinnaker.yml` and delete unnecessary services. Read more on [custom service settings](https://www.spinnaker.io/reference/halyard/custom/#custom-service-settings).
+  * Add service settings, or copy settings from `staging/spinnaker.yml` and delete unnecessary services. Read more on [custom service settings](/reference/halyard/custom/#custom-service-settings).
   * Change the `baseURL` for the service to the copied NGROK endpoint.
 * Configure the local service to communicate with the Spinnaker instance.
   * Copy the kubeconfig from Spinnaker `/etc/spinnaker/.kube/config` to your local machine (e.g. `/tmp/kubeconfig-minnaker`)
