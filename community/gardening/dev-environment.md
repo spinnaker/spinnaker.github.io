@@ -20,13 +20,12 @@ First things first, to develop Spinnaker, you'll need a Spinnaker instance. To g
 Follow the [Getting Set Up](https://www.spinnaker.io/guides/developer/getting-set-up/) guide to install Spinnaker locally.
 
 ## Minnaker method
-If you're not sure which method to choose, we suggest following [these instructions to install Minnaker](https://github.com/armory/minnaker) in your chosen environment. This simplifies installation steps, and uses Kubernetes (K3S) under the hood. Install in a cloud VM or a local Ubuntu 18.04 VM.
+If you're not sure which method to choose, we suggest following [these instructions to install Minnaker](https://github.com/armory/minnaker) in your chosen environment. This simplifies installation steps, and uses lightweight Kubernetes (K3S) under the hood. Install in a cloud VM or a local Ubuntu 18.04 VM.
 
 ### Set up local development environment
 1. Install your IDE. These instructions target [IntelliJ IDEA](https://www.jetbrains.com/idea/download/#section=mac).
 2. Git clone the [Spinnaker service(s)](https://github.com/spinnaker) you will debug or extend.
-3. Import the `gradle.properties` file from the root of the service repository into your IDE:
-   Import Project > Select project folder > Select __Gradle__ > Click 'Finish'.
+3. Open the project in your IDE: File > Open > Select project folder > Click 'OK'.
 4. Build the project:
    - Open the 'Gradle' window and double-click the 'Build' task under Tasks > Builds.
 
