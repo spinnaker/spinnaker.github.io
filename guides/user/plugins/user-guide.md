@@ -1,15 +1,13 @@
 ---
 layout: single
-title:  "Plugin Users Guide"
+title:  "Users Guide"
 sidebar:
   nav: guides
 ---
 
-{% include toc %}
+{% include alpha version="1.19.4" %}
 
-<div class="notice--danger">
-  <strong>Note:</strong> Plugins are an early alpha feature that is under active development and will likely change.
-</div>
+{% include toc %}
 
 In this guide, you add an existing plugin from an [example repository](https://github.com/spinnaker-plugin-examples/examplePluginRepository) to Spinnaker. See the [Plugin Creators Guide](/guides/developer/plugin-creators) for how to create a plugin.
 
@@ -17,8 +15,8 @@ In this guide, you add an existing plugin from an [example repository](https://g
 
 * The plugin is either a [Plugin Framework for Java](https://github.com/pf4j/pf4j)(PF4J) plugin or a Spring plugin
 * The plugin resides in a location that Spinnaker can access
-* You use Spinnaker v1.19 or later
-* You use Halyard v1.32.0 or later to deploy Spinnaker
+* You use Spinnaker v1.19.4 or later
+* You use Halyard v1.34 or later to deploy Spinnaker
 
 # Plugins overview
 
@@ -60,12 +58,20 @@ Define plugins in a file called `plugins.json`. This guide uses the [file](https
     "provider": "https://github.com/claymccoy",
     "releases": [
       {
-        "version": "1.0.16",
+          "version": "1.0.17",
+          "date": "2020-03-25T16:07:51.524Z",
+          "requires": "orca>=0.0.0,deck>=0.0.0",
+          "sha512sum": "17f23cc00a3f931c66b6fe90f69fca3a8221687900163ff54e942be1b05c405bf7250a5be2a9265f7f204ec4f4fcb2afedaebd7c903f2f3c7127c1c6902fdc93",
+          "state": "RELEASE",
+          "url": "https://github.com/spinnaker-plugin-examples/pf4jStagePlugin/releases/download/v1.0.17/pf4jStagePlugin-v1.0.17.zip"
+        },
+      {
+        "version": "1.0.17",
         "date": "2020-02-26T18:42:44.793Z",
         "requires": "orca>=0.0.0,deck>=0.0.0",
         "sha512sum": "0a218278c8f9083f54117983e64ae508c5f21ddfc4dc5e5a6b757d73d61f216407cfa92a42d63ebd01ef80937373c973acc103ef5c758333511f66ec239c9943",
         "state": "RELEASE",
-        "url": "https://github.com/spinnaker-plugin-examples/pf4jStagePlugin/releases/download/v1.0.16/pf4jStagePlugin-v1.0.16.zip"
+        "url": "https://github.com/spinnaker-plugin-examples/pf4jStagePlugin/releases/download/v1.0.16/pf4jStagePlugin-v1.0.17.zip"
       },
       {
         "version": "1.0.15",
