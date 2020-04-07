@@ -67,7 +67,7 @@ If you're not sure which method to choose, we suggest following [these instructi
   * Copy the token for the secret associated with the serviceaccount `kubectl describe secret`
   * Grant the service account - cluster-admin access `clusterrolebinding`
   * Update the `users.user` section of the `kubeconfig` by replacing `users.user.password` and `users.user.username` to `users.user.token`, where the token value is the secret value associated with the ServiceAccount.
-  * Update the kubeconfig clusters.cluster.server address to point to the IP address of Minnaker on local machine:  e.g.  `192.168.123.128:6443`
+  * Update the kubeconfig `clusters.cluster.server` address to point to the IP address of Minnaker on local machine:  e.g.  `192.168.123.128:6443`
   * Consult this example `kubeconfig` for reference:
     ```
 
