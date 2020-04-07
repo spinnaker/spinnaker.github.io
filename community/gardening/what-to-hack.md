@@ -5,7 +5,7 @@ sidebar:
   nav: community
 ---
 
-## What to Hack
+## What to hack
 
 Not sure where to get started? Suggestions:
 
