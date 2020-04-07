@@ -173,7 +173,7 @@ _The instructions for this method are in beta. Pull requests welcome!_
   ```
 * Port-forward the externally-hosted Spinnaker services to your local machine
   * You may use [NGROK](https://ngrok.com/download)
-  * Or, try this Fish function, `pf-spinnaker` loops through all of the Spinnaker services in your Kubernetes namespaces and forwards their ports to your local machine. Try it:
+  * Or, try this Fish function: `pf-spinnaker` loops through all of the Spinnaker services in your Kubernetes namespaces and forwards their ports to your local machine. Try it:
   ```
   function pf-spinnaker
     set -l services (string split , -- \
