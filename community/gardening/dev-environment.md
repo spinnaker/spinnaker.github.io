@@ -20,7 +20,7 @@ First things first, to develop Spinnaker, you'll need a Spinnaker instance. To g
 Follow the [Getting Set Up](https://www.spinnaker.io/guides/developer/getting-set-up/) guide to install Spinnaker locally.
 
 ## Minnaker method
-If you're not sure which method to choose, we suggest following [these instructions to install Minnaker](https://github.com/armory/minnaker) in your chosen environment. This simplifies installation steps, and uses lightweight Kubernetes (K3S) under the hood. Install in a cloud VM or a local Ubuntu 18.04 VM.
+If you're not sure which method to choose, we suggest following [these instructions to install Minnaker](https://github.com/armory/minnaker) in your chosen environment. This simplifies installation steps, and uses lightweight Kubernetes [(K3S)](https://k3s.io/) under the hood. Install in a cloud VM or a local Ubuntu 18.04 VM.
 
 ### Set up local development environment
 1. Install your IDE. These instructions target [IntelliJ IDEA](https://www.jetbrains.com/idea/download/#section=mac).
