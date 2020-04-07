@@ -26,9 +26,9 @@ If you're not sure which method to choose, we suggest following [these instructi
 * Install your IDE. These instructions target [IntelliJ IDEA](https://www.jetbrains.com/idea/download/#section=mac).
 * Git clone the [Spinnaker service(s)](https://github.com/spinnaker) you will debug or extend.
 * Import the `gradle.properties` file from the root of the service repository into your IDE:
-  * Import Project > Select project folder > Select __Gradle__ > Click 'Finish'
+  * Import Project > Select project folder > Select __Gradle__ > Click 'Finish'.
 * Build the project:
-  * Open the 'Gradle' window and double-click the 'Build' task under Tasks > Builds
+  * Open the 'Gradle' window and double-click the 'Build' task under Tasks > Builds.
 
 #### __Next steps IF your Minnaker instance is running in the cloud__
 
@@ -37,7 +37,7 @@ If you're not sure which method to choose, we suggest following [these instructi
   * Execute `ngrok http <service port number>` e.g. `ngrok http 8089` for echo.
   * Copy the URL in the `Forwarding` output lines.
 * Configure your Spinnaker instance to use the forwarded NGROK address(es).
-  * Create a `.hal/default/profiles/spinnaker-local.yml` file
+  * Create a `.hal/default/profiles/spinnaker-local.yml` file.
   * Add service settings, or copy settings from `.hal/default/staging/spinnaker.yml` and delete unnecessary services. Read more on [custom service settings](/reference/halyard/custom/#custom-service-settings).
   * Change the `baseURL` for the service to the copied NGROK endpoint.
 * Configure the local service to communicate with the Spinnaker instance.
@@ -57,10 +57,10 @@ If you're not sure which method to choose, we suggest following [these instructi
   kubectl --kubeconfig config-minnaker -n spinnaker port-forward spin-orca-5f47b76f84-bvh98 8083:8083
   kubectl --kubeconfig config-minnaker -n spinnaker port-forward spin-front50-64ddf796bf-gznqj 8080:8080
   ```
-  * __Now you're ready to run and debug the service or services!__
+* __Now you're ready to run and debug the service or services!__
 
 #### __Next steps IF your Minnaker instance is running locally__
-* [Create a kubeconfig for your machine reference](http://docs.shippable.com/deploy/tutorial/create-kubeconfig-for-self-hosted-kubernetes-cluster/)
+* [Create a kubeconfig for your machine reference](http://docs.shippable.com/deploy/tutorial/create-kubeconfig-for-self-hosted-kubernetes-cluster/).
   * Create a skeleton kubeconfig and get the certificate for the cluster:
    `kubectl config view --flatten --minify`
   * Create a service account for the namespace: `serviceaccount`
