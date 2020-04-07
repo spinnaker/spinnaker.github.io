@@ -475,8 +475,10 @@ guides:
         children:
           - title: Overview
             url: /guides/developer/plugin-creators/overview/
-          - title: ExtensionPoint Plugin Walkthrough
-            url: /guides/developer/plugin-creators/extensionpoint-plugin-walkthrough/
+          - title: Pipeline Stage Plugin Walkthrough
+            url: /guides/developer/plugin-creators/stage-plugin-walkthrough/
+          - title: Plugin Project Configuration
+            url: /guides/developer/plugin-creators/project-config/
   - title: Operator How-Tos
     collapsed: true
     children:
