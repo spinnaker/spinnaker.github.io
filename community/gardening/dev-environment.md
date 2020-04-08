@@ -16,9 +16,6 @@ First things first, to develop Spinnaker, you'll need a Spinnaker instance. To g
 * [Clone and install each Spinnaker service locally.](#classic-local-installation-method)
 * [Install Spinnaker to your Kubernetes cluster](#kubernetes-installation-methods), running in your cloud provider or private cloud of choice. Read more about the [Kubernetes & Docker method](#kubernetes-and-docker-method) below.
 
-## Classic local installation method
-Follow the [Getting Set Up](https://www.spinnaker.io/guides/developer/getting-set-up/) guide to install Spinnaker locally.
-
 ## Minnaker method
 If you're not sure which method to choose, we suggest following [these instructions to install Minnaker](https://github.com/armory/minnaker) in your chosen environment. This simplifies installation steps, and uses lightweight Kubernetes [(K3S)](https://k3s.io/) under the hood. Install in a cloud VM or a local Ubuntu 18.04 VM.
 
@@ -105,9 +102,8 @@ If you're not sure which method to choose, we suggest following [these instructi
         `kubectl --kubeconfig config-minnaker -n spinnaker port-forward spin-front50-64ddf796bf-gznqj 8080:8080`
 8. __Now you're ready to run and debug the service or services!__
 
-
-
-
+## Classic local installation method
+Follow the [Getting Set Up](https://www.spinnaker.io/guides/developer/getting-set-up/) guide to install Spinnaker locally.
 
 ## Kubernetes and Docker method:
 
