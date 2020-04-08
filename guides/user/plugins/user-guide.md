@@ -33,17 +33,17 @@ Define plugins in a file called `plugins.json`. This guide uses the [file](https
 ```json
 [
  {
-   "id": <unique-plugin-id>,
-   "description": <description>,
-   "provider": <provider>,
+   "id": "<unique-plugin-id>",
+   "description": "<description>",
+   "provider": "<provider>",
    "releases": [
 	 {
-	   "version": <version>,
-	   "date": <date>,
-	   "requires": <comma-delimited-list-of-spinnaker-services>,
-	   "sha512sum": <checksum>,
-	   "state": <state>,
-	   "url": <complete-url-to-bundle-zip-file>
+	   "version": "<version>",
+	   "date": "<date>",
+	   "requires": "<comma-delimited-list-of-spinnaker-services>",
+	   "sha512sum": "<checksum>",
+	   "state": "<state>",
+	   "url": "<complete-url-to-bundle-zip-file>"
 	 }
    ]
  }
@@ -55,7 +55,7 @@ Define plugins in a file called `plugins.json`. This guide uses the [file](https
   {
     "id": "Armory.RandomWaitPlugin",
     "description": "An example of a PF4J-based plugin that provides a new stage.",
-    "provider": "https://github.com/claymccoy",
+    "provider": "https://github.com/spinnaker-plugin-examples",
     "releases": [
       {
           "version": "1.0.17",
@@ -66,7 +66,7 @@ Define plugins in a file called `plugins.json`. This guide uses the [file](https
           "url": "https://github.com/spinnaker-plugin-examples/pf4jStagePlugin/releases/download/v1.0.17/pf4jStagePlugin-v1.0.17.zip"
         },
       {
-        "version": "1.0.17",
+        "version": "1.0.16",
         "date": "2020-02-26T18:42:44.793Z",
         "requires": "orca>=0.0.0,deck>=0.0.0",
         "sha512sum": "0a218278c8f9083f54117983e64ae508c5f21ddfc4dc5e5a6b757d73d61f216407cfa92a42d63ebd01ef80937373c973acc103ef5c758333511f66ec239c9943",
@@ -104,8 +104,8 @@ This guide uses the [file](https://raw.githubusercontent.com/spinnaker-plugin-ex
 ```json
 [
   {
-    "id": <unique-repo-name>,
-    "url": <url-of-plugins.json-file>
+    "id": "<unique-repo-name>",
+    "url": "<url-of-plugins.json-file>"
   }
 ]
 ```
@@ -178,7 +178,7 @@ hal plugins add Armory.RandomWaitPlugin \
     --version=<version>             
 ```
 
-Use `--ui-resource-location=<location-of-plugin-ui-resource>` to configure the frontend portion of the plugin. This parameter may be omitted when the plugin doesn't have a UI component. The `url` must be publicly accessible. It also has to allow for [cross origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) requests.
+Use `--ui-resource-location=<location-of-plugin-ui-resource>` to configure the frontend portion of the plugin. This parameter may be omitted when the plugin doesn't have a UI component. The `url` of the JavaScript application file must be publicly accessible. It also has to allow for [cross origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) requests.
 
 See the command [reference](/reference/halyard/commands/#hal-plugins-add) for the complete list of parameters.
 

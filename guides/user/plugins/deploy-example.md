@@ -22,6 +22,7 @@ sidebar:
 	```yaml
     spinnaker.extensibility.plugins-root-path: /opt/orca/plugins
 	```
+These issues are fixed in Halyard 1.34.
 
 # Steps
 
