@@ -16,10 +16,10 @@ __Consult these guides to get started. Check this page for more plugin training 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/b7BmMY1kR10" frameborder="0" allowfullscreen></iframe>
 
-_The Spinnaker plugin framework leverages PF4J. This video focuses on extending functionality via stable, well-defined extension points. We’ll use the Orca stage extension point to add an example custom stage that waits a random amount of time as part of a Spinnaker pipeline. We’ll show how to set up IntelliJ to debug plugins._
+_The Spinnaker plugin framework leverages PF4J. This video focuses on extending functionality via stable, well-defined extension points. It demonstrates using the Orca stage extension point to add an example custom stage that waits a random amount of time as part of a Spinnaker pipeline. It also shows how to set up IntelliJ to debug plugins._
 
 ### <a href="https://www.youtube.com/u9NVlG58NYo" target="_blank">How to build a Plugin: Building the frontend for a Spinnaker-native custom stage (8m 56s)</a>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/u9NVlG58NYo" frameborder="0" allowfullscreen></iframe>
 
-_This video focuses on creating a presentation layer for Deck using TypeScript and React. We’ll discuss the frontend-backend interaction in a Spinnaker plugin and demonstrate what a native custom stage looks like in the Spinnaker UI._
+_This video focuses on creating a presentation layer for Deck using TypeScript and React. It discusses the frontend-backend interaction in a Spinnaker plugin and demonstrates what a native custom stage looks like in the Spinnaker UI._
