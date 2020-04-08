@@ -19,9 +19,11 @@ To attend Spinnaker Gardening Days, you'll need Zoom. See Zoom's ["Joining a Mee
 * Join the [__Gardening Central__ Zoom Room](https://armory.zoom.us/j/6807216019) to enter Spinnaker Gardening Days
 * Join [Spinnaker Slack](https://join.spinnaker.io) to chat in [event & team channels](slack-map.md). Visit __#gardening-general__, our main event channel.
 * [Master schedule](schedule.md)
+* [Slack map](slack-map.md)
 * [What to hack](what-to-hack.md)
 * [Hackathon logistics](hack-logistics.md)
-* [Slack map](slack-map.md)
+* [Development environments](dev-environment.md)
+* [Developing plugins](developing-plugins.md)
 * [Read about prizes](prizes.md)
 * [Spinnaker-hackathon Github organizaion](https://github.com/spinnaker-hackathon)
 * [Spinnaker Gardening repository](https://github.com/spinnaker-hackathon/gardening)
