@@ -6,7 +6,7 @@ sidebar:
 ---
 
 {% include alpha version="1.19.4" %}
-
+> This guide is a work in progress.
 
 {% include toc %}
 
