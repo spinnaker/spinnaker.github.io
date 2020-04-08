@@ -4,7 +4,7 @@ title:  "Plugin Development at Spinnaker Gardening Days"
 sidebar:
   nav: community
 ---
-The Spinnaker plugin framework simplifies loading and managing third-party plugins. This makes it easier to extend Spinnaker, and to share and evolve those extensions throughout their lifecycles. At this stage, the new plugin framework has a growing list of well-defined extension points. It's time for the community to begin leveraging those extension points to add functionality to Spinnaker, and to explore development of new extension points.
+The Spinnaker plugin framework simplifies loading and managing third-party extensions. This makes it easier to extend and integrate with Spinnaker, and to share and evolve those extensions throughout their lifecycles. At this stage, the new plugin framework has a growing list of well-defined extension points. It's time for the community to begin leveraging those extension points to add functionality to Spinnaker, and to explore development of new extension points.
 
 ## Intro to plugins assignment at Spinnaker Gardening Days
 
