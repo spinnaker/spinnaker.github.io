@@ -19,6 +19,12 @@ First things first, to develop Spinnaker, you'll need a Spinnaker instance. To g
 ## Minnaker method
 If you're not sure which method to choose, we suggest following [these instructions to install Minnaker](https://github.com/armory/minnaker) in your chosen environment. This simplifies installation steps, and uses lightweight Kubernetes [(K3S)](https://k3s.io/) under the hood. Install in a cloud VM or a local Ubuntu 18.04 VM.
 
+### <a href="https://youtu.be/xSZlWf9rUI4" target="_blank">Developing for Spinnaker With Minnaker (15m 26s)</a>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xSZlWf9rUI4" frameborder="0" allowfullscreen></iframe>
+
+Learn how to install Minnaker, set up remote SSH, and connect to the local VM instance via local Spinnaker service configuration. Use kubectl port forwarding to connect a local clone of Orca to Redis and Front50 in Minnaker. Test and debug Orca by setting a break point in the stage task and running the stage._
+
 ### Set up local development environment
 1. Install your IDE. These instructions target [IntelliJ IDEA](https://www.jetbrains.com/idea/download/#section=mac).
 2. Git clone the [Spinnaker service(s)](https://github.com/spinnaker) you will debug or extend.
