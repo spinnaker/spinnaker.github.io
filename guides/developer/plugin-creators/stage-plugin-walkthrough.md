@@ -6,7 +6,7 @@ sidebar:
 ---
 
 {% include alpha version="1.19.4" %}
-> This guide is a work in progress.
+> This guide is a work in progress. Help us improve the content by submitting a pull request!
 
 {% include toc %}
 
@@ -69,47 +69,39 @@ Plugin-Class: io.armory.plugin.stage.wait.random.RandomWaitPlugin
 ```
 
 
-# Running `random-wait-orca` in Orca
+# Debugging `random-wait-orca` in Orca locally
 
-@TODO
+> Help us improve this section by submitting a pull request!
 
-install correct version of jdk
-
-clone orca branch release-1.19.x
-
-import into IntelliJ
-
-build plugin, copy `.plugin-ref` copy steps from pf4jStagePlugin README (add screenshots?)
+1. Ensure your development environment is set up to run Orca locally.
+1. Clone Orca branch release-1.19.x
+1. Import into IntelliJ
+1. Follow the steps in the [Debugging](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin#debugging) section of the pf4jStagePlugin README.
 
 
-# Running `random-wait-deck` in Deck
+# Debugging `random-wait-deck` in Deck locally
 
-Obtain the Deck release-1.19.x branch.
+> Help us improve this section by submitting a pull request!
 
-Create a folder called `plugins` in the `deck` directory. Copy `RandomWaitStageIndex.js` to the new directory.
+1. Obtain the Deck release-1.19.x branch.
+1. Create a folder called `plugins` in the `deck` directory. Copy `RandomWaitStageIndex.js` to the new directory.
+1. Add to  `deck\plugin-manifest.json`:
 
+	```json
+	[
+	  {
+		"id": "Armory.RandomWaitPlugin",
+		"version": "1.0.16",
+		"url": "/plugins/RandomWaitStageIndex.js>"
+	  }
+	]
+	```
 
-Add to  `deck\plugin-manifest.json`:
-
-```json
-[
-  {
-	"id": "Armory.RandomWaitPlugin",
-	"version": "1.0.16",
-	"url": "/plugins/RandomWaitStageIndex.js>"
-  }
-]
-```
-
-Start Deck and navigate to the Pipeline creation screen. Verify that `Random Wait` is an option in the Stage drop-down.
-
-@TODO
-
-add troubleshooting
+1. Start Deck and navigate to the Pipeline creation screen. Verify that `Random Wait` is an option in the Stage drop-down.
 
 # Plugin build and configuration files
 
-@TODO
+> Help us improve this section by submitting a pull request!
 
 `build.gradle`
 - `spinnakerBundle` section

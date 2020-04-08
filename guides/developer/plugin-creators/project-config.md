@@ -6,7 +6,7 @@ sidebar:
 ---
 
 {% include alpha version="1.19.4" %}
-> This guide is a work in progress.
+> This guide is a work in progress. Help us improve the content by submitting a pull request!
 
 {% include toc %}
 
@@ -25,8 +25,7 @@ Some important aspects of your project's gradle build:
 
 ### gradle.properties
 
-This is optional, but externalizes the versions of tooling and API dependencies
-from your build script.
+Organizing these values into gradle.properties is optional, but these versions are very much mandatory.
 
 ```
 spinnakerGradleVersion=7.5.2
@@ -127,7 +126,7 @@ spinnakerPlugin {
    and metadata generation.
 2. Spinnaker services require JDK 1.8 compatible bytecode.
 3. Enable pf4j annotation processing to build plugin extension metadata
-4. The plugin APIs are marked as `compileOnly` so as to not include them in the resulting plugin jar. These dependencies must be loaded from the service's classloader, not the plugin classloader.
+4. The plugin APIs are marked as `compileOnly` so as to not include them in the resulting plugin jar. These dependencies are loaded from the service's classloader, not the plugin classloader.
 5. You can include additional dependencies that your plugin requires. These dependencies will be bundled into the plugin and in a private classloader for the plugin.
 6. The `spinnakerPlugin` block is used to generate plugin and bundle metadata. The `serviceName` is the spinnaker service this plugin extends (and should match the service api dependency brought in in `(4)` above).
 
@@ -137,13 +136,15 @@ With the gradle configuraton above, you should be able to import your plugin int
 
 ### UI-extension IDE configuration
 
-**TODO**
+> Help us improve this section by submitting a pull request!
 
 ### Service-extension IDE configuration
 
+> Help us improve this section by submitting a pull request!
+
 #### Plugin debugging in a local service
 
-If you have a local instance of a host service (in the plugin example this is `orca`) running, you can link your plugin into that service with a `plugin-ref` that points to your local development workspace.
+If you have a local instance of a host service (in the pf4jStagePlugin example this is `orca`) running, you can link your plugin into that service with a `plugin-ref` that points to your local development workspace.
 
 There are two options, depending on how you run the host service:
 
