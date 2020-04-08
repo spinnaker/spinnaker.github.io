@@ -455,6 +455,8 @@ guides:
           url: /guides/user/managed-delivery/environment-constraints/
         - title: Artifacts
           url: /guides/user/managed-delivery/artifacts/
+        - title: Pinning an Environment
+          url: /guides/user/managed-delivery/pinning/
         - title: Resource Status
           url: /guides/user/managed-delivery/resource-status/
         - title: API
