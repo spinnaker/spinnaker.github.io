@@ -11,17 +11,23 @@ sidebar:
 
 # Requirements
 * Spinnaker 1.19.4
-* Halyard 1.34
-* pf4jStagePlugin 1.0.17
+* Halyard 1.33
+* pf4jStagePlugin 1.0.16
+
+# Caveats with Halyard 1.33
+
+* Halyard does not update the plugin configuration when you run `hal plugins edit`. You must manually update the `.hal\config` entry.
+* Halyard does not tell Orca where to look for the plugin. Navigate to `.hal/default/profiles` and create an `orca-local.yml` file with this content:
+
+	```yaml
+    spinnaker.extensibility.plugins-root-path: /opt/orca/plugins
+	```
 
 # Steps
-1. Download pf4jStagePlugin 1.0.17.  Unzip `pf4jStagePlugin-v1.0.17.zip` and then unzip `deck.zip`. Move the `RandomWaitStageIndex.js` file to a publicly accessible location that supports CORs, such as an AWS S3 bucket.
 
-	```shell
-	wget https://github.com/spinnaker-plugin-examples/pf4jStagePlugin/releases/download/v1.0.17/pf4jStagePlugin-v1.0.17.zip
-	unzip pf4jStagePlugin-v1.0.17.zip
-	unzip deck.zip
-	```
+1. Download  [`RandomWaitStageIndex.js`](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin/releases/download/v1.0.16/RandomWaitStageIndex.js) and move the file to a publicly accessible location that supports CORs, such as an AWS S3 bucket.
+
+1. Create the `orca-local.yml` file (see above)
 
 1. Configure the plugin repository and redeploy Spinnaker
 
@@ -53,7 +59,7 @@ sidebar:
           id: Armory.RandomWaitPlugin
           enabled: true
           uiResourceLocation: https://aimeeu-plugins.s3.us-east-2.amazonaws.com/RandomWaitStageIndex.js
-          version: 1.0.17
+          version: 1.0.16
           extensions:
             armory.randomWaitStage:
               id: armory.randomWaitStage
@@ -76,11 +82,9 @@ sidebar:
           defaultMaxWaitTime: 60
 	```
 
+
 1. Redeploy Spinnaker
 
 	```shell
 	hal deploy apply
 	```
-
-1. a
-1. a
