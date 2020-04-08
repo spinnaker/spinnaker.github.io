@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Development Environments for Spinnaker Gardening Days"
+title:  "Plugin Development at Spinnaker Gardening Days"
 sidebar:
   nav: community
 ---

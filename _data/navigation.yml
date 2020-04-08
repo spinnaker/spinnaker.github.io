@@ -734,6 +734,8 @@ community:
         url: /community/gardening/slack-map/
       - title: Dev Environments
         url: /community/gardening/dev-environment/
+      - title: Developing Plugins
+        url: /community/gardening/developing-plugins/
       - title: Prizes
         url: /community/gardening/prizes/
 news:
