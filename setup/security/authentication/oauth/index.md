@@ -97,15 +97,23 @@ userInfoMapping:
 
 #### Enable your custom provider
 
+Configure your custom OAuth Provider in Halyard
+
 ```
 CLIENT_ID=myClientId
 CLIENT_SECRET=myClientSecret
 
 hal config security authn oauth2 edit \
   --client-id $CLIENT_ID \
-  --client-secret $CLIENT_SECRET \
+  --client-secret $CLIENT_SECRET
+```
+
+Enable the oauth2 Provider in Halyard
+
+```
 hal config security authn oauth2 enable
 ```
+
 
 ## Network architecture and SSL termination
 

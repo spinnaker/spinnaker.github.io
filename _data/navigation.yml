@@ -13,8 +13,8 @@ main:
     url: /success-stories/
   - title: Blog
     url: https://blog.spinnaker.io
-  - title: Publications
-    url: /publications/
+  - title: News
+    url: /news/
 
 concepts:
   - children:
@@ -26,6 +26,8 @@ concepts:
       url: /concepts/pipelines/
     - title: Providers
       url: /concepts/providers/
+    - title: Read eBook
+      url: /concepts/ebook/
 
 setup:
   - title: Try it out
@@ -206,6 +208,8 @@ setup:
         children:
           - title: Set Up Continuous Integration
             url: /setup/ci/
+          - title: AWS CodeBuild
+            url: /setup/ci/codebuild/
           - title: Google Cloud Build
             url: /setup/ci/gcb/
           - title: Jenkins
@@ -715,11 +719,29 @@ community:
     url: /community/security/
   - title: Usage Stats
     url: /community/stats
-
-publications:
-  - title: eBook
-    url: /publications/ebook/
-  - title: Presentations and Videos
-    url: /publications/presentations/
-  - title: Articles
-    url: /publications/articles/
+  - title: Captain's Log
+    url: /community/captains-log/
+  - title: Spinnaker Gardening Days
+    url: /community/gardening/
+    children:
+      - title: Schedule
+        url: /community/gardening/schedule/
+      - title: Hackathon Logistics
+        url: /community/gardening/hack-logistics/
+      - title: What to Hack
+        url: /community/gardening/what-to-hack/
+      - title: Slack Map
+        url: /community/gardening/slack-map/
+      - title: Dev Environments
+        url: /community/gardening/dev-environment/
+      - title: Prizes
+        url: /community/gardening/prizes/
+news:
+  - title: Sign Up
+    url: /news/signup
+  - title: Latest
+    url: /news/latest/
+  - title: Editions
+    url: /news/editions/
+  - title: Archive
+    url: /news/archive/

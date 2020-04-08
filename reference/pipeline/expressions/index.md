@@ -287,8 +287,8 @@ Source code for the expression language is in the [spinnaker/orca
 repository](https://github.com/spinnaker/orca), mostly in the following classes:
 
 * [ContextParameterProcessor class](https://github.com/spinnaker/orca/blob/master/orca-core/src/main/java/com/netflix/spinnaker/orca/pipeline/util/ContextParameterProcessor.java)
-* [ExpressionsSupport class](https://github.com/spinnaker/orca/blob/master/orca-core/src/main/java/com/netflix/spinnaker/orca/pipeline/expressions/ExpressionsSupport.java)
-* Subclasses of [ExpressionFunctionProvider](https://github.com/spinnaker/orca/blob/master/orca-core/src/main/java/com/netflix/spinnaker/orca/pipeline/expressions/ExpressionFunctionProvider.kt)
+* [ExpressionsSupport class](https://github.com/spinnaker/kork/blob/master/kork-expressions/src/main/java/com/netflix/spinnaker/kork/expressions/ExpressionsSupport.java)
+* Subclasses of [ExpressionFunctionProvider](https://github.com/spinnaker/kork/blob/master/kork-expressions/src/main/kotlin/com/netflix/spinnaker/kork/expressions/ExpressionFunctionProvider.kt)
 
 
 ## Pipeline expression implementation
