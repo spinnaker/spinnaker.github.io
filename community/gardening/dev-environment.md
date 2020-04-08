@@ -23,7 +23,7 @@ If you're not sure which method to choose, we suggest following [these instructi
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/xSZlWf9rUI4" frameborder="0" allowfullscreen></iframe>
 
-Learn how to install Minnaker, set up remote SSH, and connect to the local VM instance via local Spinnaker service configuration. Use kubectl port forwarding to connect a local clone of Orca to Redis and Front50 in Minnaker. Test and debug Orca by setting a break point in the stage task and running the stage._
+_Learn how to install Minnaker, set up remote SSH, and connect to the local VM instance via local Spinnaker service configuration. Use kubectl port forwarding to connect a local clone of Orca to Redis and Front50 in Minnaker. Test and debug Orca by setting a break point in the stage task and running the stage._
 
 ### Set up local development environment
 1. Install your IDE. These instructions target [IntelliJ IDEA](https://www.jetbrains.com/idea/download/#section=mac).
