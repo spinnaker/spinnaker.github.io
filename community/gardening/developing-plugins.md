@@ -8,7 +8,7 @@ The Spinnaker plugin framework simplifies loading and managing third-party exten
 
 ## Intro to plugins assignment at Spinnaker Gardening Days
 
-To jump into Spinnaker plugins, start by creating a custom separate stage plugin. This will help you become familiar with using the framework. For your first plugin project, we recommend that you leverage the new SimpleStage extension point to add your custom pipeline stage to Spinnaker. Read more in the [Plugin Creators Guide](https://www.spinnaker.io/guides/developer/plugin-creators/).
+To jump into Spinnaker plugins, start by creating a custom separate stage plugin. This will help you become familiar with the framework. For your first plugin project, we recommend that you use the new `SimpleStage` extension point to add your custom pipeline stage to Spinnaker. Read more in the [Plugin Creators Guide](https://www.spinnaker.io/guides/developer/plugin-creators/).
 
 __Consult these guides to get started. Check this page for more plugin training videos, to be added soon!__
 
