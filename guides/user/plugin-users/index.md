@@ -11,7 +11,7 @@ sidebar:
   <strong>Note:</strong> Plugins are an early alpha feature that is under active development and will likely change.
 </div>
 
-In this guide, you add an existing plugin from an [example repository](https://github.com/spinnaker-plugin-examples/examplePluginRepository) to Spinnaker. See the [Plugin Creators Guide](/guides/developer/plugin-creators) for how to create a plugin.
+In this guide, you add an existing plugin from an [example repository](https://github.com/spinnaker-plugin-examples/examplePluginRepository) to Spinnaker. See the [Plugin Creators Guide](/guides/developer/plugin-creators/overview/) for how to create a plugin.
 
 # Requirements
 
