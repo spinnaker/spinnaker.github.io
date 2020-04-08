@@ -20,23 +20,23 @@ sidebar:
 
 # pf4jStagePlugin plugin
 
-The [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin) creates a custom pipeline stage that waits a number of seconds before signaling success. The plugin consists of a `random-weight-orca` [Kotlin](https://kotlinlang.org/docs/reference/) server component and a `random-wait-deck` [React](https://reactjs.org/) UI component.
+The [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin) creates a custom pipeline stage that waits a number of seconds before signaling success. The plugin consists of a `random-wait-orca` [Kotlin](https://kotlinlang.org/docs/reference/) server component and a `random-wait-deck` [React](https://reactjs.org/) UI component.
 
 This is a very simplistic plugin for educational purposes only. You can use this plugin as a starting point to create a custom pipeline stage.
 
-## `random-weight-orca`
+## `random-wait-orca`
 
 This component implements the [SimpleStage](https://github.com/spinnaker/orca/blob/ab89a0d7f847205ccd62e70f8a714040a8621ee7/orca-api/src/main/java/com/netflix/spinnaker/orca/api/SimpleStage.java) PF4J extension point in Orca and  consists of five classes in the `io.armory.plugin.state.wait.random` package:
 
 * `Context.kt`: a data class that stores the `maxWaitTime` value; `SimpleStage` uses `Context`
 * `Output.kt`: a data class that stores the `timeToWait` getValue; this data is returned to the extension point implementation and can be used in later stages
-* `RandomWeightConfig.kt`: a data class with the `@ExtensionConfiguration` tag; key-value pairs in this class map to the plugin's configuration
-* `RandomWeightInput.kt`: a data class that contains the key-values pairs that we care about from the Context map
+* `RandomWaitConfig.kt`: a data class with the `@ExtensionConfiguration` tag; key-value pairs in this class map to the plugin's configuration
+* `RandomWaitInput.kt`: a data class that contains the key-values pairs that we care about from the Context map
 * `RandomWaitPlugin.kt`: this is the plugin's main class; implements `SimpleStage`
 
 Watch a [video walkthrough](https://youtu.be/b7BmMY1kR10) and read [code comments](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin/tree/master/random-wait-orca/src/main/kotlin/io/armory/plugin/stage/wait/random) for more information.
 
-## `random-weight-deck`
+## `random-wait-deck`
 
 This component uses the [`rollup.js`](https://rollupjs.org/guide/en/#plugins-overview) plugin library to create a UI widget for Deck.
 
