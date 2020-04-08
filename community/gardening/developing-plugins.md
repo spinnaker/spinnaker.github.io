@@ -10,7 +10,7 @@ The Spinnaker plugin framework simplifies loading and managing third-party plugi
 
 To jump into Spinnaker plugins, start by creating a custom separate stage plugin. This will help you become familiar with using the framework. For your first plugin project, we recommend that you leverage the new SimpleStage extension point to add your custom pipeline stage to Spinnaker. Read more in the [Plugin Creators Guide](https://www.spinnaker.io/guides/developer/plugin-creators/).
 
-__Consult these guides to get started on your project. Check this guide for more plugin training videos, to be added soon!__
+__Consult these guides to get started. Check this page for more plugin training videos, to be added soon!__
 
 ### <a href="https://youtu.be/b7BmMY1kR10" target="_blank">How to build a Plugin: Creating a Spinnaker-native custom stage (16m 55s)</a>
 
