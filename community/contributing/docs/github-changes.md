@@ -9,7 +9,7 @@ sidebar:
 
 # Open a pull request on GitHub
 
-1. Navigate to the [Spinnaker documentation repository](https://github.com/spinnaker/spinnaker.github.io). Note that the top navigation of Spinnaker.io corresponds to folder names to help you find the file you're looking for.
+1. Navigate to the [Spinnaker documentation repository](https://github.com/spinnaker/spinnaker.github.io). Note that the top navigation of Spinnaker.io corresponds to folder names. Use them as a reference to help you find the file you're looking for.
 2. On the page where you see the issue, select the pencil icon at the top right. You can also scroll to the bottom of the page and select **Edit this page**.
 3. Make your changes in the GitHub markdown editor.
 4. Below the editor, fill in the **Propose file change** form.
@@ -23,7 +23,7 @@ sidebar:
   For example:
 
   ```
-   docs(plugins): add documentation for plugin creators
+  docs(plugins): add documentation for plugin creators
   ```
 
   For more information, see [commit message guidelines](https://www.spinnaker.io/community/contributing/submitting/#commit-message-conventions).
@@ -33,6 +33,7 @@ sidebar:
 5. Select **propose file change**.
 
 6. Select **create pull request**.
+
 7. After the **open a pull request** screen appears, fill in the form with the following information:
 
   - The **subject** field of the pull request defaults to the commit summary. Please change this to add a brief summary of your PR changes.

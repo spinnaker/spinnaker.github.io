@@ -111,7 +111,11 @@ Avoid jargon and idioms to help non-native English speakers understand the conte
 
 ### Avoid statements about the future
 
-If you need to write about an alpha feature, use  `{% include alpha version="<version>" %}` to denote the Spinnaker version. You can also put the note or under a heading that identifies it as alpha information. However, do not include statements about when the feature will no longer be alpha, or what will change.
+If you need to write about an alpha feature, use the `alpha` include tag to denote the Spinnaker version. You can also put a note under a heading that identifies it as alpha information. However, do not include statements about when the feature will no longer be alpha, or what will change.
+
+`alpha` include example:
+
+{% include alpha version="1.19.4" %}
 
 ### Avoid statements that will soon be out of date
 
@@ -180,6 +184,7 @@ For example:
 | Open the `/.hal/config` file. | Open the /.hal/config file.|
 
 ### Lists
+
 Group items in a list that are related to each other. Use a numbered list for instructions that need to be completed in a specific order.
 
  - End each item in a list with a period if one or more items in the list are complete sentences. For the sake of consistency, normally either all items or none should be complete sentences.
@@ -190,6 +195,7 @@ Group items in a list that are related to each other. Use a numbered list for in
  - List items may consist of multiple paragraphs. Each subsequent paragraph in a list item must be indented by either four spaces or one tab.
  - Indent nested list items by either four spaces or one tab.
  - The first line of a code block should be indented four spaces. For example, an ordered list with a code block looks like this in Markdown:
+
 	~~~
 	1. Do this
 	1. Do this
@@ -204,7 +210,7 @@ Group items in a list that are related to each other. Use a numbered list for in
 	1. Do the next thing
 	~~~
 
-	The rendered output look like:
+	The rendered output looks like:
 
 	1. Do this
 	1. Do this
@@ -227,11 +233,17 @@ See the [Markdown Guide](https://www.markdownguide.org/basic-syntax/#lists) for 
 Use meaningful variable names that have a context rather than  'foo','bar', and similar meaningless variable names.
 
 Use a single backtick (\`) to surround inline code in a Markdown document. In Markdown:
+
 ~~~~~~~~~
 Run `hal deploy apply` to deploy Spinnaker.
 ~~~~~~~~~
 
+renders as:
+
+Run `hal deploy apply` to deploy Spinnaker.
+
 Use triple backticks to enclose a code block. In Markdown:
+
 ~~~~~~~~~
 ```json
 {
@@ -241,6 +253,16 @@ Use triple backticks to enclose a code block. In Markdown:
 }
 ```
 ~~~~~~~~~
+
+renders as:
+
+```json
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "age": 25
+}
+```
 
 Remove trailing spaces in all code blocks.
 
@@ -265,10 +287,10 @@ The output is similar to this:
 
 For field values of type string or integer, use code style instead of quotation marks.
 
-| **Do**                                   | **Do Not**                              |
-|:---------------------------------------- |:--------------------------------------- |
+| **Do** | **Do Not** |
+|:----- |:---------- |
 | Set the value of `enabled` to `True`.    | Set the value of `enabled` to "True".   |
-| Set the value of `image` to `nginx:1.8`. | Set the value of `image` to "nginx:1.8. |
+| Set the value of `image` to `nginx:1.8`. | Set the value of `image` to "nginx:1.8." |
 | Set the value of `maxWaitTime` to `30`.  | 'Set the value of `maxWaitTime` to "30".' |
 
 ## Versioning Spinnaker examples

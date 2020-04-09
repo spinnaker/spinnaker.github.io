@@ -9,7 +9,7 @@ sidebar:
 
 {% include toc %}
 
-In this guide, you add an existing plugin from an [example repository](https://github.com/spinnaker-plugin-examples/examplePluginRepository) to Spinnaker. See the [Plugin Creators Guide](/guides/developer/plugin-creators) for how to create a plugin.
+In this guide, you add an existing plugin from an [example repository](https://github.com/spinnaker-plugin-examples/examplePluginRepository) to Spinnaker. See the [Plugin Creators Guide](/guides/developer/plugin-creators/overview/) for how to create a plugin.
 
 # Requirements
 
