@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Make a Change Using the GitHub UI"
+title:  "Make a Change Using the GitHub Web UI"
 sidebar:
   nav: community
 ---
@@ -42,7 +42,6 @@ Before a pull request is merged, Spinnaker community members will review it. If 
 # What to do if you're asked to make changes
 
 1. Go to the **Files changed** tab in GitHub.
-1. Select the edit (pencil) icon on any files that were changed by the pull request.
 1. Make the requested changes.
 1. Commit the changes.
 
