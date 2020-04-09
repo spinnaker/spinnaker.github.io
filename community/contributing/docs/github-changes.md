@@ -9,7 +9,7 @@ sidebar:
 
 # Open a pull request on GitHub
 
-1. Navigate to the [Spinnaker documentation repository](https://github.com/spinnaker/spinnaker.github.io). Note that the top navigation of Spinnaker.io corresponds to folder names to help you find the file you're looking for.
+1. Navigate to the [Spinnaker documentation repository](https://github.com/spinnaker/spinnaker.github.io). Note that the top navigation of Spinnaker.io corresponds to folder names. Use them as a reference to help you find the file you're looking for.
 1. On the page where you see the issue, select the pencil icon at the top right. You can also scroll to the bottom of the page and select **Edit this page**.
 1. Make your changes in the GitHub markdown editor.
 1. Below the editor, fill in the **Propose file change** form.
