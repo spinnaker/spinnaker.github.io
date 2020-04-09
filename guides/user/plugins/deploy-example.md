@@ -16,7 +16,7 @@ sidebar:
 
 # Caveats with Halyard 1.33
 
-* Halyard does not update the plugin configuration when you run `hal plugins edit`. You must manually update the `.hal\config` entry.
+* Halyard does not update the plugin configuration when you run `hal plugins edit`. You must manually update the `.hal/config` entry.
 * Halyard does not tell Orca where to look for the plugin. Navigate to `.hal/default/profiles` and create an `orca-local.yml` file with this content:
 
 	```yaml
@@ -28,9 +28,9 @@ These issues are fixed in Halyard 1.34.
 
 1. Download  [`RandomWaitStageIndex.js`](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin/releases/download/v1.0.16/RandomWaitStageIndex.js) and move the file to a publicly accessible location that supports CORs, such as an AWS S3 bucket.
 
-1. Create the `orca-local.yml` file (see above)
+1. Create the `orca-local.yml` file (see above).
 
-1. Configure the plugin repository and redeploy Spinnaker
+1. Configure the plugin repository and redeploy Spinnaker.
 
 	```shell
 	hal plugins repository add spinnaker-plugin-examples \
@@ -38,7 +38,7 @@ These issues are fixed in Halyard 1.34.
 	hal deploy apply
 	```
 
-1. Add the pf4jStagePlugin
+1. Add the pf4jStagePlugin.
 
 	```shell
 	hal plugins add Armory.RandomWaitPlugin \
@@ -84,7 +84,7 @@ These issues are fixed in Halyard 1.34.
 	```
 
 
-1. Redeploy Spinnaker
+1. Redeploy Spinnaker.
 
 	```shell
 	hal deploy apply
