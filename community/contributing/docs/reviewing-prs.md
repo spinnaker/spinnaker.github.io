@@ -9,13 +9,11 @@ sidebar:
 
 # Review a pull request
 
-```
 Anyone can review a documentation pull request. Visit the [pull requests](https://github.com/spinnaker/spinnaker.github.io/pulls) section in the Spinnaker website repository to see a list of all currently open pull requests.
 
 Reviewing documentation pull requests is a great way to get started contributing to the Spinnaker community. It helps you to learn the code base, and builds rapport with other contributors.
 
 Before reviewing code, do the following:
-```
 
 1. Read the [documentation style guide](https://www.spinnaker.io/community/contributing/docs/docs-style-guide/) so that you can leave informed feedback.
 
@@ -68,6 +66,4 @@ When reviewing a PR, use the following questions as a starting point.
 
 # Other
 
-```
 For small issues with a PR, like typos or whitespace, prefix your comments with nit:. This lets the author know the issue is non-critical.
-```
