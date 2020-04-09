@@ -7,14 +7,13 @@ sidebar:
 
 {% include toc %}
 
-
 This page gives writing style guidelines for the Spinnaker documentation. Since these are guidelines, not rules, use your best judgment when creating content. Feel free to propose changes to this document in a pull request.
 
-If you have a style question that isn't answered in this guide, ask the SIG Docs team in the `#sig-documentation` channel.
+If you have a style question that isn't answered in this guide, ask the SIG Docs team in the [Spinnaker Slack](https://join.spinnaker.io) `#sig-documentation` channel.
 
 ## Language
 
-The Spinnaker documentation uses U.S. English spelling and grammar. However, use the international standard for punctuation inside quotes.
+The Spinnaker documentation uses U.S. English spelling and grammar. However, use the international standard for putting punctuation outside of quotation marks.
 
 |**Do** |**Do Not**|
 |:------|:---------|
@@ -112,7 +111,7 @@ Avoid jargon and idioms to help non-native English speakers understand the conte
 
 ### Avoid statements about the future
 
-If you need to write about an alpha feature, put the text in a note or under a heading that identifies it as alpha information.
+If you need to write about an alpha feature, use  `{% include alpha version="<version>" %}` to denote the Spinnaker version. You can also put the note or under a heading that identifies it as alpha information. However, do not include statements about when the feature will no longer be alpha, or what will change.
 
 ### Avoid statements that will soon be out of date
 
@@ -128,13 +127,13 @@ Avoid using words like "currently" and "new." A feature that is new today might 
 ### Use sentence capitalization for headings
 
 ~~~~~~~~~
-# Creating a custom webhook stage
+# Create a custom webhook stage
 
-## Configuring parameters for custom webhook stages
+## Configure parameters for custom webhook stages
 ~~~~~~~~~
 
 ### Line breaks
-U#se a single newline to separate block-level content like headings, lists, images, code blocks, paragraphs, and others.
+Use a single newline to separate block-level content like headings, lists, images, code blocks, paragraphs, and others.
 
 ### Use camel case for API objects
 
@@ -184,41 +183,42 @@ For example:
 Group items in a list that are related to each other. Use a numbered list for instructions that need to be completed in a specific order.
 
  - End each item in a list with a period if one or more items in the list are complete sentences. For the sake of consistency, normally either all items or none should be complete sentences.
- - Use the number one (1.) for ordered lists.
+ - Use the number one `1.` for each item in an ordered list.
  - Use (+), (* ), or (-) for unordered lists.
  - Leave a blank line after each list.
- - Indent nested lists with four spaces (for example, ⋅⋅⋅⋅).
+ - Indent nested list items with one tab
  - List items may consist of multiple paragraphs. Each subsequent paragraph in a list item must be indented by either four spaces or one tab.
- - The first line of a code block should be indented four spaces
+ - Indent nested list items by either four spaces or one tab.
+ - The first line of a code block should be indented four spaces. For example, an ordered list with a code block looks like this in Markdown:
+	~~~
+	1. Do this
+	1. Do this
+	1. Do this
+	1. Run these commands:
 
-For example, an ordered list with a code block looks like this in Markdown:
-~~~
-1. Do this
-1. Do this
-1. Do this
-1. Run these commands:
+	    ```
+		  curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/debian/InstallHalyard.sh
+		  sudo bash InstallHalyard.sh
+		```
 
-    ```
-	  curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/debian/InstallHalyard.sh
-	  sudo bash InstallHalyard.sh
-	```
+	1. Do the next thing
+	~~~
 
-1. Do the next thing
-~~~
+	The rendered output look like:
 
-The rendered output look like:
+	1. Do this
+	1. Do this
+	1. Do this
+	1. Run these commands:
 
-1. Do this
-1. Do this
-1. Do this
-1. Run these commands:
+	    ```
+		curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/debian/InstallHalyard.sh
+		sudo bash InstallHalyard.sh
+		```
 
-    ```
-	curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/debian/InstallHalyard.sh
-	sudo bash InstallHalyard.sh
-	```
+	1. Do the next thing
 
-1. Do the next thing
+See the [Markdown Guide](https://www.markdownguide.org/basic-syntax/#lists) for more list examples.
 
 ## Inline code formatting
 
@@ -263,12 +263,13 @@ The output is similar to this:
 
 ### Use normal style for string and integer field values
 
-For field values of type string or integer, use normal style without quotation marks.
+For field values of type string or integer, use code style instead of quotation marks.
 
-|**Do** |**Do Not**|
-|:------|:---------|
-Set the value of `enabled` to True. | Set the value of `enabled` to "True".
-Set the value of `image` to nginx:1.8. | Set the value of `image` to `nginx:1.8`.
+| **Do**                                   | **Do Not**                              |
+|:---------------------------------------- |:--------------------------------------- |
+| Set the value of `enabled` to `True`.    | Set the value of `enabled` to "True".   |
+| Set the value of `image` to `nginx:1.8`. | Set the value of `image` to "nginx:1.8. |
+| Set the value of `maxWaitTime` to `30`.  | 'Set the value of `maxWaitTime` to "30".' |
 
 ## Versioning Spinnaker examples
 
@@ -280,11 +281,11 @@ If the information is version specific, the Spinnaker version needs to be define
 
 A list of Spinnaker-specific terms and words to be used consistently across the site:
 
-| **Do**                         | **Do Not**                                                         |
-|:------------------------------ |:------------------------------------------------------------------ |
-| Kubernetes                     | kubernetes                           |
-| Docker                         | docker                               |
-| SIG Docs                       | SIG Docs rather than SIG-DOCS or other variations.                 |
-| On-premises                    | On-premises or On-prem rather than On-premise or other variations. |
-| Halyard                        | halyard                                                                   |
-| Operator or Spinnaker Operator | operator or Spinnaker operator  |                                                                 
+| **Do**   | **Do Not**  |
+|:----|:-----|
+| Kubernetes | kubernetes |
+| Docker  | docker |
+| SIG Docs  | SIG-DOCS or other variations.  |
+| On-premises or on-prem | On-premise or other variations. |  
+| Halyard | halyard |
+| Operator or Spinnaker Operator | operator or Spinnaker operator |
