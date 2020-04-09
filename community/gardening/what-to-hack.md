@@ -35,5 +35,5 @@ Not sure where to get started contributing to Spinnaker? May we suggest:
 
 * Run through a [Spinnaker codelab](/guides/tutorials/codelabs/). Document and file any issues you encounter [here](https://github.com/spinnaker/spinnaker.github.io/issues/) when you come across them.
 
-* Drop in to #sig- channels and ask what they are working on to learn more.
+* Drop in to `#sig-` channels and ask what they are working on to learn more.
 
