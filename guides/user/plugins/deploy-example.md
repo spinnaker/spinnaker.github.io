@@ -31,14 +31,13 @@ These issues are fixed in Halyard 1.34.
 
 2. Create the `orca-local.yml` file in `.hal/default/profiles`. If you are using Halyard 1.33, see [Known Issues](#known-issues).
 
-3. Configure the plugin repository and redeploy Spinnaker:
+3. Configure the plugin repository:
 
 	```shell
   # Configure the plugin repository
 	hal plugins repository add spinnaker-plugin-examples \
 	  --url=https://raw.githubusercontent.com/spinnaker-plugin-examples/examplePluginRepository/master/repositories.json
 	# Apply your changes and deploy Spinnaker
-  hal deploy apply
 	```
 
 1. Add the pf4jStagePlugin:
