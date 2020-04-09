@@ -393,8 +393,13 @@ guides:
         url: /guides/user/tagging/
       - title: Custom Instance Links
         url: /guides/user/instance-links/
-      - title: Plugin Users Guide
-        url: /guides/user/plugin-users/
+      - title: Plugins
+        collapsed: true
+        children:
+          - title: Users Guide
+            url: /guides/user/plugins/user-guide/
+          - title: pf4jStagePlugin Deployment Example
+            url: /guides/user/plugins/deploy-example/
       - title: Kubernetes (Manifest Based)
         collapsed: true
         children:
@@ -455,6 +460,8 @@ guides:
           url: /guides/user/managed-delivery/environment-constraints/
         - title: Artifacts
           url: /guides/user/managed-delivery/artifacts/
+        - title: Pinning an Environment
+          url: /guides/user/managed-delivery/pinning/
         - title: Resource Status
           url: /guides/user/managed-delivery/resource-status/
         - title: API
@@ -734,6 +741,8 @@ community:
         url: /community/gardening/slack-map/
       - title: Dev Environments
         url: /community/gardening/dev-environment/
+      - title: Developing Plugins
+        url: /community/gardening/developing-plugins/
       - title: Prizes
         url: /community/gardening/prizes/
 news:
