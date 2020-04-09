@@ -11,7 +11,7 @@ sidebar:
   <strong>Note:</strong> Plugins are an early alpha feature that is under active development and will likely change.
 </div>
 
-This guide is for creating a new plugin to Spinnaker. For information about how to use an existing plugin, see [Plugin Users Guide](/guides/user/plugin-users/).
+This guide is for creating a new plugin to Spinnaker. For information about how to use an existing plugin, see [Plugin Users Guide](/guides/user/plugins/user-guide/).
 
 # Create the Backend For Stage Plugins
 
