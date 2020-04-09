@@ -16,11 +16,14 @@ First things first, to develop Spinnaker, you'll need a Spinnaker instance. To g
 * [Clone and install each Spinnaker service locally.](#classic-local-installation-method)
 * [Install Spinnaker to your Kubernetes cluster](#kubernetes-installation-methods), running in your cloud provider or private cloud of choice. Read more about the [Kubernetes & Docker method](#kubernetes-and-docker-method) below.
 
-## Classic local installation method
-Follow the [Getting Set Up](https://www.spinnaker.io/guides/developer/getting-set-up/) guide to install Spinnaker locally.
-
 ## Minnaker method
 If you're not sure which method to choose, we suggest following [these instructions to install Minnaker](https://github.com/armory/minnaker) in your chosen environment. This simplifies installation steps, and uses lightweight Kubernetes [(K3S)](https://k3s.io/) under the hood. Install in a cloud VM or a local Ubuntu 18.04 VM.
+
+### <a href="https://youtu.be/xSZlWf9rUI4" target="_blank">Developing for Spinnaker With Minnaker (15m 26s)</a>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xSZlWf9rUI4" frameborder="0" allowfullscreen></iframe>
+
+_Learn how to install Minnaker, set up remote SSH, and connect to the local VM instance via local Spinnaker service configuration. Use kubectl port forwarding to connect a local clone of Orca to Redis and Front50 in Minnaker. Test and debug Orca by setting a break point in the stage task and running the stage._
 
 ### Set up local development environment
 1. Install your IDE. These instructions target [IntelliJ IDEA](https://www.jetbrains.com/idea/download/#section=mac).
@@ -105,9 +108,8 @@ If you're not sure which method to choose, we suggest following [these instructi
         `kubectl --kubeconfig config-minnaker -n spinnaker port-forward spin-front50-64ddf796bf-gznqj 8080:8080`
 8. __Now you're ready to run and debug the service or services!__
 
-
-
-
+## Classic local installation method
+Follow the [Getting Set Up](https://www.spinnaker.io/guides/developer/getting-set-up/) guide to install Spinnaker locally.
 
 ## Kubernetes and Docker method:
 
