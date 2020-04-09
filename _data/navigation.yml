@@ -723,7 +723,7 @@ community:
         children:
           - title: Docs Style Guide
             url: /community/contributing/docs/docs-style-guide/
-          - title: Make a Change Using the GitHub UI
+          - title: Make a Change Using the GitHub Web UI
             url: /community/contributing/docs/github-changes/
   - title: Governance
     url: https://github.com/spinnaker/governance/
