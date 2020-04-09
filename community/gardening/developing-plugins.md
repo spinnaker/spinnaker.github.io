@@ -26,13 +26,13 @@ _This video focuses on creating a presentation layer for Deck using TypeScript a
 
 ### <a href="https://www.youtube.com/watch?v=-AIOXdgvNqs" target="_blank">How to build a PLUGIN: The build process for a Spinnaker plugin (4m 53s)</a>
 
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=-AIOXdgvNqs" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-AIOXdgvNqs" frameborder="0" allowfullscreen></iframe>
 
 This video focuses on the Gradle build process for packaging plugin development projects, using the custom stage plugin as an example.
 
 ### <a href="https://www.youtube.com/watch?v=G2eyc9gzNS0" target="_blank">How to build a PLUGIN: Delivering a plugin to your Spinnaker environment (10m 53s)</a>
 
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=G2eyc9gzNS0" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/G2eyc9gzNS0" frameborder="0" allowfullscreen></iframe>
 
 This video focuses on delivering a plugin to a running Spinnaker instance for integration testing and beyond. It uses the custom stage plugin as an example.
 
