@@ -168,6 +168,9 @@ chime_user:
 ep_user:
   image_path: assets/images/users/ep_logo.jpg
   alt: "EP Logo" 
+adevinta_user:
+  image_path: assets/images/users/adevinta_logo.png
+  alt: "Adevinta Logo" 
 ---
 
 The Spinnaker OSS project was started at Netflix. Now, it thrives on the contributions of the broader DevOps community who have adopted it as their Continuous Delivery tool. 
@@ -313,6 +316,10 @@ You can read more about how you can get involved through project SIGs, roles, an
     {% include spinnaker_user id="waze_user" %}
     {% include spinnaker_user id="weatherbug_user" %}
     {% include spinnaker_user id="xiaohongshu_user" %}
+
+  </div>
+    <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="adevinta_user" %}
 
   </div>
 

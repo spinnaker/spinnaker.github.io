@@ -208,6 +208,8 @@ setup:
         children:
           - title: Set Up Continuous Integration
             url: /setup/ci/
+          - title: AWS CodeBuild
+            url: /setup/ci/codebuild/
           - title: Google Cloud Build
             url: /setup/ci/gcb/
           - title: Jenkins
@@ -453,6 +455,8 @@ guides:
           url: /guides/user/managed-delivery/environment-constraints/
         - title: Artifacts
           url: /guides/user/managed-delivery/artifacts/
+        - title: Pinning an Environment
+          url: /guides/user/managed-delivery/pinning/
         - title: Resource Status
           url: /guides/user/managed-delivery/resource-status/
         - title: API
@@ -726,7 +730,23 @@ community:
     url: /community/stats
   - title: Captain's Log
     url: /community/captains-log/
-
+  - title: Spinnaker Gardening Days
+    url: /community/gardening/
+    children:
+      - title: Schedule
+        url: /community/gardening/schedule/
+      - title: Hackathon Logistics
+        url: /community/gardening/hack-logistics/
+      - title: What to Hack
+        url: /community/gardening/what-to-hack/
+      - title: Slack Map
+        url: /community/gardening/slack-map/
+      - title: Dev Environments
+        url: /community/gardening/dev-environment/
+      - title: Developing Plugins
+        url: /community/gardening/developing-plugins/
+      - title: Prizes
+        url: /community/gardening/prizes/
 news:
   - title: Sign Up
     url: /news/signup
