@@ -725,6 +725,11 @@ community:
         url: /community/contributing/releasing/
       - title: Code Conventions for Server-side Components
         url: /community/contributing/back-end-code/
+      - title: Documentation
+        collapsed: true
+        children:
+          - title: Docs Style Guide
+            url: /community/contributing/docs/docs-style-guide/
   - title: Governance
     url: https://github.com/spinnaker/governance/
   - title: FAQs
