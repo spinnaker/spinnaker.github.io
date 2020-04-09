@@ -52,4 +52,4 @@ Before a pull request is merged, Spinnaker community members will review it. If 
 
 # Need help? Get in touch!
 
-If you run into any issues, don't hesitate to reach out to us. We're here to help. Please post a message in the `#sig-documentation` [Slack Channel](https://join.spinnaker.io/), and someone will get back to you!
+If you run into any issues, don't hesitate to reach out to us. We're here to help. Please post a message in the `#sig-documentation` [Slack Channel](https://app.slack.com/client/T091CRSGH/CMPS49682), and someone will get back to you!
