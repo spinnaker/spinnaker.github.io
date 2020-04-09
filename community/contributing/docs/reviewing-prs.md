@@ -11,22 +11,22 @@ sidebar:
 
 Anyone can review a documentation pull request. Visit the [pull requests](https://github.com/spinnaker/spinnaker.github.io/pulls) section in the Spinnaker website repository to see a list of all currently open pull requests.
 
-Reviewing documentation pull requests is a great way to get started contributing to the Spinnaker community. It helps you to learn the code base, and builds rapport with other contributors.
-
-Before reviewing code, do the following:
-
-1. Read the [documentation style guide](https://www.spinnaker.io/community/contributing/docs/docs-style-guide/) so that you can leave informed feedback.
+Reviewing documentation pull requests is a great way to get started contributing to the Spinnaker community. It helps you to learn the code base and builds rapport with other contributors.
 
 # Before you begin
+
+Before reviewing documentation, do the following:
+
+Read the [documentation style guide](https://www.spinnaker.io/community/contributing/docs/docs-style-guide/) so that you can leave informed feedback.
 
 1. Review the [code of conduct](https://github.com/spinnaker/spinnaker.github.io/blob/master/community/contributing/code-of-conduct.md) and ensure that you abide by it at all times.
 2. Be polite, helpful, and considerate of others.
 3. Comment on positive aspects of a PR, as well as changes.
-4. Be empathetic, and mindful of how your changes or review may be received.
+4. Be empathetic and mindful of how your changes or review may be received.
 5. Ask clarifying questions if something in a PR is unclear.
 6. Assume positive intent.
 7. If you are an experienced contributor, consider pairing with new contributors whose work requires extensive changes.
-8. Be mindful of the needs of contributors that are neurodivergent or have a learning disability. Ask your fellow contributors how they work best, and what communication style they prefer.
+8. Be mindful of the needs of contributors that are neurodivergent or have a learning disability. Ask your fellow contributors how they work best and what communication style they prefer.
 
 # Start the review process
 
@@ -39,7 +39,7 @@ Before reviewing code, do the following:
   - Questions
   - no-lifecycle
 
-    Additionally, make sure the PR isn't marked as a work in progress (WIP). PRs using the WIP label are not ready for review yet.
+    If a PR is labelled `draft PR` it means that the contributor would like feedback on their PR throughout the review process. Reviewers should encourage new contributors to use **draft PRs** rather than open a pull request.
 
   - Once you've found a PR to review, understand the change by:
 
@@ -55,15 +55,15 @@ Before reviewing code, do the following:
 
 # Reviewing checklist
 
-When reviewing a PR, use the following questions as a starting point.
+When reviewing a PR, use the following questions as a starting point:
 
 - Are there any obvious errors in grammar or language?
 - Is there a better way to phrase something?
 - Are there words, phrases, or terms that should be replaced with a non-discriminatory alternative?
 - Does the word choice, punctuation, and capitalization follow the [style guide](https://www.spinnaker.io/community/contributing/docs/docs-style-guide/)?
-- Are there long sentences which could be shorter, or made less complex?
+- Are there long sentences which could be shorter or made less complex?
 - Are there long paragraphs which would work better as a bulleted list or table?
 
 # Other
 
-For small issues with a PR, like typos or whitespace, prefix your comments with nit:. This lets the author know the issue is non-critical.
+For small issues with a PR, like typos or whitespace, prefix your comments with "nit:". This lets the author know the issue is non-critical.
