@@ -480,7 +480,14 @@ guides:
       - title: Kubernetes CRD extensions
         url: /guides/developer/crd-extensions/
       - title: Plugin Creators Guide
-        url: /guides/developer/plugin-creators/
+        collapsed: true
+        children:
+          - title: Overview
+            url: /guides/developer/plugin-creators/overview/
+          - title: Pipeline Stage Plugin Walkthrough
+            url: /guides/developer/plugin-creators/stage-plugin-walkthrough/
+          - title: Plugin Project Configuration
+            url: /guides/developer/plugin-creators/project-config/
   - title: Operator How-Tos
     collapsed: true
     children:
