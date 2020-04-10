@@ -25,7 +25,7 @@ If using other networking modes like 'bridge', you don't need to setup any furth
 
 ### Service-Linked IAM Roles
 
-In Spinnaker versions 1.19 and above, the Amazon ECS cloud provider requires service-linked roles for Amazon ECS and Application Auto Scaling.  To create the required service-linked roles, run the following commands.
+In Spinnaker versions 1.19 and later, the Amazon ECS cloud provider requires service-linked roles for Amazon ECS and Application Auto Scaling.  To create the required service-linked roles, run the following commands.
 
 ```
 aws iam create-service-linked-role --aws-service-name ecs.amazonaws.com
