@@ -7,9 +7,9 @@ sidebar:
 
 {% include toc %}
 
-# Review a pull request
+# Review a Pull request
 
-Anyone can review a documentation pull request. Visit the [pull requests](https://github.com/spinnaker/spinnaker.github.io/pulls) section in the Spinnaker website repository to see a list of all currently open pull requests.
+Anyone can review a documentation pull request (PR). Visit the [**Pull requests**](https://github.com/spinnaker/spinnaker.github.io/pulls) section in the Spinnaker website repository to see a list of all currently open pull requests.
 
 Reviewing documentation pull requests is a great way to get started contributing to the Spinnaker community. It helps you to learn the code base and builds rapport with other contributors.
 
@@ -17,7 +17,7 @@ Reviewing documentation pull requests is a great way to get started contributing
 
 Before reviewing documentation, do the following:
 
-Read the [documentation style guide](https://www.spinnaker.io/community/contributing/docs/docs-style-guide/) so that you can leave informed feedback.
+Read the [documentation style guide](/community/contributing/docs/docs-style-guide/) so that you can leave informed feedback.
 
 1. Review the [code of conduct](https://github.com/spinnaker/spinnaker.github.io/blob/master/community/contributing/code-of-conduct.md) and ensure that you abide by it at all times.
 2. Be polite, helpful, and considerate of others.
@@ -39,7 +39,13 @@ Read the [documentation style guide](https://www.spinnaker.io/community/contribu
   - Questions
   - no-lifecycle
 
-    If a PR is labelled `draft PR` it means that the contributor would like feedback on their PR throughout the review process. Reviewers should encourage new contributors to use **draft PRs** rather than open a pull request.
+  PRs have two states, one is **ready for review** and the other is a **draft Pull request**
+
+  If a PR is classified as a [draft pull request](https://github.blog/2019-02-14-introducing-draft-pull-requests/), this means the contributor would like feedback on their PR throughout the review process, and that the PR is **not ready for review or merging**.
+
+  Reviewers should encourage new contributors to make use of **draft PRs** when appropriate.
+
+  If a PR is **ready for review**, reviewers should proceed to the next step in the review process.
 
   - Once you've found a PR to review, understand the change by:
 
@@ -60,7 +66,7 @@ When reviewing a PR, use the following questions as a starting point:
 - Are there any obvious errors in grammar or language?
 - Is there a better way to phrase something?
 - Are there words, phrases, or terms that should be replaced with a non-discriminatory alternative?
-- Does the word choice, punctuation, and capitalization follow the [style guide](https://www.spinnaker.io/community/contributing/docs/docs-style-guide/)?
+- Does the word choice, punctuation, and capitalization follow the [style guide](/community/contributing/docs/docs-style-guide/)?
 - Are there long sentences which could be shorter or made less complex?
 - Are there long paragraphs which would work better as a bulleted list or table?
 
