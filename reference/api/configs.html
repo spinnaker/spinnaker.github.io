@@ -1,0 +1,58 @@
+---
+layout: single
+title:  "Config files reference"
+sidebar:
+  nav: reference
+---
+
+<p>
+Spinnaker services are configured with yaml files.
+Usually they are generated and managed by halyard.
+<br>
+Halyard covers a subset of the available options. This reference contains a broader list.
+<br>
+This reference is generated collecting the outputs from the following json files in the build:
+<code>
+spring-configuration-metadata.json — [SERVICE-NAME]/build/classes/groovy/main/META-INF/spring-configuration-metadata.json
+</code>
+There might be other options not covered here.
+</p>
+
+
+{% for service in site.data.configs %}
+{% assign svc_name = service[0] %}
+<h2>{{ svc_name }}</h2>
+  <h3> Groups </h3>
+  <ul>
+    {% for svc in service[1].groups %}
+      <li>
+        Name: {{ svc.name }} <br>
+        Type: {{ svc.type}} <br>
+        SourceType: {{ svc.sourceType}}
+      </li>
+    {% endfor %}
+  </ul>
+  <h3> Properties </h3>
+  <ul>
+    {% for svc in service[1].properties %}
+      <li>
+        Name: {{ svc.name }} <br>
+        Type: {{ svc.type}} <br>
+        SourceType: {{ svc.sourceType}} <br>
+        Default: {{ svc.defaultValue }}
+      </li>
+    {% endfor %}
+
+</ul>
+
+<h3> Hints </h3>
+
+<ul>
+    {% for svc in service[1].hints %}
+      <li>
+        {{ svc }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endfor %}
+

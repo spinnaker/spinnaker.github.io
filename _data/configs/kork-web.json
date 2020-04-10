@@ -1,0 +1,90 @@
+{
+  "groups": [
+    {
+      "name": "default",
+      "type": "com.netflix.spinnaker.config.TomcatConfigurationProperties",
+      "sourceType": "com.netflix.spinnaker.config.TomcatConfigurationProperties"
+    },
+    {
+      "name": "endpoints.resolved-env",
+      "type": "com.netflix.spinnaker.config.ResolvedEnvironmentConfigurationProperties",
+      "sourceType": "com.netflix.spinnaker.config.ResolvedEnvironmentConfigurationProperties"
+    },
+    {
+      "name": "management.endpoint.resolved-env",
+      "type": "com.netflix.spinnaker.endpoint.ResolvedEnvironmentEndpoint",
+      "sourceType": "com.netflix.spinnaker.endpoint.ResolvedEnvironmentEndpoint"
+    },
+    {
+      "name": "ok-http-client.interceptor",
+      "type": "com.netflix.spinnaker.config.OkHttpMetricsInterceptorProperties",
+      "sourceType": "com.netflix.spinnaker.config.OkHttpMetricsInterceptorProperties"
+    },
+    {
+      "name": "retrofit",
+      "type": "com.netflix.spinnaker.retrofit.RetrofitConfigurationProperties",
+      "sourceType": "com.netflix.spinnaker.retrofit.RetrofitConfigurationProperties"
+    },
+    {
+      "name": "server.ssl",
+      "type": "com.netflix.spinnaker.tomcat.x509.SslExtensionConfigurationProperties",
+      "sourceType": "com.netflix.spinnaker.tomcat.x509.SslExtensionConfigurationProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "default.api-port",
+      "type": "java.lang.Integer",
+      "sourceType": "com.netflix.spinnaker.config.TomcatConfigurationProperties",
+      "defaultValue": -1
+    },
+    {
+      "name": "default.legacy-server-port",
+      "type": "java.lang.Integer",
+      "sourceType": "com.netflix.spinnaker.config.TomcatConfigurationProperties",
+      "defaultValue": -1
+    },
+    {
+      "name": "default.relaxed-path-characters",
+      "type": "java.lang.String",
+      "sourceType": "com.netflix.spinnaker.config.TomcatConfigurationProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "default.relaxed-query-characters",
+      "type": "java.lang.String",
+      "sourceType": "com.netflix.spinnaker.config.TomcatConfigurationProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "endpoints.resolved-env.keys-to-sanitize",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "com.netflix.spinnaker.config.ResolvedEnvironmentConfigurationProperties"
+    },
+    {
+      "name": "management.endpoint.resolved-env.cache.time-to-live",
+      "type": "java.time.Duration",
+      "description": "Maximum time that a response can be cached.",
+      "sourceType": "com.netflix.spinnaker.endpoint.ResolvedEnvironmentEndpoint",
+      "defaultValue": "0ms"
+    },
+    {
+      "name": "management.endpoint.resolved-env.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Whether to enable the resolvedEnv endpoint.",
+      "sourceType": "com.netflix.spinnaker.endpoint.ResolvedEnvironmentEndpoint",
+      "defaultValue": true
+    },
+    {
+      "name": "retrofit.log-level",
+      "type": "retrofit.RestAdapter$LogLevel",
+      "sourceType": "com.netflix.spinnaker.retrofit.RetrofitConfigurationProperties"
+    },
+    {
+      "name": "server.ssl.crl-file",
+      "type": "java.lang.String",
+      "sourceType": "com.netflix.spinnaker.tomcat.x509.SslExtensionConfigurationProperties"
+    }
+  ],
+  "hints": []
+}

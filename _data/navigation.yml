@@ -540,6 +540,8 @@ reference:
     children:
     - title: Docs
       url: /reference/api/docs.html
+    - title: Configs
+      url: /reference/api/configs/
     - title: Swagger UI
       url: /reference/api/swagger-ui/
   - title: Cloud Providers
