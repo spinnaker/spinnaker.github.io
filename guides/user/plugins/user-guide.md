@@ -3,6 +3,8 @@ layout: single
 title:  "Users Guide"
 sidebar:
   nav: guides
+redirect_from:
+  - /guides/user/plugin-users/
 ---
 
 {% include alpha version="1.19.4" %}
