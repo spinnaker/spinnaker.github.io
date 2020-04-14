@@ -3,13 +3,15 @@ layout: single
 title:  "Users Guide"
 sidebar:
   nav: guides
+redirect_from:
+  - /guides/user/plugin-users/
 ---
 
 {% include alpha version="1.19.4" %}
 
 {% include toc %}
 
-In this guide, you add an existing plugin from an [example repository](https://github.com/spinnaker-plugin-examples/examplePluginRepository) to Spinnaker. See the [Plugin Creators Guide](/guides/developer/plugin-creators) for how to create a plugin.
+In this guide, you add an existing plugin from an [example repository](https://github.com/spinnaker-plugin-examples/examplePluginRepository) to Spinnaker. See the [Plugin Creators Guide](/guides/developer/plugin-creators/overview/) for how to create a plugin.
 
 # Requirements
 
