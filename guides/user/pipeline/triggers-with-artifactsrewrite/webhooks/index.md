@@ -7,9 +7,6 @@ sidebar:
 
 {% include toc %}
 
-> This guide assumes that you have enabled the `artifactsRewrite` feature flag.
-> See [Prerequisites](#prerequisites).
-
 In order to programatically trigger pipelines you can send a `POST` call to
 Spinnaker at a preconfigured endpoint. You can use this to trigger pipelines
 when a CI job finishes, from the command line, or from a third-party system.
@@ -24,10 +21,7 @@ If you're triggering from a *GitHub* webhook, see the instructions
 
 ## Prerequisites
 
-* Enable the `artifactsRewrite` feature flag in Spinnaker. In
-  `~/.hal/$DEPLOYMENT/profiles/settings-local.js` (where `$DEPLOYMENT` is
-  typically `default`), add the line
-  `window.spinnakerSettings.feature.artifactsRewrite = true;`.
+* Artifact support [enabled](/reference/artifacts-with-artifactsrewrite//#enabling-artifact-support).
 
 ## Adding a webhook trigger to a pipeline
 

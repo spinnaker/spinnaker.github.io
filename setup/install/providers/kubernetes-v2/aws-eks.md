@@ -116,8 +116,9 @@ users:
 ```bash
 hal config provider kubernetes enable
 hal config provider kubernetes account add ${MY_K8_ACCOUNT} --provider-version v2 --context $(kubectl config current-context)
-hal config features edit --artifacts true
 ```
+
+Finally, enable [artifact support](/reference/artifacts-with-artifactsrewrite//#enabling-artifact-support).
 
 ## Launch and Configure Amazon EKS Worker Nodes
 

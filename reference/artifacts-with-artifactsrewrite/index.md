@@ -7,12 +7,6 @@ sidebar:
 
 {% include toc %}
 
-> The pages in this section assume that you have enabled the `artifactsRewrite`
-> feature flag. In `~/.hal/$DEPLOYMENT/profiles/settings-local.js` (where
-> `$DEPLOYMENT` is typically `default`), add:
->
-> `window.spinnakerSettings.feature.artifactsRewrite = true;`
-
 A Spinnaker artifact is a named JSON object that refers to an external resource.
 
 Spinnaker supports a wide range of providers. An artifact can reference any of many different external resources, such as&#8230;
@@ -27,6 +21,16 @@ Each of these could be fetched using a URI and used within a pipeline, but a URI
 To incorporate metadata such as this along with the resource's URI, Spinnaker artifacts follow a particular specification that includes the human-readable name of the artifact, its URI, and any other applicable metadata. This is called "artifact decoration". Every Spinnaker artifact--whether supplied to a pipeline, accessed within a pipeline, or produced by a pipeline--follows this specification.
 
 Keep in mind that the artifact in Spinnaker is a _reference_ to an external resource--it is not the resource itself. The resource itself could be of any type supported by Spinnaker; the artifact is the named JSON object that contains information about the resource.
+
+## Enabling artifact support
+
+If using a version of Spinnaker prior to 1.20, enable support for the standard artifacts UI:
+
+```bash
+hal config features edit --artifacts-rewrite true
+```
+
+If using a version of Spinnaker greater than or equal to 1.20, support for the standard artifacts UI is enabled by default.
 
 ## The artifact format
 
