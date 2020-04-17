@@ -24,9 +24,9 @@ With this overview of key metrics that indicate Spinnaker health across its serv
 In 2020, the vision of data-driven product development for Spinnaker has taken a big step forward with the implementation of Telemetry. For release 1.18.x, telemetry is opt-in, for testing and fine-tuning. You can help provide a clear picture by turning data collection on in your Spinnaker instance(s) now. As of 1.19.0+, telemetry will be enabled by default. See the linked community stats page for instructions and more info.
 
 
-## [Plugin Creators Guide](https://www.spinnaker.io/guides/user/plugin-users/)
+## [Plugin Creators Guide](/guides/developer/plugin-creators/overview/)
 
-Armory and Netflix engineers have built a plug-in framework that helps you extend Spinnaker without having to add custom stages. The new plugin system allows us to integrate services with Spinnaker outside of runtime, with clearly defined extension points to work from. The new [Plugin Creators Guide](/guides/developer/plugin-creators/) walks us through creating and loading a simple plugin. Use it as a starting point to build your own!
+Armory and Netflix engineers have built a plug-in framework that helps you extend Spinnaker without having to add custom stages. The new plugin system allows us to integrate services with Spinnaker outside of runtime, with clearly defined extension points to work from. The new [Plugin Creators Guide](/guides/developer/plugin-creators/overview/) walks us through creating a simple plugin. Use it as a starting point to build your own!
 
 
 ## [Continuous Delivery Summit Europe](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/program/colocated-events/#continuous-delivery-summit)

@@ -208,6 +208,8 @@ setup:
         children:
           - title: Set Up Continuous Integration
             url: /setup/ci/
+          - title: AWS CodeBuild
+            url: /setup/ci/codebuild/
           - title: Google Cloud Build
             url: /setup/ci/gcb/
           - title: Jenkins
@@ -391,8 +393,13 @@ guides:
         url: /guides/user/tagging/
       - title: Custom Instance Links
         url: /guides/user/instance-links/
-      - title: Plugin Users Guide
-        url: /guides/user/plugin-users/
+      - title: Plugins
+        collapsed: true
+        children:
+          - title: Users Guide
+            url: /guides/user/plugins/user-guide/
+          - title: pf4jStagePlugin Deployment Example
+            url: /guides/user/plugins/deploy-example/
       - title: Kubernetes (Manifest Based)
         collapsed: true
         children:
@@ -453,6 +460,8 @@ guides:
           url: /guides/user/managed-delivery/environment-constraints/
         - title: Artifacts
           url: /guides/user/managed-delivery/artifacts/
+        - title: Pinning an Environment
+          url: /guides/user/managed-delivery/pinning/
         - title: Resource Status
           url: /guides/user/managed-delivery/resource-status/
         - title: API
@@ -471,7 +480,14 @@ guides:
       - title: Kubernetes CRD extensions
         url: /guides/developer/crd-extensions/
       - title: Plugin Creators Guide
-        url: /guides/developer/plugin-creators/
+        collapsed: true
+        children:
+          - title: Overview
+            url: /guides/developer/plugin-creators/overview/
+          - title: Pipeline Stage Plugin Walkthrough
+            url: /guides/developer/plugin-creators/stage-plugin-walkthrough/
+          - title: Plugin Project Configuration
+            url: /guides/developer/plugin-creators/project-config/
   - title: Operator How-Tos
     collapsed: true
     children:
@@ -709,6 +725,13 @@ community:
         url: /community/contributing/releasing/
       - title: Code Conventions for Server-side Components
         url: /community/contributing/back-end-code/
+      - title: Documentation
+        collapsed: true
+        children:
+          - title: Docs Style Guide
+            url: /community/contributing/docs/docs-style-guide/
+          - title: Make a Change Using the GitHub Web UI
+            url: /community/contributing/docs/github-changes/
   - title: Governance
     url: https://github.com/spinnaker/governance/
   - title: FAQs
@@ -719,7 +742,23 @@ community:
     url: /community/stats
   - title: Captain's Log
     url: /community/captains-log/
-
+  - title: Spinnaker Gardening Days
+    url: /community/gardening/
+    children:
+      - title: Schedule
+        url: /community/gardening/schedule/
+      - title: Hackathon Logistics
+        url: /community/gardening/hack-logistics/
+      - title: What to Hack
+        url: /community/gardening/what-to-hack/
+      - title: Slack Map
+        url: /community/gardening/slack-map/
+      - title: Dev Environments
+        url: /community/gardening/dev-environment/
+      - title: Developing Plugins
+        url: /community/gardening/developing-plugins/
+      - title: Prizes
+        url: /community/gardening/prizes/
 news:
   - title: Sign Up
     url: /news/signup

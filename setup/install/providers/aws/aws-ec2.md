@@ -7,6 +7,10 @@ sidebar:
 
 {% include toc %}
 
+> :warning: These instructions are out-of-date and a new version is being
+> worked on. In the meantime, please use the following
+> [AWS install tutorial](https://aws.amazon.com/blogs/opensource/continuous-delivery-spinnaker-amazon-eks/).
+
 In [AWS](https://aws.amazon.com/){:target="\_blank"}, an [__Account__](/concepts/providers/#accounts)
 maps to a credential able to authenticate against a given [AWS
 account](https://aws.amazon.com/account/){:target="\_blank"}.
@@ -93,7 +97,6 @@ After the AWS IAM user, roles, policies and trust relationship have been set up,
 1. Access the Halyard Pod.
 2. Add the configurations for AWS provider with `hal` command. Please check [hal config provider AWS](https://www.spinnaker.io/reference/halyard/commands/#hal-config-provider-aws).
 3. Enable the AWS provider `hal config provider aws enable`.
-4. Apply the configurations to Spinnaker `hal deploy apply`.
 
 ### Configure Halyard to use AccessKeys (if configured)
 
