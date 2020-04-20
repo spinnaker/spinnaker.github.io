@@ -25,7 +25,7 @@ repos you should see.
 
    `hal config ci travis enable`
 
-1. Turn on the Travis stage feature:
+1. If using Spinnaker 1.19 or earlier, turn on the Travis stage feature:
 
    `hal config features edit --travis true`
 

@@ -388,3 +388,15 @@ Extend Spinnaker with [predefined Webhook stages](/guides/operator/custom-webhoo
 ### Custom Job
 
 Extend Spinnaker with [predefined Run Job stages](/guides/operator/custom-job-stages/).
+
+## Hiding Stages
+
+If using Spinnaker 1.20 or later, stages that are not provider-specific will be
+available by default. To hide specific stages from end-users, set the
+`hiddenStages` property in Deck's [custom profile](/reference/halyard/custom/#custom-profile-for-deck)
+to a list of the keys of stages you wish to hide. For example, to hide the
+Gremlin and Travis stages, include the following in `settings-local.js`:
+                                             
+```js
+ window.spinnakerSettings.hiddenStages = ['gremlin', 'travis'];
+```
