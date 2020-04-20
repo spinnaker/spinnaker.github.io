@@ -138,23 +138,19 @@ environments:
   notifications: # omitted for brevity
   constraints: []
   resources: # details omitted for brevity
-  - apiVersion: ec2.spinnaker.netflix.com/v1
-    kind: cluster
+  - kind: ec2/cluster@v1
     # details
-  - apiVersion: ec2.spinnaker.netflix.com/v1
-    kind: classic-load-balancer
-    # details    
+  - kind: ec2/classic-load-balancer@v1
+    # details
 - name: staging
   notifications: # omitted for brevity
   constraints: 
   - type: depends-on
     environment: testing
   resources: # details omitted for brevity
-  - apiVersion: ec2.spinnaker.netflix.com/v1
-    kind: cluster
+  - kind: ec2/cluster@v1
     # details
-  - apiVersion: ec2.spinnaker.netflix.com/v1
-    kind: classic-load-balancer
+  - kind: ec2/classic-load-balancer@v1
     # details 
 ```
 
