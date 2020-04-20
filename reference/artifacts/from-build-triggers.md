@@ -85,6 +85,10 @@ messageFormat=custom-jar
 customFormat=true
 ```
 
+### Warning
+
+Spinnaker > 1.15.x uses Jinjava 2.2.3 which does not support methods such as `tojson`. Make sure to use supported Jinja syntax
+
 ## Supplied templates
 
 The templates that are supplied with Spinnaker can be found in the

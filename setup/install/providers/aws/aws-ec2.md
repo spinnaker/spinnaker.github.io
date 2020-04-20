@@ -97,7 +97,6 @@ After the AWS IAM user, roles, policies and trust relationship have been set up,
 1. Access the Halyard Pod.
 2. Add the configurations for AWS provider with `hal` command. Please check [hal config provider AWS](https://www.spinnaker.io/reference/halyard/commands/#hal-config-provider-aws).
 3. Enable the AWS provider `hal config provider aws enable`.
-4. Apply the configurations to Spinnaker `hal deploy apply`.
 
 ### Configure Halyard to use AccessKeys (if configured)
 
