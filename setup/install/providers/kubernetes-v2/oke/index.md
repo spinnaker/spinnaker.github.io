@@ -30,9 +30,10 @@ hal config provider kubernetes account add my-k8s-v2-acct \
     --provider-version v2 \
     --context $(kubectl config current-context)
 ```
-Enable the Kubernetes provider and artifacts feature:
+Enable the Kubernetes provider:
 
 ```bash
 hal config provider kubernetes enable
-hal config features edit --artifacts true
 ```
+
+Finally, enable [artifact support](/reference/artifacts-with-artifactsrewrite//#enabling-artifact-support).

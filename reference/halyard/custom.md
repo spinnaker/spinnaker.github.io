@@ -56,12 +56,12 @@ their services by checking `~/.hal/$DEPLOYMENT/history/service-profiles.yml`.
 
 To supply custom settings or new values that override generated settings for the
 Deck UI, you can place them in a file called `settings-local.js`. For
-example, to enable the `artifactsRewrite` feature flag, you can create the
+example, to enable the `chaosMonkey` feature flag, you can create the
 following file:
 
 __`~/.hal/default/profiles/settings-local.js`:__
 ```js
-window.spinnakerSettings.feature.artifactsRewrite = true;
+window.spinnakerSettings.feature.chaosMonkey = true;
 ```
 
 ## Custom Service Settings
