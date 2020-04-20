@@ -122,9 +122,9 @@ fetch your tar archive, untar it, and then deploy the code to App Engine.
 Spinnaker supports deploying Docker containers on the App Engine Flex runtime from images built and stored
 in Google Container Registry from just a gcr.io URL.
 
-You'll find an option in the Create Server Group modal in Deck to use a Container Image as a
-deployment's Source Type. Selecting the Container Image option reveals a textbox that can then be used to specify the gcr.io URL.  Alternatively
-you can use an Artifact as the source of the container image URL.
+You'll find an option in the Create Server Group dialog in Deck to use a **Container Image** as a
+deployment's **Source Type**. Selecting the **Container Image** option reveals a textbox that can then be used to specify the gcr.io URL.  Alternatively
+you can use an **Artifact** as the source of the container image URL.
 
 ## Next steps
 
