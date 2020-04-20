@@ -30,7 +30,7 @@ If using a version of Spinnaker prior to 1.20, enable support for the standard a
 hal config features edit --artifacts-rewrite true
 ```
 
-If using a version of Spinnaker greater than or equal to 1.20, support for the standard artifacts UI is enabled by default.
+If using Spinnaker 1.20 or later, support for the standard artifacts UI is enabled by default.
 
 ## The artifact format
 
