@@ -501,6 +501,8 @@ guides:
         url: /guides/operator/webhook-custom-trust-store/
       - title: "Orca: Redis to SQL"
         url: /guides/operator/orca-redis-to-sql/
+      - title: Hiding Stages
+        url: /guides/operator/hiding-stages/
   - title: Runbooks
     collapsed: true
     children:

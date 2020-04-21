@@ -28,7 +28,7 @@ and credentials.
    hal config ci wercker enable
    ```
 
-2. If using Spinnaker 1.19 or earlier, make sure that the Wercker stage feature flag is turned on:
+2. If you're using Spinnaker 1.19 or earlier, make sure that the Wercker stage feature flag is turned on:
 
    ```bash
    hal config features edit --wercker true
