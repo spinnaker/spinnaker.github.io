@@ -209,11 +209,7 @@ hal config provider kubernetes account add my-k8s-v2-account \
     --context $CONTEXT
 ```
 
-You'll also need to run
-
-```bash
-hal config features edit --artifacts true
-```
+Finally, enable [artifact support](/reference/artifacts-with-artifactsrewrite//#enabling-artifact-support).
 
 ## Advanced account settings
 

@@ -7,10 +7,6 @@
  
  {% include toc %}
 
-> This codelab assumes that you have enabled the `artifactsRewrite` feature flag. In `~/.hal/$DEPLOYMENT/profiles/settings-local.js` (where `$DEPLOYMENT` is typically `default`), add:
->
-> `window.spinnakerSettings.feature.artifactsRewrite = true;`
- 
 In this codelab, you will deploy an artifact to Cloud Foundry via a Spinnaker pipeline that is triggered by JAR uploads to a Google Cloud Storage (GCS) bucket.
 
 ## Prerequisites
@@ -19,6 +15,7 @@ This codelab assumes you have the following:
 
 1. A billing-enabled Google Cloud Platform (GCP) project.
 1. The `gcloud` CLI tool (installed locally on your computer).
+1. Artifact support [enabled](/reference/artifacts-with-artifactsrewrite//#enabling-artifact-support).
 
 ## 1. Create a GCS Bucket for Artifact Storage
 
@@ -64,10 +61,9 @@ b. Create a key for the service account and download the key in JSON format to y
 
 ## 4. Tell Spinnaker to Use the Pub/Sub Subscription
 
-a. Enable artifact support, then enable the GCS artifact provider:
+a. Enable the GCS artifact provider:
 
   ```
-  $ hal config features edit --artifacts true
   $ hal config artifact gcs enable
   ```
 

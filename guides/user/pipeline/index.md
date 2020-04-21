@@ -9,8 +9,8 @@ The pipeline is the key deployment management construct in Spinnaker. Here are
 a few guides to help you get started using pipelines:
 
 * [Managing Pipelines](/guides/user/pipeline/managing-pipelines/)
-* [Triggering Pipelines (Standard Artifacts UI)](/guides/user/pipeline/triggers/)
-* [Triggering Pipelines (New Artifacts UI)](/guides/user/pipeline/triggers-with-artifactsrewrite/)
+* [Triggering Pipelines](/guides/user/pipeline/triggers-with-artifactsrewrite/)
+* [Triggering Pipelines (Legacy Artifacts UI)](/guides/user/pipeline/triggers/)
 * [Pipeline Expressions](/guides/user/pipeline/expressions/)
 * [Searching for Triggered Pipeline Executions](/guides/user/pipeline/searching/)
 * [Managing and Using Pipeline Templates](/guides/user/pipeline/pipeline-templates/)

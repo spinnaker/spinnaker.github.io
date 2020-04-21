@@ -7,9 +7,6 @@ sidebar:
 
 {% include toc %}
 
-> This guide assumes that you have enabled the `artifactsRewrite` feature flag.
-> See [Prerequisite configuration/setup](#prerequisite-configurationsetup).
-
 This guide explains how to configure Spinnaker to trigger pipelines based on
 changes in a [Google Cloud Storage](https://cloud.google.com/storage/) (GCS)
 bucket, and inject changed GCS objects as [artifacts](/reference/artifacts)
@@ -40,11 +37,8 @@ You need the following:
 * [A running Spinnaker instance](/setup/install/). This guide shows you how
   to configure an existing one to accept GCS messages, and download the files
   referenced by the messages in your pipelines.
-
-* The `artifactsRewrite` feature flag enabled in Spinnaker. In
-  `~/.hal/$DEPLOYMENT/profiles/settings-local.js` (where `$DEPLOYMENT` is
-  typically `default`), add the line
-  `window.spinnakerSettings.feature.artifactsRewrite = true;`.
+  
+* Artifact support [enabled](/reference/artifacts-with-artifactsrewrite//#enabling-artifact-support).  
 
 At this point, we will configure Pub/Sub, and a GCS artifact account. The
 Pub/Sub messages will be received by Spinnaker whenever a file is uploaded or

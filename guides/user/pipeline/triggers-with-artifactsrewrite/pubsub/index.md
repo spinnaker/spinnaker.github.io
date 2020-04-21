@@ -7,9 +7,6 @@ sidebar:
 
 {% include toc %}
 
-> This guide assumes that you have enabled the `artifactsRewrite` feature flag.
-> See [Prerequisites](#prerequisites).
-
 In order to programatically trigger pipelines one can configure Spinnaker to
 subscribe and listen to a Pub/Sub topic and push messages to the configured
 topic. This can be used to trigger pipelines during CI jobs, from the command line,
@@ -24,10 +21,7 @@ Only Google Pub/Sub is supported. See the instructions
 
 ## Prerequisites
 
-* Enable the `artifactsRewrite` feature flag in Spinnaker. In
-  `~/.hal/$DEPLOYMENT/profiles/settings-local.js` (where `$DEPLOYMENT` is
-  typically `default`), add the line
-  `window.spinnakerSettings.feature.artifactsRewrite = true;`.
+* Artifact support [enabled](/reference/artifacts-with-artifactsrewrite//#enabling-artifact-support).
 
 ## Adding a Pub/Sub trigger to a pipeline
 
