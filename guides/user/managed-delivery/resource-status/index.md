@@ -50,7 +50,7 @@ Example response:
   image_path="./resource-status-created.png"
 %}
 
-When a resource has a Created status, it means Spinnaker has just received the resource’s declarative configuration and hasn't taken any action yet.
+When a resource has this status, it means Spinnaker has just received the resource’s declarative configuration and hasn't taken any action yet.
 
 If the actual state of the resource matches the declarative configuration, the resource will transition to the [Happy](/guides/user/managed-delivery/resource-status/#happy) status the next time Spinnaker checks it.
 
@@ -65,7 +65,7 @@ While Spinnaker is managing a resource, manual changes made via the UI or the AP
   image_path="./resource-status-diff.png"
 %}
 
-When a resource has a Diff status, it means Spinnaker detected a drift from the declarative configuration but hasn't taken any action yet.
+When a resource has this status, it means Spinnaker detected a drift from the declarative configuration but hasn't taken any action yet.
 
 Once Spinnaker starts taking automatic action to correct the drift, the status  changes to [Actuating](/guides/user/managed-delivery/resource-status/#actuating).
 
@@ -78,7 +78,7 @@ While Spinnaker is managing a resource, manual changes made via the UI or the AP
   image_path="./resource-status-actuating.png"
 %}
 
-When a resource has an Actuating status, it means Spinnaker detected a drift from the declarative configuration and automatic action is in progress to resolve it. You can click on "History" to see details about the detected drift and the specific tasks Spinnaker launched, along with whether they succeeded or failed.
+When a resource has this status, it means Spinnaker detected a drift from the declarative configuration and automatic action is in progress to resolve it. You can click on "History" to see details about the detected drift and the specific tasks Spinnaker launched, along with whether they succeeded or failed.
 
 If automatic actions successfully resolve the drift, the status will change to [Happy](/guides/user/managed-delivery/resource-status/#happy). If automatic actions don't help to resolve the drift, the status will change to [Unhappy](/guides/user/managed-delivery/resource-status/#unhappy).
 
@@ -91,7 +91,7 @@ While Spinnaker is managing a resource, manual changes made via the UI or the AP
   image_path="./resource-status-happy.png"
 %}
 
-When a resource has a Happy status, all is well and the actual state of the resource matches its declarative configuration.
+When a resource has this status, all is well and the actual state of the resource matches its declarative configuration.
 
 If Spinnaker detects a drift from the declarative configuration in the future, the resource status will change to [Diff](/guides/user/managed-delivery/resource-status/#diff). Once Spinnaker starts taking automatic action to correct the drift, the status will change to [Actuating](/guides/user/managed-delivery/resource-status/#actuating).
 
@@ -104,7 +104,7 @@ While Spinnaker is managing a resource, manual changes made via the UI or the AP
   image_path="./resource-status-unhappy.png"
 %}
 
-When a resource has an Unhappy status, it means Spinnaker detected a drift from the declarative configuration but hasn't been able to resolve it through automatic actions. This might mean that the actions Spinnaker has taken are failing, or something else is preventing the actions from having their desired effect.
+When a resource has this status, it means Spinnaker detected a drift from the declarative configuration but hasn't been able to resolve it through automatic actions. This might mean that the actions Spinnaker has taken are failing, or something else is preventing the actions from having their desired effect.
 
 While a resource is Unhappy, Spinnaker will continue trying to resolve the drift and may eventually succeed. If it does, the resource will transition to the [Happy](/guides/user/managed-delivery/resource-status/#happy) status.
 
@@ -117,7 +117,7 @@ You can click on "History" to see the detected drift along with actions Spinnake
   image_path="./resource-status-paused.png"
 %}
 
-When a resource has a Paused status, it means Spinnaker is configured to continuously manage the resource but you've chosen to temporarily pause management. While management is paused Spinnaker won't check for drift from the declarative configuration, and it won't take any automatic actions. Depending on whether you've paused the specific resource or the entire application, you can either click "Resume management of this resource" or go to the Config view in your app to resume management.
+When a resource has this status, it means Spinnaker is configured to continuously manage the resource but you've chosen to temporarily pause management. While management is paused Spinnaker won't check for drift from the declarative configuration, and it won't take any automatic actions. Depending on whether you've paused the specific resource or the entire application, you can either click "Resume management of this resource" or go to the Config view in your app to resume management.
 
 When you resume management the status will change to [Resumed](/guides/user/managed-delivery/resource-status/#resumed).
 
@@ -128,9 +128,23 @@ When you resume management the status will change to [Resumed](/guides/user/mana
   image_path="./resource-status-resumed.png"
 %}
 
-When a resource has a Resumed status, it means management was just resumed after being temporarily paused and Spinnaker hasn't checked for drift from the declarative configuration yet.
+When a resource has this status, it means management was just resumed after being temporarily paused and Spinnaker hasn't checked for drift from the declarative configuration yet.
 
 If a drift is detected, the status will change to [Diff](/guides/user/managed-delivery/resource-status/#diff). If no drift is detected, the status will change to [Happy](/guides/user/managed-delivery/resource-status/#unhappy).
+
+### Currently unresolvable
+{%
+  include
+  figure
+  image_path="./resource-status-currently-unresolvable.png"
+%}
+
+When a resource has this status, it means something Spinnaker requires to properly manage the resource is either not ready yet or temporarily experiencing disruption. Automatic action won't be taken while in this status, but it doesn't necessarily mean something is broken. Some examples of things that might lead to a resource entering this status:
+
+  - A downstream system (like a container registry or cloud provider) temporarily rate limiting or experiencing availability issues
+  - A required part of the resource's desired state (like a VM image) not being available yet
+
+If you see this status and want to investigate the cause, you can click "History" to view additional details and understand what else was happening when the issue began. While you may decide to take some action as a result of this status, it's unlikely the issue requires manual intervention. Once the issue is resolved the resource will transition to whatever status is applicable at the time based on its desired state.
 
 ### Error
 {%
@@ -139,7 +153,7 @@ If a drift is detected, the status will change to [Diff](/guides/user/managed-de
   image_path="./resource-status-error.png"
 %}
 
-When a resource has an Error status, it means something went wrong while trying to check the resource for drift from its declarative configuration. Because something went wrong, Spinnaker can't take automatic actions and drift from the declarative configuration won't be resolved (until something changes). Some examples of problems that might lead to an error status:
+When a resource has this status, it means something went wrong while trying to check the resource for drift from its declarative configuration. Because something went wrong, Spinnaker can't take automatic actions and drift from the declarative configuration won't be resolved (until something changes). Some examples of problems that might lead to an error status:
 
   - A problem retrieving or processing information about the current state of the resource
   - A problem with the declarative configuration (invalid settings, etc.)
@@ -156,7 +170,7 @@ If you see this status, it's probably best to investigate the current state of t
   image_path="./resource-status-unknown.png"
 %}
 
-When a resource has an Unknown status, it means Spinnaker was unable to determine the current status for some reason. Because the status is unknown, it's tough to tell by the status alone whether something is *wrong*, or just unexpected.
+When a resource has this status, it means Spinnaker was unable to determine the current status for some reason. Because the status is unknown, it's tough to tell by the status alone whether something is *wrong*, or just unexpected.
 
 After encountering this status, Spinnaker will continue trying to check the resource for its status and may eventually succeed. If it does, the resource will transition to whatever status is applicable at that time.
 
