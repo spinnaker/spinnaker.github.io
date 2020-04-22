@@ -24,6 +24,8 @@ sidebar:
     spinnaker.extensibility.plugins-root-path: /opt/orca/plugins
 	```
 These issues are fixed in Halyard 1.34.
+* Prior to Spinnaker 1.20.0 and pf4jStagePlugin 1.1.3, plugin users needed to upload their UI plugin bundle to a publicly-accessible static asset server
+  and point to that resource using the `--ui-resource-location` Halyard flag. You may ignore those instructions below if you are using Spinnaker >= 1.20.0 and pf4jStagePlugin >= 1.1.3.
 
 # Steps
 
