@@ -8,8 +8,8 @@ sidebar:
 {% include toc %}
 
 This page describes how to set up a Kubernetes cluster on
-[ACK](https://www.alibabacloud.com/product/kubernetes) to be used as a Spinnaker
-Kubernetes v2 provider.
+[ACK](https://www.alibabacloud.com/product/kubernetes) to be used with Spinnaker's
+Kubernetes provider.
 
 # Create a cluster
 

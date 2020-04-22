@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Kubernetes Provider V2 (Manifest Based)"
+title:  "Kubernetes Provider"
 sidebar:
   nav: setup
 ---
@@ -8,16 +8,14 @@ sidebar:
 
 {% include toc %}
 
-The Spinnaker Kubernetes V2 provider fully supports manifest-based deployments and is the recommended provider for deploying to Kubernetes with Spinnaker.
-[Kubernetes provider V1](https://www.spinnaker.io/setup/install/providers/kubernetes/){:target="\_blank"}
+Spinnaker's Kubernetes provider fully supports Kubernetes-native, manifest-based deployments and is the recommended provider for deploying to Kubernetes with Spinnaker.
+[Spinnaker's legacy Kubernetes provider](https://www.spinnaker.io/setup/install/providers/kubernetes/){:target="\_blank"}
 is [scheduled for removal](https://github.com/spinnaker/governance/blob/master/rfc/eol_kubernetes_v1.md){:target="\_blank"} in Spinnaker 1.21.
 
 ## Accounts
 
-For Kubernetes V2, a Spinnaker [Account](/concepts/providers/#accounts) maps to a
-credential that can authenticate against your Kubernetes Cluster. Unlike with
-the V1 provider, in V2 the Account does not require any Docker Registry
-Accounts.
+A Spinnaker [Account](/concepts/providers/#accounts) maps to a
+credential that can authenticate against your Kubernetes Cluster.
 
 ## Prerequisites
 
@@ -153,14 +151,11 @@ metadata:
 
 <span class="begin-collapsible-section"></span>
 
-## Migrating from the V1 provider
+## Migrating from Spinnaker's legacy Kubernetes provider
 
-> :warning: The V2 provider does __not__ use the [Docker Registry
-> Provider](https://www.spinnaker.io/setup/install/providers/docker-registry/), and we
-> encourage you to stop using the Docker Registry accounts in Spinnaker.  The
-> V2 provider requires that you manage your private registry [configuration and
-> authentication](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)
-> yourself.
+> Prior to the deprecation of Spinnaker's legacy (V1) Kubernetes provider, the
+> standard provider was often referred to as the V2 provider. For clarity, this
+> section refers to the providers as the V1 and V2 providers.
 
 There is no automatic pipeline migration from the V1 provider to V2, for a few
 reasons:
@@ -180,6 +175,13 @@ reasons:
   Kubernetes. To avoid building dense and brittle mappings between Spinnaker's
   logical resources and Kubernetes's infrastructure resources, we chose to
   adopt the Kubernetes resources and operations more natively.
+  
+* The V2 provider does __not__ use the [Docker Registry
+  Provider](https://www.spinnaker.io/setup/install/providers/docker-registry/), and we
+  encourage you to stop using the Docker Registry accounts in Spinnaker.  The
+  V2 provider requires that you manage your private registry [configuration and
+  authentication](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)
+  yourself.
 
 However, you can easily migrate your _infrastructure_ into the V2 provider.
 For any V1 account you have running, you can add a V2 account following the
@@ -204,8 +206,7 @@ Then add the account:
 ```bash
 CONTEXT=$(kubectl config current-context)
 
-hal config provider kubernetes account add my-k8s-v2-account \
-    --provider-version v2 \
+hal config provider kubernetes account add my-k8s-account \
     --context $CONTEXT
 ```
 
