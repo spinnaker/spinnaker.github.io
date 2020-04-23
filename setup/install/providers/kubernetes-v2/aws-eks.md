@@ -3,8 +3,6 @@ layout: single
 title:  "Set up the Kubernetes provider for Amazon EKS"
 sidebar:
   nav: setup
-redirect_from: 
-  - /setup/install/providers/aws/aws-ec2/ 
 ---
 
 {% include toc %}
