@@ -147,7 +147,6 @@ At the end of this guide you will have:
 
    ```bash
    hal config provider kubernetes account add my-test-account \
-     --provider-version v2 \
      --context $(kubectl config current-context)
    ```
 

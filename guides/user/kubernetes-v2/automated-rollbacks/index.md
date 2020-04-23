@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Configure Automated Rollbacks in the Kubernetes Provider V2"
+title:  "Configure Automated Rollbacks in the Kubernetes Provider"
 sidebar:
   nav: guides
 ---
