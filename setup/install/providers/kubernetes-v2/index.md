@@ -177,11 +177,12 @@ reasons:
   adopt the Kubernetes resources and operations more natively.
   
 * The V2 provider does __not__ use the [Docker Registry
-  Provider](https://www.spinnaker.io/setup/install/providers/docker-registry/), and we
-  encourage you to stop using the Docker Registry accounts in Spinnaker.  The
-  V2 provider requires that you manage your private registry [configuration and
-  authentication](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)
-  yourself.
+  Provider](https://www.spinnaker.io/setup/install/providers/docker-registry/).
+  You may still need Docker Registry accounts to trigger pipelines, but
+  otherwise we encourage you to stop using Docker Registry accounts in Spinnaker.
+  The V2 provider requires that you manage your private registry [configuration
+  and authentication](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)
+  yourself.  
 
 However, you can easily migrate your _infrastructure_ into the V2 provider.
 For any V1 account you have running, you can add a V2 account following the
