@@ -49,6 +49,8 @@ setup:
             children:
               - title: Overview
                 url: /setup/install/providers/aws/
+              - title: EC2
+                url: /setup/install/providers/aws/aws-ec2/
               - title: ECS
                 url: /setup/install/providers/aws/aws-ecs/
           - title: Azure
