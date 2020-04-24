@@ -24,10 +24,10 @@ Keep in mind that the artifact in Spinnaker is a _reference_ to an external reso
 
 ## Enabling artifact support
 
-If using a version of Spinnaker prior to 1.20, enable support for the standard artifacts UI:
+If using a version of Spinnaker prior to 1.20, enable support for the standard artifacts UI by editing the `features` section of your Halyard `config` file and adding:
 
-```bash
-hal config features edit --artifacts-rewrite true
+```yaml
+artifactsRewrite: true
 ```
 
 If using Spinnaker 1.20 or later, support for the standard artifacts UI is enabled by default.

@@ -170,9 +170,13 @@ hal config provider kubernetes account add eks-spinnaker --context $CONTEXT
 
 ### 4. Enable artifact support
 
+If using a version of Spinnaker prior to 1.20, edit the `features` section of your Halyard `config` file and add:
+
+```yaml
+artifactsRewrite: true
 ```
-hal config features edit --artifacts true
-```
+
+If using Spinnaker 1.20 or later, support for artifacts is enabled by default.
 
 ### 5. Configure Spinnaker to install in Kubernetes
 
