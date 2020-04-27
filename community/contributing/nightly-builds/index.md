@@ -142,3 +142,11 @@ $ gcloud compute ssh --project spinnaker-community jenkins-transfer --zone us-ce
 ```
 
 The extra `--ssh-flag` establishes a tunnel to the `test-jenkins` instance, which is used to trigger some integration tests. You can view this instance at [http://localhost:4040](http://localhost:4040) after the connection is established.
+
+#### Change to `jenkins` user
+
+All processes are run as the `jenkins` user and most of the useful links are in `/home/jenkins`. Switch to it with:
+
+```bash
+$ sudo su - jenkins
+```
