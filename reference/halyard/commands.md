@@ -4,7 +4,7 @@ title: "Commands"
 sidebar:
   nav: reference
 ---
-Published: 2020-04-23 14:40:16
+Published: 2020-04-27 19:52:22
 
 
 # Table of Contents
@@ -6361,6 +6361,8 @@ hal config features edit [parameters]
 ```
 
 #### Parameters
+ * `--artifacts`: Enable artifact support. Read more at [https://spinnaker.io/reference/artifacts/](https://spinnaker.io/reference/artifacts/)
+ * `--artifacts-rewrite`: Enable new artifact support. Read more at [https://www.spinnaker.io/reference/artifacts-with-artifactsrewrite/](https://www.spinnaker.io/reference/artifacts-with-artifactsrewrite/)
  * `--chaos`: Enable Chaos Monkey support. For this to work, you'll need a running Chaos Monkey deployment. Currently, Halyard doesn't configure Chaos Monkey for you; read more instructions here [https://github.com/Netflix/chaosmonkey/wiki](https://github.com/Netflix/chaosmonkey/wiki).
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--managed-pipeline-templates-v2-ui`: Enable managed pipeline templates v2 UI support.
