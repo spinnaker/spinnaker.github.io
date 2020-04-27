@@ -22,7 +22,7 @@ It also exists as an explanation of certain code paths within Spinnaker which in
 
 Developers who want to implement these features will have to build their own layered version
 of [Clouddriver](https://github.com/spinnaker/clouddriver) -
-  see Adam Jorden's [blog post](https://blog.spinnaker.io/scaling-spinnaker-at-netflix-custom-features-and-packaging-e78536d38040) - and should be familiar with the [Kubernetes V2 provider](/reference/providers/kubernetes-v2) and writing code for Clouddriver.
+  see Adam Jorden's [blog post](https://blog.spinnaker.io/scaling-spinnaker-at-netflix-custom-features-and-packaging-e78536d38040) - and should be familiar with the [Kubernetes provider](/reference/providers/kubernetes-v2) and writing code for Clouddriver.
 
 ## Custom Handlers
 

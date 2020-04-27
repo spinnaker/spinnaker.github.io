@@ -3,6 +3,7 @@ layout: single
 title: "Overview"
 sidebar:
   nav: guides
+redirect-from: /guides/developer/plugin-creators/
 ---
 
 {% include alpha version="1.19.4" %}

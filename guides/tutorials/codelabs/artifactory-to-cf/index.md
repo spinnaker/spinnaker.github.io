@@ -6,10 +6,6 @@
 ---
 
  {% include toc %}
- 
-> This codelab assumes that you have enabled the `artifactsRewrite` feature flag. In `~/.hal/$DEPLOYMENT/profiles/settings-local.js` (where `$DEPLOYMENT` is typically `default`), add:
->
-> `window.spinnakerSettings.feature.artifactsRewrite = true;`
 
 In this codelab, you will deploy an artifact to Cloud Foundry via a Spinnaker pipeline. The pipeline is triggered by an artifact published to a JFrog Artifactory Maven repository or by an app manifest stored in a GitHub repository.
 
@@ -17,6 +13,7 @@ In this codelab, you will deploy an artifact to Cloud Foundry via a Spinnaker pi
 
 This codelab assumes you have the following:
 
+* Artifact support [enabled](/reference/artifacts-with-artifactsrewrite//#enabling-artifact-support).
 * An Artifactory repository configured to accept a Maven artifact&mdash;the JAR for your application
 * A GitHub repository containing a manifest with which to deploy your application
 

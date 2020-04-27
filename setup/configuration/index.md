@@ -202,7 +202,6 @@ kubernetes:
   enabled: true
   accounts:
     - name: default
-      providerVersion: V2
       kubeconfigFile: configserver:kubeconfig.yml
       dockerRegistries:
         - accountName: dockerhub

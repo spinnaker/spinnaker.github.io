@@ -27,4 +27,4 @@ That being said, below are some ways to configure Amazon Web Services (AWS) Clou
 
 * [Amazon Elastic Compute Cloud (EC2)](/setup/install/providers/aws/aws-ec2/) - - Use this option, if you want to manage [EC2 Instances](https://aws.amazon.com/ec2/) via Spinnaker
 * [Amazon Elastic Container Service (ECS)](/setup/install/providers/aws/aws-ecs/) - Use this option, if you want to manage containers in [Amazon ECS](https://aws.amazon.com/ecs/)
-* [Amazon Elastic Kubernetes Service (EKS)](/setup/install/providers/kubernetes-v2/aws-eks/) - Use this option, if you want to manage containers in [Amazon EKS](https://aws.amazon.com/eks/). This option uses [Kubernetes V2 (manifest based) Clouddriver](/setup/install/providers/kubernetes-v2)
+* [Amazon Elastic Kubernetes Service (EKS)](/setup/install/providers/kubernetes-v2/aws-eks/) - Use this option, if you want to manage containers in [Amazon EKS](https://aws.amazon.com/eks/). This option uses [Spinnaker's Kubernetes provider](/setup/install/providers/kubernetes-v2)

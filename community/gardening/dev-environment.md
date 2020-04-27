@@ -155,7 +155,6 @@ _The instructions for this method are in beta. Pull requests welcome!_
     accounts:
       name: kubernetes
       requiredMembership: []
-      providerVersion: V2
       permissions: []
       dockerRegistries: []
       configureImagePullSecrets: true
