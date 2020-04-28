@@ -73,7 +73,7 @@ future patch releases (e.g. `M.N.1`).
 
 ## Upcoming Release Windows
 
-| Version | Window Opens | Release Manager |
+| Version | Window Opens | Release Manager (Slack ID) |
 |-|-|-|
 | `1.20.0` | 2020-04-27 | Ethan Rogers (@ethanfrogers)
 | `1.21.0` | 2020-06-22 | TBD
