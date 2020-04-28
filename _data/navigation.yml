@@ -398,8 +398,8 @@ guides:
         children:
           - title: Users Guide
             url: /guides/user/plugins/user-guide/
-          - title: pf4jStagePlugin Deployment Example
-            url: /guides/user/plugins/deploy-example/
+          #- title: pf4jStagePlugin Deployment Example
+            #url: /guides/user/plugins/deploy-example/
       - title: Kubernetes (Manifest Based)
         collapsed: true
         children:
