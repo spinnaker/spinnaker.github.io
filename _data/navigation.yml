@@ -710,6 +710,8 @@ community:
         url: /community/releases/release-cadence/
       - title: Support Policy
         url: /community/releases/support-policy/
+      - title: Release Manager Runbook
+        url: /community/releases/release-manager-runbook
   - title: Contributing
     collapsed: true
     children:
