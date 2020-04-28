@@ -28,11 +28,12 @@ and credentials.
    hal config ci wercker enable
    ```
 
-2. If you're using Spinnaker 1.19 or earlier, make sure that the Wercker stage feature flag is turned on:
+2. If you're using Spinnaker 1.19 or earlier, enable the Wercker stage by adding
+the following to your [Deck custom profile](/reference/halyard/custom/#custom-profile-for-deck):
 
-   ```bash
-   hal config features edit --wercker true
-   ```
+    ```js
+     window.spinnakerSettings.feature.wercker = true;
+    ```
 
 3. Next, add a Wercker master i.e. a connection to Wercker from Spinnaker.
       ```bash
