@@ -159,8 +159,9 @@ release candidate is now validated and can be tested by running:
     reason to change it (in which case, please also change the default for new
     builds).
     
-1. Approve the spinnaker-announce email (link will come in email). Currently,
-only members of the Google Spinnaker OSS team can approve the email.
+1. Approve the spinnaker-announce email (link will come in email). If this is
+your first release manager rotation, please ask a Google team member to add
+you as a manager to the spinnaker-announce Google group.
 
 1. Deprecate the n-3 release (i.e. when releasing 1.18, deprecate 1.15).
 
