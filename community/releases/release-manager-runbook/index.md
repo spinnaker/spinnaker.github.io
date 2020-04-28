@@ -9,7 +9,7 @@ sidebar:
 
 ## Friday before the release window opens
 
-1. Ping [#dev](https://spinnakerteam.slack.com/messages/dev/) reminding everyone
+Ping [#dev](https://spinnakerteam.slack.com/messages/dev/) reminding everyone
 to merge outstanding changes by Monday:
 
     > The release manager will be cutting the $VERSION release branches on Tuesday,
@@ -19,7 +19,7 @@ to merge outstanding changes by Monday:
 
 ## First Monday of the release window
 
-1. Ping [#dev](https://spinnakerteam.slack.com/messages/dev/) reminding everyone
+Ping [#dev](https://spinnakerteam.slack.com/messages/dev/) reminding everyone
 to merge outstanding changes ASAP:
 
     > The release manager will be cutting the $VERSION release branches tomorrow
@@ -310,5 +310,5 @@ Repeat as needed.
 
 Repeat as needed.
 
-1. Follow the instructions in deck-kayenta’s
+Follow the instructions in deck-kayenta’s
 [README](https://github.com/spinnaker/deck-kayenta#publishing-spinnakerkayenta).
