@@ -462,6 +462,8 @@ guides:
           url: /guides/user/managed-delivery/artifacts/
         - title: Pinning an Environment
           url: /guides/user/managed-delivery/pinning/
+        - title: Marking an Artifact as Bad
+          url: /guides/user/managed-delivery/marking-as-bad/
         - title: Resource Status
           url: /guides/user/managed-delivery/resource-status/
         - title: API
