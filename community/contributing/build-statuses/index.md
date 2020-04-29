@@ -44,20 +44,20 @@ services:
 ## Core Services
 
 {% for svc in page.services.core %}
-  {% capture altTxt%}{{svc | captialize }} Build Status{% endcapture %}
-  {% capture githubStatusImg%}https://github.com/spinnaker/{{svc}}/workflows/{{svc | capitalize}}%20CI/badge.svg{% endcapture %}
+  {% capture altTxt%}{{svc | capitalize }} Build Status{% endcapture %}
+  {% capture githubStatusImg%}https://github.com/spinnaker/{{svc}}/workflows/Branch%20Build/badge.svg{% endcapture %}
   {% capture githubLink%}https://github.com/spinnaker/{{svc}}/actions?query=workflow%3A%22Branch+Build%22+branch%3Amaster{% endcapture%}
 
-  * [![{{altTxt}}]({{githubStatusImg}}){:style="height: 30px"}]({{githubLink}}){:target="\_blank"}
+  * {{svc | capitalize }} [![{{altTxt}}]({{githubStatusImg}}){:style="height: 25px"}]({{githubLink}}){:target="\_blank"}
 {% endfor %}
 
 
 ## Optional and Supporting Services
 
 {% for svc in page.services.supporting %}
-  {% capture altTxt%}{{svc | captialize }} Build Status{% endcapture %}
-  {% capture githubStatusImg%}https://github.com/spinnaker/{{svc}}/workflows/{{svc | capitalize}}%20CI/badge.svg{% endcapture %}
+  {% capture altTxt%}{{svc | capitalize }} Build Status{% endcapture %}
+  {% capture githubStatusImg%}https://github.com/spinnaker/{{svc}}/workflows/Branch%20Build/badge.svg{% endcapture %}
   {% capture githubLink%}https://github.com/spinnaker/{{svc}}/actions?query=workflow%3A%22Branch+Build%22+branch%3Amaster{% endcapture%}
 
-  * [![{{altTxt}}]({{githubStatusImg}}){:style="height: 30px"}]({{githubLink}}){:target="\_blank"}
+  * {{svc | capitalize }} [![{{altTxt}}]({{githubStatusImg}}){:style="height: 25px"}]({{githubLink}}){:target="\_blank"}
 {% endfor %}
