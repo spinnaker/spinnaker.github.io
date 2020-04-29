@@ -9,6 +9,8 @@ redirect_from:
 
 {% include alpha version="1.19.4" %}
 
+>Note: Spinnaker 1.19.x only supports backend plugins due to a bug in Deck.
+
 {% include toc %}
 
 In this guide, you add an existing plugin from an [example repository](https://github.com/spinnaker-plugin-examples/examplePluginRepository) to Spinnaker. See the [Plugin Creators Guide](/guides/developer/plugin-creators/overview/) for how to create a plugin.
