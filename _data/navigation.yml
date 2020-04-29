@@ -462,6 +462,8 @@ guides:
           url: /guides/user/managed-delivery/artifacts/
         - title: Pinning an Environment
           url: /guides/user/managed-delivery/pinning/
+        - title: Vetoing an Artifact
+          url: /guides/user/managed-delivery/vetoing/
         - title: Resource Status
           url: /guides/user/managed-delivery/resource-status/
         - title: API
