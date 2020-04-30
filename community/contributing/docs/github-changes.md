@@ -9,7 +9,7 @@ sidebar:
 
 # Open a pull request on GitHub
 
-1. Click the **Suggest an Edit** link in the upper right hand corner of the Spinnaker documentation page. This takes you to the file in GitHub.
+1. Click the **Suggest an Edit** link in the upper right hand corner of the Spinnaker documentation page. This takes you to the page's source file in GitHub.
 1. Select the pencil icon at the top right. You can also scroll to the bottom of the page and select **Edit this page**.
 1. Make your changes in the GitHub markdown editor.
 1. Below the editor, fill in the **Propose file change** form.
