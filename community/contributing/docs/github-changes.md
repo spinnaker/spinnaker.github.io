@@ -7,44 +7,45 @@ sidebar:
 
 {% include toc %}
 
-# Open a pull request on GitHub
+# Open a pull request (PR) on GitHub
 
-1. Click the **Suggest an Edit** link in the upper right hand corner of the Spinnaker documentation page. This takes you to the page's source file in GitHub.
-1. Select the pencil icon at the top right. You can also scroll to the bottom of the page and select **Edit this page**.
+1. Click the **Suggest an Edit** link on the documentation page you want to update. This takes you to the page's source file in GitHub.
+1. Click the pencil icon to edit the file.
 1. Make your changes in the GitHub markdown editor.
-1. Below the editor, fill in the **Propose file change** form.
+1. Fill in the **Propose file change** form.
 
-  In the **first field**, give your commit message a title that explains what your pull request is about.
+   ![ProposeFileChange](/assets/images/community/contributing/docs/github-propose-file-change-form.jpg)
 
-  The Spinnaker repositories use a PR title checker, so the title of your PR must follow a specific format: `<type>(<scope>): <subject>`.
+   1. Explain what your file change is about in a short summary.
 
-  Make sure you include a space after the colon.
+   2. Provide a clear description of your change. Do not to leave this field blank. It is helpful to reviewers to have additional context about what you changed.
 
-  For example:
 
-  ```
-  docs(plugins): add documentation for plugin creators
-  ```
+1. Click **Propose file change**. This takes you to the **Comparing changes** screen so you can review your changes.
 
-  For more information, see [commit message guidelines](https://www.spinnaker.io/community/contributing/submitting/#commit-message-conventions).
+1. Click **Create pull request**. This takes you to the **Open a pull request** form.
 
-  In the **second field**, provide a clear and detailed description of your PR. Do not to leave these fields blank, as it is helpful to reviewers when merging your request to have additional context as to what your pull request is about.
+1. Fill in the **Open a pull request** form.
 
-1. Select **propose file change**.
+   ![OpenPullRequest](/assets/images/community/contributing/docs/github-open-pull-request.jpg)
 
-1. Select **create pull request**.
+   1. The **Title** defaults to the file change summary. Update the title so it follows the `<type>(<scope>): <subject>` format. Make sure you include a space after the colon. For example:
 
-1. After the **open a pull request** screen appears, fill in the form with the following information:
+      ```
+      docs(plugins): add documentation for plugin creators
+      ```
 
-  - The **subject** field of the pull request defaults to the commit summary. Please change this to add a brief summary of your PR changes.
-  - The **body** contains some template text. Delete this template text, or feel free to use it to help draft your own extended commit message detailing your pull request. PR descriptions are the first step to helping reviewers and project maintainers understand why your change was made. Any description is better than leaving this field blank, and help get your PR merged faster!
-  - Please leave the **allow edits from maintainers** checkbox selected.
+      The Spinnaker repositories use a PR title checker, so your PR will fail if the title is not in the correct format. For more information, see [commit message conventions](/community/contributing/submitting/#commit-message-conventions).
+
+   2. The **Leave a comment** field defaults to the file change description. PR descriptions are the first step to helping reviewers and project maintainers understand why your change was made. Do not leave this field blank. Provide as much description as possible. A good description helps get your PR merged faster!
+
+   3. Leave the **Allow edits from maintainers** checkbox selected.
 
 # Address feedback in GitHub
 
-Before a pull request is merged, Spinnaker community members will review it. If you have a specific person in mind that you would like to review your pull request, [tag them in the issue comments](https://github.blog/2011-03-23-mention-somebody-they-re-notified/) using the @ symbol and then their GitHub username.
+Spinnaker community members will review your pull request. If you have a specific person in mind, [tag them in the issue comments](https://github.blog/2011-03-23-mention-somebody-they-re-notified/) using the @ symbol and then their GitHub username. Reviewers can request changes, leave comments, or approve the pull request.
 
-# What to do if you're asked to make changes
+# What to do if a reviewer asks for changes
 
 1. Go to the **Files changed** tab in GitHub.
 1. Make the requested changes.
@@ -52,4 +53,4 @@ Before a pull request is merged, Spinnaker community members will review it. If 
 
 # Need help? Get in touch!
 
-If you run into any issues, don't hesitate to reach out to us. We're here to help. Please post a message in the `#sig-documentation` [Slack Channel](https://app.slack.com/client/T091CRSGH/CMPS49682), and someone will get back to you!
+Don't hesitate to reach out to the Docs team if you run into any issues. We're here to help. Post a message in the `#sig-documentation` [Slack Channel](https://app.slack.com/client/T091CRSGH/CMPS49682), and someone will get back to you!
