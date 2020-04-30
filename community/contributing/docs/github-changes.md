@@ -10,7 +10,10 @@ sidebar:
 # Open a pull request (PR) on GitHub
 
 1. Click the **Suggest an Edit** link on the documentation page you want to update. This takes you to the page's source file in GitHub.
-1. Click the pencil icon to edit the file.
+1. Click the **Edit this file in the fork of your project** pencil icon to edit the file.
+
+   ![EditFileIcon](/assets/images/community/contributing/docs/github-edit-file-icon.jpg)
+
 1. Make your changes in the GitHub markdown editor.
 1. Fill in the **Propose file change** form.
 
@@ -19,7 +22,6 @@ sidebar:
    1. Explain what your file change is about in a short summary.
 
    2. Provide a clear description of your change. Do not to leave this field blank. It is helpful to reviewers to have additional context about what you changed.
-
 
 1. Click **Propose file change**. This takes you to the **Comparing changes** screen so you can review your changes.
 
