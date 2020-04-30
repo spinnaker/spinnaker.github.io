@@ -7,7 +7,7 @@ sidebar:
 
 {% include toc %}
 
-# Open a pull request on GitHub
+# Open a pull request on GitHub  ABANDON THIS PR
 
 1. Navigate to the [Spinnaker documentation repository](https://github.com/spinnaker/spinnaker.github.io). Note that the top navigation of Spinnaker.io corresponds to folder names. Use them as a reference to help you find the file you're looking for.
 2. On the page where you see the issue, select the pencil icon at the top right. You can also scroll to the bottom of the page and select **Edit this page**.
