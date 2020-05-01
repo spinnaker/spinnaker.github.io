@@ -398,8 +398,8 @@ guides:
         children:
           - title: Users Guide
             url: /guides/user/plugins/user-guide/
-          - title: pf4jStagePlugin Deployment Example
-            url: /guides/user/plugins/deploy-example/
+          #- title: pf4jStagePlugin Deployment Example
+            #url: /guides/user/plugins/deploy-example/
       - title: Kubernetes (Manifest Based)
         collapsed: true
         children:
@@ -462,6 +462,8 @@ guides:
           url: /guides/user/managed-delivery/artifacts/
         - title: Pinning an Environment
           url: /guides/user/managed-delivery/pinning/
+        - title: Marking an Artifact as Bad
+          url: /guides/user/managed-delivery/marking-as-bad/
         - title: Resource Status
           url: /guides/user/managed-delivery/resource-status/
         - title: API
@@ -710,6 +712,8 @@ community:
         url: /community/releases/release-cadence/
       - title: Support Policy
         url: /community/releases/support-policy/
+      - title: Release Manager Runbook
+        url: /community/releases/release-manager-runbook
   - title: Contributing
     collapsed: true
     children:
@@ -734,6 +738,8 @@ community:
             url: /community/contributing/docs/docs-style-guide/
           - title: Make a Change Using the GitHub Web UI
             url: /community/contributing/docs/github-changes/
+          - title: Review a Pull Request
+            url: /community/contributing/docs/reviewing-prs/
   - title: Governance
     url: https://github.com/spinnaker/governance/
   - title: FAQs

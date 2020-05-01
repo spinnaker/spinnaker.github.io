@@ -73,12 +73,12 @@ future patch releases (e.g. `M.N.1`).
 
 ## Upcoming Release Windows
 
-| Version | Window Opens |
-|-|-|
-| `1.18.0` | 2020-01-06 |
-| `1.19.0` | 2020-03-02 |
-| `1.20.0` | 2020-04-27 |
-| `1.21.0` | 2020-06-22 |
+| Version | Window Opens | Release Manager (Slack ID) |
+|-|-|-|
+| `1.20.0` | 2020-04-27 | Ethan Rogers (@ethanfrogers)
+| `1.21.0` | 2020-06-22 | TBD
+| `1.22.0` | 2020-08-17 | TBD
+| `1.23.0` | 2020-10-12 | TBD
 
 > Keep in mind, when the window opens, the release candidate becomes available.
 > The actual release happens one to two weeks later.

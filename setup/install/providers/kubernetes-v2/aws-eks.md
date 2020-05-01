@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Set up a Kubernetes v2 provider for Amazon EKS"
+title:  "Set up the Kubernetes provider for Amazon EKS"
 sidebar:
   nav: setup
 ---
@@ -165,7 +165,7 @@ kubectl config set-context $CONTEXT --user ${CONTEXT}-token-user
 Add `eks-spinnaker` cluster as a Kubernetes provider:
 
 ```
-hal config provider kubernetes account add eks-spinnaker --provider-version v2 --context $CONTEXT
+hal config provider kubernetes account add eks-spinnaker --context $CONTEXT
 ```
 
 ### 4. Enable artifact support

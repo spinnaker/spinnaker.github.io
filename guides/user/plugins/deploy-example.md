@@ -1,6 +1,7 @@
 ---
 layout: single
 title:  "pf4jStagePlugin Deployment Example"
+published: false
 sidebar:
   nav: guides
 ---
