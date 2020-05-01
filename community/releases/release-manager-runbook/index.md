@@ -94,7 +94,10 @@ job:
     
 1. Add the new Flow_BuildAndValidate_${RELEASE} job to the public
 [Build Statuses page](https://www.spinnaker.io/community/contributing/build-statuses/#nightly-and-release-integration-tests).
-Ping [#dev](https://spinnakerteam.slack.com/messages/dev/) with some version of
+Remove the oldest job. For each service under Core Services, add a row for the
+newest release branch, and remove the row for the oldest release branch.
+
+1. Ping [#dev](https://spinnakerteam.slack.com/messages/dev/) with some version of
 this message, including a link to the correct section of the changelog gist:
 
     > The release window for Spinnaker $VERSION is now open!  This means that
