@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Make a Change Using the GitHub Web UI
+title: Make a Change Using a Local Clone
 sidebar:
   nav: community
 ---
@@ -47,23 +47,23 @@ lines, work from a local fork. Make sure you have [git](https://git-scm.com/book
    upstream	https://github.com/spinnaker/spinnaker.github.io (push)
    ```
 
-1. Fetch commits from your fork's `origin/master` and `spinnaker/spinnaker.github.io`'s `upstream/master`:
+## Update your local repository
+
+You should make sure your local repository is up to date before you start making changes. Fetch commits from your fork's `origin/master` and `spinnaker/spinnaker.github.io`'s `upstream/master`:
 
    ```bash
    git fetch origin
    git fetch upstream
    ```
 
-   This makes sure your local repository is up to date before you start making changes.
-
-   >This workflow is different from a source code commit workflow . You do not need to rebase your local copy of `master` with `upstream/master` before pushing updates to your fork. In the documentation workflow, you create a branch that tracks changes to `upstream/master` rather than `origin/master`.
+   >This workflow is different from a source code commit workflow . You do not need to rebase your local copy of `master` with `upstream/master` before pushing updates to your fork. In the documentation workflow, you create a working branch that tracks changes to `upstream/master` rather than `origin/master`.
 
 ## Create a working branch
 
-1. Create a new branch based on `upstream/master`:
+1. Create a new working branch based on `upstream/master`:
 
    ```bash
-   git checkout -b <my-new-branch> upstream/master
+   git checkout -b <your-working-branch> upstream/master
    ```
 
 1.  Make your changes.
@@ -76,7 +76,7 @@ It's a good idea to preview your changes locally before pushing them or opening 
 
 ## Commit your changes
 
-Commit your changes when you are ready to submit a pull request.
+Commit your changes when you are ready to submit a pull request (PR).
 
 1. Check which files you need to commit:
 
@@ -113,111 +113,109 @@ Commit your changes when you are ready to submit a pull request.
 1.  Create a commit:
 
    ```bash
-   git commit -m "Your commit message"
+   git commit -a -m <your-commit-subject> -m <your-commit-description>
    ```
 
-   Your commit message can have a max of 50 characters.
+   - `-a`: Commits all changes.
+   - `-m`: Use the given <msg> as the commit message. If multiple -m options are given, their values are concatenated as separate paragraphs.
+
+   Your commit messages must be 50 characters or less.
 
    > Do not use any [GitHub
    Keywords](https://help.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword) in your commit message. You can add those to the pull request description later.
 
-1. Push your local branch and its new commit to your remote fork:
+1. Push your working branch and its new commit to your remote fork:
 
    ```bash
-   git push origin <my-new-branch>
+   git push origin <your-working-branch>
    ```
 
 ## Open a pull request from your fork to spinnaker/spinnaker.github.io
 
-1. In a web browser, go to the [`spinnaker/spinnaker.github.io`](https://github.com/spinnaker/spinnaker.github.io) repository.
-1. Select **New Pull Request**.
-1. Select **compare across forks**.
-1. From the **head repository** drop-down menu, select your fork.
-1. From the **compare** drop-down menu, select your branch.
-1. Select **Create Pull Request**.
-1. Add a description for your pull request:
-   - **Title** (50 characters or less): Summarize the intent of the change.
-   - **Description**: Describe the change in more detail.
-     - If there is a related GitHub issue, include `Fixes #12345` or `Closes #12345` in the description. GitHub's automation closes the mentioned issue after merging the PR if used. If there are other related PRs, link those as well.
-     - If you want advice on something specific, include any questions you'd like reviewers to think about in your description.
+1. In a web browser, go to the [`spinnaker/spinnaker.github.io`](https://github.com/spinnaker/spinnaker.github.io) repository. You should see your recently pushed working branch and a **Compare & pull request** button.
 
-1. Select the **Create pull request** button.
+   ![CompareAndPullRequest](/assets/images/community/contributing/docs/compare-and-pr.jpg)
 
-  Congratulations! Your pull request is available in [Pull requests](https://github.com/kubernetes/website/pulls).
+1. Click **Compare & pull request**. This takes you to the **Open a pull request** screen.
 
+   ![OpenPullRequest](/assets/images/community/contributing/docs/github-open-pull-request.jpg)
 
-After opening a PR, GitHub runs automated tests and tries to deploy a preview using [Netlify](https://www.netlify.com/).
+   1. The **Title** defaults to the commit subject. Update the title so it follows the `<type>(<scope>): <subject>` format. Make sure you include a space after the colon. For example:
 
-  - If the Netlify build fails, select **Details** for more information.
-  - If the Netlify build succeeds, select **Details** opens a staged version of the Kubernetes website with your changes applied. This is how reviewers check your changes.
+   ```
+   docs(plugins): add documentation for plugin creators
+   ```
 
-GitHub also automatically assigns labels to a PR, to help reviewers. You can add them too, if needed. For more information, see [Adding and removing issue labels](/docs/contribute/review/for-approvers/#adding-and-removing-issue-labels).
+   The Spinnaker repositories use a PR title checker, so your PR will fail if the title is not in the correct format. For more information, see [commit message conventions](/community/contributing/submitting/#commit-message-conventions).
+
+   2. The **Leave a comment** field defaults to the commit description. Pull request descriptions are the first step to helping reviewers and project maintainers understand why your change was made. Do not leave this field blank. Provide as much description as possible. A good description helps get your PR merged faster!
+   3. Leave the **Allow edits from maintainers** checkbox selected.
+   4. Click the **Create pull request** button.
+
+   Congratulations! You can view your submitted pull request on the **Pull requests** [tab](https://github.com/spinnaker/spinnaker.github.io/pulls).
+
+   >Do not delete your working branch until your pull request has been merged!
 
 ## Addressing feedback locally
 
-1. After making your changes, amend your previous commit:
+Reviewers may ask you to make changes to your pull request. Read the feedback and make changes in your working branch.
+
+1. After making your changes, create a new commit:
 
    ```bash
-   git commit -a --amend
+   git commit -a -m <your-commit-subject> -m <your-commit-description>
    ```
 
-   - `-a`: commits all changes
-   - `--amend`: amends the previous commit, rather than creating a new one
+1. Push your changes:
 
-2. Update your commit message if needed.
+   ```bash
+   git push origin <your-working-branch>
+   ```
 
-3. Use `git push origin <my_new_branch>` to push your changes and re-run the Netlify tests.
+## Changes from reviewers
 
-   {{< note >}}
-     If you use `git commit -m` instead of amending, you must [squash your commits](#squashing-commits) before merging.
-   {{< /note >}}
-
-### Changes from reviewers
-
-Sometimes reviewers commit to your pull request. Before making any other changes, fetch those commits.
+Sometimes reviewers commit to your pull request. Fetch those commits before making any other changes.
 
 1. Fetch commits from your remote fork and rebase your working branch:
 
    ```bash
    git fetch origin
-   git rebase origin/<your-branch-name>
+   git rebase origin/<your-working-branch>
    ```
 
-2. After rebasing, force-push new changes to your fork:
+1. After rebasing, force-push new changes to your fork:
 
    ```bash
-   git push --force-with-lease origin <your-branch-name>
+   git push --force-with-lease origin <your-working-branch>
    ```
 
 ### Merge conflicts and rebasing
 
-{{< note >}}
-For more information, see [Git Branching - Basic Branching and Merging](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging#_basic_merge_conflicts), [Advanced Merging](https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging), or ask in the `#sig-docs` Slack channel for help.
-{{< /note >}}
+>For more information, see [Git Branching - Basic Branching and Merging](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging#_basic_merge_conflicts), [Advanced Merging](https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging), or ask in the `#sig-documentation` Slack channel for help.
 
 If another contributor commits changes to the same file in another PR, it can create a merge conflict. You must resolve all merge conflicts in your PR.
 
-1. Update your fork and rebase your local branch:
+1. Update your fork and rebase your working branch:
 
    ```bash
    git fetch origin
-   git rebase origin/<your-branch-name>
+   git rebase origin/<your-working-branch>
    ```
 
    Then force-push the changes to your fork:
 
    ```bash
-   git push --force-with-lease origin <your-branch-name>
+   git push --force-with-lease origin <your-working-branch>
    ```
 
-2. Fetch changes from `kubernetes/website`'s `upstream/master` and rebase your branch:
+1. Fetch changes from `spinnaker/spinnaker.github.io`'s `upstream/master` and rebase your branch:
 
    ```bash
    git fetch upstream
    git rebase upstream/master
    ```
 
-3. Inspect the results of the rebase:
+1. Inspect the results of the rebase:
 
    ```bash
    git status
@@ -225,31 +223,30 @@ If another contributor commits changes to the same file in another PR, it can cr
 
   This results in a number of files marked as conflicted.
 
-4. Open each conflicted file and look for the conflict markers: `>>>`, `<<<`, and `===`. Resolve the conflict and delete the conflict marker.
+1. Open each conflicted file and look for the conflict markers: `>>>`, `<<<`, and `===`. Resolve the conflict and delete the conflict marker.
 
-   {{< note >}}
-   For more information, see [How conflicts are presented](https://git-scm.com/docs/git-merge#_how_conflicts_are_presented).
-   {{< /note >}}
+   >For more information, see [How conflicts are presented](https://git-scm.com/docs/git-merge#_how_conflicts_are_presented).
 
-5. Add the files to the changeset:
+1. Add the files to the changeset:
 
    ```bash
    git add <filename>
    ```
-6.  Continue the rebase:
+
+1.  Continue the rebase:
 
    ```bash
    git rebase --continue
    ```
 
-7.  Repeat steps 2 to 5 as needed.
+1.  Repeat steps 2 to 5 as needed.
 
    After applying all commits, the `git status` command shows that the rebase is complete.
 
-8. Force-push the branch to your fork:
+1. Force-push your working branch to your remote fork:
 
    ```bash
-   git push --force-with-lease origin <your-branch-name>
+   git push --force-with-lease origin <your-working-branch>
    ```
 
    The pull request no longer shows any conflicts.
