@@ -104,13 +104,11 @@ this message, including a link to the correct section of the changelog gist:
     > release branches have been cut from master and those branches are only
     > accepting fixes for existing features.  Please contact $YOUR_NAME
     > (slack: $YOUR_SLACK_ID, github: $YOUR_GITHUB_ID, or email: $YOUR_EMAIL) if you
-    > would like a fix cherry-picked into the release or you would like to highlight
-    > a specific fix or feature in the release’s changelog. If you’d like to jog
-    > your memory of everything to be released with Spinnaker $VERSION, see the raw
-    > changelog here: $LINK_TO_CHANGELOG.
-
-1. Share a curated changelog with any partners from the community who want to
-add notes.
+    > would like a fix cherry-picked into the release. If you would like to highlight
+    > a specific fix or feature in the release’s changelog, please make a pull
+    > request against the [curated changelog](/community/releases/next-release-preview)
+    > by Friday. If you’d like to jog your memory of everything to be released
+    > with Spinnaker $VERSION, see the raw changelog here: $LINK_TO_CHANGELOG.
 
 1. When the Flow_BuildAndValidate_${RELEASE} job passes, ping
 [#dev](https://spinnakerteam.slack.com/messages/dev/) with a message that
@@ -142,8 +140,12 @@ release candidate is now validated and can be tested by running:
     1. Copy the changes for this release from the raw build changelog to the new
     1.nn.0.md file.
 
-    1. Add the notes from the curated changelog to the top of the gist,
-    formatting them for Markdown ([sample 1.nn.0 release notes](https://gist.github.com/spinnaker-release/cc4410d674679c5765246a40f28e3cad)).
+    1. Add the notes from the [curated changelog](/community/releases/next-release-preview)
+    to the top of the gist ([sample 1.nn.0 release notes](https://gist.github.com/spinnaker-release/cc4410d674679c5765246a40f28e3cad)).
+    
+    1. Reset the [curated changelog](/community/releases/next-release-preview)
+    for the next release by removing all added notes and incrementing the version
+    number in the heading.
 
 1. Run Publish_SpinnakerRelease:
 
