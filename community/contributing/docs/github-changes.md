@@ -10,7 +10,7 @@ sidebar:
 # Open a pull request (PR) on GitHub
 
 1. Click the **Suggest an Edit** link on the documentation page you want to update. This takes you to the page's source file in GitHub.
-1. Click the **Edit this file** pencil icon to edit the file.
+1. Click the **Edit this file...** pencil icon to edit the file.
 
    ![EditFileIcon](/assets/images/community/contributing/docs/github-edit-file-icon.jpg)
 
