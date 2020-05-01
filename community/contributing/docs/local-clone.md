@@ -124,24 +124,24 @@ Commit your changes when you are ready to submit a pull request.
 1. Push your local branch and its new commit to your remote fork:
 
    ```bash
-   git push origin <my_new_branch>
+   git push origin <my-new-branch>
    ```
 
 ## Open a pull request from your fork to spinnaker/spinnaker.github.io
 
-1. In a web browser, go to the [`kubernetes/website`](https://github.com/kubernetes/website/) repository.
-2. Select **New Pull Request**.
-3. Select **compare across forks**.
-4. From the **head repository** drop-down menu, select your fork.
-5. From the **compare** drop-down menu, select your branch.
-6. Select **Create Pull Request**.
-7. Add a description for your pull request:
+1. In a web browser, go to the [`spinnaker/spinnaker.github.io`](https://github.com/spinnaker/spinnaker.github.io) repository.
+1. Select **New Pull Request**.
+1. Select **compare across forks**.
+1. From the **head repository** drop-down menu, select your fork.
+1. From the **compare** drop-down menu, select your branch.
+1. Select **Create Pull Request**.
+1. Add a description for your pull request:
    - **Title** (50 characters or less): Summarize the intent of the change.
    - **Description**: Describe the change in more detail.
      - If there is a related GitHub issue, include `Fixes #12345` or `Closes #12345` in the description. GitHub's automation closes the mentioned issue after merging the PR if used. If there are other related PRs, link those as well.
      - If you want advice on something specific, include any questions you'd like reviewers to think about in your description.
 
-8. Select the **Create pull request** button.
+1. Select the **Create pull request** button.
 
   Congratulations! Your pull request is available in [Pull requests](https://github.com/kubernetes/website/pulls).
 
