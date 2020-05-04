@@ -12,20 +12,20 @@ sidebar:
 Ping [#dev](https://spinnakerteam.slack.com/messages/dev/) reminding everyone
 to merge outstanding changes by Monday:
 
-    > The release manager will be cutting the $VERSION release branches on Tuesday,
-    > so if there are any outstanding PRs that you'd like to get into $VERSION,
-    > please make sure they are merged by EOD Monday. Once the branch is cut, only
-    > fixes will be accepted into the release branches.
+> The release manager will be cutting the $VERSION release branches on Tuesday,
+> so if there are any outstanding PRs that you'd like to get into $VERSION,
+> please make sure they are merged by EOD Monday. Once the branch is cut, only
+> fixes will be accepted into the release branches.
 
 ## First Monday of the release window
 
 Ping [#dev](https://spinnakerteam.slack.com/messages/dev/) reminding everyone
 to merge outstanding changes ASAP:
 
-    > The release manager will be cutting the $VERSION release branches tomorrow
-    > morning, so if there are any outstanding PRs that you'd like to get into
-    > $VERSION, please make sure they are merged ASAP. Once the branch is cut, only
-    > fixes will be accepted into the release branches.
+> The release manager will be cutting the $VERSION release branches tomorrow
+> morning, so if there are any outstanding PRs that you'd like to get into
+> $VERSION, please make sure they are merged ASAP. Once the branch is cut, only
+> fixes will be accepted into the release branches.
 
 ## First Tuesday of the release window
 
