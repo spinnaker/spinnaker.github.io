@@ -19,11 +19,11 @@ these fields.
 
 ## OAuth 2.0 providers
 
-In the general case, you’ll need to consult the documentation of your OAuth 2
+Consult the documentation of your OAuth 2
 provider to determine the appropriate values to put in each configurable field. For
 some common OAuth 2.0 providers, specific documentation is provided here.
 
-If you are using one of these providers, please follow the appropriate link
+If you're using one of these providers, please follow the appropriate link
 below for specific instructions on configuring your provider:
 * [Azure](./azure/)
 * [GitHub Teams](./github/)
@@ -95,7 +95,7 @@ userInfoMapping:
 User access can be restricted further based on the user info from an OAuth ID token. This
 requirement is set via the `security.authn.oauth2.userInfoRequirements` field, which
 is a map of key/value pairs. The values are interpreted as regular expressions if
-if they start and end with '/'. This enables us to restrict user login to specific
+they start and end with '/'. This enables us to restrict user login to specific
 domains or users having a specific attribute.
 
 For example:

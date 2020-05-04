@@ -20,10 +20,10 @@ security:
         # The OAuth client secret you have configured with your OAuth provider.
         clientSecret: string 
           
-        # The access token uri for your OAuth provider.
+        # The access token URI for your OAuth provider.
         accessTokenUri: string
           
-        # The user authorization uri for your OAuth 2.0 provider.
+        # The user authorization URI for your OAuth 2.0 provider.
         userAuthorizationUri: string
           
         # The scope to request when obtaining an access token from your
