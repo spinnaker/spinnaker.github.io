@@ -17,9 +17,9 @@ use with your Microsoft Azure tenant. More extensive documentation is available 
    - Application type: Web app / API
    - Sign-on URL: https://localhost:8084/login (replace localhost with your Gate address if known, and `https` with `http` if appropriate)
    - Click "Create"
-4. Note the "Application ID", this is the client-id to pass to hal. Copy it to a safe place.
+4. Note the "Application ID", this is the client ID to pass to hal. Copy it to a safe place.
 5. Click "Settings" -> "Keys". Under "Passwords", add a Key Description (eg Spinnaker), set the expiry and then click "Save".
-   "Value" will now be populated. This is your client-secret, copy it to a safe place.
+   "Value" will now be populated. This is your client secret; copy it to a safe place.
 
 ## Configure Halyard
 
@@ -34,7 +34,7 @@ security:
       enabled: true
       client:
         clientId: # client ID from above
-        clientSecret: client-secret # client secret from above
+        clientSecret: # client secret from above
         accessTokenUri: https://login.microsoftonline.com/${azureTenantId}/oauth2/token
         userAuthorizationUri: https://login.microsoftonline.com/${azureTenantId}/oauth2/authorize?resource=https://graph.windows.net
         clientAuthenticationScheme: query
