@@ -494,6 +494,8 @@ guides:
             url: /guides/developer/plugin-creators/stage-plugin-walkthrough/
           - title: Plugin Project Configuration
             url: /guides/developer/plugin-creators/project-config/
+          - title: Plugin Test Environment
+            url: /guides/developer/plugin-creators/plugin-test-env.md
   - title: Operator How-Tos
     collapsed: true
     children:
