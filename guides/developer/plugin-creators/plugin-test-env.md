@@ -5,36 +5,39 @@ sidebar:
   nav: guides
 ---
 
-This guide explains how to set up a local Spinnaker environment on your MacBook so you can test your plugin. A Spinnaker microservice running inside IntelliJ communicates with the other Spinnaker services running in a local VM.
+This guide explains how to set up a local Spinnaker environment on your MacBook so you can test your plugin. A Spinnaker microservice running inside IntelliJ communicates with the other Spinnaker services that are running in a local VM.
 
 For example:
 * OSX using IP 192.168.64.1 and the VM using 192.168.64.2
 * Orca running on http://192.168.64.1:8083
-* All other services running on 192.168.64.2
+* All other services running in VM on 192.168.64.2
 
 Software and versions used in this guide:
 
-* Java Development Kit, 1.8
+* [Java Development Kit](https://adoptopenjdk.net/), 11
+* [Groovy](https://groovy-lang.org/), 3.0.3
 * [Multipass](https://multipass.run/), 1.2.1
-* [IntelliJ IDEA](https://www.jetbrains.com/idea/), 2020.1
-* [Minnaker](https://github.com/armory/minnaker), 0.0.17
-* [Spinnaker](https://www.spinnaker.io/community/releases/versions/), 1.2.0
+* [IntelliJ IDEA](https://www.jetbrains.com/idea/), 2020.1, with the JetBrains Kotlin plugin
+* [Spinnaker](https://www.spinnaker.io/community/releases/versions/), 1.2.0, installed using [Minnaker](https://github.com/armory/minnaker), 0.0.17
 * [Halyard](https://console.cloud.google.com/gcr/images/spinnaker-marketplace/GLOBAL/halyard), 1.35.3
 * [Orca](https://github.com/spinnaker/orca/), branch `release-1.20.x`
 * [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin), 1.1.5
 
 ## Prerequisites
 
+* You have read the [Plugin Creators Guide Overview](/guides/developer/plugin-creators/overview/)
 * Your OSX workstation has at least 16GB of RAM and 30GB of available storage
-* You have installed JDK 1.8; see [AdoptOpenJDK](https://adoptopenjdk.net/) for how to install multiple versions of the JDK on OSX
+* You have installed JDK 11; see [AdoptOpenJDK](https://adoptopenjdk.net/installation.html#x64_mac-jdk) for installation instructions or install using [Homebrew](https://github.com/AdoptOpenJDK/homebrew-openjdk)
+* You have installed Groovy
 * You have installed Multipass
 * You have installed and are familiar with IntelliJ
+* You have installed the JetBrains Kotlin plugin into IntelliJ
 
 ## Install Spinnaker in a Multipass VM
 
  Minnaker is an open source tool that installs the latest release of Spinnaker and Halyard on [Lightweight Kubernetes (K3s)](https://k3s.io/).
 
-1. Launch a Multipass VM **with 2 cores, 10GB of memory, 30GB of storage**
+1. Launch a Multipass VM with 2 cores, 10GB of memory, 30GB of storage
 
    ```bash
    multipass launch -c 2 -m 10G -d 30G
@@ -102,12 +105,6 @@ Configure Minnaker to expect the relevant service to be external:
 ./minnaker/scripts/utils/external_service_setup.sh orca
 ```
 
-`external_service_setup.sh` removes the previous configuration each time you run it. If you want to run multiple services locally, specify them delimited by a space:
-
-```bash
-./minnaker/scripts/utils/external_service_setup.sh orca echo
-```
-
 Output is similar to:
 
 ```bash
@@ -133,15 +130,21 @@ services:
 --------------
 ```
 
-Copy the `services` section between the dotted lines.    
+Copy the `services` section between the dotted lines. You will use this snippet to configure your OSX workstation.
+
+**Note**: `external_service_setup.sh` removes the previous configuration each time you run it. If you want to run multiple services locally, specify them delimited by a space:
+
+```bash
+./minnaker/scripts/utils/external_service_setup.sh orca deck
+```
 
 ## Configure your OSX workstation for the local service
 
-Create or edit the `~/.spinnaker/spinnaker-local.yml` file and paste the previously copied output into it.
+Create or edit the `~/.spinnaker/spinnaker-local.yml` file and paste the previously copied `services` snippet into it.
 
-## Run a Spinnaker Service in IntelliJ
+## Run a Spinnaker service in IntelliJ
 
-In this example, you are using the Orca branch that corresponds to the Spinnaker version you installed.
+In this example, you use the Orca branch that corresponds to the Spinnaker 1.20 version you installed using Minnaker.
 
 1. Clone the service you need to test your plugin
 
@@ -151,38 +154,45 @@ In this example, you are using the Orca branch that corresponds to the Spinnaker
 
 1. Open the Orca project in IntelliJ
 
-   * If you don't have a project open, you see a "Welcome to IntellJ IDEA" window.
+   * If you don't have a project open, you see a **Welcome to IntellJ IDEA** window.
       1. Click **Open or Import**
-      1. Navigate to your directory
+      1. Navigate to your Orca directory
       1. Click on `build.gradle` and click **Open**
       1. Select **Open as Project**
 
    * If you already have one or more projects open, do the following:
       1. Use the menu **File** > **Open**
-      1. Navigate to your directory
+      1. Navigate to your Orca directory
       1. Click on `build.gradle` and click **Open**
       1. Select **Open as Project**
 
 1. Grab a beverage and snack while you wait for IntelliJ to finish indexing the project
+1. If you have multiple JDKs installed, configure the Orca project to use JDK 11
 
 Through the next few steps, if you see an `Unable to find Main` log message or fields are grayed out, reimport the project:
 
    1. **View** > **Tool Windows** > **Gradle**
    1. In the Gradle window, right click "Orca" and then click **Reimport Gradle Project**
 
-1. Click the **Add Configuration** button to open the **Run/Debug Configurations** window
-1. Click the `+` button to create a new configuration
-1. Select **Application**
-1. Enter "RunOrca" in the **Name** field
-1. **Main class**  Click the **...** button.  Either wait for it to load and select "Main (com.netflix.spinnaker.orca) or click on "Project" and navigate to `orca > orca-web > src > main > groovy > com.netflix.spinnaker > orca > Main`
+1. Create a Run Configuration
 
-1. In the dropdown for "Use classpath of module", select "orca-web_main"
+   1. Click the **Add Configuration** button to open the **Run/Debug Configurations** window
+   1. Click the `+` button to create a new configuration
+   1. Select **Application**
+   1. Enter "RunOrca" in the **Name** field
+   1. **Main class**  Click the **...** button.  Wait for the list to load and then select `Main (com.netflix.spinnaker.orca)`. Alternately, click on **Project** and navigate to `orca > orca-web > src > main > groovy > com.netflix.spinnaker > orca > Main`
+   1. In the dropdown for **Use classpath of module**, select **orca-web_main**
+   1. Click **Apply** and then **OK**
 
-1. Click "Apply" and then "OK"
+1. Run Orca: click the green triangle next to your `RunOrca` configuration
 
-1. To build and run the thing, click the little green triangle next to your configuration (top right corner, kinda)
+   Success output is similar to:
 
-Now magic happens.
+	```bash
+	INFO 18111 --- [           main] com.netflix.spinnaker.orca.Main          : [] Started Main in 11.123 seconds (JVM running for 11.933)
+	```
+
+	If Orca is unable to find Redis, make sure your Minnaker VM is running and that all the Spinnaker services are ready.
 
 ## Start doing plugin-ey things
 
