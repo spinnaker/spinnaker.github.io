@@ -142,7 +142,6 @@ stage.
 The `config` object contains the entire stage config. In this Wait-stage example, `config` includes only `waitTime`. 
 
 
-The example above shows a value for `waitTime` in the `config` element. When the pipeline is instantiated from this template, the `waitTime` is set to `67`.
 
 ## Add a branch to the pipeline
 
