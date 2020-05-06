@@ -139,7 +139,7 @@ stage.
 ]
 ```
 
-### Set stage config-specific overrides
+The `config` object contains the entire stage config. In this Wait-stage example, `config` includes only `waitTime`. 
 
 You can set a value for any property in a stage, and that value is set in the stage when the pipeline is instantiated.
 
