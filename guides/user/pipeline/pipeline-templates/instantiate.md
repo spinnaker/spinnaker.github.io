@@ -139,6 +139,12 @@ stage.
 ]
 ```
 
+### Set stage config-specific overrides
+
+You can set a value for any property in a stage, and that value is set in the stage when the pipeline is instantiated.
+
+The example above shows a value for `waitTime` in the `config` element. When the pipeline is instantiated from this template, the `waitTime` is set to `67`.
+
 ## Add a branch to the pipeline
 
 The template you're using might itself have branches, but if it doesn't, and
