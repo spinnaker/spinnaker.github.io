@@ -127,7 +127,12 @@ release candidate is now validated and can be tested by running:
 
 1. Create a new gist for this release.
 
-    1. Log into GitHub as spinnaker-release and create a new gist to hold the
+    1. Log into GitHub as spinnaker-release. If this is your first release
+    manager rotation, ask a member of the TOC or SC to add you to the
+    release-manager@spinnaker.io group, which has access to the
+    [spinnaker-release GitHub account credentials](https://docs.google.com/document/d/1CFPP-QXV8lu9QR76B9V0W8TEtObOBv52UqohQ-ztH58/edit?usp=sharing).
+    
+    1. Create a new gist to hold the
     release notes for this release branch.
     
     1. The description should be “Spinnaker 1.nn.x Release Notes” (e.g.,
