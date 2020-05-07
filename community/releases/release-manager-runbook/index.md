@@ -29,9 +29,6 @@ to merge outstanding changes ASAP:
 
 ## The day the branches are cut (Tuesday)
 
-1. Reach out to anyone who has previously contacted you to ensure their
-last-minute release PRs have been merged.
-
 1. If there are any [outstanding autobump PRs](https://github.com/pulls?q=is%3Apr+author%3Aspinnakerbot+is%3Aopen),
 make the required fixes to allow them to merge.
 
