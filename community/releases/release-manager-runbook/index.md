@@ -237,7 +237,7 @@ Example: VERSION="1.17.2" ./publish.sh
 
 Repeat weeklyish for each supported version.
 
-1. Check for any PRs waiting to be [cherry-picked](https://github.com/search?q=org%3Aspinnaker+label%3Acherry-pick+state%3Aopen+type%3Apr).
+1. Check for any PRs waiting to be [cherry-picked](https://github.com/search?q=org%3Aspinnaker+state%3Aopen+author%3Aapp%2Fmergify+is%3Apr&type=Repositories&ref=advsearch&l=&l=).
 
 1. Rerun the Flow_BuildAndValidate_${RELEASE} job and get a green build.
 
