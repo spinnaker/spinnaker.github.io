@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Set up canary support"
+title:  "Set up Canary Analysis Support"
 sidebar:
   nav: setup
 ---
