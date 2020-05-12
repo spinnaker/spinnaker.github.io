@@ -68,6 +68,10 @@ The following yaml-based parameters provide a Clouddriver configuration that ent
 ```yaml
 sql:
   enabled: true
+  # read-only boolean toggles `SELECT` or `DELETE` health checks for all pools.
+  # Especially relevant for clouddriver-ro and clouddriver-ro-deck which can
+  # target a SQL read replica in their default pools.
+  read-only: false 
   taskRepository:
     enabled: true
   cache:
