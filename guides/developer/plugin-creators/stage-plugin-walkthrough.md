@@ -1,8 +1,7 @@
 ---
 layout: single
 title: "Pipeline Stage Plugin Walkthrough"
-sidebar:
-  nav: guides
+redirect-to: /guides/developer/plugin-creators/plugin-test-env
 ---
 
 {% include alpha version="1.19.4" %}

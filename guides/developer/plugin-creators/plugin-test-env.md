@@ -5,6 +5,11 @@ sidebar:
   nav: guides
 ---
 
+{% include alpha version="1.20" %}
+> This guide is a work in progress. Help us improve the content by submitting a pull request!
+
+{% include toc %}
+
 This guide explains how to set up a local Spinnaker environment on your MacBook so you can test your plugin. A Spinnaker microservice running inside IntelliJ communicates with the other Spinnaker services that are running in a local VM.
 
 For example:
@@ -12,16 +17,17 @@ For example:
 * Orca running on http://192.168.64.1:8083
 * All other services running in VM on 192.168.64.2
 
-Software and versions used in this guide:
+Software used in this guide:
 
 * [Java Development Kit](https://adoptopenjdk.net/), 11
 * [Groovy](https://groovy-lang.org/), 3.0.3
+* [Gradle](https://gradle.org/install/)
+* [Yarn](https://classic.yarnpkg.com/en/docs/install#mac-stable)
 * [Multipass](https://multipass.run/), 1.2.1
 * [IntelliJ IDEA](https://www.jetbrains.com/idea/), 2020.1, with the JetBrains Kotlin plugin
-* [Spinnaker](https://www.spinnaker.io/community/releases/versions/), 1.2.0, installed using [Minnaker](https://github.com/armory/minnaker), 0.0.17
-* [Halyard](https://console.cloud.google.com/gcr/images/spinnaker-marketplace/GLOBAL/halyard), 1.35.3
+* [Spinnaker](https://www.spinnaker.io/community/releases/versions/) 1.2.0 and [Halyard](https://console.cloud.google.com/gcr/images/spinnaker-marketplace/GLOBAL/halyard) 1.35.3, installed using [Minnaker](https://github.com/armory/minnaker), 0.0.17
 * [Orca](https://github.com/spinnaker/orca/), branch `release-1.20.x`
-* [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin), 1.1.5
+* [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin), 1.1.4
 
 ## Prerequisites
 
@@ -30,8 +36,8 @@ Software and versions used in this guide:
 * You have installed JDK 11; see [AdoptOpenJDK](https://adoptopenjdk.net/installation.html#x64_mac-jdk) for installation instructions or install using [Homebrew](https://github.com/AdoptOpenJDK/homebrew-openjdk)
 * You have installed Groovy
 * You have installed Multipass
-* You have installed and are familiar with IntelliJ
-* You have installed the JetBrains Kotlin plugin into IntelliJ
+* You have installed IntelliJ and the Kotlin plugin
+* You know how to run and debug an application using IntelliJ
 
 ## Install Spinnaker in a Multipass VM
 
@@ -184,7 +190,7 @@ Through the next few steps, if you see an `Unable to find Main` log message or f
    1. In the dropdown for **Use classpath of module**, select **orca-web_main**
    1. Click **Apply** and then **OK**
 
-1. Run Orca: click the green triangle next to your `RunOrca` configuration
+1. Run `orca` using the `RunOrca` configuration
 
    Success output is similar to:
 
@@ -194,187 +200,105 @@ Through the next few steps, if you see an `Unable to find Main` log message or f
 
 	If Orca is unable to find Redis, make sure your Minnaker VM is running and that all the Spinnaker services are ready.
 
-## Start doing plugin-ey things
+## pf4jStagePlugin
 
+To show how to deploy and debug a plugin, this guide uses the [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin), which creates a custom pipeline stage that waits a number of seconds before signaling success. The plugin consists of a `random-wait-orca` [Kotlin](https://kotlinlang.org/docs/reference/) server component and a `random-wait-deck` [React](https://reactjs.org/) UI component.
+
+This is a very simplistic plugin for educational purposes only. You can use this plugin as a starting point to create a custom pipeline stage.
+
+### Clone the codebase
+
+```bash
+git clone --single-branch --branch v1.1.4 https://github.com/spinnaker-plugin-examples/pf4jStagePlugin.git
+```
+
+If you plan to Clone the 1.1.4 tag
 Follow the "debugging" section here: https://github.com/spinnaker-plugin-examples/pf4jStagePlugin
 
 notes:
 * Create the `plugins` directory in the git repo (e.g., `~/git/spinnaker/orca/plugins`) and put the `.plugin-ref` in there
 * If you don't see the gradle tab, you can get to it with View > Tool Windows > Gradle
 
-## Build and test the randomWait stage
+### Build the plugin
 
-This assumes you have a Github account, and are logged in.
+```bash
+./gradlew releaseBundle
+```
 
-1. You *probably* want to work on a fork.  Go to github.com/spinnaker-plugin-examples/pf4jStagePlugin
+This creates `/build/distributions/pf4jStagePlugin-1.1.4.zip` and `random-wait-orca/build/Armory.RandomWaitPlugin-orca.plugin-ref`.
 
-1. In the top right corner, click "Fork" and choose your username to create a fork.  For example, mine is `justinrlee` so I end up with github.com/justinrlee/pf4jStagePlugin
+## Configure your local Spinnaker environment for the plugin
 
-1. On your workstation, choose a working directory.  For example, `~/git/justinrlee`
+1. Create a top-level `plugins` directory in your Orca project
+1. Copy the `Armory.RandomWaitPlugin-orca.plugin-ref` file to the `plugins` directory
+1. Create the `orca-local.yml` file in `~/.spinnaker/` with the following contents:
 
-   ```bash
-   mkdir -p ~/git/justinrlee
-   cd ~/git/justinrlee
-   ```
-
-1. Clone the repo
-
-   ```bash
-   git clone https://github.com/justinrlee/pf4jStagePlugin.git
-   ```
-
-   _or, if you have a Git SSH key set up_
-
-   ```bash
-   git clone git@github.com:justinrlee/pf4jStagePlugin.git
-   ```
-
-1. Check out a tag.
-
-   If you are using Spinnaker 1.19.x, you probably need a 1.0.x tag (1.0.x is compatible 1.19, 1.1.x is compatible with 1.20)
-
-   List available tags:
-
-   ```bash
-   cd pf4jStagePlugin
-   git tag -l
-   ```
-
-   Check out the tag you want:
-
-   ```bash
-   git checkout v1.0.17
-   ```
-
-   Create a branch off of it (optional, but good if you're gonna be making changes).  This creates a branch called custom-stage
-
-   ```bash
-   git switch -c custom-stage
-   ```
-
-1. Build the thing from the CLI
-
-   ```bash
-   ./gradlew releaseBundle
-   ```
-
-   This will generate an orca .plugin-ref file (`random-wait-orca/build/orca.plugin-ref`).  
-
-1. Copy the `orca.plugin-ref` file to the `plugins` directory in your `orca` repo.
-
-   Create the destination directory - this will depend on where you cloned the orca repo
-
-   ```bash
-   mkdir -p ~/git/spinnaker/orca/plugins
-   ```
-
-   Copy the file
-
-   ```bash
-   cp random-wait-orca/build/orca.plugin-ref ~/git/spinnaker/orca/plugins/
-   ```
-
-1. Create the orca-local.yml file in `~/.spinnaker/`
-
-   This tells Spinnaker to enable and use the plugin
-
-   Create this file at `~/.spinnaker/orca-local.yml`:
-
-   ```bash
-   # ~/.spinnaker/orca-local.yml
+   ```yaml
    spinnaker:
      extensibility:
       plugins:
          Armory.RandomWaitPlugin:
           enabled: true
-          version: 1.0.17
+          version: 1.1.4
           extensions:
             armory.randomWaitStage:
               enabled: true
               config:
                 defaultMaxWaitTime: 60
+	```
+
+   This tells Spinnaker to enable and use the plugin.
+
+
+## Run the plugin and Orca in IntelliJ
+
+1. In IntelliJ, link the `pf4jStagePlugin` project to your `Orca` project
+
+   1. Open the **Gradle** window in your Orca project if it's not already open (**View > Tool Windows > Gradle**)
+   1. In the **Gradle** window, click the **+** sign to link your `pf4jStagePlugin` Gradle project
+   1. Navigate to your `pf4jStagePlugin` directory , select the `build.gradle` file, and click **Open**
+
+1. In the **Gradle** window, right click **orca** and click **Reimport Gradle Project**
+1. Create a new build configuration
+
+   ![Edit Run Configuration](/assets/images/guides/developer/plugin-creators/intellij-edit-runconfig.jpg)
+
+   1. Click **Edit Configurations...**
+   1. In the **Run/Debug Configurations** window, click the **+** icon and then select **Application**
+   1. Fill in fields 1-6 like this:
+
+      ![Create Run Configuration](/assets/images/guides/developer/plugin-creators/build-test-runconfig.jpg)
+
+   1. Click **OK**
+
+1. Run `orca` using the `Build and Test Plugin`  configuration. On success, you see a "Completed initialization" log statement in the console
+
+   ```bash
+	020-05-12 16:03:44.274  INFO 6973 --- [0.0-8083-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : [] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-05-12 16:03:44.274  INFO 6973 --- [0.0-8083-exec-1] o.s.web.servlet.DispatcherServlet        : [] Initializing Servlet 'dispatcherServlet'
+2020-05-12 16:03:44.290  INFO 6973 --- [0.0-8083-exec-1] o.s.web.servlet.DispatcherServlet        : [] Completed initialization in 16 ms
+	```
+
+   If you see error messages about Redis, make sure all the pods in your Spinnaker instance are `READY`. You can check the IP address and port for each service in `~/.spinnaker/spinnaker-local.yml`.
+
+## Test the plugin
+
+1. Access the the Spinnaker UI (http://your-VM-ip:9000)
+1. Go to **Applications** > **spin** > **PIPELINES**
+1. Create a new pipeline
+1. Add a new stage
+1. Click **Edit stage as JSON** to open the **Edit Stage JSON** window
+1. Paste this content in the text box:
+
+   ```json
+   {
+     "maxWaitTime": 15,
+     "name": "Test RandomWait",
+     "type": "randomWait"
+    }
    ```
 
-1. In IntelliJ (where you have the Orca project open), Link the plugin project to your current project
-
-   1. Open the Gradle window if it's not already open (View > Tool Windows > Gradle)
-
-   1. In the Gradle window, click the little '+' sign
-
-   1. Navigate to your plugin directory (e.g., `/git/justinrlee/pf4jStagePlugin`), and select `build.gradle` and click Open
-
-1. In the Gradle window, right click "orca" and click "Reimport Gralde Project"
-
-1. In IntelliJ, create a new build configuration
-
-   1. In the top right, next to the little hammer icon, there's a dropdown.  Click "Edit Configurations..."
-
-   1. Click the '+' sign in the top left, and select "Application"
-
-   1. Call it something cool.  Like "Build and Test Plugin"
-
-   1. Select the main class (Either wait for it to load and select "Main (com.netflix.spinnaker.orca) or click on "Project" and navigate to `orca > orca-web > src > main > groovy > com.netflix.spinnaker > orca > Main`)
-
-   1. In the dropdown for "Use classpath of module", select "orca-web_main"
-
-   1. Put this in the "VM Options" field put this: '`-Dpf4j.mode=development`'
-
-   1. In the "Before launch" section of the window, click the '+' sign and add "Build Project"
-
-   1. Select "Build" in the "Before launch" section and click the '-' sign to remove it (you don't need both "Build" and "Build Project")
-
-   1. Click "Apply" and then "OK"
-
-1. Run your stuff.
-
-   1. If the unmodified Orca is still running, click the little stop icon (red square in top right corner)
-
-   1. Select your new build configuration in the dropdown
-
-   1. Click the runicon (little green triangle)
-
-   1. In the console output you should see something that looks like this:
-
-       ```
-       2020-04-30 10:17:41.242  INFO 53937 --- [          main] com.netflix.spinnaker.orca.Main         : [] Starting Main on justin-mbp-16.lan with PID 53937 (/Users/justin/dev/spinnaker/orca/orca-web/build/classes/groovy/main started by justin in /Users/justin/dev/spinnaker/orca)
-       2020-04-30 10:17:41.245  INFO 53937 --- [          main] com.netflix.spinnaker.orca.Main         : [] The following profiles are active: test,local
-
-       ...
-
-       2020-04-30 10:17:44.276  WARN 53937 --- [          main] c.n.s.config.PluginsAutoConfiguration   : [] No remote repositories defined, will fallback to looking for a 'repositories.json' file next to the application executable
-       2020-04-30 10:17:44.410  INFO 53937 --- [          main] org.pf4j.AbstractPluginManager          : [] Plugin 'Armory.RandomWaitPlugin@unspecified' resolved
-       2020-04-30 10:17:44.411  INFO 53937 --- [          main] org.pf4j.AbstractPluginManager          : [] Start plugin 'Armory.RandomWaitPlugin@unspecified'
-       2020-04-30 10:17:44.413  INFO 53937 --- [          main] i.a.p.s.wait.random.RandomWaitPlugin    : [] RandomWaitPlugin.start()
-       ```
-
-   1. If you see "no class Main.main" or something, in the Gradle window, try right click on "orca" and reimport Gradle project and try again.
-
-1. Test your stuff
-
-   1. Go into the Spinnaker UI (should be http://your-VM-ip:9000)
-
-   1. Go to applications > spin > pipelines
-
-   1. Create a new pipeline
-
-   1. Add stage
-
-   1. Edit stage as JSON (bottom right)
-
-   1. Paste this in there:
-
-      ```json
-      {
-        "maxWaitTime": 15,
-        "name": "Test RandomWait",
-        "type": "randomWait"
-       }
-      ```
-
-   1. Update stage
-
-   1. Save changes
-
-   1. Click back to pipelines (pipelines tab at top)
-
-Magic.  Maybe.  Maybe not.
+1. Click **Update Stage**
+1. Click **Save Changes**
+1. Go back to the **PIPELINES** screen
+1. **Start Manual Execution** and watch the stage wait for the specified number of seconds
