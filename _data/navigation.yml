@@ -155,17 +155,21 @@ setup:
                  url: /setup/security/authentication/
                - title: SAML
                  url: /setup/security/authentication/saml/
-               - title: Oauth
+               - title: OAuth 2.0
                  collapsed: true
                  children:
                    - title: Overview
                      url: /setup/security/authentication/oauth/
-                   - title: Google
-                     url: /setup/security/authentication/oauth/google/
-                   - title: GitHub
-                     url: /setup/security/authentication/oauth/github/
+                   - title: Configuration
+                     url: /setup/security/authentication/oauth/config/
                    - title: Azure
                      url: /setup/security/authentication/oauth/azure/
+                   - title: GitHub
+                     url: /setup/security/authentication/oauth/github/
+                   - title: Google
+                     url: /setup/security/authentication/oauth/google/
+                   - title: Oracle Cloud
+                     url: /setup/security/authentication/oauth/oracle/
                - title: LDAP/Active Directory
                  url: /setup/security/authentication/ldap/
                - title: x509
@@ -714,6 +718,8 @@ community:
         url: /community/releases/support-policy/
       - title: Release Manager Runbook
         url: /community/releases/release-manager-runbook
+      - title: Next Release Preview
+        url: /community/releases/next-release-preview
   - title: Contributing
     collapsed: true
     children:

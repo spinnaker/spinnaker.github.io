@@ -139,6 +139,10 @@ stage.
 ]
 ```
 
+The `config` object contains the entire stage config. In this Wait-stage example, `config` includes only `waitTime`. 
+
+
+
 ## Add a branch to the pipeline
 
 The template you're using might itself have branches, but if it doesn't, and

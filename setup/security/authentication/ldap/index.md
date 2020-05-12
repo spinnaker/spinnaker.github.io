@@ -44,12 +44,12 @@ default.
 - If `--user-search-filter` is provided:
     - Search LDAP:
         - Search in  `--user-search-base` OR the root (would be `a/b/c` in this example) if user-search-base is not set.
-        - Filtered by `--user-search-filter="(d={0})"` where `uid=<the username as typed in>`, such as `joe`.
+        - Filtered by `--user-search-filter="(d={0})"` where `uid=<the username as typed in>`, such as `jdoe`.
         - Start at the rootDn and use sub tree searches
     - Return root DN computed + the found user DN
 - If `user-search-filter` is not provided:
-    - Calculate the user DN using `user-dn-pattern`.  In the case below, the user `joe` would have a full DN of 
-    `uid=joe,ou=users,dc=mydomain,dc=net`.
+    - Calculate the user DN using `user-dn-pattern`.  In the case below, the user `jdoe` would have a full DN of
+    `uid=jdoe,ou=users,dc=mydomain,dc=net`.
     - Return root DN computed + user DN
     
 
@@ -57,12 +57,12 @@ For example, given the following parameters:
 
 * Root DN is `dc=my-organization,dc=com` 
 * `user-dn-pattern` is `uid={0},ou=users`
-* User with the id `joe` 
+* User with the id `jdoe`
 
-The full, unique DN would be `uid=joe,ou=users,dc=my-organization,dc=com`.
+The full, unique DN would be `uid=jdoe,ou=users,dc=my-organization,dc=com`.
 
-When `joe` is trying to log in, this full user DN is constructed and passed to the LDAP server with
-his password. The password is hashed on the server and compared to its own hashed version. If
+When `jdoe` is trying to log in, this full user DN is constructed and passed to the LDAP server with
+their password. The server hashes the password and compares it to its own hashed version. If
 successful, the bind (aka connection) is successful and Gate creates a session.
 
 ## Testing with ldapsearch
