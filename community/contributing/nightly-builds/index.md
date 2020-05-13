@@ -114,7 +114,6 @@ on what specificially went wrong.
 
     ![](troubleshooting - build - 30 - failedOutput.png)
 
-
 ### Test Failures
 
 1. View the Test Results Overview.
@@ -150,3 +149,28 @@ All processes are run as the `jenkins` user and most of the useful links are in 
 ```bash
 $ sudo su - jenkins
 ```
+
+### Common Build Failures
+
+#### Bintray Conflicts
+
+If an artifact is uploaded to the Bintray repository but never published
+(either because of a transient Bintray error or an interrupted build), you'll
+get an error like this:
+
+> Bintray API Request 'create version 0.20.0-20200512192702' failed with HTTP response 409 Conflict
+
+Delete the artifact to resolve the issue.
+
+First, navigate to the specific version [in the Bintray
+repository](https://bintray.com/beta/#/spinnaker-releases/jars?tab=packages).
+Next, click on the Spinnaker repository that had the failure. (If you don't see
+it, click to the next page; there are only 10 items per page for some reason.)
+Then click on the specific version that had the issue.
+
+Once you're on the matching version, click "Actions" in the upper right and
+select "Edit". On the next page, click the "Delete" link in the upper right. It
+will look like nothing happened, but after 10 seconds or so, the page will
+refresh and the version will be gone.
+
+Now you can restart the build.
