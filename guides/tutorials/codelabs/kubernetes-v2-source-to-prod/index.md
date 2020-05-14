@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Kubernetes Source To Prod (Manifest Based)"
+title:  "Kubernetes Source To Prod"
 sidebar:
   nav: guides
 redirect_from: /guides/tutorials/codelabs/kubernetes-source-to-prod/
@@ -112,12 +112,10 @@ Now we will register both contexts with Spinnaker.
 
 ```bash
 hal config provider kubernetes account add prod-demo \
-  --context $PROD_CONTEXT \
-  --provider-version v2
+  --context $PROD_CONTEXT
 
 hal config provider kubernetes account add staging-demo \
-  --context $STAGING_CONTEXT \
-  --provider-version v2
+  --context $STAGING_CONTEXT
 ```
 
 ### Configure GitHub artifact credentials

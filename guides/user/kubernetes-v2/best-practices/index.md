@@ -1,13 +1,13 @@
 ---
 layout: single
-title:  "Best Practices for the Kubernetes Provider V2"
+title:  "Best Practices for the Kubernetes Provider"
 sidebar:
   nav: guides
 ---
 
 {% include toc %}
 
-The Kubernetes Provider V2 enables a wide variety of ways to deploy your
+The Kubernetes provider enables a wide variety of ways to deploy your
 manifests into Kubernetes clusters. This page provides best-practices for doing
 so.
 

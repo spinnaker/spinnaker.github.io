@@ -8,7 +8,7 @@ sidebar:
 {% include toc %}
 
 This guide shows the basics of how to deploy a Kubernetes manifest using the
-[Kubernetes Provider V2](/setup/install/providers/kubernetes-v2).
+[Kubernetes provider](/setup/install/providers/kubernetes-v2).
 
 There are two main steps:
 
@@ -39,7 +39,7 @@ from the stage selector:
 %}
 
 > :warning: Don't select the regular __Deploy__ stage; it deploys more
-> opinionated "Server Groups" using another provider (including Kubernetes V1).
+> opinionated "Server Groups" using other providers.
 
 ### Specify manifests statically
 

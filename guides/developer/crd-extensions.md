@@ -22,11 +22,11 @@ It also exists as an explanation of certain code paths within Spinnaker which in
 
 Developers who want to implement these features will have to build their own layered version
 of [Clouddriver](https://github.com/spinnaker/clouddriver) -
-  see Adam Jorden's [blog post](https://blog.spinnaker.io/scaling-spinnaker-at-netflix-custom-features-and-packaging-e78536d38040) - and should be familiar with the [Kubernetes V2 provider](/reference/providers/kubernetes-v2) and writing code for Clouddriver.
+  see Adam Jorden's [blog post](https://blog.spinnaker.io/scaling-spinnaker-at-netflix-custom-features-and-packaging-e78536d38040) - and should be familiar with the [Kubernetes provider](/reference/providers/kubernetes-v2) and writing code for Clouddriver.
 
 ## Custom Handlers
 
-The central extension point is the [KubernetesHandler](https://github.com/spinnaker/clouddriver/blob/master/clouddriver-kubernetes-v2/src/main/java/com/netflix/spinnaker/clouddriver/kubernetes/v2/op/handler/KubernetesHandler.java) class. A subclass of `KubernetesHandler` - e.g., [KubernetesReplicaSetHandler](https://github.com/spinnaker/clouddriver/blob/master/clouddriver-kubernetes-v2/src/main/java/com/netflix/spinnaker/clouddriver/kubernetes/v2/op/handler/KubernetesReplicaSetHandler.java) - defines the
+The central extension point is the [KubernetesHandler](https://github.com/spinnaker/clouddriver/blob/master/clouddriver-kubernetes/src/main/java/com/netflix/spinnaker/clouddriver/kubernetes/op/handler/KubernetesHandler.java) class. A subclass of `KubernetesHandler` - e.g., [KubernetesReplicaSetHandler](https://github.com/spinnaker/clouddriver/blob/master/clouddriver-kubernetes/src/main/java/com/netflix/spinnaker/clouddriver/kubernetes/op/handler/KubernetesReplicaSetHandler.java) - defines the
 relationship between Spinnaker and your Kubernetes kind.
 
 For example, if you wanted to build a Spinnaker integration for your CRD of kind `MyCRDKind`, you would start with
@@ -79,7 +79,7 @@ public class MyCRDHandler extends KubernetesHandler {
 ## Custom Spinnaker Resource Models
 
 You may want to change how their CRD is represented in Spinnaker's API. By default, a CRD of `spinnakerKind` `serverGroups` will
-be represented with the model class [KubernetesV2ServerGroup](https://github.com/spinnaker/clouddriver/blob/master/clouddriver-kubernetes-v2/src/main/java/com/netflix/spinnaker/clouddriver/kubernetes/v2/caching/view/model/KubernetesV2ServerGroup.java).
+be represented with the model class [KubernetesV2ServerGroup](https://github.com/spinnaker/clouddriver/blob/master/clouddriver-kubernetes/src/main/java/com/netflix/spinnaker/clouddriver/kubernetes/caching/view/model/KubernetesV2ServerGroup.java).
 
 You may want to override this representation, for example, if you want to define how your server group's `region` is resolved.
 
@@ -140,52 +140,3 @@ kubernetes:
 ```
 
 Be careful - this naming strategy will be applied to all manifests manipulated by this account.
-
-## Custom Spinnaker UIs
-
-See the [reference repository](https://github.com/spinnaker/deck-customized) for developing Spinnaker UI customizations that
-should not be open sourced.
-
-Spinnaker's UI, Deck, has many points of integration to allow for per-cloud provider customization through the `CloudProviderRegistry`:
-
-```javascript
-cloudProviderRegistryProvider.registerProvider('kubernetes', {
-  name: 'Kubernetes',
-  skin: 'v2',
-  ... // References to components and templates that are rendered per cloud provider throughout Deck.
-});
-```
-
-It's possible to override individual components and templates within the `CloudProviderRegistry` at build time
-using Deck's `OverrideRegistry`.
-However, these overrides are static and apply to every account using the UI implementation.
-
-The UIs for Spinnaker's Kubernetes V1 & V2 providers are implemented as `skin`s. A `skin` is a named UI implementation for a given provider, and
-is not strictly coupled to a backend implementation. By default, a Spinnaker Kubernetes account using the V1 provider implementation
-will use the V1 skin; an account using the V2 implementation will use the V2 skin.
-
-You can write custom skins for the Kubernetes provider by registering a new `skin` with the `CloudProviderRegistry`:
-
-```javascript
-cloudProviderRegistryProvider.registerProvider('kubernetes', {
-  name: 'Kubernetes',
-  skin: 'myCustomizedUISkin',
-  ... // References to components and templates. These do not all need to be custom components -
-  ... // you can mix in components from the V1 and V2 Kubernetes `skins`.
-});
-```
-
-This skin can be referenced in a Kubernetes account config. For example:
-
-```
-kubernetes:
-  accounts:
-    - name: my-kubernetes-account
-      skin: myCustomizedUISkin
-```
-
-Use a custom skin in cases where some Kubernetes account should render the V1 or V2 `skin`, and another should use custom UI components.
-If all Kubernetes accounts need the same customizations, then Deck's `OverrideRegistry` should be sufficient.
-
-There is no strong relationship between CRDs and UI customizations - i.e., you may want to have per-account UI customizations even
-if you aren't using CRDs.

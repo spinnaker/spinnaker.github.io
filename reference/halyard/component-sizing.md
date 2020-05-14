@@ -21,7 +21,7 @@ There are two ways to specify requests and limits
 
 * _(Recommended)_ By supplying the container name, e.g. `echo:`, followed by the container requests and limits.
 
-  This sets resource configuration for the echo container in `spin-echo` service's pod only, not any sidecars
+  This sets resource configuration for the `echo` container in `spin-echo` service's pod only, not any sidecars
   (e.g. the monitoring daemon).
    
 * By supplying the service name, e.g. `spin-clouddriver:`, followed by the container requests and limits.
@@ -36,7 +36,7 @@ deploymentEnvironment:
   customSizing:
     # This applies sizings to only the echo container and not to any sidecar 
     # containers running with echo.
-    spin-echo:
+    echo:
       limits:
         cpu: 250m
         memory: 512Mi
