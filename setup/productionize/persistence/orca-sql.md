@@ -85,6 +85,17 @@ In case you have deployed Spinnaker using [Halyard](/reference/halyard/), you ne
 
 Read more about profiles and service-settings [here](/reference/halyard/custom/).
 
+## MariaDB
+
+The default MySQL Connector for Aurora MySQL 5.7 should be fine, but you may also setup Orca to use the MariaDB JDBC driver over MySQL Connector.
+
+The MariaDB driver is Aurora clustering aware, which takes care of automatic master failover operations. 
+Due to licensing issues, Orca cannot ship with the MariaDB driver. 
+
+An example of wiring up MariaDB into Orca can be found here: [robzienert/orca-mariadb-extension](https://github.com/robzienert/orca-mariadb-extension).
+
+---
+
 ## Netflix's Amazon Aurora Example
 
 While vanilla MySQL provides more durability and performance over Redis, Netflix additionally uses Amazon Aurora MySQL 5.7.
@@ -127,11 +138,3 @@ If you are only deploying Aurora into a single region, don't enable any binlog s
 - *collation_connection*: `utf8mb4_unicode_ci`
 - *collation_server*: `utf8mb4_unicode_ci`
 - *innodb_checksums*: `0`
-
-#### MariaDB
-
-The default MySQL Connector for Aurora MySQL 5.7 should be fine, but you may also setup Orca to use the MariaDB JDBC driver over MySQL Connector.
-The MariaDB driver is Aurora clustering aware, which takes care of automatic master failover operations. 
-Due to licensing issues, Orca cannot ship with the MariaDB driver. 
-
-An example of wiring up MariaDB into Orca can be found here: [robzienert/orca-mariadb-extension](https://github.com/robzienert/orca-mariadb-extension).
