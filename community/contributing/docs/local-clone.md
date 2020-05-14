@@ -7,7 +7,7 @@ sidebar:
 
 {% include toc %}
 
-If your changes are larger than a few lines or involve multiple files, you should fork the `spinnaker/spinnaker.github.io` repository and work from a local clone. Make sure you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed on your computer and have configured your GitHub account. See the [GitHub Help](https://help.github.com/en/github) for details.
+If you are going to make a lot of changes, you can fork the `spinnaker/spinnaker.github.io` repository and work from a local clone. Make sure you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed on your computer and have configured your GitHub account. See the [GitHub Help](https://help.github.com) for details.
 
 ## Fork the Spinnaker documentation repository
 
@@ -19,7 +19,7 @@ If your changes are larger than a few lines or involve multiple files, you shoul
 1. In a terminal window, clone your fork:
 
    ```bash
-   git clone git@github.com/<github-username>/spinnaker.github.io.git
+   git clone git@github.com:<github-username>/spinnaker.github.io.git
    ```
 
 1. Navigate to the new `spinnaker.github.io` directory. Set the `spinnaker/spinnaker.github.io` repository as the `upstream` remote:
@@ -54,15 +54,17 @@ Make sure your local repository is current before you start making changes. Fetc
    git fetch upstream
    ```
 
-   This workflow is different from a source code commit workflow . You do not need to rebase your local copy of `master` with `upstream/master` before pushing updates to your fork. In this documentation workflow, you create a working branch that tracks changes to `upstream/master` rather than `origin/master`.
-
 ## Create a working branch
 
-1. Create a new working branch based on `upstream/master`:
+1. In your `master` branch, create a new working branch based on `upstream/master`:
 
    ```bash
    git checkout -b <your-working-branch> upstream/master
    ```
+
+	Since `git` tracks changes to `upstream\master`, you don't need to rebase your fork before you create a working branch.
+
+	Note: you can check which branch you are on by executing `git branch`. See the [Understanding history: What is a branch?](https://git-scm.com/docs/user-manual#what-is-a-branch) section of the _Git User Manual_ for more information.
 
 1.  Make your changes.
 
@@ -88,8 +90,6 @@ Navigate to `http://localhost:4000` to see your changes.
 
 ## Commit your changes
 
-Commit your changes when you are ready to submit a pull request.
-
 1. Check which files you need to commit:
 
    ```bash
@@ -99,7 +99,7 @@ Commit your changes when you are ready to submit a pull request.
    Output is similar to:
 
    ```bash
-   On branch local-clone
+   On branch <your-working-branch>
    Changes not staged for commit:
    (use "git add <file>..." to update what will be committed)
    (use "git restore <file>..." to discard changes in working directory)
@@ -117,7 +117,7 @@ Commit your changes when you are ready to submit a pull request.
 1. Add new files listed under **Untracked files** to the commit:
 
    ```bash
-   git add <your-file-name>
+   git add <path/your-file-name>
    ```
 
    Repeat this for each new file.
@@ -128,8 +128,8 @@ Commit your changes when you are ready to submit a pull request.
    git commit -a -m "<your-commit-subject>" -m "<your-commit-description>"
    ```
 
-   - `-a`: Commits all changes.
-   - `-m`: Use the given `<msg>` as the commit message. If multiple `-m` options are given, their values are concatenated as separate paragraphs.
+   - `-a`: Commit all staged changes.
+   - `-m`: Use the given `<your-commit-subject>` as the commit message. If multiple `-m` options are given, their values are concatenated as separate paragraphs.
 
    Your commit messages must be 50 characters or less. Do not use any [GitHub
    Keywords](https://help.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword) in your commit message. You can add those to the pull request description later.
@@ -139,6 +139,8 @@ Commit your changes when you are ready to submit a pull request.
    ```bash
    git push origin <your-working-branch>
    ```
+
+   You can commit and push many times before you create your PR.
 
 ## Create a pull request from your fork to spinnaker/spinnaker.github.io
 
@@ -165,7 +167,9 @@ Commit your changes when you are ready to submit a pull request.
 
 Congratulations! You can view your submitted pull request on the **Pull requests** [tab](https://github.com/spinnaker/spinnaker.github.io/pulls).
 
->Do not delete your working branch until your pull request has been merged!
+>Do not delete your working branch until your pull request has been merged! You may need to update your content based on reviewer feedback.
+
+When you look at your PR, you may see a **This branch is out-of-date with the base branch** message. This means approvers merged PRs while you were working on your changes. If you see a **Merge conflict** message, you need to [rebase your PR](#merge-conflicts-and-rebasing).  
 
 ## Addressing feedback locally
 
