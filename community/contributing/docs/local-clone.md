@@ -56,15 +56,30 @@ Make sure your local repository is current before you start making changes. Fetc
 
 ## Create a working branch
 
-1. In your `master` branch, create a new working branch based on `upstream/master`:
+1. Make sure you are in your `master` branch before you create your working
+branch. You can use `git branch` to see which branch you are in.
+
+   ```bash
+	git branch
+	```
+
+	The output lists your local branches. There is an `*` next to the branch you are in.
+
+	```bash
+   working-branch-1
+   working-branch-2
+   * master
+   ```
+
+   If you are not in `master`, execute `git checkout master` to go to your `master` branch. See the [Understanding history: What is a branch?](https://git-scm.com/docs/user-manual#what-is-a-branch) section of the _Git User Manual_ for more information.
+
+1. Create a new working branch based on `upstream/master`.
 
    ```bash
    git checkout -b <your-working-branch> upstream/master
    ```
 
 	Since `git` tracks changes to `upstream\master`, you don't need to rebase your fork before you create a working branch.
-
-	Note: you can check which branch you are on by executing `git branch`. See the [Understanding history: What is a branch?](https://git-scm.com/docs/user-manual#what-is-a-branch) section of the _Git User Manual_ for more information.
 
 1.  Make your changes.
 
@@ -204,7 +219,7 @@ Sometimes reviewers commit changes to your pull request. Fetch those commits bef
    git push --force-with-lease origin <your-working-branch>
    ```
 
-### Merge conflicts and rebasing
+## Merge conflicts and rebasing
 
 If another contributor commits changes to the same file in another PR, it can create a merge conflict. You must resolve all merge conflicts in your PR.
 
