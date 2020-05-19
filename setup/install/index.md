@@ -19,9 +19,9 @@ in [Quickstart](/setup/quickstart/) might be a better choice.
 
 * A Kubernetes cluster on which to install Spinnaker itself
 
-  We recommend at least 4 cores and 8GB of RAM available in the cluster. 
+  We recommend at least 4 cores and 16GB of RAM available in the cluster. 
 
-You can also install [on a single local machine](https://www.spinnaker.io/setup/install/environment/#local-debian), or [for Spinnaker development](https://www.spinnaker.io/setup/install/environment/#local-git), making sure you have the 4 cores and 8GB in each case. 
+You can also install [on a single local machine](https://www.spinnaker.io/setup/install/environment/#local-debian), or [for Spinnaker development](https://www.spinnaker.io/setup/install/environment/#local-git), making sure you have the 4 cores and 16GB in each case. 
 
 ## The process
 
