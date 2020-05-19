@@ -27,6 +27,8 @@ There are two ways you can install Halyard:
    
 * [on Docker](#install-halyard-on-docker)
 
+We recommend you install Halyard on a machine with at least 12GB of RAM.
+
 > **Note**: If you need to run Halyard without access to public internet, read
 > [Deploy Custom Spinnaker Builds](/guides/operator/custom-boms/).
 
