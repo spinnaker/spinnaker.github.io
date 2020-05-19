@@ -124,7 +124,7 @@ get an error like this:
 
 > Bintray API Request 'create version 0.20.0-20200512192702' failed with HTTP response 409 Conflict
 
-Follow these steps to delete the artifact and resolve the issue.
+Follow these steps to delete the artifact and resolve the issue:
 
 1. Navigate to the specific version [in the Bintray
    repository](https://bintray.com/beta/#/spinnaker-releases/jars?tab=packages)
