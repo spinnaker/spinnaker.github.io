@@ -7,17 +7,17 @@ sidebar:
 
 {% include toc %}
 
-## Friday before the release window opens
+## One week before the branches are cut (Monday)
 
 Ping [#dev](https://spinnakerteam.slack.com/messages/dev/) reminding everyone
 to merge outstanding changes by Monday:
 
-> The release manager will be cutting the $VERSION release branches on Tuesday,
+> The release manager will be cutting the $VERSION release branches next Tuesday,
 > so if there are any outstanding PRs that you'd like to get into $VERSION,
-> please make sure they are merged by EOD Monday. Once the branch is cut, only
-> fixes will be accepted into the release branches.
+> please make sure they are merged by EOD next Monday. Once the branch is cut,
+> only fixes will be accepted into the release branches.
 
-## First Monday of the release window
+## One day before the branches are cut (Monday)
 
 Ping [#dev](https://spinnakerteam.slack.com/messages/dev/) reminding everyone
 to merge outstanding changes ASAP:
@@ -27,10 +27,7 @@ to merge outstanding changes ASAP:
 > $VERSION, please make sure they are merged ASAP. Once the branch is cut, only
 > fixes will be accepted into the release branches.
 
-## First Tuesday of the release window
-
-1. Reach out to anyone who has previously contacted you to ensure their
-last-minute release PRs have been merged.
+## The day the branches are cut (Tuesday)
 
 1. If there are any [outstanding autobump PRs](https://github.com/pulls?q=is%3Apr+author%3Aspinnakerbot+is%3Aopen),
 make the required fixes to allow them to merge.
@@ -100,25 +97,25 @@ newest release branch, and remove the row for the oldest release branch.
 1. Ping [#dev](https://spinnakerteam.slack.com/messages/dev/) with some version of
 this message, including a link to the correct section of the changelog gist:
 
-    > The release window for Spinnaker $VERSION is now open!  This means that
-    > release branches have been cut from master and those branches are only
-    > accepting fixes for existing features.  Please contact $YOUR_NAME
-    > (slack: $YOUR_SLACK_ID, github: $YOUR_GITHUB_ID, or email: $YOUR_EMAIL) if you
-    > would like a fix cherry-picked into the release. If you would like to highlight
-    > a specific fix or feature in the release’s changelog, please make a pull
-    > request against the [curated changelog](/community/releases/next-release-preview)
+    > The release branches for Spinnaker $VERSION have been cut from master!
+    > Those branches are only accepting fixes for existing features.  Please
+    > contact $YOUR_NAME (slack: $YOUR_SLACK_ID, github: $YOUR_GITHUB_ID, or
+    > email: $YOUR_EMAIL) if you would like a fix cherry-picked into the
+    > release. If you would like to highlight a specific fix or feature in the
+    > release’s changelog, please make a pull request against the
+    > [curated changelog](/community/releases/next-release-preview)
     > by Friday. If you’d like to jog your memory of everything to be released
     > with Spinnaker $VERSION, see the raw changelog here: $LINK_TO_CHANGELOG.
 
 1. When the Flow_BuildAndValidate_${RELEASE} job passes, ping
-[#dev](https://spinnakerteam.slack.com/messages/dev/) with a message that
+[#dev](https://spinnakerteam.slack.com/messages/dev/) with a message that the
 release candidate is now validated and can be tested by running:
 
     ```
     hal config version edit --version ${RELEASE_BRANCH}-latest-validated
     ```
 
-## Second Monday of the release window
+## One week after branches are cut (Monday)
 
 1. Check for any PRs waiting to be [cherry-picked](https://github.com/pulls?utf8=%E2%9C%93&q=org%3Aspinnaker+is%3Apr+is%3Aopen+-base%3Amaster).
 (You can further restrict the query by adding a constraint like +base:release-1.18.x to the URL.)
@@ -127,7 +124,12 @@ release candidate is now validated and can be tested by running:
 
 1. Create a new gist for this release.
 
-    1. Log into GitHub as spinnaker-release and create a new gist to hold the
+    1. Log into GitHub as spinnaker-release. If this is your first release
+    manager rotation, ask a member of the TOC or SC to add you to the
+    release-manager@spinnaker.io group, which has access to the
+    [spinnaker-release GitHub account credentials](https://docs.google.com/document/d/1CFPP-QXV8lu9QR76B9V0W8TEtObOBv52UqohQ-ztH58/edit?usp=sharing).
+    
+    1. Create a new gist to hold the
     release notes for this release branch.
     
     1. The description should be “Spinnaker 1.nn.x Release Notes” (e.g.,
@@ -235,7 +237,7 @@ Example: VERSION="1.17.2" ./publish.sh
 
 Repeat weeklyish for each supported version.
 
-1. Check for any PRs waiting to be [cherry-picked](https://github.com/search?q=org%3Aspinnaker+label%3Acherry-pick+state%3Aopen+type%3Apr).
+1. Check for any PRs waiting to be [cherry-picked](https://github.com/search?q=org%3Aspinnaker+state%3Aopen+author%3Aapp%2Fmergify+is%3Apr&type=Repositories&ref=advsearch&l=&l=).
 
 1. Rerun the Flow_BuildAndValidate_${RELEASE} job and get a green build.
 
