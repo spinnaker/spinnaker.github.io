@@ -15,9 +15,13 @@ in [Quickstart](/setup/quickstart/) might be a better choice.
 * A machine on which to install Halyard
 
   This can be a local machine or VM (Ubuntu 14.04/16.04, Debian, or macOS), or
-  it can be a Docker container.
+  it can be a Docker container. Make sure it has at least 4GB of memory.
 
 * A Kubernetes cluster on which to install Spinnaker itself
+
+  We recommend at least 4 cores and 8GB of RAM available in the cluster. 
+
+You can also install [on a single local machine](https://www.spinnaker.io/setup/install/environment/#local-debian), or [for Spinnaker development](https://www.spinnaker.io/setup/install/environment/#local-git), making sure you have the 4 cores and 8GB in each case. 
 
 ## The process
 
