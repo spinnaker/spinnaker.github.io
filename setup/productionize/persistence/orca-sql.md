@@ -27,7 +27,7 @@ The `migration` user will only be used to perform schema changes on the database
 
 Before deploying Orca, the schema and database uses must first be manually setup:
 
-1. Set MySQL Server variable `tx_isolation` setting to `READ-COMMITTED`. Refer to [MySQL Server System Variables](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_tx_isolation)
+1. Set MySQL Server variable `tx_isolation` setting to `READ-COMMITTED`. Refer to [MySQL Server System Variables](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_tx_isolation).
 
 From the MySQL Server command line run
 ```
