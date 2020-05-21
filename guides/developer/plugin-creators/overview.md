@@ -3,10 +3,12 @@ layout: single
 title: "Overview"
 sidebar:
   nav: guides
+redirect-from: /guides/developer/plugin-creators/
 ---
 
 {% include alpha version="1.19.4" %}
 
+>Note: Spinnaker 1.19.x only supports backend plugins due to a bug in Deck.
 
 {% include toc %}
 

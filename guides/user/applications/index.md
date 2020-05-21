@@ -25,7 +25,7 @@ are going to deploy (typically a microservice). It includes...
 When you first access a new instance of Spinnaker you might notice that there
 are already several applications visible when you click the **Applications** tab.
 This happens if you install Spinnaker on an existing Kubernetes cluster, using
-the [Kubernetes V1 provider](/setup/providers/kubernetes/). These applications
+the [Kubernetes provider](/reference/providers/kubernetes-v2/). These applications
 are derived from existing infrastructure.
 
 **Don't delete any of them**.

@@ -23,7 +23,14 @@ For example, if you develop the package `keeldemo` (which is built into a debian
 artifacts:
 - name: keeldemo
   type: deb
-  reference: my-artifact # optional human-readable reference to be used elsewhere in the config, defaults to artifact name
+  reference: my-artifact   # optional human-readable reference to be used elsewhere in the config, defaults to artifact name
+  vmOptions:               # only required for Debian artifacts, this information is used to determine how to bake a virtual machine image
+    baseOs: bionic-classic # the base operating system for the virtual machine image
+    regions:               # the regions to bake the image in (this should at least correspond to the regions you will deploy to)
+    - us-west-2
+    - us-east-1
+    baseLabel: RELEASE     # the operating system label, optional and defaults to "RELEASE"
+    storeType: EBS         # the storage type for the virtual machine image, optional and defaults to "EBS"
 ```
 
 You can have multiple artifacts in your delivery config.
@@ -125,41 +132,31 @@ artifacts:
 - name: keeldemo 
   type: deb
   reference: my-artifact
+  vmOptions: # details omitted for brevity
 environments:
 - name: testing
   notifications: # omitted for brevity
   constraints: []
   resources: # details omitted for brevity
-  - apiVersion: bakery.spinnaker.netflix.com/v1
-    kind: image
+  - kind: ec2/cluster@v1
     # details
-  - apiVersion: ec2.spinnaker.netflix.com/v1
-    kind: cluster
+  - kind: ec2/classic-load-balancer@v1
     # details
-  - apiVersion: ec2.spinnaker.netflix.com/v1
-    kind: classic-load-balancer
-    # details    
 - name: staging
   notifications: # omitted for brevity
   constraints: 
   - type: depends-on
     environment: testing
   resources: # details omitted for brevity
-  - apiVersion: ec2.spinnaker.netflix.com/v1
-    kind: cluster
+  - kind: ec2/cluster@v1
     # details
-  - apiVersion: ec2.spinnaker.netflix.com/v1
-    kind: classic-load-balancer
+  - kind: ec2/classic-load-balancer@v1
     # details 
 ```
 
 This shortened delivery config shows how to promote a debian artifact through two environments. 
 
-Note that there is an image resource in the `testing` environment.
-The image resource specifies how new debian artifacts should be baked into AMIs.
-You only need to include an image resource in your first environment because you'll be promoting that image through the environments that follow.
-
-Also note that the first environment has no constraints.
+Note that the first environment has no constraints.
 
 ## Example 
 

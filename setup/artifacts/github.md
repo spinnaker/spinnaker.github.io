@@ -38,10 +38,11 @@ TOKEN_FILE=
 ARTIFACT_ACCOUNT_NAME=my-github-artifact-account
 ```
 
-First, make sure that artifact support is enabled:
+First, enable [artifact support](/reference/artifacts-with-artifactsrewrite//#enabling-artifact-support).
+
+Next, enable the GitHub artifact provider:
 
 ```bash
-hal config features edit --artifacts true
 hal config artifact github enable
 ```
 

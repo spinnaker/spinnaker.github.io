@@ -25,9 +25,12 @@ repos you should see.
 
    `hal config ci travis enable`
 
-1. Turn on the Travis stage feature:
+1. If you're using Spinnaker 1.19 or earlier, enable the Travis stage by adding
+the following to your [Deck custom profile](/reference/halyard/custom/#custom-profile-for-deck):
 
-   `hal config features edit --travis true`
+    ```js
+     window.spinnakerSettings.feature.travis = true;
+    ```
 
 1. Add a Travis CI master named my-travis-master (or any arbitrary human-readable
 name):

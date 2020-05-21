@@ -30,7 +30,7 @@ _Learn how to install Minnaker, set up remote SSH, and connect to the local VM i
 2. Git clone the [Spinnaker service(s)](https://github.com/spinnaker) you will debug or extend.
 3. Open the project in your IDE: File > Open > Select project folder > Click 'OK'.
 4. Build the project:
-   - Open the 'Gradle' window and double-click the 'Build' task under Tasks > Builds.
+   - Open the 'Gradle' window and double-click the 'Build' task under Tasks > Builds. (If you don't see the 'Gradle' window, select View > Tool Windows > Gradle to open it.)
 
 #### __Next steps IF your Minnaker instance is running in the cloud__
 
@@ -155,7 +155,6 @@ _The instructions for this method are in beta. Pull requests welcome!_
     accounts:
       name: kubernetes
       requiredMembership: []
-      providerVersion: V2
       permissions: []
       dockerRegistries: []
       configureImagePullSecrets: true

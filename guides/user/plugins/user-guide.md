@@ -3,9 +3,13 @@ layout: single
 title:  "Users Guide"
 sidebar:
   nav: guides
+redirect_from:
+  - /guides/user/plugin-users/
 ---
 
 {% include alpha version="1.19.4" %}
+
+>Note: Spinnaker 1.19.x only supports backend plugins due to a bug in Deck.
 
 {% include toc %}
 
@@ -179,6 +183,8 @@ hal plugins add Armory.RandomWaitPlugin \
 ```
 
 Use `--ui-resource-location=<location-of-plugin-ui-resource>` to configure the frontend portion of the plugin. This parameter may be omitted when the plugin doesn't have a UI component. The `url` of the JavaScript application file must be publicly accessible. It also has to allow for [cross origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) requests.
+
+Users on Spinnaker 1.20.0 or later trying to install pf4jStagePlugin on 1.1.3 or later will not need to configure the `--ui-resource-location` parameter.
 
 See the command [reference](/reference/halyard/commands/#hal-plugins-add) for the complete list of parameters.
 

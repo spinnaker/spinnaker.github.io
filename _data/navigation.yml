@@ -155,17 +155,21 @@ setup:
                  url: /setup/security/authentication/
                - title: SAML
                  url: /setup/security/authentication/saml/
-               - title: Oauth
+               - title: OAuth 2.0
                  collapsed: true
                  children:
                    - title: Overview
                      url: /setup/security/authentication/oauth/
-                   - title: Google
-                     url: /setup/security/authentication/oauth/google/
-                   - title: GitHub
-                     url: /setup/security/authentication/oauth/github/
+                   - title: Configuration
+                     url: /setup/security/authentication/oauth/config/
                    - title: Azure
                      url: /setup/security/authentication/oauth/azure/
+                   - title: GitHub
+                     url: /setup/security/authentication/oauth/github/
+                   - title: Google
+                     url: /setup/security/authentication/oauth/google/
+                   - title: Oracle Cloud
+                     url: /setup/security/authentication/oauth/oracle/
                - title: LDAP/Active Directory
                  url: /setup/security/authentication/ldap/
                - title: x509
@@ -398,8 +402,8 @@ guides:
         children:
           - title: Users Guide
             url: /guides/user/plugins/user-guide/
-          - title: pf4jStagePlugin Deployment Example
-            url: /guides/user/plugins/deploy-example/
+          #- title: pf4jStagePlugin Deployment Example
+            #url: /guides/user/plugins/deploy-example/
       - title: Kubernetes (Manifest Based)
         collapsed: true
         children:
@@ -462,6 +466,8 @@ guides:
           url: /guides/user/managed-delivery/artifacts/
         - title: Pinning an Environment
           url: /guides/user/managed-delivery/pinning/
+        - title: Marking an Artifact as Bad
+          url: /guides/user/managed-delivery/marking-as-bad/
         - title: Resource Status
           url: /guides/user/managed-delivery/resource-status/
         - title: API
@@ -501,6 +507,8 @@ guides:
         url: /guides/operator/webhook-custom-trust-store/
       - title: "Orca: Redis to SQL"
         url: /guides/operator/orca-redis-to-sql/
+      - title: Hiding Stages
+        url: /guides/operator/hiding-stages/
   - title: Runbooks
     collapsed: true
     children:
@@ -563,47 +571,7 @@ reference:
         url: /reference/providers/kubernetes-v2/
       - title: Oracle Cloud
         url: /reference/providers/oracle/
-  - title: Artifacts (Standard UI)
-    collapsed: true
-    children:
-      - title: Overview
-        url: /reference/artifacts/
-      - title: In Pipelines
-        url: /reference/artifacts/in-pipelines/
-      - title: From Build Triggers
-        url: /reference/artifacts/from-build-triggers/
-      - title: In Kubernetes (Manifest Based)
-        url: /reference/artifacts/in-kubernetes-v2/
-      - title: In Google App Engine
-        url: /reference/artifacts/in-appengine/
-      - title: Types of Artifacts
-        collapsed: true
-        children:
-          - title: Overview
-            url: /reference/artifacts/types/overview/
-          - title: Docker Image
-            url: /reference/artifacts/types/docker-image/
-          - title: Embedded Base64
-            url: /reference/artifacts/types/embedded-base64/
-          - title: GCS Object
-            url: /reference/artifacts/types/gcs-object/
-          - title: S3 Object
-            url: /reference/artifacts/types/s3-object/
-          - title: Git Repo
-            url: /reference/artifacts/types/git-repo/
-          - title: GitHub File
-            url: /reference/artifacts/types/github-file/
-          - title: GitLab File
-            url: /reference/artifacts/types/gitlab-file/
-          - title: Bitbucket File
-            url: /reference/artifacts/types/bitbucket-file/
-          - title: HTTP File
-            url: /reference/artifacts/types/http-file/
-          - title: Kubernetes Object
-            url: /reference/artifacts/types/kubernetes-object/
-          - title: Oracle Object
-            url: /reference/artifacts/types/oracle-object/
-  - title: Artifacts (New UI)
+  - title: Artifacts
     collapsed: true
     children:
       - title: Overview
@@ -647,6 +615,46 @@ reference:
             url: /reference/artifacts-with-artifactsrewrite/types/oracle-object/
           - title: Maven Artifact
             url: /reference/artifacts-with-artifactsrewrite/types/maven-artifact/
+  - title: Artifacts (Legacy UI)
+    collapsed: true
+    children:
+      - title: Overview
+        url: /reference/artifacts/
+      - title: In Pipelines
+        url: /reference/artifacts/in-pipelines/
+      - title: From Build Triggers
+        url: /reference/artifacts/from-build-triggers/
+      - title: In Kubernetes (Manifest Based)
+        url: /reference/artifacts/in-kubernetes-v2/
+      - title: In Google App Engine
+        url: /reference/artifacts/in-appengine/
+      - title: Types of Artifacts
+        collapsed: true
+        children:
+          - title: Overview
+            url: /reference/artifacts/types/overview/
+          - title: Docker Image
+            url: /reference/artifacts/types/docker-image/
+          - title: Embedded Base64
+            url: /reference/artifacts/types/embedded-base64/
+          - title: GCS Object
+            url: /reference/artifacts/types/gcs-object/
+          - title: S3 Object
+            url: /reference/artifacts/types/s3-object/
+          - title: Git Repo
+            url: /reference/artifacts/types/git-repo/
+          - title: GitHub File
+            url: /reference/artifacts/types/github-file/
+          - title: GitLab File
+            url: /reference/artifacts/types/gitlab-file/
+          - title: Bitbucket File
+            url: /reference/artifacts/types/bitbucket-file/
+          - title: HTTP File
+            url: /reference/artifacts/types/http-file/
+          - title: Kubernetes Object
+            url: /reference/artifacts/types/kubernetes-object/
+          - title: Oracle Object
+            url: /reference/artifacts/types/oracle-object/
   - title: Halyard
     collapsed: true
     children:
@@ -708,6 +716,10 @@ community:
         url: /community/releases/release-cadence/
       - title: Support Policy
         url: /community/releases/support-policy/
+      - title: Release Manager Runbook
+        url: /community/releases/release-manager-runbook
+      - title: Next Release Preview
+        url: /community/releases/next-release-preview
   - title: Contributing
     collapsed: true
     children:
@@ -732,6 +744,8 @@ community:
             url: /community/contributing/docs/docs-style-guide/
           - title: Make a Change Using the GitHub Web UI
             url: /community/contributing/docs/github-changes/
+          - title: Review a Pull Request
+            url: /community/contributing/docs/reviewing-prs/
   - title: Governance
     url: https://github.com/spinnaker/governance/
   - title: FAQs
