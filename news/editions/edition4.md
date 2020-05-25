@@ -47,6 +47,16 @@ Information about the latest Spinnaker releases:
 - [Release Notes: 1.20](https://gist.github.com/spinnaker-release/75d50c7b931f1089e710a0e9d1acf8c4)
 
 ## Jobs
+[Engineering Director at Armory](https://www.armory.io/careers/open-positions/?gh_jid=4736783002)
+[Site Reliability Engineer at Armory](https://www.armory.io/careers/open-positions/?gh_jid=4729812002)
+[Senior DevOps Engineer at OpsMx](https://www.opsmx.com/careers.html)
+[Customer Support Engineer at OpsMx](https://www.opsmx.com/careers.html)
+[Pre-Sales Engineer at OpsMx](https://www.opsmx.com/careers.html)
+[Senior Java Developer at OpsMx](https://www.opsmx.com/careers.html)
+[Junior Java Developer at OpsMx](https://www.opsmx.com/careers.html)
+
+Trying to hire a Spinnaker engineer? [Join Spinnaker Slack](join.spinnaker.io) and add the jobs you'd like to advertise to the [#Spinnaker-News Channel](https://spinnakerteam.slack.com/archives/C011W1CNW8Y)
+
 
 ## Call for Participation
 
