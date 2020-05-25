@@ -30,7 +30,7 @@ Combine the deployment ease of the run script stage with the security advantages
 ## [A Guide On The Installation Of Spinnaker in Kubernetes Clusters](https://www.magalix.com/blog/a-guide-on-the-installation-of-spinnaker-in-your-production-kubernetes-cluster)
 With this guide, use Halyard to install Spinnaker in a Kubernetes cluster, such as one you create in Google Kubernetes Engine. Configure an IAM role, storage bucket, and Halyard, and deploy a production-grade instance of Spinnaker.
 
-## [Spinnaker and th DevOps trends that will matter most in 2020](https://www.techrepublic.com/article/11-devops-trends-that-will-matter-most-in-2020/)
+## [Spinnaker and the DevOps trends that will matter most in 2020](https://www.techrepublic.com/article/11-devops-trends-that-will-matter-most-in-2020/)
 
 ## [Spinnaker projects participating in Google Summer of Code](https://cd.foundation/blog/2020/05/18/9-cd-foundation-projects-are-participating-in-this-years-google-summer-of-code/)
 This year, we have joined GSoC to bring more student developers into the Spinnaker community. We'll nurture two Spinnaker projects: "Drone CI type for Spinnaker pipeline stage," from Victor Odusanya mentored by Armory engineer [Cameron Motevasselani](https://www.youtube.com/watch?v=HtkXeC8a38Y); and “Continuous Delivery, Continuous Deployments with Spinnaker,” from Moki Daniel mentored by Armory engineer [Fernando Freire](https://www.armory.io/blog/identifying-risk-when-executing-your-kubernetes-migration/).
@@ -59,6 +59,8 @@ Trying to hire a Spinnaker engineer? [Join Spinnaker Slack](join.spinnaker.io) a
 
 
 ## Call for Participation
+<add some stuff here>
 
 ## Tweet Street
 Noteworthy tweets this month:
+<add some stuff here>
