@@ -46,5 +46,9 @@ We are excited to announce that [Rosalind Benoit](https://blog.spinnaker.io/buil
 Information about the latest Spinnaker releases:
 - [Release Notes: 1.20](https://gist.github.com/spinnaker-release/75d50c7b931f1089e710a0e9d1acf8c4)
 
+## Jobs
+
+## Call for Participation
+
 ## Tweet Street
 Noteworthy tweets this month:
