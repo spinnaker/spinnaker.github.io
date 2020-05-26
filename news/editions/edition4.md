@@ -30,8 +30,6 @@ Combine the deployment ease of the run script stage with the security advantages
 ## [A Guide On The Installation Of Spinnaker in Kubernetes Clusters](https://www.magalix.com/blog/a-guide-on-the-installation-of-spinnaker-in-your-production-kubernetes-cluster)
 With this guide, use Halyard to install Spinnaker in a Kubernetes cluster, such as one you create in Google Kubernetes Engine. Configure an IAM role, storage bucket, and Halyard, and deploy a production-grade instance of Spinnaker.
 
-## [Spinnaker and the DevOps trends that will matter most in 2020](https://www.techrepublic.com/article/11-devops-trends-that-will-matter-most-in-2020/)
-
 ## [Spinnaker projects participating in Google Summer of Code](https://cd.foundation/blog/2020/05/18/9-cd-foundation-projects-are-participating-in-this-years-google-summer-of-code/)
 This year, we have joined GSoC to bring more student developers into the Spinnaker community. We'll nurture two Spinnaker projects: "Drone CI type for Spinnaker pipeline stage," from Victor Odusanya mentored by Armory engineer [Cameron Motevasselani](https://www.youtube.com/watch?v=HtkXeC8a38Y); and “Continuous Delivery, Continuous Deployments with Spinnaker,” from Moki Daniel mentored by Armory engineer [Fernando Freire](https://www.armory.io/blog/identifying-risk-when-executing-your-kubernetes-migration/).
 
@@ -40,6 +38,22 @@ Tracy Miranda, the new Governing Board chair of the CDF, discusses the foundatio
 
 ## [Spinnaker community builder elected as chair of CD Foundation Outreach Committee](https://cd.foundation/announcement/2020/04/24/new-chair-of-cd-foundation-outreach-committee-elected/)
 We are excited to announce that [Rosalind Benoit](https://blog.spinnaker.io/building-open-source-community-culture-online-part-1-2f77272f5442) was elected the CD Foundation Outreach Committee Chairperson. The Outreach Committee manages marketing and outreach for CDF projects on behalf of the Governing Board. Rosalind’s election to this role is a recognition of her contributions to CDF community efforts, and will bring Spinnaker outreach into focus.
+
+## [Spinnaker Operator Demo](https://www.youtube.com/watch?v=VojwvcxZF3k)
+Take a look at the Spinnaker Operator, a Kubernetes operator for Spinnaker that makes it easier to install, deploy, and upgrade any version of Spinnaker using standard Kubernetes application workflows and tools, like kubectl, helm, or kustomize.
+
+
+## [Developing for Spinnaker with Minnaker](https://www.youtube.com/watch?v=xSZlWf9rUI4)
+Use Minnaker (https://github.com/armory/minnaker) to quickly set up Spinnaker in a VM for development. Host this VM in the cloud or locally with 16 GB of RAM at minimum. Steps: Install Minnaker, set up remote SSH, and connect to the instance; Test and debug Orca by connecting a local clone to Redis and Front50 in Minnaker with kubectl; Set and test a break point.
+
+## [How to Build a Spinnaker Plugin](https://www.youtube.com/watch?v=b7BmMY1kR10)
+This how-to video series demonstrates the process of building a plugin to extend Spinnaker with custom functionality. Learn to leverage an extension point to [add a custom stage](https://www.youtube.com/watch?v=b7BmMY1kR10) to Spinnaker, to do [the build process](https://www.youtube.com/watch?v=-AIOXdgvNqs) for your custom stage plugin, to [develop a plugin frontend](https://www.youtube.com/watch?v=u9NVlG58NYo), and to [deliver your plugin](https://www.youtube.com/watch?v=G2eyc9gzNS0) to your Spinnaker environment.
+
+## [Learn how to integrate Jenkins with Spinnaker](https://www.youtube.com/watch?v=s6NaYmD3cJk)
+Follow the OpsMx Spinnaker tutorial and begin learning how to integrate Jenkins with Spinnaker to do continuous integration within your software delivery pipelines.
+
+## [How to integrate AWS with Spinnaker - Part 1](https://www.youtube.com/watch?v=TG9TOrl4tos)
+Learn about accounts in the AWS provider for deploying to AWS with Spinnaker. Create the roles, policies, and users needed to set up [managing and managed](https://www.spinnaker.io/setup/install/providers/aws/) accounts.
 
 
 ## Release Alerts
@@ -59,7 +73,10 @@ Trying to hire a Spinnaker engineer? [Join Spinnaker Slack](join.spinnaker.io) a
 
 
 ## Call for Participation
-<add some stuff here>
+
+We need feedback on our [dev environments document](https://www.spinnaker.io/community/gardening/dev-environment/) and would like to help our community get set up for Spinnaker development. Run through the guide and engage the community with your feedback by sharing it in the [#dev-toolkit Slack channel](https://spinnakerteam.slack.com/archives/C011LUJ0UQJ), [opening a pull request](https://github.com/spinnaker/spinnaker.github.io/pulls), or [submitting an issue](https://github.com/spinnaker/spinnaker.github.io/issues) to spinnaker.github.io.
+
+<want more stuff here>
 
 ## Tweet Street
 Noteworthy tweets this month:
