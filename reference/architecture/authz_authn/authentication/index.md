@@ -214,7 +214,7 @@ flow looks like:
         IdentityProvider->>-Deck: HTTP 302 to https://gate.url/login?code=abcdef
     </div>
 
-1. OAuth provider confirms that the user is granting Gate access to his profile.
+1. OAuth provider confirms that the user is granting Gate access to their profile.
 
 1. Using the `redirect_uri`, the OAuth provider redirects the user to this address, providing an
 additional `code` parameter.

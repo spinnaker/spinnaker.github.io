@@ -744,6 +744,8 @@ community:
             url: /community/contributing/docs/docs-style-guide/
           - title: Make a Change Using the GitHub Web UI
             url: /community/contributing/docs/github-changes/
+          - title: Make a Change Using a Local Clone
+            url: /community/contributing/docs/local-clone/
           - title: Review a Pull Request
             url: /community/contributing/docs/reviewing-prs/
   - title: Governance
