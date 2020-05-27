@@ -36,7 +36,7 @@ Learn to configure a webhook to trigger pipelines in Spinnaker 1.19.1 based on c
 We can configure Spinnaker's Clouddriver with external configuration stores, such as HashiCorp Vault, a secrets management tool, to keep Kubernetes account information secure outside of Spinnaker. Consult this guide and its [sequel](https://blog.opsmx.com/spinnaker-externalising-kubeconfig-files-of-kubernetes-accounts/) to learn about externalizing dynamic Kubernetes accounts and kubeconfig files in Vault.
 
 ## [Spinnaker Operator Demo](https://www.youtube.com/watch?v=VojwvcxZF3k)
-Take a look at the Spinnaker Operator, a Kubernetes operator for Spinnaker that makes it easier to install, deploy, and upgrade any version of Spinnaker using standard Kubernetes application workflows and tools, like kubectl, helm, or kustomize.
+Take a look at the Spinnaker Operator, a Kubernetes operator for Spinnaker that makes it easier to install, deploy, and upgrade any version of Spinnaker using standard Kubernetes application workflows and tools like kubectl, helm, or kustomize.
 
 ## [Spinnaker idea: reusable run job stages via script runner containers](https://medium.com/@tomas_lin/spinnaker-idea-reusable-run-job-stages-via-script-runner-containers-ff5fd95ec056)
 Combine the deployment ease of the run script stage with the security advantages of a containerized stage by building general runner containers that run mix-and-match script workflows from S3. Enjoy the flexibility and security of a container runtime, and reduce time spend building containers.
