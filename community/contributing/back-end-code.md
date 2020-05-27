@@ -97,6 +97,18 @@ Please select, or create, appropriate exception types rather than throwing overl
 Exception types you create should extend `RuntimeException` (directly or indirectly).
 Please try to include descriptive information in exception messages, especially for errors that will be surfaced to the user.
 
+The package `kork-exceptions` includes some standard base exception types that you are encouraged to use directly or extend as needed.
+
+## Deprecations
+
+Deprecating old, unused or high-debt code is highly encouraged!
+When deprecating code, you MUST include the `@Deprecation` annotation, _along with supporting documentation_:
+
+1. Why is this code deprecated? This should preferrably be a link to a Github Issue (label it with `no-lifecycle`).
+1. What is this code being replaced by?
+
+It is insufficient to simply annotate code as deprecated without additional context: Deprecations will be rejected without sufficient context.
+
 ## Testing
 
 We really appreciate contributions that include tests.

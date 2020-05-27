@@ -737,6 +737,8 @@ community:
         url: /community/contributing/releasing/
       - title: Code Conventions for Server-side Components
         url: /community/contributing/back-end-code/
+      - title: Managing Deprecations
+        url: /community/contributing/managing-deprecations/
       - title: Documentation
         collapsed: true
         children:
