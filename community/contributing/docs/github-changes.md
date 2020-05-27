@@ -40,8 +40,11 @@ sidebar:
       The Spinnaker repositories use a PR title checker, so your PR will fail if the title is not in the correct format. For more information, see [commit message conventions](/community/contributing/submitting/#commit-message-conventions).
 
    2. The **Leave a comment** field defaults to the file change description. PR descriptions are the first step to helping reviewers and project maintainers understand why your change was made. Do not leave this field blank. Provide as much description as possible. A good description helps get your PR merged faster!
-
    3. Leave the **Allow edits from maintainers** checkbox selected.
+
+1. Click the **Create pull request** button.
+
+   Congratulations! You can view your submitted pull request on the **Pull requests** [tab](https://github.com/spinnaker/spinnaker.github.io/pulls).
 
 # Address feedback in GitHub
 
