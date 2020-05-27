@@ -8,7 +8,7 @@ redirect_from: /news/latest/
 ##
 > This issue focuses on open source innovation in the Spinnaker community. Spinnaker sets the standard in total software development lifecycle automation because you evolve it.
 
-## [How to Build a Spinnaker Plugin](https://www.youtube.com/watch?v=b7BmMY1kR10)
+## [How to build a Spinnaker plugin](https://www.youtube.com/watch?v=b7BmMY1kR10)
 This how-to video series demonstrates the process of building a plugin to extend Spinnaker with custom functionality. Learn to leverage an extension point to [add a custom stage](https://www.youtube.com/watch?v=b7BmMY1kR10) to Spinnaker, to do [the build process](https://www.youtube.com/watch?v=-AIOXdgvNqs) for your custom stage plugin, to [develop a plugin frontend](https://www.youtube.com/watch?v=u9NVlG58NYo), and to [deliver your plugin](https://www.youtube.com/watch?v=G2eyc9gzNS0) to your Spinnaker environment.
 
 ## [Using CodeBuild in Spinnaker for continuous integration](https://aws.amazon.com/blogs/devops/using-codebuild-in-spinnaker-for-continuous-integration/)
