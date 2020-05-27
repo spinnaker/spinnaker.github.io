@@ -33,7 +33,7 @@ Learn about accounts in the AWS provider for deploying to AWS with Spinnaker. Cr
 Learn to configure a webhook to trigger pipelines in Spinnaker 1.19.1 based on commits to a GitHub repository. Set up Spinnaker to listen to changes in a GitHub artifact repository, inject changed GitHub files as artifacts into your pipeline, and provide execution verification.
 
 ## [Spinnaker – Configuring dynamic Kubernetes accounts using Vault](https://blog.opsmx.com/spinnaker-configuring-dynamic-kubernetes-accounts-using-vault/)
-We can configure Spinnaker's Clouddriver with external configuration stores, such as HashiCorp Vault, a secrets management tool, to keep Kubernetes account information secure outside of Spinnaker. Consult this guide and its [sequel](https://blog.opsmx.com/spinnaker-externalising-kubeconfig-files-of-kubernetes-accounts/) to learn about externalizing dynamic Kubernetes accounts and kubeconfig files in Vault.
+We can configure Spinnaker's Clouddriver with external configuration stores, such as HashiCorp Vault to keep Kubernetes account information secure outside of Spinnaker. Consult this guide and its [sequel](https://blog.opsmx.com/spinnaker-externalising-kubeconfig-files-of-kubernetes-accounts/) to learn how to externalize dynamic Kubernetes accounts and kubeconfig files in Vault.
 
 ## [Spinnaker Operator Demo](https://www.youtube.com/watch?v=VojwvcxZF3k)
 Take a look at the Spinnaker Operator, a Kubernetes operator for Spinnaker that makes it easier to install, deploy, and upgrade any version of Spinnaker using standard Kubernetes application workflows and tools like kubectl, helm, or kustomize.
