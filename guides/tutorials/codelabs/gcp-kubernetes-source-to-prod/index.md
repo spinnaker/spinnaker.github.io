@@ -38,36 +38,79 @@ If you don't already have gcloud installed, [install gcloud](https://cloud.googl
 ### Enable APIs
 
 Navigate to the Google Cloud Console and enable the following APIs:
-* [Service Management API](https://console.cloud.google.com/apis/api/servicemanagement.googleapis.com/overview)
-* [Google Cloud Resource Manager API](https://console.developers.google.com/apis/api/cloudresourcemanager.googleapis.com/overview)
+* [Service Management
+API](https://console.cloud.google.com/apis/api/servicemanagement.googleapis.com/overview){:target="_blank"}
+* [Google Cloud Resource Manager
+API](https://console.developers.google.com/apis/api/cloudresourcemanager.googleapis.com/overview){:target="_blank"}
 
 ### Create a Kubernetes cluster (GKE)
 
-* Navigate to the [Google Cloud Console’s Container Engine section](https://console.cloud.google.com/kubernetes) and click the *Create a container cluster* button.
+1. Navigate to the [Google Kubernetes Engine
+section](https://console.cloud.google.com/kubernetes), in Cloud Console, and
+click the **Create cluster** button.
 
-![Create K8S cluster](images/002_create_gke_form.png)
+   ![Create K8S cluster](images/003_create_gke_form.png)
 
-* Name the cluster "codelab-kubernetes-cluster"
-* Select "us-central1-f" in the *Zone* drop down list.
-* Click the *Create* button
+1. Name the cluster "codelab-kubernetes-cluster"
+1. Select "us-central1-f" in the *Zone* drop down list.
+1. Click *Create*.
 
 ### Create a Spinnaker instance
 
-* Navigate to the [Spinnaker Launcher offering](https://console.cloud.google.com/launcher/details/click-to-deploy-images/spinnaker?q=spinnaker)
-and click the *Launch on Compute Engine* button.
+1. Navigate to the [Spinnaker for Google Cloud Platform
+repository](https://github.com/googlecloudplatform/spinnaker-for-gcp), and
+click the **Open in Google Cloud Shell** button in the README.
 
-| ![Create Spinnaker instance](images/005_launcher_form.png) |
+1. When prompted, click **Proceed**.
 
-* Set the *Deployment name* "spinnaker-cd-codelab"
-* Select "us-central1-f" in the *Zone* drop down list.
-* Expand the *Show Kubernetes options* section at the bottom
-* Check on the "Kubernetes Enabled" checkbox
-* Enter the name of the Kubernetes Cluster you created in the step above ("codelab-kubernetes-cluster")
-* Select "us-central1-f" in the *Kubernetes Cluster Zone* drop down list.
-* Click the *Deploy* button
+   ![Begin the Spinnaker on GCP process](images/proceed.png) |
 
-This will provision a Spinnaker instance with providers set up for your
-Kubernetes cluster as well as your GCP project’s Container Registry.
+   The Spinnaker on Google Cloud platform management console starts up, with a
+   file browser, code editor, the Cloud Shell command line, and instructions
+   for installing and accessing Spinnaker.
+
+   ![The management console for Spinnaker on GCP](images/console.png) |
+
+1. Click **Select an existing project**, and select the project under which you
+created the "codelab-kubernetes-cluster".
+
+   ![Select existing project](images/existing_project.png) |
+
+1. Click **Start**.
+
+1. On the **Spinnaker Installation** page of the instructions, be sure to
+both of the following commands:
+
+   ```bash
+   PROJECT_ID=PROJECT_ID \
+       ~/spinnaker-for-gcp/scripts/install/setup_properties.sh
+   ```
+
+   and:
+
+   ```bash
+   cloudshell edit ~/spinnaker-for-gcp/scripts/install/properties
+   ```
+
+   The `properties` file opens in the file editor.
+
+1. Edit the following section of the `properties` file, to identify the Kubernetes
+cluster you previously created:
+
+   ```bash
+   # If cluster does not exist, it will be created.
+   export GKE_CLUSTER=codelab-kubernetes-cluster
+   export ZONE=us-central1-f
+   export REGION=us-central1
+   ```
+
+1. Select **Save** from the **File** menu, and proceed with the Spinnaker
+installtion, as instructed in the management console.
+
+1. Wait for the installation script to finish, then click **Next**.
+
+1. Follow the instructions to connect to your Spinnaker instance.
+
 
 ## Part 1: Code and Builds
 
