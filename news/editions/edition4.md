@@ -67,7 +67,7 @@ Information about the latest Spinnaker releases:
 [Senior Java Developer at OpsMx](https://www.opsmx.com/careers.html)
 [Junior Java Developer at OpsMx](https://www.opsmx.com/careers.html)
 
-Trying to hire a Spinnaker engineer? [Join Spinnaker Slack](join.spinnaker.io) and add the jobs you'd like to advertise to the [#Spinnaker-News Channel](https://spinnakerteam.slack.com/archives/C011W1CNW8Y)
+Trying to hire a Spinnaker engineer? [Join Spinnaker Slack](https://join.spinnaker.io) and add the jobs you'd like to advertise to the [#Spinnaker-News Channel](https://spinnakerteam.slack.com/archives/C011W1CNW8Y)
 
 
 ## Call for Participation
