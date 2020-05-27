@@ -32,7 +32,7 @@ hal config features edit --artifacts-rewrite true
 
 If using Spinnaker 1.20 or later, support for the standard artifacts UI is enabled by default.
 
-## Migrating from the legacy artifacts UI
+## Transitioning from the legacy artifacts UI
 
 If you were using Spinnaker 1.19 or earlier with the legacy artifacts UI enabled,
 you will notice several changes upon upgrading to 1.20. For example, there is no
