@@ -30,7 +30,7 @@ Follow the OpsMx Spinnaker tutorial and begin learning how to integrate Jenkins 
 Learn about accounts in the AWS provider for deploying to AWS with Spinnaker. Create the roles, policies, and users needed to set up [managing and managed](https://www.spinnaker.io/setup/install/providers/aws/) accounts.
 
 ## [Continuous deployment to Kubernetes using GitHub-triggered Spinnaker pipelines](https://blog.opsmx.com/continuous-deployment-to-kubernetes-using-github-triggered-spinnaker-pipelines/)
-Learn to configure a webhook to trigger pipelines in Spinnaker 1.19.1 based on commits to a GitHub repository. Set up Spinnaker to listen to changes in a GitHub artifact repository, inject changed GitHub files as artifacts into your pipeline, and provide execution verification.
+Learn to configure a webhook to trigger pipelines in Spinnaker 1.19.1 based on commits to a GitHub repository. Set up Spinnaker to listen to changes in a GitHub artifact repository, inject changed GitHub files as artifacts into your pipeline, and verify execution.
 
 ## [Spinnaker – Configuring dynamic Kubernetes accounts using Vault](https://blog.opsmx.com/spinnaker-configuring-dynamic-kubernetes-accounts-using-vault/)
 We can configure Spinnaker's Clouddriver with external configuration stores, such as HashiCorp Vault to keep Kubernetes account information secure outside of Spinnaker. Consult this guide and its [sequel](https://blog.opsmx.com/spinnaker-externalising-kubeconfig-files-of-kubernetes-accounts/) to learn how to externalize dynamic Kubernetes accounts and kubeconfig files in Vault.
