@@ -51,7 +51,7 @@ This year, we joined GSoC to bring more student developers into the Spinnaker co
 Tracy Miranda, the new Governing Board chair of the CDF, discusses the foundation's purpose and interoperability goals on the InfoQ podcast. Read more about Tracy's vision of standardized metadata in continuous delivery pipelines and how Spinnaker's advanced deployment strategies fit in.
 
 ## [Spinnaker community builder elected as chair of CD Foundation Outreach Committee](https://cd.foundation/announcement/2020/04/24/new-chair-of-cd-foundation-outreach-committee-elected/)
-We are excited to announce that [Rosalind Benoit](https://blog.spinnaker.io/building-open-source-community-culture-online-part-1-2f77272f5442) was elected the CD Foundation Outreach Committee Chairperson. The Outreach Committee manages marketing and outreach for CDF projects on behalf of the Governing Board. Rosalind’s election recognizes her contributions to CDF community efforts, and will bring Spinnaker outreach into focus.
+We are excited to announce that [Rosalind Benoit](https://blog.spinnaker.io/building-open-source-community-culture-online-part-1-2f77272f5442) was elected chairperson of the CD Foundation Outreach Committee. The Outreach Committee manages marketing and outreach for CDF projects on behalf of the Governing Board. Rosalind’s election recognizes her contributions to CDF community efforts, and will bring Spinnaker outreach into focus.
 
 
 ## Release Alerts
