@@ -39,7 +39,7 @@ We can configure Spinnaker's Clouddriver with external configuration stores, suc
 Take a look at the Spinnaker Operator, a Kubernetes operator for Spinnaker that makes it easier to install, deploy, and upgrade any version of Spinnaker using standard Kubernetes application workflows and tools like kubectl, helm, or kustomize.
 
 ## [Spinnaker idea: reusable run job stages via script runner containers](https://medium.com/@tomas_lin/spinnaker-idea-reusable-run-job-stages-via-script-runner-containers-ff5fd95ec056)
-Combine the deployment ease of the run script stage with the security advantages of a containerized stage by building general runner containers that run mix-and-match script workflows from S3. Enjoy the flexibility and security of a container runtime, and reduce time spend building containers.
+Combine the deployment ease of the run script stage with the security advantages of a containerized stage by building general runner containers that run mix-and-match script workflows from S3. Enjoy the flexibility and security of a container runtime, and reduce time spent building containers.
 
 ## [A Guide On The Installation Of Spinnaker in Kubernetes Clusters](https://www.magalix.com/blog/a-guide-on-the-installation-of-spinnaker-in-your-production-kubernetes-cluster)
 With this guide, use Halyard to install Spinnaker in a Kubernetes cluster, such as one you create in Google Kubernetes Engine. Configure an IAM role, storage bucket, and Halyard, and deploy a production-grade instance of Spinnaker.
