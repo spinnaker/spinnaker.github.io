@@ -104,7 +104,7 @@ The package `kork-exceptions` includes some standard base exception types that y
 Deprecating old, unused or high-debt code is highly encouraged!
 When deprecating code, you MUST include the `@Deprecation` annotation, _along with supporting documentation_:
 
-1. Why is this code deprecated? This should preferrably be a link to a Github Issue (label it with `no-lifecycle`).
+1. Why is this code deprecated? This should be a link to a Github Issue with the `no-lifecycle` label.
 1. What is this code being replaced by?
 
 It is insufficient to simply annotate code as deprecated without additional context: Deprecations will be rejected without sufficient context.
