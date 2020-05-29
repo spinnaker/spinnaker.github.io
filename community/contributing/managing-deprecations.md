@@ -26,7 +26,7 @@ This approval is noted by labeling the issue as "approved" or "rejected", depend
 
 ## Deprecation cycles
 
-A deprecation must be announced at least 1 release cycle in advance from when the functonality will be removed, however a less aggressive window should generally be used.
+A deprecation must be announced at least 1 release cycle in advance of when the functionality will be removed; however, a less aggressive window should generally be used.
 Announcements of deprecation should be added to the [Next Release Preview page](/community/releases/next-release-preview), with a link to the Github issue created previously, as well as links to any other supporting documentation, such as configuration or migration docs.
 
 Once the preceding Spinnaker version has been released, you are encouraged to remove the deprecated code from the codebase as soon as possible, so that sufficient time can given to fixing edge cases that may arise from the removal before the next Spinnaker release.
