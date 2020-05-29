@@ -107,7 +107,7 @@ When deprecating code, you MUST include the `@Deprecation` annotation, _along wi
 1. Why is this code deprecated? This should be a link to a Github Issue with the `no-lifecycle` label.
 1. What is this code being replaced by?
 
-It is insufficient to simply annotate code as deprecated without additional context: Deprecations will be rejected without sufficient context.
+Do not annotate code as deprecated without additional context. Deprecations without sufficient context will be rejected.
 
 ## Testing
 
