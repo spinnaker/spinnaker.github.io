@@ -9,8 +9,7 @@ Deprecating old functionality is key to making Spinnaker easier to maintain, but
 
 ## Before you begin
 
-The best way to propose a deprecation is to first [open an
-issue](https://github.com/spinnaker/spinnaker/issues/new), ping the [#dev channel](https://spinnakerteam.slack.com/messages/C0DPVDMQE/) in slack and discuss your deprecation before taking action.
+The best way to propose a deprecation is to first [open an issue](https://github.com/spinnaker/spinnaker/issues/new), ping the [#dev channel](https://spinnakerteam.slack.com/messages/C0DPVDMQE/) in Slack, and discuss your deprecation before taking action.
 
 Often times, you will need the following information:
 
