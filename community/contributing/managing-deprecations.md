@@ -21,7 +21,7 @@ Often times, you will need the following information:
 
 ## Deprecation approval
 
-Before a deprecation cycle can be started, it must first be approved by either the SIG owning the functionality, or by the Technical Oversight Committee.
+Before a deprecation cycle starts, it must be approved by either the SIG owning the functionality, or by the Technical Oversight Committee.
 This approval is noted by labeling the issue as "approved" or "rejected", depending on the decision.
 
 ## Deprecation cycles
