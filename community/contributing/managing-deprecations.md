@@ -13,7 +13,7 @@ The best way to propose a deprecation is to first [open an issue](https://github
 
 Often times, you will need the following information:
 
-1. An overview of what the functionality does, or intended to do.
+1. An overview of what the functionality does or intended to do.
 1. A description of why this functionality should be deprecated, and eventually, removed.
 1. A description of the replacement functionality, if any, or information about why this functionality will not need a replacement.
 1. The scope of impact on the codebase: What services will be affected?
