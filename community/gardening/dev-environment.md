@@ -220,4 +220,4 @@ __Now you're ready to run and debug the service or services!__
 * [This repository](https://github.com/robzienert/spinnaker-oss-setup) installs all Spinnaker dependencies besides the JDK to your machine running OSX. With a few tweaks and a package manager swap, you could also use it to automate dependency setup on Linux.
 
 ## Help us improve the contributor experience
-This page is beta! Please submit a Pull Request, or use the #gardening-feedback channel to share your thoughts on how to improve the Spinnaker contributor experience.
+This page is beta! Please submit a Pull Request
