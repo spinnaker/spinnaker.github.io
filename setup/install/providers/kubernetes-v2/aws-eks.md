@@ -137,7 +137,7 @@ CONTEXT=$(kubectl config current-context)
 Next, create a service account for the Amazon EKS cluster:
 
 ```
-kubectl apply --context $CONTEXT -f https://spinnaker.io/downloads/kubernetes/service-account.yml
+kubectl apply --context $CONTEXT -f https://www.spinnaker.io/downloads/kubernetes/service-account.yml
 ```
 
 See the [Kubernetes documentation for more details on service accounts](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/).
