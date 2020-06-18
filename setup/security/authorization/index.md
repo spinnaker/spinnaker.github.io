@@ -29,7 +29,7 @@ Permissions can be attached to applications and (provider) accounts. A permissio
 
 Keep these in mind as you consider your authorization strategy:
 
-1) Fiat's authorization model is a whitelist that is open by default. In other words, when a resource does _not_ 
+1) Fiat's authorization model open by default. In other words, when a resource does _not_
 define who is allowed to access it, it is considered unrestricted.  This means:
    * If an account is unrestricted, any user with access to Spinnaker can deploy a new application
    to that account.

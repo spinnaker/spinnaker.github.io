@@ -60,7 +60,7 @@ metadata:
   The files passed to `--values` parameter in the `helm
   template` command. Each is a
   remotely stored artifact representing a [Helm Value
-  File](https://helm.sh/docs/topics/chart_template_guide/values_files/).
+  File](https://helm.sh/docs/chart_template_guide/values_files/).
 
 * __Statically specified overrides__
 

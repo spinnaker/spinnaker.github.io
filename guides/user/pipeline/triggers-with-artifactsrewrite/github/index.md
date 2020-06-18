@@ -7,9 +7,6 @@ sidebar:
 
 {% include toc %}
 
-> This guide assumes that you have enabled the `artifactsRewrite` feature flag.
-> See [Prerequisite configuration/setup](#prerequisite-configurationsetup).
-
 This guide explains how to configure Spinnaker to trigger pipelines based on
 commits to a [GitHub](https://github.com) repository and inject changed GitHub
 files as [artifacts](/reference/artifacts) into a pipeline.
@@ -35,11 +32,8 @@ You need the following:
 
 * [A running Spinnaker instance](/setup/install/). This guide shows you how to
   update it to accept messages from GitHub.
-
-* The `artifactsRewrite` feature flag enabled in Spinnaker. In
-  `~/.hal/$DEPLOYMENT/profiles/settings-local.js` (where `$DEPLOYMENT` is
-  typically `default`), add the line
-  `window.spinnakerSettings.feature.artifactsRewrite = true;`.
+  
+* Artifact support [enabled](/reference/artifacts-with-artifactsrewrite//#enabling-artifact-support).  
 
 
 At this point, we will configure GitHub webhooks and a GitHub artifact account.

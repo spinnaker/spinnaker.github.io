@@ -26,6 +26,26 @@ cases:
     text: Thanks to Spinnaker, developers can focus on developing business logic rather than becoming experts on each cloud platform. Teams can track the lifecycle of a deployment using several notification mechanisms including email, Slack, and SMS, allowing them to coordinate handoffs between developer and QA teams.
 
 testimonials:
+  - name: Adobe
+    logo: testimonials-logos/adobe_logo.png
+    quote: "Today, we're using Spinnaker to deploy some of our most critical apps to production."
+    questions:
+      - question: How did you discover Spinnaker?
+        answer: We first heard about Spinnaker in 2016, when Netflix published a blog post about it, as a successor of Asgard. We didn't quite have the bandwidth at the time to give it a try, but later on, once our deployment process started to become more and more of a problem, a bell rang, and Spinnaker came into the picture. 
+
+      - question: What was your experience getting started with Spinnaker?
+        answer: We started using Spinnaker at Adobe in 2017, when we came across a nice starting guide from AWS. It relied on CloudFormation to create the required resources and it took us under an hour to boot up Spinnaker and hook into our account.
+                We quickly fell in love with it. When it came to using it for our production apps, we encountered an issue though. At the time, Spinnaker was packaged for Debian (Ubuntu), but our company was pushing towards using Centos.
+                We spent quite a lot of time repackaging the Spinnaker services as RPMs and making them work, but after a few months we were able to achieve this goal. It wasn’t ideal, because we were quickly left behind with the new Spinnaker versions and services (eg. Kayenta, as the new service for automatic canary analysis, came into its existence afterwards).
+                We were excited to hear that Spinnaker could be deployed to Kubernetes and once it was packaged as a helm chart, we gave it a try. We are now quite happy with the way things are, with Spinnaker deployed to Kubernetes, using a highly available setup.
+   
+      - question: Where are you today with Spinnaker? What benefits has it provided to your team?
+        answer: Today, we're using Spinnaker to deploy some of our most critical apps to production. Most of these apps are deployed to AWS EC2 (virtual machines), but since the beginning of 2019 we've been moving and more towards deploying our microservices to Kubernetes, using Spinnaker.
+                Deploying our apps before using Spinnaker was a cumbersome process, which took quite a lot of engineering effort and was error prone. Spinnaker saved us a lot of man hours and brought a more reliable deployment process for our team. Spinnaker caught the attention of more and more teams inside Adobe and we're now onboarding them in a single Spinnaker instance.
+
+      - question: What is missing or could be improved in Spinnaker?
+        answer: One recurring pain point we hear from our colleagues regarding Spinnaker is the complexity of using it. In order to improve the user experience, we'd love to see more investment in the User Interface. The UI can be quite intimidating for people that are new to Spinnaker, especially when trying to deploying to Kubernetes (using the V2 integration). We're hopeful things will get better in this area and we're already starting to see progress.
+  
   - name: Airbnb
     logo: testimonials-logos/airbnb_logo.png
     quote: "We are planning to open up Spinnaker to all services and make it the default deployment tool in 2020."
@@ -118,6 +138,41 @@ testimonials:
         answer: The base Spinnaker docs are not good. 
                 Armory provides much more useful documentation.
 
+  - name: DINS
+    logo: testimonials-logos/dins_logo.png
+    quote: "[Spinnaker is] responsible for the deployment of more than 30 different services and 100s to come."
+    questions:
+      - question: How did you discover Spinnaker?
+        answer: We were trying to build an automated Continuous Delivery pipeline and searching for appropriate tools.
+
+      - question: What was your experience getting started with Spinnaker?
+        answer: Spinnaker is integrated with our internal systems, also Jenkins, Gitlab CI. Spinnaker became a core tool for Kubernetes deployments.
+
+      - question: Where are you today with Spinnaker? What benefits has it provided to your team?
+        answer: 4 Spinnaker instances. Responsible for the deployment of more than 30 different services and 100s to come.
+
+      - question: What is missing or could be improved in Spinnaker?
+        answer: Lack of documentation related to API and pipeline as a code.
+
+  - name: Jamf
+    logo: testimonials-logos/jamf_logo.png
+    quote: "The pipelines allow for easy auditing and ensuring all changes to pipelines are run through our controls for proper change control management."
+    questions:
+      - question: How did you discover Spinnaker?
+        answer: When researching how we were planning on deploying a new set of microservices into production, we happened upon Spinnaker.
+
+      - question: What was your experience getting started with Spinnaker?
+        answer: It took a little bit of time to figure out how to properly configure both Spinnaker itself as well as how we structure our pipelines.  This was pre v2 of the Kubernetes provider, so there was a bit of magic happening that was not well understood right away.  Once we got a handle on all the features we were able to easily scale out to new services quickly and easily.
+
+      - question: Where are you today with Spinnaker? What benefits has it provided to your team?
+        answer: Today we are deploying a number of different production workloads with several teams across many different EKS clusters. Some teams are under SOC2 controls, while others have not made it to that point as of yet. With this in mind, the pipelines allow for easy auditing and ensuring all changes to pipelines are run through our controls for proper change control management.
+                As we look toward the future we are planning to migrate our largest application to utilize Spinnaker to do all of the heavy lifting work of application management per customer. 
+
+      - question: What is missing or could be improved in Spinnaker?
+        answer: Ops is probably the biggest issue we have today. There is not a great way of maintaining Spinnaker while allowing for easily creating a testing environment.
+                The other issue we face as we continue to add clusters to our purview is being able to template out a pipeline to run against every cluster added to Spinnaker. Currently this is a manual operation on all of the infrastructure pieces that our team owns (logging, monitoring, node draining, calico, ingress) to add a new cluster to all of these individual pipelines.  
+                A way of templating that out would be beneficial from the operational aspect of managing all of these clusters for the applications that are the same.
+
   - name: SAP Customer Experience
     logo: testimonials-logos/sap.png
     quote: "Our largest development projects are deploying 25 times in production (daily average)."
@@ -152,3 +207,37 @@ testimonials:
       - question: What is missing or could be improved in Spinnaker?
         answer: The UI can be made more intuitive and troubleshooting can be made a lot easier.
 
+  - name: Veamly
+    logo: testimonials-logos/veamly_logo.png
+    quote: "It's a true enabler for companies to embrace continuous deployment and change the way software is shipped to production."
+    questions:
+      - question: How did you discover Spinnaker?
+        answer: I learnt about Spinnaker when I attended Google Cloud Summit in New York City in 2017. I was fascinated by the potential of this technology. It's a true enabler for companies to embrace continuous deployment and change the way software is shipped to production. 
+
+      - question: What was your experience getting started with Spinnaker?
+        answer: Prior to using Spinnaker our build/deployment model was built around Jenkins. We used an internally managed Jenkins version to build and ship code to production. Jenkins quickly became a bottleneck with a high price tag for a young startup like Veamly.
+                As part of migrating our CI/CD infrastructure, we ended up using Google Cloud Build and Spinnaker to deploy docker images to our Kubernetes clusters. After we migrated our build process to use Google Cloud Build, we decided to use Spinnaker especially given that we were looking at doing canary releases instead of blue/green deployments. The transition was smooth and done in the course of a day of work.
+
+      - question: Where are you today with Spinnaker? What benefits has it provided to your team?
+        answer: Today, all our production deployments are done using Spinnaker, By doing so, we gained more stability, more flexibility to do rollbacks, and faster deployments. Spinnaker has also offered us more visibility about which Kubernetes cluster will be updated by a given Spinnaker pipeline. 
+
+      - question: What is missing or could be improved in Spinnaker?
+        answer: Given our size, we have not yet run into any limitations with Spinnaker.
+  
+  - name: wescale
+    logo: testimonials-logos/wescale_logo.png
+    quote: "Spinnaker has provided my client...with more stability in their pipelines, speedier deliveries, and a strong understanding of the application delivery process."
+    questions:
+      - question: How did you discover Spinnaker?
+        answer: I first discovered Spinnaker through the Netflix Engineering tech blog, which I was already following for Java-related topics.
+
+      - question: What was your experience getting started with Spinnaker?
+        answer: It was kind of hard to get started with it back in the old days (circa 2015-2016), then came along halyard, which allowed a smoother experience. But, it still feels a little overwhelming for newcomers to the Spinnaker platform, so I would say better than before but still far from Zero To Hero in a few commands. 
+                We should provide a simple halyard template file for the most common installations options (including setting up the provider, authentication, CI tool, etc.) in just one command. More defaults should already be configured, but just in a disabled state. 
+
+      - question: Where are you today with Spinnaker? What benefits has it provided to your team?
+        answer: Spinnaker has provided my client (I work for a consulting company) with more stability in their pipelines, speedier deliveries, and a strong understanding of the application delivery process. 
+
+      - question: What is missing or could be improved in Spinnaker?
+        answer: My main concern or the missing link has always been a community-standardised way of doing pipeline as code with Spinnaker (PAC). This is something that has prevented Spinnaker adoption in some organisations.
+  

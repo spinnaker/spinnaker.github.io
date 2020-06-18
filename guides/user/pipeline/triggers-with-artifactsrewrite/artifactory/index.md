@@ -7,9 +7,6 @@ sidebar:
 
 {% include toc %}
 
-> This guide assumes that you have enabled the `artifactsRewrite` feature flag.
-> See [Prerequisites](#prerequisites).
-
 This guide explains how to add a [JFrog
 Artifactory](https://jfrog.com/artifactory/) trigger to your pipeline.
 
@@ -27,10 +24,7 @@ commands](/reference/halyard/commands/#hal-config-repository-artifactory))
   config artifact maven` Halyard
 commands](/reference/halyard/commands/#hal-config-artifact-maven))
 
-* The `artifactsRewrite` feature flag enabled in Spinnaker. In
-  `~/.hal/$DEPLOYMENT/profiles/settings-local.js` (where `$DEPLOYMENT` is
-  typically `default`), add the line
-  `window.spinnakerSettings.feature.artifactsRewrite = true;`.
+* Artifact support [enabled](/reference/artifacts-with-artifactsrewrite//#enabling-artifact-support).
 
 # Adding an Artifactory Trigger
 

@@ -56,7 +56,7 @@ monitoring
 Spinnaker](https://blog.spinnaker.io/monitoring-spinnaker-part-1-4847f42a3abd)
 for the curious.
 
-If you see slowdowns in some of Spinanker's operations, such as...
+If you see slowdowns in some of Spinnaker's operations, such as...
 
 * creating applications,
 * running pipelines,

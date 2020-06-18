@@ -8,8 +8,8 @@ sidebar:
 {% include toc %}
 
 This page describes how to set up a Kubernetes cluster on
-[GKE](https://cloud.google.com/kubernetes-engine/) to be used as a Spinnaker
-Kubernetes v2 provider. The process is very simple, but you need to do some
+[GKE](https://cloud.google.com/kubernetes-engine/) to be used with Spinnaker's
+Kubernetes provider. The process is very simple, but you need to do some
 specific things to allow Spinnaker to authenticate against your cluster.
 
 > Note: To manage and create clusters in a given project, you need the

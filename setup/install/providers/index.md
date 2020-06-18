@@ -28,7 +28,7 @@ Add as many of the following providers as you need. When you're done, return to 
 * [Cloud Foundry](/setup/install/providers/cf/)
 * [DC/OS](/setup/install/providers/dcos/)
 * [Google Compute Engine](/setup/install/providers/gce/)
-* [Kubernetes V2 (manifest based)](/setup/install/providers/kubernetes-v2/)
+* [Kubernetes](/setup/install/providers/kubernetes-v2/)
 * [Oracle](/setup/install/providers/oracle/)
 
 See also [`hal config provider`](/reference/halyard/commands/#hal-config-provider)

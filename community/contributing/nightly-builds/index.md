@@ -81,3 +81,99 @@ The following jobs assist in removing old artifacts created during the build pro
 * [Admin_DailyJanitor](https://builds.spinnaker.io/view/5%20Admin/job/Admin_DailyJanitor/){:target="\_blank"}
 * [Admin_AuditBoms](https://builds.spinnaker.io/view/5%20Admin/job/Admin_AuditBoms/){:target="\_blank"}
 * [Admin_DeleteObsoleteArtifacts](https://builds.spinnaker.io/view/5%20Admin/job/Admin_DeleteObsoleteArtifacts/){:target="\_blank"}
+
+## Troubleshooting Playbook
+
+Check whether the failure happened during the _build_ or the _test_ phase:
+
+1. Click the failing Flow.
+
+    ![](troubleshooting - base - 10 - flow.png)
+
+1. Click for the most recent failing build.
+
+    ![](troubleshooting - base - 20 - mostRecent.png)
+
+1. Click through to the failing phase.
+
+    ![](troubleshooting - base - 30 - phase.png)
+
+### Build Failures
+
+1. The build phase uses many subshells to perform its work in parallel. Use the `Console Output`
+to help narrow down which step of the build has failed, and use the collected logs to view more information
+on what specificially went wrong.
+
+    ![](troubleshooting - build - 10 - consoleOutput.png)
+
+1. The Console Output prints out after each completion how much work is still remaining.
+
+    ![](troubleshooting - build - 20 - buildSteps.png)
+
+1. Frequently, the build error will be printed out directly to the Console Output, but sometimes this output can be hard to read. View the raw file directly using the Build Artifacts link from Step 1.
+
+    ![](troubleshooting - build - 30 - failedOutput.png)
+
+#### Common Build Failures
+
+##### Bintray Conflicts
+
+If an artifact is uploaded to the Bintray repository but never published
+(either because of a transient Bintray error or an interrupted build), you'll
+get an error like this:
+
+> Bintray API Request 'create version 0.20.0-20200512192702' failed with HTTP response 409 Conflict
+
+Follow these steps to delete the artifact and resolve the issue:
+
+1. Navigate to the specific version [in the Bintray
+   repository](https://bintray.com/beta/#/spinnaker-releases/jars?tab=packages)
+
+1. Click on the Spinnaker repository that had the failure. (If you don't see
+it, click to the next page; there are only 10 items per page for some reason.)
+
+1. Click on the specific version that had the issue.
+
+1. Click "Actions" in the upper right and select "Edit". 
+
+1. On the next page, click the "Delete" link in the upper right. It
+will look like nothing happened, but after 10 seconds or so, the page will
+refresh and the version will be gone.
+
+Now that the conflict has been removed, you can restart the build.
+
+### Test Failures
+
+1. View the Test Results Overview.
+
+    ![](troubleshooting - test - 10 - testResultsOverview.png)
+
+1. Identify the failing test.
+
+    ![](troubleshooting - test - 20 - failingTest.png)
+
+1. Identify which step in the test is failing.
+
+    ![](troubleshooting - test - 30 - failingStep.png)
+
+1. It can sometimes help to view the last call that was made prior to that stage failing.
+
+    ![](troubleshooting - test - 40 - failingDetails.png)
+
+### Connecting to the Jenkins VM
+
+Members of the `jenkins-debuggers@spinnaker.io` group have access to SSH directly to the Jenkins VM. You can connect to the instance with this command:
+
+```bash
+$ gcloud compute ssh --project spinnaker-community jenkins-transfer --zone us-central1-f --ssh-flag "-L 4040:test-jenkins:8080"
+```
+
+The extra `--ssh-flag` establishes a tunnel to the `test-jenkins` instance, which is used to trigger some integration tests. You can view this instance at [http://localhost:4040](http://localhost:4040) after the connection is established.
+
+#### Change to `jenkins` user
+
+All processes are run as the `jenkins` user and most of the useful links are in `/home/jenkins`. Switch to it with:
+
+```bash
+$ sudo su - jenkins
+```

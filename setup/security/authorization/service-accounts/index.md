@@ -80,3 +80,17 @@ the case.)
 
 At pipeline runtime, standard authorization checks against the account and application occur 
 just as if it were a human user.
+
+## Deleting service accounts
+
+To delete a service account, use the following `DELETE` endpoint in Front50:
+
+```bash
+# Service Account ID is the same as service account name with all lowercase
+SERVICE_ACCOUNT_ID="sekret-service-account@spinnaker-test.net"
+FRONT50=http://front50.url:8080
+
+curl -X DELETE "$FRONT50/serviceAccounts/$SERVICE_ACCOUNT_ID"
+```
+
+Similar to service account creation, a Fiat sync (`curl -X POST $FIAT/roles/sync` ) might be necessary for the changes to be immediately reflected.

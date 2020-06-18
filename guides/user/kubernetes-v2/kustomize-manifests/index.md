@@ -19,9 +19,9 @@ In the context of Spinnaker, Kustomize lets you generate a custom manifest, whic
 
 Note that Spinnaker uses the latest non-kubectl version of Kustomize.
 
-## Enabling Kustomize in 1.16 and 1.17 (Beta)
+## Enabling Kustomize Prior to 1.20
 
-Kustomize can be enabled by a feature flag in 1.16 and 1.17.
+Kustomize must be enabled by a feature flag in Spinnaker 1.16 - 1.19.
 
 For Halyard, add the following line to `~/.hal/{DEPLOYMENT_NAME}/profiles/settings-local.js`:
 

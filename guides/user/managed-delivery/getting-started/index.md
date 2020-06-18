@@ -21,10 +21,10 @@ You can pick a new piece of infrastructure that you want to create (a new load b
 We recommend creating a new security group to test things out.
 This guide will walk you through creating a new managed security group.
 
-First, you'll create a YAML file to store your delivery config in.
-Then, you'll set up a Spinnaker pipeline to submit that YAML file to Spinnaker.
-Finally, you'll watch Spinnaker take actions to make your resource exist.
-
+Here are the steps you'll complete:
+1. First, you'll create a YAML file to store your delivery config in.
+2. Then, you'll set up a Spinnaker pipeline to submit that YAML file to Spinnaker.
+3. Finally, you'll watch Spinnaker take actions to make your resource exist.
 
 ## Background
 
@@ -33,9 +33,12 @@ These resources are security groups, load balancers, and clusters.
 To create these resources you manually define them by clicking the `create` button in the Spinnaker UI.
 
 Managed Delivery changes this interaction.
-To define resources that Spinnaker manages, you'll create a YAML "delivery config" file specifying the desired state of your infrastructure resources.
-"Desired state" is a new-to-Spinnaker phrase that means you're specifying **what** you want your infrastructure to always look like, regardless of **how** Spinnaker decides to make it look that way.
+To define resources that Spinnaker manages, you'll create a YAML-based "delivery config" file specifying the desired state of your infrastructure resources.
+"Desired state" is a new concept in Spinnaker that means you're specifying **what** you want your infrastructure to always look like, regardless of **how** Spinnaker decides to make it look that way.
 In practice, this desired state will often look like the configuration options you're used to defining through the Spinnaker UI.
+
+> :bulb: To learn more about delivery configs, check out <a href="/guides/user/managed-delivery/delivery-configs/" target="_blank">this section</a>
+> of the documentation.
 
 Once you create a YAML delivery config, you'll need to tell Spinnaker to manage it. 
 This is done by submitting the file to Spinnaker's API.
@@ -50,7 +53,6 @@ You must submit your YAML files to Spinnaker every time they change.
 All the instructions for this flow are captured in this doc. 
 
 Let's get started!
-
 
 ## Prerequisites
 
@@ -77,13 +79,19 @@ The base URL for exporting a security group is:
 /managed/resources/export/aws/AWS_ACCOUNT_NAME/securitygroup/APP_NAME_OR_SG_NAME?serviceAccount=SERVICE_ACCOUNT
 ```
 
-You'll need to replace `AWS_ACCOUNT_NAME` with the account your app is in.
-You'll need to replace `APP_NAME_OR_SG_NAME` with either the name of your application or the name of the security group you want to export. 
-You probably have a security group with the same name as your app, which is the one you should use here.
-You'll need to replace `SERVICE_ACCOUNT` with the same service account you created or found in the [prerequisites](#prerequisites) step.
+* Replace `AWS_ACCOUNT_NAME` with the account your app is in. You can check the [credentials]
+endpoint in Spinnaker API for a list of valid account names.
+* Replace `APP_NAME_OR_SG_NAME` with either the name of your application or the name of the
+security group you want to export. You probably have a security group with the same name as
+your app, which is the one you should use here.
+* Replace `SERVICE_ACCOUNT` with the same service account you created or found in the
+[prerequisites](#prerequisites) step.
 
-If you've gotten all the information right a resource configuration will show up. For more information on how to use this API see the [API](/guides/user/managed-delivery/api/#export-an-existing-resource) doc.
+If you've gotten all the information right a resource configuration will show up. See the [API]
+docs for more information on usage. 
 
+[credentials]: /reference/api/docs.html#api-Credentialscontroller-getAccountsUsingGET
+[API]: /guides/user/managed-delivery/api#export-an-existing-resource
 
 ## Save Your Resource In Your Git Repository
 
@@ -148,7 +156,7 @@ For example, my sample security group for my app `keeldemo` will have a moniker 
 
 which will name the security group `keeldemo-md`.
 
-**STOP! Don't commit your delivery config yet! Just save it locally.**
+:stop_sign: **STOP! Don't commit your delivery config yet! Just save it locally.**
 
 
 ## Repository Permissions

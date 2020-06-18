@@ -43,7 +43,7 @@ and get it using the following command:
        "type": "front50/pipelineTemplate", # Static constant
      },
      "variables": {
-       "waitTime": 4 # Value for the template variable.
+       "timeToWait": 4 # Value for the template variable.
      },
      "exclude": [],
      "triggers": [],
@@ -64,7 +64,7 @@ and get it using the following command:
    ```json
    "template": {
      "artifactAccount": "front50ArtifactCredentials", # Static constant
-     "reference": "spinnaker://<templateName>",
+     "reference": "spinnaker://<templateId>",
      "type": "front50/pipelineTemplate" # Static constant
    }
    ```
@@ -138,6 +138,10 @@ stage.
     }
 ]
 ```
+
+The `config` object contains the entire stage config. In this Wait-stage example, `config` includes only `waitTime`. 
+
+
 
 ## Add a branch to the pipeline
 

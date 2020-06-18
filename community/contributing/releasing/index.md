@@ -28,7 +28,7 @@ it must be cherry-picked onto that release branch.
 
 There are two ways to create a pull request for a cherry-pick:
 
-* [Using the Spinnaker GitHub bot](#cherry-pick-using-the-github-bot)
+* [Using Mergify](#cherry-pick-using-mergify)
 * [Manually via the command-line](#cherry-pick-using-the-command-line)
 
 After creating a cherry-pick pull request, you should assign the review to the
@@ -46,12 +46,12 @@ not there are workarounds, etc. If there isn't an issue already open, you can
 either (preferably) file a new one, or else include these details in your
 cherrypick pull request.
 
-## Cherry-pick using the GitHub bot
+## Cherry-pick using Mergify
 
-To cherry-pick into release `X.Y`, add the following comment to the _merged_ PR
-for your change:
+To cherry-pick into the `1.18` release branch (for example), add the following
+comment to the _merged_ PR for your change:
 
-> @spinnakerbot cherry-pick X.Y
+> @Mergifyio backport release-1.18.x
 
 ## Cherry-pick using the command line
 

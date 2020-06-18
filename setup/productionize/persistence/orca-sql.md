@@ -27,7 +27,13 @@ The `migration` user will only be used to perform schema changes on the database
 
 Before deploying Orca, the schema and database uses must first be manually setup:
 
-1. Set MySQL Server `tx_isolation` setting to `READ-COMMITTED`
+1. Set MySQL Server variable `tx_isolation` setting to `READ-COMMITTED`. Refer to [MySQL Server System Variables](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_tx_isolation).
+
+From the MySQL Server command line run
+```
+set tx_isolation = 'REPEATABLE-READ';
+```
+
 2. Setup the schema and database users
   
   ```sql
@@ -85,6 +91,17 @@ In case you have deployed Spinnaker using [Halyard](/reference/halyard/), you ne
 
 Read more about profiles and service-settings [here](/reference/halyard/custom/).
 
+## MariaDB
+
+The default MySQL Connector for Aurora MySQL 5.7 should be fine, but you may also setup Orca to use the MariaDB JDBC driver over MySQL Connector.
+
+The MariaDB driver is Aurora clustering aware, which takes care of automatic master failover operations. 
+Due to licensing issues, Orca cannot ship with the MariaDB driver. 
+
+An example of wiring up MariaDB into Orca can be found here: [robzienert/orca-mariadb-extension](https://github.com/robzienert/orca-mariadb-extension).
+
+---
+
 ## Netflix's Amazon Aurora Example
 
 While vanilla MySQL provides more durability and performance over Redis, Netflix additionally uses Amazon Aurora MySQL 5.7.
@@ -127,11 +144,3 @@ If you are only deploying Aurora into a single region, don't enable any binlog s
 - *collation_connection*: `utf8mb4_unicode_ci`
 - *collation_server*: `utf8mb4_unicode_ci`
 - *innodb_checksums*: `0`
-
-#### MariaDB
-
-The default MySQL Connector for Aurora MySQL 5.7 should be fine, but you may also setup Orca to use the MariaDB JDBC driver over MySQL Connector.
-The MariaDB driver is Aurora clustering aware, which takes care of automatic master failover operations. 
-Due to licensing issues, Orca cannot ship with the MariaDB driver. 
-
-An example of wiring up MariaDB into Orca can be found here: [robzienert/orca-mariadb-extension](https://github.com/robzienert/orca-mariadb-extension).
