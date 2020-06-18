@@ -64,7 +64,8 @@ sql:
     jdbcUrl: jdbc:mysql://localhost:3306/orca
     user: orca_service
     password: hunter2
-    connectionTimeout: 5000
+    connectionTimeoutMs: 5000 
+    maxLifetimeMs: 30000
     maxLifetime: 30000
     # MariaDB-specific:
     maxPoolSize: 50
