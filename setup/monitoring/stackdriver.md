@@ -108,11 +108,6 @@ Proceed to [install the dashboards](#installing-the-stackdriver-dashboards)
 
 ## Installing the Stackdriver dashboards
 
-*__Note__: The Stackdriver Dashboard API is currently whitelisted, so
-you need a registered STACKDRIVER_API key in order to use it. If you
-are so inclined, [contact your sales
-representative](https://cloud.google.com/contact/){:target="\_blank"}.
-
 To install the stackdriver dashboards, you need to have the monitoring daemon
 installed. But you only need it installed while you upload the dashboards.
 You can do this on a temporary VM.
