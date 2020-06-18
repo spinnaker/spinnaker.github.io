@@ -119,6 +119,9 @@ release candidate is now validated and can be tested by running:
 
 1. Check for any PRs waiting to be [cherry-picked](https://github.com/pulls?utf8=%E2%9C%93&q=org%3Aspinnaker+is%3Apr+is%3Aopen+-base%3Amaster).
 (You can further restrict the query by adding a constraint like +base:release-1.18.x to the URL.)
+Ensure patches meet the
+[release branch patch criteria](/community/contributing/releasing#release-branch-patch-criteria)
+before merging.
 
 1. Rerun the Flow_BuildAndValidate_${RELEASE} job and get a green build.
 
@@ -238,6 +241,9 @@ Example: VERSION="1.17.2" ./publish.sh
 Repeat weeklyish for each supported version.
 
 1. Check for any PRs waiting to be [cherry-picked](https://github.com/search?q=org%3Aspinnaker+state%3Aopen+author%3Aapp%2Fmergify+is%3Apr&type=Repositories&ref=advsearch&l=&l=).
+Ensure patches meet the
+[release branch patch criteria](/community/contributing/releasing#release-branch-patch-criteria)
+before merging.
 
 1. Rerun the Flow_BuildAndValidate_${RELEASE} job and get a green build.
 
