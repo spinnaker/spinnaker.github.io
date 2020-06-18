@@ -88,7 +88,7 @@ manual_judgments_feature:
   title: Manual Judgments
   content: "Require a manual approval prior to releasing an update with a manual judgement stage."
 execution_windows_feature:
-  title: White-listed Execution Windows
+  title: Restricted Execution Windows
   content: "Restrict the execution of stages to certain windows of time, making sure deployments happen during off-peak traffic or when the right people are on hand to monitor the roll-out."
 chaos_monkey_feature:
   title: Chaos Monkey Integration

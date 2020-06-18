@@ -4,7 +4,7 @@ title: "Commands"
 sidebar:
   nav: reference
 ---
-Published: 2020-04-30 21:10:29
+Published: 2020-06-18 17:50:25
 
 
 # Table of Contents
@@ -631,7 +631,6 @@ Published: 2020-04-30 21:10:29
  * [**hal plugins delete**](#hal-plugins-delete)
  * [**hal plugins disable**](#hal-plugins-disable)
  * [**hal plugins disable-downloading**](#hal-plugins-disable-downloading)
- * [**hal plugins edit**](#hal-plugins-edit)
  * [**hal plugins enable**](#hal-plugins-enable)
  * [**hal plugins enable-downloading**](#hal-plugins-enable-downloading)
  * [**hal plugins list**](#hal-plugins-list)
@@ -12120,7 +12119,6 @@ hal plugins [parameters] [subcommands]
  * `delete`: Delete a plugin
  * `disable`: Enable or disable all plugins
  * `disable-downloading`: Enable or disable the ability for Spinnaker services to download jars for plugins
- * `edit`: Edit a plugin
  * `enable`: Enable or disable all plugins
  * `enable-downloading`: Enable or disable the ability for Spinnaker services to download jars for plugins
  * `list`: List all plugins
@@ -12142,7 +12140,6 @@ hal plugins add PLUGIN [parameters]
  * `--enabled`: To enable or disable the plugin.
  * `--extensions`: A comma separated list of extensions to enable
  * `--no-validate`: (*Default*: `false`) Skip validation.
- * `--ui-resource-location`: The location of the plugin's ui resource.
  * `--version`: The plugin version to use
 
 
@@ -12190,26 +12187,6 @@ hal plugins disable-downloading [parameters]
 #### Parameters
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--no-validate`: (*Default*: `false`) Skip validation.
-
-
----
-## hal plugins edit
-
-Edit a plugin
-
-#### Usage
-```
-hal plugins edit PLUGIN [parameters]
-```
-
-#### Parameters
-`PLUGIN`: The name of the plugin to operate on.
- * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
- * `--enabled`: To enable or disable the plugin.
- * `--extensions`: A comma separated list of extensions to create
- * `--no-validate`: (*Default*: `false`) Skip validation.
- * `--ui-resource-location`: The location of the plugin's ui resource.
- * `--version`: The plugin version to use
 
 
 ---
