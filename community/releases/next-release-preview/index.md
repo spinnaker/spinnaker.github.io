@@ -40,3 +40,28 @@ safety of the patch release upgrade process, we have documented more explicit
 [patch criteria](https://www.spinnaker.io/community/contributing/releasing/#release-branch-patch-criteria)
 to determine whether a change is appropriate to cherry-pick into a release
 branch.
+
+### Improved UI for child pipeline failures
+
+Previously, failures in pipelines that run as stages of other pipelines were
+difficult to debug. There is now a modal to surface failed child pipeline
+execution details. Enable this functionality by adding the following to your
+`settings-local.js`:
+
+```
+window.spinnakerSettings.feature.executionMarkerInformationModal = true;
+```
+
+Please report any bugs by opening a GitHub issue. Barring any major issues, this
+feature will be enabled by default in 1.22. Check out the
+[PR](https://github.com/spinnaker/deck/pull/8325) for more details.
+
+### Single artifacts UI
+
+[1.20](https://www.spinnaker.io/community/releases/versions/1-20-0-changelog#standard-artifacts-ui-enabled-by-default)
+enabled the standard artifacts UI by default, but provided a temporary
+`legacyArtifactsEnabled` flag to revert to the legacy artifacts UI. This flag
+is no longer supported in 1.21, and the standard artifacts UI is the only
+available artifacts UI. See this
+[RFC](https://github.com/spinnaker/governance/blob/master/rfc/legacy_artifacts_ui_removal.md)
+for more details.
