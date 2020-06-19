@@ -303,6 +303,9 @@ https://builds.spinnaker.io/job/Build_PrimaryArtifacts/${JOB_NUMBER}/artifact/bu
     1. Set `HALYARD_BUILD_VERSION_TO_RELEASE` to the version copied from the
     prior step.
 
+1. Post in [#halyard](https://spinnakerteam.slack.com/messages/halyard/) that a
+   new version of Halyard has been released.
+
 ## Release patch-version Halyard
 
 Repeat as needed.
@@ -318,6 +321,9 @@ Repeat as needed.
 
     1. Set **HALYARD_BUILD_VERSION_TO_RELEASE** to pre-colon output from
     `last_version_commit.yml` of the prior job.
+
+1. Post in [#halyard](https://spinnakerteam.slack.com/messages/halyard/) that a
+   new version of Halyard has been released.
 
 ## Publish a new version of deck-kayenta
 
