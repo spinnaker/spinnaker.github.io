@@ -221,17 +221,6 @@ Use `hal deploy apply` to redeploy Spinnaker with the updated configuration.
 hal plugins list
 ```
 
-## Edit a plugin
-
-You can use `hal plugins edit PLUGIN [parameters]` to modify a plugin's `version`, `ui-resource-location`, and `enabled` parameters. For example, to disable an enabled plugin, change the `enabled` parameter to false and then redeploy Spinnaker.
-
-```
-hal plugins edit Armory.RandomWaitPlugin --enabled=false
-hal deploy apply
-```
-
-See the command [reference](/reference/halyard/commands/#hal-plugins-edit) for the complete list of parameters.
-
 ## Delete a plugin
 
 You can use `hal plugins delete PLUGIN` to delete a plugin.
