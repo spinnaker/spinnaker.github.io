@@ -123,6 +123,12 @@ hal config provider kubernetes account add staging-demo \
 Make sure to [add GitHub as an artifact account](/setup/artifacts/github). This
 will allow us to fetch the manifests later.
 
+### Configure Docker Registry account
+
+Make sure to [add a Docker Registry provider account](/setup/install/providers/docker-registry).
+This will allow us to configure a Spinnaker pipeline to trigger on a Docker
+image update.
+
 ### Deploy Spinnaker
 
 Pick a version & specify that you want to deploy Spinnaker inside the staging
@@ -193,13 +199,27 @@ NAME        TYPE       CLUSTER-IP    EXTERNAL-IP   PORT(S)          AGE
 spin-gate   NodePort   10.7.255.85   <none>        8084:31355/TCP   32m
 ```
 
-Now pick any node in the cluster and record its IP as `$NODE_IP`; for the purposes of
-this codelab, we'll be sending external webhooks to `$NODE_PORT` on that node. In
-order for these webhooks to work, for this codelab only, open your firewall
-on that node to all addresses for TCP connections on `$NODE_PORT`. If you
-were running Spinnaker in production with [authentication](/setup/security),
-only webhooks would be allowed, which you can reject by header or payload.
-See [the webhook guide for more details](/guides/user/triggers/webhooks).
+Now pick any node in the cluster and record its IP as `$NODE_IP`. In order to
+get the IP of a node, first get the nodes in the cluster and record one of the
+names as `$NODE_NAME`:
+
+```bash
+kubectl get nodes
+```
+
+Next run the following command to get information about the node and record the
+ExternalIP as `$NODE_IP`:
+
+```bash
+kubectl describe node $NODE_NAME
+```
+ 
+For the purposes of this codelab, we'll be sending external webhooks to 
+`$NODE_PORT` on that node. In order for these webhooks to work, for this codelab 
+only, open your firewall on that node to all addresses for TCP connections on 
+`$NODE_PORT`. If you were running Spinnaker in production with [authentication](/setup/security), 
+only webhooks would be allowed, which you can reject by header or payload. See 
+[the webhook guide for more details](/guides/user/triggers/webhooks).
 
 ### Allow Docker to post build events
 
@@ -258,22 +278,7 @@ in this pipeline, meaning we expect each time that this pipeline executes,
 either a GitHub event will supply us with a new manifest to deploy, or we will
 use some default or prior manifest.
 
-Select __Add Artifact__:
-
-{% include figure
-   image_path="./add-github-artifact.png"
-%}
-
-Select GitHub as the artifact type, and set the __File Path__ to
-`manifests/demo.yml`, and select __Use Prior Execution__, to tell
-Spinnaker that if no matching artifact is found, to use the last execution's
-value. (This will be useful later).
-
-{% include figure
-   image_path="./configure-github-artifact.png"
-%}
-
-Next, let's add a GitHub trigger:
+Select __Add Trigger__:
 
 {% include figure
    image_path="./add-github-trigger.png"
@@ -288,12 +293,19 @@ Supply the following configuration values:
 | __Organization or User__  | The user you forked the above code into. |
 | __Project__ | "spin-kub-v2-demo" |
 | __Secret__ | The `$SECRET` chosen [above](#allow-github-to-post-push-events). |
-| __Expected Artifacts__ | Must reference the `manifests/demo.yml` artifact. |
 
 {% include figure
    image_path="./configure-github-trigger.png"
-   caption="We supply the expected artifact to be sure that we only trigger the
-   pipeline when that file changes."
+%}
+
+Next we will define a new artifact in the __Artifact Constraints__ field.
+For __Account__, select the GitHub artifact account created earlier and then set 
+the __File Path__ to `manifests/demo.yml`. Lastly, select 
+__User Prior Execution__, to tell Spinnaker that if no matching artifact is
+found, use the last execution's value. (This will be useful later).
+
+{% include figure
+    image_path="./configure-github-artifact.png"
 %}
 
 With the trigger configuration in place, let's configure a "Deploy manifest"
@@ -387,17 +399,19 @@ Docker repository's __Build Settings__ tab as shown here:
 Next, in Spinnaker, let's edit our Pipeline to allow Docker images to trigger a
 deployment:
 
-First, add a Docker expected artifact next to our Git expected artifact:
-
-{% include figure
-   image_path="./configure-docker-artifact.png"
-%}
-
-Next, add a _Webhook_ trigger to listen to build events from DockerHub. The
-_Docker_ trigger alone won't provide us with provenance information.
+First, add another automated trigger next to our Git trigger. Select __Type__
+Webhook and input dockerhub for the __Source__.
 
 {% include figure
    image_path="./configure-docker-webhook.png"
+%}
+
+Next, define a new artifact in the __Artifact Constraints__ field. For 
+__Account__, select the Docker Registry account created earlier and input your
+docker image under __Docker image__.
+
+{% include figure
+   image_path="./configure-docker-artifact.png"
 %}
 
 Finally, back in the "Deploy (Manifest)" stage configuration, select the
