@@ -301,7 +301,7 @@ Supply the following configuration values:
 Next we will define a new artifact in the __Artifact Constraints__ field.
 For __Account__, select the GitHub artifact account created earlier and then set 
 the __File Path__ to `manifests/demo.yml`. Lastly, select 
-__User Prior Execution__, to tell Spinnaker that if no matching artifact is
+__Use Prior Execution__, to tell Spinnaker that if no matching artifact is
 found, use the last execution's value. (This will be useful later).
 
 {% include figure
