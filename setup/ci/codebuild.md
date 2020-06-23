@@ -25,16 +25,19 @@ to create a service role, then run the following command, replace the service ro
 ```
 aws codebuild create-project \
   --name spinnaker-project \
-  --source "type=GITHUB,location=https://github.com/aws/aws-codebuild-docker-images.git" \
+  --source "type=GITHUB,location=https://github.com/aws-samples/aws-codebuild-samples.git" \
   --artifacts "type=NO_ARTIFACTS" \
   --environment "type=LINUX_CONTAINER,computeType=BUILD_GENERAL1_SMALL,image=aws/codebuild/standard:4.0" \
   --service-role <YOUR_SERVICE_ROLE> \
   --region <YOUR_AWS_REGION>
 ```
 
+**Note:** The project created by the command above doesn't produce artifacts, since `NO_ARTIFACTS` is specified for artifacts type.
+To create a project that generates artifacts, follow instructions in this
+[user guide]((https://docs.aws.amazon.com/codebuild/latest/userguide/create-project.html)).
+
 For more information about how to create a project of your need,
-see [AWS CLI reference](https://docs.aws.amazon.com/cli/latest/reference/codebuild/create-project.html)
-and [use case based samples](https://docs.aws.amazon.com/codebuild/latest/userguide/use-case-based-samples.html)
+see [use case based samples](https://docs.aws.amazon.com/codebuild/latest/userguide/use-case-based-samples.html)
 in AWS CodeBuild documentation.
 
 ### IAM Role
