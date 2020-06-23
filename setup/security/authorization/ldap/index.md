@@ -34,7 +34,7 @@ The above is a sample.  See below for more information.
 ## How Fiat determines group membership
 The LDAP provider works by querying the LDAP server utilizing a user as set by the 
 [manager-dn and managerPassword](/reference/halyard/commands/#hal-config-security-authz-ldap-edit) and making a 
-query. If a manager is NOT set, Spinnaker falls back to validating group membership using the login user's credentials.  
+query that uses the logged-in user's username to filter results. 
 
 Fiat will use the "bound" account to do the following:
 - Make a query using a base of `group-search-base`. **THIS IS A REQUIRED FIELD.** If not set, no roles get queried.
@@ -75,10 +75,5 @@ To see the internals (can be useful for debugging):
 * Fiat: [LdapUserRolesProvider](https://github.com/spinnaker/fiat/blob/master/fiat-ldap/src/main/java/com/netflix/spinnaker/fiat/roles/ldap/LdapUserRolesProvider.java)
 * Spring Auth Provider: [LdapAuthenticationProviderConfigurer](https://github.com/spring-projects/spring-security/blob/master/config/src/main/java/org/springframework/security/config/annotation/authentication/configurers/ldap/LdapAuthenticationProviderConfigurer.java)
 * Gate: [LdapSsoConfig](https://github.com/spinnaker/gate/blob/master/gate-ldap/src/main/groovy/com/netflix/spinnaker/gate/security/ldap/LdapSsoConfig.groovy)
-
-## Next steps...
-
-* Read through [Authorization Overview](/setup/security/authorization/)
-* Read through [LDAP Authorization](/setup/security/authorization/ldap/)
 
 

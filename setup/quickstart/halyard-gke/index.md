@@ -68,7 +68,7 @@ Navigate to the Google Cloud Console and enable the following APIs:
 Create a service account for our halyard host VM:
 
 ```bash
-GCP_PROJECT=$(gcloud info --format='value(config.project)')
+GCP_PROJECT=$(gcloud config get-value project)
 HALYARD_SA=halyard-service-account
 
 gcloud iam service-accounts create $HALYARD_SA \
@@ -218,7 +218,7 @@ Set up to persist to GCS
 
 ```bash
 hal config storage gcs edit \
-    --project $(gcloud info --format='value(config.project)') \
+    --project $(gcloud config get-value project) \
     --json-path ~/.gcp/gcp.json
 
 hal config storage edit --type gcs

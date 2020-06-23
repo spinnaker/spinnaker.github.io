@@ -53,6 +53,7 @@ sudo bash InstallHalyard.sh -y
 
 Note that Oracle-provided images have a default set of firewall rules which allow only SSH access.  To bake an image that allows HTTP access like in this tutorial, you need a custom bake template like this one to place in ~/.hal/default/profiles/rosco/packer/codelab.json.
 
+{% raw %}
 ```json
 {
   "variables": {
@@ -120,7 +121,7 @@ Note that Oracle-provided images have a default set of firewall rules which allo
   ]
 }
 ```
-
+{% endraw %}
 <span class="end-collapsible-section"></span>
 
 * Set up Spinnaker version.  To complete this tutorial, Spinnaker version has to be at least 1.11.x.
@@ -132,7 +133,7 @@ hal config version edit --version $SPINNAKER_VERSION
 * Execute the following commands to complete the installation:
 
 ```bash
-hal config deploy edit --type localdebian 
+hal config deploy edit --type localdebian
 sudo hal deploy apply
 sudo systemctl daemon-reload
 ```
@@ -149,7 +150,7 @@ Now Spinnaker UI is available at [http://localhost:9000](http://localhost:9000).
 
 ## Part 1: Bake & deploy to test
 
-In this first exercise, you’ll set up a pipeline, named Bake & Deploy to Test, which builds an image, deploys it as a server group to a test cluster, then destroys the previous server group in that cluster (also called the "Highlander" strategy). 
+In this first exercise, you’ll set up a pipeline, named Bake & Deploy to Test, which builds an image, deploys it as a server group to a test cluster, then destroys the previous server group in that cluster (also called the "Highlander" strategy).
 
 The workflow is shown in the figure below.
 
@@ -209,7 +210,7 @@ The purpose of this pipeline is to generate an image from a package, and then de
 Create a new pipeline by navigating to the PIPELINES tab and clicking the link *Configure a new pipeline*
 
 * Name the pipeline “Bake & Deploy to Test”.
-* Click the *Create* button. 
+* Click the *Create* button.
 
 ![](bakedeploy-1.png)
 

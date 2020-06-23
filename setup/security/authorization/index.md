@@ -29,7 +29,7 @@ Permissions can be attached to applications and (provider) accounts. A permissio
 
 Keep these in mind as you consider your authorization strategy:
 
-1) Fiat's authorization model is a whitelist that is open by default. In other words, when a resource does _not_ 
+1) Fiat's authorization model open by default. In other words, when a resource does _not_
 define who is allowed to access it, it is considered unrestricted.  This means:
    * If an account is unrestricted, any user with access to Spinnaker can deploy a new application
    to that account.
@@ -131,7 +131,7 @@ setting the following property in `fiat-local.yml`:
 
 - To delete a load balancer in account Z, you need to have `WRITE` permission on the account.
 - To update a pipeline in an app, you need `WRITE` permission on that app.
-- Since version 1.14 (2.5.x), you can run a pipeline with just the `EXECUTE` permission.
+- Since version 1.14, you can run a pipeline with just the `EXECUTE` permission.
 - To successfully run a pipeline in app X that deploys to account Y, you need (at least)  `EXECUTE` on the app X and
  `WRITE` on the account Y.
 

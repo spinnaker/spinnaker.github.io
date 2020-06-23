@@ -7,12 +7,6 @@ sidebar:
 
 {% include toc %}
 
-> The guides listed below assume that you have enabled the `artifactsRewrite`
-> feature flag. In `~/.hal/$DEPLOYMENT/profiles/settings-local.js` (where
-> `$DEPLOYMENT` is typically `default`), add:
->
-> `window.spinnakerSettings.feature.artifactsRewrite = true;`
-
 A pipeline trigger defines when to automatically run a pipeline. There are many
 types of triggers available: Jenkins jobs, webhooks, CRON jobs, even other
 pipelines. Adding a trigger to your pipeline means that the pipeline runs each

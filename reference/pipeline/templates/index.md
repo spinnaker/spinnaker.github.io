@@ -80,3 +80,5 @@ config:
   "stages": []
 }
 ```
+
+A more thorough explanation of some fields such as `protect` can be found in the `v1` schema [here](https://github.com/spinnaker/dcd-spec/blob/master/PIPELINE_TEMPLATES.md).

@@ -22,6 +22,9 @@ This guide explains how and where to use expressions, and provides some examples
 of what you can do with them. For a list of available functions, see the
 [reference guide](/reference/pipeline/expressions/).
 
+> Note: Pipeline expression syntax is based on [Spring Expression Language
+> (SpEL)](https://docs.spring.io/spring/docs/current/spring-framework-reference/html/expressions.html).
+
 ## What does a pipeline expression look like?
 
 A pipeline expression is made up of `$` followed by opening/closing brackets:
@@ -221,6 +224,10 @@ curl http://api.my.spinnaker/pipelines/$PIPELINE_ID/evaluateExpression \
        -H "Content-Type: text/plain" \
        --data '${ #stage("Deploy").status.toString() }'
 ```
+
+If you've [enabled authz](/setup/security/authorization/) on Spinnaker, you can include your session cookie from your
+ browser into `curl`.
+`-H 'cookie: SESSION=<INSERT_SESSION_ID_FROM_BROWSER_HERE>'`
 
 This example outputs the status of your Deploy stage:
 

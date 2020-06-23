@@ -1,20 +1,20 @@
 ---
 Layout: single
-title:  "Kubernetes Provider V2 (Manifest Based)"
+title:  "Kubernetes Provider"
 sidebar:
   nav: reference
 ---
 
 {% include toc %}
 
-This article describes how the Kubernetes provider v2 works and how it differs
+This article describes how the Kubernetes provider works and how it differs
 from other providers in Spinnaker. If you're unfamiliar with Kubernetes
 terminology, see the [Kubernetes
 documentation](https://kubernetes.io/docs/home/).
 
 # The manifest-based approach
 
-The Kubernetes provider v2 combines the strengths of Kubernetes's [declarative
+The Kubernetes provider combines the strengths of Kubernetes's [declarative
 infrastructure
 management](https://kubernetes.io/docs/tutorials/object-management-kubectl/declarative-object-management-configuration/)
 with Spinnaker's workflow engine for imperative steps when you need them. You
@@ -22,9 +22,8 @@ can fully specify all your infrastructure in the native Kubernetes manifest
 format but still express, for example, a multi-region canary-driven rollout.
 
 This is a significant departure from how deployments are managed in Spinnaker
-using other providers (including the [Kubernetes provider
-v1](https://www.spinnaker.io/reference/providers/kubernetes/)). The rest of this
-doc explains the differences.
+using other providers (including the [legacy Kubernetes provider](https://www.spinnaker.io/reference/providers/kubernetes/)).
+The rest of this doc explains the differences.
 
 ## No restrictive naming policies
 
@@ -48,7 +47,7 @@ Other providers in Spinnaker track operations that modify cloud resources. For
 example, if you run a resize operation, Spinnaker monitors that operation until
 the specified resize target is met. But because Kubernetes only tries to satisfy
 the desired _state_, and offers a level-based API for this purpose, the
-Kubernetes provider v2 uses the concept of "manifest stability."
+Kubernetes provider uses the concept of "manifest stability."
 
 A deployed manifest is considered stable when the Kubernetes controller-manager
 no longer needs to modify it, and it’s deemed “ready.” This assessment is
@@ -222,7 +221,7 @@ Spinnaker applies the following labels as of release 1.9:
 
 Resource mapping between Spinnaker and Kubernetes constructs, as well as the
 introduction of new types of resources, is a lot more flexible in the
-Kubernetes provider V2 than for other providers, because of how many types of
+Kubernetes provider than for other providers, because of how many types of
 resources Kubernetes supports. Also the Kubernetes extension
 mechanisms&mdash;called [Custom Resource Definitions
 (CRDs)](https://kubernetes.io/docs/concepts/api-extension/custom-resources/)&mdash;make

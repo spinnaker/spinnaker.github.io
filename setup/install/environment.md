@@ -53,12 +53,9 @@ which you will install Spinnaker.
    This must be on a Kubernetes cluster. It does not have to be the same
    provider as the one you're using to deploy your applications.
 
-   * [Kubernetes](/setup/install/providers/kubernetes)
+   * [Kubernetes](/setup/install/providers/kubernetes-v2)
 
-   * [Kubernetes (Manifest Based)](/setup/install/providers/kubernetes-v2)<br />
-     :warning: This is still in alpha.
-
-   We recommend at least 4 cores and 8GB of RAM available in the cluster where
+   We recommend at least 4 cores and 16GB of RAM available in the cluster where
    you will deploy Spinnaker.
 
 1. Make sure [`kubectl` is installed](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
@@ -85,6 +82,8 @@ for your Spinnaker services, setting the `initialDelaySeconds` to the upper boun
 
 The __Local Debian__ installation means Spinnaker will be downloaded and run on the
 single machine Halyard is currently installed on.
+
+We recommend at least 4 cores and 16GB of RAM.
 
 > **Note**: Local Debian installation requires Ubuntu 14.04 or 16.04.
 
@@ -130,6 +129,8 @@ For a short guide to getting up and running with developing Spinnaker, see the
 
 ### Prerequisites
 
+We recommend at least 4 cores and 16GB of RAM.
+
 #### Install local dependencies
 
 Ensure that the following are installed on your system:
@@ -146,12 +147,12 @@ Ensure that the following are installed on your system:
     sudo apt-get update
     sudo apt-get install openjdk-8-jdk
     ```
-* node (version >=10.15.1, [can be installed via nvm](https://github.com/creationix/nvm#install-script), summarized below)
+* node (version >=12.16.0, [can be installed via nvm](https://github.com/creationix/nvm#install-script), summarized below)
     ```
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
     # Follow instructions at end of script to add nvm to ~/.bash_rc
 
-    nvm install v10.15.3
+    nvm install v12.16.0
     ```
 * yarn: `npm install -g yarn` or [guide](https://yarnpkg.com/lang/en/docs/install/)
 
@@ -171,12 +172,12 @@ Ensure that the following are installed on your system:
     ```
   brew cask install adoptopenjdk/openjdk/adoptopenjdk8
     ```
-* node (version >=10.15.1, [can be installed via nvm](https://github.com/creationix/nvm#install-script), summarized below)
+* node (version >=12.16.0, [can be installed via nvm](https://github.com/creationix/nvm#install-script), summarized below)
     ```
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
     # Follow instructions at end of script to add nvm to ~/.bash_rc
 
-    nvm install v10.15.3
+    nvm install v12.16.0
     ```
 * yarn: `npm install -g yarn` or [guide](https://yarnpkg.com/lang/en/docs/install/)
 

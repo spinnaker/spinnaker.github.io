@@ -68,7 +68,7 @@ SA_EMAIL=$(gcloud iam service-accounts list \
     --filter="displayName:$SERVICE_ACCOUNT_NAME" \
     --format='value(email)')
 
-PROJECT=$(gcloud info --format='value(config.project)')
+PROJECT=$(gcloud config get-value project)
 
 # permission to read existing configured metrics
 gcloud projects add-iam-policy-binding $PROJECT \
@@ -107,11 +107,6 @@ Proceed to [install the dashboards](#installing-the-stackdriver-dashboards)
 
 
 ## Installing the Stackdriver dashboards
-
-*__Note__: The Stackdriver Dashboard API is currently whitelisted, so
-you need a registered STACKDRIVER_API key in order to use it. If you
-are so inclined, [contact your sales
-representative](https://cloud.google.com/contact/){:target="\_blank"}.
 
 To install the stackdriver dashboards, you need to have the monitoring daemon
 installed. But you only need it installed while you upload the dashboards.

@@ -101,13 +101,17 @@ pipeline start/complete/fail).
 
 ### Stage
 
-A *Stage* in Spinnaker is an atomic building block for a pipeline, describing an
-action that the pipeline will perform. You can sequence
-[stages](/reference/pipeline/stages/) in a Pipeline in any order, though some
+A *Stage* in Spinnaker is a collection of sequential Tasks and composed Stages that
+describe a higher-level action the Pipeline will perform either linearly or in parallel.
+You can sequence [stages](/reference/pipeline/stages/) in a Pipeline in any order, though some
 stage sequences may be more common than others. Spinnaker provides a number of
 stages such as Deploy, Resize, Disable, Manual Judgment, and many more. You can
 see the full list of stages and read about implementation details for each
 provider in the [Reference](/reference/providers) section.
+
+### Task
+
+A *Task* in Spinnaker is an automatic function to perform.
 
 ### Deployment strategies
 

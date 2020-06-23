@@ -16,6 +16,14 @@ provider.
 
 ## General
 
+### AWS CodeBuild
+Run an AWS CodeBuild build by specifying the name of the project. The sources and the image
+used by the build can be from upstream stages. Artifacts produced by the build can
+be injected into the pipeline and used by downstream stages.
+
+See this [user guide](/setup/ci/codebuild/) for more information about configuring
+this stage.
+
 ### Bake
 Bake an image from the specified packages. Baking here refers to the process
 of creating a machine image. Spinnaker's bakery is backed by

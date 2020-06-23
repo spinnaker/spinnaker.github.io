@@ -1,34 +1,45 @@
 
 ## Jekyll Installation
-Swap out `rbenv` below for `rvm` if you prefer. RVM was giving me installation issues, so I found `rbenv` - Travis
+Jekyll runs on Ruby, and running multiple versions of Ruby on a single system is apparently difficult. These instructions install [`rbenv`](https://github.com/rbenv/rbenv), which makes it easy to install and switch to a specific Ruby version.
 
-1. Create and run from a fresh VM instance:
-    1. `gcloud compute instances create jekyll --image-project=ubuntu-os-cloud --image-family=ubuntu-1404-lts --machine-type=n1-standard-1`
+1. (Optional) Create and run from a fresh VM instance, and forward the Jekyll default port (4000):
+    1. `gcloud compute instances create jekyll --image-project=ubuntu-os-cloud --image-family=ubuntu-1804-lts --machine-type=n1-standard-1`
     1. `gcloud compute ssh jekyll --ssh-flag="-L 4000:localhost:4000"`
 1. Install `rbenv` and `ruby-build`. Add these to `$PATH`:
-    1. `sudo apt-get install -y git bzip2 build-essential libssl-dev libreadline-dev zlib1g-dev`
-    1. `git clone https://github.com/rbenv/rbenv.git ~/.rbenv`
-    1. `git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build`
-    1. `echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc`
-    1. `echo 'eval "$(rbenv init -)"' >> ~/.bashrc`
-    1. `. ~/.bashrc`
-1. Install and use ruby 2.4.1    
-    1. `rbenv install 2.4.1`
-    1. `rbenv global 2.4.1`
+    ```
+    sudo apt update
+    sudo apt-get install -y git bzip2 build-essential libssl-dev libreadline-dev zlib1g-dev
+    git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+    git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+    echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+    source ~/.bashrc
+    ```
+1. Install and use ruby 2.4.1
+    ```
+    rbenv install 2.4.1
+    rbenv global 2.4.1
+    ```
 1. Fork and clone your forked repo:
-    1. `GITHUB_USER=$USER # or something else here`
-    1. `git clone https://github.com/$GITHUB_USER/spinnaker.github.io.git`
+    ```
+    GITHUB_USER=$USER # or something else here
+    git clone https://github.com/$GITHUB_USER/spinnaker.github.io.git
+    ```
 1. Install `bundle` gem
-    1. `cd spinnaker.github.io`
-    1. `gem install bundle`
-    1. `bundle install`    
+    ```
+    cd spinnaker.github.io
+    gem install bundler
+    bundle install
+    ```
 
-## Local Development 
+Your system is now ready for local preview of the documentation site.
+
+## Local Preview
 1. Start Jekyll server
     1. `bundle exec jekyll serve --watch`
 1. (Optional): Add `--incremental` to speed up page generation when working on one page
     1. `bundle exec jekyll serve --watch --incremental`
-1. Navigate to [http://localhost:4000](http://localhost:4000) to see your locally generated page.    
+1. Navigate to [http://localhost:4000](http://localhost:4000) to see your locally generated page.
 
 You can do the same within Docker using the included Dockerfile (the volume mount will still allow changes to files to be visible to Jekyll):
 
@@ -53,7 +64,7 @@ This allows peer reviews of a breaking change without needing any technical setu
 
 ## Page Generation
 
-A page named `foo.md` will be transformed to `foo/index.html` and links to `foo` will result in an HTTP 301 
+A page named `foo.md` will be transformed to `foo/index.html` and links to `foo` will result in an HTTP 301
 to `foo/`. This has two implications:
 
 1. It is more efficient to include the trailing `/` in links.
@@ -63,19 +74,19 @@ to `foo/`. This has two implications:
 
 ## Mermaid
 
-Sequence diagrams can be generated with the [mermaid.js](https://github.com/knsv/mermaid) library by adding `{% 
-include mermaid %}` near the bottom of the page. See some of the 
+Sequence diagrams can be generated with the [mermaid.js](https://github.com/knsv/mermaid) library by adding `{%
+include mermaid %}` near the bottom of the page. See some of the
 [security docs](https://github.com/spinnaker/spinnaker.github.io/blob/master/setup/security/authentication/index.md)
 for an example.
 
 ## Breadcrumbs
 
-Each page has a breadcrumb trail at the top that is based on the URL structure. You should ensure that there is at 
+Each page has a breadcrumb trail at the top that is based on the URL structure. You should ensure that there is at
 least an `index.md` file within each URL directory, otherwise the links will break.
 
 ## Link Checker
-Keep the "broken window theory" at bay by ensuring all links work with 
+Keep the "broken window theory" at bay by ensuring all links work with
 [HTML Proofer](https://github.com/gjtorikian/html-proofer)
 
-Run link checker before committing: 
-`rake test` 
+Run link checker before committing:
+`rake test`
