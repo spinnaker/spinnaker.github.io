@@ -19,8 +19,9 @@ The AWS Codebuild stage requires Spinnaker 1.19 or later.
 ### AWS CodeBuild project
 
 You need to have an [AWS CodeBuild](https://aws.amazon.com/codebuild/) project. To create a project,
-follow [instructions](https://docs.aws.amazon.com/codebuild/latest/userguide/setting-up.html#setting-up-service-role-cli)
-to create a service role, then run the following command, replace the service role with the one created and region of your own choice
+follow the instructions on how [to create a CodeBuild service role (AWS CLI)](https://docs.aws.amazon.com/codebuild/latest/userguide/setting-up.html#setting-up-service-role-cli).
+
+Next, run the following command (make sure you replace the service role with the one created and region of your own choice):
 
 ```
 aws codebuild create-project \
@@ -32,13 +33,11 @@ aws codebuild create-project \
   --region <YOUR_AWS_REGION>
 ```
 
-**Note:** The project created by the command above doesn't produce artifacts, since `NO_ARTIFACTS` is specified for artifacts type.
-To create a project that generates artifacts, follow instructions in this
-[user guide](https://docs.aws.amazon.com/codebuild/latest/userguide/create-project.html).
+**Note:** The project created by the command above doesn't produce artifacts since `NO_ARTIFACTS` is specified for artifacts type.
+To create a project that generates artifacts, follow the instructions in the AWS
+[Codebuild user guide](https://docs.aws.amazon.com/codebuild/latest/userguide/create-project.html).
 
-For more information about how to create a project of your need,
-see [use case based samples](https://docs.aws.amazon.com/codebuild/latest/userguide/use-case-based-samples.html)
-in AWS CodeBuild documentation.
+For more information about how to create a project to meet your needs, see the [use case based samples](https://docs.aws.amazon.com/codebuild/latest/userguide/use-case-based-samples.html) in the AWS CodeBuild documentation.
 
 ### IAM Role
 
