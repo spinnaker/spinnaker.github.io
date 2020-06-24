@@ -35,7 +35,7 @@ aws codebuild create-project \
 
 **Note:** The project created by the command above doesn't produce artifacts since `NO_ARTIFACTS` is specified for artifacts type.
 To create a project that generates artifacts, follow the instructions in the AWS
-[Codebuild user guide](https://docs.aws.amazon.com/codebuild/latest/userguide/create-project.html).
+[CodeBuild user guide](https://docs.aws.amazon.com/codebuild/latest/userguide/create-project.html).
 
 For more information about how to create a project to meet your needs, see the [use case based samples](https://docs.aws.amazon.com/codebuild/latest/userguide/use-case-based-samples.html) in the AWS CodeBuild documentation.
 
