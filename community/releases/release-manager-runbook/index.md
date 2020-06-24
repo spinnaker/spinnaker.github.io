@@ -9,10 +9,10 @@ sidebar:
 
 
 ## A Quick Review of Release Process
-Here's some quick review of what the release process looks like from the community perspective:
-- [This is the expected release cadence](https://spinnaker.io/community/releases/release-cadence/). 
-- The [release calendar](https://spinnaker.io/community/releases/release-cadence/#upcoming-releases) is an awesome to give you a agenda of expected duties.
-- Here's [what we expect all contributors to do for backports/patches](https://spinnaker.io/community/contributing/releasing/#release-branch-patch-criteria).
+Here's a quick review of what the release process looks like from the community perspective:
+- This is the [expected release cadence](/community/releases/release-cadence/). 
+- The [release calendar](/community/releases/release-cadence/#upcoming-releases) is an awesome. It gives you an agenda of expected duties.
+- Here's what the project expects all contributors to do for [backports/patches](/community/contributing/releasing/#release-branch-patch-criteria).
 
 
 ## One week before the branches are cut (Monday)
