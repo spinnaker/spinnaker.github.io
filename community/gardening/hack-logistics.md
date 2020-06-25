@@ -11,7 +11,7 @@ Now when you [register for Gardening Days](https://go.armory.io/gardening), you 
 
 ### Hackathon Attendee Rewards
 
-All participants earn points, redeemable for prizes, for each individual contribution they make from 12 AM PDT July 16th through 11 AM PDT July 23rd. Review the list of eligible contributions to see what’s eligible -- pull requests most welcome, but count on other ways to add value.
+All participants earn points, redeemable for prizes, for each individual contribution they make from 12 AM PDT July 16th through 11 AM PDT July 23rd. Review the list of [eligible contributions](what-to-hack.md) to see what’s eligible -- pull requests most welcome, but count on other ways to add value.
 
 ### Hackathon Challenges
 Along with individual rewards, we will award team prizes based on an anonymous poll of the Experts panel on demo day. Our prize sponsors will award First Prize and Runner-up prize packages in each challenge category, to be shared among the winning teams.
