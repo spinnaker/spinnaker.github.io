@@ -104,7 +104,7 @@ targetCompatibility = 1.8
 
 dependencies {
   // (3):
-  annotationProcessor("org.pf4j:pf4j:$pf4jVersion)
+  annotationProcessor("org.pf4j:pf4j:$pf4jVersion")
 
   // (4):
   compileOnly("com.netflix.spinnaker.kork:kork-plugins-api:$korkVersion")

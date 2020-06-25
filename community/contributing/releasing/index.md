@@ -17,10 +17,29 @@ Any time we release a new minor version of Spinnaker (e.g. 1.16.0 or 1.17.0), we
 include all commits merged into `master` for each service. We do this on a
 [regular cadence](/community/releases/release-cadence).
 
+# Release branch patch criteria
+
+In order to be considered safe to merge into a release branch, your patch must:
+
+* Fix a documented regression. This means that the currently broken
+  functionality must have worked as expected in a previous version of Spinnaker.
+  If the regression is not already documented in a GitHub issue, please create
+  one. Describe the difference between the expected and observed behavior, and
+  include links to the commit(s) that introduced the regression.
+* Include tests validating the regression and the fix. The first commit of your
+  patch pull request should add test coverage that demonstrates the existence
+  of the bug and exercises all code paths potentially impacted by your fix.
+  Subsequent commits should fix the bug and update the tests you just added. If
+  your fix is so complex as to make complete tests coverage impossible, it is
+  not a good candidate for merging into a release branch.
+
+These criteria do not apply to security vulnerability patches, which may be
+merged into release branches at the discretion of the Security SIG and release
+manager.
+
 # Merge into the release branch
 
-If your patch is a relatively small localized change that fixes a bug, and
-doesn't introduce a feature or breaking change, you can request that your patch
+If your patch meets the [cherry-pick criteria](#release-branch-patch-criteria), you can request that your patch
 be merged into a release branch. Every minor release of Spinnaker has its own
 release branch. For example, all Spinnaker 1.16 releases (1.16.0, 1.16.1, etc.)
 are built from the `release-1.16.x` release branch. To get your patch into 1.16,
@@ -36,15 +55,10 @@ current release manager. The release manager rotation calendar is currently only
 available inside Google, but it only rotates every eight weeks. The release
 manager will be the person posting about the releases in [the
 `#spinnaker-releases` Slack
-channel](https://app.slack.com/client/T091CRSGH/CHD4ATAMV/). They will evaluate
-the patch, make sure it's appropriate and safe, and merge it if so.
+channel](https://app.slack.com/client/T091CRSGH/CHD4ATAMV/).
 
-Please make sure your pull request references a GitHub issue with enough details
-to allow the release manager to evaluate your request. It should detail exactly
-what the impact of the bug is to users, how long it's been around, whether or
-not there are workarounds, etc. If there isn't an issue already open, you can
-either (preferably) file a new one, or else include these details in your
-cherrypick pull request.
+Please make sure your pull request description makes it easy for the release
+manager to evaluate whether your patch meets the release branch patch criteria.
 
 ## Cherry-pick using Mergify
 

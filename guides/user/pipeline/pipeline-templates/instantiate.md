@@ -43,7 +43,7 @@ and get it using the following command:
        "type": "front50/pipelineTemplate", # Static constant
      },
      "variables": {
-       "waitTime": 4 # Value for the template variable.
+       "timeToWait": 4 # Value for the template variable.
      },
      "exclude": [],
      "triggers": [],
