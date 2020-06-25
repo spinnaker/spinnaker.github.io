@@ -45,13 +45,23 @@ make the required fixes to allow them to merge.
 1. Start with a [green build on master](https://builds.spinnaker.io/job/Flow_BuildAndValidate/).
 
 1. Create the release branches by running the [**Admin_StartReleaseBranch**](https://builds.spinnaker.io/job/Admin_StartReleaseBranch/build?delay=0sec)
-job:
-    
+job which will create `latest-unvalidated` when it passes:
+
     1. Set **NEW_BRANCH_NAME** to `${RELEASE_BRANCH}` (e.g., `release-1.20.x`).
-    
+
     1. Set **BASE_BRANCH** to `master`.
 
-1. Deactivate the now-oldest Flow_BuildAndValidate_* flow:
+    - you can check the status of each service build by going to [GCP cloudbuild](https://console.cloud.google.com/cloud-build/builds?project=spinnaker-community). Turn on the tags to see which each service name
+        <details>
+        <summary>GIF of showing tags</summary>
+
+        <img src="/assets/images/releases/gcp-cloudbuild-tags.gif" />
+
+        </details>
+
+    - Tip! Take a look at the [troubleshooting section here](#troubleshooting).
+
+1. Deactivate the now-oldest Flow_BuildAndValidate_* flow by removing the schedule:
 
     1. Select the oldest flow.
 
@@ -360,3 +370,16 @@ Repeat as needed.
 
 Follow the instructions in deck-kayenta’s
 [README](https://github.com/spinnaker/deck-kayenta#publishing-spinnakerkayenta).
+
+
+## Troubleshooting
+
+### Flow_BuildAndValidate_* is getting 409s when trying to upload to Bintry
+If you're getting an errors that look like:
+```
+Bintray API Request 'create version 2.15.0-20200624170019' failed with HTTP response 409 Conflict
+```
+
+You'll need to go into Bintray and delete that version and rerun the job.
+
+Quick link to Orca (change the service name at the end of the url path): [https://bintray.com/beta/#/spinnaker-releases/jars/orca/](https://bintray.com/beta/#/spinnaker-releases/jars/orca/)
