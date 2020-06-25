@@ -10,9 +10,19 @@ sidebar:
 
 ## A Quick Review of Release Process
 Here's a quick review of what the release process looks like from the community perspective:
-- This is the [expected release cadence](/community/releases/release-cadence/). 
+- This is the [expected release cadence](/community/releases/release-cadence/).
 - The [release calendar](/community/releases/release-cadence/#upcoming-releases) is awesome. It gives you an agenda with the expected duties.
 - Here's what the project expects all contributors to do for [backports/patches](/community/contributing/releasing/#release-branch-patch-criteria).
+
+
+## Verify You Have Access
+- You've been included in [release-manager@spinnaker.io](mailto:release-manager@spinnaker.io) group by contacting a
+member of the TOC or SC.
+- Into the [spinnaker-announce@googlegroups.com](mailto:spinnaker-announce@googlegroups.com) group.
+- Into the [Bintray spinnaker-releases](https://bintray.com/spinnaker-releases) org.
+- To [Jenkins UI](https://builds.spinnaker.io/) and can build a job.
+- To [SSH into Jenkins](https://spinnaker.io/community/contributing/nightly-builds/#connecting-to-the-jenkins-vm).
+- To [GCP spinnaker-community cloudbuild](https://console.cloud.google.com/cloud-build/builds?project=spinnaker-community).
 
 
 ## One week before the branches are cut (Monday)
@@ -154,9 +164,8 @@ before merging.
 
 1. Create a new gist for this release.
 
-    1. Log into GitHub as spinnaker-release. If this is your first release
-    manager rotation, ask a member of the TOC or SC to add you to the
-    release-manager@spinnaker.io group, which has access to the
+    1. Log into GitHub as spinnaker-release. 
+    release-manager@spinnaker.io group will have access to the
     [spinnaker-release GitHub account credentials](https://docs.google.com/document/d/1CFPP-QXV8lu9QR76B9V0W8TEtObOBv52UqohQ-ztH58/edit?usp=sharing).
 
     1. Create a new gist to hold the
