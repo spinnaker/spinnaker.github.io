@@ -7,6 +7,14 @@ sidebar:
 
 {% include toc %}
 
+
+## A Quick Review of Release Process
+Here's a quick review of what the release process looks like from the community perspective:
+- This is the [expected release cadence](/community/releases/release-cadence/). 
+- The [release calendar](/community/releases/release-cadence/#upcoming-releases) is awesome. It gives you an agenda with the expected duties.
+- Here's what the project expects all contributors to do for [backports/patches](/community/contributing/releasing/#release-branch-patch-criteria).
+
+
 ## One week before the branches are cut (Monday)
 
 Ping [#dev](https://spinnakerteam.slack.com/messages/dev/) reminding everyone
