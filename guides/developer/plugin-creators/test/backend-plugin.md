@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Test Environment Using Minnaker"
+title: "Backend Plugin"
 sidebar:
   nav: guides
 ---
@@ -17,89 +17,16 @@ For example:
 * Orca running on http://192.168.64.1:8083
 * All other services running in VM on 192.168.64.2
 
-Software used in this guide:
+{% include_relative software.md %}
 
-* [Java Development Kit](https://adoptopenjdk.net/), 11
-* [Groovy](https://groovy-lang.org/), 3.0.3
-* [Gradle](https://gradle.org/install/)
-* [Yarn](https://classic.yarnpkg.com/en/docs/install#mac-stable)
-* [Multipass](https://multipass.run/), 1.2.1
-* [IntelliJ IDEA](https://www.jetbrains.com/idea/), 2020.1, with the JetBrains Kotlin plugin
-* [Spinnaker](https://www.spinnaker.io/community/releases/versions/) 1.2.0 and [Halyard](https://console.cloud.google.com/gcr/images/spinnaker-marketplace/GLOBAL/halyard) 1.35.3, installed using [Minnaker](https://github.com/armory/minnaker), 0.0.17
+Specific to this guide:
+
 * [Orca](https://github.com/spinnaker/orca/), branch `release-1.20.x`
 * [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin), 1.1.4
 
-## Prerequisites
+{% include_relative prereqs.md %}
 
-* You have read the [Plugin Creators Guide Overview](/guides/developer/plugin-creators/overview/)
-* Your OSX workstation has at least 16GB of RAM and 30GB of available storage
-* You have installed JDK 11; see [AdoptOpenJDK](https://adoptopenjdk.net/installation.html#x64_mac-jdk) for installation instructions or install using [Homebrew](https://github.com/AdoptOpenJDK/homebrew-openjdk)
-* You have installed Groovy
-* You have installed Multipass
-* You have installed IntelliJ and the Kotlin plugin
-* You know how to run and debug an application using IntelliJ
-
-## Install Spinnaker in a Multipass VM
-
- Minnaker is an open source tool that installs the latest release of Spinnaker and Halyard on [Lightweight Kubernetes (K3s)](https://k3s.io/).
-
-1. Launch a Multipass VM with 2 cores, 10GB of memory, 30GB of storage
-
-   ```bash
-   multipass launch -c 2 -m 10G -d 30G
-   ```
-
-1. Get the name of your VM
-
-   ```bash
-   multipass list
-   ```
-
-1. Access your VM
-
-   ```bash
-   multipass shell <vm-name>
-   ```
-
-1. Download and unpack Minnaker
-
-   ```bash
-   curl -LO https://github.com/armory/minnaker/releases/latest/download/minnaker.tgz
-   tar -xzvf minnaker.tgz
-   ```
-
-1. Install Spinnaker
-
-   The `minnaker/scripts` directory contains multiple scripts. Use the `no_auth_install` script to install Spinnaker in no-auth mode so you can access Spinnaker without credentials. **Be sure to use the `-o` option** to install the open source version of Spinnaker rather than Armory Spinnaker.
-
-   ```bash   
-   ./minnaker/scripts/no_auth_install.sh -o
-   ```
-
-   If you accidentally forget the `-o` option, run `./minnaker/scripts/switch_to_oss.sh` to install open source Spinnaker.
-
-   The script prints out the IP address of Minnaker after installation is complete.
-
-   Check pod status:
-
-   ```bash
-   kubectl -n spinnaker get pods
-   ```
-
-   If you need to access the Halyard pod, execute:
-
-   ```bash
-   export HAL_POD=$(kubectl -n spinnaker get pod -l app=halyard -oname | cut -d'/' -f 2)
-   kubectl -n spinnaker exec -it ${HAL_POD} bash
-   ```
-
-   Consult the Minnaker [README](https://github.com/armory/minnaker/blob/master/readme.md#changing-your-spinnaker-configuration) for basic troubleshooting information if you run into issues.
-
-1. Configure Minnaker to listen on all ports:
-
-   ```bash
-   ./minnaker/scripts/utils/expose_local.sh
-   ```
+{% include_relative install-minnaker.md %}
 
 ## Configure Minnaker for a local external service
 
