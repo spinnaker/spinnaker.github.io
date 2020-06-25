@@ -164,7 +164,7 @@ before merging.
 
 1. Create a new gist for this release.
 
-    1. Log into GitHub as spinnaker-release. 
+    1. Log into GitHub as spinnaker-release.
     release-manager@spinnaker.io group will have access to the
     [spinnaker-release GitHub account credentials](https://docs.google.com/document/d/1CFPP-QXV8lu9QR76B9V0W8TEtObOBv52UqohQ-ztH58/edit?usp=sharing).
 
