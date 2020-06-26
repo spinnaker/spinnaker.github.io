@@ -99,8 +99,7 @@ job:
     
 1. Add the new Flow_BuildAndValidate_${RELEASE} job to the public
 [Build Statuses page](https://www.spinnaker.io/community/contributing/build-statuses/#nightly-and-release-integration-tests).
-Remove the oldest job. For each service under Core Services, add a row for the
-newest release branch, and remove the row for the oldest release branch.
+Remove the oldest job.
 
 1. Ping [#dev](https://spinnakerteam.slack.com/messages/dev/) with some version of
 this message, including a link to the correct section of the changelog gist:
