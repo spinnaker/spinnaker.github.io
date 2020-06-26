@@ -21,7 +21,7 @@ to see if we've encounter them before.
 ## Verify You Have Access To The Following
 - You're a member of the [release-manager@spinnaker.io](mailto:release-manager@spinnaker.io)
 and [spinnaker-announce@googlegroups.com](mailto:spinnaker-announce@googlegroups.com) groups.
-Contacting a member of the TOC or SC to get access.
+Contact a member of the TOC or SC to get access.
 - You've been invited to the [Bintray's spinnaker-releases](https://bintray.com/spinnaker-releases) org.
 - You can access the [Jenkins UI](https://builds.spinnaker.io/) and you're able to run a job.
 - You can [SSH into Jenkins](https://spinnaker.io/community/contributing/nightly-builds/#connecting-to-the-jenkins-vm).
