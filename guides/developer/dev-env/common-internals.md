@@ -3,6 +3,7 @@ layout: single
 title: "Common Internals"
 sidebar:
   nav: guides
+redirect_from: /guides/developer/common-internals/
 ---
 
 Spinnaker is built as a collection of microservices, all of these services share a common foundation.
@@ -25,7 +26,7 @@ Spinnaker is a collection of JVM backend-services and a frontend application (De
 
 ## Third-party Libraries
 
-Spinnaker is built on the shoulders of giants. 
+Spinnaker is built on the shoulders of giants.
 This is not an exhaustive list of libraries that we use, but the ones we've identified as having a large presence across the product.
 
 - Deck
