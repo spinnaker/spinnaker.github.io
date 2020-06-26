@@ -332,9 +332,9 @@ and verify the following (leaving time for the site to rebuild):
 1. Ping the [#spinnaker-releases](https://spinnakerteam.slack.com/messages/spinnaker-releases/)
 channel to let them know that the new patch is available.
 
-  > Hot Tip! You can use giphy to tell everyone it's released!
-  >
-  > `/giphy #caption "Spinnaker {VERSION} has been released!" gif search query`
+    > Hot Tip! You can use giphy to tell everyone it's released!
+    >
+    > `/giphy #caption "Spinnaker {VERSION} has been released!" gif search query`
 
 1. Approve the spinnaker-announce email (link will come in email).
 You can approve the message here: https://groups.google.com/forum/#!pendingmsg/spinnaker-announce
