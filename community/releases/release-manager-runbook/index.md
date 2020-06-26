@@ -14,6 +14,9 @@ Here's a quick review of what the release process looks like from the community 
 - The [release calendar](/community/releases/release-cadence/#upcoming-releases) is awesome. It gives you an agenda with the expected duties.
 - Here's what the project expects all contributors to do for [backports/patches](/community/contributing/releasing/#release-branch-patch-criteria).
 
+If the builds break, you can take a look at [some common issues](https://spinnaker.io/community/contributing/nightly-builds/#common-build-failures)
+to see if we've encounter them before.
+
 
 ## Verify You Have Access
 - You've been included in [release-manager@spinnaker.io](mailto:release-manager@spinnaker.io) group by contacting a
@@ -68,8 +71,6 @@ job which will create `latest-unvalidated` when it passes:
         <img src="/assets/images/releases/gcp-cloudbuild-tags.gif" />
 
         </details>
-
-    - Tip! Take a look at the [troubleshooting section here](#troubleshooting).
 
 1. Deactivate the now-oldest Flow_BuildAndValidate_* flow by removing the schedule:
 
@@ -379,16 +380,3 @@ Repeat as needed.
 
 Follow the instructions in deck-kayenta’s
 [README](https://github.com/spinnaker/deck-kayenta#publishing-spinnakerkayenta).
-
-
-## Troubleshooting
-
-### Flow_BuildAndValidate_* is getting 409s when trying to upload to Bintry
-If you're getting an errors that look like:
-```
-Bintray API Request 'create version 2.15.0-20200624170019' failed with HTTP response 409 Conflict
-```
-
-You'll need to go into Bintray and delete that version and rerun the job.
-
-Quick link to Orca (change the service name at the end of the url path): [https://bintray.com/beta/#/spinnaker-releases/jars/orca/](https://bintray.com/beta/#/spinnaker-releases/jars/orca/)
