@@ -21,5 +21,5 @@ sidebar:
 To attend Spinnaker Gardening Days, you'll need Zoom. See Zoom's ["Joining a Meeting" documentation](https://support.zoom.us/hc/en-us/articles/201362193-Joining-a-Meeting) to learn how to join.
 
 ## Guidelines
-1. No hate speech, put-downs, or sexual content allowed in hackathon meetings or channels. Keep it classy and remember, we all have the same intrinsic value.
+1. No racist or other hate speech, put-downs, or sexual content allowed in hackathon meetings or channels. Keep it classy and remember, we all have the same intrinsic value.
 2. Don't be afraid to share your thoughts, ask for help in __#gardening-ineedhelp__, or try something new. This is a safe space!
