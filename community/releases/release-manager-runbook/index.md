@@ -125,7 +125,7 @@ job, which creates `latest-unvalidated` when it passes:
     1. This will automatically update the [changelog gist](https://gist.github.com/spinnaker-release/4f8cd09490870ae9ebf78be3be1763ee)
     on GitHub.
 
-    1. Copy the direct link to the changelog for this version by searching for the release branch. Ex: `release-1.21.x`.
+    1. Copy the direct link to the changelog for this version by searching for the release branch. For example: `release-1.21.x`.
 
 1. Add the new Flow_BuildAndValidate_${RELEASE} job to the public
 [Build Statuses page](https://www.spinnaker.io/community/contributing/build-statuses/#nightly-and-release-integration-tests).
