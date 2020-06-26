@@ -18,14 +18,14 @@ If the builds break, you can take a look at [some common issues](https://spinnak
 to see if we've encounter them before.
 
 
-## Verify You Have Access
-- You've been included in [release-manager@spinnaker.io](mailto:release-manager@spinnaker.io) group by contacting a
-member of the TOC or SC.
-- Into the [spinnaker-announce@googlegroups.com](mailto:spinnaker-announce@googlegroups.com) group.
-- Into the [Bintray spinnaker-releases](https://bintray.com/spinnaker-releases) org.
-- To [Jenkins UI](https://builds.spinnaker.io/) and can build a job.
-- To [SSH into Jenkins](https://spinnaker.io/community/contributing/nightly-builds/#connecting-to-the-jenkins-vm).
-- To [GCP spinnaker-community cloudbuild](https://console.cloud.google.com/cloud-build/builds?project=spinnaker-community).
+## Verify You Have Access To The Following
+- You're a member of the [release-manager@spinnaker.io](mailto:release-manager@spinnaker.io)
+and [spinnaker-announce@googlegroups.com](mailto:spinnaker-announce@googlegroups.com) group.
+Contacting a member of the TOC or SC to get access.
+- You've been invited to the [Bintray's spinnaker-releases](https://bintray.com/spinnaker-releases) org.
+- You can access the [Jenkins UI](https://builds.spinnaker.io/) and you're able to run a job.
+- You can [SSH into Jenkins](https://spinnaker.io/community/contributing/nightly-builds/#connecting-to-the-jenkins-vm).
+- You're able to view our [GCP spinnaker-community cloudbuilds](https://console.cloud.google.com/cloud-build/builds?project=spinnaker-community). You should see a lot of builds.
 
 
 ## One week before the branches are cut (Monday)
