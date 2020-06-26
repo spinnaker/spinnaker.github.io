@@ -19,6 +19,9 @@ to see if we've encountered them before.
 
 
 ## Verify You Have Access To The Following
+
+If you don't have access to any of the following, contact a member of the TOC or SC.
+
 - You're a member of the [release-managers@spinnaker.io](https://groups.google.com/a/spinnaker.io/forum/#!forum/release-managers)
 group and a *manager* of the [spinnaker-announce@googlegroups.com](https://groups.google.com/forum/#!forum/spinnaker-announce)
 group. (You'll get a permissions error on those pages if you don't have access.
