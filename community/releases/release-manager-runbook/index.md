@@ -148,7 +148,7 @@ this message, including a link to the correct section of the changelog gist foun
 [#dev](https://spinnakerteam.slack.com/messages/dev/) with a message that the
 release candidate is now validated and can be tested.
 
-    > You are now welcome to test out the new release candidate ${RELEASE} by running
+    > You are now welcome to test out the new release candidate for ${RELEASE} by running
     > ```
     > hal config version edit --version ${RELEASE_BRANCH}-latest-unvalidated
     > ```
