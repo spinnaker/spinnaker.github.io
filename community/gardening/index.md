@@ -9,7 +9,7 @@ sidebar:
 [Register for Spinnaker Gardening Days](https://go.armory.io/gardening) to join our hackathon and earn rewards for your Spinnaker contributions July 16-23.
 
 ## Jump In!
-* Join [Spinnaker Slack](https://join.spinnaker.io) to chat in [event & team channels](slack-map.md). Visit __#gardening-general__, our main event channel to engage
+* Join [Spinnaker Slack](https://join.spinnaker.io) to chat in [event & team channels](slack-map.md). Visit __#gardening-general__, our main event channel to engage.
 * Find out how weeklong Gardening Days 2.0 will work on the [Hackathon logistics](hack-logistics.md) page
 * The [What to hack](what-to-hack.md) page list all eligible contributions types
 * Check the [Master schedule](schedule.md) to see our more time-zone inclusive global schedule
