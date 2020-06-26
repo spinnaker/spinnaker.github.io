@@ -23,7 +23,10 @@ to see if we've encountered them before.
 group and a *manager* of the [spinnaker-announce@googlegroups.com](https://groups.google.com/forum/#!forum/spinnaker-announce)
 group. (You'll get a permissions error on those pages if you don't have access.
 - You've been invited to the [Bintray's spinnaker-releases](https://bintray.com/spinnaker-releases) org.
-- You can access the [Jenkins UI](https://builds.spinnaker.io/) and you're able to run a job.
+- You're a member of the [release-managers GitHub team](https://github.com/orgs/spinnaker/teams/release-managers).
+- You can access the [Jenkins UI](https://builds.spinnaker.io/) and you're able
+to run a job. Access is controlled by the `release-managers` GitHub team, but it
+may take some time for the permissions to propagate from GitHub to Jenkins.
 - You can [SSH into Jenkins](https://spinnaker.io/community/contributing/nightly-builds/#connecting-to-the-jenkins-vm).
 - You're able to view our [GCP spinnaker-community cloudbuilds](https://console.cloud.google.com/cloud-build/builds?project=spinnaker-community). You should see a lot of builds.
 
