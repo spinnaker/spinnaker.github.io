@@ -282,9 +282,11 @@ Ensure patches meet the
 [release branch patch criteria](/community/contributing/releasing#release-branch-patch-criteria)
 before merging.
 
-    You can use this search to see what's waiting to be cherry-picked
+    You can use these searches to see what's waiting to be cherry-picked for each release branch.
     ```
-    https://github.com/search?type=Issues&q=org:spinnaker+state:open+is:pr+base:${RELEASE_BRANCH}
+    https://github.com/search?type=Issues&q=org:spinnaker+state:open+is:pr+base:${RELEASE_BRANCH-1}
+    https://github.com/search?type=Issues&q=org:spinnaker+state:open+is:pr+base:${RELEASE_BRANCH-2}
+    https://github.com/search?type=Issues&q=org:spinnaker+state:open+is:pr+base:${RELEASE_BRANCH-3}
     ```
 
 1. Rerun the Flow_BuildAndValidate_${RELEASE} job and get a green build.
