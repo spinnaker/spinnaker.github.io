@@ -64,9 +64,10 @@ job, which creates `latest-unvalidated` when it passes:
 
     1. Set **BASE_BRANCH** to `master`.
 
-    - you can check the status of each service build by going to [GCP cloudbuild](https://console.cloud.google.com/cloud-build/builds?project=spinnaker-community). Turn on the tags to see which each service name
+    - If the builds fail, a helpful UI is the [GCP cloudbuild](https://console.cloud.google.com/cloud-build/builds?project=spinnaker-community). 
+    Make sure to enable tags to the service name.
         <details>
-        <summary>GIF of showing tags</summary>
+        <summary>Click to expand a GIF of how to viewing the tags</summary>
 
         <img src="/assets/images/releases/gcp-cloudbuild-tags.gif" />
 
