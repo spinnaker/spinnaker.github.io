@@ -64,7 +64,7 @@ job, which creates `latest-unvalidated` when it passes:
 
     1. Set **BASE_BRANCH** to `master`.
 
-    - If the builds fail, a helpful UI is the [GCP cloudbuild](https://console.cloud.google.com/cloud-build/builds?project=spinnaker-community). 
+    - If the builds fail, [Google Cloud Build](https://console.cloud.google.com/cloud-build/builds?project=spinnaker-community) is a helpful UI. 
     Make sure to enable tags to the service name.
         <details>
         <summary>Click to expand a GIF of how to viewing the tags</summary>
