@@ -337,7 +337,7 @@ channel to let them know that the new patch is available.
     > `/giphy #caption "Spinnaker {VERSION} has been released!" gif search query`
 
 1. Approve the spinnaker-announce email (link will come in email).
-You can approve the message here: https://groups.google.com/forum/#!pendingmsg/spinnaker-announce
+You can approve the message in the [spinnaker-announce group](https://groups.google.com/forum/#!pendingmsg/spinnaker-announce).
 
 
 ## Release minor-version Halyard
