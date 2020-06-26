@@ -5,7 +5,7 @@ sidebar:
   nav: guides
 ---
 
-{% include alpha version="1.20" %}
+{% include alpha version="1.20.6" %}
 > This guide is a work in progress. Help us improve the content by submitting a pull request!
 
 {% include toc %}
@@ -22,7 +22,7 @@ For example:
 Specific to this guide:
 
 * [Orca](https://github.com/spinnaker/orca/), branch `release-1.20.x`
-* [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin), 1.1.4
+* [fetchArtifactsStage](https://github.com/spinnaker-plugin-examples/fetchArtifactsStage), 1.0.8
 
 {% include_relative prereqs.md %}
 
@@ -127,20 +127,19 @@ Through the next few steps, if you see an `Unable to find Main` log message or f
 
 	If Orca is unable to find Redis, make sure your Minnaker VM is running and that all the Spinnaker services are ready.
 
-## pf4jStagePlugin
+## fetchArtifactsStage plugin
 
-To show how to deploy and debug a plugin, this guide uses the [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin), which creates a custom pipeline stage that waits a number of seconds before signaling success. The plugin consists of a `random-wait-orca` [Kotlin](https://kotlinlang.org/docs/reference/) server component and a `random-wait-deck` [React](https://reactjs.org/) UI component.
+This plugin defines a new pipeline stage that fetches a file from a GitHub repository and adds it to the pipeline as a temporary file. 
 
 This is a very simplistic plugin for educational purposes only. You can use this plugin as a starting point to create a custom pipeline stage.
 
 ### Clone the codebase
 
 ```bash
-git clone --single-branch --branch v1.1.4 https://github.com/spinnaker-plugin-examples/pf4jStagePlugin.git
+git clone --single-branch --branch v1.0.8 https://github.com/spinnaker-plugin-examples/fetchArtifactsStage.git
 ```
 
-If you plan to Clone the 1.1.4 tag
-Follow the "debugging" section here: https://github.com/spinnaker-plugin-examples/pf4jStagePlugin
+
 
 notes:
 * Create the `plugins` directory in the git repo (e.g., `~/git/spinnaker/orca/plugins`) and put the `.plugin-ref` in there

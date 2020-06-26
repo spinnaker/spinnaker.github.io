@@ -23,7 +23,7 @@
 1. Download and unpack Minnaker
 
    ```bash
-   curl -LO https://github.com/armory/minnaker/releases/latest/download/minnaker.tgz
+   curl -LO https://github.com/armory/minnaker/releases/0.0.20/download/minnaker.tgz
    tar -xzvf minnaker.tgz
    ```
 
