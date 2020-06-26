@@ -20,8 +20,8 @@ to see if we've encountered them before.
 
 ## Verify You Have Access To The Following
 - You're a member of the [release-manager@spinnaker.io](mailto:release-manager@spinnaker.io)
-and [spinnaker-announce@googlegroups.com](mailto:spinnaker-announce@googlegroups.com) group.
-Contacting a member of the TOC or SC to get access.
+and [spinnaker-announce@googlegroups.com](mailto:spinnaker-announce@googlegroups.com) groups.
+Contact a member of the TOC or SC to get access.
 - You've been invited to the [Bintray's spinnaker-releases](https://bintray.com/spinnaker-releases) org.
 - You can access the [Jenkins UI](https://builds.spinnaker.io/) and you're able to run a job.
 - You can [SSH into Jenkins](https://spinnaker.io/community/contributing/nightly-builds/#connecting-to-the-jenkins-vm).
@@ -64,10 +64,10 @@ job, which creates `latest-unvalidated` when it passes:
 
     1. Set **BASE_BRANCH** to `master`.
 
-    - If the builds fail, a helpful UI is the [GCP cloudbuild](https://console.cloud.google.com/cloud-build/builds?project=spinnaker-community). 
+    - If the builds fail, [Google Cloud Build](https://console.cloud.google.com/cloud-build/builds?project=spinnaker-community) is a helpful UI. 
     Make sure to enable tags to the service name.
         <details>
-        <summary>Click to expand a GIF of how to viewing the tags</summary>
+        <summary>Click to expand a GIF of how to view the tags</summary>
 
         <img src="/assets/images/releases/gcp-cloudbuild-tags.gif" />
 
