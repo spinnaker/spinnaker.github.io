@@ -27,7 +27,7 @@ Along with individual rewards, we will award team prizes based on an anonymous p
   - Teams of developers discover ways to automate their SDLCs with Spinnaker, using cloud drivers, pipeline triggers, webhook and Jenkins stages, and more
   - Teams create content for the Spinnaker community, such as video, blog, Twitch, and Slack streams
 - SIG Challenges
-  - SIGs that schedule Special Sessions choose a project or issue in their domain and compete   
+  - SIGs that schedule special sessions choose a project or issue in their domain and compete   
   - Attendees bring problems and ideas to Special Session meetings to join SIG teams
 
 ### The Spinnaker-Hackathon Organization
