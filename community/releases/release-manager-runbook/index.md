@@ -67,7 +67,7 @@ job, which creates `latest-unvalidated` when it passes:
     - If the builds fail, [Google Cloud Build](https://console.cloud.google.com/cloud-build/builds?project=spinnaker-community) is a helpful UI. 
     Make sure to enable tags to the service name.
         <details>
-        <summary>Click to expand a GIF of how to viewing the tags</summary>
+        <summary>Click to expand a GIF of how to view the tags</summary>
 
         <img src="/assets/images/releases/gcp-cloudbuild-tags.gif" />
 
