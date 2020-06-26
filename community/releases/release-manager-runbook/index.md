@@ -15,7 +15,7 @@ Here's a quick review of what the release process looks like from the community 
 - Here's what the project expects all contributors to do for [backports/patches](/community/contributing/releasing/#release-branch-patch-criteria).
 
 If the builds break, you can take a look at [some common issues](https://spinnaker.io/community/contributing/nightly-builds/#common-build-failures)
-to see if we've encounter them before.
+to see if we've encountered them before.
 
 
 ## Verify You Have Access To The Following
