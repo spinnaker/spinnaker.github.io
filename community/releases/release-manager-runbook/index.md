@@ -61,7 +61,7 @@ to merge outstanding changes ASAP:
 1. If there are any [outstanding autobump PRs](https://github.com/pulls?q=is%3Apr+author%3Aspinnakerbot+is%3Aopen),
 make the required fixes to allow them to merge.
 
-1. Start with a [green build on master](https://builds.spinnaker.io/job/Flow_BuildAndValidate/).
+1. Start with a [blue build on master](https://builds.spinnaker.io/job/Flow_BuildAndValidate/).
 
 1. Create the release branches by running the [**Admin_StartReleaseBranch**](https://builds.spinnaker.io/job/Admin_StartReleaseBranch/build?delay=0sec)
 job, which creates `latest-unvalidated` when it passes:
@@ -173,7 +173,7 @@ Ensure patches meet the
 [release branch patch criteria](/community/contributing/releasing#release-branch-patch-criteria)
 before merging.
 
-1. Rerun the Flow_BuildAndValidate_${RELEASE} job and get a green build.
+1. Rerun the Flow_BuildAndValidate_${RELEASE} job and get a blue build.
 
 1. Create a new gist for this release.
 
