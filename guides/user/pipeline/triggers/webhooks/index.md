@@ -21,7 +21,7 @@ If you're triggering from a *GitHub* webhook, see the instructions
 [here](/setup/triggers/github/) to set up that webhook.
 
 If you're triggering to a Spinnaker with authentication, see the 
-instructions [here](/setup/security/authorization/) to set up the 
+instructions [here](/setup/security/authorization/#automated-pipeline-triggers) to set up the 
 automated trigger.
 
 ## Adding a webhook trigger to a pipeline
