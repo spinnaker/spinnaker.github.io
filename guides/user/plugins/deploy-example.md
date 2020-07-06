@@ -75,7 +75,7 @@ spinnaker:
 
 Beginning in Spinnaker 1.20, Gate needs to know where to get any plugin that has a Deck component. If your plugin is backend only, you do not need to modify `gate-local.yml`.
 
-You can find `gate-local.yml` in the directory where Halyard stores local config files. This is usually `\etc\spinnaker\.hal\default\profiles`. Add the following snippet:
+You can create or find `gate-local.yml` in the directory where Halyard stores local config files. This is usually `~\.hal\default\profiles` on the machine where Halyard is running. Add the following snippet:
 
 ```yaml
 spinnaker:
