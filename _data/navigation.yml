@@ -400,7 +400,7 @@ guides:
       - title: Plugins
         collapsed: true
         children:
-          - title: Users Guide
+          - title: Plugin Users Guide
             url: /guides/user/plugins/user-guide/
           - title: pf4jStagePlugin Deployment Example
             url: /guides/user/plugins/deploy-example/

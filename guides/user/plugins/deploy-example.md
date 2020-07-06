@@ -103,6 +103,9 @@ hal deploy apply
 
 The RandomWait stage appears in the **Type** select list when you create a new Pipeline stage.
 
+{% include image-caption.html url="/assets/images/guides/user/plugins/deploy-example/randomWaitTypeUI.png" caption="Random Wait stage in Type select list" %}
+
+{% include image-caption.html url="/assets/images/guides/user/plugins/deploy-example/randomWaitStageUI.png" caption="Random Wait stage after it has been selected and the configuration panel is visible." %}
 
 
 ## Troubleshooting
@@ -134,7 +137,7 @@ If the plugin doesn't appear in the **Type** select list, check the following lo
   2020-07-01 16:52:13.170  WARN 1 --- [           main] org.pf4j.AbstractPluginManager           : [] Plugin '/opt/orca/plugins/Armory.RandomWaitPlugin-pf4jStagePlugin-v1.1.13/orca' is invalid and it will be disabled
   ```
 
-  your plugin doesn't work with the version of Spinnaker you are using. Contact the plugin's developer.
+  ...your plugin doesn't work with the version of Spinnaker you are using. Contact the plugin's developer.
 
   If you see `this.pluginId must not be null`, the plugin manifest file is missing values. Contact the plugin's developer.
 

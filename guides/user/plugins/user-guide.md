@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Users Guide"
+title:  "Plugin Users Guide"
 sidebar:
   nav: guides
 redirect_from:
@@ -46,10 +46,10 @@ Spinnaker environment:
 
 ## How to add a plugin to Spinnaker
 
-1. Add a plugin repository using Halyard
-1. Add a plugin using Halyard
-1. Add a `deck-proxy` to `gate-local.yml` (frontend plugins only)
-1. Redeploy Spinnaker
+1. [Add a plugin repository using Halyard](#add-a-plugin-repository-using-halyard)
+1. [Add a plugin using Halyard](#add-a-plugin-using-halyard)
+1. [Add a `deck-proxy` to `gate-local.yml`](#add-a-deck-proxy-to-gate-local.yml) (frontend plugins only)
+1. [Redeploy Spinnaker](#redeploy-spinnaker)
 
 ## Add a plugin repository using Halyard
 
@@ -131,7 +131,7 @@ The plugin distributor should provide you with the `unique-plugin-id`, `extensio
 
 The following example is from the [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin/blob/master/random-wait-orca/src/main/kotlin/io/armory/plugin/stage/wait/random/RandomWaitConfig.kt).
 
-```java
+```kotlin
 package io.armory.plugin.stage.wait.random
 
 import com.netflix.spinnaker.kork.plugins.api.ExtensionConfiguration
@@ -145,13 +145,55 @@ import com.netflix.spinnaker.kork.plugins.api.ExtensionConfiguration
 data class RandomWaitConfig(var defaultMaxWaitTime: Int)
 ```
 
+You would add the `pf4jStagePlugin` to Spinnaker like this:
+
+```bash
+hal plugins add Armory.RandomWaitPlugin --extensions=armory.randomWaitStage \
+--version=1.1.4 --enabled=true
+```
+
+Halyard adds the plugin configuration to the `.hal/config` file. Note the plugin's empty `config` collection.
+
+```yaml
+spinnaker:
+  extensibility:
+    plugins:
+      Armory.RandomWaitPlugin:
+        id: Armory.RandomWaitPlugin
+        enabled: true
+        version: 1.1.14
+        extensions:
+          armory.randomWaitStage:
+            id: armory.randomWaitStage
+            enabled: true
+            config: {}
+    repositories:
+      examplePluginsRepo:
+        id: examplePluginsRepo
+        url: https://raw.githubusercontent.com/spinnaker-plugin-examples/examplePluginRepository/master/plugins.json
+```
+
+Halyard does not support configuring plugins, so you should manually edit the  Halconfig file for custom values. For example, `pf4jStagePlugin` has a configurable `defaultMaxWaitTime`, so you add that parameter to the plugin's configuration in the `config` collection:
+
+```yaml
+spinnaker:
+  extensibility:
+    plugins:
+      Armory.RandomWaitPlugin:
+        id: Armory.RandomWaitPlugin
+        enabled: true
+        version: 1.1.14
+        extensions:
+          armory.randomWaitStage:
+            id: armory.randomWaitStage
+            enabled: true
+            config:
+              defaultMaxWaitTime: 60
+```
+
 You can also list, edit, and delete plugins. See the Halyard [commands](https://spinnaker.io/reference/halyard/commands/#hal-plugins) for a complete list.
 
 Note: `hal plugins enable` and `hal plugins disable` enable or disable all plugins, so use with caution.
-
-### Configure the plugin
-
-Halyard does not support configuring plugins, so you should manually edit the `.hal/config` file to configure custom values. Find the `plugins` section, locate your plugin's definition, and then change values in the `config` section.
 
 ## Add a `deck-proxy` to `gate-local.yml`
 
@@ -176,6 +218,10 @@ spinnaker:
 * `unique-plugin-id`: the plugin ID you used when you added the plugin to Spinnaker ([Add a plugin using Halyard](#add-a-plugin-using-halyard) section)
 * `unique-repo-name`: the plugin repository ID you used when you added the repository to Spinnaker ([Add a plugin repository using Halyard](#add-a-plugin-repository-using-halyard) section)
 * `url`: the location of the plugin repository ([Add a plugin repository using Halyard](#add-a-plugin-repository-using-halyard) section)
+
+## Redeploy Spinnaker
+
+Remember to `hal deploy apply` after you have finished configuring your plugin.
 
 ## Deployment example
 
