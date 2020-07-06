@@ -48,7 +48,7 @@ Spinnaker environment:
 
 1. [Add a plugin repository using Halyard](#add-a-plugin-repository-using-halyard)
 1. [Add a plugin using Halyard](#add-a-plugin-using-halyard)
-1. [Add a `deck-proxy` to `gate-local.yml`](#add-a-deck-proxy-to-gate-local.yml) (frontend plugins only)
+1. [Add a Deck proxy to Gate](#add-a-deck-proxy-to-gate) (frontend plugins only)
 1. [Redeploy Spinnaker](#redeploy-spinnaker)
 
 ## Add a plugin repository using Halyard
@@ -145,7 +145,7 @@ import com.netflix.spinnaker.kork.plugins.api.ExtensionConfiguration
 data class RandomWaitConfig(var defaultMaxWaitTime: Int)
 ```
 
-You would add the `pf4jStagePlugin` to Spinnaker like this:
+You add the `pf4jStagePlugin` to Spinnaker like this:
 
 ```bash
 hal plugins add Armory.RandomWaitPlugin --extensions=armory.randomWaitStage \
@@ -173,7 +173,7 @@ spinnaker:
         url: https://raw.githubusercontent.com/spinnaker-plugin-examples/examplePluginRepository/master/plugins.json
 ```
 
-Halyard does not support configuring plugins, so you should manually edit the  Halconfig file for custom values. For example, `pf4jStagePlugin` has a configurable `defaultMaxWaitTime`, so you add that parameter to the plugin's configuration in the `config` collection:
+Halyard does not support configuring plugins, so you should manually edit the  Halconfig file for custom values. For example, `pf4jStagePlugin` has a configurable `defaultMaxWaitTime`, so you add that parameter to the plugin's configuration in the `config` collection section:
 
 ```yaml
 spinnaker:
@@ -195,7 +195,7 @@ You can also list, edit, and delete plugins. See the Halyard [commands](https://
 
 Note: `hal plugins enable` and `hal plugins disable` enable or disable all plugins, so use with caution.
 
-## Add a `deck-proxy` to `gate-local.yml`
+## Add a Deck proxy to Gate
 
 If your plugin has a Deck component, you need to configure a `deck-proxy` so Gate knows where to find the plugin.
 
