@@ -5,10 +5,7 @@ sidebar:
   nav: guides
 ---
 
-{% include alpha version="1.20.6" %}
-> This guide is a work in progress. Help us improve the content by submitting a pull request!
-
-{% include toc %}
+{% include_relative alpha-toc.md %}
 
 This guide explains how to set up a local Spinnaker environment on your MacBook so you can test your backend plugin. A Spinnaker microservice running inside IntelliJ communicates with the other Spinnaker services that are running in a local VM.
 
@@ -129,7 +126,7 @@ Through the next few steps, if you see an `Unable to find Main` log message or f
 
 ## fetchArtifactsStage plugin
 
-This plugin defines a new pipeline stage that fetches a file from a GitHub repository and adds it to the pipeline as a temporary file. 
+This plugin defines a new pipeline stage that fetches a file from a GitHub repository and adds it to the pipeline as a temporary file.
 
 This is a very simplistic plugin for educational purposes only. You can use this plugin as a starting point to create a custom pipeline stage.
 
@@ -228,3 +225,8 @@ This creates `/build/distributions/pf4jStagePlugin-1.1.4.zip` and `random-wait-o
 1. Click **Save Changes**
 1. Go back to the **PIPELINES** screen
 1. **Start Manual Execution** and watch the stage wait for the specified number of seconds
+
+
+## Frontend plugin
+
+If your plugin has a Deck component, see the [Deck Plugin](/guides/developer/plugin-creators/test/deck-plugin/) guide for steps to run Deck locally and debug your frontend component.
