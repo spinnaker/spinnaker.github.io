@@ -71,7 +71,7 @@ sql:
   # read-only boolean toggles `SELECT` or `DELETE` health checks for all pools.
   # Especially relevant for clouddriver-ro and clouddriver-ro-deck which can
   # target a SQL read replica in their default pools.
-  read-only: false 
+  read-only: false
   taskRepository:
     enabled: true
   cache:
@@ -120,7 +120,7 @@ The above yaml configures Clouddriver to use a MySQL table as part of a locking 
 
 The following modification to the above example configures Clouddriver to use SQL for the cache and task repository, and Redis for agent scheduling.
 
-**IMPORTANT NOTE FOR GOOGLE CLOUDSQL USERS**: The SQL Agent Scheduler does not work in CloudSQL. You must continue to use the Redis scheduler for now.
+**IMPORTANT NOTE FOR SQL USERS NOT USING AWS AURORADB**: Problems have been reported when trying to move the Clouddriver Agent Scheduler to SQL in both Google Managed CloudSQL and Amazon Managed RDS SQL. The issue can cause unpredictable behavior concerning Clouddriver's ability to schedule caching agents. It is recommended to keep your Agent Scheduler in redis if you're using this type of backend for Clouddriver caching. A configuration example that does this is below. Please see [this issue](https://github.com/spinnaker/spinnaker/issues/5829) for additional information.
 
 ```yaml
 sql:
