@@ -94,7 +94,7 @@ git clone --single-branch --branch release-1.21.x https://github.com/spinnaker/o
 git clone --single-branch --branch release-1.21.x https://github.com/spinnaker/deck.git
 ```
 
-## Run a Spinnaker service in IntelliJ
+## Run Orca in IntelliJ
 
 1. Open the Orca project in IntelliJ
 
@@ -111,6 +111,7 @@ git clone --single-branch --branch release-1.21.x https://github.com/spinnaker/d
       1. Select **Open as Project**
 
 1. Grab a beverage and snack while you wait for IntelliJ to finish indexing the project
+
 1. If you have multiple JDKs installed, configure the Orca project to use JDK 11
 
 Through the next few steps, if you see an `Unable to find Main` log message or fields are grayed out, reimport the project:
@@ -118,15 +119,19 @@ Through the next few steps, if you see an `Unable to find Main` log message or f
    1. **View** > **Tool Windows** > **Gradle**
    1. In the Gradle window, right click "Orca" and then click **Reimport Gradle Project**
 
-1. Create a Run Configuration
+1. Create a **Run Configuration**
+
+   You can skip the following steps if IntelliJ automatically creates a "Main" Run Configuration. Rename "Main" to "RunOrca".
 
    1. Click the **Add Configuration** button to open the **Run/Debug Configurations** window
    1. Click the `+` button to create a new configuration
-   1. Select **Application**
+   1. Select **Spring Boot**
    1. Enter "RunOrca" in the **Name** field
    1. **Main class**  Click the **...** button.  Wait for the list to load and then select `Main (com.netflix.spinnaker.orca)`. Alternately, click on **Project** and navigate to `orca > orca-web > src > main > groovy > com.netflix.spinnaker > orca > Main`
    1. In the dropdown for **Use classpath of module**, select **orca-web_main**
    1. Click **Apply** and then **OK**
+
+	[Run Orca Configuration](/assets/images/guides/developer/plugin-creators/run-orca-config.png)
 
 1. Run `orca` using the `RunOrca` configuration
 
@@ -138,17 +143,7 @@ Through the next few steps, if you see an `Unable to find Main` log message or f
 
 	If Orca is unable to find Redis, make sure your Minnaker VM is running and that all the Spinnaker services are ready.
 
-## fetchArtifactsStage plugin
 
-This plugin defines a new pipeline stage that fetches a file from a GitHub repository and adds it to the pipeline as a temporary file.
-
-This is a very simplistic plugin for educational purposes only. You can use this plugin as a starting point to create a custom pipeline stage.
-
-### Clone the codebase
-
-```bash
-git clone --single-branch --branch v1.0.8 https://github.com/spinnaker-plugin-examples/fetchArtifactsStage.git
-```
 
 
 
@@ -162,7 +157,7 @@ notes:
 ./gradlew releaseBundle
 ```
 
-This creates `/build/distributions/pf4jStagePlugin-1.1.4.zip` and `random-wait-orca/build/Armory.RandomWaitPlugin-orca.plugin-ref`.
+This creates `/build/distributions/pf4jStagePlugin-1.1.14.zip` and `random-wait-orca/build/Armory.RandomWaitPlugin-orca.plugin-ref`.
 
 ## Configure your local Spinnaker environment for the plugin
 
@@ -176,7 +171,7 @@ This creates `/build/distributions/pf4jStagePlugin-1.1.4.zip` and `random-wait-o
       plugins:
          Armory.RandomWaitPlugin:
           enabled: true
-          version: 1.1.4
+          version: 1.1.14
           extensions:
             armory.randomWaitStage:
               enabled: true
@@ -196,6 +191,7 @@ This creates `/build/distributions/pf4jStagePlugin-1.1.4.zip` and `random-wait-o
    1. Navigate to your `pf4jStagePlugin` directory , select the `build.gradle` file, and click **Open**
 
 1. In the **Gradle** window, right click **orca** and click **Reimport Gradle Project**
+
 1. Create a new build configuration
 
    ![Edit Run Configuration](/assets/images/guides/developer/plugin-creators/intellij-edit-runconfig.jpg)
@@ -241,6 +237,4 @@ This creates `/build/distributions/pf4jStagePlugin-1.1.4.zip` and `random-wait-o
 1. **Start Manual Execution** and watch the stage wait for the specified number of seconds
 
 
-## Frontend plugin
 
-If your plugin has a Deck component, see the [Deck Plugin](/guides/developer/plugin-creators/test/deck-plugin/) guide for steps to run Deck locally and debug your frontend component.
