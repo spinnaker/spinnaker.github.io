@@ -18,7 +18,7 @@ In this guide, you deploy the `pf4jStagePlugin` plugin from the [spinnaker-plugi
 
 This guide was tested with the following software versions:
 
-* Spinnaker 1.20.6 or 1.21.0
+* Spinnaker 1.20.6 and 1.21.0
 * Halyard 1.36
 * pf4jStagePlugin 1.1.14
 

@@ -40,8 +40,8 @@ Spinnaker uses [PF4J-Update](https://github.com/pf4j/pf4j-update) to load and ma
 
 Spinnaker environment:
 
-* Spinnaker v1.20.6 or later
-* Halyard v1.36 or later to deploy Spinnaker
+* Spinnaker v1.20.6, v1.21.0 (assumption is v1.21.x but not validated)
+* Halyard v1.36 to deploy Spinnaker (assumption is v1.36+ but not validated)
 
 
 ## How to add a plugin to Spinnaker
