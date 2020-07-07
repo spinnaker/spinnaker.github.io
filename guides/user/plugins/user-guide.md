@@ -93,17 +93,17 @@ For example:
 ```json
 [
   {
-	  "id": "spinnaker-plugin-examples",
-	  "url": "https://raw.githubusercontent.com/spinnaker-plugin-examples/examplePluginRepository/master/plugins.json"
- },
- {
-	 "id": "my-company-internal-plugins",
-	 "url": "https://<my-company-internal-github>/<repo-name>/plugins.json"
- },
- {
-	 "id": "my-plugins",
-	 "url": "https://github.com/aimeeu/pluginRepository/blob/master/plugins.json"
- }
+    "id": "spinnaker-plugin-examples",
+    "url": "https://raw.githubusercontent.com/spinnaker-plugin-examples/examplePluginRepository/master/plugins.json"
+  },
+  {
+    "id": "my-company-internal-plugins",
+    "url": "https://<my-company-internal-github>/<repo-name>/plugins.json"
+  },
+  {
+    "id": "my-plugins",
+    "url": "https://github.com/aimeeu/pluginRepository/blob/master/plugins.json"
+  }
 ]
 ```
 
@@ -129,7 +129,7 @@ hal plugins add <unique-plugin-id> --extensions=<extension-name> \
 
 The plugin distributor should provide you with the `unique-plugin-id`, `extensions`, and `version` values as well as any plugin configuration details. If you have to hunt for these values, you can find `unique-plugin-id` and `version` in the `plugins.json` file, but you have to look at the code to find the value for `extensions`. Search for the deprecated `@ExtensionConfiguration` or the current `@PluginConfiguration` annotation. Both take a value, which is the extension name.
 
-Use of the deprecated `@ExtensionConfiguration` annotation in the [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin/blob/master/random-wait-orca/src/main/kotlin/io/armory/plugin/stage/wait/random/RandomWaitConfig.kt), which is written in Kotlin:
+Example of the deprecated `@ExtensionConfiguration` annotation in the [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin/blob/master/random-wait-orca/src/main/kotlin/io/armory/plugin/stage/wait/random/RandomWaitConfig.kt), which is written in Kotlin:
 
 ```kotlin
 package io.armory.plugin.stage.wait.random
@@ -140,7 +140,7 @@ import com.netflix.spinnaker.kork.plugins.api.ExtensionConfiguration
 data class RandomWaitConfig(var defaultMaxWaitTime: Int)
 ```
 
-Use of the `@PluginConfiguration` annotation in the [Notification Plugin](https://github.com/spinnaker-plugin-examples/notificationPlugin/blob/master/notification-agent-echo/src/main/kotlin/io/armory/plugin/example/echo/notificationagent/HTTPNotificationConfig.kt#L5), which is also written in Kotlin:
+Example of the `@PluginConfiguration` annotation in the [Notification Plugin](https://github.com/spinnaker-plugin-examples/notificationPlugin/blob/master/notification-agent-echo/src/main/kotlin/io/armory/plugin/example/echo/notificationagent/HTTPNotificationConfig.kt#L5), which is also written in Kotlin:
 
 ```kotlin
 package io.armory.plugin.example.echo.notificationagent
@@ -175,13 +175,9 @@ spinnaker:
             id: armory.randomWaitStage
             enabled: true
             config: {}
-    repositories:
-      examplePluginsRepo:
-        id: examplePluginsRepo
-        url: https://raw.githubusercontent.com/spinnaker-plugin-examples/examplePluginRepository/master/plugins.json
 ```
 
-Halyard does not support configuring plugins, so you should manually edit the  Halconfig file for custom values. For example, `pf4jStagePlugin` has a configurable `defaultMaxWaitTime`, so you add that parameter to the plugin's configuration in the `config` collection section:
+Halyard _does not_ support configuring plugins, so you should manually edit the  Halconfig file for custom values. For example, `pf4jStagePlugin` has a configurable `defaultMaxWaitTime`, so you add that parameter to the plugin's configuration in the `config` collection section:
 
 ```yaml
 spinnaker:
