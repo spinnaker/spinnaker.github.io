@@ -311,7 +311,7 @@ Repeat weeklyish for each supported version.
 (You can further restrict the query by adding a constraint like +base:release-1.18.x to the URL.)
 Ensure patches meet the
 [release branch patch criteria](/community/contributing/releasing#release-branch-patch-criteria)
-before merging.
+before merging. To view what's been merged into the each release branch since the last release, see the [changelog gist](https://gist.github.com/spinnaker-release/4f8cd09490870ae9ebf78be3be1763ee) on Github.
 
 1. Rerun the Flow_BuildAndValidate_${RELEASE} job and get a blue build.
 
@@ -369,7 +369,9 @@ automatically check the “build Halyard” checkbox in the downstream
 Build_PrimaryArtifacts flow.
 
 1. After that passes, navigate to:
+```
 https://builds.spinnaker.io/job/Build_PrimaryArtifacts/${JOB_NUMBER}/artifact/build_output/build_halyard/last_version_commit.yml/*view*/
+```
 (insert correct JOB_NUMBER) and copy the version (it will be the entire string prior to the colon).
 
 1. Run Publish_HalyardRelease:
@@ -380,10 +382,21 @@ https://builds.spinnaker.io/job/Build_PrimaryArtifacts/${JOB_NUMBER}/artifact/bu
 1. Post in [#halyard](https://spinnakerteam.slack.com/messages/halyard/) that a
    new version of Halyard has been released.
 
+    > Hot Tip! You can use giphy to tell everyone it's released!
+    >
+    > `/giphy #caption "Halyard {VERSION} has been released!" gif search query`
+
 
 ## Release patch-version Halyard
 
 Repeat as needed.
+
+1. Check for any PRs waiting to be [cherry-picked](https://github.com/spinnaker/halyard/pulls?q=is%3Apr+is%3Aopen+sort%3Aupdated-desc+-base%3Amaster).
+(You can further restrict the query by adding a constraint like +base:release-1.18.x to the URL.)
+Ensure patches meet the
+[release branch patch criteria](/community/contributing/releasing#release-branch-patch-criteria)
+before merging.
+
 
 1. Run Build_Halyard:
 
@@ -399,6 +412,11 @@ Repeat as needed.
 
 1. Post in [#halyard](https://spinnakerteam.slack.com/messages/halyard/) that a
    new version of Halyard has been released.
+
+    > Hot Tip! You can use giphy to tell everyone it's released!
+    >
+    > `/giphy #caption "Halyard {VERSION} has been released!" gif search query`
+
 
 ## Publish a new version of deck-kayenta
 
