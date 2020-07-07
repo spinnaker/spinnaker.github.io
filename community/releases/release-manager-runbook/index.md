@@ -196,7 +196,7 @@ before merging.
         # Spinnaker Release ${nn.nn.nn}
         **_Note: This release requires Halyard version ${nn.nn.nn} or later._**
 
-        This release includes fixes, features, and performance improvements across a wide feature set in Spinnaker. Here we share a summary of notable improvements, followed by the comprehensive changelog.
+        This release includes fixes, features, and performance improvements across a wide feature set in Spinnaker. This section provides a summary of notable improvements followed by the comprehensive changelog.
 
         ${CURATED_CHANGE_LOG}
 
@@ -205,10 +205,9 @@ before merging.
         ${RAW_CHANGE_LOG}
         ```
 
-        1. Copy the changes for this release from the [raw build changelog](https://gist.github.com/spinnaker-release/4f8cd09490870ae9ebf78be3be1763ee#file-release-1-21-x-raw-changelog-md) to the new
-        1.nn.0.md file. You can change the anchor tag in the link for your release version.
+        a. Copy the changes for this release from the [raw build changelog](https://gist.github.com/spinnaker-release/4f8cd09490870ae9ebf78be3be1763ee#file-release-1-21-x-raw-changelog-md) to the new 1.nn.0.md file. Change the anchor tag in the link for your release version.
 
-        1. Add the notes from the [curated changelog](/community/releases/next-release-preview)
+        b. Add the notes from the [curated changelog](/community/releases/next-release-preview)
         to the top of the gist ([sample 1.nn.0 release notes](https://gist.github.com/spinnaker-release/cc4410d674679c5765246a40f28e3cad)).
 
     1. Reset the [curated changelog](/community/releases/next-release-preview)
@@ -222,7 +221,7 @@ before merging.
     1. **Spinnaker Release Alias** should be the name of a Netflix original TV
     show converted to an alphanumeric string
     (e.g., "Gilmore Girls A Year in the Life").
-    Only worry about name collisions with the current active releases (e.g. `hal version list`)
+    Only worry about name collisions with the current active releases (i.e. `hal version list`)
 
     1. **BOM version** should be `release-1.nn.x-latest-unvalidated` (replacing nn
     with the version number).
@@ -262,7 +261,7 @@ You can approve the message in the [spinnaker-announce group](https://groups.goo
     - Flow_BuildAndValidate (master, BUILDING NIGHTLY)
 
 1. Ping the [#spinnaker-releases](https://spinnakerteam.slack.com/messages/spinnaker-releases/)
-channel to let them know that the new patch is available.
+channel to let them know that a new patch is available.
 
     > Hot Tip! You can use giphy to tell everyone it's released!
     >
