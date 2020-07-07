@@ -479,6 +479,11 @@ guides:
     children:
       - title: Getting Set Up
         url: /guides/developer/getting-set-up/
+      - title: Provider Specific Setups
+        collapsed: true
+        children:
+          - title: Set Up Spinnaker Development on AWS
+            url: /guides/developer/provider-setups/aws-dev-setup/
       - title: Writing a New Stage
         url: /guides/developer/new-stage/
       - title: Kork Library
