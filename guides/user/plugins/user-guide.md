@@ -238,3 +238,4 @@ See the [pf4jStagePlugin Deployment Example](/guides/user/plugins/deploy-example
 ## Resources
 
 You can ask for help with plugins in the [Spinnaker Slack's](https://join.spinnaker.io/) `#plugins` channel.
+
