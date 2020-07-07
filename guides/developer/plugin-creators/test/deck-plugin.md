@@ -131,7 +131,7 @@ Through the next few steps, if you see an `Unable to find Main` log message or f
    1. In the dropdown for **Use classpath of module**, select **orca-web_main**
    1. Click **Apply** and then **OK**
 
-	[Run Orca Configuration](/assets/images/guides/developer/plugin-creators/run-orca-config.png)
+	![Run Orca Configuration](/assets/images/guides/developer/plugin-creators/run-orca-config.png)
 
 1. Run `orca` using the `RunOrca` configuration
 
@@ -145,7 +145,7 @@ Through the next few steps, if you see an `Unable to find Main` log message or f
 
 
 
-
+==================================================================
 
 notes:
 * Create the `plugins` directory in the git repo (e.g., `~/git/spinnaker/orca/plugins`) and put the `.plugin-ref` in there
