@@ -23,7 +23,7 @@
 1. Download and unpack Minnaker
 
    ```bash
-   curl -LO https://github.com/armory/minnaker/releases/0.0.20/download/minnaker.tgz
+   curl -LO https://github.com/armory/minnaker/releases/download/0.0.20/minnaker.tgz
    tar -xzvf minnaker.tgz
    ```
 
@@ -45,12 +45,7 @@
    kubectl -n spinnaker get pods
    ```
 
-   If you need to access the Halyard pod, execute:
-
-   ```bash
-   export HAL_POD=$(kubectl -n spinnaker get pod -l app=halyard -oname | cut -d'/' -f 2)
-   kubectl -n spinnaker exec -it ${HAL_POD} bash
-   ```
+   Minnaker forwards `hal` commands to the Halyard pod so you don't need to access the pod itself.
 
    Consult the Minnaker [README](https://github.com/armory/minnaker/blob/master/readme.md#changing-your-spinnaker-configuration) for basic troubleshooting information if you run into issues.
 

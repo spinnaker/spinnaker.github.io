@@ -5,7 +5,7 @@ sidebar:
   nav: guides
 ---
 
-{% include alpha version="1.19.4" %}
+{% include alpha version="1.21.0" %}
 > This guide is a work in progress. Help us improve the content by submitting a pull request!
 
 {% include toc %}
@@ -15,8 +15,8 @@ sidebar:
 
 * You have read the [Plugin Creators Guide Overview](/guides/developer/plugin-creators/overview/).
 * [Gradle](https://gradle.org/) and [Yarn](https://classic.yarnpkg.com/en/) for building the plugin locally
-* IntelliJ IDEA, Orca branch `release-1.19.x` and Deck branch  for local testing
-* Spinnaker v1.19.4 and Halyard 1.34 for deploying the pf4jStagePlugin 1.0.16
+* IntelliJ IDEA, Orca branch `release-1.21.x` and Deck branch  for local testing
+* Spinnaker v1.21.0 and Halyard 1.36 for deploying the pf4jStagePlugin 1.1.14
 
 # pf4jStagePlugin plugin
 

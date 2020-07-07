@@ -3,6 +3,7 @@ layout: single
 title: "Backend Plugin"
 sidebar:
   nav: guides
+published: false
 ---
 
 {% include_relative alpha-toc.md %}
