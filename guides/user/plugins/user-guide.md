@@ -15,7 +15,7 @@ _Note: Spinnaker 1.19.x does not support frontend plugins due to a bug in Deck._
 
 ## Overview
 
-Spinnaker uses [PF4J-Update](https://github.com/pf4j/pf4j-update) to load and manage third-party plugins. These plugins can implement a PF4J extension point or be Spring components. See the [Plugin Creators Guide](/guides/developer/plugin-creators/overview/) for details.
+Spinnaker uses [PF4J-Update](https://github.com/pf4j/pf4j-update) to load and manage plugins. These plugins can implement a PF4J extension point or be Spring components. See the [Plugin Creators Guide](/guides/developer/plugin-creators/overview/) for details.
 
 ## Terms
 
@@ -93,16 +93,16 @@ For example:
 ```json
 [
   {
-    "id": "spinnaker-plugin-examples",
-    "url": "https://raw.githubusercontent.com/spinnaker-plugin-examples/examplePluginRepository/master/plugins.json"
+	  "id": "spinnaker-plugin-examples",
+	  "url": "https://raw.githubusercontent.com/spinnaker-plugin-examples/examplePluginRepository/master/plugins.json"
  },
  {
-     "id": "my-company-internal-plugins",
-     "url": "https://<my-company-internal-github>/<repo-name>/plugins.json"
+	 "id": "my-company-internal-plugins",
+	 "url": "https://<my-company-internal-github>/<repo-name>/plugins.json"
  },
  {
-	  "id": "my-plugins",
-	  "url": "https://github.com/aimeeu/pluginRepository/blob/master/plugins.json"
+	 "id": "my-plugins",
+	 "url": "https://github.com/aimeeu/pluginRepository/blob/master/plugins.json"
  }
 ]
 ```
@@ -127,23 +127,31 @@ hal plugins add <unique-plugin-id> --extensions=<extension-name> \
 --version=<version> --enabled=true
 ```
 
-The plugin distributor should provide you with the `unique-plugin-id`, `extensions`, and `version` values as well as any plugin configuration details. If you have to hunt for these values, you can find `unique-plugin-id` and `version` in the `plugins.json` file, but you have to look at the code to find the value for `extensions`. Search for the `@ExtensionConfiguration` annotation, which defines the extension name.
+The plugin distributor should provide you with the `unique-plugin-id`, `extensions`, and `version` values as well as any plugin configuration details. If you have to hunt for these values, you can find `unique-plugin-id` and `version` in the `plugins.json` file, but you have to look at the code to find the value for `extensions`. Search for the deprecated `@ExtensionConfiguration` or the current `@PluginConfiguration` annotation. Both take a value, which is the extension name.
 
-The following example is from the [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin/blob/master/random-wait-orca/src/main/kotlin/io/armory/plugin/stage/wait/random/RandomWaitConfig.kt).
+Use of the deprecated `@ExtensionConfiguration` annotation in the [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin/blob/master/random-wait-orca/src/main/kotlin/io/armory/plugin/stage/wait/random/RandomWaitConfig.kt), which is written in Kotlin:
 
 ```kotlin
 package io.armory.plugin.stage.wait.random
 
 import com.netflix.spinnaker.kork.plugins.api.ExtensionConfiguration
 
-/**
- * Data in this class maps to the plugin configuration in a service's config YAML.
- * The data can be key/value pairs or an entire configuration tree.
- *
- */
 @ExtensionConfiguration("armory.randomWaitStage")
 data class RandomWaitConfig(var defaultMaxWaitTime: Int)
 ```
+
+Use of the `@PluginConfiguration` annotation in the [Notification Plugin](https://github.com/spinnaker-plugin-examples/notificationPlugin/blob/master/notification-agent-echo/src/main/kotlin/io/armory/plugin/example/echo/notificationagent/HTTPNotificationConfig.kt#L5), which is also written in Kotlin:
+
+```kotlin
+package io.armory.plugin.example.echo.notificationagent
+
+import com.netflix.spinnaker.kork.plugins.api.PluginConfiguration
+
+@PluginConfiguration("armory.httpNotificationService")
+data class HTTPNotificationConfig(val url: String)
+```
+
+Plugin configuration variables are passed into the primary class constructor. So if the plugin developer doesn't specify configuration details, you can find key and type, or a configuration tree, by looking at the primary class constructor.
 
 You add the `pf4jStagePlugin` to Spinnaker like this:
 
@@ -193,13 +201,13 @@ spinnaker:
 
 You can also list, edit, and delete plugins. See the Halyard [commands](https://spinnaker.io/reference/halyard/commands/#hal-plugins) for a complete list.
 
-Note: `hal plugins enable` and `hal plugins disable` enable or disable all plugins, so use with caution.
+Note: `hal plugins enable` and `hal plugins disable` enable or disable _all_ plugins, so use with caution.
 
 ## Add a Deck proxy to Gate
 
 If your plugin has a Deck component, you need to configure a `deck-proxy` so Gate knows where to find the plugin.
 
-You can create or find the `gate-local.yml` in the same place as the other Halyard configuration files. This is usually `~\.hal\default\profiles` on the machine where Halyard is running.
+You can create or find the `gate-local.yml` in the same place as the other Halyard configuration files. This is usually `~/.hal/default/profiles` on the machine where Halyard is running.
 
 ```yaml
 spinnaker:
