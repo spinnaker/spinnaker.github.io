@@ -11,17 +11,17 @@ This guide explains how to set up a local Spinnaker environment on your MacBook 
 
 Example Spinnaker setup:
 
-* OSX using IP 192.168.64.1 and the VM using 192.168.64.4
+* OSX using IP 192.168.64.1 and the VM using 192.168.64.5
 * Orca running on `http://192.168.64.1:8083`
 * Deck running on `http://192.168.64.1:9000`
-* All other services running in VM on 192.168.64.4
+* All other services running in VM on 192.168.64.5
 
 {% include_relative software.md %}
 
 Specific to this guide:
 
-* [Orca](https://github.com/spinnaker/orca/tree/release-1.21.x), branch `release-1.21.x`
-* [Deck](https://github.com/spinnaker/deck/tree/release-1.21.x), branch `release-1.21.x`
+* [Orca](https://github.com/spinnaker/orca/tree/release-1.20.x), branch `release-1.21.x`
+* [Deck](https://github.com/spinnaker/deck/tree/release-1.20.x), branch `release-1.21.x`
 * [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin), v1.1.14
 
 {% include_relative prereqs.md %}
@@ -57,26 +57,26 @@ services:
 Place this file at '~/.spinnaker/spinnaker-local.yml' on your workstation
 --------------
 services:
+  clouddriver:
+    baseUrl: http://192.168.64.5:7002
+  redis:
+    baseUrl: http://192.168.64.5:6379
+  front50:
+    baseUrl: http://192.168.64.5:8080
   orca:
     host: 0.0.0.0
-  redis:
-    baseUrl: http://192.168.64.4:6379
-  front50:
-    baseUrl: http://192.168.64.4:8080
+  gate:
+    baseUrl: http://192.168.64.5:8084
   deck:
     host: 0.0.0.0
   echo:
-    baseUrl: http://192.168.64.4:8089
-  gate:
-    baseUrl: http://192.168.64.4:8084
-  clouddriver:
-    baseUrl: http://192.168.64.4:7002
+    baseUrl: http://192.168.64.5:8089
   rosco:
-    baseUrl: http://192.168.64.4:8087
+    baseUrl: http://192.168.64.5:8087
 --------------
 ```
 
-This script creates a `spinnaker-local.yml` on the VM that indicates the IPs where Orca and Deck are running. Furthermore, the script generates Spinnaker configuration content that you need to save on your OSX workstation so that your locally running services know where the rest of the Spinnaker services are running.
+This script creates a `spinnaker-local.yml` on the VM that indicates the IPs where Orca and Deck are running. Furthermore, the script generates Spinnaker configuration content that you need to copy on your OSX workstation. This content tells your locally running services where the rest of the Spinnaker services are running.
 
 **Note**: `external_service_setup.sh` removes the previous configuration each time you run it.
 
@@ -123,9 +123,12 @@ Through the next few steps, if you see an `Unable to find Main` log message or f
 
    You can skip the following steps if IntelliJ automatically creates a "Main" Run Configuration. Rename "Main" to "RunOrca".
 
-   1. Click the **Add Configuration** button to open the **Run/Debug Configurations** window
+   1. Click the **Add Configuration** or **Edit Configurations** button to open the **Run/Debug Configurations** window
+
+	  ![Edit Run Configuration](/assets/images/guides/developer/plugin-creators/intellij-edit-runconfig.jpg)
+
    1. Click the `+` button to create a new configuration
-   1. Select **Spring Boot**
+   1. Select **Application**
    1. Enter "RunOrca" in the **Name** field
    1. **Main class**  Click the **...** button.  Wait for the list to load and then select `Main (com.netflix.spinnaker.orca)`. Alternately, click on **Project** and navigate to `orca > orca-web > src > main > groovy > com.netflix.spinnaker > orca > Main`
    1. In the dropdown for **Use classpath of module**, select **orca-web_main**
@@ -143,21 +146,20 @@ Through the next few steps, if you see an `Unable to find Main` log message or f
 
 	If Orca is unable to find Redis, make sure your Minnaker VM is running and that all the Spinnaker services are ready.
 
+	You can stop running Orca after you have verified that you can successfully run it.
 
+## Build the plugin
 
-==================================================================
-
-notes:
-* Create the `plugins` directory in the git repo (e.g., `~/git/spinnaker/orca/plugins`) and put the `.plugin-ref` in there
-* If you don't see the gradle tab, you can get to it with View > Tool Windows > Gradle
-
-### Build the plugin
+Navigate to the `pf4jStagePlugin` directory and execute:
 
 ```bash
 ./gradlew releaseBundle
 ```
 
-This creates `/build/distributions/pf4jStagePlugin-1.1.14.zip` and `random-wait-orca/build/Armory.RandomWaitPlugin-orca.plugin-ref`.
+Building creates files you need in later steps:
+
+* `random-wait-orca/build/Armory.RandomWaitPlugin-orca.plugin-ref`
+* `random-wait-deck/build/dist/index.js`
 
 ## Configure your local Spinnaker environment for the plugin
 
@@ -168,7 +170,7 @@ This creates `/build/distributions/pf4jStagePlugin-1.1.14.zip` and `random-wait-
    ```yaml
    spinnaker:
      extensibility:
-      plugins:
+       plugins:
          Armory.RandomWaitPlugin:
           enabled: true
           version: 1.1.14
@@ -176,13 +178,12 @@ This creates `/build/distributions/pf4jStagePlugin-1.1.14.zip` and `random-wait-
             armory.randomWaitStage:
               enabled: true
               config:
-                defaultMaxWaitTime: 60
+                defaultMaxWaitTime: 20
 	```
 
    This tells Spinnaker to enable and use the plugin.
 
-
-## Run the plugin and Orca in IntelliJ
+## Import the pf4jStagePlugin project into IntelliJ
 
 1. In IntelliJ, link the `pf4jStagePlugin` project to your `Orca` project
 
@@ -192,31 +193,79 @@ This creates `/build/distributions/pf4jStagePlugin-1.1.14.zip` and `random-wait-
 
 1. In the **Gradle** window, right click **orca** and click **Reimport Gradle Project**
 
-1. Create a new build configuration
+## Configure Deck for the plugin
 
-   ![Edit Run Configuration](/assets/images/guides/developer/plugin-creators/intellij-edit-runconfig.jpg)
+1. Update the `deck/plugin-manifest.json` with your plugin information
+
+   ```json
+	[
+		{
+			"id": "Armory.RandomWaitPlugin", // this name doesn't actually matter
+			"url": "plugins/index.js"
+		}
+	]
+	```
+
+1. Create a `deck/plugins` directory and `symlink` `random-wait-deck/build/dist/index.js` to `deck/plugins/index.js`. For example:
+
+   ```bash
+	cd <path-to-deck>
+   ln -s <path-to-pf4jStagePlugin>/random-wait-deck/build/dist/index.js plugins/index.js
+	```
+
+## Run the plugin and Orca in IntelliJ
+
+1. Create a new build configuration
 
    1. Click **Edit Configurations...**
    1. In the **Run/Debug Configurations** window, click the **+** icon and then select **Application**
-   1. Fill in fields 1-6 like this:
+   1. Fill in fields 1-6 with the following:
+
+	  1. **Name:** "Build and Test Plugin"
+	  2. **Main class:** "com.netflix.spinnaker.orca.Main"
+	  3. **VM options:** "-Dpf4j.mode=development"
+	  4. **Use classpath of module:** "orca-web_main"
+	  5. **JRE:** 11
+	  6. **Before launch** Build Project (remove Build)
 
       ![Create Run Configuration](/assets/images/guides/developer/plugin-creators/build-test-runconfig.jpg)
 
    1. Click **OK**
 
-1. Run `orca` using the `Build and Test Plugin`  configuration. On success, you see a "Completed initialization" log statement in the console
+1. Run `orca` using the `Build and Test Plugin`  configuration. On success, you see a "Completed initialization" log statement in the console:
 
    ```bash
 	020-05-12 16:03:44.274  INFO 6973 --- [0.0-8083-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : [] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-05-12 16:03:44.274  INFO 6973 --- [0.0-8083-exec-1] o.s.web.servlet.DispatcherServlet        : [] Initializing Servlet 'dispatcherServlet'
-2020-05-12 16:03:44.290  INFO 6973 --- [0.0-8083-exec-1] o.s.web.servlet.DispatcherServlet        : [] Completed initialization in 16 ms
+   INFO 6973 --- [0.0-8083-exec-1] o.s.web.servlet.DispatcherServlet        : [] Initializing Servlet 'dispatcherServlet'
+   INFO 6973 --- [0.0-8083-exec-1] o.s.web.servlet.DispatcherServlet        : [] Completed initialization in 16 ms
 	```
 
    If you see error messages about Redis, make sure all the pods in your Spinnaker instance are `READY`. You can check the IP address and port for each service in `~/.spinnaker/spinnaker-local.yml`.
 
+	Plugin loading messages appear near the top of the Orca log. You should see statements similar to:
+
+	```bash
+	INFO 90843 --- [           main] org.pf4j.AbstractPluginManager           : [] Plugin 'Armory.RandomWaitPlugin@unspecified' resolved
+   INFO 90843 --- [           main] org.pf4j.AbstractPluginManager           : [] Start plugin 'Armory.RandomWaitPlugin@unspecified'
+   INFO 90843 --- [           main] i.a.p.s.wait.random.RandomWaitPlugin     : [] RandomWaitPlugin.start()
+	```
+
+## Build and run Deck
+
+The Deck project [README](https://github.com/spinnaker/deck) has instructions for building and running Deck locally.
+
+1. Build Deck by executing `yarn` from the `deck` directory
+2. Start Deck with the API_HOST argument, which is the Gate URL
+
+   ```bash
+	cd deck
+	yarn
+   API_HOST=http://192.168.64.5:8084 yarn start
+	```
+
 ## Test the plugin
 
-1. Access the the Spinnaker UI (http://your-VM-ip:9000)
+1. Access the the Spinnaker UI at `http://localhost:9000`
 1. Go to **Applications** > **spin** > **PIPELINES**
 1. Create a new pipeline
 1. Add a new stage
