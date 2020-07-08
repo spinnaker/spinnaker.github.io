@@ -187,7 +187,7 @@ ssh ubuntu@$SPINNAKER_INSTANCE_DNS 'for i in ~/dev/spinnaker/*; do (cd $i && ech
 
 [Login to the instance](https://docs.aws.amazon.com/quickstarts/latest/vmlaunch/step-2-connect-to-instance.html), deploy the changes, and check for build or service failures:
 ```
-ssh -A -L 9000:localhost:9000 -L 8084:localhost:8084 -L 8087:localhost:8087 ubuntu@$spinnaker_instance -i /path/to/my-key-pair.pem
+ssh -A -L 9000:localhost:9000 -L 8084:localhost:8084 -L 8087:localhost:8087 ubuntu@$SPINNAKER_INSTANCE_DNS -i /path/to/my-key-pair.pem
 
 hal deploy apply
 # or for individual service changes: hal deploy apply --service-names=clouddriver,deck,{other_service_with_changes}
@@ -315,7 +315,7 @@ ps -ef | grep {pid}
 # For instance, if the process id was 12345
 ps -ef | grep 12345
 ```
-* If the process is another instance of the spinnaker microservice that you're trying to start, you can kill the process
+* If the process is another instance of the Spinnaker microservice that you're trying to start, you can kill the process
 ```
 kill -9 {pid}
 # For instance, if the process id was 12345
