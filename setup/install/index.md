@@ -10,6 +10,8 @@ This section describes how to install and set up Spinnaker so that it can be con
 use in production. If you just want to evaluate Spinnaker without much work, one of the options
 in [Quickstart](/setup/quickstart/) might be a better choice.
 
+> *Note*: A new configuration tool—Kleat—is under development. [Learn more here](https://github.com/spinnaker/kleat).
+
 ## What you'll need
 
 * A machine on which to install Halyard
