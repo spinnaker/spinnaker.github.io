@@ -9,13 +9,13 @@ sidebar:
 
 This guide describes how a developer can set up a [Local Git deployment](/setup/install/environment/#local-git) of Spinnaker on Amazon EC2.
 
-In this setup, Spinnaker runs on an EC2 instance. Code is edited on the laptop and then synced to the EC2 instance for testing.
+In this setup, Spinnaker runs on an EC2 instance. Code is edited on the machine and then synced to the EC2 instance for testing.
 
 
-# Configure laptop
+# Configure local machine
 
 1. Create forks of all the [Spinnaker microservices](/reference/architecture/#spinnaker-microservices) on GitHub.
-2. Clone them onto your laptop in a dedicated `/spinnaker` directory. This will simplify syncing them in a batch during development.
+2. Clone them onto your local machine in a dedicated `/spinnaker` directory. This will simplify syncing them in a batch during development.
 3. Set up [Intellij](/guides/developer/getting-set-up/#intellij) for Spinnaker as specified.
 
 
@@ -37,7 +37,7 @@ In this setup, Spinnaker runs on an EC2 instance. Code is edited on the laptop a
 
 3. In the default VPC of the same region, [create a security group](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#CreatingSecurityGroups) named "SpinnakerDev" and [add a rule](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#AddRemoveRules) allowing port 22 inbound for a restricted set of IPs (for example, corporate firewall ranges). 
 
-4. Then, provision a development instance that uses these resources:
+4. Provision a development instance that uses these resources with the following steps:
     * From the AWS Console, navigate to the EC2 [launch instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/launching-instance.html) wizard
     * Select an _Ubuntu Server 16.04_ Amazon machine image
     * Select an instance type with sufficient resources to run all the Spinnaker microservices, such as _m5.4xlarge_
@@ -56,7 +56,7 @@ In this setup, Spinnaker runs on an EC2 instance. Code is edited on the laptop a
         apt-get -y install git curl netcat redis-server openjdk-8-jdk emacs awscli python2.7 python-pip
         ```
 
-    * Up the storage snapshot size to ~100GB
+    * Increase the storage snapshot size to ~100GB
     * For tags, add key: "Name" with value: "SpinnakerDev", to help identify it after creation
     * Select the previously created `SpinnakerDev` security group you just created
     * Click "Launch", select the key pair you just created (or another you can use for SSH), and hit "Launch Instances"
@@ -70,6 +70,7 @@ ssh -A -L 9000:localhost:9000 -L 8084:localhost:8084 -L 8087:localhost:8087 ubun
 ```
 
 Install dependencies:
+
 ```
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 source ~/.bashrc
@@ -83,6 +84,7 @@ hal -v
 ```
 
 Configure and deploy the Spinnaker installation:
+
 ```
 # Store state in S3 and deploy a recent stable version
 hal config storage s3 edit --region $AWS_REGION   # use region where your dev instance resides
@@ -126,18 +128,49 @@ hal config provider docker-registry account add my-us-west-2-devel-registry \
  --track-digests true
 ```
 
-Optionally connect Amazon ECS to your AWS account
+Optionally connect Amazon ECS to your AWS account:
+
 ```
 hal config provider ecs account add ecs-my-aws-devel-acct --aws-account my-aws-devel-acct
 hal config provider ecs enable
 ```
 
-Deploy everything
+Deploy everything:
+
 ```
 hal deploy apply
 ```
 
 Wait for Clouddriver to start up by checking the logs in ~/dev/spinnaker/logs/clouddriver.log.
+
+```
+# Clouddriver start up msg displays after all gradle tasks are run
+...
+> Task :clouddriver-web:run
+      ___                       __
+     /\_ \                     /\ \
+  ___\//\ \     ___   __  __   \_\ \
+ /'___\\ \ \   / __`\/\ \/\ \  /'_` \
+/\ \__/ \_\ \_/\ \L\ \ \ \_\ \/\ \L\ \
+\ \____\/\____\ \____/\ \____/\ \___,_\
+ \/____/\/____/\/___/  \/___/  \/__,_ /
+
+  __
+ /\ \         __
+ \_\ \  _ __ /\_\  __  __     __   _ __
+ /'_` \/\`'__\/\ \/\ \/\ \  /'__`\/\`'__\
+/\ \L\ \ \ \/ \ \ \ \ \_/ |/\  __/\ \ \/
+\ \___,_\ \_\  \ \_\ \___/ \ \____\\ \_\
+ \/__,_ /\/_/   \/_/\/__/   \/____/ \/_/
+
+
+2020-06-04 21:09:28.940  INFO 29524 --- [           main] b.c.PropertySourceBootstrapConfiguration : Located property source: CompositePropertySo
+urce {name='configService', propertySources=[]}
+2020-06-04 21:09:28.946  INFO 29524 --- [           main] com.netflix.spinnaker.clouddriver.Main   : The following profiles are active: composite
+,test,local
+...
+```
+
 
 # Daily development
 ## Test Spinnaker Code Changes
@@ -166,7 +199,7 @@ Test your changes manually at http://localhost:9000.
 
 ## Regularly sync from upstream
 
-Add the following to your laptop's .bashrc file
+Add the following to your local machine's .bashrc file
 ```
 sync-from-upstream() {
     for i in ./*; do
@@ -175,23 +208,23 @@ sync-from-upstream() {
 }
 ```
 
-Then regularly run `sync-from-upstream` in your `/spinnaker` directory to keep your local repos and GitHub forks in sync with upstream Spinnaker.
+Regularly run `sync-from-upstream` in your `/spinnaker` directory to keep your local repos and GitHub forks in sync with upstream Spinnaker. Syncing daily or every couple of days will ensure you're working off the latest code for each service.  
 
 ## Local development with `spinnaker/deck`
 
-To expedite development of [deck](https://github.com/spinnaker/deck) or to add ad-hoc `console.log` statements for debugging, it's possible to run the app on your local machine and connect to the services on your development instance over SSH.
+To expedite development of [Deck](https://github.com/spinnaker/deck) or to add ad-hoc `console.log` statements for debugging, you can run the web app on your local machine and connect to the services on your development instance over SSH.
 
-1. After forking and pulling down `deck` locally, install dependencies with `yarn` (see [README](https://github.com/spinnaker/deck/blob/master/README.md#prerequisites))
+1. After forking and pulling down Deck locally, install dependencies with `yarn` (see [README](https://github.com/spinnaker/deck/blob/master/README.md#prerequisites))
 
-2. Run `deck` with `yarn run start`
+2. Run Deck with `yarn run start`
     * Windows users can circumvent the bash start up script by running it directly with **npm**: `npm run start-dev-server`
 
-3. Open separate terminal and [SSH into your development instance](https://docs.aws.amazon.com/quickstarts/latest/vmlaunch/step-2-connect-to-instance.html):
+3. Open a separate terminal and [SSH into your development instance](https://docs.aws.amazon.com/quickstarts/latest/vmlaunch/step-2-connect-to-instance.html):
 ```
 ssh -A -L 8084:localhost:8084 -L 8087:localhost:8087 ubuntu@$SPINNAKER_INSTANCE_DNS -i /path/to/my-key-pair.pem
 ```
 
-4. Access local deck on `localhost:9000`. Changes made & saved to your local app will prompt the app to refresh.
+4. Access local Deck on `localhost:9000`. Changes made & saved to your local app will prompt the app to refresh.
 
 NOTE: feature flags that would be set as environment variables on your development instance can be manually turned on/off in local deck by setting them in [`settings.js`](https://github.com/spinnaker/deck/blob/master/settings.js).
 
@@ -202,9 +235,9 @@ Below are some issues you may encounter when running or setting up your dev inst
 
 ## "Pool Not Open"
 
-Example exception found in clouddriver log:
+Example exception found in Clouddriver log:
 ```
-Example Exception (Found in the clouddriver log file)
+Example Exception (Found in the Clouddriver log file)
 2019-08-14 19:30:34.381 ERROR 24799 --- [gentScheduler-1] c.n.s.c.r.c.ClusteredAgentScheduler      : Unable to run agents
 redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
 	at redis.clients.util.Pool.getResource(Pool.java:53) ~[jedis-2.9.3.jar:na]
@@ -227,12 +260,12 @@ Caused by: java.lang.IllegalStateException: Pool not open
 ...
 ```
 
-It's likely that there is another exception that has occurred when clouddriver started up (that can be found near the top of the log file). This means that clouddriver failed to start up successfully, and you will see this stacktrace in the logs for every second (or the defined the polling frequency) that clouddriver is running with the initial exception.
+It's likely that there is another exception that has occurred when Clouddriver started up (that can be found near the top of the log file). This means that Clouddriver failed to start up successfully, and you will see this stacktrace in the logs for every second (or the defined the polling frequency) that clouddriver is running with the initial exception.
 
 * Check the top of the log file (if the file is too large, you can use the `head` command to check the top of the file):
 ```
 head -{number of lines} {log file}
-# For instance, if you're looking up the first 1000 lines of the clouddriver log file.
+# For instance, if you're looking up the first 1000 lines of the Clouddriver log file.
 head -1000 dev/spinnaker/logs/clouddriver.log
 ```
 * The first exception that you see (e.g., failed API call or authentication issue) is likely the root cause.
@@ -240,7 +273,7 @@ head -1000 dev/spinnaker/logs/clouddriver.log
 
 ## "Address already in use"
 
-Example exception found in clouddriver log:
+Example exception found in Clouddriver log:
 ```
 org.apache.catalina.LifecycleException: Protocol handler start failed
 	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1008) ~[tomcat-embed-core-9.0.21.jar:9.0.21]
@@ -269,8 +302,8 @@ Caused by: java.net.BindException: Address already in use
 
 If you get this exception when running `hal deploy apply`, check that you don't already have an instance of that microservice currently running (perhaps as root or another user). Check that the [spinnaker microservice ports](https://www.spinnaker.io/reference/architecture/#port-mappings) are not already in use.
 
-The following would be an example of how to debug this exception for clouddriver (port 7002):
-* Check if the port for the given microservice is in use, and make a note of the process id (pid) that is using it. For instance for clouddriver, you would do the following:
+The following would be an example of how to debug this exception for Clouddriver (port 7002):
+* Check if the port for the given microservice is in use, and make a note of the process id (pid) that is using it. For instance for Clouddriver, you would do the following:
 ```
 sudo netstat -plnt | grep {port}
 # For CloudDriver
