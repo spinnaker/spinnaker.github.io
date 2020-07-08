@@ -260,7 +260,7 @@ Caused by: java.lang.IllegalStateException: Pool not open
 ...
 ```
 
-It's likely that there is another exception that has occurred when Clouddriver started up (that can be found near the top of the log file). This means that Clouddriver failed to start up successfully, and you will see this stacktrace in the logs for every second (or the defined the polling frequency) that clouddriver is running with the initial exception.
+It's likely that there is another exception that has occurred when Clouddriver started up (that can be found near the top of the log file). This means that Clouddriver failed to start up successfully, and you will see this stacktrace in the logs for every second (or the defined the polling frequency) that Clouddriver is running with the initial exception.
 
 * Check the top of the log file (if the file is too large, you can use the `head` command to check the top of the file):
 ```
