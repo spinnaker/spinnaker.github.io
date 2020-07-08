@@ -1,38 +1,145 @@
 ---
 layout: single
-title: "Deck Plugin"
+title: "Test a Pipeline Stage Plugin"
 sidebar:
   nav: guides
 ---
 
-{% include_relative alpha-toc.md %}
+{% include alpha version="1.20.6" %}
 
-This guide explains how to set up a local Spinnaker environment on your MacBook so you can test the pf4jStagePlugin, which has both Orca and Deck components. Spinnaker microservices running inside IntelliJ communicate with the other Spinnaker services that are running in a local VM.
+{% include toc %}
+
+This guide explains how to set up a local Spinnaker environment on your MacBook so you can test the `pf4jStagePlugin`, which has both Orca and Deck components. Spinnaker services running locally communicate with the other Spinnaker services running in a local VM.
 
 Example Spinnaker setup:
 
 * OSX using IP 192.168.64.1 and the VM using 192.168.64.5
 * Orca running on `http://192.168.64.1:8083`
 * Deck running on `http://192.168.64.1:9000`
-* All other services running in VM on 192.168.64.5
+* All other services running in the VM on 192.168.64.5
 
-{% include_relative software.md %}
+Software for development:
+
+* [Java Development Kit](https://adoptopenjdk.net/), 11
+* [Groovy](https://groovy-lang.org/), 3.0.3
+* [Gradle](https://gradle.org/install/)
+* [Yarn](https://classic.yarnpkg.com/en/docs/install#mac-stable) for building and running Deck
+* [Multipass](https://multipass.run/), 1.3.0
+* [IntelliJ IDEA](https://www.jetbrains.com/idea/), 2020.1.2, with the JetBrains Kotlin plugin
+* [Spinnaker](https://www.spinnaker.io/community/releases/versions/) 1.20.6 and [Halyard](https://console.cloud.google.com/gcr/images/spinnaker-marketplace/GLOBAL/halyard) 1.36.0, installed using [Minnaker](https://github.com/armory/minnaker), 0.0.20
 
 Specific to this guide:
 
-* [Orca](https://github.com/spinnaker/orca/tree/release-1.20.x), branch `release-1.21.x`
-* [Deck](https://github.com/spinnaker/deck/tree/release-1.20.x), branch `release-1.21.x`
+* [Orca](https://github.com/spinnaker/orca/tree/release-1.20.x), branch `release-1.20.x`
+* [Deck](https://github.com/spinnaker/deck/tree/release-1.20.x), branch `release-1.20.x`
 * [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin), v1.1.14
 
-{% include_relative prereqs.md %}
+## Prerequisites
 
-{% include_relative install-minnaker.md %}
+* You have read the [Plugin Creators Guide Overview](/guides/developer/plugin-creators/overview/)
+* Your OSX workstation has at least 16GB of RAM and 30GB of available storage
+* You have installed JDK 11; see [AdoptOpenJDK](https://adoptopenjdk.net/installation.html#x64_mac-jdk) for installation instructions or install using [Homebrew](https://github.com/AdoptOpenJDK/homebrew-openjdk)
+* You have installed Groovy
+* You have installed Multipass
+* You have installed IntelliJ and the Kotlin plugin
+* You know how to run and debug an application using IntelliJ
+
+## Install Spinnaker in a Multipass VM
+
+ Minnaker is an open source tool that installs the latest release of Spinnaker and Halyard on [Lightweight Kubernetes (K3s)](https://k3s.io/).
+
+1. Launch a Multipass VM with 2 cores, 10GB of memory, 30GB of storage
+
+   ```bash
+   multipass launch -c 2 -m 10G -d 30G
+   ```
+
+1. Get the name of your VM
+
+   ```bash
+   multipass list
+   ```
+
+1. Access your VM
+
+   ```bash
+   multipass shell <vm-name>
+   ```
+
+1. Download and unpack Minnaker
+
+   ```bash
+   curl -LO https://github.com/armory/minnaker/releases/download/0.0.20/minnaker.tgz
+   tar -xzvf minnaker.tgz
+   ```
+
+1. Install Spinnaker
+
+   The `minnaker/scripts` directory contains multiple scripts. Use the `no_auth_install` script to install Spinnaker in no-auth mode so you can access Spinnaker without credentials. **Be sure to use the `-o` option** to install the open source version of Spinnaker rather than Armory Spinnaker.
+
+   ```bash   
+   ./minnaker/scripts/no_auth_install.sh -o
+   ```
+
+   If you accidentally forget the `-o` option, run `./minnaker/scripts/switch_to_oss.sh` to install open source Spinnaker.
+
+   The script prints out the IP address of Minnaker after installation is complete.
+
+   Check pod status:
+
+   ```bash
+   kubectl -n spinnaker get pods
+   ```
+
+
+
+   Consult the Minnaker [README](https://github.com/armory/minnaker/blob/master/readme.md#changing-your-spinnaker-configuration) for basic troubleshooting information if you run into issues.
+
+1. Revert Spinnaker to 1.20.6
+
+   Minnaker forwards `hal` commands to the Halyard pod so you don't need to access the pod itself.
+
+   ```bash
+	hal config version edit --version 1.20.6
+	hal deploy apply
+	```
+
+1. Configure Minnaker to listen on all ports
+
+   ```bash
+   ./minnaker/scripts/utils/expose_local.sh
+   ```
+
+   This creates a load balancer for each service. Console output is similar to:
+
+	```bash
+	NAME                                READY   STATUS    RESTARTS   AGE
+   minio-0                             1/1     Running   0          18h
+   mariadb-0                           1/1     Running   0          18h
+   halyard-0                           1/1     Running   0          18h
+   spin-redis-664df6f896-b5px8         1/1     Running   0          18h
+   svclb-spin-clouddriver-lcmrq        1/1     Running   0          10m
+   svclb-spin-redis-24qf6              1/1     Running   0          10m
+   svclb-spin-front50-8hchk            1/1     Running   0          10m
+   svclb-spin-orca-9t89s               1/1     Running   0          10m
+   svclb-spin-gate-gn6g5               1/1     Running   0          10m
+   svclb-spin-deck-26vpf               1/1     Running   0          10m
+   svclb-spin-echo-s6zdv               1/1     Running   0          10m
+   svclb-spin-rosco-qwfhv              1/1     Running   0          10m
+   spin-deck-55b88d5fb9-v2ngf          1/1     Running   0          10m
+   spin-front50-8fd4f9459-fwpzc        1/1     Running   0          10m
+   spin-rosco-6885b6df45-jqkl9         1/1     Running   0          10m
+   spin-gate-75df95744b-7zvp5          1/1     Running   0          10m
+   spin-orca-766f9bbf7b-cw9f7          1/1     Running   0          10m
+   spin-echo-9bbcd9df8-td4rt           1/1     Running   0          10m
+   spin-clouddriver-55bc94ddcc-4d7cd   1/1     Running   0          10m
+	```
 
 ## Configure Minnaker for local external services
 
 Decide which Spinnaker services you want to run locally. This example uses Orca and Deck.
 
-Configure Minnaker to expect the relevant service to be external:
+Configure Minnaker to expect the relevant services to be external:
 
 ```bash
 ./minnaker/scripts/utils/external_service_setup.sh orca deck
@@ -90,8 +197,8 @@ For this guide, `pf4jStagePlugin` v1.1.14, which works with Spinnaker 1.21.0. Cl
 
 ```bash
 git clone --single-branch --branch v1.1.14 https://github.com/spinnaker-plugin-examples/pf4jStagePlugin.git
-git clone --single-branch --branch release-1.21.x https://github.com/spinnaker/orca.git
-git clone --single-branch --branch release-1.21.x https://github.com/spinnaker/deck.git
+git clone --single-branch --branch release-1.20.x https://github.com/spinnaker/orca.git
+git clone --single-branch --branch release-1.20.x https://github.com/spinnaker/deck.git
 ```
 
 ## Run Orca in IntelliJ
@@ -141,7 +248,7 @@ Through the next few steps, if you see an `Unable to find Main` log message or f
    Success output is similar to:
 
 	```bash
-	INFO 18111 --- [           main] com.netflix.spinnaker.orca.Main          : [] Started Main in 11.123 seconds (JVM running for 11.933)
+	INFO 18111 --- [main] com.netflix.spinnaker.orca.Main: [] Started Main in 11.123 seconds (JVM running for 11.933)
 	```
 
 	If Orca is unable to find Redis, make sure your Minnaker VM is running and that all the Spinnaker services are ready.
@@ -161,7 +268,7 @@ Building creates files you need in later steps:
 * `random-wait-orca/build/Armory.RandomWaitPlugin-orca.plugin-ref`
 * `random-wait-deck/build/dist/index.js`
 
-## Configure your local Spinnaker environment for the plugin
+## Configure Orca for the plugin
 
 1. Create a top-level `plugins` directory in your Orca project
 1. Copy the `Armory.RandomWaitPlugin-orca.plugin-ref` file to the `plugins` directory
@@ -245,9 +352,9 @@ Building creates files you need in later steps:
 	Plugin loading messages appear near the top of the Orca log. You should see statements similar to:
 
 	```bash
-	INFO 90843 --- [           main] org.pf4j.AbstractPluginManager           : [] Plugin 'Armory.RandomWaitPlugin@unspecified' resolved
-   INFO 90843 --- [           main] org.pf4j.AbstractPluginManager           : [] Start plugin 'Armory.RandomWaitPlugin@unspecified'
-   INFO 90843 --- [           main] i.a.p.s.wait.random.RandomWaitPlugin     : [] RandomWaitPlugin.start()
+	INFO 90843 --- [main] org.pf4j.AbstractPluginManager: [] Plugin 'Armory.RandomWaitPlugin@unspecified' resolved
+   INFO 90843 --- [main] org.pf4j.AbstractPluginManager: [] Start plugin 'Armory.RandomWaitPlugin@unspecified'
+   INFO 90843 --- [main] i.a.p.s.wait.random.RandomWaitPlugin: [] RandomWaitPlugin.start()
 	```
 
 ## Build and run Deck
@@ -263,8 +370,22 @@ The Deck project [README](https://github.com/spinnaker/deck) has instructions fo
    API_HOST=http://192.168.64.5:8084 yarn start
 	```
 
-## Test the plugin
+## Verify the plugin loads in Deck
 
+1. Access the the Spinnaker UI at `http://localhost:9000`
+1. Go to **Applications** > **spin** > **PIPELINES**
+1. Create a new pipeline
+1. Add a new stage
+1. Look for "Random Wait" in the **Type** select list
+
+7/8/2020 - problem with Deck/Gate - plugin-manifest
+plugin-manifest.json is loaded THREE times when I access localhost:9000
+the first from localhost:9000/plugin-manifest.json (with correct content).
+The second and third time it's from gate, empty both times http://192.168.64.5:8084/plugins/deck/plugin-manfest.json (empty)
+
+## Debug the backend of the plugin
+
+Start the
 1. Access the the Spinnaker UI at `http://localhost:9000`
 1. Go to **Applications** > **spin** > **PIPELINES**
 1. Create a new pipeline

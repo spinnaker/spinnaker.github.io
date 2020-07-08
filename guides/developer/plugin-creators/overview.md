@@ -6,7 +6,7 @@ sidebar:
 redirect-from: /guides/developer/plugin-creators/
 ---
 
-{% include alpha version="1.19.4" %}
+{% include alpha version="1.20.6" %}
 
 >Note: Spinnaker 1.19.x only supports backend plugins due to a bug in Deck.
 
@@ -15,8 +15,8 @@ redirect-from: /guides/developer/plugin-creators/
 
 # Requirements
 
-* Spinnaker v1.19.4+
-* Halyard 1.34+
+* Spinnaker v1.20.6
+* Halyard 1.36
 
 # Taxonomy
 
