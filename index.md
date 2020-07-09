@@ -1,8 +1,8 @@
 ---
 layout: home
 conference_ad_row:
-  title: Don't miss V2 of Spinnaker Gardening Days, your open source hackathon
-  excerpt: "[Register now](https://go.armory.io/gardening) to join Spinnaker contributors on July 16-23 to learn and build. The buzz around our inaugural hackathon brought the community together, so we're launching V2 as a weeklong event with team placement and project matching support, SIG projects, free compute from AWS, a global-friendly schedule, and much more. All are welcome! Automate your SDLC and extend the ecosystem with us. [Learn more](community/gardening/)."
+  title: Automate your SDLC at Gardening Days, our open source hackathon
+  excerpt: "[Register now](https://go.armory.io/gardening) to join Spinnaker contributors on July 16-23 to learn and build. A whole week, Thursday-Thursday to contribute when you can and earn prizes. Sign up, and you'll be matched with a team to boost your contribution points and impact! Along with [individual rewards](community/gardening/what-to-hack.md), teams will demo projects to compete for prize packages awarded to [challenge-winning]() teams and runners-up. Enjoy free compute from AWS, SIG projects in Security, Ops, and more, and a global-friendly schedule. Everyone's welcome to extend the ecosystem with us. [Learn more](community/gardening/)."
   image_path: assets/images/Gardening2.png
   alt: "Spinnaker Gardening Days Logo"
 slack_row:
