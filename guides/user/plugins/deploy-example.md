@@ -1,96 +1,156 @@
 ---
 layout: single
 title:  "pf4jStagePlugin Deployment Example"
-published: false
+published: true
 sidebar:
   nav: guides
 ---
 
-{% include alpha version="1.19.4" %}
+{% include alpha version="1.20.6" %}
 
 {% include toc %}
 
-# Requirements
+In this guide, you deploy the `pf4jStagePlugin` plugin from the [spinnaker-plugin-examples](https://github.com/spinnaker-plugin-examples/examplePluginRepository) repository.
 
-* Spinnaker 1.19.4
-* Halyard 1.33
-* pf4jStagePlugin 1.0.16
+ By implementing Orca's SimpleStage PF4J extension point, the `pf4jStagePlugin` creates a custom pipeline stage that waits a random number of seconds before signaling success. This plugin consists of a `random-wait-orca` Kotlin server component and a `random-wait-deck` React UI component that uses the rollup.js plugin library.
 
-# Known Issues
+## Requirements
 
-* Halyard does not update the plugin configuration when you run `hal plugins edit`. You must manually update the `.hal/config` entry.
-* Halyard does not tell Orca where to look for the plugin. Navigate to `.hal/default/profiles` and create an `orca-local.yml` file with this content:
+This guide was tested with the following software versions:
 
-	```yaml
-    spinnaker.extensibility.plugins-root-path: /opt/orca/plugins
-	```
-These issues are fixed in Halyard 1.34.
-* Prior to Spinnaker 1.20.0 and pf4jStagePlugin 1.1.3, plugin users needed to upload their UI plugin bundle to a publicly-accessible static asset server
-  and point to that resource using the `--ui-resource-location` Halyard flag. You may ignore those instructions below if you are using Spinnaker >= 1.20.0 and pf4jStagePlugin >= 1.1.3.
+* Spinnaker 1.20.6 and 1.21.0
+* Halyard 1.36
+* pf4jStagePlugin 1.1.14
 
-# Steps
+## Add the plugin repository
 
-1. Download  [`RandomWaitStageIndex.js`](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin/releases/download/v1.0.16/RandomWaitStageIndex.js) and move the file to a publicly accessible location that supports Cross-Origin Resource Sharing (CORS), such as an AWS S3 bucket.
+```bash
+hal plugins repository add examplePluginsRepo \
+  --url=https://raw.githubusercontent.com/spinnaker-plugin-examples/examplePluginRepository/master/plugins.json
+```
 
-2. Create the `orca-local.yml` file in `.hal/default/profiles`. If you are using Halyard 1.33, see [Known Issues](#known-issues).
+This adds the following YAML to your Halconfig:
 
-3. Configure the plugin repository:
+```yaml
+spinnaker:
+  extensibility:
+    plugins: {}
+    repositories:
+      examplePluginsRepo:
+        id: examplePluginsRepo
+        url: https://raw.githubusercontent.com/spinnaker-plugin-examples/examplePluginRepository/master/plugins.json
+```
 
-	```shell
-  # Configure the plugin repository
-	hal plugins repository add spinnaker-plugin-examples \
-	  --url=https://raw.githubusercontent.com/spinnaker-plugin-examples/examplePluginRepository/master/repositories.json
-	# Apply your changes and deploy Spinnaker
-	```
+## Add the plugin
 
-1. Add the pf4jStagePlugin:
+```bash
+ hal plugins add Armory.RandomWaitPlugin --version=1.1.14 \
+   --enabled=true --extensions=armory.randomWaitStage
+ ```
 
-	```shell
-	hal plugins add Armory.RandomWaitPlugin \
-	  --enabled=true \
-	  --extensions=armory.randomWaitStage \
-	  --version=1.0.17 \
-	  --ui-resource-location=https://aimeeu-plugins.s3.us-east-2.amazonaws.com/RandomWaitStageIndex.js
-	```
+Next, configure the plugin. Edit your Halconfig to add the `defaultMaxWaitTime` in the `config` section:
 
-1. Configure the plugin by editing its entry in the Halconfig:
-
-	Base configuration:
-
-	```yaml
-   spinnaker:
-    extensibility:
-      plugins:
-        Armory.RandomWaitPlugin:
-          id: Armory.RandomWaitPlugin
-          enabled: true
-          uiResourceLocation: https://aimeeu-plugins.s3.us-east-2.amazonaws.com/RandomWaitStageIndex.js
-          version: 1.0.16
-          extensions:
-            armory.randomWaitStage:
-              id: armory.randomWaitStage
-              enabled: true
-              config: {}
-      repositories:
-        spinnaker-plugin-examples:
-          id: spinnaker-plugin-examples
-          url: https://raw.githubusercontent.com/spinnaker-plugin-examples/examplePluginRepository/master/repositories.json
-	```
-
-	Add the `defaultMaxWaitTime` to the `config` list:
-
-	```yaml
-    extensions:
-      armory.randomWaitStage:
-        id: armory.randomWaitStage
+```yaml
+spinnaker:
+  extensibility:
+    plugins:
+      Armory.RandomWaitPlugin:
+        id: Armory.RandomWaitPlugin
         enabled: true
-        config:
-          defaultMaxWaitTime: 60
-	```
+        version: 1.1.14
+        extensions:
+          armory.randomWaitStage:
+            id: armory.randomWaitStage
+            enabled: true
+            config:
+              defaultMaxWaitTime: 60
+    repositories:
+      examplePluginsRepo:
+        id: examplePluginsRepo
+        url: https://raw.githubusercontent.com/spinnaker-plugin-examples/examplePluginRepository/master/plugins.json
+```
 
 
-1. Redeploy Spinnaker:
+## Add `deck-proxy` to gate-local.yml
 
-	```shell
-	hal deploy apply
-	```
+Beginning in Spinnaker 1.20, Gate needs to know where to get any plugin that has a Deck component. If your plugin is backend only, you do not need to modify `gate-local.yml`.
+
+You can create or find `gate-local.yml` in the directory where Halyard stores local config files. This is usually `~\.hal\default\profiles` on the machine where Halyard is running. Add the following snippet:
+
+```yaml
+spinnaker:
+   extensibility:
+     deck-proxy:
+       enabled: true
+       plugins:
+         Armory.RandomWaitPlugin:
+           enabled: true
+           version: 1.1.14
+       repositories:
+         examplePluginsRepo:
+           url: https://raw.githubusercontent.com/spinnaker-plugin-examples/examplePluginRepository/master/plugins.json
+```
+
+The plugin and repository information is a subset of the entries in your Halconfig.
+
+## Redeploy Spinnaker
+
+```bash
+hal deploy apply
+```
+
+## Access the RandomWait plugin in the UI
+
+The RandomWait stage appears in the **Type** select list when you create a new Pipeline stage.
+
+{% include image-caption.html url="/assets/images/guides/user/plugins/deploy-example/randomWaitTypeUI.png" caption="Random Wait stage in Type select list" %}
+
+{% include image-caption.html url="/assets/images/guides/user/plugins/deploy-example/randomWaitStageUI.png" caption="Random Wait stage after it has been selected and the configuration panel is visible." %}
+
+
+## Troubleshooting
+
+If the plugin doesn't appear in the **Type** select list, check the following logs:
+
+* Orca, for the plugin backend
+
+  You should see output similar to this when the plugin has been successfully loaded:
+
+  ```bash
+  2020-07-02 16:12:43.284  INFO 1 --- [           main] com.netflix.spinnaker.orca.Main          : [] Starting Main v1.0.0 on spin-orca-7466444f64-cg5gd with PID 1 (/opt/orca/lib/orca-web.jar started by spinnaker in /)
+  2020-07-02 16:12:54.691  INFO 1 --- [           main] org.pf4j.DefaultPluginManager            : [] PF4J version 3.2.0 in 'deployment' mode
+  2020-07-02 16:12:59.088  INFO 1 --- [           main] .k.p.u.r.s.LatestPluginInfoReleaseSource : [] Latest release version '1.1.14' for plugin 'Armory.RandomWaitPlugin'
+  2020-07-02 16:12:59.091  INFO 1 --- [           main] .k.p.u.r.s.SpringPluginInfoReleaseSource : [] Spring configured release version '1.1.14' for plugin 'Armory.RandomWaitPlugin'
+  2020-07-02 16:12:59.103  INFO 1 --- [           main] p.u.r.s.PreferredPluginInfoReleaseSource : [] No preferred release version found for 'Armory.RandomWaitPlugin'
+  2020-07-02 16:12:59.620  INFO 1 --- [           main] org.pf4j.util.FileUtils                  : [] Expanded plugin zip 'orca.zip' in 'orca'
+  2020-07-02 16:12:59.643  INFO 1 --- [           main] org.pf4j.util.FileUtils                  : [] Expanded plugin zip 'Armory.RandomWaitPlugin-pf4jStagePlugin-v1.1.14.zip' in 'Armory.RandomWaitPlugin-pf4jStagePlugin-v1.1.14'
+  2020-07-02 16:12:59.652  INFO 1 --- [           main] org.pf4j.util.FileUtils                  : [] Expanded plugin zip 'orca.zip' in 'orca'
+  2020-07-02 16:12:59.653  INFO 1 --- [           main] org.pf4j.AbstractPluginManager           : [] Plugin 'Armory.RandomWaitPlugin@unspecified' resolved
+  2020-07-02 16:12:59.658  INFO 1 --- [           main] org.pf4j.AbstractPluginManager           : [] Start plugin 'Armory.RandomWaitPlugin@unspecified'
+  2020-07-02 16:12:59.659  INFO 1 --- [           main] i.a.p.s.wait.random.RandomWaitPlugin     : [] RandomWaitPlugin.start()
+  ```
+
+  If you see log output similar to
+
+  ```bash
+  Plugin 'Armory.RandomWaitPlugin@unspecified' requires a minimum system version of orca>=8.0.0, and you have 1.0.0
+  2020-07-01 16:52:13.170  WARN 1 --- [           main] org.pf4j.AbstractPluginManager           : [] Plugin '/opt/orca/plugins/Armory.RandomWaitPlugin-pf4jStagePlugin-v1.1.13/orca' is invalid and it will be disabled
+  ```
+
+  ...your plugin doesn't work with the version of Spinnaker you are using. Contact the plugin's developer.
+
+  If you see `this.pluginId must not be null`, the plugin manifest file is missing values. Contact the plugin's developer.
+
+* Gate, for the plugin frontend
+
+  You should see output similar to this when the plugin has been successfully loaded:
+
+  ```bash
+  2020-07-02 16:12:51.994  INFO 1 --- [           main] .k.p.u.r.s.LatestPluginInfoReleaseSource : Latest release version not found for plugin 'Armory.RandomWaitPlugin'
+  2020-07-02 16:12:51.997  INFO 1 --- [           main] .k.p.u.r.s.SpringPluginInfoReleaseSource : Spring configured release version '1.1.14' for plugin 'Armory.RandomWaitPlugin'
+  2020-07-02 16:12:52.002  INFO 1 --- [           main] p.u.r.s.PreferredPluginInfoReleaseSource : No preferred release version found for 'Armory.RandomWaitPlugin'
+  2020-07-02 16:12:52.644  INFO 1 --- [           main] org.pf4j.util.FileUtils                  : Expanded plugin zip 'Armory.RandomWaitPlugin-pf4jStagePlugin-v1.1.14.zip' in 'Armory.RandomWaitPlugin-pf4jStagePlugin-v1.1.14'
+  2020-07-02 16:12:52.645  WARN 1 --- [           main] c.n.s.k.p.bundle.PluginBundleExtractor   : Downloaded plugin bundle 'Armory.RandomWaitPlugin-pf4jStagePlugin-v1.1.14.zip' does not have plugin for service: gate
+  ```
+
+  If Gate can't find your frontend plugin, make sure the entries in `gate-local.yml` are correct.
