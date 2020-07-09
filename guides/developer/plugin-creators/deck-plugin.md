@@ -9,7 +9,7 @@ sidebar:
 
 {% include toc %}
 
-This guide explains how to set up a local Spinnaker environment on your MacBook so you can test the `pf4jStagePlugin`, which has both Orca and Deck components. Spinnaker services running locally communicate with the other Spinnaker services running in a local VM.
+This guide explains how to set up a local Spinnaker environment on your MacBook so you can test the `pf4jStagePlugin`, which has both Orca and Deck components. Spinnaker services running locally communicate with the other Spinnaker services running in a local VM. Although this guide is specific to the `pf4jStagePlugin`, you can adapt its contents to test your own plugin.
 
 Example Spinnaker setup:
 
@@ -263,7 +263,7 @@ Navigate to the `pf4jStagePlugin` directory and execute:
 ./gradlew releaseBundle
 ```
 
-Building creates files you need in later steps:
+The build process creates files you need in later steps:
 
 * `random-wait-orca/build/Armory.RandomWaitPlugin-orca.plugin-ref`
 * `random-wait-deck/build/dist/index.js`
@@ -292,7 +292,7 @@ Building creates files you need in later steps:
 
 ## Import the pf4jStagePlugin project into IntelliJ
 
-1. In IntelliJ, link the `pf4jStagePlugin` project to your `Orca` project
+1. In IntelliJ, link the `pf4jStagePlugin` project to your Orca project
 
    1. Open the **Gradle** window in your Orca project if it's not already open (**View > Tool Windows > Gradle**)
    1. In the **Gradle** window, click the **+** sign to link your `pf4jStagePlugin` Gradle project
@@ -300,23 +300,28 @@ Building creates files you need in later steps:
 
 1. In the **Gradle** window, right click **orca** and click **Reimport Gradle Project**
 
+You can now run or debug Orca and the plugin using IntelliJ.
+
 ## Configure Deck for the plugin
 
-1. Update the `deck/plugin-manifest.json` with your plugin information
+1. Update the `deck/plugin-manifest.json` with the plugin information
 
    ```json
 	[
 		{
-			"id": "Armory.RandomWaitPlugin", // this name doesn't actually matter
-			"url": "plugins/index.js"
+			"id": "Armory.RandomWaitPlugin",
+			"url": "./plugins/index.js",
+			"version": "1.1.14"
 		}
 	]
 	```
 
+	For development, the values in `id` and `version` can be any value.
+
 1. Create a `deck/plugins` directory and `symlink` `random-wait-deck/build/dist/index.js` to `deck/plugins/index.js`. For example:
 
    ```bash
-	cd <path-to-deck>
+   cd <path-to-deck>
    ln -s <path-to-pf4jStagePlugin>/random-wait-deck/build/dist/index.js plugins/index.js
 	```
 
@@ -335,11 +340,11 @@ Building creates files you need in later steps:
 	  5. **JRE:** 11
 	  6. **Before launch** Build Project (remove Build)
 
-      ![Create Run Configuration](/assets/images/guides/developer/plugin-creators/build-test-runconfig.jpg)
+     ![Create Run Configuration](/assets/images/guides/developer/plugin-creators/build-test-runconfig.jpg)
 
    1. Click **OK**
 
-1. Run `orca` using the `Build and Test Plugin`  configuration. On success, you see a "Completed initialization" log statement in the console:
+1. Run `orca` and the `pf4jStagePlugin` using the **Build and Test Plugin**  configuration. On successful launch, you see a "Completed initialization" log statement in the console:
 
    ```bash
 	020-05-12 16:03:44.274  INFO 6973 --- [0.0-8083-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : [] Initializing Spring DispatcherServlet 'dispatcherServlet'
@@ -352,7 +357,7 @@ Building creates files you need in later steps:
 	Plugin loading messages appear near the top of the Orca log. You should see statements similar to:
 
 	```bash
-	INFO 90843 --- [main] org.pf4j.AbstractPluginManager: [] Plugin 'Armory.RandomWaitPlugin@unspecified' resolved
+   INFO 90843 --- [main] org.pf4j.AbstractPluginManager: [] Plugin 'Armory.RandomWaitPlugin@unspecified' resolved
    INFO 90843 --- [main] org.pf4j.AbstractPluginManager: [] Start plugin 'Armory.RandomWaitPlugin@unspecified'
    INFO 90843 --- [main] i.a.p.s.wait.random.RandomWaitPlugin: [] RandomWaitPlugin.start()
 	```
@@ -365,8 +370,8 @@ The Deck project [README](https://github.com/spinnaker/deck) has instructions fo
 2. Start Deck with the API_HOST argument, which is the Gate URL
 
    ```bash
-	cd deck
-	yarn
+   cd deck
+   yarn
    API_HOST=http://192.168.64.5:8084 yarn start
 	```
 
@@ -378,14 +383,20 @@ The Deck project [README](https://github.com/spinnaker/deck) has instructions fo
 1. Add a new stage
 1. Look for "Random Wait" in the **Type** select list
 
-7/8/2020 - problem with Deck/Gate - plugin-manifest
-plugin-manifest.json is loaded THREE times when I access localhost:9000
-the first from localhost:9000/plugin-manifest.json (with correct content).
-The second and third time it's from gate, empty both times http://192.168.64.5:8084/plugins/deck/plugin-manfest.json (empty)
+### Troubleshooting
+
+You can use the Developer Tools in your browser to troubleshoot Deck plugin issues.
+
+![Debugging Deck in Chromium](/assets/images/guides/developer/plugin-creators/debugDeck01.png)
+
+Look for `plugin-manifest.json` and `index.js`. It's normal to see 3 `plugin-manifest.json` files. The first one is from Deck - you created this file in the [Configure Deck for the plugin](#configure-deck-for-the-plugin) section above. The next two from Gate are not relevant for local development. If you don't see the `plugin-manifest.json` and `index.js` files, check the **Console** tab for errors. Also verify that the content in your `plugin-manifest.json` file is correct.
 
 ## Debug the backend of the plugin
 
-Start the
+If you want to debug the backend component of the plugin without a working Deck component, you can create a new stage and configure it using JSON.
+
+1. Start the **Build and Test Plugin** configuration in Debug mode
+1. Start Deck
 1. Access the the Spinnaker UI at `http://localhost:9000`
 1. Go to **Applications** > **spin** > **PIPELINES**
 1. Create a new pipeline
@@ -401,10 +412,17 @@ Start the
     }
    ```
 
+   * `maxWaitTime`: number of seconds; you get the `maxWaitTime` field name from the variable passed into the `RandomWaitInput` [primary constructor](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin/blob/master/random-wait-orca/src/main/kotlin/io/armory/plugin/stage/wait/random/RandomWaitInput.kt)
+	* `name`: name of the new stage
+	* `type`: use the value returned by the [`getName` function](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin/blob/master/random-wait-orca/src/main/kotlin/io/armory/plugin/stage/wait/random/RandomWaitPlugin.kt#L40) in `RandomWaitStage`
+
 1. Click **Update Stage**
 1. Click **Save Changes**
 1. Go back to the **PIPELINES** screen
 1. **Start Manual Execution** and watch the stage wait for the specified number of seconds
 
 
+## Resources
+
+You can ask for help with plugins in the [Spinnaker Slack's](https://join.spinnaker.io/) `#plugins` channel.
 
