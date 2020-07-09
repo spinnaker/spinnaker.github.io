@@ -8,9 +8,16 @@ sidebar:
 ## Register
 [Register for Spinnaker Gardening Days](https://go.armory.io/gardening) to join our hackathon and earn rewards for your Spinnaker contributions July 16-23.
 
+## About
+
+Gardening Days rewards new and veteran contributors and SDLC partners for building and extending the Spinnaker ecosystem. All contributions attendees make in the week, including project and plugin code, documentation, content, videos, issues [and more](https://spinnaker.io/community/gardening/what-to-hack/), add up to points. All registered contributors will receive prizes based on their point totals, so contribute when you can. When you [sign up](https://go.armory.io/gardening), you'll be matched with a team. Teams can choose a project and compete in one of [four challenge categories](https://spinnaker.io/community/gardening/hack-logistics/#team-challenges). Teams that demo a project will be eligible for prize packages awarded to challenge-winning teams and runners-up in each category.
+
+Elevate your impact with free compute from AWS, SIG projects in Security, Ops, and more, a global-friendly schedule, and updated documentation and training resources.
+
 ## Jump In!
-* Join [Spinnaker Slack](https://join.spinnaker.io) to chat in [event & team channels](slack-map.md). Visit __#gardening-general__, our main event channel to engage.
+* Join [Spinnaker Slack](https://join.spinnaker.io) to chat in [event & team channels](slack-map.md). Have questions? Ask them in [__#gardening-general__](https://spinnakerteam.slack.com/archives/CV4A90DPF), our main event channel.
 * Find out how weeklong Gardening Days 2.0 will work on the [Hackathon logistics](hack-logistics.md) page.
+* Look for your team match message in Spinnaker Slack July 14-15. Introduce yourself!
 * The [What to hack](what-to-hack.md) page list all eligible contributions types.
 * Check the [Master schedule](schedule.md) to see our more time-zone inclusive global schedule.
 * The updated [Slack map](slack-map.md) has a shorter, sweeter list of Slack channels to engage in.
