@@ -79,7 +79,7 @@ job, which creates `latest-unvalidated` when it passes:
 
         </details>
 
-1. Deactivate the now-oldest Flow_BuildAndValidate_* flow by removing the schedule:
+1. Deactivate the now-oldest `Flow_BuildAndValidate_*` flow by removing the schedule:
 
     1. Select the oldest flow.
 
@@ -92,11 +92,11 @@ job, which creates `latest-unvalidated` when it passes:
 
     1. Save.
 
-1. Create a new Flow_BuildAndValidate_* flow for the release branch.
+1. Create a new `Flow_BuildAndValidate_*` flow for the release branch.
 
     1. Click **New Item** on the left hand side of the main menu.
 
-    1. Set **Name** to Flow_BuildAndValidate_${RELEASE} (e.g., `1_18_x`). Note
+    1. Set **Name** to `Flow_BuildAndValidate_${RELEASE}` (e.g., `1_18_x`). Note
     that the newer versions of Jenkins seem to disallow the `.` character in the
     job name, so will want to `s/./_`.
 
@@ -112,19 +112,19 @@ job, which creates `latest-unvalidated` when it passes:
 
     1. Save.
 
-1. At this point, the following Flow_BuildAndValidate_* jobs should exist:
+1. At this point, the following `Flow_BuildAndValidate_*` jobs should exist:
 
-    - Flow_BuildAndValidate_${RELEASE-3} (DEACTIVATED)
+    - `Flow_BuildAndValidate_${RELEASE-3}` (DEACTIVATED)
 
-    - Flow_BuildAndValidate_${RELEASE-2} (BUILDING NIGHTLY)
+    - `Flow_BuildAndValidate_${RELEASE-2}` (BUILDING NIGHTLY)
 
-    - Flow_BuildAndValidate_${RELEASE-1} (BUILDING NIGHTLY)
+    - `Flow_BuildAndValidate_${RELEASE-1}` (BUILDING NIGHTLY)
 
-    - Flow_BuildAndValidate_${RELEASE} (BUILDING NIGHTLY)
+    - `Flow_BuildAndValidate_${RELEASE}` (BUILDING NIGHTLY)
 
-    - Flow_BuildAndValidate (master, BUILDING SEVERAL TIMES DAILY)
+    - `Flow_BuildAndValidate` (master, BUILDING SEVERAL TIMES DAILY)
 
-1. Run the Flow_BuildAndValidate_${RELEASE} job.
+1. Run the `Flow_BuildAndValidate_${RELEASE}` job.
 
     1. Select `stable` for **HALYARD_RELEASE_TRACK**.
 
@@ -133,7 +133,7 @@ job, which creates `latest-unvalidated` when it passes:
 
     1. Copy the direct link to the changelog for this version by searching for the release branch. For example: `release-1.21.x`.
 
-1. Add the new Flow_BuildAndValidate_${RELEASE} job to the public
+1. Add the new `Flow_BuildAndValidate_${RELEASE}` job to the public
 [Build Statuses page](https://www.spinnaker.io/community/contributing/build-statuses/#nightly-and-release-integration-tests).
 Remove the oldest job.
 
@@ -150,7 +150,7 @@ this message, including a link to the correct section of the changelog gist foun
     > by Friday. If you’d like to jog your memory of everything to be released
     > with Spinnaker $VERSION, see the raw changelog here: $LINK_TO_CHANGELOG.
 
-1. When the Flow_BuildAndValidate_${RELEASE} job passes, ping
+1. When the `Flow_BuildAndValidate_${RELEASE}` job passes, ping
 [#dev](https://spinnakerteam.slack.com/messages/dev/) with a message that the
 release candidate is now validated and can be tested.
 
@@ -173,7 +173,7 @@ Ensure patches meet the
 [release branch patch criteria](/community/contributing/releasing#release-branch-patch-criteria)
 before merging.
 
-1. Rerun the Flow_BuildAndValidate_${RELEASE} job and get a blue build.
+1. Rerun the `Flow_BuildAndValidate_${RELEASE}` job and get a blue build.
 
 1. Create a new gist for this release.
 
@@ -237,15 +237,15 @@ you as a manager to the spinnaker-announce Google group.
    (While logged in as spinnaker-release, click "Edit", scroll to the file, and
    click "Delete".)
 
-1. At this point, the following Flow_BuildAndValidate_* jobs should exist:
+1. At this point, the following `Flow_BuildAndValidate_*` jobs should exist:
 
-    - Flow_BuildAndValidate_${RELEASE-2} (BUILDING NIGHTLY)
+    - `Flow_BuildAndValidate_${RELEASE-2}` (BUILDING NIGHTLY)
 
-    - Flow_BuildAndValidate_${RELEASE-1} (BUILDING NIGHTLY)
+    - `Flow_BuildAndValidate_${RELEASE-1}` (BUILDING NIGHTLY)
 
-    - Flow_BuildAndValidate_${RELEASE} (BUILDING NIGHTLY)
+    - `Flow_BuildAndValidate_${RELEASE}` (BUILDING NIGHTLY)
 
-    - Flow_BuildAndValidate (master, BUILDING NIGHTLY)
+    - `Flow_BuildAndValidate` (master, BUILDING NIGHTLY)
 
 1. Ping the [#spinnaker-releases](https://spinnakerteam.slack.com/messages/spinnaker-releases/)
 channel to let them know that the new version is available.
@@ -301,7 +301,7 @@ before merging.
     https://github.com/search?type=Issues&q=org:spinnaker+state:open+is:pr+base:${RELEASE_BRANCH-3}
     ```
 
-1. Rerun the Flow_BuildAndValidate_${RELEASE} job and get a green build.
+1. Rerun the `Flow_BuildAndValidate_${RELEASE}` job and get a green build.
 
 1. Run Publish_SpinnakerPatchRelease:
 
