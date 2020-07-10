@@ -221,7 +221,7 @@ before merging.
     1. **Spinnaker Release Alias** should be the name of a Netflix original TV
     show converted to an alphanumeric string
     (e.g., "Gilmore Girls A Year in the Life").
-    Only worry about name collisions with the current active releases (i.e. `hal version list`)
+    The name must be unique among current active releases (releases returned by `hal version list`).
 
     1. **BOM version** should be `release-1.nn.x-latest-unvalidated` (replacing nn
     with the version number).
