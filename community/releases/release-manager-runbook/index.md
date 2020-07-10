@@ -223,7 +223,7 @@ before merging.
     (e.g., "Gilmore Girls A Year in the Life").
     The name must be unique among current active releases (releases returned by `hal version list`).
 
-    1. **BOM version** should be `release-1.nn.x-latest-unvalidated` (replacing nn
+    1. **BOM version** is be `release-1.nn.x-latest-unvalidated` (replacing nn
     with the version number).
 
     1. The **Gist URL** is the URL to the gist you just created.
