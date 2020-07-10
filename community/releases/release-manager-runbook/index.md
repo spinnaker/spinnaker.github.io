@@ -191,7 +191,7 @@ before merging.
     1. Add a file 1.nn.0.md (e.g., `1.18.0.md`) to hold the release notes for
     the new release.
 
-        Use this template to build the file.
+        Use this template to build the file:
         ```md
         # Spinnaker Release ${nn.nn.nn}
         **_Note: This release requires Halyard version ${nn.nn.nn} or later._**
