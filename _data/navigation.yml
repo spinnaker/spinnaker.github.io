@@ -490,7 +490,7 @@ guides:
             collapsed: true
             children:
             - title: Set Up Spinnaker Development on AWS
-              url: /guides/developer/provider-setups/aws-dev-setup/
+              url: /guides/developer/dev-env/provider-setups/aws-dev-setup/
       - title: Extending Spinnaker
         collapsed: true
         children:
