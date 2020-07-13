@@ -31,7 +31,8 @@ Elevate your impact with free compute from AWS, SIG projects in Security, Ops, a
     - Security SIG - **Thursday July 16, 11 AM PDT** 
       Discuss and develop threat models for Spinnaker deployment endpoints.
       
-    - Ops SIG - **Thursday July 16, 10 AM PDT** - Build a Spinnaker customization to automate dynamic accounts configuration
+    - Ops SIG - **Thursday July 16, 10 AM PDT**
+      Build a Spinnaker customization to automate dynamic accounts configuration.
 - Look for your team match message in Spinnaker Slack July 14-15. Introduce yourself!
 - The [What to hack](what-to-hack.md) page list all eligible contributions types.
 - Check the [Master schedule](schedule.md) to see our more time-zone inclusive global schedule.
