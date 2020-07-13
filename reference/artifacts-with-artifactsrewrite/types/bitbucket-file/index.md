@@ -62,7 +62,7 @@ The following are the fields that make up a Bitbucket file artifact:
 | Field | Explanation |
 |-|-----------|
 | `type` | Always `bitbucket/file`. |
-| `reference` | The full path (including filename) for retrieval via the Bitbucket API. Example: `https://api.bitbucket.org/2.0/repositories/$ORG/$REPO/raw/$VERSION/$FILEPATH`. |
+| `reference` | The full path (including filename) for retrieval via the Bitbucket API. Example: `https://api.bitbucket.org/2.0/repositories/$ORG/$REPO/src/$VERSION/$FILEPATH`. |
 | `name` | The path to the file within your repository. Example: `path/to/file.yml`. |
 | `version` | N/A--must be specified in `reference`. |
 | `location` | N/A. |
