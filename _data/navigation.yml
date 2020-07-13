@@ -548,7 +548,7 @@ guides:
     collapsed: true
     children:
       - title: Common Internals
-        url: /guides/developer/common-internals/
+        url: /guides/developer/dev-env/common-internals/
       - title: Front50
         url: https://github.com/spinnaker/front50/blob/master/README.md
       - title: Igor
