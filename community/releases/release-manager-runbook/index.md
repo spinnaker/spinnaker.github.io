@@ -181,7 +181,7 @@ before merging.
     The release-manager@spinnaker.io group has access to the
     [spinnaker-release GitHub account credentials](https://docs.google.com/document/d/1CFPP-QXV8lu9QR76B9V0W8TEtObOBv52UqohQ-ztH58/edit?usp=sharing).
 
-    1. Create a new gist to hold the
+    1. Create a new public gist to hold the
     release notes for this release branch.
 
     1. The description should be “Spinnaker 1.nn.x Release Notes” (e.g.,
@@ -191,11 +191,24 @@ before merging.
     1. Add a file 1.nn.0.md (e.g., `1.18.0.md`) to hold the release notes for
     the new release.
 
-    1. Copy the changes for this release from the raw build changelog to the new
-    1.nn.0.md file.
+        Use this template to build the file:
+        ```md
+        # Spinnaker Release ${nn.nn.nn}
+        **_Note: This release requires Halyard version ${nn.nn.nn} or later._**
 
-    1. Add the notes from the [curated changelog](/community/releases/next-release-preview)
-    to the top of the gist ([sample 1.nn.0 release notes](https://gist.github.com/spinnaker-release/cc4410d674679c5765246a40f28e3cad)).
+        This release includes fixes, features, and performance improvements across a wide feature set in Spinnaker. This section provides a summary of notable improvements followed by the comprehensive changelog.
+
+        ${CURATED_CHANGE_LOG}
+
+        # Changelog
+
+        ${RAW_CHANGE_LOG}
+        ```
+
+        a. Copy the changes for this release from the [raw build changelog](https://gist.github.com/spinnaker-release/4f8cd09490870ae9ebf78be3be1763ee#file-release-1-21-x-raw-changelog-md) to the new 1.nn.0.md file. Change the anchor tag in the link for your release version.
+
+        b. Add the notes from the [curated changelog](/community/releases/next-release-preview)
+        to the top of the gist ([sample 1.nn.0 release notes](https://gist.github.com/spinnaker-release/cc4410d674679c5765246a40f28e3cad)).
 
     1. Reset the [curated changelog](/community/releases/next-release-preview)
     for the next release by removing all added notes and incrementing the version
@@ -208,8 +221,9 @@ before merging.
     1. **Spinnaker Release Alias** should be the name of a Netflix original TV
     show converted to an alphanumeric string
     (e.g., "Gilmore Girls A Year in the Life").
+    The name must be unique among current active releases (releases returned by `hal version list`).
 
-    1. **BOM version** should be "release-1.nn.x-latest-validated" (replacing nn
+    1. **BOM version** is `release-1.nn.x-latest-unvalidated` (replace nn
     with the version number).
 
     1. The **Gist URL** is the URL to the gist you just created.
@@ -218,9 +232,8 @@ before merging.
     reason to change it (in which case, please also change the default for new
     builds).
 
-1. Approve the spinnaker-announce email (link will come in email). If this is
-your first release manager rotation, please ask a Google team member to add
-you as a manager to the spinnaker-announce Google group.
+1. Approve the spinnaker-announce email (link will come in email).
+You can approve the message in the [spinnaker-announce group](https://groups.google.com/forum/#!pendingmsg/spinnaker-announce).
 
 1. Deprecate the n-3 release (i.e. when releasing 1.18, deprecate 1.15).
 
@@ -248,7 +261,11 @@ you as a manager to the spinnaker-announce Google group.
     - `Flow_BuildAndValidate` (master, BUILDING NIGHTLY)
 
 1. Ping the [#spinnaker-releases](https://spinnakerteam.slack.com/messages/spinnaker-releases/)
-channel to let them know that the new version is available.
+channel to let them know that a new patch is available.
+
+    > Hot Tip! You can use giphy to tell everyone it's released!
+    >
+    > `/giphy #caption "Spinnaker {VERSION} has been released!" gif search query`
 
 1. Publish a Spin CLI minor version.
 
@@ -289,19 +306,13 @@ Example: VERSION="1.17.2" ./publish.sh
 
 Repeat weeklyish for each supported version.
 
-1. Check for any PRs waiting to be cherry-picked.
+1. Check for any PRs waiting to be [cherry-picked](https://github.com/pulls?utf8=%E2%9C%93&q=org%3Aspinnaker+is%3Apr+is%3Aopen+-base%3Amaster).
+(You can further restrict the query by adding a constraint like +base:release-1.18.x to the URL.)
 Ensure patches meet the
 [release branch patch criteria](/community/contributing/releasing#release-branch-patch-criteria)
-before merging.
+before merging. To view what's been merged into the each release branch since the last release, see the [changelog gist](https://gist.github.com/spinnaker-release/4f8cd09490870ae9ebf78be3be1763ee) on Github.
 
-    You can use these searches to see what's waiting to be cherry-picked for each release branch.
-    ```
-    https://github.com/search?type=Issues&q=org:spinnaker+state:open+is:pr+base:${RELEASE_BRANCH-1}
-    https://github.com/search?type=Issues&q=org:spinnaker+state:open+is:pr+base:${RELEASE_BRANCH-2}
-    https://github.com/search?type=Issues&q=org:spinnaker+state:open+is:pr+base:${RELEASE_BRANCH-3}
-    ```
-
-1. Rerun the `Flow_BuildAndValidate_${RELEASE}` job and get a green build.
+1. Rerun the `Flow_BuildAndValidate_${RELEASE}` job and get a blue build.
 
 1. Run Publish_SpinnakerPatchRelease:
 
@@ -357,7 +368,9 @@ automatically check the “build Halyard” checkbox in the downstream
 Build_PrimaryArtifacts flow.
 
 1. After that passes, navigate to:
+```
 https://builds.spinnaker.io/job/Build_PrimaryArtifacts/${JOB_NUMBER}/artifact/build_output/build_halyard/last_version_commit.yml/*view*/
+```
 (insert correct JOB_NUMBER) and copy the version (it will be the entire string prior to the colon).
 
 1. Run Publish_HalyardRelease:
@@ -368,10 +381,21 @@ https://builds.spinnaker.io/job/Build_PrimaryArtifacts/${JOB_NUMBER}/artifact/bu
 1. Post in [#halyard](https://spinnakerteam.slack.com/messages/halyard/) that a
    new version of Halyard has been released.
 
+    > Hot Tip! You can use giphy to tell everyone it's released!
+    >
+    > `/giphy #caption "Halyard {VERSION} has been released!" gif search query`
+
 
 ## Release patch-version Halyard
 
 Repeat as needed.
+
+1. Check for any PRs waiting to be [cherry-picked](https://github.com/spinnaker/halyard/pulls?q=is%3Apr+is%3Aopen+sort%3Aupdated-desc+-base%3Amaster).
+(You can further restrict the query by adding a constraint like +base:release-1.18.x to the URL.)
+Ensure patches meet the
+[release branch patch criteria](/community/contributing/releasing#release-branch-patch-criteria)
+before merging.
+
 
 1. Run Build_Halyard:
 
@@ -387,6 +411,11 @@ Repeat as needed.
 
 1. Post in [#halyard](https://spinnakerteam.slack.com/messages/halyard/) that a
    new version of Halyard has been released.
+
+    > Hot Tip! You can use giphy to tell everyone it's released!
+    >
+    > `/giphy #caption "Halyard {VERSION} has been released!" gif search query`
+
 
 ## Publish a new version of deck-kayenta
 
