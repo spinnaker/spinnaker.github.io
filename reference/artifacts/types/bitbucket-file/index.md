@@ -27,7 +27,7 @@ stage.
 ```json
 {
   "type": "bitbucket/file",
-  "reference": "https://api.bitbucket.org/2.0/repositories/org/repo/raw/master/manifests/config.yaml",
+  "reference": "https://api.bitbucket.org/2.0/repositories/org/repo/src/master/manifests/config.yaml",
   "name": "manifests/config.yaml"
 }
 ```
