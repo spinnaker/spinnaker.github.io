@@ -397,7 +397,7 @@ guides:
         url: /guides/user/tagging/
       - title: Custom Instance Links
         url: /guides/user/instance-links/
-      - title: Using Plugins
+      - title: Plugins
         collapsed: true
         children:
           - title: Plugin Users Guide
