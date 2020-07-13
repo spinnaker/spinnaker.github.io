@@ -400,10 +400,10 @@ guides:
       - title: Plugins
         collapsed: true
         children:
-          - title: Users Guide
+          - title: Plugin Users Guide
             url: /guides/user/plugins/user-guide/
-          #- title: pf4jStagePlugin Deployment Example
-            #url: /guides/user/plugins/deploy-example/
+          - title: pf4jStagePlugin Deployment Example
+            url: /guides/user/plugins/deploy-example/
       - title: Kubernetes (Manifest Based)
         collapsed: true
         children:
@@ -479,6 +479,11 @@ guides:
     children:
       - title: Getting Set Up
         url: /guides/developer/getting-set-up/
+      - title: Provider Specific Setups
+        collapsed: true
+        children:
+          - title: Set Up Spinnaker Development on AWS
+            url: /guides/developer/provider-setups/aws-dev-setup/
       - title: Writing a New Stage
         url: /guides/developer/new-stage/
       - title: Kork Library
