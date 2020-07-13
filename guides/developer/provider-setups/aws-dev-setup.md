@@ -69,6 +69,8 @@ Get your instance's DNS name and [login via SSH](https://docs.aws.amazon.com/qui
 ssh -A -L 9000:localhost:9000 -L 8084:localhost:8084 -L 8087:localhost:8087 ubuntu@$SPINNAKER_INSTANCE_DNS -i /path/to/my-key-pair.pem
 ```
 
+Follow the GitHub instructions to [generate a new SSH key](https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) on the Spinnaker instance and [add it to your GitHub account](https://help.github.com/en/articles/adding-a-new-ssh-key-to-your-github-account).
+
 Install dependencies:
 
 ```
