@@ -29,7 +29,9 @@ Elevate your impact with free compute from AWS, SIG projects in Security, Ops, a
     
   - **Join a SIG Project** _SIG Challenges_ 
     - Everyone's welcome! Join a SIG team by showing up at a Special Session SIG meeting:
-    - Documentation SIG - **Wednesday July 15, 10:30 AM PDT** - Share docs feedback and develop content for Spinnaker.io
+    - Documentation SIG - **Wednesday July 15, 10:30 AM PDT**
+      Share docs feedback and develop content for Spinnaker.io.
+      
     - Security SIG - **Thursday July 16, 11 AM PDT** 
       Discuss and develop threat models for Spinnaker deployment endpoints.
       
