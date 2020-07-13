@@ -24,7 +24,9 @@ Elevate your impact with free compute from AWS, SIG projects in Security, Ops, a
   - **Extend Spinnaker** _Plugin Challenge_
     Work with Armory engineers to customize Spinnaker with a plugin.
     
-  - **Share Content** _Automate Your SDLC Challenge_ - Share your Spinnaker with technical content
+  - **Share Content** _Automate Your SDLC Challenge_
+    - Share your Spinnaker with technical content.
+    
   - **Join a SIG Project** _SIG Challenges_ 
     - Everyone's welcome! Join a SIG team by showing up at a Special Session SIG meeting:
     - Documentation SIG - **Wednesday July 15, 10:30 AM PDT** - Share docs feedback and develop content for Spinnaker.io
