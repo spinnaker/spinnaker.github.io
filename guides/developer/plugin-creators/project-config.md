@@ -11,14 +11,14 @@ sidebar:
 
 ## Project Configuration targeting Spinnaker 1.20.6, 1.21+
 
-{% include alpha version="1.20.6" %}
+>Note: the contents of this section refer to alpha features in Spinnaker 1.20.6. This means we are working on their stability and usability, as well as possibly adding or changing features. Expect rough edges. Ask questions in the [#plugins Slack channel](https://join.spinnaker.io/) if you need help.
 
 Plugins are an evolving feature.  The easiest way to set up a new plugin project is to copy one of the [spinnaker-plugin-examples](https://github.com/spinnaker-plugin-examples) projects that most closely resembles what you want to do.
 
 Updates:
 
 * `@ExtensionConfiguration` has been deprecated. Use `@PluginConfiguration` instead.
-* You can now generate a skeleton Deck plugin project by executing:
+* You can now generate a skeleton Deck plugin component by executing:
 
   ```bash
   npx -p @spinnaker/pluginsdk scaffold`
@@ -29,7 +29,7 @@ Updates:
 
 ## Project Configuration targeting Spinnaker 1.19.4
 
-{% include alpha version="1.19.4" %}
+>Note: the contents of this section refer to alpha features in Spinnaker 1.19.4. This means we are working on their stability and usability, as well as possibly adding or changing features. Expect rough edges. Ask questions in the [#plugins Slack channel](https://join.spinnaker.io/) if you need help.
 
 Keep the following recommendations and requirements in mind: - We recommend
 making the project a Gradle project. There is Gradle tooling to support plugin

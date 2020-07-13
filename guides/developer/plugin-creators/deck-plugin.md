@@ -9,11 +9,11 @@ sidebar:
 
 {% include toc %}
 
-This guide explains how to set up a local Spinnaker environment on your MacBook so you can test the `pf4jStagePlugin`, which has both Orca and Deck components. Spinnaker services running locally communicate with the other Spinnaker services running in a local VM. Although this guide is specific to the `pf4jStagePlugin`, you can adapt its contents to test your own plugin.
+This guide explains how to set up a local Spinnaker environment on your Mac or Windows environment so you can test the `pf4jStagePlugin`, which has both Orca and Deck components. Spinnaker services running locally communicate with the other Spinnaker services running in a local VM. Although this guide is specific to the `pf4jStagePlugin`, you can adapt its contents to test your own plugin.
 
 Example Spinnaker setup:
 
-* OSX using IP 192.168.64.1 and the VM using 192.168.64.5
+* OSX or Windows using IP 192.168.64.1 and the VM using 192.168.64.5
 * Orca running on `http://192.168.64.1:8083`
 * Deck running on `http://192.168.64.1:9000`
 * All other services running in the VM on 192.168.64.5
@@ -37,7 +37,7 @@ Specific to this guide:
 ## Prerequisites
 
 * You have read the [Plugin Creators Guide Overview](/guides/developer/plugin-creators/overview/)
-* Your OSX workstation has at least 16GB of RAM and 30GB of available storage
+* Your workstation has at least 16GB of RAM and 30GB of available storage
 * You have installed JDK 11; see [AdoptOpenJDK](https://adoptopenjdk.net/installation.html#x64_mac-jdk) for installation instructions or install using [Homebrew](https://github.com/AdoptOpenJDK/homebrew-openjdk)
 * You have installed Groovy
 * You have installed Multipass
@@ -48,32 +48,32 @@ Specific to this guide:
 
  Minnaker is an open source tool that installs the latest release of Spinnaker and Halyard on [Lightweight Kubernetes (K3s)](https://k3s.io/).
 
-1. Launch a Multipass VM with 2 cores, 10GB of memory, 30GB of storage
+1. Launch a Multipass VM with 2 cores, 10GB of memory, 30GB of storage.
 
    ```bash
    multipass launch -c 2 -m 10G -d 30G
    ```
 
-1. Get the name of your VM
+1. Get the name of your VM.
 
    ```bash
    multipass list
    ```
 
-1. Access your VM
+1. Access your VM.
 
    ```bash
    multipass shell <vm-name>
    ```
 
-1. Download and unpack Minnaker
+1. Download and unpack Minnaker.
 
    ```bash
    curl -LO https://github.com/armory/minnaker/releases/download/0.0.20/minnaker.tgz
    tar -xzvf minnaker.tgz
    ```
 
-1. Install Spinnaker
+1. Install Spinnaker.
 
    The `minnaker/scripts` directory contains multiple scripts. Use the `no_auth_install` script to install Spinnaker in no-auth mode so you can access Spinnaker without credentials. **Be sure to use the `-o` option** to install the open source version of Spinnaker rather than Armory Spinnaker.
 
@@ -95,7 +95,7 @@ Specific to this guide:
 
    Consult the Minnaker [README](https://github.com/armory/minnaker/blob/master/readme.md#changing-your-spinnaker-configuration) for basic troubleshooting information if you run into issues.
 
-1. Revert Spinnaker to 1.20.6
+1. Revert Spinnaker to 1.20.6.
 
    Minnaker forwards `hal` commands to the Halyard pod so you don't need to access the pod itself.
 
@@ -104,7 +104,7 @@ Specific to this guide:
 	hal deploy apply
 	```
 
-1. Configure Minnaker to listen on all ports
+1. Configure Minnaker to listen on all ports.
 
    ```bash
    ./minnaker/scripts/utils/expose_local.sh
@@ -187,13 +187,36 @@ This script creates a `spinnaker-local.yml` on the VM that indicates the IPs whe
 
 **Note**: `external_service_setup.sh` removes the previous configuration each time you run it.
 
-## Configure your OSX workstation for the local services
+## Configure your workstation for the local services
 
 Copy the `services` section between the dotted lines in the terminal output from the executing the `external_service_setup.sh` script. Create or edit the `~/.spinnaker/spinnaker-local.yml` file on your workstation and paste the previously copied `services` snippet into it.
 
+The `spinnaker-local.yml` has this content:
+
+```yaml
+services:
+  clouddriver:
+    baseUrl: http://192.168.64.5:7002
+  redis:
+    baseUrl: http://192.168.64.5:6379
+  front50:
+    baseUrl: http://192.168.64.5:8080
+  orca:
+    host: 0.0.0.0
+  gate:
+    baseUrl: http://192.168.64.5:8084
+  deck:
+    host: 0.0.0.0
+  echo:
+    baseUrl: http://192.168.64.5:8089
+  rosco:
+    baseUrl: http://192.168.64.5:8087
+--------------
+```
+
 ## Clone the plugin and required services
 
-For this guide, `pf4jStagePlugin` v1.1.14, which works with Spinnaker 1.21.0. Clone the Orca and Deck `release-1.21.x` branches that correspond to the Spinnaker 1.21.0 version you installed using Minnaker.  
+Clone the Orca and Deck `release-1.20.x` branches that correspond to the Spinnaker 1.21.0 version you installed using Minnaker.  Then clone `pf4jStagePlugin` v1.1.14, which works with Spinnaker 1.20.6.
 
 ```bash
 git clone --single-branch --branch v1.1.14 https://github.com/spinnaker-plugin-examples/pf4jStagePlugin.git
@@ -203,7 +226,7 @@ git clone --single-branch --branch release-1.20.x https://github.com/spinnaker/d
 
 ## Run Orca in IntelliJ
 
-1. Open the Orca project in IntelliJ
+1. Open the Orca project in IntelliJ.
 
    * If you don't have a project open, you see a **Welcome to IntellJ IDEA** window.
       1. Click **Open or Import**
@@ -217,33 +240,33 @@ git clone --single-branch --branch release-1.20.x https://github.com/spinnaker/d
       1. Click on `build.gradle` and click **Open**
       1. Select **Open as Project**
 
-1. Grab a beverage and snack while you wait for IntelliJ to finish indexing the project
+1. Grab a beverage and snack while you wait for IntelliJ to finish indexing the project.
 
-1. If you have multiple JDKs installed, configure the Orca project to use JDK 11
+1. If you have multiple JDKs installed, configure the Orca project to use JDK 11.
 
 Through the next few steps, if you see an `Unable to find Main` log message or fields are grayed out, reimport the project:
 
    1. **View** > **Tool Windows** > **Gradle**
    1. In the Gradle window, right click "Orca" and then click **Reimport Gradle Project**
 
-1. Create a **Run Configuration**
+1. Create a **Run Configuration**.
 
    You can skip the following steps if IntelliJ automatically creates a "Main" Run Configuration. Rename "Main" to "RunOrca".
 
-   1. Click the **Add Configuration** or **Edit Configurations** button to open the **Run/Debug Configurations** window
+   1. Click the **Add Configuration** or **Edit Configurations** button to open the **Run/Debug Configurations** window.
 
 	  ![Edit Run Configuration](/assets/images/guides/developer/plugin-creators/intellij-edit-runconfig.jpg)
 
-   1. Click the `+` button to create a new configuration
-   1. Select **Application**
-   1. Enter "RunOrca" in the **Name** field
-   1. **Main class**  Click the **...** button.  Wait for the list to load and then select `Main (com.netflix.spinnaker.orca)`. Alternately, click on **Project** and navigate to `orca > orca-web > src > main > groovy > com.netflix.spinnaker > orca > Main`
+   1. Click the `+` button to create a new configuration.
+   1. Select **Application**.
+   1. Enter "RunOrca" in the **Name** field.
+   1. **Main class**  Click the **...** button.  Wait for the list to load and then select `Main (com.netflix.spinnaker.orca)`. Alternately, click on **Project** and navigate to `orca > orca-web > src > main > groovy > com.netflix.spinnaker > orca > Main`.
    1. In the dropdown for **Use classpath of module**, select **orca-web_main**
-   1. Click **Apply** and then **OK**
+   1. Click **Apply** and then **OK**.
 
 	![Run Orca Configuration](/assets/images/guides/developer/plugin-creators/run-orca-config.png)
 
-1. Run `orca` using the `RunOrca` configuration
+1. Run `orca` using the `RunOrca` configuration.
 
    Success output is similar to:
 
@@ -251,7 +274,7 @@ Through the next few steps, if you see an `Unable to find Main` log message or f
 	INFO 18111 --- [main] com.netflix.spinnaker.orca.Main: [] Started Main in 11.123 seconds (JVM running for 11.933)
 	```
 
-	If Orca is unable to find Redis, make sure your Minnaker VM is running and that all the Spinnaker services are ready.
+	If Orca can't find Redis, make sure your Minnaker VM is running and that all the Spinnaker services are ready.
 
 	You can stop running Orca after you have verified that you can successfully run it.
 
@@ -270,8 +293,8 @@ The build process creates files you need in later steps:
 
 ## Configure Orca for the plugin
 
-1. Create a top-level `plugins` directory in your Orca project
-1. Copy the `Armory.RandomWaitPlugin-orca.plugin-ref` file to the `plugins` directory
+1. Create a top-level `plugins` directory in your Orca project.
+1. Copy the `Armory.RandomWaitPlugin-orca.plugin-ref` file to the `plugins` directory.
 1. Create the `orca-local.yml` file in `~/.spinnaker/` with the following contents:
 
    ```yaml
@@ -292,19 +315,19 @@ The build process creates files you need in later steps:
 
 ## Import the pf4jStagePlugin project into IntelliJ
 
-1. In IntelliJ, link the `pf4jStagePlugin` project to your Orca project
+1. In IntelliJ, link the `pf4jStagePlugin` project to your Orca project.
 
-   1. Open the **Gradle** window in your Orca project if it's not already open (**View > Tool Windows > Gradle**)
-   1. In the **Gradle** window, click the **+** sign to link your `pf4jStagePlugin` Gradle project
-   1. Navigate to your `pf4jStagePlugin` directory , select the `build.gradle` file, and click **Open**
+   1. Open the **Gradle** window in your Orca project if it's not already open (**View > Tool Windows > Gradle**).
+   1. In the **Gradle** window, click the **+** sign to link your `pf4jStagePlugin` Gradle project.
+   1. Navigate to your `pf4jStagePlugin` directory , select the `build.gradle` file, and click **Open**.
 
-1. In the **Gradle** window, right click **orca** and click **Reimport Gradle Project**
+1. In the **Gradle** window, right click **orca** and click **Reimport Gradle Project**.
 
 You can now run or debug Orca and the plugin using IntelliJ.
 
 ## Configure Deck for the plugin
 
-1. Update the `deck/plugin-manifest.json` with the plugin information
+1. Update the `deck/plugin-manifest.json` with the plugin information.
 
    ```json
 	[
@@ -327,10 +350,10 @@ You can now run or debug Orca and the plugin using IntelliJ.
 
 ## Run the plugin and Orca in IntelliJ
 
-1. Create a new build configuration
+1. Create a new build configuration.
 
    1. Click **Edit Configurations...**
-   1. In the **Run/Debug Configurations** window, click the **+** icon and then select **Application**
+   1. In the **Run/Debug Configurations** window, click the **+** icon and then select **Application**.
    1. Fill in fields 1-6 with the following:
 
 	  1. **Name:** "Build and Test Plugin"
@@ -342,7 +365,7 @@ You can now run or debug Orca and the plugin using IntelliJ.
 
      ![Create Run Configuration](/assets/images/guides/developer/plugin-creators/build-test-runconfig.jpg)
 
-   1. Click **OK**
+   1. Click **OK**.
 
 1. Run `orca` and the `pf4jStagePlugin` using the **Build and Test Plugin**  configuration. On successful launch, you see a "Completed initialization" log statement in the console:
 
@@ -366,8 +389,8 @@ You can now run or debug Orca and the plugin using IntelliJ.
 
 The Deck project [README](https://github.com/spinnaker/deck) has instructions for building and running Deck locally.
 
-1. Build Deck by executing `yarn` from the `deck` directory
-2. Start Deck with the API_HOST argument, which is the Gate URL
+1. Build Deck by executing `yarn` from the `deck` directory.
+2. Start Deck with the API_HOST argument, which is the Gate URL.
 
    ```bash
    cd deck
@@ -377,11 +400,11 @@ The Deck project [README](https://github.com/spinnaker/deck) has instructions fo
 
 ## Verify the plugin loads in Deck
 
-1. Access the the Spinnaker UI at `http://localhost:9000`
-1. Go to **Applications** > **spin** > **PIPELINES**
-1. Create a new pipeline
-1. Add a new stage
-1. Look for "Random Wait" in the **Type** select list
+1. Access the the Spinnaker UI at `http://localhost:9000`.
+1. Go to **Applications** > **spin** > **PIPELINES**.
+1. Create a new pipeline.
+1. Add a new stage.
+1. Look for "Random Wait" in the **Type** select list.
 
 ### Troubleshooting
 
@@ -395,13 +418,13 @@ Look for `plugin-manifest.json` and `index.js`. It's normal to see 3 `plugin-man
 
 If you want to debug the backend component of the plugin without a working Deck component, you can create a new stage and configure it using JSON.
 
-1. Start the **Build and Test Plugin** configuration in Debug mode
-1. Start Deck
-1. Access the the Spinnaker UI at `http://localhost:9000`
-1. Go to **Applications** > **spin** > **PIPELINES**
-1. Create a new pipeline
-1. Add a new stage
-1. Click **Edit stage as JSON** to open the **Edit Stage JSON** window
+1. Start the **Build and Test Plugin** configuration in Debug mode.
+1. Start Deck.
+1. Access the the Spinnaker UI at `http://localhost:9000`.
+1. Go to **Applications** > **spin** > **PIPELINES**.
+1. Create a new pipeline.
+1. Add a new stage.
+1. Click **Edit stage as JSON** to open the **Edit Stage JSON** window.
 1. Paste this content in the text box:
 
    ```json
@@ -416,10 +439,10 @@ If you want to debug the backend component of the plugin without a working Deck 
 	* `name`: name of the new stage
 	* `type`: use the value returned by the [`getName` function](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin/blob/master/random-wait-orca/src/main/kotlin/io/armory/plugin/stage/wait/random/RandomWaitPlugin.kt#L40) in `RandomWaitStage`
 
-1. Click **Update Stage**
-1. Click **Save Changes**
-1. Go back to the **PIPELINES** screen
-1. **Start Manual Execution** and watch the stage wait for the specified number of seconds
+1. Click **Update Stage**.
+1. Click **Save Changes**.
+1. Go back to the **PIPELINES** screen.
+1. **Start Manual Execution** and watch the stage wait for the specified number of seconds.
 
 
 ## Resources
