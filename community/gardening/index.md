@@ -17,7 +17,10 @@ Elevate your impact with free compute from AWS, SIG projects in Security, Ops, a
 ## Jump In!
 - Join [Spinnaker Slack](https://join.spinnaker.io) to chat in [event & team channels](slack-map.md). Have questions? Ask them in [__#gardening-general__](https://spinnakerteam.slack.com/archives/CV4A90DPF), our main event channel.
 - Find out how weeklong Gardening Days 2.0 will work on the [Hackathon logistics](hack-logistics.md) page. Get inspired by these challenges:
-  - **Fix Bugs & Error Messages** _Retrofit 500 Challenge_ - Fix the most commonly occurring 500 errors
+  - **Fix Bugs & Error Messages** _Retrofit 500 Challenge_ 
+  
+    Fix the most commonly occurring 500 errors.
+    
   - **Extend Spinnaker** _Plugin Challenge_ - Work with Armory engineers to customize Spinnaker with a plugin
   - **Share Content** _Automate Your SDLC Challenge_ - Share your Spinnaker with technical content
   - **Join a SIG Project** _SIG Challenges_ - Everyone's welcome! Join a SIG team by showing up at a Special Session SIG meeting:
