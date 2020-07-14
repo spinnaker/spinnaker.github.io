@@ -30,7 +30,7 @@ The pipeline UI exposes the following fields for the Bitbucket file artifact:
     </tr>
     <tr>
       <td><strong>File path</strong></td>
-      <td>The full path (including filename) for retrieval via the Bitbucket API. Example: <code>https://api.bitbucket.org/1.0/repositories/$ORG/$REPO/raw/$VERSION/$FILEPATH</code>.</td>
+      <td>The full path (including filename) for retrieval via the Bitbucket API. Example: <code>https://api.bitbucket.org/2.0/repositories/$ORG/$REPO/src/$VERSION/$FILEPATH</code>.</td>
     </tr>
   </tbody>
 </table>
@@ -62,7 +62,7 @@ The following are the fields that make up a Bitbucket file artifact:
 | Field | Explanation |
 |-|-----------|
 | `type` | Always `bitbucket/file`. |
-| `reference` | The full path (including filename) for retrieval via the Bitbucket API. Example: `https://api.bitbucket.org/1.0/repositories/$ORG/$REPO/raw/$VERSION/$FILEPATH`. |
+| `reference` | The full path (including filename) for retrieval via the Bitbucket API. Example: `https://api.bitbucket.org/2.0/repositories/$ORG/$REPO/src/$VERSION/$FILEPATH`. |
 | `name` | The path to the file within your repository. Example: `path/to/file.yml`. |
 | `version` | N/A--must be specified in `reference`. |
 | `location` | N/A. |
@@ -73,7 +73,7 @@ as it would appear in a pipeline definition:
 ```json
 {
   "type": "bitbucket/file",
-  "reference": "https://api.bitbucket.org/1.0/repositories/org/repo/raw/master/manifests/config.yaml",
+  "reference": "https://api.bitbucket.org/2.0/repositories/org/repo/src/master/manifests/config.yaml",
   "name": "manifests/config.yaml"
 }
 ```
