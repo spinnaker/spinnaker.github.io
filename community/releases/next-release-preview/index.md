@@ -11,57 +11,39 @@ Please make a pull request to describe any changes you wish to highlight
 in the next release of Spinnaker. These notes will be prepended to the release
 changelog.
 
-## Coming Soon in Release 1.21
+## Coming Soon in Release 1.22
 
-### End of Support for the legacy Kubernetes Provider
+### (Breaking Change) Suffix no longer added to jobs created by Kubernetes _Run Job_ stage
 
-1.20 was the final release to include support for Spinnaker's legacy Kubernetes
-(V1) provider. Please migrate all Kubernetes accounts to the standard (V2)
-provider before upgrading to Spinnaker 1.21.
+Spinnaker no longer automatically appends a unique suffix to the name of jobs
+created by the Kubernetes _Run Job_ stage. Prior to this release, if you
+specified `metadata.name: my-job`, Spinnaker would update the name to
+`my-job-[random-string]` before deploying the job to Kubernetes. As of this
+release, the job's name will be passed through to Kubernetes exactly as
+supplied.
 
-### Suspension of Support for Alicloud, DC/OS, and Oracle Cloud Providers
+To continue having a random suffix added to the job name, set the
+`metadata.generateName` field instead of `metadata.name`, which causes the
+[Kubernetes API](https://kubernetes.io/docs/reference/using-api/api-concepts/#generated-values)
+to append a random suffix to the name.
 
-The Alicloud, DC/OS, and Oracle cloud providers are excluded from 1.21 because
-they no longer meet Spinnaker's
-[cloud provider requirements](https://github.com/spinnaker/governance/blob/master/cloud-provider-requirements.md),
-which include the formation of a Spinnaker SIG. If you are interested in
-forming a SIG for one of these cloud providers, please comment on the
-appropriate GitHub issue:
+This change is particularly important for users who are using the preconfigured
+job stage for Kubernetes, or who are otherwise sharing job stages among
+different pipelines. In these cases, jobs are often running concurrently, and it
+is important that each job have a unique name. In order to retain the previous
+behavior, these users will need to manually update their Kubernetes job
+manifests to use the `generateName` field.
 
-* [Alicloud](https://github.com/spinnaker/governance/issues/122)
-* [DC/OS](https://github.com/spinnaker/governance/issues/125)
-* [Oracle](https://github.com/spinnaker/governance/issues/127)
+Users of Spinnaker >= 1.20.3 can opt in to this new behavior by setting
+`kubernetes.jobs.append-suffix: false` in their `clouddriver-local.yml`.
 
-### New release branch patch criteria
+As of Spinnaker 1.22, this new behavior is the default. Users can still opt out
+of the new behavior by setting `kubernetes.jobs.append-suffix: true` in their
+`clouddriver-local.yml`. This will cause Spinnaker to continue to append a
+suffix to the name of jobs as in prior releases.
 
-Previously, fixes were merged into release branches at the discretion of the
-release manager. To increase the transparency of the release process and the
-safety of the patch release upgrade process, we have documented more explicit
-[patch criteria](https://www.spinnaker.io/community/contributing/releasing/#release-branch-patch-criteria)
-to determine whether a change is appropriate to cherry-pick into a release
-branch.
-
-### Improved UI for child pipeline failures
-
-Previously, failures in pipelines that run as stages of other pipelines were
-difficult to debug. There is now a modal to surface failed child pipeline
-execution details. Enable this functionality by adding the following to your
-`settings-local.js`:
-
-```
-window.spinnakerSettings.feature.executionMarkerInformationModal = true;
-```
-
-Please report any bugs by opening a GitHub issue. Barring any major issues, this
-feature will be enabled by default in 1.22. Check out the
-[PR](https://github.com/spinnaker/deck/pull/8325) for more details.
-
-### Single artifacts UI
-
-[1.20](https://www.spinnaker.io/community/releases/versions/1-20-0-changelog#standard-artifacts-ui-enabled-by-default)
-enabled the standard artifacts UI by default, but provided a temporary
-`legacyArtifactsEnabled` flag to revert to the legacy artifacts UI. This flag
-is no longer supported in 1.21, and the standard artifacts UI is the only
-available artifacts UI. See this
-[RFC](https://github.com/spinnaker/governance/blob/master/rfc/legacy_artifacts_ui_removal.md)
-for more details.
+The ability to opt out of the new behavior will be removed in Spinnaker 1.23.
+The above setting will have no effect, and Spinnaker will no longer append a
+suffix to job names. It is thus strongly recommended that 1.22 users who opt out
+update any necessary jobs and remove the setting before upgrading to Spinnaker
+1.23.

@@ -138,7 +138,7 @@ setting the following property in `fiat-local.yml`:
 ## Role Providers
 In Spinnaker there are a few ways you can associate a role with a user:
 
-- With a file that contains user ↔ role (YAML parseable map with [user]: list of roles)
+- Via [YAML file](https://github.com/spinnaker/fiat/blob/master/fiat-file/src/test/resources/fiat-test-permissions.yml): contains user ↔ role mapping. A YAML parseable map with structure [user]: list of roles
 - Via [GitHub teams](./github-teams/): roles are the teams a user belongs to in a configured Org
 - Via [Google Groups](./google-groups/): roles are mapped (see settings) from the Google directory
 - Via [LDAP](./ldap/): roles are searched in LDAP from the user
