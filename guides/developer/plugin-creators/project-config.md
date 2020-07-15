@@ -5,13 +5,31 @@ sidebar:
   nav: guides
 ---
 
-{% include alpha version="1.19.4" %}
-> This guide is a work in progress. Help us improve the content by submitting a pull request!
 
 {% include toc %}
 
 
-# Project Configuration
+## Configuring projects targeting deployment on Spinnaker 1.20.6, 1.21+
+
+>Note: the contents of this section refer to alpha features in Spinnaker 1.20.6. This means we are working on their stability and usability, as well as possibly adding or changing features. Expect rough edges. Ask questions in the [#plugins Slack channel](https://join.spinnaker.io/) if you need help.
+
+Plugins are an evolving feature.  The easiest way to set up a new plugin project is to copy one of the [spinnaker-plugin-examples](https://github.com/spinnaker-plugin-examples) projects that most closely resembles what you want to do.
+
+Updates:
+
+* `@ExtensionConfiguration` has been deprecated. Use `@PluginConfiguration` instead.
+* You can now generate a skeleton Deck plugin component by executing:
+
+  ```bash
+  npx -p @spinnaker/pluginsdk scaffold`
+  ```
+
+  This creates the structure and files for your Deck component.
+
+
+## Configuring projects targeting deployment on Spinnaker 1.19.4
+
+>Note: the contents of this section refer to alpha features in Spinnaker 1.19.4. This means we are working on their stability and usability, as well as possibly adding or changing features. Expect rough edges. Ask questions in the [#plugins Slack channel](https://join.spinnaker.io/) if you need help.
 
 Keep the following recommendations and requirements in mind: - We recommend
 making the project a Gradle project. There is Gradle tooling to support plugin
@@ -19,11 +37,11 @@ development. - You can add any dependencies you need to make your plugin
 successful.. *TODO-CF* this is almost certainly a lie when it comes to things
 that conflict with the dependencies in the compileOnly scope...
 
-## Gradle configuration
+### Gradle configuration
 
 Some important aspects of your project's gradle build:
 
-### gradle.properties
+#### gradle.properties
 
 Organizing these values into gradle.properties is optional, but these versions are very much mandatory.
 
@@ -40,7 +58,7 @@ modifying this file for each release. There are fancier ways (the example
 project uses a git tag strategy and additional gradle plugins) but those are
 outside the scope of this documentation.
 
-### Top-level build.gradle
+#### Top-level build.gradle
 
 ```
 // (1):
@@ -74,7 +92,7 @@ spinnakerBundle {
 2. The `plugins` block imports the node plugin but does not apply it. This plugin is needed by the ui-extension to build the us assets.
 3. At the top level we apply the `io.spinnaker.plugin.bundler` to define the name of the plugin bundle this project is producing along with bundle metadata.
 
-### UI-extension build.gradle
+#### UI-extension build.gradle
 
 To build a UI extension with the base conventions, the only thing necessary is
 applying the `io.spinnaker.plugin.ui-extension` plugin.
@@ -85,7 +103,7 @@ applying the `io.spinnaker.plugin.ui-extension` plugin.
 apply plugin: "io.spinnaker.plugin.ui-extension"
 ```
 
-### Service extension build.gradle
+#### Service extension build.gradle
 
 Here are the basic things your service-extension gradle build needs. Note that
 the example project includes a bunch of additional configuration to configure
@@ -130,31 +148,31 @@ spinnakerPlugin {
 5. You can include additional dependencies that your plugin requires. These dependencies will be bundled into the plugin and in a private classloader for the plugin.
 6. The `spinnakerPlugin` block is used to generate plugin and bundle metadata. The `serviceName` is the spinnaker service this plugin extends (and should match the service api dependency brought in in `(4)` above).
 
-## IntelliJ Configuration
+### IntelliJ Configuration
 
 With the gradle configuraton above, you should be able to import your plugin into IntelliJ as a project.
 
-### UI-extension IDE configuration
+#### UI-extension IDE configuration
 
 > Help us improve this section by submitting a pull request!
 
-### Service-extension IDE configuration
+#### Service-extension IDE configuration
 
 > Help us improve this section by submitting a pull request!
 
-#### Plugin debugging in a local service
+##### Plugin debugging in a local service
 
 If you have a local instance of a host service (in the pf4jStagePlugin example this is `orca`) running, you can link your plugin into that service with a `plugin-ref` that points to your local development workspace.
 
 There are two options, depending on how you run the host service:
 
-##### Running the host service in the IDE
+###### Running the host service in the IDE
 
 If you have the ability to run a service locally in IntelliJ (the configuration for that is outside the scope of this document), then you can add configure your IntelliJ project with both the host service and your plugin in the same workspace.
 
 Open the IntelliJ project you have configured for the host service, click the `+` button on the Gradle tab, and navigate to your plugin project's build.gradle. This will include the plugin project in the workspace.
 
-##### Attaching to a remote JVM process for the host service
+###### Attaching to a remote JVM process for the host service
 
 You can debug a service extension in the IDE, provided you have an instance of
 the host service to attach a debugger to, and that the host service shares a
@@ -168,7 +186,7 @@ In use module classpath, select the main classpath from the service-extension pl
 
 Copy the command-line arguments for the JVM from this dialog, and ensure however you are launching the host service locally that it gets those JVM arguments.
 
-#### Linking the plugin-ref to the host service
+##### Linking the plugin-ref to the host service
 
 When you build your plugin project with gradle, it will produce a `.plugin-ref` file in the build/ directory for the plugin. You only need to do this once initially, and if your plugin dependencies are changed to regenerate it.
 

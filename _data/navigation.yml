@@ -477,26 +477,34 @@ guides:
   - title: Developer How-Tos
     collapsed: true
     children:
-      - title: Getting Set Up
-        url: /guides/developer/getting-set-up/
-      - title: Provider Specific Setups
+      - title: Setting up a Development Environment
         collapsed: true
         children:
-          - title: Set Up Spinnaker Development on AWS
-            url: /guides/developer/provider-setups/aws-dev-setup/
-      - title: Writing a New Stage
-        url: /guides/developer/new-stage/
-      - title: Kork Library
-        url: /guides/developer/kork-library/
-      - title: Kubernetes CRD extensions
-        url: /guides/developer/crd-extensions/
-      - title: Plugin Creators Guide
+          - title: Kork Library
+            url: /guides/developer/dev-env/kork-library/
+          - title: Common Internals
+            url: /guides/developer/dev-env/common-internals/
+          - title: Getting Set Up
+            url: /guides/developer/dev-env/getting-set-up/
+          - title: Provider Specific Setups
+            collapsed: true
+            children:
+            - title: Set Up Spinnaker Development on AWS
+              url: /guides/developer/dev-env/provider-setups/aws-dev-setup/
+      - title: Extending Spinnaker
+        collapsed: true
+        children:
+          - title: Writing a New Stage
+            url: /guides/developer/extending/new-stage/
+          - title: Kubernetes CRD extensions
+            url: /guides/developer/extending/crd-extensions/
+      - title: Creating Plugins
         collapsed: true
         children:
           - title: Overview
             url: /guides/developer/plugin-creators/overview/
-          - title: Pipeline Stage Plugin Walkthrough
-            url: /guides/developer/plugin-creators/stage-plugin-walkthrough/
+          - title: Test a Pipeline Stage Plugin
+            url: /guides/developer/plugin-creators/deck-plugin/
           - title: Plugin Project Configuration
             url: /guides/developer/plugin-creators/project-config/
   - title: Operator How-Tos
@@ -540,7 +548,7 @@ guides:
     collapsed: true
     children:
       - title: Common Internals
-        url: /guides/developer/common-internals/
+        url: /guides/developer/dev-env/common-internals/
       - title: Front50
         url: https://github.com/spinnaker/front50/blob/master/README.md
       - title: Igor

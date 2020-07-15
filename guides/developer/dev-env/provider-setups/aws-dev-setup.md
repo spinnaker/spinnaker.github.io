@@ -16,7 +16,7 @@ In this setup, Spinnaker runs on an EC2 instance. Code is edited on the machine 
 
 1. Create forks of all the [Spinnaker microservices](/reference/architecture/#spinnaker-microservices) on GitHub.
 2. Clone them onto your local machine in a dedicated `/spinnaker` directory. This will simplify syncing them in a batch during development.
-3. Set up [Intellij](/guides/developer/getting-set-up/#intellij) for Spinnaker as specified.
+3. Set up [Intellij](/guides/developer/dev-env/getting-set-up/#intellij) for Spinnaker as specified.
 
 
 # Configure development region
@@ -33,19 +33,19 @@ In this setup, Spinnaker runs on an EC2 instance. Code is edited on the machine 
 
     * `SpinnakerManagedRole` : The role Spinnaker will assume to interact with your AWS resources. See the [AWS Setup Guide](/setup/install/providers/aws/) for more details.
 
-2. In the AWS console, in the region where you want your development instance to reside, [create a key pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair). 
+2. In the AWS console, in the region where you want your development instance to reside, [create a key pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair).
 
-3. In the default VPC of the same region, [create a security group](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#CreatingSecurityGroups) named "SpinnakerDev" and [add a rule](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#AddRemoveRules) allowing port 22 inbound for a restricted set of IPs (for example, corporate firewall ranges). 
+3. In the default VPC of the same region, [create a security group](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#CreatingSecurityGroups) named "SpinnakerDev" and [add a rule](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#AddRemoveRules) allowing port 22 inbound for a restricted set of IPs (for example, corporate firewall ranges).
 
 4. Provision a development instance that uses these resources with the following steps:
     * From the AWS Console, navigate to the EC2 [launch instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/launching-instance.html) wizard
     * Select an _Ubuntu Server 16.04_ Amazon machine image
     * Select an instance type with sufficient resources to run all the Spinnaker microservices, such as _m5.4xlarge_
     * On the "instance details" step:
-        * select the default VPC for "Network" 
+        * select the default VPC for "Network"
         * select the previously created `SpinnakerDevInstanceRole` for "IAM role"
         * under "Advanced Details", add the following user data which will install some dependencies for your [Local Git deployment](/setup/install/environment/#local-git):
-        
+
         ```
         #!/bin/bash
         set -ex
@@ -63,7 +63,7 @@ In this setup, Spinnaker runs on an EC2 instance. Code is edited on the machine 
 
 # Configure Development EC2 Instance
 
-Get your instance's DNS name and [login via SSH](https://docs.aws.amazon.com/quickstarts/latest/vmlaunch/step-2-connect-to-instance.html). 
+Get your instance's DNS name and [login via SSH](https://docs.aws.amazon.com/quickstarts/latest/vmlaunch/step-2-connect-to-instance.html).
 
 ```
 ssh -A -L 9000:localhost:9000 -L 8084:localhost:8084 -L 8087:localhost:8087 ubuntu@$SPINNAKER_INSTANCE_DNS -i /path/to/my-key-pair.pem
@@ -309,7 +309,7 @@ The following would be an example of how to debug this exception for Clouddriver
 ```
 sudo netstat -plnt | grep {port}
 # For CloudDriver
-sudo netstat -plnt | grep 7002 
+sudo netstat -plnt | grep 7002
 ```
 * Using the process id (pid) determined above, check what process is using the open port:
 ```
