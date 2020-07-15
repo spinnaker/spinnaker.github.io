@@ -15,7 +15,7 @@ Not sure where to get started contributing to Spinnaker? May we suggest these po
 
 - Create a custom-stage plugin and familiarize yourself with using the framework. This uses the new SimpleStage extension point to add your custom pipeline stage to Spinnaker. Read more in the [Plugin Creators Guide](https://www.spinnaker.io/guides/developer/plugin-creators/).
 
-- Help make Spinnaker documentation easier to use. Participate in a spinnaker.io card sorting exercise asynchronously. Don’t forget to submit&mdash;you don’t have to sort all the cards to get points.  Start [here](https://www.provenbyusers.com/cs.php?c=26cc8242). Stop by the #sig-documentation Slack channel if you have questions or want to chat!
+- Stop by the #sig-documentation Slack channel if you want to help out with work related to the spinnaker.io website refresh!
 
 - Open issues, comment on issues and PRs to provide context, and review PRs in [the Spinnaker organization](https://github.com/spinnaker).
 
