@@ -11,13 +11,6 @@ sidebar:
 
 This guide explains how to set up a local Spinnaker environment on your Mac or Windows environment so you can test the `pf4jStagePlugin`, which has both Orca and Deck components. Spinnaker services running locally communicate with the other Spinnaker services running in a local VM. Although this guide is specific to the `pf4jStagePlugin`, you can adapt its contents to test your own plugin.
 
-Example Spinnaker setup:
-
-* OSX or Windows using IP 192.168.64.1 and the VM using 192.168.64.5
-* Orca running on `http://192.168.64.1:8083`
-* Deck running on `http://192.168.64.1:9000`
-* All other services running in the VM on 192.168.64.5
-
 Software for development:
 
 * [Java Development Kit](https://adoptopenjdk.net/), 11
@@ -33,6 +26,13 @@ Specific to this guide:
 * [Orca](https://github.com/spinnaker/orca/tree/release-1.20.x), branch `release-1.20.x`
 * [Deck](https://github.com/spinnaker/deck/tree/release-1.20.x), branch `release-1.20.x`
 * [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin), v1.1.14
+
+Spinnaker setup used in this guide:
+
+* OSX or Windows using IP {my-workstation-ip} and the VM using {my-vm-ip}
+* Orca running on `{my-workstation-ip}:8083`
+* Deck running on `{my-workstation-ip}:9000`
+* All other services running in the VM on {my-vm-ip}
 
 ## Prerequisites
 
@@ -90,8 +90,6 @@ Specific to this guide:
    ```bash
    kubectl -n spinnaker get pods
    ```
-
-
 
    Consult the Minnaker [README](https://github.com/armory/minnaker/blob/master/readme.md#changing-your-spinnaker-configuration) for basic troubleshooting information if you run into issues.
 
@@ -157,29 +155,29 @@ Generated local /etc/spinnaker/.hal/default/profiles/spinnaker-local.yml:
 --------------
 services:
   orca:
-    baseUrl: http://192.168.64.1:8083
+    baseUrl: {my-vm-ip}:8083
   deck:
-    baseUrl: http://192.168.64.1:9000
+    baseUrl: {my-vm-ip}:9000
 --------------
 Place this file at '~/.spinnaker/spinnaker-local.yml' on your workstation
 --------------
 services:
   clouddriver:
-    baseUrl: http://192.168.64.5:7002
+    baseUrl: {my-workstation-ip}:7002
   redis:
-    baseUrl: http://192.168.64.5:6379
+    baseUrl: {my-workstation-ip}:6379
   front50:
-    baseUrl: http://192.168.64.5:8080
+    baseUrl: {my-workstation-ip}:8080
   orca:
     host: 0.0.0.0
   gate:
-    baseUrl: http://192.168.64.5:8084
+    baseUrl: {my-workstation-ip}:8084
   deck:
     host: 0.0.0.0
   echo:
-    baseUrl: http://192.168.64.5:8089
+    baseUrl: {my-workstation-ip}:8089
   rosco:
-    baseUrl: http://192.168.64.5:8087
+    baseUrl: {my-workstation-ip}:8087
 --------------
 ```
 
@@ -196,27 +194,27 @@ The `spinnaker-local.yml` has this content:
 ```yaml
 services:
   clouddriver:
-    baseUrl: http://192.168.64.5:7002
+    baseUrl: {my-workstation-ip}:7002
   redis:
-    baseUrl: http://192.168.64.5:6379
+    baseUrl: {my-workstation-ip}:6379
   front50:
-    baseUrl: http://192.168.64.5:8080
+    baseUrl: {my-workstation-ip}:8080
   orca:
     host: 0.0.0.0
   gate:
-    baseUrl: http://192.168.64.5:8084
+    baseUrl: {my-workstation-ip}:8084
   deck:
     host: 0.0.0.0
   echo:
-    baseUrl: http://192.168.64.5:8089
+    baseUrl: {my-workstation-ip}:8089
   rosco:
-    baseUrl: http://192.168.64.5:8087
+    baseUrl: {my-workstation-ip}:8087
 --------------
 ```
 
 ## Clone the plugin and required services
 
-Clone the Orca and Deck `release-1.20.x` branches that correspond to the Spinnaker 1.21.0 version you installed using Minnaker.  Then clone `pf4jStagePlugin` v1.1.14, which works with Spinnaker 1.20.6.
+Clone the Orca and Deck `release-1.20.x` branches that correspond to the Spinnaker 1.20.6 version you installed using Minnaker.  Then clone `pf4jStagePlugin` v1.1.14, which works with Spinnaker 1.20.6.
 
 ```bash
 git clone --single-branch --branch v1.1.14 https://github.com/spinnaker-plugin-examples/pf4jStagePlugin.git
@@ -395,7 +393,7 @@ The Deck project [README](https://github.com/spinnaker/deck) has instructions fo
    ```bash
    cd deck
    yarn
-   API_HOST=http://192.168.64.5:8084 yarn start
+   API_HOST={my-workstation-ip}:8084 yarn start
 	```
 
 ## Verify the plugin loads in Deck
@@ -412,11 +410,11 @@ You can use the Developer Tools in your browser to troubleshoot Deck plugin issu
 
 ![Debugging Deck in Chromium](/assets/images/guides/developer/plugin-creators/debugDeck01.png)
 
-Look for `plugin-manifest.json` and `index.js`. It's normal to see 3 `plugin-manifest.json` files. The first one is from Deck - you created this file in the [Configure Deck for the plugin](#configure-deck-for-the-plugin) section above. The next two from Gate are not relevant for local development. If you don't see the `plugin-manifest.json` and `index.js` files, check the **Console** tab for errors. Also verify that the content in your `plugin-manifest.json` file is correct.
+Look for `plugin-manifest.json` and `index.js`. It's normal to see 3 `plugin-manifest.json` HTTP requests. The first one is from Deck - you created this file in the [Configure Deck for the plugin](#configure-deck-for-the-plugin) section above. The next two from Gate are not relevant for local development. If you don't see the `plugin-manifest.json` and `index.js` HTTP requests, check the **Console** tab for errors. Also verify that the content in your `plugin-manifest.json` file is correct.
 
 ## Debug the backend of the plugin
 
-If you want to debug the backend component of the plugin without a working Deck component, you can create a new stage and configure it using JSON.
+If you want to debug the backend component of the plugin without a working Deck component, you can create a new stage in the UI and configure it using JSON.
 
 1. Start the **Build and Test Plugin** configuration in Debug mode.
 1. Start Deck.
@@ -424,7 +422,7 @@ If you want to debug the backend component of the plugin without a working Deck 
 1. Go to **Applications** > **spin** > **PIPELINES**.
 1. Create a new pipeline.
 1. Add a new stage.
-1. Click **Edit stage as JSON** to open the **Edit Stage JSON** window.
+1. Do not choose a stage from the **Type** select list. Instead, click **Edit stage as JSON** to open the **Edit Stage JSON** window.
 1. Paste this content in the text box:
 
    ```json
