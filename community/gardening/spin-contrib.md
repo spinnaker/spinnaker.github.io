@@ -37,6 +37,7 @@ The session instructor creates a Kubernetes namespace for each registered attend
 * Install [JDK 11](https://adoptopenjdk.net/installation.html).
 
   * Mac
+
     ```bash
     brew tap AdoptOpenJDK/openjdk
     brew cask install adoptopenjdk11

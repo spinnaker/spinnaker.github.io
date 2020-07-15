@@ -24,19 +24,18 @@ If you're not sure which method to choose, we suggest using Minnaker. This simpl
 
 The [Test a Pipeline Stage Plugin](/guides/developer/plugin-creators/deck-plugin/) guide contains instructions for setting up a local development environment with Minnaker running in a Multipass VM. This method does not require port-forwarding or setting up remote SSH.
 
-Alternately, you can watch <a href="https://youtu.be/xSZlWf9rUI4" target="_blank">Developing for Spinnaker With Minnaker (15m 26s)</a>
+Alternately, you can watch <a href="https://youtu.be/xSZlWf9rUI4" target="_blank">Developing for Spinnaker With Minnaker (15m 26s)</a>. Learn how to install Minnaker, set up remote SSH, and connect to the local VM instance via local Spinnaker service configuration. Use kubectl port forwarding to connect a local clone of Orca to Redis and Front50 in Minnaker. Test and debug Orca by setting a breakpoint in the stage task and running the stage.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/xSZlWf9rUI4" frameborder="0" allowfullscreen></iframe>
 
-Learn how to install Minnaker, set up remote SSH, and connect to the local VM instance via local Spinnaker service configuration. Use kubectl port forwarding to connect a local clone of Orca to Redis and Front50 in Minnaker. Test and debug Orca by setting a break point in the stage task and running the stage.
 
 ### AWS EKS and Telepresence method
 
-See the [New Spinnaker Contribution Walkthrough Session](/community/gardening/spin-contrib/) doc for how to use the Telepresence network proxy to enable services running locally to connect to services running in an AWS EKS cluster.
+See the [New Spinnaker Contribution Walkthrough Session](/community/gardening/spin-contrib/) doc for how to use the Telepresence network proxy to enable services running locally to connect to services running in an AWS EKS cluster. You could adapt this method if you want to run Minnaker in a remote VM.
 
 ### Classic local installation method
 
-Follow the [Getting Set Up](https://www.spinnaker.io/guides/developer/getting-set-up/) guide to install Spinnaker locally.
+Follow the [Getting Set Up](/guides/developer/getting-set-up/) guide to install Spinnaker locally.
 
 ### Kubernetes and Docker method
 
