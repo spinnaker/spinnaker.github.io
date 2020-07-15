@@ -9,7 +9,7 @@ sidebar:
 {% include toc %}
 
 
-## Project Configuration targeting Spinnaker 1.20.6, 1.21+
+## Configuring projects targeting deployment on Spinnaker 1.20.6, 1.21+
 
 >Note: the contents of this section refer to alpha features in Spinnaker 1.20.6. This means we are working on their stability and usability, as well as possibly adding or changing features. Expect rough edges. Ask questions in the [#plugins Slack channel](https://join.spinnaker.io/) if you need help.
 
@@ -27,7 +27,7 @@ Updates:
   This creates the structure and files for your Deck component.
 
 
-## Project Configuration targeting Spinnaker 1.19.4
+## Configuring projects targeting deployment on Spinnaker 1.19.4
 
 >Note: the contents of this section refer to alpha features in Spinnaker 1.19.4. This means we are working on their stability and usability, as well as possibly adding or changing features. Expect rough edges. Ask questions in the [#plugins Slack channel](https://join.spinnaker.io/) if you need help.
 
