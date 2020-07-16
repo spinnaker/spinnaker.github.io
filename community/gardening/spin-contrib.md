@@ -8,6 +8,7 @@ sidebar:
 This page contains notes for the _New Spinnaker Contribution Walkthrough_ session. Register for the session on the Gardening Days [schedule](/community/gardening/schedule/).
 
 Registered attendees will receive credentials to access their own Kubernetes namespace on an AWS EKS cluster for the duration of the event.
+
 Attendees are encouraged to use this environment for their hackathon projects as well.
 
 ## Session goals
@@ -79,9 +80,7 @@ The session instructor creates a Kubernetes namespace for each registered attend
 
 ## Fork and clone Orca and Deck repositories
 
-Fork the repositories in the UI, then clone them to your local machine. We will
-choose the release branch of these services so that we're working against the
-latest stable version.
+Fork the repositories in the UI, then clone them to your local machine. Choose the release branch of these services so that we're working against the latest stable version:
 
 ```bash
 git clone --single-branch --branch release-1.21.x https://github.com/YOUR_USERNAME/orca.git
@@ -94,7 +93,7 @@ Import the Orca project into IntelliJ. **File** -> **Open**, select `orca/build.
 
 Create a repository for yourself based on the [template repository here][tpl].
 
-You will use `spinsvc.yml` to deploy Spinnaker on the EKS cluster your instructor set up for you. Download the file. Update the last part of the s3 bucket name on L26 with your `namespace` name. You can find your `namespace` name on L10 of the Kubernetes config that you downloaded [earlier](#save-your-kubernetes-config-file).
+Use `spinsvc.yml` to deploy Spinnaker on the EKS cluster your instructor set up for you. Download the file. Update the last part of the s3 bucket name on L26 with your `namespace` name. You can find your `namespace` name on L10 of the Kubernetes config that you downloaded [earlier](#save-your-kubernetes-config-file).
 
 ```yaml
 spec:
@@ -134,7 +133,7 @@ Check the status of the Spinnaker pods:
  kubectl get pods
  ```
 
- You should see output similar to:
+ You should see output similar to the following:
 
  ```bash
  NAME                                READY   STATUS              RESTARTS   AGE
@@ -150,13 +149,13 @@ spin-rosco-79b55d5c99-zkq4w         0/1     ContainerCreating   0          22s
 
 ## Port forward Gate and Deck services
 
-In your current terminal window, forward the Deck port:
+In your current Terminal window, forward the Deck port:
 
 ```bash
 kubectl -n <your-namespace-name> port-forward svc/spin-deck 9000
 ```
 
-Open another terminal session and forward the Gate port:
+Open another Terminal session and forward the Gate port:
 
 ```bash
 export KUBECONFIG=~/.kube/<kube-config-file-name>.yaml
@@ -165,7 +164,7 @@ kubectl -n <your-namespace-name> port-forward svc/spin-gate 8084
 
 ## Start Telepresence for the local Orca service
 
-In a new terminal session, change to the Orca directory and start Telepresence:
+In a new Terminal session, change to the Orca directory and start Telepresence:
 
 ```
 cd <path-to-orca-clone>
