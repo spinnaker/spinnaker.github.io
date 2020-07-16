@@ -26,8 +26,7 @@ Attendees are encouraged to use this environment for their hackathon projects as
 
 ## Save your Kubernetes config file
 
-The session instructor creates a Kubernetes namespace for each registered attendee and emails a a download link. Save this YAML file to your local `~./kube/` directory.
-You can call this anything you'd like, though a good name would be `garden.yaml`
+The session instructor creates a Kubernetes namespace for each registered attendee and emails a a download link. Save this YAML file to your local `~./kube/` directory. You can name the file anything you'd like, but a good name would be `garden.yaml`.
 
 ## Install software
 
@@ -94,9 +93,8 @@ Import the Orca project into IntelliJ. **File** -> **Open**, select `orca/build.
 ## Install Spinnaker
 
 Create a repository for yourself based on the [template repository here][tpl].
-Update the last part of the s3 bucket name on L14 with your `namespace` name. You can find your `namespace` name on L10 of the Kubernetes config that you downloaded [earlier](#save-your-kubernetes-config-file).
 
-For example, if your `namespace` is "aimee", change `gardening-days-fixme` to `gardening-days-aimee` in the `s3:bucket` section.
+You will use `spinsvc.yml` to deploy Spinnaker on the EKS cluster your instructor set up for you. Download the file. Update the last part of the s3 bucket name on L26 with your `namespace` name. You can find your `namespace` name on L10 of the Kubernetes config that you downloaded [earlier](#save-your-kubernetes-config-file).
 
 ```yaml
 spec:
@@ -108,17 +106,26 @@ spec:
       persistentStorage:
         persistentStoreType: s3
         s3:
-          bucket: gardening-days-fixme
+          bucket: gardening-days-FIXME # replace with gardening-days-<your-namespace>
           rootFolder: front50
 ```
 
+For example, if your `namespace` is "aimee", change `gardening-days-FIXME` to `gardening-days-aimee` in the `s3:bucket` section.
+
 Save the file.
 
-Export your KUBECONFIG file and `kubectl apply` the `SpinnakerService.yaml` custom resource definition to install Spinnaker. You only have access to your namespace, so you do not need to include the `-n <namespace>` parameter.
+Export your KUBECONFIG file and `kubectl apply` the `spinsvc.yaml` custom resource definition to install Spinnaker. You only have access to your namespace, so you do not need to include the `-n <namespace>` parameter.
 
 ```bash
 export KUBECONFIG=~/.kube/<kube-config-file-name>.yaml
-kubectl apply -f SpinnakerService.yaml
+kubectl apply -f <spinnaker-service-file>.yaml
+```
+
+For example:
+
+```bash
+export KUBECONFIG=~/.kube/garden.yaml
+kubectl apply -f spinsvc.yaml
 ```
 
 Check the status of the Spinnaker pods:
@@ -230,6 +237,10 @@ cp -R $TELEPRESENCE_ROOT/opt/spinnaker/config/ ~/.spinnaker
 	```
 
 	If Orca can't find Redis, make sure your Redis service container is running.
+
+
+
+
 [Spinnaker Operator]: https://github.com/armory/spinnaker-operator
 [Telepresence]: https://www.telepresence.io/
 [tpl]: https://github.com/spinnaker-hackathon/new-spin-contrib-manifest
