@@ -256,6 +256,27 @@ cp -R $TELEPRESENCE_ROOT/opt/spinnaker/config/ ~/.spinnaker
 	If Orca can't find Redis, make sure your Redis service container is running.
 
 
+## Create a new stage
+
+explanation of pipeline task
+deploy manifest stage, task
+task status
+
+create new stage
+orca core
+
+
+package com.netflix.spinnaker.orca.pipeline
+
+create class that implements StageDefinitionBuilder
+
+Code is in a
+[gist](https://gist.github.com/dogonthehorizon/805db48d7233c2eab5f8215ecc145ec9)
+
+
+
+
+
 
 
 [Spinnaker Operator]: https://github.com/armory/spinnaker-operator
