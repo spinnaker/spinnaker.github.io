@@ -22,7 +22,7 @@ Attendees are encouraged to use this environment for their hackathon projects as
 * [IntelliJ IDEA](https://www.jetbrains.com/idea/) Community Edition, which comes bundled with Gradle and Groovy
 * [Java Development Kit](https://adoptopenjdk.net/), 11
 * [Yarn](https://classic.yarnpkg.com/en/docs/install#mac-stable) for building and running Deck
-* [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) for managing your Kubernetes cluster
+* [kubectl] for managing your Kubernetes cluster
 * [Telepresence], a network proxy
 
 ## Save your Kubernetes config file
@@ -243,3 +243,4 @@ cp -R $TELEPRESENCE_ROOT/opt/spinnaker/config/ ~/.spinnaker
 [Spinnaker Operator]: https://github.com/armory/spinnaker-operator
 [Telepresence]: https://www.telepresence.io/
 [tpl]: https://github.com/spinnaker-hackathon/new-spin-contrib-manifest
+[kubectl]: https://kubernetes.io/docs/reference/kubectl/overview/
