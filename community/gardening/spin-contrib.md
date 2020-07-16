@@ -80,14 +80,35 @@ The session instructor creates a Kubernetes namespace for each registered attend
 
 ## Fork and clone Orca and Deck repositories
 
-Fork the repositories in the UI, then clone them to your local machine. Choose the release branch of these services so that we're working against the latest stable version:
+Fork the repositories in the UI, then clone them to your local machine. Checkout the release branch of these services so that we're working against the latest stable version:
 
 ```bash
-git clone --single-branch --branch release-1.21.x https://github.com/YOUR_USERNAME/orca.git
-git clone --single-branch --branch release-1.21.x https://github.com/YOUR_USERNAME/deck.git
+git clone git@github.com:<your-github-username>/orca.git
+git clone git@github.com:<your-github-username>/deck.git
+cd orca
+git checkout release-1.21.x
+cd ../deck
+git checkout release-1.21.x
 ```
 
 Import the Orca project into IntelliJ. **File** -> **Open**, select `orca/build.gradle`, and import as a new project. You can continue on with the following steps while IntelliJ imports the project.
+
+You can also build Orca using Gradle on the command line:
+
+```bash
+cd orca
+./gradlew
+```
+
+Build Deck via the command line:
+
+```bash
+cd deck
+yarn
+```
+
+If you can ignore the `gyp` not found error when you build Deck.
+
 
 ## Install Spinnaker
 
@@ -116,21 +137,19 @@ Save the file.
 Export your KUBECONFIG file and `kubectl apply` the `spinsvc.yaml` custom resource definition to install Spinnaker. You only have access to your namespace, so you do not need to include the `-n <namespace>` parameter.
 
 ```bash
-export KUBECONFIG=~/.kube/<kube-config-file-name>.yaml
-kubectl apply -f <spinnaker-service-file>.yaml
+kubectl --kubeconfig ~/.kube/<kube-config-file-name>.yaml apply -f <spinnaker-service-file>.yaml
 ```
 
 For example:
 
 ```bash
-export KUBECONFIG=~/.kube/garden.yaml
-kubectl apply -f spinsvc.yaml
+kubectl --kubeconfig ~/.kube/<kube-config-file-name>.yaml apply -f spinsvc.yaml
 ```
 
 Check the status of the Spinnaker pods:
 
 ```bash
- kubectl get pods
+ kubectl --kubeconfig ~/.kube/<kube-config-file-name>.yaml get pods
  ```
 
  You should see output similar to the following:
@@ -152,14 +171,13 @@ spin-rosco-79b55d5c99-zkq4w         0/1     ContainerCreating   0          22s
 In your current Terminal window, forward the Deck port:
 
 ```bash
-kubectl -n <your-namespace-name> port-forward svc/spin-deck 9000
+kubectl --kubeconfig ~/.kube/<kube-config-file-name>.yaml -n <your-namespace-name> port-forward svc/spin-deck 9000
 ```
 
 Open another Terminal session and forward the Gate port:
 
 ```bash
-export KUBECONFIG=~/.kube/<kube-config-file-name>.yaml
-kubectl -n <your-namespace-name> port-forward svc/spin-gate 8084
+kubectl --kubeconfig ~/.kube/<kube-config-file-name>.yaml -n <your-namespace-name> port-forward svc/spin-gate 8084
 ```
 
 ## Start Telepresence for the local Orca service
