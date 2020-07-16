@@ -16,7 +16,7 @@ First things first, to develop Spinnaker, you'll need a Spinnaker instance. To g
 
 * Install [Minnaker](https://github.com/armory/minnaker), a Spinnaker instance that runs in a Linux VM on your local machine
 * [Clone and install each Spinnaker service locally.](#classic-local-installation-method)
-* [Install Spinnaker to your Kubernetes cluster](#kubernetes-installation-methods), running in your cloud provider or private cloud of choice. Read more about the [Kubernetes & Docker method](#kubernetes-and-docker-method) below.
+* Install Spinnaker in your Kubernetes cluster, running in your cloud provider or private cloud of choice. Read more about the [Kubernetes & Docker method](#kubernetes-and-docker-method) below.
 
 ### Minnaker method
 
