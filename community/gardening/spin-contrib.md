@@ -143,7 +143,7 @@ kubectl --kubeconfig ~/.kube/<kube-config-file-name>.yaml apply -f <spinnaker-se
 For example:
 
 ```bash
-kubectl --kubeconfig ~/.kube/<kube-config-file-name>.yaml apply -f spinsvc.yaml
+kubectl --kubeconfig ~/.kube/garden.yaml apply -f spinsvc.yaml
 ```
 
 Check the status of the Spinnaker pods:
