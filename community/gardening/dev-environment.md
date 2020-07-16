@@ -4,27 +4,27 @@ title:  "Development Environments for Spinnaker Gardening Days"
 sidebar:
   nav: community
 ---
-What's the best environment Spinnaker development? How can you set up your workstation to debug a Spinnaker service?  It depends! Consider these constraints when choosing your strategy:
+What's the best environment for Spinnaker development? How can you set up your workstation to debug a Spinnaker service?  It depends! Consider these constraints when choosing your strategy:
 
-* __Locally available computing resources__: hosting Spinnaker services is memory intensive.
-* __Access and cost management for public clouds__: Spinnaker can be hosted in the cloud, where you'll pay for resources.
-* __Familiarity with Kubernetes__: you may use Kubernetes tools to manage your Spinnaker environment if you prefer.
+* __Locally available computing resources__: Hosting Spinnaker services is memory intensive.
+* __Access and cost management for public clouds__: Spinnaker can be hosted in the cloud, but you'll pay for resources.
+* __Familiarity with Kubernetes__: You can use Kubernetes tools to manage your Spinnaker environment.
 
 ## Install Spinnaker
 
-First things first, to develop Spinnaker, you'll need a Spinnaker instance. To get that, you have options:
+To develop Spinnaker, you'll need a Spinnaker instance. To get that, you have options:
 
-* Install [Minnaker](https://github.com/armory/minnaker), a Spinnaker instance that runs in a Linux VM on your local machine
-* [Clone and install each Spinnaker service locally.](#classic-local-installation-method)
-* Install Spinnaker in your Kubernetes cluster, running in your cloud provider or private cloud of choice. Read more about the [Kubernetes & Docker method](#kubernetes-and-docker-method) below.
+* Install [Minnaker](https://github.com/armory/minnaker), a Spinnaker instance that runs in a Linux VM on your local machine.
+* [Clone and install each Spinnaker service locally](#classic-local-installation-method).
+* Install Spinnaker in your Kubernetes cluster that runs in your cloud provider or private cloud of choice. Read more about the [Kubernetes & Docker method](#kubernetes-and-docker-method).
 
 ### Minnaker method
 
-If you're not sure which method to choose, we suggest using Minnaker. This simplifies installation steps and uses lightweight Kubernetes [(K3S)](https://k3s.io/) under the hood. Install in a local Ubuntu 18.04 VM.
+If you're not sure which method to choose, we suggest using [[Minnaker](https://github.com/armory/minnaker). This simplifies installation steps and uses lightweight Kubernetes [(K3S)](https://k3s.io/) under the hood. Install in a local Ubuntu 18.04 VM.
 
 The [Test a Pipeline Stage Plugin](/guides/developer/plugin-creators/deck-plugin/) guide contains instructions for setting up a local development environment with Minnaker running in a Multipass VM. This method does not require port-forwarding or setting up remote SSH.
 
-Alternately, you can watch <a href="https://youtu.be/xSZlWf9rUI4" target="_blank">Developing for Spinnaker With Minnaker (15m 26s)</a>. Learn how to install Minnaker, set up remote SSH, and connect to the local VM instance via local Spinnaker service configuration. Use kubectl port forwarding to connect a local clone of Orca to Redis and Front50 in Minnaker. Test and debug Orca by setting a breakpoint in the stage task and running the stage.
+Alternately, you can watch "Developing for Spinnaker With Minnaker (15m 26s)". Learn how to install Minnaker, set up remote SSH, and connect to the local VM instance through local Spinnaker service configuration. Use `kubectl` port forwarding to connect a local clone of Orca to Redis and Front50 in Minnaker. Test and debug Orca by setting a breakpoint in the stage task and running the stage.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/xSZlWf9rUI4" frameborder="0" allowfullscreen></iframe>
 
@@ -72,7 +72,7 @@ _The instructions for this method are in beta. Pull requests welcome!_
 
 2. Open a bash shell in the location where Halyard is installed.
   - If Halyard is running in Docker, run `docker exec -it halyard bash` to enter a shell.   
-3. Edit the Kubernetes block of your .hal/config with your namespace and kubeconfig file location to enable a Kubernetes install, as in this snippet:
+3. Edit the Kubernetes block of your `.hal/config` with your namespace and kubeconfig file location to enable a Kubernetes install:
   ```
   ...
   kubernetes:
@@ -97,9 +97,9 @@ _The instructions for this method are in beta. Pull requests welcome!_
     primaryAccount: kubernetes
       ...
   ```
-4. Port-forward the externally-hosted Spinnaker services to your local machine
+4. Port-forward the externally-hosted Spinnaker services to your local machine.
   - You may use [NGROK](https://ngrok.com/download)
-  - Or, try this Fish function: `pf-spinnaker` loops through all of the Spinnaker services in your Kubernetes namespaces and forwards their ports to your local machine. Try it:
+  - Or, try this Fish function: `pf-spinnaker`, which loops through all of the Spinnaker services in your Kubernetes namespaces and forwards their ports to your local machine. Try it:
   ```
   function pf-spinnaker
     set -l services (string split , -- \
