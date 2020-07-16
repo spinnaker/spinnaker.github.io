@@ -80,7 +80,7 @@ The session instructor creates a Kubernetes namespace for each registered attend
 
 ## Fork and clone Orca and Deck repositories
 
-Fork the repositories in the UI, then clone them to your local machine. Checkout the release branch of these services so that we're working against the latest stable version:
+Fork the repositories in the UI, then clone them to your local machine. Check out the release branch of these services so that we're working against the latest stable version:
 
 ```bash
 git clone git@github.com:<your-github-username>/orca.git
