@@ -7,14 +7,14 @@ sidebar:
 
 This page contains notes for the _New Spinnaker Contribution Walkthrough_ session. Register for the session on the Gardening Days [schedule](/community/gardening/schedule/).
 
-Registered attendees will receive credentials to access their own Kubernetes namespace on an AWS EKS cluster.
+Registered attendees will receive credentials to access their own Kubernetes namespace on an AWS EKS cluster for the duration of the event.
+Attendees are encouraged to use this environment for their hackathon projects as well.
 
 ## Session goals
 
-* Use Spinnaker Operator to install Spinnaker in your Kubernetes namespace
-* Configure [Telepresence]() to proxy traffic between Spinnaker running in EKS and services running on your workstation
-* Run Orca locally
-* Run Deck locally
+* Use [Spinnaker Operator] to install Spinnaker in your Kubernetes namespace
+* Combine tools like [Telepresence] and [kubectl] to modify service locally and interact with your remote cluster
+* Get hands on contribution experience by adding a new Pipeline Stage to Spinnaker
 
 ## Software
 
@@ -22,11 +22,12 @@ Registered attendees will receive credentials to access their own Kubernetes nam
 * [Java Development Kit](https://adoptopenjdk.net/), 11
 * [Yarn](https://classic.yarnpkg.com/en/docs/install#mac-stable) for building and running Deck
 * [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) for managing your Kubernetes cluster
-* [Telepresence](https://www.telepresence.io/), a network proxy
+* [Telepresence], a network proxy
 
 ## Save your Kubernetes config file
 
 The session instructor creates a Kubernetes namespace for each registered attendee and emails a a download link. Save this YAML file to your local `~./kube/` directory.
+You can call this anything you'd like, though a good name would be `garden.yaml`
 
 ## Install software
 
@@ -77,20 +78,25 @@ The session instructor creates a Kubernetes namespace for each registered attend
 
    * Windows [instructions](https://www.telepresence.io/reference/windows)
 
-## Clone Orca and Deck repositories
+## Fork and clone Orca and Deck repositories
+
+Fork the repositories in the UI, then clone them to your local machine. We will
+choose the release branch of these services so that we're working against the
+latest stable version.
 
 ```bash
-git clone --single-branch --branch release-1.21.x https://github.com/spinnaker/orca.git
-git clone --single-branch --branch release-1.21.x https://github.com/spinnaker/deck.git
+git clone --single-branch --branch release-1.21.x https://github.com/YOUR_USERNAME/orca.git
+git clone --single-branch --branch release-1.21.x https://github.com/YOUR_USERNAME/deck.git
 ```
 
 Import the Orca project into IntelliJ. **File** -> **Open**, select `orca/build.gradle`, and import as a new project. You can continue on with the following steps while IntelliJ imports the project.
 
 ## Install Spinnaker
 
-Download `SpinnakerService.yaml` from @TODO INSERT URL HERE. Update the last part of the s3 bucket name on L14 with your `namespace` name. You can find your `namespace` name on L10 of the Kubernetes config that you downloaded [earlier](#save-your-kubernetes-config-file).
+Create a repository for yourself based on the [template repository here][tpl].
+Update the last part of the s3 bucket name on L14 with your `namespace` name. You can find your `namespace` name on L10 of the Kubernetes config that you downloaded [earlier](#save-your-kubernetes-config-file).
 
-For example, if your `namespace` is "aimee", change `gardening-days-ffreire` to `gardening-days-aimee` in the `s3:bucket` section.
+For example, if your `namespace` is "aimee", change `gardening-days-fixme` to `gardening-days-aimee` in the `s3:bucket` section.
 
 ```yaml
 spec:
@@ -102,7 +108,7 @@ spec:
       persistentStorage:
         persistentStoreType: s3
         s3:
-          bucket: gardening-days-ffreire
+          bucket: gardening-days-fixme
           rootFolder: front50
 ```
 
@@ -224,3 +230,6 @@ cp -R $TELEPRESENCE_ROOT/opt/spinnaker/config/ ~/.spinnaker
 	```
 
 	If Orca can't find Redis, make sure your Redis service container is running.
+[Spinnaker Operator]: https://github.com/armory/spinnaker-operator
+[Telepresence]: https://www.telepresence.io/
+[tpl]: https://github.com/spinnaker-hackathon/new-spin-contrib-manifest
