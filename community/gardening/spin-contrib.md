@@ -107,7 +107,7 @@ cd deck
 yarn
 ```
 
-If you can ignore the `gyp` not found error when you build Deck.
+You can ignore the `gyp` not found error when you build Deck.
 
 
 ## Install Spinnaker
