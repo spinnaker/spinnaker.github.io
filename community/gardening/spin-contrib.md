@@ -197,7 +197,7 @@ Output:
 orca-local.yml orca.yml       spinnaker.yml
 ```
 
-Copy those files to your local `~./spinnaker` directory:
+Copy those files to your local `~/.spinnaker` directory:
 
 ```bash
 cp -R $TELEPRESENCE_ROOT/opt/spinnaker/config/ ~/.spinnaker
