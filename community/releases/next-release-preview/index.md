@@ -47,3 +47,11 @@ The above setting will have no effect, and Spinnaker will no longer append a
 suffix to job names. It is thus strongly recommended that 1.22 users who opt out
 update any necessary jobs and remove the setting before upgrading to Spinnaker
 1.23.
+
+### Navigation and Layout UI Update
+
+Spinnaker's UI has changed! An application's nested menus are now represented as a flat list on the left side of the browser window. The menu can also be collapsed into a condensed view. This allows for better utilization of screen real-estate, and support for any number of additional application pages. As plugin support continues to improve, we hope this refresh to the navigation will give you more flexibility within the UI to make Spinnaker your own. This update also includes changes to the overall layout and design of some application pages to take better advantage of larger screen sizes.
+
+This change should not introduce any interruptions to a vanilla install of `deck`. However, if you've already made navigational changes to your group's instance of `deck` or created custom banners/headers for your app, you may need to make updates. The pattern for creating new routes in the side nav can be observed in the feature's PR:
+
+https://github.com/spinnaker/deck/pull/8239
