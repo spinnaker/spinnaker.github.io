@@ -5,6 +5,8 @@ sidebar:
   nav: community
 ---
 
+{% include toc %}
+
 This page contains notes for the _New Spinnaker Contribution Walkthrough_ session. Register for the session on the Gardening Days [schedule](/community/gardening/schedule/).
 
 Registered attendees will receive credentials to access their own Kubernetes namespace on an AWS EKS cluster for the duration of the event.
@@ -24,10 +26,13 @@ Attendees are encouraged to use this environment for their hackathon projects as
 * [Yarn](https://classic.yarnpkg.com/en/docs/install#mac-stable) for building and running Deck
 * [kubectl] for managing your Kubernetes cluster
 * [Telepresence], a network proxy
+* Spinnaker 1.21.x, installed using [Spinnaker Operator]
 
 ## Save your Kubernetes config file
 
-The session instructor creates a Kubernetes namespace for each registered attendee and emails a a download link. Save this YAML file to your local `~./kube/` directory. You can name the file anything you'd like, but a good name would be `garden.yaml`.
+The session instructor creates a Kubernetes namespace on EKS for each registered attendee and emails a download link. Save this YAML file to your local `~./kube/` directory. You can name the file anything you'd like, but for this workshop we suggest `garden.yaml`.
+
+_Subsequent steps in this workshop refer to your `kubeconfig` file as `garden.yaml`._
 
 ## Install software
 
@@ -80,14 +85,35 @@ The session instructor creates a Kubernetes namespace for each registered attend
 
 ## Fork and clone Orca and Deck repositories
 
-Fork the repositories in the UI, then clone them to your local machine. Choose the release branch of these services so that we're working against the latest stable version:
+Fork the repositories in the UI, then clone them to your local machine. Check out the release branch of these services so that we're working against the latest stable version:
 
 ```bash
-git clone --single-branch --branch release-1.21.x https://github.com/YOUR_USERNAME/orca.git
-git clone --single-branch --branch release-1.21.x https://github.com/YOUR_USERNAME/deck.git
+git clone git@github.com:<your-github-username>/orca.git
+git clone git@github.com:<your-github-username>/deck.git
+cd orca
+git checkout release-1.21.x
+cd ../deck
+git checkout release-1.21.x
 ```
 
 Import the Orca project into IntelliJ. **File** -> **Open**, select `orca/build.gradle`, and import as a new project. You can continue on with the following steps while IntelliJ imports the project.
+
+You can also build Orca using Gradle on the command line:
+
+```bash
+cd orca
+./gradlew
+```
+
+Build Deck via the command line:
+
+```bash
+cd deck
+yarn
+```
+
+You can ignore the `gyp` not found error when you build Deck.
+
 
 ## Install Spinnaker
 
@@ -116,21 +142,19 @@ Save the file.
 Export your KUBECONFIG file and `kubectl apply` the `spinsvc.yaml` custom resource definition to install Spinnaker. You only have access to your namespace, so you do not need to include the `-n <namespace>` parameter.
 
 ```bash
-export KUBECONFIG=~/.kube/<kube-config-file-name>.yaml
-kubectl apply -f <spinnaker-service-file>.yaml
+kubectl --kubeconfig ~/.kube/<kube-config-file-name>.yaml apply -f <spinnaker-service-file>.yaml
 ```
 
 For example:
 
 ```bash
-export KUBECONFIG=~/.kube/garden.yaml
-kubectl apply -f spinsvc.yaml
+kubectl --kubeconfig ~/.kube/garden.yaml apply -f spinsvc.yaml
 ```
 
 Check the status of the Spinnaker pods:
 
 ```bash
- kubectl get pods
+ kubectl --kubeconfig ~/.kube/garden.yaml get pods
  ```
 
  You should see output similar to the following:
@@ -152,14 +176,13 @@ spin-rosco-79b55d5c99-zkq4w         0/1     ContainerCreating   0          22s
 In your current Terminal window, forward the Deck port:
 
 ```bash
-kubectl -n <your-namespace-name> port-forward svc/spin-deck 9000
+kubectl --kubeconfig ~/.kube/garden.yaml -n <your-namespace-name> port-forward svc/spin-deck 9000
 ```
 
 Open another Terminal session and forward the Gate port:
 
 ```bash
-export KUBECONFIG=~/.kube/<kube-config-file-name>.yaml
-kubectl -n <your-namespace-name> port-forward svc/spin-gate 8084
+kubectl --kubeconfig ~/.kube/garden.yaml -n <your-namespace-name> port-forward svc/spin-gate 8084
 ```
 
 ## Start Telepresence for the local Orca service
@@ -168,7 +191,7 @@ In a new Terminal session, change to the Orca directory and start Telepresence:
 
 ```
 cd <path-to-orca-clone>
-KUBECONFIG=~/.kube/<kube-config-file-name>.yaml telepresence --namespace <your-namespace-name> --swap-deployment spin-orca --env-file .env-telepresence
+KUBECONFIG=~/.kube/garden.yaml telepresence --namespace <your-namespace-name> --swap-deployment spin-orca --env-file .env-telepresence
 ```
 
 You may see a permission error on OSX similar to:
@@ -235,7 +258,26 @@ cp -R $TELEPRESENCE_ROOT/opt/spinnaker/config/ ~/.spinnaker
 	INFO 18111 --- [main] com.netflix.spinnaker.orca.Main: [] Started Main in 11.123 seconds (JVM running for 11.933)
 	```
 
-	If Orca can't find Redis, make sure your Redis service container is running.
+### Troubleshooting
+
+If you see errors about `fiat`:
+
+* Make sure you have `orca-local.yml`, `orca.yml`, and `spinnaker.yml` in your local `.spinnaker` directory. If those files are missing, either you missed the [step](#copy-spinnaker-configs-to-your-local-directory) to copy those files to your local `.spinnaker` directory **or** Telepresence started but didn't have permission to mount a local volume. If you are on OSX and granted permission while Telepresence was running, you need to restart Telepresence and then copy the config files.
+
+If you see errors about Redis:
+
+* Make sure Telepresence has started without permission errors
+* Make sure the Redis container is running
+
+   `kubectl --kubeconfig ~/.kube/garden.yaml get pods`
+
+## Create a new stage
+
+You can access code for this section in this
+[gist](https://gist.github.com/dogonthehorizon/805db48d7233c2eab5f8215ecc145ec9)
+
+
+
 
 
 
