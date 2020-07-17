@@ -176,13 +176,13 @@ spin-rosco-79b55d5c99-zkq4w         0/1     ContainerCreating   0          22s
 In your current Terminal window, forward the Deck port:
 
 ```bash
-kubectl --kubeconfig ~/.kube/garden.yaml -n <your-namespace-name> port-forward svc/spin-deck 9000
+kubectl --kubeconfig ~/.kube/garden.yaml port-forward svc/spin-deck 9000
 ```
 
 Open another Terminal session and forward the Gate port:
 
 ```bash
-kubectl --kubeconfig ~/.kube/garden.yaml -n <your-namespace-name> port-forward svc/spin-gate 8084
+kubectl --kubeconfig ~/.kube/garden.yaml port-forward svc/spin-gate 8084
 ```
 
 ## Start Telepresence for the local Orca service
@@ -191,7 +191,7 @@ In a new Terminal session, change to the Orca directory and start Telepresence:
 
 ```
 cd <path-to-orca-clone>
-KUBECONFIG=~/.kube/garden.yaml telepresence --namespace <your-namespace-name> --swap-deployment spin-orca --env-file .env-telepresence
+KUBECONFIG=~/.kube/garden.yaml telepresence --swap-deployment spin-orca --env-file .env-telepresence
 ```
 
 You may see a permission error on OSX similar to:
