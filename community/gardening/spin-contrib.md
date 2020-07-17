@@ -220,7 +220,7 @@ cp -R $TELEPRESENCE_ROOT/opt/spinnaker/config/ ~/.spinnaker
 
 		* Select **Enable EnvFile**
 		* Click the **+** sign
-		* **Add...* and select **.env file**
+		* **Add...** and select **.env file**
 		* Add `.env-telepresence`
 
         ![Add telepresence file](/assets/images/community/gardening/env-file.png)
