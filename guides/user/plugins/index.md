@@ -5,6 +5,7 @@ sidebar:
   nav: guides
 redirect_from:
   - /guides/user/plugin-users/
+  - /guides/user/plugins/user-guide
 ---
 
 {% include alpha version="1.20.6" %}
