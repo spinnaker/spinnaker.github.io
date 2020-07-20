@@ -271,6 +271,10 @@ If you see errors about Redis:
 
    `kubectl --kubeconfig ~/.kube/garden.yaml get pods`
 
+If you can't configure to run Orca on IntelliJ:
+
+* You can try closing the project, delete any `*.iml` and `.idea` files, and then select File -> Open and select `settings.gradle` file of the project (Orca directory)
+
 ## Create a new stage
 
 You can access code for this section in this
