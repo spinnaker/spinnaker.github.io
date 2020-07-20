@@ -139,7 +139,7 @@ For example, if your `namespace` is "aimee", change `gardening-days-FIXME` to `g
 
 Save the file.
 
-Export your KUBECONFIG file and `kubectl apply` the `spinsvc.yaml` custom resource definition to install Spinnaker. You only have access to your namespace, so you do not need to include the `-n <namespace>` parameter.
+Export your KUBECONFIG file and `kubectl apply` the `spinsvc.yaml` custom resource definition to install Spinnaker. _You only have access to your namespace, so you do not need to include the `-n <namespace>` parameter._
 
 ```bash
 kubectl --kubeconfig ~/.kube/<kube-config-file-name>.yaml apply -f <spinnaker-service-file>.yaml
