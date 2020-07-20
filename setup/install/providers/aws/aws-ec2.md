@@ -11,7 +11,7 @@ sidebar:
 > worked on. In the meantime, please use the following
 > [AWS tutorial: Continuous Delivery using Spinnaker on Amazon EKS](https://aws.amazon.com/blogs/opensource/continuous-delivery-spinnaker-amazon-eks/).
 
-The AWS EC2 Provider is used if you want to manage EC2 Instances via Spinnaker. Refer to the AWS Cloud Provider [Overview to](https://spinnaker.io/setup/install/providers/aws/) understand how AWS IAM must be set up for the AWS EC2 provider to work.
+Use the AWS EC2 Provider if you want to manage EC2 Instances via Spinnaker. Refer to the [AWS Cloud Provider Overview](https://spinnaker.io/setup/install/providers/aws/) to understand how AWS IAM must be set up for the AWS EC2 provider to work.
 
 In [AWS](https://aws.amazon.com/){:target="\_blank"}, an [__Account__](/concepts/providers/#accounts)
 maps to a credential able to authenticate against a given [AWS
