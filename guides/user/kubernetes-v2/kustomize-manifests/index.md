@@ -113,7 +113,7 @@ As of 1.17, [git/repo](/reference/artifacts/types/git-repo/) is the only support
 
 Pipelines configured to use Kustomize in 1.16 will continue to work in 1.17. However, editing a `Bake (Manifest)` stage in 1.17, which was originally created in 1.16, requires you to update the `Bake (Manifest) Configuration` to use the `git/repo` artifact type.  To do so, use the following instructions:
 
-1. Click on the `Account` dropdown and select a configured `git/repo` account.  If none appear, make sure you have [configured a git/repo account](/reference/artifacts/types/git-repo/#configuration)  
+1. Click on the `Account` dropdown and select a configured `git/repo` account.  If none appear, make sure you have [configured a git/repo account](/reference/artifacts/types/git-repo)  
 __Note:__ You should click and select a `git/repo` account even if one already appears in the UI prior to your doing so. This will force the underlying JSON to be updated to use the new artifact. 
 
 1. Update the URL. This should be the location of the git repository.  
