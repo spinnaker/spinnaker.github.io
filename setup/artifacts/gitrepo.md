@@ -39,7 +39,7 @@ echo $TOKEN > $TOKEN_FILE
 
 Add an artifact account:
 
-```bash
+   ```bash
 hal config artifact gitrepo account add $ARTIFACT_ACCOUNT_NAME \
     --token-file $TOKEN_FILE
 ```
