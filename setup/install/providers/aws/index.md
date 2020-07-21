@@ -7,8 +7,8 @@ sidebar:
 
 {% include toc %}
 
-### AWS Compute with the Spinnaker AWS Cloud Provider
-The AWS Cloud Provider allows Spinnaker to release artifacts in some of the [AWS compute services](https://aws.amazon.com/products/compute/) with Spinnaker.
+## AWS Compute with the Spinnaker AWS Cloud Provider
+The AWS Cloud Provider allows Spinnaker to release artifacts in some of the [AWS compute services](https://aws.amazon.com/products/compute/)
 
 There are several ways to configure the Amazon Web Services (AWS) Cloud Provider. Choose one or more based on your requirements:
 
@@ -17,7 +17,8 @@ There are several ways to configure the Amazon Web Services (AWS) Cloud Provider
 * [Amazon Elastic Kubernetes Service (EKS)](/setup/install/providers/kubernetes-v2/aws-eks/) - Use this option, if you want to manage containers in [AWS EKS](https://aws.amazon.com/eks/). This option uses [Kubernetes V2 (manifest based) Clouddriver](/setup/install/providers/kubernetes-v2)
 * [Amazon Lambda (Lambda)](https://aws.amazon.com/blogs/opensource/how-to-integrate-aws-lambda-with-spinnaker/) - Use this option, if you want to enable [AWS Lambda](https://aws.amazon.com/lambda/) support 
 
-### Concepts
+## AWS IAM Permissions with the AWS Cloud Provider
+AWS controls the permissions with AWS IAM Identity Access Management. Spinnaker functionality with AWS requires an AWS IAM structure to be ready in the AWS target accounts.
 
 There are two types of Accounts in the Spinnaker AWS provider: __AWS Managing__ account and __AWS Managed__ account(s).
 
