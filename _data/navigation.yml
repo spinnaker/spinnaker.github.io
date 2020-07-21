@@ -124,6 +124,8 @@ setup:
             url: /setup/artifacts/github/
           - title: GitLab
             url: /setup/artifacts/gitlab/
+          - title: Git Repo
+            url: /setup/artifacts/gitrepo/
           - title: Google Cloud Storage
             url: /setup/artifacts/gcs/
           - title: HTTP
