@@ -12,7 +12,7 @@ Kustomize is a tool that lets you create customized Kubernetes deployments witho
 To learn more about Kustomize and how to define a `kustomization.yaml` file, see the following links:
 
 * [Kubernetes SIG for Kustomize](https://github.com/kubernetes-sigs/kustomize)
-* [Documentation for Kustomize](https://github.com/kubernetes-sigs/kustomize/tree/master/docs)
+* [Documentation for Kustomize](https://kubernetes-sigs.github.io/kustomize/)
 * [Example Kustomization](https://github.com/kubernetes-sigs/kustomize/tree/master/examples/wordpress)
 
 In the context of Spinnaker, Kustomize lets you generate a custom manifest, which can be deployed in a downstream `Deploy (Manifest)` stage. This manifest is tailored to your requirements and built on existing configurations.
