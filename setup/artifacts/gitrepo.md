@@ -7,7 +7,7 @@ sidebar:
 
 {% include toc %}
 
-This shows how to configure a Git Repo artifact account so Spinnaker can use entire repositories as a single artifact.
+This shows how to configure a Git Repo artifact account so Spinnaker can use an entire repository as a single artifact.
 
 ## Prerequisites
 
