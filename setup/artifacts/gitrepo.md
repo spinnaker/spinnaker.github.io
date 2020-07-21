@@ -47,7 +47,7 @@ hal config artifact gitrepo account add $ARTIFACT_ACCOUNT_NAME \
 
 ### User-Password Auth
 
-The username-password file contents should be in the format:
+1. Create a username-password file, with contents in the following format:
 
  ```
  <username>:<password>
