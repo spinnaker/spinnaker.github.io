@@ -44,6 +44,15 @@ You need to set the `spinnaker.baseUrl` configuration value which is used by spi
 
 Email in spinnaker is provided by [Spring Boot Mail
 starter](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-email.html){:target="\_blank"}.
+
+The settings for some popular email providers are listed below:
+| Email Provider | SMTP username | SMTP password | SMTP server address | SMTP port (TLS) | SMTP port (SSL) | SMTP TLS/SSL required |
+| ------ | ------ | ------ | ------ | ------ | ------ | ------ |
+| Gsuite/Gmail | Your email address | Your email password | smtp.gmail.com | 587 | 465 | yes |
+| Yahoo | Your email address| Your email password | smtp.mail.yahoo.com | 587 | 465 | yes |
+| Hotmail/live | Your email address| Your email password | smtp.live.com | 587 | - | yes |
+| Outlook | Your email address| Your email password | smtp-mail.outlook.com | 587 | 25 | yes |
+
 The following is an example of using hotmail to send notifications.
 
 in echo.yml
