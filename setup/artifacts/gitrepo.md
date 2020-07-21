@@ -37,7 +37,7 @@ Choose to set up either token, user-password or ssh key auth below.
    echo $TOKEN > $TOKEN_FILE
 ```
 
-Add an artifact account:
+1. Add an artifact account:
 
    ```bash
    hal config artifact gitrepo account add $ARTIFACT_ACCOUNT_NAME \
