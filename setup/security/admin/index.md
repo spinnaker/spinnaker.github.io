@@ -25,10 +25,9 @@ TBD
 In the Fiat config file, add the following:
 
 ```yaml
-fiat:
-  admin:
-    roles:
-      - devops-admin
+admin:
+  roles:
+    - devops-admin
 ```
 
 > For installations managed by Halyard, the file should be located in the following path
