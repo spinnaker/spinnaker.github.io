@@ -260,16 +260,21 @@ cp -R $TELEPRESENCE_ROOT/opt/spinnaker/config/ ~/.spinnaker
 
 ### Troubleshooting
 
-If you see errors about `fiat`:
+If you can't configure Orca to run in IntelliJ:
+
+* You can try closing the project and deleting any `*.iml` and `.idea` files. Then select  **File** -> **Open** and select the `settings.gradle` file of the project (`orca` directory)
+
+If you see errors about `fiat` when you run Orca:
 
 * Make sure you have `orca-local.yml`, `orca.yml`, and `spinnaker.yml` in your local `.spinnaker` directory. If those files are missing, either you missed the [step](#copy-spinnaker-configs-to-your-local-directory) to copy those files to your local `.spinnaker` directory **or** Telepresence started but didn't have permission to mount a local volume. If you are on OSX and granted permission while Telepresence was running, you need to restart Telepresence and then copy the config files.
 
-If you see errors about Redis:
+If you see errors about Redis when you run Orca:
 
 * Make sure Telepresence has started without permission errors
 * Make sure the Redis container is running
 
    `kubectl --kubeconfig ~/.kube/garden.yaml get pods`
+
 
 ## Create a new stage
 
