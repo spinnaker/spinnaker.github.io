@@ -31,7 +31,7 @@ Choose to set up either token, user-password or ssh key auth below.
 
 1. Generate an access token for your Git provider (eg, [GitHub](https://github.com/settings/tokens){:target="\_blank"} or [GitLab](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html){:target="\_blank"}). The token requires the __repo__ scope.
 
-Place the token in a file (`$TOKEN_FILE`) readable by Halyard:
+1. Place the token in a file (`$TOKEN_FILE`) readable by Halyard:
 
 ```bash
 echo $TOKEN > $TOKEN_FILE
