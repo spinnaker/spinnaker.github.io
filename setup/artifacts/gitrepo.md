@@ -34,7 +34,7 @@ Choose to set up either token, user-password or ssh key auth below.
 1. Place the token in a file (`$TOKEN_FILE`) readable by Halyard:
 
 ```bash
-echo $TOKEN > $TOKEN_FILE
+   echo $TOKEN > $TOKEN_FILE
 ```
 
 Add an artifact account:
