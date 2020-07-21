@@ -57,7 +57,7 @@ Choose to set up either token, user-password or ssh key auth below.
 
    ```bash
    hal config artifact gitrepo account add $ARTIFACT_ACCOUNT_NAME \
-    ----username-password-file $PASSWORD_FILE
+    --username-password-file $PASSWORD_FILE
    ```
 
 
