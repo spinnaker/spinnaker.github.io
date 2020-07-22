@@ -54,6 +54,8 @@ Spinnaker environment:
 
 ## Add a plugin repository using Halyard
 
+_Note: Your plugins.json and repository.json files must be in a location that Spinnaker can access. Token authentication to private repositories is not supported. Consider storing your plugins and repository files in an AWS S3 bucket (or similar) instead of a private repository._
+
 When you configure a repository, you tell Spinnaker where to find the `plugins.json` file that defines the plugins you want to use.  Each plugin repository entry in Spinnaker consists of a unique name and a URL.
 
 If you want a repository to point to a single `plugins.json` file, you add it like this:
