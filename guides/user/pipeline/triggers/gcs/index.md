@@ -120,7 +120,7 @@ run our pipeline.
 
 Next, we must configure the trigger: 
 
-* __Type:__ Pub/Sub
+* __Type__: Pub/Sub
 * __Pub/Sub System Type:__ Google
 * __Subscription Name:__ Depends on what you've configured in your Pub/Sub
   configuration using Halyard
@@ -145,6 +145,5 @@ Next, we must configure the trigger:
 If you upload a file to a path matching your configured __Object path__,
 the pipeline should execute. If it doesn't, you can start by checking the logs
 in the __Echo__ service.
-
 
 
