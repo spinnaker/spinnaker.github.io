@@ -13,7 +13,7 @@ sidebar:
 
 Use the AWS EC2 Provider if you want to manage EC2 Instances via Spinnaker. Refer to the [AWS Cloud Provider Overview](https://spinnaker.io/setup/install/providers/aws/) to understand how AWS IAM must be set up with the Spinnaker AWS EC2 provider.
 
-Spinnaker will use an [AWS IAM structure](https://aws.amazon.com/iam/) of users, roles, policies, etc to access AWS services and resources securely. There are 3 options to set up the AWS IAM structure
+Spinnaker will use an [AWS IAM structure](https://aws.amazon.com/iam/) of users, roles, policies, and so on, to access AWS services and resources securely. There are 3 options to set up the AWS IAM structure
 
 1. AWS CloudFormation templates deployed with the CloudFormation Console
 2. AWS CloudFormation templates deployed with AWS CLI
