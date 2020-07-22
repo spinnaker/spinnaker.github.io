@@ -1,8 +1,8 @@
 ---
 layout: home
 conference_ad_row:
-  title: Don't miss V2 of Spinnaker Gardening Days, your open source hackathon
-  excerpt: "[Register now](https://go.armory.io/gardening) to join Spinnaker contributors on July 16-23 to learn and build. The buzz around our inaugural hackathon brought the community together, so we're launching V2 as a weeklong event with team placement and project matching support, SIG projects, free compute from AWS, a global-friendly schedule, and much more. All are welcome! Automate your SDLC and extend the ecosystem with us."
+  title: Automate your SDLC at Gardening Days, our open source hackathon
+  excerpt: "[Register now](https://go.armory.io/gardening) to join Spinnaker contributors on July 16-23 to learn and build. Contribute when you can all week long and earn prizes. Sign up, and you'll be matched with a team based on skill and interest. Along with [individual rewards](/community/gardening/what-to-hack/), teams will demo projects to compete for prize packages awarded to [challenge-winning](/community/gardening/hack-logistics/#hackathon-challenges) teams and runners-up. Enjoy free compute from AWS, SIG projects in Security, Ops, and more, and a global-friendly schedule. Everyone's welcome to extend the ecosystem with us. [Learn more](/community/gardening/)."
   image_path: assets/images/Gardening2.png
   alt: "Spinnaker Gardening Days Logo"
 slack_row:
@@ -83,7 +83,7 @@ notifications_feature:
   content: "Set up event notifications for email, Slack, HipChat, or SMS (via Twilio)."
 access_control_feature:
   title: Role-based Access Control
-  content: "Restrict access to projects or accounts by hooking into your internal authentication system using OAuth, SAML, LDAP, X.509 certs, Google groups, Azure groups, or GitHub teams."
+  content: "Restrict access to projects or accounts by hooking into your internal authentication system using OAuth, SAML, LDAP, X.509 certs, Google groups, Azure groups, or GitHub Organizations."
 manual_judgments_feature:
   title: Manual Judgments
   content: "Require a manual approval prior to releasing an update with a manual judgement stage."

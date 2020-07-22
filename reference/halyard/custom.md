@@ -124,7 +124,7 @@ At a high level, the configurable items inside the Kubernetes service settings a
 | `deploymentStrategy` | Defines either `RollingUpdate` or `Recreate` deployment strategy, including setting `MaxSurge` and `MaxUnavailable` See [Deployment Strategy](#deployment-strategy) below. |
 | `imagePullSecrets` | Define secrets to use to pull a custom artifact when using an artifactId to swap out docker image. More details can be found in the [Image Pull Secrets section](#imagepullsecrets). |
 | `nodePort` | When using a serviceType of NodePort, this provides the NodePort value. |
-| `nodeSelector` | Provide a list of `nodeSelector` key-value pairs to add to the pod specification. See [Node Selector](#nodeselector) below. |
+| `nodeSelectors` | Provide a list of `nodeSelectors` key-value pairs to add to the pod specification. See [Node Selectors](#nodeselectors) below. |
 | `podAnnotations` | Provide a list of annotations to put on the deployed pods. See [Annotations and Labels](#podannotations-podlabels-and-servicelabels) below. |
 | `podLabels` |  Provide a list of labels to put on the deployed pods. See [Annotations and Labels](#podannotations-podlabels-and-servicelabels) below. |
 | `securityContext` | Set the securityContext that the Spinnaker services should run using in Kubernetes |
@@ -163,13 +163,13 @@ kubernetes:
 
 These are all optional ways to control what metadata elements exist on the resources deployed by Halyard. For additional information about how these can be used, you can look at the [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) or [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) pages from Kubernetes.
 
-### nodeSelector
+### nodeSelectors
 
 Node selector annotations will put out `nodeSelector` values in the Pod specification. They generally follow a similar syntax to the annotations and labels. For example:
 
 ```
 kubernetes:
-  nodeSelector:
+  nodeSelectors:
      exampleNodeKey: exampleNodeValue
 ```
 
