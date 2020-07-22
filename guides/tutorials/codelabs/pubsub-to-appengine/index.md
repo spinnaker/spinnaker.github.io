@@ -41,7 +41,7 @@ $ gsutil mb -p $PROJECT_ID $BUCKET_NAME
 
 ```
 TOPIC_NAME=<topic>
-SUBSCRIPTION_NAME=<subscription>`
+SUBSCRIPTION_NAME=<subscription>
 ```
 
 3. Create the GCS Pub/Sub notification:
@@ -50,7 +50,7 @@ SUBSCRIPTION_NAME=<subscription>`
 4. Verify with `gsutil notification list $BUCKET_NAME`.
 
 5. Create a pull subscription:
-`gcloud beta pubsub subscriptions create $SUBSCRIPTION_NAME --topic $TOPIC_NAME`.
+`gcloud pubsub subscriptions create $SUBSCRIPTION_NAME --topic $TOPIC_NAME`.
 
 ## Configure and deploy your Spinnaker instance
 
@@ -90,8 +90,7 @@ We'll need this service account later, so keep these environment variables handy
 
 First, configure your GCS artifact provider.
 
-1. Enable artifiact support:
-`hal config features edit --artifacts true`.
+1. Enable [artifact support](/reference/artifacts-with-artifactsrewrite//#enabling-artifact-support).
 
 2. Enable the GCS artifact provider:
 `hal config artifact gcs enable`
@@ -107,7 +106,7 @@ Now configure Spinnaker to receive messages from your Google Cloud Pub/Sub subsc
 `hal config pubsub google enable`
 
 2. Add your subscription to Google Pub/Sub:
-`hal config pubsub google subscription add --project $PROJECT_ID --json-path $SERVICE_ACCOUNT_DEST --subscription-name $SUBSCRIPTION_NAME --template-path $TEMPLATE_PATH my-gcs-subscription --message-format GCS`
+`hal config pubsub google subscription add --project $PROJECT_ID --json-path $SERVICE_ACCOUNT_DEST --subscription-name $SUBSCRIPTION_NAME --message-format GCS my-gcs-subscription`
 
 ### Deploy Spinnaker with Halyard
 

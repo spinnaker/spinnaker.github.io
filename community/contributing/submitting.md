@@ -17,24 +17,30 @@ issue](https://github.com/spinnaker/spinnaker/issues/new), ping the [#dev
 channel](https://spinnakerteam.slack.com/messages/C0DPVDMQE/) in slack and
 discuss your ideas before implementing them.
 
-It's possible that we'll encourage you to write a "design doc" if your change
-is large or impactful enough. There are no formal requirements, but we
-encourage you to discuss the following points:
+It's possible that we'll encourage you to write an RFC if your change is large
+or impactful enough. There is an [RFC
+template](https://github.com/spinnaker/governance/blob/master/rfc/.template.md)
+to use for this. There are also several [already-submitted
+RFCs](https://github.com/spinnaker/governance/tree/master/rfc) you can use for
+reference.
 
-* Why this change is necessary, and what problem(s) it solves.
-* What alternatives you considered.
-* How it will integrate with other Spinnaker features.
-* A rough, technical plan of the work required.
-* What integration testing you think is necessary.
-* (Optional) Implementation milestones you plan to hit.
-
-Once your design doc is ready, the community will review it and leave feedback.
+When your RFC is ready, add it to [the `spinnaker/governance/rfc`
+directory](https://github.com/spinnaker/governance/tree/master/rfc) by sending a
+pull request. Members of the community will review it.
 
 ## When you initiate a Pull Request from Github
 
 * Provide a descriptive title for your changes.
 * Add inline code comments to changes that might not be obvious.
-* Squash your commits when you first submit your PR, and again when it's ready to be merged. It's much easier to review incremental changes to feedback when the commits are kept separate.
+* Squash your commits into logically reviewable chunks when you first submit
+  your PR. Address feedback in follow-up (unsquashed) commits. It's much easier
+  to review incremental changes to feedback when the commits are kept separate.
+* All pull requests should get reviewed by at least one other [member of the
+  Spinnaker organization](https://github.com/orgs/spinnaker/people) before
+  merging. (While some members of the organization have access to merge without
+  a review, this should *only* be done in an emergency or when merging a large
+  series of dependency bumps across repositories.)
+* Squash your commits when merging to the branch.
 
 ## Commit message conventions
 

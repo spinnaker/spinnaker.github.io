@@ -60,8 +60,8 @@ You can define *Clusters*, which are logical groupings of Server Groups in
 Spinnaker.
 
 > **Note:** cluster, here, does not map to a Kubernetes cluster. It's merely a
-> collection Server Groups, irrespective of any Kubernetes clusters that might
-be included in your underlying architecture.
+> collection of Server Groups, irrespective of any Kubernetes clusters that might
+> be included in your underlying architecture.
 
 ### Server Group
 
@@ -95,19 +95,23 @@ from stage to stage along the pipeline.
 You can start a pipeline manually, or you can configure it to be automatically
 triggered by an event, such as a Jenkins job completing, a new Docker image appearing in your registry, a CRON schedule, or a stage in another pipeline.
 
-You can configure the pipeline to emit notifications, by email, SMS or HipChat,
+You can configure the pipeline to emit notifications, by email, Slack, or SMS,
 to interested parties at various points during pipeline execution (such as on
 pipeline start/complete/fail).
 
 ### Stage
 
-A *Stage* in Spinnaker is an atomic building block for a pipeline, describing an
-action that the pipeline will perform. You can sequence
-[stages](/reference/pipeline/stages/) in a Pipeline in any order, though some
+A *Stage* in Spinnaker is a collection of sequential Tasks and composed Stages that
+describe a higher-level action the Pipeline will perform either linearly or in parallel.
+You can sequence [stages](/reference/pipeline/stages/) in a Pipeline in any order, though some
 stage sequences may be more common than others. Spinnaker provides a number of
 stages such as Deploy, Resize, Disable, Manual Judgment, and many more. You can
 see the full list of stages and read about implementation details for each
 provider in the [Reference](/reference/providers) section.
+
+### Task
+
+A *Task* in Spinnaker is an automatic function to perform.
 
 ### Deployment strategies
 

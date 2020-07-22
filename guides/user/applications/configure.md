@@ -35,12 +35,11 @@ activity. These notifications are optional.
 
 1. Select the notification medium:
    * email
-   * HipChat
    * SMS
+   * Slack
 
 1. Provide the information for the type you chose:
    * email address
-   * HipChat room
    * Phone number
 
 1. Choose each pipeline event that will trigger this notification:

@@ -11,13 +11,8 @@ This is the reference documentation for the metrics reported by Spinnaker
 microservices. It is intended for operators who need to monitor the services
 but cannot use the monitoring-daemon. If you're looking on instructions for
 how to install or setup monitoring, checkout the
-[setup instructions](/setup/monitoring/).
-
-## Enabling monitoring
-
-The monitoring endpoint, `/spectator/metrics`, is not available unless
-monitoring is enabled, which it is by default. Monitoring is enabled in
-the microservices using the Halyard command **TBD**.
+[Enable Monitoring](/setup/monitoring/) section in the
+[Spinnaker Setup Guide](/setup/).
 
 
 ## Metrics overview

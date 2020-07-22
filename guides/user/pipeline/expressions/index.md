@@ -22,6 +22,9 @@ This guide explains how and where to use expressions, and provides some examples
 of what you can do with them. For a list of available functions, see the
 [reference guide](/reference/pipeline/expressions/).
 
+> Note: Pipeline expression syntax is based on [Spring Expression Language
+> (SpEL)](https://docs.spring.io/spring/docs/current/spring-framework-reference/html/expressions.html).
+
 ## What does a pipeline expression look like?
 
 A pipeline expression is made up of `$` followed by opening/closing brackets:
@@ -51,10 +54,13 @@ be evaluated.
 ### Where can I use pipeline expressions?
 
 You can use pipeline expressions any place in the UI where you can enter
-free-form text, with the exception of the pipeline **Configuration** stage. If
-you want to set the value of a field using a pipeline expression but there is no
-text box available, you can use the [Edit as
-JSON](/guides/user/pipeline/managing-pipelines/#edit-a-pipeline-as-JSON)
+free-form text, with the exception of the pipeline **Configuration** stage.
+However, expressions can be used with Expected Artifacts, just enable "Use
+Default Artifact" and write the expression in the Object path.
+
+If you want to set the value of a field using a pipeline expression but there is
+no text box available, you can use the [Edit as
+JSON](/guides/user/pipeline/managing-pipelines/#edit-a-pipeline-as-json)
 pipeline feature.
 
 ### When are pipeline expressions evaluated?
@@ -219,6 +225,10 @@ curl http://api.my.spinnaker/pipelines/$PIPELINE_ID/evaluateExpression \
        --data '${ #stage("Deploy").status.toString() }'
 ```
 
+If you've [enabled authz](/setup/security/authorization/) on Spinnaker, you can include your session cookie from your
+ browser into `curl`.
+`-H 'cookie: SESSION=<INSERT_SESSION_ID_FROM_BROWSER_HERE>'`
+
 This example outputs the status of your Deploy stage:
 
 ```
@@ -230,12 +240,12 @@ For example, if you forget the closing bracket in the example above, it outputs
 the following:
 
 ```
-{  
+{
   "detail":
-    {  
+    {
       "{ #stage(\"Deploy\").status.toString() ":
-        [  
-          {  
+        [
+          {
             "description":
               "Failed to evaluate [expression] Expression
               [{ #stage( #root.execution, \"Deploy\").status.toString() ]
@@ -274,8 +284,9 @@ Each stage has a _Conditional on Expression_ checkbox in the _Execution Options_
 section of its configuration. If you select _Conditional on Expression_ and
 enter an expression, the stage only runs if the expression evaluates to true.
 
-For example, if you input the expression `${trigger["dryRun"] == false}`, the
-stage will be skipped during dry runs.
+For example, if you input the expression `trigger["dryRun"] == false`, the
+stage will be skipped during dry runs.  Note: expressions in this field do not
+need to be wrapped in `${}`.
 
 ![](images/conditional-on-expression.png)
 

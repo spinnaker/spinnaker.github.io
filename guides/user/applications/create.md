@@ -26,35 +26,16 @@ applications available, the first thing you're going to do is create one.
 
 1. Provide the application attributes in the **New Application** dialog.
 
-   * Provide a **Name**
-
-     This name can't be changed later.
-
-   * **Owner Email** is your email address, or that of someone else who will own
-   this application.
-
-   * **Repo Type** tells Spinnaker where to find your repository.
-
-   * **Description** can be anything you want, but should help others understand
-   what this application is for.
-
-   * **Instance Health** tells Spinnaker how to assess the health of the instance
-   you're deploying to.
-
-     - **Consider only cloud provider...** if activated, tells Spinnaker to rely
-     only on the machine itself to report its health. This is the easier option,
-     and is recommended for development. If not selected, Spinnaker uses the
-     health provider configured in your load balancer. This is a more thorough
-     check and is recommended for production.
-
-     - **Show health override** lets you choose the health check separately for
-     each task.
-
-   * The **Instance Port** gives the default port number, on the deployed instance,
-   that Spinnaker will use when constructing links on the instance's detail view.
-
-   * **Enable restarting running pipelines**, if selected, lets you restart stages
-   while the pipeline is running. *Not recommended*.
+   | Field | Required | Description |
+   | --- | --- | --- |
+   | Name  | Yes | A unique name to identify this application. |
+   | Owner Email | Yes | The email address of the owner of this application, within your installation of Spinnaker. |
+   | Repo type | No | The platform hosting the code repository for this application. Stash, Bitbucket, or GitHub. |
+   | Description | No | Use this text field to describe the application, if necessary. |
+   | Consider only cloud provider health | Bool, default=no | If enabled, instance status as reported by the cloud provider is considered sufficient to determine task completion. When disabled, tasks need health status reported by some other health provider (load balancer, discovery service).|
+   | Show health override option | Bool, default=no | If enabled, users can toggle previous option per task. |
+   | Instance port | No | This field is used to generate links from Spinnaker instance details to a running instance. The instance port can be used or overridden for specific links configured for your application (via the Config screen). |
+   | Enable restarting running pipelines | Bool, default=no | If enabled, users can restart pipeline stages while a pipeline is still running. This behavior is not recommended. |
 
 1. Click **Create**.
 

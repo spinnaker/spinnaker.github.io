@@ -1,10 +1,15 @@
 ---
 layout: home
-summit_row:
-  title: "Come join us at the 2nd-annual Spinnaker Summit"
-  excerpt: "Oct. 8-9 in Seattle, WA"
-  image_path: assets/images/spinnaker_summit.png
-  alt: ""
+conference_ad_row:
+  title: Automate your SDLC at Gardening Days, our open source hackathon
+  excerpt: "[Register now](https://go.armory.io/gardening) to join Spinnaker contributors on July 16-23 to learn and build. Contribute when you can all week long and earn prizes. Sign up, and you'll be matched with a team based on skill and interest. Along with [individual rewards](/community/gardening/what-to-hack/), teams will demo projects to compete for prize packages awarded to [challenge-winning](/community/gardening/hack-logistics/#hackathon-challenges) teams and runners-up. Enjoy free compute from AWS, SIG projects in Security, Ops, and more, and a global-friendly schedule. Everyone's welcome to extend the ecosystem with us. [Learn more](/community/gardening/)."
+  image_path: assets/images/Gardening2.png
+  alt: "Spinnaker Gardening Days Logo"
+slack_row:
+  title: Join Spinnaker Slack
+  excerpt: "Visit [join.spinnaker.io](https://join.spinnaker.io) to get help on Spinnaker Slack, a place for the community to come together. Use this vibrant workspace to ask and answer questions, connect with other operators and users, discuss issues with SIGs, and learn about Spinnaker!"
+  image_path: assets/images/slack_logo.png
+  alt: "Join Spinnaker Slack"
 spinnaker_row:
   title: Spinnaker is an open source, multi-cloud continuous delivery platform for releasing software changes with high velocity and confidence.
   excerpt: "Created at Netflix, it has been battle-tested in production by hundreds of teams over millions of deployments. It combines a powerful and flexible pipeline management system with integrations to the major cloud providers."
@@ -12,7 +17,7 @@ spinnaker_row:
   alt: "Spinnaker Logo"
 multi_cloud_row:
   title: Multi-Cloud
-  excerpt: "Deploy across multiple cloud providers including AWS EC2, Kubernetes, Google Compute Engine, Google Kubernetes Engine, Google App Engine, Microsoft Azure, and Openstack, with Oracle Bare Metal and DC/OS coming soon."
+  excerpt: "Deploy across multiple cloud providers including AWS EC2, Kubernetes, Google Compute Engine, Google Kubernetes Engine, Google App Engine, Microsoft Azure, Openstack, Cloud Foundry, and Oracle Cloud Infrastructure, with DC/OS coming soon."
   image_path: assets/images/cloud.svg
   alt: "Multi-Cloud Logo"
 automated_releases_row:
@@ -42,14 +47,18 @@ azure_provider:
   image_path: assets/images/azure.png
   alt: "Azure Logo"
   image_class: spin_cloud_provider__azure
-os_provider:
-  image_path: assets/images/os.png
-  alt: "Openstack Logo"
-  image_class: spin_cloud_provider__os
 appengine_provider:
   image_path: assets/images/appengine.svg
   alt: "App Engine Logo"
   image_class: spin_cloud_provider__appengine
+cf_provider:
+  image_path: assets/images/cf.png
+  alt: "Cloud Foundry Logo"
+  image_class: spin_cloud_provider__cf
+oracle_provider:
+  image_path: assets/images/oracle.svg
+  alt: "Oracle Cloud Infrastructure Logo"
+  image_class: spin_cloud_provider__oracle
 active_community_row:
   title: Active Community
   excerpt: "Join a community that includes Netflix, Google, Microsoft, Veritas, Target, Kenzan, Schibsted, and many others, actively working to maintain and improve Spinnaker."
@@ -59,7 +68,7 @@ ci_integrations_feature:
   content: "Listen to events, collect artifacts, and trigger pipelines from Jenkins or Travis CI. Triggers via git, cron, or a new image in a docker registry are also supported."
 monitoring_integrations_feature:
   title: Monitoring Integrations
-  content: "Tie your releases to monitoring services Datadog, Prometheus, or Stackdriver, using their metrics for canary analysis."
+  content: "Tie your releases to monitoring services Datadog, Prometheus, Stackdriver, SignalFx, or New Relic using their metrics for canary analysis."
 cli_feature:
   title: CLI for Setup and Admin
   content: "Install, configure, and update your Spinnaker instance with halyard, Spinnaker’s CLI tool."
@@ -74,12 +83,12 @@ notifications_feature:
   content: "Set up event notifications for email, Slack, HipChat, or SMS (via Twilio)."
 access_control_feature:
   title: Role-based Access Control
-  content: "Restrict access to projects or accounts by hooking into your internal authentication system using OAuth, SAML, LDAP, X.509 certs, Google groups, Azure groups, or GitHub teams."
+  content: "Restrict access to projects or accounts by hooking into your internal authentication system using OAuth, SAML, LDAP, X.509 certs, Google groups, Azure groups, or GitHub Organizations."
 manual_judgments_feature:
   title: Manual Judgments
   content: "Require a manual approval prior to releasing an update with a manual judgement stage."
 execution_windows_feature:
-  title: White-listed Execution Windows
+  title: Restricted Execution Windows
   content: "Restrict the execution of stages to certain windows of time, making sure deployments happen during off-peak traffic or when the right people are on hand to monitor the roll-out."
 chaos_monkey_feature:
   title: Chaos Monkey Integration
@@ -125,20 +134,21 @@ waze_case_study:
     {% include masthead.html %}
 
     <div class="spin_header__text">
-      <h1>Continuous Delivery for Enterprise</h1>
-      <h2>Fast, safe, repeatable deployments</h2>
+      <h1>Cloud Native Continuous Delivery</h1>
+      <h2>Fast, safe, repeatable deployments for every Enterprise</h2>
     </div>
     <ul class="spin_call_to_action">
       <li><a href="/concepts/">HOW IT WORKS</a></li>
       <li><a href="/setup/">INSTALL SPINNAKER</a></li>
-      <li><a href="/publications/ebook/">READ OUR EBOOK</a></li>
+      <li><a href="/guides/user/get-started/">GET STARTED</a></li>
+      <li><a href="/concepts/ebook/">READ OUR EBOOK</a></li>
     </ul>
   </div>
 </div>
 
 <div class="spin_header__push_down">
-<a href="https://www.spinnakersummit.com" target="_blank">{% include splash_feature_row id="summit_row" type="left" %}</a>
-<hr width="100%" size="4" noshade>
+{% include splash_feature_row id="conference_ad_row" type="summit" %}
+{% include splash_feature_row id="slack_row" type="left" %}
 {% include splash_feature_row id="spinnaker_row" type="right" %}
 {% include splash_feature_row id="multi_cloud_row" type="left" %}
 {% include splash_feature_row id="automated_releases_row" type="right" %}
@@ -154,11 +164,12 @@ waze_case_study:
         {% include spinnaker_cloud_provider id="aws_provider" %}
         {% include spinnaker_cloud_provider id="gcp_provider" %}
         {% include spinnaker_cloud_provider id="k8s_provider" %}
+        {% include spinnaker_cloud_provider id="oracle_provider" %}
+      </div>
       <div class="clearfix">
         {% include spinnaker_cloud_provider id="azure_provider" %}
-        {% include spinnaker_cloud_provider id="os_provider" %}
         {% include spinnaker_cloud_provider id="appengine_provider" %}
-      </div>
+        {% include spinnaker_cloud_provider id="cf_provider" %}
       </div>
     </div>
   </div>  
@@ -186,12 +197,12 @@ waze_case_study:
   {% include spinnaker_feature_box id="chaos_monkey_feature" %}
 </div>
 
-<h1 class="spin__heading mt2">Case Studies</h1>
+<!-- <h1 class="spin__heading mt2">Case Studies</h1>
 
 <div class="clearfix">
   {% include spinnaker_case_study id="netflix_case_study" %}
   {% include spinnaker_case_study id="waze_case_study" %}
-</div>
+</div> -->
 
 <!-- <div class="clearfix">
   {% include spinnaker_case_study id="target_case_study" %}

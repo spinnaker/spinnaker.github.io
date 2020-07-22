@@ -13,18 +13,64 @@ Spinnaker you manage. You have a few options available:
 
 # Wait for the non-patch release
 
-Any time we release `X+1.Y.0` or `X.Y+1.0`, we include all commits merged into
-`master` for each service. We do this on a [regular
-cadence](/community/releases/release-cadence).
+Any time we release a new minor version of Spinnaker (e.g. 1.16.0 or 1.17.0), we
+include all commits merged into `master` for each service. We do this on a
+[regular cadence](/community/releases/release-cadence).
+
+# Release branch patch criteria
+
+In order to be considered safe to merge into a release branch, your patch must:
+
+* Fix a documented regression. This means that the currently broken
+  functionality must have worked as expected in a previous version of Spinnaker.
+  If the regression is not already documented in a GitHub issue, please create
+  one. Describe the difference between the expected and observed behavior, and
+  include links to the commit(s) that introduced the regression.
+* Include tests validating the regression and the fix. The first commit of your
+  patch pull request should add test coverage that demonstrates the existence
+  of the bug and exercises all code paths potentially impacted by your fix.
+  Subsequent commits should fix the bug and update the tests you just added. If
+  your fix is so complex as to make complete tests coverage impossible, it is
+  not a good candidate for merging into a release branch.
+
+These criteria do not apply to security vulnerability patches, which may be
+merged into release branches at the discretion of the Security SIG and release
+manager.
 
 # Merge into the release branch
 
-If your patch fixes a bug, and doesn't introduce a feature or breaking change,
-you can release your change even sooner by cherry-picking into a release
-branch. Every release `X.Y.0` creates a `release-X.Y.x` branch in each
-repository. If you cherry-pick your change into that branch, and open a PR
-against that branch with your patch, it will make it into the next patch
-release.
+If your patch meets the [cherry-pick criteria](#release-branch-patch-criteria), you can request that your patch
+be merged into a release branch. Every minor release of Spinnaker has its own
+release branch. For example, all Spinnaker 1.16 releases (1.16.0, 1.16.1, etc.)
+are built from the `release-1.16.x` release branch. To get your patch into 1.16,
+it must be cherry-picked onto that release branch.
+
+There are two ways to create a pull request for a cherry-pick:
+
+* [Using Mergify](#cherry-pick-using-mergify)
+* [Manually via the command-line](#cherry-pick-using-the-command-line)
+
+After creating a cherry-pick pull request, you should assign the review to the
+current release manager. The release manager rotation calendar is currently only
+available inside Google, but it only rotates every eight weeks. The release
+manager will be the person posting about the releases in [the
+`#spinnaker-releases` Slack
+channel](https://app.slack.com/client/T091CRSGH/CHD4ATAMV/).
+
+Please make sure your pull request description makes it easy for the release
+manager to evaluate whether your patch meets the release branch patch criteria.
+
+## Cherry-pick using Mergify
+
+To cherry-pick into the `1.18` release branch (for example), mention the `@spinnaker/release-managers`
+to have them add the following comment to the _merged_ PR for your change:
+
+> @Mergifyio backport release-1.18.x
+
+Later improvements will allow anyone to execute the backport command, a [feature request has been submitted](https://github.com/Mergifyio/mergify-engine/issues/1070) to Mergify.
+
+
+## Cherry-pick using the command line
 
 For example: say you've fixed a bug and had the fix merged into master. You're
 running Spinnaker 1.5.1, and want the fix in Spinnaker 1.5.2. First, find the

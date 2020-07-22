@@ -5,13 +5,11 @@ sidebar:
   nav: setup
 ---
 
-{% include alpha version="1.9" %}
-
 {% include toc %}
 
 Pipeline permissions enable automatically triggered pipelines to modify
 resources in protected accounts and applications. They are an alternative
-to manually managing [Fiat Service Accounts](../service-accounts/).
+to manually managing [Fiat Service Accounts](/setup/security/authorization/service-accounts/).
 
 Without pipeline permissions, a Spinnaker operator first has to create a
 Fiat Service account with the correct permissions. A user can then specify the
@@ -44,7 +42,7 @@ is added in the pipeline configuration page in the UI. You can add any of the
 roles that you currently have. Once you add a role to the pipeline, only users
 who have _all of the specified roles_ can edit or execute the pipeline.
 This is similar to the behavior of
-[Fiat service accounts](../service-accounts#service-account-roles).
+[Fiat service accounts](/setup/security/authorization/service-accounts#service-account-roles).
 
 ![permissions selector from pipeline config in Deck](permissions-selector.png)
 
@@ -53,7 +51,38 @@ This is similar to the behavior of
 Once pipeline permissions are enabled, the `RunAsUser` selector will be hidden
 from Deck. However, any previously configured triggers will continue to use
 the previously selected service account in order to maintain backwards
-compatibility. Newly added triggers will use the permssions specified. If you
+compatibility. Newly added triggers will use the permissions specified. If you
 wish to use pipeline permissions for the older triggers and already have
 permissions specified, edit your pipeline JSON and remove the `RunAsUser` field
-from your trigger.
+from your trigger, or enable the automatic migration (see next section).
+
+### Automatic migration
+
+Front50 can automatically migrate all pipelines from using [Fiat Service
+Accounts](/setup/security/authorization/service-accounts/) to use Pipeline Permissions and managed service
+accounts. The migrator is disabled by default, and can be enabled by adding the
+following flag to `front50-local.yml`:
+
+```yaml
+migrations:
+  migrateToManagedServiceAccounts: true
+```
+
+If you're using Halyard, the file is `~/.hal/default/profiles/front50-local.yml`.
+
+This migration will migrate pipelines that have Fiat service accounts set to the
+new Pipeline Permissions. It will only run on pipelines where `roles` are not
+already present and `runAsUser` is set to a non-managed service account.
+
+The migration job will automatically create the new managed service users, and the
+new service user will get the same permissions as the manual service user that it
+replaces.
+
+{% include
+   warning
+   content="**Note:** If a pipeline has multiple triggers with different
+   `runAsUser` fields set, the new managed service user will get all of the roles
+   of the different manual service users (as you can only have one managed service
+   user per pipeline). This can potentially remove some users ability to edit or
+   execute affected pipelines."
+%}

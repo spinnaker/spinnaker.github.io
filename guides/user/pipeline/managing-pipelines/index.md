@@ -36,7 +36,7 @@ Make sure that you are editing the **Configuration** stage of your pipeline.
 
 ![](images/configuration-stage.png)
 
-1. Select **Add trigger**.
+1. Select **Add Trigger**.
   ![](images/add-trigger.png)
 2. Choose your desired trigger type from the drop-down menu that appears, and
 input any further required configuration.
@@ -53,7 +53,7 @@ will take once it's configured.
   ![](images/add-stage.png)
 2. Set the stage type using the drop-down menu.
 3. If this isn't the first stage in your pipeline, make sure that this stage
-depends on the desired upstream stage(s) using the **Depends on** field.
+depends on the desired upstream stage(s) using the **Depends On** field.
   ![](images/stage-depends-on.png)
 
 You can add as many stages as your pipeline needs, in any order that makes sense
@@ -67,6 +67,31 @@ any necessary parameters.
 
 ![](images/manual-execution.png)
 
+### Linking to the Manual Execution dialog
+You can create a deep link to the confirmation dialog for any pipeline by adding
+a `startManualExecution` parameter to the URL for an application's pipelines 
+view. The parameter's value can be either the pipeline name or its ID.
+
+To prepopulate pipeline parameter values in the dialog, just include them as
+parameters in the URL.
+
+For example: 
+  * you have an an application named "myapp"
+  * the application has a pipeline named "deploy-to-prod" 
+  * the pipeline has one parameter, `region`
+  * the pipeline's ID is `12345`
+  * your Spinnaker installation is hosted at https://my.spinnaker.example.com
+
+These links would open the dialog automatically:
+  * https://my.spinnaker.example.com/#/applications/myapp/executions?startManualExecution=deploy-to-prod
+  * https://my.spinnaker.example.com/#/applications/myapp/executions?startManualExecution=12345
+
+These links would open the dialog automatically, and pre-populate the region
+parameter with `us-central-1`
+  * https://my.spinnaker.example.com/#/applications/myapp/executions?startManualExecution=deploy-to-prod&region=us-central-1
+  * https://my.spinnaker.example.com/#/applications/myapp/executions?startManualExecution=12345&region=us-central-1
+
+
 ## Disable a pipeline
 
 Disabling a pipeline prevents any triggers from firing, as well as preventing
@@ -75,10 +100,10 @@ users from running it manually.
 1. From the **Pipelines** tab, click **Configure** to modify an existing
 pipeline.
   ![](images/select-configure.png)
-2. Click **Pipeline actions** in the upper right corner, and select **Disable**.
+2. Click **Pipeline Actions** in the upper right corner, and select **Disable**.
   ![](images/pipeline-actions.png)
 
-In order to re-enable your disabled pipeline, select **Pipeline actions** and
+In order to re-enable your disabled pipeline, select **Pipeline Actions** and
 choose **Enable**.
 
 ## Delete a pipeline
@@ -86,12 +111,12 @@ choose **Enable**.
 1. From the **Pipelines** tab, click **Configure** to modify an existing
 pipeline.
   ![](images/select-configure.png)
-2. Click **Pipeline actions** in the upper right corner, and select **Delete**.
+2. Click **Pipeline Actions** in the upper right corner, and select **Delete**.
   ![](images/pipeline-actions.png)
 
 ## Edit a pipeline as JSON
 
-> **Warning**: the JSON you write here is not validated -- Edit as JSON
+> **Warning**: The JSON you write here is not validated -- Edit as JSON
 essentially allows you to modify the pipeline via a free-form textbox. **Be
 careful!** It's very easy to break the pipeline, although you can restore from
 revision history to roll back any changes.
@@ -109,7 +134,7 @@ In order to edit your pipeline as JSON:
 1. From the **Pipelines** tab, click **Configure** to modify an existing
 pipeline.
   ![](images/select-configure.png)
-2. Click **Pipeline actions** in the upper right corner, and select
+2. Click **Pipeline Actions** in the upper right corner, and select
 **Edit as JSON**.
   ![](images/pipeline-actions.png)
 
@@ -119,14 +144,14 @@ Each time you save your pipeline, the current version is added to revision
 history. You can use revision history to diff two versions of a pipeline or to
 restore an older version of a pipeline.
 
-> *Note*: If you are using Minio or Redis as your
-[storage service](/setup/install/storage/), you won't be able to use revision
-history because neither supports it.
+   > **Note:** If you are using Minio or Redis as your
+   > [storage service](/setup/install/storage/), you won't be able to use revision
+   > history because neither supports it.
 
 1. From the **Pipelines** tab, click **Configure** to modify an existing
 pipeline.
   ![](images/select-configure.png)
-2. Click **Pipeline actions** in the upper right corner, and select
+2. Click **Pipeline Actions** in the upper right corner, and select
 **View revision history**.
   ![](images/pipeline-actions.png)
 
@@ -162,7 +187,7 @@ Spinnaker UI. You can still update a locked pipeline via the API.
 1. From the **Pipelines** tab, click **Configure** to modify an existing
 pipeline.
   ![](images/select-configure.png)
-2. Click **Pipeline actions** in the upper right corner, and select
+2. Click **Pipeline Actions** in the upper right corner, and select
 **Lock**.
   ![](images/pipeline-actions.png)
 
@@ -170,6 +195,6 @@ pipeline.
 1. From the **Pipelines** tab, click **Configure** to modify an existing
 pipeline.
   ![](images/select-configure.png)
-2. Click **Pipeline actions** in the upper right corner, and select
+2. Click **Pipeline Actions** in the upper right corner, and select
 **Rename**.
   ![](images/pipeline-actions.png)

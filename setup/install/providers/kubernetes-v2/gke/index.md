@@ -8,8 +8,8 @@ sidebar:
 {% include toc %}
 
 This page describes how to set up a Kubernetes cluster on
-[GKE](https://cloud.google.com/kubernetes-engine/) to be used as a Spinnaker
-Kubernetes v2 provider. The process is very simple, but you need to do some
+[GKE](https://cloud.google.com/kubernetes-engine/) to be used with Spinnaker's
+Kubernetes provider. The process is very simple, but you need to do some
 specific things to allow Spinnaker to authenticate against your cluster.
 
 > Note: To manage and create clusters in a given project, you need the
@@ -45,7 +45,7 @@ This is a good thing because it prevents authenticating from a different
 machine that hasn't already authenticated with `gcloud`. But it also
 complicates configuring Spinnaker because each machine running Spinnaker needs
 its own service account. `gcloud` checks the permissions of that service
-account in order to generate an authenication token.
+account in order to generate an authentication token.
 
 Given that all pods on GKE share the same service account, granting Spinnaker
 on GKE permission also grants permission to all pods running alongside

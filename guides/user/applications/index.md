@@ -8,7 +8,7 @@ sidebar:
 {% include toc %}
 
 An application in Spinnaker is a construct that represents some service that you
-are going to deploy (typically a microservice). It includes...
+are going to deploy (typically a microservice). It includes:
 
 * the pipelines that process the service through to deployment in production
 
@@ -22,10 +22,10 @@ are going to deploy (typically a microservice). It includes...
 
 ## Important note about applications
 
-When you first access a new instance of Spinnaker you might notice that there
+When you first access a new instance of Spinnaker, you might notice that there
 are already several applications visible when you click the **Applications** tab.
 This happens if you install Spinnaker on an existing Kubernetes cluster, using
-the [Kubernetes V1 provider](/setup/providers/kubernetes/). These applications
+the [Kubernetes provider](/reference/providers/kubernetes-v2/). These applications
 are derived from existing infrastructure.
 
 **Don't delete any of them**.
@@ -51,4 +51,4 @@ that promote the same service into the next environment.
 
 ## Next
 
-[Configure An Application](/guides/user/applications/configure/)
+[Create An Application](/guides/user/applications/create/)

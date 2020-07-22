@@ -19,7 +19,6 @@ target_user:
 schibsted_user:
   image_path: assets/images/users/schibsted_logo.svg
   alt: "Schibsted logo"
-  image_class: spinnaker_user__schibsted
 gogo_user:
   image_path: assets/images/users/gogo_logo.png
   alt: "Gogo logo"
@@ -100,103 +99,233 @@ mercari_user:
 plaid_user:
   image_path: assets/images/users/plaid_logo.png
   alt: "Plaid Logo"
+centeredge_user:
+  image_path: assets/images/users/centeredge_logo.png
+  alt: "CenterEdge Logo"
+redbox_user:
+  image_path: assets/images/users/redbox_logo.png
+  alt: "Redbox Logo"
+armory_user:
+  image_path: assets/images/users/armory_logo.png
+  alt: "Armory Logo"
+launchdarkly_user:
+  image_path: assets/images/users/launchdarkly_logo.png
+  alt: "LaunchDarkly Logo"
+dins_user:
+  image_path: assets/images/users/dins_logo.png
+  alt: "DINS Logo"
+nearpod_user:
+  image_path: assets/images/users/nearpod_logo.svg
+  alt: "Nearpod Logo"
+alto_user:
+  image_path: assets/images/users/alto-logo-wordmark.svg
+  alt: "ALTO Logo"
+opsmx_user:
+  image_path: assets/images/users/opsmx_logo.png
+  alt: "OpsMx Logo"
+cisco_user:
+  image_path: assets/images/users/cisco_logo.png
+  alt: "Cisco Logo"
+grab_user:
+  image_path: assets/images/users/grab.png
+  alt: "Grab Logo"
+getyourguide_user:
+  image_path: assets/images/users/GYG_logo.png
+  alt: "GetYourGuide Logo"
+uneeq_user:
+  image_path: assets/images/users/uneeq_logo.png
+  alt: "UneeQ Logo"
+jpmc_user:
+  image_path: assets/images/users/jpmc-logo.png
+  alt: "JPMC Logo"
+groundtruth_user:
+  image_path: assets/images/users/groundtruth-logo.png
+  alt: "GroundTruth Logo"  
+avast_user:
+  image_path: assets/images/users/avast_logo.png
+  alt: "Avast Logo"
+transunion_user:
+  image_path: assets/images/users/transunion_logo.png
+  alt: "TransUnion Logo"
+comcast_user:
+  image_path: assets/images/users/comcast_logo.png
+  alt: "Comcast Logo"
+sap_user:
+  image_path: assets/images/users/sap_logo.png
+  alt: "SAP Logo"    
+glovo_user:
+  image_path: assets/images/users/glovo_logo.jpg
+  alt: "Glovo Logo"
+capsilon_user:
+  image_path: assets/images/users/capsilon_logo.png
+  alt: "Capsilon Logo"    
+patreon_user:
+  image_path: assets/images/users/patreon_logo.png
+  alt: "Patreon Logo"
+chime_user:
+  image_path: assets/images/users/chime_logo.png
+  alt: "Chime Logo" 
+ep_user:
+  image_path: assets/images/users/ep_logo.jpg
+  alt: "EP Logo" 
+adevinta_user:
+  image_path: assets/images/users/adevinta_logo.png
+  alt: "Adevinta Logo"
+airbnb_user:
+  image_path: assets/images/users/airbnb_logo.jpg
+  alt: "Airbnb logo"   
 ---
+
+The Spinnaker OSS project was started at Netflix. Now, it thrives on the contributions of the broader DevOps community who have adopted it as their Continuous Delivery tool. 
 
 ## Engage the community and get support
 
-The Spinnaker OSS project was started at Netflix, and today thrives on the contributions and broad adoption of the public devops community. Here are some ways to engage the community and find help&mdash;join us!
+Here are some ways to engage the Spinnaker community and find help&mdash;join us!
 
-* [Spinnaker community forum](https://community.spinnaker.io)
+### [Slack](http://join.spinnaker.io)
 
-    Closely monitored by Spinnaker principal developers, this forum is a good place to initiate discussions that might go on for a while and that won't scroll off the screen before you notice them.
+Start here! Many Spinnaker contributors and users are active on the Spinnaker Slack. It's a great place to get answers to questions or start a discussion about a feature or topic. Good places to begin on Slack include the following channels: 
 
-* [GitHub](https://github.com/spinnaker)
+* A Special Interest Group (SIG) channel if there is a relevant one. SIGs are groups that focus on specific topics, such as `#sig-security` or `#sig-documentation`. All SIG Slack channels start with the prefix `sig`.
+* A narrowly focused channel, such as #auth
+* [#general](https://spinnakerteam.slack.com/archives/C091CCWRJ) for general questions and discussion 
+* [#dev](https://spinnakerteam.slack.com/archives/C0DPVDMQE) for help contributing to Spinnaker
+    
 
-    The Spinnaker org, with repos for its many services. Come here to contribute to the Spinnaker services and documentation.
+### [GitHub](https://github.com/spinnaker)
 
-    If you find a problem, you can file an issue [here](https://github.com/spinnaker/spinnaker/issues). (However, if you just have a question, use one of the other resources listed here.)
+The Spinnaker org with repos for all the services and documentation. Come here to contribute to Spinnaker!
+    
+After engaging with the community to work through a problem, we encourage you to help us improve Spinnaker. File an issue if appropriate or even submit a fix. Reasons you might file an issue include the following: 
 
-* [Slack](http://join.spinnaker.io)
+* Your problem is due to a bug or limitation that is not documented 
+* The documentation is confusing or missing
+* The behavior of a feature or field is unclear
 
-    A great place to get quick answers to questions that do not require extended, threaded discussion.
+You can file an issue [here](https://github.com/spinnaker/spinnaker/issues). 
 
-* [Stack Overflow](https://stackoverflow.com/search?q=spinnaker)
+## Project Governance
 
-    Many people involved in the Spinnaker community can answer questions posed here. However, the principal developers don't monitor Stack Overflow as closely.
+Spinnaker is an OSS project owned and run by the community, through a structure of appointed roles. One important goal of this governance model is to make it easier for everyone to figure out how to get involved. If you want to get involved, we want to help you get there! As the project grows and its needs evolve, we will - as a community - continue to revisit and shape this structure.
 
+You can read more about how you can get involved through project SIGs, roles, and standing committees in the [Governance](https://github.com/spinnaker/governance) section.
 
 ## Who's using Spinnaker?
 
 <div class="clearfix mb4">
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="adevinta_user" %}
+    {% include spinnaker_user id="airbnb_user" %}
+    {% include spinnaker_user id="alto_user" %}
+
+  </div>
+  <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="armory_user" %}
+    {% include spinnaker_user id="avast_user" %}
     {% include spinnaker_user id="box_user" %}
+
+  </div>
+  <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="capsilon_user" %}
+    {% include spinnaker_user id="centeredge_user" %}
     {% include spinnaker_user id="cerner_user" %}
+
+  </div>
+  <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="chartboost_user" %}
+    {% include spinnaker_user id="chime_user" %}
+    {% include spinnaker_user id="cisco_user" %}
+
   </div>
   <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="clarivate_user" %}
     {% include spinnaker_user id="cleartax_in_user" %}
     {% include spinnaker_user id="cloudera_user" %}
+
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="comcast_user" %}
     {% include spinnaker_user id="contaazul_user" %}
-    {% include spinnaker_user id="gogo_user" %}
-    {% include spinnaker_user id="google_user" %}
+    {% include spinnaker_user id="dins_user" %}
+
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="ep_user" %}
+    {% include spinnaker_user id="getyourguide_user" %}
+    {% include spinnaker_user id="gogo_user" %}
+            
+  </div>
+  <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="google_user" %}
+    {% include spinnaker_user id="glovo_user" %}
+    {% include spinnaker_user id="grab_user" %}
+        
+  </div>
+  <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="groundtruth_user" %}
     {% include spinnaker_user id="grubhub_user" %}
     {% include spinnaker_user id="informatica_user" %}
-    {% include spinnaker_user id="kenzan_user" %}
+                
+  </div>
+  <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="jpmc_user" %}
+    {% include spinnaker_user id="kenzan_user" %} 
+    {% include spinnaker_user id="launchdarkly_user" %}
+                
   </div>
   <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="lookout_user" %}
     {% include spinnaker_user id="makerbot_user" %}
     {% include spinnaker_user id="mercari_user" %}
+                
   </div>
   <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="mulesoft_user" %}
+    {% include spinnaker_user id="nearpod_user" %}
     {% include spinnaker_user id="nest_user" %}
-    {% include spinnaker_user id="netflix_user" %}
- </div>
+            
+  </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="netflix_user" %}
+    {% include spinnaker_user id="opsmx_user" %}
     {% include spinnaker_user id="optimizely_user" %}
+           
+  </div>
+  <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="patreon_user" %}
     {% include spinnaker_user id="plaid_user" %}
     {% include spinnaker_user id="plangrid_user" %}
-  </div>
+                
+  </div>  
   <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="purestorage_user" %}
+    {% include spinnaker_user id="redbox_user" %}
     {% include spinnaker_user id="smartthings_user" %}
-    {% include spinnaker_user id="schibsted_user" %}
+            
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="sap_user" %}
+    {% include spinnaker_user id="schibsted_user" %}
     {% include spinnaker_user id="scopely_user" %}
+            
+  </div>
+  <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="skuid_user" %}
     {% include spinnaker_user id="target_user" %}
+    {% include spinnaker_user id="transunion_user" %}
+    
   </div>
   <div class="clearfix flex items-center mb3">
-    {% include spinnaker_user id="underarmour_user" %}
+    {% include spinnaker_user id="underarmour_user" %} 
+    {% include spinnaker_user id="uneeq_user" %}
     {% include spinnaker_user id="waze_user" %}
+
+  </div>
+    <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="weatherbug_user" %}
+    {% include spinnaker_user id="xiaohongshu_user" %}
+    
+
   </div>
-  <div class="clearfix flex items-center mb3">
-      {% include spinnaker_user id="xiaohongshu_user" %}
-  </div>
+
 </div>
-
-## Core contributors
-
-The list of contributors is growing with some core contributors below. Please reach out to us with a PR or on slack if you'd like to be added to this list!
-
-* [Amazon](https://aws.amazon.com/opensource/)
-* [Armory](http://www.armory.io/)
-* [Cerner Corporation](http://cerner.com/)
-* [Google](https://opensource.google.com/)
-* [Kenzan](http://kenzan.com/)
-* [Microsoft](https://opensource.microsoft.com/)
-* [Netflix](https://netflix.github.io/)
-* [Oracle](http://oracle.com/)
-* [Pivotal](http://pivotal.io/)
-* [Schibsted](http://www.schibsted.com/)
-* [Skuid](http://www.skuid.com/)
-* [Target](http://target.github.io/)
-* [Veritas Technologies LLC](https://github.com/VeritasOS)

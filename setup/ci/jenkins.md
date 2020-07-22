@@ -9,19 +9,19 @@ redirect_from: /docs/jenkins-script-execution-stage
 {% include toc %}
 
 Setting up [Jenkins](https://jenkins.io/){:target="\_blank"} as a Continuous
-Integration (CI) system within Spinnaker enables using Jenkins as a Pipeline
-Trigger, as well as the Run Script stage, which depends on Jenkins as a job
-executor.
+Integration (CI) system within Spinnaker lets you trigger pipelines with
+Jenkins, add a Jenkins stage to your pipeline, or add a Script stage to your
+pipeline.
 
 ## Prerequisites
 
-You need a running Jenkins Master at version 1.x - 2.x reachable at a URL
-(`$BASEURL`) from whatever provider/environment Spinnaker will be
-deployed in.
+To connect Jenkins to Spinnaker, you need:
 
-If Jenkins is secured, you need a username/password
-(`$USERNAME`/`$PASSWORD`) pair able to authenticate against Jenkins using
-HTTP Basic Auth.
+*   A running Jenkins Master at version 1.x - 2.x, reachable at a URL
+    (`$BASEURL`) from the provider that Spinnaker will be deployed in.
+*   A username/API key (`$USERNAME`/`$APIKEY`) pair able to authenticate
+    against Jenkins using HTTP Basic Auth, if Jenkins is secured. A user's
+    API key can be found at `$BASEURL/user/$USERNAME/configure`.
 
 ## Add your Jenkins master
 
@@ -35,21 +35,23 @@ HTTP Basic Auth.
 human-readable name), to your list of Jenkins masters:
 
    ```bash
-   echo $PASSWORD | hal config ci jenkins master add my-jenkins-master \
+   echo $APIKEY | hal config ci jenkins master add my-jenkins-master \
        --address $BASEURL \
        --username $USERNAME \
-       --password # password will be read from STDIN to avoid appearing
+       --password # api key will be read from STDIN to avoid appearing
                   # in your .bash_history
    ```
 
    > *Note*: If you use the [GitHub OAuth
    > plugin](https://wiki.jenkins.io/display/JENKINS/GitHub+OAuth+Plugin){:target="\_blank"}
    > for authentication into Jenkins, you can use the GitHub $USERNAME, and use the
-   > OAuth token as the $PASSWORD.
+   > OAuth token as the $APIKEY.
 
-1. Apply your changes:
+1. Re-deploy Spinnaker to apply your changes:
 
-   `hal deploy apply`
+   ```bash
+   hal deploy apply
+   ```
 
 ## Configure Jenkins and Spinnaker for CSRF protection
 
@@ -57,107 +59,59 @@ human-readable name), to your list of Jenkins masters:
 
 To enable Spinnaker and Jenkins to share a crumb to protect against CSRF...
 
-### 1. Configure Halyard to enable the `csrf` flag:
+1. Configure Halyard to enable the `csrf` flag:
 
-```
-hal config ci jenkins master edit MASTER --csrf true
-```
-
-(`MASTER` is the name of the Jenkins master you've previously
-configured. If you haven't yet added your master, use `hal config ci
-jenkins master add` instead of `edit`. )
-
-Here's what your Jenkins master configuration looks like in your Hal config:
-
-```yaml
-jenkins:
-      enabled: true
-      masters:
-      - name: <jenkins master name>
-        address: http://<jenkins ip>/jenkins
-        username: <jenkins admin user>
-        password: <admin password>
-        csrf: true
-```
-
-Be sure to invoke `hal deploy apply` to apply your changes.
-
-### 2. Enable CSRF protection in Jenkins:
-
-a. Under __Manage Jenkins__ > __Configure Global Security__, select __Prevent
-Cross Site Request Forgery exploits__.
-
-b. Under __Crumb Algorithm__, select __Default Crumb Issuer__.
-
-![](/setup/ci/jenkins_enable_csrf.png)
-
-## Configure script stage
-
-### Purpose
-The [Script stage](/reference/pipeline/stages/#script) lets you run an arbitrary
-shell, Python, or Groovy script on a Jenkins instance as a first class stage in
-Spinnaker. For example, you can use it to launch a test suite from a pipeline
-instead of doing it manually.
-
-### Prerequisites
-
-In order to configure a Script stage, you need:
-
-*   A running Spinnaker instance, with access to configuration files
-*   A running Jenkins instance at `$JENKINS_HOST`, with a user profile set up
-    with admin access
-
-### Configure Jenkins
-
-1.  `ssh` into your Jenkins machine.
-
-2.  Download the [raw job xml config
-    file](https://storage.googleapis.com/jenkins-script-stage-config/scriptJobConfig.xml)
-    with the command:
-
-    ```bash
-    curl -X GET \
-        -o "scriptJobConfig.xml" \
-        "https://storage.googleapis.com/jenkins-script-stage-config/scriptJobConfig.xml"
+    ```
+    hal config ci jenkins master edit MASTER --csrf true
     ```
 
-3.  Create the Jenkins job where your script will run. To do this, you need the
-    following information:
+    (`MASTER` is the name of the Jenkins master you've previously
+    configured. If you haven't yet added your master, use `hal config ci
+    jenkins master add` instead of `edit`. )
 
-    *   `$JENKINS_HOST`: your running Jenkins instance.
-    *   `$JOB_NAME`: the name of the Jenkins job where your script runs.
-    *   `$USER`: your Jenkins username.
-    *   `$USER_API_TOKEN`: the API token for your user. You can find this in
-        Jenkins in the **Configure** page for your user.
+    Here's what your Jenkins master configuration looks like in your Hal config:
 
-    Then, run the command:
-
-    ```bash
-    curl -s -XPOST 'http://$JENKINS_HOST/createItem?name=$JOB_NAME' \
-        -u $USER:$USER_API_TOKEN
-        --data-binary @scriptJobConfig.xml \
-        -H "Content-Type:text/xml"
+    ```yaml
+    jenkins:
+          enabled: true
+          masters:
+          - name: <jenkins master name>
+            address: http://<jenkins ip>/jenkins
+            username: <jenkins admin user>
+            password: <admin password>
+            csrf: true
     ```
 
-4.  Navigate to Jenkins >> the job you just created >> **Configure** and do two
-    things:
+    Be sure to invoke `hal deploy apply` to apply your changes.
 
-    1.  Add the GitHub repository containing your scripts.
-    2.  Either create a `Spinnaker` node in which Jenkins will run all Script
-        jobs, or de-select the **Restrict where this project can be run**
-        checkbox.
+2. Install Strict Crumb Issuer Plugin in Jenkins:
 
-    At this point, you can manually run the script job in Jenkins (including
-    manually adding necessary parameters) and see it succeed.
+    a. Under __Manage Jenkins__ > __Plugin Manager__ > __Available__, search for __Strict Crumb Issuer Plugin__, select __Install__
 
-5.  If your Jenkins master is named anything other than `master` in your
-    Spinnaker configuration, you'll need to add the following to
-    `orca-local.yml` in order for Spinnaker to find it:
+    ![](/setup/ci/strict_crumb_issuer_plugin_install.png)
 
-    ```yml
-    script:
-      master: your-jenkins-master
-      job: $JOB_NAME  # from step #3
-    ```
+3. Enable CSRF protection in Jenkins:
 
-You can now use the Script stage in your pipelines.
+    a. Under __Manage Jenkins__ > __Configure Global Security__, select __Prevent
+    Cross Site Request Forgery exploits__.
+
+    b. Under __Crumb Algorithm__, select __Strict Crumb Issuer__.
+
+    c. Under __Strict Crumb Issuer__ > __Advanced__, deselect __Check the session ID__
+
+    ![](/setup/ci/jenkins_enable_csrf_strict.png)
+
+## Next steps
+
+You can use Jenkins in your pipelines in one of three ways:
+*   As a [pipeline trigger](/guides/user/pipeline/triggers/jenkins/)
+*   Using the built-in [Jenkins stage](/reference/pipeline/stages/#jenkins)
+*   Using the [Script stage](/reference/pipeline/stages/#script)
+
+After you've completed the setup above, you're ready to trigger pipelines with
+Jenkins or run the Jenkins stage. This is sufficient for most use cases. See
+[Triggering Pipelines with Jenkins](/guides/user/pipeline/triggers/jenkins/)
+for more information.
+
+Using the Script stage requires further configuration. See [Configuring
+the Script Stage](/setup/features/script-stage/) to finish setting it up.

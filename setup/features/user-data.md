@@ -9,11 +9,10 @@ Spinnaker refers to data injected into instances started by Spinnaker as *user d
 The implementation and naming of this varies from provider to provider, but the resulting functionality is similar.
 In AWS, it is known as [User Data](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html){:target="\_blank"}.
 In GCP, it is known as [Instance Metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata){:target="\_blank"}.
-In OpenStack, it is known as [User Data](http://cloudinit.readthedocs.io/en/latest/topics/format.html#user-data-script){:target="\_blank"}.
 The template file used to define the user data is called the *user data file* which is located on the Clouddriver server.
 Tokens are replaced in the user data file to provide some specifics about the deployment.
 Every instance started has environment variables are set according to the template and the deployment.
-This feature is currently supported with the AWS, GCP, and OpenStack providers.
+This feature is currently supported with the AWS and GCP providers.
 
 ## Configuration
 
@@ -103,29 +102,3 @@ The metadata defined in the server group configuration within Spinnaker takes pr
 For example, if the environment variable `CLOUD_CLUSTER=%%app%%-%%stack%%` is set in the *user data file*
 and in the server group configuration, the metadata section includes `CLOUD_CLUSTER=overridden-stack`
 then the final metadata injected into the instance will be `CLOUD_CLUSTER=overridden-stack`.
-
-### OpenStack
-
-The path to the template file is controlled by the `--user-data-file` flag with [Halyard](/reference/halyard/commands/#hal-config-provider-openstack-account-add).
-
-The contents of this file are token-replaced and set as
-[Cloud-Init](http://cloudinit.readthedocs.io/en/latest/index.html){:target="\_blank"}
-in the instances of a server group. With OpenStack, this file is technically a
-complete [`user-data-script`](http://cloudinit.readthedocs.io/en/latest/topics/format.html#user-data-script){:target="\_blank"}
-that is token-replaced; as such, the file must to start with content type
-(usually `#!/bin/sh`). For example:
-
-```sh
-#!/bin/sh
-
-CLOUD_ACCOUNT="%%account%%"
-CLOUD_ACCOUNT_TYPE="%%accounttype%%"
-CLOUD_ENVIRONMENT="%%env%%"
-CLOUD_SERVER_GROUP="%%group%%"
-CLOUD_CLUSTER="%%cluster%%"
-CLOUD_STACK="%%stack%%"
-CLOUD_DETAIL="%%detail%%"
-CLOUD_REGION="%%region%%"
-```
-
-Any user data defined in the server group configuration within Spinnaker is appended to the `user-data-script` that is set on the instances.

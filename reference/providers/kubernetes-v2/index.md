@@ -1,20 +1,20 @@
 ---
 Layout: single
-title:  "Kubernetes Provider V2 (Manifest Based)"
+title:  "Kubernetes Provider"
 sidebar:
   nav: reference
 ---
 
 {% include toc %}
 
-This article describes how the Kubernetes provider v2 works and how it differs
+This article describes how the Kubernetes provider works and how it differs
 from other providers in Spinnaker. If you're unfamiliar with Kubernetes
 terminology, see the [Kubernetes
 documentation](https://kubernetes.io/docs/home/).
 
 # The manifest-based approach
 
-The Kubernetes provider v2 combines the strengths of Kubernetes's [declarative
+The Kubernetes provider combines the strengths of Kubernetes's [declarative
 infrastructure
 management](https://kubernetes.io/docs/tutorials/object-management-kubectl/declarative-object-management-configuration/)
 with Spinnaker's workflow engine for imperative steps when you need them. You
@@ -22,9 +22,8 @@ can fully specify all your infrastructure in the native Kubernetes manifest
 format but still express, for example, a multi-region canary-driven rollout.
 
 This is a significant departure from how deployments are managed in Spinnaker
-using other providers (including the [Kubernetes provider
-v1](https://www.spinnaker.io/reference/providers/kubernetes/)). The rest of this
-doc explains the differences.
+using other providers (including the [legacy Kubernetes provider](https://www.spinnaker.io/reference/providers/kubernetes/)).
+The rest of this doc explains the differences.
 
 ## No restrictive naming policies
 
@@ -48,7 +47,7 @@ Other providers in Spinnaker track operations that modify cloud resources. For
 example, if you run a resize operation, Spinnaker monitors that operation until
 the specified resize target is met. But because Kubernetes only tries to satisfy
 the desired _state_, and offers a level-based API for this purpose, the
-Kubernetes provider v2 uses the concept of "manifest stability."
+Kubernetes provider uses the concept of "manifest stability."
 
 A deployed manifest is considered stable when the Kubernetes controller-manager
 no longer needs to modify it, and it’s deemed “ready.” This assessment is
@@ -150,6 +149,55 @@ command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
   If instead Spinnaker is deploying ReplicaSets directly without a Deployment,
   this annotation does the job.
 
+* `strategy.spinnaker.io/recreate`
+
+  As of Spinnaker 1.13, you can force Spinnaker to delete a resource (if it
+  already exists) before creating it again. This is useful for kinds such
+  as [`Job`](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/),
+  which cannot be edited once created, or must be re-created to run again.
+  
+  When set to `'true'` for a versioned resource, this will only re-create your
+  resource if no edits have been made since the last deployment (i.e. the 
+  same version of the resource is redeployed).
+  
+  The default behavior is `'false'`.
+
+* `strategy.spinnaker.io/replace`
+
+  As of Spinnaker 1.14, you can force Spinnaker to use `replace` instead of
+  of `apply` while deploying a Kubernetes resource. This may be useful for resources
+  such as `ConfigMap` which may exceed the annotation size limit of 262144 characters.
+
+  When set to `'true'` for a versioned resource, this will update your resources using
+  `replace`. Refer to [Kubernetes Object Management](https://kubernetes.io/docs/concepts/overview/object-management-kubectl/overview/#imperative-object-configuration) for more details on object
+  configuration and trade-offs.
+
+  The default behavior is `'false'`.
+
+## Traffic
+
+* `traffic.spinnaker.io/load-balancers`
+
+  As of Spinnaker 1.10, you can specify which load balancers
+  ([Services](https://kubernetes.io/docs/concepts/services-networking/service/))
+  a workload is attached to at deployment time. This will automatically set the
+  required labels on the workload's Pods to match that of the Services' [label
+  selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors).
+
+  This annotation must be supplied as a list of `<kind> <name>` pairs where
+  `kind` and `name` refer to the load balancer in the same namespace as the 
+  resource. For example:
+
+  * `traffic.spinnaker.io/load-balancers: '["service my-service"]'` attaches to
+    the Service named `my-service`.
+
+  * `traffic.spinnaker.io/load-balancers: '["service my-service", "service my-canary-service"]'` 
+    attaches to the Services named `my-service` and `my-canary-service`.
+    
+  As of Spinnaker 1.14, instead of manually adding the `traffic.spinnaker.io/load-balancers`
+  annotation, you can select which load balancers to associate with a workload from the Deploy
+  (Manifest) stage. Spinnaker will then add the appropriate annotation for you. 
+
 # Reserved labels
 
 In accordance with [Kubernetes' recommendations on common
@@ -173,12 +221,13 @@ Spinnaker applies the following labels as of release 1.9:
 
 Resource mapping between Spinnaker and Kubernetes constructs, as well as the
 introduction of new types of resources, is a lot more flexible in the
-Kubernetes provider V2 than for other providers, because of how many types of
+Kubernetes provider than for other providers, because of how many types of
 resources Kubernetes supports. Also the Kubernetes extension
 mechanisms&mdash;called [Custom Resource Definitions
 (CRDs)](https://kubernetes.io/docs/concepts/api-extension/custom-resources/)&mdash;make
 it easy to build new types of resources, and Spinnaker accommodates that by
-making it simple to extend Spinnaker to support a user's CRDs.
+making it simple to [extend Spinnaker to support a user's 
+CRDs](https://www.spinnaker.io/guides/developer/crd-extensions/).
 
 ## Terminology mapping
 

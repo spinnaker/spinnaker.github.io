@@ -6,6 +6,9 @@ sidebar:
 redirect_from: /reference/providers/kubernetes-v1/
 ---
 
+> ⚠️ Spinnaker's legacy Kubernetes provider (V1) is [scheduled for removal](https://github.com/spinnaker/governance/blob/master/rfc/eol_kubernetes_v1.md) in Spinnaker 1.21.
+> We recommend using the [standard provider (V2)](/reference/providers/kubernetes-v2) instead. 
+
 {% include toc %}
 
 If you are not familiar with Kubernetes or some of the Kubernetes terminology
@@ -36,7 +39,7 @@ replaced.
 A Spinnaker **Server Group** maps to a Kubernetes [Replica
 Set](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/).
 The Spinnaker API resource is defined
-[here](https://github.com/spinnaker/clouddriver/blob/master/clouddriver-kubernetes/src/main/groovy/com/netflix/spinnaker/clouddriver/kubernetes/deploy/description/servergroup/DeployKubernetesAtomicOperationDescription.groovy).
+[here](https://github.com/spinnaker/clouddriver/blob/f89de41a805f9a043cfbbb3b9e9c78df1ad53360/clouddriver-kubernetes-v1/src/main/groovy/com/netflix/spinnaker/clouddriver/kubernetes/v1/deploy/ops/servergroup/DeployKubernetesAtomicOperation.groovy).
 
 When Spinnaker creates a Server Group named `${SERVER-GROUP}` it sets the
 following Pod labels:
@@ -77,10 +80,10 @@ There are two things to take note of here:
    replicated sets of Instances that are updated by some orchestration
    mechanism, this is an apt mapping.
 2. This mapping is optional because Spinnaker's orchestration capabilities do
-   not require Deployment objects to exist to handle udpates. In fact, one
+   not require Deployment objects to exist to handle updates. In fact, one
    __should not__ attempt to let Spinnaker's orchestration (Red/Black,
    Highlander) manage Server Groups handled by Kubernetes' orchestration
-   (Rolling Update), since do not, and are not intended to work together.
+   (Rolling Update), since they do not, and are not intended to work together.
 
 The labeling scheme is a little more complex when Deployment objects are
 involved, because Kubernetes deployments find Pods to manage using

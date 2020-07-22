@@ -46,7 +46,7 @@ SA_EMAIL=$(gcloud iam service-accounts list \
     --filter="displayName:$SERVICE_ACCOUNT_NAME" \
     --format='value(email)')
 
-PROJECT=$(gcloud info --format='value(config.project)')
+PROJECT=$(gcloud config get-value project)
 
 # permission to create/modify instances in your project
 gcloud projects add-iam-policy-binding $PROJECT \
@@ -94,14 +94,15 @@ hal config provider google enable
 All that's required are the following values (we've provided defaults for you):
 
 ```bash
-PROJECT=$(gcloud info --format='value(config.project)')
+PROJECT=$(gcloud config get-value project)
 SERVICE_ACCOUNT_DEST=# see Prerequisites section above
 ```
 
 Finally, add your new google account:
 
 ```bash
-hal config provider google account add my-gce-account --project $PROJECT \
+ACCOUNT=my-gce-account
+hal config provider google account add $ACCOUNT --project $PROJECT \
     --json-path $SERVICE_ACCOUNT_DEST
 ```
 

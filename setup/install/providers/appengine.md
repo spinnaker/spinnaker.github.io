@@ -35,7 +35,7 @@ gcloud app create --region <e.g., us-central>
 You will also need to enable the App Engine Admin API for your project:
 
 ```bash
-gcloud service-management enable appengine.googleapis.com
+gcloud services enable appengine.googleapis.com
 ```
 
 ## Downloading credentials
@@ -62,7 +62,7 @@ SA_EMAIL=$(gcloud iam service-accounts list \
     --filter="displayName:$SERVICE_ACCOUNT_NAME" \
     --format='value(email)')
 
-PROJECT=$(gcloud info --format='value(config.project)')
+PROJECT=$(gcloud config get-value project)
 
 gcloud projects add-iam-policy-binding $PROJECT \
     --role roles/storage.admin \
@@ -120,19 +120,11 @@ fetch your tar archive, untar it, and then deploy the code to App Engine.
 ### Deploying from Google Container Registry URL
 
 Spinnaker supports deploying Docker containers on the App Engine Flex runtime from images built and stored
-in Google Container Registry from just a gcr.io URL.  This feature is currently flagged because it is still quite new.
+in Google Container Registry from just a gcr.io URL.
 
-In order to enable this feature, set the flag with Halyard like so:
-
-```bash
-hal config features edit --appengine-container-image-url-deployments true
-```
-
-After doing this you'll find an option in the Create Server Group modal in Deck to use a Container Image as a
-deployment's Source Type.
-
-Selecting the Container Image option reveals a textbox that can then be used to specify the gcr.io URL.  Alternatively
-you can use an Artifact as the source of the container image URL.
+You'll find an option in the Create Server Group dialog in Deck to use a **Container Image** as a
+deployment's **Source Type**. Selecting the **Container Image** option reveals a textbox that can then be used to specify the gcr.io URL.  Alternatively
+you can use an **Artifact** as the source of the container image URL.
 
 ## Next steps
 

@@ -10,8 +10,8 @@ redirect_from:
 
 {% include toc %}
 
-Halyard manages the lifecycle of your Spinnaker deployment, including writing &
-validating your deployment's configuration, deploying each of Spinnaker's
+Halyard is a command-line administration tool that manages the lifecycle of your Spinnaker deployment,
+including writing & validating your deployment's configuration, deploying each of Spinnaker's
 microservices, and updating the deployment.
 
 All production-capable deployments of Spinnaker require Halyard in order to
@@ -22,13 +22,21 @@ just going to tell you to use Halyard.
 There are two ways you can install Halyard:
 
 * [locally on Debian/Ubuntu or macOS](#install-on-debianubuntu-and-macos)
+
+   This can be on a desktop or laptop computer, or on a VM.
+   
 * [on Docker](#install-halyard-on-docker)
+
+We recommend you install Halyard on a machine with at least 12GB of RAM.
+
+> **Note**: If you need to run Halyard without access to public internet, read
+> [Deploy Custom Spinnaker Builds](/guides/operator/custom-boms/).
 
 ## Install on Debian/Ubuntu and macOS
 
 Halyard runs on...
 
-* Ubuntu 14.04 or 16.04 (Ubuntu 16.04 requires Spinnaker 1.6.0 or later)
+* Ubuntu 14.04, 16.04 or 18.04 (Ubuntu 16.04 requires Spinnaker 1.6.0 or later)
 * Debian 8 or 9
 * macOS (tested on 10.13 High Sierra only)
 
@@ -36,7 +44,7 @@ Halyard runs on...
 
    For Debian/Ubuntu:
    ```bash
-  curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/debian/InstallHalyard.sh
+   curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/debian/InstallHalyard.sh
    ```
 
    For macOS:

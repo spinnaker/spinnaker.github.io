@@ -83,7 +83,7 @@ customHeaders:
 url: https://api.github.com/repos/ethanfrogers/spinnaker/statuses/${parameterValues['gitCommit']}
 payload: |-
   {
-    "state": "${parameterValues['state']}",
+    "state": "${parameterValues['status']}",
     "target_url": "${parameterValues['targetUrl']}",
     "context": "${parameterValues['context']}"
   }

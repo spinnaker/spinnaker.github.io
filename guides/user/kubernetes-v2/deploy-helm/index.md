@@ -5,20 +5,17 @@ sidebar:
   nav: guides
 ---
 
-{% include alpha version="1.8" %}
-
 {% include toc %}
 
 Spinnaker surfaces a "Bake (Manifest)" stage to turn templates into manifests
-with the help of a templating engine. Currently, the only supported templating
-engine is [Helm](https://helm.sh/), by relying on the `helm template` command.
-See more details [here](https://docs.helm.sh/helm/#helm-template).
+with the help of a templating engine. [Helm](https://helm.sh/) relies on the `helm template` command.
+For more details, see `helm template --help`.
 
-> Note: This stage is intended to help you package and deploy applications 
+> Note: This stage is intended to help you package and deploy applications
 > that you own, and are actively developing and redeploying frequently.
 > It is not intended to serve as a one-time installation method for
 > third-party packages. If that is your goal, it's arguably better to call
-> [`helm install`](https://docs.helm.sh/helm/#helm-install) once when 
+> `helm install` once when
 > bootstrapping your Kubernetes cluster.
 
 > Note: Make sure that you have configured [artifact support](/setup/artifacts)
@@ -41,8 +38,7 @@ When configuring the "Bake (Manifest)" stage, you can specify the following:
 
   The Helm chart that you will be deploying, stored remotely as a
   `.tar.gz` archive. You can produce this by running `helm package
-  /path/to/chart`. See more details
-  [here](https://docs.helm.sh/helm/#helm-package).
+  /path/to/chart`. For more details, `helm package --help`.
 
 * __The release namespace__ (optional)
 
@@ -52,22 +48,24 @@ When configuring the "Bake (Manifest)" stage, you can specify the following:
 > Note: Not all Helm charts contain namespace definitions in their manifests.
 > Make sure that your manifests contain the following code:
 
+{% raw %}
 ```yaml
 metadata:
   namespace: {{ .Release.Namespace }}
 ```
+{% endraw %}
 
 * __Zero or more override artifacts__ (optional)
 
-  The files passed to `--values` parameter in the [`helm
-  template` command](https://docs.helm.sh/helm/#helm-template). Each is a
+  The files passed to `--values` parameter in the `helm
+  template` command. Each is a
   remotely stored artifact representing a [Helm Value
-  File](https://docs.helm.sh/chart_template_guide/#values-files).
+  File](https://helm.sh/docs/chart_template_guide/values_files/).
 
 * __Statically specified overrides__
 
   The set of static of key/value pairs that are passed as `--set` parameters to
-  the [`helm template` command](https://docs.helm.sh/helm/#helm-template).
+  the `helm template` command.
 
 As an example, we have a fully configured Bake (Manifest) stage below:
 
@@ -149,3 +147,7 @@ deployed at once:
   figure
   image_path="./result.png"
 %}
+
+## Other Templating Engines
+
+In addition to Helm, Spinnaker also supports Kustomize as a templating engine. For more information, see [Using Kustomize for Manifests](/guides/user/kubernetes-v2/kustomize-manifests/).

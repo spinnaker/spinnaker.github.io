@@ -31,6 +31,7 @@ following issues:
    These settings will configure cross-origin resource sharing (CORS) between your Gate and Deck
    endpoints; if this is not properly configured, your browser will reject requests from Deck to
    Gate.
+ * If you have a local deployment of Spinnaker, ensure that Redis is available at the configured address (localhost:6379 by default). If not, start redis by running `sudo systemctl enable redis-server && sudo systemctl start redis-server` and restart spinnaker by running `sudo systemctl restart spinnaker`.
 
 ## I want to expose LocalDebian Spinnaker on a public IP address, but it always binds to localhost
 
@@ -72,6 +73,9 @@ for the version of Spinnaker you want to install. The bucket is
 [`gsutil`](https://cloud.google.com/storage/docs/gsutil){:target="\_blank"} CLI.
 The remediation will depend on your local network. You can also always omit
 validation with the `--no-validate` flag.
+
+As an alternative to `gsutil`, you can try querying the bucket directly using its
+fully-qualified URI: `curl storage.googleapis.com/halconfig`.
 
 ## Halyard times out during a deployment
 
@@ -164,3 +168,39 @@ For example,
 ```bash
 DEFAULT_JVM_OPTS=-Dhttp.proxyHost=my.proxy.domain.com -Dhttp.proxyPort=3128
 ```
+
+## I want to run a Spinnaker service (Clouddriver, Echo, etc) behind an HTTP proxy server
+
+For most Spinnaker service communication, this can be accomplished by setting appropriate 
+JVM options for the service you want to proxy. For example, if you wanted to proxy Echo
+communication for Slack notifications, you would add the following proxy settings to 
+`~/.hal/default/service-settings/echo.yml`
+
+```yaml
+env:
+  JAVA_OPTS: "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=2
+              -Dhttp.proxyHost=<proxy host> -Dhttp.proxyPort=<proxy port> -Dhttps.proxyHost=<proxy host>
+              -Dhttps.proxyPort=<proxy port> -Dhttp.nonProxyHosts='localhost|127.*|[::1]|*.spinnaker'"
+```
+
+These settings will forward all external communication through the proxy server specified while
+keeping internal traffic non-proxied. Additional information can be found 
+[here.](https://docs.oracle.com/javase/8/docs/technotes/guides/net/proxies.html){:target="\_blank"}
+
+The Kubernetes provider must be handled differently. Because the Kubernetes provider 
+uses `kubectl` (which uses curl), you must set environment variables if you want 
+Kubernetes traffic to be proxied. 
+
+An example `clouddriver.yml` that will proxy Kubernetes traffic will look like:
+```yaml
+env:
+  HTTP_PROXY: "proxyaddress:proxyport"
+  HTTPS_PROXY: "proxyaddress:proxyport"
+  NO_PROXY: "localhost,127.0.0.1,*.spinnaker" 
+```
+
+## What is the best way to delete a Spinnaker deployment?
+
+Run `hal deploy clean` to delete an existing Spinnaker deployment. Note that this command destroys all Spinnaker artifacts in your target deployment environment. So, use it with caution and back up your configuration in case you want to restore it. 
+
+After Spinnaker is deleted, delete Halyard by running `sudo ~/.hal/uninstall.sh`

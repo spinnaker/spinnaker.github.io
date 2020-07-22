@@ -27,6 +27,8 @@ completed the section, return to this page.
 * [Minio](/setup/install/storage/minio)
 * [Redis](/setup/install/storage/redis) :warning: Unsupported and not recommended for production environments
 * [S3](/setup/install/storage/s3)
+* [Oracle Object Storage](/setup/install/storage/oracle)
+
 
 See also [`hal config storage`](/reference/halyard/commands/#hal-config-storage).
 

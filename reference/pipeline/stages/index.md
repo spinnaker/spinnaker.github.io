@@ -16,6 +16,14 @@ provider.
 
 ## General
 
+### AWS CodeBuild
+Run an AWS CodeBuild build by specifying the name of the project. The sources and the image
+used by the build can be from upstream stages. Artifacts produced by the build can
+be injected into the pipeline and used by downstream stages.
+
+See this [user guide](/setup/ci/codebuild/) for more information about configuring
+this stage.
+
 ### Bake
 Bake an image from the specified packages. Baking here refers to the process
 of creating a machine image. Spinnaker's bakery is backed by
@@ -110,6 +118,13 @@ In Spinnaker, tags can only contain lowercase letters, numeric characters,
 underscores and dashes. Depending on your provider, you may need to specify what
 region to search for the image.
 
+### Google Cloud Build
+
+Run a Google Cloud Build build by specifing a build config as either an artifact or
+as inline YAML. Artifacts produced by the build can be injected into the pipeline
+and used by downstream stages. You must [configure Google Cloud Build](/setup/ci/gcb/)
+in order to use this stage.
+
 ### Jenkins
 Run the specified job in Jenkins. You must [set up Jenkins](/setup/ci/jenkins/)
 in order to use this stage. Once Jenkins is configured, your Jenkins master and
@@ -122,6 +137,9 @@ that users can choose from. These input options can be used to determine
 pipeline behavior in downstream stages. For example, you can use the [**Check
 Preconditions**](#check-preconditions) stage to ensure that a given stage only
 runs if a particular input is specified.
+
+Note: The Manual Judgement stage requires that Spinnaker's Echo service is
+enabled in order to work.
 
 ### Pipeline
 Select any pipeline and run it as a sub-pipeline. You can run pipelines from
@@ -147,7 +165,11 @@ match the specified capacity.
 Roll back one or more regions in a Cluster.
 
 ### Run Job
-Run a container.
+Run a container. You need to
+[set up a docker registry](/setup/install/providers/docker-registry/) so that
+Spinnaker can access the images to run. Once you're set up correctly, placing
+your cursor in the the **Image** field displays a drop-down menu of available
+images.
 
 ### Scale Down Cluster
 Scale down a cluster. You can prevent this stage from scaling down active Server
@@ -158,7 +180,7 @@ size while the rest are scaled down.
 Execute an arbitrary script as part of your pipeline. Spinnaker uses Jenkins to
 sandbox your scripts, so you need to [set up Jenkins](/setup/ci/jenkins/) in
 order to use it. If you already have Jenkins set up, make sure that you have
-[configured it to run scripts](/setup/ci/jenkins//#configure-script-stage).
+[configured it to run scripts](/setup/features/script-stage/).
 
 The only required field in this stage is **Command**, where you must specify the
 command to run the script. Otherwise, you can use any of the fields that are
@@ -231,6 +253,9 @@ custom webhook stage is a webhook stage specifically named and configured for
 your application's needs, which shows up in the standard pipeline stages
 dropdown menu.
 
+You can [add more certification authorities](/guides/operator/webhook-custom-trust-store/)
+to trust when making webhook calls over HTTPS.
+
 ### Wercker
 Run the specified Wercker pipeline. You must [set up Wercker](/setup/ci/wercker/)
 in order to use this stage. Once Wercker has been configured, your Wercker
@@ -279,6 +304,38 @@ service if one was not specified.
 ### Modify AWS Scaling Process
 Suspend/resume scaling processes.
 
+## Cloud Foundry
+
+### Create Service Key
+Generate credentials for a service instance. Similar to `cf create-service-key`; see the Cloud Foundry documentation about how to [Create a Service Key](https://docs.cloudfoundry.org/devguide/services/service-keys.html#create).
+
+### Delete Service Key
+Delete an existing service key. Similar to `cf delete-service-key`; see the Cloud Foundry documentation about how to [Delete a Service Key](https://docs.cloudfoundry.org/devguide/services/service-keys.html#delete).
+
+### Deploy Service
+Create a service instance. Similar to `cf create-service`; see the Cloud Foundry documentation about [Creating Service Instances](https://docs.cloudfoundry.org/devguide/services/managing-services.html#create).
+
+### Destroy Service
+Delete a service instance. Similar to `cf delete-service`; see the Cloud Foundry documentation about how to [Delete a Service Instance](https://docs.cloudfoundry.org/devguide/services/managing-services.html#delete).
+
+### Map Load Balancer
+Map a Load Balancer (a Cloud Foundry route) to a server group (Cloud Foundry app).
+The domain must already exist in the Cloud Foundry org.
+If the route does not already exist, it will be created.
+Similar to `cf map-route`; see the Cloud Foundry documentation about how to [Map a Route to Your App](https://docs.cloudfoundry.org/devguide/deploy-apps/routes-domains.html#map-route).
+
+### Share Service
+Share a service instance with a specific org / spaces.
+Similar to `cf share-service`; see the Cloud Foundry documentation about [Sharing a Service Instance](https://docs.cloudfoundry.org/devguide/services/sharing-instances.html#sharing).
+
+### Unmap Load Balancer
+Unmap a Load Balancer (a Cloud Foundry route) from a server group (Cloud Foundry app).
+Similar to `cf unmap-route`; see the Cloud Foundry documentation about how to [Unmap a Route](https://docs.cloudfoundry.org/devguide/deploy-apps/routes-domains.html#unmap-route).
+
+### Unshare Service
+Unshare a service instance with a specific org / space.
+Similar to `cf unshare-service`; see the Cloud Foundry documentation about [Unsharing a Service Instance](https://docs.cloudfoundry.org/devguide/services/sharing-instances.html#unsharing).
+
 ## Kubernetes
 
 ### Bake (Manifest)
@@ -310,7 +367,7 @@ for a set of resources. It can also be used to implement a [rainbow deployment
 strategy for Kubernetes by first deploying a new ReplicaSet and then patching
 the fronting service's selectors to point to the new ReplicaSet.
 
-Spinnaker also supports [artifact substitution
+When patching with a _strategic_ or _merge_ strategy, Spinnaker also supports [artifact substitution
 ](/reference/artifacts/in-kubernetes-v2/#binding-artifacts-in-manifests) for the
 patch content just like the resource manifest in the deploy stage.
 
@@ -319,3 +376,15 @@ Scale a Kubernetes object created from a manifest.
 
 ### Undo Rollout (Manifest)
 Rollback a manifest a target number of revisions.
+
+
+## Custom Stages
+
+
+### Custom Webhook
+
+Extend Spinnaker with [predefined Webhook stages](/guides/operator/custom-webhook-stages/).
+
+### Custom Job
+
+Extend Spinnaker with [predefined Run Job stages](/guides/operator/custom-job-stages/).

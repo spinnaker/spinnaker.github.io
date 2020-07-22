@@ -147,7 +147,6 @@ At the end of this guide you will have:
 
    ```bash
    hal config provider kubernetes account add my-test-account \
-     --docker-registries my-gcr-account \
      --context $(kubectl config current-context)
    ```
 
@@ -156,4 +155,3 @@ At the end of this guide you will have:
    ```bash
    hal deploy apply
    ```
-

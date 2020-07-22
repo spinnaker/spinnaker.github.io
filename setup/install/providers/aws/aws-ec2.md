@@ -7,6 +7,12 @@ sidebar:
 
 {% include toc %}
 
+> :warning: These instructions are out-of-date and a new version is being
+> worked on. In the meantime, please use the following
+> [AWS tutorial: Continuous Delivery using Spinnaker on Amazon EKS](https://aws.amazon.com/blogs/opensource/continuous-delivery-spinnaker-amazon-eks/).
+
+Use the AWS EC2 Provider if you want to manage EC2 Instances via Spinnaker. Refer to the [AWS Cloud Provider Overview](https://spinnaker.io/setup/install/providers/aws/) to understand how AWS IAM must be set up for the AWS EC2 provider to work.
+
 In [AWS](https://aws.amazon.com/){:target="\_blank"}, an [__Account__](/concepts/providers/#accounts)
 maps to a credential able to authenticate against a given [AWS
 account](https://aws.amazon.com/account/){:target="\_blank"}.
@@ -18,10 +24,10 @@ Use this option to deploy Spinnaker, if you are familar with deployment using [A
 ### Managing Account
 1. Navigate to [Console](https://console.aws.amazon.com/){:target="\_blank"} > CloudFormation and [select](https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/getting-started.html#select-region) your preferred region.
 2. Download [the template](https://d3079gxvs8ayeg.cloudfront.net/templates/managing.yaml) locally to your workstation.
-    
-    2.a (Optional). Add additional managed account as shown [here](https://github.com/spinnaker/spinnaker.github.io/tree/master/setup/install/providers/aws/managing.yaml#L104)
+
+    2.a (Optional). Add additional managed account as shown on line 158 in the SpinnakerAssumeRolePolicy section of the downloaded template file.
 3. Creating the CloudFormation Stack
-    * __Create Stack__ > __Upload a template to Amazon S3__ > __Browse to template you downloaded in Step-2 above__ > __Next__  
+    * __Create Stack__ > __Upload a template to Amazon S3__ > __Browse to template you downloaded in Step-2 above__ > __Next__
     * Enter __Stack Name__ as spinnaker-**managing**-infrastructure-setup and follow the prompts on screen to create the stack
 4. Once the stack is select the stack you created in Step-3 > Outputs and note the values. You will need these values for subsequent configurations.
 
@@ -33,7 +39,7 @@ Use this option to deploy Spinnaker, if you are familar with deployment using [A
 1. Navigate to [Console](https://console.aws.amazon.com/){:target="\_blank"} > CloudFormation and [select](https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/getting-started.html#select-region) your preferred region.
 2. Download [the template](https://d3079gxvs8ayeg.cloudfront.net/templates/managed.yaml) locally to your workstation.
 3. Creating the CloudFormation Stack
-    * __Create Stack__ > __Upload a template to Amazon S3__ > __Browse to template you downloaded in Step-2 above__ > __Next__  
+    * __Create Stack__ > __Upload a template to Amazon S3__ > __Browse to template you downloaded in Step-2 above__ > __Next__
     * Enter __Stack Name__ as spinnaker-**managed**-infrastructure-setup and follow the prompts on screen to create the stack
     * Enter __AuthArn__ and __ManagingAccountId__ as the value noted above and follow the prompts on screen to create the stack
 
@@ -51,8 +57,8 @@ If you want to use AccessKeys and Secrets to run Spinnaker
 
 ```bash
 
-curl https://d3079gxvs8ayeg.cloudfront.net/templates/managing.yaml
-echo "Optionally add Managing account to the file downloaded as shown at https://github.com/spinnaker/spinnaker.github.io/tree/master/setup/install/providers/aws/managing.yaml#L104"
+curl -O https://d3079gxvs8ayeg.cloudfront.net/templates/managing.yaml
+echo "Optionally add Managing account to the file downloaded as shown on line 158 in the SpinnakerAssumeRolePolicy section of the downloaded file."
 aws cloudformation deploy --stack-name spinnaker-managing-infrastructure-setup --template-file managing.yaml \
 --parameter-overrides UseAccessKeyForAuthentication=true --capabilities CAPABILITY_NAMED_IAM --region us-west-2
 ```
@@ -61,8 +67,8 @@ If you want to use InstanceProfile run Spinnaker
 
 ```bash
 
-curl https://d3079gxvs8ayeg.cloudfront.net/templates/managing.yaml
-echo "Optionally add Managing account to the file downloaded as shown at https://github.com/spinnaker/spinnaker.github.io/tree/master/setup/install/providers/aws/managing.yaml#L104"
+curl -O https://d3079gxvs8ayeg.cloudfront.net/templates/managing.yaml
+echo "Optionally add Managing account to the file downloaded as shown on line 158 in the SpinnakerAssumeRolePolicy section of the downloaded file."
 aws cloudformation deploy --stack-name spinnaker-managing-infrastructure-setup --template-file managing.yaml \
 --parameter-overrides UseAccessKeyForAuthentication=false --capabilities CAPABILITY_NAMED_IAM --region us-west-2
 ```
@@ -74,13 +80,27 @@ aws cloudformation deploy --stack-name spinnaker-managing-infrastructure-setup -
 
 ```bash
 
-curl https://d3079gxvs8ayeg.cloudfront.net/templates/managed.yaml
+curl -O https://d3079gxvs8ayeg.cloudfront.net/templates/managed.yaml
 aws cloudformation deploy --stack-name spinnaker-managed-infrastructure-setup --template-file managed.yaml \
 --parameter-overrides AuthArn=FROM_ABOVE ManagingAccountId=FROM_ABOVE --capabilities CAPABILITY_NAMED_IAM --region us-west-2
 ```
- 
- 
-## Configure Halyard to use AccessKeys (if configured)
+
+## Option-3 : Use AWS Console UI (Manual Steps) 
+
+There are 2 options here
+1. Using AWS IAM AccessKey and Secret
+Option number 1 is useful for creation of user with AWS Access Key and secret. This is a common configuration. 
+2. Using AWS IAM Roles
+Option 2 uses the IAM roles *ManagingRole* and *ManagedRoles*. This setting is applied on some environments that have extra security considerations.
+
+## Halyard Configurations
+After the AWS IAM user, roles, policies and trust relationship have been set up, the next step is to add the AWS configurations to Spinnaker via Halyard CLI:
+
+1. Access the Halyard Pod.
+2. Add the configurations for AWS provider with `hal` command. Please check [hal config provider AWS](https://www.spinnaker.io/reference/halyard/commands/#hal-config-provider-aws).
+3. Enable the AWS provider `hal config provider aws enable`.
+
+### Configure Halyard to use AccessKeys (if configured)
 
 > These steps need to be carried out only if you selected UseAccessKeyForAuthentication as true in Option-1 or Option-2 above
 
@@ -89,7 +109,7 @@ hal config provider aws edit --access-key-id ${ACCESS_KEY_ID} \
     --secret-access-key # do not supply the key here, you will be prompted
 ```
 
-## Configure Halyard to add AWS Accounts
+### Configure Halyard to add AWS Accounts
 
 ```bash
 $AWS_ACCOUNT_NAME={name for AWS account in Spinnaker, e.g. my-aws-account}

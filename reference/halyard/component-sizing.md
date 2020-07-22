@@ -8,7 +8,7 @@ sidebar:
 {% include toc %}
 
 
-Within the Halyard Configuration custom sizing can be specified for each Spinnaker component. Custom sizing must be manually added to the Halyard Configuration, there are no CLI commands or flags to enable these settings. This feature is currently only supported for distributed deployments using Kubernetes (`hal config deploy edit --type distributed --account-name my-k8s-cluster`).
+Custom sizing can be specified for each Spinnaker component within the Halyard configuration. You can either add these sizes to the Halyard config manually, or use any of the [Halyard component sizing commands](https://www.spinnaker.io/reference/halyard/commands/#hal-config-deploy-component-sizing). This feature is currently only supported for distributed deployments using Kubernetes (`hal config deploy edit --type distributed --account-name my-k8s-cluster`).
 
 ## Kubernetes
 The following Kubernetes settings can be tweaked within custom sizing. 
@@ -21,7 +21,7 @@ There are two ways to specify requests and limits
 
 * _(Recommended)_ By supplying the container name, e.g. `echo:`, followed by the container requests and limits.
 
-  This sets resource configuration for the echo container in `spin-echo` service's pod only, not any sidecars
+  This sets resource configuration for the `echo` container in `spin-echo` service's pod only, not any sidecars
   (e.g. the monitoring daemon).
    
 * By supplying the service name, e.g. `spin-clouddriver:`, followed by the container requests and limits.
@@ -58,10 +58,10 @@ Limits and requests follow the Kubernetes conventions [documented here](https://
 
 #### Updating JAVA_OPTS
 
-As of Halyard 1.8, all JVM-based services have the following JAVA_OPTS set:
+All JVM-based services have the following JAVA_OPTS set:
 
 ```
-JAVA_OPTS=-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=2
+JAVA_OPTS=-XX:MaxRAMPercentage=50.0
 ```
 
 This sets the JVM's heap size to half the memory allocated per container. This can be overriden by specifying your own `JAVA_OPTS` 
@@ -71,7 +71,7 @@ As a starting point, the `-Xms` can be set to 80%-90% of the requests memory all
 
 ```
 env:
-   JAVA_OPTS: "-Xms410m -Xmx819m
+   JAVA_OPTS: "-Xms410m -Xmx819m"
 ```
 
 #### Recommendations

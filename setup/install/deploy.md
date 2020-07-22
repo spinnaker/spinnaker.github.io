@@ -37,6 +37,7 @@ hal deploy apply
 __Note:__ If you're deploying to your local machine, you might need `sudo hal
 deploy apply`.
 
+
 ## Connect to the Spinnaker UI
 
 1. Run the following command:
@@ -51,6 +52,15 @@ deploy apply`.
      service).
 
 1. Navigate to [localhost:9000](localhost:9000).
+
+
+__Note:__ Even if the `hal deploy apply` command returns successfully, the 
+installation may not be complete yet. This is especially the case with 
+kubernetes distributed installs. If you see errors such as `Connection refused`
+it may be that all of the containers are not yet available. You can either wait, 
+or check the status of all of the containers using the commands for your cloud
+provider (such as `kubectl get pods --namespace spinnaker`).
+
 
 ### Alternatives
 
@@ -92,7 +102,14 @@ hal deploy apply
 ## Next steps
 
 Now that Spinnaker is deployed and capable managing your cloud provider, you
-can either visit the [Guides](/guides/) pages to learn how to use Spinnaker, or
-continue with additional configuration, such as your [image bakery](/setup/bakery/).
+can...
+
+* Continue with additional configuration, such as your [image
+bakery](/setup/bakery/)
+
+* If you're a Spinnaker end user, read how to [get started using
+Spinnaker](/guides/user/get-started)
+
+* Visit the [Guides](/guides/) pages to learn more
 
 You might also want to [back up your configuration](/setup/install/backups/).

@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Set up canary support"
+title:  "Set up Canary Analysis Support"
 sidebar:
   nav: setup
 ---
@@ -11,7 +11,7 @@ Setting up automated canary analysis in Spinnaker consists of running a bunch
 of Halyard commands, as described in this doc. Before you can use the canary
 analysis service, you must configure at least one metrics service, and at least
 one storage service. The most common setup is to have one metrics service
-configured (e.g. Stackdriver, Atlas, Prometheus or Datadog) and one storage
+configured (e.g. Stackdriver, Atlas, Prometheus, Datadog or New Relic) and one storage
 service (e.g. S3, GCS or Minio) configured. For further details, [here's a
 comprehensive reference](/reference/halyard/commands/#hal-config-canary).
 
@@ -107,6 +107,7 @@ hal config canary edit --default-metrics-store STORE
 * `datadog`
 * `stackdriver`
 * `prometheus`
+* `newrelic`
 
 ## Provide the default metrics account
 
@@ -143,7 +144,7 @@ hal config canary aws disable
 
 ### Manage or view AWS account information for canary
 
-You can add, delete, and multiple accounts for AWS service integrations.
+You can add, edit, and delete multiple accounts for AWS service integrations.
 
 #### Add an account to your AWS service integration
 
@@ -164,7 +165,7 @@ hal config canary aws edit --s3-enabled true
 #### View your AWS canary account details
 
 ```
-hal config canary aws account get
+hal config canary aws account get ACCOUNT
 ```
 
 #### List your canary AWS accounts
@@ -193,9 +194,9 @@ hal config canary datadog disable
 
 ### Manage or view Datadog account information for canary
 
-You can add, delete, and multiple accounts for Datadog service integrations.
+You can add, edit, and delete multiple accounts for Datadog service integrations.
 For details on the parameters for these commands, see the [Halyard reference
-documentation](/reference/halyard/commands/#hal-config-canary)
+documentation](/reference/halyard/commands/#hal-config-canary).
 
 #### Add an account to your Datadog service integration
 
@@ -223,7 +224,7 @@ hal config canary datadog account delete ACCOUNT
 #### View your Datadog canary account details
 
 ```
-hal config canary datadog account get
+hal config canary datadog account get ACCOUNT
 ```
 
 #### List your canary Datadog accounts
@@ -255,9 +256,9 @@ hal config canary google disable
 
 ### Manage or view Google account information for canary
 
-You can add, delete, and multiple accounts for Google service integrations.
+You can add, edit, and delete multiple accounts for Google service integrations.
 For details on the parameters for these commands, see the [Halyard reference
-documentation](/reference/halyard/commands/#hal-config-canary)
+documentation](/reference/halyard/commands/#hal-config-canary).
 
 #### Add an account to your Google service integration
 
@@ -285,7 +286,7 @@ hal config canary google account delete ACCOUNT
 #### View your Google canary account details
 
 ```
-hal config canary google account get
+hal config canary google account get ACCOUNT
 ```
 
 #### List your canary Google accounts
@@ -313,9 +314,9 @@ hal config canary prometheus disable
 
 ### Manage or view Prometheus account information for canary
 
-You can add, delete, and multiple accounts for Prometheus service integrations.
+You can add, edit, and delete multiple accounts for Prometheus service integrations.
 For details on the parameters for these commands, see the [Halyard reference
-documentation](/reference/halyard/commands/#hal-config-canary)
+documentation](/reference/halyard/commands/#hal-config-canary).
 
 #### Add an account to your Prometheus service integration
 
@@ -342,11 +343,70 @@ hal config canary prometheus account delete ACCOUNT
 #### View your Prometheus canary account details
 
 ```
-hal config canary prometheus account get
+hal config canary prometheus account get ACCOUNT
 ```
 
 #### List your canary Prometheus accounts
 
 ```
 hal config canary prometheus account list
+```
+
+
+
+
+## Set up canary analysis to use New Relic
+
+If your telemetry provider is New Relic, use these commands to set up your canary
+to work with your New Relic metrics.
+
+### Enable/disable your New Relic service integration
+
+```
+hal config canary newrelic enable
+```
+
+```
+hal config canary newrelic disable
+```
+
+### Manage or view New Relic account information for canary
+
+You can add, edit, and delete multiple accounts for New Relic service integrations.
+For details on the parameters for these commands, see the [Halyard reference
+documentation](/reference/halyard/commands/#hal-config-canary).
+
+#### Add an account to your New Relic service integration
+
+```
+hal config canary newrelic account add ACCOUNT --api-key --application-key
+--base-url
+```
+
+See the [command reference](/reference/halyard/commands/#hal-config-canary)
+for more about these parameters.
+
+#### Edit your New Relic account information
+
+```
+hal config canary newrelic account edit ACCOUNT --api-key --application-key
+--base-url
+```
+
+#### Delete your account
+
+```
+hal config canary newrelic account delete ACCOUNT
+```
+
+#### View your New Relic canary account details
+
+```
+hal config canary newrelic account get ACCOUNT
+```
+
+#### List your canary New Relic accounts
+
+```
+hal config canary newrelic account list
 ```

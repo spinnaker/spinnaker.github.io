@@ -40,13 +40,19 @@ Since Groovy closures can be automatically type-coerced to Java [SAM types](http
 ## Code formatting
 
 We follow [Google's Java Style Guide](https://google.github.io/styleguide/javaguide.html) for Java.
+We follow [ktlint](https://ktlint.github.io/) for Kotlin.
 
-For Kotlin / Groovy languages please use:
+For Groovy and miscellaneous files, please use:
 
 * 2 space indents.
 * No more than 1 consecutive line of whitespace.
-* Line breaks rather than overly long lines.
+* Line breaks rather than overly long lines (limit to 120 column width if possible).
 * Camel case conventions as per Java.
+
+Code formatting is applied automatically with a git pre-commit hook, but if you need to check or apply code formatting outside of this process:
+
+* Format code: `./gradlew spotlessApply`
+* Check code: `./gradlew spotlessCheck`
 
 ## Package structure
 
