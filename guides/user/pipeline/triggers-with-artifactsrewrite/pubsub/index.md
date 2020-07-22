@@ -7,13 +7,13 @@ sidebar:
 
 {% include toc %}
 
-In order to programatically trigger pipelines one can configure Spinnaker to
+In order to programatically trigger pipelines, you can configure Spinnaker to
 subscribe and listen to a Pub/Sub topic and push messages to the configured
 topic. This can be used to trigger pipelines during CI jobs, from the command line,
 or from a third-party system. The message payload will be available in the
 Pipeline's execution.
 
-> __☞ Note__:  It's possible to configure multiple pipelines to trigger off of
+> __Note:__  It's possible to configure multiple pipelines to trigger off of
 > a single Pub/Sub message.
 
 Only Google Pub/Sub is supported. See the instructions
@@ -29,8 +29,9 @@ Assuming you have created a pipeline, under __Configuration__, select __Add
 Trigger__ and make its type selector __Pub/Sub__.
 
 To select a Pub/Sub subscription to trigger from, select values for
-__Pub/Sub System Type__ and __Subscription Name__. Note that the subscription
-must be configured before it is available to select in the UI.
+__Pub/Sub System Type__ and __Subscription Name__. 
+  > __Note:__ The subscription
+  > must be configured before it is available to select in the UI.
 
 {%
   include
@@ -42,10 +43,10 @@ must be configured before it is available to select in the UI.
 
 If you want to ensure that a Pub/Sub trigger only fires when a certain message payload
 arrives, you can provide __Payload Constraints__ in the trigger. These are
-key/value pairs where the key must be found in the incoming message payload, and the
+key/value pairs where the key must be found in the incoming message payload. The
 value must match using regex.
 
-For example, if we had configured:
+For example, if we configured:
 
 {%
   include
@@ -108,7 +109,7 @@ following message payload for example:
 }
 ```
 
-> __☞ Note__: If you had selected the __Required__ checkbox for a parameter
+> __Note:__ If you selected the __Required__ checkbox for a parameter
 > without providing a default, the pipeline doesn't trigger if a parameter is
 > not present. The difference between this and the preconditions covered
 > earlier is that when a precondition isn't met, Spinnaker will not even try to
@@ -121,7 +122,7 @@ following message payload for example:
 If your pipeline requires artifacts (for example, a Kubernetes manifest file
 stored in GCS), you can make this explicit by defining an __Expected Artifact__
 and assigning it to the Pub/Sub Trigger. Under **Artifact Constraints**, select
-**Define a new artifact...** and supply the artifact details, as shown below:
+**Define a new artifact**, and supply the artifact details, as shown below:
 
 {%
   include
@@ -136,7 +137,7 @@ and assigning it to the Pub/Sub Trigger. Under **Artifact Constraints**, select
 %}
 
 In order for this to work, you need to supply the required artifact in the
-Pub/Sub message payload, and configure Spinnaker so that it can translate the
+Pub/Sub message payload and configure Spinnaker so that it can translate the
 Pub/Sub payload into a Spinnaker artifact.
 
 If you're using GCR, you can use the `--message-format` flag and Spinnaker will
@@ -149,9 +150,10 @@ hal config pubsub google subscription edit my-gcr-subscription \
 
 Otherwise, you need to supply a translation template so that Spinnaker can
 translate the Pub/Sub payload into a Spinnaker artifact. To do this, create a
-[Jinja template](http://jinja.pocoo.org/docs/2.10/templates). Note that the
-output of the Jinja transform must be a JSON list of Spinnaker artifacts. The
-translation template itself can be any valid Jinja transform.
+[Jinja template](http://jinja.pocoo.org/docs/2.10/templates). 
+
+  > __Note:__ The output of the Jinja transform must be a JSON list of Spinnaker artifacts. The
+  > translation template itself can be any valid Jinja transform.
 
 Use the following `hal` command to tell Spinnaker how to find the template:
 
