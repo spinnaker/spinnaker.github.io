@@ -51,7 +51,7 @@ Use this option to deploy Spinnaker, if you are familar with deployment using [A
 
 ![](../outputs_cloudformation.png)
 
-## Option-2 : Configure with AWS CLI
+## Option 2: Configure with AWS CLI
 
 This option assumes that you have AWS CLI [installed](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) ,
 [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html) and have access to managing and each of the managed account.
