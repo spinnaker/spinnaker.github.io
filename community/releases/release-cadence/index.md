@@ -73,12 +73,13 @@ future patch releases (e.g. `M.N.1`).
 
 ## Upcoming Releases
 
-| Version | Release Branches Cut | Release Manager (Slack ID) |
-|-|-|-|
-| `1.20.0` | 2020-04-27 | Ethan Rogers (@ethanfrogers)
-| `1.21.0` | 2020-06-23 | TBD
-| `1.22.0` | 2020-08-18 | TBD
-| `1.23.0` | 2020-10-13 | TBD
+There's a public calendar you can subscribe to which includes important release dates.
 
-> Keep in mind, when the release branches are cut, the release candidate becomes
-> available. The stable release becomes available one to two weeks later.
+* If you use Google Calendar, [click here to subscribe](https://calendar.google.com/calendar?cid=c3Bpbm5ha2VyLmlvX3AybjhzZWd2bG5lbDRjYm83NzdlbTM1YjBjQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20).
+* If you don't use Google Calendar or have trouble with the first link, you can copy this iCal URL to subscribe using your calendar app of choice (instructions for [Google](https://support.google.com/calendar/answer/37100), [Apple Calendar](https://support.apple.com/guide/calendar/subscribe-to-calendars-icl1022/mac)):
+   ```
+   https://calendar.google.com/calendar/ical/spinnaker.io_p2n8segvlnel4cbo777em35b0c%40group.calendar.google.com/public/basic.ics
+   ```
+* If you don't want to subscribe directly, you can check the calendar below:
+
+<iframe src="https://calendar.google.com/calendar/embed?src=spinnaker.io_p2n8segvlnel4cbo777em35b0c%40group.calendar.google.com&ctz=America%2FNew_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>

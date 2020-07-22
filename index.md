@@ -1,9 +1,9 @@
 ---
 layout: home
 conference_ad_row:
-  title: Sign Up for Virtual Spinnaker Gardening Days
-  excerpt: "Have fun and move the needle on continuous delivery at Spinnaker Gardening Days #communityHack, sponsored by Salesforce! [Register](https://go.armory.io/gardening) and join Spinnaker users and companies on April 9 & 10 to learn and build. Enjoy a collaborative hackathon, free training, and community celebration. We’ll dig into open-source issues and features as well as extend the ecosystem. [Click to learn more](https://github.com/spinnaker-hackathon/gardening)."
-  image_path: assets/images/Gardening_logo.png
+  title: Automate your SDLC at Gardening Days, our open source hackathon
+  excerpt: "[Register now](https://go.armory.io/gardening) to join Spinnaker contributors on July 16-23 to learn and build. Contribute when you can all week long and earn prizes. Sign up, and you'll be matched with a team based on skill and interest. Along with [individual rewards](/community/gardening/what-to-hack/), teams will demo projects to compete for prize packages awarded to [challenge-winning](/community/gardening/hack-logistics/#hackathon-challenges) teams and runners-up. Enjoy free compute from AWS, SIG projects in Security, Ops, and more, and a global-friendly schedule. Everyone's welcome to extend the ecosystem with us. [Learn more](/community/gardening/)."
+  image_path: assets/images/Gardening2.png
   alt: "Spinnaker Gardening Days Logo"
 slack_row:
   title: Join Spinnaker Slack
@@ -83,12 +83,12 @@ notifications_feature:
   content: "Set up event notifications for email, Slack, HipChat, or SMS (via Twilio)."
 access_control_feature:
   title: Role-based Access Control
-  content: "Restrict access to projects or accounts by hooking into your internal authentication system using OAuth, SAML, LDAP, X.509 certs, Google groups, Azure groups, or GitHub teams."
+  content: "Restrict access to projects or accounts by hooking into your internal authentication system using OAuth, SAML, LDAP, X.509 certs, Google groups, Azure groups, or GitHub Organizations."
 manual_judgments_feature:
   title: Manual Judgments
   content: "Require a manual approval prior to releasing an update with a manual judgement stage."
 execution_windows_feature:
-  title: White-listed Execution Windows
+  title: Restricted Execution Windows
   content: "Restrict the execution of stages to certain windows of time, making sure deployments happen during off-peak traffic or when the right people are on hand to monitor the roll-out."
 chaos_monkey_feature:
   title: Chaos Monkey Integration

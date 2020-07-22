@@ -26,8 +26,8 @@ be evaluated.
 Spinnaker allows you to execute Java code within a pipeline expression. This can
 be useful for string manipulation or more advanced custom logic than
 would otherwise be possible. For security reasons, you can only call methods of
-whitelisted Java classes. You can find the full list of whitelisted classes
-[here](#whitelisted-java-classes).
+specifically allowed Java classes. You can find the full list of allowed classes
+[here](#allowed-java-classes).
 
 You can use methods directly on existing map values based on their Java class.
 For example, you can process a list of values entered as a parameter using
@@ -261,24 +261,27 @@ For example, `${#triggerResolvedArtifact("my-image")["reference"]}` might return
 A shortcut to look up the resolved artifact in execution trigger by its type. If multiple artifacts are found, only 1 will be returned.
 For example, `${#triggerResolvedArtifactByType("docker/image")["reference"]}` might return `gcr.io/spinnaker-marketplace/orca@sha256:b48dbe7d7cb580db8512e4687d31f3710185b08afcf3cb53c0203025f93f9091`.
 
-## Whitelisted Java classes
+## Allowed Java classes
 
-You can find the code which whitelists Java classes [here](https://github.com/spinnaker/orca/blob/6d0ba0bf8af5e06c5b405b8294f07e7a5a4c335a/orca-core/src/main/java/com/netflix/spinnaker/orca/pipeline/expressions/whitelisting/InstantiationTypeRestrictor.java#L26).
-The whitelisted classes are:
+You can find the code which restricts instantiable Java classes [here](https://github.com/spinnaker/kork/blob/8e414e21625219a58afece0a812f570340882294/kork-expressions/src/main/java/com/netflix/spinnaker/kork/expressions/whitelisting/InstantiationTypeRestrictor.java#L28).
+The allowed classes are:
 
 * [Boolean](https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html)
 * [Byte](https://docs.oracle.com/javase/8/docs/api/java/lang/Byte.html)
 * [ChronoUnit](https://docs.oracle.com/javase/8/docs/api/java/time/temporal/ChronoUnit.html)
 * [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html)
+* [DayOfWeek](https://docs.oracle.com/javase/8/docs/api/java/time/DayOfWeek.html)
 * [Double](https://docs.oracle.com/javase/8/docs/api/java/lang/Double.html)
 * [Instant](https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html)
 * [Integer](https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html)
 * [LocalDate](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html)
+* [LocalDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDateTime.html)
 * [Long](https://docs.oracle.com/javase/8/docs/api/java/lang/Long.html)
 * [Math](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html)
 * [Random](https://docs.oracle.com/javase/8/docs/api/java/util/Random.html)
 * [SimpleDateFormat](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html)
 * [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)
+* [URLEncoder](https://docs.oracle.com/javase/8/docs/api/java/net/URLEncoder.html)
 * [UUID](https://docs.oracle.com/javase/8/docs/api/java/util/UUID.html)
 
 ## Source code

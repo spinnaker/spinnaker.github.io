@@ -29,9 +29,9 @@ services:
 
 branches:
 - master
+- release-1.21.x
 - release-1.20.x
 - release-1.19.x
-- release-1.18.x
 ---
 
 [Build Cop Rotation History](https://github.com/spinnaker/spinnaker/issues?utf8=%E2%9C%93&q=is%3Aissue+label%3Abuild-cop-rotation)

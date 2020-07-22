@@ -11,7 +11,7 @@ sidebar:
 If you have [enabled canary for your application](/setup/canary/) and have one
 or more [canary configs prepared](/guides/user/canary/config/), you can now add
 a canary stage to your pipeline and configure it to perform canary analysis for
-your deployment,
+your deployment.
 
 This stage type is for the canary _analysis_ only. The canary stage doesn't
 perform any provisioning or cleanup operations for you. Those must be configured
