@@ -21,7 +21,7 @@ Spinnaker's event bus as shown below.
 # Prerequisite configuration/setup
 
 If you (or your Spinnaker admin) already configured Spinnaker to listen to
-a Pub/Sub messages from the GCS bucket and you plan to publish objects to, you can
+Pub/Sub messages from the GCS bucket you plan to publish objects to, you can
 skip this section. _One Pub/Sub subscription can be used to trigger as many
 independent Spinnaker pipelines as needed_.
 
@@ -145,5 +145,4 @@ Next, we must configure the trigger:
 If you upload a file to a path matching your configured __Object path__,
 the pipeline should execute. If it doesn't, you can start by checking the logs
 in the __Echo__ service.
-
 
