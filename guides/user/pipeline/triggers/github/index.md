@@ -27,7 +27,7 @@ skip this section.
 
 You need the following:
 
-* A GitHub repository either under your user, in an organization, or user's
+* A GitHub repository, either under your user account or in an organization or user's
   account that you have permission to publish commits to.
 
   This will be referred to as `$ORGANIZATION/$REPOSITORY` from now on (e.g.
@@ -128,5 +128,4 @@ run our pipeline. To configure the trigger:
 If you add or modify a file matching your expected artifact to the configured
 repository, it should execute. If it doesn't, you can start by checking the
 logs of the __Echo__ service.
-
 
