@@ -1,4 +1,3 @@
-
 ## Jekyll Installation
 Jekyll runs on Ruby, and running multiple versions of Ruby on a single system is apparently difficult. These instructions install [`rbenv`](https://github.com/rbenv/rbenv), which makes it easy to install and switch to a specific Ruby version.
 
