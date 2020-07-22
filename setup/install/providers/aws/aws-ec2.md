@@ -23,7 +23,7 @@ In [AWS](https://aws.amazon.com/){:target="\_blank"}, an [__Account__](/concepts
 maps to a credential able to authenticate against a given [AWS
 account](https://aws.amazon.com/account/){:target="\_blank"}.
 
-## Option-1 : Configure with AWS CloudFormation Console
+## Option 1: Configure with AWS CloudFormation Console
 
 Use this option to deploy Spinnaker, if you are familar with deployment using [AWS Console](https://console.aws.amazon.com/) .
 
