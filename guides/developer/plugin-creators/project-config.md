@@ -21,7 +21,7 @@ Updates:
 * You can now generate a skeleton Deck plugin component by executing:
 
   ```bash
-  npx -p @spinnaker/pluginsdk scaffold`
+  npx -p @spinnaker/pluginsdk scaffold
   ```
 
   This creates the structure and files for your Deck component.
