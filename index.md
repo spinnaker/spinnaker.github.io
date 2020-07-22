@@ -83,7 +83,7 @@ notifications_feature:
   content: "Set up event notifications for email, Slack, HipChat, or SMS (via Twilio)."
 access_control_feature:
   title: Role-based Access Control
-  content: "Restrict access to projects or accounts by hooking into your internal authentication system using OAuth, SAML, LDAP, X.509 certs, Google groups, Azure groups, or GitHub teams."
+  content: "Restrict access to projects or accounts by hooking into your internal authentication system using OAuth, SAML, LDAP, X.509 certs, Google groups, Azure groups, or GitHub Organizations."
 manual_judgments_feature:
   title: Manual Judgments
   content: "Require a manual approval prior to releasing an update with a manual judgement stage."
