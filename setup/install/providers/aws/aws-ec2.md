@@ -149,9 +149,10 @@ the [Halyard command reference](/reference/halyard/commands#hal-config-provider-
 ## Next steps
 
 Optionally, you can enable other AWS Providers:
-[set up Amazon's Elastic Container
-Service](/setup/install/providers/aws/aws-ecs/), [manage containers in AWS EKS](https://aws.amazon.com/eks/), [enable AWS Lambda support for Spinnaker](https://aws.amazon.com/lambda/) or [set up another cloud
-provider](/setup/install/providers/).
+* [Manage containers in AWS ECS with Spinnaker](/setup/install/providers/aws/aws-ecs/)
+* [Manage containers in AWS EKS with Spinnaker](https://aws.amazon.com/eks/)
+* [Enable AWS Lambda support with Spinnaker](https://aws.amazon.com/lambda/) 
+* [Set up another cloud provider](/setup/install/providers/)
 
-Otherwise you're ready to [choose an environment](/setup/install/environment/)
+Otherwise you are ready to [choose an environment](/setup/install/environment/)
 in which to install Spinnaker.
