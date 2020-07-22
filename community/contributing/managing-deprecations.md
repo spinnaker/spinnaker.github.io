@@ -31,4 +31,4 @@ Deprecation announcements should be added to the [Next Release Preview page](/co
 
 Once the Spinnaker version with the deprecation announcement gets released, you are encouraged to remove the deprecated code from the codebase as soon as possible. This gives you and others sufficient time to fix edge cases that may arise from the removal before the next Spinnaker release.
 
-[1^]: Automated migrations are not always possible. In lieu of a migration, documentation must be provided on how to migrate installations.
+[^1]: Automated migrations are not always possible. In lieu of a migration, documentation must be provided on how to migrate installations.
