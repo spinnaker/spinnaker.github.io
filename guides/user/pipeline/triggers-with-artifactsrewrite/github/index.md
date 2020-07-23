@@ -13,18 +13,18 @@ files as [artifacts](/reference/artifacts) into a pipeline.
 
 This functionality uses GitHub
 [Webhooks](https://developer.github.com/webhooks/) for delivering messages to
-Spinnaker, and must be configured to send messages to Spinnaker's event bus as
+Spinnaker and must be configured to send messages to Spinnaker's event bus as
 shown below.
 
 # Prerequisite configuration/setup
 
-If you (or your Spinnaker admin) have already configured Spinnaker to listen to
+If you (or your Spinnaker admin) already configured Spinnaker to listen to
 a GitHub webhooks from the repository you plan to publish commits to, you can
 skip this section.
 
 You need the following:
 
-* A GitHub repository either under your user, or in an organization or user's
+* A GitHub repository, either under your user or in an organization or user's
   account that you have permission to publish commits to.
 
   This will be referred to as `$ORGANIZATION/$REPOSITORY` from now on (for
@@ -36,7 +36,7 @@ You need the following:
 * Artifact support [enabled](/reference/artifacts-with-artifactsrewrite//#enabling-artifact-support).  
 
 
-At this point, we will configure GitHub webhooks and a GitHub artifact account.
+At this point, you'll configure GitHub webhooks and a GitHub artifact account.
 The webhook will be received by Spinnaker whenever a commit is made, and the
 artifact account will allow you to download any pertinent files.
 
@@ -60,7 +60,7 @@ to apply them in Spinnaker.
 
 # Using GitHub artifacts in pipelines
 
-We will need either an existing or a new pipeline that we want to be triggered
+You'll need either an existing or a new pipeline that you want to be triggered
 on changes to GitHub artifacts. If you do not have a pipeline, create one as shown
 below.
 
@@ -93,14 +93,14 @@ Let's add a Git trigger to run our pipeline. To configure the trigger:
 
 ## Configure the GitHub artifact
 
-Now we need to declare that the GitHub trigger expects that a specific artifact
+Now you need to declare that the GitHub trigger expects that a specific artifact
 matching some criteria is available before the pipeline starts executing. In
 doing so, you guarantee that an artifact matching your description is present in
 the pipeline's execution context. If no artifact for this description is present,
 the pipeline won't start.
 
 To configure the artifact, go to the __Artifact Constraints__ dropdown for the
-GitHub trigger configuration, and select __"Define a new artifact..."__ to bring
+GitHub trigger configuration and select __"Define a new artifact"__ to bring
 up the __Expected Artifact__ form.
 
 {%
@@ -117,7 +117,7 @@ Enter the artifact information:
 
 1. Enter a value in the __File path__ field.
 
-	 > __☞ Note__: This path can be a regular expression. You can, for example,
+	 > __Note:__ This path can be a regular expression. You can, for example,
 	 > set the object path to be `folder/.*\.yml` to trigger on any change to a
 	 > YAML file inside `folder` in your repository.
 
