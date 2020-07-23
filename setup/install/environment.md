@@ -12,7 +12,7 @@ In this step, you tell Halyard in what type of environment to install Spinnaker.
 The recommended path is a distributed installation onto a Kubernetes cluster,
 but all of these methods are supported:
 
-* [Distributed Kubernetes](#distributed-kubernetes) on Kubernetes
+* [Distributed Kubernetes](#distributed-installation) on Kubernetes
 
   Halyard deploys each of Spinnaker's [microservices](/reference/architecture)
   separately. __This is highly recommended for use in production.__
