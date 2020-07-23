@@ -18,7 +18,7 @@ pipeline parameter to specify the target namespace.
 
 ## Configure your pipeline parameters
 
-First we will register a pipeline parameter in the "configuration" tab of the
+First you will register a pipeline parameter in the "configuration" tab of the
 pipeline editor (only the __Name__ is required):
 
 {% include
