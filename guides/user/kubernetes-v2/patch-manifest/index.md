@@ -34,22 +34,12 @@ There are a few steps:
 
 2. To identify the Kubernetes resource to patch, specify the following required fields:
 
-* __Account__
-
-  The Spinnaker account that manages the Kubernetes cluster
-
-* __Namespace__
-
-  The Kubernetes namespace that your resource is located in
-
-* __Kind__
-
-  The Kubernetes Kind of your resource e.g. deployment, service etc
-
-* __Name__
-
-  The name of your Kubernetes resource
-
+| Field | Value |
+|-------|-------|
+| __Account__ | The Spinnaker account that manages the Kubernetes cluster |
+| __Namespace__ | The Kubernetes namespace that your resource is located in |
+| __Kind__ | The Kubernetes Kind of your resource e.g. deployment, service etc |
+| __Name__ | The name of your Kubernetes resource |
 
 ## Specify your patch content
 
@@ -98,7 +88,7 @@ Assuming you have declared an expected artifact upstream to your Patch (Manifest
   get to pick which upstream artifact to deploy."
 %}
 
-> __☞ Note__: Make sure that the __Artifact Account__ field matches an account
+> __Note__: Make sure that the __Artifact Account__ field matches an account
 > with permission to download the manifest.
 
 
@@ -117,7 +107,7 @@ spec:
           image: gcr.io/my-project/my-image
 ```
 
-Now, if your pipeline was triggered due to a new Docker image tag being pushed to your Docker registry (say my-image:2.0), Spinnaker will override the version of the container image with the new version:
+If your pipeline was triggered due to a new Docker image tag being pushed to your Docker registry (say my-image:2.0), Spinnaker will override the version of the container image with the new version:
 
 ```yaml
 #...rest of manifest
