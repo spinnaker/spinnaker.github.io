@@ -91,7 +91,7 @@ for which you're providing values and write that value.
    ```
 You can code each value by hand in the pipeline JSON that you create. You can
 also generate the JSON and populate the values programatically. For simplicity
-This doc describes doing it by hand. <!-- This sentence sounds like "This doc" should be hyperlinked but I don't see anything. I wanted to bring attention to this in case there is supposed to be a link -->
+This doc describes doing it by hand. 
 
 
 ## Specify inheritance and overrides
