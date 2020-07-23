@@ -35,7 +35,7 @@ artifacts:
 
 You can have multiple artifacts in your delivery config.
 We will watch for new versions of every artifact you define.
-In order to deploy a cluster that is running an artifact you'll need to use it within a resource (in an **Environment**).
+In order to deploy a cluster that is running an artifact, you'll need to use it within a resource (in an **Environment**).
 
 _For detailed artifact information, please refer to the [Artifacts](/guides/user/managed-delivery/artifacts/) page._
 
@@ -156,7 +156,7 @@ environments:
 
 This shortened delivery config shows how to promote a debian artifact through two environments. 
 
-Note that the first environment has no constraints.
+  > __Note__: The first environment has no constraints.
 
 ## Example 
 
