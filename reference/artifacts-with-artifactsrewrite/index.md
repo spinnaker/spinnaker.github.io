@@ -32,6 +32,23 @@ hal config features edit --artifacts-rewrite true
 
 If using Spinnaker 1.20 or later, support for the standard artifacts UI is enabled by default.
 
+## Transitioning from the legacy artifacts UI
+
+If you were using Spinnaker 1.19 or earlier with the legacy artifacts UI enabled,
+you will notice several changes upon upgrading to 1.20. For example, there is no
+longer a separate Expected Artifacts section when configuring a pipeline.
+Instead, you can add, edit, and remove expected artifacts from the Trigger
+Constraints section of each trigger. If an artifact is not associated with a
+trigger, it is no longer editable from the pipeline configuration view, and we
+recommend defining it inline in the stage that consumes it instead.
+
+For the 1.20 release only, you can add the following to your `settings-local.js`
+to revert to the legacy artifacts UI:
+
+```
+window.spinnakerSettings.feature.legacyArtifactsEnabled = true;
+```
+
 ## The artifact format
 
 As an example, an object stored in Google Cloud Storage (GCS) might be accessed using the following Spinnaker artifact:
