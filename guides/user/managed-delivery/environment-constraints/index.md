@@ -356,14 +356,14 @@ Once a user in the channel clicks on the `Approve` button, the notification chan
   image_path="./md-manual-judgment-approved.png"
 %}
 
-> :warning: Note that the `frequency` setting for notifications does not affect this behavior -- interactive
+> :warning: The `frequency` setting for notifications does not affect this behavior -- interactive
 > notifications will always be sent unless your operator has chosen to disable this feature entirely on your
 > company's instance of Spinnaker.
 
 ### APIs to interact with constraints
 In addition to Slack integration, the following API endpoints are currently available to interact with constraints.
 
-_Note: we limit to one delivery config per app, so these APIs currently use app name._
+  > ___Note__: We limit to one delivery config per app, so these APIs currently use app name._
 
 #### Reading status of pending and recent constraints
 
