@@ -8,7 +8,7 @@ sidebar:
 {% include toc %}
 
 Before you can add a canary stage to a pipeline, you need to configure what the
-canary consists of, including...
+canary consists of, including:
 
 * A name by which a canary stage can choose this config
 * The specific metrics to evaluate, and a logical grouping of those metrics
@@ -20,7 +20,7 @@ Canary configuration is done per Spinnaker
 [application](/concepts/#application). For each
 application set up to support canary, you create one or more configs.
 
-> Note: By default, all the canary configs you create are visible to all
+> __Note__: By default, all the canary configs you create are visible to all
 applications. But you can [change
 that](/setup/canary/#specify-the-scope-of-canary-configs).
 
