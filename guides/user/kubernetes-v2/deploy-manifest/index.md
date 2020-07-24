@@ -44,7 +44,7 @@ from the stage selector:
 ### Specify manifests statically
 
 If you know ahead of time what you expect to deploy using a certain manifest
-(even if you don't know what version of your Docker image it will run) you can
+(even if you don't know what version of your Docker image it will run), you can
 declare it directly in the pipeline by providing the manifest specification:
 
 {%
@@ -55,7 +55,7 @@ declare it directly in the pipeline by providing the manifest specification:
   to enter the manifest YAML by hand."
 %}
 
-Of course, if you are _generating_ your pipeline definitions rather than entering
+If you are _generating_ your pipeline definitions rather than entering
 them into the UI, the stage definition would look more like this:
 
 ```json
@@ -79,11 +79,11 @@ or want a single deploy stage to deploy a variety of manifests, you
 can specify your manifest using an [Artifact](/reference/artifacts).
 
 The idea is: artifacts in Spinnaker allow you to reference remote, deployable
-resources. When referencing an artifact from a Deploy Manifest stage , that
+resources. When referencing an artifact from a Deploy Manifest stage, that
 artifact must be a text file containing the Manifest specification.
 This can be stored in GitHub or an object store (like GCS).
 
-Changes to manifests can trigger pipelines. Here's some more information:
+Changes to manifests can trigger pipelines. For more information:
 
 * [Consuming GitHub Artifacts](/guides/user/triggers/github)
 * [Consuming GCS Artifacts](/guides/user/triggers/gcs)
@@ -99,7 +99,7 @@ manifest stage, you can reference it in the Deploy configuration:
   get to pick which upstream artifact to deploy."
 %}
 
-> __☞ Note__: Make sure that the __Artifact Account__ field matches an account
+> __Note__: Make sure that the __Artifact Account__ field matches an account
 > with permission to download the manifest.
 
 Keep in mind that the artifact bound in the upstream stage can match multiple
