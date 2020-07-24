@@ -120,10 +120,30 @@ flag or via STDIN, e.g.
 }
 ```
 
+You can pass in paramaters as key-value pairs with the `-p` flag as such:
+
+```bash
+spin pipeline execute --application my-app --name my-pipeline -p foo=bar,baz=qux
+```
+
 ### Delete a pipeline with `delete`
 
 ```bash
 spin pipeline delete --name my-pipeline --application my-app
 
 Pipeline deleted
+```
+
+### Enable/Disable a pipeline with `update`
+
+```bash
+spin pipeline update --application my-app --name my-pipeline --enabled
+
+Pipeline updated
+```
+
+```bash
+spin pipeline update --application my-app --name my-pipeline --disabled
+
+Pipeline updated
 ```
