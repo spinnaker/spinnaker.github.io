@@ -120,15 +120,13 @@ run our pipeline.
 
 Next, we must configure the trigger: 
 
-* __Type__: Pub/Sub
-* __Pub/Sub System Type:__ Google
-* __Subscription Name:__ Depends on what you've configured in your Pub/Sub
-  configuration using Halyard
-* __Attribute Constraints:__ Must be configured to include the pair `eventType`:
-  `OBJECT_FINALIZE` (see the
-  [docs](https://cloud.google.com/storage/docs/pubsub-notifications#events) for
-  an explanation)
-* __Expected Artifacts:__ Must reference the artifact defined previously
+| Field | Value |
+|-------|-------|
+| __Type__ | "Pub/Sub" | 
+| __Pub/Sub System Type__ | "Google" |
+| __Subscription Name__  | Depends on your Pub/Sub configuration (from Halyard|
+| __Attribute Constraints__ | Must be configured to include the pair `eventType`:`OBJECT_FINALIZE` (See the [docs](https://cloud.google.com/storage/docs/pubsub-notifications#events)) |
+| __Expected Artifacts__ | Must reference the artifact defined previously |
 
 {%
   include
