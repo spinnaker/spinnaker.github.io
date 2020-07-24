@@ -74,12 +74,12 @@ and get it using the following command:
 
 ## Provide values for the variables
 
-> Note: the variables [defined in the pipeline
+> __Note__: The variables [defined in the pipeline
 > template](/guides/user/pipeline/pipeline-templates/create/#3-edit-the-file-for-template-format)
 > include default values, so you don't have to provide a value for every variable defined.
 
-In the pipeline JSON file, in the `variables` section, list each variable
-for which you're providing values, and write that value.
+In the pipeline JSON file (in the `variables` section), list each variable
+for which you're providing values and write that value.
 
    Use the following format:
 
@@ -91,7 +91,7 @@ for which you're providing values, and write that value.
    ```
 You can code each value by hand in the pipeline JSON that you create. You can
 also generate the JSON and populate the values programatically. For simplicity
-This doc describes doing it by hand.
+This doc describes doing it by hand. 
 
 
 ## Specify inheritance and overrides
