@@ -28,7 +28,7 @@ In order to be considered safe to merge into a release branch, your patch must:
   documented in a GitHub issue, please create one. Describe the difference
   between the expected and observed behavior, and include links to the commit
   that introduced the regression. Indicate to which releases you would like
-  your fix to be considered a candidate for backporting.
+  your fix to be backported.
 * Include tests validating the regression and the fix. The first commit of your
   patch pull request should add test coverage that demonstrates the existence
   of the bug and exercises all code paths potentially impacted by your fix.
