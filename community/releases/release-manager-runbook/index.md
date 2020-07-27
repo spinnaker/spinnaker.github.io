@@ -446,7 +446,7 @@ Repeat weekly.
 add an explanation to the contributor as a comment.
 
     1. If it's impossible for the candidate to meet the criteria (for example, it doesn't
-       not fix a regression), remove the `backport-candidate` label.
+       fix a regression), remove the `backport-candidate` label.
        
     1. If the contributor can amend the candidate to meet the criteria (e.g.,
        add test coverage), don't remove the `backport-candidate` label.
