@@ -449,4 +449,4 @@ add an explanation to the contributor as a comment.
        not fix a regression), remove the `backport-candidate` label.
        
     1. If the contributor can amend the candidate to meet the criteria (e.g.,
-       add test coverage), do not remove the `backport-candidate` label.
+       add test coverage), don't remove the `backport-candidate` label.
