@@ -21,9 +21,10 @@ include all commits merged into `master` for each service. We do this on a
 
 In order to be considered safe to merge into a release branch, your patch must:
 
-* Fix a documented regression. This means that the currently broken
-  functionality must have worked as expected in the version(s) of Spinnaker
-  to which you want to backport a fix. If the regression is not already
+* Fix a documented regression in a
+  [supported version of Spinnaker](https://spinnaker.io/community/releases/versions/#latest-stable).
+  This means that the currently broken functionality must have worked as
+  expected in a previous version of Spinnaker. If the regression is not already
   documented in a GitHub issue, please create one. Describe the difference
   between the expected and observed behavior, and include links to the commit(s)
   that introduced the regression. Indicate to which release(s) you would like
