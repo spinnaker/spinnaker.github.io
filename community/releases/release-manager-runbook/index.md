@@ -445,7 +445,7 @@ Repeat weekly.
 [release branch patch criteria](/community/contributing/releasing#release-branch-patch-criteria),
 add an explanation to the contributor as a comment.
 
-    1. If it is impossible for the candidate to meet the criteria (e.g., it does
+    1. If it's impossible for the candidate to meet the criteria (for example, it doesn't
        not fix a regression), remove the `backport-candidate` label.
        
     1. If the contributor can amend the candidate to meet the criteria (e.g.,
