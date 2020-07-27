@@ -44,26 +44,26 @@ Select `Kustomize` as the Render Engine and define the artifact for your `kustom
 
 You can specify the following:
 
-* __The account__ (required)
+* __Account__ (required)
 
   The `git/repo` account to use.
 
-* __The URL__ (required)
+* __URL__ (required)
 
   The location of the Git repository.
 
-* __The branch__ (optional)
+* __Branch__ (optional)
 
   The branch of the repository you want to use. _[Defaults to `master`]_
 
-* __The subpath__ (optional)
+* __Subpath__ (optional)
 
   By clicking `Checkout subpath`, you can optionally pass in a
   relative subpath within the repository. This provides the option
   to checkout only a portion of the repository, thereby reducing the
   size of the generated artifact.
 
-* __The Kustomize File__ (required)
+* __Kustomize File__ (required)
 
   The relative path to the `kustomization.yaml` file residing in the
   Git repository.
@@ -112,7 +112,7 @@ As of 1.17, [git/repo](/reference/artifacts/types/git-repo/) is the only support
 Pipelines configured to use Kustomize in 1.16 will continue to work in 1.17. However, editing a `Bake (Manifest)` stage in 1.17, which was originally created in 1.16, requires you to update the `Bake (Manifest) Configuration` to use the `git/repo` artifact type.  To do so, use the following instructions:
 
 1. Click on the `Account` dropdown and select a configured `git/repo` account.  If none appear, make sure you have [configured a git/repo account](/reference/artifacts/types/git-repo)  
-__Note:__ You should click and select a `git/repo` account even if one already appears in the UI prior to your doing so. This will force the underlying JSON to be updated to use the new artifact. 
+  > __Note__: You should click and select a `git/repo` account even if one already appears in the UI prior to your doing so. This will force the underlying JSON to be updated to   > use the new artifact. 
 
 1. Update the URL. This should be the location of the git repository.  
 __example__: `https://github.com/kubernetes-sigs/kustomize`

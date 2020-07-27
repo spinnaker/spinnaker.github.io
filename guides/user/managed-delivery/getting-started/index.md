@@ -15,7 +15,7 @@ This guide walks through onboarding to Managed Delivery assuming that you are us
 
 ## Intro
 
-To get started with Managed Delivery you'll need an idea of what infrastructure you want to manage.
+To get started with Managed Delivery, you'll need an idea of what infrastructure you want to manage.
 You can pick a new piece of infrastructure that you want to create (a new load balancer, for example) or migrate an existing piece of infrastructure (an existing cluster, for example).
 
 We recommend creating a new security group to test things out.
@@ -45,7 +45,7 @@ This is done by submitting the file to Spinnaker's API.
 You can submit a delivery config from your local machine, but that's not very traceable or repeatable.
 
 We recommend checking delivery configs into your git repository in a `.spinnaker/` directory at the base level of your repository.
-In order to get Spinnaker to pick up your configuration (and monitor for changes) you should create a git-triggered pipeline that submits those files to Spinnaker.
+In order to get Spinnaker to pick up your configuration (and monitor for changes), you should create a git-triggered pipeline that submits those files to Spinnaker.
 
 **An important note**: Spinnaker is the source of truth for desired state of resources.
 You must submit your YAML files to Spinnaker every time they change.
@@ -166,8 +166,8 @@ Make sure your git repository is accessible by Spinnaker.
 
 ## Setting Up Resource Submission
 
-Since Spinnaker is the source of truth (and not Git) you need to submit your managed resource configuration to Spinnaker every time there are changes.
-There's a Spinnaker stage for this!
+Since Spinnaker is the source of truth (and not Git), you need to submit your managed resource configuration to Spinnaker every time there are changes.
+There's a Spinnaker stage for this.
 See the docs on [Git-based-workflows](/guides/user/managed-delivery/git-based-workflows/) for detailed instructions.
 
 
@@ -194,17 +194,17 @@ For more help with this endpoint, see the the [API](/guides/user/managed-deliver
 
 You can see the actions Spinnaker is taking on your behalf in the `Tasks` view for your app. 
 
-If you navigate to `Security Groups` you should be able to see a small flag on the resource that will show you it's being manged.
+If you navigate to `Security Groups`, you should be able to see a small flag on the resource that will show you it's being manged.
 If you click on a managed resource you will see the available managed actions.
 
-Under the actions you can click to see the resource definition that Spinnaker has for that resource.
+Under the actions, you can click to see the resource definition that Spinnaker has for that resource.
 You can also see the history of that resource. 
 The history view shows every diff Spinnaker has seen, and every action taken to resolve that diff.
  
  
 ## Find Your Resource ID
 
-For some API calls you need the resource ID. 
+For some API calls, you need the resource ID. 
 You can find this by clicking on the resource in the UI, and then clicking on `Resource Actions` -> `Raw Source` (right side on the panel that pops out).
 The ID will be in the the `metadata` section and will be human readable, like `ec2:cluster:test:keeldemo-main`.
 
@@ -223,7 +223,7 @@ That section contains a pause/resume button which you can use to stop and start 
 
 ## Cleaning Up / Opting Out
 
-If you don't want Spinnaker to manage your resource declaratively anymore you can delete the declarative config from Spinnaker:
+If you don't want Spinnaker to manage your resource declaratively anymore, you can delete the declarative config from Spinnaker:
 
 ```bash
 DELETE /managed/delivery-configs/{deliveryConfigName}
