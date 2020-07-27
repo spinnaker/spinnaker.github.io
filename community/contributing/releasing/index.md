@@ -48,7 +48,7 @@ release branch. For example, all Spinnaker 1.16 releases (1.16.0, 1.16.1, etc.)
 are built from the `release-1.16.x` release branch. To get your patch into 1.16,
 it must be cherry-picked onto that release branch.
 
-After creating a pull request that you would like to be backported to a release
+After you've created a pull request for a fix that you want backported to a release
 branch, add a comment that includes the following:
 
 > @spinnakerbot add-label backport-candidate
