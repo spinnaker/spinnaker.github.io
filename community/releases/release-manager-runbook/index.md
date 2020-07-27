@@ -303,7 +303,7 @@ Example: VERSION="1.17.2" ./publish.sh
 Repeat weeklyish for each supported version.
 
 1. Audit [backport candidates](#audit-backport-candidates).
-To view what's been merged into the each release branch since the last release,
+To view what's been merged into each release branch since the last release,
 see the [changelog gist](https://gist.github.com/spinnaker-release/4f8cd09490870ae9ebf78be3be1763ee)
 on Github.
 
