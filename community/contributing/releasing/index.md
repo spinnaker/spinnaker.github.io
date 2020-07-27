@@ -26,7 +26,7 @@ In order to be considered safe to merge into a release branch, your patch must:
   This means that the currently broken functionality must have worked as
   expected in a previous version of Spinnaker. If the regression is not already
   documented in a GitHub issue, please create one. Describe the difference
-  between the expected and observed behavior, and include links to the commit(s)
+  between the expected and observed behavior, and include links to the commit
   that introduced the regression. Indicate to which release(s) you would like
   your fix to be considered a candidate for backporting.
 * Include tests validating the regression and the fix. The first commit of your
