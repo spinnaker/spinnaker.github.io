@@ -16,6 +16,7 @@ credentials.
 * [Bitbucket](/setup/artifacts/bitbucket/)
 * [GitHub](/setup/artifacts/github/)
 * [GitLab](/setup/artifacts/gitlab/)
+* [Git Repo](/setup/artifacts/gitrepo/)
 * [Google Cloud Storage](/setup/artifacts/gcs/)
 * [HTTP](/setup/artifacts/http/)
 * [Maven](/setup/artifacts/maven/)

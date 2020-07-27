@@ -139,7 +139,7 @@ For example, if your `namespace` is "aimee", change `gardening-days-FIXME` to `g
 
 Save the file.
 
-Export your KUBECONFIG file and `kubectl apply` the `spinsvc.yaml` custom resource definition to install Spinnaker. You only have access to your namespace, so you do not need to include the `-n <namespace>` parameter.
+Export your KUBECONFIG file and `kubectl apply` the `spinsvc.yaml` custom resource definition to install Spinnaker. _You only have access to your namespace, so you do not need to include the `-n <namespace>` parameter._
 
 ```bash
 kubectl --kubeconfig ~/.kube/<kube-config-file-name>.yaml apply -f <spinnaker-service-file>.yaml
@@ -176,13 +176,13 @@ spin-rosco-79b55d5c99-zkq4w         0/1     ContainerCreating   0          22s
 In your current Terminal window, forward the Deck port:
 
 ```bash
-kubectl --kubeconfig ~/.kube/garden.yaml -n <your-namespace-name> port-forward svc/spin-deck 9000
+kubectl --kubeconfig ~/.kube/garden.yaml port-forward svc/spin-deck 9000
 ```
 
 Open another Terminal session and forward the Gate port:
 
 ```bash
-kubectl --kubeconfig ~/.kube/garden.yaml -n <your-namespace-name> port-forward svc/spin-gate 8084
+kubectl --kubeconfig ~/.kube/garden.yaml port-forward svc/spin-gate 8084
 ```
 
 ## Start Telepresence for the local Orca service
@@ -191,7 +191,7 @@ In a new Terminal session, change to the Orca directory and start Telepresence:
 
 ```
 cd <path-to-orca-clone>
-KUBECONFIG=~/.kube/garden.yaml telepresence --namespace <your-namespace-name> --swap-deployment spin-orca --env-file .env-telepresence
+KUBECONFIG=~/.kube/garden.yaml telepresence --swap-deployment spin-orca --env-file .env-telepresence
 ```
 
 You may see a permission error on OSX similar to:
@@ -260,16 +260,21 @@ cp -R $TELEPRESENCE_ROOT/opt/spinnaker/config/ ~/.spinnaker
 
 ### Troubleshooting
 
-If you see errors about `fiat`:
+If you can't configure Orca to run in IntelliJ:
+
+* You can try closing the project and deleting any `*.iml` and `.idea` files. Then select  **File** -> **Open** and select the `settings.gradle` file of the project (`orca` directory)
+
+If you see errors about `fiat` when you run Orca:
 
 * Make sure you have `orca-local.yml`, `orca.yml`, and `spinnaker.yml` in your local `.spinnaker` directory. If those files are missing, either you missed the [step](#copy-spinnaker-configs-to-your-local-directory) to copy those files to your local `.spinnaker` directory **or** Telepresence started but didn't have permission to mount a local volume. If you are on OSX and granted permission while Telepresence was running, you need to restart Telepresence and then copy the config files.
 
-If you see errors about Redis:
+If you see errors about Redis when you run Orca:
 
 * Make sure Telepresence has started without permission errors
 * Make sure the Redis container is running
 
    `kubectl --kubeconfig ~/.kube/garden.yaml get pods`
+
 
 ## Create a new stage
 

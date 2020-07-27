@@ -62,10 +62,13 @@ manager to evaluate whether your patch meets the release branch patch criteria.
 
 ## Cherry-pick using Mergify
 
-To cherry-pick into the `1.18` release branch (for example), add the following
-comment to the _merged_ PR for your change:
+To cherry-pick into the `1.18` release branch (for example), mention the `@spinnaker/release-managers`
+to have them add the following comment to the _merged_ PR for your change:
 
 > @Mergifyio backport release-1.18.x
+
+Later improvements will allow anyone to execute the backport command, a [feature request has been submitted](https://github.com/Mergifyio/mergify-engine/issues/1070) to Mergify.
+
 
 ## Cherry-pick using the command line
 
