@@ -55,3 +55,18 @@ Spinnaker's UI has changed! An application's nested menus are now represented as
 This change should not introduce any interruptions to a vanilla install of `deck`. However, if you've already made navigational changes to your group's instance of `deck` or created custom banners/headers for your app, you may need to make updates. The pattern for creating new routes in the side nav can be observed in the feature's PR:
 
 https://github.com/spinnaker/deck/pull/8239
+
+### Kubernetes Annotation-Driven UI Update
+
+Please see the Kubernetes Annotation-Driven UI
+[documentation](/guides/user/kubernetes-v2/annotations-ui) for the current
+list of available template values for each Spinnaker resource kind. Previously,
+the following template values were available on each kind:
+
+- apiVersion
+- displayName
+- kind
+- namespace
+
+These values should now be read directly from the Kubernetes `manifest`, which
+is available as a top-level key for each resource kind.

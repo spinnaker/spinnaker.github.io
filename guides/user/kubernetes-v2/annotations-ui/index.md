@@ -76,51 +76,37 @@ for the resource that is annotated.  The complete set of available keys is docum
 #### Instances
 
 - account - the spinnaker account for this resource
-- apiVersion - the kubernetes apiVersion of this resource
 - cloudProvider - this will always be `kubernetes`
-- displayName - the name of the resource prepared for UI display
-- hasHealthStatus - a boolean indicating whether the instance has health status
 - healthState - the instance's health status, if available
 - id - the instance's id
-- kind - the kubernetes kind of this resource
 - manifest - the kubernetes manifest as JSON object
 - name - the resource's name
-- namespace - the kubernetes namespace in which this resource resides
 
 #### Load Balancers
 
 - account - the spinnaker account for this resource
-- apiVersion - the kubernetes apiVersion of this resource
 - cloudProvider - this will always be `kubernetes`
 - detail - the spinnaker detail, if any, for this resource
-- displayName - the name of the resource prepared for UI display
-- kind - the kubernetes kind of this resource
 - manifest - the kubernetes manifest as JSON object
 - name - the resource's name
-- namespace - the kubernetes namespace in which this resource resides
 - stack - the spinnaker stack, if any, for this resource
 - type - this resource's spinnaker type
 
 #### Security Groups
 
 - account - the spinnaker account for this resource
-- apiVersion - the kubernetes apiVersion of this resource
 - application - the spinnaker application name, if any, for this resource
 - cloudProvider - this will always be `kubernetes`
 - detail - the spinnaker detail, if any, for this resource
-- displayName - the name of the resource prepared for UI display
 - id - the security group's id
-- kind - the kubernetes kind of this resource
 - manifest - the kubernetes manifest as JSON object
 - name - the resource's name
-- namespace - the kubernetes namespace in which this resource resides
 - stack - the spinnaker stack, if any, for this resource
 - type - this resource's spinnaker type
 
 #### Server Groups
 
 - account - the spinnaker account for this resource
-- apiVersion - the kubernetes apiVersion of this resource
 - app - the spinnaker application name, if any, for this resource
 - category - the spinnaker category, if any, for this resource
 - cloudProvider - this will always be `kubernetes`
@@ -129,22 +115,14 @@ for the resource that is annotated.  The complete set of available keys is docum
 - detail - the spinnaker detail, if any, for this resource
 - disabled - a boolean that is true if this server group is disabled
 - disabledDate - a number representing the date this server group was disabled
-- displayName - the name of the resource prepared for UI display
-- kind - the kubernetes kind of this resource
 - manifest - the kubernetes manifest as JSON object
 - name - the resource's name
-- namespace - the kubernetes namespace in which this resource resides
-- region - the region this server group is in
 - stack - the spinnaker stack, if any, for this resource
 - type - this resource's spinnaker type
 
 #### Server Group Managers
 
 - account - the spinnaker account for this resource
-- apiVersion - the kubernetes apiVersion of this resource
 - cloudProvider - this will always be `kubernetes`
-- displayName - the name of the resource prepared for UI display
-- kind - the kubernetes kind of this resource
 - manifest - the kubernetes manifest as JSON object
 - name - the resource's name
-- namespace - the kubernetes namespace in which this resource resides
