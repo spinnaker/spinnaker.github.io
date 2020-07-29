@@ -21,11 +21,14 @@ include all commits merged into `master` for each service. We do this on a
 
 In order to be considered safe to merge into a release branch, your patch must:
 
-* Fix a documented regression. This means that the currently broken
-  functionality must have worked as expected in a previous version of Spinnaker.
-  If the regression is not already documented in a GitHub issue, please create
-  one. Describe the difference between the expected and observed behavior, and
-  include links to the commit(s) that introduced the regression.
+* Fix a documented regression in a
+  [supported version of Spinnaker](https://spinnaker.io/community/releases/versions/#latest-stable).
+  This means that the currently broken functionality must have worked as
+  expected in a previous version of Spinnaker. If the regression is not already
+  documented in a GitHub issue, please create one. Describe the difference
+  between the expected and observed behavior, and include links to the commit
+  that introduced the regression. Indicate to which releases you would like
+  your fix to be backported.
 * Include tests validating the regression and the fix. The first commit of your
   patch pull request should add test coverage that demonstrates the existence
   of the bug and exercises all code paths potentially impacted by your fix.
@@ -45,55 +48,14 @@ release branch. For example, all Spinnaker 1.16 releases (1.16.0, 1.16.1, etc.)
 are built from the `release-1.16.x` release branch. To get your patch into 1.16,
 it must be cherry-picked onto that release branch.
 
-There are two ways to create a pull request for a cherry-pick:
+After you've created a pull request for a fix that you want backported to a release
+branch, add a comment that includes the following:
 
-* [Using Mergify](#cherry-pick-using-mergify)
-* [Manually via the command-line](#cherry-pick-using-the-command-line)
+> @spinnakerbot add-label backport-candidate
 
-After creating a cherry-pick pull request, you should assign the review to the
-current release manager. The release manager rotation calendar is currently only
-available inside Google, but it only rotates every eight weeks. The release
-manager will be the person posting about the releases in [the
-`#spinnaker-releases` Slack
-channel](https://app.slack.com/client/T091CRSGH/CHD4ATAMV/).
-
+Release managers will audit all PRs with the `backport-candidate` label weekly.
 Please make sure your pull request description makes it easy for the release
 manager to evaluate whether your patch meets the release branch patch criteria.
-
-## Cherry-pick using Mergify
-
-To cherry-pick into the `1.18` release branch (for example), mention the `@spinnaker/release-managers`
-to have them add the following comment to the _merged_ PR for your change:
-
-> @Mergifyio backport release-1.18.x
-
-Later improvements will allow anyone to execute the backport command, a [feature request has been submitted](https://github.com/Mergifyio/mergify-engine/issues/1070) to Mergify.
-
-
-## Cherry-pick using the command line
-
-For example: say you've fixed a bug and had the fix merged into master. You're
-running Spinnaker 1.5.1, and want the fix in Spinnaker 1.5.2. First, find the
-commit's hash. This is easy to do in the "Commits" tab in your repository:
-
-{% include figure image_path="./commit.png" caption="The hash is `a090bf3` in
-this example" %}
-
-Now, in your cloned repository run:
-
-```bash
-# the branch depends on your target release
-git fetch upstream release-1.5.x
-
-git checkout upstream/release-1.5.x
-
-# the commit depends on what you found in the "Commits" tab above
-git cherry-pick a090bf3
-
-git checkout -b patch-broken-creds
-
-git push origin patch-broken-creds
-```
 
 Navigate to GitHub, and create a PR as you would normally, but make sure that
 your "base" is set to the release branch in the upstream repository as shown

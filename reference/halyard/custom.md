@@ -125,10 +125,11 @@ At a high level, the configurable items inside the Kubernetes service settings a
 | `imagePullSecrets` | Define secrets to use to pull a custom artifact when using an artifactId to swap out docker image. More details can be found in the [Image Pull Secrets section](#imagepullsecrets). |
 | `nodePort` | When using a serviceType of NodePort, this provides the NodePort value. |
 | `nodeSelectors` | Provide a list of `nodeSelectors` key-value pairs to add to the pod specification. See [Node Selectors](#nodeselectors) below. |
-| `podAnnotations` | Provide a list of annotations to put on the deployed pods. See [Annotations and Labels](#podannotations-podlabels-and-servicelabels) below. |
-| `podLabels` |  Provide a list of labels to put on the deployed pods. See [Annotations and Labels](#podannotations-podlabels-and-servicelabels) below. |
+| `podAnnotations` | Provide a list of annotations to put on the deployed pods. See [Annotations and Labels](#podannotations-podlabels-and-serviceannotations-servicelabels) below. |
+| `podLabels` |  Provide a list of labels to put on the deployed pods. See [Annotations and Labels](#podannotations-podlabels-and-serviceannotations-servicelabels) below. |
 | `securityContext` | Set the securityContext that the Spinnaker services should run using in Kubernetes |
-| `serviceLabels` | Provide a list of labels to put on the deployed services. See [Annotations and Labels](#podannotations-podlabels-and-servicelabels) below. |
+| `serviceAnnotations` | Provide a list of annotations to put on the deployed services. See [Annotations and Labels](#podannotations-podlabels-and-serviceannotations-servicelabels) below. |
+| `serviceLabels` | Provide a list of labels to put on the deployed services. See [Annotations and Labels](#podannotations-podlabels-and-serviceannotations-servicelabels) below. |
 | `serviceAccountName` | Provide a default `serviceAccount` under which to run Spinnaker services. |
 | `serviceType` | Define a specific serviceType for deployed services, `ClusterIP` (Default) or `NodePort` |
 | `useExecHealthCheck` | Disable the exec-based healthcheck if necessary. See [useExecHealthCheck](#useexechealthcheck) for details. |
@@ -146,19 +147,22 @@ kubernetes:
   - desired-image-pull-secret2
 ```
 
-### podAnnotations, podLabels and serviceLabels
+### podAnnotations, podLabels and serviceAnnotations, serviceLabels
 
 Annotations and labels hold metadata that can be used to specify special behavior within Kubernetes. To apply annotations or labels to the `Pod` and `Service` resources for a particular Spinnaker service you can use something like:
 
 ```
 kubernetes:
   podAnnotations:
-    example/annotation: spinnaker.io
-    example/annotation-2: halyard
+    example/podAnnotation: spinnaker.io
+    example/podAnnotation-2: halyard
   podLabels:
     examplePodLabel: examplePodLabelValue
   serviceLabels:
     exampleServiceLabel: exampleServiceLabelValue
+  serviceAnnotations:
+    example/serviceAnnotation: spinnaker.io
+    example/serviceAnnotation-2: halyard
 ```
 
 These are all optional ways to control what metadata elements exist on the resources deployed by Halyard. For additional information about how these can be used, you can look at the [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) or [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) pages from Kubernetes.
