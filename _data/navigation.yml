@@ -546,6 +546,8 @@ guides:
         url: /guides/spin/pipeline/
       - title: Manage Pipeline Templates
         url: /guides/spin/pipeline-templates/
+      - title: Manage Projects
+        url: /guides/spin/projects/
   - title: Service Overviews
     collapsed: true
     children:

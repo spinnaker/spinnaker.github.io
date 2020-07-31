@@ -10,7 +10,7 @@ sidebar:
 ## Overview
 
 Once you have `spin` installed and configured, you can use it to start
-managing your Spinnaker pipelines.
+managing your Spinnaker project dashboards as code.
 
 `spin` can manage the whole lifecycle of your projects:
 
@@ -45,17 +45,15 @@ Use " project [command] --help" for more information about a command.
 ```
 
 The following assumes Spinnaker is running and Gate is
-listening on `http://localhost:8084`. If gate is running elsewhere,
+listening on `http://localhost:8084`. If Gate is running elsewhere,
 you can set the Gate endpoint with the global `--gate-endpoint` flag.
 
-## Managing Your Pipeline's Lifecycle
+## Managing your project's lifecycle
 
-### Create and update pipelines with `save`
+### Create and update projects with `save`
 
 ```bash
 $ spin project save --file <path to project json>
-
-Parsed submitted project: <...>
 
 Project save succeeded
 ```
