@@ -6,7 +6,7 @@ sidebar:
 redirect-from: /guides/developer/plugin-creators/
 ---
 
-{% include alpha version="1.19.4" %}
+{% include alpha version="1.20.6" %}
 
 >Note: Spinnaker 1.19.x only supports backend plugins due to a bug in Deck.
 
@@ -15,8 +15,8 @@ redirect-from: /guides/developer/plugin-creators/
 
 # Requirements
 
-* Spinnaker v1.19.4+
-* Halyard 1.34+
+* Spinnaker v1.20.6
+* Halyard 1.36
 
 # Taxonomy
 
@@ -54,7 +54,7 @@ Look through the code or ask in the [Spinnaker Slack](https://join.spinnaker.io/
 
 ## Example ExtensionPoint plugin
 
-The [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin) creates a custom pipeline stage that waits a specified number of seconds before signaling success. Consult the [Pipeline Stage Plugin Walkthrough](/guides/developer/plugin-creators/stage-plugin-walkthrough/) for a detailed explanation of this plugin.
+The [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin) creates a custom pipeline stage that waits a specified number of seconds before signaling success. Consult the [Test a Pipeline Stage Plugin](/guides/developer/plugin-creators/deck-plugin/) guide for how to test this plugin using a local Spinnaker environment.
 
 # Interface (Non-ExtensionPoint) plugins
 

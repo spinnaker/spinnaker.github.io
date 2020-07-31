@@ -26,7 +26,7 @@ specific documentation is provided here.
 If you're using one of these providers, please follow the appropriate link
 below for specific instructions on configuring your provider:
 * [Azure](./azure/)
-* [GitHub Teams](./github/)
+* [GitHub Organization](./github/)
 * [Google Apps for Work / G Suite](./google/)
 * [Oracle Cloud](./oracle/)
 

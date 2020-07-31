@@ -3,7 +3,9 @@ layout: single
 title:  "Kork Library"
 sidebar:
   nav: guides
-redirect_from: /docs/kork-library-dev
+redirect_from:
+  - /docs/kork-library-dev
+  - /guides/developer/kork-library/
 ---
 
 {% include toc %}
@@ -74,4 +76,3 @@ repositories {
 
 3. Create a submit a PR to the component that includes bumping this version number and any build/test fixes.
 4. Create and submit a PR for the feature that relied on the Kork changes.
-
