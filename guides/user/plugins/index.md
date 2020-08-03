@@ -54,6 +54,8 @@ Spinnaker environment:
 
 ## Add a plugin repository using Halyard
 
+_Note: Your plugins.json and repository.json files must be in a location that Spinnaker can access. Token authentication to private repositories is not supported. Consider storing your plugins and repository files in an AWS S3 bucket (or similar) instead of a private repository._
+
 When you configure a repository, you tell Spinnaker where to find the `plugins.json` file that defines the plugins you want to use.  Each plugin repository entry in Spinnaker consists of a unique name and a URL.
 
 If you want a repository to point to a single `plugins.json` file, you add it like this:
@@ -152,7 +154,7 @@ import com.netflix.spinnaker.kork.plugins.api.PluginConfiguration
 data class HTTPNotificationConfig(val url: String)
 ```
 
-Plugin configuration variables are passed into the primary class constructor. So if the plugin developer doesn't specify configuration details, you can find key and type, or a configuration tree, by looking at the primary class constructor.
+Plugin configuration variables are passed into the primary class constructor. If the plugin developer doesn't specify configuration details, you can find key and type, or a configuration tree, by looking at the primary class constructor.
 
 You add the `pf4jStagePlugin` to Spinnaker like this:
 
@@ -178,7 +180,7 @@ spinnaker:
             config: {}
 ```
 
-Halyard _does not_ support configuring plugins, so you should manually edit the  Halconfig file for custom values. For example, `pf4jStagePlugin` has a configurable `defaultMaxWaitTime`, so you add that parameter to the plugin's configuration in the `config` collection section:
+Halyard _does not_ support configuring plugins. You should manually edit the  Halconfig file for custom values. For example, `pf4jStagePlugin` has a configurable `defaultMaxWaitTime`, so you add that parameter to the plugin's configuration in the `config` collection section:
 
 ```yaml
 spinnaker:

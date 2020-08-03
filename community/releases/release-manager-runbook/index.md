@@ -167,11 +167,7 @@ release candidate is now validated and can be tested.
 
 ## One week after branches are cut (Monday)
 
-1. Check for any PRs waiting to be [cherry-picked](https://github.com/pulls?utf8=%E2%9C%93&q=org%3Aspinnaker+is%3Apr+is%3Aopen+-base%3Amaster).
-(You can further restrict the query by adding a constraint like +base:release-1.18.x to the URL.)
-Ensure patches meet the
-[release branch patch criteria](/community/contributing/releasing#release-branch-patch-criteria)
-before merging.
+1. Audit [backport candidates](#audit-backport-candidates).
 
 1. Rerun the `Flow_BuildAndValidate_${RELEASE}` job and get a blue build.
 
@@ -306,11 +302,10 @@ Example: VERSION="1.17.2" ./publish.sh
 
 Repeat weeklyish for each supported version.
 
-1. Check for any PRs waiting to be [cherry-picked](https://github.com/pulls?utf8=%E2%9C%93&q=org%3Aspinnaker+is%3Apr+is%3Aopen+-base%3Amaster).
-(You can further restrict the query by adding a constraint like +base:release-1.18.x to the URL.)
-Ensure patches meet the
-[release branch patch criteria](/community/contributing/releasing#release-branch-patch-criteria)
-before merging. To view what's been merged into the each release branch since the last release, see the [changelog gist](https://gist.github.com/spinnaker-release/4f8cd09490870ae9ebf78be3be1763ee) on Github.
+1. Audit [backport candidates](#audit-backport-candidates).
+To view what's been merged into each release branch since the last release,
+see the [changelog gist](https://gist.github.com/spinnaker-release/4f8cd09490870ae9ebf78be3be1763ee)
+on Github.
 
 1. Rerun the `Flow_BuildAndValidate_${RELEASE}` job and get a blue build.
 
@@ -390,12 +385,8 @@ https://builds.spinnaker.io/job/Build_PrimaryArtifacts/${JOB_NUMBER}/artifact/bu
 
 Repeat as needed.
 
-1. Check for any PRs waiting to be [cherry-picked](https://github.com/spinnaker/halyard/pulls?q=is%3Apr+is%3Aopen+sort%3Aupdated-desc+-base%3Amaster).
-(You can further restrict the query by adding a constraint like +base:release-1.18.x to the URL.)
-Ensure patches meet the
-[release branch patch criteria](/community/contributing/releasing#release-branch-patch-criteria)
-before merging.
-
+1. Ensure you have [audited](#audit-backport-candidates) all
+[Halyard backport candidates](https://github.com/spinnaker/halyard/pulls?q=is%3Apr+sort%3Aupdated-desc+label%3Abackport-candidate).
 
 1. Run Build_Halyard:
 
@@ -423,3 +414,39 @@ Repeat as needed.
 
 Follow the instructions in deck-kayenta’s
 [README](https://github.com/spinnaker/deck-kayenta#publishing-spinnakerkayenta).
+
+## Audit backport candidates
+
+Repeat weekly.
+
+1. Audit each PR that has been labelled a
+[backport candidate](https://github.com/pulls?q=org%3Aspinnaker+is%3Apr+sort%3Aupdated-desc+label%3Abackport-candidate).
+
+1. If a candidate meets the
+[release branch patch criteria](/community/contributing/releasing#release-branch-patch-criteria):
+
+    1. Remove the `backport-candidate` label from the PR.
+    
+    1. Add a comment instructing
+       [Mergify](https://doc.mergify.io/commands.html#backport) to create
+       backport PRs against one or more release branches. For example, to
+       create backport PRs against the 1.20 and 1.21 release branches, comment:
+       
+       > @Mergifyio backport release-1.20.x release-1.21.x
+
+    1. Approve and merge the backport PRs.
+
+    1. If Mergify cannot create a backport because there are merge conflicts,
+       ask the contributor to open a PR against the target release branches with
+       their commits manually
+       [cherry-picked](https://git-scm.com/docs/git-cherry-pick).
+
+1. If a candidate does not meet the
+[release branch patch criteria](/community/contributing/releasing#release-branch-patch-criteria),
+add an explanation to the contributor as a comment.
+
+    1. If it's impossible for the candidate to meet the criteria (for example, it doesn't
+       fix a regression), remove the `backport-candidate` label.
+       
+    1. If the contributor can amend the candidate to meet the criteria (for example,
+       add test coverage), don't remove the `backport-candidate` label.
