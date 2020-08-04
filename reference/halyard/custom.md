@@ -125,6 +125,7 @@ At a high level, the configurable items inside the Kubernetes service settings a
 | `imagePullSecrets` | Define secrets to use to pull a custom artifact when using an artifactId to swap out docker image. More details can be found in the [Image Pull Secrets section](#imagepullsecrets). |
 | `nodePort` | When using a serviceType of NodePort, this provides the NodePort value. |
 | `nodeSelectors` | Provide a list of `nodeSelectors` key-value pairs to add to the pod specification. See [Node Selectors](#nodeselectors) below. |
+| `affinity` | Provide a list of `affinity` per Spinnaker component to add to the pod specification. See [Affinity](#affinity) below. |
 | `podAnnotations` | Provide a list of annotations to put on the deployed pods. See [Annotations and Labels](#podannotations-podlabels-and-serviceannotations-servicelabels) below. |
 | `podLabels` |  Provide a list of labels to put on the deployed pods. See [Annotations and Labels](#podannotations-podlabels-and-serviceannotations-servicelabels) below. |
 | `securityContext` | Set the securityContext that the Spinnaker services should run using in Kubernetes |
@@ -178,6 +179,29 @@ kubernetes:
 ```
 
 Additional information regarding Node Selectors can be found in [the Kubernetes NodeSelector documentation](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector).
+
+### affinity
+
+Affinity annotations will put out `affinity` values in the Pod specification and is more expressive than `nodeSelector`. Precedence can be set rather than a hard requirement. The two types are `node affinity` and `inter-pod affinity/anti-affinity`.
+
+Provide configuration per spinnaker component like the below example.
+
+```
+kubernetes:
+  deploymentEnvironment:
+    affinity:
+      spin-clouddriver:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: spinnaker
+                operator: In
+                values:
+                - 'true'
+```
+
+Additional information regarding `affinity` can be found in [the Kubernetes affinity documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity).
 
 ### useExecHealthCheck
 
