@@ -34,7 +34,7 @@ Flags:
 
 Global Flags:
       --config string            path to config file (default $HOME/.spin/config)
-      --default-headers string   configure default headers for gate client as comma separated list (e.g. key1=value1,key2=value2)
+      --default-headers string   configure default headers for Gate client as comma separated list (e.g. key1=value1,key2=value2)
       --gate-endpoint string     Gate (API server) endpoint (default http://localhost:8084)
   -k, --insecure                 ignore certificate errors
       --no-color                 disable color (default true)

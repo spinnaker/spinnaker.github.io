@@ -45,7 +45,7 @@ Use " pipeline [command] --help" for more information about a command.
 ```
 
 The following assumes Spinnaker is running and Gate is
-listening on `http://localhost:8084`. If gate is running elsewhere,
+listening on `http://localhost:8084`. If Gate is running elsewhere,
 you can set the Gate endpoint with the global `--gate-endpoint` flag.
 
 ## Managing your pipeline's lifecycle
