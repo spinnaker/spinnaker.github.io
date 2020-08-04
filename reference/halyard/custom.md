@@ -174,8 +174,9 @@ Node selector annotations will put out `nodeSelector` values in the Pod specific
 
 ```
 kubernetes:
-  nodeSelectors:
-     exampleNodeKey: exampleNodeValue
+  deploymentEnvironment:
+    nodeSelectors:
+      exampleNodeKey: exampleNodeValue
 ```
 
 Additional information regarding Node Selectors can be found in [the Kubernetes NodeSelector documentation](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector).
