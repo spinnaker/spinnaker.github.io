@@ -183,7 +183,7 @@ Additional information regarding Node Selectors can be found in [the Kubernetes 
 
 ### affinity
 
-Affinity annotations will put out `affinity` values in the Pod specification and is more expressive than `nodeSelector`. Precedence can be set rather than a hard requirement. The two types are `node affinity` and `inter-pod affinity/anti-affinity`.
+Affinity annotations generate `affinity` values in the Pod specification and are more expressive than `nodeSelector`. You can set precedence rather than specify an affinity hard requirement. The two types are `node affinity` and `inter-pod affinity/anti-affinity`.
 
 Provide configuration per spinnaker component like the below example.
 
@@ -202,7 +202,7 @@ kubernetes:
                 - 'true'
 ```
 
-Additional information regarding `affinity` can be found in [the Kubernetes affinity documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity).
+See [the Kubernetes affinity documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity) for more information.
 
 ### useExecHealthCheck
 
