@@ -11,10 +11,15 @@ Storing Spinnaker configs in a git repository is a great solution for maintainin
 
 
 ## Secret Format
-To reference secrets in configs, use the following general format:
+To reference secrets in configs, use the following general format for secret literal values, like passwords and tokens:
 
 ```
 encrypted:<secret engine>!<key1>:<value1>!<key2>:<value2>!...
+```
+While to reference secret files like kubeconfig files the syntax is:
+
+```
+encryptedFile:<secret engine>!<key1>:<value1>!<key2>:<value2>!...
 ```
 The key-value parameters making up the string vary with each secret engine. Refer to the specific documentation for each engine for more information.
 
