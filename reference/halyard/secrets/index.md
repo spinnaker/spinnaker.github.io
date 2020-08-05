@@ -16,7 +16,7 @@ To reference secrets in configs, use the following general format for secret lit
 ```
 encrypted:<secret engine>!<key1>:<value1>!<key2>:<value2>!...
 ```
-While to reference secret files like kubeconfig files the syntax is:
+To reference secret files like kubeconfig files the syntax is:
 
 ```
 encryptedFile:<secret engine>!<key1>:<value1>!<key2>:<value2>!...
@@ -68,4 +68,3 @@ The secrets framework is extensible and support for new engines can easily be ad
 
 * [S3](/reference/halyard/secrets/s3-secrets/)
 * [GCS](/reference/halyard/secrets/gcs-secrets/)
-
