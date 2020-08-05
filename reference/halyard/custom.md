@@ -202,7 +202,7 @@ kubernetes:
                 - 'true'
 ```
 
-Additional information regarding `affinity` can be found in [the Kubernetes affinity documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity).
+See [the Kubernetes affinity documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity) for more information.
 
 ### useExecHealthCheck
 
