@@ -39,7 +39,7 @@ gsutil cp /path/to/mykubeconfig gs://mybucket/mykubeconfig
 
 
 ## Referencing secrets
-Now that secrets are safely stored in the bucket, you reference them from your config files using the following format. The GCS specific parameters (`b:<bucket>`, `f:<path to file>`, `k:<optional yaml key>`) can be in any order.
+Now that secrets are safely stored in the bucket, you reference them from your config files using the format below. The GCS-specific parameters (`b:<bucket>`, `f:<path to file>`, `k:<optional yaml key>`) can be in any order.
 To reference secret literal values:
 
 ```
