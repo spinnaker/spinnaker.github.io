@@ -125,7 +125,7 @@ At a high level, the configurable items inside the Kubernetes service settings a
 | `imagePullSecrets` | Define secrets to use to pull a custom artifact when using an artifactId to swap out docker image. More details can be found in the [Image Pull Secrets section](#imagepullsecrets). |
 | `nodePort` | When using a serviceType of NodePort, this provides the NodePort value. |
 | `nodeSelectors` | Provide a list of `nodeSelectors` key-value pairs to add to the pod specification. See [Node Selectors](#nodeselectors) below. |
-| `affinity` | Provide a list of `affinity` rules applied to a Spinnaker components pod specification. See [Affinity](#affinity) below. |
+| `affinity` | Provide a list of `affinity` rules applied to a Spinnaker component's pod specification. See [Affinity](#affinity) below. |
 | `podAnnotations` | Provide a list of annotations to put on the deployed pods. See [Annotations and Labels](#podannotations-podlabels-and-serviceannotations-servicelabels) below. |
 | `podLabels` |  Provide a list of labels to put on the deployed pods. See [Annotations and Labels](#podannotations-podlabels-and-serviceannotations-servicelabels) below. |
 | `securityContext` | Set the securityContext that the Spinnaker services should run using in Kubernetes |
