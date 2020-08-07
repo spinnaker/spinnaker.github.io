@@ -11,13 +11,19 @@ sidebar:
 > worked on. In the meantime, please use the following
 > [AWS tutorial: Continuous Delivery using Spinnaker on Amazon EKS](https://aws.amazon.com/blogs/opensource/continuous-delivery-spinnaker-amazon-eks/).
 
-Use the AWS EC2 Provider if you want to manage EC2 Instances via Spinnaker. Refer to the [AWS Cloud Provider Overview](https://spinnaker.io/setup/install/providers/aws/) to understand how AWS IAM must be set up for the AWS EC2 provider to work.
+Use the AWS EC2 Provider if you want to manage EC2 Instances via Spinnaker. Refer to the [AWS Cloud Provider Overview](https://spinnaker.io/setup/install/providers/aws/) to understand how AWS IAM must be set up with the Spinnaker AWS EC2 provider.
+
+Spinnaker will use an [AWS IAM structure](https://aws.amazon.com/iam/) of users, roles, policies, and so on, to access AWS services and resources securely. There are 3 options to set up the AWS IAM structure
+
+1. AWS CloudFormation templates deployed with the CloudFormation Console
+2. AWS CloudFormation templates deployed with AWS CLI
+3. Manually creating the IAM structure with the AWS IAM Console
 
 In [AWS](https://aws.amazon.com/){:target="\_blank"}, an [__Account__](/concepts/providers/#accounts)
 maps to a credential able to authenticate against a given [AWS
 account](https://aws.amazon.com/account/){:target="\_blank"}.
 
-## Option-1 : Use AWS Console to configure AWS
+## Option 1: Configure with AWS CloudFormation Console
 
 Use this option to deploy Spinnaker, if you are familar with deployment using [AWS Console](https://console.aws.amazon.com/) .
 
@@ -45,7 +51,7 @@ Use this option to deploy Spinnaker, if you are familar with deployment using [A
 
 ![](../outputs_cloudformation.png)
 
-## Option-2 : Use AWS CLI to configure AWS
+## Option 2: Configure with AWS CLI
 
 This option assumes that you have AWS CLI [installed](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) ,
 [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html) and have access to managing and each of the managed account.
@@ -85,22 +91,31 @@ aws cloudformation deploy --stack-name spinnaker-managed-infrastructure-setup --
 --parameter-overrides AuthArn=FROM_ABOVE ManagingAccountId=FROM_ABOVE --capabilities CAPABILITY_NAMED_IAM --region us-west-2
 ```
 
-## Option-3 : Use AWS Console UI (Manual Steps) 
+## Option-3 : Configure with AWS IAM Console
+### Create Roles
+
+
+### Create Policies
+
+
+### Associate Policies to User or Roles
+The permissions defined in the policies are attached to the users or roles. This will allows Spinnaker to use either a user or a role and deploy EC2 instances in any particular region.
 
 There are 2 options here
-1. Using AWS IAM AccessKey and Secret
+1. Using AWS IAM User with AccessKey and Secret
 Option number 1 is useful for creation of user with AWS Access Key and secret. This is a common configuration. 
 2. Using AWS IAM Roles
 Option 2 uses the IAM roles *ManagingRole* and *ManagedRoles*. This setting is applied on some environments that have extra security considerations.
 
 ## Halyard Configurations
-After the AWS IAM user, roles, policies and trust relationship have been set up, the next step is to add the AWS configurations to Spinnaker via Halyard CLI:
+After the AWS IAM  structure (user, roles, policies and trust relationship) has been set up, the next step is to add the AWS configurations to Spinnaker via Halyard CLI:
 
+The General steps are the following:
 1. Access the Halyard Pod.
 2. Add the configurations for AWS provider with `hal` command. Please check [hal config provider AWS](https://www.spinnaker.io/reference/halyard/commands/#hal-config-provider-aws).
 3. Enable the AWS provider `hal config provider aws enable`.
 
-### Configure Halyard to use AccessKeys (if configured)
+### Configure Spinnaker AWS provider to use AccessKeys (if using AWS IAM user)
 
 > These steps need to be carried out only if you selected UseAccessKeyForAuthentication as true in Option-1 or Option-2 above
 
@@ -109,7 +124,7 @@ hal config provider aws edit --access-key-id ${ACCESS_KEY_ID} \
     --secret-access-key # do not supply the key here, you will be prompted
 ```
 
-### Configure Halyard to add AWS Accounts
+### Add AWS Accounts to the AWS provider
 
 ```bash
 $AWS_ACCOUNT_NAME={name for AWS account in Spinnaker, e.g. my-aws-account}
@@ -119,21 +134,25 @@ hal config provider aws account add $AWS_ACCOUNT_NAME \
     --assume-role role/spinnakerManaged
 ```
 
-Now enable AWS
+### Enable the Spinnaker AWS provider
 
 ```bash
 hal config provider aws enable
 ```
 
 ## Advanced account settings
+After you configure the Spinnaker AWS provider you can manage and deploy EC2 resources with Spinnaker.
 
-You can view the available configuration flags for AWS within the
-[Halyard reference](/reference/halyard/commands#hal-config-provider-aws-account-add).
+You can view the available configuration flags for Spinnaker AWS provider within the
+the [Halyard command reference](/reference/halyard/commands#hal-config-provider-aws-account-add).
 
 ## Next steps
 
-Optionally, you can [set up Amazon's Elastic Container
-Service](/setup/install/providers/aws/aws-ecs/) or [set up another cloud
-provider](/setup/install/providers/), but otherwise you're ready to
-[choose an environment](/setup/install/environment/)
+Optionally, you can enable other AWS Providers:
+* [Manage containers in AWS ECS with Spinnaker](/setup/install/providers/aws/aws-ecs/)
+* [Manage containers in AWS EKS with Spinnaker](https://aws.amazon.com/eks/)
+* [Enable AWS Lambda support with Spinnaker](https://aws.amazon.com/lambda/) 
+* [Set up another cloud provider](/setup/install/providers/)
+
+Otherwise you are ready to [choose an environment](/setup/install/environment/)
 in which to install Spinnaker.
