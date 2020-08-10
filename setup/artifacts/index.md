@@ -18,6 +18,7 @@ credentials.
 * [GitLab](/setup/artifacts/gitlab/)
 * [Git Repo](/setup/artifacts/gitrepo/)
 * [Google Cloud Storage](/setup/artifacts/gcs/)
+* [Helm](/setup/artifacts/helm/)
 * [HTTP](/setup/artifacts/http/)
 * [Maven](/setup/artifacts/maven/)
 * [Oracle Object](/setup/artifacts/oracle/)
