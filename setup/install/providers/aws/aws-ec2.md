@@ -143,7 +143,7 @@ hal config provider aws enable
 ## Advanced account settings
 After you configure the Spinnaker AWS provider you can manage and deploy EC2 resources with Spinnaker.
 
-You can view the available configuration flags for Spinnaker AWS provider within the
+You can view the available configuration flags for the Spinnaker AWS provider within the
 the [Halyard command reference](/reference/halyard/commands#hal-config-provider-aws-account-add).
 
 ## Next steps
