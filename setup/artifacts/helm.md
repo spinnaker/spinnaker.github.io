@@ -7,7 +7,7 @@ sidebar:
 
 {% include toc %}
 
-Spinnaker stages that read data from artifacts can read Helm provider directly. The provider can be Artifactory like [Nexus](https://help.sonatype.com/repomanager3/formats/helm-repositories), [JFrog](https://jfrog.com/integration/helm-repository/), or [Chartmuseum](https://chartmuseum.com/).
+Spinnaker stages that consume artifacts can read from a Helm provider directly. The provider can be an Artifactory like [Nexus](https://help.sonatype.com/repomanager3/formats/helm-repositories), [JFrog](https://jfrog.com/integration/helm-repository/), or [Chartmuseum](https://chartmuseum.com/).
 
 If the files are hidden behind basic auth, you can configure an artifact account with the needed credentials to read your artifact.
 
