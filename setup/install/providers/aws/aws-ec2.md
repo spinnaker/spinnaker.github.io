@@ -30,7 +30,8 @@ Use this option to deploy Spinnaker, if you are familar with deployment using [A
     2.b (Optional). Add additional managed account as shown on line 158 in the SpinnakerAssumeRolePolicy section of the downloaded template file.
 3. Create the CloudFormation Stack:
     * __Create Stack__ > __Upload a template to Amazon S3__ > __Browse to template you downloaded in Step-2 above__ > __Next__
-    * Enter __Stack Name__ as spinnaker-**managing**-infrastructure-setup and follow the prompts on screen to create the stack, from the dropdown select **‘UseAccessKeyForAuthentication’** as True to get the Access and Secret Key.
+    * Enter __Stack Name__ as spinnaker-**managing**-infrastructure-setup and follow the prompts on screen to create the stack.
+    * From the dropdown select **‘UseAccessKeyForAuthentication’** as True to get the Access and Secret Key.
 4. Once the stack is select the stack you created in Step-3 > Outputs and note the values. You will need these values for subsequent configurations.
 
 
