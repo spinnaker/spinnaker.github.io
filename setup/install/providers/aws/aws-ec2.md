@@ -96,7 +96,7 @@ Option number 1 is useful for creation of user with AWS Access Key and secret. T
 Option 2 uses the IAM roles *ManagingRole* and *ManagedRoles*. This setting is applied on some environments that have extra security considerations.
 
 ### Spinaker AssumeRole Policy
-1. Incase, if you miss to add append the Line 158, then Manually create a Policy by Navigating to Console > IAM > Policies
+1. Incase, if you miss to add append the Line 158, then Manually create a Policy by Navigating to **Console > IAM > Policies**.
 2. Click on **Create New Policy**, then click on **JSON** and add the code shown below.
 3. Name the policy “Spinnaker AssumeRole Policy”
 
