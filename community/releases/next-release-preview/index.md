@@ -57,18 +57,18 @@ This change should not introduce any interruptions to a vanilla install of `deck
 https://github.com/spinnaker/deck/pull/8239
 
 
-### Clouddriver SQL Cache Data Too Long Issue Resolved
+### Issue Resolved: Clouddriver SQL Cache Data Too Long
 
-We've fixed an issue preventing data from being stored in Clouddriver's SQL 
+We've fixed an issue that prevented data from being stored in Clouddriver's SQL 
 Cache because the data was too long 
 ([Github issue](https://github.com/spinnaker/spinnaker/issues/5600)). As a part
 of this fix we introduced a second version of the tables used by Clouddriver
 for caching. You should see tables named `cats_v2_*` in your Clouddriver 
 database moving forward.
 
-Once you're comfortable with the Spinnaker release and don't expect to rollback 
-to a previous version then you can feel free to delete the first version of the 
-tables used for caching. In order to easily facilitate deleting these tables we
-have exposed an admin endpoint that will handle the deletion process. The admin
-endpoint can be reached via a curl PUT request against 
+Once you're comfortable with the Spinnaker release and don't expect to roll back 
+to a previous version, then you can delete the first version of the tables used 
+for caching. In order to easily facilitate deleting these tables we have exposed 
+an admin endpoint that will handle the deletion process. The admin endpoint can 
+be reached via a `curl PUT` request against 
 `{your_clouddriver}/admin/db/drop_version/V1`.
