@@ -8,9 +8,7 @@ redirect_from:
   - /guides/user/plugins/user-guide/
 ---
 
-{% include alpha version="1.20.6" %}
-
-_Note: Spinnaker 1.19.x does not support frontend plugins due to a bug in Deck._
+_Note: Spinnaker 1.20.6 and 1.21+ support plugins with both server and frontend components. Spinnaker 1.19.x does not support frontend plugins due to a bug in Deck._
 
 {% include toc %}
 
@@ -41,8 +39,8 @@ Spinnaker uses [PF4J-Update](https://github.com/pf4j/pf4j-update) to load and ma
 
 Spinnaker environment:
 
-* Spinnaker v1.20.6, v1.21.0 (assumption is v1.21.x but not validated)
-* Halyard v1.36 to deploy Spinnaker (assumption is v1.36+ but not validated)
+* Spinnaker v1.20.6, v1.21+
+* Halyard v1.36 to deploy Spinnaker
 
 
 ## How to add a plugin to Spinnaker
