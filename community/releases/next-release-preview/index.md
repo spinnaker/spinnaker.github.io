@@ -56,7 +56,6 @@ This change should not introduce any interruptions to a vanilla install of `deck
 
 https://github.com/spinnaker/deck/pull/8239
 
-
 ### Issue Resolved: Clouddriver SQL Cache Data Too Long
 
 We've fixed an issue that prevented data from being stored in Clouddriver's SQL 
@@ -72,3 +71,12 @@ for caching. In order to easily facilitate deleting these tables we have exposed
 an admin endpoint that will handle the deletion process. The admin endpoint can 
 be reached via a `curl PUT` request against 
 `{your_clouddriver}/admin/db/drop_version/V1`.
+
+### (Breaking Change) Spinnaker Dockerfile GID/UID changes
+
+The Dockerfile of each Spinnaker microservice (except Halyard and Deck) now
+specifies an explicit GID and UID of `10111` for the `spinnaker` user.
+
+This is only a breaking change if you were relying on the previous
+non-deterministically assigned GID and UID
+(e.g., in a custom Kubernetes [security context](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)).
