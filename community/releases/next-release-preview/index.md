@@ -48,6 +48,15 @@ suffix to job names. It is thus strongly recommended that 1.22 users who opt out
 update any necessary jobs and remove the setting before upgrading to Spinnaker
 1.23.
 
+### (Breaking Change) Spinnaker Dockerfile GID/UID changes
+
+The Dockerfile of each Spinnaker microservice (except Halyard and Deck) now
+specifies an explicit GID and UID of `10111` for the `spinnaker` user.
+
+This is only a breaking change if you were relying on the previous
+non-deterministically assigned GID and UID
+(for example, in a custom Kubernetes [security context](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)).
+
 ### Navigation and Layout UI Update
 
 Spinnaker's UI has changed! An application's nested menus are now represented as a flat list on the left side of the browser window. The menu can also be collapsed into a condensed view. This allows for better utilization of screen real-estate, and support for any number of additional application pages. As plugin support continues to improve, we hope this refresh to the navigation will give you more flexibility within the UI to make Spinnaker your own. This update also includes changes to the overall layout and design of some application pages to take better advantage of larger screen sizes.
@@ -55,3 +64,19 @@ Spinnaker's UI has changed! An application's nested menus are now represented as
 This change should not introduce any interruptions to a vanilla install of `deck`. However, if you've already made navigational changes to your group's instance of `deck` or created custom banners/headers for your app, you may need to make updates. The pattern for creating new routes in the side nav can be observed in the feature's PR:
 
 https://github.com/spinnaker/deck/pull/8239
+
+### Issue Resolved: Clouddriver SQL Cache Data Too Long
+
+We've fixed an issue that prevented data from being stored in Clouddriver's SQL 
+Cache because the data was too long 
+([Github issue](https://github.com/spinnaker/spinnaker/issues/5600)). As a part
+of this fix we introduced a second version of the tables used by Clouddriver
+for caching. You should see tables named `cats_v2_*` in your Clouddriver 
+database moving forward.
+
+Once you're comfortable with the Spinnaker release and don't expect to roll back 
+to a previous version, then you can delete the first version of the tables used 
+for caching. In order to easily facilitate deleting these tables we have exposed 
+an admin endpoint that will handle the deletion process. The admin endpoint can 
+be reached via a `curl PUT` request against 
+`{your_clouddriver}/admin/db/drop_version/V1`.
