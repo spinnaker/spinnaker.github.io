@@ -59,7 +59,8 @@ to merge outstanding changes ASAP:
 ## The day the branches are cut (Tuesday)
 
 1. If there are any [outstanding autobump PRs](https://github.com/pulls?q=is%3Apr+author%3Aspinnakerbot+is%3Aopen),
-make the required fixes to allow them to merge.
+make the required fixes to allow them to merge. (You can ignore `keel` and
+`swabbie`; those repositories aren't part of a Spinnaker release.)
 
 1. Start with a [blue build on master](https://builds.spinnaker.io/job/Flow_BuildAndValidate/).
 
