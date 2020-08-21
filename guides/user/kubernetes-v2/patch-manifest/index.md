@@ -129,7 +129,7 @@ You can also specify the following options:
 
 * __Merge Strategy__
 
-  * _strategic_: This is the default. It is a [customized version of JSON merge patch](https://github.com/kubernetes/community/blob/master/contributors/devel/strategic-merge-patch.md) specific to Kubernetes that allows Kubernetes objects to be either replaced or merged based on the object struct tags. It is particularly useful when you want to add a new item to a list (e.g. a new annotation, label, or even a new container to a pod spec) instead of replacing the list.
+  * _strategic_: This is the default. It is a [customized version of JSON merge patch](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-api-machinery/strategic-merge-patch.md) specific to Kubernetes that allows Kubernetes objects to be either replaced or merged based on the object struct tags. It is particularly useful when you want to add a new item to a list (e.g. a new annotation, label, or even a new container to a pod spec) instead of replacing the list.
 
   * _json_: This will patch the manifest using a standard [RFC 6902 JSON patch](https://tools.ietf.org/html/rfc6902).
 
