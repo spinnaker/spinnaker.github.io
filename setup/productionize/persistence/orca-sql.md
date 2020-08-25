@@ -91,7 +91,6 @@ monitor:
 # Please PR if you have success with other databases
 keiko:
   queue:
-    fillExecutorEachCycle: true
     sql:
       enabled: true
     redis:
