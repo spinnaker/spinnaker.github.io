@@ -59,7 +59,8 @@ to merge outstanding changes ASAP:
 ## The day the branches are cut (Tuesday)
 
 1. If there are any [outstanding autobump PRs](https://github.com/pulls?q=is%3Apr+author%3Aspinnakerbot+is%3Aopen),
-make the required fixes to allow them to merge.
+make the required fixes to allow them to merge. (You can ignore `keel` and
+`swabbie`; those repositories aren't part of a Spinnaker release.)
 
 1. Start with a [blue build on master](https://builds.spinnaker.io/job/Flow_BuildAndValidate/).
 
@@ -426,13 +427,15 @@ Repeat weekly.
 [release branch patch criteria](/community/contributing/releasing#release-branch-patch-criteria):
 
     1. Remove the `backport-candidate` label from the PR.
+
+    1. Determine which versions the PR needs to be backported to. If it gets backported to an older version, all new versions should get the backport as well. Go only as far back as the supported [stable versions](https://spinnaker.io/community/releases/versions/#latest-stable).
     
     1. Add a comment instructing
        [Mergify](https://doc.mergify.io/commands.html#backport) to create
        backport PRs against one or more release branches. For example, to
-       create backport PRs against the 1.20 and 1.21 release branches, comment:
+       create backport PRs against the 1.19, 1.20 and 1.21 release branches, comment:
        
-       > @Mergifyio backport release-1.20.x release-1.21.x
+       > @Mergifyio backport release-1.19.x release-1.20.x release-1.21.x
 
     1. Approve and merge the backport PRs.
 

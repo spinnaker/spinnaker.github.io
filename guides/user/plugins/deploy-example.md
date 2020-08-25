@@ -6,7 +6,7 @@ sidebar:
   nav: guides
 ---
 
-{% include alpha version="1.20.6" %}
+_Note: Spinnaker 1.20.6 and 1.21+ support plugins with both server and frontend components. Spinnaker 1.19.x does not support frontend plugins due to a bug in Deck._
 
 {% include toc %}
 
@@ -18,7 +18,7 @@ In this guide, you deploy the `pf4jStagePlugin` plugin from the [spinnaker-plugi
 
 This guide was tested with the following software versions:
 
-* Spinnaker 1.20.6 and 1.21.0
+* Spinnaker 1.20.6 and 1.21+
 * Halyard 1.36
 * pf4jStagePlugin 1.1.14
 
