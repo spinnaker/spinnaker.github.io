@@ -269,13 +269,12 @@ channel to let them know that a new patch is available.
     1. Each Spin CLI release is tied to a version of Gate. To ensure
     compatibility, regenerate the Gate Client API.
 
-    1. From the Gate repository, check out the release branch and follow the
-    [instructions](https://github.com/spinnaker/spin/blob/master/CONTRIBUTING.md#updating-the-gate-api)
-    for updating the generated Gate Client API. Cherry-pick the Gate Client API
-    changes onto the Spin CLI release branch. As of writing, the Swagger
-    Codegen CLI uses 2.3.1; you can get that JAR [here](https://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/2.3.1/swagger-codegen-cli-2.3.1.jar).
-    If using a different version, you can try modifying the version parameters
-    in the URL.
+    1. From the Gate repository, check out the release branch and generate the `swagger/swagger.json` file (it's not under source control):
+    ```
+    ./swagger/generate_swagger.sh
+    ```
+    
+    1. From the spin-cli repository, check out the release branch (release branches from gate and spin-cli must match) and follow the [instructions](https://github.com/spinnaker/spin/blob/master/CONTRIBUTING.md#updating-the-gate-api) in that repo to update the gate client. This involves creating and merging a PR to spin-cli release branch with the updated gate client.
 
     1. If regenerating the Gate Client API produced any changes, kick off the
     Flow_BuildAndValidate_1.xx.x for the release branch and wait for a successful
@@ -295,9 +294,8 @@ channel to let them know that a new patch is available.
         - BOM_VERSION: This is the BOM to associate the Spin CLI release with. It is
         the latest Spinnaker release number, 1.xx.x.
 
-1. Publish a Sponnet minor version. Run the [publish.sh](https://github.com/spinnaker/sponnet/blob/master/publish.sh)
-script while passing in the version number of the new release.
-Example: VERSION="1.17.2" ./publish.sh
+1. Make a Sponnet [github release](https://github.com/spinnaker/sponnet/releases/new). Give it the same version as the newly released Spinnaker, with the tag prefixed with "v" (i.e. v${RELEASE}).
+
 
 ## Every subsequent Monday: Patch a previous Spinnaker version
 
