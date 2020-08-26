@@ -40,7 +40,7 @@ set tx_isolation = 'REPEATABLE-READ';
   CREATE SCHEMA `orca` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
   GRANT 
-    SELECT, INSERT, UPDATE, DELETE, EXECUTE, SHOW VIEW 
+    SELECT, INSERT, UPDATE, DELETE, CREATE, EXECUTE, SHOW VIEW
   ON `orca`.* 
   TO 'orca_service'@'%'; -- IDENTIFIED BY "password" if using password based auth
 
