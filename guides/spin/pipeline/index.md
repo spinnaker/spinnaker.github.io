@@ -45,10 +45,10 @@ Use " pipeline [command] --help" for more information about a command.
 ```
 
 The following assumes Spinnaker is running and Gate is
-listening on `http://localhost:8084`. If gate is running elsewhere,
+listening on `http://localhost:8084`. If Gate is running elsewhere,
 you can set the Gate endpoint with the global `--gate-endpoint` flag.
 
-## Managing Your Pipeline's Lifecycle
+## Managing your pipeline's lifecycle
 
 ### Create and update pipelines with `save`
 
@@ -57,6 +57,7 @@ $ spin pipeline save --file <path to pipeline json>
 
 Parsed submitted pipeline: <...>
 
+# Returns the following message if the pipeline gets updated successfully.
 Pipeline save succeeded
 ```
 
@@ -120,10 +121,32 @@ flag or via STDIN, e.g.
 }
 ```
 
+You can pass in paramaters as key-value pairs with the `-p` flag as such:
+
+```bash
+spin pipeline execute --application my-app --name my-pipeline -p foo=bar,baz=qux
+```
+
 ### Delete a pipeline with `delete`
 
 ```bash
 spin pipeline delete --name my-pipeline --application my-app
 
 Pipeline deleted
+```
+
+### Enable/disable a pipeline with `update`
+
+```bash
+spin pipeline update --application my-app --name my-pipeline --enabled
+
+# Returns the following message if the pipeline gets updated successfully.
+Pipeline updated
+```
+
+```bash
+spin pipeline update --application my-app --name my-pipeline --disabled
+
+# Returns the following message if the pipeline gets updated successfully.
+Pipeline updated
 ```
