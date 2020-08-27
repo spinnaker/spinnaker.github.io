@@ -123,7 +123,7 @@ See the command [reference](/reference/halyard/commands/#hal-plugins-repository)
 
 ## Add a plugin using Halyard
 
->Note: When Halyard adds a plugin to a Spinnaker installation, it adds the plugin repository information to each service. This means that when you restart Spinnaker, each service restarts, downloads the plugin, and checks if an extension exists for that service. See the [Plugin configuration without Halyard](#plugin-configuration-without-halyard) section for how to avoid each service restarting.
+>Note: When Halyard adds a plugin to a Spinnaker installation, it adds the plugin repository information to each service. This means that when you restart Spinnaker, each service restarts, downloads the plugin, and checks if an extension exists for that service. Each service restarting is not ideal for large Spinnaker installations due to service restart times. Clouddriver can take an hour or more to restart if you have many accounts configured. Engineers are working to shorten restart times. See the [Plugin configuration without Halyard](#plugin-configuration-without-halyard) section for how to avoid each service restarting.
 
 After you have added your plugin repository, you can add your plugin to Spinnaker. The Halyard [command](/reference/halyard/commands/#hal-plugins-add) is:
 
