@@ -123,7 +123,7 @@ See the command [reference](/reference/halyard/commands/#hal-plugins-repository)
 
 ## Add a plugin using Halyard
 
->Note: When Halyard adds a plugin to a Spinnaker installation, it adds the plugin repository information to each service. This means each service  downloads the plugin and checks if an extension exists for that service. Each service restarts, which is not good for large Spinnaker installations. See the [Plugin configuration without Halyard](#plugin-configuration-without-halyard) section for how to avoid each service restarting.
+>Note: When Halyard adds a plugin to a Spinnaker installation, it adds the plugin repository information to each service. This means that when you restart Spinnaker, each service restarts, downloads the plugin, and checks if an extension exists for that service. See the [Plugin configuration without Halyard](#plugin-configuration-without-halyard) section for how to avoid each service restarting.
 
 After you have added your plugin repository, you can add your plugin to Spinnaker. The Halyard [command](/reference/halyard/commands/#hal-plugins-add) is:
 
@@ -223,11 +223,12 @@ spinnaker:
 
 The plugin developer should provide configuration details in YAML format. If not:
 
-1. Add the plugin using Halyard
-1. Do not restart Spinnaker
-1. Copy the plugin configuration from the Halconfig file
-1. Paste the plugin configuration into the relevant service's local file; make sure configuration is in the format detailed above
-1. [Delete](https://spinnaker.io/reference/halyard/commands/#hal-plugins-delete) the plugin by executing `hal plugins delete <unique-plugin-id>`
+1. Add the plugin using Halyard.
+1. Do not restart Spinnaker.
+1. Copy the plugin configuration from the Halconfig file.
+1. Paste the plugin configuration into the relevant service's local file. Make sure configuration is in the format detailed above.
+1. [Delete](https://spinnaker.io/reference/halyard/commands/#hal-plugins-delete) the plugin by executing `hal plugins delete <unique-plugin-id>`.
+1. Restart Spinnaker
 
 ## List, edit, and delete plugins
 
@@ -248,9 +249,9 @@ spinnaker:
          <unique-plugin-id>:
            enabled: true
            version: <version>
-       repositories:
-         <unique-repo-name>:
-           url: <url-to-repositories.json-or-plugins.json>
+     repositories:
+       <unique-repo-name>:
+         url: <url-to-repositories.json-or-plugins.json>
 ```
 
 * `unique-plugin-id`: the plugin ID you used when you added the plugin to Spinnaker ([Add a plugin using Halyard](#add-a-plugin-using-halyard) section)
