@@ -550,6 +550,8 @@ guides:
         url: /guides/spin/pipeline-templates/
       - title: Manage Projects
         url: /guides/spin/projects/
+      - title: Manage Canary Configs
+        url: /guides/spin/canary-configs/
   - title: Service Overviews
     collapsed: true
     children:
