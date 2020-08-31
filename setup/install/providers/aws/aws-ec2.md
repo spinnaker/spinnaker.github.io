@@ -25,10 +25,13 @@ Use this option to deploy Spinnaker, if you are familar with deployment using [A
 1. Navigate to [Console](https://console.aws.amazon.com/){:target="\_blank"} > CloudFormation and [select](https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/getting-started.html#select-region) your preferred region.
 2. Download [the template](https://d3079gxvs8ayeg.cloudfront.net/templates/managing.yaml) locally to your workstation.
 
-    2.a (Optional). Add additional managed account as shown on line 158 in the SpinnakerAssumeRolePolicy section of the downloaded template file.
-3. Creating the CloudFormation Stack
+    2.a Search for ‘SpinnakerInstanceProfileArn’ and comment out the line.
+    
+    2.b (Optional). Add additional managed account as shown in the `SpinnakerAssumeRolePolicy` section of the downloaded template file.
+3. Create the CloudFormation Stack:
     * __Create Stack__ > __Upload a template to Amazon S3__ > __Browse to template you downloaded in Step-2 above__ > __Next__
-    * Enter __Stack Name__ as spinnaker-**managing**-infrastructure-setup and follow the prompts on screen to create the stack
+    * Enter __Stack Name__ as spinnaker-**managing**-infrastructure-setup and follow the prompts on screen to create the stack.
+    * From the dropdown select **‘UseAccessKeyForAuthentication’** as True to get the Access and Secret Key.
 4. Once the stack is select the stack you created in Step-3 > Outputs and note the values. You will need these values for subsequent configurations.
 
 
@@ -93,6 +96,25 @@ Option number 1 is useful for creation of user with AWS Access Key and secret. T
 2. Using AWS IAM Roles
 Option 2 uses the IAM roles *ManagingRole* and *ManagedRoles*. This setting is applied on some environments that have extra security considerations.
 
+### Spinaker AssumeRole Policy
+1. Incase, if you miss to add append the Line 158, then Manually create a Policy by Navigating to **Console > IAM > Policies**.
+2. Click on **Create New Policy**, then click on **JSON** and add the code shown below.
+3. Name the policy “Spinnaker AssumeRole Policy”.
+
+```JSON
+{
+	"Version": "2012-10-17",
+	"Statement": [{
+		"Action": "sts:AssumeRole",
+		"Resource": [
+			"arn:aws:iam::<AWS Account ID>:role/spinnakerManaged",
+			"arn:aws:iam::<AWS Account ID>:role/spinnakerManaged"
+		],
+		"Effect": "Allow"
+	}]
+}
+```
+
 ## Halyard Configurations
 After the AWS IAM user, roles, policies and trust relationship have been set up, the next step is to add the AWS configurations to Spinnaker via Halyard CLI:
 
@@ -106,7 +128,9 @@ After the AWS IAM user, roles, policies and trust relationship have been set up,
 
 ```bash
 hal config provider aws edit --access-key-id ${ACCESS_KEY_ID} \
-    --secret-access-key # do not supply the key here, you will be prompted
+     --secret-access-key # do not supply the key here, you will be prompted 
+hal config provider aws bakery edit --aws-access-key ${ACCESS_KEY_ID} \
+     --aws-secret-key # do not supply the key here, you will be prompted
 ```
 
 ### Configure Halyard to add AWS Accounts
