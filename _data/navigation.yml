@@ -124,8 +124,12 @@ setup:
             url: /setup/artifacts/github/
           - title: GitLab
             url: /setup/artifacts/gitlab/
+          - title: Git Repo
+            url: /setup/artifacts/gitrepo/
           - title: Google Cloud Storage
             url: /setup/artifacts/gcs/
+          - title: Helm
+            url: /setup/artifacts/helm/
           - title: HTTP
             url: /setup/artifacts/http/
           - title: Maven
@@ -544,6 +548,10 @@ guides:
         url: /guides/spin/pipeline/
       - title: Manage Pipeline Templates
         url: /guides/spin/pipeline-templates/
+      - title: Manage Projects
+        url: /guides/spin/projects/
+      - title: Manage Canary Configs
+        url: /guides/spin/canary-configs/
   - title: Service Overviews
     collapsed: true
     children:
@@ -750,6 +758,8 @@ community:
         url: /community/contributing/releasing/
       - title: Code Conventions for Server-side Components
         url: /community/contributing/back-end-code/
+      - title: Managing Deprecations
+        url: /community/contributing/managing-deprecations/
       - title: Documentation
         collapsed: true
         children:

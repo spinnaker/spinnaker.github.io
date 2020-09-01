@@ -58,7 +58,7 @@ both permissions to perform certain actions.
 * An external role provider from one of the following:
     * Google Groups via a G Suite Account
         * With access to the G Suite Admin console
-    * GitHub Team
+    * GitHub Organization
     * LDAP server
     * SAML Identity Provider (IdP) that includes groups in the assertion
         > SAML roles are fixed at login time, and cannot be changed until the user needs to

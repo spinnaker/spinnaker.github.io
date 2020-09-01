@@ -5,12 +5,10 @@ sidebar:
   nav: guides
 redirect_from:
   - /guides/user/plugin-users/
-  - /guides/user/plugins/user-guide
+  - /guides/user/plugins/user-guide/
 ---
 
-{% include alpha version="1.20.6" %}
-
-_Note: Spinnaker 1.19.x does not support frontend plugins due to a bug in Deck._
+_Note: Spinnaker 1.20.6 and 1.21+ support plugins with both server and frontend components. Spinnaker 1.19.x does not support frontend plugins due to a bug in Deck._
 
 {% include toc %}
 
@@ -41,8 +39,8 @@ Spinnaker uses [PF4J-Update](https://github.com/pf4j/pf4j-update) to load and ma
 
 Spinnaker environment:
 
-* Spinnaker v1.20.6, v1.21.0 (assumption is v1.21.x but not validated)
-* Halyard v1.36 to deploy Spinnaker (assumption is v1.36+ but not validated)
+* Spinnaker v1.20.6, v1.21+
+* Halyard v1.36 to deploy Spinnaker
 
 
 ## How to add a plugin to Spinnaker
@@ -53,6 +51,8 @@ Spinnaker environment:
 1. [Redeploy Spinnaker](#redeploy-spinnaker)
 
 ## Add a plugin repository using Halyard
+
+_Note: Your plugins.json and repository.json files must be in a location that Spinnaker can access. Token authentication to private repositories is not supported. Consider storing your plugins and repository files in an AWS S3 bucket (or similar) instead of a private repository._
 
 When you configure a repository, you tell Spinnaker where to find the `plugins.json` file that defines the plugins you want to use.  Each plugin repository entry in Spinnaker consists of a unique name and a URL.
 
@@ -115,9 +115,11 @@ hal plugins repository add all-the-plugins \
     --url=https://raw.githubusercontent.com/aimeeu/all-the-plugins/master/repositories.json
 ```
 
-You can also list, edit, and delete repositories. See the command [reference](/reference/halyard/commands/#hal-plugins-repository) for a complete list of parameters.
-
 Don't forget to `hal deploy apply` to apply your configuration changes.
+
+## List, edit, and delete repositories
+
+See the command [reference](/reference/halyard/commands/#hal-plugins-repository) to list, edit, or delete repositories.
 
 ## Add a plugin using Halyard
 
@@ -152,7 +154,7 @@ import com.netflix.spinnaker.kork.plugins.api.PluginConfiguration
 data class HTTPNotificationConfig(val url: String)
 ```
 
-Plugin configuration variables are passed into the primary class constructor. So if the plugin developer doesn't specify configuration details, you can find key and type, or a configuration tree, by looking at the primary class constructor.
+Plugin configuration variables are passed into the primary class constructor. If the plugin developer doesn't specify configuration details, you can find key and type, or a configuration tree, by looking at the primary class constructor.
 
 You add the `pf4jStagePlugin` to Spinnaker like this:
 
@@ -178,7 +180,7 @@ spinnaker:
             config: {}
 ```
 
-Halyard _does not_ support configuring plugins, so you should manually edit the  Halconfig file for custom values. For example, `pf4jStagePlugin` has a configurable `defaultMaxWaitTime`, so you add that parameter to the plugin's configuration in the `config` collection section:
+Halyard _does not_ support configuring plugins. You should manually edit the  Halconfig file for custom values. For example, `pf4jStagePlugin` has a configurable `defaultMaxWaitTime`, so you add that parameter to the plugin's configuration in the `config` collection section:
 
 ```yaml
 spinnaker:
@@ -196,9 +198,11 @@ spinnaker:
               defaultMaxWaitTime: 60
 ```
 
-You can also list, edit, and delete plugins. See the Halyard [commands](https://spinnaker.io/reference/halyard/commands/#hal-plugins) for a complete list.
-
 Note: `hal plugins enable` and `hal plugins disable` enable or disable _all_ plugins, so use with caution.
+
+## List, edit, and delete plugins
+
+See the Halyard [commands](https://spinnaker.io/reference/halyard/commands/#hal-plugins) reference to list, edit, or delete plugins.
 
 ## Add a Deck proxy to Gate
 
