@@ -23,7 +23,7 @@ Use this option to deploy Spinnaker, if you are familar with deployment using [A
 
 ### Managing Account
 1. Navigate to [Console](https://console.aws.amazon.com/){:target="\_blank"} > CloudFormation and [select](https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/getting-started.html#select-region) your preferred region.
-2. Download [the template](https://d3079gxvs8ayeg.cloudfront.net/templates/managing.yaml) locally to your workstation.
+2. Download [the template](https://www.spinnaker.io/downloads/aws/managing.yaml) locally to your workstation.
 
     2.a (Optional). Add additional managed account as shown on line 158 in the SpinnakerAssumeRolePolicy section of the downloaded template file.
 3. Creating the CloudFormation Stack
@@ -37,7 +37,7 @@ Use this option to deploy Spinnaker, if you are familar with deployment using [A
 > These steps need to be carried out for the managing account as well.
 
 1. Navigate to [Console](https://console.aws.amazon.com/){:target="\_blank"} > CloudFormation and [select](https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/getting-started.html#select-region) your preferred region.
-2. Download [the template](https://d3079gxvs8ayeg.cloudfront.net/templates/managed.yaml) locally to your workstation.
+2. Download [the template](https://www.spinnaker.io/downloads/aws/managed.yaml) locally to your workstation.
 3. Creating the CloudFormation Stack
     * __Create Stack__ > __Upload a template to Amazon S3__ > __Browse to template you downloaded in Step-2 above__ > __Next__
     * Enter __Stack Name__ as spinnaker-**managed**-infrastructure-setup and follow the prompts on screen to create the stack
@@ -57,7 +57,7 @@ If you want to use AccessKeys and Secrets to run Spinnaker
 
 ```bash
 
-curl -O https://d3079gxvs8ayeg.cloudfront.net/templates/managing.yaml
+curl -O https://www.spinnaker.io/downloads/aws/managing.yaml
 echo "Optionally add Managing account to the file downloaded as shown on line 158 in the SpinnakerAssumeRolePolicy section of the downloaded file."
 aws cloudformation deploy --stack-name spinnaker-managing-infrastructure-setup --template-file managing.yaml \
 --parameter-overrides UseAccessKeyForAuthentication=true --capabilities CAPABILITY_NAMED_IAM --region us-west-2
@@ -67,7 +67,7 @@ If you want to use InstanceProfile run Spinnaker
 
 ```bash
 
-curl -O https://d3079gxvs8ayeg.cloudfront.net/templates/managing.yaml
+curl -O https://www.spinnaker.io/downloads/aws/managing.yaml
 echo "Optionally add Managing account to the file downloaded as shown on line 158 in the SpinnakerAssumeRolePolicy section of the downloaded file."
 aws cloudformation deploy --stack-name spinnaker-managing-infrastructure-setup --template-file managing.yaml \
 --parameter-overrides UseAccessKeyForAuthentication=false --capabilities CAPABILITY_NAMED_IAM --region us-west-2
@@ -80,16 +80,16 @@ aws cloudformation deploy --stack-name spinnaker-managing-infrastructure-setup -
 
 ```bash
 
-curl -O https://d3079gxvs8ayeg.cloudfront.net/templates/managed.yaml
+curl -O https://www.spinnaker.io/downloads/aws/managed.yaml
 aws cloudformation deploy --stack-name spinnaker-managed-infrastructure-setup --template-file managed.yaml \
 --parameter-overrides AuthArn=FROM_ABOVE ManagingAccountId=FROM_ABOVE --capabilities CAPABILITY_NAMED_IAM --region us-west-2
 ```
 
-## Option-3 : Use AWS Console UI (Manual Steps) 
+## Option-3 : Use AWS Console UI (Manual Steps)
 
 There are 2 options here
 1. Using AWS IAM AccessKey and Secret
-Option number 1 is useful for creation of user with AWS Access Key and secret. This is a common configuration. 
+Option number 1 is useful for creation of user with AWS Access Key and secret. This is a common configuration.
 2. Using AWS IAM Roles
 Option 2 uses the IAM roles *ManagingRole* and *ManagedRoles*. This setting is applied on some environments that have extra security considerations.
 

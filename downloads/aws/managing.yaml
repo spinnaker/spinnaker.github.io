@@ -1,0 +1,293 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Setup AWS CloudProvider for Spinnaker
+Parameters:
+  SpinnakerVPCCIDR:
+    Description: CIDR Block for Developer VPC
+    Type: String
+    Default: 10.100.0.0/16
+  SpinnakerPublicSubnet1CIDR:
+    Description: SpinnakerEnv Public Subnet
+    Type: String
+    Default: 10.100.10.0/24
+    ConstraintDescription: IP CIDR must be in the range of your VPC
+  SpinnakerPublicSubnet2CIDR:
+    Description: SpinnakerEnv Private Subnet
+    Type: String
+    Default: 10.100.11.0/24
+    ConstraintDescription: IP CIDR must be in the range of your VPC
+  UseAccessKeyForAuthentication:
+    Description: >
+      Select Yes, if you want to use Access Keys and Secrets for Authentication.Selecting Yes will also create Access Keys and Secrets,
+      which will be visible in Outputs Section, once the template runs successfully. It is recommended that you update the stack and remove the outputs section.
+      Select No, if you will use EC2 Instance profile.
+    Type: String
+    AllowedValues:
+      - true
+      - false
+  EksClusterName:
+    Description: >
+      Enter EKS cluster name, if you want to run Spinnaker on EKS. Please ensure EKS is available in the region you are executing this template.
+      For more information about EKS availability, refer https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/
+      If you leave this parameter as the default value of None, EKS cluster will not be created.
+    Type: String
+    Default: None
+
+Conditions:
+  CreateAccessKeys: !Equals [!Ref UseAccessKeyForAuthentication, true]
+  CreateEc2Role: !Equals [!Ref UseAccessKeyForAuthentication, false]
+  SupportEKS: !Not [!Equals ["None", !Ref EksClusterName]]
+Resources:
+  BaseIAMRole:
+    Properties:
+      RoleName: BaseIAMRole
+      AssumeRolePolicyDocument:
+        Statement:
+          - Action:
+              - sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service:
+                - ec2.amazonaws.com
+        Version: "2012-10-17"
+      Path: /
+    Type: AWS::IAM::Role
+
+  EksServiceRole:
+    Type: AWS::IAM::Role
+    Condition: SupportEKS
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+          - Action:
+              - sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service:
+                - eks.amazonaws.com
+        Version: "2012-10-17"
+      Path: /
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonEKSClusterPolicy
+        - arn:aws:iam::aws:policy/AmazonEKSServicePolicy
+  EksCluster:
+    Type: AWS::EKS::Cluster
+    Condition: SupportEKS
+    Properties:
+      Name: !Ref EksClusterName
+      Version: "1.14"
+      RoleArn: !GetAtt EksServiceRole.Arn
+      ResourcesVpcConfig:
+        SecurityGroupIds:
+          - !Ref ControlPlaneSecurityGroup
+        SubnetIds:
+          - !Ref SpinnakerPublicSubnet1
+          - !Ref SpinnakerPublicSubnet2
+
+  # Creates Instance Profile to be used by any APP created by Spinnaker. Spinnaker has passRole access only to this instance Profile
+  BaseInstanceProfile:
+    DependsOn: SpinnakerAuthRole
+    Condition: CreateEc2Role
+    Properties:
+      InstanceProfileName: BaseInstanceProfile
+      Path: /
+      Roles:
+        - !Ref BaseIAMRole
+    Type: AWS::IAM::InstanceProfile
+
+  # Creates EC2 Role and Instance Profile with which Spinnaker Runs
+  SpinnakerInstanceProfile:
+    DependsOn: SpinnakerAuthRole
+    Condition: CreateEc2Role
+    Properties:
+      Path: /
+      Roles:
+        - !Ref "SpinnakerAuthRole"
+    Type: AWS::IAM::InstanceProfile
+  SpinnakerAuthRole:
+    Properties:
+      RoleName: SpinnakerAuthRole
+      AssumeRolePolicyDocument:
+        Statement:
+          - Action:
+              - sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service:
+                - ec2.amazonaws.com
+        Version: "2012-10-17"
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/PowerUserAccess
+        - !If [
+            SupportEKS,
+            "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy",
+            !Ref "AWS::NoValue",
+          ]
+        - !If [
+            SupportEKS,
+            "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy",
+            !Ref "AWS::NoValue",
+          ]
+        - !If [
+            SupportEKS,
+            "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly",
+            !Ref "AWS::NoValue",
+          ]
+    Type: AWS::IAM::Role
+    Condition: CreateEc2Role
+
+  # Creates IAM user and AccessKeys
+  SpinnakerUser:
+    Description: User identity Spinnaker uses to create AWS resources
+    Properties:
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/PowerUserAccess
+    Type: AWS::IAM::User
+    Condition: CreateAccessKeys
+  SpinnakerAccessKey:
+    DependsOn: SpinnakerUser
+    Condition: CreateAccessKeys
+    Description: Generate AccessKey for Spinnaker
+    Properties:
+      UserName: !Ref "SpinnakerUser"
+    Type: AWS::IAM::AccessKey
+
+  # Either Keys or Instances
+
+  SpinnakerAssumeRolePolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+      Users:
+        - !If [CreateAccessKeys, !Ref SpinnakerUser, !Ref "AWS::NoValue"]
+      Roles:
+        - !If [CreateEc2Role, !Ref SpinnakerAuthRole, !Ref "AWS::NoValue"]
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Action: sts:AssumeRole
+            Effect: Allow
+            Resource:
+              - !Sub arn:aws:iam::${AWS::AccountId}:role/spinnakerManaged # This is the current account
+              #- arn:aws:iam::YOUR_MANAGED_ACCOUNT1:role/spinnakerManaged # Keep Adding Managed Accounts like this
+      PolicyName: SpinnakerAssumeRolePolicy
+
+  # Creates a single subnet VPC
+  SpinnakerVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: !Ref "SpinnakerVPCCIDR"
+      EnableDnsSupport: "true"
+      EnableDnsHostnames: "true"
+      Tags:
+        - Key: VPC
+          Value: Spinnaker VPC
+        - Key: Name
+          Value: SpinnakerVPC
+  SpinnakerInternetGateway:
+    Type: AWS::EC2::InternetGateway
+  SpinnakerAttachGateway:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref "SpinnakerVPC"
+      InternetGatewayId: !Ref "SpinnakerInternetGateway"
+  SpinnakerPublicSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref "SpinnakerVPC"
+      CidrBlock: !Ref SpinnakerPublicSubnet1CIDR
+      AvailabilityZone: !Select
+        - "0"
+        - !GetAZs ""
+      Tags:
+        - Key: Name
+          Value: !Sub SpinnakerVPC.external.${AWS::Region}a
+        - Key: immutable_metadata # If you cannot name the VPC as done above, use this tag
+          Value: !Sub |
+            {"purpose": "public-subnet"}
+  SpinnakerPublicSubnet2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref "SpinnakerVPC"
+      CidrBlock: !Ref SpinnakerPublicSubnet2CIDR
+      AvailabilityZone: !Select
+        - "1"
+        - !GetAZs ""
+      Tags:
+        - Key: Name
+          Value: !Sub SpinnakerVPC.external.${AWS::Region}b
+        - Key: immutable_metadata
+          Value: !Sub |
+            {"purpose": "public-subnet"}
+  SpinnakerPublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    DependsOn:
+      - SpinnakerVPC
+      - SpinnakerAttachGateway
+    Properties:
+      VpcId: !Ref "SpinnakerVPC"
+      Tags:
+        - Key: Name
+          Value: Spinnaker Public Route Table
+  SpinnakerPublicRoute:
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId: !Ref "SpinnakerPublicRouteTable"
+      DestinationCidrBlock: "0.0.0.0/0"
+      GatewayId: !Ref "SpinnakerInternetGateway"
+  SpinnakerPublicSubnet1RouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref SpinnakerPublicSubnet1
+      RouteTableId: !Ref "SpinnakerPublicRouteTable"
+  SpinnakerPublicSubnet2RouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref SpinnakerPublicSubnet2
+      RouteTableId: !Ref "SpinnakerPublicRouteTable"
+
+  ControlPlaneSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Condition: SupportEKS
+    Properties:
+      GroupDescription: Cluster communication with worker nodes
+      VpcId: !Ref SpinnakerVPC
+
+Outputs:
+  AccessKeyId:
+    Condition: CreateAccessKeys
+    Value: !Ref SpinnakerAccessKey
+  Secret:
+    Condition: CreateAccessKeys
+    Value: !GetAtt SpinnakerAccessKey.SecretAccessKey
+  ManagingAccountId:
+    Value: !Ref AWS::AccountId
+  AuthArn:
+    Value:
+      !If [
+        CreateAccessKeys,
+        !GetAtt SpinnakerUser.Arn,
+        !GetAtt SpinnakerAuthRole.Arn,
+      ]
+  EksClusterEndpoint:
+    Condition: SupportEKS
+    Value: !GetAtt EksCluster.Endpoint
+  EksClusterCA:
+    Condition: SupportEKS
+    Value: !GetAtt EksCluster.CertificateAuthorityData
+  SubnetIds:
+    Description: All subnets in the VPC
+    Value:
+      !Join [",", [!Ref SpinnakerPublicSubnet1, !Ref SpinnakerPublicSubnet2]]
+  EksClusterName:
+    Condition: SupportEKS
+    Value: !Ref EksClusterName
+
+  SpinnakerInstanceProfileArn:
+    Value: !GetAtt SpinnakerInstanceProfile.Arn
+
+  VpcId:
+    Value: !Ref SpinnakerVPC
+
+  SecurityGroups:
+    Condition: SupportEKS
+    Description: Security group for the cluster control plane communication with worker nodes
+    Value: !Join [",", [!Ref ControlPlaneSecurityGroup]]
