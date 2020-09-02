@@ -102,14 +102,6 @@ aws cloudformation deploy --stack-name spinnaker-managed-infrastructure-setup --
 --parameter-overrides AuthArn=FROM_ABOVE ManagingAccountId=FROM_ABOVE --capabilities CAPABILITY_NAMED_IAM --region us-west-2
 ```
 
-## Option-3 : Use AWS Console UI (Manual Steps)
-
-There are 2 options here
-1. Using AWS IAM AccessKey and Secret
-Option number 1 is useful for creation of user with AWS Access Key and secret. This is a common configuration.
-2. Using AWS IAM Roles
-Option 2 uses the IAM roles *ManagingRole* and *ManagedRoles*. This setting is applied on some environments that have extra security considerations.
-
 ## Halyard Configurations
 After the AWS IAM user, roles, policies and trust relationship have been set up, the next step is to add the AWS configurations to Spinnaker via Halyard CLI:
 
