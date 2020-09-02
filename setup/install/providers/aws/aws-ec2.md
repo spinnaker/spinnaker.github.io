@@ -30,7 +30,10 @@ Use this option to deploy Spinnaker, if you are familar with deployment using [A
     * __Create Stack__ > __Upload a template to Amazon S3__ > __Browse to template you downloaded in Step-2 above__ > __Next__
     * Enter __Stack Name__ as spinnaker-**managing**-infrastructure-setup and follow the prompts on screen to create the stack
 4. Once the stack is select the stack you created in Step-3 > Outputs and note the values. You will need these values for subsequent configurations.
-
+5. If you set UseAccessKeyForAuthentication to "true" for the stack, retrieve the access key credentials.
+    * Navigate to the Secrets Manager console.
+    * Select the secret created by your CloudFormation stack.  The name of the secret was shown in the __SpinnakerUserSecret__ output value for the stack.
+    * Click __Retrieve secret value__ and note the values. You will need these values for subsequent configurations.
 
 ### In each of the Managed Account
 
@@ -71,6 +74,20 @@ curl -O https://www.spinnaker.io/downloads/aws/managing.yaml
 echo "Optionally add Managing account to the file downloaded as shown on line 158 in the SpinnakerAssumeRolePolicy section of the downloaded file."
 aws cloudformation deploy --stack-name spinnaker-managing-infrastructure-setup --template-file managing.yaml \
 --parameter-overrides UseAccessKeyForAuthentication=false --capabilities CAPABILITY_NAMED_IAM --region us-west-2
+```
+
+After deploying the stack, retrieve the outputs for the created stack:
+
+```bash
+
+aws cloudformation describe-stacks --stack-name spinnaker-managing-infrastructure-setup  --region us-west-2 --query 'Stacks[0].Outputs'
+```
+
+If you chose to use AccessKeys and Secrets to run Spinnaker, retrieve the values from Secrets Manager using the secret ARN in the stack's SpinnakerUserSecret output:
+
+```bash
+
+aws secretsmanager get-secret-value --secret-id FROM_ABOVE --region us-west-2
 ```
 
 ### In each of the Managed Account

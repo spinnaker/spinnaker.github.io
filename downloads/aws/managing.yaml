@@ -150,6 +150,18 @@ Resources:
     Properties:
       UserName: !Ref "SpinnakerUser"
     Type: AWS::IAM::AccessKey
+  SpinnakerAccessKeyCredentials:
+    DependsOn: SpinnakerAccessKey
+    Condition: CreateAccessKeys
+    Description: Store the access key credentials for Spinnaker in a secure location
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Description: Spinnaker user access key credentials
+      SecretString: !Sub |
+        {
+          "AccessKeyId":"${SpinnakerAccessKey}",
+          "SecretAccessKey":"${SpinnakerAccessKey.SecretAccessKey}"
+        }
 
   # Either Keys or Instances
 
@@ -252,12 +264,9 @@ Resources:
       VpcId: !Ref SpinnakerVPC
 
 Outputs:
-  AccessKeyId:
+  SpinnakerUserSecret:
     Condition: CreateAccessKeys
-    Value: !Ref SpinnakerAccessKey
-  Secret:
-    Condition: CreateAccessKeys
-    Value: !GetAtt SpinnakerAccessKey.SecretAccessKey
+    Value: !Ref SpinnakerAccessKeyCredentials
   ManagingAccountId:
     Value: !Ref AWS::AccountId
   AuthArn:
