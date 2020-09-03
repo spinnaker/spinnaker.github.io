@@ -94,7 +94,7 @@ aws cloudformation deploy --stack-name spinnaker-managed-infrastructure-setup --
 ```
 
 ## Option-3 : Configure with AWS IAM Console
-The Spinnaker **Managing** role AWS account Assumes the Spinnaker **Managed** role AWS account in a target AWS account via AWS IAM resources (policies, roles, users, trust relationship, etc). This allows Spinnaker to take control of the AWS cloud resources.
+The Spinnaker **Managing** role AWS account assumes the Spinnaker **Managed** role AWS account in a target AWS account via AWS IAM resources (policies, roles, users, trust relationship, etc). This allows Spinnaker to control the AWS cloud resources.
 
 For the Example below the AWS Account **spinnakerManaging** assumes the **spinnakerManaged** role in the AWS accounts **develop** and **staging**. The account **spinnakerManaging** is where Spinnaker lives
 
