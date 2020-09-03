@@ -102,7 +102,7 @@ A great use case for this set up is to deploy pre-built AWS AMIs to AWS EC2.
 
 ![Example AWS IAM structure for Spinnaker AWS Provider](/setup/install/providers/images/example-aws-provider.svg)
 
-Before you start create a simple table mapping the Account names and account IDs for your desired set up. An example table is shown below.
+Before you start, create a simple table that maps the Account names to account IDs for your desired set up. An example table is shown below.
 
 | Name              | Account Id   |
 |-------------------|--------------|
