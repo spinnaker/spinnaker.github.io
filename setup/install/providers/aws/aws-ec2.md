@@ -295,7 +295,7 @@ hal config provider aws account add $AWS_ACCOUNT_NAME \
 
 #### Configure Spinnaker AWS provider to use AccessKeys (if using AWS IAM user)
 
-> These steps need to be carried out only if you selected [Option-1 AWS IAM user](/#aws-iam-user-or-roles) with key id and secret.
+> These steps need to be carried out only if you selected [Option-1 AWS IAM user](#aws-iam-user-or-roles) with key id and secret.
 
 ```bash
 hal config provider aws edit --access-key-id ${ACCESS_KEY_ID} \
