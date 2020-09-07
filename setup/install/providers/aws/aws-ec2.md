@@ -9,11 +9,14 @@ sidebar:
 
 > :warning: These instructions were updated to manually set up the AWS provider with [Option-3](#option-3--configure-with-aws-iam-console) on **2020-08-22**. <br>
 
-> The other options [Option-1](#option-1-configure-with-aws-cloudformation-console) and [Option-2](http://0.0.0.0:4000/setup/install/providers/aws/aws-ec2/#option-2-configure-with-aws-cli) are out-of-date and a new version is being
-> worked on. In the meantime, please use the following
+> The other options [Option-1](#option-1-configure-with-aws-cloudformation-console) and [Option-2](http://0.0.0.0:4000/setup/install/providers/aws/aws-ec2/#option-2-configure-with-aws-cli) are out-of-date and a new version has been worked on [PR2020](https://github.com/spinnaker/spinnaker.github.io/pull/2020). In the meantime, please use the following
 > [AWS tutorial: Continuous Delivery using Spinnaker on Amazon EKS](https://aws.amazon.com/blogs/opensource/continuous-delivery-spinnaker-amazon-eks/).
 
+The AWS EC2 Provider allows you to deploy AWS EC2 resources with Spinnaker. The most common use case is the deployment of ready-to-go baked AMIs.
+
 Use the AWS EC2 Provider if you want to manage EC2 Instances via Spinnaker. Refer to the [AWS Cloud Provider Overview](https://spinnaker.io/setup/install/providers/aws/) to understand how AWS IAM must be set up with the Spinnaker AWS EC2 provider.
+
+The AWS EC2 and AWS ECS legacy providers depend on the AWS IAM structure that must be set up before trying to deploy resources to AWS EC2. Refer to the [Concepts overview page](http://spinnaker.io/setup/install/providers/aws/)
 
 Spinnaker will use an [AWS IAM structure](https://aws.amazon.com/iam/) with users, roles, policies, and so on, to access AWS services and resources securely. There are 3 options to set up the AWS IAM structure
 
