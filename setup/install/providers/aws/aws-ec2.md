@@ -7,7 +7,7 @@ sidebar:
 
 {% include toc %}
 
-> :warning: These instructions were updated to manually set up the AWS provider with [Option-3](#option-3--configure-with-aws-iam-console) on **2020-08-22**. <br>
+> :warning: These instructions were updated, on **2020-08-22**, to manually set up the AWS provider with [Option-3](#option-3--configure-with-aws-iam-console). <br>
 
 > The other options [Option-1](#option-1-configure-with-aws-cloudformation-console) and [Option-2](http://0.0.0.0:4000/setup/install/providers/aws/aws-ec2/#option-2-configure-with-aws-cli) are out-of-date and a new version has been worked on [PR2020](https://github.com/spinnaker/spinnaker.github.io/pull/2020). In the meantime, please use the following
 > [AWS tutorial: Continuous Delivery using Spinnaker on Amazon EKS](https://aws.amazon.com/blogs/opensource/continuous-delivery-spinnaker-amazon-eks/).
@@ -97,15 +97,15 @@ aws cloudformation deploy --stack-name spinnaker-managed-infrastructure-setup --
 ```
 
 ## Option-3 : Configure with AWS IAM Console
-The Spinnaker **Managing** role AWS account Assumes the Spinnaker **Managed** role AWS account in a target AWS account via AWS IAM resources (policies, roles, users, trust relationship, etc). This allows Spinnaker to take control of the AWS cloud resources.
+The Spinnaker **Managing** role AWS account assumes the Spinnaker **Managed** role AWS account in a target AWS account via AWS IAM resources (policies, roles, users, trust relationship, etc). This allows Spinnaker to control the AWS cloud resources.
 
-For the Example below the AWS Account **spinnakerManaging** assumes the **spinnakerManaged** role in the AWS accounts **develop** and **staging**. The account **spinnakerManaging** is where Spinnaker lives
+For the Example below the AWS Account **spinnakerManaging** assumes the **spinnakerManaged** role in the AWS accounts **develop** and **staging**. The account **spinnakerManaging** is where Spinnaker lives.
 
 A great use case for this set up is to deploy pre-built AWS AMIs to AWS EC2.
 
 ![Example AWS IAM structure for Spinnaker AWS Provider](/setup/install/providers/images/example-aws-provider.svg)
 
-Before you start create a simple table mapping the Account names and account IDs for your desired set up. An example table is shown below.
+Before you start, create a simple table that maps the Account names to account IDs for your desired set up. An example table is shown below.
 
 | Name              | Account Id   |
 |-------------------|--------------|
