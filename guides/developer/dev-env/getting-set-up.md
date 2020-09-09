@@ -3,6 +3,7 @@ layout: single
 title: "Getting Set Up for Spinnaker Development"
 sidebar:
   nav: guides
+redirect_from: /guides/developer/getting-set-up/
 ---
 
 {% include toc %}
@@ -79,7 +80,7 @@ necessary.
 
 ## IntelliJ
 
-Import the project into IntelliJ: 
+Import the project into IntelliJ:
 1. Select `New` > `Project from Existing Sources`
 1. Navigating to a service's `build.gradle` file (i.e., `~/dev/spinnaker/clouddriver/build.gradle`)
 
