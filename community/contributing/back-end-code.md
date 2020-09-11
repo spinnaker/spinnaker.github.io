@@ -111,7 +111,9 @@ Do not annotate code as deprecated without additional context. Deprecations with
 
 ## Ambiguous Types
 
-Refrain from using open-ended, ambiguous types, such as `Map<String, Object>`. These types, while flexible, make APIs unobvious, difficult to integrate with and test. Instead, use well-defined types, or if a `Map` type is truly needed, use the most constrictive contract as possible, such as `Map<String, String>`.
+Refrain from using open-ended, ambiguous types, such as `Map<String, Object>`. 
+These types, while flexible, make APIs unobvious, difficult to integrate with and test.
+Instead, use well-defined types, or if a `Map` type is truly needed, use the most constrictive contract as possible, such as `Map<String, String>`.
 
 ## Testing
 
