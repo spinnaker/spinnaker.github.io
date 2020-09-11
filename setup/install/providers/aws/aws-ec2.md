@@ -113,16 +113,17 @@ aws cloudformation deploy --stack-name spinnaker-managed-infrastructure-setup --
 --parameter-overrides AuthArn=FROM_ABOVE ManagingAccountId=FROM_ABOVE --capabilities CAPABILITY_NAMED_IAM --region us-west-2
 ```
 
-## Option-3 : Configure with AWS IAM Console
-The Spinnaker **Managing** role AWS account assumes the Spinnaker **Managed** role AWS account in a target AWS account via AWS IAM resources (policies, roles, users, trust relationship, etc). This allows Spinnaker to control the AWS cloud resources.
+## Option 3: Configure with AWS IAM Console
 
-For the Example below the AWS Account **spinnakerManaging** assumes the **spinnakerManaged** role in the AWS accounts **develop** and **staging**. The account **spinnakerManaging** is where Spinnaker lives.
+Option 3 focuses on using two roles, a Spinnaker **Managing** role and a Spinnaker **managed** role. The Spinnaker **Managing** role AWS account assumes the Spinnaker **Managed** role AWS account in a target AWS account using AWS IAM resources, including policies, roles, users, and trust relationship. This allows Spinnaker to control the AWS cloud resources.
+
+For the example below, the AWS Account **spinnakerManaging** assumes the **spinnakerManaged** role in the AWS accounts **develop** and **staging**. The account **spinnakerManaging** is where Spinnaker lives.
 
 A great use case for this set up is to deploy pre-built AWS AMIs to AWS EC2.
 
 ![Example AWS IAM structure for Spinnaker AWS Provider](/setup/install/providers/images/example-aws-provider.svg)
 
-Before you start, create a simple table that maps the Account names to account IDs for your desired set up. An example table is shown below.
+Before you start, create a table that maps the account names to account IDs for your desired set up. An example table is shown:
 
 | Name              | Account Id   |
 |-------------------|--------------|
@@ -130,69 +131,77 @@ Before you start, create a simple table that maps the Account names to account I
 | develop           | 200000000002 |
 | staging           | 300000000003 |
 
-### AWS IAM user or Roles
-There are 2 options here
-1. Set Up AWS IAM structure and use an AWS IAM User *spinnakerManaging* with AccessKey and Secret. This option is useful for creation of user with AWS Access Key and secret. This is a common configuration. 
-2. Using AWS IAM Roles. Option 2 uses the IAM roles *ManagingRole* and *ManagedRoles*. This setting is applied on some environments that have extra security considerations. For Example the EC2 instance where Spinnaker is used to deploy AWS resources has the *ManagingRole* attached. The *ManagingRole* contains the AWS IAM policies required to manage AWS resources.
+These examples are used in the subsequent sections.
+
+### AWS IAM user or roles
+
+For IAM, you can either create IAM users or roles based on your requirements:
+
+1. Set Up AWS IAM structure and use an AWS IAM User *spinnakerManaging* with AccessKey and Secret. This option is useful for creating users with AWS Access Key and secret. This is a common configuration.
+2. Using AWS IAM Roles, such as creating a *ManagingRole* and *ManagedRoles*. This option might be needed for environments that have extra security considerations. The EC2 instance where Spinnaker is used to deploy AWS resources has the *ManagingRole* attached. The *ManagingRole* contains the AWS IAM policies required to manage AWS resources.
 
 ### Create AWS IAM user
-- Access AWS IAM console
-- Switch to spinnakerManaging AWS Account
-- Add user and name it **spinnakerManaging**
-- Check the “Programmatic access” checkbox
-- Add tags that will identify this user e.g. spinnakerManaging
-- Create user
-- Copy the “Access key ID” and “Secret access key” to your secret management system i.e. Vault, AWS Secrets manager, 1Password
-- Copy the AWS ARN of the Created User `arn:aws:iam::100000000001:user/spinnakerManaging`
+
+1. Navigate to the AWS IAM console.
+2. Switch to the **spinnakerManaging** AWS Account.
+3. Add a user and name it **spinnakerManaging**.
+4. Check the “Programmatic access” checkbox.
+5. Add tags to help you identify this user, such as "spinnakerManaging".
+6. Create the user.
+7. Save the “Access key ID” and “Secret access key” somewhere secure, such as a secret management system like Vault, AWS Secrets manager, or 1Password.
+8. Save the AWS ARN for the user, for example: `arn:aws:iam::100000000001:user/spinnakerManaging`.
 
 ### Create Roles
+
 #### Create Managed Roles in each target AWS Account
-The order of creation should be
 
-1. Create **spinnakerManaged** in **develop ID=200000000002**
-2. Create **spinnakerManaged** in **staging ID=300000000003**
+First, create the **spinnakerManaged** role for the **develop ID=200000000002**. Then, repeat the same steps to create **spinnakerManaged** in **staging ID=300000000003**.
 
-- Access AWS IAM console
-- Switch to develop AWS Account
-- Roles > Create Role
-- Select EC2. We can change this later, because we want to specify an explicit consumer of this role in a later stage.
-- Search for PowerUserAccess in the search filter, and select the Policy called PowerUserAcces (This is what gives access to AWS services)
-- Add tags that will identify this Role
-- Enter a Role Name. **spinnakerManaged**
-- Click Create role
-- Select the Created Role > Click on **Add inline policy** (on the right) > Click on the **JSON** tab
-- Add the following code for the Inline Policy and name it **PassRole-and-Certificates**
-- Create Policy
+1. Navigate to the AWS IAM console.
+2. Switch to the AWS Account you want to create the roll for.
+3. Go to **Roles > Create Role**.
+4. Select EC2. You can change this later, because we want to specify an explicit consumer of this role in a later stage.
+5. For permissions, search for "PowerUserAccess" and select this policy. This gives the role permission to access AWS services.
+6. Add tags that will help you identify this role.
+7. Enter a role name: spinnakerManaged.
+8. Create the roll.
+9. Select the created role and add an inline policy using the following JSON snippet: 
 
-```
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Action": [
-                "iam:ListServerCertificates",
-                "iam:PassRole"
-            ],
-            "Resource": [
-                "*"
-            ],
-            "Effect": "Allow"
-        }
-    ]
-}
-```
+   ```json
+   {
+       "Version": "2012-10-17",
+       "Statement": [
+           {
+               "Action": [
+                   "iam:ListServerCertificates",
+                   "iam:PassRole"
+               ],
+               "Resource": [
+                   "*"
+               ],
+               "Effect": "Allow"
+           }
+       ]
+   }
+   ```
 
-- Repeat Steps for creation of **spinnakerManaged** on the next target AWS account. For this example **staging**
+10. Name the policy "PassRole-and-Certificates".
+11. Create the policy.
 
-### Create Role BaseIAMRole
-BaseIAMRole is the default role that Spinnaker will use if a **spinnakerManaged** Role is not found
+Repeat these steps for the second AWS environment. In this example, that is the **staging** environment.
 
-- Access AWS IAM console For each of the desired target accounts. e.g. spinnakerManaging, develop and staging
-- Roles > Create Role
-- Select **EC2**, and click **Next: Permissions**
-- Click **Next: Tags**
-- Add tags that will identify this Role. Spinnaker
-- Specify the Role Name as **BaseIAMRole**
+### Create the role BaseIAMRole
+
+BaseIAMRole is the default role that Spinnaker will use if the **spinnakerManaged** role is not found.
+
+1. Navigate to the AWS IAM console. 
+2. Create the role.
+3. Select **EC2**, and click **Next: Permissions**
+4. Click **Next: Tags**
+5. Add tags that will identify this Role. Spinnaker
+6. Specify the Role Name as **BaseIAMRole**
+
+Repeat this process for. e.g. spinnakerManaging, develop and staging
 
 ### Create AWS Policy
 The AWS IAM policy gives permissions the user **spinnakerManaging** to assume the role of the **spinnakerManaged** for the different target accounts **develop** and **staging**
