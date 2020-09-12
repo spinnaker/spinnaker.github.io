@@ -310,7 +310,7 @@ Before you start, you must have Halyard installed. Additionally, you should unde
    The following examples add the ****spinnakerManaged** and **develop** accounts from the previous examples. Repeat the command for every account you want to add.
 
    ```bash
-   # Adds spinnakerManaged for the regions us-east-1 and us-west-2
+# Adds spinnakerManaging for the regions us-east-1 and us-west-2
    export AWS_ACCOUNT_NAME=""
    export ACCOUNT_ID="100000000001"
    
