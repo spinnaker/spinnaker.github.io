@@ -307,7 +307,7 @@ Before you start, you must have Halyard installed. Additionally, you should unde
 
    For information about the available parameters, see [hal config provider AWS](https://www.spinnaker.io/reference/halyard/commands/#hal-config-provider-aws).
 
-   The following examples add the ****spinnakerManaged** and **develop** accounts from the previous examples. Repeat the command for every account you want to add.
+   The following examples add the ****spinnakerManaging** and **develop** accounts from the previous examples. Repeat the command for every account you want to add.
 
    ```bash
 # Adds spinnakerManaging for the regions us-east-1 and us-west-2
