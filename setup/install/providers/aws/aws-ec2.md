@@ -149,7 +149,7 @@ For IAM, you can either create IAM users or roles based on your requirements:
 5. Add tags to help you identify this user, such as "spinnakerManaging".
 6. Create the user.
 7. Save the “Access key ID” and “Secret access key” somewhere secure, such as a secret management system like Vault, AWS Secrets manager, or 1Password.
-8. Save the AWS ARN for the user, for example: `arn:aws:iam::100000000001:user/spinnakerManaging`.
+8. Save the AWS ARN for the user, for example: `arn:aws:iam::100000000001:user/spinnakerManaging`. You need the ARN later when you configure the managed accounts to trust the managing account (IAM user).
 
 ### Create Roles
 
@@ -201,126 +201,143 @@ BaseIAMRole is the default role that Spinnaker will use if the **spinnakerManage
 5. Add tags that will identify this Role. Spinnaker
 6. Specify the Role Name as **BaseIAMRole**
 
-Repeat this process for. e.g. spinnakerManaging, develop and staging
+Repeat this process for all the accounts.
 
 ### Create AWS Policy
-The AWS IAM policy gives permissions the user **spinnakerManaging** to assume the role of the **spinnakerManaged** for the different target accounts **develop** and **staging**
 
-- Select the AWS account where Spinnaker lives **spinnakerManaging**
-- Access AWS IAM console
-- List the AWS ARN of the **spinnakerManaged** accounts **develop** and **staging**. For example see the list below with 3 AWS ARN for different AWS Accounts each corresponding to an environment.
-```
-"arn:aws:iam::200000000002:role/spinnakerManaged",
-"arn:aws:iam::300000000003:role/spinnakerManaged"
-```
+The AWS IAM policy gives permissions to the **spinnakerManaging** user to assume the **spinnakerManaged** role for the different target accounts (**develop** and **staging**).
 
-- From AWS IAM Policies > Create Policy > JSON Enter the policy attached below with the correct AWS ARNs for the **spinnakerManaged** accounts **develop** and **staging**
-- Enter as the input name the policy myOrgSpinnakerManagingAccountPolicy e.g. **SpinnakerManagingAccountPolicy**
-- Create policy. Note that this policy has access to EC2, cloudformation and ECR.
+1. Select the AWS account where Spinnaker lives **spinnakerManaging**.
+2. Access AWS IAM console.
+3. List the AWS ARN of the **spinnakerManaged** accounts **develop** and **staging**. For example, the list below shows 3 AWS ARNs for different AWS accounts, each corresponding to an environment:
 
-```
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2:*",
-                "cloudformation:*",
-                "ecr:*"
-            ],
-            "Resource": [
-                "*"
-            ]
-        },
-        {
-            "Action": "sts:AssumeRole",
-            "Resource": [
-                "arn:aws:iam::200000000002:role/spinnakerManaged",
-                "arn:aws:iam::300000000003:role/spinnakerManaged"
-            ],
-            "Effect": "Allow"
-        }
-    ]
-}
-```
+   ```bash
+   "arn:aws:iam::200000000002:role/spinnakerManaged",
+   "arn:aws:iam::300000000003:role/spinnakerManaged"
+   ```
 
-### Add Permissions to AWS IAM user/spinnakerManaging
-- From AWS IAM console > User
-- Permissions tab > Add Permissions
-- Attach existing policies directly
-- Add policy **SpinnakerManagingAccountPolicy**
+4. Add a policy using the following JSON. Make sure to update it with the correct AWS ARNs for the **spinnakerManaged** accounts **develop** and **staging**:
 
-### Configure Trust relationship between Managed Roles and managing User
-This step sets the AWS trust relationship for the SpinnakerManaged AWS IAM role with the spinnakerManaging AWS IAM user
+   ```json
+   {
+       "Version": "2012-10-17",
+       "Statement": [
+           {
+               "Effect": "Allow",
+               "Action": [
+                   "ec2:*",
+                   "cloudformation:*",
+                   "ecr:*"
+               ],
+               "Resource": [
+                   "*"
+               ]
+           },
+           {
+               "Action": "sts:AssumeRole",
+               "Resource": [
+                   "arn:aws:iam::200000000002:role/spinnakerManaged",
+                   "arn:aws:iam::300000000003:role/spinnakerManaged"
+               ],
+               "Effect": "Allow"
+           }
+       ]
+   }
+   ```
 
-#### Configure the Managed Accounts To Trust The Managing Account IAM USER spinnakerManaging
-The Managed Roles (Target Accounts develop and staging) must be configured to trust and allow the Managing (Assuming) User **spinnakerManaging**. For our example, in this step **spinnakerManaging** will be configured to assume the **spinnakerManaged** Role in AWS Accounts **develop** and **staging**.
+   Note that this policy has access to EC2, CloudFormation, and ECR.
 
-This is called a **Trust Relationship** and is configured each of the Managed Roles (Target Roles) SpinnakerManagedRoleAccount
+5. Give the policy a descriptive name, such as **SpinnakerManagingAccountPolicy**.
+6. Create the policy.
 
-- Access AWS IAM Console in each of the required AWS target Accounts
-- Roles > Find and select the Managed Role for the AWS Account e.g. **spinnakerManaged**
-- Click on the Trust relationships tab.
-- Obtain the AWS ARN of the user created in step [Create AWS IAM User](#create-aws-iam-user)
-```
-"arn:aws:iam::100000000001:user/spinnakerManaging"
-```
+### Add permissions to AWS IAM user spinnakerManaging
 
-- Edit the Trust Relationship **Edit trust relationship**
-- Replace the Policy with the new policy that includes the AWS ARN of the Spinnaker Managing User **spinnakerManaging**
+1. In the AWS IAM console, go to **User** and select **spinnakerManaging**.
+2. Add Permissions.
+3. Attach an existing policy: **SpinnakerManagingAccountPolicy**.
 
-```
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": [
-          "arn:aws:iam::100000000001:user/spinnakerManaging"
-        ]
-      },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}
-```
+### Configure the trust relationship between the managed Roles and managing User
 
-After setting the AWS IAM structure you can enable the AWS Provider in the Spinnaker configuration file. In the next section you can use the CLI tool *Halyard* to configure and enable the AWS Provider.
+Set up the AWS trust relationship for the SpinnakerManaged AWS IAM role with the **spinnakerManaging** AWS IAM user.
+
+#### Configure the managed accounts to trust the managing account (IAM user) spinnakerManaging
+
+The managed accounts (**develop** and **staging** in this example) need to be configured to trust the **spinnakerManaging** to use AWS resources under their control. For this example, **spinnakerManaging** assumes the **spinnakerManaged** role in the AWS Accounts **develop** and **staging**.
+
+This trust relationship and is configured for each of the target managed roles.
+
+1. Navigate to the AWS IAM Console and select one of the managed accounts. For this example, this is **develop** and **staging**.
+2. In the **Roles** section, find and select the managed role for the AWS Account, **spinnakerManaged** in this example.
+3. Go to the **Trust relationship** tab.
+4. Edit the trust relationship. Use the following policy, making sure to replace the example ARN with the actual ARN from [Create AWS IAM User](#create-aws-iam-user):
+
+   ```json
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Effect": "Allow",
+         "Principal": {
+           "AWS": [
+             "arn:aws:iam::100000000001:user/spinnakerManaging"
+           ]
+         },
+         "Action": "sts:AssumeRole"
+       }
+     ]
+   }
+   ```
+5. Repeat this process for any managed accounts. This example requires the both **develop** and **staging** to have a trust relationship with the IAM user **spinnakerManaging**.
+
+After you set up the AWS IAM user, roles, policies and trust relationship, enable the AWS Provider in the Spinnaker. You can use the CLI tool *Halyard* to configure and enable the AWS Provider.
 
 ## Halyard Configurations
+
 After the AWS IAM structure (user, roles, policies, and trust relationship) has been set up, the next step is to add the AWS configurations to Spinnaker via Halyard CLI:
 
-### Enable AWS Provider
-1. Access Halyard (Compute Instance, Pod, container locally, etc)
-2. Add the configurations for AWS provider with `hal` command. Please check [hal config provider AWS](https://www.spinnaker.io/reference/halyard/commands/#hal-config-provider-aws).
-3. Enable the AWS provider `hal config provider aws enable`. More details with the example to deploy to **develop** and **staging** AWS accounts below.
+### Enable the AWS provider
 
-### Map AWS Accounts in Spinnaker Configuration
+Before you start, you must have Halyard installed. Additionally, you should understand how to run Halyard commands. Specifically, how you access Halyard depends on how and where you installed Halyard. For example, if you installed Halyard in a Docker container, you need to use the `docker exec` command.
 
-#### Add **spinnakerManaging** Account to Spinnaker
-Add the managing account and specify an AWS region.
-```bash
-$AWS_ACCOUNT_NAME=""
-ACCOUNT_ID="100000000001"
+1. Add the AWS accounts to Spinnaker:
 
-hal config provider aws account add $AWS_ACCOUNT_NAME \
-    --account-id ${ACCOUNT_ID} \
-    --assume-role role/spinnakerManaged \
-    --regions us-east-1, us-west-2
-```
+   ```bash
+   hal config provider aws [parameters] [subcommands]
+   ```
 
-#### Add **spinnakerManaged** Accounts to Spinnaker
-```bash
-$AWS_ACCOUNT_NAME={name for AWS account in Spinnaker, e.g. my-aws-account or develop as in the example presented in this document}
-ACCOUNT_ID="200000000002"
+   For information about the available parameters, see [hal config provider AWS](https://www.spinnaker.io/reference/halyard/commands/#hal-config-provider-aws).
 
-hal config provider aws account add $AWS_ACCOUNT_NAME \
-    --account-id ${ACCOUNT_ID} \
-    --assume-role role/spinnakerManaged \
-    --regions us-east-1, us-west-2
-```
+   The following examples add the ****spinnakerManaged** and **develop** accounts from the previous examples. Repeat the command for every account you want to add.
+
+   ```bash
+   # Adds spinnakerManaged for the regions us-east-1 and us-west-2
+   export AWS_ACCOUNT_NAME=""
+   export ACCOUNT_ID="100000000001"
+   
+   hal config provider aws account add $AWS_ACCOUNT_NAME \
+       --account-id ${ACCOUNT_ID} \
+       --assume-role role/spinnakerManaged \
+       --regions us-east-1, us-west-2
+   ```
+
+   ```bash
+   # Adds the develop account for the regions us-east-1 and us-west-2.
+   export AWS_ACCOUNT_NAME=develop
+   export ACCOUNT_ID="200000000002"
+   
+   hal config provider aws account add $AWS_ACCOUNT_NAME \
+       --account-id ${ACCOUNT_ID} \
+       --assume-role role/spinnakerManaged \
+       --regions us-east-1, us-west-2
+   ```
+
+2. Enable the AWS provider:
+
+   ```bash
+   hal config provider aws enable
+   ```
+
+After you configure the Spinnaker AWS provider you can manage AWS resources depending on what you included in the [AWS policy](#create-aws-policy). You would be able to deploy EC2 resources with Spinnaker.
 
 #### Configure Spinnaker AWS provider to use AccessKeys (if using AWS IAM user)
 
@@ -330,14 +347,6 @@ hal config provider aws account add $AWS_ACCOUNT_NAME \
 hal config provider aws edit --access-key-id ${ACCESS_KEY_ID} \
     --secret-access-key # do not supply the key here, you will be prompted
 ```
-
-### Enable the Spinnaker AWS provider
-After having added the desired accounts you can enable the AWS provider
-```bash
-hal config provider aws enable
-```
-
-After you configure the Spinnaker AWS provider you can manage AWS resources depending on what you included in the [AWS policy](#create-aws-policy). You would be able to deploy EC2 resources with Spinnaker.
 
 ### Advanced config for AWS provider
 You can view the available configuration flags for the Spinnaker AWS provider within the
