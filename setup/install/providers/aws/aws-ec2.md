@@ -7,7 +7,7 @@ sidebar:
 
 {% include toc %}
 
-> :warning: These instructions were updated, on **2020-08-22**, to manually set up the AWS provider with [Option-3](#option-3--configure-with-aws-iam-console). <br>
+> :warning: These instructions were updated, on **2020-08-22**, to manually set up the AWS provider with [Option-3](#option-3-configure-with-aws-iam-console). <br>
 
 > The other options [Option-1](#option-1-configure-with-aws-cloudformation-console) and [Option-2](http://0.0.0.0:4000/setup/install/providers/aws/aws-ec2/#option-2-configure-with-aws-cli) are out-of-date and a new version has been worked on [PR2020](https://github.com/spinnaker/spinnaker.github.io/pull/2020). In the meantime, please use the following
 > [AWS tutorial: Continuous Delivery using Spinnaker on Amazon EKS](https://aws.amazon.com/blogs/opensource/continuous-delivery-spinnaker-amazon-eks/).
