@@ -9,27 +9,27 @@ use with your AWS Cognito User Pools.
 
 ## Setting up an AWS Cognito App Client
 
-1. Navigate to [https://aws.amazon.com/](https://aws.amazon.com/) and log in with your AWS credentials.
+1. Navigate to [https://aws.amazon.com/cognito/](https://aws.amazon.com/cognito/) and log in with your AWS credentials.
 2. Search for Cognito in the search bar.
 3. Select the user pools you want Spinnaker to use.
-4. At the side bar under "General settings", select "App clients", add a client
-  - Make sure you select "Generate client secret"
-5. After that go to "App integration", then to "App client settings"
-  - Select "Cognito User Pool" as one of the "Enabled Identity Providers"
-  - Input your callback url
-  - Check the following
+4. At the side bar under "General settings", select "App clients", add a client.
+  - Make sure you select "Generate client secret."
+5. After that go to "App integration", then to "App client settings."
+  a) Select "Cognito User Pool" as one of the "Enabled Identity Providers."
+  b) Input your callback URL.
+  c) Check the following
     - Authorization code grant, Implicit grant
     - email, openid
-  - Also make sure you already have a domain name for your hosted UI
+  d) Also make sure you already have a domain name for your hosted UI
   
-You should have these credentials ready before moving on to the next step
+Have these credentials ready before moving on to the next step
 - App client id
 - App client secret
 - Hosted UI domain name
 
 ## Configure Halyard
 
-You may configure Halyard either with the CLI or by manually editing the hal config.
+You can configure Halyard either with the [CLI](/reference/halyard/commands/) or by manually editing the hal config.
 
 ### Hal config
 
@@ -53,10 +53,10 @@ security:
 
 ### CLI
 
-Set up OAuth 2.0 with AWS Cognito:
+1. Set up OAuth 2.0 with AWS Cognito:
 
 `hal config security authn oauth2 edit --provider OTHER --client-id (client ID from above)  --client-secret (client secret from above) --access-token-uri (your domain name)/oauth2/token --user-authorization-uri (your domain name)/oauth2/authorize --user-info-uri (your domain name)/oauth2/userInfo`
 
-Now enable OAuth 2.0 using hal:
+2. Enable OAuth 2.0 using:
 
 `hal config security authn oauth2 enable`
