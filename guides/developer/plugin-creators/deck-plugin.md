@@ -393,7 +393,7 @@ The Deck project [README](https://github.com/spinnaker/deck) has instructions fo
    ```bash
    cd deck
    yarn
-   API_HOST={my-workstation-ip}:8084 yarn start
+   API_HOST={my-workstation-ip}:8084 AUTH_ENABLED=false yarn start
 	```
 
 ## Verify the plugin loads in Deck
