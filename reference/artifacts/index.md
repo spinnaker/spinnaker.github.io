@@ -5,7 +5,7 @@ sidebar:
   nav: reference
 ---
 
-> This section refers to the legacy artifacts UI, which is scheduled for removal
+> This section refers to the legacy artifacts UI, which was removed
 > in release 1.21. Please refer to the [standard artifacts guide](/reference/artifacts-with-artifactsrewrite)
 > instead.
 
