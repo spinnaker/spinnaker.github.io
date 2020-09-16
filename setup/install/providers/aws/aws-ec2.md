@@ -101,7 +101,7 @@ If you chose to use AccessKeys and Secrets to run Spinnaker, retrieve the values
 aws secretsmanager get-secret-value --secret-id FROM_ABOVE --region us-west-2
 ```
 
-### In each of the Managed Account
+### In each of the Managed Accounts
 
 > These steps need to be carried out for the managing account as well.
 
@@ -209,9 +209,14 @@ The AWS IAM policy gives permissions to the **spinnakerManaging** user to assume
 
 1. Select the AWS account where Spinnaker lives **spinnakerManaging**.
 2. Access AWS IAM console.
-3. List the AWS ARN of the **spinnakerManaged** accounts **develop** and **staging**. For example, the list below shows 3 AWS ARNs for different AWS accounts, each corresponding to an environment:
+3. List the AWS ARN of the **spinnakerManaged** accounts:
+
+- **spinnakerManaging** (Identified with ID 100000000001) the AWS account where Spinnaker is installed
+- **develop** (Identified with ID 200000000002) represents the AWS Account to be used for dev purposes
+- **staging** (300000000003) represents the AWS account used . For example, the list below shows 3 AWS ARNs for different AWS accounts, each corresponding to an environment:
 
    ```bash
+   "arn:aws:iam::100000000001:role/spinnakerManaged",
    "arn:aws:iam::200000000002:role/spinnakerManaged",
    "arn:aws:iam::300000000003:role/spinnakerManaged"
    ```
@@ -307,11 +312,11 @@ Before you start, you must have Halyard installed. Additionally, you should unde
 
    For information about the available parameters, see [hal config provider AWS](https://www.spinnaker.io/reference/halyard/commands/#hal-config-provider-aws).
 
-   The following examples add the ****spinnakerManaging** and **develop** accounts from the previous examples. Repeat the command for every account you want to add.
+   The following examples add the **spinnakerManaging** and **develop** accounts from the previous examples. Repeat the command for every account you want to add.
 
    ```bash
-# Adds spinnakerManaging for the regions us-east-1 and us-west-2
-   export AWS_ACCOUNT_NAME=""
+# Adds AWS_ACCOUNT_NAME="spinnakerManaging" for the AWS regions us-east-1 and us-west-2
+   export AWS_ACCOUNT_NAME="<Name of the managing account. The example uses spinnakerManaging>"
    export ACCOUNT_ID="100000000001"
    
    hal config provider aws account add $AWS_ACCOUNT_NAME \
