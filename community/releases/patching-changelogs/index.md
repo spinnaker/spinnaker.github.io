@@ -1,0 +1,15 @@
+---
+title:  "Patching Changelogs"
+sidebar:
+  nav: community
+---
+
+{% include toc %}
+
+It's not currently possible to submit a PR to adjust a changelog for a version
+of spinnaker that's already been released, as they're stored in gists.
+
+To change a [changelog](https://github.com/spinnaker/spinnaker.github.io/blob/master/_changelogs),
+please contact the Release Manager via [slack](http://join.spinnaker.io), on
+[#spinnaker-releases](https://spinnakerteam.slack.com/messages/spinnaker-releases/)
+to handle edits to existing changelogs.
