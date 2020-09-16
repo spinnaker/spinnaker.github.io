@@ -13,14 +13,14 @@ use with your AWS Cognito User Pools.
 2. Search for Cognito in the search bar.
 3. Select the user pools you want Spinnaker to use.
 4. At the side bar under "General settings", select "App clients", add a client.
-  - Make sure you select "Generate client secret."
+    - Make sure you select "Generate client secret."
 5. After that go to "App integration", then to "App client settings."
-  a) Select "Cognito User Pool" as one of the "Enabled Identity Providers."
-  b) Input your callback URL.
-  c) Check the following
-    - Authorization code grant, Implicit grant
-    - email, openid
-  d) Also make sure you already have a domain name for your hosted UI
+    - Select "Cognito User Pool" as one of the "Enabled Identity Providers."
+    - Input your callback URL.
+    - Check the following
+       - Authorization code grant, Implicit grant
+       - email, openid
+    - Also make sure you already have a domain name for your hosted UI
   
 Have these credentials ready before moving on to the next step
 - App client id
