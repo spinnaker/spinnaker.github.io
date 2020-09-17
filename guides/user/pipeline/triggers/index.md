@@ -7,6 +7,11 @@ sidebar:
 
 {% include toc %}
 
+> This section describes configuring pipeline triggers with the legacy artifacts
+> UI, which was removed in release 1.21. Please refer to the
+> [guide](/guides/user/pipeline/triggers-with-artifactsrewrite/) for configuring
+> pipeline triggers with the standard artifacts UI instead.
+
 A pipeline trigger defines when to automatically run a pipeline. There are many
 types of triggers available: Jenkins jobs, webhooks, CRON jobs, even other
 pipelines. Adding a trigger to your pipeline means that the pipeline runs each
