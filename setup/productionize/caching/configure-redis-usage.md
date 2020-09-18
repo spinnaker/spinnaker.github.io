@@ -29,7 +29,7 @@ can be set in `~/.hal/$DEPLOYMENT/profiles/clouddriver-local.yml`:
 redis.poll.intervalSeconds:
 
 
-# How many seconds (default 600, 5 minutes) Clouddriver will wait to reschedule
+# How many seconds (default 300, 5 minutes) Clouddriver will wait to reschedule
 # an agent that never completes (never throws an error or returns cache data).
 # If your agents are taking a long time to complete their cache cycles
 # successfully and Clouddriver is prematurely rescheduling them, you can try to
