@@ -211,9 +211,9 @@ The AWS IAM policy gives permissions to the **spinnakerManaging** user to assume
 2. Access AWS IAM console.
 3. List the AWS ARN of the **spinnakerManaged** accounts:
 
-- **spinnakerManaging** (Identified with ID 100000000001) the AWS account where Spinnaker is installed
-- **develop** (Identified with ID 200000000002) represents the AWS Account to be used for dev purposes
-- **staging** (300000000003) represents the AWS account used . For example, the list below shows 3 AWS ARNs for different AWS accounts, each corresponding to an environment:
+   - **spinnakerManaging** (Identified with ID 100000000001) the AWS account where Spinnaker is installed
+   - **develop** (Identified with ID 200000000002) represents the AWS Account to be used for dev purposes
+   - **staging** (300000000003) represents the AWS account used . For example, the list below shows 3 AWS ARNs for different AWS accounts, each corresponding to an environment:
 
    ```bash
    "arn:aws:iam::100000000001:role/spinnakerManaged",
