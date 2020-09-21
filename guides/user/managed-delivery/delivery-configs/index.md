@@ -158,6 +158,25 @@ This shortened delivery config shows how to promote a debian artifact through tw
 
   > __Note__: The first environment has no constraints.
 
+## Using JSON Schema with Delivery Configs
+
+You can use the Delivery Config JSON schema to compose and validate your delivery config files.
+
+Instructions for how to set this up depend on your IDE. 
+
+### Visual Studio Code
+
+1. Install the [_YAML Language Support by Red Hat_ plugin](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
+2. Go to _Settings > Extensions > YAML_
+3. Under the _Yaml: Schemas_ heading click _Edit in settings.json_
+4. Add the following entry to the `yaml.schemas` block:
+
+```
+"yaml.schemas": {
+  "https://api.spinnaker.mgmt.netflix.net/managed/delivery-configs/schema": ["spinnaker.yml"]
+}
+```
+
 ## Example 
 
 TODO eb: add an example 
