@@ -23,7 +23,7 @@ To adjust how this caching happens, Clouddriver exposes a few properties that
 can be set in `~/.hal/$DEPLOYMENT/profiles/clouddriver-local.yml`:
 
 ```yaml
-# How many seconds (default 30) between runs of agent. Lowering this number
+# How many seconds (default 30s) between runs of agent. Lowering this number
 # means the resources in the Spinnaker UI will be updated more frequently,
 # at the cost higher API/quota usage of your cloud provider.
 redis.poll.intervalSeconds:
