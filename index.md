@@ -1,10 +1,10 @@
 ---
 layout: home
 conference_ad_row:
-  title: Automate your SDLC at Gardening Days, our open source hackathon
-  excerpt: "[Register now](https://go.armory.io/gardening) to join Spinnaker contributors on July 16-23 to learn and build. Contribute when you can all week long and earn prizes. Sign up, and you'll be matched with a team based on skill and interest. Along with [individual rewards](/community/gardening/what-to-hack/), teams will demo projects to compete for prize packages awarded to [challenge-winning](/community/gardening/hack-logistics/#hackathon-challenges) teams and runners-up. Enjoy free compute from AWS, SIG projects in Security, Ops, and more, and a global-friendly schedule. Everyone's welcome to extend the ecosystem with us. [Learn more](/community/gardening/)."
-  image_path: assets/images/Gardening2.png
-  alt: "Spinnaker Gardening Days Logo"
+  title: Submit Your Talk for Spinnaker Summit 2020
+  excerpt: "[Submit your proposal now](https://linuxfoundation.smapply.io/prog/spinnaker_summit_2020/) to lead a session at Spinnaker Summit October 19-November 12. We're seeking content on technology topics from across the SDLC, including talks, discussions, workshops, informal fireside interviews, product demos, and more. Be creative! Bonus: a Summit Gardening Days hackathon with free compute will be running all month long! [Learn more](https://www.spinnakersummit.com)."
+  image_path: assets/images/summit-socialmedia-transparent.png
+  alt: "Spinnaker Summit Logo"
 slack_row:
   title: Join Spinnaker Slack
   excerpt: "Visit [join.spinnaker.io](https://join.spinnaker.io) to get help on Spinnaker Slack, a place for the community to come together. Use this vibrant workspace to ask and answer questions, connect with other operators and users, discuss issues with SIGs, and learn about Spinnaker!"
@@ -83,7 +83,7 @@ notifications_feature:
   content: "Set up event notifications for email, Slack, HipChat, or SMS (via Twilio)."
 access_control_feature:
   title: Role-based Access Control
-  content: "Restrict access to projects or accounts by hooking into your internal authentication system using OAuth, SAML, LDAP, X.509 certs, Google groups, Azure groups, or GitHub teams."
+  content: "Restrict access to projects or accounts by hooking into your internal authentication system using OAuth, SAML, LDAP, X.509 certs, Google groups, Azure groups, or GitHub Organizations."
 manual_judgments_feature:
   title: Manual Judgments
   content: "Require a manual approval prior to releasing an update with a manual judgement stage."

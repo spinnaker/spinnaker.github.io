@@ -16,18 +16,18 @@ files as [artifacts](/reference/artifacts) into a pipeline.
 
 This functionality uses GitHub
 [Webhooks](https://developer.github.com/webhooks/) for delivering messages to
-Spinnaker, and must be configured to send messages to Spinnaker's event bus as
+Spinnaker and must be configured to send messages to Spinnaker's event bus as
 shown below.
 
 # Prerequisite configuration/setup
 
-If you (or your Spinnaker admin) have already configured Spinnaker to listen to
+If you (or your Spinnaker admin) already configured Spinnaker to listen to
 a GitHub webhooks from the repository you plan to publish commits to, you can
 skip this section.
 
 You need the following:
 
-* A GitHub repository either under your user, or in an organization or user's
+* A GitHub repository, either under your user account or in an organization or user's
   account that you have permission to publish commits to.
 
   This will be referred to as `$ORGANIZATION/$REPOSITORY` from now on (e.g.
@@ -36,9 +36,9 @@ You need the following:
 * [A running Spinnaker instance](/setup/install). This guide shows you how to
   update it to accept messages from GitHub.
 
-At this point, we will configure GitHub webhooks, and a GitHub artifact
+At this point, we will configure GitHub webhooks and a GitHub artifact
 account. The intent is that the webhook will be received by Spinnaker whenever
-a commit is made, and the artifact account will allow you to download any
+a commit is made and the artifact account will allow you to download any
 pertinent files.
 
 ## 1. Configure GitHub webhooks
@@ -88,9 +88,10 @@ artifact for this description is present, the pipeline won't start.
 %}
 
 Now to configure the artifact, change the "Custom" dropdown to "GitHub", and
-enter the __File path__ field. Note: this path can be a regex. You can, for
-example, set the object path to be `folder/.*\.yml` to trigger on any change to
-a YAML file inside `folder` in your repository.
+enter the __File path__ field. 
+  > **Note:** This path can be a regex. You can, for
+  > example, set the object path to be `folder/.*\.yml` to trigger on any change to
+  > a YAML file inside `folder` in your repository.
 
 {%
   include
@@ -127,5 +128,4 @@ run our pipeline. To configure the trigger:
 If you add or modify a file matching your expected artifact to the configured
 repository, it should execute. If it doesn't, you can start by checking the
 logs of the __Echo__ service.
-
 

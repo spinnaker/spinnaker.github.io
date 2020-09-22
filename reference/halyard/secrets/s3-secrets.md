@@ -39,10 +39,17 @@ aws s3 cp /path/to/mykubeconfig s3://mybucket/mykubeconfig
 
 
 ## Referencing secrets
-Now that secrets are safely stored in the bucket, you reference them from your config files using the following format. The S3 specific parameters (`r:<region>`, `b:<bucket>`, etc) can be in any order:
+Now that secrets are safely stored in the bucket, you reference them from your config files using the following format. The S3 specific parameters (`r:<region>`, `b:<bucket>`, `k:<optional yaml key>`) can be in any order:
+To reference secret literal values:
 
 ```
 encrypted:s3!r:<region>!b:<bucket>!f:<path to file>!k:<optional yaml key>
+```
+
+To reference secret files:
+
+```
+encryptedFile:s3!b:<bucket>!f:<path to file>
 ```
 
 The `k:<key>` parameter is only necessary when storing secret values in a yaml file, like in our example. To reference `github.password` from the file above, use:
@@ -50,7 +57,7 @@ The `k:<key>` parameter is only necessary when storing secret values in a yaml f
 encrypted:s3!b:mybucket!f:spinnaker-secrets.yml!r:us-west-2!k:github.password
 ```
 
-But to reference your kubeconfig file, you can leave off the `k` parameter:
+But to reference your kubeconfig file, you can leave off the `k` parameter and use `encryptedFile` prefix:
 ```
-encrypted:s3!r:us-west-2!b:mybucket!f:mykubeconfig
+encryptedFile:s3!r:us-west-2!b:mybucket!f:mykubeconfig
 ```

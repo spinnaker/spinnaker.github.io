@@ -11,47 +11,31 @@ Please make a pull request to describe any changes you wish to highlight
 in the next release of Spinnaker. These notes will be prepended to the release
 changelog.
 
-## Coming Soon in Release 1.22
+## Coming Soon in Release 1.23
 
-### (Breaking Change) Suffix no longer added to jobs created by Kubernetes _Run Job_ stage
+### (Breaking Change) Spinnaker Kubernetes manifest image overwriting with a bound artifact
 
-Spinnaker no longer automatically appends a unique suffix to the name of jobs
-created by the Kubernetes _Run Job_ stage. Prior to this release, if you
-specified `metadata.name: my-job`, Spinnaker would update the name to
-`my-job-[random-string]` before deploying the job to Kubernetes. As of this
-release, the job's name will be passed through to Kubernetes exactly as
-supplied.
+Spinnaker will now overwrite images in a manifest with a bound artifact if the
+input manifest's image has a tag on it. The previous behavior was that Spinnaker
+would only overwrite images in a manifest if the image did not have a tag.
 
-To continue having a random suffix added to the job name, set the
-`metadata.generateName` field instead of `metadata.name`, which causes the
-[Kubernetes API](https://kubernetes.io/docs/reference/using-api/api-concepts/#generated-values)
-to append a random suffix to the name.
+https://github.com/spinnaker/spinnaker/issues/5948
 
-This change is particularly important for users who are using the preconfigured
-job stage for Kubernetes, or who are otherwise sharing job stages among
-different pipelines. In these cases, jobs are often running concurrently, and it
-is important that each job have a unique name. In order to retain the previous
-behavior, these users will need to manually update their Kubernetes job
-manifests to use the `generateName` field.
+### Kubernetes accounts no longer use the liveManifestCalls flag
 
-Users of Spinnaker >= 1.20.3 can opt in to this new behavior by setting
-`kubernetes.jobs.append-suffix: false` in their `clouddriver-local.yml`.
+As of this release, Kubernetes accounts no longer read the value of the
+`liveManifestCalls` flag. Instead of using this flag, Spinnaker now decides
+whether to read from the cache or directly from the Kubernetes cluster based on
+the context of the request.
 
-As of Spinnaker 1.22, this new behavior is the default. Users can still opt out
-of the new behavior by setting `kubernetes.jobs.append-suffix: true` in their
-`clouddriver-local.yml`. This will cause Spinnaker to continue to append a
-suffix to the name of jobs as in prior releases.
+From a practical perspective this means that:
 
-The ability to opt out of the new behavior will be removed in Spinnaker 1.23.
-The above setting will have no effect, and Spinnaker will no longer append a
-suffix to job names. It is thus strongly recommended that 1.22 users who opt out
-update any necessary jobs and remove the setting before upgrading to Spinnaker
-1.23.
+- Users who had `liveManifestCalls` enabled will see the same fast deploys as
+  always but will no longer experience
+  [bugs with dynamic target selection](https://github.com/spinnaker/spinnaker/issues/5607).
+- Users who had `liveManifestCalls` disabled will notice significantly faster
+  deployments.
 
-### Navigation and Layout UI Update
-
-Spinnaker's UI has changed! An application's nested menus are now represented as a flat list on the left side of the browser window. The menu can also be collapsed into a condensed view. This allows for better utilization of screen real-estate, and support for any number of additional application pages. As plugin support continues to improve, we hope this refresh to the navigation will give you more flexibility within the UI to make Spinnaker your own. This update also includes changes to the overall layout and design of some application pages to take better advantage of larger screen sizes.
-
-This change should not introduce any interruptions to a vanilla install of `deck`. However, if you've already made navigational changes to your group's instance of `deck` or created custom banners/headers for your app, you may need to make updates. The pattern for creating new routes in the side nav can be observed in the feature's PR:
-
-https://github.com/spinnaker/deck/pull/8239
+Users may wish to remove the `liveManifestCalls` flag from their account
+configuration, though this is not required and any configured value for this
+setting will be ignored by Spinnaker.

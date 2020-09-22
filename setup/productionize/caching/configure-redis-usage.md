@@ -23,13 +23,13 @@ To adjust how this caching happens, Clouddriver exposes a few properties that
 can be set in `~/.hal/$DEPLOYMENT/profiles/clouddriver-local.yml`:
 
 ```yaml
-# How many seconds (default 30) between runs of agent. Lowering this number
+# How many seconds (default 30s) between runs of agent. Lowering this number
 # means the resources in the Spinnaker UI will be updated more frequently,
 # at the cost higher API/quota usage of your cloud provider.
 redis.poll.intervalSeconds:
 
 
-# How many seconds (default 600, 5 minutes) Clouddriver will wait to reschedule
+# How many seconds (default 300s, 5 minutes) Clouddriver will wait to reschedule
 # an agent that never completes (never throws an error or returns cache data).
 # If your agents are taking a long time to complete their cache cycles
 # successfully and Clouddriver is prematurely rescheduling them, you can try to
