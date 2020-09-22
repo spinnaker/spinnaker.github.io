@@ -40,7 +40,7 @@ Annotations](#reserved-annotations) for more details.
 ## Accommodating level-based deployments
 
 See the [Kubernetes API
-conventions](https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md#spec-and-status)
+conventions](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status)
 for a description of edge-based vs. level-based APIs.
 
 Other providers in Spinnaker track operations that modify cloud resources. For
