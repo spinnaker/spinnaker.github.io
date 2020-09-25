@@ -509,6 +509,8 @@ guides:
             url: /guides/developer/plugin-creators/overview/
           - title: Test a Pipeline Stage Plugin
             url: /guides/developer/plugin-creators/deck-plugin/
+          - title: Plugin Compatibility Testing
+            url: /guides/developer/plugin-creators/compatibility-testing/
           - title: Plugin Project Configuration
             url: /guides/developer/plugin-creators/project-config/
   - title: Operator How-Tos
