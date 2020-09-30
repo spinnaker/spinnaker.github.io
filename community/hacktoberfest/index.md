@@ -7,11 +7,16 @@ sidebar:
 
 [Hacktoberfest](https://hacktoberfest.digitalocean.com/) is a month-long global celebration of open source software that happens every year in October. During the month of October, you can contribute to Spinnaker and earn swag and recognition from the [Continuous Delivery Foundation](https://cd.foundation), our parent organization.
 
-We invite everyone to participate and to contribute to the Spinnaker project, regardless of their background and Spinnaker experience. There are many ways to contribute to Spinnaker during Hacktoberfest and other contributor events. You can work on code or documentation, assist community members in [Spinnaker Slack](http://join.spinnaker.io), or answer [StackOverflow questions](https://stackoverflow.com/questions/tagged/spinnaker). You can also share your experiences with Spinnaker by creating a new blog post, video, or social media steam. 
+We invite everyone to participate and to contribute to the Spinnaker project, regardless of their background and Spinnaker experience. There are many ways to contribute to Spinnaker during Hacktoberfest and other contributor events. You can:
+- Work on core or plugin code
+- Write and improve documentation
+- Assist community members in [Spinnaker Slack](http://join.spinnaker.io)
+- Answer [StackOverflow questions](https://stackoverflow.com/questions/tagged/spinnaker)
+- Share your experiences with Spinnaker by creating a new blog post, video, or social media steam 
 
 For more information on eligible contributions, see the [What to Hack](/community/gardening/what-to-hack/) page. For help getting started as a Spinnaker contributor, visit the [Contributing](/community/contributing/) page.
 
-All of the following count as contributions, as long as they're made to the `spinnaker` and `spinnaker-hackathon` organizations :
+All of the following GitHub events count as contributions, as long as they're made to the `spinnaker` and `spinnaker-hackathon` organizations:
 * pull requests
 * issues
 * comments on PRs and issues
