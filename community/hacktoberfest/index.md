@@ -11,7 +11,12 @@ We invite everyone to participate and to contribute to the Spinnaker project, re
 
 For more information on eligible contributions, see the [What to Hack](/community/gardening/what-to-hack/) page. For help getting started as a Spinnaker contributor, visit the [Contributing](/community/contributing/) page.
 
-All pull requests, issues, and PR or issue comments made to the `spinnaker` and `spinnaker-hackathon` organizations on GitHub count as contributions. Here are some ideas to get you started:
+All of the following count as contributions, as long as they're made to the `spinnaker` and `spinnaker-hackathon` organizations :
+* pull requests
+* issues
+* comments on PRs and issues
+
+Here are some ideas to get you started:
 - [Beginner-friendly issues on GitHub](https://github.com/spinnaker/spinnaker/issues?q=is%3Aopen+is%3Aissue+label%3A%22beginner+friendly%22)
 - [Project ideas](https://github.com/spinnaker-hackathon/gardening/blob/master/project-ideas.md) from Gardening Days, the Spinnaker hackathon program
 
