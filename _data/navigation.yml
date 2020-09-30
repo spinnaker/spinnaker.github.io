@@ -802,6 +802,8 @@ community:
         url: /community/gardening/developing-plugins/
       - title: Prizes
         url: /community/gardening/prizes/
+  - title: Hacktoberfest
+    url: /community/hacktoberfest/
 news:
   - title: Sign Up
     url: /news/signup
