@@ -16,7 +16,7 @@ Welcome to the Spinnaker community! Please join us as a contributor.
 - Set up a local development environment to test pull requests: [Development environments](/community/gardening/dev-environment/).
 - Read guidelines on submitting patches, proposing new features, and using commit and PR naming conventions: [How to submit a patch](/community/contributing/submitting/).
 - Read code conventions for pull requests to core services: [Code conventions for server-side components](/community/contributing/back-end-code/).
-- Get started contributing by reviewing documentation pull requests: [Reviewing Pull Requests](/community/contributing/docs/reviewing-prs).
+- Get started contributing by reviewing documentation pull requests: [Reviewing pull requests](/community/contributing/docs/reviewing-prs).
 
 ## Connecting with the community
 
