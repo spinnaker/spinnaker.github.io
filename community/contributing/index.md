@@ -33,9 +33,3 @@ You can connect with contributors and discuss opportunities to contribute in a f
 The Spinnaker community is currently working to develop and document a standard environment and toolkit for Spinnaker development. While we get organized, the [Development Environments](/community/gardening/dev-environment/) guide is the most current resource and focuses on development instances of Spinnaker that leverage Kubernetes. If you prefer to set up [Spinnaker services](https://spinnaker.io/reference/architecture/) locally without using Kubernetes, follow this [guide to setting up a dev environment](/guides/developer/getting-set-up/) to get up and running.
 
 Please join the [#dev-toolkit](https://spinnakerteam.slack.com/archives/C011LUJ0UQJ) channel in [Slack](http://join.spinnaker.io) to share your feedback or help develop the toolkit.
-
-## License agreements
-
-We should certainly have a place where we tell you about Contributor License Agreements and how you need to identify the right one and sign it before you are able to contribute code to Spinnaker. We'll probably end up doing something like this, but at the moment we're exploring options that might make it easier for most of you to contribute. Please stay tuned...
-
-In the meantime, you can currently contribute according to the Apache license at your own risk.
