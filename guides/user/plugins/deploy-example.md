@@ -86,9 +86,9 @@ spinnaker:
          Armory.RandomWaitPlugin:
            enabled: true
            version: 1.1.14
-       repositories:
-         examplePluginsRepo:
-           url: https://raw.githubusercontent.com/spinnaker-plugin-examples/examplePluginRepository/master/plugins.json
+     repositories:
+       examplePluginsRepo:
+         url: https://raw.githubusercontent.com/spinnaker-plugin-examples/examplePluginRepository/master/plugins.json
 ```
 
 The plugin and repository information is a subset of the entries in your Halconfig.

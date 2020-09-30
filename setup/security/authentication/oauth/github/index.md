@@ -1,5 +1,5 @@
 ---
-title:  "GitHub Teams"
+title:  "GitHub Organization"
 sidebar:
   nav: setup
 ---
