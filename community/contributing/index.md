@@ -12,11 +12,11 @@ Welcome to the Spinnaker community! Please join us as a contributor.
 
 ## Quick Links
 
-- [Spinnaker GitHub issue tracker](https://github.com/spinnaker/spinnaker/issues): file Spinnaker issues.
-- [Development environments](/community/gardening/dev-environment/): set up a local development environment to test your pull requests.
-- [How to submit a patch](/community/contributing/submitting/): read guidelines on submitting patches, proposing new features, and using commit and PR naming conventions.
-- [Code conventions for server-side components](/community/contributing/back-end-code/): read code conventions for pull requests to core services.
-- [Reviewing Pull Requests](/community/contributing/docs/reviewing-prs): get started contributing by reviewing documentation pull requests.
+- File an issue: [Spinnaker issue tracker](https://github.com/spinnaker/spinnaker/issues).
+- Set up a local development environment to test pull requests: [Development environments](/community/gardening/dev-environment/).
+- Read guidelines on submitting patches, proposing new features, and using commit and PR naming conventions: [How to submit a patch](/community/contributing/submitting/).
+- Read code conventions for pull requests to core services: [Code conventions for server-side components](/community/contributing/back-end-code/).
+- Get started contributing by reviewing documentation pull requests: [Reviewing Pull Requests](/community/contributing/docs/reviewing-prs).
 
 ## Connecting with the community
 
