@@ -5,7 +5,7 @@ sidebar:
   nav: community
 ---
 
-[Hacktoberfest](https://hacktoberfest.digitalocean.com/) is a month-long global celebration of open source software that happens every year in October. During this event, anyone can support open source by contributing changes, which earn swag and recognition from the [Continuous Delivery Foundation](https://cd.foundation), our parent organization.
+[Hacktoberfest](https://hacktoberfest.digitalocean.com/) is a month-long global celebration of open source software that happens every year in October. During the month of October, you can contribute to Spinnaker and earn swag and recognition from the [Continuous Delivery Foundation](https://cd.foundation), our parent organization.
 
 We invite everyone to participate and to contribute to the Spinnaker project, regardless of their background and Spinnaker experience. There are many ways to contribute to Spinnaker during Hacktoberfest and other contributor events. You can work on code or documentation, assist community members in [Spinnaker Slack](http://join.spinnaker.io), or answer [StackOverflow questions](https://stackoverflow.com/questions/tagged/spinnaker). You can also share your experiences with Spinnaker by creating a new blog post, video, or social media steam. 
 
