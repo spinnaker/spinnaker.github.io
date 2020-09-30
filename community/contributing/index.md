@@ -8,6 +8,8 @@ redirect_from: /docs/contributing-to-spinnaker
 
 {% include toc %}
 
+Welcome to the Spinnaker community! Please join us as a contributor.
+
 ## Quick Links
 
 - [Spinnaker GitHub issue tracker](https://github.com/spinnaker/spinnaker/issues): file Spinnaker issues
