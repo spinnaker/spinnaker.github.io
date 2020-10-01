@@ -226,6 +226,11 @@ This is useful if you generate pipelines programmatically and don't want to modi
 when a dependent pipeline is automatically regenerated.    
 For example, `${#pipelineId("Deploy to prod")}` might return `9b2395dc-7a2b-4845-b623-838bd74d059b`.
 
+### #pipelineIdInApplication(String pipelineName, String applicationName)
+
+This function looks up the pipeline id for the given pipeline name and Spinnaker application. This is helpful to 
+retrieve the pipeline id for an existing pipeline within any application in Spinnaker.
+
 ### #toBoolean(String)
 
 Converts the input string to a boolean.
