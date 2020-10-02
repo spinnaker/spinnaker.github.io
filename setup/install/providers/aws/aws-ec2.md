@@ -158,13 +158,13 @@ For IAM, you can either create IAM users or roles based on your requirements:
 First, create the **spinnakerManaged** role for the **develop ID=200000000002**. Then, repeat the same steps to create **spinnakerManaged** in **staging ID=300000000003**.
 
 1. Navigate to the AWS IAM console.
-2. Switch to the AWS Account you want to create the roll for.
+2. Switch to the AWS Account you want to create the role for.
 3. Go to **Roles > Create Role**.
 4. Select EC2. You can change this later, because we want to specify an explicit consumer of this role in a later stage.
 5. For permissions, search for "PowerUserAccess" and select this policy. This gives the role permission to access AWS services.
 6. Add tags that will help you identify this role.
 7. Enter a role name: spinnakerManaged.
-8. Create the roll.
+8. Create the role.
 9. Select the created role and add an inline policy using the following JSON snippet: 
 
    ```json
