@@ -39,10 +39,17 @@ gsutil cp /path/to/mykubeconfig gs://mybucket/mykubeconfig
 
 
 ## Referencing secrets
-Now that secrets are safely stored in the bucket, you reference them from your config files using the following format. The GCS specific parameters (`b:<bucket>`, `f:<path to file>`, etc) can be in any order:
+Now that secrets are safely stored in the bucket, you reference them from your config files using the format below. The GCS-specific parameters (`b:<bucket>`, `f:<path to file>`, `k:<optional yaml key>`) can be in any order.
+To reference secret literal values:
 
 ```
 encrypted:gcs!b:<bucket>!f:<path to file>!k:<optional yaml key>
+```
+
+To reference secret files:
+
+```
+encryptedFile:gcs!b:<bucket>!f:<path to file>
 ```
 
 The `k:<key>` parameter is only necessary when storing secret values in a yaml file, like in our example. To reference `github.password` from the file above, use:
@@ -50,7 +57,7 @@ The `k:<key>` parameter is only necessary when storing secret values in a yaml f
 encrypted:gcs!b:mybucket!f:spinnaker-secrets.yml!k:github.password
 ```
 
-But to reference your kubeconfig file, you can leave off the `k` parameter:
+But to reference your kubeconfig file, you can leave off the `k` parameter and use `encryptedFile` prefix:
 ```
-encrypted:gcs!b:mybucket!f:mykubeconfig
+encryptedFile:gcs!b:mybucket!f:mykubeconfig
 ```

@@ -3,6 +3,7 @@ layout: single
 title:  "Kubernetes CRD Extensions"
 sidebar:
   nav: guides
+redirect_from: /guides/developer/crd-extensions/
 ---
 
 # Spinnaker Extension Points for Custom Resource Definitions

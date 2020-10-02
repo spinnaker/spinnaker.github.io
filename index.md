@@ -1,10 +1,10 @@
 ---
 layout: home
 conference_ad_row:
-  title: Don't miss V2 of Spinnaker Gardening Days, your open source hackathon
-  excerpt: "[Register now](https://go.armory.io/gardening) to join Spinnaker contributors on July 16-23 to learn and build. The buzz around our inaugural hackathon brought the community together, so we're launching V2 as a weeklong event with team placement and project matching support, SIG projects, free compute from AWS, a global-friendly schedule, and much more. All are welcome! Automate your SDLC and extend the ecosystem with us."
-  image_path: assets/images/Gardening2.png
-  alt: "Spinnaker Gardening Days Logo"
+  title: Register for Spinnaker Summit 2020
+  excerpt: "[Register today](https://events.linuxfoundation.org/spinnaker-summit/register/) to join us at Spinnaker Summit October 19-November 12. Get access to a month of great talks with your free conference pass and hands on content with your premium ticket. Bonus: a [Summit Gardening Days hackathon](https://events.linuxfoundation.org/spinnaker-summit/program/summit-gardening-days/) with free AWS compute will be running all month long! [Learn more](https://www.spinnakersummit.com)."
+  image_path: assets/images/summit-socialmedia-transparent.png
+  alt: "Spinnaker Summit Logo"
 slack_row:
   title: Join Spinnaker Slack
   excerpt: "Visit [join.spinnaker.io](https://join.spinnaker.io) to get help on Spinnaker Slack, a place for the community to come together. Use this vibrant workspace to ask and answer questions, connect with other operators and users, discuss issues with SIGs, and learn about Spinnaker!"
@@ -83,12 +83,12 @@ notifications_feature:
   content: "Set up event notifications for email, Slack, HipChat, or SMS (via Twilio)."
 access_control_feature:
   title: Role-based Access Control
-  content: "Restrict access to projects or accounts by hooking into your internal authentication system using OAuth, SAML, LDAP, X.509 certs, Google groups, Azure groups, or GitHub teams."
+  content: "Restrict access to projects or accounts by hooking into your internal authentication system using OAuth, SAML, LDAP, X.509 certs, Google Groups, Azure Groups, or GitHub Teams."
 manual_judgments_feature:
   title: Manual Judgments
   content: "Require a manual approval prior to releasing an update with a manual judgement stage."
 execution_windows_feature:
-  title: White-listed Execution Windows
+  title: Restricted Execution Windows
   content: "Restrict the execution of stages to certain windows of time, making sure deployments happen during off-peak traffic or when the right people are on hand to monitor the roll-out."
 chaos_monkey_feature:
   title: Chaos Monkey Integration

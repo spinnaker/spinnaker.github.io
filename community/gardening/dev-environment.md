@@ -4,116 +4,41 @@ title:  "Development Environments for Spinnaker Gardening Days"
 sidebar:
   nav: community
 ---
-What's the best environment Spinnaker development? How can you set up your workstation to debug a Spinnaker service?  It depends! Consider these constraints when choosing your strategy:
+What's the best environment for Spinnaker development? How can you set up your workstation to debug a Spinnaker service?  It depends! Consider these constraints when choosing your strategy:
 
-* __Locally available computing resources__: hosting Spinnaker services is memory intensive.
-* __Access and cost management for public clouds__: Spinnaker can be hosted in the cloud, where you'll pay for resources.
-* __Familiarity with Kubernetes__: you may use Kubernetes tools to manage your Spinnaker environment if you prefer.
+* __Locally available computing resources__: Hosting Spinnaker services is memory intensive.
+* __Access and cost management for public clouds__: Spinnaker can be hosted in the cloud, but you'll pay for resources.
+* __Familiarity with Kubernetes__: You can use Kubernetes tools to manage your Spinnaker environment.
 
-# Install Spinnaker
-First things first, to develop Spinnaker, you'll need a Spinnaker instance. To get that, you have options:
-* Install [Minnaker](https://github.com/armory/minnaker), a POC Spinnaker instance that runs in a Linux VM on your local machine, or in the cloud.
-* [Clone and install each Spinnaker service locally.](#classic-local-installation-method)
-* [Install Spinnaker to your Kubernetes cluster](#kubernetes-installation-methods), running in your cloud provider or private cloud of choice. Read more about the [Kubernetes & Docker method](#kubernetes-and-docker-method) below.
+## Install Spinnaker
 
-## Minnaker method
-If you're not sure which method to choose, we suggest following [these instructions to install Minnaker](https://github.com/armory/minnaker) in your chosen environment. This simplifies installation steps, and uses lightweight Kubernetes [(K3S)](https://k3s.io/) under the hood. Install in a cloud VM or a local Ubuntu 18.04 VM.
+To develop Spinnaker, you'll need a Spinnaker instance. To get that, you have options:
 
-### <a href="https://youtu.be/xSZlWf9rUI4" target="_blank">Developing for Spinnaker With Minnaker (15m 26s)</a>
+* Install [Minnaker](https://github.com/armory/minnaker), a Spinnaker instance that runs in a Linux VM on your local machine.
+* [Clone and install each Spinnaker service locally](#classic-local-installation-method).
+* Install Spinnaker in your Kubernetes cluster that runs in your cloud provider or private cloud of choice. Read more about the [Kubernetes & Docker method](#kubernetes-and-docker-method).
+
+### Minnaker method
+
+If you're not sure which method to choose, we suggest using [[Minnaker](https://github.com/armory/minnaker). This simplifies installation steps and uses lightweight Kubernetes [(K3S)](https://k3s.io/) under the hood. Install in a local Ubuntu 18.04 VM.
+
+The [Test a Pipeline Stage Plugin](/guides/developer/plugin-creators/deck-plugin/) guide contains instructions for setting up a local development environment with Minnaker running in a Multipass VM. This method does not require port-forwarding or setting up remote SSH.
+
+Alternately, you can watch "Developing for Spinnaker With Minnaker (15m 26s)". Learn how to install Minnaker, set up remote SSH, and connect to the local VM instance through local Spinnaker service configuration. Use `kubectl` port forwarding to connect a local clone of Orca to Redis and Front50 in Minnaker. Test and debug Orca by setting a breakpoint in the stage task and running the stage.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/xSZlWf9rUI4" frameborder="0" allowfullscreen></iframe>
 
-_Learn how to install Minnaker, set up remote SSH, and connect to the local VM instance via local Spinnaker service configuration. Use kubectl port forwarding to connect a local clone of Orca to Redis and Front50 in Minnaker. Test and debug Orca by setting a break point in the stage task and running the stage._
 
-### Set up local development environment
-1. Install your IDE. These instructions target [IntelliJ IDEA](https://www.jetbrains.com/idea/download/#section=mac).
-2. Git clone the [Spinnaker service(s)](https://github.com/spinnaker) you will debug or extend.
-3. Open the project in your IDE: File > Open > Select project folder > Click 'OK'.
-4. Build the project:
-   - Open the 'Gradle' window and double-click the 'Build' task under Tasks > Builds. (If you don't see the 'Gradle' window, select View > Tool Windows > Gradle to open it.)
+### AWS EKS and Telepresence method
 
-#### __Next steps IF your Minnaker instance is running in the cloud__
+See the [New Spinnaker Contribution Walkthrough Session](/community/gardening/spin-contrib/) doc for how to use the Telepresence network proxy to enable services running locally to connect to services running in an AWS EKS cluster. You could adapt this method if you want to run Minnaker in a remote VM.
 
-5. [Install NGROK](https://ngrok.com/download), a tunneling service. Run it to create a tunnel from the service to the Spinnaker instance:
-   - Consult the [port mappings reference](/reference/architecture/#port-mappings) to determine which ports to forward. Create tunnels for the service(s) you're running locally.
-   - Execute `ngrok http <service port number>` e.g. `ngrok http 8089` for echo.
-   - Copy the URL in the `Forwarding` output lines.
-6. Configure your Spinnaker instance to use the forwarded NGROK address(es).
-   - Create a `.hal/default/profiles/spinnaker-local.yml` file.
-   - Add service settings, or copy settings from `.hal/default/staging/spinnaker.yml` and delete unnecessary services. Read more on [custom service settings](/reference/halyard/custom/#custom-service-settings).
-   - Change the `baseURL` for the service to the copied NGROK endpoint.
-7. Configure the local service to communicate with the Spinnaker instance.
-   - Copy the kubeconfig from Spinnaker `/etc/spinnaker/.kube/config` to your local machine (e.g. `/tmp/kubeconfig-minnaker`)
-   - Update the kubeconfig clusters.cluster.server address to point to the external endpoint URL as in this snippet:
+### Classic local installation method
 
-    ```
-    apiVersion: v1
-      clusters:
-      - cluster:
-          server: ec2-34-223-57-141.us-west-2.compute.amazonaws.com:6443
-    ...
-    ```
-   - Make sure the security group on your VM allows port 6443.
-   - Use `kubectl port-forward` to forward the services required. For example, if running echo locally, you'll need it to communicate with orca and front50:
-  ```
-  kubectl --kubeconfig config-minnaker -n spinnaker port-forward spin-orca-5f47b76f84-bvh98 8083:8083
-  kubectl --kubeconfig config-minnaker -n spinnaker port-forward spin-front50-64ddf796bf-gznqj 8080:8080
-  ```
-8. __Now you're ready to run and debug the service or services!__
+Follow the [Getting Set Up](/guides/developer/getting-set-up/) guide to install Spinnaker locally.
 
-#### __Next steps IF your Minnaker instance is running locally__
-5. [Create a kubeconfig for your machine reference](http://docs.shippable.com/deploy/tutorial/create-kubeconfig-for-self-hosted-kubernetes-cluster/).
-   - Create a skeleton kubeconfig and get the certificate for the cluster:
-   `kubectl config view --flatten --minify`
-   - Create a service account for the namespace: `serviceaccount`
-   - Copy the token for the secret associated with the serviceaccount `kubectl describe secret`
-   - Grant the service account - cluster-admin access `clusterrolebinding`
-   - Update the `users.user` section of the `kubeconfig` by replacing `users.user.password` and `users.user.username` to `users.user.token`, where the token value is the secret value associated with the ServiceAccount.
-   - Update the kubeconfig `clusters.cluster.server` address to point to the IP address of Minnaker on local machine:  e.g.  `192.168.123.128:6443`
-   - Consult this example `kubeconfig` for reference:
-    ```
+### Kubernetes and Docker method
 
-    apiVersion: v1
-    clusters:
-    - cluster:
-        certificate-authority-data: <CAString>
-        server: https://192.168.1.128:6443
-      name: plugin.example.net
-    contexts:
-    - context:
-        cluster: plugin.example.net
-        user: spinnaker-sa
-      name: plugin.example.net
-    current-context: plugin.example.net
-    kind: Config
-    preferences: {}
-    users:
-    - name: spinnaker-sa
-      user:
-        token: <tokenString>
-    ```
-6. Configure your Minnaker instance to forward ports to your local machine (gateway) via spinnaker-local.yml configuration.
-   - Create a `.hal/default/profiles/spinnaker-local.yml` file.
-   - Add service settings, or copy settings from `.hal/default/staging/spinnaker.yml` and delete unnecessary services. Read more on [custom service settings](/reference/halyard/custom/#custom-service-settings).
-   - Change the `baseURL` for the service to the default gateway IP Address including the port, e.g. `http://192.168.123.1:8083` for orca.
-   - Consult the [port mappings reference](/reference/architecture/#port-mappings) to determine which ports to forward.
-7. Configure the local service to communicate with the Spinnaker instance.
-   - The `kubeconfig` you just created does part of the configuration.
-   - Use `kubectl port-forward` to forward the services required. For example, if running Echo locally, you'll need it to communicate with Orca and Front50:
-     - Option 1: Forward via Service:
-        `kubectl` `--``kubeconfig config-minnaker -n spinnaker port-forward svc/spin-orca 8083:8083 &`
-        `kubectl --kubeconfig config-minnaker -n spinnaker port-forward svc/spin-front50 8080:8080 &`
-     - Option 2: Forward via Pod:
-        `kubectl --kubeconfig config-minnaker -n spinnaker port-forward spin-orca-5f47b76f84-bvh98 8083:8083`
-        `kubectl --kubeconfig config-minnaker -n spinnaker port-forward spin-front50-64ddf796bf-gznqj 8080:8080`
-8. __Now you're ready to run and debug the service or services!__
-
-## Classic local installation method
-Follow the [Getting Set Up](https://www.spinnaker.io/guides/developer/getting-set-up/) guide to install Spinnaker locally.
-
-## Kubernetes and Docker method:
-
-### Kubernetes installation methods
 _The instructions for this method are in beta. Pull requests welcome!_
 
 1. Install Spinnaker to a Kubernetes cluster. There are several ways to do this:
@@ -147,7 +72,7 @@ _The instructions for this method are in beta. Pull requests welcome!_
 
 2. Open a bash shell in the location where Halyard is installed.
   - If Halyard is running in Docker, run `docker exec -it halyard bash` to enter a shell.   
-3. Edit the Kubernetes block of your .hal/config with your namespace and kubeconfig file location to enable a Kubernetes install, as in this snippet:
+3. Edit the Kubernetes block of your `.hal/config` with your namespace and kubeconfig file location to enable a Kubernetes install:
   ```
   ...
   kubernetes:
@@ -172,9 +97,9 @@ _The instructions for this method are in beta. Pull requests welcome!_
     primaryAccount: kubernetes
       ...
   ```
-4. Port-forward the externally-hosted Spinnaker services to your local machine
+4. Port-forward the externally-hosted Spinnaker services to your local machine.
   - You may use [NGROK](https://ngrok.com/download)
-  - Or, try this Fish function: `pf-spinnaker` loops through all of the Spinnaker services in your Kubernetes namespaces and forwards their ports to your local machine. Try it:
+  - Or, try this Fish function: `pf-spinnaker`, which loops through all of the Spinnaker services in your Kubernetes namespaces and forwards their ports to your local machine. Try it:
   ```
   function pf-spinnaker
     set -l services (string split , -- \
@@ -216,7 +141,8 @@ _The instructions for this method are in beta. Pull requests welcome!_
 
 __Now you're ready to run and debug the service or services!__
 
-## Additional references
+### Additional references
+
 * [This repository](https://github.com/robzienert/spinnaker-oss-setup) installs all Spinnaker dependencies besides the JDK to your machine running OSX. With a few tweaks and a package manager swap, you could also use it to automate dependency setup on Linux.
 
 ## Help us improve the contributor experience

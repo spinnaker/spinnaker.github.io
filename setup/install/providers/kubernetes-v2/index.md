@@ -10,7 +10,7 @@ sidebar:
 
 Spinnaker's Kubernetes provider fully supports Kubernetes-native, manifest-based deployments and is the recommended provider for deploying to Kubernetes with Spinnaker.
 [Spinnaker's legacy Kubernetes provider](https://www.spinnaker.io/setup/install/providers/kubernetes/){:target="\_blank"}
-is [scheduled for removal](https://github.com/spinnaker/governance/blob/master/rfc/eol_kubernetes_v1.md){:target="\_blank"} in Spinnaker 1.21.
+was [removed](https://github.com/spinnaker/governance/blob/master/rfc/eol_kubernetes_v1.md){:target="\_blank"} in Spinnaker 1.21.
 
 ## Accounts
 
@@ -61,7 +61,7 @@ CONTEXT=$(kubectl config current-context)
 # This service account uses the ClusterAdmin role -- this is not necessary, 
 # more restrictive roles can by applied.
 kubectl apply --context $CONTEXT \
-    -f https://spinnaker.io/downloads/kubernetes/service-account.yml
+    -f https://www.spinnaker.io/downloads/kubernetes/service-account.yml
 
 TOKEN=$(kubectl get secret --context $CONTEXT \
    $(kubectl get serviceaccount spinnaker-service-account \

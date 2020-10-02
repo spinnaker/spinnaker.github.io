@@ -11,6 +11,7 @@ redirect_from: /docs/notifications-and-events-guide
 Out of the box, Spinnaker allows you to configure the following types of notifications:
 
 * [Email](#email)
+* [Microsoft Teams](#microsoft-teams)
 * [Slack](#slack)
 * [SMS](#twilio) via Twilio
 
@@ -44,6 +45,17 @@ You need to set the `spinnaker.baseUrl` configuration value which is used by spi
 
 Email in spinnaker is provided by [Spring Boot Mail
 starter](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-email.html){:target="\_blank"}.
+
+The settings for some popular email providers are listed below:
+
+Email Provider | SMTP username | SMTP password | SMTP server address | SMTP port (TLS) | SMTP port (SSL) | SMTP TLS/SSL required 
+------ | ------ | ------ | ------ | ------ | ------ | ------ 
+Gsuite/Gmail | Your email address | Your email password | smtp.gmail.com | 587 | 465 | yes 
+Yahoo | Your email address| Your email password | smtp.mail.yahoo.com | 587 | 465 | yes 
+Hotmail/live | Your email address| Your email password | smtp.live.com | 587 | - | yes 
+Outlook | Your email address| Your email password | smtp-mail.outlook.com | 587 | 25 | yes 
+
+
 The following is an example of using hotmail to send notifications.
 
 in echo.yml
@@ -74,6 +86,22 @@ window.spinnakerSettings.notifications = window.spinnakerSettings.notifications 
 window.spinnakerSettings.notifications.email = window.spinnakerSettings.notifications.email || {};
 window.spinnakerSettings.notifications.email.enabled = true;
 ```
+
+## Microsoft Teams
+
+To enable Microsoft Teams support, add the following statement to the `echo-local.yml` file:
+
+```yaml
+microsoftteams:
+  enabled: true
+```
+
+Spinnaker supports sending notifications to Microsoft Teams using Incoming Webhooks.
+
+To create a custom incoming webhook in Teams, follow the instructions provided here: [Add an incoming webhook to a Teams channel](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook#add-an-incoming-webhook-to-a-teams-channel)
+
+When configuring a Microsoft Teams notification, enter the full incoming webhook URL in the `Teams Webhook URL` text box.
+![](ms-teams.png)
 
 ## Slack
 
