@@ -179,6 +179,19 @@ auth:
     password: < password >
 ```
 
+### LDAP/Active Directory
+
+`spin` can be configured with LDAP to authenticate calls against Spinnaker. The configuration
+block looks like this:
+
+```yaml
+auth:
+  enabled: true
+  ldap:
+    username: < username >
+    password: < password >
+```
+
 ## Global Flags
 
 `spin` has a few helpful global flags:
