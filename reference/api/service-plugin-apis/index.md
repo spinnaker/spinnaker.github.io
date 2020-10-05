@@ -6,4 +6,4 @@ sidebar:
 ---
 
 - Orca
-  - [master](/reference/api/service-plugin-apis/orca-api/master/orca-api/)
+  - [master](/reference/api/service-plugin-apis/orca-api/master/html/orca-api/)
