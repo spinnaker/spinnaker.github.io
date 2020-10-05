@@ -573,6 +573,8 @@ reference:
       url: /reference/api/docs.html
     - title: Swagger UI
       url: /reference/api/swagger-ui/
+    - title: Service Plugin APIs
+      url: /reference/api/service-plugin-apis/
   - title: Cloud Providers
     collapsed: true
     children:
