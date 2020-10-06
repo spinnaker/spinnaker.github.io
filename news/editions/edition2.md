@@ -3,7 +3,6 @@ layout: single
 title:  "*Flying*  Edition 2"
 sidebar:
   nav: news
-redirect_from: /news/latest/
 ---
 ## Laying the groundwork for Spinnaker success
 > This month's issue focuses on ways that cloud providers, project governors, contributors, and operators have laid groundwork to make 2020 Spinnaker's best year ever. With telemetry, a plugin framework, a hackathon, and new ways to install, manage, and integrate with Spinnaker, we're ready to share the most mature and capable continuous delivery platform with **literally everyone**.
