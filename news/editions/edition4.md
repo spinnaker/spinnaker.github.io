@@ -7,8 +7,8 @@ redirect_from: /news/latest/
 ---
 > It's been a while! This mega-issue will catch you up on new Spinnaker content from the past few months. Spinnaker sets the standard for open source innovation because YOU evolve it.
 
-## [Join us October 19th through November 12 for Spinnaker Summit & Summit Gardening](https://events.linuxfoundation.org/spinnaker-live/)
-This year's Spinnaker Summit is a 4-week virtual event. Learn from technical and leadership-focused talks on Tuesdays and Thursdays, and catch keynotes and special events on Wednesdays. Speakers hail from Adobe, Airbnb, Autodesk, AWS, Cisco, Cloudera, Modzy, Netflix, Pinterest, Red Hat, Salesforce, SAP, Snap, Splunk, Sumo Logic, Xero and more. Hack all month at [Gardening Days](https://github.com/spinnaker-hackathon/gardening), our global hackathon, part of Summit schedule this year with exciting challenges from GitHub, Sumo Logic, and more. [Get your Summit tickets now](https://events.linuxfoundation.org/spinnaker-summit/register/)!
+## [Join us for Spinnaker Summit & Summit Gardening](https://events.linuxfoundation.org/spinnaker-live/)
+This year's Spinnaker Summit is a 4-week virtual event, October 19th - November 12. Learn from technical and leadership-focused talks on Tuesdays and Thursdays, and catch keynotes and special events on Wednesdays. Speakers hail from Adobe, Airbnb, Autodesk, AWS, Cisco, Cloudera, Modzy, Netflix, Pinterest, Red Hat, Salesforce, SAP, Snap, Splunk, Sumo Logic, Xero and more. Hack all month at [Gardening Days](https://github.com/spinnaker-hackathon/gardening), our global hackathon, part of Summit schedule this year with exciting challenges from GitHub, Sumo Logic, and more. [Get your Summit tickets now](https://events.linuxfoundation.org/spinnaker-summit/register/)!
 
 ## Solution guides
 
