@@ -42,6 +42,20 @@ In this webinar, Paul Roberts of AWS and Lee Faus of Armory discuss the struggle
 ## [Integrating Spinnaker with ServiceNow](https://www.armory.io/blog/integrating-spinnaker-with-servicenow/)
 Using ServiceNow as a system of record for software code and infrastructure changes to production  environments? In this video and blog, learn to trigger Spinnaker pipelines from ServiceNow, use Spinnaker Pipeline Expressions to capture build metadata, and automate ServiceNow change requests.
 
+## Success stories
+
+## [True continuous deployment: From dream to reality with Spinnaker at Upside](https://engineering.upside.com/true-continuous-deployment-from-dream-to-reality-with-spinnaker-5b48487d2f88)
+Learn how and why Upside is leveraging Spinnaker to give its teams more runway to build out complex and robust deployment pipelines with ease. With Continuous Deployment, Upside engineers can further increase the velocity of deployments, as well as their confidence in them.
+
+## [Spinnaker @ GIPHY](https://engineering.giphy.com/spinnaker-giphy/?fbclid=IwAR1aztJT68aqrDUBzPDGmYfpTQfvpNK5WHkVBQ1lxLViGbg6yx8aoJj-hMI)
+Understand the Site Reliability team at GIPHY's process for distributing applications to Kubernetes on AWS servers. Spinnaker has made it easy for GIPHY to integrate with existing Jenkins pipelines and tooling, deploy to multiple cluster via Helm, and handle automated canary testing and releases.
+
+## [Our journey to continuous delivery at Grab (part 1)](https://engineering.grab.com/our-journey-to-continuous-delivery-at-grab)
+Read an in-depth account of 2 years spent improving the continuous delivery processes for backend services at Grab. Part One describes Grab's starting point, and the software and tools created and integrated. Grab chose Spinnaker because of its maturity, support of complex workflows and multicloud, open-source extensibility, and lack of a single point of failure.
+
+## [Zero to 1000+ applications large scale CD adoption at Cisco with Spinnaker and OpenShift](https://youtu.be/RpIHjGg_fcs)
+In this webinar, Balaji Siva, VP of Products at OpsMx, engages Anil Anaberumutt, IT architect at Cisco, and Red Hat Sr. Solutions Architect, Vikas Grover, in a discussion about Cisco’s CD challenges. They discuss lessons learned, best practices implemented, and key results achieved on their CD transformation journey.
+
 ## New & newsworthy
 
 ## [Telltale: Netflix application monitoring simplified](https://netflixtechblog.com/telltale-netflix-application-monitoring-simplified-5c08bfa780ba)
@@ -58,20 +72,6 @@ Tracy Miranda, the new Governing Board chair of the CDF, discusses the foundatio
 
 ## [Deep Dive into Spinnaker and the Spinnaker Operator](https://youtu.be/-p_CJc9BjAM)
 The Spinnaker Operator makes deploying and managing the full lifecycle of Spinnaker app simple and reliable, leveraging a Kubernetes-native GitOps workflow and tools like kubectl, helm, and kustomize. This OpenShift Commons briefing explains and [demonstrates](https://youtu.be/5IMkZnF09d8) the [operator](https://github.com/armory/spinnaker-operator) and tours Armory Enterprise features.
-
-## Success stories
-
-## [True continuous deployment: From dream to reality with Spinnaker at Upside](https://engineering.upside.com/true-continuous-deployment-from-dream-to-reality-with-spinnaker-5b48487d2f88)
-Learn how and why Upside is leveraging Spinnaker to give its teams more runway to build out complex and robust deployment pipelines with ease. With Continuous Deployment, Upside engineers can further increase the velocity of deployments, as well as their confidence in them.
-
-## [Spinnaker @ GIPHY](https://engineering.giphy.com/spinnaker-giphy/?fbclid=IwAR1aztJT68aqrDUBzPDGmYfpTQfvpNK5WHkVBQ1lxLViGbg6yx8aoJj-hMI)
-Understand the Site Reliability team at GIPHY's process for distributing applications to Kubernetes on AWS servers. Spinnaker has made it easy for GIPHY to integrate with existing Jenkins pipelines and tooling, deploy to multiple cluster via Helm, and handle automated canary testing and releases.
-
-## [Our journey to continuous delivery at Grab (part 1)](https://engineering.grab.com/our-journey-to-continuous-delivery-at-grab)
-Read an in-depth account of 2 years spent improving the continuous delivery processes for backend services at Grab. Part One describes Grab's starting point, and the software and tools created and integrated. Grab chose Spinnaker because of its maturity, support of complex workflows and multicloud, open-source extensibility, and lack of a single point of failure.
-
-## [Zero to 1000+ applications large scale CD adoption at Cisco with Spinnaker and OpenShift](https://youtu.be/RpIHjGg_fcs)
-In this webinar, Balaji Siva, VP of Products at OpsMx, engages Anil Anaberumutt, IT architect at Cisco, and Red Hat Sr. Solutions Architect, Vikas Grover, in a discussion about Cisco’s CD challenges. They discuss lessons learned, best practices implemented, and key results achieved on their CD transformation journey.
 
 ## New products & partnerships
 
