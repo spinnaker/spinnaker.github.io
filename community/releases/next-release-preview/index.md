@@ -39,3 +39,10 @@ From a practical perspective this means that:
 Users may wish to remove the `liveManifestCalls` flag from their account
 configuration, though this is not required and any configured value for this
 setting will be ignored by Spinnaker.
+
+### Java 11 is Required
+
+Spinnaker now requires a Java 11 (or greater) runtime:
+- If you use the community Docker containers, these have been using Java 11 for several releases now. No changes are required.
+- If you are using the community Debian packages, you need to make sure a Java 11 runtime is available on your system.
+- If you're building your own Spinnaker binaries from source, you will need to use a Java 11 JDK.
