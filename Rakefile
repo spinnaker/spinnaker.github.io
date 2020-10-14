@@ -11,6 +11,9 @@ task :test do
     :check_html => true,
     :disable_external => true,  # TODO: each "Suggest Edit" button return 404 for some reason?
     :empty_alt_ignore => true,
+    :file_ignore => [
+      /.*service\-plugin\-apis.*/ # Ignore auto-generated javadocs
+    ]
   }
   HTMLProofer.check_directory("./_site", options).run
 end
