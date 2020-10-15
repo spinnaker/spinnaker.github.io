@@ -11,6 +11,7 @@ redirect_from: /docs/notifications-and-events-guide
 Out of the box, Spinnaker allows you to configure the following types of notifications:
 
 * [Email](#email)
+* [Microsoft Teams](#microsoft-teams)
 * [Slack](#slack)
 * [SMS](#twilio) via Twilio
 
@@ -85,6 +86,22 @@ window.spinnakerSettings.notifications = window.spinnakerSettings.notifications 
 window.spinnakerSettings.notifications.email = window.spinnakerSettings.notifications.email || {};
 window.spinnakerSettings.notifications.email.enabled = true;
 ```
+
+## Microsoft Teams
+
+To enable Microsoft Teams support, add the following statement to the `echo-local.yml` file:
+
+```yaml
+microsoftteams:
+  enabled: true
+```
+
+Spinnaker supports sending notifications to Microsoft Teams using Incoming Webhooks.
+
+To create a custom incoming webhook in Teams, follow the instructions provided here: [Add an incoming webhook to a Teams channel](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook#add-an-incoming-webhook-to-a-teams-channel)
+
+When configuring a Microsoft Teams notification, enter the full incoming webhook URL in the `Teams Webhook URL` text box.
+![](ms-teams.png)
 
 ## Slack
 

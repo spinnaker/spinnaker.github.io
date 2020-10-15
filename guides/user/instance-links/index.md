@@ -82,6 +82,7 @@ account | account owner of the instance | prod
 availabilityZone | zone where instance resides | us-east-1a
 cloudProvider | "aws" | "aws"
 clientToken | see AWS Documentation | (string)
+cluster | cluster name | myapp-staging
 id | instance ID | i-12345678
 imageId | ID of the AMI running on this instance | ami-123456
 instanceId | same as id | i-12345678

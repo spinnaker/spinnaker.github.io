@@ -1,8 +1,8 @@
 ---
 layout: home
 conference_ad_row:
-  title: Submit Your Talk for Spinnaker Summit 2020
-  excerpt: "[Submit your proposal now](https://linuxfoundation.smapply.io/prog/spinnaker_summit_2020/) to lead a session at Spinnaker Summit October 19-November 12. We're seeking content on technology topics from across the SDLC, including talks, discussions, workshops, informal fireside interviews, product demos, and more. Be creative! Bonus: a Summit Gardening Days hackathon with free compute will be running all month long! [Learn more](https://www.spinnakersummit.com)."
+  title: Register for Spinnaker Summit 2020
+  excerpt: "[Register today](https://events.linuxfoundation.org/spinnaker-summit/register/) to join us at Spinnaker Summit October 19-November 12. Get access to a month of great talks with your free conference pass and hands on content with your premium ticket. Bonus: a [Summit Gardening Days hackathon](https://events.linuxfoundation.org/spinnaker-summit/program/summit-gardening-days/) with free AWS compute will be running all month long! [Learn more](https://www.spinnakersummit.com)."
   image_path: assets/images/summit-socialmedia-transparent.png
   alt: "Spinnaker Summit Logo"
 slack_row:
@@ -83,7 +83,7 @@ notifications_feature:
   content: "Set up event notifications for email, Slack, HipChat, or SMS (via Twilio)."
 access_control_feature:
   title: Role-based Access Control
-  content: "Restrict access to projects or accounts by hooking into your internal authentication system using OAuth, SAML, LDAP, X.509 certs, Google groups, Azure groups, or GitHub Organizations."
+  content: "Restrict access to projects or accounts by hooking into your internal authentication system using OAuth, SAML, LDAP, X.509 certs, Google Groups, Azure Groups, or GitHub Teams."
 manual_judgments_feature:
   title: Manual Judgments
   content: "Require a manual approval prior to releasing an update with a manual judgement stage."

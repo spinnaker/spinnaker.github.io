@@ -84,6 +84,12 @@ sql:
     writeBatchSize: 300
   scheduler:
     enabled: true
+
+  # Enable clouddriver-caching's clean up agent to periodically purge old 
+  # clusters and accounts. Set to true when using the Kubernetes provider.
+  unknown-agent-cleanup-agent:
+    enabled: false
+
   connectionPools:
     default:
       # additional connection pool parameters are available here,

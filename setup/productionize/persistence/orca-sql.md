@@ -31,7 +31,7 @@ Before deploying Orca, the schema and database uses must first be manually setup
 
 From the MySQL Server command line run
 ```
-set tx_isolation = 'REPEATABLE-READ';
+set tx_isolation = 'READ-COMMITTED';
 ```
 
 2. Setup the schema and database users
