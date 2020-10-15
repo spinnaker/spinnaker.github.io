@@ -150,8 +150,8 @@ auth:
     - scope1
     - scope2
     cachedToken:
-      accesstoken: ${ACCESS_TOKEN} # Note the key capitalization
-      refreshtoken: ${REFRESH_TOKEN} # Note the key capitalization
+      access_token: ${ACCESS_TOKEN} # Note the key capitalization
+      refresh_token: ${REFRESH_TOKEN} # Note the key capitalization
 ```
 
 This method is OAuth2-provider specific since the workflow to acquire
