@@ -102,7 +102,7 @@ Encoding with any other OID can be done by editing the `openssl.conf`.
     keyUsage = nonRepudiation, digitalSignature, keyEncipherment
     1.2.840.10070.8.1 = ASN1:UTF8String:spinnaker-example0\nspinnaker-example1
     ```
-    The same rule as in step above is applied for role defention in the step above
+    The same rule for the roles definition as in the first step of this section.
 
 1. Use the CA to sign the server's request. (If using an external CA, they do this for you.)
     ```
