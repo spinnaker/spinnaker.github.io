@@ -18,7 +18,7 @@ Elevate your impact with free compute from AWS, a global-friendly schedule, and 
 - [Spinnaker Slack](https://join.spinnaker.io): Join our Slack to participate. Have questions? Ask them in [__#gardening-general__](https://spinnakerteam.slack.com/archives/CV4A90DPF), our main event channel.
 - [Spinnaker Summit schedule](https://events.linuxfoundation.org/spinnaker-summit/program/schedule/): View the global schedule for Spinnaker Summit and Summit Gardening in your time zone.
 - [Getting started](https://github.com/spinnaker-hackathon/gardening/blob/master/getting-started.md): Find out how to get started with Gardening Days.
-- [Gardening repository](https://github.com/spinnaker-hackathon/gardening): All things gardening live in this repo, including information about prizes, challenges, and project ideas.
+- [Gardening repository](https://github.com/spinnaker-hackathon/gardening): All things gardening live in this repo, including information about prizes, challenges, project ideas, and contribution eligibility and tracking.
 -[Development environments](dev-environment.md): Set up your Spinnaker environment using this guide, and use free AWS compute if you like.
 - [Developing plugins](developing-plugins.md): Learn more about developing Spinnaker plugins with this training series.
 
