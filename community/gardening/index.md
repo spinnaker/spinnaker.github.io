@@ -10,7 +10,7 @@ sidebar:
 
 ## About
 
-Gardening Days rewards new and veteran contributors for building the Spinnaker ecosystem. All contributions attendees make in the week add up to points. This includes project and plugin code, documentation, content, videos, issues [and more](https://spinnaker.io/community/gardening/what-to-hack/). All registered contributors will receive prizes based on their point totals, so contribute when you can. After you [sign up](https://events.linuxfoundation.org/spinnaker-summit/register/), you'll be matched with a team. Teams can choose a project and compete in [a challenge category](https://github.com/spinnaker-hackathon/gardening/blob/master/challenges.md) for team prize packages. Summit Gardening challenges teams to build software delivery solutions and content focused on Spinnaker, GitHub Action, Sumo Logic, AWS, New Relic, and more.
+Gardening Days rewards contributors for building the Spinnaker ecosystem. All contributions attendees make in the week add up to points. This includes project and plugin code, documentation, content, videos, issues [and more](https://spinnaker.io/community/gardening/what-to-hack/). All registered contributors will receive [prizes](https://github.com/spinnaker-hackathon/gardening/blob/master/prizes.md) based on point totals, so contribute when you can. After you [sign up](https://events.linuxfoundation.org/spinnaker-summit/register/), you'll be matched with a team. Teams can choose a project to compete in [a challenge category](https://github.com/spinnaker-hackathon/gardening/blob/master/challenges.md) for a team prize package. Challenges include software delivery solutions and content focused on Spinnaker, GitHub Action, Sumo Logic, AWS, New Relic, and more.
 
 Elevate your impact with free compute from AWS, a global-friendly schedule, and [Spinnaker Summit programming](https://events.linuxfoundation.org/spinnaker-summit/program/schedule/) all month long!
 
@@ -19,7 +19,6 @@ Elevate your impact with free compute from AWS, a global-friendly schedule, and 
 - [Spinnaker Summit schedule](https://events.linuxfoundation.org/spinnaker-summit/program/schedule/): View the global schedule for Spinnaker Summit and Summit Gardening in your time zone.
 - [Getting started](https://github.com/spinnaker-hackathon/gardening/blob/master/getting-started.md): Find out how to get started with Gardening Days.
 - [Gardening repository](https://github.com/spinnaker-hackathon/gardening): All things gardening live in this repo, including information about prizes, challenges, and project ideas.
-- [What to hack](what-to-hack.md): See a list of all eligible contributions types.
 -[Development environments](dev-environment.md): Set up your Spinnaker environment using this guide, and use free AWS compute if you like.
 - [Developing plugins](developing-plugins.md): Learn more about developing Spinnaker plugins with this training series.
 
