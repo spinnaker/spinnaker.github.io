@@ -44,7 +44,8 @@ Spinnaker uses the [Plugin Framework for Java (PF4J)](https://github.com/pf4j/pf
 An extension point is an interface that extends `org.pf4j.ExtensionPoint` and is located in the `api` module of a service. Spinnaker exposes the following extension points:
 
 * Orca
-  - [SimpleStage](https://github.com/spinnaker/orca/blob/ab89a0d7f847205ccd62e70f8a714040a8621ee7/orca-api/src/main/java/com/netflix/spinnaker/orca/api/SimpleStage.java) for creating a custom pipeline stage
+  - [StageDefinitionBuilder](https://github.com/spinnaker/orca/blob/master/orca-api/src/main/java/com/netflix/spinnaker/orca/api/pipeline/graph/StageDefinitionBuilder.java) for creating a custom pipeline stage
+  - [Task](https://github.com/spinnaker/orca/blob/master/orca-api/src/main/java/com/netflix/spinnaker/orca/api/pipeline/Task.java) for creating a custom pipeline task to use in a custom pipeline stage
   - [PreconfiguredJobConfigurationProvider](https://github.com/spinnaker/orca/blob/master/orca-api/src/main/java/com/netflix/spinnaker/orca/api/preconfigured/jobs/PreconfiguredJobConfigurationProvider.java) for provisioning preconfigured Job stages
 
 * Echo

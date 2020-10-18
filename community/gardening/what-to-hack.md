@@ -13,7 +13,7 @@ Not sure where to get started contributing to Spinnaker? May we suggest these po
 
 - Visit the [list of beginner-friendly Spinnaker issues](https://github.com/spinnaker/spinnaker/issues?q=is%3Aopen+is%3Aissue+label%3A%22beginner+friendly%22+). Each issue has a Slack channel referencing the issue number (e.g. #gardening-team-issue-5357). Check the channel to collaborate.
 
-- Create a custom-stage plugin and familiarize yourself with using the framework. This uses the new SimpleStage extension point to add your custom pipeline stage to Spinnaker. Read more in the [Plugin Creators Guide](https://www.spinnaker.io/guides/developer/plugin-creators/).
+- Create a custom-stage plugin and familiarize yourself with using the framework. This uses the new StageDefinitionBuilder extension point to add your custom pipeline stage to Spinnaker. Read more in the [Plugin Creators Guide](https://www.spinnaker.io/guides/developer/plugin-creators/).
 
 - Stop by the #sig-documentation Slack channel if you want to help out with work related to the spinnaker.io website refresh!
 
