@@ -2,7 +2,7 @@
 layout: home
 conference_ad_row:
   title: Register for Spinnaker Summit 2020
-  excerpt: "[Register today](https://events.linuxfoundation.org/spinnaker-summit/register/) to join us at Spinnaker Summit October 19-November 12. Get access to a month of great talks with your free conference pass and hands on content with your premium ticket. Bonus: a [Summit Gardening Days hackathon](https://events.linuxfoundation.org/spinnaker-summit/program/summit-gardening-days/) with free AWS compute will be running all month long! [Learn more](https://www.spinnakersummit.com)."
+  excerpt: "[Register today](https://events.linuxfoundation.org/spinnaker-summit/register/) to join us at Spinnaker Summit October 19-November 12. Get access to a month of great talks with your free conference pass and hands on content with your premium ticket. Bonus: a [Summit Gardening Days hackathon](https://events.linuxfoundation.org/spinnaker-summit/program/summit-gardening-days/) with free AWS compute will be running all month long! [Learn more](https://github.com/spinnaker-hackathon/gardening/blob/master/README.md)."
   image_path: assets/images/summit-socialmedia-transparent.png
   alt: "Spinnaker Summit Logo"
 slack_row:
