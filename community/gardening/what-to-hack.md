@@ -9,7 +9,7 @@ sidebar:
 
 Not sure where to get started contributing to Spinnaker? May we suggest these points-eligible contributions:
 
-- Hack on your team’s project as part of our [4 challenges!](hack-logistics.md/#hackathon-challenges)
+- Hack on your team’s project as part of our [challenges!](https://github.com/spinnaker-hackathon/gardening/blob/master/challenges.md)
 
 - Visit the [list of beginner-friendly Spinnaker issues](https://github.com/spinnaker/spinnaker/issues?q=is%3Aopen+is%3Aissue+label%3A%22beginner+friendly%22+). Each issue has a Slack channel referencing the issue number (e.g. #gardening-team-issue-5357). Check the channel to collaborate.
 
@@ -36,3 +36,5 @@ Not sure where to get started contributing to Spinnaker? May we suggest these po
 - Run through a [Spinnaker codelab](/guides/tutorials/codelabs/). Document and file any issues you encounter [here](https://github.com/spinnaker/spinnaker.github.io/issues/) when you come across them. Share your progress in [#gardening-general](https://spinnakerteam.slack.com/archives/CV4A90DPF).
 
 - Drop in to `#sig-` channels and ask what they are working on to learn more.
+
+- Host a Gardening Days event! Anyone is welcome to host an activity for 15 minutes or more. All times and topics that adhere to our guidelines are welcome! Please post in [#gardening-general](https://spinnakerteam.slack.com/archives/CV4A90DPF) and mention @gardening-admin to be added to the schedule.
