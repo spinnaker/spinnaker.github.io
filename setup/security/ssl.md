@@ -223,6 +223,7 @@ eventual fully-qualified domain name (FQDN) as the Common Name (CN).
 
     ```bash
     openssl x509 \
+      -sha256 \
       -req \
       -days 365 \
       -in gate.csr \

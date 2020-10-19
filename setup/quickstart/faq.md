@@ -187,21 +187,17 @@ These settings will forward all external communication through the proxy server 
 keeping internal traffic non-proxied. Additional information can be found 
 [here.](https://docs.oracle.com/javase/8/docs/technotes/guides/net/proxies.html){:target="\_blank"}
 
-The Kubernetes V2 provider must be handled differently. Because the Kubernetes V2 provider 
-uses `kubectl` (which uses curl), you must set environment variablesif you want 
-Kubernetes V2 traffic to be proxied. 
+The Kubernetes provider must be handled differently. Because the Kubernetes provider 
+uses `kubectl` (which uses curl), you must set environment variables if you want 
+Kubernetes traffic to be proxied. 
 
-An example `clouddriver.yml` that will proxy Kubernetes V2 traffic will look like:
+An example `clouddriver.yml` that will proxy Kubernetes traffic will look like:
 ```yaml
 env:
   HTTP_PROXY: "proxyaddress:proxyport"
   HTTPS_PROXY: "proxyaddress:proxyport"
   NO_PROXY: "localhost,127.0.0.1,*.spinnaker" 
 ```
-
-If you are using both the V1 and V2 version of the Kubernetes provider, you'll need to supply both sets of 
-proxy definitions. 
-
 
 ## What is the best way to delete a Spinnaker deployment?
 

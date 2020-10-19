@@ -23,9 +23,22 @@ If using the 'awsvpc' networking mode (required for the 'Fargate' launch type), 
 
 If using other networking modes like 'bridge', you don't need to setup any further networking.  The cluster's networking configuration will be passed from your cluster's EC2 instances to your containers.
 
-### Spinnaker Clouddriver role
+### Service-Linked IAM Roles
 
-The role that Clouddriver assumes for your Amazon ECS account needs to have the trust relationship below for your Spinnaker IAM assumed role.  For information on how to set up the role Clouddriver assumes, see the [AWS documentation](/setup/install/providers/aws/aws-ec2/)  For information on how to modify IAM roles in the AWS console, see the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html){:target="\_blank"}
+In Spinnaker versions 1.19 and later, the Amazon ECS cloud provider requires service-linked roles for Amazon ECS and Application Auto Scaling.  To create the required service-linked roles, run the following commands.
+
+```
+aws iam create-service-linked-role --aws-service-name ecs.amazonaws.com
+aws iam create-service-linked-role --aws-service-name ecs.application-autoscaling.amazonaws.com
+```
+
+See the [Amazon ECS service-linked role documentation](https://docs.aws.amazon.com/AmazonECS/latest/userguide/using-service-linked-roles.html){:target="\_blank"} and the [Application Auto Scaling service-linked role documentation](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-service-linked-roles.html){:target="\_blank"} for information on the permissions in these roles.
+
+### Legacy IAM Roles (prior to 1.19)
+
+In Spinnaker versions 1.18 and below, the Amazon ECS cloud provider uses [legacy IAM roles for Amazon ECS](https://docs.aws.amazon.com/AmazonECS/latest/userguide/ecs-legacy-iam-roles.html){:target="\_blank"}.  The provider uses the cloud provider account's assumed IAM role as both the [Service Scheduler IAM role](https://docs.aws.amazon.com/AmazonECS/latest/userguide/ecs-legacy-iam-roles.html#service_IAM_role){:target="\_blank"} and the [Service Auto Scaling IAM role](https://docs.aws.amazon.com/AmazonECS/latest/userguide/ecs-legacy-iam-roles.html#autoscale_IAM_role){:target="\_blank"} for the server group's Amazon ECS service.
+
+The IAM role for the cloud provider account associated with the Amazon ECS server group must allow both Amazon ECS and Application Auto Scaling to assume the role in its trust policy.
 
 ```json
 {
@@ -45,9 +58,36 @@ The role that Clouddriver assumes for your Amazon ECS account needs to have the 
 }
 ```
 
+For information on how to configure the IAM role associated with the cloud provider account, see the [AWS provider documentation](/setup/install/providers/aws/aws-ec2/).  For information on how to modify IAM roles in the AWS console, see the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html){:target="\_blank"}.
+
+### Task Execution IAM Role
+
+Some Amazon ECS services require a [task execution IAM role](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_execution_IAM_role.html){:target="\_blank"}, such as services running on AWS Fargate.  If you are using task definition artifacts in your Spinnaker pipeline, the task execution role can be specified in the artifact's task definition file.
+
+If you are not using a task definition artifact (or if the artifact's task definition file does not specify a task execution role) for a server group running on Fargate, the Amazon ECS cloud provider will fallback to using the cloud provider account's assumed IAM role as the task execution role.  In that situation, the IAM role for the cloud provider account associated with the Amazon ECS server group must allow Amazon ECS to assume the role in its trust policy.
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+                "Service": [
+                  "ecs-tasks.amazonaws.com"
+                ]
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+```
+
+For information on how to configure the IAM role associated with the cloud provider account, see the [AWS provider documentation](/setup/install/providers/aws/aws-ec2/).  For information on how to modify IAM roles in the AWS console, see the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html){:target="\_blank"}.
+
 ### Optional: IAM Roles for Tasks
 
-You can create IAM roles that have the `ecs-tasks.amazonaws.com` trust relationship so that your containers have an IAM role associated to them.  For information on how to modify IAM roles in the AWS console, see the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html){:target="\_blank"}
+You can create [IAM roles for tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html){:target="\_blank"} and associate them to your Amazon ECS provider server group in Spinnaker, so that your application's containers have access to IAM role credentials.  The task role must allow Amazon ECS to assume the role in its trust policy.
 
 ```json
 {
@@ -64,6 +104,8 @@ You can create IAM roles that have the `ecs-tasks.amazonaws.com` trust relations
   ]
 }
 ```
+
+For information on how to modify IAM roles in the AWS console, see the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html){:target="\_blank"}.
 
 ### Optional: Service Auto Scaling
 

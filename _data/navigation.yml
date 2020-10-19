@@ -124,8 +124,12 @@ setup:
             url: /setup/artifacts/github/
           - title: GitLab
             url: /setup/artifacts/gitlab/
+          - title: Git Repo
+            url: /setup/artifacts/gitrepo/
           - title: Google Cloud Storage
             url: /setup/artifacts/gcs/
+          - title: Helm
+            url: /setup/artifacts/helm/
           - title: HTTP
             url: /setup/artifacts/http/
           - title: Maven
@@ -155,17 +159,21 @@ setup:
                  url: /setup/security/authentication/
                - title: SAML
                  url: /setup/security/authentication/saml/
-               - title: Oauth
+               - title: OAuth 2.0
                  collapsed: true
                  children:
                    - title: Overview
                      url: /setup/security/authentication/oauth/
-                   - title: Google
-                     url: /setup/security/authentication/oauth/google/
-                   - title: GitHub
-                     url: /setup/security/authentication/oauth/github/
+                   - title: Configuration
+                     url: /setup/security/authentication/oauth/config/
                    - title: Azure
                      url: /setup/security/authentication/oauth/azure/
+                   - title: GitHub
+                     url: /setup/security/authentication/oauth/github/
+                   - title: Google
+                     url: /setup/security/authentication/oauth/google/
+                   - title: Oracle Cloud
+                     url: /setup/security/authentication/oauth/oracle/
                - title: LDAP/Active Directory
                  url: /setup/security/authentication/ldap/
                - title: x509
@@ -338,7 +346,24 @@ guides:
             url: /guides/user/pipeline/
           - title: Managing Pipelines
             url: /guides/user/pipeline/managing-pipelines/
-          - title: Triggering Pipelines (Standard Artifacts UI)
+          - title: Triggering Pipelines
+            collapsed: true
+            children:
+            - title: Overview
+              url: /guides/user/pipeline/triggers-with-artifactsrewrite/
+            - title: Triggering pipelines with Jenkins
+              url: /guides/user/pipeline/triggers-with-artifactsrewrite/jenkins/
+            - title: Triggering on Pub/Sub Messages
+              url: /guides/user/pipeline/triggers-with-artifactsrewrite/pubsub/
+            - title: Triggering on Webhooks
+              url: /guides/user/pipeline/triggers-with-artifactsrewrite/webhooks/
+            - title: Receiving Artifacts From GCS
+              url: /guides/user/pipeline/triggers-with-artifactsrewrite/gcs/
+            - title: Receiving Artifacts From GitHub
+              url: /guides/user/pipeline/triggers-with-artifactsrewrite/github/
+            - title: Triggering pipelines with Artifactory
+              url: /guides/user/pipeline/triggers-with-artifactsrewrite/artifactory/
+          - title: Triggering Pipelines (Legacy Artifacts UI)
             collapsed: true
             children:
               - title: Overview
@@ -353,23 +378,6 @@ guides:
                 url: /guides/user/pipeline/triggers/gcs/
               - title: Receiving Artifacts From GitHub
                 url: /guides/user/pipeline/triggers/github/
-          - title: Triggering Pipelines (New Artifacts UI)
-            collapsed: true
-            children:
-              - title: Overview
-                url: /guides/user/pipeline/triggers-with-artifactsrewrite/
-              - title: Triggering pipelines with Jenkins
-                url: /guides/user/pipeline/triggers-with-artifactsrewrite/jenkins/
-              - title: Triggering on Pub/Sub Messages
-                url: /guides/user/pipeline/triggers-with-artifactsrewrite/pubsub/
-              - title: Triggering on Webhooks
-                url: /guides/user/pipeline/triggers-with-artifactsrewrite/webhooks/
-              - title: Receiving Artifacts From GCS
-                url: /guides/user/pipeline/triggers-with-artifactsrewrite/gcs/
-              - title: Receiving Artifacts From GitHub
-                url: /guides/user/pipeline/triggers-with-artifactsrewrite/github/
-              - title: Triggering pipelines with Artifactory
-                url: /guides/user/pipeline/triggers-with-artifactsrewrite/artifactory/
           - title: Pipeline Expressions
             url: /guides/user/pipeline/expressions/
           - title: Searching for Triggered Pipeline Executions
@@ -396,8 +404,8 @@ guides:
       - title: Plugins
         collapsed: true
         children:
-          - title: Users Guide
-            url: /guides/user/plugins/user-guide/
+          - title: Plugin Users Guide
+            url: /guides/user/plugins/
           - title: pf4jStagePlugin Deployment Example
             url: /guides/user/plugins/deploy-example/
       - title: Kubernetes (Manifest Based)
@@ -462,6 +470,8 @@ guides:
           url: /guides/user/managed-delivery/artifacts/
         - title: Pinning an Environment
           url: /guides/user/managed-delivery/pinning/
+        - title: Marking an Artifact as Bad
+          url: /guides/user/managed-delivery/marking-as-bad/
         - title: Resource Status
           url: /guides/user/managed-delivery/resource-status/
         - title: API
@@ -471,21 +481,36 @@ guides:
   - title: Developer How-Tos
     collapsed: true
     children:
-      - title: Getting Set Up
-        url: /guides/developer/getting-set-up/
-      - title: Writing a New Stage
-        url: /guides/developer/new-stage/
-      - title: Kork Library
-        url: /guides/developer/kork-library/
-      - title: Kubernetes CRD extensions
-        url: /guides/developer/crd-extensions/
-      - title: Plugin Creators Guide
+      - title: Setting up a Development Environment
+        collapsed: true
+        children:
+          - title: Kork Library
+            url: /guides/developer/dev-env/kork-library/
+          - title: Common Internals
+            url: /guides/developer/dev-env/common-internals/
+          - title: Getting Set Up
+            url: /guides/developer/dev-env/getting-set-up/
+          - title: Provider Specific Setups
+            collapsed: true
+            children:
+            - title: Set Up Spinnaker Development on AWS
+              url: /guides/developer/dev-env/provider-setups/aws-dev-setup/
+      - title: Extending Spinnaker
+        collapsed: true
+        children:
+          - title: Writing a New Stage
+            url: /guides/developer/extending/new-stage/
+          - title: Kubernetes CRD extensions
+            url: /guides/developer/extending/crd-extensions/
+      - title: Creating Plugins
         collapsed: true
         children:
           - title: Overview
             url: /guides/developer/plugin-creators/overview/
-          - title: Pipeline Stage Plugin Walkthrough
-            url: /guides/developer/plugin-creators/stage-plugin-walkthrough/
+          - title: Test a Pipeline Stage Plugin
+            url: /guides/developer/plugin-creators/deck-plugin/
+          - title: Plugin Compatibility Testing
+            url: /guides/developer/plugin-creators/compatibility-testing/
           - title: Plugin Project Configuration
             url: /guides/developer/plugin-creators/project-config/
   - title: Operator How-Tos
@@ -501,6 +526,8 @@ guides:
         url: /guides/operator/webhook-custom-trust-store/
       - title: "Orca: Redis to SQL"
         url: /guides/operator/orca-redis-to-sql/
+      - title: Hiding Stages
+        url: /guides/operator/hiding-stages/
   - title: Runbooks
     collapsed: true
     children:
@@ -523,11 +550,15 @@ guides:
         url: /guides/spin/pipeline/
       - title: Manage Pipeline Templates
         url: /guides/spin/pipeline-templates/
+      - title: Manage Projects
+        url: /guides/spin/projects/
+      - title: Manage Canary Configs
+        url: /guides/spin/canary-configs/
   - title: Service Overviews
     collapsed: true
     children:
       - title: Common Internals
-        url: /guides/developer/common-internals/
+        url: /guides/developer/dev-env/common-internals/
       - title: Front50
         url: https://github.com/spinnaker/front50/blob/master/README.md
       - title: Igor
@@ -542,6 +573,8 @@ reference:
       url: /reference/api/docs.html
     - title: Swagger UI
       url: /reference/api/swagger-ui/
+    - title: Service Plugin APIs
+      url: /reference/api/service-plugin-apis/
   - title: Cloud Providers
     collapsed: true
     children:
@@ -563,47 +596,7 @@ reference:
         url: /reference/providers/kubernetes-v2/
       - title: Oracle Cloud
         url: /reference/providers/oracle/
-  - title: Artifacts (Standard UI)
-    collapsed: true
-    children:
-      - title: Overview
-        url: /reference/artifacts/
-      - title: In Pipelines
-        url: /reference/artifacts/in-pipelines/
-      - title: From Build Triggers
-        url: /reference/artifacts/from-build-triggers/
-      - title: In Kubernetes (Manifest Based)
-        url: /reference/artifacts/in-kubernetes-v2/
-      - title: In Google App Engine
-        url: /reference/artifacts/in-appengine/
-      - title: Types of Artifacts
-        collapsed: true
-        children:
-          - title: Overview
-            url: /reference/artifacts/types/overview/
-          - title: Docker Image
-            url: /reference/artifacts/types/docker-image/
-          - title: Embedded Base64
-            url: /reference/artifacts/types/embedded-base64/
-          - title: GCS Object
-            url: /reference/artifacts/types/gcs-object/
-          - title: S3 Object
-            url: /reference/artifacts/types/s3-object/
-          - title: Git Repo
-            url: /reference/artifacts/types/git-repo/
-          - title: GitHub File
-            url: /reference/artifacts/types/github-file/
-          - title: GitLab File
-            url: /reference/artifacts/types/gitlab-file/
-          - title: Bitbucket File
-            url: /reference/artifacts/types/bitbucket-file/
-          - title: HTTP File
-            url: /reference/artifacts/types/http-file/
-          - title: Kubernetes Object
-            url: /reference/artifacts/types/kubernetes-object/
-          - title: Oracle Object
-            url: /reference/artifacts/types/oracle-object/
-  - title: Artifacts (New UI)
+  - title: Artifacts
     collapsed: true
     children:
       - title: Overview
@@ -647,6 +640,46 @@ reference:
             url: /reference/artifacts-with-artifactsrewrite/types/oracle-object/
           - title: Maven Artifact
             url: /reference/artifacts-with-artifactsrewrite/types/maven-artifact/
+  - title: Artifacts (Legacy UI)
+    collapsed: true
+    children:
+      - title: Overview
+        url: /reference/artifacts/
+      - title: In Pipelines
+        url: /reference/artifacts/in-pipelines/
+      - title: From Build Triggers
+        url: /reference/artifacts/from-build-triggers/
+      - title: In Kubernetes (Manifest Based)
+        url: /reference/artifacts/in-kubernetes-v2/
+      - title: In Google App Engine
+        url: /reference/artifacts/in-appengine/
+      - title: Types of Artifacts
+        collapsed: true
+        children:
+          - title: Overview
+            url: /reference/artifacts/types/overview/
+          - title: Docker Image
+            url: /reference/artifacts/types/docker-image/
+          - title: Embedded Base64
+            url: /reference/artifacts/types/embedded-base64/
+          - title: GCS Object
+            url: /reference/artifacts/types/gcs-object/
+          - title: S3 Object
+            url: /reference/artifacts/types/s3-object/
+          - title: Git Repo
+            url: /reference/artifacts/types/git-repo/
+          - title: GitHub File
+            url: /reference/artifacts/types/github-file/
+          - title: GitLab File
+            url: /reference/artifacts/types/gitlab-file/
+          - title: Bitbucket File
+            url: /reference/artifacts/types/bitbucket-file/
+          - title: HTTP File
+            url: /reference/artifacts/types/http-file/
+          - title: Kubernetes Object
+            url: /reference/artifacts/types/kubernetes-object/
+          - title: Oracle Object
+            url: /reference/artifacts/types/oracle-object/
   - title: Halyard
     collapsed: true
     children:
@@ -708,6 +741,10 @@ community:
         url: /community/releases/release-cadence/
       - title: Support Policy
         url: /community/releases/support-policy/
+      - title: Release Manager Runbook
+        url: /community/releases/release-manager-runbook
+      - title: Next Release Preview
+        url: /community/releases/next-release-preview
   - title: Contributing
     collapsed: true
     children:
@@ -725,6 +762,8 @@ community:
         url: /community/contributing/releasing/
       - title: Code Conventions for Server-side Components
         url: /community/contributing/back-end-code/
+      - title: Managing Deprecations
+        url: /community/contributing/managing-deprecations/
       - title: Documentation
         collapsed: true
         children:
@@ -732,6 +771,10 @@ community:
             url: /community/contributing/docs/docs-style-guide/
           - title: Make a Change Using the GitHub Web UI
             url: /community/contributing/docs/github-changes/
+          - title: Make a Change Using a Local Clone
+            url: /community/contributing/docs/local-clone/
+          - title: Review a Pull Request
+            url: /community/contributing/docs/reviewing-prs/
   - title: Governance
     url: https://github.com/spinnaker/governance/
   - title: FAQs
@@ -753,12 +796,16 @@ community:
         url: /community/gardening/what-to-hack/
       - title: Slack Map
         url: /community/gardening/slack-map/
+      - title: New Spinnaker Contribution Walkthrough Session
+        url: /community/gardening/spin-contrib/
       - title: Dev Environments
         url: /community/gardening/dev-environment/
       - title: Developing Plugins
         url: /community/gardening/developing-plugins/
       - title: Prizes
         url: /community/gardening/prizes/
+  - title: Hacktoberfest
+    url: /community/hacktoberfest/
 news:
   - title: Sign Up
     url: /news/signup

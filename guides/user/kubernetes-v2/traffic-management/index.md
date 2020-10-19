@@ -8,7 +8,7 @@ sidebar:
 {% include toc %}
 
 This guide shows the basics of how to manage traffic during deployments using
-[Kubernetes Provider V2](/setup/install/providers/kubernetes-v2). This includes
+the [Kubernetes provider](/setup/install/providers/kubernetes-v2). This includes
 automatically attaching a
 [Service](https://kubernetes.io/docs/concepts/services-networking/service/)
 to a workload during deployment, and defining pipelines to perform blue/green
@@ -155,8 +155,7 @@ application. When completed, an execution of this pipeline will look like:
 
 You need the following:
 
-1. Spinnaker with a [Kubernetes Provider
-   V2](/setup/install/providers/kubernetes-v2) configured
+1. Spinnaker with the [Kubernetes provider](/setup/install/providers/kubernetes-v2) configured
 
 2. One service called `my-service` running in the cluster and namespace your
    pipeline will deploy to. For the purpose of this example we will assume it

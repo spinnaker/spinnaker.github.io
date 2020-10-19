@@ -150,8 +150,8 @@ auth:
     - scope1
     - scope2
     cachedToken:
-      accesstoken: ${ACCESS_TOKEN} # Note the key capitalization
-      refreshtoken: ${REFRESH_TOKEN} # Note the key capitalization
+      access_token: ${ACCESS_TOKEN} # Note the key capitalization
+      refresh_token: ${REFRESH_TOKEN} # Note the key capitalization
 ```
 
 This method is OAuth2-provider specific since the workflow to acquire
@@ -175,6 +175,19 @@ block looks like this:
 auth:
   enabled: true
   basic:
+    username: < username >
+    password: < password >
+```
+
+### LDAP/Active Directory
+
+`spin` can be configured with LDAP to authenticate calls against Spinnaker. The configuration
+block looks like this:
+
+```yaml
+auth:
+  enabled: true
+  ldap:
     username: < username >
     password: < password >
 ```

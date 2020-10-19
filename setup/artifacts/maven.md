@@ -19,10 +19,11 @@ that reads the data.
 
 ## Edit your artifact settings
 
-1. Make sure that artifact support is enabled:
+1. Enable [artifact support](/reference/artifacts-with-artifactsrewrite//#enabling-artifact-support).
+
+1. Enable the Maven artifact provider:
 
    ```bash
-   hal config features edit --artifacts true
    hal config artifact maven enable
    ```
 

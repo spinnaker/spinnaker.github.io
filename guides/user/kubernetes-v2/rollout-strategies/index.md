@@ -8,7 +8,7 @@ sidebar:
 {% include toc %}
 
 This guide describes how to take advantage of the
-[Kubernetes V2](/setup/install/providers/kubernetes-v2) provider's first-class support
+[Kubernetes](/setup/install/providers/kubernetes-v2) provider's first-class support
 for common rollout strategies, including dark, highlander, and red/black rollouts.
 
 > **Note:** The implementation of these rollout strategies currently leverages Spinnaker's existing
