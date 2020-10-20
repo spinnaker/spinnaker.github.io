@@ -7,30 +7,41 @@ sidebar:
 
 {% include toc %}
 
-This page contains notes for the _New Spinnaker Contribution Walkthrough_ session. Register for the session on the Gardening Days [schedule](/community/gardening/schedule/).
+This page contains notes for the _New Spinnaker Contribution Walkthrough_ session.
+Register for the session on the Spinnaker Summit
+[page](https://events.linuxfoundation.org/spinnaker-summit/register/).
 
 Registered attendees will receive credentials to access their own Kubernetes namespace on an AWS EKS cluster for the duration of the event.
 
 Attendees are encouraged to use this environment for their hackathon projects as well.
 
+Below is a recording from a previous workshop that you can use to follow along:
+
+<div style="width: 65%;">
+  <iframe width="280" height="158" src="https://www.youtube.com/embed/Sb5CO6RQx_Q" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
 ## Session goals
 
 * Use [Spinnaker Operator] to install Spinnaker in your Kubernetes namespace
-* Combine tools like [Telepresence] and [kubectl] to modify service locally and interact with your remote cluster
+* Combine tools like [Telepresence] and [kubectl] to modify services locally
+and interact with your remote Spinnaker cluster
 * Get hands on contribution experience by adding a new Pipeline Stage to Spinnaker
 
 ## Software
 
 * [IntelliJ IDEA](https://www.jetbrains.com/idea/) Community Edition, which comes bundled with Gradle and Groovy
+  * While you may choose an editor of your choice, this walkthrough assumes you are using IntelliJ
 * [Java Development Kit](https://adoptopenjdk.net/), 11
 * [Yarn](https://classic.yarnpkg.com/en/docs/install#mac-stable) for building and running Deck
 * [kubectl] for managing your Kubernetes cluster
 * [Telepresence], a network proxy
-* Spinnaker 1.21.x, installed using [Spinnaker Operator]
+* Spinnaker 1.22.x, installed using [Spinnaker Operator]
 
 ## Save your Kubernetes config file
 
-The session instructor creates a Kubernetes namespace on EKS for each registered attendee and emails a download link. Save this YAML file to your local `~./kube/` directory. You can name the file anything you'd like, but for this workshop we suggest `garden.yaml`.
+The session instructor creates a Kubernetes namespace in EKS for each registered attendee and provides a download link. Save this YAML file to your local `~./kube/` directory. You can name the file anything you'd like, but for this workshop we suggest `garden.yaml`.
+If you are following along at home, use the credentials for your existing cluster.
 
 _Subsequent steps in this workshop refer to your `kubeconfig` file as `garden.yaml`._
 
@@ -38,11 +49,21 @@ _Subsequent steps in this workshop refer to your `kubeconfig` file as `garden.ya
 
 * Download and install IntelliJ Community Edition.
 
-  * Install the `EnvFile` plugin to easily import variables into your Run configurations.
+
+  * Mac instructions
+
+    ```bash
+    brew cask install intellij-idea-ce
+    ```
+
+  * Windows [instructions](https://www.jetbrains.com/idea/download/#section=windows)
+
+  * Also install the [`EnvFile` plugin](https://plugins.jetbrains.com/plugin/7861-envfile)
+  to easily import variables into your Run configurations.
 
 * Install [JDK 11](https://adoptopenjdk.net/installation.html).
 
-  * Mac
+  * Mac instructions
 
     ```bash
     brew tap AdoptOpenJDK/openjdk
@@ -64,7 +85,7 @@ _Subsequent steps in this workshop refer to your `kubeconfig` file as `garden.ya
 
 * Install `kubectl`.
 
-  * Mac
+  * Mac instructions
 
     ```bash
     brew install kubectl
@@ -74,7 +95,7 @@ _Subsequent steps in this workshop refer to your `kubeconfig` file as `garden.ya
 
 * Install Telepresence.
 
-  * Mac   
+  * Mac instructions
 
     ```bash
     brew cask install osxfuse
@@ -83,17 +104,25 @@ _Subsequent steps in this workshop refer to your `kubeconfig` file as `garden.ya
 
    * Windows [instructions](https://www.telepresence.io/reference/windows)
 
-## Fork and clone Orca and Deck repositories
+## Fork and clone the Orca and Deck repositories
 
-Fork the repositories in the UI, then clone them to your local machine. Check out the release branch of these services so that we're working against the latest stable version:
+[Fork the repositories in GitHub][fork], then [clone them to your local machine][clone].
+Code for each project is organized into stable release branches, so to work on a
+fix for the `1.22` release you would check out the `release-1.22.x` branch for
+Orca and Deck. If you want to contribute a fix for a future release, you would
+use the `master` branch.
 
 ```bash
+# Check out the projects
 git clone git@github.com:<your-github-username>/orca.git
 git clone git@github.com:<your-github-username>/deck.git
+
+# Set each project to the desired release branch
 cd orca
-git checkout release-1.21.x
+git checkout release-1.22.x
+
 cd ../deck
-git checkout release-1.21.x
+git checkout release-1.22.x
 ```
 
 Import the Orca project into IntelliJ. **File** -> **Open**, select `orca/build.gradle`, and import as a new project. You can continue on with the following steps while IntelliJ imports the project.
@@ -118,6 +147,13 @@ You can ignore the `gyp` not found error when you build Deck.
 ## Install Spinnaker
 
 Create a repository for yourself based on the [template repository here][tpl].
+
+If you are new to `kubectl` and `kustomize`, the `kustomization.yaml` file will
+be your "main" entry point and the files referenced will contain partial
+configuration files that are combined into a single `SpinnakerService` manifest.
+For more information on `kustomize` see the [official documentation here][kustomize].
+It is not necessary to install `kustomize` separately for this workshop, it is
+already bundled as part of `kubectl`.
 
 Use `spinsvc.yml` to deploy Spinnaker on the EKS cluster your instructor set up for you. Download the file. Update the last part of the s3 bucket name on L26 with your `namespace` name. You can find your `namespace` name on L10 of the Kubernetes config that you downloaded [earlier](#save-your-kubernetes-config-file).
 
@@ -281,13 +317,10 @@ If you see errors about Redis when you run Orca:
 You can access code for this section in this
 [gist](https://gist.github.com/dogonthehorizon/805db48d7233c2eab5f8215ecc145ec9)
 
-
-
-
-
-
-
 [Spinnaker Operator]: https://github.com/armory/spinnaker-operator
 [Telepresence]: https://www.telepresence.io/
-[tpl]: https://github.com/spinnaker-hackathon/new-spin-contrib-manifest
+[tpl]: https://github.com/armory/spinnaker-kustomize-patches
 [kubectl]: https://kubernetes.io/docs/reference/kubectl/overview/
+[fork]: https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/fork-a-repo
+[clone]: https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository
+[kustomize]: 
