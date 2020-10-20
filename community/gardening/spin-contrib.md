@@ -146,7 +146,17 @@ You can ignore the `gyp` not found error when you build Deck.
 
 ## Install Spinnaker
 
-Create a repository for yourself based on the [template repository here][tpl].
+Create a repository for yourself based on the [template repository here][tpl]
+and [clone] it to your local machine.
+
+The main piece of configuration for our Spinnaker is the `SpinnakerService`
+manifest. This manifest describes what version of Spinnaker we want to deploy,
+specific configuration for each service (e.g. turning on/off feature flags), and
+more.
+
+We manage our configuration files using `kustomize`, which is a tool that allows
+us to combine and modify partial configurations into a complete manifest that
+we apply to the cluster.
 
 If you are new to `kubectl` and `kustomize`, the `kustomization.yaml` file will
 be your "main" entry point and the files referenced will contain partial
@@ -155,56 +165,194 @@ For more information on `kustomize` see the [official documentation here][kustom
 It is not necessary to install `kustomize` separately for this workshop, it is
 already bundled as part of `kubectl`.
 
-Use `spinsvc.yml` to deploy Spinnaker on the EKS cluster your instructor set up for you. Download the file. Update the last part of the s3 bucket name on L26 with your `namespace` name. You can find your `namespace` name on L10 of the Kubernetes config that you downloaded [earlier](#save-your-kubernetes-config-file).
+### Choose a version
+
+The first thing we'll change is the version of Spinnaker we want to deploy.
+Open `spinnakerservice.yml` and you'll see the following snippet of configuration:
 
 ```yaml
+apiVersion: spinnaker.io/v1alpha2
+kind: SpinnakerService
+metadata:
+  name: spinnaker
 spec:
-  # spec.spinnakerConfig - This section is how to specify configuration spinnaker
   spinnakerConfig:
-    # spec.spinnakerConfig.config - This section contains the contents of a deployment found in a halconfig .deploymentConfigurations[0]
+    # ------- Main config section, equivalent to "~/.hal/config" from Halyard
     config:
-      version: 1.21.0
-      persistentStorage:
-        persistentStoreType: s3
-        s3:
-          bucket: gardening-days-FIXME # replace with gardening-days-<your-namespace>
-          rootFolder: front50
+      version: 2.21.0            # Spinnaker version to deploy
+# More configuration below this line.
 ```
 
-For example, if your `namespace` is "aimee", change `gardening-days-FIXME` to `gardening-days-aimee` in the `s3:bucket` section.
+In order to change the version of Spinnaker you are using, modify the `version`
+key to match a release. At the time of writing `1.22.2` is
+the most current version. We will replace `2.21.0` in the config above with
+`1.22.2`. You can find the most up to date Spinnaker versions by visiting
+the [Spinnaker releases page](https://spinnaker.io/community/releases/versions/).
 
 Save the file.
 
-Export your KUBECONFIG file and `kubectl apply` the `spinsvc.yaml` custom resource definition to install Spinnaker. _You only have access to your namespace, so you do not need to include the `-n <namespace>` parameter._
+### Update your namespace
 
-```bash
-kubectl --kubeconfig ~/.kube/<kube-config-file-name>.yaml apply -f <spinnaker-service-file>.yaml
+If you are following along with the workshop live you will need to make sure
+that Kustomize knows about your namespace, otherwise the deployment will fail.
+
+Open `kustomization.yml` and modify the `namespace` key to match your username.
+For example, if your username is `workshop-user`, then you would update the
+file to look like the following example:
+
+```yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: workshop-user
+
+# More configuration below.
 ```
 
-For example:
+*Note:* If you see a `NOTE` comment about updating ClusterRoleBinding namespaces,
+it is safe to ignore for this workshop. We will provide our own service account
+in a later section.
 
-```bash
-kubectl --kubeconfig ~/.kube/garden.yaml apply -f spinsvc.yaml
+### Update Your Kubernetes Service Account
+
+Clouddriver is the Spinnaker service that interacts with Kubernetes as well as
+other cloud providers to execute your deployments. In order for it to function
+within this development environment we will need to make sure that it is
+running with the same service account that you are using to access the cluster.
+
+Open the `./accounts/kubernetes/patch-kube.yml` file.
+
+Inside of the Kubernetes provider config you should see a `namespaces` key.
+Update this value to contain the namespace that you are working in for the
+workshop. For example, if your namespace is called `workshop-user` then you will
+modify this key to look like the following:
+
+```yaml
+#-----------------------------------------------------------------------------------------------------------------
+# Example configuration for adding kubernetes accounts to spinnaker.
+#
+# Documentation: https://docs.armory.io/docs/spinnaker-user-guides/kubernetes-v2/
+#-----------------------------------------------------------------------------------------------------------------
+apiVersion: spinnaker.io/v1alpha2
+kind: SpinnakerService
+metadata:
+  name: spinnaker
+spec:
+  validation:
+    providers:
+      kubernetes:
+        enabled: true    # Default: true. Indicate if operator should do connectivity checks to configured kubernetes accounts before applying the manifest
+  spinnakerConfig:
+    config:
+      providers:
+        kubernetes:
+          enabled: true
+          primaryAccount: spinnaker
+          accounts:
+          # Account for Spinnaker's own kubernetes cluster (Optional).
+          - name: spinnaker
+            serviceAccount: true             # When true, Spinnaker will attempt to authenticate against Kubernetes using a Kubernetes service account. This only works when Spinnaker is deployed in the same Kubernetes cluster. Read more about service accounts here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/.
+            providerVersion: V2
+            permissions: {}
+            dockerRegistries: []
+            cacheThreads: 1                  # Number of caching agents for this kubernetes account. Each agent handles a subset of the namespaces available to this account. By default, only 1 agent caches all kinds for all namespaces in the account.
+            namespaces:
+              - workshop-user
+            # Additional config below.
+```
+
+At the bottom of the file you will notice a `service-settings` configuration
+block that defines the service account name Clouddriver will use. Change this
+value to the name of the service account that you were given. For example, if
+your service account is `workshop-user`, then you would change `spin-sa` in the
+following config block to `workshop-user`
+
+```yaml
+    # Needed for Kubernetes accounts of type "serviceAccount: true"
+    service-settings:
+      clouddriver:
+        kubernetes:
+          serviceAccountName: workshop-user # <- this should be your service account name.
+```
+
+Save the file.
+
+### Configure Minio
+
+Spinnaker requires an object storage provider in order to save things like
+application and pipeline configuration. The template repository that you are
+using for this workshop provides pre-baked configuration for Minio, an S3
+compatible object store that can run inside the Kubernetes cluster for this
+workshop. In order to configure it properly we need to create an access key.
+This repository also comes with some utility shell scripts that can create
+and manage secrets for us within the cluster.
+
+Change the name of the `./secrets/secrets-example.env` file to
+`./secrets/secrets.env`. Then, open `./secrets/secrets.env` and update the
+`minioAccessKey` value to any string with more than eight characters as in
+the following example:
+
+```config
+#-------------------------------------------------------------------------------------------
+# Key-value pairs for secrets to store in Kubernetes.
+#
+# Reference secrets in spinnaker config files like this (not all fields support secrets):
+# encrypted:k8s!n:spin-secrets!k:<secret key>
+#-------------------------------------------------------------------------------------------
+
+minioAccessKey=somerandomstringlongerthaneightcharacters
+# More secrets defined below this line.
+```
+
+Save the file.
+
+### Deploy Spinnaker
+
+We are now ready to deploy our cluster. In order to build a complete
+`SpinnakerService` configuration and ensure secrets are created we will use
+the `./deploy.sh` helper script provided with the template repository.
+For this command to function throughout the rest of this workshop, export the
+`KUBECONFIG` variable to point to your
+[workshop credentials file](#save-your-kubernetes-file):
+
+```shell
+# In BASH and ZSH shells, you can export like so:
+export KUBECONFIG=~/.kube/garden.yaml
+```
+
+Then, deploy using the helper script. Make sure to specify the `SPIN_FLAVOR`
+variable to make sure you install the open source version of Spinnaker:
+
+```shell
+SPIN_FLAVOR=oss ./deploy.sh
+```
+
+If you see errors running this script you can also run the apply command
+manually like so:
+
+```shell
+kubectl --kubeconfig ~/.kube/garden.yaml apply -k .
 ```
 
 Check the status of the Spinnaker pods:
 
 ```bash
- kubectl --kubeconfig ~/.kube/garden.yaml get pods
- ```
+kubectl --kubeconfig ~/.kube/garden.yaml get pods
+```
 
- You should see output similar to the following:
+You should see output similar to the following:
 
- ```bash
- NAME                                READY   STATUS              RESTARTS   AGE
-spin-clouddriver-7fb7bf898d-8cl8r   0/1     Running             0          22s
-spin-deck-7dccfc7b78-kvhhw          1/1     Running             0          22s
-spin-echo-6785784d68-zpwbz          0/1     Running             0          22s
-spin-front50-75dcbc8cf7-jsr4k       0/1     Running             0          22s
-spin-gate-85c85856c5-rm7kt          0/1     Running             0          22s
-spin-orca-65d4c5848f-qw748          0/1     Running             0          22s
-spin-redis-677f644ff-kt6qk          1/1     Running             0          22s
-spin-rosco-79b55d5c99-zkq4w         0/1     ContainerCreating   0          22s
+```bash
+NAME                                READY   STATUS    RESTARTS   AGE
+minio-0                             1/1     Running   0          27m
+spin-clouddriver-7569597b8b-zbw6c   1/1     Running   0          27m
+spin-deck-7777b5d98b-w7bcl          1/1     Running   0          27m
+spin-echo-5c9db8d898-b9pkb          1/1     Running   0          27m
+spin-front50-59f8695cd5-xtw4c       1/1     Running   0          27m
+spin-gate-bfd4c488c-hn45h           1/1     Running   0          27m
+spin-orca-784b867dd8-pz6js          1/1     Running   0          27m
+spin-redis-6745f98fb9-fxj7l         1/1     Running   0          27m
+spin-rosco-5b69d6556-9dgxx          1/1     Running   0          27m
 ```
 
 ## Port forward Gate and Deck services
@@ -323,4 +471,4 @@ You can access code for this section in this
 [kubectl]: https://kubernetes.io/docs/reference/kubectl/overview/
 [fork]: https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/fork-a-repo
 [clone]: https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository
-[kustomize]: 
+[kustomize]: https://kubernetes-sigs.github.io/kustomize/guides/bespoke/
