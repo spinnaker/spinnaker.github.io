@@ -31,7 +31,7 @@ and interact with your remote Spinnaker cluster
 ## Software
 
 * [IntelliJ IDEA](https://www.jetbrains.com/idea/) Community Edition, which comes bundled with Gradle and Groovy
-  * While you may choose an editor of your choice, this walkthrough will assume IntelliJ
+  * While you may choose an editor of your choice, this walkthrough assumes you are using IntelliJ
 * [Java Development Kit](https://adoptopenjdk.net/), 11
 * [Yarn](https://classic.yarnpkg.com/en/docs/install#mac-stable) for building and running Deck
 * [kubectl] for managing your Kubernetes cluster
