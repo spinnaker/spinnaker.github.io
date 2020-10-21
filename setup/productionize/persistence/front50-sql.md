@@ -123,7 +123,7 @@ The following steps were taken to live migrate Front50 at Netflix from S3 to SQL
 5. Verify that writes are happening against SQL and S3 (search for `CompositeStorageService`).
 6. Enable reads against SQL with `spinnaker.migration.compositeStorageService.reads.primary: true`.
 7. Verify reads are happening against SQL (search for `CompositeStorageService`).
-8. Disable reads against S3 with `spinnaker.migration.compositeStorageService.reads.primary: false`.
+8. Disable reads against S3 with `spinnaker.migration.compositeStorageService.reads.previous: false`.
 9. Diable the migrator with `spinnaker.migration.enabled: false`.
 
 To ensure safety, we migrated over the course of a week. 
