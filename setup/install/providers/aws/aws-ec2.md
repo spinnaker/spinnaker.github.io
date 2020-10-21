@@ -357,6 +357,9 @@ hal config provider aws edit --access-key-id ${ACCESS_KEY_ID} \
 You can view the available configuration flags for the Spinnaker AWS provider within the
 the [Halyard command reference](/reference/halyard/commands#hal-config-provider-aws-account-add).
 
+### Additional feature config for AWS provider
+We recommend enabling [AWS Launch Templates](https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchTemplates.html) for your autoscaling groups to get the latest EC2 features. You can learn how to enable this within the [Launch Template Setup Guide](/setup/features/aws-launch-templates).
+
 ## Next steps
 
 Optionally, you can enable other AWS Providers:
