@@ -131,7 +131,7 @@ You can also build Orca using Gradle on the command line:
 
 ```bash
 cd orca
-./gradlew build
+./gradlew clean build -xcheck
 ```
 
 Build Deck via the command line:
