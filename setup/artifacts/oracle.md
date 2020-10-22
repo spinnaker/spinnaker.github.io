@@ -49,11 +49,7 @@ If you have enabled [Oracle Cloud provider](/setup/install/providers/oracle/) in
    
 ## Add Oracle Object Storage Artifact to Spinnaker
 
-First, make sure that artifact support is enabled:
-
-```bash
-hal config features edit --artifacts true
-```
+First, enable [artifact support](/reference/artifacts-with-artifactsrewrite//#enabling-artifact-support).
 
 Next, add an artifact account:
 

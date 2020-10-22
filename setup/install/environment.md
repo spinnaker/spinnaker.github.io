@@ -53,9 +53,9 @@ which you will install Spinnaker.
    This must be on a Kubernetes cluster. It does not have to be the same
    provider as the one you're using to deploy your applications.
 
-   * [Kubernetes (Manifest Based)](/setup/install/providers/kubernetes-v2)
+   * [Kubernetes](/setup/install/providers/kubernetes-v2)
 
-   We recommend at least 4 cores and 8GB of RAM available in the cluster where
+   We recommend at least 4 cores and 16GB of RAM available in the cluster where
    you will deploy Spinnaker.
 
 1. Make sure [`kubectl` is installed](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
@@ -82,6 +82,8 @@ for your Spinnaker services, setting the `initialDelaySeconds` to the upper boun
 
 The __Local Debian__ installation means Spinnaker will be downloaded and run on the
 single machine Halyard is currently installed on.
+
+We recommend at least 4 cores and 16GB of RAM.
 
 > **Note**: Local Debian installation requires Ubuntu 14.04 or 16.04.
 
@@ -126,6 +128,8 @@ For a short guide to getting up and running with developing Spinnaker, see the
 [developer setup guide](/guides/developer/getting-set-up).
 
 ### Prerequisites
+
+We recommend at least 4 cores and 16GB of RAM.
 
 #### Install local dependencies
 

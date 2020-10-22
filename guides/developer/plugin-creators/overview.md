@@ -3,18 +3,20 @@ layout: single
 title: "Overview"
 sidebar:
   nav: guides
+redirect-from: /guides/developer/plugin-creators/
 ---
 
-{% include alpha version="1.19.4" %}
+{% include alpha version="1.20.6" %}
 
+>Note: Spinnaker 1.19.x only supports backend plugins due to a bug in Deck.
 
 {% include toc %}
 
 
 # Requirements
 
-* Spinnaker v1.19.4+
-* Halyard 1.34+
+* Spinnaker v1.20.6
+* Halyard 1.36
 
 # Taxonomy
 
@@ -42,7 +44,8 @@ Spinnaker uses the [Plugin Framework for Java (PF4J)](https://github.com/pf4j/pf
 An extension point is an interface that extends `org.pf4j.ExtensionPoint` and is located in the `api` module of a service. Spinnaker exposes the following extension points:
 
 * Orca
-  - [SimpleStage](https://github.com/spinnaker/orca/blob/ab89a0d7f847205ccd62e70f8a714040a8621ee7/orca-api/src/main/java/com/netflix/spinnaker/orca/api/SimpleStage.java) for creating a custom pipeline stage
+  - [StageDefinitionBuilder](https://github.com/spinnaker/orca/blob/master/orca-api/src/main/java/com/netflix/spinnaker/orca/api/pipeline/graph/StageDefinitionBuilder.java) for creating a custom pipeline stage
+  - [Task](https://github.com/spinnaker/orca/blob/master/orca-api/src/main/java/com/netflix/spinnaker/orca/api/pipeline/Task.java) for creating a custom pipeline task to use in a custom pipeline stage
   - [PreconfiguredJobConfigurationProvider](https://github.com/spinnaker/orca/blob/master/orca-api/src/main/java/com/netflix/spinnaker/orca/api/preconfigured/jobs/PreconfiguredJobConfigurationProvider.java) for provisioning preconfigured Job stages
 
 * Echo
@@ -52,7 +55,7 @@ Look through the code or ask in the [Spinnaker Slack](https://join.spinnaker.io/
 
 ## Example ExtensionPoint plugin
 
-The [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin) creates a custom pipeline stage that waits a specified number of seconds before signaling success. Consult the [Pipeline Stage Plugin Walkthrough](/guides/developer/plugin-creators/stage-plugin-walkthrough/) for a detailed explanation of this plugin.
+The [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin) creates a custom pipeline stage that waits a specified number of seconds before signaling success. Consult the [Test a Pipeline Stage Plugin](/guides/developer/plugin-creators/deck-plugin/) guide for how to test this plugin using a local Spinnaker environment.
 
 # Interface (Non-ExtensionPoint) plugins
 

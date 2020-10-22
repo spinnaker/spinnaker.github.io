@@ -1,13 +1,13 @@
 ---
 layout: single
-title:  "Artifacts In Kubernetes (Manifest Based)"
+title:  "Artifacts In Kubernetes"
 sidebar:
   nav: reference
 ---
 
 {% include toc %}
 
-Artifacts play an important role in the Kubernetes Provider V2. Everything from
+Artifacts play an important role in the Kubernetes provider. Everything from
 the manifests you deploy, to the Docker images or ConfigMaps they reference
 can be expressed or deployed in terms of artifacts.
 

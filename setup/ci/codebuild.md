@@ -18,7 +18,26 @@ The AWS Codebuild stage requires Spinnaker 1.19 or later.
 
 ### AWS CodeBuild project
 
-You need to have an [AWS CodeBuild](https://aws.amazon.com/codebuild/) project.
+You need to have an [AWS CodeBuild](https://aws.amazon.com/codebuild/) project. To create a project,
+follow the instructions on how [to create a CodeBuild service role (AWS CLI)](https://docs.aws.amazon.com/codebuild/latest/userguide/setting-up.html#setting-up-service-role-cli).
+
+Next, run the following command (make sure you replace the service role with the one created and region of your own choice):
+
+```
+aws codebuild create-project \
+  --name spinnaker-project \
+  --source "type=GITHUB,location=https://github.com/aws-samples/aws-codebuild-samples.git" \
+  --artifacts "type=NO_ARTIFACTS" \
+  --environment "type=LINUX_CONTAINER,computeType=BUILD_GENERAL1_SMALL,image=aws/codebuild/standard:4.0" \
+  --service-role <YOUR_SERVICE_ROLE> \
+  --region <YOUR_AWS_REGION>
+```
+
+**Note:** The project created by the command above doesn't produce artifacts since `NO_ARTIFACTS` is specified for artifacts type.
+To create a project that generates artifacts, follow the instructions in the AWS
+[CodeBuild user guide](https://docs.aws.amazon.com/codebuild/latest/userguide/create-project.html).
+
+For more information about how to create a project to meet your needs, see the [use case based samples](https://docs.aws.amazon.com/codebuild/latest/userguide/use-case-based-samples.html) in the AWS CodeBuild documentation.
 
 ### IAM Role
 
@@ -86,7 +105,7 @@ To run an AWS CodeBuild build as part of a Spinnaker pipeline, perform the follo
   - Select the source artifact to use as the build source. If not specified, the source configured in the project is used.
   - Specify the [source version](https://docs.aws.amazon.com/codebuild/latest/APIReference/API_StartBuild.html#CodeBuild-StartBuild-request-sourceVersion).
   of the build source. If not specified, the latest version is used.
-  - Specify the buildspec file. If left blank, the buildspec configured in the project is used.
+  - Specify the [buildspec file](https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html). If left blank, the buildspec configured in the project is used.
   - Select secondary build sources. If not specified, the secondary sources configured in the project is used.
 
 4. (Optional) In the **Environment Configuration** section, you can specify the image tag or image digest that identifies the Docker image to use. If not specified, the image configured in the project is used. **Note:** As a prerequisite, follow this

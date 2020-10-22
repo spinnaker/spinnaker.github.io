@@ -36,10 +36,11 @@ TOKEN_FILE=
 ARTIFACT_ACCOUNT_NAME=my-gitlab-artifact-account
 ```
 
-First, make sure that artifact support is enabled:
+First, enable [artifact support](/reference/artifacts-with-artifactsrewrite//#enabling-artifact-support).
+
+Next, enable the GitLab artifact provider:
 
 ```bash
-hal config features edit --artifacts true
 hal config artifact gitlab enable
 ```
 

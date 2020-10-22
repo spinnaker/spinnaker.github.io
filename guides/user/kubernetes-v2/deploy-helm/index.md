@@ -11,14 +11,14 @@ Spinnaker surfaces a "Bake (Manifest)" stage to turn templates into manifests
 with the help of a templating engine. [Helm](https://helm.sh/) relies on the `helm template` command.
 For more details, see `helm template --help`.
 
-> Note: This stage is intended to help you package and deploy applications
+> __Note__: This stage is intended to help you package and deploy applications
 > that you own, and are actively developing and redeploying frequently.
 > It is not intended to serve as a one-time installation method for
 > third-party packages. If that is your goal, it's arguably better to call
 > `helm install` once when
 > bootstrapping your Kubernetes cluster.
 
-> Note: Make sure that you have configured [artifact support](/setup/artifacts)
+> __Note__: Make sure you configured [artifact support](/setup/artifacts)
 > in Spinnaker first. All Helm charts are fetched/stored as artifacts in
 > Spinnaker. Read more in the [reference pages](/reference/artifacts).
 
@@ -26,26 +26,26 @@ For more details, see `helm template --help`.
 
 When configuring the "Bake (Manifest)" stage, you can specify the following:
 
-* __The release name__ (required)
+* __Release name__ (required)
 
   The Helm release name for this chart. This determines the name of the
   artifact produced by this stage.
 
-> Note: this name will override any changes you make to the name
+> __Note__: this name will override any changes you make to the name
 > in the Produces Artifacts section.
 
-* __The template artifact__ (required)
+* __Template artifact__ (required)
 
   The Helm chart that you will be deploying, stored remotely as a
   `.tar.gz` archive. You can produce this by running `helm package
   /path/to/chart`. For more details, `helm package --help`.
 
-* __The release namespace__ (optional)
+* __Release namespace__ (optional)
 
   The Kubernetes namespace to install release into. If parameter is not
   specified default namespace will be used.
 
-> Note: Not all Helm charts contain namespace definitions in their manifests.
+> __Note__: Not all Helm charts contain namespace definitions in their manifests.
 > Make sure that your manifests contain the following code:
 
 {% raw %}
@@ -135,7 +135,7 @@ stage as shown here:
   image_path="./expected-artifact.png"
 %}
 
-> Note: Make sure to select "embedded-artifact" as the artifact account for
+> __Note__: Make sure to select "embedded-artifact" as the artifact account for
 > your base64 manifest set. This is required to translate the manifest set into
 > the format required by the deploy stage.
 

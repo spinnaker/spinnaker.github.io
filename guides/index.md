@@ -33,5 +33,5 @@ The following types of user guides are included:
   - [Pipelines](/guides/user/pipeline/)
   - [Tagging](/guides/user/tagging/)
   - [Custom instance links](/guides/user/instance-links/)
-  - [Kubernetes \(manifest based\)](/guides/user/kubernetes-v2/deploy-manifest/)
+  - [Kubernetes](/guides/user/kubernetes-v2/deploy-manifest/)
   - [Automated canary analysis \(Kayenta\)](/guides/user/canary/)
