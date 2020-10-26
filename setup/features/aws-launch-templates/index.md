@@ -19,7 +19,7 @@ This section summarizes the steps required to set up launch templates if you are
 ### New to AWS
 If you are new to Spinnaker or even just new to AWS in Spinnaker, we recommend immediately enabling launch template support for all applications. 
 
-1. Update `cloudriver.yml` to enable launch templates for all applications. 
+1. Update your clouddriver configuration file, usually `clouddriver.yml`, to enable launch templates for all applications. 
   ```yml
     aws.features.launch-templates.enabled: true
     aws.features.launch-templates.all-applications.enabled: true
@@ -41,7 +41,7 @@ If you are new to Spinnaker or even just new to AWS in Spinnaker, we recommend i
 ### Current AWS User
 If you already use AWS as a cloud provider in Spinnaker, we recommend migrating to launch templates. Since there may be pre-existing dependencies on launch configurations, we have created some rollout configurations you can utilize for testing and/or migration.
 
-1. Update `cloudriver.yml` to enable launch template support. 
+1. Update your clouddriver configuration file, usually `clouddriver.yml`, to enable launch template support. 
   ```yml
     aws.features.launch-templates.enabled: true
   ```
