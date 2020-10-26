@@ -800,6 +800,8 @@ community:
         url: /community/gardening/developing-plugins/
       - title: Slack Map
         url: /community/gardening/slack-map/
+      - title: Spinnaker Product Box Workshop & Voting
+        url: /community/gardening/spinnaker-product-box
   - title: Hacktoberfest
     url: /community/hacktoberfest/
 news:
