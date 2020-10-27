@@ -9,15 +9,15 @@ sidebar:
 
 Not sure where to get started contributing to Spinnaker? May we suggest these points-eligible contributions:
 
-- Hack on your team’s project as part of our [4 challenges!](hack-logistics.md/#hackathon-challenges)
+- Hack on your team’s project as part of our [challenges!](https://github.com/spinnaker-hackathon/gardening/blob/master/challenges.md)
 
 - Visit the [list of beginner-friendly Spinnaker issues](https://github.com/spinnaker/spinnaker/issues?q=is%3Aopen+is%3Aissue+label%3A%22beginner+friendly%22+). Each issue has a Slack channel referencing the issue number (e.g. #gardening-team-issue-5357). Check the channel to collaborate.
 
-- Create a custom-stage plugin and familiarize yourself with using the framework. This uses the new SimpleStage extension point to add your custom pipeline stage to Spinnaker. Read more in the [Plugin Creators Guide](https://www.spinnaker.io/guides/developer/plugin-creators/).
+- Create a custom-stage plugin and familiarize yourself with using the framework. This uses the new StageDefinitionBuilder extension point to add your custom pipeline stage to Spinnaker. Read more in the [Plugin Creators Guide](https://www.spinnaker.io/guides/developer/plugin-creators/).
 
 - Stop by the #sig-documentation Slack channel if you want to help out with work related to the spinnaker.io website refresh!
 
-- Open issues, comment on issues and PRs to provide context, and review PRs in [the Spinnaker organization](https://github.com/spinnaker).
+- Open [issues](https://github.com/spinnaker/spinnaker/issues), comment on issues and PRs to provide context, and review PRs in the [Spinnaker Project repo](https://github.com/spinnaker/spinnaker).
 
 - Add quality answers to [questions tagged "Spinnaker" on StackOverflow](https://stackoverflow.com/questions/tagged/spinnaker). End your answers with the suggestion that users [join Spinnaker Slack](https://join.spinnaker.io). To get points for your answers, share question links in the __[#gardening-general](https://spinnakerteam.slack.com/archives/CV4A90DPF)__ channel and indicate your username.
 
@@ -25,7 +25,7 @@ Not sure where to get started contributing to Spinnaker? May we suggest these po
 
 - Share a Spinnaker news item, tutorial, or tweet link in #spinnaker-news on [Spinnaker Slack](https://join.spinnaker.io) to help us build the next edition of [Flying, the Spinnaker Newsletter](/news/latest/). [Sign up for the newsletter](/news/), too!
 
-- - Create a video, tutorial, or stream on something you know how to do in Spinnaker, even if it’s really small. We have a great need for more short (0-5 minutes) training videos for Spinnaker, especially on the basics. [Cloudapp](https://www.getcloudapp.com/) is really useful for quickly making training videos. Share a link to your content in [#gardening-general](https://spinnakerteam.slack.com/archives/CV4A90DPF)with a note that you created it.
+- Create a video, tutorial, or stream on something you know how to do in Spinnaker, even if it’s really small. We have a great need for more short (0-5 minutes) training videos for Spinnaker, especially on the basics. [Cloudapp](https://www.getcloudapp.com/) is really useful for quickly making training videos. Share a link to your content in [#gardening-general](https://spinnakerteam.slack.com/archives/CV4A90DPF)with a note that you created it.
 
 - Sign up to receive Flying, the Spinnaker Newsletter.
 
@@ -36,3 +36,5 @@ Not sure where to get started contributing to Spinnaker? May we suggest these po
 - Run through a [Spinnaker codelab](/guides/tutorials/codelabs/). Document and file any issues you encounter [here](https://github.com/spinnaker/spinnaker.github.io/issues/) when you come across them. Share your progress in [#gardening-general](https://spinnakerteam.slack.com/archives/CV4A90DPF).
 
 - Drop in to `#sig-` channels and ask what they are working on to learn more.
+
+- Host a Gardening Days event! Anyone is welcome to host an activity for 15 minutes or more. All times and topics that adhere to our guidelines are welcome! Please post in [#gardening-general](https://spinnakerteam.slack.com/archives/CV4A90DPF) and mention @gardening-admin to be added to the schedule.

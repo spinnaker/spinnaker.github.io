@@ -60,14 +60,17 @@ This configuration is your baseline for Orca to talk to SQL, in `orca.yml`.
 ```yaml
 sql:
   enabled: true
-  connectionPool:
-    jdbcUrl: jdbc:mysql://localhost:3306/orca
-    user: orca_service
-    password: hunter2
-    connectionTimeout: 5000
-    maxLifetime: 30000
-    # MariaDB-specific:
-    maxPoolSize: 50
+  connectionPools:
+    default:
+      default: true
+      # additional connection pool parameters are available here,
+      # for more detail and to view defaults, see:
+      # https://github.com/spinnaker/kork/blob/master/kork-sql/src/main/kotlin/com/netflix/spinnaker/kork/sql/config/ConnectionPoolProperties.kt
+      jdbcUrl: jdbc:mysql://localhost:3306/orca
+      user: orca_service
+      password: hunter2
+      # MariaDB-specific:
+      maxPoolSize: 50
   migration:
     jdbcUrl: jdbc:mysql://localhost:3306/orca
     user: orca_migrate

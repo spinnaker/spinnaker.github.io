@@ -513,6 +513,13 @@ guides:
             url: /guides/developer/plugin-creators/compatibility-testing/
           - title: Plugin Project Configuration
             url: /guides/developer/plugin-creators/project-config/
+      - title: Plugin Core Contributor Guide
+        collapsed: true
+        children:
+          - title: Getting Started
+            url: /guides/developer/plugin-core-developers
+          - title: Backend Extension Points
+            url: /guides/developer/plugin-core-developers/backend
   - title: Operator How-Tos
     collapsed: true
     children:
@@ -790,20 +797,16 @@ community:
     children:
       - title: Schedule
         url: /community/gardening/schedule/
-      - title: Hackathon Logistics
-        url: /community/gardening/hack-logistics/
       - title: What to Hack
         url: /community/gardening/what-to-hack/
-      - title: Slack Map
-        url: /community/gardening/slack-map/
-      - title: New Spinnaker Contribution Walkthrough Session
-        url: /community/gardening/spin-contrib/
       - title: Dev Environments
         url: /community/gardening/dev-environment/
+      - title: New Spinnaker Contribution Walkthrough Session
+        url: /community/gardening/spin-contrib/
       - title: Developing Plugins
         url: /community/gardening/developing-plugins/
-      - title: Prizes
-        url: /community/gardening/prizes/
+      - title: Slack Map
+        url: /community/gardening/slack-map/
   - title: Hacktoberfest
     url: /community/hacktoberfest/
 news:

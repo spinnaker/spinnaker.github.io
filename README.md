@@ -1,7 +1,19 @@
 
-## Jekyll Installation
-Jekyll runs on Ruby, and running multiple versions of Ruby on a single system is apparently difficult. These instructions install [`rbenv`](https://github.com/rbenv/rbenv), which makes it easy to install and switch to a specific Ruby version.
+## Local preview
+The easiest way to preview and test your changes to Spinnaker.io is to run your branch locally with Docker, via the [dockerfile](https://github.com/spinnaker/spinnaker.github.io/blob/master/Dockerfile) included in the root directory.
 
+In the root directory of your fork, run:
+```sh
+docker build --tag spinnaker/spinnaker.github.io-test .
+docker run -it --rm --mount "type=bind,source=$(pwd),target=/code" \
+    -p 4000:4000 spinnaker/spinnaker.github.io-test --incremental
+```
+Navigate to [http://localhost:4000](http://localhost:4000) to see your locally generated page.
+
+## Jekyll method
+Alternatively, set up Jekyll and use it to run the site locally. It runs on Ruby, and running multiple versions of Ruby on a single system can create challenges. These instructions install [`rbenv`](https://github.com/rbenv/rbenv), which makes it easy to install and switch to a specific Ruby version.
+
+### Installation
 1. (Optional) Create and run from a fresh VM instance, and forward the Jekyll default port (4000):
     1. `gcloud compute instances create jekyll --image-project=ubuntu-os-cloud --image-family=ubuntu-1804-lts --machine-type=n1-standard-1`
     1. `gcloud compute ssh jekyll --ssh-flag="-L 4000:localhost:4000"`
@@ -31,23 +43,15 @@ Jekyll runs on Ruby, and running multiple versions of Ruby on a single system is
     gem install bundler
     bundle install
     ```
-
 Your system is now ready for local preview of the documentation site.
 
-## Local Preview
+### Local preview
 1. Start Jekyll server
     1. `bundle exec jekyll serve --watch`
 1. (Optional): Add `--incremental` to speed up page generation when working on one page
     1. `bundle exec jekyll serve --watch --incremental`
 1. Navigate to [http://localhost:4000](http://localhost:4000) to see your locally generated page.
 
-You can do the same within Docker using the included Dockerfile (the volume mount will still allow changes to files to be visible to Jekyll):
-
-```sh
-docker build --tag spinnaker/spinnaker.github.io-test .
-docker run -it --rm --mount "type=bind,source=$(pwd),target=/code" \
-    -p 4000:4000 spinnaker/spinnaker.github.io-test --incremental
-```
 
 ### (Optional) Host the website on Amazon S3
 
