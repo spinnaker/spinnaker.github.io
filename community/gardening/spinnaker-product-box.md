@@ -5,6 +5,8 @@ sidebar:
   nav: community
 ---
 ## Presented by Capital Carbon Consulting
+> A "Product Box" is one of the experiential learning activities which can help the team identify the product values. We assume that the product will be packaged in a box for delivery to the customer and we will design this box together
+
 - This is a 2.5-hour challenge to simulate a Product Box for Spinnaker
 - A DevOps Coach will guide this gamification challenge with step wise methodology, bringing the DevOps way to products
 - Best for Product Managers, Product Teams including UX Designers, Architects, Dev-Ops, Engineers, Cross functional teams
