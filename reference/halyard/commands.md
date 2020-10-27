@@ -1618,9 +1618,7 @@ hal config artifact gitrepo account add ACCOUNT [parameters]
  * `--ssh-private-key-passphrase`: (*Sensitive data* - user will be prompted on standard input) Passphrase for encrypted private key
  * `--ssh-trust-unknown-hosts`: Setting this to true allows Spinnaker to authenticate with unknown hosts
  * `--token`: (*Sensitive data* - user will be prompted on standard input) Git token
- * `--token-file`: File containing a Git authentication token
  * `--username`: Git username
- * `--username-password-file`: File containing "username:password" to use for Git authentication
 
 
 ---
@@ -1659,9 +1657,7 @@ hal config artifact gitrepo account edit ACCOUNT [parameters]
  * `--ssh-private-key-passphrase`: (*Sensitive data* - user will be prompted on standard input) Passphrase for encrypted private key
  * `--ssh-trust-unknown-hosts`: Setting this to true allows Spinnaker to authenticate with unknown hosts
  * `--token`: (*Sensitive data* - user will be prompted on standard input) Git token
- * `--token-file`: File containing a Git authentication token
  * `--username`: Git username
- * `--username-password-file`: File containing "username:password" to use for Git authentication
 
 
 ---
