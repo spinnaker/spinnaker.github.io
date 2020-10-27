@@ -17,7 +17,7 @@ repository can be cloned using the Git CLI.
 
 ## Git Repo artifact in the UI
 
-The pipeline UI exposes the following fields for the GitHub file artifact:
+The pipeline UI exposes the following fields for the Git Repo file artifact:
 
 | Field | Explanation |
 | ------|--------------|
