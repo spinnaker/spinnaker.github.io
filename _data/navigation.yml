@@ -513,6 +513,13 @@ guides:
             url: /guides/developer/plugin-creators/compatibility-testing/
           - title: Plugin Project Configuration
             url: /guides/developer/plugin-creators/project-config/
+      - title: Plugin Core Contributor Guide
+        collapsed: true
+        children:
+          - title: Getting Started
+            url: /guides/developer/plugin-core-developers
+          - title: Backend Extension Points
+            url: /guides/developer/plugin-core-developers/backend
   - title: Operator How-Tos
     collapsed: true
     children:
