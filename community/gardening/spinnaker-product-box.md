@@ -9,7 +9,7 @@ sidebar:
 
 - This is a 2.5-hour challenge to simulate a Product Box for Spinnaker
 - A DevOps Coach will guide this gamification challenge with step wise methodology, bringing the DevOps way to products
-- Best for Product Managers, Product Teams including UX Designers, Architects, Dev-Ops, Engineers, Cross functional teams
+- Best for product teams including product managers, UX designers, architects, DevOps, engineers, and cross-functional teams
 - This includes integration of product inception, user research techniques & simulation of user stories along with metrics
 
 ---
