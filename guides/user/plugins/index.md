@@ -230,6 +230,17 @@ The plugin developer should provide configuration details in YAML format. If not
 1. [Delete](https://spinnaker.io/reference/halyard/commands/#hal-plugins-delete) the plugin by executing `hal plugins delete <unique-plugin-id>`.
 1. Restart Spinnaker
 
+## Plugin V2 Configuration Changes
+As of Spinnaker 1.23.0, listing extensions has been deprecated and configuration has been simplified. Plugin extension configurations have been moved and are now nested under the plugin itself, eg:
+```
+spinnaker:
+  extensibility:
+    plugins:
+      myPlugin:
+        config:
+          defaultMaxWaitTime: 7
+```
+
 ## List, edit, and delete plugins
 
 See the Halyard [commands](https://spinnaker.io/reference/halyard/commands/#hal-plugins) reference to list, edit, or delete plugins.
