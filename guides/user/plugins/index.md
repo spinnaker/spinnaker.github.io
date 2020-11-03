@@ -54,6 +54,7 @@ Spinnaker environment:
 
 _Note: Your plugins.json and repository.json files must be in a location that Spinnaker can access. Token authentication to private repositories is not supported. Consider storing your plugins and repository files in an AWS S3 bucket (or similar) instead of a private repository._
 
+
 When you configure a repository, you tell Spinnaker where to find the `plugins.json` file that defines the plugins you want to use.  Each plugin repository entry in Spinnaker consists of a unique name and a URL.
 
 If you want a repository to point to a single `plugins.json` file, you add it like this:
@@ -131,6 +132,8 @@ After you have added your plugin repository, you can add your plugin to Spinnake
 hal plugins add <unique-plugin-id> --extensions=<extension-name> \
 --version=<version> --enabled=true
 ```
+
+_Note: As of Spinnaker v1.23.0, specifying extensions is no longer required. Plugin configurations have been moved and are nested under the plugin ID. See an example of the changes [here](#plugin-v2-configuration-changes)_
 
 The plugin distributor should provide you with the `unique-plugin-id`, `extensions`, and `version` values as well as any plugin configuration details. If you have to hunt for these values, you can find `unique-plugin-id` and `version` in the `plugins.json` file, but you have to look at the code to find the value for `extensions`. Search for the deprecated `@ExtensionConfiguration` or the current `@PluginConfiguration` annotation. Both take a value, which is the extension name.
 
@@ -229,6 +232,19 @@ The plugin developer should provide configuration details in YAML format. If not
 1. Paste the plugin configuration into the relevant service's local file. Make sure configuration is in the format detailed above.
 1. [Delete](https://spinnaker.io/reference/halyard/commands/#hal-plugins-delete) the plugin by executing `hal plugins delete <unique-plugin-id>`.
 1. Restart Spinnaker
+
+## Plugin V2 Configuration Changes
+As of Spinnaker 1.23.0, listing extensions has been deprecated and configuration has been simplified. Plugin extension configurations have been moved and are now nested under the plugin itself, eg:
+```
+spinnaker:
+  extensibility:
+    plugins:
+      <unique-plugin-id>:
+        id: <unique-plugin-id>
+        enabled: <true-false>
+        version: <version>
+        config: {}
+```
 
 ## List, edit, and delete plugins
 
