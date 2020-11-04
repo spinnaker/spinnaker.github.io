@@ -40,6 +40,10 @@ Halyard runs on...
 * Debian 8 or 9
 * macOS (tested on 10.13 High Sierra only)
 
+Prerequisite:
+
+* Halyard requires Java to be installed
+
 1. Get the latest version of Halyard:
 
    For Debian/Ubuntu:
