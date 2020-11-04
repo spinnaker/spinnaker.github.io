@@ -70,6 +70,9 @@ spinnaker:
         url: https://raw.githubusercontent.com/spinnaker-plugin-examples/examplePluginRepository/master/plugins.json
 ```
 
+>Note: As of Spinnaker 1.23.0, listing extensions has been deprecated and configuration has been simplified. Plugin extension configurations have been moved and are now nested under the plugin itself. 
+> See an example of the changes [here](../#plugin-v2-configuration-changes)
+
 
 ## Add `deck-proxy` to gate-local.yml
 
