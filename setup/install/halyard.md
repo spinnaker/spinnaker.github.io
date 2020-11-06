@@ -42,7 +42,7 @@ Halyard runs on...
 
 Prerequisite:
 
-* Halyard requires Java to be installed
+* Halyard requires Java 11 to be installed
 
 1. Get the latest version of Halyard:
 
