@@ -50,7 +50,7 @@ _The instructions for this method are in beta. Pull requests welcome!_
          -v ~/.hal:/home/spinnaker/.hal \
          -v ~/.kube:/home/spinnaker/.kube \
          -it \
-         gcr.io/spinnaker-marketplace/halyard:stable
+         us-docker.pkg.dev/spinnaker-community/docker/halyard:stable
        ```
    - Use the [Spinnaker for Google Cloud Engine](https://cloud.google.com/docs/ci-cd/spinnaker/spinnaker-for-gcp) solution, which installs Spinnaker to Google Kubernetes Engine.
    - Consult the installation guide for [Amazon Kubernetes Service](https://aws.amazon.com/blogs/opensource/continuous-delivery-spinnaker-amazon-eks/)
