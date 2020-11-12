@@ -19,7 +19,7 @@ Software for development:
 * [Yarn](https://classic.yarnpkg.com/en/docs/install#mac-stable) for building and running Deck
 * [Multipass](https://multipass.run/), 1.3.0
 * [IntelliJ IDEA](https://www.jetbrains.com/idea/), 2020.1.2, with the JetBrains Kotlin plugin
-* [Spinnaker](https://www.spinnaker.io/community/releases/versions/) 1.20.6 and [Halyard](https://console.cloud.google.com/gcr/images/spinnaker-marketplace/GLOBAL/halyard) 1.36.0, installed using [Minnaker](https://github.com/armory/minnaker), 0.0.20
+* [Spinnaker](https://www.spinnaker.io/community/releases/versions/) 1.20.6 and [Halyard](https://console.cloud.google.com/artifacts/docker/spinnaker-community/us/docker/halyard) 1.36.0, installed using [Minnaker](https://github.com/armory/minnaker), 0.0.20
 
 Specific to this guide:
 
