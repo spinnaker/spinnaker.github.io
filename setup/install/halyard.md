@@ -40,6 +40,10 @@ Halyard runs on...
 * Debian 8 or 9
 * macOS (tested on 10.13 High Sierra only)
 
+Prerequisite:
+
+* Halyard requires Java 11 to be installed
+
 1. Get the latest version of Halyard:
 
    For Debian/Ubuntu:
@@ -123,7 +127,7 @@ installed](https://docs.docker.com/engine/installation/){:target="\_blank"}.
        --name halyard --rm \
        -v ~/.hal:/home/spinnaker/.hal \
        -it \
-       gcr.io/spinnaker-marketplace/halyard:stable
+       us-docker.pkg.dev/spinnaker-community/docker/halyard:stable
    ```
 
    This runs as a foreground process in your current shell. This is useful
@@ -159,7 +163,7 @@ Reference](/reference/halyard/commands).
 1. Fetch the latest Halyard version.
 
    ```bash
-   docker pull gcr.io/spinnaker-marketplace/halyard:stable
+   docker pull us-docker.pkg.dev/spinnaker-community/docker/halyard:stable
    ```
 
 1. Stop the running Halyard container.
@@ -173,7 +177,7 @@ Reference](/reference/halyard/commands).
        --name halyard --rm \
        -v ~/.hal:/home/spinnaker/.hal \
        -it \
-       gcr.io/spinnaker-marketplace/halyard:stable
+       us-docker.pkg.dev/spinnaker-community/docker/halyard:stable
    ```
 
    This re-starts the container using the updated image you got in step 1.
