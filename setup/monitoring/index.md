@@ -25,7 +25,7 @@ Spinnaker currently supports three specific third-party systems:
 and [Stackdriver](http://www.stackdriver.com/){:target="\_blank"}. The daemon is
 extensible so that it should be straightforward to add other systems as well.
 In fact, each of the supported systems was provided using the daemon's extension
-mechanisms -- there are not "native" systems.
+mechanisms -- there are no "native" systems.
 
 You can also use the microservice HTTP endpoint `/spectator/metrics`
 directly to scrape metrics yourself. The JSON document structure is
