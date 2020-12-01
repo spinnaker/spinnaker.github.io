@@ -7,12 +7,13 @@ sidebar:
 
 {% include toc %}
 
-> Please note that you should only proceed with this if you have [AWS EC2](/setup/install/providers/aws/aws-ec2) configured as a cloud provider.
+> Please note that you should only proceed with this if you have [AWS EC2](/setup/install/providers/aws/aws-ec2) configured as a cloud provider. This features requires version 1.23.
 
 AWS uses [launch templates](https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchTemplates.html) to specify instance configuration information. Launch templates are the successor of launch configurations. This means that any new instance configuration feature from AWS will only be supported by launch templates. 
 
 Spinnaker still supports launch configurations for backwards compatbility, but recommends enabling launch templates to access any new features that AWS adds. 
 
+<!-- The New to AWS section is valid in version 2.24 and later>
 ## Setup Steps
 This section summarizes the steps required to set up launch templates if you are new to using AWS in Spinnaker or if you have already been using AWS as one of your cloud providers. 
 
@@ -41,38 +42,35 @@ If you are new to Spinnaker or even just new to AWS in Spinnaker, we recommend i
 ### Current AWS User
 If you already use AWS as a cloud provider in Spinnaker, we recommend migrating to launch templates. Since there may be pre-existing dependencies on launch configurations, we have created some rollout configurations you can utilize for testing and/or migration.
 
+
 1. Update your clouddriver configuration file, usually `clouddriver.yml`, to enable launch template support. 
   ```yml
     aws.features.launch-templates.enabled: true
   ```
 1. Review the [rollout configurations](#rollout-configuration) and determine which of these you can *temporarily* utilize for your rollout. If you do not need to rollout, stop here and follow the [new AWS users](#new-to-aws) steps instead. 
-1. Update `coulddriver.yml`. This step can be repeated as needed throughout your rollout. This is an example config where launch templates is rolled out to two applications in production and all of the test account. It also excludes one application completely:
+-->
+1. Update `clouddriver.yml`. This step can be repeated as needed throughout your rollout. This is an example config where launch templates is rolled out to two applications in production and all of the test account.
   ```yml
     aws.features.launch-templates.enabled: true
     aws.features.launch-templates.allowed-applications: "myapp:prod:us-east-1,anotherapp:prod:us-east-1"
     aws.features.launch-templates.allowed-accounts: "test"
-    aws.features.launch-templates.excluded-applications: "dangerousapp"
-    aws.features.launch-templates.all-applicaitons.enabled: false
   ```
 1. Read through the available [features](#feature-configuration) to determine which make sense for your use cases. 
-1. Update AWS settings in deck to include the features you identified. Ensure that `enableLaunchTemplates` is `true`. 
+1. Update AWS settings in `settings-local.js` to include the features you identified. Ensure that `enableLaunchTemplates` is `true`. 
   ```js
-    providers: {
-      aws: {
-        serverGroups: {
-          enableLaunchTemplates: true,
-          enableIPv6: true,
-          enableIMDSv2: true,
-        }
-      }
-    }
+  window.spinnakerSettings.providers.aws.serverGroups = {
+    enableLaunchTemplates: true,
+    enableIPv6: true,
+    enableIMDSv2: true,
+  };
   ```
+<!-- The New to AWS section is valid in version 2.24 and later>
 1. When you are ready for a complete rollout, enable launch templates for all applications and clean up rollout config in `clouddriver.yml`. 
     ```yml
     aws.features.launch-templates.enabled: true
     aws.features.launch-templates.all-applications.enabled: true
   ```
-
+-->
 ## Rollout Configuration
 If you already use AWS, then your applications may have some dependencies on launch configurations that prevent simple feature enabling. The configuration options beflow were created to aid with testing or a rollout period. Feel free to use whatever combination is best for you. If you would prefer to **skip a rollout**, use the configuration in [New to AWS](#new-to-aws).
 
