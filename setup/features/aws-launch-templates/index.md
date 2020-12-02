@@ -64,7 +64,7 @@ If you already use AWS as a cloud provider in Spinnaker, we recommend migrating 
     enableIMDSv2: true,
   };
   ```
-<!-- The New to AWS section is valid in version 2.24 and later>
+<!-- The New to AWS section is valid in version 2.24 and later
 1. When you are ready for a complete rollout, enable launch templates for all applications and clean up rollout config in `clouddriver.yml`. 
     ```yml
     aws.features.launch-templates.enabled: true
@@ -148,4 +148,3 @@ Once launch templates are enabled in clouddriver, a new set of features are unlo
     </tr>
   </tbody>
 </table>
-
