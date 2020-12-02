@@ -72,7 +72,8 @@ If you already use AWS as a cloud provider in Spinnaker, we recommend migrating 
   ```
 -->
 ## Rollout Configuration
-If you already use AWS, then your applications may have some dependencies on launch configurations that prevent simple feature enabling. The configuration options beflow were created to aid with testing or a rollout period. Feel free to use whatever combination is best for you. If you would prefer to **skip a rollout**, use the configuration in [New to AWS](#new-to-aws).
+If you already use AWS, then your applications may have some dependencies on launch configurations that prevent simple feature enabling. The configuration options beflow were created to aid with testing or a rollout period. Feel free to use whatever combination is best for you. 
+<!--If you would prefer to **skip a rollout**, use the configuration in [New to AWS](#new-to-aws).-->
 
 <table>
   <thead>
