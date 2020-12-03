@@ -307,8 +307,6 @@ guides:
             url: /guides/tutorials/codelabs/oci-source-to-prod/
           - title: Continuous Delivery to Kubernetes on Oracle
             url: /guides/tutorials/codelabs/oracle-kubernetes-source-to-prod/
-          - title: Continuous Delivery with Containers on GCP
-            url: /guides/tutorials/codelabs/gcp-kubernetes-source-to-prod/
           - title: Continuous Delivery to Kubernetes on Azure
             url: /guides/tutorials/codelabs/azure-kubernetes-source-to-prod/
           - title: Continuous Delivery to Azure VM Scale Set
