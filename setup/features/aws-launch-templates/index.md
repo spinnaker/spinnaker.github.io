@@ -13,7 +13,7 @@ AWS uses [launch templates](https://docs.aws.amazon.com/autoscaling/ec2/userguid
 
 Spinnaker still supports launch configurations for backwards compatbility, but recommends enabling launch templates to access any new features that AWS adds. 
 
-<!-- The New to AWS section is valid in version 2.24 and later>
+<!-- The New to AWS section is valid in version 2.24 and later
 ## Setup Steps
 This section summarizes the steps required to set up launch templates if you are new to using AWS in Spinnaker or if you have already been using AWS as one of your cloud providers. 
 
