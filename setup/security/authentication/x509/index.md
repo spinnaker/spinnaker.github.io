@@ -96,7 +96,7 @@ Encoding with any other OID can be done by editing the `openssl.conf`.
         -subj "/C=US/ST=CA/L=Oakland/O=Spinnaker/CN=example@example.com" -config openssl.conf
     ```
 
-1. Create extention config file `extention.conf` to apply roles when signing the server requests.
+1. Create extention config file `extension.conf` to apply roles when signing the server requests.
     ```
     [ v3_req ]
     keyUsage = nonRepudiation, digitalSignature, keyEncipherment
