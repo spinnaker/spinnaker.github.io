@@ -49,20 +49,21 @@ If you already use AWS as a cloud provider in Spinnaker, we recommend migrating 
   ```
 1. Review the [rollout configurations](#rollout-configuration) and determine which of these you can *temporarily* utilize for your rollout. If you do not need to rollout, stop here and follow the [new AWS users](#new-to-aws) steps instead. 
 -->
-1. Update `clouddriver.yml`. This step can be repeated as needed throughout your rollout. This is an example config where launch templates is rolled out to two applications in production and all of the test account.
+1. Update `clouddriver.yml`. This step can be repeated as needed throughout your rollout. This is an example config where launch templates is rolled out to two applications in production and all of the test account. It also excludes one application completely:
   ```yml
     aws.features.launch-templates.enabled: true
     aws.features.launch-templates.allowed-applications: "myapp:prod:us-east-1,anotherapp:prod:us-east-1"
     aws.features.launch-templates.allowed-accounts: "test"
+    aws.features.launch-templates.excluded-applications: "dangerousapp"
+    aws.features.launch-templates.all-applications.enabled: false
   ```
 1. Read through the available [features](#feature-configuration) to determine which make sense for your use cases. 
-1. Update AWS settings in `settings-local.js` to include the features you identified. Ensure that `enableLaunchTemplates` is `true`. 
+1. Update AWS settings to enable launch templates to include the features you identified. Ensure that `enableLaunchTemplates` is `true`. 
   ```js
-  window.spinnakerSettings.providers.aws.serverGroups = {
-    enableLaunchTemplates: true,
-    enableIPv6: true,
-    enableIMDSv2: true,
-  };
+  // enable launch templates for AWS
+  window.spinnakerSettings.providers.aws.serverGroups.enableLaunchTemplates = true;
+  window.spinnakerSettings.providers.aws.serverGroups.enableIPv6 = true;
+  window.spinnakerSettings.providers.aws.serverGroups.enableIMDSv2 = true;
   ```
 <!-- The New to AWS section is valid in version 2.24 and later
 1. When you are ready for a complete rollout, enable launch templates for all applications and clean up rollout config in `clouddriver.yml`. 
