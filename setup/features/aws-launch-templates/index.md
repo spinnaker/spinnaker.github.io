@@ -55,7 +55,6 @@ If you already use AWS as a cloud provider in Spinnaker, we recommend migrating 
     aws.features.launch-templates.allowed-applications: "myapp:prod:us-east-1,anotherapp:prod:us-east-1"
     aws.features.launch-templates.allowed-accounts: "test"
     aws.features.launch-templates.excluded-applications: "dangerousapp"
-    aws.features.launch-templates.all-applications.enabled: false
   ```
 1. Read through the available [features](#feature-configuration) to determine which make sense for your use cases. 
 1. Update AWS settings to enable launch templates to include the features you identified. Ensure that `enableLaunchTemplates` is `true`. 
@@ -65,13 +64,15 @@ If you already use AWS as a cloud provider in Spinnaker, we recommend migrating 
   window.spinnakerSettings.providers.aws.serverGroups.enableIPv6 = true;
   window.spinnakerSettings.providers.aws.serverGroups.enableIMDSv2 = true;
   ```
-<!-- The New to AWS section is valid in version 2.24 and later
-1. When you are ready for a complete rollout, enable launch templates for all applications and clean up rollout config in `clouddriver.yml`. 
+
+<!-- The New to AWS section is valid in version 2.24 and later  and the block below should be included when 1.24 has been releasesd-->
+<!--1. When you are ready for a complete rollout, enable launch templates for all applications and clean up rollout config in `clouddriver.yml`. 
     ```yml
     aws.features.launch-templates.enabled: true
     aws.features.launch-templates.all-applications.enabled: true
   ```
 -->
+
 ## Rollout Configuration
 If you already use AWS, then your applications may have some dependencies on launch configurations that prevent simple feature enabling. The configuration options beflow were created to aid with testing or a rollout period. Feel free to use whatever combination is best for you. 
 <!--If you would prefer to **skip a rollout**, use the configuration in [New to AWS](#new-to-aws).-->
