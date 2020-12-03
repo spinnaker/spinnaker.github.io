@@ -64,6 +64,7 @@ If you already use AWS as a cloud provider in Spinnaker, we recommend migrating 
   window.spinnakerSettings.providers.aws.serverGroups.enableIPv6 = true;
   window.spinnakerSettings.providers.aws.serverGroups.enableIMDSv2 = true;
   ```
+
 <!-- The New to AWS section is valid in version 2.24 and later  and the block below should be included when 1.24 has been releasesd-->
 <!--1. When you are ready for a complete rollout, enable launch templates for all applications and clean up rollout config in `clouddriver.yml`. 
     ```yml
