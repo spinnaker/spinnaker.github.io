@@ -337,7 +337,7 @@ Unshare a service instance with a specific org / space.
 Similar to `cf unshare-service`; see the Cloud Foundry documentation about [Unsharing a Service Instance](https://docs.cloudfoundry.org/devguide/services/sharing-instances.html#unsharing).
 
 ### Bake CF Manifest
-Bake a manifest with 1-N variables files.
+Bake a manifest with 1 or more variables files.
 Similar to `cf push --vars-file vars.yml`; see the Cloud Foundry documentation about [Variable Substitution](https://docs.cloudfoundry.org/devguide/deploy-apps/manifest-attributes.html#variable-substitution).
 
 ## Kubernetes
