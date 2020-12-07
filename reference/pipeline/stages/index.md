@@ -307,34 +307,38 @@ Suspend/resume scaling processes.
 ## Cloud Foundry
 
 ### Create Service Key
-Generate credentials for a service instance. Similar to `cf create-service-key`; see the Cloud Foundry documentation about how to [Create a Service Key](https://docs.cloudfoundry.org/devguide/services/service-keys.html#create).
+Generate credentials for a service instance. Similar to `cf create-service-key`. See the Cloud Foundry documentation about how to [Create a Service Key](https://docs.cloudfoundry.org/devguide/services/service-keys.html#create).
 
 ### Delete Service Key
-Delete an existing service key. Similar to `cf delete-service-key`; see the Cloud Foundry documentation about how to [Delete a Service Key](https://docs.cloudfoundry.org/devguide/services/service-keys.html#delete).
+Delete an existing service key. Similar to `cf delete-service-key`. See the Cloud Foundry documentation about how to [Delete a Service Key](https://docs.cloudfoundry.org/devguide/services/service-keys.html#delete).
 
 ### Deploy Service
-Create a service instance. Similar to `cf create-service`; see the Cloud Foundry documentation about [Creating Service Instances](https://docs.cloudfoundry.org/devguide/services/managing-services.html#create).
+Create a service instance. Similar to `cf create-service`. See the Cloud Foundry documentation about [Creating Service Instances](https://docs.cloudfoundry.org/devguide/services/managing-services.html#create).
 
 ### Destroy Service
-Delete a service instance. Similar to `cf delete-service`; see the Cloud Foundry documentation about how to [Delete a Service Instance](https://docs.cloudfoundry.org/devguide/services/managing-services.html#delete).
+Delete a service instance. Similar to `cf delete-service`. See the Cloud Foundry documentation about how to [Delete a Service Instance](https://docs.cloudfoundry.org/devguide/services/managing-services.html#delete).
 
 ### Map Load Balancer
 Map a Load Balancer (a Cloud Foundry route) to a server group (Cloud Foundry app).
 The domain must already exist in the Cloud Foundry org.
 If the route does not already exist, it will be created.
-Similar to `cf map-route`; see the Cloud Foundry documentation about how to [Map a Route to Your App](https://docs.cloudfoundry.org/devguide/deploy-apps/routes-domains.html#map-route).
+Similar to `cf map-route`. See the Cloud Foundry documentation about how to [Map a Route to Your App](https://docs.cloudfoundry.org/devguide/deploy-apps/routes-domains.html#map-route).
 
 ### Share Service
 Share a service instance with a specific org / spaces.
-Similar to `cf share-service`; see the Cloud Foundry documentation about [Sharing a Service Instance](https://docs.cloudfoundry.org/devguide/services/sharing-instances.html#sharing).
+Similar to `cf share-service`. See the Cloud Foundry documentation about [Sharing a Service Instance](https://docs.cloudfoundry.org/devguide/services/sharing-instances.html#sharing).
 
 ### Unmap Load Balancer
 Unmap a Load Balancer (a Cloud Foundry route) from a server group (Cloud Foundry app).
-Similar to `cf unmap-route`; see the Cloud Foundry documentation about how to [Unmap a Route](https://docs.cloudfoundry.org/devguide/deploy-apps/routes-domains.html#unmap-route).
+Similar to `cf unmap-route`. See the Cloud Foundry documentation about how to [Unmap a Route](https://docs.cloudfoundry.org/devguide/deploy-apps/routes-domains.html#unmap-route).
 
 ### Unshare Service
 Unshare a service instance with a specific org / space.
-Similar to `cf unshare-service`; see the Cloud Foundry documentation about [Unsharing a Service Instance](https://docs.cloudfoundry.org/devguide/services/sharing-instances.html#unsharing).
+Similar to `cf unshare-service`. See the Cloud Foundry documentation about [Unsharing a Service Instance](https://docs.cloudfoundry.org/devguide/services/sharing-instances.html#unsharing).
+
+### Bake CF Manifest
+Bake a manifest with 1 or more variables files.
+Similar to `cf push --vars-file vars.yml`. See the Cloud Foundry documentation about [Variable Substitution](https://docs.cloudfoundry.org/devguide/deploy-apps/manifest-attributes.html#variable-substitution).	
 
 ## Kubernetes
 
