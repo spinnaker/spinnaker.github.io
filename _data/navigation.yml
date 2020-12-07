@@ -476,6 +476,8 @@ guides:
           url: /guides/user/managed-delivery/resource-status/
         - title: API
           url: /guides/user/managed-delivery/api/
+        - title: Integrate Your CI
+          url: /guides/user/managed-delivery/intergate-your-CI/
         - title: FAQ
           url: /guides/user/managed-delivery/faq/
   - title: Developer How-Tos
