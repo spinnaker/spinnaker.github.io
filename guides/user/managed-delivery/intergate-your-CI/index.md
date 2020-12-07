@@ -1,9 +1,8 @@
 ---
 layout: single
-title:  "Intergate your CI"
+title:  "Integrate your CI"
 sidebar:
   nav: guides
-redirect_from: /reference/managed-delivery/intergate-your-CI
 ---
 
 {% include toc %}
