@@ -338,7 +338,7 @@ Similar to `cf unshare-service`. See the Cloud Foundry documentation about [Unsh
 
 ### Bake CF Manifest
 Bake a manifest with 1 or more variables files.
-Similar to `cf push --vars-file vars.yml`. See the Cloud Foundry documentation about [Variable Substitution](https://docs.cloudfoundry.org/devguide/deploy-apps/manifest-attributes.html#variable-substitution).	
+Similar to `cf push --vars-file vars.yml`. See the Cloud Foundry documentation about [Variable Substitution](https://docs.cloudfoundry.org/devguide/deploy-apps/manifest-attributes.html#variable-substitution).
 
 ## Kubernetes
 
