@@ -476,8 +476,8 @@ guides:
           url: /guides/user/managed-delivery/resource-status/
         - title: API
           url: /guides/user/managed-delivery/api/
-        - title: Integrate Your CI
-          url: /guides/user/managed-delivery/intergate-your-CI/
+        - title: CI features
+          url: /guides/user/managed-delivery/CI-features/
         - title: FAQ
           url: /guides/user/managed-delivery/faq/
   - title: Developer How-Tos
@@ -504,6 +504,8 @@ guides:
             url: /guides/developer/extending/new-stage/
           - title: Kubernetes CRD extensions
             url: /guides/developer/extending/crd-extensions/
+          - title: Integrate Your CI
+            url: /guides/developer/extending/integrate-your-CI/
       - title: Creating Plugins
         collapsed: true
         children:
