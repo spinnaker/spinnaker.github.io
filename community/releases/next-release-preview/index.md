@@ -25,3 +25,9 @@ that Halyard uses to get release information.
 
 All releases are available in the new location. Only releases prior to 1.23 are
 available in the old location, and the old location will be disabled in 2021.
+
+### Bake helm charts using git/repo artifacts
+
+The Bake (manifest) stage now accepts git/repo artifacts when baking a helm
+chart.  See [this issue](https://github.com/spinnaker/spinnaker/issues/5249) for
+background.

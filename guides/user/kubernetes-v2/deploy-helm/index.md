@@ -24,7 +24,8 @@ For more details, see `helm template --help`.
 
 ## Configure the "Bake (Manifest)" stage
 
-When configuring the "Bake (Manifest)" stage, you can specify the following:
+When configuring the "Bake (Manifest)" stage using a helm (currently HELM2 or HELM3) render engine,
+you can specify the following:
 
 * __Release name__ (required)
 
@@ -54,6 +55,13 @@ metadata:
   namespace: {{ .Release.Namespace }}
 ```
 {% endraw %}
+
+* __Helm chart file path__ (optional)
+
+  Helm chart file path is only relevant (and visible) when the template artifact
+  is a git/repo artifact.  It specifies the path to Chart.yaml in the git repo.
+  If absent, spinnaker looks for Chart.yaml in the root directory of the git
+  repo.
 
 * __Zero or more override artifacts__ (optional)
 
