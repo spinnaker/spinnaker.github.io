@@ -13,7 +13,7 @@ We know that security is very important to the Spinnaker community.  We welcome 
 
 ### Where should I report security issues?
 
-If you would like to report a vulnerability in the Spinnaker open source code, please email us at [security@spinnaker.io](mailto://security@spinnaker.io) right away, and a member of the [Security Special Interest Group (SIG)](https://github.com/spinnaker/governance/tree/master/sig-security) will get back to you as soon as we are able.  We deeply appreciate your support in discovering and disclosing security issues in a responsible way.
+If you would like to report a vulnerability in the Spinnaker open source code, please email us at [security@spinnaker.io](mailto:security@spinnaker.io) right away, and a member of the [Security Special Interest Group (SIG)](https://github.com/spinnaker/governance/tree/master/sig-security) will get back to you as soon as we are able.  We deeply appreciate your support in discovering and disclosing security issues in a responsible way.
 
 ### What should I include in a security report?
 
