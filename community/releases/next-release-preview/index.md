@@ -44,7 +44,7 @@ aws ecs put-cluster-capacity-providers \
      --region $AWS_REGION
 ```
 
-**NOTE**: If a `capacityProviderStrategy` is specified, the `launchType` parameter must be omitted. 
+**NOTE**: If a `capacityProviderStrategy` is specified, the `launchType` parameter must be omitted. This means that in case of downgrading Spinnaker from 1.24 to a previous version, server groups which may have used capacity provider strategy will need to be updated to again specify the correct launch type.
 
 ### Moniker support for Amazon ECS
 
