@@ -64,3 +64,7 @@ ecs:
 **NOTES**: 
   * To use ECS service tags, your Amazon ECS account must be opted into using the _long Amazon Resource Name (ARN)_ format. See [AWS documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html#ecs-resource-ids) for details.
   * This feature adds validation which requires deploy stage `moniker` values for `app`, `stack`, and `detail` to match top-level `application`, `stack`, and `freeFormDetails` values _if both are present_. Existing pipelines which contain both with different values will need to remove one set or update them to match. 
+
+### Amazon ECS Task Definition caching improvements
+
+Starting in 1.24, the Amazon ECS provider will only cache task definitions associated with Amazon ECS services. Previously, every "active" task definition in the account would be cached, regardless of association with a service. This change does not entail any user-facing changes, but operators may notice a smaller cache footprint and fewer API calls to Amazon ECS. 
