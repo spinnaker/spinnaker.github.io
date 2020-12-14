@@ -11,7 +11,9 @@ One of the goals of Managed Delivery is to show you the journey of your code, fr
 in an easy, consistent way.
 In order to enable this experience, we created an integration between Managed Delivery and the Continuous Integration (CI) provider, which is described below.
 
-### Note: in order to get it working for you, you'll have to integrate your CI provider. Please see our guide on [CI integration](/guides/developer/extending/integrate-your-CI).
+### Note:
+in order to take advantage of this feature, your Spinnaker operator/administrator will have to configure a CI provider which matches your company's setup. 
+They can look for available open-source or commercial Spinnaker CI providers, or even develop their own (see our developer guide on [CI integration](/guides/developer/extending/integrate-your-CI)).
 
 ## Artifact metadata
 
@@ -51,11 +53,11 @@ In Slack notifications:
 %}
 
 A new section called "Pre-deployment" is now available in the UI. This section will surface pre-deployment steps like baking (for Debian packages only) or building.
-By clicking on "See details", you'll be taken to the CI view (see below), or a default job log which you can provide as a part of your implementation, see more [here](/guides/developer/extending/integrate-your-CI/#Surface-build-information-in-the-UI).
+By clicking on "See details", you'll be taken to the viewing CI details (see below), or a CI job log which can be provided as a part of the CI integration.
 
-## CI view in Spinnaker
+## Viewing CI details in Spinnaker
 
-We recently added the option to see CI details in Spinnaker, in a new `Builds` tab.
+We recently added the option to see CI details in Spinnaker, in a new "Builds" tab.
 It looks like this:
 {%
   include
