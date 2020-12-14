@@ -62,6 +62,7 @@ ecs:
 ``` 
 
 **NOTES**: 
+  * Your AWS `SpinnakerManaged` role will now need to call [`ecs:ListAccountSettings`](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListAccountSettings.html) in order to validate whether your account is compatible with tags.
   * To use ECS service tags, your Amazon ECS account must be opted into using the _long Amazon Resource Name (ARN)_ format. See [AWS documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html#ecs-resource-ids) for details.
   * This feature adds validation which requires deploy stage `moniker` values for `app`, `stack`, and `detail` to match top-level `application`, `stack`, and `freeFormDetails` values _if both are present_. Existing pipelines which contain both with different values will need to remove one set or update them to match. 
 
