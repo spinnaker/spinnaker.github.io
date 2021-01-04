@@ -18,4 +18,4 @@ RUN bundle install --frozen
 
 EXPOSE 4000
 WORKDIR /code
-ENTRYPOINT [ "bundle", "exec", "jekyll", "serve", "--host", "0.0.0.0", "--watch" ]
+ENTRYPOINT [ "bundle", "exec", "jekyll", "serve", "--host", "0.0.0.0", "--watch"]
