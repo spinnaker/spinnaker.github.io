@@ -37,3 +37,7 @@ Managed Delivery is an initiative with two key goals.
 
 If you are interested in contributing, the Managed Delivery initiative is under the auspices of the 
 [Spinnaker-as-Code SIG](https://github.com/spinnaker/governance/blob/master/sig-spinnaker-as-code/README.md)
+
+## Getting started
+
+When you're ready to give Managed Delivery a try, check out the [Getting started](getting-started/) page.
