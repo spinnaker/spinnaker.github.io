@@ -143,6 +143,4 @@ or the talk below from Spinnaker Summit 2019.
 
 <iframe src="https://www.youtube.com/embed/mEgvOfmLnlY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-> info ""
-> _To get started with Managed Delivery, head on over to the [user guide](/guides/user/managed-delivery/)._
-
+> :bulb: _To get started with Managed Delivery, head on over to the [user guide](/guides/user/managed-delivery/)._
