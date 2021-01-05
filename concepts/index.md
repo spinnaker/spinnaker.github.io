@@ -16,7 +16,7 @@ you release software changes with high velocity and confidence.
 
 Spinnaker provides two core sets of features:
 
-* [Application management](#application-management)
+* [Application management](#application-management-aka-infrastructure-management)
 
 * [Application deployment](#application-deployment)
 
