@@ -16,13 +16,15 @@ you release software changes with high velocity and confidence.
 
 Spinnaker provides two core sets of features:
 
-* [application management](#application-management)
+* [Application management](#application-management-aka-infrastructure-management)
 
-* [application deployment](#application-deployment)
+* [Application deployment](#application-deployment)
 
-This article is an overview of these features:
+In addition, Spinnaker provides a higher-level experience that builds on top of the above features via [Managed delivery](#managed-delivery).
 
-## Application management
+This article provides an overview of these topics.
+
+## Application management (a.k.a. infrastructure management)
 
 You use Spinnaker's application management features to view and manage your
 cloud resources.
@@ -120,3 +122,27 @@ A *Task* in Spinnaker is an automatic function to perform.
 Spinnaker treats cloud-native deployment strategies as first class constructs, handling the underlying orchestration such as verifying health checks, disabling old server groups and enabling new server groups. Spinnaker supports the red/black (a.k.a. blue/green) strategy, with rolling red/black and canary strategies in active development.
 
 > Learn more about deployment management on the [Pipelines](/concepts/pipelines/) page.
+
+## Managed delivery
+Managed Delivery takes Spinnaker's infrastructure management and deployment capabilities
+to a new level by abstracting away many of the low-level details of configuring infrastructure
+and delivery workflows, and focusing on your application _requirements_, specified in a declarative
+format.
+ 
+It allows you to declare the _desired state_ of your application in terms of logical _environments_
+(think `test` and `prod`) where your cloud infrastructure resources exist (e.g. compute clusters),
+and where your _software artifacts_ (think Debian package or Docker image) are deployed. 
+Spinnaker automatically detects when a new version of your code is available for deployment and
+satisfies any deployment constraints you may have configured, or when your infrastructure resources
+diverge from the desired state, and acts upon that information to reconcile the current with the 
+desired state. 
+
+For more details on the inspiration and guiding principles behind
+Managed Delivery, check out [our blog](https://blog.spinnaker.io/managed-delivery-evolving-continuous-delivery-at-netflix-eb74877fb33c),
+or the talk below from Spinnaker Summit 2019.
+
+<iframe src="https://www.youtube.com/embed/mEgvOfmLnlY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+> info ""
+> _To get started with Managed Delivery, head on over to the [user guide](/guides/user/managed-delivery/)._
+
