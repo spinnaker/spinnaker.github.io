@@ -52,8 +52,8 @@ Scales the Amazon ECS service up or down to the desired number of instances (tas
 
 # Resource Naming
 
-As of Spinnaker 1.24.0 the ECS provider can be configured to use either Frigga or a tag based naming strategy which Spinnaker manages using its
-[Moniker](https://github.com/spinnaker/moniker) library. The naming strategy is configurable per-account and can be have a default across all accounts.
+From Spinnaker 1.24 the ECS provider can be configured to use either [Frigga](https://github.com/Netflix/frigga) or a tag based naming strategy which Spinnaker manages using its
+[Moniker](https://github.com/spinnaker/moniker) library. The naming strategy is configurable per-account or applied as a default across all accounts.
 
 ```yaml
 ecs:
@@ -73,7 +73,7 @@ The `default` naming strategy uses the [Frigga](https://github.com/Netflix/frigg
 
 The `tags` naming strategy uses information from tags on the resource to derive information like application, stack, detail, etc.
 
-To use ECS service tags, your Amazon ECS account must be [opted into using the long Amazon Resource Name (ARN) format](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html#ecs-resource-ids). In addition your AWS `SpinnakerManaged` role will need to call [`ecs:ListAccountSettings`](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListAccountSettings.html) in order to validate whether your account is compatible with tags.
+To use ECS service tags, your Amazon ECS account must be [opted into using the long Amazon Resource Name (ARN) format](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html#ecs-resource-ids). In addition, your AWS `SpinnakerManaged` role will need to call [`ecs:ListAccountSettings`](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListAccountSettings.html) in order to validate whether your account is compatible with tags.
 
 Currently these tags are only applied at the ECS service level which is then configured to propagate the tags to any tasks created by the service scheduler.
 
