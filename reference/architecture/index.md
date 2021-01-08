@@ -56,6 +56,8 @@ and service accounts.
 * [Kayenta](https://github.com/spinnaker/kayenta) provides automated canary
 analysis for Spinnaker.
 
+* [Keel](https://github.com/spinnaker/keel) powers [Managed Delivery](/guides/user/managed-delivery).
+
 * [Halyard](https://github.com/spinnaker/halyard) is Spinnaker's configuration
 service.
 
@@ -92,6 +94,14 @@ service.
  gate --> echo;
  gate --> igor(Igor);
  igor(Igor) --> echo;
+ 
+ keel(Keel) --> clouddriver;
+ keel --> orca;
+ keel --> front50;
+ keel --> fiat;
+ keel --> echo;
+ keel --> igor;
+ gate --> keel;
 
  hal(Halyard CLI) --> halyard(Halyard Daemon);
 
@@ -133,3 +143,4 @@ By default Spinnaker binds ports according to the following table
 | Kayenta     | 8090              |
 | Orca        | 8083              |
 | Rosco       | 8087              |
+| Keel        | 8087              |

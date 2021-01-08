@@ -5,12 +5,6 @@ sidebar:
   nav: guides
 ---
 
-{% include alpha version="1.18" %}
-
-> Managed Delivery is currently in Alpha and is not recommended for managing 
-> mission-critical production services. Only EC2 and Titus cloud providers are currently supported and
-> many features are still in flux or pending. 
-
 {% include toc %}
 
 ## What is Managed Delivery? 
@@ -43,3 +37,7 @@ Managed Delivery is an initiative with two key goals.
 
 If you are interested in contributing, the Managed Delivery initiative is under the auspices of the 
 [Spinnaker-as-Code SIG](https://github.com/spinnaker/governance/blob/master/sig-spinnaker-as-code/README.md)
+
+## Getting started
+
+When you're ready to give Managed Delivery a try, check out the [Getting started](getting-started/) page.
