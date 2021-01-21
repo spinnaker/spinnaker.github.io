@@ -35,7 +35,7 @@ Spinnaker's telemetry module collects the following bits of data:
     * Type
     * Cloud Provider
 
-Spinnaker's telemetry project has been reviewed and approved as compliant with the [Linux Foundation's Telemetry Data Collection and Usage Policy](https://www.linuxfoundation.org/telemetry-data-policy/#completed).
+Spinnaker's telemetry project has been reviewed and approved as compliant with the [Linux Foundation's Telemetry Data Collection and Usage Policy](https://www.linuxfoundation.org/telemetry-data-collection-and-usage-policy/).
 
 ## How is the data collected?
 
