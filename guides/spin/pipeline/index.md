@@ -127,6 +127,34 @@ You can pass in paramaters as key-value pairs with the `-p` flag as such:
 spin pipeline execute --application my-app --name my-pipeline -p foo=bar,baz=qux
 ```
 
+If your pipeline requires artifacts for execution, you can create a JSON-formatted
+artifact file and pass it with the `-t` flag as in example below:
+
+```bash
+spin pipeline execute --application my-app --name my-pipeline -t my-artifact.json
+```
+
+artifact.json example:
+
+```json
+{
+    "account":"docker-hub",
+    "organization":"my-docker-hub-organization",
+    "registry":"index.docker.io",
+    "repository":"my-docker-hub-organization/my-image",
+    "tag":"latest",
+    "type":"manual",
+    "artifacts":[
+       {
+          "type":"docker/image",
+          "name":"index.docker.io/my-docker-hub-organization/my-image",
+          "version":"latest",
+          "reference":"index.docker.io/my-docker-hub-organization/my-image:latest"
+       }
+    ]
+ }
+```
+
 ### Delete a pipeline with `delete`
 
 ```bash
