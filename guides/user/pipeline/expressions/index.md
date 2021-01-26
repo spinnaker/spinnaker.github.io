@@ -70,6 +70,86 @@ stage. You can't use pipeline expressions during the pipeline **Configuration**
 stage, because Spinnaker doesn't begin evaluating expressions until after the
 **Configuration** stage has finished.
 
+## How do I define additional data for use with pipeline expressions?
+
+### Create Parameters within the Pipeline Configuration
+
+As mentioned above, pipeline expressions cannot be used during the pipeline **Configuration** stage.  Instead, you can
+use the **Parameters** section of the pipeline **Configuration** stage to set either static or dynamic key/value pairs at
+runtime of the pipeline.
+
+> :warning: There are several reserved parameter keys (i.e names) that if overwritten by a pipeline parameter definition
+> will cause unexpected behavior and failures.  
+> Review the [_List of Reserved Parameter and Evaluate Variable Key Names_](#list-of-reserved-parameter-and-evaluate-variable-key-names).
+
+![](images/parameters.png)
+
+Any parameter set in the pipeline configuration can be accessed using one of the following pipeline expression syntax:
+
+```
+${ execution.trigger.parameters["stack"] }
+```
+
+```
+${ execution.trigger.parameters.stack }
+```
+
+```
+${ parameters["stack"] }
+```
+
+```
+${ parameters.stack }
+```
+
+### Create Variables using an Evaluate Variables Stage
+
+The Evaluate Variables stage can be used to create reuseable variables with custom keys paired with either static values
+or values as the result of a pipeline expression.
+
+> :warning: There are several reserved variable keys (i.e names) that if overwritten by an evaluate variable definition
+> will cause unexpected behavior and failures.  
+> Review the [_List of Reserved Parameter and Evaluate Variable Key Names_](#list-of-reserved-parameter-and-evaluate-variable-key-names).
+
+![](images/evaluate-variables-stage.png)
+
+Any variable set in an Evaluate Variables stage can be accessed using one of the following pipeline expression syntax
+assuming the following scenario:
+
+* Evaluate Variable Stage Name:  'Set My Variables'
+* Variable Name:  environment
+
+**Option 1:**
+```
+${ execution.stages.?[ name == 'Set My Variables' ][0].outputs.environment }
+```
+
+**Option 2:**
+```
+${ environment }
+```
+
+Conveniently as shown in Option 2, Spinnaker makes any variable set via an Evaluate Variable stage accessible to 
+pipeline expressions during runtime via an Ephemeral Variable that is simply referenced by its defined name.  While 
+this simplifies the process of referencing the variable downstream and eliminates the need to write out the long form 
+shown in Option 1 above, care must be taken not to inadvertently overwrite the variable in subsequent Evaluate Variable 
+stages later in the pipeline.
+
+### List of Reserved Parameter and Evaluate Variable Key Names
+
+The following is a list of strings that if used for either a parameter or evaluate variable key name will cause
+unexpected behavior and failures and therefore should not be used:
+
+* strategy
+* cloudProvider
+* cluster
+* credentials
+* region
+* zone
+* imageName
+* application
+
+
 ## What tools do I have for writing pipeline expressions?
 
 ### Helper functions
