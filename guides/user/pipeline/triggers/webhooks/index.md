@@ -103,7 +103,7 @@ configuration screen as the webhook trigger:
 
 > Warning: there are several reserved parameter keys (names) that cause unexpected behavior and failures
 > if overwritten by a pipeline parameter definition.
-> See the [list of reserved parameter and evaluate variable key names](/guides/user/pipeline-expressions#list-of-reserved-parameter-and-evaluate-variable-key-names).
+> See the [list of reserved parameter and evaluate variable key names](/guides/user/pipeline/expressions#list-of-reserved-parameter-and-evaluate-variable-key-names).
 
 If you were to manually execute this pipeline, you would be prompted with the
 following dialogue:
