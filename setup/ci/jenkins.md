@@ -101,6 +101,22 @@ To enable Spinnaker and Jenkins to share a crumb to protect against CSRF...
 
     ![](/setup/ci/jenkins_enable_csrf_strict.png)
 
+## Enabling Backlinks from Jenkins to Spinnaker
+
+You can configure `orca` such that it will update the description of a running Jenkins build and generate a suitable backlink.
+
+Add the following to your `orca` configuration:
+
+```
+spinnaker:
+  baseUrl:
+    www: https://spinnaker.ui.url
+```
+
+Jenkins backlinks will be generated as follows:
+`This build was triggered by '<a href=...>{Pipeline Name}</a>' in Spinnaker.`
+
+
 ## Next steps
 
 You can use Jenkins in your pipelines in one of three ways:
