@@ -35,3 +35,4 @@ The following types of user guides are included:
   - [Custom instance links](/guides/user/instance-links/)
   - [Kubernetes](/guides/user/kubernetes-v2/deploy-manifest/)
   - [Automated canary analysis \(Kayenta\)](/guides/user/canary/)
+  - [Managed Delivery](/guides/user/managed-delivery/)
