@@ -5,7 +5,9 @@ sidebar:
   nav: community
 ---
 
-[Google Summer of Code](https://summerofcode.withgoogle.com/archive/2020/organizations/6695549513760768/) 
+[Google Summer of Code](https://google.github.io/gsocguides/student/) (GSoC) is an opportunity for students to get involved with open source projects! It's a great opportunity to gain real life experience and hopefully be inspired by the many who are continuously contributing to projects every day. Getting involved in active communities are a great way to jump start your career!
+<br /><br />
+This page is a list of accepted ideas prepared specifically for [Spinnaker](https://spinnaker.io/concepts/), an open-source multi-cloud continuous delivery platform. The following list is non-exclusive, therefore if you're passionate about a different project, we're happy to review it! It should meet the [GSoC project guidelines](https://google.github.io/gsocguides/student/writing-a-proposal) and would require at least 1 mentor that we can try to help pair.
 
 | Project                                                                                                                                                                                                                                                                                                                                          | Related Skillsets       |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------|
