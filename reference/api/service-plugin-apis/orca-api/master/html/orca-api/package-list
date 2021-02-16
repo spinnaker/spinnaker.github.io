@@ -5,5 +5,6 @@ com.netflix.spinnaker.orca.api.annotations
 com.netflix.spinnaker.orca.api.pipeline
 com.netflix.spinnaker.orca.api.pipeline.graph
 com.netflix.spinnaker.orca.api.pipeline.models
+com.netflix.spinnaker.orca.api.pipeline.persistence
 com.netflix.spinnaker.orca.api.preconfigured.jobs
 
