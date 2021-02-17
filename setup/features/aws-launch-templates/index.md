@@ -11,7 +11,7 @@ sidebar:
 
 AWS uses [launch templates](https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchTemplates.html) to specify instance configuration information. Launch templates are the successor of launch configurations. This means that any new instance configuration feature from AWS will only be supported by launch templates. 
 
-Spinnaker still supports launch configurations for backwards compatbility, but recommends enabling launch templates to access any new features that AWS adds. 
+Spinnaker still supports launch configurations for backwards compatibility, but recommends enabling launch templates to access any new features that AWS adds. 
 
 ## Setup Steps
 This section summarizes the steps required to set up launch templates if you are new to using AWS in Spinnaker or if you have already been using AWS as one of your cloud providers. 
