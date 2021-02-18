@@ -11,7 +11,7 @@ sidebar:
 
 AWS uses [launch templates](https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchTemplates.html) to specify instance configuration information. Launch templates are the successor of launch configurations. This means that any new instance configuration feature from AWS will only be supported by launch templates. 
 
-Spinnaker still supports launch configurations for backwards compatbility, but recommends enabling launch templates to access any new features that AWS adds. 
+Spinnaker still supports launch configurations for backwards compatibility, but recommends enabling launch templates to access any new features that AWS adds. 
 
 ## Setup Steps
 This section summarizes the steps required to set up launch templates if you are new to using AWS in Spinnaker or if you have already been using AWS as one of your cloud providers. 
@@ -51,20 +51,21 @@ If you already use AWS as a cloud provider in Spinnaker, we recommend migrating 
     ```
     Review the [rollout configurations](#rollout-configuration) and determine which of these you can *temporarily* utilize for your rollout. If you do not need to rollout, stop here and follow the [new AWS users](#new-to-aws) steps instead. 
 1. Read through the available launch template supported [features](#feature-configuration) to determine which make sense for your users. 
-1. Update AWS settings in deck to enable launch templates and the features you identified. Ensure that `enableLaunchTemplates` is `true`. 
-  	```js
-    // enable launch templates for AWS
-    window.spinnakerSettings.providers.aws.serverGroups.enableLaunchTemplates = true;
+1. Update AWS settings in deck to enable launch templates and the features you identified. Ensure that `enableLaunchTemplates` is `true`.
+    ```js
+      // enable launch templates for AWS
+      window.spinnakerSettings.providers.aws.serverGroups.enableLaunchTemplates = true;
     
-    window.spinnakerSettings.providers.aws.serverGroups.enableIPv6 = true;
-    window.spinnakerSettings.providers.aws.serverGroups.enableIMDSv2 = true;
-    window.spinnakerSettings.providers.aws.serverGroups.enableCpuCredits = true;
-  	```
+      window.spinnakerSettings.providers.aws.serverGroups.enableIPv6 = true;
+      window.spinnakerSettings.providers.aws.serverGroups.enableIMDSv2 = true;
+      window.spinnakerSettings.providers.aws.serverGroups.enableCpuCredits = true;
+    ```
+
 1. When you are ready for a complete rollout, enable launch templates for all applications and clean up rollout config in `clouddriver.yml`. 
- 	```yml
-   aws.features.launch-templates.enabled: true
-   aws.features.launch-templates.all-applications.enabled: true
-   ```
+    ```yml
+      aws.features.launch-templates.enabled: true
+      aws.features.launch-templates.all-applications.enabled: true
+    ```
 
 ## Rollout Configuration
 If you already use AWS, then your applications may have some dependencies on launch configurations that prevent simple feature enabling. The configuration options beflow were created to aid with testing or a rollout period. Feel free to use whatever combination is best for you. 
