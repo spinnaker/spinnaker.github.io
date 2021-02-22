@@ -1,10 +1,5 @@
 ---
 layout: home
-conference_ad_row:
-  title: Register for Spinnaker Summit 2020
-  excerpt: "[Register today](https://events.linuxfoundation.org/spinnaker-summit/register/) to join us at Spinnaker Summit October 19-November 12. Get access to a month of great talks with your free conference pass and hands on content with your premium ticket. Bonus: a [Summit Gardening Days hackathon](https://events.linuxfoundation.org/spinnaker-summit/program/summit-gardening-days/) with free AWS compute will be running all month long! [Learn more](https://github.com/spinnaker-hackathon/gardening/blob/master/README.md)."
-  image_path: assets/images/summit-socialmedia-transparent.png
-  alt: "Spinnaker Summit Logo"
 slack_row:
   title: Join Spinnaker Slack
   excerpt: "Visit [join.spinnaker.io](https://join.spinnaker.io) to get help on Spinnaker Slack, a place for the community to come together. Use this vibrant workspace to ask and answer questions, connect with other operators and users, discuss issues with SIGs, and learn about Spinnaker!"
@@ -147,7 +142,6 @@ waze_case_study:
 </div>
 
 <div class="spin_header__push_down">
-{% include splash_feature_row id="conference_ad_row" type="summit" %}
 {% include splash_feature_row id="slack_row" type="left" %}
 {% include splash_feature_row id="spinnaker_row" type="right" %}
 {% include splash_feature_row id="multi_cloud_row" type="left" %}
