@@ -504,24 +504,27 @@ guides:
             url: /guides/developer/extending/crd-extensions/
           - title: Integrate Your CI
             url: /guides/developer/extending/integrate-your-CI/
-      - title: Creating Plugins
+      - title: Plugins
         collapsed: true
         children:
           - title: Overview
-            url: /guides/developer/plugin-creators/overview/
-          - title: Test a Pipeline Stage Plugin
-            url: /guides/developer/plugin-creators/deck-plugin/
-          - title: Plugin Compatibility Testing
-            url: /guides/developer/plugin-creators/compatibility-testing/
-          - title: Plugin Project Configuration
-            url: /guides/developer/plugin-creators/project-config/
-      - title: Plugin Core Contributor Guide
-        collapsed: true
-        children:
-          - title: Getting Started
-            url: /guides/developer/plugin-core-developers
-          - title: Backend Extension Points
-            url: /guides/developer/plugin-core-developers/backend
+            url: /guides/developer/plugins/overview/
+          - title: Creating Plugins
+            collapsed: true
+            children:
+              - title: Test a Pipeline Stage Plugin
+                url: /guides/developer/plugins/plugin-creators/deck-plugin/
+              - title: Plugin Compatibility Testing
+                url: /guides/developer/plugins/plugin-creators/compatibility-testing/
+              - title: Plugin Project Configuration
+                url: /guides/developer/plugins/plugin-creators/project-config/
+          - title: Plugin Core Contributor Guide
+            collapsed: true
+            children:
+              - title: Getting Started
+                url: /guides/developer/plugins/plugin-core-developers
+              - title: Backend Extension Points
+                url: /guides/developer/plugins/plugin-core-developers/backend
   - title: Operator How-Tos
     collapsed: true
     children:

@@ -3,6 +3,8 @@ layout: single
 title:  "Plugins Guide for Core Contributors"
 sidebar:
   nav: guides
+redirect-from:
+  - /guides/developer/plugin-core-developers/
 ---
 
 The goal of this guide is to help with the core services side of plugin development: Understanding how plugins work, and how to create new extension points for plugin developers to use.

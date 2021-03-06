@@ -3,6 +3,8 @@ layout: single
 title: "Plugin Project Configuration"
 sidebar:
   nav: guides
+redirect-from:
+  - /guides/developer/plugin-creators/project-config/
 ---
 
 

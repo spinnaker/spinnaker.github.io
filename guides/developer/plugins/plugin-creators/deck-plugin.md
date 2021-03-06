@@ -3,6 +3,8 @@ layout: single
 title: "Test a Pipeline Stage Plugin"
 sidebar:
   nav: guides
+redirect-from:
+  - /guides/developer/plugin-creators/deck-plugin/
 ---
 
 {% include alpha version="1.20.6" %}
