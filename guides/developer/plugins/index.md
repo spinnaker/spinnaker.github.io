@@ -96,6 +96,28 @@ each other, enable larger value for Spinnaker than the sum of its parts.
 
 # Plugin Types
 
+## Frontend (Deck) Plugins
+
+Frontend plugins provide a way to change the behavior of Deck, Spinnaker's UI
+service. You can add configuration and validation for new stages provided by
+Orca plugins, override existing components with your own implementation, or add
+new Kind definitions for custom resources in your environment.
+
+Plugins are written in any Javascript compatible language (Typescript included),
+and are loaded at runtime through Gate.
+
+The following are examples of extension points that can be overriden:
+
+  - [ApplicationIcon], replacing the icon used to represent applications in Deck
+  - [ServerGroupHeader], replacing how pod status is reported in Deck
+  - [SpinnakerHeader], allowing you to override replace the top navigation header
+
+See the [Frontend Plugin Development]({% link guides/developer/plugins/frontend.md %}) guide for more information.
+
+[ApplicationIcon]: https://github.com/spinnaker/deck/blob/master/app/scripts/modules/core/src/application/ApplicationIcon.tsx
+[SpinnakerHeader]: https://github.com/spinnaker/deck/blob/master/app/scripts/modules/core/src/header/SpinnakerHeader.tsx
+[ServerGroupHeader]: https://github.com/spinnaker/deck/blob/master/app/scripts/modules/core/src/serverGroup/ServerGroupHeader.tsx
+
 ## ExtensionPoint Plugins
 
 Spinnaker uses the [Plugin Framework for Java
@@ -104,7 +126,8 @@ interface to a service. You can create a plugin that implements the methods
 declared in an extension point.  Creating a plugin based on an extension point
 has a number of advantages:
 
-* It's the easiest - use the `@Extension` annotation and implement the methods declared in your chosen extension point
+* It's the easiest - use the `@Extension` annotation and implement the methods
+  declared in your chosen extension point
 * Spinnaker loads the plugin in an isolated classpath
 * It has the least amount of maintenance work
 * Updates to Spinnaker are not likely to break your plugin
@@ -127,9 +150,11 @@ sample of what these extension points look like in Orca and Echo:
 
 The [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin) creates a custom pipeline stage that waits a specified number of seconds before signaling success. Consult the [Test a Pipeline Stage Plugin](/guides/developer/plugin-creators/deck-plugin/) guide for how to test this plugin using a local Spinnaker environment.
 
-## Interface (Non-ExtensionPoint) Plugins
+## Interface Plugins
 
-The second way you can create a plugin is to implement a regular Java interface that you find in a service. Your plugin uses the PF4J `@Extension` annotation but does not extend `org.pf4j.ExtensionPoint`.    
+The second way you can create a plugin is to implement a regular Java interface
+that you find in a service. Your plugin uses the PF4J `@Extension` annotation
+but does not extend `org.pf4j.ExtensionPoint`.    
 
 Advantages:
 * Spinnaker loads the plugin in an isolated classpath
@@ -144,7 +169,9 @@ The [pf4jPluginWithoutExtensionPoint](https://github.com/spinnaker-plugin-exampl
 
 ## Spring Plugins
 
-When you can't find an `org.pf4j.ExtensionPoint` to use or a Java interface to implement, you can create a plugin using Spring. This is should be done as a last resort, since the disadvantages outweigh the advantages.
+When you can't find an `org.pf4j.ExtensionPoint` to use or a Java interface to
+implement, you can create a plugin using Spring. This is should be done as a
+last resort, since the disadvantages outweigh the advantages.
 
 Advantages:
 
@@ -159,4 +186,7 @@ Disadvantages:
 
 ### Example Spring Plugin
 
-The Spring Example Plugin does not use a PF4J extension point or dependencies. It uses Spring components and was created to test various use cases. See the [project](https://github.com/spinnaker-plugin-examples/springExamplePlugin) for details.
+The Spring Example Plugin does not use a PF4J extension point or dependencies.
+It uses Spring components and was created to test various use cases. See the
+[project](https://github.com/spinnaker-plugin-examples/springExamplePlugin) for
+details.

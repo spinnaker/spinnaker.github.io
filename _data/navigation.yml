@@ -511,6 +511,8 @@ guides:
             url: /guides/developer/plugins/
           - title: Backend Extension Points
             url: /guides/developer/plugins/backend/
+          - title: Frontend Plugin Development
+            url: /guides/developer/plugins/frontend/
           - title: Plugin Project Configuration
             url: /guides/developer/plugins/project-config/
           - title: Testing
