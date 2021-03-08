@@ -42,7 +42,7 @@ Here is what a typical plugin project will look like for a plugin named
 
 The top-level `build.gradle` file contains metadata related to your plugin,
 such as the plugin id that will allow you to add it to your Spinnaker cluster.
-Each core Spinnaker service will have it's own directory. This guide will focus
+Each core Spinnaker service will have its own directory. This guide will focus
 on frontend, but if you need help configuring a backend plugin check out the
 [Plugin Project Configuration] and [Backend Extension Points] guides.
 
