@@ -18,16 +18,16 @@ Make sure you have the following tools installed:
 - [NPM and NPX](https://docs.npmjs.com/cli/v7/configuring-npm/install)
 - [Yarn](https://yarnpkg.com/getting-started/install)
 
-You also need access to a running Spinnaker instance `>= 1.20.6` running in a Kubernetes cluster.
+You also need access to a Spinnaker instance `>= 1.20.6` running in a Kubernetes cluster.
 
 This guide focuses on a frontend plugin, but if you need help configuring
-a backend plugin, see the [Plugin Project Configuration]({% link guides/developer/plugins/project-config.md %}) and [Backend Extension
-Points]({% link guides/developer/plugins/backend.md %}) guides.
+a backend plugin, see the [Plugin Project Configuration]({% link
+guides/developer/plugins/project-config.md %}) and [Backend Extension Points]({%
+link guides/developer/plugins/backend.md %}) guides.
 
 ##  Plugin scaffolding
 
-You can write a Frontend plugin as standalone or as part of a broader set of functionality. In both cases, you need the Gradle toolchain to build and
-release your plugin. The [Deck](https://github.com/spinnaker/deck) project has the `@spinnaker/pluginsdk` [NPM package](https://www.npmjs.com/package/@spinnaker/pluginsdk) that you can use to generate your new frontend plugin's project structure and configuration files.
+You can write a Frontend plugin as standalone or as part of a broader set of functionality. In both cases, you need the Gradle toolchain to build and release your plugin. The [Deck](https://github.com/spinnaker/deck) project has the `@spinnaker/pluginsdk` [NPM package](https://www.npmjs.com/package/@spinnaker/pluginsdk) that you can use to generate your new frontend plugin's project structure and configuration files.
 
 ### Create the plugin project structure
 
