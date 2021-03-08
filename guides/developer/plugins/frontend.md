@@ -14,9 +14,9 @@ sidebar:
 
 Make sure you have the following tools installed:
 
-- [Gradle](https://gradle.org/install/)
-- [NPM and NPX](https://docs.npmjs.com/cli/v7/configuring-npm/install)
-- [Yarn](https://yarnpkg.com/getting-started/install)
+- [Gradle](https://gradle.org/install/).
+- [NPM and NPX](https://docs.npmjs.com/cli/v7/configuring-npm/install).
+- [Yarn](https://yarnpkg.com/getting-started/install).
 
 You also need access to a Spinnaker instance `>= 1.20.6` running in a Kubernetes cluster.
 
@@ -165,16 +165,16 @@ existing stages for the Spinnaker release to ensure you're following the correct
 
 In general, a Deck stage has these elements:
 
-- A `StageConfig` React component
-    - This component wraps `FormikStageComponent` and refers to the React `StageForm` component
-- A `StageForm` React component
+- A `StageConfig` React component.
+    - This component wraps `FormikStageComponent` and refers to the React `StageForm` component.
+- A `StageForm` React component.
     - This component provides a set of `FormikFormField` components that
-      encapsulate the configuration options for your stage
-- A (optional) `validate` function
-    - The `validate` function validates a stage configuration. When added to a stage object, `validate` is called whenever input changes in the config form
-- A Stage object that encapsulates the previous components
+      encapsulate the configuration options for your stage.
+- A (optional) `validate` function.
+    - The `validate` function validates a stage configuration. When added to a stage object, `validate` is called whenever input changes in the config form.
+- A Stage object that encapsulates the previous components.
     - This object is passed to the plugin config object and registered
-      when Deck starts
+      when Deck starts.
 
 You can define more than one stage per plugin. When you're ready to register
 your plugin and test in Deck, add all your stages to the `stage` field in your
@@ -214,7 +214,7 @@ export const InvisibleConfig = () => {
 
 In order to override the component, you need to know the Application
 configuration registration key. You can find its definition in the
-source project. There, you find the `Overridable` annotation is
+GitHub Deck project, [ApplicationConfig.tsx](https://github.com/spinnaker/deck/blob/43a0f56fa85fa1714fef0ba73810c90761f5996d/app/scripts/modules/core/src/application/config/ApplicationConfig.tsx). There, you find the `Overridable` annotation is
 `applicationConfigView`. Then, in your `index.ts` file where you define your plugin object, you override that component in the `initialize` method. For example:
 
 

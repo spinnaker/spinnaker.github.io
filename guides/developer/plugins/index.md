@@ -11,21 +11,23 @@ redirect-from:
   - /guides/developer/plugin-core-developers/getting-started/
 ---
 
+{% include toc %}
+
+## What plugins do
+
 Plugins enable operators to extend Spinnaker with custom functionality. Use
 cases include fetching credentials from a custom authorization service, adding
 a wait stage to a pipeline, updating a Jira ticket, and sending Echo events to
 third-party tools.
 
 The goal of this guide is to help with the core services side of plugin
-development: Understanding how plugins work, and how to create new extension
+development: understand how plugins work and how to create new extension
 points for plugin developers to use.
 
 > Plugins are available in Spinnaker `1.20.6` and higher, configured with
 > Halyard `1.36` and higher.
 
-{% include toc %}
-
-# Motivation
+## Why there is a plugin framework
 
 Spinnaker was originally written with extensibility in mind. Netflix
 wrote huge amounts of custom code atop OSS Spinnaker, decorating existing
@@ -46,7 +48,7 @@ Plugins were the first major manifestation of this initiative: To take the
 already-built functionality in Spinnaker and start breaking it out into
 composable, separately distributable binaries.
 
-# Terminology
+## Terminology
 
 - **Extension Point**
     - An interface defined by one of the Spinnaker services for adding specific
@@ -65,9 +67,9 @@ composable, separately distributable binaries.
     - Test harnesses and utilities to help plugin developers assert Extension
       functionality.
 
-# What Should Be An Extension Point?
+## What should be an Extension Point?
 
-Extension points should be made at intersections between a service's core
+An Extension Point should be made at an intersection between a service's core
 functionality and what it considers an integration. An integration is value
 added to a service, but not value that impacts the core functionality offerings
 of the service: The differentiator is that a service cannot function without
@@ -94,16 +96,16 @@ classes interact with each other, and when.
 Extension Points should be small and composable and, when used in concert with
 each other, enable larger value for Spinnaker than the sum of its parts.
 
-# Plugin Types
+## Plugin types
 
-## Frontend (Deck) Plugins
+### Frontend (Deck) plugins
 
 {% include fe-plugin-intro.md %}
 
 See the [Frontend Plugin Development]({% link guides/developer/plugins/frontend.md %})
 guide for more information.
 
-## ExtensionPoint Plugins
+### ExtensionPoint plugins
 
 Spinnaker uses the [Plugin Framework for Java
 (PF4J)](https://github.com/pf4j/pf4j) to indicate an _extension point_
@@ -117,7 +119,7 @@ has a number of advantages:
 * It has the least amount of maintenance work
 * Updates to Spinnaker are not likely to break your plugin
 
-### Finding an extension point
+#### Finding an extension point
 
 An extension point is an interface that extends `org.pf4j.ExtensionPoint` and
 is located in the `api` module of a service. The following list provides a
@@ -131,11 +133,11 @@ sample of what these extension points look like in Orca and Echo:
 * Echo
   - [EventListener](https://github.com/spinnaker/echo/blob/master/echo-api/src/main/java/com/netflix/spinnaker/echo/api/events/EventListener.java) for processing events posted into Echo
 
-### Example ExtensionPoint Plugin
+#### Example ExtensionPoint Plugin
 
 The [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin) creates a custom pipeline stage that waits a specified number of seconds before signaling success. Consult the [Test a Pipeline Stage Plugin](/guides/developer/plugin-creators/deck-plugin/) guide for how to test this plugin using a local Spinnaker environment.
 
-## Interface Plugins
+### Interface Plugins
 
 The second way you can create a plugin is to implement a regular Java interface
 that you find in a service. Your plugin uses the PF4J `@Extension` annotation
@@ -148,11 +150,11 @@ Disadvantages:
 * Requires a moderate knowledge of Spinnaker's architecture and code
 * Plugin can break if the service's interface changes
 
-### Example Interface Plugin
+#### Example Interface Plugin
 
 The [pf4jPluginWithoutExtensionPoint](https://github.com/spinnaker-plugin-examples/pf4jPluginWithoutExtensionPoint) plugin extends the functionality of Kork's [SecretEngine](https://github.com/spinnaker/kork/blob/5c5bf12a54ca840b7c6c9f4a57cf3c445ddd910e/kork-secrets/src/main/java/com/netflix/spinnaker/kork/secrets/SecretEngine.java). SecretEngine is a regular Java interface that does not import any PF4J classes. pf4jPluginWithoutExtensionPoint's SillySecretEngine implements SecretEngine and uses the `@Extension` annotation to identify itself as a PF4J plugin. See the plugin project's [README](https://github.com/spinnaker-plugin-examples/pf4jPluginWithoutExtensionPoint) and code for details on how this plugin works.
 
-## Spring Plugins
+### Spring Plugins
 
 When you can't find an `org.pf4j.ExtensionPoint` to use or a Java interface to
 implement, you can create a plugin using Spring. This is should be done as a
@@ -169,7 +171,7 @@ Disadvantages:
 * High maintenance; plugin can break when Spinnaker dependencies and functionality change
 
 
-### Example Spring Plugin
+#### Example Spring Plugin
 
 The Spring Example Plugin does not use a PF4J extension point or dependencies.
 It uses Spring components and was created to test various use cases. See the
