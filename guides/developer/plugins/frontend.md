@@ -38,7 +38,7 @@ mkdir my-plugin
 ```
 
 Then, from the root of the `my-plugin` directory, run the `@spinnaker/pluginsdk`
-scaffold script to create your frontend plugin:
+`scaffold` script to create your frontend plugin:
 
 ```shell
 npx -p @spinnaker/pluginsdk scaffold
@@ -95,7 +95,7 @@ yarn && yarn build
 
 ### Add top-level `build.gradle` file
 
-Your plugin can extend functionality from one or more Spinnaker services. Each service has its own directory within your plugin project structure. Here is an example of the `my-plugin` directory with backend plugins that extends Deck, Gate, and Orca:
+Your plugin can extend functionality from one or more Spinnaker services. Each service has its own directory within your plugin project structure. Here is an example of the `my-plugin` directory with backend plugins that extend Gate and Orca:
 
 ```shell
 .
@@ -153,15 +153,15 @@ to allow for CORS requests during development.
 
 ## Adding new stages
 
-The plugin SDK allows for the addition of new stages and `kinds` within
-Spinnaker.  These additions are often be accompanied by changes to Orca and
+The plugin SDK enables the addition of new stages and `kinds` within
+Spinnaker.  These additions are often accompanied by changes to Orca and
 related services. If you haven't started work on these backend components,
 see the [Backend Extension Points]({% link guides/developer/plugins/backend.md %}) guide.
 
 The `scaffold` command creates the most up-to-date schema example, which you
 should use as your template when you develop your plugin. If you are writing
 a plugin that targets an older version of Spinnaker, you may need to refer to
-existing stages for your release to ensure you're following the correct schema.
+existing stages for the Spinnaker release to ensure you're following the correct schema.
 
 In general, a Deck stage has these elements:
 
@@ -197,12 +197,12 @@ https://github.com/spinnaker-plugin-examples/pf4jStagePlugin  needs to be update
 
 You can also override existing components within Deck, so long as they have
 an `Overridable` annotation or are registered as an overridable component. In
-this use case you would define your replacement component, then leverage the
+this use case, you define your replacement component and then leverage the
 `initialize` method of your plugin object to override the component when it is
 loaded.
 
 For example, if you want to remove the ability to modify Application
-configuration in Deck, you would define a component like this:
+configuration in Deck, you define a component like this:
 
 ```javascript
 import React from 'react';
@@ -215,8 +215,7 @@ export const InvisibleConfig = () => {
 In order to override the component, you need to know the Application
 configuration registration key. You can find its definition in the
 source project. There, you find the `Overridable` annotation is
-`applicationConfigView`. Then, in your `index.ts` file where your plugin object
-is defined, you would override that component in the `initialize` method. For example:
+`applicationConfigView`. Then, in your `index.ts` file where you define your plugin object, you override that component in the `initialize` method. For example:
 
 
 ```javascript
