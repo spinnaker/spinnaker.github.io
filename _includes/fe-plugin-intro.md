@@ -1,13 +1,11 @@
 Frontend plugins provide a way to change the behavior of Deck, Spinnaker's UI
 service. You can add configuration and validation for new stages provided by
 Orca plugins, override existing components with your own implementation, or add
-new Kubernetes Kind definitions for custom resources in your environment.
+new Kubernetes Kind definitions for custom resources in your environment. Spinnaker loads plugins at runtime through Gate.
 
-Plugins are written in any JavaScript compatible language (TypeScript included),
-and are loaded at runtime through Gate. Note, however, that the tooling is
-very JavaScript and TypeScript centric.
+You can write plugins in any JavaScript-compatible language, but the development tooling is designed for JavaScript and TypeScript.
 
-The following are examples of extension points that can be overriden:
+The following are examples of extension points that you can override:
 
   - [ApplicationIcon], replacing the icon used to represent applications in Deck
   - [ServerGroupHeader], replacing how pod status is reported in Deck
