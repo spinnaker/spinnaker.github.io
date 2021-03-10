@@ -10,34 +10,10 @@ redirect-from:
 
 {% include toc %}
 
-
-## Configuring projects targeting deployment on Spinnaker 1.20.6, 1.21+
-
->Note: the contents of this section refer to alpha features in Spinnaker 1.20.6. This means we are working on their stability and usability, as well as possibly adding or changing features. Expect rough edges. Ask questions in the [#plugins Slack channel](https://join.spinnaker.io/) if you need help.
-
-Plugins are an evolving feature.  The easiest way to set up a new plugin project is to copy one of the [spinnaker-plugin-examples](https://github.com/spinnaker-plugin-examples) projects that most closely resembles what you want to do.
-
-Updates:
-
-* `@ExtensionConfiguration` has been deprecated. Use `@PluginConfiguration` instead.
-* You can now generate a skeleton Deck plugin component by executing:
-
-  ```bash
-  npx -p @spinnaker/pluginsdk scaffold
-  ```
-
-  This creates the structure and files for your Deck component.
-
-
-## Configuring projects targeting deployment on Spinnaker 1.19.4
-
->Note: the contents of this section refer to alpha features in Spinnaker 1.19.4. This means we are working on their stability and usability, as well as possibly adding or changing features. Expect rough edges. Ask questions in the [#plugins Slack channel](https://join.spinnaker.io/) if you need help.
-
-Keep the following recommendations and requirements in mind: - We recommend
-making the project a Gradle project. There is Gradle tooling to support plugin
-development. - You can add any dependencies you need to make your plugin
-successful.. *TODO-CF* this is almost certainly a lie when it comes to things
-that conflict with the dependencies in the compileOnly scope...
+Plugins are an evolving feature.  The easiest way to set up a new plugin
+project is to copy one of the
+[spinnaker-plugin-examples](https://github.com/spinnaker-plugin-examples)
+projects that most closely resembles what you want to do.
 
 ### Gradle configuration
 
@@ -47,12 +23,12 @@ Some important aspects of your project's gradle build:
 
 Organizing these values into gradle.properties is optional, but these versions are very much mandatory.
 
-```
-spinnakerGradleVersion=7.5.2
+```properties
+spinnakerGradleVersion=8.10.1
 pf4jVersion=3.2.0
-korkVersion=7.30.0
-orcaVersion=8.2.0
-version=1.2.3
+korkVersion=7.99.1
+orcaVersion=2.19.0-20210209140018
+kotlinVersion=1.3.50
 ```
 
 Note that managing the version of your plugin here (`version=1.2.3`) requires
@@ -62,24 +38,24 @@ outside the scope of this documentation.
 
 #### Top-level build.gradle
 
-```
-// (1):
+```gradle
+// file: my-plugin/build.gradle
+
 buildscript {
   repositories {
-    maven { url "https://dl.bintray.com/spinnaker/gradle/" }
+    mavenCentral()
   }
-  dependencies {
-    classpath("com.netflix.spinnaker.gradle:spinnaker-extensions:$spinnakerGradleVersion")
-  }
+}
+
+// (1):
+plugins {
+  id("com.moowork.node").version("1.3.1").apply(false)
+  id("io.spinnaker.plugin.bundler").version("$spinnakerGradleVersion")
+  id("com.palantir.git-version").version("0.12.2")
+  //... other plugins you might be using
 }
 
 // (2):
-plugins {
-  //... other plugins you might be using
-  id("com.moowork.node").version("1.3.1").apply(false)
-}
-
-// (3):
 apply plugin: "io.spinnaker.plugin.bundler"
 spinnakerBundle {
   pluginId = "Armory.RandomWaitPlugin"
@@ -87,23 +63,49 @@ spinnakerBundle {
   provider = "https://github.com/spinnaker-plugin-examples"
   version = rootProject.version
 }
+
+// (3):
+version = normalizedVersion()
+
+subprojects {
+  group = "io.armory.plugin.manifest"
+  version = rootProject.version
+}
+
+String normalizedVersion() {
+  String fullVersion = gitVersion()
+  String normalized = fullVersion.split("-").first()
+  if (fullVersion.contains("dirty")) {
+    return "$normalized-SNAPSHOT"
+  } else {
+    return normalized
+  }
+}
 ```
 
 **Notes:**
-1. The `buildscript` block brings in the spinnaker-extensions gradle tooling, which includes plugins for creating a bundle, ui-extension, and service-extension.
-2. The `plugins` block imports the node plugin but does not apply it. This plugin is needed by the ui-extension to build the us assets.
-3. At the top level we apply the `io.spinnaker.plugin.bundler` to define the name of the plugin bundle this project is producing along with bundle metadata.
+1. The `plugins` block imports the node plugin but does not apply it. This
+   plugin is needed by the ui-extension to build assets. It also imports
+   the spinnaker-extensions gradle tooling.
+1. At the top level we apply the `io.spinnaker.plugin.bundler` to define the
+   name of the plugin bundle this project is producing along with bundle
+   metadata.
+1. Utility methods for determining the latest version to use when building
+   release distributions, derived from git tags.
 
 #### UI-extension build.gradle
 
 To build a UI extension with the base conventions, the only thing necessary is
 applying the `io.spinnaker.plugin.ui-extension` plugin.
 
-**TODO** document what the ui-extension plugin supplies / supports. Maybe some of that is below?
-
-```
+```gradle
+// file: my-plugin/my-plugin-deck/build.gradle
 apply plugin: "io.spinnaker.plugin.ui-extension"
 ```
+
+This plugin will provide tasks for assembling and creating release distributions
+that are automatically called from the parent Gradle file when creating
+release builds.
 
 #### Service extension build.gradle
 
@@ -113,7 +115,9 @@ kotlin for the plugin. The configuration below strips that out to just include
 the basic gradle configuration necessary for a JVM plugin, if you wish to
 develop plugins in kotlin refer to the gradle build from the example project.
 
-```
+```gradle
+// file: my-plugin/my-plugin-orca/build.gradle
+
 // (1):
 apply plugin: "io.spinnaker.plugin.service-extension"
 apply plugin: "maven-publish"
