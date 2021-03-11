@@ -35,7 +35,7 @@ Here is an example of this configuration:
 deploymentEnvironment:
   customSizing:
     # This applies sizings to only the echo container and not to any sidecar 
-    # containers running with echo.
+    # containers running with echo. (Use spin-<service> to include sidecars)
     echo:
       limits:
         cpu: 250m
@@ -44,10 +44,10 @@ deploymentEnvironment:
         cpu: 100m
         memory: 128Mi
     # This applies sizings to the clouddriver container as well as any sidecar 
-    # containers running with clouddriver.
+    # containers running with clouddriver. (Use without spin- to only include the clouddriver container)
     spin-clouddriver:
       limits:
-        cpu: 1
+        cpu: 1000m
         memory: 1Gi
       requests:
         cpu: 250m

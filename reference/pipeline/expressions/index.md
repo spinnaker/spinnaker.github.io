@@ -204,7 +204,7 @@ access a property via `${#stage("Bake")["context"]["desiredProperty"]}`.
 
 ### #stageByRefId(String)
 
-A shortcut to get the stage by its `refId`. For example, `${#stage("3")}` allows
+A shortcut to get the stage by its `refId`. For example, `${#stageByRefId("3")}` allows
 you to access the stage with `refId = 3`.
 
 ### #currentStage()
