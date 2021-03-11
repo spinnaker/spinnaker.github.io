@@ -110,8 +110,8 @@ spin pipeline execute --name my-pipeline --application my-app
 Pipeline execution started
 ```
 If your pipeline is parameterized, you can submit a JSON-formatted
-map of the parameters and their values either via the `--parameter-file`
-flag or via STDIN, e.g.
+map of the parameters and their values via the `--parameter-file`
+flag, e.g.
 
 ```bash
 {
