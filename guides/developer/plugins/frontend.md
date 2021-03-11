@@ -212,7 +212,7 @@ import { IDeckPlugin, overrideRegistrationQueue } from '@spinnaker/core';
 import { InvisibleConfig } from './InvisibleConfig';
 
 export const plugin: IDeckPlugin = {
-  initialize: _ => {
+  initialize: () => {
     overrideRegistrationQueue.register(InvisibleConfig, 'applicationConfigView')
   }
 };
@@ -340,7 +340,7 @@ profiles:
             url: https://raw.githubusercontent.com/my-organization/my-plugin-repo/master/repositories.json
 ```
 
-After calling `hal deploy apply` or applyingn your `SpinnakerService` manifest
+After calling `hal deploy apply` or applying your `SpinnakerService` manifest
 you should see Gate re-deployed and serving up your plugin code.
 
 [Halyard]: https://github.com/spinnaker/halyard
