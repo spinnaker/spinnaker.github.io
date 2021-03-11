@@ -36,7 +36,6 @@ If you've enabled the zombie check, set an alert on the metric `queue.zombies`, 
 
 # Remediation
 
-You can run this command to cancel a zombie execution via the Orca admin API. 
 
 ```
 POST /admin/queue/zombies/{executionId}:kill
