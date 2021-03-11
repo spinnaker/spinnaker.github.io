@@ -574,6 +574,8 @@ guides:
         url: https://github.com/spinnaker/igor/blob/master/README.md
       - title: Orca
         url: /guides/developer/service-overviews/orca/
+      - title: Keel
+        url: https://github.com/spinnaker/keel/blob/master/README.md
 reference:
   - title: API
     collapsed: true
@@ -813,6 +815,8 @@ community:
         url: /community/gardening/spinnaker-product-box
   - title: Hacktoberfest
     url: /community/hacktoberfest/
+  - title: Google Summer of Code
+    url: /community/gsoc/
 news:
   - title: Sign Up
     url: /news/signup

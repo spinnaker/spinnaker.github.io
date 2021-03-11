@@ -8,3 +8,4 @@ node_modules/
 *.iws
 /.vscode/
 .DS_Store
+/vendor
