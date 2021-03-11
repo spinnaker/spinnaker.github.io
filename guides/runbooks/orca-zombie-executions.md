@@ -37,7 +37,6 @@ If you've enabled the zombie check, set an alert on the metric `queue.zombies`, 
 # Remediation
 
 You can run this command to cancel a zombie execution via the Orca admin API. 
-This method is preferrable to the `forceCancelExecution` admin command, since it is more obvious for end-users why the execution was canceled.
 
 ```
 POST /admin/queue/zombies/{executionId}:kill
