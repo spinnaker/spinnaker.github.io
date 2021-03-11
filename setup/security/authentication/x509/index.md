@@ -90,14 +90,23 @@ Encoding with any other OID can be done by editing the `openssl.conf`.
 
     >**Note:** If providing multiple groups, as in this example, separate them with a new line (`\n`). The new line `\n` shows as a `%0A` in the certificate.
 
-1. Generate a CSR for a new x509 certificate and the given `openssl.conf`:  
+1. Generate a CSR for a new x509 certificate and the given `openssl.conf`:
     ```
     openssl req -nodes -newkey rsa:2048 -keyout key.out -out client.csr \
         -subj "/C=US/ST=CA/L=Oakland/O=Spinnaker/CN=example@example.com" -config openssl.conf
     ```
+
+1. Create extention config file `extension.conf` to apply roles when signing the server requests.
+    ```
+    [ v3_req ]
+    keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+    1.2.840.10070.8.1 = ASN1:UTF8String:spinnaker-example0\nspinnaker-example1
+    ```
+    The same rule for the roles definition applied to this section, as it's explained in the first step of this section.
+
 1. Use the CA to sign the server's request. (If using an external CA, they do this for you.)
     ```
-    openssl x509 -req -days 365 -in client.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out client.crt
+    openssl x509 -req -days 365 -in client.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out client.crt -extensions v3_req  -extfile ./extension.conf
     ```
 
 ![Example x509 certificate generated](two_roles_x509.png)
@@ -110,8 +119,8 @@ hal config security authn x509 edit --role-oid 1.2.840.10070.8.1
 
 ### Configure SSL to require certs
 
-If you have SSL enabled, you need to set the Apache Tomcat SSL stack to require a valid certificate 
-chain as required by the Spring Security integration. 
+If you have SSL enabled, you need to set the Apache Tomcat SSL stack to require a valid certificate
+chain as required by the Spring Security integration.
 
 ```
 hal config security api ssl edit --client-auth # Set to WANT or NEED
@@ -119,8 +128,8 @@ hal config security api ssl edit --client-auth # Set to WANT or NEED
 
 There are three states for `client-auth` - `WANT`, `NEED`, and when it is unset.
 
-Set `client-auth` to `WANT` to use a certificate if available. SSL connections will succeed even if 
-the client doesn’t provide a certificate. This is useful if you enable x509 with another 
+Set `client-auth` to `WANT` to use a certificate if available. SSL connections will succeed even if
+the client doesn’t provide a certificate. This is useful if you enable x509 with another
 authentication method like OAuth, LDAP, SAML - when a certificate is not provided, users can still
 authenticate with one of these methods.
 

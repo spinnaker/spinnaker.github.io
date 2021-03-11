@@ -91,7 +91,7 @@ dependencies:
     version: 0.7.0
 artifactSources:
   debianRepository: https://dl.bintray.com/spinnaker-releases/debians
-  dockerRegistry: gcr.io/spinnaker-marketplace
+  dockerRegistry: us-docker.pkg.dev/spinnaker-community/docker
   gitPrefix: https://github.com/spinnaker
 ```
 
