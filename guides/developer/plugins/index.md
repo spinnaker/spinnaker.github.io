@@ -24,8 +24,8 @@ The goal of this guide is to help with the core services side of plugin
 development: understand how plugins work and how to create new extension
 points for plugin developers to use.
 
-> Plugins are available in Spinnaker `1.20.6` and higher, configured with
-> Halyard `1.36` and higher.
+> Plugins are available in Spinnaker `1.20.6+` configured with
+> Halyard `1.36+`.
 
 ## Why there is a plugin framework
 
@@ -135,7 +135,7 @@ sample of what these extension points look like in Orca and Echo:
 
 #### Example ExtensionPoint Plugin
 
-The [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin) creates a custom pipeline stage that waits a specified number of seconds before signaling success. Consult the [Test a Pipeline Stage Plugin](/guides/developer/plugin-creators/deck-plugin/) guide for how to test this plugin using a local Spinnaker environment.
+The [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin) creates a custom pipeline stage that waits a specified number of seconds before signaling success. Consult the [Test a Pipeline Stage Plugin]({% link guides/developer/plugins/testing/deck-plugin.md %}) guide for how to test this plugin using a local Spinnaker environment.
 
 ### Interface Plugins
 

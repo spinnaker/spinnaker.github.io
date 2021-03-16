@@ -95,13 +95,13 @@ yarn && yarn build
 
 ### Gradle Configuration
 
-In order to build and release your plugin you will need to ensure that you have
+In order to build and release your plugin, you need to ensure that you have
 your Gradle environment configured correctly. Follow the advice in the [Plugin
 Project Configuration]({% link guides/developer/plugins/project-config.md %})
 document up to the `UI-extension build.gradle` section.
 
 The development tooling uses this top-level Gradle file to create a simple
-plugin metadata file. See the [Building & Releasing](#building-and-releasing)
+plugin metadata file. See the [Build and release](#build-and-release)
 section to learn how to configure the rest of this file to create release
 distributions and proper plugin manifest metadata.
 
@@ -131,7 +131,7 @@ plugins listed, the one with your `pluginId` as well as a `plugindev.livereload`
 plugin. The development tooling uses `plugindev.livereload` to reload Deck on
 each code change in your plugin directory.
 
-### Fixing CORS errors when using a remote deck instance
+### Fix CORS errors when using a remote deck instance
 
 During development, you may run into
 [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)-related
@@ -140,7 +140,7 @@ errors if your Deck service runs on an address other than
 instance](https://support.armory.io/support?id=kb_article_view&sysparm_article=KB0010084)
 to allow for CORS requests during development.
 
-## Adding new stages
+## Add new stages
 
 The plugin SDK enables the addition of new stages and `kinds` within
 Spinnaker.  These additions are often accompanied by changes to Orca and
@@ -178,11 +178,7 @@ export const plugin: IDeckPlugin = {
 };
 ```
 
-<!-- FIXME link to a frontend plugin example
-https://github.com/spinnaker-plugin-examples/pf4jStagePlugin  needs to be updated to use the latest architecture
--->
-
-## Overriding existing components
+## Override existing components
 
 You can also override existing components within Deck, so long as they have
 an `Overridable` annotation or are registered as an overridable component. In
@@ -201,10 +197,13 @@ export const InvisibleConfig = () => {
 }
 ```
 
-In order to override the component, you need to know the Application
-configuration registration key. You can find its definition in the
-GitHub Deck project, [ApplicationConfig.tsx](https://github.com/spinnaker/deck/blob/43a0f56fa85fa1714fef0ba73810c90761f5996d/app/scripts/modules/core/src/application/config/ApplicationConfig.tsx). There, you find the `Overridable` annotation is
-`applicationConfigView`. Then, in your `index.ts` file where you define your plugin object, you override that component in the `initialize` method. For example:
+In order to override the component, you need to know
+the Application configuration registration key. You
+can find its definition in the GitHub Deck project,
+[ApplicationConfig.tsx](https://github.com/spinnaker/deck/blob/43a0f56fa85fa1714fef0ba73810c90761f5996d/app/scripts/modules/core/src/application/config/ApplicationConfig.tsx).
+There, you find the `Overridable` annotation is `applicationConfigView`. Then,
+in your `index.ts` file where you define your plugin object, you override that
+component in the `initialize` method. For example:
 
 
 ```javascript
@@ -218,20 +217,19 @@ export const plugin: IDeckPlugin = {
 };
 ```
 
-Once installed, you see the Application configuration page now displays our `h1`
+Once installed, you see the Application configuration page now displays the `h1`
 header.
 
-## Building and releasing
+## Build and release
 
-Building and releasing requires a few steps: adding a distribution repository,
+Building and releasing requires adding a distribution repository,
 building and committing changes for the plugin, and hosting the plugin.
 
-### Creating plugin packages
+### Create plugin packages
 
 Creating a plugin distribution starts from the root of your plugin project.
 The `releaseBundle` task is responsible for creating zip distributions of all
-plugin code and storing it in the `build/distributions` directory. To get
-started:
+plugin code and storing it in the `build/distributions` directory. Run the `releaseBundle` task to get started:
 
 ```shell
 ./gradlew releaseBundle
@@ -239,8 +237,8 @@ started:
 
 If you find the zip archive doesn't contain all your plugin code, make sure
 that you've included each plugin sub-directory in the parent build. You can
-do so by editing the `settings.gradle` file and ensuring that each project
-is `included`. A sample is provided below:
+do that by editing the `settings.gradle` file and ensuring that each project
+is `included`. For example:
 
 ```gradle
 // file: my-plugin/settings.gradle
@@ -252,11 +250,9 @@ include "my-plugin-deck"
 // other configuration ...
 ```
 
-### Creating distribution files
+### Create distribution files
 
-A requires two files to be installable, a `repositories.json` file
-which represents a set of pointers to plugin files, and a `plugins.json` file
-which lists all versions of a particular plugin.
+Spinnaker needs a `repositories.json` file and a `plugins.json` file to install a plugin. `repositories.json` represents a set of pointers to plugin files, and `plugins.json` lists all versions of a particular plugin. See the [Plugin Users Guide]({% link guides/user/plugins/index.md %}) for more information.
 
 The format of the `repositories.json` file looks like this:
 
@@ -269,11 +265,12 @@ The format of the `repositories.json` file looks like this:
 ]
 ```
 
-The `id` key uniquely idenfies your plugin repository, and the URL points to
-where your `plugins.json` is stored. This URL can be any URI so long as it is
-accessible from your Spinnaker cluster.
+The `id` key uniquely identifies your plugin repository. The `url` points to
+where your keep your `plugins.json` file. This URL can be any URI so long as Spinnaker can reach it.
 
-The format of the `plugins.json` file looks like this:
+The `releaseBundle` command that generates the plugin packages also generates required metadata. You can find this metadata in the `build/distributions/plugin-info.json` file. You must provide the value for the `url` key. The value is the location of your plugin zip file. You can store the file in any location that Spinnaker can access.
+
+Here is an example `plugins.json` file's contents:
 
 ```json
 [
@@ -294,24 +291,11 @@ The format of the `plugins.json` file looks like this:
 ]
 ```
 
-The metadata that you must provide is generated by the `releaseBundle` command
-used in the previous section. The metadata is found in the
-`build/distributions/plugin-info.json`.  The only additional field you must
-provide from this generated JSON is the `url` key which points to the location
-of your plugin zip file. The zip file may live at any URI so long as it is
-accessible from your Spinnaker cluster.
+You can store the `repositories.json` and `plugins.json` in any location that Spinnaker can reach. Most developers store these files in a repository separate from the plugin code.
 
-It is common for users to store these files in a separate git repository from
-the plugin code, especially if the plugin is proprietary, so that it is
-accessible from a given Spinnaker cluster.
+### Create an installation README for your users
 
-### Installation
-
-Installation occurs either through [Halyard] or the [Spinnaker Operator]. In
-either case you will have a Halconfig file that will configure plugins for your
-Spinnaker cluster.
-
-The following YAML snippet is a sample of how you would configure your plugin:
+In addition to explaining what your plugin does, you should include a YAML snippet showing your plugin's configuration. For example:
 
 ```yaml
 profiles:
@@ -322,8 +306,8 @@ profiles:
           # The plugin id you defined in your build.gradle
           My.Plugin.Id:
             enabled: true
-            # It's important to note here that this must be a SemVer compatible
-            # string (i.e. do not include a `v` in front of the version string)
+            # This must be a SemVer-compatible string
+            # (i.e. do not include a `v` in front of the version string)
             version: "0.1.0"
   gate:
     spinnaker:
@@ -340,8 +324,12 @@ profiles:
             url: https://raw.githubusercontent.com/my-organization/my-plugin-repo/master/repositories.json
 ```
 
-After calling `hal deploy apply` or applying your `SpinnakerService` manifest
-you should see Gate re-deployed and serving up your plugin code.
 
-[Halyard]: https://github.com/spinnaker/halyard
-[Spinnaker Operator]: https://github.com/armory/spinnaker-operator
+## Next steps
+
+* [Test your plugin locally using Minnaker]({% link guides/developer/plugins/testing/deck-plugin.md %})
+* [Plugin Compatibility Testing]({% link guides/developer/plugins/testing/compatibility-testing.md %})
+* [Deploy your plugin]({% link guides/user/plugins/index.md %})
+
+
+

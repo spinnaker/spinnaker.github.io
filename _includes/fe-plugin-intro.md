@@ -13,8 +13,8 @@ The following are examples of Deck features that you can override:
 
 The following projects demonstrate adding new stages to Spinnaker:
 
-  - [nomadPlugin], adding a Nomad provider to Spinnaker
-  - [pf4jStagePlugin], adding a sample random wait stage to Spinnaker
+  - [nomadPlugin], adding a Nomad provider to Spinnaker.
+  - [pf4jStagePlugin], adding a sample random wait stage to Spinnaker.
 
 [ApplicationIcon]: https://github.com/spinnaker/deck/blob/master/app/scripts/modules/core/src/application/ApplicationIcon.tsx
 [SpinnakerHeader]: https://github.com/spinnaker/deck/blob/master/app/scripts/modules/core/src/header/SpinnakerHeader.tsx
