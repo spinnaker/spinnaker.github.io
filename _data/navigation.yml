@@ -504,24 +504,24 @@ guides:
             url: /guides/developer/extending/crd-extensions/
           - title: Integrate Your CI
             url: /guides/developer/extending/integrate-your-CI/
-      - title: Creating Plugins
+      - title: Plugins
         collapsed: true
         children:
           - title: Overview
-            url: /guides/developer/plugin-creators/overview/
-          - title: Test a Pipeline Stage Plugin
-            url: /guides/developer/plugin-creators/deck-plugin/
-          - title: Plugin Compatibility Testing
-            url: /guides/developer/plugin-creators/compatibility-testing/
-          - title: Plugin Project Configuration
-            url: /guides/developer/plugin-creators/project-config/
-      - title: Plugin Core Contributor Guide
-        collapsed: true
-        children:
-          - title: Getting Started
-            url: /guides/developer/plugin-core-developers
+            url: /guides/developer/plugins/
           - title: Backend Extension Points
-            url: /guides/developer/plugin-core-developers/backend
+            url: /guides/developer/plugins/backend/
+          - title: Frontend Plugin Development
+            url: /guides/developer/plugins/frontend/
+          - title: Plugin Project Configuration
+            url: /guides/developer/plugins/project-config/
+          - title: Testing
+            collapsed: true
+            children:
+              - title: Test a Pipeline Stage Plugin
+                url: /guides/developer/plugins/testing/deck-plugin/
+              - title: Plugin Compatibility Testing
+                url: /guides/developer/plugins/testing/compatibility-testing/
   - title: Operator How-Tos
     collapsed: true
     children:
