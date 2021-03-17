@@ -329,7 +329,7 @@ profiles:
 
 * [Test your plugin locally using Minnaker]({% link guides/developer/plugins/testing/deck-plugin.md %})
 * [Plugin Compatibility Testing]({% link guides/developer/plugins/testing/compatibility-testing.md %})
-* [Deploy your plugin]({% link guides/user/plugins/index.md %})
+* [Deploy your plugin using Halyard]({% link guides/user/plugins/index.md %})
 
-
+{% include plugins-spin-operator.md %}
 
