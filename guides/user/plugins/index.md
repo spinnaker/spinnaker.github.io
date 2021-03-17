@@ -10,7 +10,7 @@ redirect_from:
 
 {% include toc %}
 
->Note: This guide is for plugins that run in Spinnaker 1.20.6 and 1.21+
+>Note: This guide is for plugins that run in Spinnaker 1.20.6 and 1.21+.
 
 ## Overview of Spinnaker plugins
 
@@ -42,6 +42,7 @@ Spinnaker environment:
 * Spinnaker v1.20.6, v1.21+
 * Halyard v1.36 to deploy Spinnaker
 
+{% include plugins-spin-operator.md %}
 
 ## How to add a plugin to Spinnaker
 

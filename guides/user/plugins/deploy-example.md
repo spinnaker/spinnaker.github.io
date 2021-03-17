@@ -24,6 +24,8 @@ This guide was tested with the following software versions:
 * Halyard 1.36+
 * pf4jStagePlugin 1.1.17
 
+{% include plugins-spin-operator.md %}
+
 ## Add the plugin repository
 
 ```bash
