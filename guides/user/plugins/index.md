@@ -8,13 +8,13 @@ redirect_from:
   - /guides/user/plugins/user-guide/
 ---
 
-_Note: Spinnaker 1.20.6 and 1.21+ support plugins with both server and frontend components. Spinnaker 1.19.x does not support frontend plugins due to a bug in Deck._
-
 {% include toc %}
 
-## Overview
+>Note: This guide is for plugins that run in Spinnaker 1.20.6 and 1.21+.
 
-Spinnaker uses [PF4J-Update](https://github.com/pf4j/pf4j-update) to load and manage plugins. These plugins can implement a PF4J extension point or be Spring components. See the [Plugin Creators Guide](/guides/developer/plugin-creators/overview/) for details.
+## Overview of Spinnaker plugins
+
+Spinnaker uses [PF4J-Update](https://github.com/pf4j/pf4j-update) to load and manage plugins. These plugins can implement a PF4J extension point or be Spring components. See the [Plugin Creators Guide]({% link guides/developer/plugins/index.md %}) for details.
 
 ## Terms
 
@@ -42,6 +42,7 @@ Spinnaker environment:
 * Spinnaker v1.20.6, v1.21+
 * Halyard v1.36 to deploy Spinnaker
 
+{% include plugins-spin-operator.md %}
 
 ## How to add a plugin to Spinnaker
 
@@ -120,51 +121,27 @@ Don't forget to `hal deploy apply` to apply your configuration changes.
 
 ## List, edit, and delete repositories
 
-See the command [reference](/reference/halyard/commands/#hal-plugins-repository) to list, edit, or delete repositories.
+See the command [reference]({% link reference/halyard/commands.md %}) to list, edit, or delete repositories.
 
 ## Add a plugin using Halyard
 
 >Note: When Halyard adds a plugin to a Spinnaker installation, it adds the plugin repository information to each service. This means that when you restart Spinnaker, each service restarts, downloads the plugin, and checks if an extension exists for that service. Each service restarting is not ideal for large Spinnaker installations due to service restart times. Clouddriver can take an hour or more to restart if you have many accounts configured. Engineers are working to shorten restart times. See the [Plugin configuration without Halyard](#plugin-configuration-without-halyard) section for how to avoid each service restarting.
 
-After you have added your plugin repository, you can add your plugin to Spinnaker. The Halyard [command](/reference/halyard/commands/#hal-plugins-add) is:
+After you have added your plugin repository, you can add your plugin to Spinnaker. The Halyard [command]({% link reference/halyard/commands.md %}) is:
 
 ```bash
-hal plugins add <unique-plugin-id> --extensions=<extension-name> \
+hal plugins add <unique-plugin-id>  \
 --version=<version> --enabled=true
 ```
 
-_Note: As of Spinnaker v1.23.0, specifying extensions is no longer required. Plugin configurations have been moved and are nested under the plugin ID. See an example of the changes [here](#plugin-v2-configuration-changes)_
-
-The plugin distributor should provide you with the `unique-plugin-id`, `extensions`, and `version` values as well as any plugin configuration details. If you have to hunt for these values, you can find `unique-plugin-id` and `version` in the `plugins.json` file, but you have to look at the code to find the value for `extensions`. Search for the deprecated `@ExtensionConfiguration` or the current `@PluginConfiguration` annotation. Both take a value, which is the extension name.
-
-Example of the deprecated `@ExtensionConfiguration` annotation in the [pf4jStagePlugin](https://github.com/spinnaker-plugin-examples/pf4jStagePlugin/blob/master/random-wait-orca/src/main/kotlin/io/armory/plugin/stage/wait/random/RandomWaitConfig.kt), which is written in Kotlin:
-
-```kotlin
-package io.armory.plugin.stage.wait.random
-
-import com.netflix.spinnaker.kork.plugins.api.ExtensionConfiguration
-
-@ExtensionConfiguration("armory.randomWaitStage")
-data class RandomWaitConfig(var defaultMaxWaitTime: Int)
-```
-
-Example of the `@PluginConfiguration` annotation in the [Notification Plugin](https://github.com/spinnaker-plugin-examples/notificationPlugin/blob/master/notification-agent-echo/src/main/kotlin/io/armory/plugin/example/echo/notificationagent/HTTPNotificationConfig.kt#L5), which is also written in Kotlin:
-
-```kotlin
-package io.armory.plugin.example.echo.notificationagent
-
-import com.netflix.spinnaker.kork.plugins.api.PluginConfiguration
-
-@PluginConfiguration("armory.httpNotificationService")
-data class HTTPNotificationConfig(val url: String)
-```
+The plugin distributor should provide you with the `unique-plugin-id` and `version` values as well as any plugin configuration details. If you have to hunt for these values, you can find `unique-plugin-id` and `version` in the `plugins.json` file.
 
 Plugin configuration variables are passed into the primary class constructor. If the plugin developer doesn't specify configuration details, you can find key and type, or a configuration tree, by looking at the primary class constructor.
 
 You add the `pf4jStagePlugin` to Spinnaker like this:
 
 ```bash
-hal plugins add Armory.RandomWaitPlugin --extensions=armory.randomWaitStage \
+hal plugins add Armory.RandomWaitPlugin  \
 --version=1.1.4 --enabled=true
 ```
 
@@ -175,14 +152,8 @@ spinnaker:
   extensibility:
     plugins:
       Armory.RandomWaitPlugin:
-        id: Armory.RandomWaitPlugin
         enabled: true
-        version: 1.1.14
-        extensions:
-          armory.randomWaitStage:
-            id: armory.randomWaitStage
-            enabled: true
-            config: {}
+        version: 1.1.17
 ```
 
 Halyard _does not_ support configuring plugins. You should manually edit the  Halconfig file for custom values. For example, `pf4jStagePlugin` has a configurable `defaultMaxWaitTime`, so you add that parameter to the plugin's configuration in the `config` collection section:
@@ -192,15 +163,10 @@ spinnaker:
   extensibility:
     plugins:
       Armory.RandomWaitPlugin:
-        id: Armory.RandomWaitPlugin
         enabled: true
-        version: 1.1.14
-        extensions:
-          armory.randomWaitStage:
-            id: armory.randomWaitStage
-            enabled: true
-            config:
-              defaultMaxWaitTime: 60
+        version: 1.1.17
+        config:
+          defaultMaxWaitTime: 60
 ```
 
 Note: `hal plugins enable` and `hal plugins disable` enable or disable _all_ plugins, so use with caution.
@@ -214,14 +180,9 @@ spinnaker:
   extensibility:
     plugins:
       <unique-plugin-id>:
-        id: <unique-plugin-id>
         enabled: <true-false>
         version: <version>
-        extensions:
-          <extension-name>:
-            id: <extension-name>
-            enabled: <true-false>
-            config: {}
+        config: {}
 ```
 
 The plugin developer should provide configuration details in YAML format. If not:
@@ -229,26 +190,15 @@ The plugin developer should provide configuration details in YAML format. If not
 1. Add the plugin using Halyard.
 1. Do not restart Spinnaker.
 1. Copy the plugin configuration from the Halconfig file.
-1. Paste the plugin configuration into the relevant service's local file. Make sure configuration is in the format detailed above.
-1. [Delete](https://spinnaker.io/reference/halyard/commands/#hal-plugins-delete) the plugin by executing `hal plugins delete <unique-plugin-id>`.
+1. Paste the plugin configuration into the relevant service's local file. Make sure configuration is in the format detailed abov
+   e.
+1. [Delete]({% link reference/halyard/commands.md %}) the plugin by executing `hal plugins delete <unique-plugin-id>`.
 1. Restart Spinnaker
 
-## Plugin V2 Configuration Changes
-As of Spinnaker 1.23.0, listing extensions has been deprecated and configuration has been simplified. Plugin extension configurations have been moved and are now nested under the plugin itself, eg:
-```
-spinnaker:
-  extensibility:
-    plugins:
-      <unique-plugin-id>:
-        id: <unique-plugin-id>
-        enabled: <true-false>
-        version: <version>
-        config: {}
-```
 
 ## List, edit, and delete plugins
 
-See the Halyard [commands](https://spinnaker.io/reference/halyard/commands/#hal-plugins) reference to list, edit, or delete plugins.
+See the Halyard [commands]({% link reference/halyard/commands.md %}) reference to list, edit, or delete plugins.
 
 ## Add a Deck proxy to Gate
 
@@ -280,7 +230,7 @@ Remember to `hal deploy apply` after you have finished configuring your plugin.
 
 ## Deployment example
 
-See the [pf4jStagePlugin Deployment Example](/guides/user/plugins/deploy-example/) page for a walkthrough and troubleshooting.
+See the [pf4jStagePlugin Deployment Example]({% link guides/user/plugins/deploy-example.md %}) page for a walkthrough and troubleshooting.
 
 ## Resources
 

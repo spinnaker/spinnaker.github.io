@@ -3,6 +3,8 @@ layout: single
 title:  "Backend Service Extension Points"
 sidebar:
   nav: guides
+redirect-from:
+  - /guides/developer/plugin-core-developers/backend/
 ---
 
 {% include toc %}

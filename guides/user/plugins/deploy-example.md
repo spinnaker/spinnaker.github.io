@@ -6,9 +6,11 @@ sidebar:
   nav: guides
 ---
 
-_Note: Spinnaker 1.20.6 and 1.21+ support plugins with both server and frontend components. Spinnaker 1.19.x does not support frontend plugins due to a bug in Deck._
-
 {% include toc %}
+
+## Overview
+
+_Note: This guide is for Spinnaker 1.20.6 and 1.21+._
 
 In this guide, you deploy the `pf4jStagePlugin` plugin from the [spinnaker-plugin-examples](https://github.com/spinnaker-plugin-examples/examplePluginRepository) repository.
 
@@ -18,9 +20,11 @@ In this guide, you deploy the `pf4jStagePlugin` plugin from the [spinnaker-plugi
 
 This guide was tested with the following software versions:
 
-* Spinnaker 1.20.6 and 1.21+
-* Halyard 1.36
-* pf4jStagePlugin 1.1.14
+* Spinnaker 1.21+
+* Halyard 1.36+
+* pf4jStagePlugin 1.1.17
+
+{% include plugins-spin-operator.md %}
 
 ## Add the plugin repository
 
@@ -57,20 +61,16 @@ spinnaker:
       Armory.RandomWaitPlugin:
         id: Armory.RandomWaitPlugin
         enabled: true
-        version: 1.1.14
-        extensions:
-          armory.randomWaitStage:
-            id: armory.randomWaitStage
-            enabled: true
-            config:
-              defaultMaxWaitTime: 60
+        version: 1.1.17
+        config:
+          defaultMaxWaitTime: 60
     repositories:
       examplePluginsRepo:
         id: examplePluginsRepo
         url: https://raw.githubusercontent.com/spinnaker-plugin-examples/examplePluginRepository/master/plugins.json
 ```
 
->Note: As of Spinnaker 1.23.0, listing extensions has been deprecated and configuration has been simplified. Plugin extension configurations have been moved and are now nested under the plugin itself. 
+>Note: As of Spinnaker 1.23.0, listing extensions has been deprecated and configuration has been simplified. Plugin extension configurations have been moved and are now nested under the plugin itself.
 > See an example of the changes [here](../#plugin-v2-configuration-changes)
 
 
@@ -88,7 +88,7 @@ spinnaker:
        plugins:
          Armory.RandomWaitPlugin:
            enabled: true
-           version: 1.1.14
+           version: 1.1.17
      repositories:
        examplePluginsRepo:
          url: https://raw.githubusercontent.com/spinnaker-plugin-examples/examplePluginRepository/master/plugins.json
