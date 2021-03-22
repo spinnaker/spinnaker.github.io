@@ -6,15 +6,26 @@ description: "See how developers are the key change agents in their companies."
 sidebar:
   nav: success-stories
 ---
-
+<div class="featured-quotes-container">
+    <h3>Featured Quotes</h3>
+    <div class="featured-quotes-wrapper">
+        {% for quote in site.data.success-stories.featured_quotes %}
+            <figure>
+                <img src="{{quote.logo}}" alt="{{quote.name}}">
+            </figure>
+            <div class="quote">
+                <p>{{quote.text}}</p>
+                <p>{{quote.attribution}}</p>
+            </div>      
+        {% endfor %}
+    </div>
+</div>
 <div class="success-stories-container">
     <h3>Case Studies</h3>
-
     <div class="success-stories-wrapper">
         {% for story in site.data.success-stories.cases %}
             <article>
                 <a href="{{story.link}}" target="_blank">
-                    <!-- <h4>{{story.name}}</h4> -->
                     <figure>
                         <img src="{{story.logo}}" alt="{{story.name}}">
                     </figure>
@@ -58,10 +69,6 @@ sidebar:
             </article>
         {% endfor %}
     </div>
-
-    <!-- <p>
-        Want to share your Spinnaker Success Story? <a href="https://spinnaker.formstack.com/forms/spinnaker_testimonials" target="_blank">Click here!</a>
-    </p> -->
 </div>
 
 <div class="videos-container">

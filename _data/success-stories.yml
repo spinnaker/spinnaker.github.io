@@ -1,3 +1,9 @@
+featured_quotes:
+  - name: Biden for President
+    logo: cases-logos/biden.jpg
+    text: "For the 2020 campaign, we relied heavily on Spinnaker for our daily workflows. It managed thousands of deployments throughout the course of the campaign. Security and high-availability was a fundamental engineering priority for us, and embracing immutable infra was a key part of that. I've used Spinnaker at a number of organizations, and its ability to manage zero-downtime deployments made it an obvious choice for the Biden campaign tech needs. At the end of the day, we were building and shipping fast, and we didn't want to spend additional effort on release engineering."
+    attribution: "– Matt Hodges, Engineering Director, Biden For President"
+
 cases:
 
   - name: Avast
@@ -24,11 +30,6 @@ cases:
     link: https://cloud.google.com/blog/products/gcp/guest-post-multi-cloud-continuous-delivery-using-spinnaker-at-waze
     logo: cases-logos/waze.jpg
     text: Thanks to Spinnaker, developers can focus on developing business logic rather than becoming experts on each cloud platform. Teams can track the lifecycle of a deployment using several notification mechanisms including email, Slack, and SMS, allowing them to coordinate handoffs between developer and QA teams.
-
-  - name: Biden for President
-    link: https://spinnaker.io/guides/
-    logo: cases-logos/biden.jpg
-    text: "For the 2020 campaign, we relied heavily on Spinnaker for our daily workflows. It managed thousands of deployments throughout the course of the campaign. Security and high-availability was a fundamental engineering priority for us, and embracing immutable infra was a key part of that. I've used Spinnaker at a number of organizations, and its ability to manage zero-downtime deployments made it an obvious choice for the Biden campaign tech needs. At the end of the day, we were building and shipping fast, and we didn't want to spend additional effort on release engineering. – Matt Hodges, Engineering Director, Biden For President"
 
 testimonials:
   - name: Adobe
