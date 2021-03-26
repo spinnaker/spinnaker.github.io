@@ -2,6 +2,7 @@ $dokka.format:html-v1
 $dokka.linkExtension:html
 
 com.netflix.spinnaker.orca.api.annotations
+com.netflix.spinnaker.orca.api.operations
 com.netflix.spinnaker.orca.api.pipeline
 com.netflix.spinnaker.orca.api.pipeline.graph
 com.netflix.spinnaker.orca.api.pipeline.models

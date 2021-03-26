@@ -5,12 +5,24 @@ sidebar:
   nav: setup
 ---
 
-Here are a few quickstart solutions. These are not meant for production use. To install spinnaker for more than just evaluation, you need a [full install](/setup/install/) using Halyard.
+If you want to install Spinnaker on Lightweight Kubernetes (K3s) for proofs of concept, see the open source project [Minnaker](https://github.com/armory/minnaker). You can install Spinnaker in about 10 minutes in a local or cloud VM.
 
-* [Amazon Web Services](https://aws.amazon.com/about-aws/whats-new/2016/08/netflix-oss-spinnaker-on-the-aws-cloud-quick-start-reference-deployment/)
-* [Spinnaker for Google Cloud Platform](https://cloud.google.com/docs/ci-cd/spinnaker/spinnaker-for-gcp)
-* [Microsoft Azure](https://aka.ms/azspinnaker)
-* [Kubernetes Helm Chart](https://github.com/kubernetes/charts/tree/master/stable/spinnaker)
-* [Spinnaker Operator](https://operatorhub.io/operator/spinnaker-operator) - installs Ubuntu based images published by Spinnaker community
-* [Spinnaker Operator based on UBI 8](https://github.com/OpsMx/opsmx-spinnaker-operator/tree/rhel) - installs Red Hat UBI 8 based images
-* [Red Hat certified Spinnaker Operator](https://access.redhat.com/containers/#/registry.connect.redhat.com/opsmx/spinnaker-operator) - installs Red Hat UBI 8 based images that are certfied by Red Hat and can be installed from the Operator Marketplace in Openshift
+Options for installing Spinnaker in Kubernetes:
+
+* [Spinnaker Operator for Kubernetes](https://github.com/armory/spinnaker-operator) is an open source Kubernetes Operator for deploying and managing Spinnaker. You can install a basic version of Spinnaker or use Kustomize files for advanced configuration.
+* [Spinnaker Operator](https://operatorhub.io/operator/spinnaker-operator) is an open source Helm chart for installing Spinnaker.
+* [Kubernetes Helm Chart](https://github.com/kubernetes/charts/tree/master/stable/spinnaker) **As of Nov 13, 2020, charts in this repo are no longer updated. **
+
+Guides for installing Spinnaker in specific cloud environments:
+
+>These guides may contain outdated content.
+
+* [Spinnaker for Google Cloud Platform](https://cloud.google.com/docs/ci-cd/spinnaker/spinnaker-for-gcp) 2020
+* [Microsoft Azure](https://azure.microsoft.com/en-us/resources/templates/301-jenkins-acr-spinnaker-k8s/) 2018
+* [Amazon Web Services](https://aws.amazon.com/about-aws/whats-new/2016/08/netflix-oss-spinnaker-on-the-aws-cloud-quick-start-reference-deployment/) 2016
+
+
+
+
+
+
