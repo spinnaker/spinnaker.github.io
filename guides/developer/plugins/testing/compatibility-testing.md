@@ -3,6 +3,8 @@ layout: single
 title: "Plugin Compatibility Testing"
 sidebar:
   nav: guides
+redirect-from:
+  - /guides/developer/plugin-creators/compatibility-testing/
 ---
 
 {% include toc %}
