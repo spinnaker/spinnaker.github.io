@@ -15,5 +15,10 @@ changelog.
 
 ### Clouddriver account sharding for caching improvements
 
-The sql backed clouddriver caching pods are now capable of sharding the accounts of any provider 
-by setting a new configuration property `caching.sharding-enabled` to `true`. A hashing logic is applied to determine which pod can run the caching agents of an account.
+Clouddriver account sharding is an opt-in feature, disabled by default, and is enabled by setting a new 
+configuration property `caching.sharding-enabled` to `true`.  
+It works for the clouddriver that uses SQL agent scheduler. 
+The feature works for all cloud providers. Accounts are split among the available pods based on their name.  
+All the caching agents for the same account are run by the same pod but not all pods cache all accounts.
+
+https://github.com/spinnaker/clouddriver/pull/5295
