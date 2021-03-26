@@ -19,7 +19,7 @@ In Spinnaker < 1.26 every time a `git/repo` artifact was needed during a pipelin
 
 Now in Spinnaker 1.26 we added support for "caching" git repositories, so only the first time the repository is needed it will be cloned, and subsequent times clouddriver will do a `git pull` to only download updates. It is expected that this dramatically improves execution times and reliability when working with big repositories.
 
-This is an op-in feature that is disabled by default, to use it you need to add to clouddriver profile configuration the following options:
+This is an opt-in feature that is disabled by default, to use it you need to add to clouddriver profile configuration the following options:
 
 ```yaml
 artifacts:
