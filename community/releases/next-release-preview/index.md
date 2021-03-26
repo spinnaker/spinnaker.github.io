@@ -27,3 +27,5 @@ artifacts:
     clone-retention-minutes: 0           # (Default: 0). How much time to keep clones. 0: no retention, -1: retain forever
     clone-retention-max-bytes: 104857600 # (Default: 100 MB). Maximum amount of disk space to use for clones.
 ```
+
+When the maximum amount of space configured for clone retention is reached, clones will be deleted after returning from the download request, just as if retention was disabled.
