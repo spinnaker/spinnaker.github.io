@@ -31,7 +31,6 @@ cases:
     logo: cases-logos/salesforce-engineering.jpg
     text: Our journey to separate CI and CD was a success with Spinnaker managing the CD. This gave us easier enforcement of deployment security policies, better change control, and standardized pipelines, all of which streamline the release process for both scheduled and unscheduled deployments.
 
-
   - name: Waze
     link: https://cloud.google.com/blog/products/gcp/guest-post-multi-cloud-continuous-delivery-using-spinnaker-at-waze
     logo: cases-logos/waze.jpg
