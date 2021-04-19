@@ -1,13 +1,19 @@
 ---
 layout: single
-title:  "Configure a Git Repo artifact account"
+title:  "Configure a Git Repo Artifact Account"
 sidebar:
   nav: setup
 ---
 
 {% include toc %}
 
-This shows how to configure a Git Repo artifact account so Spinnaker can use an entire repository as a single artifact.
+## Overview
+
+This shows how to configure a Git repo artifact account so Spinnaker can use an entire repository as a single artifact.
+
+Each time a pipeline needs a Git repo artifact during execution, Clouddriver clones the entire repo, sends the repo artifact to the pipeline, and then deletes the cloned repo immediately.
+
+Spinnaker 1.26+ includes a feature for caching a Git repo artifact. Clouddriver clones the Git repo the first time a pipeline needs it and then caches the repo for a configured retention time. Each subsequent time the pipeline needs to use that Git repo artifact, Clouddriver does a `git pull` to fetch updates rather than cloning the entire repo again. This behavior is especially useful if you have a large repo. Clouddriver deletes the cloned Git repo when the configured retention time expires.  **This is an opt-in feature that is disabled by default.** See the [Enable `git pull` support](#enable-git-pull-support) section for details.
 
 ## Prerequisites
 
@@ -25,7 +31,8 @@ hal config artifact gitrepo enable
 ```
 
 ## Configure Auth
-Choose to set up either token, user-password or ssh key auth below.
+
+Choose to set up either token, user-password, or ssh key auth below.
 
 ### Token Auth
 
@@ -69,7 +76,7 @@ Add an artifact account:
 hal config artifact gitrepo account add $ARTIFACT_ACCOUNT_NAME \
     --ssh-private-key-file-path $SSH_KEY_FILE \
     --ssh-private-key-passphrase \
-    --ssh-known-hosts-file-path $KNOWN_HOSTS_FILE 
+    --ssh-known-hosts-file-path $KNOWN_HOSTS_FILE
 
 ```
 
@@ -77,3 +84,23 @@ hal config artifact gitrepo account add $ARTIFACT_ACCOUNT_NAME \
 There are more options described
 [here](/reference/halyard/commands#hal-config-artifact-gitrepo-account-edit)
 if you need more control over your configuration.
+
+
+## Enable `git pull` support
+
+**Spinnaker version:** 1.26+
+
+This feature is disabled by default. To enable `git pull` support, add the following to your `clouddriver` profile:
+
+```yaml
+artifacts:
+  gitrepo:
+    clone-retention-minutes: 60
+    clone-retention-max-bytes: 104857600
+```
+
+* `clone-retention-minutes:` Default: 0. How much time to keep clones. Values are:
+  * 0: no retention.
+  * -1: retain forever.
+  * any whole number of minutes, such as `60`.
+* `clone-retention-max-bytes:` Default: 104857600 (100 MB). Maximum amount of disk space to use for clones. When the maximum amount of space is reached, Clouddriver deletes the clones after returning the artifact to the pipeline, just as if retention were disabled.
