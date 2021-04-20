@@ -365,7 +365,7 @@ Events have details, which will always be the same.
 
 The type of the event will outline where the event is coming from:
 
-* orca:[task type]:[status] - where task type is either 'pipeline', 'stage' or 'task' and status is 'starting', 'completed', 'failed'
+* orca:[task type]:[status] - where task type is either 'pipeline', 'stage' or 'task' and status is 'starting', 'complete', 'failed'
 * build - from igor Jenkins events
 * docker - from igor Docker events
 * git - from git web triggers
