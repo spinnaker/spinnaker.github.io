@@ -9,7 +9,7 @@ sidebar:
 
 ## Overview
 
-This shows how to configure a Git repo artifact account so Spinnaker can use an entire repository as a single artifact.
+This shows how to configure a Git repo artifact account so that Spinnaker can use an entire repo as a single artifact.
 
 Each time a pipeline needs a Git repo artifact during execution, Clouddriver clones the entire repo, sends the repo artifact to the pipeline, and then deletes the cloned repo immediately.
 
@@ -30,11 +30,11 @@ Next, enable the Git Repo artifact provider:
 hal config artifact gitrepo enable
 ```
 
-## Configure Auth
+## Configure auth
 
-Choose to set up either token, user-password, or ssh key auth below.
+Choose to set up token, user-password, or ssh key auth.
 
-### Token Auth
+### Token auth
 
 1. Generate an access token for your Git provider (eg, [GitHub](https://github.com/settings/tokens){:target="\_blank"} or [GitLab](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html){:target="\_blank"}). The token requires the __repo__ scope.
 
@@ -52,7 +52,7 @@ Choose to set up either token, user-password, or ssh key auth below.
    ```
 
 
-### User-Password Auth
+### User-Password auth
 
 1. Create a username-password file, with contents in the following format:
 
@@ -68,7 +68,7 @@ Choose to set up either token, user-password, or ssh key auth below.
    ```
 
 
-### SSH Key Auth
+### SSH key auth
 
 Add an artifact account:
 
@@ -80,10 +80,7 @@ hal config artifact gitrepo account add $ARTIFACT_ACCOUNT_NAME \
 
 ```
 
-
-There are more options described
-[here](/reference/halyard/commands#hal-config-artifact-gitrepo-account-edit)
-if you need more control over your configuration.
+See the [Halyard reference](/reference/halyard/commands#hal-config-artifact-gitrepo-account-edit) for additional options.
 
 
 ## Enable `git pull` support
