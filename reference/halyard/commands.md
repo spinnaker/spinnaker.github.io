@@ -4,7 +4,7 @@ title: "Commands"
 sidebar:
   nav: reference
 ---
-Published: 2021-02-26 10:13:34
+Published: 2021-04-13 06:03:48
 
 
 # Table of Contents
@@ -8536,6 +8536,7 @@ hal config provider docker-registry account add ACCOUNT [parameters]
  * `--password-file`: The path to a file containing your docker password in plaintext (not a docker/config.json file)
  * `--read-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to view this account's cloud resources.
  * `--repositories`: (*Default*: `[]`) An optional list of repositories to cache images from. If not provided, Spinnaker will attempt to read accessible repositories from the registries _catalog endpoint
+ * `--repositories-regex`: Allows to specify a Regular Expression to filter the repositories.
  * `--required-group-membership`: (*Default*: `[]`) A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
  * `--sort-tags-by-date`: (*Default*: `false`) Sort tags by creation date. Not recommended for use with large registries; sorting performance scales poorly due to limitations of the Docker V2 API.
  * `--track-digests`: (*Default*: `false`) Track digest changes. This is not recommended as it consumes a high QPM, and most registries are flaky.
@@ -8600,6 +8601,7 @@ hal config provider docker-registry account edit ACCOUNT [parameters]
  * `--remove-required-group-membership`: Remove this group from the list of required group memberships.
  * `--remove-write-permission`: Remove this permission to from list of write permissions.
  * `--repositories`: (*Default*: `[]`) An optional list of repositories to cache images from. If not provided, Spinnaker will attempt to read accessible repositories from the registries _catalog endpoint
+ * `--repositories-regex`: Allows to specify a Regular Expression to filter the repositories.
  * `--required-group-membership`: A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
  * `--sort-tags-by-date`: Sort tags by creation date. Not recommended for use with large registries; sorting performance scales poorly due to limitations of the Docker V2 API.
  * `--track-digests`: Track digest changes. This is not recommended as it consumes a high QPM, and most registries are flaky.
@@ -9615,7 +9617,7 @@ This can only be set when --kinds is empty or not set.
  * `--omit-namespaces`: (*Default*: `[]`) A list of namespaces this Spinnaker account cannot deploy to or cache.
 This can only be set when --namespaces is empty or not set.
  * `--only-spinnaker-managed`: (*Default*: `false`) (V2 Only) When true, Spinnaker will only cache/display applications that have been
-created by Spinnaker; as opposed to attempting to configure applications for resources already present in Kubernetes. Resources already present in Kubernetes will need to be annotated manually with the Spinnaker [application moniker](https://spinnaker.io/reference/providers/kubernetes-v2/#moniker) if set to true.
+created by Spinnaker; as opposed to attempting to configure applications for resources already present in Kubernetes.
  * `--provider-version`: (*Default*: `v2`) There are currently two versions of the Kubernetes Provider: V1 and V2. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.V1 is scheduled for removal in Spinnaker 1.21; we recommend using V2 only.
  * `--raw-resource-endpoint-kind-expressions`: (*Default*: `[]`) (V2 Only) A list of resource kind regular expressions that the raw resources endpoint will use to filter resources. Only resources matching one or more of the provided expressions will be returned.
  * `--raw-resource-endpoint-omit-kind-expressions`: (*Default*: `[]`) (V2 Only) A list of resource kind regular expressions that the raw resources endpoint will use to filter resources. Only resources that don't match any of the provided expressions will be returned. This can only be set when --raw-resource-endpoint-kinds is empty or not set
@@ -9691,7 +9693,7 @@ This can only be set when --kinds is empty or not set.
  * `--omit-namespaces`: (*Default*: `[]`) A list of namespaces this Spinnaker account cannot deploy to or cache.
 This can only be set when --namespaces is empty or not set.
  * `--only-spinnaker-managed`: (V2 Only) When true, Spinnaker will only cache/display applications that have been
-created by Spinnaker; as opposed to attempting to configure applications for resources already present in Kubernetes. Resources already present in Kubernetes will need to be annotated manually with the Spinnaker [application moniker](https://spinnaker.io/reference/providers/kubernetes-v2/#moniker) if set to true.
+created by Spinnaker; as opposed to attempting to configure applications for resources already present in Kubernetes.
  * `--provider-version`: There are currently two versions of the Kubernetes Provider: V1 and V2. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.V1 is scheduled for removal in Spinnaker 1.21; we recommend using V2 only.
  * `--raw-resource-endpoint-kind-expressions`: (*Default*: `[]`) (V2 Only) A list of resource kind regular expressions that the raw resources endpoint will use to filter resources. Only resources matching one or more of the provided expressions will be returned.
  * `--raw-resource-endpoint-omit-kind-expressions`: (*Default*: `[]`) (V2 Only) A list of resource kind regular expressions that the raw resources endpoint will use to filter resources. Only resources that don't match any of the provided expressions will be returned. This can only be set when --raw-resource-endpoint-kinds is empty or not set
