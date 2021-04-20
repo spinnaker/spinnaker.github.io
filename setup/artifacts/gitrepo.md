@@ -90,13 +90,17 @@ if you need more control over your configuration.
 
 **Spinnaker version:** 1.26+
 
-This feature is disabled by default. To enable `git pull` support, add the following to your `clouddriver` profile:
+This feature is disabled by default. To enable `git pull` support, add the following `artifacts` section to your `clouddriver` profile:
 
 ```yaml
-artifacts:
-  gitrepo:
-    clone-retention-minutes: 60
-    clone-retention-max-bytes: 104857600
+spec:
+  spinnakerConfig:
+    profiles:
+      clouddriver:
+        artifacts:
+          gitrepo:
+            clone-retention-minutes: 60
+            clone-retention-max-bytes: 104857600
 ```
 
 * `clone-retention-minutes:` Default: 0. How much time to keep clones. Values are:
