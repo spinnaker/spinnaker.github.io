@@ -177,6 +177,9 @@ airbnb_user:
 stilingue_user:
   image_path: assets/images/users/stilingue_logo.png
   alt: "Stilingue logo"
+salesforce_user:
+  image_path: assets/images/users/salesforce_logo.png
+  alt: "Salesforce logo"
 ---
 
 The Spinnaker OSS project was started at Netflix. Now, it thrives on the contributions of the broader DevOps community who have adopted it as their Continuous Delivery tool.
@@ -303,7 +306,7 @@ You can read more about how you can get involved through project SIGs, roles, an
   <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="purestorage_user" %}
     {% include spinnaker_user id="redbox_user" %}
-    {% include spinnaker_user id="smartthings_user" %}
+    {% include spinnaker_user id="salesforce_user" %}
 
   </div>
   <div class="clearfix flex items-center mb3">
@@ -314,21 +317,24 @@ You can read more about how you can get involved through project SIGs, roles, an
   </div>
   <div class="clearfix flex items-center mb3">
     {% include spinnaker_user id="skuid_user" %}
+    {% include spinnaker_user id="smartthings_user" %}
     {% include spinnaker_user id="stilingue_user" %}
-    {% include spinnaker_user id="target_user" %}
 
   </div>
   <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="target_user" %}
     {% include spinnaker_user id="transunion_user" %}
     {% include spinnaker_user id="underarmour_user" %}
-    {% include spinnaker_user id="uneeq_user" %}
 
   </div>
     <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="uneeq_user" %}
     {% include spinnaker_user id="waze_user" %}
     {% include spinnaker_user id="weatherbug_user" %}
-    {% include spinnaker_user id="xiaohongshu_user" %}
 
+  </div>
+    <div class="clearfix flex items-center mb3">
+    {% include spinnaker_user id="xiaohongshu_user" %}
 
   </div>
 
