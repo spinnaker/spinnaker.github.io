@@ -140,4 +140,4 @@ parameters:
     type: string
 ```
 ### Troubleshooting
- * *nothing in stage dropdown*. If after adding webhook you see nothing in stage dropdown check that you added description to preconfigured webhook.
+ * *stages do not apprear in deck*. If after adding webhook you see nothing in stage dropdown of pipeline configuration view check that you added description to preconfigured webhook.
