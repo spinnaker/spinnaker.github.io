@@ -111,6 +111,27 @@ Encoding with any other OID can be done by editing the `openssl.conf`.
 
 ![Example x509 certificate generated](two_roles_x509.png)
 
+### Issuing the client certificate using AWS Certificate Manager
+
+If you are using [AWS Certificate Manager's Private Certificate Authority](https://aws.amazon.com/certificate-manager/private-certificate-authority/) to issue client certificates containing role information, you will need to provide a certificate template that allows passthrough of these extensions from the Certificate Signing Request. [BlackEndEntityCertificate_CSRPassthrough/V1](https://docs.aws.amazon.com/acm-pca/latest/userguide/UsingTemplates.html#BlankEndEntityCertificate_CSRPassthrough) is one such template. To issue the certificate using ACM Private CA, first generate the CSR following steps 1 and 2 above. Then, run the following to issue the certificate:
+
+```
+aws acm-pca issue-certificate --csr fileb://client.csr \
+    --template-arn arn:aws:acm-pca:::template/BlankEndEntityCertificate_CSRPassthrough/V1 \
+    --certificate-authority-arn [private CA ARN] \
+    --signing-algorithm SHA256WITHRSA \
+    --validity Value=365,Type="DAYS"
+```
+
+You can then fetch the issued client certificate and output it into a file with:
+
+```
+aws acm-pca get-certificate --certificate-authority-arn [private CA ARN] \
+    --certificate-arn [ARN of previously generated certificate] \
+    --query Certificate \
+    --output text > client.crt
+```
+
 ## Set roleOid
 
 ```
