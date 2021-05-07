@@ -2,7 +2,7 @@
 layout: home
 slack_row:
   title: Join Spinnaker Slack
-  excerpt: "Visit [join.spinnaker.io](https://join.spinnaker.io) to get help on Spinnaker Slack, a place for the community to come together. Use this vibrant workspace to ask and answer questions, connect with other operators and users, discuss issues with SIGs, and learn about Spinnaker!"
+  excerpt: "[Join us on Spinnaker Slack](https://join.slack.com/t/spinnakerteam/shared_invite/zt-7juwxmx0-nQ4Ud4pJcbuPykX3SXwQrg) – a place for the community to come together. Use this vibrant workspace to ask and answer questions, connect with other operators and users, discuss issues with SIGs, and learn about Spinnaker!"
   image_path: assets/images/slack_logo.png
   alt: "Join Spinnaker Slack"
 spinnaker_row:
