@@ -16,7 +16,7 @@ As with any job runner, logs are the primary form of feedback and it's important
 
 ### Link to external system
 
-Most Kubernetes deployments will have some utility for forwarding logs from containers and into external systems for log analysis. If you're using one of these platforms, you can configure your `Job` with the annotation `job.spinnaker.io/logs` and a templated URL to your logging system. This value of this annotation will be used to render a link in the UI. 
+Most Kubernetes deployments will have some utility for forwarding logs from containers and into external systems for log analysis. If you're using one of these platforms, you can configure your `Job` with the annotation `job.spinnaker.io/logs` and a templated URL to your logging system. This value of this annotation will be used to render a link in the UI.
 
 To make it easier to pinpoint the specific job, the annotation value can be templated with values from the deployed `Job` manifest. To use templates, use `{{ "{{ templateKey "}} }}` where `templateKey` is the path to the value you wish to use. The deployed manifest will be passed into the template as JSON. This functionality mirrors that of the [Annotation Driven UI](/guides/user/kubernetes-v2/annotations-ui/).
 
@@ -98,7 +98,7 @@ Again, using this solution would result in the following format:
 
 If `SPINNAKER_CONFIG_JSON` is found multiple times within the log then each is parsed and added to the resulting output. If multiple keys are the same, for example the key `foo` is contained in multiple instances of `SPINNAKER_CONFIG_JSON`, then the _last one_ wins. The results of multiple occurrences _are not merged_.
 
-If you source JSON from a file (`SPINNAKER_CONFIG_JSON=$(cat file.json)`), be sure that the file content does not introduce newline characters since each `SPINNAKER_CONFIG_JSON` is only parsed from one line in the log file. 
+If you source JSON from a file (`SPINNAKER_CONFIG_JSON=$(cat file.json)`), be sure that the file content does not introduce newline characters since each `SPINNAKER_CONFIG_JSON` is only parsed from one line in the log file.
 
 
 ### Artifacts
@@ -123,6 +123,6 @@ In order to capture this output, you'll want to configure the `Run Job (Manifest
 
 ## Cleaning up old Jobs
 
-Spinnaker doesn't clean up any `Jobs` deployed via the `Run Job (Manifest)` stage. In order to clean up old `Jobs` it's recommended that you implement some type of garbage collection so as not to overrun your Kubernetes deployment with a massive amount of old `Jobs`. 
+Spinnaker uses the [recreate strategy](https://spinnaker.io/reference/providers/kubernetes-v2/#strategy) in the `Run Job (Manifest)` stage.  That means that if a `Job` exists with the same name, Spinnaker deletes it before deploying the new one.  Note that using [metadata.generateName](https://kubernetes.io/docs/reference/using-api/api-concepts/#generated-values) means that Kubernetes generates jobs with unique names each time.  In this case, in order to clean up old `Jobs` you should implement some type of garbage collection so as not to overrun your Kubernetes deployment with a massive amount of old `Jobs`.
 
 As of Kubernetes 1.12, [automatic `Job` cleanup](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/#clean-up-finished-jobs-automatically) is an alpha feature, available behind the `TTLAfterFinished` feature flag. This flag must be enabled on the API server when it's started. To verify if your deployment has this feature enabled, check with your Kubernetes administrator.

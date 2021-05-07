@@ -26,6 +26,11 @@ cases:
     logo: cases-logos/netflix.jpg
     text: The community uptake has been tremendous. Having a platform that has an extensible model, and accommodates multiple cloud providers out of the box, means that we are one large community rather than a bunch of micro-communities focused on various forks. This has the benefit of allowing everyone within the community to take advantage of various innovations.
 
+  - name: Salesforce Engineering
+    link: https://engineering.salesforce.com/journey-to-spinnaker-deployment-orchestration-743bbda6c01c
+    logo: cases-logos/salesforce-engineering.jpg
+    text: Our journey to separate CI and CD was a success with Spinnaker managing the CD. This gave us easier enforcement of deployment security policies, better change control, and standardized pipelines, all of which streamline the release process for both scheduled and unscheduled deployments.
+
   - name: Waze
     link: https://cloud.google.com/blog/products/gcp/guest-post-multi-cloud-continuous-delivery-using-spinnaker-at-waze
     logo: cases-logos/waze.jpg

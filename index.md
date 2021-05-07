@@ -56,7 +56,7 @@ oracle_provider:
   image_class: spin_cloud_provider__oracle
 active_community_row:
   title: Active Community
-  excerpt: "Join a community that includes Netflix, Google, Microsoft, Veritas, Target, Kenzan, Schibsted, and many others, actively working to maintain and improve Spinnaker."
+  excerpt: "Join a community that includes Netflix, Google, Microsoft, Salesforce, Veritas, Target, Kenzan, Schibsted, and many others, actively working to maintain and improve Spinnaker."
   image_path: assets/images/community.svg
 ci_integrations_feature:
   title: CI Integrations

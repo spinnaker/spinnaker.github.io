@@ -72,7 +72,7 @@ metadata:
 
 * __Statically specified overrides__
 
-  The set of static of key/value pairs that are passed as `--set` parameters to
+  The set of static key/value pairs that are passed as `--set` parameters to
   the `helm template` command.
 
 As an example, we have a fully configured Bake (Manifest) stage below:

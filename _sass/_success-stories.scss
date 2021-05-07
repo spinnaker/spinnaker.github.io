@@ -47,14 +47,18 @@
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 20px;
+    align-items: center;
     justify-content: space-between;
   }
 
   .quote {
-    p:nth-child(2) {
-      text-align: right;
+    p {
       margin: 23px 15px 15px;
       font-size: 0.75em;
+      font-style: italic;
+    }
+    p:nth-child(2) {
+      text-align: right;
     }
   }
 
@@ -95,6 +99,7 @@
   .success-stories-wrapper {
     display: grid;
     grid-template-columns: repeat(3, calc(33% - 10px));
+    gap: 24px 10px;
     justify-content: space-between;
   }
 
@@ -206,35 +211,6 @@
           height: 68px;
         }
       }
-
-      // div {
-      //     padding: 4px 12px;
-      //     position: relative;
-
-      //     &:before {
-      //         content: '';
-      //         width: 60px;
-      //         height: 3px;
-      //         position: absolute;
-      //         left: 12px;
-      //         bottom: 0;
-      //         background: $masthead-color;
-      //     }
-      // }
-
-      // h4 {
-      //     font-size: .9em;
-      //     color: $masthead-link-color-hover;
-      //     font-weight: 900;
-      //     margin: 0;
-      // }
-
-      // p {
-      //     font-size: .75em;
-      //     color: $masthead-link-color-hover;
-      //     font-weight: 100;
-      //     margin: 0;
-      // }
     }
 
     q {
