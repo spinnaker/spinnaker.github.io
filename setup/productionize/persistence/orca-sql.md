@@ -38,16 +38,20 @@ set tx_isolation = 'READ-COMMITTED';
   
   ```sql
   CREATE SCHEMA `orca` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+  
+  CREATE USER 
+    'orca_service'@'%', -- IDENTIFIED BY "password" if using password based auth
+    'orca_migrate'@'%'; -- IDENTIFIED BY "password" if using password based auth
 
   GRANT 
     SELECT, INSERT, UPDATE, DELETE, CREATE, EXECUTE, SHOW VIEW
   ON `orca`.* 
-  TO 'orca_service'@'%'; -- IDENTIFIED BY "password" if using password based auth
+  TO 'orca_service'@'%';
 
   GRANT 
     SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, REFERENCES, INDEX, ALTER, LOCK TABLES, EXECUTE, SHOW VIEW 
   ON `orca`.* 
-  TO 'orca_migrate'@'%'; -- IDENTIFIED BY "password" if using password based auth
+  TO 'orca_migrate'@'%';
   ```
 
 When Orca starts up, it will perform database migrations to ensure its running the correct schema.
