@@ -1,8 +1,8 @@
 ---
 layout: single
-title:  "AWS Launch Templates"
+title:  "AWS Launch Templates Setup"
 sidebar:
-  nav: setup
+nav: setup
 ---
 
 {% include toc %}
@@ -19,13 +19,13 @@ This section summarizes the steps required to set up launch templates if you are
 ### New to AWS
 If you are new to Spinnaker or even just new to AWS in Spinnaker, we recommend immediately enabling launch template support for all applications. 
 
-1. Update your clouddriver configuration file, usually `clouddriver.yml`, to enable launch templates for all applications. 
+1. Update your Clouddriver configuration file, usually `clouddriver.yml`, to enable launch templates for all applications. 
     ```yml
       aws.features.launch-templates.enabled: true
       aws.features.launch-templates.all-applications.enabled: true
     ```
 1. Read through the available launch template supported [features](#feature-configuration) to determine which make sense for your users. 
-1. Update AWS settings in deck to enable launch templates and the features you identified. Ensure that `enableLaunchTemplates` is `true`. 
+1. Update AWS settings in Deck to enable launch templates and the features you identified. Ensure that `enableLaunchTemplates` is `true`. 
     ```js
       providers: {
         aws: {
@@ -51,21 +51,20 @@ If you already use AWS as a cloud provider in Spinnaker, we recommend migrating 
     ```
     Review the [rollout configurations](#rollout-configuration) and determine which of these you can *temporarily* utilize for your rollout. If you do not need to rollout, stop here and follow the [new AWS users](#new-to-aws) steps instead. 
 1. Read through the available launch template supported [features](#feature-configuration) to determine which make sense for your users. 
-1. Update AWS settings in deck to enable launch templates and the features you identified. Ensure that `enableLaunchTemplates` is `true`.
-    ```js
-      // enable launch templates for AWS
-      window.spinnakerSettings.providers.aws.serverGroups.enableLaunchTemplates = true;
+1. Update AWS settings in Deck to enable launch templates and the features you identified. Ensure that `enableLaunchTemplates` is `true`. 
+  	```js
+    // enable launch templates for AWS
+    window.spinnakerSettings.providers.aws.serverGroups.enableLaunchTemplates = true;
     
-      window.spinnakerSettings.providers.aws.serverGroups.enableIPv6 = true;
-      window.spinnakerSettings.providers.aws.serverGroups.enableIMDSv2 = true;
-      window.spinnakerSettings.providers.aws.serverGroups.enableCpuCredits = true;
-    ```
-
+    window.spinnakerSettings.providers.aws.serverGroups.enableIPv6 = true;
+    window.spinnakerSettings.providers.aws.serverGroups.enableIMDSv2 = true;
+    window.spinnakerSettings.providers.aws.serverGroups.enableCpuCredits = true;
+  	```
 1. When you are ready for a complete rollout, enable launch templates for all applications and clean up rollout config in `clouddriver.yml`. 
-    ```yml
-      aws.features.launch-templates.enabled: true
-      aws.features.launch-templates.all-applications.enabled: true
-    ```
+ 	```yml
+   aws.features.launch-templates.enabled: true
+   aws.features.launch-templates.all-applications.enabled: true
+   ```
 
 ## Rollout Configuration
 If you already use AWS, then your applications may have some dependencies on launch configurations that prevent simple feature enabling. The configuration options beflow were created to aid with testing or a rollout period. Feel free to use whatever combination is best for you. 
@@ -114,47 +113,11 @@ If you would prefer to **skip a rollout**, use the configuration in [New to AWS]
     <tr>
       <td>all-applications.enabled</td>
       <td>Boolean</td>
-      <td>Allows launch tempaltes on any application, except for those that have been excluded. This will override any of the allowed lists, and widely rollout launch templates.</td>
+      <td>Allows launch templates on any application, except for those that have been excluded. This will override any of the allowed lists, and widely rollout launch templates.</td>
       <td>true</td>
     </tr>
   </tbody>
 </table>
 
 ## Feature Configuration
-Once launch templates are enabled in clouddriver, a new set of features are unlocked. Review the table of features below to determine which features you want to enable in the UI. Users will see enabled features as options when configuring a server group. 
-                                                        
-<table>
-  <thead>
-    <tr>
-      <th>Feature</th>
-      <th style="width=50%;">Description</th>
-      <th>Deck Setting</th>
-      <th>Clouddriver API Request Parameter</th>
-      <th>Release Version</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>IPv6</td>
-      <td>ASGs associate an IPv6 address to their instances.</td>
-      <td><em>enableIPv6</em></td>
-      <td><em>associateIPv6Address</em></td>
-      <td><em>v1.21</em></td>
-    </tr>
-    <tr>
-      <td>IMDSv2</td>
-      <td>Helps mitigate AWS credential theft from the exploitation of SSRF vulnerabilities in web applications. This is only supported by modern SDKs. <font size="-1">Learn more from <a target="_blank" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-credits-baseline-concepts.html">AWS</a>.</font></td>
-      <td><em>enableIMDSv2</em></td>
-      <td><em>requireIMDSv2</em></td>
-      <td><em>v1.21</em></td>
-    </tr>
-    <tr>
-      <td>CreditSpecification</td>
-      <td>The credit option for CPU usage of the instance. <a target="_blank" href="https://github.com/spinnaker/clouddriver/blob/master/clouddriver-aws/src/main/groovy/com/netflix/spinnaker/clouddriver/aws/deploy/handlers/BasicAmazonDeployHandler.groovy#L488">Default in Spinnaker is <em>standard</em></a> irrespective of the instance family. 
-      Valid for burstable performance EC2 instances only. <font size="-1">Learn more from <a target="_blank" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-credits-baseline-concepts.html">AWS</a>.</font></td>
-      <td><em>enableCpuCredits</em></td>
-      <td><em>unlimitedCpuCredits</em></td>
-      <td><em>v1.24</em></td>
-    </tr>
-  </tbody>
-</table>
+Learn more about the feature set along with sample API requests [here](/features/server-group-launch-settings/aws-ec2/launch-templates.md#Launch-Template-Feature-Configuration).

@@ -240,14 +240,26 @@ setup:
       - title: Set up canary support
         url: /setup/canary
       - title: Additional Features
-        collapsed: true
+        collapsed: false
         children:
-          - title: Configure Notifications
-            url: /setup/features/notifications/
+          - title: Configure Server Group Launch Settings
+            collapsed: true
+            children:
+              - title: AWS Server Group Launch Settings
+                collapsed: false
+                children:
+                  - title: Overview
+                    url: /setup/features/server-group-launch-settings/aws-ec2/
+                  - title: Setup Launch Template Support
+                    url: /setup/features/server-group-launch-settings/aws-ec2/launch-templates-setup/
+                  - title: Launch Template Features
+                    url: /setup/features/server-group-launch-settings/aws-ec2/launch-templates/
           - title: Configure User Data (metadata)
             url: /setup/features/user-data/
           - title: Configure the Script stage
             url: /setup/features/script-stage/
+          - title: Configure Notifications
+            url: /setup/features/notifications/
           - title: Configure Slack Support
             url: /setup/features/slack-support
       - title: Use External Account Configuration
