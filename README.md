@@ -1,3 +1,13 @@
+# THIS REPOSITORY IS NO LONGER USED TO GENERATE THE SPINNAKER.IO WEBSITE.
+All pull requests should be made in the new [github.com/spinnaker/spinnaker.io](https://github.com/spinnaker/spinnaker.io) repo.
+
+
+
+
+
+
+
+--------------------------------- ARCHIVED ------------------------------
 
 ## Local preview
 The easiest way to preview and test your changes to Spinnaker.io is to run your branch locally with Docker, via the [dockerfile](https://github.com/spinnaker/spinnaker.github.io/blob/master/Dockerfile) included in the root directory.
