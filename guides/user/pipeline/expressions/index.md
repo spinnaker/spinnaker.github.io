@@ -13,16 +13,19 @@ redirect_from:
 Pipeline expressions allow you to dynamically set and access variables during
 pipeline execution. You can use an expression in almost any text field in a
 Spinnaker pipeline stage. Pipeline expressions help you use arbitrary values
-about the state of your system in the execution of your pipelines. You can use
-them to turn on or off particular stages or branches of your pipeline,
-dynamically name your stack, check the status of another stage, and perform
-other operations.
+about the state of your system in the execution of your pipelines. 
+
+You can use them to: 
+* Turn on or off particular stages or branches of your pipeline
+* Dynamically name your stack
+* Check the status of another stage
+* Perform other operations
 
 This guide explains how and where to use expressions, and provides some examples
 of what you can do with them. For a list of available functions, see the
 [reference guide](/reference/pipeline/expressions/).
 
-> Note: Pipeline expression syntax is based on [Spring Expression Language
+> __Note:__ Pipeline expression syntax is based on [Spring Expression Language
 > (SpEL)](https://docs.spring.io/spring/docs/current/spring-framework-reference/html/expressions.html).
 
 ## What does a pipeline expression look like?
@@ -37,8 +40,7 @@ ${expression here}
 If an expression can't be evaluated, Spinnaker simply returns the expression.
 The above example would return "expression here."
 
-You also can interpolate expressions and strings. For example if
-`expressionA` evaluates to _Hello_ and `expressionB` evaluates to _world_,
+You also can interpolate expressions and strings. For example, if
 
 ```
  ${expressionA}-randomString-${expressionB}
@@ -46,19 +48,19 @@ You also can interpolate expressions and strings. For example if
 
 evaluates to _Hello-randomString-world_.
 
-Note that expressions can't be nested: `${ expression1 ${expression2} }` won't
-be evaluated.
+  > __Note:__ Expressions can't be nested: `${ expression1 ${expression2} }` won't
+  > be evaluated.
 
 ## How do I use a pipeline expression?
 
 ### Where can I use pipeline expressions?
 
-You can use pipeline expressions any place in the UI where you can enter
+You can use pipeline expressions in any place in the UI where you can enter
 free-form text, with the exception of the pipeline **Configuration** stage.
 However, expressions can be used with Expected Artifacts, just enable "Use
 Default Artifact" and write the expression in the Object path.
 
-If you want to set the value of a field using a pipeline expression but there is
+If you want to set the value of a field using a pipeline expression, but there is
 no text box available, you can use the [Edit as
 JSON](/guides/user/pipeline/managing-pipelines/#edit-a-pipeline-as-json)
 pipeline feature.
@@ -67,7 +69,7 @@ pipeline feature.
 
 Spinnaker evaluates the expressions for a given stage at the beginning of that
 stage. You can't use pipeline expressions during the pipeline **Configuration**
-stage, because Spinnaker doesn't begin evaluating expressions until after the
+stage because Spinnaker doesn't begin evaluating expressions until after the
 **Configuration** stage has finished.
 
 ## How do I define additional data for use with pipeline expressions?
@@ -168,7 +170,7 @@ the helper functions that are available.
 are variables which refer to global information about the current pipeline
 execution. For example, `execution` is a variable which refers to the current
 pipeline execution, whereas `trigger` lets you access information
-about the pipeline trigger. For example, if you've set up a Jenkins trigger and
+about the pipeline trigger. Another example is if you've set up a Jenkins trigger and
 want to know which build triggered the current pipeline, you could access that
 information with the expression `${trigger["buildInfo"]["number"]}`.
 
@@ -182,7 +184,7 @@ are available to you:
 
 ![](images/helper-properties-list.png)
 
-Once a helper property is added to the expression you can use any of the meta
+Once a helper property is added to the expression, you can use any of the meta
 keys (Shift, Command, Alt, Control) to bring up a list of all the pipeline
 context that is relevant to the selected helper property.
 
@@ -216,16 +218,17 @@ context.
 To specify a property file:
 
 1. Archive it in your Jenkins job.
-2. Specify the name of the file in the pipeline configuration. Note that this
-    is just the name of the file, not the absolute path —
+2. Specify the name of the file in the pipeline configuration. 
+  > __Note:__ This is just the name of the file, not the absolute path —
     `mypropertyfile.properties` rather than
     `workspace/build/mypropertyfile.properties`.
-    ![](images/property-file.png)
+    
+![](images/property-file.png)
 
 If you upload a property file via a Jenkins trigger, you can access the
 variables via `trigger["properties"]`. However, if you're using property files
 in Jenkins or Script pipeline _stages_, they are added directly to the stage
-context. Within the stage itself you can access them directly, and future stages
+context. Within the stage itself, you can access them directly and future stages
 can access them via the stage context.
 
 For example, consider a property file containing this:
@@ -241,9 +244,9 @@ If it was uploaded in a Jenkins or Script stage, you would access it in that
 stage directly: `${version}`. Successive stages could access the variable
 using the stage context: `${#stage("Jenkins job")["context"]["version"]}`.
 
-Be careful when using property files in pipelines with multiple Jenkins jobs. If
-both jobs upload property files with the same variables specified, they may
-overwrite one another.
+  > __Note:__ Be careful when using property files in pipelines with multiple Jenkins jobs. If
+  > both jobs upload property files with the same variables specified, they may
+  > overwrite one another.
 
 ### #root
 
@@ -252,9 +255,9 @@ stage. For example, each Bake stage has a _package_ value which returns the name
 of the package that it installed. To access that value within the stage, you can
 use the expression `${#root["package"]}`.
 
-Note that if you are running an expression against the [testing
+  > __Note:__ If you're running an expression against the [testing
 endpoint](#how-do-i-test-a-pipeline-expression), `#root` returns the entire
-pipeline context, because the expression isn't tied to a particular stage.
+pipeline context because the expression isn't tied to a particular stage.
 
 ### Special characters
 
@@ -339,12 +342,12 @@ the following:
 }
 ```
 
-Note that [Gate](https://github.com/spinnaker/gate) is the microservice that
-provides access to the Spinnaker API. If you're accessing Spinnaker via the
-default `localhost:9000`, make sure you're sending your API requests to Gate
-(defaults to `localhost:8084`).
-
-Note also that pipeline expressions may not behave exactly the same against the
+  > __Note:__ [Gate](https://github.com/spinnaker/gate) is the microservice that
+  > provides access to the Spinnaker API. If you're accessing Spinnaker via the
+  > default `localhost:9000`, make sure you're sending your API requests to Gate
+  > (defaults to `localhost:8084`).
+  
+Pipeline expressions may not behave exactly the same against the
 testing endpoint and in your pipeline. In your pipeline, each expression is
 evaluated against the context of the particular stage in which it was declared.
 When using the testing endpoint, your expression is evaluated against the
@@ -363,12 +366,14 @@ section of its configuration. If you select _Conditional on Expression_ and
 enter an expression, the stage only runs if the expression evaluates to true.
 
 For example, if you input the expression `trigger["dryRun"] == false`, the
-stage will be skipped during dry runs.  Note: expressions in this field do not
-need to be wrapped in `${}`.
+stage will be skipped during dry runs.  
+
+> __Note:__ Expressions in this field do not
+> need to be wrapped in `${}`.
 
 ![](images/conditional-on-expression.png)
 
-Note that only the specific stage containing this expression will be skipped.
+Only the specific stage containing this expression will be skipped.
 Stages that depend on it will still run.
 
 ### Create a stack named after a committed git branch
@@ -383,7 +388,7 @@ the Jenkins build is triggered by a git commit.
 
 2. Add a deploy stage to the pipeline. In the _stack_ field, you'll use the
 expression `${#alphanumerical(scmInfo.branch)}` rather than a static value.
-`#alphanumerical` strips out all special characters from the input string, which
+`#alphanumerical` strips out all special characters from the input string. This
 is important because some providers don't allow stack names with special
 characters. `scmInfo` is a helper property which provides details about the most
 recently executed Jenkins job.
@@ -396,16 +401,16 @@ recently executed Jenkins job.
 
 3. Commit to a git branch in the repo you've connected to Jenkins in order to
 trigger your pipeline. When the pipeline runs, it replaces the expression with
-the name of the branch, creating a new cluster. The screenshot below shows what
+the name of the branch; thus creating a new cluster. The screenshot below shows what
 happens when you push commits to both the _master_ branch and a branch called
-_new-release_. Note that the dash was stripped out of _new-release_, creating
+_new-release_. The dash was stripped out of _new-release_, creating
 the _newrelease_ cluster.
 
     ![](images/dynamic-clusters.png)
 
 ### Use preconditions to choose pipeline paths
 
-You're going to set up a pipeline with three conditions, and gate these
+You're going to set up a pipeline with three conditions and gate these
 conditions with a manual judgment stage. The screenshots below show a pipeline
 that receives and bakes a binary from a Jenkins trigger, but you can work
 through this example with any pipeline that's able to deploy an image.
@@ -423,7 +428,7 @@ step' with three input options: **do nothing**, **deploy another**, and
     ![](images/cleanup-precondition.png)
 
     The `judgment` function checks the output of a Manual Judgment stage whose name
-    matches the input string.  Note that the input is case-sensitive. Since the name
+    matches the input string.  The input is case-sensitive. Since the name
     of the Manual Judgment stage is 'Ask for next step', attempting to find it using
     `#judgment("ask for next step")` would fail.
 
