@@ -34,9 +34,9 @@ on an existing pipeline.
 
 * Share the template with one or more teams of developers using Spinnaker.
 
-  To [save a pipeline
+  [Saving a pipeline
   template](/guides/user/pipeline/pipeline-templates/create/#4-save-the-template)
-  to Spinnaker is to make it available to developers. It's a good idea though
+  to Spinnaker makes it available to developers. It's a good idea 
   to communicate to the team what templates are available.
 
 * [Use the `spin` CLI to plan how to parameterize the
