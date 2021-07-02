@@ -3,7 +3,6 @@ layout: single
 title:  "*Flying*  Edition 3"
 sidebar:
   nav: news
-redirect_from: /news/latest/
 ---
 ## Open Source: #BetterTogether
 > This month's issue focuses Spinnaker's strong open source DNA. Spinnaker builds a bridge between the collaboration story at the core of Linux culture and the powerful cloud economy that has leveraged it to transform software delivery. OSS community efforts to build native Kubernetes|Spinnaker integration highlight this unique strength.
@@ -24,7 +23,7 @@ Fans of the __[Just me and Opensource](https://www.youtube.com/user/wenkatn)__ o
 2-way interactive Slack notifications allow Netflix engineers deploying with Spinnaker's new Managed Delivery feature to approve a Spinnaker pipeline manual judgement directly from Slack. Learn how Echo handles communications between notifying services and Slack via interactive notification callbacks.
 
 ## [Operating Spinnaker at Scale & the Ops SIG's Mission](https://www.armory.io/blog/scaling-spinnaker-at-salesforce-the-life-of-a-cloud-ops-architect/)
-Discover the mission of the new <span class="x x-first x-last">[</span>Operations SIG<span class="x x-first x-last">](https://github.com/spinnaker/governance/tree/master/sig-ops)</span> in this interview with the co-chair, Edgar Magana of Salesforce. 
+Discover the mission of the new <span class="x x-first x-last">[</span>Operations SIG<span class="x x-first x-last">](https://github.com/spinnaker/governance/tree/master/sig-ops)</span> in this interview with the co-chair, Edgar Magana of Salesforce.
 
 This SIG will address several goals and challenges, including reference architecture. Edgar explains these through the lens of Salesforce's Spinnaker implementation, which targets both Kubernetes and EC2 deployments.  
 
