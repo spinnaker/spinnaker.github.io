@@ -61,7 +61,7 @@ CONTEXT=$(kubectl config current-context)
 # This service account uses the ClusterAdmin role -- this is not necessary, 
 # more restrictive roles can by applied.
 kubectl apply --context $CONTEXT \
-    -f https://www.spinnaker.io/downloads/kubernetes/service-account.yml
+    -f https://spinnaker.io/downloads/kubernetes/service-account.yml
 
 TOKEN=$(kubectl get secret --context $CONTEXT \
    $(kubectl get serviceaccount spinnaker-service-account \
@@ -206,8 +206,8 @@ Then add the account:
 
 ```bash
 CONTEXT=$(kubectl config current-context)
-
-hal config provider kubernetes account add my-k8s-account \
+ACCOUNT="my-k8s-account"
+hal config provider kubernetes account add $ACCOUNT \
     --context $CONTEXT
 ```
 

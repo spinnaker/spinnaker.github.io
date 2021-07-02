@@ -69,7 +69,9 @@ hal config storage edit --type s3
 ```
 
 ## Notes
-> :warning: Unless you've configured Minio to [support virtual-host-style requests](https://docs.min.io/docs/minio-server-configuration-guide.html#Domain), you need to enable the path-style access mode: `hal config storage s3 edit --path-style-access true`. Otherwise, Front50 will fail with `java.net.UnknownHostException: $BUCKET_NAME.localhost` exceptions.
+
+> :warning: Unless you've configured Minio to [support virtual-host-style requests](https://docs.min.io/docs/minio-server-configuration-guide.html#Domain), you need to enable the path-style access mode: `hal config storage s3 edit --path-style-access true`. Otherwise, Front50 will fail with `java.net.UnknownHostException: $BUCKET_NAME.localhost` exceptions.  
+> :warning: If you use Distributed installation and Front50 is in the crash loop, please set the endpoint as a Minio address instead of localhost.
 
 ## Next steps
 
