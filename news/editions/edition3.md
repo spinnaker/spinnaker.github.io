@@ -37,8 +37,8 @@ Armory released a new "PaCRD" experiment this month. Learn how to add a controll
 ## [Spinnaker Summit CFP Now Open](https://linuxfoundation.smapply.io/prog/spinnaker_summit_2020/)
 With Spring upon us, the annual Spinnaker Summit is closer than you think. The CFP recently opened, and the application contains plenty of inspiration. Newly created tracks (Deep Dive, Hands-On, and Solutions & Case Studies) aim to create a high-quality program that will appeal to any CD stakeholder. Visit the #spinnaker-summit-2020 channel for brainstorming support, and count on help with presentation prep as needed. Submit your proposals today!
 
-## [Fix Applied for Clouddriver SQL Injection Bug Discovered by Autodesk](https://github.com/spinnaker/clouddriver/pull/4435)
-Engineers from Netflix and Armory acted quickly to include an important Clouddriver fix in the 1.17 release. The PEN testing team at Autodesk, a company using Spinnaker in production, discovered the SQL injection vulnerability and facilitated the quick fix. Community teamwork win!
+## [Clouddriver SQL Injection Bug Fixed](https://github.com/spinnaker/clouddriver/pull/4435)
+The PEN testing team at Autodesk, a company using Spinnaker in production, discovered the SQL injection vulnerability and facilitated the quick fix. Engineers from Netflix and Armory acted quickly to include the fix in the 1.17 release.  Community teamwork win!
 
 ## Getting Started with Spinnaker: Easier Than Ever
 The community has worked hard to make getting up and running with an open source Spinnaker instance easier than ever. OpsMX has shared their [Easy Spinnaker](https://github.com/OpsMx/enterprise-spinnaker/tree/master/scripts/easy-spinnaker) method, which creates a single-node install in Kubernetes. Meanwhile, Armory has developed [Minnaker](https://github.com/armory/minnaker) for POC and evaluation installs of Spinnaker in a Linux VM using K3S.
