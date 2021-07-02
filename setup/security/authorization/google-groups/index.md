@@ -26,8 +26,11 @@ create a service account that will access the G Suite Directory API.
     1. Navigate to the "IAM & Admin" --> Service accounts section.
     1. Click "Create Service Account."
     1. Give it a name like "spinnaker-fiat."
-    1. Select "Furnish a new private key" and select the JSON format.
-    1. Select "Enable G Suite Domain-wide Delegation."
+    1. Click Create. No Need to assign any permissions at this stage
+    1. After Its created, you can go and click the service account for details.
+    1. Navigate to "Details" tab, and Click "Enable G Suite Domain-wide Delegation"
+    1. Navigate to "Keys" tab, to create a JSON Service.
+    1. Click "ADD KEY", Key Type: "JSON"
     1. Click "Create", which should download the private key for your new service account (see
     figure below).
     1. Transfer this JSON file to a known location in your Spinnaker deployment.
@@ -43,8 +46,8 @@ create a service account that will access the G Suite Directory API.
     ![authorize the service account to access the Directory API](fiat-authorize-client.png)
 
     1. Navigate to the "Security" Settings page.
-    1. Under "Advanced settings", click "Manage API client access."
-    1. Enter the Client ID noted above under "Client Name."
+    1. Under "API Controls", click "Domain wide delegation."
+    1. Click "Add New" Enter the Client ID noted above under "Client Name."
     1. Enter `https://www.googleapis.com/auth/admin.directory.group.readonly` as the API scope.
     1. Click "Authorize."
 
