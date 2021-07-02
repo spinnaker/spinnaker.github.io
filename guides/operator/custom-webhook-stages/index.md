@@ -27,7 +27,7 @@ Custom webhook stages support a variety of options, most of which are available 
 
 * `enabled` - whether the stage will appear in the UI
 * `label` - the human readable name of the stage
-* `description` - a human readable description of what the stage is used for
+* `description` - a human readable description of what the stage is used. *manadatory for some spinnaker versions*
 * `type` - a _unique_ key used to identifty the stage type within a pipeline
 * `url` - the url for the webhook
 * `customHeaders` - any headers needed for your webhook's http request. ex. API tokens.
@@ -139,3 +139,5 @@ parameters:
     name: description
     type: string
 ```
+### Troubleshooting
+ * *stages do not apprear in deck*. If after adding webhook you see nothing in stage dropdown of pipeline configuration view check that you added description to preconfigured webhook.
