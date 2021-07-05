@@ -44,14 +44,14 @@ The above payload is sent to `https://stats.spinnaker.io/log` upon the completio
 For release 1.18.x, telemetry is opt-in, as we test and scale the system and fine-tune the dashboards. Spinnaker administrators can help by turning **on** data collection by executing
 
 ```
-hal config telemetry enable
+hal config stats enable
 ```
 and redeploying.
 
 As of 1.19.0+, telemetry will be enabled by default. Spinnaker administrators can turn **off** data collection by executing
 
 ```
-hal config telemetry disable
+hal config stats disable
 ```
 and redeploying.
 

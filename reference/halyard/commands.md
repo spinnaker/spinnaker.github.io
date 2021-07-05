@@ -4,7 +4,7 @@ title: "Commands"
 sidebar:
   nav: reference
 ---
-Published: 2021-05-17 22:20:37
+Published: 2021-06-29 00:09:08
 
 
 # Table of Contents
@@ -9595,6 +9595,7 @@ hal config provider kubernetes account add ACCOUNT [parameters]
 `ACCOUNT`: The name of the account to operate on.
  * `--cache-all-application-relationships`: If true, will add application relationships in the cache for all types of resources.
 This includes CRDs and resources that aren't used in the Clusters, Load Balancers or Firewalls sections.
+ * `--cache-interval-seconds`: How many seconds elapse between polling your kubernetes api. Kubernetes apis are sensitive to over-polling, and larger intervals (e.g. 10 minutes = 600 seconds) are desirable if you're seeing rate limiting.
  * `--cache-threads`: (*Default*: `1`) Number of caching agents for this kubernetes account. Each agent handles a subset of the namespaces available to this account. By default, only 1 agent caches all kinds for all namespaces in the account.
  * `--check-permissions-on-startup`: When false, clouddriver will skip the permission checks for all kubernetes kinds at startup. This can save a great deal of time
 during clouddriver startup when you have many kubernetes accounts configured. This disables the log messages at startup about missing permissions.
@@ -9670,6 +9671,7 @@ hal config provider kubernetes account edit ACCOUNT [parameters]
  * `--all-namespaces`: (*Default*: `false`) Set the list of namespaces to cache and deploy to every namespace available to your supplied credentials.
  * `--cache-all-application-relationships`: If true, will add application relationships in the cache for all types of resources.
 This includes CRDs and resources that aren't used in the Clusters, Load Balancers or Firewalls sections.
+ * `--cache-interval-seconds`: How many seconds elapse between polling your kubernetes api. Kubernetes apis are sensitive to over-polling, and larger intervals (e.g. 10 minutes = 600 seconds) are desirable if you're seeing rate limiting.
  * `--cache-threads`: Number of caching agents for this kubernetes account. Each agent handles a subset of the namespaces available to this account. By default, only 1 agent caches all kinds for all namespaces in the account.
  * `--check-permissions-on-startup`: When false, clouddriver will skip the permission checks for all kubernetes kinds at startup. This can save a great deal of time
 during clouddriver startup when you have many kubernetes accounts configured. This disables the log messages at startup about missing permissions.
